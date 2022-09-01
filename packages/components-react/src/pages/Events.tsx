@@ -1,6 +1,15 @@
 import { ChangeEvent, useCallback, useState } from 'react';
+import type {
+  AccordionChangeEvent,
+  CarouselChangeEvent,
+  PageChangeEvent,
+  SortingChangeEvent,
+  SwitchChangeEvent,
+  TabChangeEvent,
+} from '@porsche-design-system/components-react';
 import {
   PAccordion,
+  PCarousel,
   PModal,
   PPagination,
   PSwitch,
@@ -13,13 +22,6 @@ import {
   PTabsItem,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import type {
-  AccordionChangeEvent,
-  PageChangeEvent,
-  SortingChangeEvent,
-  SwitchChangeEvent,
-  TabChangeEvent,
-} from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
   const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
@@ -31,6 +33,7 @@ export const EventsPage = (): JSX.Element => {
   const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
+  const [carouselChangeEventCounter, setCarouselSortingChangeEventCounter] = useState(0);
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionChange = useCallback(
@@ -63,6 +66,10 @@ export const EventsPage = (): JSX.Element => {
   }, []);
   const onTableSortingChange = useCallback(
     (e: CustomEvent<SortingChangeEvent>) => setTableSortingChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onCarouselChange = useCallback(
+    (e: CustomEvent<CarouselChangeEvent>) => setCarouselSortingChangeEventCounter((prev) => prev + 1),
     []
   );
 
@@ -126,6 +133,15 @@ export const EventsPage = (): JSX.Element => {
           </PTableHead>
         </PTable>
         <p>{tableSortingChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PCarousel onCarouselChange={onCarouselChange}>
+          <div children="Slide 1" />
+          <div children="Slide 2" />
+          <div children="Slide 3" />
+        </PCarousel>
+        <p>{carouselChangeEventCounter}</p>
       </div>
     </>
   );

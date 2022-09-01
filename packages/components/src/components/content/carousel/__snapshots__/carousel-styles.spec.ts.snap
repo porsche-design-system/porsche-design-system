@@ -1,0 +1,851 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and theme: light 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+.pagination {
+  display: none;
+  grid-auto-columns: 0.5rem;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 0.5rem;
+}
+.bullet {
+  border-radius: 0.25rem;
+  background: #96989a;
+}
+.bullet--active {
+  background: #000;
+}
+@media(min-width:480px) {
+  .pagination {
+    display: grid;
+  }
+}
+
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .pagination {
+    display: none;
+  }
+}
+
+@media(min-width:1000px) {
+  .pagination {
+    display: grid;
+  }
+}
+
+@media(min-width:1300px) {
+  .pagination {
+    display: none;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
+  }
+  .pagination {
+    display: grid;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: dark 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #fff !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #fff;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+.pagination {
+  display: grid;
+  grid-auto-columns: 0.5rem;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 0.5rem;
+}
+.bullet {
+  border-radius: 0.25rem;
+  background: #7c7f81;
+}
+.bullet--active {
+  background: #fff;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: light 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+.pagination {
+  display: grid;
+  grid-auto-columns: 0.5rem;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 0.5rem;
+}
+.bullet {
+  border-radius: 0.25rem;
+  background: #96989a;
+}
+.bullet--active {
+  background: #000;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: true and theme: light 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: false and theme: light 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+  padding: 0 max(1rem, 7vw);
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+.pagination {
+  display: grid;
+  grid-auto-columns: 0.5rem;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 0.5rem;
+}
+.bullet {
+  border-radius: 0.25rem;
+  background: #96989a;
+}
+.bullet--active {
+  background: #000;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: max(1rem, 7vw);
+    bottom: 0;
+  }
+}
+
+@media(min-width:1760px) {
+  .splide__track {
+    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
+  }
+  .header {
+    gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: true and theme: light 1`] = `
+":host {
+  display: grid !important;
+  max-width: 120rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+  grid-column: 1;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2,::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
+  h2,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
+  }
+}
+
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: 1rem;
+  padding: 0 max(1rem, 7vw);
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 0.5rem;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    position: relative;
+    min-height: 2.5rem;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: max(1rem, 7vw);
+    bottom: 0;
+  }
+}
+
+@media(min-width:1760px) {
+  .splide__track {
+    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
+  }
+  .header {
+    gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
+  }
+}
+"
+`;

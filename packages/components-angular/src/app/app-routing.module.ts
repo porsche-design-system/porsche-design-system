@@ -70,14 +70,24 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
-    name: 'Inline Notification Example Events',
-    path: 'inline-notification-example-events',
-    component: fromExamples.InlineNotificationExampleEventsComponent,
+    name: 'Carousel Example Events',
+    path: 'carousel-example-events',
+    component: fromExamples.CarouselExampleEventsComponent,
+  },
+  {
+    name: 'Carousel Example Dynamic Slides',
+    path: 'carousel-example-dynamic-slides',
+    component: fromExamples.CarouselExampleDynamicSlidesComponent,
   },
   {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
+  },
+  {
+    name: 'Inline Notification Example Events',
+    path: 'inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
     name: 'Modal Example Accessibility',

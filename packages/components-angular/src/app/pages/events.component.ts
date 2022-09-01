@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
   AccordionChangeEvent,
+  CarouselChangeEvent,
   PageChangeEvent,
   SortingChangeEvent,
   SwitchChangeEvent,
@@ -73,6 +74,15 @@ import type {
       </p-table>
       <p>{{ tableSortingChangeEventCounter }}</p>
     </div>
+
+    <div class="playground light">
+      <p-carousel (carouselChange)="onCarouselChange($event)">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+      <p>{{ carouselChangeEventCounter }}</p>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -86,6 +96,7 @@ export class EventsComponent {
   public modalCloseEventCounter = 0;
   public isModalOpen = false;
   public tableSortingChangeEventCounter = 0;
+  public carouselChangeEventCounter = 0;
 
   // unused event parameters are used to verify that types can be imported package root
   public onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
@@ -123,5 +134,9 @@ export class EventsComponent {
 
   public onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
     this.tableSortingChangeEventCounter++;
+  }
+
+  public onCarouselChange(e: CustomEvent<CarouselChangeEvent>) {
+    this.carouselChangeEventCounter++;
   }
 }
