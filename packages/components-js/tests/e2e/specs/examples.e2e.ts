@@ -1,5 +1,12 @@
 import type { Page } from 'puppeteer';
-import { goto, getConsoleErrorsAmount, getConsoleWarningsAmount, initConsoleObserver } from '../helpers';
+import {
+  getConsoleErrorMessages,
+  getConsoleErrorsAmount,
+  getConsoleWarningMessages,
+  getConsoleWarningsAmount,
+  goto,
+  initConsoleObserver,
+} from '../helpers';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -29,7 +36,15 @@ const exampleUrls = exampleRoutes.map((item) => item.path);
 
 it.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
   await goto(page, exampleUrl);
+
+  if (getConsoleErrorsAmount() !== 0) {
+    console.log(getConsoleErrorMessages());
+  }
   expect(getConsoleErrorsAmount()).toBe(0);
+
+  if (getConsoleWarningsAmount() !== 0) {
+    console.log(getConsoleWarningMessages());
+  }
   expect(getConsoleWarningsAmount()).toBe(0);
 
   await page.evaluate(() => console.error('test error'));

@@ -71,6 +71,10 @@ describe('getBreakpointCustomizableStructure()', () => {
     expect(getBreakpointCustomizableStructure('boolean')).toMatchSnapshot();
   });
 
+  it('should return formatted string for number type', () => {
+    expect(getBreakpointCustomizableStructure('number')).toMatchSnapshot();
+  });
+
   it('should return formatted string for array type', () => {
     expect(getBreakpointCustomizableStructure(['a', 'b'])).toMatchSnapshot();
   });
@@ -121,6 +125,20 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
       jest.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
       expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(true);
       expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(false);
+    });
+  });
+
+  describe('for number', () => {
+    it('should call isValueNotOfType() with correct parameters', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
+      isBreakpointCustomizableValueInvalid(true, 'number');
+      expect(spy).toBeCalledWith(true, 'number');
+    });
+
+    it('should return result of isValueNotOfType()', () => {
+      jest.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
+      expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(true);
+      expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(false);
     });
   });
 

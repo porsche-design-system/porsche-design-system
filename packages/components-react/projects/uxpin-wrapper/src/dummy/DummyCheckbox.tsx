@@ -1,6 +1,7 @@
 import { ChangeEvent, FocusEvent } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
-type Props = {
+export type DummyCheckboxProps = {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
@@ -13,6 +14,16 @@ type Props = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyCheckbox = (props: Props): JSX.Element => {
+export const DummyCheckbox = (props: DummyCheckboxProps): JSX.Element => {
   return <input type="checkbox" {...props} />;
 };
+
+export const dummyCheckboxPropsKeys = extractPropsKeys<DummyCheckboxProps>({
+  disabled: null,
+  readOnly: null,
+  required: null,
+  checked: null,
+  onChange: null,
+  onFocus: null,
+  onBlur: null,
+});
