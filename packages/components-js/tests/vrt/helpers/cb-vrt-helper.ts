@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
+import { SKELETONS_ACTIVE } from 'shared/src';
 
+export const testIfSkeletonsActive = SKELETONS_ACTIVE ? test.describe : test.describe.skip;
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
 export type Viewport = typeof extendedViewports[number];
