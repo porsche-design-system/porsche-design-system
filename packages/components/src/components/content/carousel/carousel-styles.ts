@@ -29,6 +29,11 @@ export const getComponentCss = (
     },
   };
 
+  const backfaceVisibility: JssStyle = {
+    backfaceVisibility: 'hidden',
+    WebkitBackfaceVisibility: 'hidden',
+  };
+
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -69,18 +74,20 @@ export const getComponentCss = (
           })),
         '&--draggable': {
           userSelect: 'none',
+          WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
       },
       '&__list': {
         display: 'flex',
         height: '100%',
-        backfaceVisibility: 'hidden',
+        ...backfaceVisibility,
       },
       '&__slide': {
         position: 'relative',
         flexShrink: 0,
-        backfaceVisibility: 'hidden',
+        ...backfaceVisibility,
+        transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
       '&__sr': getScreenReaderOnlyJssStyle(), // appears in the DOM when sliding
     },
