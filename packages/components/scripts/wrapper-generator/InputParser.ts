@@ -51,7 +51,6 @@ export class InputParser {
       .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
       // fix consumer typing for CarouselInternationalization prop with string type
       .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;')
-      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
       // fix consumer typing for ScrollToPosition prop with string type
       .replace(/(export declare type ScrollToPosition = .*?) \| string;/, '$1;');
 
