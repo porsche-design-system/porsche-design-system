@@ -18,7 +18,6 @@ export const getComponentCss = (
 
   const actionPrevNextStyles = {
     position: 'relative',
-
     padding: `${pxToRemWithUnit(4)} 0`,
     pointerEvents: 'none',
     display: 'flex',
