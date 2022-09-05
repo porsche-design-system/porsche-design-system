@@ -48,10 +48,9 @@ button:focus:not(:focus-visible) {
 
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #01ba1d;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -115,10 +114,9 @@ button:focus:not(:focus-visible) {
 
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #018a16;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -170,10 +168,9 @@ button:focus:not(:focus-visible) {
 }
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #7c7f81;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -225,10 +222,9 @@ button:focus:not(:focus-visible) {
 }
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #96989a;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -309,11 +305,10 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: #fff;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
-  box-sizing: border-box;
+  background: #fff;
 }
 button::after {
   content: \\"\\";
@@ -402,11 +397,10 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: #000;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
-  box-sizing: border-box;
+  background: #000;
 }
 button::after {
   content: \\"\\";
@@ -495,7 +489,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -589,7 +582,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -683,7 +675,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -777,7 +768,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -871,7 +861,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -965,7 +954,6 @@ button::before {
   position: absolute;
   top: 0.1875em;
   left: 0.1875em;
-  background: none;
   height: 1.125em;
   width: 1.125em;
   border-radius: 50%;
@@ -1042,10 +1030,9 @@ button:focus:not(:focus-visible) {
 
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #ff9b00;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -1109,10 +1096,9 @@ button:focus:not(:focus-visible) {
 
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #ff9b00;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -1164,10 +1150,9 @@ button:focus:not(:focus-visible) {
 }
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #7c7f81;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -1219,10 +1204,9 @@ button:focus:not(:focus-visible) {
 }
 .icon {
   position: absolute;
-  height: inherit;
   left: 0;
+  height: inherit;
   color: #96989a;
-  margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
