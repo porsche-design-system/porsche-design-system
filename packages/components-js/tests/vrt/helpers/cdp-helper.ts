@@ -94,14 +94,13 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
 export const resolveSelector = (
   selector: string
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
-  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
-
-  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-    throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  }
-  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-    throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  }
+  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x, index) => {
+    if (index > 0) {
+      return x.replace('.', '').trim();
+    } else {
+      return x.trim();
+    }
+  });
 
   return { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName };
 };
@@ -120,12 +119,19 @@ const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise
   ).nodeIds;
 };
 
-export const findBackendNodeIds = (currentNode: Protocol.DOM.Node, localNodeName: string): BackendNodeId[] => {
-  if (currentNode.localName === localNodeName) {
+export const findBackendNodeIds = (
+  currentNode: Protocol.DOM.Node,
+  localNodeNameOrClassName: string
+): BackendNodeId[] => {
+  // support tag names & class names
+  if (
+    currentNode.localName === localNodeNameOrClassName ||
+    currentNode.attributes?.includes(localNodeNameOrClassName)
+  ) {
     return [currentNode.backendNodeId];
   } else {
     return currentNode.children
-      ?.map((child) => findBackendNodeIds(child, localNodeName))
+      ?.map((child) => findBackendNodeIds(child, localNodeNameOrClassName))
       .flat()
       .filter((x) => x);
   }
