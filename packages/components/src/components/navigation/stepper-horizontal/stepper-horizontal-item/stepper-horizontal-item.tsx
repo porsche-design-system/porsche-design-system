@@ -77,7 +77,7 @@ export class StepperHorizontalItem {
               aria-hidden="true"
             />
           )}
-          {this.state && <span class="sr-only">{`${this.state}: `}</span>}
+          {this.state && <span class="sr-only">{this.state}: </span>}
           <slot />
         </button>
       </Host>
