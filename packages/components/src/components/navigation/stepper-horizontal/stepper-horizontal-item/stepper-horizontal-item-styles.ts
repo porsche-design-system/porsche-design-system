@@ -1,4 +1,5 @@
 import {
+  addImportantToRule,
   getFocusJssStyle,
   getHoverJssStyle,
   getScreenReaderOnlyJssStyle,
@@ -34,9 +35,17 @@ const getColor = (
   return { baseColor, hoverColor, iconColor: colorMap[state], invertedBaseColor, disabledColor };
 };
 
+const spriteStepSize = 0.625; // 10px / font size in px
+const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
+const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
+const counterCirclePosition = '0.1875em'; // (button height - height of circle) / 2
+const counterCircleSize = '1.125em'; // 18px / font size
+const counterValuePosition = '0.4375em'; // (button height - height of sprite) / font size in px / 2
+const counterValueSize = spriteHeight;
+
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
   const { baseColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColor(state, theme);
-  const isCurrentOrUndefined = state === 'current' || !state;
+  const isStateCurrentOrUndefined = state === 'current' || !state;
   const isDisabled = !state || disabled;
   const hoverJssStyles = getHoverJssStyle();
 
@@ -44,42 +53,44 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
 
   return getCss({
     '@global': {
-      ':host':
-        isCurrentOrUndefined &&
-        Array.from(Array(9)).reduce(
-          (result, _, i) => ({
-            ...result,
-            [`&(:nth-of-type(${i + 1})) $button::after`]: {
-              backgroundPositionX: pxToRemWithUnit(-i * 10),
-            },
-          }),
-          {} as JssStyle
-        ),
+      ':host': {
+        ...(isStateCurrentOrUndefined &&
+          Array.from(Array(9)).reduce(
+            (result, _, i) => ({
+              ...result,
+              [`&(:nth-of-type(${i + 1})) $button::after`]: {
+                backgroundPositionX: `${-i * spriteStepSize}em`,
+              },
+            }),
+            {} as JssStyle
+          )),
+        fontSize: addImportantToRule('inherit'),
+      },
       button: {
-        display: 'flex',
         position: 'relative',
-        alignItems: 'center',
-        height: pxToRemWithUnit(24),
+        height: '1.5em',
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         margin: 0,
+        padding: `0 0 0 calc(1.5em + ${pxToRemWithUnit(4)})`, // icon height + 4 px
         background: 0,
         border: 0,
         ...textSmall,
+        fontSize: 'inherit',
         whiteSpace: 'nowrap',
         ...getFocusJssStyle(),
-        ...(isCurrentOrUndefined
+        ...(isStateCurrentOrUndefined
           ? {
-              padding: `0 0 0 ${pxToRemWithUnit(28)}`,
               cursor: isDisabled ? 'not-allowed' : 'auto',
               '&::before': {
                 // circle of counter element
-                position: 'absolute',
-                left: pxToRemWithUnit(3),
                 content: '""',
+                position: 'absolute',
+                top: counterCirclePosition,
+                left: counterCirclePosition,
                 background: isDisabled ? 'none' : baseColor,
-                width: pxToRemWithUnit(18),
-                height: pxToRemWithUnit(18),
+                height: counterCircleSize,
+                width: counterCircleSize,
                 borderRadius: '50%',
                 boxSizing: 'border-box',
                 ...(isDisabled && {
@@ -87,17 +98,17 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                 }),
               },
               '&::after': {
-                // unit of counter element
-                position: 'absolute',
-                left: pxToRemWithUnit(7),
+                // value of counter element
                 content: '""',
-                width: pxToRemWithUnit(10),
-                height: pxToRemWithUnit(10),
-                background: `${getSvg(svgColor)} 0 50% / 90px 10px no-repeat`,
+                position: 'absolute',
+                top: counterValuePosition,
+                left: counterValuePosition,
+                width: counterValueSize,
+                height: counterValueSize,
+                background: `${getSvg(svgColor)} 0 50% / ${spriteWidth} ${spriteHeight} no-repeat`,
               },
             }
           : {
-              padding: 0,
               cursor: isDisabled ? 'not-allowed' : 'pointer',
               textDecoration: isDisabled ? 'none' : 'underline',
               ...(!isDisabled &&
@@ -110,8 +121,11 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             }),
       },
     },
-    ...(!isCurrentOrUndefined && {
+    ...(!isStateCurrentOrUndefined && {
       icon: {
+        position: 'absolute',
+        height: 'inherit',
+        left: 0,
         color: isDisabled ? disabledColor : iconColor,
         marginRight: pxToRemWithUnit(4),
         transition: getTransition('color'),
