@@ -79,7 +79,7 @@ const getAllButtons = async () =>
     )
   );
 const getScrollArea = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .scroll-area');
-const getGradientNext = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next .gradient');
+const getGradientNext = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next');
 
 describe('validation', () => {
   it('should throw error if an item with current state is added while another exists', async () => {

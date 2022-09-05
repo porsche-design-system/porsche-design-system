@@ -277,6 +277,14 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md'),
       ],
     },
+    Scroller: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/common/scroller/scroller.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/common/scroller/scroller.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/common/scroller/scroller.props.md')],
+    },
     Select: {
       Examples: [
         // @ts-ignore

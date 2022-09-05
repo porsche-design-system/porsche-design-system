@@ -9,7 +9,7 @@ import {
   resolveSelector,
 } from '../../vrt/helpers/cdp-helper';
 
-type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
+type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId' | 'attributes'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
 type TestCase = {
   node: NodeWithChildren;
@@ -51,6 +51,33 @@ describe('cdp-helper', () => {
         },
         selector: 'test',
         expect: [],
+      },
+      {
+        node: {
+          localName: 'test1',
+          attributes: ['test', 'node', 'attribute'],
+          backendNodeId: 1,
+          children: [{ localName: 'test2', backendNodeId: 2, children: [{ localName: 'test3', backendNodeId: 3 }] }],
+        },
+        selector: 'test',
+        expect: [1],
+      },
+      {
+        node: {
+          localName: 'test1',
+          attributes: ['node', 'attribute'],
+          backendNodeId: 1,
+          children: [
+            {
+              localName: 'test2',
+              attributes: ['test', 'attribute'],
+              backendNodeId: 2,
+              children: [{ localName: 'test3', attributes: ['test'], backendNodeId: 3 }],
+            },
+          ],
+        },
+        selector: 'test',
+        expect: [2],
       },
     ];
 
@@ -116,17 +143,18 @@ describe('cdp-helper', () => {
       });
     });
 
+    it('should support classes in shadow root and split string to object with hostElementSelector and shadowRootNodeName', () => {
+      expect(resolveSelector('.focus p-scroller >>> .scroll-wrapper')).toEqual({
+        hostElementSelector: '.focus p-scroller',
+        shadowRootNodeName: 'scroll-wrapper',
+      });
+    });
+
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
       expect(resolveSelector('.hover > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
         hostElementSelector: '.hover > p-checkbox-wrapper input[type="checkbox"]',
         shadowRootNodeName: undefined,
       });
-    });
-
-    it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
-      expect(() => resolveSelector('.hover > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
-        '"\\">>> .tabs-bar\\" selector has to be an \\"Element.localName\\" in shadow-root"'
-      );
     });
   });
 });
