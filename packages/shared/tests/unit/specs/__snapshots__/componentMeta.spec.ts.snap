@@ -1199,6 +1199,9 @@ Object {
     "isThemeable": true,
     "props": Array [
       Object {
+        "size": "small",
+      },
+      Object {
         "theme": "light",
       },
     ],

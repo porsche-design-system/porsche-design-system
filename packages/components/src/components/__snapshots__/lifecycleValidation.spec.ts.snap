@@ -319,6 +319,7 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
 Object {
+  "size": "breakpoint",
   "theme": "oneOf",
 }
 `;

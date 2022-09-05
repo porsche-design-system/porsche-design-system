@@ -13,16 +13,19 @@ import {
   validateProps,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
+import type { StepChangeEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
+  STEPPER_HORIZONTAL_SIZES,
   syncItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
 import { getScrollerElements } from '../../../common/scroller/scroller-utils';
+import type { BreakpointCustomizable } from '../../../../types';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
+  size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -32,6 +35,9 @@ const propTypes: PropTypes<typeof StepperHorizontal> = {
 })
 export class StepperHorizontal {
   @Element() public host!: HTMLElement;
+
+  /** The text size. */
+  @Prop() public size?: BreakpointCustomizable<StepperHorizontalSize> = 'small';
 
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
