@@ -67,6 +67,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-scroller',
+      samples: [
+        [
+          componentsJsPath + '/scroller-example.html',
+          componentsAngularPath + '/scroller-example.component.ts',
+          componentsReactPath + '/ScrollerExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-segmented-control',
       samples: [
         [
