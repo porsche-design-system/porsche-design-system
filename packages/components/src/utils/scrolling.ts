@@ -25,6 +25,7 @@ export const scrollElementTo = (el: HTMLElement, amount: number): void => {
     });
   } else {
     // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
+    // https://caniuse.com/?search=scroll-behavior
     const initialScrollLeft = el.scrollLeft;
     const scrollDistance = amount - initialScrollLeft;
     const scrollStep = scrollDistance / steps;
@@ -38,6 +39,7 @@ export const scrollElementBy = (el: HTMLElement, amount: number): void => {
     el.scrollBy({ left: amount, top: 0, behavior: 'smooth' });
   } else {
     // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
+    // https://caniuse.com/?search=scroll-behavior
     const initialScrollLeft = el.scrollLeft;
     const endScrollLeft = initialScrollLeft + amount;
     const scrollStep = amount / steps;
@@ -47,8 +49,7 @@ export const scrollElementBy = (el: HTMLElement, amount: number): void => {
 };
 
 export const getScrollByX = (scrollAreaElement: HTMLElement): number => {
-  const { offsetWidth } = scrollAreaElement;
-  return Math.round(offsetWidth * 0.2);
+  return Math.round(scrollAreaElement.offsetWidth * 0.2);
 };
 
 export const FOCUS_PADDING_WIDTH = 4;
@@ -61,12 +62,11 @@ export const getScrollActivePosition = (
   gradientWidth: number
 ): number => {
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
-    elements[activeElementIndex] ?? {};
-  const elementsCount = elements.length;
+    elements[activeElementIndex] || {};
 
   let scrollPosition: number;
   if (direction === 'next') {
-    if (activeElementIndex === elementsCount - 1) {
+    if (activeElementIndex === elements.length - 1) {
       // go to last element
       scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
