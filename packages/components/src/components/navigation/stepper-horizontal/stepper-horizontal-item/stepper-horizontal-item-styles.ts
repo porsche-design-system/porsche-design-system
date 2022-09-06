@@ -70,6 +70,9 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             {} as JssStyle
           )),
         fontSize: addImportantToRule('inherit'),
+        '&(:not(:last-of-type))': {
+          marginRight: addImportantToRule(pxToRemWithUnit(16)),
+        },
       },
       button: {
         position: 'relative',
@@ -143,6 +146,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         position: 'absolute',
         left: 0,
         height: 'inherit',
+        width: '1.5em', // needed for Safari
         color: isDisabled ? disabledColor : iconColor,
         transition: getTransition('color'),
       },
