@@ -52,7 +52,6 @@ export class StepperHorizontal {
   private currentStepIndex: number;
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss, this.size);
     this.defineStepperHorizontalItemElements();
 
     observeChildren(this.host, () => {
@@ -73,6 +72,7 @@ export class StepperHorizontal {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size);
     syncItemsProps(this.host, this.theme);
   }
 
