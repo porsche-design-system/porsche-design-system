@@ -180,7 +180,7 @@ export const StepperHorizontalPage = (): JSX.Element => {
         </PStepperHorizontal>
       </div>
 
-      <div className="playground dark" title="should render arrow left and right on dark background">
+      <div className="playground dark" title="should render stepper horizontal with arrow left and right on dark background">
         <PStepperHorizontal theme="dark" style={{ maxWidth: '600px' }}>
           <PStepperHorizontalItem state="complete">Scrollable 1</PStepperHorizontalItem>
           <PStepperHorizontalItem state="complete">Scrollable 2</PStepperHorizontalItem>
