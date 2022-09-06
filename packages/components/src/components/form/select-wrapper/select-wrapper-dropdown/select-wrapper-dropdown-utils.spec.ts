@@ -205,7 +205,7 @@ describe('getOptionMaps()', () => {
   };
 
   const generateHTMLOptionElements = (opts?: GenerateHTMLOptionElementOptions): HTMLOptionElement[] => {
-    const { text, disabled = false, hidden = false, selected = false, isGrouped } = opts ?? {};
+    const { text, disabled = false, hidden = false, selected = false, isGrouped } = opts || {};
     const option = document.createElement('option');
 
     option.text = text;
