@@ -28,7 +28,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/scroller/scroller-utils';
-import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
+import { GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -65,14 +65,11 @@ export class TabsBar {
 
   @State() private tabElements: HTMLElement[] = [];
 
-  private intersectionObserver: IntersectionObserver;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
   private direction: Direction = 'next';
   private hasPTabsParent: boolean;
-  private scrollAreaElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private scrollerElement: HTMLElement;
+  private scrollerElement: HTMLPScrollerElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
@@ -100,7 +97,6 @@ export class TabsBar {
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
     // TODO: validation of active element index inside of tabs bar!
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
@@ -132,7 +128,6 @@ export class TabsBar {
     unobserveBreakpointChange(this.host);
 
     unobserveChildren(this.host);
-    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
@@ -155,7 +150,7 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabElements)) {
-      const tabIndex = this.activeTabIndex ?? 0;
+      const tabIndex = this.activeTabIndex || 0;
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
       const attrs = {
@@ -167,12 +162,6 @@ export class TabsBar {
         setAttribute(tab, key, value);
       }
     }
-  };
-
-  private defineHTMLElements = (): void => {
-    const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
-    this.scrollAreaElement = scrollAreaElement;
-    this.prevGradientElement = prevGradientElement;
   };
 
   private setTabElements = (): void => {
@@ -236,22 +225,19 @@ export class TabsBar {
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
-    if (!this.scrollAreaElement) {
-      return;
+    if (this.scrollerElement) {
+      const scrollActivePosition = getScrollActivePosition(
+        this.tabElements,
+        this.direction,
+        this.activeTabIndex,
+        this.scrollerElement
+      );
+
+      this.scrollerElement.scrollToPosition = {
+        scrollPosition: scrollActivePosition,
+        isSmooth,
+      };
     }
-
-    const scrollActivePosition = getScrollActivePosition(
-      this.tabElements,
-      this.direction,
-      this.activeTabIndex,
-      this.scrollAreaElement.offsetWidth,
-      this.prevGradientElement.offsetWidth
-    );
-
-    (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
-      scrollPosition: scrollActivePosition,
-      isSmooth,
-    };
   };
 
   private setBarStyle = (): void => {

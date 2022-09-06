@@ -24,7 +24,6 @@ import {
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
-import { getScrollerElements } from '../../../common/scroller/scroller-utils';
 import type { BreakpointCustomizable } from '../../../../types';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
@@ -49,9 +48,7 @@ export class StepperHorizontal {
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepChangeEvent>;
 
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  private scrollAreaElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private scrollerElement: HTMLElement;
+  private scrollerElement: HTMLPScrollerElement;
   private currentStepIndex: number;
 
   public connectedCallback(): void {
@@ -80,23 +77,21 @@ export class StepperHorizontal {
   }
 
   public componentDidLoad(): void {
-    this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
     this.observeBreakpointChange();
 
     // Sometimes lifecycle gets called after disconnectedCallback()
-    if (this.scrollAreaElement && this.prevGradientElement) {
+    if (this.scrollerElement) {
       this.addEventListeners();
 
       // Initial scroll current into view
-      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      this.scrollerElement.scrollToPosition = {
         scrollPosition: getScrollActivePosition(
           this.stepperHorizontalItems,
           'next',
           this.currentStepIndex,
-          this.scrollAreaElement.offsetWidth,
-          this.prevGradientElement.offsetWidth
+          this.scrollerElement
         ),
         isSmooth: false,
       };
@@ -126,7 +121,7 @@ export class StepperHorizontal {
   }
 
   private addEventListeners = (): void => {
-    this.scrollAreaElement.addEventListener('click', (e) => {
+    this.scrollerElement.addEventListener('click', (e) => {
       const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
         this.host,
         'pStepperHorizontalItem',
@@ -139,12 +134,6 @@ export class StepperHorizontal {
         this.stepChange.emit({ activeStepIndex: clickedStepIndex });
       }
     });
-  };
-
-  private defineScrollerElements = (): void => {
-    const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
-    this.scrollAreaElement = scrollAreaElement;
-    this.prevGradientElement = prevGradientElement;
   };
 
   private defineStepperHorizontalItemElements = (): void => {
@@ -162,18 +151,16 @@ export class StepperHorizontal {
     const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     // If state is set to undefined index is -1
     if (newStepIndex !== -1) {
-      const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
       const scrollActivePosition = getScrollActivePosition(
         this.stepperHorizontalItems,
-        direction,
+        newStepIndex > this.currentStepIndex ? 'next' : 'prev',
         newStepIndex,
-        this.scrollAreaElement.offsetWidth,
-        this.prevGradientElement.offsetWidth
+        this.scrollerElement
       );
 
       this.currentStepIndex = newStepIndex;
 
-      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      this.scrollerElement.scrollToPosition = {
         scrollPosition: scrollActivePosition,
         isSmooth: true,
       };
