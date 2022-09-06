@@ -23,10 +23,10 @@ export const cbVRT = async (route: string, viewport: Viewport = 1000, options?: 
   return test(testName, async ({ page }, workerInfo) => {
     const isMobileSafari = workerInfo.project.name === 'Mobile Safari';
 
-    // Skip this resolution for Mobile Safari because of bug where scrollbars are always visible https://github.com/microsoft/playwright/issues/844
-    if (viewport === 2560 && isMobileSafari) {
-      return;
-    }
+    test.skip(
+      viewport === 2560 && isMobileSafari,
+      'Skip this resolution for Mobile Safari because of bug where scrollbars are always visible https://github.com/microsoft/playwright/issues/844'
+    );
 
     await page.setViewportSize({
       width: viewport === 320 && isMobileSafari ? 358 : viewport, // Workaround for Mobile Safari if viewport < 358 an empty screenshot is created, since the Target is closed after navigation
