@@ -126,7 +126,6 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-
     unobserveChildren(this.host);
   }
 
