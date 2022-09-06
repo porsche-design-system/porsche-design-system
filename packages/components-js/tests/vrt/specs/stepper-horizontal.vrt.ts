@@ -26,12 +26,21 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
         <p-stepper-horizontal theme="${theme}">
-          <p-stepper-horizontal-item theme="${theme}" state="warning">Step Warning</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="${theme}" state="complete">Step Complete</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="${theme}" state="warning" disabled>Step Warning Disabled</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="${theme}" state="complete" disabled>Step Complete Disabled</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="${theme}" state="current">Step Current</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="${theme}">Step</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="warning">Warning</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="complete">Complete</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="warning" disabled>Warning Disabled</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="complete" disabled>Complete Disabled</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="current">Current</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}">Default</p-stepper-horizontal-item>
+        </p-stepper-horizontal>
+
+        <p-stepper-horizontal theme="${theme}" size="medium">
+          <p-stepper-horizontal-item theme="${theme}" state="warning">Warning</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="complete">Complete</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="warning" disabled>Warning Disabled</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="complete" disabled>Complete Disabled</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}" state="current">Current</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="${theme}">Default</p-stepper-horizontal-item>
         </p-stepper-horizontal>
         `;
 
