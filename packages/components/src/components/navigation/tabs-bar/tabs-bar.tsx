@@ -158,7 +158,7 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabElements)) {
-      const tabIndex = this.activeTabIndex ?? 0;
+      const tabIndex = this.activeTabIndex || 0;
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
       const attrs = {
