@@ -4,9 +4,6 @@ exports[`getComponentCss() should return correct css for size: "medium" 1`] = `
 ":host {
   display: block;
 }
-::slotted(*:not(:last-child)) {
-  margin-right: 1em !important;
-}
 .scroller {
   display: flex;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -23,9 +20,6 @@ exports[`getComponentCss() should return correct css for size: "small" 1`] = `
 ":host {
   display: block;
 }
-::slotted(*:not(:last-child)) {
-  margin-right: 1em !important;
-}
 .scroller {
   display: flex;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -41,9 +35,6 @@ exports[`getComponentCss() should return correct css for size: "small" 1`] = `
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
 ":host {
   display: block;
-}
-::slotted(*:not(:last-child)) {
-  margin-right: 1em !important;
 }
 .scroller {
   display: flex;
