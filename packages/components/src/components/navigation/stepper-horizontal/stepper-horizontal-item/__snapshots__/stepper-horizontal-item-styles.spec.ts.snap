@@ -4,6 +4,9 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
 ":host {
   font-size: inherit !important;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -50,6 +53,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #01ba1d;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -69,6 +73,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -116,6 +123,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -135,6 +143,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -170,6 +181,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #7c7f81;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -189,6 +201,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -224,6 +239,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -270,6 +286,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 }
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -363,6 +382,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -454,6 +476,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 }
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -548,6 +573,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -640,6 +668,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 }
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -734,6 +765,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -826,6 +860,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 }
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -920,6 +957,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 :host(:nth-of-type(9)) button::after {
   background-position-x: -5em;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -986,6 +1026,9 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
 ":host {
   font-size: inherit !important;
 }
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
+}
 button {
   position: relative;
   height: 1.5em;
@@ -1032,6 +1075,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #ff9b00;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1051,6 +1095,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -1098,6 +1145,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #ff9b00;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1117,6 +1165,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -1152,6 +1203,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #7c7f81;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1171,6 +1223,9 @@ button:focus:not(:focus-visible) {
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
+}
+:host(:not(:last-of-type)) {
+  margin-right: 1rem !important;
 }
 button {
   position: relative;
@@ -1206,6 +1261,7 @@ button:focus:not(:focus-visible) {
   position: absolute;
   left: 0;
   height: inherit;
+  width: 1.5em;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
