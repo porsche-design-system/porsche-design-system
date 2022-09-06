@@ -1,6 +1,7 @@
-import { Direction } from '../components/common/scroller/scroller-utils';
+import type { Direction } from '../components/common/scroller/scroller-utils';
+import { getScrollerElements } from '../components/common/scroller/scroller-utils';
 
-export const supportsScrollBehavior = (): boolean => 'scrollBehavior' in document?.documentElement?.style;
+const supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
 
 const steps = 20;
 
@@ -18,7 +19,7 @@ const intervalScroll = (el: HTMLElement, scrollStep: number, initialScrollLeft: 
 };
 
 export const scrollElementTo = (el: HTMLElement, amount: number): void => {
-  if (supportsScrollBehavior()) {
+  if (supportsScrollBehavior) {
     el.scrollTo({
       left: amount,
       behavior: 'smooth',
@@ -35,7 +36,7 @@ export const scrollElementTo = (el: HTMLElement, amount: number): void => {
 };
 
 export const scrollElementBy = (el: HTMLElement, amount: number): void => {
-  if (supportsScrollBehavior()) {
+  if (supportsScrollBehavior) {
     el.scrollBy({ left: amount, top: 0, behavior: 'smooth' });
   } else {
     // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
@@ -58,11 +59,11 @@ export const getScrollActivePosition = (
   elements: HTMLElement[],
   direction: Direction,
   activeElementIndex: number,
-  scrollAreaOffsetWidth: number,
-  gradientWidth: number
+  scrollerElement: HTMLPScrollerElement
 ): number => {
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
     elements[activeElementIndex] || {};
+  const [scrollAreaElement, prevGradientElement] = getScrollerElements(scrollerElement);
 
   let scrollPosition: number;
   if (direction === 'next') {
@@ -71,7 +72,7 @@ export const getScrollActivePosition = (
       scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
       // go to next element
-      scrollPosition = activeElementOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = activeElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
     if (activeElementIndex === 0) {
@@ -79,7 +80,11 @@ export const getScrollActivePosition = (
       scrollPosition = 0;
     } else {
       // go to prev element
-      scrollPosition = activeElementOffsetLeft + activeElementOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
+      scrollPosition =
+        activeElementOffsetLeft +
+        activeElementOffsetWidth +
+        prevGradientElement.offsetWidth -
+        scrollAreaElement.offsetWidth;
     }
   }
   return scrollPosition;
