@@ -180,7 +180,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-stepper-horizontal>
     </div>
 
-    <div class="playground dark" title="should render arrow left and right on dark background">
+    <div class="playground dark" title="should render stepper horizontal with arrow left and right on dark background">
       <p-stepper-horizontal [theme]="'dark'" style="max-width: 600px">
         <p-stepper-horizontal-item [state]="'complete'">Scrollable 1</p-stepper-horizontal-item>
         <p-stepper-horizontal-item [state]="'complete'">Scrollable 2</p-stepper-horizontal-item>
