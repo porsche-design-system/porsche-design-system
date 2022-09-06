@@ -65,7 +65,6 @@ export class TabsBar {
 
   @State() private tabElements: HTMLElement[] = [];
 
-  private intersectionObserver: IntersectionObserver;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
   private direction: Direction = 'next';
@@ -137,7 +136,6 @@ export class TabsBar {
       unobserveBreakpointChange(this.host);
     }
     unobserveChildren(this.host);
-    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
