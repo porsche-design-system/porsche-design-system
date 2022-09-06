@@ -32,6 +32,17 @@ clicked step.
 
 <Playground :config="config" :markup="basic"></Playground>
 
+## Size
+
+<Playground :markup="sizeMarkup" :config="config">
+  <select v-model="size" aria-label="Select size">
+    <option disabled>Select size</option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
+  </select>
+</Playground>
+
 ## Scrollable
 
 If the amount of steps exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
@@ -83,6 +94,9 @@ import type { Theme } from '@/models';
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  size = 'small'
+
   codeExample = getStepperHorizontalCodeSamples();
   
   basic = `<p-stepper-horizontal>
@@ -169,6 +183,17 @@ export default class Code extends Vue {
   get theme(): Theme {
     return this.$store.getters.theme;
   }
+  
+  get sizeMarkup() {
+    return `<p-stepper-horizontal size="${this.size}">
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+</p-stepper-horizontal>`;
+  }
+
+
 }
 </script>
 
