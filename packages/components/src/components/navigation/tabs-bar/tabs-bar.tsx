@@ -74,10 +74,6 @@ export class TabsBar {
   private prevGradientElement: HTMLElement;
   private scrollerElement: HTMLElement;
 
-  private get isSizeBreakpointCustomizable(): boolean {
-    return typeof parseJSON(this.size) === 'object';
-  }
-
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
     // can be null if removeAttribute() is used
@@ -133,9 +129,8 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    if (this.isSizeBreakpointCustomizable) {
-      unobserveBreakpointChange(this.host);
-    }
+    unobserveBreakpointChange(this.host);
+
     unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
   }
@@ -264,7 +259,7 @@ export class TabsBar {
   };
 
   private observeBreakpointChange = (): void => {
-    if (this.isSizeBreakpointCustomizable) {
+    if (typeof parseJSON(this.size) === 'object') {
       observeBreakpointChange(this.host, () => {
         this.setBarStyle();
         this.scrollActiveTabIntoView(false);
