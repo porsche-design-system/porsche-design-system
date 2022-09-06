@@ -5,10 +5,13 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  observeBreakpointChange,
   observeChildren,
+  parseJSON,
   THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
+  unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
 } from '../../../../utils';
@@ -62,6 +65,8 @@ export class StepperHorizontal {
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.scrollIntoView();
     });
+
+    this.observeBreakpointChange();
   }
 
   public componentWillLoad(): void {
@@ -77,6 +82,8 @@ export class StepperHorizontal {
   public componentDidLoad(): void {
     this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+
+    this.observeBreakpointChange();
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollAreaElement && this.prevGradientElement) {
@@ -102,6 +109,8 @@ export class StepperHorizontal {
   }
 
   public disconnectedCallback(): void {
+    unobserveBreakpointChange(this.host);
+
     unobserveChildren(this.host);
   }
 
@@ -109,10 +118,8 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host role="list">
-        <PrefixedTagNames.pScroller theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
-          <div class="item-wrapper">
-            <slot />
-          </div>
+        <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
+          <slot />
         </PrefixedTagNames.pScroller>
       </Host>
     );
@@ -170,6 +177,12 @@ export class StepperHorizontal {
         scrollPosition: scrollActivePosition,
         isSmooth: true,
       };
+    }
+  };
+
+  private observeBreakpointChange = (): void => {
+    if (typeof parseJSON(this.size) === 'object') {
+      observeBreakpointChange(this.host, this.scrollIntoView);
     }
   };
 }
