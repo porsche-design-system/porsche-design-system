@@ -1,7 +1,7 @@
 # Stepper Horizontal
 
-The `p-stepper-horizontal` displays progress through a sequence of logical and numbered steps.  
-Horizontal steppers are ideal when the contents of one step depend on an earlier step.  
+The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps.  
+It is ideal when the contents of one step depends on an earlier step.  
 Avoid using long step names.
 
 The component does not handle the display of your content. When using the component you have to manually take care of
@@ -17,7 +17,7 @@ behavior.
 
 ## Basic example
 
-Use `p-horizontal-stepper-items` inside the `p-horizontal-stepper` component. Each item will be rendered as a step. You
+Use `p-stepper-horizontal-item`s inside the `p-stepper-horizontal` component. Each item will be rendered as a step. You
 have to manually manage the state of the items by setting the `state` property.
 
 The `state` property can be set to `complete` when a step is complete, `warning` when a user has to revisit the step,
@@ -27,16 +27,18 @@ If the `state` property is `undefined` the step renders as stateless and disable
 This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
 steps which cannot yet be processed at the time.
 
-By clicking on a previous step, the `p-horizontal-stepper` emits the `stepChange` event, which contains the index of the
+By clicking on a previous step, the `p-stepper-horizontal` emits the `stepChange` event, which contains the index of the
 clicked step.
 
 <Playground :config="config" :markup="basic"></Playground>
 
 ## Size
 
+You can set the `size` property of the component which is breakpoint customizable.
+
 <Playground :markup="sizeMarkup" :config="config">
   <label>
-  <p-text :theme="theme">Select size:</p-text>
+    <p-text :theme="theme">Select size:</p-text>
     <select v-model="size" aria-label="Select size">
       <option disabled>Select size</option>
       <option value="small">Small</option>
@@ -48,7 +50,7 @@ clicked step.
 
 ## Scrollable
 
-If the amount of steps exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
+If the amount of steps exceeds the viewport, the component renders arrow buttons to help with horizontal scrolling.
 
 <Playground :config="config" :markup="scrollable"></Playground>
 
