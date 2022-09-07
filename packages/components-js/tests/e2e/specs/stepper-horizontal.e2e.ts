@@ -172,7 +172,7 @@ describe('scrolling', () => {
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const item5Offset = await getOffsetLeft(item5);
-    const scrollDistanceRight = +item5Offset - +gradientWidth + FOCUS_PADDING;
+    const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
     await item4.click();
@@ -200,7 +200,7 @@ describe('scrolling', () => {
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const item5Offset = await getOffsetLeft(item5);
-    const scrollDistanceRight = +item5Offset - +gradientWidth + FOCUS_PADDING;
+    const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
     await setProperty(item5, 'state', 'complete');
