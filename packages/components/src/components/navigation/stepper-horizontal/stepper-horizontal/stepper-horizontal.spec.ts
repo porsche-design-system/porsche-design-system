@@ -8,45 +8,30 @@ describe('connectedCallback', () => {
   it('should call defineStepperHorizontalItemElements()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
-    component.host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
 
     component.connectedCallback();
     expect(spy).toBeCalledTimes(1);
   });
 
-  xit('should call this.observeBreakpointChange()', () => {});
+  it('should call this.observeBreakpointChange()', () => {
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+
+    component.connectedCallback();
+    expect(spy).toBeCalledTimes(1);
+  });
 });
 
 describe('componentWillLoad', () => {
-  xit('should call this.validateComponent()', () => {});
-
-  // TODO: next 3 tests don't belong here
-  it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+  it('should call this.validateComponent()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    const spy = jest.spyOn(component, 'validateComponent' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
-  });
-
-  it('should call throwIfChildCountIsExceeded() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-
-    component.componentWillLoad();
-    expect(spy).toBeCalledWith(component.host, 9);
-  });
-
-  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-
-    component.componentWillLoad();
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toBeCalledTimes(1);
   });
 });
 
@@ -59,7 +44,13 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(component['stepperHorizontalItems']);
   });
 
-  xit('should call this.observeBreakpointChange()', () => {});
+  it('should call this.observeBreakpointChange()', () => {
+    const component = new StepperHorizontal();
+    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+
+    component.componentDidLoad();
+    expect(spy).toBeCalledTimes(1);
+  });
 
   it('should call this.addEventListeners()', () => {
     const component = new StepperHorizontal();
@@ -96,5 +87,34 @@ describe('componentDidUpdate', () => {
 
     component.componentDidUpdate();
     expect(spy).toBeCalledWith(component.host, expect.any(Array));
+  });
+});
+
+describe('validateComponent', () => {
+  it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+
+    component.componentWillLoad();
+    expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
+  });
+
+  it('should call throwIfChildCountIsExceeded() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+
+    component.componentWillLoad();
+    expect(spy).toBeCalledWith(component.host, 9);
+  });
+
+  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
+    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+
+    component.componentWillLoad();
+    expect(spy).toBeCalledWith(component.host, expect.anything());
   });
 });
