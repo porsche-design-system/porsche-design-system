@@ -112,6 +112,11 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
   <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
   }
   
@@ -158,7 +163,7 @@ export default class Code extends Vue {
   }
 
   onStepChange(e): void {
-    const { activeStepIndex } = e.detail;      
+    const { activeStepIndex } = e.detail;
     for (let i = activeStepIndex + 1; i < this.steps.length; i++) {
       /* reset step state when going back via stepper horizontal item click */
       this.steps[i].state = undefined;
