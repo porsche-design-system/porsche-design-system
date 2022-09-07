@@ -92,6 +92,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           ? // counter circle icon via css
             {
               cursor: isDisabled ? 'not-allowed' : 'auto',
+              // TODO: combine &::before and &::after element
               '&::before': {
                 // circle of counter element
                 content: '""',
