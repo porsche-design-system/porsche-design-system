@@ -96,7 +96,7 @@ describe('validateComponent', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component.componentWillLoad();
+    component['validateComponent']();
     expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
   });
 
@@ -105,7 +105,7 @@ describe('validateComponent', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component.componentWillLoad();
+    component['validateComponent']();
     expect(spy).toBeCalledWith(component.host, 9);
   });
 
@@ -114,7 +114,7 @@ describe('validateComponent', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component.componentWillLoad();
+    component['validateComponent']();
     expect(spy).toBeCalledWith(component.host, expect.anything());
   });
 });
