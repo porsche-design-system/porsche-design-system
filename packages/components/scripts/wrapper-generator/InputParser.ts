@@ -50,7 +50,9 @@ export class InputParser {
       // fix consumer typing for accessibility props with string type
       .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
       // fix consumer typing for CarouselInternationalization prop with string type
-      .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;');
+      .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;')
+      // fix consumer typing for ScrollToPosition prop with string type
+      .replace(/(export declare type ScrollToPosition = .*?) \| string;/, '$1;');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
     this.rawLocalJSX = rawLocalJSX;

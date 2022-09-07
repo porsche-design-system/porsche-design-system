@@ -4,6 +4,7 @@ import { CarouselExampleEventsComponent } from './carousel-example-events.compon
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { TableExampleAdvancedComponent } from './table-example-advanced.component';
@@ -22,6 +23,7 @@ export const examples = [
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
+  ScrollerExampleComponent,
   SegmentedControlExampleComponent,
   StepperHorizontalExampleComponent,
   TableExampleAdvancedComponent,
@@ -40,6 +42,7 @@ export * from './carousel-example-events.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';
+export * from './scroller-example.component';
 export * from './segmented-control-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './table-example-advanced.component';
