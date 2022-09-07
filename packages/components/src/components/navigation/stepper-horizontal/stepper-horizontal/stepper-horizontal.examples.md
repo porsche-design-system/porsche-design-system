@@ -35,12 +35,15 @@ clicked step.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
-  </select>
+  <label>
+  <p-text :theme="theme">Select size:</p-text>
+    <select v-model="size" aria-label="Select size">
+      <option disabled>Select size</option>
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="{ base: 'small', l: 'medium' }">{ base: 'small', l: 'medium' }</option>
+    </select>
+  </label>
 </Playground>
 
 ## Scrollable
@@ -102,6 +105,15 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
+
+  get sizeMarkup() {
+    return `<p-stepper-horizontal size="${this.size}">
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+</p-stepper-horizontal>`;
+  }
   
   scrollable = `<div style="max-width: 600px">
   <p-stepper-horizontal>
@@ -157,17 +169,6 @@ export default class Code extends Vue {
   get theme(): Theme {
     return this.$store.getters.theme;
   }
-  
-  get sizeMarkup() {
-    return `<p-stepper-horizontal size="${this.size}">
-  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
-</p-stepper-horizontal>`;
-  }
-
-
 }
 </script>
 
