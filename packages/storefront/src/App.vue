@@ -1,5 +1,8 @@
 <template>
-  <main v-if="isStandalone">
+  <div v-if="$route.name === 'kitchensink'">
+    <router-view />
+  </div>
+  <main v-else-if="isStandalone">
     <router-view />
   </main>
   <!-- id="app" is for vrt test -->

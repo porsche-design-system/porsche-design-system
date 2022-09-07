@@ -32,7 +32,7 @@ window.componentsReady = componentsReady; // for vrt
 window.location.hash = window.location.hash.replace('%23', '#');
 
 Vue.config.productionTip = false;
-Vue.config.ignoredElements = [/p-\w*/];
+Vue.config.ignoredElements = [/(p-|phn-)\w*/];
 
 Vue.use({
   install(vue: VueConstructor) {
