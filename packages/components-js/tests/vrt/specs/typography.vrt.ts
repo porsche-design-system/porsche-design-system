@@ -7,7 +7,15 @@ it('should have no visual regression for font family fallback strategy', async (
 });
 
 it('should have no visual regression for latin charset', async () => {
-  expect(await vrtTest(getVisualRegressionOverviewTester(), 'typography-latin', '/#typography-latin')).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionOverviewTester(), 'typography-latin-U+0020-1EFF', '/#typography-latin-U+0020-1EFF')
+  ).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionOverviewTester(), 'typography-latin-U+2000-26FF', '/#typography-latin-U+2000-26FF')
+  ).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionOverviewTester(), 'typography-latin-U+FB00-FEFF', '/#typography-latin-U+FB00-FEFF')
+  ).toBeFalsy();
 });
 
 it('should have no visual regression greek and coptic charset', async () => {

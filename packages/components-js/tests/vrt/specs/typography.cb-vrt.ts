@@ -5,8 +5,16 @@ test.describe('should have no visual regression for font family fallback strateg
   await cbVRT('typography-fallback-strategy');
 });
 
-test.describe.only('should have no visual regression for latin charset', async () => {
-  await cbVRT('typography-latin');
+test.describe.only('should have no visual regression for latin charset U+0020-1EFF', async () => {
+  await cbVRT('typography-latin-U+0020-1EFF');
+});
+
+test.describe.only('should have no visual regression for latin charset U+2000-26FF', async () => {
+  await cbVRT('typography-latin-U+2000-26FF');
+});
+
+test.describe.only('should have no visual regression for latin charset U+FB00-FEFF', async () => {
+  await cbVRT('typography-latin-U+FB00-FEFF');
 });
 
 test.describe('should have no visual regression greek and coptic charset', async () => {
