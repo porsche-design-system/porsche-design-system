@@ -23,6 +23,11 @@ const router = new VueRouter({
       component: () => import('@/views/Custom.vue'),
     },
     {
+      path: '/kitchensink/:page',
+      name: 'kitchensink',
+      component: () => import('@/views/KitchenSink.vue'),
+    },
+    {
       path: '/:category/:page/:tab?',
       name: 'page',
       component: () => import('@/views/Page.vue'),
