@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
@@ -18,6 +18,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -27,20 +28,18 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const clickHandlerScript = `
-    <script>
-    const stepper = document.querySelector('p-stepper-horizontal');
-    const stepElements = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+<script>
+  const stepper = document.querySelector('p-stepper-horizontal');
+  stepper.addEventListener('stepChange', (e) => {
+    const { activeStepIndex } = e.detail;
+    const stepElements = Array.from(e.target.children);
 
-    stepper.addEventListener('stepChange', (e) => {
-      const { activeStepIndex } = e.detail;
+    const prevStepIndex = stepElements.findIndex((step) => step.state === 'current');
 
-
-      const prevStepIndex = stepElements.findIndex((step) => step.state === 'current');
-
-      stepElements[prevStepIndex].state = 'complete';
-      stepElements[activeStepIndex].state = 'current';
-    });
-    </script>`;
+    stepElements[prevStepIndex].state = 'complete';
+    stepElements[activeStepIndex].state = 'current';
+  });
+</script>`;
 
 type InitOptions = {
   amount?: number;
@@ -49,7 +48,7 @@ type InitOptions = {
 };
 
 const initStepperHorizontal = async (opts?: InitOptions) => {
-  const { amount = 3, currentStep = 0, isWrapped } = opts ?? {};
+  const { amount = 3, currentStep = 0, isWrapped } = opts || {};
 
   const getState = (index: number) =>
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
@@ -71,10 +70,10 @@ const initStepperHorizontal = async (opts?: InitOptions) => {
 };
 
 const getHost = () => selectNode(page, 'p-stepper-horizontal');
-const getAllStepItems = () => page.$$('p-stepper-horizontal-item');
-const getAllButtons = async () =>
+const getStepItems = () => page.$$('p-stepper-horizontal-item');
+const getButtons = async () =>
   Promise.all(
-    (await getAllStepItems()).map(async (x) =>
+    (await getStepItems()).map(async (x) =>
       (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
     )
   );
@@ -103,7 +102,7 @@ describe('validation', () => {
     await initConsoleObserver(page);
 
     await initStepperHorizontal();
-    const [, item2] = await getAllStepItems();
+    const [, item2] = await getStepItems();
 
     await setProperty(item2, 'state', 'current');
     await waitForStencilLifecycle(page);
@@ -133,13 +132,11 @@ describe('validation', () => {
 describe('scrolling', () => {
   it('should scroll current step into view', async () => {
     await initStepperHorizontal({ amount: 9, currentStep: 3, isWrapped: true });
-    const allSteps = await getAllStepItems();
-    const selectedButtonOffset = await getOffsetLeft(allSteps[3]);
+    const [, , , step4] = await getStepItems();
+    const step4Offset = await getOffsetLeft(step4);
     const gradientWidth = await getOffsetWidth(await getGradientNext());
     const scrollArea = await getScrollArea();
-    const scrollDistance = +selectedButtonOffset - +gradientWidth + FOCUS_PADDING;
-
-    await waitForStencilLifecycle(page);
+    const scrollDistance = step4Offset - gradientWidth + FOCUS_PADDING;
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -162,8 +159,7 @@ describe('scrolling', () => {
 </div>${clickHandlerScript}`
     );
 
-    const [, , , button4, button5] = await getAllButtons();
-    const [, , , item4, item5] = await getAllStepItems();
+    const [, , , item4, item5] = await getStepItems();
     const gradient = await getGradientNext();
     const gradientWidth = await getOffsetWidth(gradient);
     const scrollArea = await getScrollArea();
@@ -171,28 +167,28 @@ describe('scrolling', () => {
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-    await button5.click();
+    await item5.click();
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button5offset = await getOffsetLeft(item5);
-    const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
+    const item5Offset = await getOffsetLeft(item5);
+    const scrollDistanceRight = +item5Offset - +gradientWidth + FOCUS_PADDING;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
-    await button4.click();
+    await item4.click();
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button4offset = await getOffsetLeft(item4);
-    const buttonWidth = await getOffsetWidth(item4);
-    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    const item4Offset = await getOffsetLeft(item4);
+    const item4Width = await getOffsetWidth(item4);
+    const scrollDistanceLeft = item4Offset + item4Width + gradientWidth - scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
   it('should scroll to correct position when current step item changes', async () => {
     await initStepperHorizontal({ amount: 9, isWrapped: true });
 
-    const [item1, , , item4, item5] = await getAllStepItems();
+    const [item1, , , item4, item5] = await getStepItems();
     const gradient = await getGradientNext();
     const gradientWidth = await getOffsetWidth(gradient);
     const scrollArea = await getScrollArea();
@@ -203,8 +199,8 @@ describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button5offset = await getOffsetLeft(item5);
-    const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
+    const item5Offset = await getOffsetLeft(item5);
+    const scrollDistanceRight = +item5Offset - +gradientWidth + FOCUS_PADDING;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
     await setProperty(item5, 'state', 'complete');
@@ -212,16 +208,16 @@ describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button4offset = await getOffsetLeft(item4);
-    const buttonWidth = await getOffsetWidth(item4);
-    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    const item4Offset = await getOffsetLeft(item4);
+    const item4Width = await getOffsetWidth(item4);
+    const scrollDistanceLeft = item4Offset + item4Width + gradientWidth - scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
   it('should scroll to correct position if one item is removed', async () => {
     await initStepperHorizontal({ amount: 9, currentStep: 4, isWrapped: true });
     const host = await getHost();
-    const [, , , , item5] = await getAllStepItems();
+    const [, , , , item5] = await getStepItems();
 
     await host.evaluate((host) => {
       host.removeChild(host.firstChild);
@@ -234,9 +230,9 @@ describe('scrolling', () => {
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
-    const button4offset = await getOffsetLeft(item5);
-    const buttonWidth = await getOffsetWidth(item5);
-    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    const item5Offset = await getOffsetLeft(item5);
+    const item5Width = await getOffsetWidth(item5);
+    const scrollDistanceLeft = item5Offset + item5Width + gradientWidth - scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
@@ -252,7 +248,7 @@ describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const [item1, , , , , item6] = await getAllStepItems();
+    const [item1, , , , , item6] = await getStepItems();
 
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
@@ -262,9 +258,9 @@ describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button6offset = await getOffsetLeft(item6);
-    const buttonWidth = await getOffsetWidth(item6);
-    const scrollDistanceLeft = +button6offset + +buttonWidth + FOCUS_PADDING - +scrollAreaWidth;
+    const item6Offset = await getOffsetLeft(item6);
+    const item6Width = await getOffsetWidth(item6);
+    const scrollDistanceLeft = item6Offset + item6Width + FOCUS_PADDING - scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 });
@@ -275,7 +271,7 @@ describe('events', () => {
   it('should trigger event on step click', async () => {
     await initStepperHorizontal({ currentStep: 2 });
     const host = await getHost();
-    const [button1, button2] = await getAllButtons();
+    const [item1, item2] = await getStepItems();
 
     let eventCounter = 0;
     await addEventListener(host, 'stepChange', () => eventCounter++);
@@ -283,79 +279,90 @@ describe('events', () => {
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-stepper-horizontal');
 
-    button1.click();
-    await waitForStencilLifecycle(page);
-
+    await item1.click();
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(1);
 
-    await button2.click();
-    await waitForStencilLifecycle(page);
-
+    await item2.click();
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(2);
   });
 
   it('should not trigger event when clicked in between steps', async () => {
-    await initStepperHorizontal({ currentStep: 0 });
-    initConsoleObserver(page);
-    const [firstStep] = await getAllStepItems();
+    await initStepperHorizontal({ currentStep: 2 });
+    const host = await getHost();
+    const [item1] = await getStepItems();
 
     let eventCounter = 0;
+    await addEventListener(host, 'stepChange', () => eventCounter++);
 
-    await page.mouse.click((await getOffsetWidth(firstStep)) + 8, 18);
-    await waitForStencilLifecycle(page);
-
+    await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(0);
+
+    await item1.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(1);
   });
 
   it('should not trigger event if click on current', async () => {
-    await initStepperHorizontal({ amount: 3 });
-    const [button1] = await getAllButtons();
-
-    await waitForStencilLifecycle(page);
+    await initStepperHorizontal({ currentStep: 2 });
+    const host = await getHost();
+    const [item1, , item3] = await getStepItems();
 
     let eventCounter = 0;
+    await addEventListener(host, 'stepChange', () => eventCounter++);
 
-    button1.click();
-    await waitForStencilLifecycle(page);
-
+    await item3.click();
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(0);
+
+    await item1.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(1);
   });
 
   it('should not trigger event if item is disabled', async () => {
     await initStepperHorizontal({ currentStep: 2 });
-    const [, step2] = await getAllStepItems();
-    const [, button2] = await getAllButtons();
+    const host = await getHost();
+    const [item1, item2] = await getStepItems();
 
-    await setProperty(step2, 'disabled', true);
+    await setProperty(item2, 'disabled', true);
     await waitForStencilLifecycle(page);
 
     let eventCounter = 0;
+    await addEventListener(host, 'stepChange', () => eventCounter++);
 
-    button2.click();
-    await waitForStencilLifecycle(page);
-
+    await item2.click();
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(0);
+
+    await item1.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(1);
   });
 
   it('should not trigger event if item without state', async () => {
     await initStepperHorizontal({ currentStep: 1 });
-    const [, , button3] = await getAllButtons();
-
-    await waitForStencilLifecycle(page);
+    const host = await getHost();
+    const [item1, , item3] = await getStepItems();
 
     let eventCounter = 0;
+    await addEventListener(host, 'stepChange', () => eventCounter++);
 
-    button3.click();
-    await waitForStencilLifecycle(page);
-
+    await item3.click();
+    await waitForEventSerialization(page);
     expect(eventCounter).toBe(0);
+
+    await item1.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(1);
   });
 });
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init when first step is current', async () => {
     await initStepperHorizontal({ currentStep: 0 });
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
@@ -371,7 +378,6 @@ describe('lifecycle', () => {
 
   it('should work without unnecessary round trips on init when third step is current', async () => {
     await initStepperHorizontal({ currentStep: 2 });
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
@@ -394,7 +400,6 @@ describe('lifecycle', () => {
       stepperItemElements[0].state = 'complete';
       stepperItemElements[1].state = 'current';
     });
-
     await waitForStencilLifecycle(page);
 
     const status = await getLifecycleStatus(page);
@@ -412,7 +417,7 @@ describe('lifecycle', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree of stepper-horizontal', async () => {
     await initStepperHorizontal({ amount: 3 });
-    const [button1, button2] = await getAllButtons();
+    const [button1, button2] = await getButtons();
 
     await expectA11yToMatchSnapshot(page, button1, { message: 'Of Button' });
     expect(await getAttribute(button1, 'aria-current')).toBe('step');
