@@ -54,15 +54,12 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal ref="stepperInteractive" :theme="theme">    
-    <p-stepper-horizontal-item ref="step1" :state="'current'">Enter personal details</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item ref="step2">Confirm e-mail</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item ref="step3">Set password</p-stepper-horizontal-item>      
+  <p-stepper-horizontal :theme="theme" @stepChange="onStepChange">    
+    <template v-for="({ state, text }, i) in steps">
+      <p-stepper-horizontal-item :state="state">{{ text }}</p-stepper-horizontal-item>
+    </template>
   </p-stepper-horizontal>
-
-  <template v-for="(content, i) in stepContent">
-    <p-text v-if="getActiveStepIndex(steps) === i" :theme="theme" class="mock-content">{{ content }}</p-text>
-  </template>
+  <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>
 
   <p-button-group>
     <p-button
@@ -120,9 +117,11 @@ export default class Code extends Vue {
   </p-stepper-horizontal>
 </div>`;
 
-  stepsRefs = [];
-
-  steps = [{state: 'current'}, {state: undefined}, {state:undefined}];
+  steps: { state: string; text: string; }[] = [
+    { state: 'current', text: 'Enter personal details' }, 
+    { state: undefined, text: 'Confirm e-mail' }, 
+    { state: undefined, text: 'Set password' },
+  ];
 
   stepContent = [
     'A form with personal details could be displayed here.',
@@ -130,54 +129,29 @@ export default class Code extends Vue {
     'A form with a password input field could be displayed here.',
   ];
 
-  getActiveStepIndex(steps) {
+  getActiveStepIndex(steps): number {
     return steps.findIndex((step) => step.state === 'current');
   }
   
-  onNextPrevStep(direction) {
-    const activeStepIndex = this.getActiveStepIndex(this.stepsRefs);
+  onNextPrevStep(direction): void {
+    const activeStepIndex = this.getActiveStepIndex(this.steps);
 
     if (direction === 'next') {
-      this.stepsRefs[activeStepIndex].state = 'complete';
       this.steps[activeStepIndex].state = 'complete';
-      this.stepsRefs[activeStepIndex + 1].state = 'current';
       this.steps[activeStepIndex + 1].state = 'current';
     } else {
-      this.stepsRefs[activeStepIndex].state = undefined;
       this.steps[activeStepIndex].state = undefined;
-      this.stepsRefs[activeStepIndex - 1].state = 'current';
       this.steps[activeStepIndex - 1].state = 'current';
     }
   }
 
-  mounted() {
-    this.stepsRefs = [this.$refs.step1, this.$refs.step2, this.$refs.step3];
-
-    /* initially update accordion with open attribute in playground */
-    this.registerEvents();
-
-    /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
-      this.registerEvents();
-    }));
-  }
-
-  updated(){
-    this.registerEvents(); 
-  }
-
-  registerEvents() {    
-    this.$refs.stepperInteractive.addEventListener('stepChange', (e) => {
-      const { activeStepIndex } = e.detail;      
-      for (let i = activeStepIndex + 1; i < this.stepsRefs.length; i++) {
-        /* reset step state when going back via stepper horizontal item click */
-        this.stepsRefs[i].state = undefined;
-        this.steps[i].state = undefined;
-      }
-      this.stepsRefs[activeStepIndex].state = 'current';
-      this.steps[activeStepIndex].state = 'current';
-    });
+  onStepChange(e): void {
+    const { activeStepIndex } = e.detail;      
+    for (let i = activeStepIndex + 1; i < this.steps.length; i++) {
+      /* reset step state when going back via stepper horizontal item click */
+      this.steps[i].state = undefined;
+    }
+    this.steps[activeStepIndex].state = 'current';
   }
 
   get theme(): Theme {
