@@ -40,9 +40,7 @@ export const cbVRT = async (route: string, options?: CBVRTestOptions): Promise<v
   });
 };
 
-type Options = { withBackground: boolean };
-
-export const openPopoversAndHighlightSpacerPlaywright = async (page: Page, opts?: Options): Promise<void> => {
+export const openPopovers = async (page: Page): Promise<void> => {
   const bodyHeightWidth = await page.evaluate(() => {
     return {
       height: document.body.clientHeight,
@@ -61,20 +59,4 @@ export const openPopoversAndHighlightSpacerPlaywright = async (page: Page, opts?
       button.click();
     });
   });
-
-  if (opts?.withBackground) {
-    const popoverHandles = await page.$$('p-popover');
-    await Promise.all(
-      popoverHandles.map(async (popoverHandle) => {
-        const popover = await popoverHandle.evaluateHandle((x: HTMLElement) => x);
-        // Wait until popover is opened and selector is rendered
-        const spacer = await page.waitForFunction(
-          (popoverEl) => popoverEl.shadowRoot.querySelector('.spacer'),
-          popover
-        );
-        // Set background color of .spacer
-        await spacer.evaluateHandle((spacerEl: HTMLElement) => (spacerEl.style.background = 'rgba(255, 0, 0, 0.4)'));
-      })
-    );
-  }
 };
