@@ -59,6 +59,11 @@ const config: PlaywrightTestConfig = {
     {
       name: 'Mobile Safari',
       use: {
+        /* For easier debugging use: */
+        // launchOptions: {
+        //   headless: false,
+        //   slowMo: 500,
+        // },
         browserName: 'webkit',
         ...devices['iPhone 13 Pro'],
       },
