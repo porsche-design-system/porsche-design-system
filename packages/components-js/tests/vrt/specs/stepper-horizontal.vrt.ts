@@ -33,15 +33,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
             <p-stepper-horizontal-item theme="${theme}" state="current">Current</p-stepper-horizontal-item>
             <p-stepper-horizontal-item theme="${theme}">Default</p-stepper-horizontal-item>`;
 
-      const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
-        <p-stepper-horizontal theme="${theme}">
-            ${stepperHorizontalItems}
-        </p-stepper-horizontal>
+      const getElementsMarkup: GetThemedMarkup = (theme: Theme) =>
+        `
+        <p-stepper-horizontal theme="${theme}">` +
+        stepperHorizontalItems +
+        `</p-stepper-horizontal>
 
-        <p-stepper-horizontal theme="${theme}" size="medium">
-            ${stepperHorizontalItems}
-        </p-stepper-horizontal>
-        `;
+        <p-stepper-horizontal theme="${theme}" size="medium">` +
+        stepperHorizontalItems +
+        `</p-stepper-horizontal>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
