@@ -102,6 +102,17 @@ describe('componentDidUpdate', () => {
   });
 });
 
+describe('disconnectedCallback', () => {
+  it('should call unobserveBreakpointChange() with correct parameters', () => {
+    const component = new StepperHorizontal();
+    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
+    component.host = document.createElement('p-stepper-horizontal');
+
+    component.disconnectedCallback();
+    expect(spy).toBeCalledWith(component.host);
+  });
+});
+
 describe('this.validateComponent()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
