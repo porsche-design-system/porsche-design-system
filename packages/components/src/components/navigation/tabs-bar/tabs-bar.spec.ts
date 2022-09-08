@@ -113,7 +113,7 @@ describe('disconnectedCallback', () => {
   });
 });
 
-describe('observeBreakpointChange', () => {
+describe('this.observeBreakpointChange()', () => {
   it('should not call observeBreakpointChange() if size is not BreakpointCustomizable ', () => {
     const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const host = document.createElement('p-tabs-bar');
