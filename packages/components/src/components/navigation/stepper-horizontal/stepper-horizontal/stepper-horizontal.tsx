@@ -54,6 +54,7 @@ export class StepperHorizontal {
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
 
+    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
       this.defineStepperHorizontalItemElements();
       // Validate when new steps are added
