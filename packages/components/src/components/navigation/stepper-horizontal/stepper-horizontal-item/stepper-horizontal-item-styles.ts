@@ -72,7 +72,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           )),
         fontSize: addImportantToRule('inherit'),
         '&(:not(:last-of-type))': {
-          marginRight: addImportantToRule(pxToRemWithUnit(16)),
+          marginRight: addImportantToRule('1em'),
         },
       },
       button: {
