@@ -43,7 +43,7 @@ const getColors = (
   };
 };
 
-// following constants are defined to ensure correct styles for different sizes of stepper horizontal
+// following constants are defined in em to ensure proportional size based on parents font size
 const spriteStepSize = 0.625; // 10px / font size in px
 const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
 const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
