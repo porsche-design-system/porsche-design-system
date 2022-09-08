@@ -1,6 +1,7 @@
 import { StepperHorizontal } from './stepper-horizontal';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../../utils/validation/throwIfChildrenAreNotOfKind';
 import * as throwIfChildCountIsExceededUtils from '../../../../utils/validation/throwIfChildCountIsExceeded';
+import * as breakpointObserverUtils from '../../../../utils/breakpoint-observer';
 import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 import * as scrollingUtils from '../../../../utils/scrolling';
 
@@ -11,7 +12,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith();
   });
 
   it('should call this.observeBreakpointChange()', () => {
@@ -20,7 +21,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith();
   });
 });
 
@@ -31,12 +32,12 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'validateComponent' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith();
   });
 });
 
 describe('componentDidLoad', () => {
-  it('should call getIndexOfStepWithStateCurrent() with correct paramters', () => {
+  it('should call getIndexOfStepWithStateCurrent() with correct parameters', () => {
     const component = new StepperHorizontal();
     const spy = jest.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
 
@@ -49,12 +50,11 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentDidLoad();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith();
   });
 
   it('should call this.addEventListeners()', () => {
     const component = new StepperHorizontal();
-    // needs to be mocked for component lifecycle flow to work
     component.host = document.createElement('p-stepper-horizontal');
     component['scrollerElement'] = document.createElement('p-scroller');
 
@@ -64,10 +64,22 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
     expect(spy).toBeCalledWith();
   });
+
+  it('should set correct value of this.scrollerElement.scrollToPosition', () => {
+    const component = new StepperHorizontal();
+    component['scrollerElement'] = document.createElement('p-scroller');
+    jest.spyOn(scrollingUtils, 'getScrollActivePosition').mockReturnValue(5);
+
+    component.componentDidLoad();
+    expect(component['scrollerElement'].scrollToPosition).toEqual({
+      scrollPosition: 5,
+      isSmooth: false,
+    });
+  });
 });
 
 describe('componentWillRender', () => {
-  it('should call syncItemsProps() with correct parameter', () => {
+  it('should call syncItemsProps() with correct parameters', () => {
     const spy = jest.spyOn(stepperHorizontalUtils, 'syncItemsProps');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
@@ -90,7 +102,7 @@ describe('componentDidUpdate', () => {
   });
 });
 
-describe('validateComponent', () => {
+describe('this.validateComponent()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
     const component = new StepperHorizontal();
@@ -115,6 +127,28 @@ describe('validateComponent', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component['validateComponent']();
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toBeCalledWith(component.host, component['stepperHorizontalItems']);
+  });
+});
+
+xdescribe('this.scrollIntoView()', () => {});
+
+describe('this.observeBreakpointChange()', () => {
+  it('should not call observeBreakpointChange() with correct parameters if this.size is not breakpoint customizable', () => {
+    const component = new StepperHorizontal();
+    component.size = 'small';
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+
+    component['observeBreakpointChange']();
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should call observeBreakpointChange() with correct parameters if this.size is breakpoint customizable', () => {
+    const component = new StepperHorizontal();
+    component.size = { base: 'small', s: 'medium' };
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+
+    component['observeBreakpointChange']();
+    expect(spy).toBeCalledWith(component.host, component['scrollIntoView']);
   });
 });
