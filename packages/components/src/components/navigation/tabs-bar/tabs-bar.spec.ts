@@ -129,7 +129,7 @@ describe('this.observeBreakpointChange()', () => {
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
-    component.size = "{base: 'small', m: 'medium'}";
+    component.size = { base: 'small', m: 'medium' };
 
     component['observeBreakpointChange']();
     expect(spy).toBeCalledWith(host, expect.any(Function));
