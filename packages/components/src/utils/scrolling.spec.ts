@@ -1,8 +1,39 @@
-import { getScrollActivePosition, getScrollByX } from './scrolling';
+import {
+  getScrollActivePosition,
+  getScrollByX,
+  overrideSupportsScrollBehavior,
+  scrollElementBy,
+  scrollElementTo,
+} from './scrolling';
 import * as scrollerUtils from '../components/common/scroller/scroller-utils';
 
-xdescribe('scrollElementTo()', () => {});
-xdescribe('scrollElementBy()', () => {});
+describe('scrollElementTo()', () => {
+  it('should call el.scrollTo() with correct parameter if scrollBehavior is supported', () => {
+    overrideSupportsScrollBehavior(true);
+    const el = document.createElement('div');
+    const spy = jest.fn();
+    el.scrollTo = spy;
+
+    scrollElementTo(el, 100);
+    expect(spy).toBeCalledWith({ left: 100, behavior: 'smooth' });
+  });
+
+  xit('should call intervalScroll() with correct parameter if scrollBehavior is not supported', () => {});
+});
+
+describe('scrollElementBy()', () => {
+  it('should call el.scrollBy() with correct parameter if scrollBehavior is supported', () => {
+    overrideSupportsScrollBehavior(true);
+    const el = document.createElement('div');
+    const spy = jest.fn();
+    el.scrollBy = spy;
+
+    scrollElementBy(el, 100);
+    expect(spy).toBeCalledWith({ left: 100, top: 0, behavior: 'smooth' });
+  });
+
+  xit('should call intervalScroll() with correct parameter if scrollBehavior is not supported', () => {});
+});
 
 describe('getScrollByX()', () => {
   const data: [HTMLElement, number][] = [
@@ -17,10 +48,8 @@ describe('getScrollByX()', () => {
 
 describe('getScrollActivePosition()', () => {
   const scrollerElement = document.createElement('p-scroller');
-  let scrollAreaElement = document.createElement('div');
-  scrollAreaElement = { ...scrollAreaElement, offsetWidth: 4 };
-  let gradientElement = document.createElement('div');
-  gradientElement = { ...gradientElement, offsetWidth: 20 };
+  const scrollAreaElement = { ...document.createElement('div'), offsetWidth: 4 };
+  const gradientElement = { ...document.createElement('div'), offsetWidth: 20 };
 
   it('should call getScrollerElements() with correct parameter', () => {
     const spy = jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);

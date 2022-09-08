@@ -1,7 +1,12 @@
 import type { Direction } from '../components/common/scroller/scroller-utils';
 import { getScrollerElements } from '../components/common/scroller/scroller-utils';
 
-const supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
+let supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
+
+// for unit tests
+export const overrideSupportsScrollBehavior = (override: boolean): void => {
+  supportsScrollBehavior = override;
+};
 
 const steps = 20;
 
