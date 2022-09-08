@@ -550,7 +550,7 @@ describe('formatObjectOutput()', () => {
 
 describe('formatArrayOutput()', () => {
   it('should return formatted string for array', () => {
-    expect(formatArrayOutput(['value1', 'value2', true, 1])).toMatchSnapshot();
+    expect(formatArrayOutput(['value1', 'value2', true, 1, undefined])).toMatchSnapshot();
   });
 });
 

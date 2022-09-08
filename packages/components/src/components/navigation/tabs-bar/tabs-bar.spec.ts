@@ -7,7 +7,7 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('connectedCallback', () => {
-  it('should call setTabElements()', () => {
+  it('should call this.setTabElements()', () => {
     const component = new TabsBar();
     const spy = jest.spyOn(component, 'setTabElements' as any);
 
@@ -17,7 +17,7 @@ describe('connectedCallback', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call observeChildren()', () => {
+  it('should call observeChildren() with correct parameters', () => {
     const childrenObserverUtilsSpy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
@@ -28,90 +28,67 @@ describe('connectedCallback', () => {
     expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.any(Function));
   });
 
-  it('should not call observeBreakpointChange() if size is not BreakpointCustomizable ', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
-    const host = document.createElement('p-tabs-bar');
+  it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
-    component.host = host;
+    component.host = document.createElement('p-tabs-bar');
+    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+
     component.connectedCallback();
-
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should call observeBreakpointChange() if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
-    const host = document.createElement('p-tabs-bar');
-    const component = new TabsBar();
-    component.host = host;
-    component.size = "{base: 'small', m: 'medium'}";
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(host, expect.any(Function));
+    expect(spy).toBeCalledWith();
   });
 });
 
 describe('componentDidLoad', () => {
-  it('should call defineHTMLElements()', () => {
-    const component = new TabsBar();
-    const spy = jest.spyOn(component, 'defineHTMLElements' as any);
-    const scroller = document.createElement('p-scroller');
-    component['scrollerElement'] = scroller;
-
-    component.componentDidLoad();
-
-    expect(spy).toBeCalledWith();
-    expect(spy).toBeCalledTimes(1);
-  });
-
-  it('should call sanitizeActiveTabIndex()', () => {
+  it('should call sanitizeActiveTabIndex() with correct parameters', () => {
     const spy = jest.spyOn(tabsBarUtils, 'sanitizeActiveTabIndex');
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
     component['scrollerElement'] = scroller;
 
     component.componentDidLoad();
-
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call observeBreakpointChange() with correct parameters if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+  it('should call this.addEventListeners()', () => {
     const component = new TabsBar();
-    const host = document.createElement('p-tabs-bar');
-    const scroller = document.createElement('p-scroller');
-    component.size = "{base: 'small', m: 'medium'}";
-    component.host = host;
-    component['scrollerElement'] = scroller;
+    component.host = document.createElement('p-tabs-bar');
+    component['scrollerElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(component, 'addEventListeners' as any);
 
     component.componentDidLoad();
-
-    expect(spy).toBeCalledWith(host, expect.any(Function));
+    expect(spy).toBeCalledWith();
   });
-
-  it('should not call observeBreakpointChange() if size is not BreakpointCustomizable', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+  it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
-    const scroller = document.createElement('p-scroller');
-    component['scrollerElement'] = scroller;
+    component.host = document.createElement('p-tabs-bar');
+    component['scrollerElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentDidLoad();
+    expect(spy).toBeCalledWith();
+  });
+  it('should call this.setBarStyle()', () => {
+    const component = new TabsBar();
+    component.host = document.createElement('p-tabs-bar');
+    component['scrollerElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(component, 'setBarStyle' as any);
 
-    expect(spy).not.toBeCalled();
+    component.componentDidLoad();
+    expect(spy).toBeCalledWith();
   });
 });
 
 describe('componentDidRender', () => {
-  it('should call setBarStyle()', () => {
+  it('should call this.setBarStyle()', () => {
     const component = new TabsBar();
     const spy = jest.spyOn(component, 'setBarStyle' as any);
 
     component.componentDidRender();
-
     expect(spy).toBeCalledWith();
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call setAccessibilityAttributes()', () => {
+  it('should call this.setAccessibilityAttributes()', () => {
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
@@ -125,35 +102,36 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should not call unobserveBreakpointChange() if size is not BreakpointCustomizable', () => {
+  it('should call unobserveBreakpointChange() with correct parameter ', () => {
     const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
     const component = new TabsBar();
+    const host = document.createElement('p-tabs-bar');
+    component.host = host;
 
     component.disconnectedCallback();
+    expect(spy).toBeCalledWith(host);
+  });
+});
 
+describe('this.observeBreakpointChange()', () => {
+  it('should not call observeBreakpointChange() if size is not BreakpointCustomizable ', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+    const host = document.createElement('p-tabs-bar');
+    const component = new TabsBar();
+    component.host = host;
+
+    component['observeBreakpointChange']();
     expect(spy).not.toBeCalled();
   });
 
-  it('should call unobserveBreakpointChange() with correct parameter if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
-    const component = new TabsBar();
-    const host = document.createElement('p-tabs-bar');
-    component.size = "{base: 'small', m: 'medium'}";
-    component.host = host;
-
-    component.disconnectedCallback();
-
-    expect(spy).toBeCalledWith(host);
-  });
-
-  it('should call unobserveChildren()', () => {
-    const childrenObserverUtilsSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+  it('should call observeBreakpointChange() if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
+    component.size = { base: 'small', m: 'medium' };
 
-    component.disconnectedCallback();
-
-    expect(childrenObserverUtilsSpy).toBeCalledWith(host);
+    component['observeBreakpointChange']();
+    expect(spy).toBeCalledWith(host, expect.any(Function));
   });
 });

@@ -55,6 +55,7 @@ export const getComponentCss = (
       position: 'relative',
       display: 'inline-flex',
       minWidth: '100%',
+      verticalAlign: 'top',
     },
     trigger: {
       position: 'absolute',
