@@ -44,7 +44,7 @@ Object {
 exports[`should call validateProps() with correct parameters via componentWillRender for p-button-pure: propTypes with ValidatorFunctions 1`] = `
 Object {
   "active": "boolean",
-  "alignLabel": "oneOf",
+  "alignLabel": "breakpoint",
   "aria": "aria",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
@@ -57,6 +57,18 @@ Object {
   "theme": "oneOf",
   "type": "oneOf",
   "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-carousel: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "description": "string",
+  "disablePagination": "breakpoint",
+  "heading": "string",
+  "intl": "shape",
+  "slidesPerPage": "breakpoint",
+  "theme": "oneOf",
+  "wrapContent": "boolean",
 }
 `;
 
@@ -265,6 +277,15 @@ Object {
 }
 `;
 
+exports[`should call validateProps() with correct parameters via componentWillRender for p-scroller: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "gradientColorScheme": "oneOf",
+  "scrollIndicatorPosition": "oneOf",
+  "scrollToPosition": "shape",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
 Object {
   "backgroundColor": "oneOf",
@@ -307,6 +328,7 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
 Object {
+  "size": "breakpoint",
   "theme": "oneOf",
 }
 `;
@@ -320,7 +342,7 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-switch: propTypes with ValidatorFunctions 1`] = `
 Object {
-  "alignLabel": "oneOf",
+  "alignLabel": "breakpoint",
   "checked": "boolean",
   "disabled": "boolean",
   "hideLabel": "breakpoint",

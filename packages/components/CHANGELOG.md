@@ -9,6 +9,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.16.0] - 2022-09-08
+
+### [2.15.1-rc.1] - 2022-09-08
+
+#### Added
+
+- `Carousel`
+- `Scroller`
+
+#### Changed
+
+- `Stepper Horizontal` now has `size` property
+- `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered
+  correctly.
+- `Tabs Bar` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered correctly.
+
+### [2.15.1-rc.0] - 2022-08-24
+
+#### Fixed
+
+- `Radio Button Wrapper` visual selection change bug in Safari >= 15.5
+
 ### [2.15.0] - 2022-08-22
 
 ### [2.15.0-rc.1] - 2022-08-18

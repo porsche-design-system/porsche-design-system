@@ -107,6 +107,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/action/button-pure/button-pure.props.md')],
     },
+    Carousel: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/content/carousel/carousel.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/content/carousel/carousel.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/content/carousel/carousel.props.md')],
+    },
     Checkbox: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.examples.md')],
@@ -268,6 +276,14 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md'),
       ],
+    },
+    Scroller: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/common/scroller/scroller.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/common/scroller/scroller.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/common/scroller/scroller.props.md')],
     },
     Select: {
       Examples: [
