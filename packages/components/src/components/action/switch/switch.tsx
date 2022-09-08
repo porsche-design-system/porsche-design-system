@@ -16,7 +16,7 @@ import { getButtonAriaAttributes } from './switch-utils';
 export type SwitchChangeEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
-  alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   stretch: AllowedTypes.breakpoint('boolean'),
   checked: AllowedTypes.boolean,
