@@ -1,8 +1,11 @@
 import '../../../../components/scripts/mockMutationObserver';
 
-// patch window usage in cross imports from utils of components package via skeletno styles
+// patch window usage in cross imports from utils of components package via skeleton styles
 // @ts-ignore
 global.window = { matchMedia: () => undefined };
+// patch document for supportsScrollBehavior in scrolling.ts
+// @ts-ignore
+global.document = { documentElement: { style: {} } };
 
 import * as fs from 'fs';
 import * as path from 'path';

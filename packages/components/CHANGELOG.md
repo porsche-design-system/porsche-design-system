@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.15.1-rc.1] - 2022-09-08
+
 #### Added
 
 - `Carousel`
@@ -16,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Stepper Horizontal` now has `size` property
 - `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered
   correctly.
 - `Tabs Bar` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered correctly.

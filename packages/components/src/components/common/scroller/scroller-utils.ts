@@ -1,4 +1,4 @@
-import { getScrollByX, getShadowRootHTMLElement } from '../../../utils';
+import { getHTMLElements, getScrollByX } from '../../../utils';
 
 export type Direction = 'prev' | 'next';
 export const GRADIENT_COLOR_THEMES = ['default', 'surface'] as const;
@@ -7,25 +7,14 @@ export type ScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | 
 export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
 export type ScrollIndicatorPosition = typeof SCROLL_INDICATOR_POSITIONS[number];
 
-export const getScrollPositionAfterPrevNextClick = (scrollAreaElement: HTMLElement, direction: string): number => {
+export const getScrollPositionAfterPrevNextClick = (scrollAreaElement: HTMLElement, direction: Direction): number => {
   const { scrollLeft } = scrollAreaElement;
   const scrollByX = getScrollByX(scrollAreaElement);
-  let scrollPosition: number;
-  if (direction === 'next') {
-    scrollPosition = scrollLeft + scrollByX;
-  } else {
-    scrollPosition = scrollLeft - scrollByX;
-  }
-  return scrollPosition;
+  return direction === 'next' ? scrollLeft + scrollByX : scrollLeft - scrollByX;
 };
 
-export const getScrollerElements = (
-  scrollerElement: HTMLElement
-): { scrollAreaElement: HTMLElement; prevGradientElement: HTMLElement } => {
-  return {
-    scrollAreaElement: getShadowRootHTMLElement(scrollerElement, '.scroll-area'),
-    prevGradientElement: getShadowRootHTMLElement(scrollerElement, '.action-prev'),
-  };
+export const getScrollerElements = (scrollerElement: HTMLElement): [HTMLElement, HTMLElement] => {
+  return getHTMLElements(scrollerElement.shadowRoot, '.scroll-area,.action-prev') as [HTMLElement, HTMLElement];
 };
 
 export const isScrollable = (isPrevHidden: boolean, isNextHidden: boolean): boolean => {
