@@ -105,7 +105,6 @@ export class StepperHorizontal {
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-
     unobserveChildren(this.host);
   }
 
