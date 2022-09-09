@@ -1,7 +1,7 @@
 # Stepper Horizontal
 
-The `p-stepper-horizontal` displays progress through a sequence of logical and numbered steps.  
-Horizontal steppers are ideal when the contents of one step depend on an earlier step.  
+The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps.  
+It is ideal when the contents of one step depends on an earlier step.  
 Avoid using long step names.
 
 The component does not handle the display of your content. When using the component you have to manually take care of
@@ -17,7 +17,7 @@ behavior.
 
 ## Basic example
 
-Use `p-horizontal-stepper-items` inside the `p-horizontal-stepper` component. Each item will be rendered as a step. You
+Use `p-stepper-horizontal-item`s inside the `p-stepper-horizontal` component. Each item will be rendered as a step. You
 have to manually manage the state of the items by setting the `state` property.
 
 The `state` property can be set to `complete` when a step is complete, `warning` when a user has to revisit the step,
@@ -27,14 +27,30 @@ If the `state` property is `undefined` the step renders as stateless and disable
 This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
 steps which cannot yet be processed at the time.
 
-By clicking on a previous step, the `p-horizontal-stepper` emits the `stepChange` event, which contains the index of the
+By clicking on a previous step, the `p-stepper-horizontal` emits the `stepChange` event, which contains the index of the
 clicked step.
 
 <Playground :config="config" :markup="basic"></Playground>
 
+## Size
+
+You can set the `size` property of the component which is breakpoint customizable.
+
+<Playground :markup="sizeMarkup" :config="config">
+  <label>
+    <p-text :theme="theme">Select size:</p-text>
+    <select v-model="size" aria-label="Select size">
+      <option disabled>Select size</option>
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="{ base: 'small', l: 'medium' }">{ base: 'small', l: 'medium' }</option>
+    </select>
+  </label>
+</Playground>
+
 ## Scrollable
 
-If the amount of steps exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
+If the amount of steps exceeds the viewport, the component renders arrow buttons to help with horizontal scrolling.
 
 <Playground :config="config" :markup="scrollable"></Playground>
 
@@ -43,15 +59,12 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal ref="stepperInteractive" :theme="theme">    
-    <p-stepper-horizontal-item ref="step1" :state="'current'">Enter personal details</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item ref="step2">Confirm e-mail</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item ref="step3">Set password</p-stepper-horizontal-item>      
+  <p-stepper-horizontal :theme="theme" @stepChange="onStepChange">    
+    <template v-for="({ state, text }, i) in steps">
+      <p-stepper-horizontal-item :state="state">{{ text }}</p-stepper-horizontal-item>
+    </template>
   </p-stepper-horizontal>
-
-  <template v-for="(content, i) in stepContent">
-    <p-text v-if="getActiveStepIndex(steps) === i" :theme="theme" class="mock-content">{{ content }}</p-text>
-  </template>
+  <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>
 
   <p-button-group>
     <p-button
@@ -83,6 +96,9 @@ import type { Theme } from '@/models';
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  size = 'small'
+
   codeExample = getStepperHorizontalCodeSamples();
   
   basic = `<p-stepper-horizontal>
@@ -91,6 +107,20 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
+
+  get sizeMarkup() {
+    return `<p-stepper-horizontal size="${this.size}">
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+</p-stepper-horizontal>`;
+  }
   
   scrollable = `<div style="max-width: 600px">
   <p-stepper-horizontal>
@@ -106,9 +136,11 @@ export default class Code extends Vue {
   </p-stepper-horizontal>
 </div>`;
 
-  stepsRefs = [];
-
-  steps = [{state: 'current'}, {state: undefined}, {state:undefined}];
+  steps: { state: string; text: string; }[] = [
+    { state: 'current', text: 'Enter personal details' }, 
+    { state: undefined, text: 'Confirm e-mail' }, 
+    { state: undefined, text: 'Set password' },
+  ];
 
   stepContent = [
     'A form with personal details could be displayed here.',
@@ -116,54 +148,29 @@ export default class Code extends Vue {
     'A form with a password input field could be displayed here.',
   ];
 
-  getActiveStepIndex(steps) {
+  getActiveStepIndex(steps): number {
     return steps.findIndex((step) => step.state === 'current');
   }
   
-  onNextPrevStep(direction) {
-    const activeStepIndex = this.getActiveStepIndex(this.stepsRefs);
+  onNextPrevStep(direction): void {
+    const activeStepIndex = this.getActiveStepIndex(this.steps);
 
     if (direction === 'next') {
-      this.stepsRefs[activeStepIndex].state = 'complete';
       this.steps[activeStepIndex].state = 'complete';
-      this.stepsRefs[activeStepIndex + 1].state = 'current';
       this.steps[activeStepIndex + 1].state = 'current';
     } else {
-      this.stepsRefs[activeStepIndex].state = undefined;
       this.steps[activeStepIndex].state = undefined;
-      this.stepsRefs[activeStepIndex - 1].state = 'current';
       this.steps[activeStepIndex - 1].state = 'current';
     }
   }
 
-  mounted() {
-    this.stepsRefs = [this.$refs.step1, this.$refs.step2, this.$refs.step3];
-
-    /* initially update accordion with open attribute in playground */
-    this.registerEvents();
-
-    /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
-      this.registerEvents();
-    }));
-  }
-
-  updated(){
-    this.registerEvents(); 
-  }
-
-  registerEvents() {    
-    this.$refs.stepperInteractive.addEventListener('stepChange', (e) => {
-      const { activeStepIndex } = e.detail;      
-      for (let i = activeStepIndex + 1; i < this.stepsRefs.length; i++) {
-        /* reset step state when going back via stepper horizontal item click */
-        this.stepsRefs[i].state = undefined;
-        this.steps[i].state = undefined;
-      }
-      this.stepsRefs[activeStepIndex].state = 'current';
-      this.steps[activeStepIndex].state = 'current';
-    });
+  onStepChange(e): void {
+    const { activeStepIndex } = e.detail;
+    for (let i = activeStepIndex + 1; i < this.steps.length; i++) {
+      /* reset step state when going back via stepper horizontal item click */
+      this.steps[i].state = undefined;
+    }
+    this.steps[activeStepIndex].state = 'current';
   }
 
   get theme(): Theme {

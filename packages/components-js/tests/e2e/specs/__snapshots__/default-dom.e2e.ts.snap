@@ -494,11 +494,9 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-stepper-horizontal 1`] = `
-"<p-scroller class=\\"hydrated\\">
-  <div class=\\"item-wrapper\\">
-    <slot>
-    </slot>
-  </div>
+"<p-scroller class=\\"scroller hydrated\\">
+  <slot>
+  </slot>
 </p-scroller>"
 `;
 
