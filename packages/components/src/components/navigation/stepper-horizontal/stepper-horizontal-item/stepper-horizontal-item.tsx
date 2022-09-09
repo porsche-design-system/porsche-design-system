@@ -72,12 +72,13 @@ export class StepperHorizontalItem {
             <PrefixedTagNames.pIcon
               class="icon"
               name={getIconName(this.state)}
+              size="inherit"
               theme={this.host.theme || 'light'}
               color="inherit"
               aria-hidden="true"
             />
           )}
-          {this.state && <span class="sr-only">{`${this.state}: `}</span>}
+          {this.state && <span class="sr-only">{this.state}: </span>}
           <slot />
         </button>
       </Host>

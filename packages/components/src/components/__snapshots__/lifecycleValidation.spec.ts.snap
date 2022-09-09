@@ -44,7 +44,7 @@ Object {
 exports[`should call validateProps() with correct parameters via componentWillRender for p-button-pure: propTypes with ValidatorFunctions 1`] = `
 Object {
   "active": "boolean",
-  "alignLabel": "oneOf",
+  "alignLabel": "breakpoint",
   "aria": "aria",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
@@ -328,6 +328,7 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
 Object {
+  "size": "breakpoint",
   "theme": "oneOf",
 }
 `;
@@ -341,7 +342,7 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-switch: propTypes with ValidatorFunctions 1`] = `
 Object {
-  "alignLabel": "oneOf",
+  "alignLabel": "breakpoint",
   "checked": "boolean",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
