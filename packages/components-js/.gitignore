@@ -4,6 +4,7 @@
 /projects/components-wrapper/environment.js
 
 /tests/vrt/results
+/tests/playwright/results
 /tests/unit/results
 /playwright-report/
 /playwright/.cache/
