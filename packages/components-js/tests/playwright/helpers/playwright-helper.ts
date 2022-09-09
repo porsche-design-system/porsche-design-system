@@ -17,7 +17,9 @@ export const executeVisualRegressionTest = async (route: string, options?: Optio
   const { baseUrl, namePostfix, scenario } = { ...defaultOptions, ...options };
   const testName = `${route}${namePostfix}`;
 
-  return test(testName, async ({ page, viewport: { width } }) => {
+  return test(testName, async ({ page, viewport: { width } }, testInfo) => {
+    testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
+
     await page.setViewportSize({ width, height: 1 });
     await page.goto(`${baseUrl}/#${route}`, { waitUntil: 'networkidle' });
     await page.evaluate(() => (window as any).componentsReady());
@@ -27,7 +29,7 @@ export const executeVisualRegressionTest = async (route: string, options?: Optio
       await scenario(page);
     }
 
-    expect(await page.locator('#app').screenshot()).toMatchSnapshot(`${testName}.png`); // system OS names in snapshot might be removable soon: https://github.com/microsoft/playwright/issues/13296
+    expect(await page.locator('#app').screenshot()).toMatchSnapshot(`${testName}.png`);
   });
 };
 

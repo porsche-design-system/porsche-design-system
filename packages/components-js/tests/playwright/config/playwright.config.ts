@@ -57,7 +57,7 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
     {
-      name: 'Mobile Safari',
+      name: 'mobile safari',
       use: {
         /* For easier debugging use: */
         // launchOptions: {
