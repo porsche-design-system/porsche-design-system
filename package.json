@@ -98,6 +98,7 @@
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
     "test:vrt:components-js": "yarn --cwd ./packages/components-js test:vrt",
     "test:cb-vrt:components-js": "yarn --cwd ./packages/components-js test:cb-vrt",
+    "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
     "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",
