@@ -1,17 +1,16 @@
-import type { Options } from '@splidejs/splide';
-import type { ResponsiveOptions } from '@splidejs/splide';
+import type { ResponsiveOptions, Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
 import { getTagName, hasNamedSlot, mergeDeep } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
-import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
 import type { TagName } from '@porsche-design-system/shared';
 
 // https://splidejs.com/guides/i18n/#default-texts
+// extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
 export type CarouselInternationalization =
-  | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>>
-  | string; // string to support attribute, gets removed via InputParser
+  // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
+  Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
 type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'gap'>;
