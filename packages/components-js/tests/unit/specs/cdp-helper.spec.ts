@@ -1,13 +1,12 @@
-import Protocol from 'devtools-protocol';
+import type Protocol from 'devtools-protocol';
+import type { GetMarkup, GetThemedMarkup } from '../../vrt/puppeteer/helpers';
 import {
   findBackendNodeIds,
   generateGUID,
   getBodyMarkup,
-  GetMarkup,
   getThemedBodyMarkup,
-  GetThemedMarkup,
   resolveSelector,
-} from '../../vrt/helpers/cdp-helper';
+} from '../../vrt/puppeteer/helpers';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId' | 'attributes'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
