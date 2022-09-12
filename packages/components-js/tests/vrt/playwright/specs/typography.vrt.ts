@@ -5,16 +5,8 @@ test.describe('should have no visual regression for font family fallback strateg
   await executeVisualRegressionTest('typography-fallback-strategy');
 });
 
-test.describe('should have no visual regression for latin charset U+0020-1EFF', async () => {
-  await executeVisualRegressionTest('typography-latin-U+0020-1EFF');
-});
-
-test.describe('should have no visual regression for latin charset U+2000-26FF', async () => {
-  await executeVisualRegressionTest('typography-latin-U+2000-26FF');
-});
-
-test.describe('should have no visual regression for latin charset U+FB00-FEFF', async () => {
-  await executeVisualRegressionTest('typography-latin-U+FB00-FEFF');
+test.describe('should have no visual regression for latin charset', async () => {
+  await executeVisualRegressionTest('typography-latin');
 });
 
 test.describe('should have no visual regression greek and coptic charset', async () => {
