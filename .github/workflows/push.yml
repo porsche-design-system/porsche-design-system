@@ -157,8 +157,8 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-js
-  components-js-vrt:
-    name: 'Components JS VRT'
+  components-js-vrt-puppeteer:
+    name: 'Components JS VRT (Puppeteer)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -200,16 +200,16 @@ jobs:
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-test-vrt
+          entrypoint: run-test-vrt-puppeteer
           args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: components-js-vrt-regression
-          path: ./packages/components-js/tests/vrt/results
-  components-js-cb-vrt:
-    name: 'Components JS CB VRT'
+          name: components-js-vrt-puppeteer-regression
+          path: ./packages/components-js/tests/vrt/puppeteer/results
+  components-js-vrt-playwright:
+    name: 'Components JS VRT (Playwright)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -251,14 +251,14 @@ jobs:
       - name: 'CB VRT Test'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-test-cb-vrt
+          entrypoint: run-test-vrt-playwright
           args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: components-js-cb-vrt-regression
-          path: ./packages/components-js/tests/vrt/results/cb-vrt
+          name: components-js-vrt-playwright-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -884,8 +884,8 @@ jobs:
       - components-unit
       - components-js-unit
       - components-js-e2e
-      - components-js-vrt
-      - components-js-cb-vrt
+      - components-js-vrt-puppeteer
+      - components-js-vrt-playwright
       - components-angular
       - components-react
       - fallbacks
@@ -927,8 +927,8 @@ jobs:
       - components-unit
       - components-js-unit
       - components-js-e2e
-      - components-js-vrt
-      - components-js-cb-vrt
+      - components-js-vrt-puppeteer
+      - components-js-vrt-playwright
       - components-angular
       - components-react
       - fallbacks
