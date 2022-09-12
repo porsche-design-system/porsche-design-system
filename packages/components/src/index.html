@@ -23,7 +23,17 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <button id="changeOpts">click here to change data</button>
+
+      <h2>"disabled" state doesn't update with data change</h2>
+      <p-select-wrapper label="Some label" hideLabel>
+        <select id="select-wrapper"></select>
+      </p-select-wrapper>
+
+      <h2>"disabled" state updates with data change</h2>
+      <select id="selectNative" name="some-name"></select>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -33,6 +43,61 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      const data1 = [
+        {
+          name: 'optionA',
+          available: true,
+        },
+        {
+          name: 'optionB',
+          available: false,
+        },
+        {
+          name: 'optionC',
+          available: true,
+        },
+      ];
+
+      const data2 = [
+        {
+          name: 'optionD',
+          available: false,
+        },
+        {
+          name: 'optionB',
+          available: true,
+        },
+        {
+          name: 'optionC',
+          available: true,
+        },
+      ];
+
+      let data = data1;
+
+      const isDisabled = (item) => (!item.available ? 'disabled' : '');
+
+      const renderOptions = (items) =>
+        items.map(
+          (item) => `<option key=${item.name} value="a" ${isDisabled(item)}>
+              ${item.name}
+          </option>`
+        );
+
+      const markup = `${renderOptions(data)}`;
+
+      document.querySelector('#select-wrapper').innerHTML = markup;
+      document.querySelector('#selectNative').innerHTML = markup;
+
+      const changeOpts = document.getElementById('changeOpts');
+      changeOpts.addEventListener('click', function (e) {
+        data = data2;
+        const markup = `<select>${renderOptions(data)}</select>`;
+        const markupNative = `${renderOptions(data)}`;
+        document.querySelector('#select-wrapper').innerHTML = markup;
+        document.querySelector('#selectNative').innerHTML = markupNative;
+      });
     </script>
     <!-- /END -->
   </body>

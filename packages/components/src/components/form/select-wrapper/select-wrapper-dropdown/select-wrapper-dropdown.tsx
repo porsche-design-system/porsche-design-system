@@ -5,6 +5,7 @@ import {
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
+  unobserveChildren,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -70,6 +71,16 @@ export class SelectWrapperDropdown {
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOneOfKind(this.host, ['pSelectWrapper']);
+    observeChildren(
+      this.selectRef,
+      () => {
+        this.setOptionMaps();
+        this.observeOptions(); // new option might have been added
+      },
+      // unfortunately we can't observe hidden property of option elements via observeProperties
+      // therefore we do it here via attribute
+      ['hidden']
+    );
   }
 
   public componentWillRender(): void {
@@ -96,6 +107,7 @@ export class SelectWrapperDropdown {
 
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -206,8 +218,7 @@ export class SelectWrapperDropdown {
     this.observeOptions(); // initial
 
     observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
-    // TODO: shouldn't this be called via connectedCallback() so be identical to other components?
-    // TODO: also unobserveChildren() is missing?
+
     observeChildren(
       this.selectRef,
       () => {
