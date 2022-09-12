@@ -50,10 +50,10 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'desktop chrome',
-      use: devices['Desktop Chrome'],
-    },
+    // {
+    //   name: 'desktop chrome',
+    //   use: devices['Desktop Chrome'],
+    // },
     {
       name: 'desktop safari',
       use: devices['Desktop Safari'],
