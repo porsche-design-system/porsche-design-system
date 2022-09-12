@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
-  reattachElementHost,
+  reattachElementHandle,
   removeAttribute,
   selectNode,
   setContentWithDesignSystem,
