@@ -50,23 +50,25 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'WebKit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //   },
-    // },
+    {
+      name: 'desktop chrome',
+      use: devices['Desktop Chrome']
+    },
+    {
+      name: 'desktop safari',
+      use: devices['Desktop Safari']
+    },
+    {
+      name: 'desktop firefox',
+      use: devices['Desktop Firefox']
+    },
+    {
+      name: 'mobile chrome',
+      use: devices['Pixel 5'],
+    },
     {
       name: 'mobile safari',
-      use: {
-        /* For easier debugging use: */
-        // launchOptions: {
-        //   headless: false,
-        //   slowMo: 500,
-        // },
-        browserName: 'webkit',
-        ...devices['iPhone 13 Pro'],
-      },
+      use: devices['iPhone 13'],
     },
   ],
 
