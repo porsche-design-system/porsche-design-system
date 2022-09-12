@@ -74,9 +74,7 @@ import { ToastPrefixedPage } from './ToastPrefixed';
 import { TypographyCyrilPage } from './TypographyCyril';
 import { TypographyFallbackStrategyPage } from './TypographyFallbackStrategy';
 import { TypographyGreekAndCopticPage } from './TypographyGreekAndCoptic';
-import { TypographyLatinU_0020_1EffPage } from './TypographyLatinU_0020_1Eff';
-import { TypographyLatinU_2000_26FfPage } from './TypographyLatinU_2000_26Ff';
-import { TypographyLatinUFb00FeffPage } from './TypographyLatinUFb00Feff';
+import { TypographyLatinPage } from './TypographyLatin';
 
 export const generatedRoutes: RouteType[] = [
   {
@@ -395,18 +393,8 @@ export const generatedRoutes: RouteType[] = [
     element: <TypographyGreekAndCopticPage />,
   },
   {
-    name: 'Typography Latin U 0020 1 Eff',
-    path: '/typography-latin-u-0020-1-eff',
-    element: <TypographyLatinU_0020_1EffPage />,
-  },
-  {
-    name: 'Typography Latin U 2000 26 Ff',
-    path: '/typography-latin-u-2000-26-ff',
-    element: <TypographyLatinU_2000_26FfPage />,
-  },
-  {
-    name: 'Typography Latin U Fb00 Feff',
-    path: '/typography-latin-u-fb00-feff',
-    element: <TypographyLatinUFb00FeffPage />,
+    name: 'Typography Latin',
+    path: '/typography-latin',
+    element: <TypographyLatinPage />,
   },
 ];

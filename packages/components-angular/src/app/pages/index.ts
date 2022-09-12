@@ -87,9 +87,7 @@ import { ToastPrefixedComponent } from './toast-prefixed.component';
 import { TypographyCyrilComponent } from './typography-cyril.component';
 import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
 import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
-import { TypographyLatinU_0020_1EffComponent } from './typography-latin-U+0020-1EFF.component';
-import { TypographyLatinU_2000_26FfComponent } from './typography-latin-U+2000-26FF.component';
-import { TypographyLatinUFb00FeffComponent } from './typography-latin-U+FB00-FEFF.component';
+import { TypographyLatinComponent } from './typography-latin.component';
 
 export const generatedPages = [
   AccordionComponent,
@@ -157,9 +155,7 @@ export const generatedPages = [
   TypographyCyrilComponent,
   TypographyFallbackStrategyComponent,
   TypographyGreekAndCopticComponent,
-  TypographyLatinU_0020_1EffComponent,
-  TypographyLatinU_2000_26FfComponent,
-  TypographyLatinUFb00FeffComponent,
+  TypographyLatinComponent,
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [
@@ -479,18 +475,8 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TypographyGreekAndCopticComponent,
   },
   {
-    name: 'Typography Latin U 0020 1 Eff',
-    path: 'typography-latin-u-0020-1-eff',
-    component: TypographyLatinU_0020_1EffComponent,
-  },
-  {
-    name: 'Typography Latin U 2000 26 Ff',
-    path: 'typography-latin-u-2000-26-ff',
-    component: TypographyLatinU_2000_26FfComponent,
-  },
-  {
-    name: 'Typography Latin U Fb00 Feff',
-    path: 'typography-latin-u-fb00-feff',
-    component: TypographyLatinUFb00FeffComponent,
+    name: 'Typography Latin',
+    path: 'typography-latin',
+    component: TypographyLatinComponent,
   },
 ];
