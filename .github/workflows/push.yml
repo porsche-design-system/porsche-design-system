@@ -248,7 +248,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'CB VRT Test'
+      - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt-playwright
