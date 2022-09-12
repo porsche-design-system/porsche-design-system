@@ -52,24 +52,24 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'desktop chrome',
-      use: devices['Desktop Chrome']
+      use: devices['Desktop Chrome'],
     },
     {
       name: 'desktop safari',
-      use: devices['Desktop Safari']
+      use: devices['Desktop Safari'],
     },
-    {
-      name: 'desktop firefox',
-      use: devices['Desktop Firefox']
-    },
-    {
-      name: 'mobile chrome',
-      use: devices['Pixel 5'],
-    },
-    {
-      name: 'mobile safari',
-      use: devices['iPhone 13'],
-    },
+    // {
+    //   name: 'desktop firefox',
+    //   use: devices['Desktop Firefox']
+    // },
+    // {
+    //   name: 'mobile chrome',
+    //   use: devices['Pixel 5'],
+    // },
+    // {
+    //   name: 'mobile safari',
+    //   use: devices['iPhone 13'],
+    // },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
