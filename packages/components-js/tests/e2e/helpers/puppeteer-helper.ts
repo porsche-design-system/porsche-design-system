@@ -127,7 +127,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement();
+  ).asElement() as ElementHandle;
 };
 
 export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle<ShadowRoot>> => {
@@ -359,7 +359,7 @@ export const expectA11yToMatchSnapshot = async (
     ...options,
   });
 
-  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+  message ? expect(snapshot).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
 
 export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
