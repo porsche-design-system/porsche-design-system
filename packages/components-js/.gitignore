@@ -3,7 +3,7 @@
 
 /projects/components-wrapper/environment.js
 
-/tests/vrt/results
+/tests/vrt/puppeteer/results
 /tests/playwright/results
 /tests/unit/results
 /playwright-report/

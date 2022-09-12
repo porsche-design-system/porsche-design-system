@@ -16,7 +16,7 @@ type MarqueViewport = typeof marqueViewports[number];
 
 export const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
-  fixturesDir: 'tests/vrt/fixtures',
+  fixturesDir: 'tests/vrt/puppeteer/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:8575',
