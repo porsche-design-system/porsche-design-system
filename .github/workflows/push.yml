@@ -197,17 +197,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt-puppeteer
-          args: --components-js
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-js-vrt-puppeteer-regression
-          path: ./packages/components-js/tests/vrt/puppeteer/results
+#      - name: 'VRT Test'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt-puppeteer
+#          args: --components-js
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-js-vrt-puppeteer-regression
+#          path: ./packages/components-js/tests/vrt/puppeteer/results
   components-js-vrt-playwright:
     name: 'Components JS VRT (Playwright)'
     runs-on: ubuntu-latest
