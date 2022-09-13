@@ -1,6 +1,5 @@
 import { SelectWrapper } from './select-wrapper';
 import * as selectWrapperUtils from './select-wrapper-utils';
-import * as propertyObserverUtils from '../../../../utils/property-observer';
 
 const initComponent = (): SelectWrapper => {
   const component = new SelectWrapper();

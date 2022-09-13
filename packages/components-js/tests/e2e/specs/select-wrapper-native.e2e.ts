@@ -1,6 +1,5 @@
 import {
   expectA11yToMatchSnapshot,
-  getAttribute,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
