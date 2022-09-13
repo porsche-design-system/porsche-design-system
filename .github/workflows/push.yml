@@ -314,17 +314,17 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-angular
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt
-          args: --components-angular
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-angular-vrt-regression
-          path: ./packages/components-angular/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --components-angular
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-angular-vrt-regression
+#          path: ./packages/components-angular/tests/vrt/results
   components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
@@ -385,28 +385,28 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-react
-      - name: 'VRT Test components-react'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt
-          args: --components-react
-      - name: 'VRT Test components-react/nextjs'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt
-          args: --components-react/nextjs
-      - name: 'VRT Regression components-react'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-react-vrt-regression
-          path: ./packages/components-react/tests/vrt/results
-      - name: 'VRT Regression components-react/nextjs'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-react-nextjs-vrt-regression
-          path: ./packages/components-react/projects/nextjs/tests/vrt/results
+#      - name: 'VRT Test components-react'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --components-react
+#      - name: 'VRT Test components-react/nextjs'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --components-react/nextjs
+#      - name: 'VRT Regression components-react'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-react-vrt-regression
+#          path: ./packages/components-react/tests/vrt/results
+#      - name: 'VRT Regression components-react/nextjs'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-react-nextjs-vrt-regression
+#          path: ./packages/components-react/projects/nextjs/tests/vrt/results
   fallbacks:
     name: 'Fallbacks'
     runs-on: ubuntu-latest
@@ -680,17 +680,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt
-          args: --storefront
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: storefront-vrt-regression
-          path: ./packages/storefront/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --storefront
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: storefront-vrt-regression
+#          path: ./packages/storefront/tests/vrt/results
   production-builds:
     name: 'Production Builds'
     runs-on: ubuntu-latest
