@@ -8,7 +8,8 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim-1.25.1-playwright
+  PDS_NODE_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/playwright:v1.25.1-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -29,7 +30,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
         shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
@@ -70,7 +71,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -131,7 +132,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -176,7 +177,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -197,17 +198,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-#      - name: 'VRT Test'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt-puppeteer
-#          args: --components-js
-#      - name: 'VRT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-js-vrt-puppeteer-regression
-#          path: ./packages/components-js/tests/vrt/puppeteer/results
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt-puppeteer
+          args: --components-js
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-vrt-puppeteer-regression
+          path: ./packages/components-js/tests/vrt/puppeteer/results
   components-js-vrt-playwright:
     name: 'Components JS VRT (Playwright)'
     runs-on: ubuntu-latest
@@ -227,7 +228,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -248,17 +249,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-#      - name: 'VRT Test'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt-playwright
-#          args: --components-js
-#      - name: 'VRT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-js-vrt-playwright-regression
-#          path: ./packages/components-js/tests/vrt/playwright/results
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-vrt-playwright-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -278,7 +279,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -314,17 +315,17 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-angular
-#      - name: 'VRT Test'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --components-angular
-#      - name: 'VRT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-angular-vrt-regression
-#          path: ./packages/components-angular/tests/vrt/results
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --components-angular
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-angular-vrt-regression
+          path: ./packages/components-angular/tests/vrt/results
   components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
@@ -344,7 +345,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -385,28 +386,28 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-react
-#      - name: 'VRT Test components-react'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --components-react
-#      - name: 'VRT Test components-react/nextjs'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --components-react/nextjs
-#      - name: 'VRT Regression components-react'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-react-vrt-regression
-#          path: ./packages/components-react/tests/vrt/results
-#      - name: 'VRT Regression components-react/nextjs'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-react-nextjs-vrt-regression
-#          path: ./packages/components-react/projects/nextjs/tests/vrt/results
+      - name: 'VRT Test components-react'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react
+      - name: 'VRT Test components-react/nextjs'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react/nextjs
+      - name: 'VRT Regression components-react'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-vrt-regression
+          path: ./packages/components-react/tests/vrt/results
+      - name: 'VRT Regression components-react/nextjs'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-nextjs-vrt-regression
+          path: ./packages/components-react/projects/nextjs/tests/vrt/results
   fallbacks:
     name: 'Fallbacks'
     runs-on: ubuntu-latest
@@ -426,7 +427,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -472,7 +473,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -507,7 +508,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -557,7 +558,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -608,7 +609,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -659,7 +660,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -680,17 +681,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-#      - name: 'VRT Test'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --storefront
-#      - name: 'VRT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: storefront-vrt-regression
-#          path: ./packages/storefront/tests/vrt/results
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --storefront
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-vrt-regression
+          path: ./packages/storefront/tests/vrt/results
   production-builds:
     name: 'Production Builds'
     runs-on: ubuntu-latest
@@ -710,7 +711,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -815,7 +816,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -850,7 +851,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -907,7 +908,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -956,7 +957,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install' # needed for algolia
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -997,7 +998,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1046,7 +1047,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -1086,7 +1087,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1117,7 +1118,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1148,7 +1149,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1180,7 +1181,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1212,7 +1213,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Utilities Deprecated Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -1244,7 +1245,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run
         env:

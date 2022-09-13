@@ -1,8 +1,8 @@
 #!/bin/bash
 
 REGISTRY=ghcr.io/porscheui/porsche-design-system
-IMAGE=node
-TAG=16.15.1-stretch-slim-1.25.1-playwright
+IMAGE=playwright
+TAG=v1.25.1-focal
 
 docker pull $REGISTRY/$IMAGE:latest
 
