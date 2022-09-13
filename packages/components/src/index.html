@@ -61,7 +61,7 @@
 
       const data2 = [
         {
-          name: 'optionD',
+          name: 'optionA',
           available: false,
         },
         {
@@ -93,7 +93,7 @@
       const changeOpts = document.getElementById('changeOpts');
       changeOpts.addEventListener('click', function (e) {
         data = data2;
-        const markup = `<select>${renderOptions(data)}</select>`;
+        const markup = `${renderOptions(data)}`;
         const markupNative = `${renderOptions(data)}`;
         document.querySelector('#select-wrapper').innerHTML = markup;
         document.querySelector('#selectNative').innerHTML = markupNative;
