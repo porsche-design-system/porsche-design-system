@@ -9,12 +9,12 @@ export type {
 
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
-export type Viewport = typeof extendedViewports[number];
+type Viewport = typeof extendedViewports[number];
 
 export const marqueViewports = [1299, 1300] as const;
 type MarqueViewport = typeof marqueViewports[number];
 
-export const defaultOptions: VisualRegressionTestOptions = {
+const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
   fixturesDir: 'tests/vrt/puppeteer/fixtures',
   resultsDir: 'tests/vrt/puppeteer/results',
