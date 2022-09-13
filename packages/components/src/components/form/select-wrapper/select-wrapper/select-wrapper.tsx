@@ -13,6 +13,7 @@ import {
   isRequiredAndParentNotRequired,
   observeAttributes,
   observeChildren,
+  observeProperties,
   setAriaAttributes,
   setAttribute,
   THEMES,
@@ -210,7 +211,7 @@ export class SelectWrapper {
 
   private observeOptions(): void {
     getOptionsElements(this.select).forEach((el) => {
-      observeAttributes(
+      observeProperties(
         el,
         ['selected', 'disabled'],
         () => (this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select'))
