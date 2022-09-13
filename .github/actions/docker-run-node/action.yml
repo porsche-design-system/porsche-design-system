@@ -1,0 +1,5 @@
+name: Docker Run
+description: Run scripts in custom docker image
+runs:
+  using: docker
+  image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
