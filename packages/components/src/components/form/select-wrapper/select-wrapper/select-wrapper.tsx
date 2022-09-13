@@ -12,8 +12,6 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   observeAttributes,
-  observeChildren,
-  observeProperties,
   setAriaAttributes,
   setAttribute,
   THEMES,
@@ -29,7 +27,6 @@ import { StateMessage } from '../../../common/state-message/state-message';
 import { Required } from '../../../common/required/required';
 import { FORM_STATES } from '../../form-state';
 import type { FormState } from '../../form-state';
-import { getOptionsElements } from '../select-wrapper-dropdown/select-wrapper-dropdown-utils';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
@@ -85,31 +82,11 @@ export class SelectWrapper {
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
-    observeChildren(
-      this.select,
-      () => {
-        this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select');
-        this.observeOptions(); // new option might have been added
-      },
-      // unfortunately we can't observe hidden property of option elements via observeProperties
-      // therefore we do it here via attribute
-      ['hidden']
-    );
   }
 
   public componentWillLoad(): void {
     this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select');
     this.observeAttributes(); // once initially
-    observeChildren(
-      this.select,
-      () => {
-        this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select');
-        this.observeOptions(); // new option might have been added
-      },
-      // unfortunately we can't observe hidden property of option elements via observeProperties
-      // therefore we do it here via attribute
-      ['hidden']
-    );
 
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
     if (this.hasCustomDropdown) {
@@ -207,15 +184,5 @@ export class SelectWrapper {
 
   private observeAttributes(): void {
     observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
-  }
-
-  private observeOptions(): void {
-    getOptionsElements(this.select).forEach((el) => {
-      observeProperties(
-        el,
-        ['selected', 'disabled'],
-        () => (this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select'))
-      );
-    });
   }
 }
