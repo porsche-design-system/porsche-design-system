@@ -28,7 +28,7 @@
 
       <h2>"disabled" state doesn't update with data change</h2>
       <p-select-wrapper label="Some label" hideLabel>
-        <select id="select-wrapper"></select>
+        <select id="selectWrapper"></select>
       </p-select-wrapper>
 
       <h2>"disabled" state updates with data change</h2>
@@ -87,16 +87,17 @@
 
       const markup = `${renderOptions(data)}`;
 
-      document.querySelector('#select-wrapper').innerHTML = markup;
+      document.querySelector('#selectWrapper').innerHTML = markup;
       document.querySelector('#selectNative').innerHTML = markup;
 
       const changeOpts = document.getElementById('changeOpts');
       changeOpts.addEventListener('click', function (e) {
-        data = data2;
-        const markup = `${renderOptions(data)}`;
-        const markupNative = `${renderOptions(data)}`;
-        document.querySelector('#select-wrapper').innerHTML = markup;
-        document.querySelector('#selectNative').innerHTML = markupNative;
+        // document.querySelector('#selectWrapper').options[0].disabled = true;
+        // document.querySelector('#selectWrapper').options[1].disabled = false;
+        document.querySelector('#selectWrapper').options[0].setAttribute('disabled', 'disabled');
+        document.querySelector('#selectWrapper').options[1].removeAttribute('disabled');
+        document.querySelector('#selectNative').options[0].setAttribute('disabled', 'disabled');
+        document.querySelector('#selectNative').options[1].removeAttribute('disabled');
       });
     </script>
     <!-- /END -->

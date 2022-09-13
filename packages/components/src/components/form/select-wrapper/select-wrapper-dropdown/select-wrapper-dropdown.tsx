@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
+  observeAttributes,
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
@@ -234,6 +235,9 @@ export class SelectWrapperDropdown {
   private observeOptions(): void {
     getOptionsElements(this.selectRef).forEach((el) =>
       observeProperties(el, ['selected', 'disabled'], this.setOptionMaps)
+    );
+    getOptionsElements(this.selectRef).forEach((el) =>
+      observeAttributes(el, ['selected', 'disabled'], this.setOptionMaps)
     );
   }
 
