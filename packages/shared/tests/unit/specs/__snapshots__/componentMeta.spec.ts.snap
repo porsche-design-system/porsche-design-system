@@ -1039,7 +1039,7 @@ Object {
   "p-select-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
-    "hasObserveChildren": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
