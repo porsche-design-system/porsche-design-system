@@ -8,7 +8,7 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim-1.25.1-playwright
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -248,17 +248,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-vrt-playwright
-          args: --components-js
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-js-vrt-playwright-regression
-          path: ./packages/components-js/tests/vrt/playwright/results
+#      - name: 'VRT Test'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-vrt-playwright
+#          args: --components-js
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-js-vrt-playwright-regression
+#          path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
