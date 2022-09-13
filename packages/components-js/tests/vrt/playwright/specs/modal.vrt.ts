@@ -24,13 +24,6 @@ test.describe('should have no visual regression for fullscreen modal', async () 
 
 test.describe('should have no visual regression for fullscreen breakpoint modal', async () => {
   await executeVisualRegressionTest('modal-fullscreen-breakpoint');
-  await executeVisualRegressionTest('modal-fullscreen-breakpoint', {
-    namePostfix: '-m',
-    scenario: (page) =>
-      page.evaluate(() => {
-        (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
-      }),
-  });
 });
 
 test.describe('should have no visual regression for full-width-slot', async () => {
