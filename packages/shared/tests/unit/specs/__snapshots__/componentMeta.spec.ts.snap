@@ -1104,7 +1104,7 @@ Object {
   },
   "p-select-wrapper-dropdown": Object {
     "hasAriaProp": false,
-    "hasObserveAttributes": false,
+    "hasObserveAttributes": true,
     "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": false,
