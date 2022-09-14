@@ -294,10 +294,8 @@ describe('select-wrapper dropdown', () => {
     const dropdownOption1 = await getDropdownOption1();
     const dropdownOption2 = await getDropdownOption2();
 
-    expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
     expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
     expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
     expect(await getDisabledDropdownOptionIndex()).toBe(1);
 
     await select.evaluate((el: HTMLSelectElement) => (el.options[0].disabled = true));
@@ -305,10 +303,7 @@ describe('select-wrapper dropdown', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(dropdownOption1)).toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
     expect(await getCssClasses(dropdownOption2)).not.toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
-    expect(await getCssClasses(dropdownOption2)).toBe('option');
     expect(await getDisabledDropdownOptionIndex()).toBe(0);
   });
 
@@ -318,10 +313,8 @@ describe('select-wrapper dropdown', () => {
     const dropdownOption1 = await getDropdownOption1();
     const dropdownOption2 = await getDropdownOption2();
 
-    expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
     expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
     expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
     expect(await getDisabledDropdownOptionIndex()).toBe(1);
 
     await select.evaluate((el: HTMLSelectElement) => el.options[0].setAttribute('disabled', 'disabled'));
@@ -329,10 +322,7 @@ describe('select-wrapper dropdown', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(dropdownOption1)).toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
     expect(await getCssClasses(dropdownOption2)).not.toContain(disabledClass);
-    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
-    expect(await getCssClasses(dropdownOption2)).toBe('option');
     expect(await getDisabledDropdownOptionIndex()).toBe(0);
   });
 
