@@ -2,11 +2,9 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
-  observeAttributes,
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
-  unobserveAttributes,
   unobserveChildren,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
@@ -81,7 +79,7 @@ export class SelectWrapperDropdown {
       },
       // unfortunately we can't observe hidden property of option elements via observeProperties
       // therefore we do it here via attribute
-      ['hidden']
+      ['hidden', 'disabled', 'selected']
     );
   }
 
@@ -110,7 +108,6 @@ export class SelectWrapperDropdown {
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
     unobserveChildren(this.host);
-    unobserveAttributes(this.host);
   }
 
   public render(): JSX.Element {
@@ -230,16 +227,13 @@ export class SelectWrapperDropdown {
       },
       // unfortunately we can't observe hidden property of option elements via observeProperties
       // therefore we do it here via attribute
-      ['hidden']
+      ['hidden', 'disabled', 'selected']
     );
   }
 
   private observeOptions(): void {
     getOptionsElements(this.selectRef).forEach((el) =>
       observeProperties(el, ['selected', 'disabled'], this.setOptionMaps)
-    );
-    getOptionsElements(this.selectRef).forEach((el) =>
-      observeAttributes(el, ['selected', 'disabled'], this.setOptionMaps)
     );
   }
 
