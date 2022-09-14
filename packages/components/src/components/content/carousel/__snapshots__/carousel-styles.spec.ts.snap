@@ -709,6 +709,7 @@ p {
   }
   .header {
     gap: 1.5rem;
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .nav {
     right: min(calc(43vw - 39.6rem), 12rem);
@@ -842,6 +843,7 @@ p {
   }
   .header {
     gap: 1.5rem;
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .nav {
     right: min(calc(43vw - 39.6rem), 12rem);
