@@ -1,4 +1,4 @@
-import type { Page } from '@playwright/test';
+import type { Page, ElementHandle } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 
 type Options = {
@@ -49,4 +49,18 @@ export const openPopovers = async (page: Page): Promise<void> => {
       button.click();
     });
   });
+};
+
+export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
+  const selectorParts = selector.split('>>>');
+  const shadowRootSelectors =
+    selectorParts.length > 1
+      ? selectorParts
+          .slice(1)
+          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
+          .join('')
+      : '';
+  return (
+    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
+  ).asElement() as ElementHandle;
 };
