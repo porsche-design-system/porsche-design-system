@@ -1,6 +1,7 @@
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
+import * as attributeObserverUtils from '../../../../utils/attribute-observer';
 import * as childrenObserverUtils from '../../../../utils/children-observer';
 
 const initComponent = (): SelectWrapperDropdown => {
@@ -63,7 +64,7 @@ describe('observePropertiesAndChildren()', () => {
   });
 });
 
-describe('observeOptions()', () => {
+describe('this.observeOptions()', () => {
   it('should call observeProperties() for each option', () => {
     const component = initComponent();
     const options: HTMLOptionElement[] = [];
@@ -76,6 +77,24 @@ describe('observeOptions()', () => {
     });
 
     const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    component['observeOptions']();
+
+    expect(spy).toBeCalledTimes(3);
+    expect(spy).toHaveBeenLastCalledWith(options[2], ['selected', 'disabled'], expect.anything());
+  });
+
+  it('should call observeAttributes() for each option', () => {
+    const component = initComponent();
+    const options: HTMLOptionElement[] = [];
+
+    Array.from(Array(3)).forEach((_, idx) => {
+      const el = document.createElement('option');
+      el.value = `${idx}`;
+      component.selectRef.appendChild(el);
+      options.push(el);
+    });
+
+    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     component['observeOptions']();
 
     expect(spy).toBeCalledTimes(3);
