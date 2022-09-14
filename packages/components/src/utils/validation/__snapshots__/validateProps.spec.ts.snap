@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1]"`;
+exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1, undefined]"`;
 
 exports[`formatObjectOutput() should return formatted string for boolean 1`] = `"true"`;
 

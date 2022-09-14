@@ -115,11 +115,11 @@ export class Icon {
   }
 
   private loadIcon(): void {
-    const url = buildIconUrl(this.source ?? this.name);
+    const url = buildIconUrl(this.source || this.name);
 
     getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
-      if (url === buildIconUrl(this.source ?? this.name)) {
+      if (url === buildIconUrl(this.source || this.name)) {
         this.setIconContent(iconContent);
       }
     });

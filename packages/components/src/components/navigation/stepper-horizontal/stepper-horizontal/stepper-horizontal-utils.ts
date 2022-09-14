@@ -4,6 +4,9 @@ import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizont
 import { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
 import { forceUpdate } from '@stencil/core';
 
+export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;
+export type StepperHorizontalSize = typeof STEPPER_HORIZONTAL_SIZES[number];
+
 export type StepChangeEvent = { activeStepIndex: number };
 
 export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]): number => {
