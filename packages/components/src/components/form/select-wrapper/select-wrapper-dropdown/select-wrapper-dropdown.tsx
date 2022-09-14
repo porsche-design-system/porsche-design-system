@@ -6,6 +6,7 @@ import {
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
+  unobserveAttributes,
   unobserveChildren,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
@@ -109,6 +110,7 @@ export class SelectWrapperDropdown {
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
     unobserveChildren(this.host);
+    unobserveAttributes(this.host);
   }
 
   public render(): JSX.Element {
