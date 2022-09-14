@@ -14,7 +14,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   initPageErrorObserver,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -277,7 +277,7 @@ describe('events', () => {
     await addEventListener(host, 'stepChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-stepper-horizontal');
+    await reattachElementHandle(host);
 
     await item1.click();
     await waitForEventSerialization(page);

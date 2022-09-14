@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Issue with `Popover` where drop-shadow is not shown correctly in Chrome >= 105
+
 ### [2.16.1] - 2022-09-09
 
 #### Fixed
