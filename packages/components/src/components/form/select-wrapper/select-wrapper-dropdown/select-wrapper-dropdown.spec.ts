@@ -24,10 +24,10 @@ describe('componentDidRender', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call observePropertiesAndChildren()', () => {
+  it('should call observeProperties()', () => {
     const component = initComponent();
 
-    const spy = jest.spyOn(component, 'observePropertiesAndChildren' as any);
+    const spy = jest.spyOn(component, 'observeProperties' as any);
     try {
       component.componentWillLoad();
     } catch (e) {}
@@ -36,7 +36,7 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('observePropertiesAndChildren()', () => {
+describe('observeProperties()', () => {
   it.each(['setOptionMaps', 'observeOptions'])('should call %s()', (fn) => {
     const component = initComponent();
     const spy = jest.spyOn(component, fn as any);
