@@ -1,6 +1,8 @@
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
+import * as childrenObserverUtils from '../../../../utils/children-observer';
+import * as throwIfRootNodeIsNotOneOfKindUtils from '../../../../utils/validation/throwIfRootNodeIsNotOneOfKind';
 
 const initComponent = (): SelectWrapperDropdown => {
   const component = new SelectWrapperDropdown();
@@ -9,6 +11,30 @@ const initComponent = (): SelectWrapperDropdown => {
   component.selectRef = document.createElement('select');
   return component;
 };
+
+describe('connectedCallback', () => {
+  it('should call observeChildren() with correct parameters', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+    jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind').mockReturnValue();
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call unobserveChildren() with correct parameters', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+
+    try {
+      component.disconnectedCallback();
+    } catch {}
+
+    expect(spy).toBeCalledWith(component.host);
+  });
+});
 
 describe('componentDidRender', () => {
   it('should call handleScroll() with correct parameters', () => {
