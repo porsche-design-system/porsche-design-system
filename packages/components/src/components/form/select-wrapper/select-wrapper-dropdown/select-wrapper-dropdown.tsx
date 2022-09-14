@@ -101,7 +101,7 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillLoad(): void {
-    this.observePropertiesAndChildren();
+    this.observeProperties();
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
@@ -213,7 +213,7 @@ export class SelectWrapperDropdown {
     );
   }
 
-  private observePropertiesAndChildren(): void {
+  private observeProperties(): void {
     this.setOptionMaps(); // initial
     this.observeOptions(); // initial
 
