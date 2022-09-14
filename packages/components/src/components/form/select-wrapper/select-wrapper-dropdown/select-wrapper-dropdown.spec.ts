@@ -1,7 +1,6 @@
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
-import * as childrenObserverUtils from '../../../../utils/children-observer';
 
 const initComponent = (): SelectWrapperDropdown => {
   const component = new SelectWrapperDropdown();
@@ -52,14 +51,6 @@ describe('observePropertiesAndChildren()', () => {
     component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
-  });
-
-  it('should call observeChildren() with correct parameters', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-    component.componentWillLoad();
-
-    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
   });
 });
 
