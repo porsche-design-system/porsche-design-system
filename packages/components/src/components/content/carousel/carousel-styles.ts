@@ -22,13 +22,6 @@ export const getComponentCss = (
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
 
-  const safeZonePadding: JssStyle = wrapContent && {
-    padding: `0 ${gridSafeZone.base}`,
-    [mediaQueryXl]: {
-      padding: `0 ${gridSafeZone.xl}`,
-    },
-  };
-
   const backfaceVisibility: JssStyle = {
     backfaceVisibility: 'hidden',
     WebkitBackfaceVisibility: 'hidden',
@@ -102,7 +95,7 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       gap: pxToRemWithUnit(16),
-      ...safeZonePadding,
+      padding: wrapContent ? `0 ${gridSafeZone.base}` : null,
       [mediaQueryS]: {
         gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
         position: 'relative',
@@ -110,6 +103,7 @@ export const getComponentCss = (
       },
       [mediaQueryXl]: {
         gap: pxToRemWithUnit(24),
+        padding: wrapContent ? `0 ${gridSafeZone.xl}` : null,
       },
     },
     nav: {
