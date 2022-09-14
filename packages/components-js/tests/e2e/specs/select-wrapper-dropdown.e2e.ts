@@ -12,7 +12,7 @@ import {
   getShadowRoot,
   initAddEventListener,
   initPageErrorObserver,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -881,6 +881,7 @@ describe('select-wrapper dropdown', () => {
     it('should remove and re-attach events', async () => {
       await initSelect();
 
+      const host = await getHost();
       const dropdownButton = await getDropdownButton();
       const dropdownList = await getDropdownList();
 
@@ -892,7 +893,7 @@ describe('select-wrapper dropdown', () => {
       await addEventListener(dropdownList, 'keydown', () => listKeyDownEventCounter++);
 
       // Remove and re-attach component to check if events are duplicated / fire at all
-      await reattachElement(page, 'p-select-wrapper');
+      await reattachElementHandle(host);
 
       await dropdownButton.click();
       await waitForStencilLifecycle(page);

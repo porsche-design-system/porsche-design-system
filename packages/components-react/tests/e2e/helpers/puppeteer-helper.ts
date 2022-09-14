@@ -12,7 +12,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement();
+  ).asElement() as ElementHandle;
 };
 
 export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
