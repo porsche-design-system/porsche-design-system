@@ -59,7 +59,7 @@ describe('observePropertiesAndChildren()', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden']);
+    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
   });
 });
 
