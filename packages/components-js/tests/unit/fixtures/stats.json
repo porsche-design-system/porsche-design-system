@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 38118,
-    "gzipSize": 15523
+    "size": 38085,
+    "gzipSize": 15522
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -82,7 +82,7 @@
   {
     "chunkShortName": "main",
     "size": 63849,
-    "gzipSize": 21770
+    "gzipSize": 21771
   },
   {
     "chunkShortName": "marque",
@@ -101,8 +101,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6463,
-    "gzipSize": 2725
+    "size": 6517,
+    "gzipSize": 2743
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 23067,
-    "gzipSize": 7508
+    "size": 22962,
+    "gzipSize": 7507
   },
   {
     "chunkShortName": "spinner",
