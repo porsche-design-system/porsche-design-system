@@ -218,17 +218,6 @@ export class SelectWrapperDropdown {
     this.observeOptions(); // initial
 
     observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
-
-    observeChildren(
-      this.selectRef,
-      () => {
-        this.setOptionMaps();
-        this.observeOptions(); // new option might have been added
-      },
-      // unfortunately we can't observe hidden property of option elements via observeProperties
-      // therefore we do it here via attribute
-      ['hidden', 'disabled', 'selected']
-    );
   }
 
   private observeOptions(): void {
