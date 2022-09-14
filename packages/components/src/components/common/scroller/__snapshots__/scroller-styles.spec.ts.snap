@@ -28,6 +28,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -120,6 +121,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -212,6 +214,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -304,6 +307,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -396,6 +400,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -488,6 +493,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -580,6 +586,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -672,6 +679,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -764,6 +772,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
@@ -856,6 +865,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: relative;
   display: inline-flex;
   min-width: 100%;
+  vertical-align: top;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
