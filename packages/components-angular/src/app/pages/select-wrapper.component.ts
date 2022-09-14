@@ -427,7 +427,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render in focus state and be open"
       style="padding-bottom: calc(1rem + 340px)"
     >
-      <p-select-wrapper [label]="'Some label'">
+      <p-select-wrapper [label]="'Some label'" id="last-select-on-page">
         <select id="open-options" [name]="'some-name'">
           <option [value]="'a'">Option A</option>
           <option [value]="'b'">Option B</option>

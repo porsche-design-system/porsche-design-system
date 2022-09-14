@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
-  reattachElement,
+  reattachElementHandle,
   removeAttribute,
   selectNode,
   setContentWithDesignSystem,
@@ -258,7 +258,7 @@ describe('events', () => {
     await addEventListener(host, 'tabChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-tabs');
+    await reattachElementHandle(host);
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
