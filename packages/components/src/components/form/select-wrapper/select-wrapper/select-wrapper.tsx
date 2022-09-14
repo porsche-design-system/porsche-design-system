@@ -16,7 +16,6 @@ import {
   setAttribute,
   THEMES,
   unobserveAttributes,
-  unobserveChildren,
   validateProps,
 } from '../../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../../types';
@@ -117,7 +116,6 @@ export class SelectWrapper {
 
   public disconnectedCallback(): void {
     unobserveAttributes(this.select);
-    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
