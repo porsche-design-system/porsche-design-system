@@ -6,6 +6,7 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   getExternalDependenciesOrThrow,
+  isStableStorefrontRelease,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
 
@@ -85,5 +86,42 @@ describe('validateExternalDependencies()', () => {
   it('should return passed externalDependencies[] if values are valid', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     expect(getExternalDependenciesOrThrow(externalDependencies)).toBe(externalDependencies);
+  });
+});
+
+describe('isStableStorefrontRelease()', () => {
+  const { location } = window;
+  const mockPathname = jest.fn();
+
+  beforeAll(() => {
+    Object.defineProperty(window, 'location', {
+      value: {
+        get pathname() {
+          return mockPathname();
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    // @ts-ignore
+    delete window.location;
+    window.location = location;
+  });
+
+  it.each<[string, boolean]>([
+    ['/issue/123', false],
+    ['/release/123', false],
+    ['/', false],
+    ['/v', false],
+    ['/v1/', true],
+    ['/v1', false],
+    ['/v2/', true],
+    ['/v2', false],
+    ['/v33/', true],
+    ['/v33', false],
+  ])('should for path: %s return %s', (path, expected) => {
+    mockPathname.mockReturnValue(path);
+    expect(isStableStorefrontRelease()).toBe(expected);
   });
 });
