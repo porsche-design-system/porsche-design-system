@@ -2,6 +2,7 @@ import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
 import * as childrenObserverUtils from '../../../../utils/children-observer';
+import * as throwIfRootNodeIsNotOneOfKindUtils from '../../../../utils/validation/throwIfRootNodeIsNotOneOfKind';
 
 const initComponent = (): SelectWrapperDropdown => {
   const component = new SelectWrapperDropdown();
@@ -10,6 +11,30 @@ const initComponent = (): SelectWrapperDropdown => {
   component.selectRef = document.createElement('select');
   return component;
 };
+
+describe('connectedCallback', () => {
+  it('should call observeChildren() with correct parameters', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+    jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind').mockReturnValue();
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call unobserveChildren() with correct parameters', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+
+    try {
+      component.disconnectedCallback();
+    } catch {}
+
+    expect(spy).toBeCalledWith(component.host);
+  });
+});
 
 describe('componentDidRender', () => {
   it('should call handleScroll() with correct parameters', () => {
@@ -25,10 +50,10 @@ describe('componentDidRender', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call observePropertiesAndChildren()', () => {
+  it('should call observeProperties()', () => {
     const component = initComponent();
 
-    const spy = jest.spyOn(component, 'observePropertiesAndChildren' as any);
+    const spy = jest.spyOn(component, 'observeProperties' as any);
     try {
       component.componentWillLoad();
     } catch (e) {}
@@ -37,7 +62,7 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('observePropertiesAndChildren()', () => {
+describe('observeProperties()', () => {
   it.each(['setOptionMaps', 'observeOptions'])('should call %s()', (fn) => {
     const component = initComponent();
     const spy = jest.spyOn(component, fn as any);
@@ -53,17 +78,9 @@ describe('observePropertiesAndChildren()', () => {
 
     expect(spy).toBeCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
   });
-
-  it('should call observeChildren() with correct parameters', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-    component.componentWillLoad();
-
-    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden']);
-  });
 });
 
-describe('observeOptions()', () => {
+describe('this.observeOptions()', () => {
   it('should call observeProperties() for each option', () => {
     const component = initComponent();
     const options: HTMLOptionElement[] = [];
