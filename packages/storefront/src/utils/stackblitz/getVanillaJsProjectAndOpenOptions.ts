@@ -15,6 +15,9 @@ export const getIndexHtmlMarkup = (
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[]
 ): string => {
+  console.log('globalStyles', globalStyles);
+  console.log('externalDependencies', externalDependencies);
+  console.log('sharedImportKeys', sharedImportKeys);
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
@@ -63,16 +66,22 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
+const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
+
 export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+  console.log('process.env', process.env);
+  console.log('location.pathname', location.pathname);
   return {
     '@porsche-design-system/components-js':
-      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-js'],
+      !isStableStorefrontRelease() ? '2.15.0' : dependencies['@porsche-design-system/components-js'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
+  console.log('getVanillaJsDependencies(externalDependencies)', getVanillaJsDependencies(externalDependencies));
 
   return {
     files: {
