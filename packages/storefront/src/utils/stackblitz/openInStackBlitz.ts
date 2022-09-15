@@ -22,12 +22,6 @@ export type OpenInStackBlitzOpts = {
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   const { framework, theme, backgroundColorScheme, ...rest } = opts;
-  console.log('markup', opts.markup);
-  console.log('framework', opts.framework);
-  console.log('theme', opts.theme);
-  console.log('backgroundColorScheme', opts.backgroundColorScheme);
-  console.log('externalDependencies', opts.externalDependencies);
-  console.log('sharedImportKeys', opts.sharedImportKeys);
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     ...rest,
