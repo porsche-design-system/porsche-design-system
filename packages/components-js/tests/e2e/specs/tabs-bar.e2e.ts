@@ -15,7 +15,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
-  reattachElement,
+  reattachElementHandle,
   removeAttribute,
   SCROLL_PERCENTAGE,
   selectNode,
@@ -590,7 +590,7 @@ describe('events', () => {
     await addEventListener(host, 'tabChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-tabs-bar');
+    await reattachElementHandle(host);
 
     await firstButton.click();
     await waitForStencilLifecycle(page);

@@ -97,16 +97,10 @@ export const HeadlinePage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should not automatically break words/strings by default">
-        <PHeadline variant="headline-3" style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
-        <PHeadline variant="headline-3" style={{ width: '240px', background: 'deepskyblue' }}>
-          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-        </PHeadline>
-        <PHeadline variant={{ base: 'large' }} style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </PHeadline>
-        <PHeadline variant={{ base: 'large' }} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
           <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
         </PHeadline>
       </div>
@@ -116,16 +110,10 @@ export const HeadlinePage = (): JSX.Element => {
         title="should be possible to overwrite hyphenation/break words behavior"
         style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
       >
-        <PHeadline variant="headline-3" style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
-        <PHeadline variant="headline-3" style={{ width: '240px', background: 'deepskyblue' }}>
-          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-        </PHeadline>
-        <PHeadline variant={{ base: 'large' }} style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </PHeadline>
-        <PHeadline variant={{ base: 'large' }} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
           <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
         </PHeadline>
       </div>
