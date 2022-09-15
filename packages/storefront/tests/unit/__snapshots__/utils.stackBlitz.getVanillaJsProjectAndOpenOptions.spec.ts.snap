@@ -94,7 +94,7 @@ exports[`getIndexHtmlMarkup() development mode or non stable storefront release 
               } = i;
             c || (o(e), i.isLoaded = !0), d.includes(n) || (d.push(n), l && l(n))
           }(Object.assign(Object.assign({}, {
-            version: "2.16.1",
+            version: "0.0.0",
             script: "http://localhost:3001/components/porsche-design-system.v0.0.0.js"
           }), e))
         };
@@ -183,7 +183,7 @@ exports[`getIndexHtmlMarkup() development mode or non stable storefront release 
               } = i;
             c || (o(e), i.isLoaded = !0), d.includes(n) || (d.push(n), l && l(n))
           }(Object.assign(Object.assign({}, {
-            version: "2.16.1",
+            version: "0.0.0",
             script: "http://localhost:3001/components/porsche-design-system.v0.0.0.js"
           }), e))
         };

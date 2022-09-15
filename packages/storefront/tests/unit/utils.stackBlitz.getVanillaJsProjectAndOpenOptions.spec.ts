@@ -44,7 +44,9 @@ describe('getIndexHtmlMarkup()', () => {
       jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
     });
 
-    const replaceHashedLoaderScript = (markup: string): string => markup.replace(/porsche-design-system\.v\d+\.\d+\.\d+\..+\.js/, 'porsche-design-system.v0.0.0.js');
+    const replaceHashedLoaderScript = (markup: string): string => markup.replace(/porsche-design-system\.v\d+\.\d+\.\d+[-.].+\.js/, 'porsche-design-system.v0.0.0.js');
+    const replaceLoaderVersion = (markup: string): string => markup.replace(/['"]\d+\.\d+\.\d+(-.+\.\d+)?['"]/, '"0.0.0"');
+    const cleanDynamicMarkup = (markup: string): string => replaceHashedLoaderScript(replaceLoaderVersion(markup));
 
     it('should return correct markup without externalDependencies', () => {
       jest
@@ -54,7 +56,7 @@ describe('getIndexHtmlMarkup()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(replaceHashedLoaderScript(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys))).toMatchSnapshot();
+      expect(cleanDynamicMarkup(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys))).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -65,7 +67,7 @@ describe('getIndexHtmlMarkup()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(replaceHashedLoaderScript(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys))).toMatchSnapshot();
+      expect(cleanDynamicMarkup(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys))).toMatchSnapshot();
     });
   });
 
