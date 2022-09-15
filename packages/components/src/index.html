@@ -23,7 +23,19 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-inline-notification heading="Some heading" description="Some description."> </p-inline-notification>
+
+      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+
+      <p-modal heading="Some Heading" open="false">
+        <p-text>Some Content</p-text>
+        <p-button-group class="footer">
+          <p-button>Save</p-button>
+          <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+        </p-button-group>
+      </p-modal>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -33,6 +45,12 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      const modal = document.querySelector('p-modal');
+      modal.addEventListener('close', () => {
+        modal.open = false;
+      });
+      document.querySelector('p-button').addEventListener('click', () => (modal.open = true));
     </script>
     <!-- /END -->
   </body>
