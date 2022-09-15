@@ -13,7 +13,7 @@ export const getComponentCss = (
   hasClose: boolean,
   theme: Theme
 ): string => {
-  const { baseColor } = getThemedColors(theme);
+  const { baseColor } = getThemedColors('light');
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
