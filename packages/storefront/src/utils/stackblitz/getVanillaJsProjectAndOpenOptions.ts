@@ -2,6 +2,7 @@ import { dependencies } from '../../../../components-js/package.json';
 import { getExternalDependencies, getSharedImportConstants } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
 import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
+import { porscheDesignSystemLoaderScriptForStackBlitz } from '@/lib/partialResults';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
@@ -15,9 +16,9 @@ export const getIndexHtmlMarkup = (
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[]
 ): string => {
-  console.log('globalStyles', globalStyles);
-  console.log('externalDependencies', externalDependencies);
-  console.log('sharedImportKeys', sharedImportKeys);
+  const porscheDesignSystemLoaderScript = isStableStorefrontRelease()
+    ? '<script src="node_modules/@porsche-design-system/components-js/index.js"></script>'
+    : porscheDesignSystemLoaderScriptForStackBlitz;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
@@ -33,7 +34,7 @@ export const getIndexHtmlMarkup = (
   return `<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
-    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
+    ${porscheDesignSystemLoaderScript}
     ${externalScripts}
     <style>
       ${globalStyles}
@@ -47,10 +48,12 @@ export const getIndexHtmlMarkup = (
 
 export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
   const loadFunction = 'porscheDesignSystem.load();';
-  const hasScriptTag = !!markup.match(/<script>/);
-  return hasScriptTag
-    ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
-    : markup + `\n\n<script>${loadFunction}</script>`;
+
+  return isStableStorefrontRelease()
+    ? /<script>/.test(markup)
+      ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
+      : markup + `\n\n<script>${loadFunction}</script>`
+    : markup;
 };
 
 export const replaceSharedAsyncFunctionWithConstants = (
@@ -66,22 +69,19 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
+export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
 export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-  console.log('process.env', process.env);
-  console.log('location.pathname', location.pathname);
   return {
-    '@porsche-design-system/components-js':
-      !isStableStorefrontRelease() ? '2.15.0' : dependencies['@porsche-design-system/components-js'],
+    ...isStableStorefrontRelease() && {
+      '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js']
+    },
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
-  console.log('getVanillaJsDependencies(externalDependencies)', getVanillaJsDependencies(externalDependencies));
 
   return {
     files: {
