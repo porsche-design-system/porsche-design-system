@@ -15,6 +15,7 @@
     "updateAlgolia": "ts-node --project tsconfig.node.json scripts/updateAlgoliaIndex.ts",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && test:a11y && yarn test:vrt",
+    "pretest:unit": "yarn build:preparePartialResults",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "yarn test:unit --watch",
     "test:e2e": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
