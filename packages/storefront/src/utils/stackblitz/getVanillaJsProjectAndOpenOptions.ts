@@ -1,5 +1,5 @@
 import { dependencies } from '../../../../components-js/package.json';
-import { getExternalDependencies, getSharedImportConstants } from './helper';
+import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
 import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
 import { porscheDesignSystemLoaderScriptForStackBlitz } from '@/lib/partialResults';
@@ -68,8 +68,6 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
     imask: dependencies['imask'],
   },
 };
-
-export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
 export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
