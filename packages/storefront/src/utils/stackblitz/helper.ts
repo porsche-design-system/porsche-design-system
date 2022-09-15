@@ -56,3 +56,5 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
   }
   return externalDependencies;
 };
+
+export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);

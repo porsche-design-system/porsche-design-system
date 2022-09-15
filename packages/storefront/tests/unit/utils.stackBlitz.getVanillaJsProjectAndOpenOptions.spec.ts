@@ -39,39 +39,100 @@ describe('getIndexHtmlMarkup()', () => {
     expect(replaceSharedAsyncFunctionWithConstantsSpy).toBeCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
   });
 
-  it('should return correct markup without externalDependencies', () => {
-    jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
-    jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
 
-    expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+    const replaceHashedLoaderScript = (markup: string): string => markup.replace(/porsche-design-system\.v\d+\.\d+\.\d+\..+\.js/, 'porsche-design-system.v0.0.0.js');
+
+    it('should return correct markup without externalDependencies', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(replaceHashedLoaderScript(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys))).toMatchSnapshot();
+    });
+
+    it('should return correct markup with externalDependencies', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(replaceHashedLoaderScript(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys))).toMatchSnapshot();
+    });
   });
 
-  it('should return correct markup with externalDependencies', () => {
-    jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
-    jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
 
-    expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+    it('should return correct markup without externalDependencies', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+    });
+
+    it('should return correct markup with externalDependencies', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+    });
   });
 });
 
 describe('getExtendedMarkupWithLoadFunction()', () => {
-  it('should return script with load() call if markup contains script', () => {
-    const markup = '<p-button>SomeButton</p-button>\n<script>console.log()</script>';
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
 
-    expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+    it('should return markup and script tag without load() call', () => {
+      const markup = '<p-button>SomeButton</p-button>\n<script>console.log()</script>';
+
+      expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+    });
+
+    it('should return markup without load() call', () => {
+      const markup = '<p-button>Some snippet</p-button>';
+
+      expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+    });
   });
-  it('should return markup with script including load() call', () => {
-    const markup = '<p-button>Some snippet</p-button>';
 
-    expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
+
+    it('should return markup and load() call within existing script tag', () => {
+      const markup = '<p-button>SomeButton</p-button>\n<script>console.log()</script>';
+
+      expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+    });
+
+    it('should return markup and load() call within its own script tag', () => {
+      const markup = '<p-button>Some snippet</p-button>';
+
+      expect(getExtendedMarkupWithLoadFunction(markup)).toMatchSnapshot();
+    });
   });
 });
 
@@ -115,31 +176,43 @@ describe('getVanillaJsDependencies()', () => {
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV=test', () => {
-    expect(process.env.NODE_ENV).toBe('test');
-    expect(getVanillaJsDependencies([])).toEqual({
-      '@porsche-design-system/components-js': '0.0.0',
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
+
+    it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
+
+      expect(getVanillaJsDependencies([])).toEqual({});
+    });
+
+    it('should return correct StackblitzProjectDependencies with externalDependency', () => {
+      const mockedDependency = { mockedImask: '0.0.0' };
+      jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+      expect(getVanillaJsDependencies(['imask'])).toEqual(mockedDependency);
     });
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV=development', () => {
-    const initialNodeEnvValue = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'development';
-
-    expect(getVanillaJsDependencies([])).toEqual({
-      '@porsche-design-system/components-js': 'latest',
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
     });
 
-    process.env.NODE_ENV = initialNodeEnvValue;
-  });
+    it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
+      expect(getVanillaJsDependencies([])).toEqual({
+        "@porsche-design-system/components-js": "0.0.0"
+      });
+    });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency', () => {
-    const mockedDependency = { mockedImask: '0.0.0' };
-    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+    it('should return correct StackblitzProjectDependencies with externalDependency', () => {
+      const mockedDependency = { mockedImask: '0.0.0' };
+      jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getVanillaJsDependencies(['imask'])).toEqual({
-      '@porsche-design-system/components-js': '0.0.0',
-      ...mockedDependency,
+      expect(getVanillaJsDependencies(['imask'])).toEqual({
+        '@porsche-design-system/components-js': '0.0.0',
+        ...mockedDependency,
+      });
     });
   });
 });
