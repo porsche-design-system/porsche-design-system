@@ -175,7 +175,7 @@ it('should have working pagination and prev/next buttons after reconnect', async
   const buttonNext = await getButtonNext();
   const [slide1, slide2, slide3] = await getSlides();
 
-  await reattachElementHandle(page, host);
+  await reattachElementHandle(host);
   // different refs after reconnect, so we have to select them here
   const [bullet1, bullet2, bullet3] = await getPaginationBullets();
 
@@ -474,7 +474,7 @@ describe('events', () => {
     let eventCounter = 0;
     await addEventListener(host, 'carouselChange', () => eventCounter++);
 
-    await reattachElementHandle(page, host);
+    await reattachElementHandle(host);
     expect(eventCounter).toBe(0);
 
     await nextButton.click();

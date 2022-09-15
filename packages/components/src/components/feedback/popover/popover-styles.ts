@@ -103,6 +103,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       right: spacerBox,
       bottom: spacerBox,
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
+      backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'

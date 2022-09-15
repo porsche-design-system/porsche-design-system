@@ -16,8 +16,8 @@ type MarqueViewport = typeof marqueViewports[number];
 
 const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
-  fixturesDir: 'tests/vrt/fixtures',
-  resultsDir: 'tests/vrt/results',
+  fixturesDir: 'tests/vrt/puppeteer/fixtures',
+  resultsDir: 'tests/vrt/puppeteer/results',
   tolerance: 0,
   baseUrl: 'http://localhost:8575',
   timeout: 90000,
@@ -87,7 +87,12 @@ type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
 };
 
-export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: VRTestOptions) => {
+export const vrtTest = (
+  vrt: VisualRegressionTester,
+  snapshotId: string,
+  url: string,
+  options?: VRTestOptions
+): Promise<boolean> => {
   const { scenario, ...otherOptions } = options || {};
   const { baseUrl } = customOptions ?? defaultOptions;
 
