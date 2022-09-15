@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { headingXSmall, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
@@ -13,9 +13,15 @@ export const getComponentCss = (
   hasClose: boolean,
   theme: Theme
 ): string => {
+  const { baseColor } = getThemedColors(theme);
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
+      'h5,::slotted([slot=heading])': addImportantToEachRule({
+        ...headingXSmall,
+        margin: 0,
+        color: baseColor,
+      }),
     },
     icon: getNotificationIconJssStyle(state),
     content: getNotificationContentJssStyle(),
