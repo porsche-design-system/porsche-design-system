@@ -1,7 +1,16 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
-import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import {
+  gridSafeZone,
+  mediaQueryMin,
+  fontBehavior,
+  fontFamily,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  mediaQueryMinMax,
+} from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -78,6 +87,7 @@ export const getComponentCss = (
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
+  const { baseColor } = getThemedColors('light');
 
   return getCss({
     '@global': {
@@ -115,6 +125,21 @@ export const getComponentCss = (
         ...getSlottedJssStyle(32, hasHeader),
         [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
         [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
+      }),
+      'h1,::slotted([slot=heading])': addImportantToEachRule({
+        font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1.5rem/1.5 ${fontFamily}`,
+        ...fontBehavior,
+        [mediaQueryMinMax('s', 'm')]: {
+          fontSize: '1.5rem',
+          lineHeight: 1.5,
+        },
+
+        [mediaQueryMin('m')]: {
+          fontSize: '2.25rem',
+          lineHeight: 1.3333333333,
+        },
+        margin: 0,
+        color: baseColor,
       }),
     },
     root: mergeDeep(

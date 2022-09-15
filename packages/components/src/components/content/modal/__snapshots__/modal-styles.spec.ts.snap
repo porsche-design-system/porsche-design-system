@@ -36,6 +36,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -46,6 +60,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -147,6 +165,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -154,6 +186,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -263,6 +299,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -270,6 +320,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -380,6 +434,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -390,6 +458,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -491,6 +563,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -498,6 +584,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -610,6 +700,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -620,6 +724,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -721,6 +829,20 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -728,6 +850,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -838,6 +964,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -848,6 +988,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -986,6 +1130,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -996,6 +1154,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1097,6 +1259,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1104,6 +1280,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1213,6 +1393,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1220,6 +1414,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1330,6 +1528,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1340,6 +1552,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1441,6 +1657,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1448,6 +1678,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1560,6 +1794,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1570,6 +1818,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -1671,6 +1923,20 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1,::slotted([slot=heading]) {
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+@media(min-width:760px) and (max-width:999px) {
+  h1,::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1678,6 +1944,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1,::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
