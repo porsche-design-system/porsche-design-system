@@ -195,10 +195,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-textarea-wrapper'], 'componentDidLoad: p-textarea-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(3);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -217,7 +217,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-textarea-wrapper'], 'componentDidUpdate: p-textarea-wrapper').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

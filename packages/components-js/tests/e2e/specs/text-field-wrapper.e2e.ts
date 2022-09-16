@@ -523,11 +523,11 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-text-field-wrapper'], 'componentDidLoad: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(3);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 
   it('should work without unnecessary round trips after prop change', async () => {
