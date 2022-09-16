@@ -1,5 +1,10 @@
 import { dependencies } from '../../../../components-angular/package.json';
-import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from './helper';
+import {
+  getExternalDependencies,
+  removeSharedImport,
+  getSharedImportConstants,
+  isStableStorefrontRelease
+} from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
@@ -8,6 +13,7 @@ import type {
   ExternalDependency,
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
+import { porscheDesignSystemLoaderScriptForStackBlitz } from '@/lib/partialResults';
 
 const classNameRegex = /(export class )[A-z]+( {)/;
 
@@ -44,22 +50,33 @@ const externalDependencyModuleImportMap: {
 };
 
 export const getAppModuleTsMarkup = (externalDependencies: ExternalDependency[]): string => {
-  const imports = externalDependencies
-    .map((dependency) => externalDependencyModuleImportMap[dependency].import)
-    .join('\n');
-  const modules = externalDependencies
-    .map((dependency) => externalDependencyModuleImportMap[dependency].module)
-    .join(', ');
+  const imports = [
+    `import { NgModule${isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'} } from '@angular/core';`,
+    `import { BrowserModule } from '@angular/platform-browser';`,
+    `import { FormsModule } from '@angular/forms';`,
+    ...(isStableStorefrontRelease() ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`] : []),
+    `import { AppComponent } from './app.component';`,
+  ].concat(
+    externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].import)
+  ).join('\n');
 
-  return `import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { AppComponent } from './app.component';
-${imports}
+  const ngImports = [
+    'BrowserModule',
+    'FormsModule',
+    ...(isStableStorefrontRelease() ? ['PorscheDesignSystemModule'] : []),
+  ].concat(
+    externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module)
+  ).join(', ');
+
+  const ngSchemas = [
+    ...(isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA']),
+  ];
+
+  return `${imports}
 @NgModule({
-  imports: [BrowserModule, FormsModule, ${modules ? modules + ', ' : ''}PorscheDesignSystemModule],
+  imports: [${ngImports}],
   declarations: [AppComponent],
+  schemas: [${ngSchemas}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}`;
@@ -99,12 +116,16 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`;
 
-export const getIndexHtmlMarkup = (globalStyles: string): string => `<!DOCTYPE html>
+
+export const getIndexHtmlMarkup = (globalStyles: string): string => {
+  const porscheDesignSystemLoaderScript = isStableStorefrontRelease() ? '' : porscheDesignSystemLoaderScriptForStackBlitz;
+
+  return `<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Angular</title>
-
+    ${porscheDesignSystemLoaderScript}
     <style>
       ${globalStyles}
     </style>
@@ -112,7 +133,8 @@ export const getIndexHtmlMarkup = (globalStyles: string): string => `<!DOCTYPE h
   <body>
     <porsche-design-system-app></porsche-design-system-app>
   </body>
-</html>`;
+</html>`
+};
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
