@@ -6,23 +6,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     Object {
       "children": Array [
@@ -57,23 +47,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     Object {
       "children": Array [
@@ -108,23 +88,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     Object {
       "children": Array [
@@ -159,23 +129,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     Object {
       "children": Array [

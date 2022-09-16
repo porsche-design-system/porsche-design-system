@@ -559,13 +559,13 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
+    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(undefined); // p-headlinde should not be used within
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
 
     expect(
       status.componentDidLoad.all,
       'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(5);
+    ).toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -583,8 +583,8 @@ describe('lifecycle', () => {
     expect(
       status.componentDidLoad.all,
       'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, p-headline').toBe(2);
+    ).toBe(4);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, p-headline').toBe(1);
   });
 });
 
@@ -605,9 +605,7 @@ describe('slotted heading', () => {
     await waitForStencilLifecycle(page);
     await waitForComponentsReady(page); // wait for p-headline to initialize
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
-      '"<p-headline class=\\"hydrated\\">Some Heading</p-headline>"'
-    );
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h1>Some Heading</h1>"');
   });
 });
 
