@@ -5,6 +5,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   display: flex !important;
   outline: 0 !important;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
 button {
   position: relative;
   width: 3rem;
@@ -83,6 +91,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
 button {
   position: relative;
   width: 3rem;
@@ -159,6 +175,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   display: flex !important;
   outline: 0 !important;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
 }
 button {
   position: relative;
@@ -237,6 +261,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
 button {
   position: relative;
   width: 3rem;
@@ -304,6 +336,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
 button {
   position: relative;
   width: 3rem;
@@ -370,6 +410,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   display: flex !important;
   outline: 0 !important;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
 }
 button {
   position: relative;
@@ -455,6 +503,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
 button {
   position: relative;
   width: 3rem;
@@ -531,6 +587,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 ":host {
   display: flex !important;
   outline: 0 !important;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
 }
 button {
   position: relative;

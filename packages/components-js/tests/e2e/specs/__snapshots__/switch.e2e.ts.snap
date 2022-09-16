@@ -8,18 +8,8 @@ Object {
         Object {
           "children": Array [
             Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "name": "Some Label",
-                      "role": "StaticText",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
+              "name": "Some Label",
+              "role": "StaticText",
             },
           ],
           "role": "none",
