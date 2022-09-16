@@ -13,22 +13,51 @@ exports[`extendMarkupWithAppComponent() should return correct markup 1`] = `
 export class AppComponent {}"
 `;
 
-exports[`getAppModuleTsMarkup() should return correct markup for [] as externalDependencies 1`] = `
-"import { NgModule } from '@angular/core';
+exports[`getAppModuleTsMarkup() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup for [] as externalDependencies 1`] = `
+"import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
-
 @NgModule({
-  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
+  imports: [BrowserModule, FormsModule],
   declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}"
 `;
 
-exports[`getAppModuleTsMarkup() should return correct markup with externalDependencies 1`] = `
+exports[`getAppModuleTsMarkup() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with externalDependencies 1`] = `
+"import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { IMaskModule } from 'angular-imask';
+@NgModule({
+  imports: [BrowserModule, FormsModule, IMaskModule],
+  declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
+exports[`getAppModuleTsMarkup() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup for [] as externalDependencies 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+@NgModule({
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
+  declarations: [AppComponent],
+  schemas: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
+exports[`getAppModuleTsMarkup() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with externalDependencies 1`] = `
 "import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -36,9 +65,120 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 import { IMaskModule } from 'angular-imask';
 @NgModule({
-  imports: [BrowserModule, FormsModule, IMaskModule, PorscheDesignSystemModule],
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule, IMaskModule],
   declarations: [AppComponent],
+  schemas: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}"
+`;
+
+exports[`getIndexHtmlMarkup() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup 1`] = `
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Angular</title>
+    <script>
+      var porscheDesignSystem;
+      (() => {
+        "use strict";
+        var e = {
+            d: (t, o) => {
+              for (var s in o) e.o(o, s) && !e.o(t, s) && Object.defineProperty(t, s, {
+                enumerable: !0,
+                get: o[s]
+              })
+            },
+            o: (e, t) => Object.prototype.hasOwnProperty.call(e, t),
+            r: e => {
+              "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+                value: "Module"
+              }), Object.defineProperty(e, "__esModule", {
+                value: !0
+              })
+            }
+          },
+          t = {};
+
+        function o(e) {
+          if ("noModule" in HTMLScriptElement.prototype) {
+            const t = ("script", document.createElement("script"));
+            t.src = e, t.setAttribute("crossorigin", ""), document.body.appendChild(t)
+          }
+        }
+        e.r(t), e.d(t, {
+          load: () => n
+        });
+        const s = "porscheDesignSystem";
+        const n = (e = {
+          prefix: ""
+        }) => {
+          ! function({
+            script: e,
+            version: t,
+            prefix: n
+          }) {
+            var r;
+            const i = null !== (r = function(e) {
+                const t = (document[s] || (document[s] = {}), document[s]),
+                  {
+                    [e]: o = null
+                  } = t;
+                if (null === o) {
+                  const o = {
+                    isLoaded: !1,
+                    prefixes: [],
+                    registerCustomElements: null
+                  };
+                  t[e] = o
+                }
+                return t[e]
+              }(t)) && void 0 !== r ? r : {},
+              {
+                isLoaded: c,
+                prefixes: d,
+                registerCustomElements: l
+              } = i;
+            c || (o(e), i.isLoaded = !0), d.includes(n) || (d.push(n), l && l(n))
+          }(Object.assign(Object.assign({}, {
+            version: "0.0.0",
+            script: "http://localhost:3001/components/porsche-design-system.v0.0.0.js"
+          }), e))
+        };
+        porscheDesignSystem = t
+      })();
+      porscheDesignSystem.load()
+    </script>
+    <style>
+      some styless
+    </style>
+  </head>
+
+  <body>
+    <porsche-design-system-app></porsche-design-system-app>
+  </body>
+
+</html>
+`;
+
+exports[`getIndexHtmlMarkup() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup 1`] = `
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Angular</title>
+
+    <style>
+      some styles
+    </style>
+  </head>
+
+  <body>
+    <porsche-design-system-app></porsche-design-system-app>
+  </body>
+
+</html>
 `;

@@ -1,7 +1,7 @@
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
 import { getSharedImportConstants, getExternalDependencies, removeSharedImport } from './helper';
-import { convertMarkup } from '@/utils';
+import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
   GetStackblitzProjectAndOpenOptions,
