@@ -123,12 +123,12 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
+    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(undefined); // p-headlinde should not be used within
     expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -144,7 +144,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
