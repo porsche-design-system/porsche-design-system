@@ -5,7 +5,7 @@ import {
   getSharedImportConstants,
   isStableStorefrontRelease
 } from './helper';
-import { convertMarkup } from '@/utils';
+import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
   SharedImportKey,

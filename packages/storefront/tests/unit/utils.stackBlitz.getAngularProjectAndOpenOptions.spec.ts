@@ -13,6 +13,8 @@ import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } fro
 import * as getAngularProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
+import * as getVanillaJsProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';
+import { cleanDynamicLoaderMarkup } from './utils';
 
 jest.mock('../../../components-angular/package.json', () => ({
   dependencies: {
@@ -115,12 +117,32 @@ describe('extendMarkupWithAppComponent()', () => {
 });
 
 describe('getAppModuleTsMarkup()', () => {
-  it('should return correct markup for [] as externalDependencies', () => {
-    expect(getAppModuleTsMarkup([])).toMatchSnapshot();
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
+
+    it('should return correct markup for [] as externalDependencies', () => {
+      expect(getAppModuleTsMarkup([])).toMatchSnapshot();
+    });
+
+    it('should return correct markup with externalDependencies', () => {
+      expect(getAppModuleTsMarkup(['imask'])).toMatchSnapshot();
+    });
   });
 
-  it('should return correct markup with externalDependencies', () => {
-    expect(getAppModuleTsMarkup(['imask'])).toMatchSnapshot();
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
+
+    it('should return correct markup for [] as externalDependencies', () => {
+      expect(getAppModuleTsMarkup([])).toMatchSnapshot();
+    });
+
+    it('should return correct markup with externalDependencies', () => {
+      expect(getAppModuleTsMarkup(['imask'])).toMatchSnapshot();
+    });
   });
 });
 
@@ -259,6 +281,28 @@ describe('getAngularProjectAndOpenOptions()', () => {
       title: stackBlitzFrameworkOpts.title,
       description: stackBlitzFrameworkOpts.description,
       dependencies: mockedDependencies,
+    });
+  });
+});
+
+describe('getIndexHtmlMarkup()', () => {
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
+
+    it('should return correct markup', () => {
+      expect(cleanDynamicLoaderMarkup(getIndexHtmlMarkup('some styless'))).toMatchSnapshot();
+    });
+  });
+
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
+
+    it('should return correct markup', () => {
+      expect(getIndexHtmlMarkup('some styles')).toMatchSnapshot();
     });
   });
 });
