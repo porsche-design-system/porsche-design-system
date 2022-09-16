@@ -94,6 +94,10 @@ export const getComponentCss = (direction: PopoverDirection): string => {
           display: 'inline-block',
         }),
       },
+      p: {
+        ...textSmall,
+        margin: 0,
+      },
     },
     spacer: {
       position: 'absolute',
