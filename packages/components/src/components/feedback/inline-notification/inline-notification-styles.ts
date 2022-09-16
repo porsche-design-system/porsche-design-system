@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import { headingXSmall, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { headingXSmall, mediaQueryMin, textSmall, fontFamily } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
@@ -22,6 +22,11 @@ export const getComponentCss = (
         margin: 0,
         color: baseColor,
       }),
+      p: {
+        ...textSmall,
+        fontFamily,
+        margin: 0,
+      },
     },
     icon: getNotificationIconJssStyle(state),
     content: getNotificationContentJssStyle(),

@@ -25,6 +25,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -67,6 +76,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
@@ -111,6 +129,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -154,6 +181,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -196,6 +232,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
@@ -243,6 +288,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -288,6 +342,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
@@ -341,6 +404,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -392,6 +464,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
@@ -448,6 +529,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -503,6 +593,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -545,6 +644,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
@@ -589,6 +697,15 @@ h5,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -631,6 +748,15 @@ h5,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
 }
 @media(min-width:760px) {
   :host {
