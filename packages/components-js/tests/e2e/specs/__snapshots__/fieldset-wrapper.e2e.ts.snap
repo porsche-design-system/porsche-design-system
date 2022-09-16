@@ -12,33 +12,23 @@ Object {
                 Object {
                   "children": Array [
                     Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "role": "none",
-                            },
-                            Object {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
+                      "role": "none",
+                    },
+                    Object {
                       "role": "none",
                     },
                   ],
                   "role": "none",
-                },
-                Object {
-                  "name": "Some Message",
-                  "role": "StaticText",
                 },
               ],
               "role": "none",
             },
           ],
           "role": "none",
+        },
+        Object {
+          "name": "Some Message",
+          "role": "StaticText",
         },
       ],
       "name": "",
@@ -63,33 +53,23 @@ Object {
                 Object {
                   "children": Array [
                     Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "role": "none",
-                            },
-                            Object {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
+                      "role": "none",
+                    },
+                    Object {
                       "role": "none",
                     },
                   ],
                   "role": "none",
-                },
-                Object {
-                  "name": "Some Message",
-                  "role": "StaticText",
                 },
               ],
               "role": "none",
             },
           ],
           "role": "none",
+        },
+        Object {
+          "name": "Some Message",
+          "role": "StaticText",
         },
       ],
       "name": "",

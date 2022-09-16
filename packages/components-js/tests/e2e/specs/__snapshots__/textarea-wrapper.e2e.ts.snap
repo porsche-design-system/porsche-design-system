@@ -10,33 +10,23 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "role": "none",
-                        },
-                        Object {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
+                  "role": "none",
+                },
+                Object {
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            Object {
-              "name": "Some error message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    Object {
+      "name": "Some error message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
@@ -54,30 +44,20 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            Object {
-              "name": "Some success message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    Object {
+      "name": "Some success message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
@@ -120,33 +100,23 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "role": "none",
-                        },
-                        Object {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
+                  "role": "none",
+                },
+                Object {
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            Object {
-              "name": "Some error message",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    Object {
+      "name": "Some error message",
+      "role": "StaticText",
     },
   ],
   "name": "",
