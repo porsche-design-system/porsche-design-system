@@ -24,7 +24,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
-const getLabel = () => selectNode(page, 'p-switch >>> p-text');
+const getLabel = () => selectNode(page, 'p-switch >>> span');
 
 const clickHandlerScript = `
     <script>
@@ -273,9 +273,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-switch'], 'componentDidLoad: p-switch').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -284,10 +284,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-switch'], 'componentDidLoad: p-switch').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined);
     expect(status.componentDidLoad['p-spinner'], 'componentDidLoad: p-spinner').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -302,7 +302,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-switch'], 'componentDidUpdate: p-switch').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

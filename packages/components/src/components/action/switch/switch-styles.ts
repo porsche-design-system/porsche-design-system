@@ -9,7 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { spacing } from '@porsche-design-system/utilities-v2';
+import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 const { small: spacingSmall } = spacing;
@@ -114,6 +114,10 @@ export const getComponentCss = (
         display: 'flex',
         outline: 0,
       }),
+      span: {
+        ...textSmall,
+        margin: 0,
+      },
       button: {
         position: 'relative',
         width: pxToRemWithUnit(48),
