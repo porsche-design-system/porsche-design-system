@@ -17,22 +17,12 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -58,22 +48,12 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -99,22 +79,12 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -140,22 +110,12 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
