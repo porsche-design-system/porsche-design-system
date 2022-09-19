@@ -4,6 +4,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -79,6 +88,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -206,6 +220,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -280,6 +303,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -313,6 +341,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, isCounterVisible: true, hasCounter: true 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -388,6 +425,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -444,6 +486,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -518,6 +569,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -551,6 +607,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -625,6 +690,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -670,6 +740,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -744,6 +823,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -787,6 +871,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -861,6 +954,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -915,6 +1013,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, isCounterVisible: false, hasCounter: false 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -990,6 +1097,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1023,6 +1135,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, isCounterVisible: true, hasCounter: true 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1098,6 +1219,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1154,6 +1280,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 ::slotted(textarea) {
   display: block !important;
   position: relative !important;
@@ -1229,6 +1364,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1262,6 +1402,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, isCounterVisible: true, hasCounter: true 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1338,6 +1487,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1393,6 +1547,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, isCounterVisible: false, hasCounter: false 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1469,6 +1632,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1501,6 +1669,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, isCounterVisible: true, hasCounter: true 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1577,6 +1754,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1631,6 +1813,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, isCounterVisible: false, hasCounter: false 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1707,6 +1898,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1740,6 +1936,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, isCounterVisible: true, hasCounter: true 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1816,6 +2021,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1871,6 +2081,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, isCounterVisible: false, hasCounter: false 1`] = `
 ":host {
   display: block;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1947,6 +2166,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #96989a;
