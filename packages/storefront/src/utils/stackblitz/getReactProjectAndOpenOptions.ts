@@ -96,7 +96,6 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-// @ts-ignore
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
