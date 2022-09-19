@@ -1,10 +1,9 @@
 import {
   extendMarkupWithAppComponent,
-  getReactDependencies,
+  getDependencies,
   getReactProjectAndOpenOptions,
-  indexTsMarkup,
   replaceSharedImportsWithConstants,
-  dependencyMap,
+  dependencyMap, getIndexTsx, getTsconfigJson, getAppTsx,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 
@@ -98,12 +97,57 @@ describe('extendMarkupWithAppComponent()', () => {
   });
 });
 
-describe('getReactDependencies()', () => {
+describe('getAppTsx()', () => {
+  it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
+    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
+    const extendMarkupWithAppComponentSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+
+    getAppTsx('some markup', true, []);
+
+    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).toHaveBeenCalledWith('some markup', []);
+    expect(extendMarkupWithAppComponentSpy).not.toHaveBeenCalled();
+  });
+
+  it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
+    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
+    const extendMarkupWithAppComponentSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+
+    getAppTsx('some markup', false, []);
+
+    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).not.toHaveBeenCalled();
+    expect(extendMarkupWithAppComponentSpy).toHaveBeenCalledWith('some markup');
+  });
+});
+
+describe('getIndexTsx()', () => {
+  it('should return correct values', () => {
+    const spy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+
+    expect(getIndexTsx()).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('getTsconfigJson()', () => {
+  it('should return correct values', () => {
+    expect(getTsconfigJson()).toMatchSnapshot();
+  });
+});
+
+describe('getDependencies()', () => {
   const expectedDefaultDependencies = {
     react: '0.0.0',
     'react-dom': '0.0.0',
     '@types/react': '0.0.0',
     '@types/react-dom': '0.0.0',
+  };
+
+  const expectedStableReleaseDependencies = {
+    ...expectedDefaultDependencies,
     '@porsche-design-system/components-react': '0.0.0',
   };
 
@@ -111,33 +155,30 @@ describe('getReactDependencies()', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getReactDependencies(externalDependencies);
+    getDependencies(externalDependencies);
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies process.env.NODE_ENV=test', () => {
-    expect(process.env.NODE_ENV).toBe('test');
-    expect(getReactDependencies([])).toEqual(expectedDefaultDependencies);
-  });
+  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV=development', () => {
-    const initialNodeEnvValue = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'development';
-
-    expect(getReactDependencies([])).toEqual({
-      ...expectedDefaultDependencies,
-      '@porsche-design-system/components-react': 'latest',
-    });
-
-    process.env.NODE_ENV = initialNodeEnvValue;
-  });
-
-  it('should return correct StackblitzProjectDependencies with externalDependency', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getReactDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'])).toEqual({
+      ...expectedStableReleaseDependencies,
+      ...mockedDependency,
+    });
+  });
+
+  it('should return correct StackblitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    const mockedDependency = { mockedImask: '0.0.0' };
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+    expect(getDependencies(['imask'])).toEqual({
       ...expectedDefaultDependencies,
       ...mockedDependency,
     });
@@ -179,28 +220,34 @@ describe('getReactProjectAndOpenOptions()', () => {
     expect(spy).toBeCalledWith(stackBlitzFrameworkOpts.markup);
   });
 
-  it('should call getReactDependencies() with correct parameters', () => {
-    const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getReactDependencies');
+  it('should call getDependencies() with correct parameters', () => {
+    const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies');
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(spy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
   });
 
-  it('should return correct StackBlitzProjectAndOpenOptions', () => {
+  it('should return correct StackBlitzProjectAndOpenOptions for stable storefront release (e.g. /v2/…, /v3/…)', () => {
     const mockedDependencies = { mockedDependency: '0.0.0' };
     const mockedMarkup = 'Some mocked markup';
     const mockedJSONString = 'Some String';
 
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent').mockReturnValue(mockedMarkup);
-    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getReactDependencies').mockReturnValue(mockedDependencies);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies').mockReturnValue(mockedDependencies);
     jest.spyOn(JSON, 'stringify').mockReturnValue(mockedJSONString);
 
-    expect(getReactProjectAndOpenOptions(stackBlitzFrameworkOpts)).toEqual({
+    const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
+
+    expect(result.files['@porsche-design-system/components-js/package.json']).toBeUndefined();
+    expect(result.files['@porsche-design-system/components-react/package.json']).toBeUndefined();
+
+    expect(result).toEqual({
       files: {
         'App.tsx': mockedMarkup,
         'index.html': '<div id="root"></div>',
-        'index.tsx': indexTsMarkup,
+        'index.tsx': getIndexTsx(),
         'tsconfig.json': mockedJSONString,
         'style.css': stackBlitzFrameworkOpts.globalStyles,
       },
@@ -210,5 +257,14 @@ describe('getReactProjectAndOpenOptions()', () => {
       dependencies: mockedDependencies,
       openFile: 'App.tsx',
     });
+  });
+
+  it('should contain porsche design system component bundle for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
+
+    expect(result.files['@porsche-design-system/components-js/package.json']).toBeDefined();
+    expect(result.files['@porsche-design-system/components-react/package.json']).toBeDefined();
   });
 });

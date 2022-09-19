@@ -44,27 +44,17 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
-export const dependencyMap: DependencyMap<typeof dependencies> = {
-  imask: {
-    'react-imask': dependencies['react-imask'],
-  },
+export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
+  return convertImportPaths(
+    isExampleMarkup
+      ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+      : extendMarkupWithAppComponent(markup),
+    'react'
+  )
 };
 
-export const getReactDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
-  // TODO: pick dependencies?
-  return {
-    ...isStableStorefrontRelease() && {
-      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react']
-    },
-    react: dependencies['react'],
-    'react-dom': dependencies['react-dom'],
-    '@types/react': devDependencies['@types/react'],
-    '@types/react-dom': devDependencies['@types/react-dom'],
-    ...getExternalDependencies(externalDependencies, dependencyMap),
-  };
-};
-
-export const indexTsMarkup = `import { StrictMode } from 'react';
+export const getIndexTsx = (): string => {
+  return convertImportPaths(`import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './App';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
@@ -79,13 +69,36 @@ root.render(
       <App />
     </PorscheDesignSystemProvider>
   </StrictMode>
-);`;
+);`, 'react');
+};
+
+export const getTsconfigJson = (): string => {
+  return JSON.stringify(tsconfig, null, 2);
+}
+
+export const dependencyMap: DependencyMap<typeof dependencies> = {
+  imask: {
+    'react-imask': dependencies['react-imask'],
+  },
+};
+
+export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+  // TODO: pick dependencies?
+  return {
+    ...isStableStorefrontRelease() && {
+      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react']
+    },
+    react: dependencies['react'],
+    'react-dom': dependencies['react-dom'],
+    '@types/react': devDependencies['@types/react'],
+    '@types/react-dom': devDependencies['@types/react-dom'],
+    ...getExternalDependencies(externalDependencies, dependencyMap),
+  };
+};
 
 // @ts-ignore
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
-
-  const isExampleMarkup = !!markup.match(componentNameRegex);
 
   return {
     files: {
@@ -94,21 +107,16 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
         ...componentsJs,
         ...componentsReact,
       },
-      'App.tsx': convertImportPaths(
-        isExampleMarkup
-          ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
-          : extendMarkupWithAppComponent(markup),
-        'react'
-      ),
+      'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys),
       'index.html': '<div id="root"></div>',
-      'index.tsx': convertImportPaths(indexTsMarkup, 'react'),
-      'tsconfig.json': JSON.stringify(tsconfig, null, 2),
+      'index.tsx': getIndexTsx(),
+      'tsconfig.json': getTsconfigJson(),
       'style.css': globalStyles,
     },
     template: 'create-react-app',
     title,
     description,
-    dependencies: getReactDependencies(externalDependencies),
+    dependencies: getDependencies(externalDependencies),
     openFile: 'App.tsx',
   };
 };
