@@ -21,6 +21,7 @@ p {
   hyphens: auto;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -70,6 +71,7 @@ p {
   hyphens: auto;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -119,6 +121,7 @@ p {
   hyphens: auto;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -168,6 +171,7 @@ p {
   hyphens: auto;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
