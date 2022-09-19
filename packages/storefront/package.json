@@ -64,6 +64,7 @@
     "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-plugin-vue": "^9.3.0",
+    "globby": "^11.0.4",
     "local-web-server": "^5.2.1",
     "sass": "^1.54.3",
     "sass-loader": "^10.1.1",
