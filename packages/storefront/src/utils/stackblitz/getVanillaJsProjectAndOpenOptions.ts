@@ -1,24 +1,35 @@
 import { dependencies } from '../../../../components-js/package.json';
+import componentsJs from '@/lib/porsche-design-system/components-js.json';
 import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
 import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
-import { porscheDesignSystemLoaderScriptForStackBlitz } from '@/lib/partialResults';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 
-// TODO: Use getLoader partial to inject core chunk to enable issue branches on stackblitz
+export const replaceSharedAsyncFunctionWithConstants = (
+  markup: string,
+  sharedImportKeys: SharedImportKey[]
+): string => {
+  return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
+};
 
-export const getIndexHtmlMarkup = (
+export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
+  const loadFunction = 'porscheDesignSystem.load();';
+
+  return /<script>/.test(markup)
+    ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
+    : markup + `\n\n<script>${loadFunction}</script>`;
+};
+
+export const getIndexHtml = (
   markup: string,
   globalStyles: string,
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[]
 ): string => {
-  const porscheDesignSystemLoaderScript = isStableStorefrontRelease()
-    ? '<script src="node_modules/@porsche-design-system/components-js/index.js"></script>'
-    : porscheDesignSystemLoaderScriptForStackBlitz;
+  const porscheDesignSystemLoaderScript = `<script src="${isStableStorefrontRelease() ? 'node_modules' : '.' }/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
@@ -46,21 +57,10 @@ export const getIndexHtmlMarkup = (
 </html>`;
 };
 
-export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
-  const loadFunction = 'porscheDesignSystem.load();';
-
-  return isStableStorefrontRelease()
-    ? /<script>/.test(markup)
-      ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
-      : markup + `\n\n<script>${loadFunction}</script>`
-    : markup;
-};
-
-export const replaceSharedAsyncFunctionWithConstants = (
-  markup: string,
-  sharedImportKeys: SharedImportKey[]
-): string => {
-  return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
+export const getIndexJs = (): string => {
+  const script = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem`;
+  return isStableStorefrontRelease() ? '' : script;
 };
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
@@ -69,7 +69,7 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
     ...isStableStorefrontRelease() && {
       '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js']
@@ -83,13 +83,15 @@ export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptio
 
   return {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, globalStyles, externalDependencies, sharedImportKeys),
-      'index.js': '', // StackBlitz javascript template requires a index.js file
+      // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
+      ...!isStableStorefrontRelease() && componentsJs,
+      'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys),
+      'index.js': getIndexJs(),
     },
     template: 'javascript',
     title,
     description,
-    dependencies: getVanillaJsDependencies(externalDependencies),
+    dependencies: getDependencies(externalDependencies),
     openFile: 'index.html',
   };
 };
