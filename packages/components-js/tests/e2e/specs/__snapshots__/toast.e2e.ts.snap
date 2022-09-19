@@ -8,8 +8,101 @@ Object {
         Object {
           "children": Array [
             Object {
-              "name": "Some message",
-              "role": "StaticText",
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "name": "Some message",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "name": "",
+                      "role": "status",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "name": "Close notification message",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "role": "generic",
+                            },
+                          ],
+                          "name": "Close notification message",
+                          "role": "button",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "",
+              "role": "generic",
             },
           ],
           "role": "none",
@@ -19,6 +112,6 @@ Object {
     },
   ],
   "name": "",
-  "role": "status",
+  "role": "RootWebArea",
 }
 `;
