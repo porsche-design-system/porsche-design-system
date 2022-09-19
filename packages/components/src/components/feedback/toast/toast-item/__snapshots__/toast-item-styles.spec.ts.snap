@@ -19,7 +19,6 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #000;
 }
@@ -69,7 +68,6 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #000;
 }
@@ -119,7 +117,6 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #000;
 }
@@ -169,7 +166,6 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #000;
 }
