@@ -591,9 +591,9 @@ describe('select-wrapper filter', () => {
         1
       );
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1); // for label
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined); // p-text should not be used
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -625,7 +625,7 @@ describe('select-wrapper filter', () => {
       ).toBe(2);
       expect(status.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
 
-      expect(status.componentDidLoad.all, '2nd componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
     });
   });
 
