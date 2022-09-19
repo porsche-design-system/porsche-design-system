@@ -132,7 +132,7 @@ describe('getIndexTsx()', () => {
   });
 });
 
-describe('getTsconfigJson()', () => {
+describe('tsconfigJson()', () => {
   it('should return correct values', () => {
     expect(getTsconfigJson()).toMatchSnapshot();
   });
@@ -232,9 +232,11 @@ describe('getReactProjectAndOpenOptions()', () => {
     const mockedDependencies = { mockedDependency: '0.0.0' };
     const mockedMarkup = 'Some mocked markup';
     const mockedJSONString = 'Some String';
+    const mockedIndexTsx = 'Some markup';
 
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent').mockReturnValue(mockedMarkup);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getIndexTsx').mockReturnValue(mockedIndexTsx);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies').mockReturnValue(mockedDependencies);
     jest.spyOn(JSON, 'stringify').mockReturnValue(mockedJSONString);
 
@@ -247,7 +249,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       files: {
         'App.tsx': mockedMarkup,
         'index.html': '<div id="root"></div>',
-        'index.tsx': getIndexTsx(),
+        'index.tsx': mockedIndexTsx,
         'tsconfig.json': mockedJSONString,
         'style.css': stackBlitzFrameworkOpts.globalStyles,
       },

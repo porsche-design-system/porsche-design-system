@@ -11,7 +11,6 @@ import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } fro
 
 import * as getVanillaJsProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
-import { cleanDynamicLoaderMarkup } from './utils';
 
 jest.mock('../../../components-js/package.json', () => ({
   dependencies: {
@@ -121,7 +120,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(cleanDynamicLoaderMarkup(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys))).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -132,7 +131,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(cleanDynamicLoaderMarkup(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys))).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
     });
   });
 

@@ -53,7 +53,8 @@ export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImport
   )
 };
 
-export const indexTsx = convertImportPaths(`import { StrictMode } from 'react';
+export const getIndexTsx = (): string => {
+  return convertImportPaths(`import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './App';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
@@ -68,9 +69,10 @@ root.render(
       <App />
     </PorscheDesignSystemProvider>
   </StrictMode>
-);`, 'react');
+);`, 'react')
+};
 
-export const tsconfigJson = JSON.stringify(tsconfig, null, 2);
+export const getTsconfigJson = (): string => JSON.stringify(tsconfig, null, 2);
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
@@ -104,8 +106,8 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
       },
       'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys),
       'index.html': '<div id="root"></div>',
-      'index.tsx': indexTsx,
-      'tsconfig.json': tsconfigJson,
+      'index.tsx': getIndexTsx(),
+      'tsconfig.json': getTsconfigJson(),
       'style.css': globalStyles,
     },
     template: 'create-react-app',
