@@ -265,6 +265,6 @@ describe('getReactProjectAndOpenOptions()', () => {
     const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(result.files['@porsche-design-system/components-js/package.json']).toBeDefined();
-    expect(result.files['@porsche-design-system/components-react/package.json']).toBeDefined();
+    // expect(result.files['@porsche-design-system/components-react/package.json']).toBeDefined();
   });
 });
