@@ -1,18 +1,13 @@
-import {
-  getLoaderScript,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-js/partials';
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
 
 const preparePartialResults = (): void => {
   const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
-  const porscheDesignSystemLoaderScriptForStackBlitz = getLoaderScript();
 
   const content = `/* Auto Generated File */
 
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
-export const porscheDesignSystemLoaderScriptForStackBlitz = ${JSON.stringify(porscheDesignSystemLoaderScriptForStackBlitz)};
 `;
 
   const targetFolder = '../src/lib';

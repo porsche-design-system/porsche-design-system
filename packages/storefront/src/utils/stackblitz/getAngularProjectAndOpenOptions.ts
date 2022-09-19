@@ -1,9 +1,11 @@
 import { dependencies } from '../../../../components-angular/package.json';
+import componentsJs from '@/lib/porsche-design-system/components-js.json';
+import componentsAngular from '@/lib/porsche-design-system/components-angular.json';
 import {
   getExternalDependencies,
   removeSharedImport,
   getSharedImportConstants,
-  isStableStorefrontRelease
+  isStableStorefrontRelease, convertImportPaths
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
@@ -13,7 +15,6 @@ import type {
   ExternalDependency,
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
-import { porscheDesignSystemLoaderScriptForStackBlitz } from '@/lib/partialResults';
 
 const classNameRegex = /(export class )[A-z]+( {)/;
 
@@ -40,6 +41,14 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
+export const getAppComponentTs = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
+  return convertImportPaths(
+    isExampleMarkup
+      ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+      : extendMarkupWithAppComponent(markup),
+    'angular');
+};
+
 const externalDependencyModuleImportMap: {
   [key in ExternalDependency]: { module: string; import: string };
 } = {
@@ -49,12 +58,15 @@ const externalDependencyModuleImportMap: {
   },
 };
 
-export const getAppModuleTsMarkup = (externalDependencies: ExternalDependency[]): string => {
+export const getAppModuleTs = (externalDependencies: ExternalDependency[]): string => {
   const imports = [
     `import { NgModule${isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'} } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(isStableStorefrontRelease() ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`] : []),
+    ...(isStableStorefrontRelease()
+      ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
+      : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]
+    ),
     `import { AppComponent } from './app.component';`,
   ].concat(
     externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].import)
@@ -79,8 +91,32 @@ export const getAppModuleTsMarkup = (externalDependencies: ExternalDependency[])
   schemas: [${ngSchemas}],
   bootstrap: [AppComponent],
 })
-export class AppModule {}`;
+export class AppModule {${isStableStorefrontRelease() ? '' : 'constructor () { porscheDesignSystem.load(); }'}}`;
 };
+
+export const getIndexHtml = (globalStyles: string): string => {
+  return `<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Angular</title>
+    <style>
+      ${globalStyles}
+    </style>
+  </head>
+  <body>
+    <porsche-design-system-app></porsche-design-system-app>
+  </body>
+</html>`
+};
+
+export const mainTs = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js/dist/zone';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));`;
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
@@ -89,8 +125,11 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getAngularDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
+    ...isStableStorefrontRelease() && {
+      '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular']
+    },
     '@angular/animations': dependencies['@angular/animations'],
     '@angular/common': dependencies['@angular/common'],
     '@angular/compiler': dependencies['@angular/compiler'],
@@ -102,57 +141,28 @@ export const getAngularDependencies = (externalDependencies: ExternalDependency[
     rxjs: dependencies['rxjs'],
     tslib: dependencies['tslib'],
     'zone.js': dependencies['zone.js'],
-    '@porsche-design-system/components-angular':
-      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-angular'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
-};
-
-export const mainTsMarkup = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-import 'zone.js/dist/zone';
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`;
-
-
-export const getIndexHtmlMarkup = (globalStyles: string): string => {
-  const porscheDesignSystemLoaderScript = isStableStorefrontRelease() ? '' : porscheDesignSystemLoaderScriptForStackBlitz;
-
-  return `<!DOCTYPE html>
-<html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Porsche Design System - Angular</title>
-    ${porscheDesignSystemLoaderScript}
-    <style>
-      ${globalStyles}
-    </style>
-  </head>
-  <body>
-    <porsche-design-system-app></porsche-design-system-app>
-  </body>
-</html>`
 };
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
-  const isExampleMarkup = !!markup.match(classNameRegex);
-
   return {
     files: {
-      'src/index.html': getIndexHtmlMarkup(globalStyles),
-      'src/main.ts': mainTsMarkup,
-      'src/app/app.component.ts': isExampleMarkup
-        ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
-        : extendMarkupWithAppComponent(markup),
-      'src/app/app.module.ts': getAppModuleTsMarkup(externalDependencies),
+      // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
+      ...!isStableStorefrontRelease() && {
+        ...componentsJs,
+        ...componentsAngular,
+      },
+      'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
+      'src/app/app.module.ts': getAppModuleTs(externalDependencies),
+      'src/index.html': getIndexHtml(globalStyles),
+      'src/main.ts': mainTs,
     },
     template: 'angular-cli',
     title,
     description,
-    dependencies: getAngularDependencies(externalDependencies),
+    dependencies: getDependencies(externalDependencies),
   };
 };
