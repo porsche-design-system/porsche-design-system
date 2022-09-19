@@ -3,11 +3,19 @@
 exports[`getExtendedMarkupWithLoadFunction() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return markup and script tag without load() call 1`] = `
 <p-button>SomeButton</p-button>
 <script>
+  porscheDesignSystem.load();
+
   console.log()
 </script>
 `;
 
-exports[`getExtendedMarkupWithLoadFunction() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return markup without load() call 1`] = `<p-button>Some snippet</p-button>`;
+exports[`getExtendedMarkupWithLoadFunction() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return markup without load() call 1`] = `
+<p-button>Some snippet</p-button>
+
+<script>
+  porscheDesignSystem.load();
+</script>
+`;
 
 exports[`getExtendedMarkupWithLoadFunction() stable storefront release (e.g. /v2/…, /v3/…) should return markup and load() call within existing script tag 1`] = `
 <p-button>SomeButton</p-button>
@@ -26,82 +34,12 @@ exports[`getExtendedMarkupWithLoadFunction() stable storefront release (e.g. /v2
 </script>
 `;
 
-exports[`getIndexHtmlMarkup() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with externalDependencies 1`] = `
+exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with externalDependencies 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
   <head>
-    <script>
-      var porscheDesignSystem;
-      (() => {
-        "use strict";
-        var e = {
-            d: (t, o) => {
-              for (var s in o) e.o(o, s) && !e.o(t, s) && Object.defineProperty(t, s, {
-                enumerable: !0,
-                get: o[s]
-              })
-            },
-            o: (e, t) => Object.prototype.hasOwnProperty.call(e, t),
-            r: e => {
-              "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-                value: "Module"
-              }), Object.defineProperty(e, "__esModule", {
-                value: !0
-              })
-            }
-          },
-          t = {};
-
-        function o(e) {
-          if ("noModule" in HTMLScriptElement.prototype) {
-            const t = ("script", document.createElement("script"));
-            t.src = e, t.setAttribute("crossorigin", ""), document.body.appendChild(t)
-          }
-        }
-        e.r(t), e.d(t, {
-          load: () => n
-        });
-        const s = "porscheDesignSystem";
-        const n = (e = {
-          prefix: ""
-        }) => {
-          ! function({
-            script: e,
-            version: t,
-            prefix: n
-          }) {
-            var r;
-            const i = null !== (r = function(e) {
-                const t = (document[s] || (document[s] = {}), document[s]),
-                  {
-                    [e]: o = null
-                  } = t;
-                if (null === o) {
-                  const o = {
-                    isLoaded: !1,
-                    prefixes: [],
-                    registerCustomElements: null
-                  };
-                  t[e] = o
-                }
-                return t[e]
-              }(t)) && void 0 !== r ? r : {},
-              {
-                isLoaded: c,
-                prefixes: d,
-                registerCustomElements: l
-              } = i;
-            c || (o(e), i.isLoaded = !0), d.includes(n) || (d.push(n), l && l(n))
-          }(Object.assign(Object.assign({}, {
-            version: "0.0.0",
-            script: "http://localhost:3001/components/porsche-design-system.v0.0.0.js"
-          }), e))
-        };
-        porscheDesignSystem = t
-      })();
-      porscheDesignSystem.load()
-    </script>
+    <script src="./@porsche-design-system/components-js/index.js"></script>
     <script src="node_modules/imask/dist/imask.min.js"></script>
     <style>
       Some global styles
@@ -115,82 +53,12 @@ exports[`getIndexHtmlMarkup() development mode or non stable storefront release 
 </html>
 `;
 
-exports[`getIndexHtmlMarkup() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup without externalDependencies 1`] = `
+exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup without externalDependencies 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
   <head>
-    <script>
-      var porscheDesignSystem;
-      (() => {
-        "use strict";
-        var e = {
-            d: (t, o) => {
-              for (var s in o) e.o(o, s) && !e.o(t, s) && Object.defineProperty(t, s, {
-                enumerable: !0,
-                get: o[s]
-              })
-            },
-            o: (e, t) => Object.prototype.hasOwnProperty.call(e, t),
-            r: e => {
-              "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-                value: "Module"
-              }), Object.defineProperty(e, "__esModule", {
-                value: !0
-              })
-            }
-          },
-          t = {};
-
-        function o(e) {
-          if ("noModule" in HTMLScriptElement.prototype) {
-            const t = ("script", document.createElement("script"));
-            t.src = e, t.setAttribute("crossorigin", ""), document.body.appendChild(t)
-          }
-        }
-        e.r(t), e.d(t, {
-          load: () => n
-        });
-        const s = "porscheDesignSystem";
-        const n = (e = {
-          prefix: ""
-        }) => {
-          ! function({
-            script: e,
-            version: t,
-            prefix: n
-          }) {
-            var r;
-            const i = null !== (r = function(e) {
-                const t = (document[s] || (document[s] = {}), document[s]),
-                  {
-                    [e]: o = null
-                  } = t;
-                if (null === o) {
-                  const o = {
-                    isLoaded: !1,
-                    prefixes: [],
-                    registerCustomElements: null
-                  };
-                  t[e] = o
-                }
-                return t[e]
-              }(t)) && void 0 !== r ? r : {},
-              {
-                isLoaded: c,
-                prefixes: d,
-                registerCustomElements: l
-              } = i;
-            c || (o(e), i.isLoaded = !0), d.includes(n) || (d.push(n), l && l(n))
-          }(Object.assign(Object.assign({}, {
-            version: "0.0.0",
-            script: "http://localhost:3001/components/porsche-design-system.v0.0.0.js"
-          }), e))
-        };
-        porscheDesignSystem = t
-      })();
-      porscheDesignSystem.load()
-    </script>
+    <script src="./@porsche-design-system/components-js/index.js"></script>
 
     <style>
       Some global styles
@@ -204,7 +72,7 @@ exports[`getIndexHtmlMarkup() development mode or non stable storefront release 
 </html>
 `;
 
-exports[`getIndexHtmlMarkup() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with externalDependencies 1`] = `
+exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with externalDependencies 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -223,7 +91,7 @@ exports[`getIndexHtmlMarkup() stable storefront release (e.g. /v2/…, /v3/…) 
 </html>
 `;
 
-exports[`getIndexHtmlMarkup() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup without externalDependencies 1`] = `
+exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup without externalDependencies 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -240,4 +108,11 @@ exports[`getIndexHtmlMarkup() stable storefront release (e.g. /v2/…, /v3/…) 
   </body>
 
 </html>
+`;
+
+exports[`getIndexJs() should return correct no script for stable storefront release (e.g. /v2/…, /v3/…) 1`] = `""`;
+
+exports[`getIndexJs() should return correct script for development mode or non stable storefront release (e.g. /issue/…, /release/…) 1`] = `
+"import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem"
 `;
