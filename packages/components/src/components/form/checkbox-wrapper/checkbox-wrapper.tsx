@@ -5,7 +5,6 @@ import {
   attachSlottedCss,
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
-  getPrefixedTagNames,
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
@@ -82,16 +81,14 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <Host>
         <label>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class="label" tag="span" color="inherit" onClick={this.onLabelClick}>
+            <span class="label" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-            </PrefixedTagNames.pText>
+            </span>
           )}
           <slot />
         </label>

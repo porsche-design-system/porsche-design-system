@@ -53,6 +53,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
@@ -221,6 +230,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
@@ -316,6 +334,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 label {
   position: relative;
   display: flex;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
@@ -413,6 +440,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
@@ -508,6 +544,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
@@ -602,6 +647,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 label {
   position: relative;
   display: flex;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
@@ -699,6 +753,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
@@ -794,6 +857,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 label {
   position: relative;
   display: flex;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
@@ -892,6 +964,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
@@ -989,6 +1070,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
@@ -1084,6 +1174,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 label {
   position: relative;
   display: flex;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
@@ -1181,6 +1280,15 @@ label {
   position: relative;
   display: flex;
 }
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
@@ -1277,6 +1385,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 label {
   position: relative;
   display: flex;
+}
+span {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: inherit;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
