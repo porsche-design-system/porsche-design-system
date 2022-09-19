@@ -13,19 +13,20 @@ export const getComponentCss = (
   hasClose: boolean,
   theme: Theme
 ): string => {
-  const { baseColor } = getThemedColors('light');
+  const textColor = getThemedColors('light').baseColor;
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
       'h5,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXSmall,
         margin: 0,
-        color: baseColor,
+        color: textColor,
       }),
       p: {
         ...textSmall,
         fontFamily,
         margin: 0,
+        color: textColor,
       },
     },
     icon: getNotificationIconJssStyle(state),
