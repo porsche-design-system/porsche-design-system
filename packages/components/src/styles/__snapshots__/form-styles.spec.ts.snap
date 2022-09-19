@@ -541,8 +541,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -646,8 +651,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -683,8 +693,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -720,8 +735,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -757,8 +777,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -795,8 +820,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -833,8 +863,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#626669",
@@ -871,8 +906,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#96989a",
@@ -909,8 +949,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -946,8 +991,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -983,8 +1033,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -1020,8 +1075,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -1058,8 +1118,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -1096,8 +1161,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#b0b1b2",
@@ -1134,8 +1204,13 @@ Object {
   "label": Object {
     "&__text": Object {
       "&+&--description": Object {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
       "&--description": Object {
         "color": "#7c7f81",
