@@ -169,10 +169,10 @@ describe('select-wrapper native', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // label and message
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined); // p-text should not be used
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -192,7 +192,7 @@ describe('select-wrapper native', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
   });

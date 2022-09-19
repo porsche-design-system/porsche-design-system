@@ -11,6 +11,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styl
 import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
 import { FormState } from '../../form-state';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 const { baseColor: themeLightBaseColor } = getThemedColors('light');
 
@@ -30,6 +31,11 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+      },
+      span: {
+        ...textSmall,
+        margin: 0,
+        color: 'inherit',
       },
       ...addImportantToEachRule(
         mergeDeep(
