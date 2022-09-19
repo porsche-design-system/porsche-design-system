@@ -123,7 +123,7 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(undefined); // p-headlinde should not be used within
+    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(undefined); // p-headlinde should not be used
     expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1); // one included in button-pure
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
