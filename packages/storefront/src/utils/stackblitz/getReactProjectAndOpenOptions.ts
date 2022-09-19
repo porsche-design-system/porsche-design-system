@@ -1,7 +1,15 @@
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
-import { getSharedImportConstants, getExternalDependencies, removeSharedImport } from './helper';
+import {
+  convertImportPaths,
+  getSharedImportConstants,
+  getExternalDependencies,
+  removeSharedImport,
+  isStableStorefrontRelease
+} from './helper';
 import { convertMarkup } from '../../utils/formatting';
+import componentsJs from '@/lib/porsche-design-system/components-js.json';
+import componentsReact from '@/lib/porsche-design-system/components-react.json';
 import type {
   DependencyMap,
   GetStackblitzProjectAndOpenOptions,
@@ -45,8 +53,9 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getReactDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    '@porsche-design-system/components-react':
-      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-react'],
+    ...isStableStorefrontRelease() && {
+      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react']
+    },
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
@@ -72,6 +81,7 @@ root.render(
   </StrictMode>
 );`;
 
+// @ts-ignore
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
@@ -79,11 +89,19 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
 
   return {
     files: {
-      'App.tsx': isExampleMarkup
-        ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
-        : extendMarkupWithAppComponent(markup),
+      // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
+      ...!isStableStorefrontRelease() && {
+        ...componentsJs,
+        ...componentsReact,
+      },
+      'App.tsx': convertImportPaths(
+        isExampleMarkup
+          ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+          : extendMarkupWithAppComponent(markup),
+        'react'
+      ),
       'index.html': '<div id="root"></div>',
-      'index.tsx': indexTsMarkup,
+      'index.tsx': convertImportPaths(indexTsMarkup, 'react'),
       'tsconfig.json': JSON.stringify(tsconfig, null, 2),
       'style.css': globalStyles,
     },
