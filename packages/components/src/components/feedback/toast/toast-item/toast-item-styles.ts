@@ -9,8 +9,10 @@ import {
 } from '../../inline-notification/inline-notification-styles';
 import { getBoxShadow } from '../../banner/banner-styles';
 import { textSmall, fontFamily } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from '../../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
+  const textColor = getThemedColors('light').baseColor;
   return getCss({
     '@global': {
       ':host': {
@@ -21,6 +23,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         ...textSmall,
         fontFamily,
         margin: 0,
+        color: textColor,
       },
     },
     icon: getNotificationIconJssStyle(state),
