@@ -237,11 +237,13 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions for stable storefront release (e.g. /v2/…, /v3/…)', () => {
-    const mockedMarkup = 'Some value';
+    const mockedIndexHtml = 'Some mocked index markup';
+    const mockedIndexJs = 'Some mocked index script';
     const mockedDependencies = { mockedDependency: '0.0.0' };
 
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
-    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtml').mockReturnValue(mockedMarkup);
+    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtml').mockReturnValue(mockedIndexHtml);
+    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexJs').mockReturnValue(mockedIndexJs);
     jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getDependencies').mockReturnValue(mockedDependencies);
 
     const result = getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
@@ -250,8 +252,8 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     expect(result).toEqual({
       files: {
-        'index.html': mockedMarkup,
-        'index.js': '',
+        'index.html': mockedIndexHtml,
+        'index.js': mockedIndexJs,
       },
       template: 'javascript',
       title: stackBlitzFrameworkOpts.title,

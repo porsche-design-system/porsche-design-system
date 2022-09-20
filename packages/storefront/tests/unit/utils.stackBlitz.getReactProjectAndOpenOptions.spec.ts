@@ -6,7 +6,6 @@ import {
   dependencyMap, getIndexTsx, getTsconfigJson, getAppTsx,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
-
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
@@ -132,7 +131,7 @@ describe('getIndexTsx()', () => {
   });
 });
 
-describe('tsconfigJson()', () => {
+describe('getTsconfigJson()', () => {
   it('should return correct values', () => {
     expect(getTsconfigJson()).toMatchSnapshot();
   });
@@ -195,62 +194,44 @@ describe('getReactProjectAndOpenOptions()', () => {
     sharedImportKeys: [],
   };
 
-  it('should call replaceSharedImportsWithConstants() with correct parameters when isExampleMarkup is true', () => {
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
-      getReactProjectAndOpenOptionsUtils,
-      'replaceSharedImportsWithConstants'
-    );
-    const matchSpy = jest.spyOn(String.prototype, 'match').mockReturnValue(['Some example markup']);
+  it('should call several functions with correct parameters', () => {
+    const isStableStorefrontReleaseSpy = jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease');
+    const getAppTsxSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getAppTsx');
+    const getIndexTsxSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getIndexTsx');
+    const getTsconfigJsonSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getTsconfigJson');
+    const getDependenciesSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies');
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(matchSpy).toBeCalledWith(/(export const )[A-z]+( = \(\): JSX.Element => {)/);
-    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith(
-      stackBlitzFrameworkOpts.markup,
-      stackBlitzFrameworkOpts.sharedImportKeys
-    );
-  });
-
-  it('should call extendMarkupWithAppComponent() with correct parameters when isExampleMarkup is false', () => {
-    const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
-    jest.spyOn(String.prototype, 'match').mockReturnValue(null);
-
-    getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
-
-    expect(spy).toBeCalledWith(stackBlitzFrameworkOpts.markup);
-  });
-
-  it('should call getDependencies() with correct parameters', () => {
-    const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies');
-
-    getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
-
-    expect(spy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
+    expect(isStableStorefrontReleaseSpy).toBeCalled();
+    expect(getAppTsxSpy).toBeCalledWith(stackBlitzFrameworkOpts.markup, false, stackBlitzFrameworkOpts.sharedImportKeys);
+    expect(getIndexTsxSpy).toBeCalled();
+    expect(getTsconfigJsonSpy).toBeCalled();
+    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions for stable storefront release (e.g. /v2/…, /v3/…)', () => {
     const mockedDependencies = { mockedDependency: '0.0.0' };
-    const mockedMarkup = 'Some mocked markup';
-    const mockedJSONString = 'Some String';
-    const mockedIndexTsx = 'Some markup';
+    const mockedAppTsx = 'Some mocked app markup';
+    const mockedIndexTsx = 'Some mocked index markup';
+    const mockedTsConfigJson = 'Some mocked ts config';
 
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
-    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent').mockReturnValue(mockedMarkup);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getAppTsx').mockReturnValue(mockedAppTsx);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getIndexTsx').mockReturnValue(mockedIndexTsx);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getTsconfigJson').mockReturnValue(mockedTsConfigJson);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies').mockReturnValue(mockedDependencies);
-    jest.spyOn(JSON, 'stringify').mockReturnValue(mockedJSONString);
 
     const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(result.files['@porsche-design-system/components-js/package.json']).toBeUndefined();
     expect(result.files['@porsche-design-system/components-react/package.json']).toBeUndefined();
-
     expect(result).toEqual({
       files: {
-        'App.tsx': mockedMarkup,
+        'App.tsx': mockedAppTsx,
         'index.html': '<div id="root"></div>',
         'index.tsx': mockedIndexTsx,
-        'tsconfig.json': mockedJSONString,
+        'tsconfig.json': mockedTsConfigJson,
         'style.css': stackBlitzFrameworkOpts.globalStyles,
       },
       template: 'create-react-app',
@@ -267,6 +248,6 @@ describe('getReactProjectAndOpenOptions()', () => {
     const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(result.files['@porsche-design-system/components-js/package.json']).toBeDefined();
-    // expect(result.files['@porsche-design-system/components-react/package.json']).toBeDefined();
+    expect(result.files['@porsche-design-system/components-react/package.json']).toBeDefined();
   });
 });
