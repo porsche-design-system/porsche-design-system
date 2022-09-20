@@ -31,7 +31,7 @@
     @Prop({ default: [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: [] }) public sharedImportKeys!: SharedImportKey[];
 
-    isLoading: boolean = false;
+    isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
     public async onButtonClick() {
