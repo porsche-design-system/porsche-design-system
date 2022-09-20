@@ -128,6 +128,7 @@ export class ButtonPure {
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
+      this.weight,
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
@@ -185,14 +186,14 @@ export class ButtonPure {
                 aria-hidden="true"
               />
             ))}
-          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <span class="label">
             <slot />
-          </PrefixedTagNames.pText>
+          </span>
         </button>
         {hasSubline && (
-          <PrefixedTagNames.pText id="subline" class="subline" tag="div" color="inherit" size="inherit">
+          <div id="subline" class="subline">
             <slot name="subline" />
-          </PrefixedTagNames.pText>
+          </div>
         )}
       </Host>
     );

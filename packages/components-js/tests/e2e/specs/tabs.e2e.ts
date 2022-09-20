@@ -355,7 +355,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -371,7 +371,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });

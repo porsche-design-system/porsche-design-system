@@ -30,25 +30,14 @@ Object {
                 Object {
                   "children": Array [
                     Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "name": "Close modal",
-                              "role": "StaticText",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
+                      "name": "Close modal",
+                      "role": "StaticText",
                     },
                   ],
                   "role": "none",
                 },
               ],
-              "name": "",
-              "role": "generic",
+              "role": "none",
             },
           ],
           "name": "Close modal",
