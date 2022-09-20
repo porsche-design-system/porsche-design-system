@@ -67,7 +67,7 @@
 
     private static async fetchPorscheDesignSystemBundle(framework: keyof PorscheDesignSystemBundleMap): Promise<PorscheDesignSystemBundle> {
       if (!isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
-        const response = await fetch(`${process.env.BASE_URL}/porsche-design-system/components-${framework}.json`);
+        const response = await fetch(`porsche-design-system/components-${framework}.json`);
         porscheDesignSystemBundleMap[framework] = await response.json() as PorscheDesignSystemBundle;
       }
 
