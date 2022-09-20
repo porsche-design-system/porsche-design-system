@@ -67,7 +67,8 @@
 
     private static async fetchPorscheDesignSystemBundle(framework: keyof PorscheDesignSystemBundleMap): Promise<PorscheDesignSystemBundle> {
       if (!isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
-        const response = await fetch(`porsche-design-system/components-${framework}.json`);
+        // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
+        const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
         porscheDesignSystemBundleMap[framework] = await response.json() as PorscheDesignSystemBundle;
       }
 
