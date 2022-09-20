@@ -565,7 +565,7 @@ describe('lifecycle', () => {
     expect(
       status.componentDidLoad.all,
       'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(4);
+    ).toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -583,7 +583,7 @@ describe('lifecycle', () => {
     expect(
       status.componentDidLoad.all,
       'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(4);
+    ).toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, p-headline').toBe(1);
   });
 });

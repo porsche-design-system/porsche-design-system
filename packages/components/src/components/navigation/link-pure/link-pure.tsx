@@ -122,6 +122,7 @@ export class LinkPure {
       this.active,
       this.stretch,
       this.size,
+      this.weight,
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
@@ -170,14 +171,14 @@ export class LinkPure {
               aria-hidden="true"
             />
           )}
-          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <span class="label">
             <slot />
-          </PrefixedTagNames.pText>
+          </span>
         </TagType>
         {hasSubline && (
-          <PrefixedTagNames.pText id="subline" class="subline" color="inherit" size="inherit" tag="div">
+          <div id="subline" class="subline">
             <slot name="subline" />
-          </PrefixedTagNames.pText>
+          </div>
         )}
       </Host>
     );

@@ -6,6 +6,7 @@ import type {
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
+  TextWeight,
   ThemeExtendedElectricDark,
 } from '../types';
 import {
@@ -25,8 +26,9 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize } from '@porsche-design-system/utilities-v2';
+import { fontSize, fontFamily, fontBehavior, fontHyphenation } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
+import { getFontWeight } from './font-weight-styles';
 
 const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
@@ -121,6 +123,7 @@ export const getLinkButtonPureStyles = (
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
+  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
   hasSubline: boolean,
@@ -129,7 +132,7 @@ export const getLinkButtonPureStyles = (
 ): Styles => {
   const { baseColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
-
+  const fontWeight = getFontWeight(weight);
   return {
     '@global': {
       ':host': {
@@ -139,6 +142,19 @@ export const getLinkButtonPureStyles = (
           display: addImportantToRule(responsiveStretch ? 'block' : 'inline-block'),
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
+      },
+      span: {
+        fontFamily,
+        fontWeight,
+        fontSize: 'inherit',
+        ...fontBehavior,
+        ...fontHyphenation,
+      },
+      'div, ::slotted([slot=subline])': {
+        fontFamily,
+        margin: 0,
+        ...fontBehavior,
+        ...fontHyphenation,
       },
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
