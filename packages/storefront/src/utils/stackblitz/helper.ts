@@ -70,9 +70,20 @@ export const convertImportPaths = (markup: string, framework: Framework): string
     );
 };
 
-export type PorscheDesignSystemBundle = { [path: string]: string };
+type PorscheDesignSystemBundle = { [path: string]: string };
+type PorscheDesignSystemBundleMap = {
+  js?: PorscheDesignSystemBundle;
+  angular?: PorscheDesignSystemBundle;
+  react?: PorscheDesignSystemBundle
+};
+
+const porscheDesignSystemBundleMap: PorscheDesignSystemBundleMap = {};
 
 export const fetchPorscheDesignSystemBundle = async (framework: Framework): Promise<PorscheDesignSystemBundle> => {
-  const response = await fetch(`/porsche-design-system/components-${framework}.json`);
-  return response.json();
+  if (!porscheDesignSystemBundleMap[framework]) {
+    const response = await fetch(`/porsche-design-system/components-${framework}.json`);
+    porscheDesignSystemBundleMap[framework] = await response.json() as PorscheDesignSystemBundle;
+  }
+
+  return porscheDesignSystemBundleMap[framework] || {};
 }
