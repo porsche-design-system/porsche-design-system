@@ -6,9 +6,10 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   getExternalDependenciesOrThrow,
-  isStableStorefrontRelease,
+  isStableStorefrontRelease, convertImportPaths,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
+import * as helper from '../../src/utils/stackblitz/helper';
 
 jest.mock('@porsche-design-system/shared/data', () => ({
   headBasic: 'mockedHeadBasic',
@@ -125,5 +126,35 @@ describe('isStableStorefrontRelease()', () => {
   ])('should for path: %s return %s', (path, expected) => {
     mockPathname.mockReturnValue(path);
     expect(isStableStorefrontRelease()).toBe(expected);
+  });
+});
+
+describe('convertImportPaths()', () => {
+  const markup = `
+'import * from '@porsche-design-system/components-js';
+'import * from '@porsche-design-system/components-angular';
+'import * from '@porsche-design-system/components-react';`;
+
+  it('should return markup without modification', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
+  });
+
+  it('should return markup without updated import path for js', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
+  });
+
+  it('should return markup without updated import path for angular', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'angular')).toMatchSnapshot();
+  });
+  it('should return markup without updated import path for react', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'react')).toMatchSnapshot();
   });
 });
