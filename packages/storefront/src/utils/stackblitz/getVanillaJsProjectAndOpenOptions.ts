@@ -1,6 +1,5 @@
 import { dependencies } from '../../../../components-js/package.json';
 import {
-  fetchPorscheDesignSystemBundle,
   getExternalDependencies,
   getSharedImportConstants, GetStackblitzProjectAndOpenOptions,
   isStableStorefrontRelease
@@ -82,12 +81,12 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = async (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
+export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies, porscheDesignSystemBundle } = opts;
 
   return {
     files: {
-      ...!isStableStorefrontRelease() && await fetchPorscheDesignSystemBundle('js'),
+      ...porscheDesignSystemBundle,
       'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys),
       'index.js': getIndexJs(),
     },

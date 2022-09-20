@@ -5,7 +5,7 @@ import {
   getSharedImportConstants,
   getExternalDependencies,
   removeSharedImport,
-  isStableStorefrontRelease, fetchPorscheDesignSystemBundle
+  isStableStorefrontRelease
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
@@ -92,16 +92,12 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = async (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
+export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies, porscheDesignSystemBundle } = opts;
 
   return {
     files: {
-      // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
-      ...!isStableStorefrontRelease() && {
-        ...await fetchPorscheDesignSystemBundle('js'),
-        ...await fetchPorscheDesignSystemBundle('react'),
-      },
+      ...porscheDesignSystemBundle,
       'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys),
       'index.html': '<div id="root"></div>',
       'index.tsx': getIndexTsx(),
