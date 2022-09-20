@@ -240,6 +240,10 @@ describe('getDependencies()', () => {
 
 describe('getAngularProjectAndOpenOptions()', () => {
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
+    porscheDesignSystemBundle: {
+      '@porsche-design-system/components-js/package.json': 'some package.json',
+      '@porsche-design-system/components-angular/package.json': 'some package.json',
+    },
     markup: 'Some markup',
     description: 'Some description',
     title: 'Some title',
@@ -264,7 +268,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
   });
 
-  it('should return correct StackBlitzProjectAndOpenOptions for stable storefront release (e.g. /v2/…, /v3/…)', () => {
+  it('should return correct StackBlitzProjectAndOpenOptions', () => {
     const mockedGetAppComponentTs = 'Some mocked app component markup';
     const mockedGetAppModuleTs = 'Some mocked app module markup';
     const mockedGetIndexHtml = 'Some mocked index markup';
@@ -280,10 +284,9 @@ describe('getAngularProjectAndOpenOptions()', () => {
 
     const result = getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(result.files['@porsche-design-system/components-js/package.json']).toBeUndefined();
-    expect(result.files['@porsche-design-system/components-angular/package.json']).toBeUndefined();
     expect(result).toEqual({
       files: {
+        ...stackBlitzFrameworkOpts.porscheDesignSystemBundle,
         'src/index.html': mockedGetIndexHtml,
         'src/main.ts': mockedMainTs,
         'src/app/app.component.ts': mockedGetAppComponentTs,
@@ -294,16 +297,5 @@ describe('getAngularProjectAndOpenOptions()', () => {
       description: stackBlitzFrameworkOpts.description,
       dependencies: mockedDependencies,
     });
-  });
-
-  it('should contain porsche design system component bundle for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
-
-    const result = getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
-
-    expect(result.files['@porsche-design-system/components-js/package.json']).toBeDefined();
-
-    // TODO: for unknown reasons the following expect works locally (with and without docker) but not in CI
-    // expect(result.files['@porsche-design-system/components-angular/package.json']).toBeDefined();
   });
 });

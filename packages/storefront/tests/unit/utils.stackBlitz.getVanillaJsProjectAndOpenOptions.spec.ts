@@ -214,6 +214,9 @@ describe('getDependencies()', () => {
 
 describe('getVanillaJsProjectAndOpenOptions()', () => {
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
+    porscheDesignSystemBundle: {
+      '@porsche-design-system/components-js/package.json': 'some package.json'
+    },
     markup: 'Some markup',
     description: 'Some description',
     title: 'Some title',
@@ -236,7 +239,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     expect(getIndexJsSpy).toBeCalled();
   });
 
-  it('should return correct StackBlitzProjectAndOpenOptions for stable storefront release (e.g. /v2/…, /v3/…)', () => {
+  it('should return correct StackBlitzProjectAndOpenOptions', () => {
     const mockedIndexHtml = 'Some mocked index markup';
     const mockedIndexJs = 'Some mocked index script';
     const mockedDependencies = { mockedDependency: '0.0.0' };
@@ -248,10 +251,9 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     const result = getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(result.files['@porsche-design-system/components-js/package.json']).toBeUndefined();
-
     expect(result).toEqual({
       files: {
+        ...stackBlitzFrameworkOpts.porscheDesignSystemBundle,
         'index.html': mockedIndexHtml,
         'index.js': mockedIndexJs,
       },
@@ -261,13 +263,5 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
       dependencies: mockedDependencies,
       openFile: 'index.html',
     });
-  });
-
-  it('should contain porsche design system component bundle for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
-
-    const result = getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
-
-    expect(result.files['@porsche-design-system/components-js/package.json']).toBeDefined();
   });
 });

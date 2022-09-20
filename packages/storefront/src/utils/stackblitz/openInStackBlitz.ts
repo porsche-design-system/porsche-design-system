@@ -10,8 +10,10 @@ import type {
   ExternalDependency,
 } from '../../utils';
 import type { Theme, ColorScheme, Framework } from '../../models';
+import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
+  porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
   framework: Exclude<Framework, 'shared'>;
   theme: Theme;
@@ -20,7 +22,7 @@ export type OpenInStackBlitzOpts = {
   sharedImportKeys: SharedImportKey[];
 };
 
-export const openInStackBlitz = async (opts: OpenInStackBlitzOpts): Promise<void> => {
+export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   const { framework, theme, backgroundColorScheme, ...rest } = opts;
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
@@ -38,7 +40,7 @@ export const openInStackBlitz = async (opts: OpenInStackBlitzOpts): Promise<void
     react: getReactProjectAndOpenOptions,
   };
 
-  const { openFile, ...project } = await getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
+  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
 
   sdk.openProject(project, { openFile });
 };
