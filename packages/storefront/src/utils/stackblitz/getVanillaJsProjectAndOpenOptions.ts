@@ -1,8 +1,12 @@
 import { dependencies } from '../../../../components-js/package.json';
-import componentsJs from '@/lib/porsche-design-system/components-js.json';
-import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
+import {
+  fetchPorscheDesignSystemBundle,
+  getExternalDependencies,
+  getSharedImportConstants, GetStackblitzProjectAndOpenOptions,
+  isStableStorefrontRelease
+} from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
-import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
+import type { DependencyMap, SharedImportKey, ExternalDependency } from './helper';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
@@ -78,13 +82,12 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = async (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
   return {
     files: {
-      // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
-      ...!isStableStorefrontRelease() && componentsJs,
+      ...!isStableStorefrontRelease() && await fetchPorscheDesignSystemBundle('js'),
       'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys),
       'index.js': getIndexJs(),
     },

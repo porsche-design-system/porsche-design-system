@@ -2,7 +2,7 @@ import fs from 'fs';
 import * as globby from 'globby';
 
 const generateComponentsBundleForStackBlitz = (framework: 'js' | 'angular' | 'react'): void => {
-  const targetPath = 'src/lib/porsche-design-system';
+  const targetPath = 'public/porsche-design-system';
   const targetFile = `${targetPath}/components-${framework}.json`;
   const bundle: { [path: string]: string } = {};
   const files = globby.sync(`../components-${framework}/dist/components-wrapper/**/*.{js,mjs,ts,json}`);

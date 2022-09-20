@@ -1,11 +1,9 @@
 import { dependencies } from '../../../../components-angular/package.json';
-import componentsJs from '@/lib/porsche-design-system/components-js.json';
-import componentsAngular from '@/lib/porsche-design-system/components-angular.json';
 import {
   getExternalDependencies,
   removeSharedImport,
   getSharedImportConstants,
-  isStableStorefrontRelease, convertImportPaths
+  isStableStorefrontRelease, convertImportPaths, fetchPorscheDesignSystemBundle
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
@@ -147,15 +145,15 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = async (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
   return {
     files: {
       // TODO: we should load component artifacts by fetch API and provide it as artifact in public folder to decrease vue component chunk size or provide examples by public git repo including commit based component builds
       ...!isStableStorefrontRelease() && {
-        ...componentsJs,
-        ...componentsAngular,
+        ...await fetchPorscheDesignSystemBundle('js'),
+        ...await fetchPorscheDesignSystemBundle('angular'),
       },
       'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies),

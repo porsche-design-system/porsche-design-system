@@ -20,7 +20,7 @@ export type OpenInStackBlitzOpts = {
   sharedImportKeys: SharedImportKey[];
 };
 
-export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
+export const openInStackBlitz = async (opts: OpenInStackBlitzOpts): Promise<void> => {
   const { framework, theme, backgroundColorScheme, ...rest } = opts;
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
@@ -38,7 +38,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     react: getReactProjectAndOpenOptions,
   };
 
-  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
+  const { openFile, ...project } = await getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
 
   sdk.openProject(project, { openFile });
 };

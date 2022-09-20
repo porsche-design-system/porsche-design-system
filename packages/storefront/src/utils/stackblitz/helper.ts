@@ -44,7 +44,7 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
   return colorScheme === 'surface' ? surface : base;
 };
 
-export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
+export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => Promise<StackBlitzProjectAndOpenOptions>;
 
 export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDependency[]): ExternalDependency[] => {
   if (externalDependencies.some((x) => !EXTERNAL_DEPENDENCIES.includes(x))) {
@@ -59,7 +59,9 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
 
 export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
-export const convertImportPaths = (markup: string, framework: 'js' | 'angular' | 'react'): string => {
+type Framework = 'js' | 'angular' | 'react';
+
+export const convertImportPaths = (markup: string, framework: Framework): string => {
   return isStableStorefrontRelease()
     ? markup
     : markup.replace(
@@ -67,3 +69,10 @@ export const convertImportPaths = (markup: string, framework: 'js' | 'angular' |
       `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
     );
 };
+
+export type PorscheDesignSystemBundle = { [path: string]: string };
+
+export const fetchPorscheDesignSystemBundle = async (framework: Framework): Promise<PorscheDesignSystemBundle> => {
+  const response = await fetch(`/porsche-design-system/components-${framework}.json`);
+  return response.json();
+}
