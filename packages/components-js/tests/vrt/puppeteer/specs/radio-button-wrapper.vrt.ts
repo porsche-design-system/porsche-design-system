@@ -80,7 +80,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover > p-radio-button-wrapper input[type="radio"]');
-      await forceHoverState(page, '.hover > .force-label > p-radio-button-wrapper >>> p-text');
+      await forceHoverState(page, '.hover > .force-label > p-radio-button-wrapper >>> span');
       await forceHoverState(page, '.hover > p-radio-button-wrapper span a');
       await forceFocusState(page, '.focus p-radio-button-wrapper input[type="radio"]');
       await forceFocusState(page, '.focus > p-radio-button-wrapper span a');
