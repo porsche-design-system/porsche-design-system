@@ -110,13 +110,15 @@ export const getIndexHtml = (globalStyles: string): string => {
 </html>`
 };
 
-export const mainTs = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+export const getMainTs = (): string => {
+  return `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`;
+  .catch((err) => console.error(err));`
+};
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
@@ -158,7 +160,7 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
       'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies),
       'src/index.html': getIndexHtml(globalStyles),
-      'src/main.ts': mainTs,
+      'src/main.ts': getMainTs(),
     },
     template: 'angular-cli',
     title,
