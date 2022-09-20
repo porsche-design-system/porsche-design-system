@@ -112,6 +112,8 @@ describe('isStableStorefrontRelease()', () => {
   it.each<[string, boolean]>([
     ['/issue/123', false],
     ['/release/123', false],
+    ['/latest', false],
+    ['/latest/', false],
     ['/', false],
     ['/v', false],
     ['/v1/', true],
