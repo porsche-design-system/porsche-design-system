@@ -11,7 +11,7 @@ const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
 
   const browserOverlayMarkup =
-    "<p>${content.replace(/<br>/g,'<br class=show--at-768-ilb>')}</p><div class=show--at-768>${[chrome, firefox, edge].map((link) => link.replace(/>/g, '><i></i>')).join('')}</div>";
+    "<p>${content.replace(/<br>/g,'<br class=show--at-768-ilb>')}</p><div class=show--at-768>${[chrome, firefox, edge].map((link) => link.replace(/>/, '><i></i>')).join('')}</div>";
 
   const defaultOverlayMarkup = '<p>${content}</p>';
 
