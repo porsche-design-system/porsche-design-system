@@ -24,6 +24,7 @@ import {
   hasVisibleIcon,
   isSizeInherit,
   parseAndGetAriaAttributes,
+  setLineHeightOnSizeInherit,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
@@ -102,6 +103,7 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
+  private labelTag: HTMLElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -138,6 +140,7 @@ export class LinkPure {
         this.iconTag.style.width = size;
         this.iconTag.style.height = size;
       });
+      setLineHeightOnSizeInherit(this.size, this.labelTag);
     }
   }
 
@@ -171,15 +174,15 @@ export class LinkPure {
               aria-hidden="true"
             />
           )}
-          <span class="label">
+          <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
           </span>
+          {hasSubline && (
+            <div id="subline" class="subline">
+              <slot name="subline" />
+            </div>
+          )}
         </TagType>
-        {hasSubline && (
-          <div id="subline" class="subline">
-            <slot name="subline" />
-          </div>
-        )}
       </Host>
     );
   }

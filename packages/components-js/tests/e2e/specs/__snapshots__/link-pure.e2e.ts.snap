@@ -3,7 +3,7 @@
 exports[`accessibility should expose correct accessibility tree description if subline property is set 1`] = `
 Object {
   "description": "Some Subline",
-  "name": "Some label",
+  "name": "Some label Some Subline",
   "role": "link",
 }
 `;
