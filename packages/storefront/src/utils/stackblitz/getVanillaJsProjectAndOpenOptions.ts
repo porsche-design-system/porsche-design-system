@@ -23,7 +23,7 @@ export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
 
   return /<script>/.test(markup)
     ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
-    : markup + `\n\n<script>${loadFunction}</script>`;
+    : `${markup}\n\n<script>${loadFunction}</script>`;
 };
 
 export const getIndexHtml = (
