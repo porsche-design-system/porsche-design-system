@@ -17,10 +17,10 @@ const filePath = path.resolve(
 );
 const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
+const [, rawRoutes] = /const routes.*(\[(?:.|\n)*\]);/.exec(fileContent) || [];
 const routes: { name: string; path: string; component: string }[] = eval(
   rawRoutes
-    .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
+    .replace(/\.\.\.\[(?:.|\n)*?\].*/, '') // get rid of generatedRoutes
     .replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
 ).filter(({ component }) => component);
 

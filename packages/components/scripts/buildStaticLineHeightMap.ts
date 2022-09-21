@@ -18,7 +18,7 @@ const buildStaticLineHeightMap = (): void => {
 const STATIC_VALUES: [number, number][] = ${JSON.stringify(lineHeightMap)};`;
 
   const newFileContent = fileContent.replace(
-    /(\/\* Auto Generated Start \*\/\s)(?:.|\s)*?(\s\/\* Auto Generated End \*\/)/,
+    /(\/\* Auto Generated Start \*\/\s)(?:.|\n)*?(\s\/\* Auto Generated End \*\/)/,
     `$1${staticValues}$2`
   );
 
