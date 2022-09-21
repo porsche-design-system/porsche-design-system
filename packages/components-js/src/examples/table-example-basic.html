@@ -3,10 +3,10 @@
 <script>
   const getHeadAndData = async () => {
     const content = await fetch('assets/table-data-basic.js').then((res) => res.text());
-    const [, headStr] = /const headBasic = ((.|\s)*?);/.exec(content) || [];
+    const [, headStr] = /const headBasic = ((.|\n)*?);/.exec(content) || [];
     const headBasic = eval(headStr);
 
-    const [, dataStr] = /const dataBasic = ((.|\s)*?);/.exec(content) || [];
+    const [, dataStr] = /const dataBasic = ((.|\n)*?);/.exec(content) || [];
     const dataBasic = eval(dataStr);
 
     return { headBasic, dataBasic };
