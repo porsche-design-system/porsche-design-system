@@ -246,7 +246,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     const removeDestructuredProp = (component: string, prop: string): string => {
-      return component.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
+      return component.replace(new RegExp(`('?${prop}'?(?: = [a-zA-Z'-]+)?(?:, )?)`, 'g'), '');
     };
 
     // remove destructured props

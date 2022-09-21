@@ -26,7 +26,7 @@ export type ValidationError = {
 
 export const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
-    .replace(/"([A-z?]+)":/g, '$1:') // remove double quotes from keys
+    .replace(/"([a-zA-Z?]+)":/g, '$1:') // remove double quotes from keys
     .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
     .replace(/(})/g, ' $1') // add space before following: }
     .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes

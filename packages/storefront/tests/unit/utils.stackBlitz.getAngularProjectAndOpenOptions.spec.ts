@@ -67,7 +67,7 @@ describe('replaceSharedImportsWithConstants()', () => {
       /(@Component\({\n\s{2}selector: ')[a-z-]+/,
       `${mockedsetSharedImportConstants}$1porsche-design-system-app`
     );
-    expect(spy).toHaveBeenNthCalledWith(2, /(export class )[A-z]+( {)/, '$1AppComponent$2');
+    expect(spy).toHaveBeenNthCalledWith(2, /(export class )[a-zA-Z]+( {)/, '$1AppComponent$2');
   });
 
   it('should return correct string without sharedImportKeys', () => {
@@ -201,7 +201,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
 
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(matchSpy).toBeCalledWith(/(export class )[A-z]+( {)/);
+    expect(matchSpy).toBeCalledWith(/(export class )[a-zA-Z]+( {)/);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith(
       stackBlitzFrameworkOpts.markup,
       stackBlitzFrameworkOpts.sharedImportKeys
