@@ -10,6 +10,7 @@ import {
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   isSizeInherit,
+  setLineHeightOnSizeInherit,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
@@ -103,6 +104,8 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
+  private labelTag: HTMLElement;
+  private sublineTag: HTMLElement;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -149,6 +152,8 @@ export class ButtonPure {
         this.iconTag.style.width = size;
         this.iconTag.style.height = size;
       });
+      setLineHeightOnSizeInherit(this.size, this.labelTag);
+      setLineHeightOnSizeInherit(this.size, this.sublineTag);
     }
   }
 
@@ -186,12 +191,12 @@ export class ButtonPure {
                 aria-hidden="true"
               />
             ))}
-          <span class="label">
+          <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
           </span>
         </button>
         {hasSubline && (
-          <div id="subline" class="subline">
+          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
             <slot name="subline" />
           </div>
         )}
