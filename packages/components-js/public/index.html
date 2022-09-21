@@ -118,7 +118,7 @@
         const page = document.location.hash.substr(1);
         const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
         app.innerHTML = '';
-        app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
+        app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
 
         // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');
