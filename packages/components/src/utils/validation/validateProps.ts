@@ -77,8 +77,8 @@ export const getBreakpointCustomizableStructure = <T>(
 ): string => {
   if (allowedValues !== 'boolean' && allowedValues !== 'number') {
     allowedValues = formatArrayOutput(allowedValues)
-      .replace('[', '(') // starting inline type literal array
-      .replace(']', ')[]') // ending inline type literal array
+      .replace(/\[/g, '(') // starting inline type literal array
+      .replace(/]/g, ')[]') // ending inline type literal array
       .replace(/,/g, ' |') as any; // replace commas with a pipe
   }
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
