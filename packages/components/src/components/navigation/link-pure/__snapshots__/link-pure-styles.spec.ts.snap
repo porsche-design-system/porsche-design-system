@@ -66,8 +66,8 @@ div, ::slotted([slot=subline]) {
 }
 
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -111,11 +111,11 @@ div, ::slotted([slot=subline]) {
   width: 1.6666666667em;
   height: 1.6666666667em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 0.75rem;
   line-height: 1.6666666667;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 0.75rem;
   margin-left: 1.6666666667em;
 }
@@ -147,11 +147,11 @@ div, ::slotted([slot=subline]) {
     width: 1.5em;
     height: 1.5em;
   }
-  .root .subline {
+  .root ~ .subline {
     font-size: 1rem;
     line-height: 1.5;
   }
-  .root .subline::before {
+  .root ~ .subline::before {
     font-size: 1rem;
     margin-left: 1.5em;
   }
@@ -180,11 +180,11 @@ div, ::slotted([slot=subline]) {
     width: 1.5em;
     height: 1.5em;
   }
-  .root .subline {
+  .root ~ .subline {
     font-size: 1.25rem;
     line-height: 1.4;
   }
-  .root .subline::before {
+  .root ~ .subline::before {
     font-size: 1.5rem;
     margin-left: 1.5em;
   }
@@ -213,11 +213,11 @@ div, ::slotted([slot=subline]) {
     width: 1.3333333333em;
     height: 1.3333333333em;
   }
-  .root .subline {
+  .root ~ .subline {
     font-size: 1.875rem;
     line-height: 1.3333333333;
   }
-  .root .subline::before {
+  .root ~ .subline::before {
     font-size: 2.25rem;
     margin-left: 1.3333333333em;
   }
@@ -246,11 +246,11 @@ div, ::slotted([slot=subline]) {
     width: 1.2307692308em;
     height: 1.2307692308em;
   }
-  .root .subline {
+  .root ~ .subline {
     font-size: 2.25rem;
     line-height: 1.3333333333;
   }
-  .root .subline::before {
+  .root ~ .subline::before {
     font-size: 3.25rem;
     margin-left: 1.2307692308em;
   }
@@ -336,8 +336,8 @@ div, ::slotted([slot=subline]) {
   color: #ff0223;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -381,11 +381,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -449,8 +449,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -475,11 +475,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -541,8 +541,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -585,15 +585,15 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
-.root:active .subline {
+.root:active + .subline {
   color: #d5001c;
 }
 .icon {
@@ -636,7 +636,7 @@ div, ::slotted([slot=subline]) {
   .root:hover {
     color: #d5001c;
   }
-  .root:hover .subline {
+  .root:hover + .subline {
     color: #d5001c;
   }
 }
@@ -677,8 +677,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -722,11 +722,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -860,8 +860,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -905,11 +905,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -973,8 +973,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -999,11 +999,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -1065,8 +1065,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1110,11 +1110,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
@@ -1177,8 +1177,8 @@ div, ::slotted([slot=subline]) {
   color: #ff0223;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1222,11 +1222,11 @@ div, ::slotted([slot=subline]) {
   width: 1.2307692308em;
   height: 1.2307692308em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 2.25rem;
   line-height: 1.3333333333;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 3.25rem;
   margin-left: 1.2307692308em;
 }
@@ -1289,8 +1289,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1334,11 +1334,11 @@ div, ::slotted([slot=subline]) {
   width: 1.2307692308em;
   height: 1.2307692308em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 2.25rem;
   line-height: 1.3333333333;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 3.25rem;
   margin-left: 1.2307692308em;
 }
@@ -1402,8 +1402,8 @@ div, ::slotted([slot=subline]) {
   color: #d5001c;
 }
 .root {
-  display: block;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1447,11 +1447,11 @@ div, ::slotted([slot=subline]) {
   width: 1.5em;
   height: 1.5em;
 }
-.root .subline {
+.root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
 }
-.root .subline::before {
+.root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
 }
