@@ -1,9 +1,5 @@
 import { dependencies } from '../../../../components-js/package.json';
-import {
-  getExternalDependencies,
-  getSharedImportConstants,
-  isStableStorefrontRelease
-} from './helper';
+import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackblitzProjectAndOpenOptions, SharedImportKey } from './helper';
 
@@ -32,7 +28,9 @@ export const getIndexHtml = (
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[]
 ): string => {
-  const porscheDesignSystemLoaderScript = `<script src="${isStableStorefrontRelease() ? 'node_modules' : '.' }/@porsche-design-system/components-js/index.js"></script>`;
+  const porscheDesignSystemLoaderScript = `<script src="${
+    isStableStorefrontRelease() ? 'node_modules' : '.'
+  }/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
@@ -60,9 +58,11 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (): string => isStableStorefrontRelease() ? '' : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+export const getIndexJs = (): string =>
+  isStableStorefrontRelease()
+    ? ''
+    : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem`;
-};
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
@@ -72,15 +72,23 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 
 export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
-    ...isStableStorefrontRelease() && {
-      '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js']
-    },
+    ...(isStableStorefrontRelease() && {
+      '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+    }),
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies, porscheDesignSystemBundle } = opts;
+  const {
+    markup,
+    description,
+    title,
+    globalStyles,
+    sharedImportKeys,
+    externalDependencies,
+    porscheDesignSystemBundle,
+  } = opts;
 
   return {
     files: {
