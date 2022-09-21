@@ -14,7 +14,9 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   if (!PREFIXED_TAG_NAMES_CACHE.has(prefix)) {
     const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
     for (const tag of TAG_NAMES) {
-      tagNames[paramCaseToCamelCase(tag)] = prefix ? `${prefix}-${tag}` : tag;
+      if (tag !== 'p-text' && tag !== 'p-headline') {
+        tagNames[paramCaseToCamelCase(tag)] = prefix ? `${prefix}-${tag}` : tag;
+      }
     }
     PREFIXED_TAG_NAMES_CACHE.set(prefix, tagNames);
   }
