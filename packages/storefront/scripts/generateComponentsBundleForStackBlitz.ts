@@ -1,7 +1,7 @@
 import fs from 'fs';
 import * as globby from 'globby';
-
-const generateComponentsBundleForStackBlitz = (framework: 'js' | 'angular' | 'react'): void => {
+type Framework =  'js' | 'angular' | 'react';
+const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   const targetPath = 'public/porsche-design-system';
   const targetFile = `${targetPath}/components-${framework}.json`;
   const bundle: { [path: string]: string } = {};
