@@ -2,6 +2,7 @@ import { LinkPure } from './link-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as throwIfInvalidLinkPureUsageUtils from '../../../utils/validation/throwIfInvalidLinkPureUsage';
+import * as lineHeightUtils from '../../../utils/typography/setLineHeightOnSizeInherit';
 
 describe('componentWillLoad', () => {
   it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
@@ -49,5 +50,18 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
 
     expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
+  });
+
+  it('should call setLineHeightOnSizeInherit() with correct parameters when size="inherit"', () => {
+    const spySetLineHeight = jest.spyOn(lineHeightUtils, 'setLineHeightOnSizeInherit');
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.host.style.fontSize = '48px';
+    component.size = 'inherit';
+    component['labelTag'] = document.createElement('span');
+    component.componentDidLoad();
+
+    expect(spySetLineHeight).toBeCalledWith(component.size, component['labelTag']);
+    expect(spySetLineHeight).toBeCalledTimes(1);
   });
 });

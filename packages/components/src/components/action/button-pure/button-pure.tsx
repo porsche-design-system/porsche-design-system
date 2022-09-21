@@ -105,7 +105,6 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
   private labelTag: HTMLElement;
-  private sublineTag: HTMLElement;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -153,7 +152,6 @@ export class ButtonPure {
         this.iconTag.style.height = size;
       });
       setLineHeightOnSizeInherit(this.size, this.labelTag);
-      setLineHeightOnSizeInherit(this.size, this.sublineTag);
     }
   }
 
@@ -194,12 +192,12 @@ export class ButtonPure {
           <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
           </span>
+          {hasSubline && (
+            <div id="subline" class="subline">
+              <slot name="subline" />
+            </div>
+          )}
         </button>
-        {hasSubline && (
-          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
-            <slot name="subline" />
-          </div>
-        )}
       </Host>
     );
   }

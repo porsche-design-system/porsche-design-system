@@ -60,7 +60,7 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
         width: lineHeightWithUnit,
         height: lineHeightWithUnit,
       },
-      '& ~ .subline': {
+      '& .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
         '&::before': {
@@ -161,8 +161,8 @@ export const getLinkButtonPureStyles = (
     // TODO: overhead in link styles when slotted anchor is used
     // TODO: overhead due that link does not need same "reset" styles as button
     root: {
-      display: 'flex',
-      alignItems: 'flex-start',
+      display: 'block',
+      alignItems: 'start',
       width: '100%',
       margin: 0,
       padding: 0,
@@ -182,7 +182,7 @@ export const getLinkButtonPureStyles = (
           '&:hover': {
             color: hoverColor,
             ...(hasSubline && {
-              '& + $subline': {
+              '& $subline': {
                 color: hoverColor,
               },
             }),
@@ -191,7 +191,7 @@ export const getLinkButtonPureStyles = (
         '&:active': {
           color: activeColor,
           ...(hasSubline && {
-            '& + $subline': {
+            '& $subline': {
               color: activeColor,
             },
           }),
