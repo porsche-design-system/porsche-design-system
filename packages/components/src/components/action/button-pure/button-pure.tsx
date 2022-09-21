@@ -192,12 +192,12 @@ export class ButtonPure {
           <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
           </span>
-          {hasSubline && (
-            <div id="subline" class="subline">
-              <slot name="subline" />
-            </div>
-          )}
         </button>
+        {hasSubline && (
+          <div id="subline" class="subline">
+            <slot name="subline" />
+          </div>
+        )}
       </Host>
     );
   }

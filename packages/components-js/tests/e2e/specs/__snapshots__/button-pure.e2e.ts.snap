@@ -3,7 +3,7 @@
 exports[`accessibility should expose accessibility tree description with slotted subline 1`] = `
 Object {
   "description": "Some Subline",
-  "name": "Some label Some Subline",
+  "name": "Some label",
   "role": "button",
 }
 `;
