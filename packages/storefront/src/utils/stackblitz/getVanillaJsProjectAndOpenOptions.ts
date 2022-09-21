@@ -5,7 +5,7 @@ import {
   isStableStorefrontRelease
 } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
-import type { DependencyMap, SharedImportKey, ExternalDependency } from './helper';
+import type { DependencyMap, ExternalDependency, GetStackblitzProjectAndOpenOptions, SharedImportKey } from './helper';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
