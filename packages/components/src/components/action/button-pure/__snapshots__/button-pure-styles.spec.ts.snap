@@ -8,6 +8,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 400;
   font-size: inherit;
   text-size-adjust: none;
@@ -17,6 +19,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -302,6 +306,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 700;
   font-size: inherit;
   text-size-adjust: none;
@@ -311,6 +317,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -476,6 +484,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 400;
   font-size: inherit;
   text-size-adjust: none;
@@ -485,6 +495,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -580,6 +592,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 400;
   font-size: inherit;
   text-size-adjust: none;
@@ -589,6 +603,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -684,6 +700,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 600;
   font-size: inherit;
   text-size-adjust: none;
@@ -693,6 +711,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -788,6 +808,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 600;
   font-size: inherit;
   text-size-adjust: none;
@@ -797,6 +819,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -915,6 +939,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 700;
   font-size: inherit;
   text-size-adjust: none;
@@ -924,6 +950,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1010,6 +1038,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 100;
   font-size: inherit;
   text-size-adjust: none;
@@ -1019,6 +1049,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1121,6 +1153,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 700;
   font-size: inherit;
   text-size-adjust: none;
@@ -1130,6 +1164,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1224,6 +1260,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 100;
   font-size: inherit;
   text-size-adjust: none;
@@ -1233,6 +1271,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1328,6 +1368,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 400;
   font-size: inherit;
   text-size-adjust: none;
@@ -1337,6 +1379,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1423,6 +1467,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }
 span {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   font-weight: 100;
   font-size: inherit;
   text-size-adjust: none;
@@ -1432,6 +1478,8 @@ span {
 }
 div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
