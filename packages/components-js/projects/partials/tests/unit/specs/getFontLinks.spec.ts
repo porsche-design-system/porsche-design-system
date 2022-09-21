@@ -2,8 +2,8 @@ import { getFontLinks } from '../../../src';
 import { render } from '@testing-library/react';
 
 const hash = '[a-z0-9]{32}';
-const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
-const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/fonts';
+const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche.com/porsche-design-system/fonts';
+const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche.cn/porsche-design-system/fonts';
 
 jest.mock('../../../src/shared');
 
