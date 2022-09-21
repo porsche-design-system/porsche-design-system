@@ -12,7 +12,7 @@ import {
   getShadowRoot,
   initAddEventListener,
   initPageErrorObserver,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -288,16 +288,60 @@ describe('select-wrapper dropdown', () => {
     expect(await getSelectedDropdownOptionIndex()).toBe(3);
   });
 
-  it('should add/remove disabled state to custom option item if added/removed to native select programmatically', async () => {
-    await initSelect();
+  it('should add/remove disabled state to custom option item if added/removed property to native select programmatically', async () => {
+    await initSelect({ disabledIndex: 1 });
     const select = await getSelect();
+    const dropdownOption1 = await getDropdownOption1();
     const dropdownOption2 = await getDropdownOption2();
 
-    await select.evaluate((el: HTMLSelectElement) => (el.options[1].disabled = true));
-    await waitForStencilLifecycle(page);
-
+    expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
     expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
     expect(await getDisabledDropdownOptionIndex()).toBe(1);
+
+    await select.evaluate((el: HTMLSelectElement) => (el.options[0].disabled = true));
+    await select.evaluate((el: HTMLSelectElement) => (el.options[1].disabled = false));
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(dropdownOption1)).toContain(disabledClass);
+    expect(await getCssClasses(dropdownOption2)).not.toContain(disabledClass);
+    expect(await getDisabledDropdownOptionIndex()).toBe(0);
+  });
+
+  it('should add/remove disabled state to custom option item if added/removed attribute to native select programmatically', async () => {
+    await initSelect({ disabledIndex: 1 });
+    const select = await getSelect();
+    const dropdownOption1 = await getDropdownOption1();
+    const dropdownOption2 = await getDropdownOption2();
+
+    expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
+    expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
+    expect(await getDisabledDropdownOptionIndex()).toBe(1);
+
+    await select.evaluate((el: HTMLSelectElement) => el.options[0].setAttribute('disabled', 'disabled'));
+    await select.evaluate((el: HTMLSelectElement) => el.options[1].removeAttribute('disabled'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(dropdownOption1)).toContain(disabledClass);
+    expect(await getCssClasses(dropdownOption2)).not.toContain(disabledClass);
+    expect(await getDisabledDropdownOptionIndex()).toBe(0);
+  });
+
+  it('should synchronize custom option and native select if selected property is set programmatically', async () => {
+    await initSelect();
+    const select = await getSelect();
+    const dropdownOption1 = await getDropdownOption1();
+    const dropdownOption2 = await getDropdownOption2();
+
+    expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
+    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
+    expect(await getSelectedDropdownOptionIndex()).toBe(0);
+
+    await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(dropdownOption1)).not.toContain(selectedClass);
+    expect(await getCssClasses(dropdownOption2)).toContain(selectedClass);
+    expect(await getSelectedDropdownOptionIndex()).toBe(1);
   });
 
   it('should synchronize custom option and native select if selected attribute is set programmatically', async () => {
@@ -307,9 +351,10 @@ describe('select-wrapper dropdown', () => {
     const dropdownOption2 = await getDropdownOption2();
 
     expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
+    expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
     expect(await getSelectedDropdownOptionIndex()).toBe(0);
 
-    await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
+    await select.evaluate((el: HTMLSelectElement) => el.options[1].setAttribute('selected', 'selected'));
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(dropdownOption1)).not.toContain(selectedClass);
@@ -836,6 +881,7 @@ describe('select-wrapper dropdown', () => {
     it('should remove and re-attach events', async () => {
       await initSelect();
 
+      const host = await getHost();
       const dropdownButton = await getDropdownButton();
       const dropdownList = await getDropdownList();
 
@@ -847,7 +893,7 @@ describe('select-wrapper dropdown', () => {
       await addEventListener(dropdownList, 'keydown', () => listKeyDownEventCounter++);
 
       // Remove and re-attach component to check if events are duplicated / fire at all
-      await reattachElement(page, 'p-select-wrapper');
+      await reattachElementHandle(host);
 
       await dropdownButton.click();
       await waitForStencilLifecycle(page);

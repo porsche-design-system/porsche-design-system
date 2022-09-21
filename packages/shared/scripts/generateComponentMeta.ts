@@ -118,7 +118,7 @@ const generateComponentMeta = (): void => {
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
-    const hasObserveChildren = source.includes('observeChildren(this.'); // this should be safe enough, but would miss a local variable as first parameter
+    const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
@@ -167,7 +167,7 @@ const generateComponentMeta = (): void => {
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
     ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
         propValue === 'true'
@@ -185,7 +185,7 @@ const generateComponentMeta = (): void => {
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
       // same regex as above without optional ? modifier
-      source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];

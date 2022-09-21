@@ -5,24 +5,29 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  observeBreakpointChange,
   observeChildren,
+  parseJSON,
   THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
+  unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
+import type { StepChangeEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
+  STEPPER_HORIZONTAL_SIZES,
   syncItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
-import { getScrollerElements } from '../../../common/scroller/scroller-utils';
+import type { BreakpointCustomizable } from '../../../../types';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
+  size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -33,6 +38,9 @@ const propTypes: PropTypes<typeof StepperHorizontal> = {
 export class StepperHorizontal {
   @Element() public host!: HTMLElement;
 
+  /** The text size. */
+  @Prop() public size?: BreakpointCustomizable<StepperHorizontalSize> = 'small';
+
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -40,15 +48,13 @@ export class StepperHorizontal {
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepChangeEvent>;
 
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  private scrollAreaElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private scrollerElement: HTMLElement;
+  private scrollerElement: HTMLPScrollerElement;
   private currentStepIndex: number;
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     this.defineStepperHorizontalItemElements();
 
+    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
       this.defineStepperHorizontalItemElements();
       // Validate when new steps are added
@@ -56,6 +62,8 @@ export class StepperHorizontal {
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.scrollIntoView();
     });
+
+    this.observeBreakpointChange();
   }
 
   public componentWillLoad(): void {
@@ -65,25 +73,26 @@ export class StepperHorizontal {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size);
     syncItemsProps(this.host, this.theme);
   }
 
   public componentDidLoad(): void {
-    this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
+    this.observeBreakpointChange();
+
     // Sometimes lifecycle gets called after disconnectedCallback()
-    if (this.scrollAreaElement && this.prevGradientElement) {
+    if (this.scrollerElement) {
       this.addEventListeners();
 
       // Initial scroll current into view
-      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      this.scrollerElement.scrollToPosition = {
         scrollPosition: getScrollActivePosition(
           this.stepperHorizontalItems,
           'next',
           this.currentStepIndex,
-          this.scrollAreaElement.offsetWidth,
-          this.prevGradientElement.offsetWidth
+          this.scrollerElement
         ),
         isSmooth: false,
       };
@@ -96,6 +105,7 @@ export class StepperHorizontal {
   }
 
   public disconnectedCallback(): void {
+    unobserveBreakpointChange(this.host);
     unobserveChildren(this.host);
   }
 
@@ -103,17 +113,15 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host role="list">
-        <PrefixedTagNames.pScroller theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
-          <div class="item-wrapper">
-            <slot />
-          </div>
+        <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
+          <slot />
         </PrefixedTagNames.pScroller>
       </Host>
     );
   }
 
   private addEventListeners = (): void => {
-    this.scrollAreaElement.addEventListener('click', (e) => {
+    this.scrollerElement.addEventListener('click', (e) => {
       const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
         this.host,
         'pStepperHorizontalItem',
@@ -126,12 +134,6 @@ export class StepperHorizontal {
         this.stepChange.emit({ activeStepIndex: clickedStepIndex });
       }
     });
-  };
-
-  private defineScrollerElements = (): void => {
-    const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
-    this.scrollAreaElement = scrollAreaElement;
-    this.prevGradientElement = prevGradientElement;
   };
 
   private defineStepperHorizontalItemElements = (): void => {
@@ -149,21 +151,25 @@ export class StepperHorizontal {
     const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     // If state is set to undefined index is -1
     if (newStepIndex !== -1) {
-      const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
       const scrollActivePosition = getScrollActivePosition(
         this.stepperHorizontalItems,
-        direction,
+        newStepIndex > this.currentStepIndex ? 'next' : 'prev',
         newStepIndex,
-        this.scrollAreaElement.offsetWidth,
-        this.prevGradientElement.offsetWidth
+        this.scrollerElement
       );
 
       this.currentStepIndex = newStepIndex;
 
-      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      this.scrollerElement.scrollToPosition = {
         scrollPosition: scrollActivePosition,
         isSmooth: true,
       };
+    }
+  };
+
+  private observeBreakpointChange = (): void => {
+    if (typeof parseJSON(this.size) === 'object') {
+      observeBreakpointChange(this.host, this.scrollIntoView);
     }
   };
 }

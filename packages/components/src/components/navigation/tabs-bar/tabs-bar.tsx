@@ -1,15 +1,17 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  observeBreakpointChange,
   observeChildren,
   parseJSON,
   setAttribute,
   THEMES_EXTENDED_ELECTRIC,
+  unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
@@ -26,8 +28,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/scroller/scroller-utils';
-import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
-import { observeBreakpointChange, unobserveBreakpointChange } from '../../../utils/breakoint-observer';
+import { GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -64,18 +65,11 @@ export class TabsBar {
 
   @State() private tabElements: HTMLElement[] = [];
 
-  private intersectionObserver: IntersectionObserver;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
   private direction: Direction = 'next';
   private hasPTabsParent: boolean;
-  private scrollAreaElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private scrollerElement: HTMLElement;
-
-  private get isSizeBreakpointCustomizable(): boolean {
-    return typeof parseJSON(this.size) === 'object';
-  }
+  private scrollerElement: HTMLPScrollerElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
@@ -91,6 +85,8 @@ export class TabsBar {
   public connectedCallback(): void {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'pTabs');
     this.setTabElements();
+
+    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
@@ -103,7 +99,6 @@ export class TabsBar {
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
     // TODO: validation of active element index inside of tabs bar!
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
@@ -132,11 +127,8 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    if (this.isSizeBreakpointCustomizable) {
-      unobserveBreakpointChange(this.host);
-    }
+    unobserveBreakpointChange(this.host);
     unobserveChildren(this.host);
-    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
@@ -148,11 +140,8 @@ export class TabsBar {
         role="tablist"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
+        scrollIndicatorPosition="top"
         ref={(el) => (this.scrollerElement = el)}
-        prevNextButtonJssStyle={{
-          top: 'calc(50% - .5em)',
-          transform: 'translate3d(0,calc(-50% + .375em),0)',
-        }}
       >
         <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
@@ -162,7 +151,7 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabElements)) {
-      const tabIndex = this.activeTabIndex ?? 0;
+      const tabIndex = this.activeTabIndex || 0;
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
       const attrs = {
@@ -174,12 +163,6 @@ export class TabsBar {
         setAttribute(tab, key, value);
       }
     }
-  };
-
-  private defineHTMLElements = (): void => {
-    const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
-    this.scrollAreaElement = scrollAreaElement;
-    this.prevGradientElement = prevGradientElement;
   };
 
   private setTabElements = (): void => {
@@ -243,22 +226,19 @@ export class TabsBar {
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
-    if (!this.scrollAreaElement) {
-      return;
+    if (this.scrollerElement) {
+      const scrollActivePosition = getScrollActivePosition(
+        this.tabElements,
+        this.direction,
+        this.activeTabIndex,
+        this.scrollerElement
+      );
+
+      this.scrollerElement.scrollToPosition = {
+        scrollPosition: scrollActivePosition,
+        isSmooth,
+      };
     }
-
-    const scrollActivePosition = getScrollActivePosition(
-      this.tabElements,
-      this.direction,
-      this.activeTabIndex,
-      this.scrollAreaElement.offsetWidth,
-      this.prevGradientElement.offsetWidth
-    );
-
-    (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
-      scrollPosition: scrollActivePosition,
-      isSmooth,
-    };
   };
 
   private setBarStyle = (): void => {
@@ -266,7 +246,7 @@ export class TabsBar {
   };
 
   private observeBreakpointChange = (): void => {
-    if (this.isSizeBreakpointCustomizable) {
+    if (typeof parseJSON(this.size) === 'object') {
       observeBreakpointChange(this.host, () => {
         this.setBarStyle();
         this.scrollActiveTabIntoView(false);

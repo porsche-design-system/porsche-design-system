@@ -214,6 +214,42 @@ Object {
     ],
     "styling": "jss",
   },
+  "p-carousel": Object {
+    "hasAriaProp": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": true,
+    "hasSkeleton": false,
+    "hasSlot": true,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": Array [
+      Object {
+        "heading": null,
+      },
+      Object {
+        "description": null,
+      },
+      Object {
+        "wrapContent": null,
+      },
+      Object {
+        "slidesPerPage": "1",
+      },
+      Object {
+        "disablePagination": false,
+      },
+      Object {
+        "intl": "{}",
+      },
+      Object {
+        "theme": "light",
+      },
+    ],
+    "shouldPatchSlot": false,
+    "styling": "jss",
+  },
   "p-checkbox-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
@@ -827,6 +863,9 @@ Object {
     "isThemeable": true,
     "props": Array [
       Object {
+        "activePage": "1",
+      },
+      Object {
         "allyLabel": "Pagination",
       },
       Object {
@@ -920,7 +959,7 @@ Object {
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
-    "isInternal": true,
+    "isInternal": false,
     "isThemeable": true,
     "props": Array [
       Object {
@@ -933,12 +972,8 @@ Object {
         "scrollToPosition": null,
       },
       Object {
-        "prevNextButtonJssStyle": null,
+        "scrollIndicatorPosition": "center",
       },
-    ],
-    "requiredRootNode": Array [
-      "p-tabs-bar",
-      "p-stepper-horizontal",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
@@ -1070,7 +1105,7 @@ Object {
   "p-select-wrapper-dropdown": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -1159,6 +1194,9 @@ Object {
     "isInternal": false,
     "isThemeable": true,
     "props": Array [
+      Object {
+        "size": "small",
+      },
       Object {
         "theme": "light",
       },
@@ -1367,6 +1405,9 @@ Object {
       },
       Object {
         "gradientColorScheme": "default",
+      },
+      Object {
+        "activeTabIndex": "0",
       },
     ],
     "shouldPatchSlot": false,

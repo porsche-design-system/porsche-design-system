@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1]"`;
+exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1, undefined]"`;
 
 exports[`formatObjectOutput() should return formatted string for boolean 1`] = `"true"`;
 
@@ -15,6 +15,8 @@ exports[`getAriaStructure() should return formatted string for array with single
 exports[`getBreakpointCustomizableStructure() should return formatted string for array type 1`] = `"('a' | 'b')[], { base: ('a' | 'b')[], xs?: ('a' | 'b')[], s?: ('a' | 'b')[], m?: ('a' | 'b')[], l?: ('a' | 'b')[], xl?: ('a' | 'b')[] }"`;
 
 exports[`getBreakpointCustomizableStructure() should return formatted string for boolean type 1`] = `"boolean, { base: boolean, xs?: boolean, s?: boolean, m?: boolean, l?: boolean, xl?: boolean }"`;
+
+exports[`getBreakpointCustomizableStructure() should return formatted string for number type 1`] = `"number, { base: number, xs?: number, s?: number, m?: number, l?: number, xl?: number }"`;
 
 exports[`getShapeStructure() should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: oneOf }"`;
 

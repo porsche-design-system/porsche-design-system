@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';
 import type { SortingChangeEvent } from '@porsche-design-system/components-angular';
+import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';
 
 @Component({
   selector: 'page-table-example-sorting',

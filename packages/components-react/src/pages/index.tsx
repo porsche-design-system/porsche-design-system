@@ -18,6 +18,7 @@ import { ButtonGroupPage } from './ButtonGroup';
 import { ButtonPurePage } from './ButtonPure';
 import { ButtonPureSkeletonPage } from './ButtonPureSkeleton';
 import { ButtonSkeletonPage } from './ButtonSkeleton';
+import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { CheckboxWrapperSkeletonPage } from './CheckboxWrapperSkeleton';
 import { ContentWrapperPage } from './ContentWrapper';
@@ -48,6 +49,7 @@ import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
 import { RadioButtonWrapperPage } from './RadioButtonWrapper';
 import { RadioButtonWrapperSkeletonPage } from './RadioButtonWrapperSkeleton';
+import { ScrollerPage } from './Scroller';
 import { SegmentedControlPage } from './SegmentedControl';
 import { SelectWrapperPage } from './SelectWrapper';
 import { SelectWrapperSkeletonPage } from './SelectWrapperSkeleton';
@@ -109,6 +111,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Button Skeleton',
     path: '/button-skeleton',
     element: <ButtonSkeletonPage />,
+  },
+  {
+    name: 'Carousel',
+    path: '/carousel',
+    element: <CarouselPage />,
   },
   {
     name: 'Checkbox Wrapper',
@@ -259,6 +266,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Radio Button Wrapper Skeleton',
     path: '/radio-button-wrapper-skeleton',
     element: <RadioButtonWrapperSkeletonPage />,
+  },
+  {
+    name: 'Scroller',
+    path: '/scroller',
+    element: <ScrollerPage />,
   },
   {
     name: 'Segmented Control',

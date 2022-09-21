@@ -70,14 +70,34 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
-    name: 'Inline Notification Example Events',
-    path: 'inline-notification-example-events',
-    component: fromExamples.InlineNotificationExampleEventsComponent,
+    name: 'Carousel Example Events',
+    path: 'carousel-example-events',
+    component: fromExamples.CarouselExampleEventsComponent,
+  },
+  {
+    name: 'Carousel Example Dynamic Slides',
+    path: 'carousel-example-dynamic-slides',
+    component: fromExamples.CarouselExampleDynamicSlidesComponent,
   },
   {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
+  },
+  {
+    name: 'Inline Notification Example Events',
+    path: 'inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsComponent,
+  },
+  {
+    name: 'Modal Example Accessibility',
+    path: 'modal-example-accessibility',
+    component: fromExamples.ModalExampleAccessibilityComponent,
+  },
+  {
+    name: 'Scroller Example',
+    path: 'scroller-example',
+    component: fromExamples.ScrollerExampleComponent,
   },
   {
     name: 'Segmented Control Example',
@@ -105,9 +125,14 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TableExampleAdvancedComponent,
   },
   {
-    name: 'Tabs Bar Example',
-    path: 'tabs-bar-example',
-    component: fromExamples.TabsBarExampleComponent,
+    name: 'Tabs Bar Example Accessibility',
+    path: 'tabs-bar-example-accessibility',
+    component: fromExamples.TabsBarExampleAccessibilityComponent,
+  },
+  {
+    name: 'Tabs Bar Example Basic',
+    path: 'tabs-bar-example-basic',
+    component: fromExamples.TabsBarExampleBasicComponent,
   },
   {
     name: 'Text Field Wrapper Example IMask',

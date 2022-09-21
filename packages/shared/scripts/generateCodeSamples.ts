@@ -27,6 +27,21 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-carousel',
+      samples: [
+        [
+          componentsJsPath + '/carousel-example-events.html',
+          componentsAngularPath + '/carousel-example-events.component.ts',
+          componentsReactPath + '/CarouselExampleEvents.tsx',
+        ],
+        [
+          componentsJsPath + '/carousel-example-dynamic-slides.html',
+          componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
+          componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [
@@ -38,6 +53,26 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/inline-notification-example-action-button.html',
           componentsAngularPath + '/inline-notification-example-action-button.component.ts',
           componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-modal',
+      samples: [
+        [
+          componentsJsPath + '/modal-example-accessibility.html',
+          componentsAngularPath + '/modal-example-accessibility.component.ts',
+          componentsReactPath + '/ModalExampleAccessibility.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-scroller',
+      samples: [
+        [
+          componentsJsPath + '/scroller-example.html',
+          componentsAngularPath + '/scroller-example.component.ts',
+          componentsReactPath + '/ScrollerExample.tsx',
         ],
       ],
     },
@@ -113,9 +148,14 @@ const generateCodeSamples = (): void => {
       component: 'p-tabs-bar',
       samples: [
         [
-          componentsJsPath + '/tabs-bar-example.html',
-          componentsAngularPath + '/tabs-bar-example.component.ts',
-          componentsReactPath + '/TabsBarExample.tsx',
+          componentsJsPath + '/tabs-bar-example-basic.html',
+          componentsAngularPath + '/tabs-bar-example-basic.component.ts',
+          componentsReactPath + '/TabsBarExampleBasic.tsx',
+        ],
+        [
+          componentsJsPath + '/tabs-bar-example-accessibility.html',
+          componentsAngularPath + '/tabs-bar-example-accessibility.component.ts',
+          componentsReactPath + '/TabsBarExampleAccessibility.tsx',
         ],
       ],
     },

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getExtendedMarkupWithLoadFunction() should return markup with script including load() call 1`] = `
+<p-button>Some snippet</p-button>
+
+<script>
+  porscheDesignSystem.load();
+</script>
+`;
+
+exports[`getExtendedMarkupWithLoadFunction() should return script with load() call if markup contains script 1`] = `
+<p-button>SomeButton</p-button>
+<script>
+  porscheDesignSystem.load();
+
+  console.log()
+</script>
+`;
+
+exports[`getIndexHtmlMarkup() should return correct markup with externalDependencies 1`] = `
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
+    <script src="node_modules/imask/dist/imask.min.js"></script>
+    <style>
+      Some global styles
+    </style>
+  </head>
+
+  <body>
+    Some markup
+  </body>
+
+</html>
+`;
+
+exports[`getIndexHtmlMarkup() should return correct markup without externalDependencies 1`] = `
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
+
+    <style>
+      Some global styles
+    </style>
+  </head>
+
+  <body>
+    Some markup
+  </body>
+
+</html>
+`;

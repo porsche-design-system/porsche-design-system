@@ -1,0 +1,17 @@
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+
+<p-modal heading="Some Heading" open="false">
+  <p-text>Some Content</p-text>
+  <p-button-group class="footer">
+    <p-button>Save</p-button>
+    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+  </p-button-group>
+</p-modal>
+
+<script>
+  const modal = document.querySelector('p-modal');
+  modal.addEventListener('close', () => {
+    modal.open = false;
+  });
+  document.querySelector('p-button').addEventListener('click', () => (modal.open = true));
+</script>

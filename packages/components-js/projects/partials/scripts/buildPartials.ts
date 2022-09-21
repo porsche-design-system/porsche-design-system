@@ -1,5 +1,12 @@
 import '../../../../components/scripts/mockMutationObserver';
 
+// patch window usage in cross imports from utils of components package via skeleton styles
+// @ts-ignore
+global.window = { matchMedia: () => undefined };
+// patch document for supportsScrollBehavior in scrolling.ts
+// @ts-ignore
+global.document = { documentElement: { style: {} } };
+
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';

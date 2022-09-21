@@ -14,22 +14,22 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
     bottom: '100%',
     left: '50%',
-    transform: 'translateX(-50%)',
+    transform: 'translate3d(-50%, 0, 0)', // translate3d used to fix Safari shadow bug
   },
   right: {
     top: '50%',
     left: '100%',
-    transform: 'translateY(-50%)',
+    transform: 'translate3d(0, -50%, 0)',
   },
   bottom: {
     top: '100%',
     left: '50%',
-    transform: 'translateX(-50%)',
+    transform: 'translate3d(-50%, 0, 0)',
   },
   left: {
     top: '50%',
     right: '100%',
-    transform: 'translateY(-50%)',
+    transform: 'translate3d(0, -50%, 0)',
   },
 };
 
@@ -103,6 +103,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       right: spacerBox,
       bottom: spacerBox,
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
+      backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'

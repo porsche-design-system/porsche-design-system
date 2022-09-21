@@ -16,7 +16,7 @@ import { getButtonAriaAttributes } from './switch-utils';
 export type SwitchChangeEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
-  alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   stretch: AllowedTypes.breakpoint('boolean'),
   checked: AllowedTypes.boolean,
@@ -108,7 +108,7 @@ export class Switch {
           {...getButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
-          tabindex={this.tabbable ? 0 : -1}
+          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
           onClick={this.onSwitchClick}
         >
           <span class="toggle">

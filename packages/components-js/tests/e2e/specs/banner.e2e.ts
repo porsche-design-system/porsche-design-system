@@ -4,7 +4,7 @@ import {
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -113,7 +113,7 @@ describe('close', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-banner');
+    await reattachElementHandle(host);
 
     await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await closeButton.click();

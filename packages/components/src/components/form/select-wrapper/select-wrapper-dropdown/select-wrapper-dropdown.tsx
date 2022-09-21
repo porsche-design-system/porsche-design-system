@@ -5,6 +5,7 @@ import {
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
+  unobserveChildren,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -70,6 +71,16 @@ export class SelectWrapperDropdown {
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOneOfKind(this.host, ['pSelectWrapper']);
+    observeChildren(
+      this.selectRef,
+      () => {
+        this.setOptionMaps();
+        this.observeOptions(); // new option might have been added
+      },
+      // unfortunately we can't observe hidden property of option elements via observeProperties
+      // therefore we do it here via attribute
+      ['hidden', 'disabled', 'selected']
+    );
   }
 
   public componentWillRender(): void {
@@ -90,12 +101,13 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillLoad(): void {
-    this.observePropertiesAndChildren();
+    this.observeProperties();
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -201,21 +213,11 @@ export class SelectWrapperDropdown {
     );
   }
 
-  private observePropertiesAndChildren(): void {
+  private observeProperties(): void {
     this.setOptionMaps(); // initial
     this.observeOptions(); // initial
 
     observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
-    observeChildren(
-      this.selectRef,
-      () => {
-        this.setOptionMaps();
-        this.observeOptions(); // new option might have been added
-      },
-      // unfortunately we can't observe hidden property of option elements via observeProperties
-      // therefore we do it here via attribute
-      ['hidden']
-    );
   }
 
   private observeOptions(): void {
