@@ -26,7 +26,14 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize, fontFamily, fontBehavior, fontHyphenation } from '@porsche-design-system/utilities-v2';
+import {
+  fontSize,
+  fontFamily,
+  fontBehavior,
+  fontHyphenation,
+  fontStyle,
+  fontVariant,
+} from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -145,6 +152,8 @@ export const getLinkButtonPureStyles = (
       },
       span: {
         fontFamily,
+        fontStyle,
+        fontVariant,
         fontWeight,
         fontSize: 'inherit',
         ...fontBehavior,
@@ -152,6 +161,8 @@ export const getLinkButtonPureStyles = (
       },
       'div, ::slotted([slot=subline])': {
         fontFamily,
+        fontStyle,
+        fontVariant,
         margin: 0,
         ...fontBehavior,
         ...fontHyphenation,
