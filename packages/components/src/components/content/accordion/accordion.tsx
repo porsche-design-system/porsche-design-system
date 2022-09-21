@@ -24,7 +24,7 @@ import {
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
-  size: AllowedTypes.oneOf<AccordionSize>(ACCORDION_SIZES),
+  size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   heading: AllowedTypes.string,
   tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),

@@ -20,6 +20,7 @@ import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
 import { FORM_STATES } from '../form-state';
 import type { FormState } from '../form-state';
+import { addChangeListener } from './radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -56,6 +57,7 @@ export class RadioButtonWrapper {
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
+    addChangeListener(this.input);
     this.observeAttributes(); // once initially
   }
 
@@ -63,7 +65,7 @@ export class RadioButtonWrapper {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
-
+  
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.

@@ -44,6 +44,26 @@ export default [
     plugins: [typescript()],
   },
   {
+    // is needed for deep import of shared/data
+    input: 'src/data/index.ts',
+    external,
+    output: {
+      dir: 'dist/esm/data',
+      format: 'esm',
+    },
+    plugins: [typescript()],
+  },
+  {
+    // additional cjs bundle is needed for jest unit tests
+    input: 'src/data/index.ts',
+    external,
+    output: {
+      dir: 'dist/data',
+      format: 'cjs',
+    },
+    plugins: [typescript()],
+  },
+  {
     input: 'src/testing.ts',
     external,
     output: {

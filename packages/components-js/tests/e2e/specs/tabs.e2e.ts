@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
-  reattachElement,
+  reattachElementHandle,
   removeAttribute,
   selectNode,
   setContentWithDesignSystem,
@@ -258,7 +258,7 @@ describe('events', () => {
     await addEventListener(host, 'tabChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-tabs');
+    await reattachElementHandle(host);
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
@@ -370,10 +370,9 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 

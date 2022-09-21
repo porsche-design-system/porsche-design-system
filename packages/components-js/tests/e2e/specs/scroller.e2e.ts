@@ -2,15 +2,18 @@ import { ElementHandle, Page } from 'puppeteer';
 import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
+  getAttribute,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
   SCROLL_PERCENTAGE,
   selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
+import type { ScrollToPosition } from '../../../../components-angular/dist/components-wrapper/lib/types';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -20,18 +23,21 @@ type InitOptions = {
   amount?: number;
   isWrapped?: boolean;
   otherMarkup?: string;
-  tag?: 'a' | 'button';
+  tag?: 'a' | 'button' | 'span';
+  scrollToPosition?: ScrollToPosition;
 };
 
 const initScroller = async (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const content = `<p-scroller>
+  const content = `<p-scroller${
+    scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : ''
+  }>
   ${elements}
 </p-scroller>${otherMarkup}`;
 
@@ -41,6 +47,7 @@ const initScroller = async (opts?: InitOptions) => {
 const getHost = () => selectNode(page, 'p-scroller');
 const getAllButtons = () => page.$$('button');
 const getScrollArea = () => selectNode(page, 'p-scroller >>> .scroll-area');
+const getScrollWrapper = () => selectNode(page, 'p-scroller >>> .scroll-wrapper');
 const getActionContainers = async () => {
   const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
   const actionNext = await selectNode(page, 'p-scroller >>> .action-next');
@@ -70,6 +77,14 @@ const addNewButton = async () => {
     scroller.append(element);
   });
 };
+
+describe('scrolling', () => {
+  it('should have correct initial scroll position when scrollToPosition is set', async () => {
+    await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
+
+    expect(await getScrollLeft(await getScrollArea())).toBe(50);
+  });
+});
 
 describe('slotted content changes', () => {
   it('should show next button after adding a button', async () => {
@@ -257,6 +272,21 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
+  it('should work without unnecessary round trips on init when scrollToPosition is set', async () => {
+    await initScroller({ isWrapped: true, tag: 'a', scrollToPosition: { scrollPosition: 100 } });
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
   it('should work without unnecessary round trips on prop change', async () => {
     await initScroller({ amount: 3, tag: 'button' });
     const host = await getHost();
@@ -315,5 +345,19 @@ describe('accessibility', () => {
       message: 'After change',
       interestingOnly: false,
     });
+  });
+
+  it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has no focusable elements', async () => {
+    await initScroller({ isWrapped: true, tag: 'span' });
+    const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
+  });
+
+  it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has focusable elements', async () => {
+    await initScroller({ isWrapped: true });
+    const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
   });
 });

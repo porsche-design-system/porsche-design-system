@@ -1,15 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `
+exports[`getComponentCss() should return correct css for size: "medium" 1`] = `
 ":host {
   display: block;
-  position: relative !important;
-  height: 2rem !important;
 }
-::slotted(*:not(:last-child)) {
-  margin-right: 1em !important;
-}
-.item-wrapper {
+.scroller {
   display: flex;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }"
+`;
+
+exports[`getComponentCss() should return correct css for size: "small" 1`] = `
+":host {
+  display: block;
+}
+.scroller {
+  display: flex;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
+":host {
+  display: block;
+}
+.scroller {
+  display: flex;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+@media(min-width:480px) {
+  .scroller {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+@media(min-width:760px) {
+  .scroller {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media(min-width:1000px) {
+  .scroller {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+@media(min-width:1300px) {
+  .scroller {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media(min-width:1760px) {
+  .scroller {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+"
 `;

@@ -160,9 +160,9 @@ export class SelectWrapper {
             <PrefixedTagNames.pSelectWrapperDropdown
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
-              label={getSlotTextContent(this.host, 'label') || this.label}
-              message={getSlotTextContent(this.host, 'message') || this.message}
-              description={getSlotTextContent(this.host, 'description') || this.description}
+              label={this.label || getSlotTextContent(this.host, 'label')}
+              message={this.message || getSlotTextContent(this.host, 'message')}
+              description={this.description || getSlotTextContent(this.host, 'description')}
               state={this.state}
               direction={this.dropdownDirection}
               filter={this.filter}

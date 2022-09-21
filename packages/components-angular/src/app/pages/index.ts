@@ -29,6 +29,7 @@ import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { ButtonPureSkeletonComponent } from './button-pure-skeleton.component';
 import { ButtonSkeletonComponent } from './button-skeleton.component';
+import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { CheckboxWrapperSkeletonComponent } from './checkbox-wrapper-skeleton.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
@@ -61,6 +62,7 @@ import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { RadioButtonWrapperSkeletonComponent } from './radio-button-wrapper-skeleton.component';
+import { ScrollerComponent } from './scroller.component';
 import { SegmentedControlComponent } from './segmented-control.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SelectWrapperSkeletonComponent } from './select-wrapper-skeleton.component';
@@ -95,6 +97,7 @@ export const generatedPages = [
   ButtonPureComponent,
   ButtonPureSkeletonComponent,
   ButtonSkeletonComponent,
+  CarouselComponent,
   CheckboxWrapperComponent,
   CheckboxWrapperSkeletonComponent,
   ContentWrapperComponent,
@@ -127,6 +130,7 @@ export const generatedPages = [
   PopoverComponent,
   RadioButtonWrapperComponent,
   RadioButtonWrapperSkeletonComponent,
+  ScrollerComponent,
   SegmentedControlComponent,
   SelectWrapperComponent,
   SelectWrapperSkeletonComponent,
@@ -189,6 +193,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Button Skeleton',
     path: 'button-skeleton',
     component: ButtonSkeletonComponent,
+  },
+  {
+    name: 'Carousel',
+    path: 'carousel',
+    component: CarouselComponent,
   },
   {
     name: 'Checkbox Wrapper',
@@ -339,6 +348,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Radio Button Wrapper Skeleton',
     path: 'radio-button-wrapper-skeleton',
     component: RadioButtonWrapperSkeletonComponent,
+  },
+  {
+    name: 'Scroller',
+    path: 'scroller',
+    component: ScrollerComponent,
   },
   {
     name: 'Segmented Control',

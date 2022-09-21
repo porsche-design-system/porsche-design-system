@@ -4,13 +4,30 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
-  throwIfRootNodeIsNotOneOfKind,
+  validateProps,
+  AllowedTypes,
+  THEMES_EXTENDED_ELECTRIC,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
-import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
-import type { ThemeExtendedElectric } from '../../../types';
-import type { JssStyle } from 'jss';
+import {
+  getScrollPositionAfterPrevNextClick,
+  GRADIENT_COLOR_THEMES,
+  isScrollable,
+  SCROLL_INDICATOR_POSITIONS,
+} from './scroller-utils';
+import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
+import type { PropTypes, ThemeExtendedElectric } from '../../../types';
+import { parseJSONAttribute } from '../../../utils/json';
+
+const propTypes: PropTypes<typeof Scroller> = {
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  gradientColorScheme: AllowedTypes.oneOf<GradientColorTheme>(GRADIENT_COLOR_THEMES),
+  scrollToPosition: AllowedTypes.shape<ScrollToPosition>({
+    scrollPosition: AllowedTypes.number,
+    isSmooth: AllowedTypes.boolean,
+  }),
+  scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
+};
 
 @Component({
   tag: 'p-scroller',
@@ -28,8 +45,8 @@ export class Scroller {
   /** Scrolls the scroll area to the left either smooth or immediately */
   @Prop() public scrollToPosition?: ScrollToPosition;
 
-  // TODO: remove this property from generated readme and types
-  @Prop() public prevNextButtonJssStyle?: PrevNextButtonJssStyle;
+  /** Sets the vertical position of scroll indicator icon */
+  @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -38,7 +55,9 @@ export class Scroller {
   private scrollAreaElement: HTMLElement;
 
   @Watch('scrollToPosition')
-  public scrollToPositionHandler({ scrollPosition, isSmooth }: ScrollToPosition): void {
+  public scrollToPositionHandler(): void {
+    this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+    const { scrollPosition, isSmooth } = this.scrollToPosition;
     if (isSmooth) {
       scrollElementTo(this.scrollAreaElement, scrollPosition);
     } else {
@@ -47,44 +66,45 @@ export class Scroller {
   }
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
+    if (this.scrollAreaElement) {
+      this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+    }
   }
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
+    if (this.scrollToPosition) {
+      this.scrollToPositionHandler();
+    }
   }
 
   // should only update if scrollable
   public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    if (propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden)) {
-      return false;
-    }
-    return true;
+    return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.gradientColorScheme,
-      this.theme,
       this.isNextHidden,
       this.isPrevHidden,
-      this.prevNextButtonJssStyle as JssStyle
+      this.scrollIndicatorPosition,
+      this.theme
     );
   }
 
   public render(): JSX.Element {
     const renderPrevNextButton = (direction: Direction): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
-      // TODO: Maybe buttons have to be tabbable when scroller is used in stepper
       return (
         <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
-          <span class="gradient" />
           <PrefixedTagNames.pButtonPure
             class="button"
             type="button"
-            tabbable={false}
+            tabindex="-1"
             hide-label="true"
             size="inherit"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
@@ -101,7 +121,7 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper">
+          <div class="scroll-wrapper" tabindex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
             <slot />
             <div class="trigger" />
             <div class="trigger" />

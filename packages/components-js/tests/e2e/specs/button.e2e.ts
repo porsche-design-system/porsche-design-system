@@ -3,7 +3,6 @@ import {
   ClickableTests,
   expectA11yToMatchSnapshot,
   getActiveElementId,
-  getAttribute,
   getLifecycleStatus,
   getProperty,
   hasFocus,

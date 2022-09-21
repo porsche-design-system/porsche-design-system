@@ -4,16 +4,16 @@
   const getHeadAndData = async () => {
     const content = await fetch('assets/table-data-basic.js').then((res) => res.text());
     const [, headStr] = /const headBasic = ((.|\s)*?);/.exec(content) || [];
-    const head = eval(headStr);
+    const headBasic = eval(headStr);
 
     const [, dataStr] = /const dataBasic = ((.|\s)*?);/.exec(content) || [];
-    const data = eval(dataStr);
+    const dataBasic = eval(dataStr);
 
-    return { head, data };
+    return { headBasic, dataBasic };
   };
 
   (async () => {
-    const { head, data } = await getHeadAndData();
+    const { headBasic, dataBasic } = await getHeadAndData();
 
     const renderTableHeadRow = (items) =>
       [
@@ -37,8 +37,8 @@
         .join('');
 
     const markup = `
-  <p-table-head>${renderTableHeadRow(head)}</p-table-head>
-  <p-table-body>${renderTableBodyRows(data)}</p-table-body>`;
+  <p-table-head>${renderTableHeadRow(headBasic)}</p-table-head>
+  <p-table-body>${renderTableBodyRows(dataBasic)}</p-table-body>`;
 
     document.querySelector('p-table').innerHTML = markup;
   })();

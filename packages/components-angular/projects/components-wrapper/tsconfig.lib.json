@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/components-wrapper",
-    "target": "es2020",
+    "target": "es2015",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,

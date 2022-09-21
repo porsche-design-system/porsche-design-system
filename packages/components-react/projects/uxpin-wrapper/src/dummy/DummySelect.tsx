@@ -1,6 +1,7 @@
 import { ChangeEvent, FocusEvent } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
-type Props = {
+export type DummySelectProps = {
   disabled?: boolean;
   placeholder?: string;
   readOnly?: boolean;
@@ -18,7 +19,7 @@ type Props = {
 export const DummySelect = ({
   options = Array.from(Array(3)).map((_, i) => `Option ${i + 1}`),
   ...props
-}: Props): JSX.Element => {
+}: DummySelectProps): JSX.Element => {
   return (
     <select {...props}>
       {options.map((item, i) => (
@@ -27,3 +28,15 @@ export const DummySelect = ({
     </select>
   );
 };
+
+export const dummySelectPropsKeys = extractPropsKeys<DummySelectProps>({
+  disabled: null,
+  placeholder: null,
+  readOnly: null,
+  required: null,
+  value: null,
+  onChange: null,
+  onFocus: null,
+  onBlur: null,
+  options: null,
+});

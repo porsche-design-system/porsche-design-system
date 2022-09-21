@@ -18,7 +18,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact, getHighlightedCode, getHighlightedLanguage } from '@/utils';
+  import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
@@ -71,20 +71,8 @@
     }
 
     get highlightedMarkup(): string {
-      const markup = this.convertMarkup ? this.convert(this.markup) : this.markup;
+      const markup = this.convertMarkup ? convertMarkup(this.markup, this.framework) : this.markup;
       return getHighlightedCode(markup, this.framework);
-    }
-
-    private convert(markup: string): string {
-      markup = cleanMarkup(markup);
-      switch (this.framework) {
-        case 'angular':
-          return convertToAngular(markup);
-        case 'react':
-          return convertToReact(markup);
-        default:
-          return markup;
-      }
     }
   }
 </script>

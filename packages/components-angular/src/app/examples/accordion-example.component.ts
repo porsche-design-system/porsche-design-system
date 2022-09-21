@@ -5,16 +5,16 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
   selector: 'page-accordion-example',
   template: `
     <p-accordion
-      heading="Some Heading"
-      tag="h3"
+      [heading]="'Some Heading'"
+      [tag]="'h3'"
       [open]="isAccordion1Open"
       (accordionChange)="onAccordion1Change($event)"
     >
       <p-text>{{ content }}</p-text>
     </p-accordion>
     <p-accordion
-      heading="Some Heading"
-      tag="h3"
+      [heading]="'Some Heading'"
+      [tag]="'h3'"
       [open]="isAccordion2Open"
       (accordionChange)="onAccordion2Change($event)"
     >

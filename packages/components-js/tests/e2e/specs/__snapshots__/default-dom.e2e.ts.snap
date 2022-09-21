@@ -62,7 +62,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
-"<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
+"<button class=\\"root\\" type=\\"submit\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <span>
@@ -134,7 +134,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     color: #d5001c !important;
   }
 </style>
-<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -142,6 +142,27 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     </slot>
   </p-text>
 </button>"
+`;
+
+exports[`should have no basic DOM regression for p-carousel 1`] = `
+"<div class=\\"header\\">
+  <slot name=\\"heading\\">
+  </slot>
+  <div class=\\"nav\\">
+    <p-button-pure class=\\"btn hydrated\\">
+    </p-button-pure>
+    <p-button-pure class=\\"btn hydrated\\">
+    </p-button-pure>
+  </div>
+</div>
+<div id=\\"splide\\" class=\\"splide splide--slide splide--ltr splide--draggable is-active is-initialized\\" role=\\"region\\" aria-roledescription=\\"carousel\\">
+  <div class=\\"splide__track splide__track--slide splide__track--ltr splide__track--draggable\\" id=\\"splide-track\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" style=\\"padding-left: 0px; padding-right: 7%;\\">
+    <div class=\\"splide__list\\" id=\\"splide-list\\" role=\\"presentation\\" style=\\"transform: translateX(0px);\\">
+    </div>
+  </div>
+</div>
+<div class=\\"pagination\\">
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
@@ -411,6 +432,29 @@ exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
 </label>"
 `;
 
+exports[`should have no basic DOM regression for p-scroller 1`] = `
+"<div class=\\"root\\">
+  <div class=\\"scroll-area\\">
+    <div class=\\"scroll-wrapper\\">
+      <slot>
+      </slot>
+      <div class=\\"trigger\\">
+      </div>
+      <div class=\\"trigger\\">
+      </div>
+    </div>
+  </div>
+  <div class=\\"action-prev\\">
+    <p-button-pure class=\\"button hydrated\\" tabindex=\\"-1\\" hide-label=\\"true\\" aria-hidden=\\"true\\">
+      prev</p-button-pure>
+  </div>
+  <div class=\\"action-next\\">
+    <p-button-pure class=\\"button hydrated\\" tabindex=\\"-1\\" hide-label=\\"true\\" aria-hidden=\\"true\\">
+      next</p-button-pure>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-segmented-control 1`] = `
 "<slot>
 </slot>"
@@ -450,11 +494,9 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-stepper-horizontal 1`] = `
-"<p-scroller class=\\"hydrated\\">
-  <div class=\\"item-wrapper\\">
-    <slot>
-    </slot>
-  </div>
+"<p-scroller class=\\"scroller hydrated\\">
+  <slot>
+  </slot>
 </p-scroller>"
 `;
 
@@ -525,7 +567,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     <slot>
     </slot>
   </p-text>
-  <button aria-checked=\\"false\\" aria-labelledby=\\"label\\" type=\\"button\\" role=\\"switch\\" tabindex=\\"0\\">
+  <button aria-checked=\\"false\\" aria-labelledby=\\"label\\" type=\\"button\\" role=\\"switch\\">
     <span class=\\"toggle\\">
     </span>
   </button>
