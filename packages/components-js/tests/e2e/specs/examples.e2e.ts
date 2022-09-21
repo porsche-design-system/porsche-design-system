@@ -26,7 +26,7 @@ const routes: { name: string; path: string }[] = rawOptions
   .split('\n')
   .filter((x) => x.trim())
   .map((option) => {
-    const [, path, name] = /<option value="([a-z-]+)">([A-z ]+)<\/option>/.exec(option) || [];
+    const [, path, name] = /<option value="([a-z-]+)">([a-zA-Z ]+)<\/option>/.exec(option) || [];
     return { name, path };
   })
   .filter(({ path }) => path);
