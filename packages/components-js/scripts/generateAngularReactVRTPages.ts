@@ -99,7 +99,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
-      const styleRegEx = /\s*<style.*>((?:.|\s)*?)<\/style>\s*/;
+      const styleRegEx = /\s*<style.*>((?:.|\n)*?)<\/style>\s*/;
       let [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
@@ -107,7 +107,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.replace(/<!-- prettier-ignore -->/g, '');
 
       // extract and replace script if there is any
-      const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
+      const scriptRegEx = /\s*<script.*>((?:.|\n)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
@@ -128,7 +128,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
       // extract template if there is any, replacing is framework specific
-      const templateRegEx = /( *<template.*>(?:.|\s)*?<\/template>)/;
+      const templateRegEx = /( *<template.*>(?:.|\n)*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
 
       fileContent = fileContent.trim();
@@ -348,7 +348,7 @@ $2`
         if (isOverviewPage) {
           // wrap right column with PorscheDesignSystemProvider
           let i = 0;
-          fileContent = fileContent.replace(/\n  <div style="flex: 1">(?:.|\s)*?\n  <\/div>/g, (match) => {
+          fileContent = fileContent.replace(/\n  <div style="flex: 1">(?:.|\n)*?\n  <\/div>/g, (match) => {
             if (i === 1) {
               match = match
                 .replace(

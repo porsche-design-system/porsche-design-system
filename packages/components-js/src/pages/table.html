@@ -2,10 +2,10 @@
   <script>
     const getHeadAndData = async () => {
       const content = await fetch('assets/table-data-vrt.js').then((res) => res.text());
-      const [, headStr] = /const headVrt = ((.|\s)*?);/.exec(content) || [];
+      const [, headStr] = /const headVrt = ((.|\n)*?);/.exec(content) || [];
       const head = eval(headStr);
 
-      const [, dataStr] = /const dataVrt = ((.|\s)*?\));/.exec(content) || [];
+      const [, dataStr] = /const dataVrt = ((.|\n)*?\));/.exec(content) || [];
       const data = eval(dataStr);
 
       return { head, data };
