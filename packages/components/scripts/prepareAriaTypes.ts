@@ -6,7 +6,7 @@ const prepareAriaTypes = (): void => {
   const reactTypesFile = path.resolve(rootDirectory, '../../node_modules/@types/react/index.d.ts');
   const reactTypes = fs.readFileSync(reactTypesFile, 'utf-8');
 
-  const [, ariaRawTypes] = /interface AriaAttributes ({(?:.|\n)*?})/.exec(reactTypes) ?? [];
+  const [, ariaRawTypes] = /interface AriaAttributes ({(?:\s|\S)*?})/.exec(reactTypes) ?? [];
   const ariaTypes = `export type AriaAttributes = ${ariaRawTypes.replace(/ {8}/g, '  ').replace(/ {4}/g, '')};`;
   const content = ['/* Auto Generated Below */', "type Booleanish = boolean | 'true' | 'false';", ariaTypes].join(
     '\n\n'

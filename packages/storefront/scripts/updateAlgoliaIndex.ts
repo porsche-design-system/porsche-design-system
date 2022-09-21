@@ -25,9 +25,9 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
 
       return fs
         .readFileSync(path.resolve(__dirname, '../src', importPath), 'utf-8')
-        .replace(/```(?:.|\n)*?```/g, '') // remove code blocks
-        .replace(/(?<!`)<(script|style)(?:.|\n)*?<\/\1>(?!`)/g, '') // remove script and style tags
-        .replace(/<!--(?:.|\n)*?-->/g, '') // remove comments
+        .replace(/```(?:\s|\S)*?```/g, '') // remove code blocks
+        .replace(/(?<!`)<(script|style)(?:\s|\S)*?<\/\1>(?!`)/g, '') // remove script and style tags
+        .replace(/<!--(?:\s|\S)*?-->/g, '') // remove comments
         .replace(/(?<!`)<([\w-]+).*?>.*?<\/\1>(?!`)/g, ''); // remove vue code
     })
     .join('\n');

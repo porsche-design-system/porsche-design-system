@@ -36,9 +36,9 @@ export class InputParser {
     this.sharedTypes = bundleDtsContent
       .substr(0, bundleDtsContent.indexOf('export namespace Components'))
       // remove unused HTMLStencilElement interface
-      .replace(/.*interface HTMLStencilElement(.|\n)*?}\n/, '')
+      .replace(/.*interface HTMLStencilElement(\s|\S)*?}\n/, '')
       // remove unused EventEmitter interface
-      .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
+      .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
       .replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '')
       // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`

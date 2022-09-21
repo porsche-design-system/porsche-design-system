@@ -15,7 +15,7 @@ const styleOverrides = fs.readFileSync(
   path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css'),
   'utf8'
 );
-const [, rootStyles] = /(:root {(?:.|\n)+?})/.exec(styleOverrides) || [];
+const [, rootStyles] = /(:root {(?:\s|\S)+?})/.exec(styleOverrides) || [];
 
 it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
