@@ -1,7 +1,7 @@
 import { dependencies } from '../../../../components-js/package.json';
 import {
   getExternalDependencies,
-  getSharedImportConstants, GetStackblitzProjectAndOpenOptions,
+  getSharedImportConstants,
   isStableStorefrontRelease
 } from './helper';
 import type { StackblitzProjectDependencies } from '../../models';
