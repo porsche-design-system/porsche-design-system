@@ -62,7 +62,7 @@ it('should not trigger updates on non-default props', async () => {
     0
   );
   expect(status1.componentDidUpdate.all, 'status after first render componentDidUpdate: all').toBe(0);
-  expect(status1.componentDidLoad.all, 'status after first render componentDidLoad: all').toBe(3);
+  expect(status1.componentDidLoad.all, 'status after first render componentDidLoad: all').toBe(2);
 
   // Changes key attribute on PLinkPure
   await button.click();
@@ -72,5 +72,5 @@ it('should not trigger updates on non-default props', async () => {
 
   expect(status2.componentDidUpdate['p-link-pure'], 'status after key change componentDidUpdate: p-link-pure').toBe(0);
   expect(status2.componentDidUpdate.all, 'status after key change componentDidUpdate: all').toBe(0);
-  expect(status2.componentDidLoad.all, 'status after key change componentDidLoad: all').toBe(6);
+  expect(status2.componentDidLoad.all, 'status after key change componentDidLoad: all').toBe(4);
 });
