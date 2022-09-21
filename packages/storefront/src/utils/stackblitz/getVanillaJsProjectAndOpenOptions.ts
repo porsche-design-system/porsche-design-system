@@ -60,10 +60,8 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (): string => {
-  const script = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+export const getIndexJs = (): string => isStableStorefrontRelease() ? '' : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem`;
-  return isStableStorefrontRelease() ? '' : script;
 };
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
