@@ -2,7 +2,7 @@ import { font } from '../variables';
 import type { FontSizeLineHeight, FontWeight } from '../variables';
 import type * as CSS from 'csstype';
 
-const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
+const FONT_SIZE_REGEX = /^(\d+(?:\.\d+)?)(rem|px)$/;
 const REM_BASE = 16;
 
 export const pxToRem = (px: string): string => {
