@@ -78,9 +78,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[]): stri
     externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module)
   ).join(', ');
 
-  const ngSchemas = [
-    ...(isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA']),
-  ];
+  const ngSchemas = isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
