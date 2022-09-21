@@ -1,9 +1,10 @@
 import { dependencies } from '../../../../components-angular/package.json';
 import {
-  getExternalDependencies,
-  removeSharedImport,
+  convertImportPaths,
+  getExternalDependencies,  
   getSharedImportConstants,
-  isStableStorefrontRelease, convertImportPaths
+  isStableStorefrontRelease,
+  removeSharedImport
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
