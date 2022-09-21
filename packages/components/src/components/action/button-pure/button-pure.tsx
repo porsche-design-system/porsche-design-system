@@ -151,8 +151,8 @@ export class ButtonPure {
         this.iconTag.style.width = size;
         this.iconTag.style.height = size;
       });
-      setLineHeightOnSizeInherit(this.size, this.labelTag);
     }
+    setLineHeightOnSizeInherit(this.size, this.labelTag);
   }
 
   public render(): JSX.Element {
