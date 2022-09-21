@@ -2,10 +2,10 @@ import { devDependencies, dependencies } from '../../../../components-react/pack
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
 import {
   convertImportPaths,
-  getSharedImportConstants,
   getExternalDependencies,
-  removeSharedImport,
-  isStableStorefrontRelease
+  getSharedImportConstants,
+  isStableStorefrontRelease,
+  removeSharedImport
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
