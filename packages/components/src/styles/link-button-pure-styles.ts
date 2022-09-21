@@ -163,6 +163,7 @@ export const getLinkButtonPureStyles = (
         fontFamily,
         fontStyle,
         fontVariant,
+        fontWeight: 400, // regular
         margin: 0,
         ...fontBehavior,
         ...fontHyphenation,

@@ -21,6 +21,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -328,6 +329,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -445,6 +447,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -541,6 +544,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -681,6 +685,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -868,6 +873,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -985,6 +991,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1081,6 +1088,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1197,6 +1205,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1313,6 +1322,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -1430,6 +1440,7 @@ div, ::slotted([slot=subline]) {
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-style: normal;
   font-variant: normal;
+  font-weight: 400;
   margin: 0;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
