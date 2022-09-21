@@ -1,6 +1,7 @@
 import { ButtonPure } from './button-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
+import * as lineHeightUtils from '../../../utils/typography/setLineHeightOnSizeInherit';
 
 jest.mock('../../../utils/button-handling');
 
@@ -36,5 +37,24 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
 
     expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
+  });
+
+  it('should call setLineHeightOnSizeInherit() with correct parameters when size="inherit"', () => {
+    const component = new ButtonPure();
+    component.host = document.createElement('p-button-pure');
+    const spySetLineHeight = jest.spyOn(lineHeightUtils, 'setLineHeightOnSizeInherit').mockImplementation();
+
+    component.componentDidLoad();
+    expect(spySetLineHeight).toBeCalledTimes(0);
+
+    component.size = 'inherit';
+    component.host.style.fontSize = '48px';
+    component['labelTag'] = document.createElement('span');
+    component['sublineTag'] = document.createElement('div');
+    component.componentDidLoad();
+
+    expect(spySetLineHeight.mock.calls[0]).toEqual([component.size, component['labelTag']]);
+    expect(spySetLineHeight.mock.calls[1]).toEqual([component.size, component['sublineTag']]);
+    expect(spySetLineHeight).toBeCalledTimes(2);
   });
 });
