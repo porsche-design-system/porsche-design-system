@@ -58,7 +58,7 @@ describe('replaceSharedImportsWithConstants()', () => {
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
     expect(spy).toBeCalledWith(
-      /(export const )[A-z]+( = \(\): JSX.Element => {)/,
+      /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/,
       `${mockedGetSharedImportConstants}$1App$2`
     );
   });

@@ -15,7 +15,7 @@ import type {
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
 
-const classNameRegex = /(export class )[A-z]+( {)/;
+const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);

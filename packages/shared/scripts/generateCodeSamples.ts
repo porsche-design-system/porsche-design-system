@@ -190,7 +190,7 @@ const generateCodeSamples = (): void => {
 
             if (framework === 'vanilla-js') {
               // remove getHeadAndData() helper function
-              fileContent = fileContent.replace(/\s\sconst getHeadAndData = (.|\s)*?return(.*\s){3}/, '');
+              fileContent = fileContent.replace(/\s\sconst getHeadAndData = (\s|\S)*?return(.*\s){3}/, '');
             }
 
             return { [framework]: fileContent };

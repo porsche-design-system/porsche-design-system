@@ -69,7 +69,7 @@ describe('replaceSharedImportsWithConstants()', () => {
       /(@Component\({\n\s{2}selector: ')[a-z-]+/,
       `${mockedsetSharedImportConstants}$1porsche-design-system-app`
     );
-    expect(spy).toHaveBeenNthCalledWith(2, /(export class )[A-z]+( {)/, '$1AppComponent$2');
+    expect(spy).toHaveBeenNthCalledWith(2, /(export class )[a-zA-Z]+( {)/, '$1AppComponent$2');
   });
 
   it('should return correct string without sharedImportKeys', () => {

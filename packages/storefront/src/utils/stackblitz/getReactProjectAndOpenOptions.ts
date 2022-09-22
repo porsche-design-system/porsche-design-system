@@ -16,7 +16,7 @@ import type {
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
 
-const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
+const componentNameRegex = /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
@@ -26,7 +26,7 @@ export const replaceSharedImportsWithConstants = (markup: string, sharedImportKe
 
 export const extendMarkupWithAppComponent = (markup: string): string => {
   const convertedMarkup = convertMarkup(markup, 'react').replace(/(\n)/g, '$1      ');
-  const reactComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[A-z]+)/g)) // Returns array of all matches and captured groups
+  const reactComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[a-zA-Z]+)/g)) // Returns array of all matches and captured groups
     .map(([, reactComponentName]) => reactComponentName)
     .filter((reactComponentName, idx, arr) => arr.findIndex((t) => t === reactComponentName) === idx) // Remove duplicates
     .join(', ');
