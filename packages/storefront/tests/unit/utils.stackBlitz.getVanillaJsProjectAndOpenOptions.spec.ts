@@ -79,7 +79,7 @@ describe('replaceSharedAsyncFunctionWithConstants()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValue(getSharedImportConstantsMock);
 
     expect(replaceSharedAsyncFunctionWithConstants(markup, sharedImportKeys)).toBe(replaceMockValue);
-    expect(spy).toBeCalledWith(/const { .* } = await [A-z]+\(\);/, getSharedImportConstantsMock);
+    expect(spy).toBeCalledWith(/const { .* } = await [a-zA-Z]+\(\);/, getSharedImportConstantsMock);
   });
 
   it('should return unmodified markup parameter if regex does not match', () => {

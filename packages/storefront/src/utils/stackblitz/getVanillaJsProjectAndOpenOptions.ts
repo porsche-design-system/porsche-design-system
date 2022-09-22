@@ -11,7 +11,7 @@ export const replaceSharedAsyncFunctionWithConstants = (
   markup: string,
   sharedImportKeys: SharedImportKey[]
 ): string => {
-  return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
+  return markup.replace(/const { .* } = await [a-zA-Z]+\(\);/, getSharedImportConstants(sharedImportKeys));
 };
 
 export const getExtendedMarkupWithLoadFunction = (markup: string): string => {

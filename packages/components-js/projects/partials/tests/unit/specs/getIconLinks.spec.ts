@@ -5,8 +5,8 @@ import { paramCase } from 'change-case';
 import { render } from '@testing-library/react';
 
 const hash = '[a-z0-9]{32}';
-const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
-const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/icons';
+const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system\\/icons';
+const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche\\.cn\\/porsche-design-system\\/icons';
 
 jest.mock('../../../src/shared');
 
