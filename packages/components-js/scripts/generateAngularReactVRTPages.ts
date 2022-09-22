@@ -107,7 +107,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.replace(/<!-- prettier-ignore -->/g, '');
 
       // extract and replace script if there is any
-      const scriptRegEx = /\s*<script[\s\S]*?>((?:\s|\S)*?)<\/script>\s*/i;
+      const scriptRegEx = /\s*<script\b[^>]*>((?:\s|\S)*?)<\/script\b[^>]*>\s*/i;
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
