@@ -4,6 +4,8 @@ node_modules
 /scripts/algoliaRecords.json
 /src/lib
 
+/public/porsche-design-system
+
 /tests/e2e/results
 /tests/vrt/results
 
