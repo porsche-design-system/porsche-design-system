@@ -30,8 +30,8 @@
       const currentUrl = getAnchorLink('').slice(0, -1);
 
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
-        const { innerText } = h2;
-        const id = paramCase(innerText);
+        const { textContent } = h2;
+        const id = paramCase((textContent || '').replace(/#$/g, ''));
         const href = currentUrl + '#' + id;
 
         // add anchor link to headline
