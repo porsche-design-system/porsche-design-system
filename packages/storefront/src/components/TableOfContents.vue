@@ -30,8 +30,8 @@
       const currentUrl = getAnchorLink('').slice(0, -1);
 
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
-        const { textContent } = h2;
-        const id = paramCase((textContent || '').replace(/#$/g, ''));
+        const { innerText } = h2;
+        const id = paramCase(innerText);
         const href = currentUrl + '#' + id;
 
         // add anchor link to headline
@@ -41,7 +41,7 @@
         (link as any).innerText = '#';
         (link as any).title = 'Link to this heading';
         (link as any).icon = 'none';
-        (link as any).href = href;
+        (link as any).href = encodeURI(href);
         /* eslint-enable */
         link.addEventListener('click', (e) => {
           this.onLinkClick({ title: '', href }, e);
