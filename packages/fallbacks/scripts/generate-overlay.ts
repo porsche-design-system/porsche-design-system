@@ -11,7 +11,7 @@ const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
 
   const browserOverlayMarkup =
-    "<p>${content.replace(/<br>/g,'<br class=show--at-768-ilb>')}</p><div class=show--at-768>${[chrome, firefox, edge].map((link) => link.replace(/>/, '><i></i>')).join('')}</div>";
+    "<p>${content.replace(/<br>/g,'<br class=show--at-768-ilb>')}</p><div class=show--at-768>${[chrome, firefox, edge].join('')}</div>";
 
   const defaultOverlayMarkup = '<p>${content}</p>';
 
@@ -132,7 +132,8 @@ ${
       margin: 0;
     }
 
-    #ID > div > div a i {
+    #ID > div > div a::before {
+      content: '';
       display: block;
       height: 100px;
       width: 100px;
@@ -141,11 +142,11 @@ ${
       margin: 0 auto 1rem;
     }
 
-    #ID > div > div a:nth-child(3) i {
+    #ID > div > div a:nth-child(3)::before {
       background-position: -100px 0;
     }
 
-    #ID > div > div a:nth-child(2) i {
+    #ID > div > div a:nth-child(2)::before {
       background-position: -200px 0;
     }`
        : ''
