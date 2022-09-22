@@ -122,9 +122,11 @@ export const buildResponsiveStyles = <T>(
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           getJssStyle(value.base, ...additionalArguments) as Styles
         )
-    : (getJssStyle(value, ...additionalArguments) as Styles);
+    : // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      (getJssStyle(value, ...additionalArguments) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
