@@ -28,15 +28,17 @@ import {
 import { fontSize } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 
-const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
+const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize, hasIcon = true): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& $icon': {
-        width: '1.5em',
-        height: '1.5em',
-      },
+      ...(hasIcon && {
+        '& $icon': {
+          width: '1.5em',
+          height: '1.5em',
+        },
+      }),
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
@@ -53,11 +55,13 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
 
     return {
       ...generateTypeScale(size),
-      '& .icon': {
-        // TODO: should be referenced
-        width: lineHeightWithUnit,
-        height: lineHeightWithUnit,
-      },
+      ...(hasIcon && {
+        '& .icon': {
+          // TODO: should be referenced
+          width: lineHeightWithUnit,
+          height: lineHeightWithUnit,
+        },
+      }),
       '& ~ .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
@@ -186,7 +190,7 @@ export const getLinkButtonPureStyles = (
           buildResponsiveStyles(stretch, (stretched: boolean) => ({
             justifyContent: stretched ? 'space-between' : 'flex-start',
           })),
-        buildResponsiveStyles(size, getSizeJssStyle)
+        buildResponsiveStyles(size, getSizeJssStyle, hasIcon)
       ),
     },
     ...(hasIcon && {
