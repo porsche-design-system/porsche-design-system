@@ -4,16 +4,8 @@
     :theme="theme"
     :icon-source="stackBlitzIcon"
     :disabled="framework === 'shared'"
-    @click="
-      openInStackBlitz({
-        markup,
-        framework,
-        theme,
-        externalDependencies: externalStackBlitzDependencies,
-        backgroundColorScheme: colorScheme,
-        sharedImportKeys,
-      })
-    "
+    :loading="isLoading"
+    @click="onButtonClick()"
     >Edit in StackBlitz
   </p-button>
 </template>
@@ -25,17 +17,66 @@
   import type { ColorScheme, Framework, Theme } from '@/models';
   import { openInStackBlitz } from '@/utils';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
+  import { isStableStorefrontRelease } from '@/utils/stackblitz/helper';
+  import type { PorscheDesignSystemBundle, PorscheDesignSystemBundleMap } from '@/utils/stackblitz/types';
+
+  const porscheDesignSystemBundleMap: PorscheDesignSystemBundleMap = {};
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
-    @Prop() public externalStackBlitzDependencies!: ExternalDependency[];
-    @Prop() public sharedImportKeys!: SharedImportKey[];
+    @Prop({ default: [] }) public externalStackBlitzDependencies!: ExternalDependency[];
+    @Prop({ default: [] }) public sharedImportKeys!: SharedImportKey[];
 
+    isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
-    openInStackBlitz = openInStackBlitz;
+
+    public async onButtonClick() {
+      this.isLoading = true;
+      openInStackBlitz({
+        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework),
+        markup: this.markup,
+        framework: this.framework,
+        theme: this.theme,
+        externalDependencies: this.externalStackBlitzDependencies,
+        backgroundColorScheme: this.colorScheme,
+        sharedImportKeys: this.sharedImportKeys,
+      });
+      this.isLoading = false;
+    }
+
+    private static async porscheDesignSystemBundle(
+      framework: Exclude<Framework, 'shared'>
+    ): Promise<PorscheDesignSystemBundle> {
+      switch (framework) {
+        case 'vanilla-js':
+          return await CodeEditor.fetchPorscheDesignSystemBundle('js');
+        case 'angular':
+          return {
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular')),
+          };
+        case 'react':
+          return {
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react')),
+          };
+      }
+    }
+
+    private static async fetchPorscheDesignSystemBundle(
+      framework: keyof PorscheDesignSystemBundleMap
+    ): Promise<PorscheDesignSystemBundle> {
+      if (!isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
+        // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
+        const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
+        porscheDesignSystemBundleMap[framework] = (await response.json()) as PorscheDesignSystemBundle;
+      }
+
+      return porscheDesignSystemBundleMap[framework] || {};
+    }
   }
 </script>

@@ -13,22 +13,53 @@ exports[`extendMarkupWithAppComponent() should return correct markup 1`] = `
 export class AppComponent {}"
 `;
 
-exports[`getAppModuleTsMarkup() should return correct markup for [] as externalDependencies 1`] = `
+exports[`getAppModuleTs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup for [] as externalDependencies 1`] = `
+"import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import * as porscheDesignSystem from './../../@porsche-design-system/components-js';
+import { AppComponent } from './app.component';
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {constructor () { porscheDesignSystem.load(); }}"
+`;
+
+exports[`getAppModuleTs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with externalDependencies 1`] = `
+"import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import * as porscheDesignSystem from './../../@porsche-design-system/components-js';
+import { AppComponent } from './app.component';
+import { IMaskModule } from 'angular-imask';
+@NgModule({
+  imports: [BrowserModule, FormsModule, IMaskModule],
+  declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {constructor () { porscheDesignSystem.load(); }}"
+`;
+
+exports[`getAppModuleTs() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup for [] as externalDependencies 1`] = `
 "import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
-
 @NgModule({
   imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
   declarations: [AppComponent],
+  schemas: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}"
 `;
 
-exports[`getAppModuleTsMarkup() should return correct markup with externalDependencies 1`] = `
+exports[`getAppModuleTs() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with externalDependencies 1`] = `
 "import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -36,9 +67,39 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 import { IMaskModule } from 'angular-imask';
 @NgModule({
-  imports: [BrowserModule, FormsModule, IMaskModule, PorscheDesignSystemModule],
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule, IMaskModule],
   declarations: [AppComponent],
+  schemas: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}"
+`;
+
+exports[`getIndexHtml() should return correct markup with styles 1`] = `
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Angular</title>
+    <style>
+      some styles
+    </style>
+  </head>
+
+  <body>
+    <porsche-design-system-app></porsche-design-system-app>
+  </body>
+
+</html>
+`;
+
+exports[`getMainTs() should return correct markup 1`] = `
+"import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js/dist/zone';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));"
 `;

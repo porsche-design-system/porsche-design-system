@@ -1,9 +1,4 @@
-import {
-  getFontFaceStylesheet,
-  getInitialStyles,
-  getLoaderScript,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-js/partials';
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
 
