@@ -1227,6 +1227,63 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }"
 `;
 
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+":host {
+  position: relative;
+  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  justify-content: flex-start;
+  font-size: inherit;
+  line-height: inherit;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+.root:focus::before {
+  outline-color: currentColor;
+}
+.root:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+.root:active {
+  color: #d5001c;
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
+`;
+
 exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
@@ -1276,10 +1333,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
@@ -1288,6 +1341,158 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   font-size: 1rem;
   margin-left: 1.5em;
 }
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+":host {
+  position: relative;
+  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  justify-content: flex-start;
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+.root:focus::before {
+  outline-color: currentColor;
+}
+.root:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+.root:active {
+  color: #d5001c;
+}
+.root ~ .subline {
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+}
+.root ~ .subline::before {
+  font-size: 0.75rem;
+  margin-left: 1.6666666667em;
+}
+@media(min-width:480px) {
+  .root {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .root .icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .root ~ .subline {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .root ~ .subline::before {
+    font-size: 1rem;
+    margin-left: 1.5em;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  .root .icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .root ~ .subline {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .root ~ .subline::before {
+    font-size: 1.5rem;
+    margin-left: 1.5em;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
+  }
+  .root .icon {
+    width: 1.3333333333em;
+    height: 1.3333333333em;
+  }
+  .root ~ .subline {
+    font-size: 1.875rem;
+    line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 2.25rem;
+    margin-left: 1.3333333333em;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    font-size: 3.25rem;
+    line-height: 1.2307692308;
+  }
+  .root .icon {
+    width: 1.2307692308em;
+    height: 1.2307692308em;
+  }
+  .root ~ .subline {
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 3.25rem;
+    margin-left: 1.2307692308em;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .root icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     color: #d5001c;
