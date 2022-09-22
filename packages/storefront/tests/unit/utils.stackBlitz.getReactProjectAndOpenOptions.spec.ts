@@ -3,7 +3,10 @@ import {
   getDependencies,
   getReactProjectAndOpenOptions,
   replaceSharedImportsWithConstants,
-  dependencyMap, getIndexTsx, getTsconfigJson, getAppTsx,
+  dependencyMap,
+  getIndexTsx,
+  getTsconfigJson,
+  getAppTsx,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
@@ -99,26 +102,38 @@ describe('extendMarkupWithAppComponent()', () => {
 describe('getAppTsx()', () => {
   it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
-    const extendMarkupWithAppComponentSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
+    const extendMarkupWithAppComponentSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'extendMarkupWithAppComponent'
+    );
 
     getAppTsx('some markup', true, []);
 
-    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).toHaveBeenCalledWith('some markup', []);
-    expect(extendMarkupWithAppComponentSpy).not.toHaveBeenCalled();
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
+    expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
-    const extendMarkupWithAppComponentSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
+    const extendMarkupWithAppComponentSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'extendMarkupWithAppComponent'
+    );
 
     getAppTsx('some markup', false, []);
 
-    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).not.toHaveBeenCalled();
-    expect(extendMarkupWithAppComponentSpy).toHaveBeenCalledWith('some markup');
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
+    expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
   });
 });
 
@@ -127,7 +142,7 @@ describe('getIndexTsx()', () => {
     const spy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
 
     expect(getIndexTsx()).toMatchSnapshot();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toBeCalledTimes(1);
   });
 });
 
@@ -208,7 +223,11 @@ describe('getReactProjectAndOpenOptions()', () => {
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(isStableStorefrontReleaseSpy).toBeCalled();
-    expect(getAppTsxSpy).toBeCalledWith(stackBlitzFrameworkOpts.markup, false, stackBlitzFrameworkOpts.sharedImportKeys);
+    expect(getAppTsxSpy).toBeCalledWith(
+      stackBlitzFrameworkOpts.markup,
+      false,
+      stackBlitzFrameworkOpts.sharedImportKeys
+    );
     expect(getIndexTsxSpy).toBeCalled();
     expect(getTsconfigJsonSpy).toBeCalled();
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);

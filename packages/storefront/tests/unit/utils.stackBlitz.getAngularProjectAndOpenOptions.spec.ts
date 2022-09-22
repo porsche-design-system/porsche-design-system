@@ -1,13 +1,13 @@
 import {
+  dependencyMap,
   extendMarkupWithAppComponent,
   getDependencies,
   getAngularProjectAndOpenOptions,
   getAppModuleTs,
+  getAppComponentTs,
   getIndexHtml,
   getMainTs,
-  dependencyMap,
   replaceSharedImportsWithConstants,
-  getAppComponentTs,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
 
@@ -119,26 +119,38 @@ describe('extendMarkupWithAppComponent()', () => {
 describe('getAppComponentTs()', () => {
   it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
-    const extendMarkupWithAppComponentSpy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getAngularProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
+    const extendMarkupWithAppComponentSpy = jest.spyOn(
+      getAngularProjectAndOpenOptionsUtils,
+      'extendMarkupWithAppComponent'
+    );
 
     getAppComponentTs('some markup', true, []);
 
-    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).toHaveBeenCalledWith('some markup', []);
-    expect(extendMarkupWithAppComponentSpy).not.toHaveBeenCalled();
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
+    expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
-    const extendMarkupWithAppComponentSpy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getAngularProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
+    const extendMarkupWithAppComponentSpy = jest.spyOn(
+      getAngularProjectAndOpenOptionsUtils,
+      'extendMarkupWithAppComponent'
+    );
 
     getAppComponentTs('some markup', false, []);
 
-    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).not.toHaveBeenCalled();
-    expect(extendMarkupWithAppComponentSpy).toHaveBeenCalledWith('some markup');
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
+    expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
   });
 });
 
@@ -262,7 +274,11 @@ describe('getAngularProjectAndOpenOptions()', () => {
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(isStableStorefrontReleaseSpy).toBeCalled();
-    expect(getAppComponentTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.markup, false, stackBlitzFrameworkOpts.sharedImportKeys);
+    expect(getAppComponentTsSpy).toBeCalledWith(
+      stackBlitzFrameworkOpts.markup,
+      false,
+      stackBlitzFrameworkOpts.sharedImportKeys
+    );
     expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
     expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.globalStyles);
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
