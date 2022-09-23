@@ -14,7 +14,7 @@ export default {
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
     resolve(),
     modify({
-      find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.(?:.|\s)*?`\);/,
+      find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.(?:\s|\S)*?`\);/,
       replace: '',
     }),
     // patch conditions into build to allow opt out of CDN requests
@@ -30,7 +30,7 @@ export default {
     }),
     modify({
       // marque assets
-      find: /(const picture =)( (?:.|\s)*?;)/,
+      find: /(const picture =)( (?:\s|\S)*?;)/,
       replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),
     terser({

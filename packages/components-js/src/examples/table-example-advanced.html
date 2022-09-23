@@ -7,10 +7,10 @@
 <script>
   const getHeadAndData = async () => {
     const content = await fetch('assets/table-data-advanced.js').then((res) => res.text());
-    const [, headStr] = /const headAdvanced = ((.|\s)*?);/.exec(content) || [];
+    const [, headStr] = /const headAdvanced = ((\s|\S)*?);/.exec(content) || [];
     const headAdvanced = eval(headStr);
 
-    const [, dataStr] = /const dataAdvanced = ((.|\s)*?);/.exec(content) || [];
+    const [, dataStr] = /const dataAdvanced = ((\s|\S)*?);/.exec(content) || [];
     const dataAdvanced = eval(dataStr);
 
     return { headAdvanced, dataAdvanced };

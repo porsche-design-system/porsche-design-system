@@ -159,7 +159,7 @@ describe('setBarStyle()', () => {
       undefined
     );
 
-    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(spy).toBeCalledWith(barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
     expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0px;');
   });
@@ -177,7 +177,7 @@ describe('setBarStyle()', () => {
       1
     );
 
-    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(spy).toBeCalledWith(barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
     expect(barElement.style.cssText).toBe('transform: translate3d(2.34375rem,0,0); width: 0px;');
   });
@@ -195,7 +195,7 @@ describe('setBarStyle()', () => {
       1
     );
 
-    expect(spy).toHaveBeenCalledWith(0, 1, barElement);
+    expect(spy).toBeCalledWith(0, 1, barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
     expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0.9375rem;');
   });
