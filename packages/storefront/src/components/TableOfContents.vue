@@ -41,7 +41,7 @@
         (link as any).innerText = '#';
         (link as any).title = 'Link to this heading';
         (link as any).icon = 'none';
-        (link as any).href = href;
+        (link as any).href = encodeURI(href);
         /* eslint-enable */
         link.addEventListener('click', (e) => {
           this.onLinkClick({ title: '', href }, e);

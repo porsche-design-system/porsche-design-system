@@ -20,3 +20,52 @@ export const App = (): JSX.Fragment => {
   );
 }"
 `;
+
+exports[`getIndexTsx() should return correct values 1`] = `
+"import { StrictMode } from 'react';
+import * as ReactDOMClient from 'react-dom/client';
+import { App } from './App';
+import { PorscheDesignSystemProvider } from './@porsche-design-system/components-react';
+import './style.css';
+
+const rootElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <PorscheDesignSystemProvider>
+      <App />
+    </PorscheDesignSystemProvider>
+  </StrictMode>
+);"
+`;
+
+exports[`getTsconfigJson() should return correct values 1`] = `
+"{
+  \\"compilerOptions\\": {
+    \\"target\\": \\"es6\\",
+    \\"lib\\": [
+      \\"dom\\",
+      \\"dom.iterable\\",
+      \\"esnext\\"
+    ],
+    \\"allowJs\\": true,
+    \\"skipLibCheck\\": true,
+    \\"esModuleInterop\\": true,
+    \\"allowSyntheticDefaultImports\\": true,
+    \\"strict\\": true,
+    \\"strictNullChecks\\": false,
+    \\"forceConsistentCasingInFileNames\\": true,
+    \\"module\\": \\"esnext\\",
+    \\"moduleResolution\\": \\"node\\",
+    \\"resolveJsonModule\\": true,
+    \\"isolatedModules\\": true,
+    \\"noEmit\\": true,
+    \\"jsx\\": \\"react-jsx\\",
+    \\"noFallthroughCasesInSwitch\\": true
+  },
+  \\"include\\": [
+    \\"src\\"
+  ]
+}"
+`;

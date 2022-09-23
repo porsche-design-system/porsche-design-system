@@ -19,7 +19,7 @@ export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
     ? markup
         // add dark theme attribute if component supports it
         .replace(/(<[pP][\w-]+)/g, (m, $tag) => {
-          return getComponentMeta(paramCase($tag.replace('<', '')) as TagName)?.isThemeable
+          return getComponentMeta(paramCase($tag.replace(/</g, '')) as TagName)?.isThemeable
             ? `${$tag} theme="dark"`
             : $tag;
         })
