@@ -4,7 +4,7 @@ exports[`formatArrayOutput() should return formatted string for array 1`] = `"['
 
 exports[`formatObjectOutput() should return formatted string for boolean 1`] = `"true"`;
 
-exports[`formatObjectOutput() should return formatted string for object 1`] = `"{ id: 1, value: \\"string\\", active: true, \\"aria-label\\": \\"label\\", optional?: true }"`;
+exports[`formatObjectOutput() should return formatted string for object 1`] = `"{ id: 1, value: "string", active: true, "aria-label": "label", optional?: true }"`;
 
 exports[`formatObjectOutput() should return formatted string for string 1`] = `"string"`;
 

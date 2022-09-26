@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should return correct css for child: false, state: false, theme: dark and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "color": "#fff",
@@ -21,7 +21,7 @@ Object {
 `;
 
 exports[`should return correct css for child: false, state: false, theme: dark and additionalDefaultJssStyle: %o 2`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "color": "#fff",
@@ -41,7 +41,7 @@ Object {
 `;
 
 exports[`should return correct css for child: false, state: true, theme: dark and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",
@@ -62,7 +62,7 @@ Object {
 `;
 
 exports[`should return correct css for child: false, state: true, theme: light and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",
@@ -83,8 +83,8 @@ Object {
 `;
 
 exports[`should return correct css for child: true, state: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: light and additionalDefaultJssStyle: %o 1`] = `
-Object {
-  "@media(min-width:1000px)": Object {
+{
+  "@media(min-width:1000px)": {
     "clip": "auto",
     "clipPath": "none",
     "height": "auto",
@@ -95,7 +95,7 @@ Object {
     "whiteSpace": "normal",
     "width": "auto",
   },
-  "@media(min-width:1300px)": Object {
+  "@media(min-width:1300px)": {
     "border": "0",
     "clip": "rect(1px,1px,1px,1px)",
     "clipPath": "inset(50%)",
@@ -107,7 +107,7 @@ Object {
     "whiteSpace": "nowrap",
     "width": "auto",
   },
-  "@media(min-width:1760px)": Object {
+  "@media(min-width:1760px)": {
     "clip": "auto",
     "clipPath": "none",
     "height": "auto",
@@ -118,7 +118,7 @@ Object {
     "whiteSpace": "normal",
     "width": "auto",
   },
-  "@media(min-width:480px)": Object {
+  "@media(min-width:480px)": {
     "clip": "auto",
     "clipPath": "none",
     "height": "auto",
@@ -129,7 +129,7 @@ Object {
     "whiteSpace": "normal",
     "width": "auto",
   },
-  "@media(min-width:760px)": Object {
+  "@media(min-width:760px)": {
     "border": "0",
     "clip": "rect(1px,1px,1px,1px)",
     "clipPath": "inset(50%)",
@@ -161,7 +161,7 @@ Object {
 `;
 
 exports[`should return correct css for child: true, state: false, theme: light and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "color": "#96989a",
@@ -181,7 +181,7 @@ Object {
 `;
 
 exports[`should return correct css for child: true, state: false, theme: light and additionalDefaultJssStyle: %o 2`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "color": "#96989a",
@@ -201,7 +201,7 @@ Object {
 `;
 
 exports[`should return correct css for child: true, state: true, theme: dark and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",
@@ -222,7 +222,7 @@ Object {
 `;
 
 exports[`should return correct css for child: true, state: true, theme: light and additionalDefaultJssStyle: %o 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",
