@@ -16,7 +16,7 @@ a::-moz-focus-inner {
   border: 0;
 }
 a::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -59,7 +59,7 @@ a::-moz-focus-inner {
   border: 0;
 }
 a::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -109,7 +109,7 @@ a::-moz-focus-inner {
   border: 0;
 }
 a::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

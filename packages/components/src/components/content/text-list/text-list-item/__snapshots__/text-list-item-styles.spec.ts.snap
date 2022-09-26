@@ -10,7 +10,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
-  content: counters(section, \\".\\", lower-latin) \\".\\" !important;
+  content: counters(section, ".", lower-latin) "." !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -36,7 +36,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
-  content: counters(section, \\".\\", lower-latin)  !important;
+  content: counters(section, ".", lower-latin)  !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -62,7 +62,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
-  content: counters(section, \\".\\", decimal) \\".\\" !important;
+  content: counters(section, ".", decimal) "." !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -88,7 +88,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
-  content: counters(section, \\".\\", decimal)  !important;
+  content: counters(section, ".", decimal)  !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -114,7 +114,7 @@ exports[`getComponentCss() should return correct css for listType: unordered, or
 }
 :host:before {
   position: absolute !important;
-  content: \\"\\" !important;
+  content: "" !important;
   left: 0 !important;
   top: calc(1.5em / 2 - 0.125em) !important;
   width: 0.25rem !important;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for listType: unordered, or
 }
 :host:before {
   position: absolute !important;
-  content: \\"\\" !important;
+  content: "" !important;
   left: 0 !important;
   top: calc(1.5em / 2) !important;
   width: 0.5rem !important;
@@ -152,7 +152,7 @@ exports[`getComponentCss() should return correct css for listType: unordered, or
 }
 :host:before {
   position: absolute !important;
-  content: \\"\\" !important;
+  content: "" !important;
   left: 0 !important;
   top: calc(1.5em / 2 - 0.125em) !important;
   width: 0.25rem !important;
@@ -171,7 +171,7 @@ exports[`getComponentCss() should return correct css for listType: unordered, or
 }
 :host:before {
   position: absolute !important;
-  content: \\"\\" !important;
+  content: "" !important;
   left: 0 !important;
   top: calc(1.5em / 2) !important;
   width: 0.5rem !important;
