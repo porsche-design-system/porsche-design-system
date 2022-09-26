@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.4.3",
-    "@types/node": "^18.6.4",
+    "@types/node": "^18.7.21",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
@@ -61,7 +61,7 @@
     "@vue/cli-service": "^4.5.15",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "1.2.2",
-    "concurrently": "^7.3.0",
+    "concurrently": "^7.4.0",
     "eslint": "^8.21.0",
     "eslint-plugin-vue": "^9.3.0",
     "globby": "^11.0.4",
