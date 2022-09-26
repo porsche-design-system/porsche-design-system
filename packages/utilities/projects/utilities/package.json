@@ -22,7 +22,7 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^8.3.4",
+    "@rollup/plugin-typescript": "^8.5.0",
     "@types/madge": "^5.0.0",
     "@types/styled-components": "^5.1.25",
     "change-case": "^4.1.2",
@@ -30,13 +30,13 @@
     "madge": "^5.0.1",
     "prettier": "^2.7.1",
     "react-jss": "^10.9.2",
-    "rollup": "^2.77.2",
+    "rollup": "^2.79.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "sass": "^1.54.3",
     "styled-components": "^5.3.5",
     "ts-jest": "^28.0.7",
     "ts-node": "^10.9.1",
-    "typescript": "~4.7.4"
+    "typescript": "~4.8.3"
   }
 }
