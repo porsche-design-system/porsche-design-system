@@ -53,7 +53,7 @@
     "jest-preset-angular": "^12.2.0",
     "local-web-server": "^5.2.1",
     "ng-packagr": "^13.3.1",
-    "rollup": "^2.77.2",
+    "rollup": "^2.79.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.9.1",
