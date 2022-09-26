@@ -2782,20 +2782,20 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@splidejs/splide@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-4.0.7.tgz#f442b7c5fc99df472c6f989787e1fb331cf177c6"
-  integrity sha512-aJAOGJN2lwjwou3mxQofc3uhe+RXpw9in0WfysFX7AMT/mj7wSqoetfm41s7J8jU6FJ3ZWaLYgSJIpBAQ5wyqw==
+"@splidejs/splide@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-4.1.2.tgz#ca7d9602ed7fb1c24b896245c663f70ff1dc487e"
+  integrity sha512-7sv4Azb4hHJ8PGT2H/ilsElrxQ3+xrKwajBX/jkntjktrsqb3u3FXzo71dNPhwVr0hXVQUFgwvn0BjhwYzUJKw==
 
 "@stackblitz/sdk@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.8.0.tgz#9bd5f028ccfc1a921d66f914d1e7ea2761139c1e"
   integrity sha512-hbS4CpQVF3bxJ+ZD8qu8lAjTZVLTPToLbMtgxbxUmp1AIgqm7i0gMFM1POBA8BqY84CT1A3z74gdCd1bsro7qA==
 
-"@stencil/core@~2.17.3":
-  version "2.17.3"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.17.3.tgz#b86cb76eb57231ce1f04014c2a51d1690c64325d"
-  integrity sha512-qw2DZzOpyaltLLEfYRTj3n+XbvRtkmv4QQimYDJubC6jMY0NXK9r6H2+VyszdbbVmvK1D9GqZtyvY0NmOrztsg==
+"@stencil/core@~2.18.0":
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.18.0.tgz#2556b0f8d1fb6f2c06c3fb22de495d59ca7daf05"
+  integrity sha512-NLEY8Jq59smyiivBAxHKipsp9YkkW/K/Vm90zAyXQqukb12i2SFucWHJ1Ik7ropVlhmMVvigyxXgRfQ9quIqtg==
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
