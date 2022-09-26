@@ -40,7 +40,7 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/madge": "^5.0.0",
-    "@types/node": "^18.6.4",
+    "@types/node": "^18.7.21",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^5.0.1",
