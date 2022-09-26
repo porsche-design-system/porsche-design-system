@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
+    "postinstall": "rm -rf ../../node_modules/@types/puppeteer",
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "ts-node scripts/generateTagNames.ts",
     "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
@@ -34,7 +35,7 @@
     "jss": "^10.9.2",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.2",
-    "puppeteer": "~15.3.2",
+    "puppeteer": "~18.0.5",
     "ts-jest": "^29.0.2"
   },
   "devDependencies": {
