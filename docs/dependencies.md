@@ -57,6 +57,7 @@ before we upgrade to it.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
+- `angular-imask` is not compatible with Angular 13 anymore, see https://github.com/uNmAnNeR/imaskjs/issues/741
 
 ---
 

@@ -4726,12 +4726,12 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ==
 
-angular-imask@^6.4.3:
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.4.3.tgz#ebb258d1b1ccbc35a723f4eb0ec6fc13bea12d59"
-  integrity sha512-qzxbI0mtezc0WfFC7mr1nOd7xOfSMaeFu7ftbzoOo5NSLuYjBSHWymw5sOGCWRWvQp8Tq54uhtHJbMBGwI3Ung==
+angular-imask@6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.4.2.tgz#5c36a7dd8643c0504cf801e10fa88cc4e1896425"
+  integrity sha512-v3/4rzPRfPQBxtOb2GPHdPE2IspoIfuAynZwmqrPXylS5bQ5lTw2BnCKov0wDhB1bHh0Ja7xpUseV3nTlK9h3A==
   dependencies:
-    imask "^6.4.3"
+    imask "^6.4.2"
     tslib "^2.3.1"
 
 ansi-colors@4.1.1:
@@ -11009,7 +11009,7 @@ image-size@~0.5.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
-imask@^6.4.3:
+imask@^6.4.2, imask@^6.4.3:
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/imask/-/imask-6.4.3.tgz#b81b247043807995e048f559e98930c2fec8004a"
   integrity sha512-aH2GHemGkr3cbRBfhogHMIx05eUxdHrZNlKTTLmz8VxpSopuHHJ8+85FsDlBVQqxPlDLhZuwj4lpHHWbLOdBSw==
