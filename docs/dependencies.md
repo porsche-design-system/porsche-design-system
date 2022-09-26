@@ -41,6 +41,7 @@ before we upgrade to it.
 
 ### Affected dependencies:
 
+- `typescript`
 - `@angular/animations`
 - `@angular/common`
 - `@angular/compiler`
@@ -55,8 +56,6 @@ before we upgrade to it.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
-
-- `typescript`
 
 ---
 
