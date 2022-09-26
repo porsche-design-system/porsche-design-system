@@ -67,7 +67,7 @@
     "imask": "^6.4.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.25.1",
+    "@playwright/test": "^1.26.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
     "@types/node": "^18.7.21",
