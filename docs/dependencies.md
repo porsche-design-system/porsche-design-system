@@ -11,6 +11,7 @@ with Vue **2** and **3**.
 
 - `vue`
 - `vue-router`
+- `vue-template-compiler`
 - `vuex`
 - `@vue/cli-plugin-babel`
 - `@vue/cli-plugin-router`
