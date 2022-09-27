@@ -1,5 +1,5 @@
-import { getPrefixedTagNames } from '../tag-name';
-import { TagNameCamelCase } from 'shared/src';
+import { getPrefixedTagNames } from '../getPrefixedTagNames';
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
 
 export const getClickedItem = <T>(
   host: HTMLElement,

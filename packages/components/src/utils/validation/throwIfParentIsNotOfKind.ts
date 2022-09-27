@@ -1,5 +1,6 @@
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName } from '../tag-name';
+import { getPrefixedTagNames } from '../getPrefixedTagNames';
+import { getTagName } from '../getTagName';
 import { isParentOfKind } from '../dom/isParentOfKind';
 
 export const throwIfParentIsNotOfKind = (element: HTMLElement, tagName: TagNameCamelCase): void => {

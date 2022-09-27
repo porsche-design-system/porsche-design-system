@@ -2,7 +2,7 @@ import { BreakpointKey, BREAKPOINTS, BreakpointValues, parseJSON } from '../brea
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
 import type { EventEmitter } from '@stencil/core';
-import { getTagName } from '../tag-name';
+import { getTagName } from '../getTagName';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;

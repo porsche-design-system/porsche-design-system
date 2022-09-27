@@ -1,6 +1,5 @@
-import { hasNamedSlot, isParentOfKind } from '.';
+import { getTagName, hasNamedSlot, isParentOfKind } from '.';
 import type { LinkButtonPureIconName } from '../types';
-import { getTagName } from './tag-name';
 
 export const hasVisibleIcon = (iconName: LinkButtonPureIconName): boolean => {
   return iconName !== 'none';
