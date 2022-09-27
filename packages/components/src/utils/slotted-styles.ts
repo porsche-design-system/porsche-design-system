@@ -1,4 +1,4 @@
-import { getTagName } from './getTagName';
+import { getTagName } from '.';
 
 type HTMLElementOrDocument = HTMLElement | Document;
 type ElementMap = Map<HTMLElementOrDocument, boolean>;

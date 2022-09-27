@@ -1,7 +1,15 @@
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import type { TagName, TagNameCamelCase } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { paramCaseToCamelCase } from '.';
-import { getTagName } from './getTagName';
+import { paramCaseToCamelCase } from './paramCaseToCamelCase';
+
+// NOTE: these utils are in the same file on purpose
+// to force them being bundled into our core chunk
+
+export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
+
+export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
+  return /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(getTagName(host))[1] as TagName;
+};
 
 // prevent internal usage of p-headline and p-text
 type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pText'>;

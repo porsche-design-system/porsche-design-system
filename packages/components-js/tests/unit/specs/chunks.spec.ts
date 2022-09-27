@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
 import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
-import { SKELETONS_ACTIVE } from '@porsche-design-system/shared';
+import { SKELETONS_ACTIVE, TAG_NAMES } from '@porsche-design-system/shared';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
 const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
@@ -315,12 +315,34 @@ describe('chunk content', () => {
     );
   });
 
-  // TODO: enable this test once chunking is under control
-  // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {
-  //   const content = getChunkContent(chunkFileName);
-  //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
-  //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
-  //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
-  //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
-  // });
+  describe('getPrefixedTagNames', () => {
+    const getPrefixedTagNamesRegEx = /new Map.+?\.filter\(\(([a-z])=>["']p-text["']!==\1&&["']p-headline["']!==\1\)/;
+
+    it('should be in core chunk', () => {
+      const content = getChunkContent(chunkFileNames[0]);
+      expect(content).toMatch(getPrefixedTagNamesRegEx);
+    });
+
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))('should not be in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect(content).not.toMatch(getPrefixedTagNamesRegEx);
+    });
+  });
+
+  describe('TAG_NAMES', () => {
+    const tagNamesRegEx = new RegExp(TAG_NAMES.map((x) => `["']${x}["']`).join(','));
+
+    it('should contain all TAG_NAMES in core chunk', () => {
+      const content = getChunkContent(chunkFileNames[0]);
+      expect(content).toMatch(tagNamesRegEx);
+    });
+
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
+      'should not contain all TAG_NAMES in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).not.toMatch(tagNamesRegEx);
+      }
+    );
+  });
 });

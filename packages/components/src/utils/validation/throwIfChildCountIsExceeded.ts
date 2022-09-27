@@ -1,4 +1,4 @@
-import { getTagName } from '../getTagName';
+import { getTagName } from '..';
 
 export const throwIfChildCountIsExceeded = (element: HTMLElement, allowedAmount: number): void => {
   const childCount = element.children.length;
