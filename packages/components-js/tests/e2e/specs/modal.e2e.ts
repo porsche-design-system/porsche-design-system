@@ -593,7 +593,7 @@ describe('slotted heading', () => {
     await initBasicModal({ hasSlottedHeading: true });
     const header = await getHeader();
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<slot name=\\"heading\\"></slot>"');
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="heading"></slot>"`);
   });
 
   it('should overwrite slotted heading when setting heading prop', async () => {
@@ -606,7 +606,7 @@ describe('slotted heading', () => {
     await waitForComponentsReady(page); // wait for p-headline to initialize
 
     expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
-      '"<p-headline class=\\"hydrated\\">Some Heading</p-headline>"'
+      `"<p-headline class="hydrated">Some Heading</p-headline>"`
     );
   });
 });
