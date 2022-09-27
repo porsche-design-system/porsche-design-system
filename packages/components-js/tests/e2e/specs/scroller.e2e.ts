@@ -66,7 +66,7 @@ const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scroll
 const clickElement = async (el: ElementHandle) => {
   await el.click();
   await waitForStencilLifecycle(page);
-  await page.waitForTimeout(CSS_ANIMATION_DURATION);
+  await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 };
 
 const addNewButton = async () => {

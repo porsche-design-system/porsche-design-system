@@ -128,7 +128,7 @@ it('should render and be visible when open', async () => {
 
 it('should not be visible when not open', async () => {
   await initBasicModal({ isOpen: false });
-  await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
+  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // wait for visibility transition to finish
   expect(await getModalVisibility()).toBe('hidden');
 });
 
@@ -191,7 +191,7 @@ describe('can be closed', () => {
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(1);
 
@@ -203,7 +203,7 @@ describe('can be closed', () => {
   it('should not be closed if mousedown inside modal', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(0);
 
@@ -215,7 +215,7 @@ describe('can be closed', () => {
   it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(0);
 
@@ -228,11 +228,11 @@ describe('can be closed', () => {
   it('should not be closable via backdrop when disableBackdropClick is set', async () => {
     const host = await getHost();
     await setProperty(host, 'disableBackdropClick', true);
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls).toBe(0);
   });
@@ -243,7 +243,7 @@ describe('can be closed', () => {
     await addEventListener(body, 'close', () => bodyCalls++);
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls).toBe(1);
     expect(bodyCalls).toBe(0);
@@ -321,20 +321,20 @@ describe('focus behavior', () => {
           });
         </script>`
     );
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
 
     expect(await getModalVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');

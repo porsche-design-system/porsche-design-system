@@ -224,7 +224,7 @@ describe('keyboard', () => {
     const host = await getHost();
     await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
 
@@ -309,7 +309,7 @@ describe('events', () => {
     const [, secondButton] = await getAllTabs();
     await secondButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(200); // to be on the safe side
+    await new Promise((resolve) => setTimeout(resolve, 200)); // to be on the safe side
 
     expect(await getCountedEvents()).toBe(1);
   });

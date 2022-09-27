@@ -74,9 +74,9 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -93,9 +93,9 @@ describe('close button', () => {
     await reattachElementHandle(host);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -111,7 +111,7 @@ describe('action button', () => {
     await addEventListener(host, 'action', () => calls++);
 
     await actionButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(calls).toBe(1);
   });
 });

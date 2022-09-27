@@ -26,7 +26,7 @@ it('overview should work without errors', async () => {
 describe('without prefix', () => {
   it('should initialize component deterministically', async () => {
     await goto(page, 'core-initializer');
-    await page.waitForTimeout(1000);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
 
