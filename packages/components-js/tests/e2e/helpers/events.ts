@@ -32,7 +32,9 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
     callback,
   });
 
-  const executionContext = elmHandle.executionContext();
+  // executionContext() became deprecated in 16.1.1 (2022-08-16)
+  // and was made internal in v18
+  const executionContext = (elmHandle as any).executionContext();
 
   // add element event listener
   await executionContext.evaluate(
