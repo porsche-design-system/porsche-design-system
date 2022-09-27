@@ -443,7 +443,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // extract other components and get rid of duplicates
     const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
-      .map((x) => x.replace('<', ''))
+      .map((x) => x.replace(/</g, ''))
       .filter((x, i, a) => a.indexOf(x) === i);
 
     const otherComponents = allComponents.filter((x) => !x.startsWith('Dummy'));
@@ -464,7 +464,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     });
 
     const content = `${imports}
-  
+
 export default (
   <${componentName} ${stringifiedProps}>
     ${children}
@@ -490,7 +490,7 @@ export default (
     });
 
     const content = `import { ${formComponentName} } from '../${formComponentName}';
-  
+
 export default <${formComponentName} ${stringifiedProps} />;
   `;
 

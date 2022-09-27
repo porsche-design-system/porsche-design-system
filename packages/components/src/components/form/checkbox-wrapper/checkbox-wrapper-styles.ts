@@ -25,7 +25,7 @@ export const getComponentCss = (
   const hasVisibleState = isVisibleFormState(state);
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const iconColor = backgroundColor.replace('#', '%23');
+  const iconColor = backgroundColor.replace(/#/g, '%23');
 
   return getCss({
     '@global': {
