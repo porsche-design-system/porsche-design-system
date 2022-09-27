@@ -11,7 +11,8 @@ import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule } from '../styles';
-import { getTagName, getTagNameWithoutPrefix } from './tag-name';
+import { getTagName } from './getTagName';
+import { getTagNameWithoutPrefix } from './getTagNameWithoutPrefix';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({

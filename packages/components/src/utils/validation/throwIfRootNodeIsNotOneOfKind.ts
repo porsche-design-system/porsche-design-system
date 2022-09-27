@@ -1,5 +1,6 @@
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName } from '../tag-name';
+import { getPrefixedTagNames } from '../getPrefixedTagNames';
+import { getTagName } from '../getTagName';
 
 export const throwIfRootNodeIsNotOneOfKind = (element: HTMLElement, tagNames: TagNameCamelCase[]): void => {
   const shadowHost = (element.getRootNode() as ShadowRoot)?.host as HTMLElement;

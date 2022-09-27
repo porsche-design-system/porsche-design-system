@@ -10,6 +10,9 @@ export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
 export * from './form';
+export { getPrefixedTagNames } from './getPrefixedTagNames';
+export { getTagName } from './getTagName';
+export { getTagNameWithoutPrefix } from './getTagNameWithoutPrefix';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
 export { parseJSONAttribute } from './json';
@@ -20,7 +23,6 @@ export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './sync';
-export * from './tag-name';
 export {
   getDataThemeDarkAttribute,
   isThemeDark,
