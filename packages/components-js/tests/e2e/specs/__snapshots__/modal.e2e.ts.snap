@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
                           "role": "none",
                         },
                       ],
@@ -25,15 +25,15 @@ Object {
               ],
               "role": "none",
             },
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Close modal",
                               "role": "StaticText",
                             },
@@ -58,15 +58,15 @@ Object {
       "name": "",
       "role": "generic",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
                       "name": "Some Heading",
                       "role": "StaticText",
                     },
@@ -84,9 +84,9 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some Content",
           "role": "StaticText",
         },

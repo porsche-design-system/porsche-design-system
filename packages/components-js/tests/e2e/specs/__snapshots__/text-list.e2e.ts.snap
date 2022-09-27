@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "The quick brown fox jumps over the lazy dog",
                   "role": "StaticText",
                 },
@@ -21,17 +21,17 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "The quick",
                   "role": "StaticText",
                 },
-                Object {
-                  "children": Array [
-                    Object {
+                {
+                  "children": [
+                    {
                       "name": "brown fox",
                       "role": "StaticText",
                     },
@@ -39,7 +39,7 @@ Object {
                   "name": "brown fox",
                   "role": "link",
                 },
-                Object {
+                {
                   "name": "jumps over the lazy dog",
                   "role": "StaticText",
                 },
@@ -51,25 +51,25 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "The quick brown fox jumps over the lazy dog",
                   "role": "StaticText",
                 },
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "The quick brown fox jumps over the lazy dog",
                                       "role": "StaticText",
                                     },

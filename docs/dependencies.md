@@ -1,4 +1,4 @@
-# Dependencies 05.08.2022
+# Dependencies 27.09.2022
 
 ## Vue
 
