@@ -146,7 +146,7 @@ function getHTMLAttributesType(props: string) {
     .filter((propName) => containsPropName(props, propName))
     .map((propName) => `'` + propName + `'`)
     .join(` | `);
-  return overriddenPropNames.length > 0 ? `Omit<HTMLAttributes<{}>, ${overriddenPropNames}>` : `<HTMLAttributes<{}>`;
+  return overriddenPropNames.length > 0 ? `Omit<HTMLAttributes<{}>, ${overriddenPropNames}>` : `HTMLAttributes<{}>`;
 }
 
 // Return true if the stringified props include the given property (required or not)
