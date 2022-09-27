@@ -18,7 +18,7 @@ it('should have correct bar width after reattaching', async () => {
 
   await page.select('select', 'overview');
   await page.select('select', 'tabs-bar-example-accessibility');
-  await page.waitForTimeout(CSS_ANIMATION_DURATION);
+  await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
   // @ts-ignore
   expect(await getBarWidth(await getBar()), 'after navigation').toBe('54px');

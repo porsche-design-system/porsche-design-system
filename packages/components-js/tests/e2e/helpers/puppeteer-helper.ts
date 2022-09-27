@@ -252,7 +252,7 @@ export const enableBrowserLogging = (page: Page): void => {
   });
 };
 
-export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
+export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
 export const hasFocus = (element: ElementHandle): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);

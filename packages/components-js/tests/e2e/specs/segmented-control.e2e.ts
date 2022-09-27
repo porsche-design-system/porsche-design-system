@@ -153,12 +153,12 @@ describe('events', () => {
     await reattachElementHandle(host);
 
     await button2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(eventCounter).toBe(1);
 
     await button1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(eventCounter).toBe(2);
   });
@@ -176,7 +176,7 @@ describe('events', () => {
     await waitForStencilLifecycle(page);
 
     await button2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(eventCounter).toBe(0);
   });
@@ -193,7 +193,7 @@ describe('events', () => {
     expect(await getProperty(firstItemHost, 'selected')).toBe(true);
 
     await button.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(eventCounter).toBe(0);
   });

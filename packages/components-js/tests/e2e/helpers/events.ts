@@ -47,8 +47,8 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
   );
 };
 
-export const waitForEventSerialization = async (page: Page): Promise<void> => {
-  return page.waitForTimeout(5); // event serialization takes a little bit
+export const waitForEventSerialization = async (): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, 5)); // event serialization takes a little bit
 };
 
 const nodeContextEvents = (waitForEvents: Map<number, WaitForEvent>, eventId: number, ev: any) => {
