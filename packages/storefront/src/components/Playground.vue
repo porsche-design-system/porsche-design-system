@@ -163,7 +163,7 @@
         return (
           (this.frameworkMarkup
             .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1]
-            .match(/\b([a-z][A-z]+)/g) as SharedImportKey[]) || []
+            .match(/\b([a-z][a-zA-Z]+)/g) as SharedImportKey[]) || []
         ); // extract consts, ignore types;
       } else {
         return [];
