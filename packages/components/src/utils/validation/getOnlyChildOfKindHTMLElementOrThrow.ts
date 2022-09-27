@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { getTagName } from '../getTagName';
+import { getTagName } from '..';
 import { getDirectChildHTMLElements } from '../dom/getDirectChildHTMLElements';
 
 // prettier-ignore
