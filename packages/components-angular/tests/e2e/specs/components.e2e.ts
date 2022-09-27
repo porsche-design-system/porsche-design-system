@@ -9,6 +9,8 @@ import {
   waitForComponentsReady,
 } from '../helpers';
 
+const console = require('console');
+
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
