@@ -25,7 +25,6 @@ describe('getTagNameWithoutPrefix()', () => {
   });
 });
 
-
 describe('getPrefixedTagNames()', () => {
   beforeEach(() => {
     PREFIXED_TAG_NAMES_CACHE.clear();
@@ -69,3 +68,4 @@ describe('getPrefixedTagNames()', () => {
     getPrefixedTagNames(document.createElement('p-button'));
     expect(spy).toBeCalledTimes(1);
   });
+});
