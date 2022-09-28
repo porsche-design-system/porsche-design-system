@@ -5,7 +5,7 @@ import {
   getExternalDependencies,
   getSharedImportConstants,
   isStableStorefrontRelease,
-  removeSharedImport
+  removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
@@ -43,16 +43,20 @@ export const App = (): JSX.Fragment => {
 };
 
 export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
-  return convertImportPaths(
-    isExampleMarkup
-      ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
-      : extendMarkupWithAppComponent(markup),
-    'react'
-  )
+  return (
+    "import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)\n" +
+    convertImportPaths(
+      isExampleMarkup
+        ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+        : extendMarkupWithAppComponent(markup),
+      'react'
+    )
+  );
 };
 
 export const getIndexTsx = (): string => {
-  return convertImportPaths(`import { StrictMode } from 'react';
+  return convertImportPaths(
+    `import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './App';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
@@ -67,7 +71,9 @@ root.render(
       <App />
     </PorscheDesignSystemProvider>
   </StrictMode>
-);`, 'react')
+);`,
+    'react'
+  );
 };
 
 export const getTsconfigJson = (): string => JSON.stringify(tsconfig, null, 2);
@@ -81,9 +87,9 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    ...isStableStorefrontRelease() && {
-      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react']
-    },
+    ...(isStableStorefrontRelease() && {
+      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
+    }),
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
@@ -93,7 +99,15 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
 };
 
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies, porscheDesignSystemBundle } = opts;
+  const {
+    markup,
+    description,
+    title,
+    globalStyles,
+    sharedImportKeys,
+    externalDependencies,
+    porscheDesignSystemBundle,
+  } = opts;
 
   return {
     files: {

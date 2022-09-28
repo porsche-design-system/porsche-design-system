@@ -21,6 +21,11 @@ export const App = (): JSX.Fragment => {
 }"
 `;
 
+exports[`getAppTsx() should match snapshot and start with import React patch 1`] = `
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+some markup"
+`;
+
 exports[`getIndexTsx() should return correct values 1`] = `
 "import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
