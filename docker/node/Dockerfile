@@ -1,4 +1,4 @@
-FROM node:16.15.1-stretch-slim
+FROM mcr.microsoft.com/playwright:v1.26.0-focal
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
@@ -20,5 +20,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
 COPY ./bin "/opt/porsche-design-system/bin"
 COPY ./shared "/opt/porsche-design-system/shared"
+
+RUN rm -rf /usr/share/fonts/opentype && rm -rf /usr/share/fonts/truetype
 
 ENTRYPOINT [ "/opt/porsche-design-system/entrypoint.sh" ]
