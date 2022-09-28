@@ -1,39 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`table accessibility should expose correct accessibility tree of scroll area: Overflow with caption as property 1`] = `
-Object {
+{
   "name": "Some caption",
   "role": "region",
 }
 `;
 
 exports[`table accessibility should expose correct accessibility tree of scroll area: Overflow with caption as slot 1`] = `
-Object {
+{
   "name": "Some caption",
   "role": "region",
 }
 `;
 
 exports[`table accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Column 1",
                                       "role": "StaticText",
                                     },
@@ -47,17 +47,17 @@ Object {
                           "name": "Column 1",
                           "role": "columnheader",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Column 2",
                                       "role": "StaticText",
                                     },
@@ -71,17 +71,17 @@ Object {
                           "name": "Column 2",
                           "role": "columnheader",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Column 3",
                                       "role": "StaticText",
                                     },
@@ -95,17 +95,17 @@ Object {
                           "name": "Column 3",
                           "role": "columnheader",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Column 4",
                                       "role": "StaticText",
                                     },
@@ -119,17 +119,17 @@ Object {
                           "name": "Column 4",
                           "role": "columnheader",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Column 5",
                                       "role": "StaticText",
                                     },
@@ -157,19 +157,19 @@ Object {
           "name": "",
           "role": "rowgroup",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 1 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -180,15 +180,15 @@ Object {
                           "name": "Row 1 Cell 1",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 1 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -199,15 +199,15 @@ Object {
                           "name": "Row 1 Cell 2",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 1 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -218,15 +218,15 @@ Object {
                           "name": "Row 1 Cell 3",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 1 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -237,15 +237,15 @@ Object {
                           "name": "Row 1 Cell 4",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 1 Cell 5",
                                   "role": "StaticText",
                                 },
@@ -263,19 +263,19 @@ Object {
                   "name": "",
                   "role": "row",
                 },
-                Object {
+                {
                   "name": ",",
                   "role": "StaticText",
                 },
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 2 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -286,15 +286,15 @@ Object {
                           "name": "Row 2 Cell 1",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 2 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -305,15 +305,15 @@ Object {
                           "name": "Row 2 Cell 2",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 2 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -324,15 +324,15 @@ Object {
                           "name": "Row 2 Cell 3",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 2 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -343,15 +343,15 @@ Object {
                           "name": "Row 2 Cell 4",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 2 Cell 5",
                                   "role": "StaticText",
                                 },
@@ -369,19 +369,19 @@ Object {
                   "name": "",
                   "role": "row",
                 },
-                Object {
+                {
                   "name": ",",
                   "role": "StaticText",
                 },
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 3 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -392,15 +392,15 @@ Object {
                           "name": "Row 3 Cell 1",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 3 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -411,15 +411,15 @@ Object {
                           "name": "Row 3 Cell 2",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 3 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -430,15 +430,15 @@ Object {
                           "name": "Row 3 Cell 3",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 3 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -449,15 +449,15 @@ Object {
                           "name": "Row 3 Cell 4",
                           "role": "gridcell",
                         },
-                        Object {
+                        {
                           "name": ",",
                           "role": "StaticText",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "name": "Row 3 Cell 5",
                                   "role": "StaticText",
                                 },
@@ -485,7 +485,7 @@ Object {
       ],
       "role": "none",
     },
-    Object {
+    {
       "role": "none",
     },
   ],

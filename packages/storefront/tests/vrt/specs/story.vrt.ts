@@ -20,7 +20,7 @@ it('should have no visual regression with dark theme', async () => {
       elementSelector: routerViewSelector,
       scenario: async (page) => {
         await page.click('.playground > p-tabs-bar > button:nth-of-type(2)');
-        await page.waitForTimeout(500); // wait for animation/transition of tabs bar
+        await new Promise((resolve) => setTimeout(resolve, 500)); // wait for animation/transition of tabs bar
       },
     })
   ).toBeFalsy();

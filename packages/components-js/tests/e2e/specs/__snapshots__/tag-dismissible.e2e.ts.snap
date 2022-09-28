@@ -1,42 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": "Remove:",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some label",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some Tag",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "role": "none",
                 },
               ],
@@ -55,42 +55,42 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree with label 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": "Remove:",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some label",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some Tag",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "role": "none",
                 },
               ],
@@ -109,33 +109,33 @@ Object {
 `;
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": "Remove:",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some Tag",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "role": "none",
                 },
               ],

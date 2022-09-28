@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getCss() should return correct css for opts: { ':host': [Object] } 1`] = `
-".\\\\:host {
+".\\:host {
   display: block;
   margin-left: 5px;
 }"
 `;
 
 exports[`getCss() should return correct css for opts: { ':host': [Object], '@media (min-width: 760px)': [Object] } 1`] = `
-".\\\\:host {
+".\\:host {
   display: block;
   margin-left: 5px !important;
 }
 @media (min-width: 760px) {
-  .\\\\:host {
+  .\\:host {
     margin-right: 5px !important;
   }
 }
