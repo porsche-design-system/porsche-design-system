@@ -72,7 +72,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -325,7 +325,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -491,7 +491,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -587,7 +587,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -758,7 +758,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -928,7 +928,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -995,7 +995,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding-left: 0.25rem;
 }
 .subline::before {
-  content: \\"\\";
+  content: "";
 }
 @media(hover:hover) {
   .root:hover {
@@ -1047,7 +1047,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1142,7 +1142,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1308,7 +1308,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1359,7 +1359,7 @@ p-link-pure a::-moz-focus-inner {
   border: 0 !important;
 }
 p-link-pure a::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -1389,7 +1389,7 @@ prefixed-p-link-pure a::-moz-focus-inner {
   border: 0 !important;
 }
 prefixed-p-link-pure a::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;

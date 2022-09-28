@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should contain correct values for themeDark 1`] = `
-Object {
-  "background": Object {
+{
+  "background": {
     "base": "#0e1418",
     "shading": "rgba(14, 20, 24, 0.9)",
     "surface": "#262b2e",
   },
   "base": "#fff",
   "brand": "#d5001c",
-  "contrast": Object {
+  "contrast": {
     "high": "#e3e4e5",
     "low": "#4a4e51",
     "medium": "#b0b1b2",
   },
-  "notification": Object {
+  "notification": {
     "error": "#fc1717",
     "errorSoft": "#fec5c5",
     "neutral": "#2193ff",
@@ -24,7 +24,7 @@ Object {
     "warning": "#ff9b00",
     "warningSoft": "#ffe6bf",
   },
-  "state": Object {
+  "state": {
     "active": "#ff0223",
     "disabled": "#7c7f81",
     "focus": "currentColor",
@@ -34,20 +34,20 @@ Object {
 `;
 
 exports[`should contain correct values for themeDarkElectric 1`] = `
-Object {
-  "background": Object {
+{
+  "background": {
     "base": "#0e1418",
     "shading": "rgba(14, 20, 24, 0.9)",
     "surface": "#262b2e",
   },
   "base": "#fff",
   "brand": "#00b0f4",
-  "contrast": Object {
+  "contrast": {
     "high": "#e3e4e5",
     "low": "#4a4e51",
     "medium": "#b0b1b2",
   },
-  "notification": Object {
+  "notification": {
     "error": "#fc1717",
     "errorSoft": "#fec5c5",
     "neutral": "#2193ff",
@@ -57,7 +57,7 @@ Object {
     "warning": "#ff9b00",
     "warningSoft": "#ffe6bf",
   },
-  "state": Object {
+  "state": {
     "active": "#00b0f4",
     "disabled": "#7c7f81",
     "focus": "currentColor",
@@ -67,20 +67,20 @@ Object {
 `;
 
 exports[`should contain correct values for themeLight 1`] = `
-Object {
-  "background": Object {
+{
+  "background": {
     "base": "#fff",
     "shading": "rgba(14, 20, 24, 0.9)",
     "surface": "#f2f2f2",
   },
   "base": "#000",
   "brand": "#d5001c",
-  "contrast": Object {
+  "contrast": {
     "high": "#323639",
     "low": "#e3e4e5",
     "medium": "#626669",
   },
-  "notification": Object {
+  "notification": {
     "error": "#e00000",
     "errorSoft": "#fae6e6",
     "neutral": "#0061bd",
@@ -90,7 +90,7 @@ Object {
     "warning": "#ff9b00",
     "warningSoft": "#fff5e5",
   },
-  "state": Object {
+  "state": {
     "active": "#d5001c",
     "disabled": "#96989a",
     "focus": "currentColor",
@@ -100,20 +100,20 @@ Object {
 `;
 
 exports[`should contain correct values for themeLightElectric 1`] = `
-Object {
-  "background": Object {
+{
+  "background": {
     "base": "#fff",
     "shading": "rgba(14, 20, 24, 0.9)",
     "surface": "#f2f2f2",
   },
   "base": "#000",
   "brand": "#00b0f4",
-  "contrast": Object {
+  "contrast": {
     "high": "#323639",
     "low": "#e3e4e5",
     "medium": "#626669",
   },
-  "notification": Object {
+  "notification": {
     "error": "#e00000",
     "errorSoft": "#fae6e6",
     "neutral": "#0061bd",
@@ -123,7 +123,7 @@ Object {
     "warning": "#ff9b00",
     "warningSoft": "#fff5e5",
   },
-  "state": Object {
+  "state": {
     "active": "#00b0f4",
     "disabled": "#96989a",
     "focus": "currentColor",

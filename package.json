@@ -144,12 +144,12 @@
     "prettier": "^2.7.1"
   },
   "resolutions": {
-    "**/react-scripts/jest": ">=28 <29",
-    "**/react-scripts/jest-circus": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/jest": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/@jest/types": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=28 <29",
+    "**/react-scripts/jest": ">=29 <30",
+    "**/react-scripts/jest-circus": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
   }
 }

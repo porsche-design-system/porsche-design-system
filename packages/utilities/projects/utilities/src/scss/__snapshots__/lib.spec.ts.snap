@@ -32,7 +32,7 @@ $pds-color-external-youtube: #ff0000;
 exports[`should contain correct content for auto generated file ./src/scss/lib/_font.scss 1`] = `
 "$pds-font-behavior-text-size-adjust: none;
 $pds-font-behavior-webkit-text-size-adjust: none;
-$pds-font-family: \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+$pds-font-family: "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
 $pds-font-hyphenation-overflow-wrap: break-word;
 $pds-font-hyphenation-hyphens: auto;
 $pds-font-size-x-small-font-size: 0.75rem;
@@ -103,7 +103,7 @@ $pds-grid-safe-zone-xl: min(calc(43vw - 39.6rem), 12rem);
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
 "@mixin pds-heading-xx-large {
-  font: normal normal 600 2rem/1.375 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 2rem/1.375 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
@@ -129,7 +129,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-heading-x-large {
-  font: normal normal 600 1.75rem/1.4285714286 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 1.75rem/1.4285714286 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
@@ -155,7 +155,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-heading-large {
-  font: normal normal 600 1.5rem/1.5 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 1.5rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
@@ -181,7 +181,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-heading-medium {
-  font: normal normal 600 1.25rem/1.4 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 1.25rem/1.4 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
@@ -207,7 +207,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-heading-small {
-  font: normal normal 600 1rem/1.5 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 1rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
@@ -233,7 +233,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-heading-x-small {
-  font: normal normal 600 1rem/1.5 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 600 1rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 }
@@ -252,7 +252,7 @@ $pds-spacing-xx-large: 5rem;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_text.scss 1`] = `
 "@mixin pds-text-x-small {
-  font: normal normal 400 0.75rem/1.6666666667 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 400 0.75rem/1.6666666667 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -260,7 +260,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-text-small {
-  font: normal normal 400 1rem/1.5 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 400 1rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -268,7 +268,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-text-medium {
-  font: normal normal 400 1.5rem/1.5 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 400 1.5rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -276,7 +276,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-text-large {
-  font: normal normal 400 2.25rem/1.3333333333 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 400 2.25rem/1.3333333333 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -284,7 +284,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 }
 
 @mixin pds-text-x-large {
-  font: normal normal 400 3.25rem/1.2307692308 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
+  font: normal normal 400 3.25rem/1.2307692308 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
   text-size-adjust: none;

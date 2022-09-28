@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree properties for state: error 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification heading.",
                   "role": "StaticText",
                 },
@@ -24,13 +24,13 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification description.",
                   "role": "StaticText",
                 },
@@ -52,15 +52,15 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree properties for state: neutral 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification heading.",
                   "role": "StaticText",
                 },
@@ -75,13 +75,13 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification description.",
                   "role": "StaticText",
                 },
@@ -103,15 +103,15 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree properties for state: success 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification heading.",
                   "role": "StaticText",
                 },
@@ -126,13 +126,13 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification description.",
                   "role": "StaticText",
                 },
@@ -154,15 +154,15 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree properties for state: warning 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification heading.",
                   "role": "StaticText",
                 },
@@ -177,13 +177,13 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "Some inline-notification description.",
                   "role": "StaticText",
                 },

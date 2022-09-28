@@ -4,14 +4,15 @@ import { ValidationError } from 'yup';
 /* eslint-disable @typescript-eslint/ban-types */
 export type ValidationBag<T extends object> = {
   data: T;
-  errors: { [key in keyof T]: string };
+  errors: Record<keyof T, string>;
   schema: SchemaOf<T>;
 };
 
-export const getInitialErrors = <T>(data: T): { [key in keyof T]: string } => {
-  const errors: { [key in keyof T]: string } = {} as { [key in keyof T]: string };
-  Object.keys(data).forEach((key) => (errors[key as keyof T] = ''));
-  return errors;
+export const getInitialErrors = <T extends object>(data: T): Record<keyof T, string> => {
+  return (Object.keys(data) as (keyof T)[]).reduce(
+    (result, key) => ({ ...result, [key]: '' }),
+    {} as Record<keyof T, string>
+  );
 };
 
 export const validateName = <T>(key: keyof T): keyof T => key;

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getFunctionalComponentRequiredStyles() should return correct styles for theme: dark 1`] = `
-Object {
-  "required": Object {
+{
+  "required": {
     "color": "#fc1717",
     "userSelect": "none",
   },
@@ -10,8 +10,8 @@ Object {
 `;
 
 exports[`getFunctionalComponentRequiredStyles() should return correct styles for theme: light 1`] = `
-Object {
-  "required": Object {
+{
+  "required": {
     "color": "#e00000",
     "userSelect": "none",
   },
