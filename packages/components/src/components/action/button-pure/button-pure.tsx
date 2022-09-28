@@ -142,7 +142,7 @@ export class ButtonPure {
       () => this.isDisabledOrLoading
     );
 
-    if (isSizeInherit(this.size)) {
+    if (isSizeInherit(this.size) && hasVisibleIcon(this.icon)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;
         this.iconTag.style.width = size;
