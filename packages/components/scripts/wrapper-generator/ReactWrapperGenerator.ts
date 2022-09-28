@@ -49,9 +49,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const typeName = this.generatePropsName(component) + genericType;
-    const HTMLAttributeType = getHTMLAttributesType(rawComponentInterface);
+    const HTMLAttributesType = this.generateHTMLAttributesType();
 
-    return `export type ${typeName} = ${HTMLAttributeType} & ${rawComponentInterface};`;
+    return `export type ${typeName} = ${HTMLAttributesType} & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
@@ -137,20 +137,12 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   private generatePropsName(component: TagName): string {
     return `${pascalCase(component)}Props`;
   }
-}
 
-// Return the `HTMLAttribute` type to be used in the intersection of the component type,
-// omitting properties that are overridden by the component (E.g. `color` property)
-function getHTMLAttributesType(props: string) {
-  const overriddenPropNames = ['color']
-    .filter((propName) => containsPropName(props, propName))
-    .map((propName) => `'` + propName + `'`)
-    .join(` | `);
-  return overriddenPropNames.length > 0 ? `Omit<HTMLAttributes<{}>, ${overriddenPropNames}>` : `HTMLAttributes<{}>`;
-}
-
-// Return true if the stringified props include the given property (required or not)
-function containsPropName(props: string, propName: string) {
-  const indentation = '  '; // 2 spaces
-  return new RegExp(indentation + propName + '(\\?)?: ').test(props);
+  // Return the `HTMLAttribute` type to be used in the intersection of the component type,
+  // omitting HTML attributes that are overridden by the component
+  protected generateHTMLAttributesType(): string {
+    const overriddenPropNames = ['color'];
+    const omitted = overriddenPropNames.map((propName) => `'${propName}'`).join(` | `);
+    return `Omit<HTMLAttributes<{}>, ${omitted}>`;
+  }
 }
