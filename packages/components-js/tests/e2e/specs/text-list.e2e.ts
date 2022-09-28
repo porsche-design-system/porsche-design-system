@@ -39,7 +39,6 @@ describe('lifecycle', () => {
   it('should have a theme prop defined at any time without any unnecessary round trips', async () => {
     await initTextList();
     const host = await getHost();
-
     expect(await getProperty(host, 'theme')).toBe('light');
 
     await setProperty(host, 'theme', 'dark');

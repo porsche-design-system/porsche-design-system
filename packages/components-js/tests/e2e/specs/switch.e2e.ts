@@ -273,7 +273,6 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-switch'], 'componentDidLoad: p-switch').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -284,7 +283,6 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-switch'], 'componentDidLoad: p-switch').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined);
     expect(status.componentDidLoad['p-spinner'], 'componentDidLoad: p-spinner').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
@@ -297,7 +295,6 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'checked', true);
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-switch'], 'componentDidUpdate: p-switch').toBe(1);
