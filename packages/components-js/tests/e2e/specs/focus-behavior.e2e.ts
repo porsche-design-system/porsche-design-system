@@ -52,7 +52,7 @@ ${component}
     const elTagName = await host.evaluate((el) => el.tagName);
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(await getActiveElementTagName(page)).toBe(elTagName);
     expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();

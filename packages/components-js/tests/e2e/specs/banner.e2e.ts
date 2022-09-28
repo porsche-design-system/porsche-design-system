@@ -71,22 +71,22 @@ describe('close', () => {
 
     const closeButton = await getCloseButton();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
   });
 
   it('should remove banner from DOM by trigger ESC key', async () => {
     await initBanner();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await page.keyboard.press('Escape');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
   });
 
@@ -98,9 +98,9 @@ describe('close', () => {
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(calls).toBe(1);
   });
 
@@ -115,10 +115,10 @@ describe('close', () => {
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -150,7 +150,7 @@ describe('close', () => {
     expect(banner1Styles).toEqual(banner2Styles);
 
     await closeButtonBanner2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     const classListBanner1AfterClick = await getCssClasses(banner1);
     const banner1StylesAfterClick = await getComputedElementHandleStyles(banner1);

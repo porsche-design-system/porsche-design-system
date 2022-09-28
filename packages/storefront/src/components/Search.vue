@@ -71,7 +71,7 @@
               page: 0,
               processingTimeMS: 0,
             })),
-          }) as any;
+          }) as unknown as ReturnType<SearchClient['search']>;
         } else {
           return this.algoliaClient.search(requests);
         }

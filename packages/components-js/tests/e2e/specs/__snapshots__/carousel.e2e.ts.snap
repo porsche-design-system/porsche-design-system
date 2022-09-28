@@ -1,31 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonNext 1`] = `
-Object {
+{
   "name": "Next slide",
   "role": "button",
 }
 `;
 
 exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonPrev 1`] = `
-Object {
+{
   "name": "Go to last slide",
   "role": "button",
 }
 `;
 
 exports[`accessibility should expose correct initial accessibility tree and aria properties: splide 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
                       "name": "Slide 1",
                       "role": "StaticText",
                     },
@@ -41,13 +41,13 @@ Object {
           "role": "group",
           "roledescription": "slide",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
                       "role": "none",
                     },
                   ],
@@ -59,13 +59,13 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
                       "role": "none",
                     },
                   ],

@@ -159,7 +159,7 @@ describe('loading behavior', () => {
         await setProperty(host, 'name', 'question');
 
         // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
-        await page.waitForTimeout(delay);
+        await new Promise((resolve) => setTimeout(resolve, delay));
 
         expect(await getContent(await getIcon())).toContain('question');
         expect(responseCounter).toEqual(2);
@@ -180,7 +180,7 @@ describe('loading behavior', () => {
         expect(await getContent(await getIcon())).toContain('highway');
 
         await setProperty(host, 'name', 'light');
-        await waitForEventSerialization(page);
+        await waitForEventSerialization();
         expect(await getContent(await getIcon())).toEqual('');
 
         await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);

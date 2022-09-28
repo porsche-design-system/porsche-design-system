@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if description is set 1`] = `
-Object {
+{
   "description": "Some description",
   "haspopup": "listbox",
   "name": "Option A, Some label",
@@ -10,7 +10,7 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: After click 1`] = `
-Object {
+{
   "expanded": true,
   "haspopup": "listbox",
   "name": "Option A, Some label",
@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: Initially 1`] = `
-Object {
+{
   "haspopup": "listbox",
   "name": "Option A, Some label",
   "role": "combobox",
@@ -27,40 +27,40 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if rendered with optgroups 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "haspopup": "listbox",
       "name": "Option A, Some label",
       "role": "combobox",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "role": "none",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "Some optgroup label 1",
           "role": "StaticText",
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option A",
               "role": "StaticText",
             },
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
                           "role": "none",
                         },
                       ],
@@ -77,9 +77,9 @@ Object {
           "role": "option",
           "selected": true,
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option B",
               "role": "StaticText",
             },
@@ -87,13 +87,13 @@ Object {
           "name": "Option B",
           "role": "option",
         },
-        Object {
+        {
           "name": "Some optgroup label 1",
           "role": "StaticText",
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option A",
               "role": "StaticText",
             },
@@ -101,9 +101,9 @@ Object {
           "name": "Option A",
           "role": "option",
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option B",
               "role": "StaticText",
             },
@@ -123,7 +123,7 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree in error state 1`] = `
-Object {
+{
   "haspopup": "listbox",
   "name": "Option A, Some label. Some error message",
   "role": "combobox",
@@ -131,7 +131,7 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option A 1`] = `
-Object {
+{
   "name": "Option A",
   "role": "option",
   "selected": true,
@@ -139,21 +139,21 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option B 1`] = `
-Object {
+{
   "name": "Option B",
   "role": "option",
 }
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option A after click 1`] = `
-Object {
+{
   "name": "Option A",
   "role": "option",
 }
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option B after click 1`] = `
-Object {
+{
   "name": "Option B",
   "role": "option",
   "selected": true,
@@ -161,36 +161,36 @@ Object {
 `;
 
 exports[`select-wrapper dropdown accessibility should expose correct initial accessibility tree and aria properties 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "haspopup": "listbox",
       "name": "Option A, Some label",
       "role": "combobox",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "role": "none",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
               "name": "Option A",
               "role": "StaticText",
             },
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
                           "role": "none",
                         },
                       ],
@@ -207,9 +207,9 @@ Object {
           "role": "option",
           "selected": true,
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option B",
               "role": "StaticText",
             },
@@ -218,9 +218,9 @@ Object {
           "name": "Option B",
           "role": "option",
         },
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "name": "Option C",
               "role": "StaticText",
             },
