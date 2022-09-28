@@ -1,6 +1,6 @@
 import { baseURL } from '../helpers';
 import type { Page } from 'puppeteer';
-import { Framework } from '../../../src/models';
+import type { Framework } from '../../../src/models';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -12,8 +12,7 @@ const frameworkToButtonTextMap: Record<Exclude<Framework, 'shared'>, string> = {
   react: 'React',
 };
 
-// TODO: 'react' causes flakiness for unknown reasons but needs to be reactivated asap
-it.each(<Framework[]>['vanilla-js', 'angular'])(
+it.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
   'should have working stackBlitz button for framework: %s',
   async (framework) => {
     await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
