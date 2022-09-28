@@ -6,43 +6,23 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -57,43 +37,23 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -108,43 +68,23 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",
@@ -159,43 +99,23 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification heading.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 5,
           "name": "Some inline-notification heading.",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "level": 5,
+      "name": "Some inline-notification heading.",
+      "role": "heading",
     },
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some inline-notification description.",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "name": "",
-          "role": "paragraph",
+          "name": "Some inline-notification description.",
+          "role": "StaticText",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "paragraph",
     },
   ],
   "description": "Some inline-notification description.",

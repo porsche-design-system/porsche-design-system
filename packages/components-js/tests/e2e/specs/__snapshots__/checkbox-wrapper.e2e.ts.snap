@@ -35,33 +35,23 @@ exports[`accessibility should add/remove accessibility tree properties if state 
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
+                  "role": "none",
+                },
+                {
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            {
-              "name": "Some error message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "name": "Some error message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
@@ -79,30 +69,20 @@ exports[`accessibility should add/remove accessibility tree properties if state 
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            {
-              "name": "Some success message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "name": "Some success message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
@@ -129,33 +109,23 @@ exports[`accessibility should expose correct accessibility tree properties in er
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
+                  "role": "none",
+                },
+                {
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            {
-              "name": "Some error message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "name": "Some error message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
