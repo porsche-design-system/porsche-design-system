@@ -148,6 +148,18 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
+      icon: 'none',
+      active: false,
+      stretch: false,
+      size: 'inherit',
+      weight: 'regular',
+      hideLabel: false,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasSlottedAnchor: false,
+      theme: 'light',
+    },
+    {
       icon: 'arrow-head-right',
       active: false,
       stretch: false,

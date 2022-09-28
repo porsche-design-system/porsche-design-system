@@ -42,7 +42,7 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& $icon': {
+      '& .icon': {
         width: '1.5em',
         height: '1.5em',
       },

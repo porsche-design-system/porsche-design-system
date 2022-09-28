@@ -133,6 +133,13 @@
 
 <div class="playground light" title="should render with no icon">
   <p-button-pure icon="none">Label icon none</p-button-pure>
+  <p-button-pure icon="none" size="inherit" style="font-size: 48px">Label icon none size inherit</p-button-pure>
+  <p-button-pure
+    icon="none"
+    size="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+    style="font-size: 48px"
+    >Label icon none size responsive</p-button-pure
+  >
   <p-button-pure size="small" icon="none">
     Label icon none
     <p slot="subline">Some subline</p>
