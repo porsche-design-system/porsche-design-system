@@ -48,10 +48,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const typeName = this.generatePropsName(component) + genericType;
-    const HTMLAttributesType = this.generateHTMLAttributesType();
+    const propsName = this.generatePropsName(component) + genericType;
+    const htmlAttributesType = this.generateHTMLAttributesType();
 
-    return `export type ${typeName} = ${HTMLAttributesType} & ${rawComponentInterface};`;
+    return `export type ${propsName} = ${htmlAttributesType} & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
