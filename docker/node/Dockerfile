@@ -21,7 +21,4 @@ COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
 COPY ./bin "/opt/porsche-design-system/bin"
 COPY ./shared "/opt/porsche-design-system/shared"
 
-# missing fallback fonts in stretch-slim base image
-COPY ./fonts "/usr/share/fonts/truetype/"
-
 ENTRYPOINT [ "/opt/porsche-design-system/entrypoint.sh" ]
