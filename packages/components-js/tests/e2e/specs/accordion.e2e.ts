@@ -208,7 +208,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       expect(eventCounter).toBe(0);
 
       await button.click();
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
 
       expect(eventCounter).toBe(1);
     });
@@ -223,7 +223,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
 
       expect(eventCounter).toBe(1);
     });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: false 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-checked": "false",
   "aria-disabled": null,
@@ -10,7 +10,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: true 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-checked": "true",
   "aria-disabled": null,
@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: false 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-checked": "false",
   "aria-disabled": "true",
@@ -28,7 +28,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: true 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-checked": "true",
   "aria-disabled": "true",
@@ -37,7 +37,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and isChecked: false 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-checked": "false",
   "aria-disabled": "true",
@@ -46,7 +46,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: false 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-checked": "false",
   "aria-disabled": "true",
@@ -55,7 +55,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: true 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-checked": "true",
   "aria-disabled": "true",

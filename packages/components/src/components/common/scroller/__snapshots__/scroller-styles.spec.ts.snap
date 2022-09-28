@@ -85,7 +85,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -271,7 +271,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -364,7 +364,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -457,7 +457,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -550,7 +550,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -643,7 +643,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -736,7 +736,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -829,7 +829,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -922,7 +922,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   position: static;
 }
 .button::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;

@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`select-wrapper native accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "Option A",
       "role": "menuitem",
       "selected": true,
     },
-    Object {
+    {
       "name": "Option B",
       "role": "menuitem",
     },
-    Object {
+    {
       "name": "Option C",
       "role": "menuitem",
     },
@@ -25,22 +25,22 @@ Object {
 `;
 
 exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = error 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
                           "role": "none",
                         },
-                        Object {
+                        {
                           "role": "none",
                         },
                       ],
@@ -52,7 +52,7 @@ Object {
               ],
               "role": "none",
             },
-            Object {
+            {
               "name": "Some error message.",
               "role": "StaticText",
             },
@@ -69,19 +69,19 @@ Object {
 `;
 
 exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = success 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
                           "role": "none",
                         },
                       ],
@@ -93,7 +93,7 @@ Object {
               ],
               "role": "none",
             },
-            Object {
+            {
               "name": "Some success message.",
               "role": "StaticText",
             },
@@ -110,18 +110,18 @@ Object {
 `;
 
 exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = error 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "Option A",
       "role": "menuitem",
       "selected": true,
     },
-    Object {
+    {
       "name": "Option B",
       "role": "menuitem",
     },
-    Object {
+    {
       "name": "Option C",
       "role": "menuitem",
     },
@@ -135,18 +135,18 @@ Object {
 `;
 
 exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = none 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "Option A",
       "role": "menuitem",
       "selected": true,
     },
-    Object {
+    {
       "name": "Option B",
       "role": "menuitem",
     },
-    Object {
+    {
       "name": "Option C",
       "role": "menuitem",
     },
@@ -159,18 +159,18 @@ Object {
 `;
 
 exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = success 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "Option A",
       "role": "menuitem",
       "selected": true,
     },
-    Object {
+    {
       "name": "Option B",
       "role": "menuitem",
     },
-    Object {
+    {
       "name": "Option C",
       "role": "menuitem",
     },

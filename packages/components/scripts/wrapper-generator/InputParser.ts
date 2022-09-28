@@ -111,7 +111,7 @@ export class InputParser {
     let [, rawComponentsInterface] = regex.exec(this.rawComponents) || [];
     rawComponentsInterface = cleanInterface(rawComponentsInterface);
 
-    const matches = Array.from(rawComponentsInterface.matchAll(/([a-z]+): (?:\s|\S)+?;/g));
+    const matches = Array.from(rawComponentsInterface.matchAll(/([a-z]+): [\s\S]+?;/g));
     matches.forEach((match) => {
       rawLocalJSXInterface = rawLocalJSXInterface.replace(new RegExp(`${match[1]}\\?: (?:\\s|.)+?;`), match[0]);
     });

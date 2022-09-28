@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`spinner accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": " ",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "role": "none",
         },
-        Object {
+        {
           "role": "none",
         },
       ],
@@ -30,23 +30,23 @@ Object {
 `;
 
 exports[`spinner accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": " ",
           "role": "StaticText",
         },
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "role": "none",
         },
-        Object {
+        {
           "role": "none",
         },
       ],

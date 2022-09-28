@@ -28,7 +28,7 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
       markup
     );
 
-    await page.waitForTimeout(100);
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));

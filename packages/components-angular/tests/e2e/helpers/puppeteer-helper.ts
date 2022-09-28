@@ -34,7 +34,7 @@ export const initConsoleObserver = (page: Page): void => {
   page.on('console', (msg) => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {
-      const { description } = msg.args()[0]['_remoteObject'];
+      const { description } = msg.args()[0].remoteObject();
       if (description) {
         console.log(description);
       }

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree of stepper-horizontal: Of Button 1`] = `
-Object {
+{
   "name": "current: Step 1",
   "role": "button",
 }

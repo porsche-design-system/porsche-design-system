@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree description if subline property is set 1`] = `
-Object {
+{
   "description": "Some Subline",
   "name": "Some label",
   "role": "link",
@@ -9,30 +9,30 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
-Object {
+{
   "name": "Some more detailed label",
   "role": "link",
 }
 `;
 
 exports[`accessibility should expose correct accessibility tree if label is hidden 1`] = `
-Object {
+{
   "name": "Some label",
   "role": "link",
 }
 `;
 
 exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
-Object {
+{
   "name": "Some label",
   "role": "link",
 }
 `;
 
 exports[`accessibility should expose correct initial accessibility tree properties 2`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "role": "none",
     },
   ],
