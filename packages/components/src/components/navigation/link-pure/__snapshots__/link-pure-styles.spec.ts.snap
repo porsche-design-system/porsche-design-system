@@ -1418,6 +1418,98 @@ div, ::slotted([slot=subline]) {
 "
 `;
 
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"inherit","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  position: relative;
+  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+span {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  font-size: inherit;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+div, ::slotted([slot=subline]) {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  margin: 0;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+::slotted(p) {
+  margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  justify-content: flex-start;
+  font-size: inherit;
+  line-height: inherit;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+.root:focus::before {
+  outline-color: currentColor;
+}
+.root:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+.root:active {
+  color: #d5001c;
+}
+.root .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
+`;
+
 exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"small","weight":"bold","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
