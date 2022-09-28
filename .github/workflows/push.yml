@@ -529,6 +529,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'Lint'
         uses: ./.github/actions/docker-run-node
         with:
@@ -640,6 +650,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'a11y Test'
         uses: ./.github/actions/docker-run-node
         with:
@@ -691,6 +711,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-node
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run-node
         with:
