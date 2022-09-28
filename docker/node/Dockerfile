@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.25.1-focal
+FROM mcr.microsoft.com/playwright:v1.26.0-focal
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
@@ -20,8 +20,5 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
 COPY ./bin "/opt/porsche-design-system/bin"
 COPY ./shared "/opt/porsche-design-system/shared"
-
-# missing fallback fonts in stretch-slim base image
-COPY ./fonts "/usr/share/fonts/truetype/"
 
 ENTRYPOINT [ "/opt/porsche-design-system/entrypoint.sh" ]

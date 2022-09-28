@@ -243,7 +243,7 @@ ul {
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -273,7 +273,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -318,7 +318,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -427,7 +427,7 @@ ul {
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -457,7 +457,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -502,7 +502,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -576,7 +576,7 @@ ul {
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -603,7 +603,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -648,7 +648,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -757,7 +757,7 @@ ul {
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -784,7 +784,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -829,7 +829,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -900,7 +900,7 @@ ul {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -930,7 +930,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -975,7 +975,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1081,7 +1081,7 @@ ul {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1111,7 +1111,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1156,7 +1156,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1227,7 +1227,7 @@ ul {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1254,7 +1254,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1299,7 +1299,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1405,7 +1405,7 @@ ul {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1432,7 +1432,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1477,7 +1477,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1552,7 +1552,7 @@ ul {
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1582,7 +1582,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1627,7 +1627,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1737,7 +1737,7 @@ ul {
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1767,7 +1767,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1812,7 +1812,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -1887,7 +1887,7 @@ ul {
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -1914,7 +1914,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1959,7 +1959,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -2069,7 +2069,7 @@ ul {
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -2096,7 +2096,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2141,7 +2141,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -2212,7 +2212,7 @@ ul {
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -2242,7 +2242,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2287,7 +2287,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -2393,7 +2393,7 @@ ul {
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -2423,7 +2423,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2468,7 +2468,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -2539,7 +2539,7 @@ ul {
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -2566,7 +2566,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2611,7 +2611,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -2717,7 +2717,7 @@ ul {
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -2744,7 +2744,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2789,7 +2789,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -3607,7 +3607,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -3631,7 +3631,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -3676,7 +3676,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #ff0223;
     background: #000;
   }
@@ -3720,7 +3720,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   pointer-events: none;
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -3744,7 +3744,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -3789,7 +3789,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -3829,7 +3829,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -3853,7 +3853,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -3898,7 +3898,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #ff0223;
     background: #000;
   }
@@ -3938,7 +3938,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
 ul::before {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -3962,7 +3962,7 @@ ul::before {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4007,7 +4007,7 @@ ul::before {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -4052,7 +4052,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -4076,7 +4076,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4121,7 +4121,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #ff0223;
     background: #000;
   }
@@ -4166,7 +4166,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   pointer-events: none;
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -4190,7 +4190,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4235,7 +4235,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }
@@ -4275,7 +4275,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -4299,7 +4299,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4344,7 +4344,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #ff0223;
     background: #000;
   }
@@ -4384,7 +4384,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
 ul::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: sticky;
   width: 100%;
@@ -4408,7 +4408,7 @@ ul::after {
   box-sizing: border-box;
   transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
 }
-.option[role=\\"status\\"] {
+.option[role="status"] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4453,7 +4453,7 @@ ul::after {
   display: none;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  .option:not([aria-disabled]):not([role="status"]):hover {
     color: #d5001c;
     background: #f2f2f2;
   }

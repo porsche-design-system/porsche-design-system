@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-describedby": null,
   "aria-disabled": null,
@@ -9,7 +9,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: true and aria: {} 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-describedby": "subline",
   "aria-disabled": null,
@@ -17,7 +17,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true, hasSubline: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-describedby": null,
   "aria-disabled": "true",
@@ -25,7 +25,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false, hasSubline: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-describedby": null,
   "aria-disabled": "true",
@@ -38,7 +38,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
   'aria-haspopup': true,
   'aria-pressed': true
 } 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-describedby": null,
   "aria-disabled": "true",
@@ -50,7 +50,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true, hasSubline: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-describedby": null,
   "aria-disabled": "true",

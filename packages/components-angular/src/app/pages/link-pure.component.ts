@@ -168,6 +168,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with no icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Label icon none</p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'" [size]="'inherit'" style="font-size: 48px"
+        >Label icon none size inherit</p-link-pure
+      >
+      <p-link-pure
+        [href]="'https://www.porsche.com'"
+        [icon]="'none'"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px"
+        >Label icon none size responsive</p-link-pure
+      >
       <p-link-pure [icon]="'none'"><a [href]="'https://www.porsche.com'">Label slotted icon none</a></p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'">
         Label icon none

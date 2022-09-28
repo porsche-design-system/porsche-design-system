@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getContentAriaAttributes() should return correct aria attributes for state: error 1`] = `
-Object {
+{
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
   "aria-live": "assertive",
@@ -10,7 +10,7 @@ Object {
 `;
 
 exports[`getContentAriaAttributes() should return correct aria attributes for state: neutral 1`] = `
-Object {
+{
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
   "aria-live": "polite",
@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`getContentAriaAttributes() should return correct aria attributes for state: success 1`] = `
-Object {
+{
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
   "aria-live": "polite",
@@ -28,7 +28,7 @@ Object {
 `;
 
 exports[`getContentAriaAttributes() should return correct aria attributes for state: warning 1`] = `
-Object {
+{
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
   "aria-live": "assertive",

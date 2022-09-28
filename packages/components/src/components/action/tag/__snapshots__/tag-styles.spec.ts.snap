@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: false 1`] = `
-Object {
+{
   "backgroundColor": "#262b2e",
   "baseColor": "#fff",
   "hoverColor": "#ff0223",
@@ -10,7 +10,7 @@ Object {
 `;
 
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: true 1`] = `
-Object {
+{
   "backgroundColor": "#262b2e",
   "baseColor": "#000",
   "hoverColor": "#d5001c",
@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: false 1`] = `
-Object {
+{
   "backgroundColor": "#f2f2f2",
   "baseColor": "#000",
   "hoverColor": "#d5001c",
@@ -28,7 +28,7 @@ Object {
 `;
 
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: true 1`] = `
-Object {
+{
   "backgroundColor": "#f2f2f2",
   "baseColor": "#fff",
   "hoverColor": "#ff0223",
@@ -137,7 +137,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -222,7 +222,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -307,7 +307,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -392,7 +392,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -477,7 +477,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -562,7 +562,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -647,7 +647,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -732,7 +732,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -817,7 +817,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -902,7 +902,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -987,7 +987,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -1072,7 +1072,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -1157,7 +1157,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;
@@ -1242,7 +1242,7 @@ span {
   outline: 0 !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: absolute !important;
   top: -3px !important;
   left: -3px !important;

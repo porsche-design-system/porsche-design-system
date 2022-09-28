@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
-Object {
+{
   "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
   "backgroundSurfaceColor": "#262b2e",
@@ -30,7 +30,7 @@ Object {
 `;
 
 exports[`getThemedColors() should return correct colors for theme: dark-electric 1`] = `
-Object {
+{
   "activeColor": "#00b0f4",
   "backgroundColor": "#0e1418",
   "backgroundSurfaceColor": "#262b2e",
@@ -59,7 +59,7 @@ Object {
 `;
 
 exports[`getThemedColors() should return correct colors for theme: light 1`] = `
-Object {
+{
   "activeColor": "#d5001c",
   "backgroundColor": "#fff",
   "backgroundSurfaceColor": "#f2f2f2",
@@ -88,7 +88,7 @@ Object {
 `;
 
 exports[`getThemedColors() should return correct colors for theme: light-electric 1`] = `
-Object {
+{
   "activeColor": "#00b0f4",
   "backgroundColor": "#fff",
   "backgroundSurfaceColor": "#f2f2f2",
