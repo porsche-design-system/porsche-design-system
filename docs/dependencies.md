@@ -1,4 +1,4 @@
-# Dependencies 05.08.2022
+# Dependencies 27.09.2022
 
 ## Vue
 
@@ -11,6 +11,7 @@ with Vue **2** and **3**.
 
 - `vue`
 - `vue-router`
+- `vue-template-compiler`
 - `vuex`
 - `@vue/cli-plugin-babel`
 - `@vue/cli-plugin-router`
@@ -41,6 +42,7 @@ before we upgrade to it.
 
 ### Affected dependencies:
 
+- `typescript`
 - `@angular/animations`
 - `@angular/common`
 - `@angular/compiler`
@@ -55,8 +57,7 @@ before we upgrade to it.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
-
-- `typescript`
+- `angular-imask` is not compatible with Angular 13 anymore, see https://github.com/uNmAnNeR/imaskjs/issues/741
 
 ---
 

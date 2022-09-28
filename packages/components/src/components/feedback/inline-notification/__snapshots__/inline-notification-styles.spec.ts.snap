@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getCloseIconJssStyle() should return correct JssStyle 1`] = `
-Object {
+{
   "marginLeft": "1rem",
 }
 `;
@@ -559,7 +559,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 `;
 
 exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
-Object {
+{
   "display": "grid",
   "gridGap": "0.25rem",
   "maxWidth": "50rem",
@@ -567,8 +567,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#e00000",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -578,8 +578,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: neutral  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#0061bd",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -589,8 +589,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#018a16",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -600,8 +600,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#ff9b00",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -611,8 +611,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -628,8 +628,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -645,8 +645,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -662,8 +662,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -679,8 +679,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -696,8 +696,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -713,8 +713,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -730,8 +730,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",

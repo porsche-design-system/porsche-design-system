@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-disabled": null,
 }
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-disabled": "true",
 }
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
-Object {
+{
   "aria-busy": null,
   "aria-disabled": "true",
 }
@@ -27,7 +27,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
   'aria-haspopup': true,
   'aria-pressed': true
 } 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-disabled": "true",
   "aria-expanded": "true",
@@ -38,7 +38,7 @@ Object {
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
-Object {
+{
   "aria-busy": "true",
   "aria-disabled": "true",
 }

@@ -85,7 +85,7 @@ const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'wi
 const clickElement = async (el: ElementHandle) => {
   await el.click();
   await waitForStencilLifecycle(page);
-  await page.waitForTimeout(CSS_ANIMATION_DURATION);
+  await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 };
 
 describe('activeTabIndex', () => {
@@ -110,13 +110,13 @@ describe('slotted content changes', () => {
     await initTabsBar({ amount: 3, activeTabIndex: 0 });
     const [firstButton] = await getAllButtons();
     const bar = await getBar();
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
 
     await firstButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(252);
   });
@@ -133,7 +133,7 @@ describe('slotted content changes', () => {
       tabsBar.append(tab);
     });
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
 
@@ -155,7 +155,7 @@ describe('slotted content changes', () => {
     });
 
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
     const [, secondButton] = await getAllButtons();
 
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
@@ -174,7 +174,7 @@ describe('slotted content changes', () => {
     });
 
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(await getBarWidth(bar)).toBe('0px');
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
@@ -192,7 +192,7 @@ describe('slotted content changes', () => {
     });
 
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const [firstButton, secondButton] = await getAllButtons();
 
@@ -214,7 +214,7 @@ describe('slotted content changes', () => {
     });
 
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const [, secondButton] = await getAllButtons();
 
@@ -369,7 +369,7 @@ describe('bar', () => {
       height: 600,
     });
 
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(Math.round((await getElementPositions(page, thirdButton)).left), 'correct offsetLeft page resize').toEqual(
       Math.floor((await getElementPositions(page, bar)).left)
@@ -386,14 +386,14 @@ describe('bar', () => {
     const host = await getHost();
     await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(Math.floor(firstButtonPosition + buttonCenter)).toEqual(
       Math.floor((await getElementPositions(page, bar)).left)
     );
 
     await clickElement(thirdButton);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(
       Math.floor((await getElementPositions(page, thirdButton)).left),
@@ -557,7 +557,7 @@ describe('keyboard', () => {
 
     const pressKey = async (key: KeyInput) => {
       await page.keyboard.press(key);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
     };
 
     await pressKey('Tab');

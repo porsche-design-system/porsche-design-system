@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If disabled 1`] = `
-Object {
+{
   "disabled": true,
   "name": "Next page",
   "role": "button",
@@ -9,28 +9,28 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If not disabled 1`] = `
-Object {
+{
   "name": "Next page",
   "role": "button",
 }
 `;
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -52,11 +52,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "1",
                   "role": "StaticText",
                 },
@@ -69,11 +69,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "2",
                   "role": "StaticText",
                 },
@@ -86,11 +86,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "3",
                   "role": "StaticText",
                 },
@@ -103,11 +103,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "4",
                   "role": "StaticText",
                 },
@@ -120,11 +120,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "5",
                   "role": "StaticText",
                 },
@@ -137,13 +137,13 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
                       "name": "…",
                       "role": "StaticText",
                     },
@@ -159,11 +159,11 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "name": "20",
                   "role": "StaticText",
                 },
@@ -176,17 +176,17 @@ Object {
           "name": "",
           "role": "listitem",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],

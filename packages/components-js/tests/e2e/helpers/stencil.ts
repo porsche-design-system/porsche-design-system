@@ -7,7 +7,7 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
 };
 
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
-  await page.waitForTimeout(40); // TODO: remove this once component lifecycles are working as intended
+  await new Promise((resolve) => setTimeout(resolve, 40)); // TODO: remove this once component lifecycles are working as intended
   await page.evaluate((): Promise<number> => {
     (window as any).checkComponentsUpdatedPromise(); // see setContentWithDesignSystem(), need to check if Promise can be resolved initially
     return (window as any).componentsUpdatedPromise; // is resolved by checkComponentsUpdatedPromise() with some delay

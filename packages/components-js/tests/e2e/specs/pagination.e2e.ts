@@ -41,7 +41,7 @@ it('should have no errors if disconnected before fully loaded', async () => {
     setTimeout(() => el.remove(), 10);
   });
 
-  await page.waitForTimeout(10);
+  await new Promise((resolve) => setTimeout(resolve, 10));
 
   expect(getConsoleErrorsAmount()).toBe(0);
 

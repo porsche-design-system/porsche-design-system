@@ -7,7 +7,7 @@ CSSStyleDeclaration {
   "2": "padding",
   "3": "box-sizing",
   "4": "font",
-  "_importants": Object {
+  "_importants": {
     "box-sizing": undefined,
     "font": undefined,
     "padding": undefined,
@@ -16,7 +16,7 @@ CSSStyleDeclaration {
   },
   "_length": 5,
   "_onChange": [Function],
-  "_values": Object {
+  "_values": {
     "box-sizing": "border-box",
     "font": "sans-serif normal normal 400 normal",
     "font-family": "sans-serif",
@@ -40,14 +40,14 @@ CSSStyleDeclaration {
   "0": "display",
   "1": "width",
   "2": "margin-right",
-  "_importants": Object {
+  "_importants": {
     "display": undefined,
     "margin-right": undefined,
     "width": undefined,
   },
   "_length": 3,
   "_onChange": [Function],
-  "_values": Object {
+  "_values": {
     "display": "inline-block",
     "margin-right": "0.25rem",
     "width": "1.5rem",
@@ -58,12 +58,12 @@ CSSStyleDeclaration {
 exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempLabel 1`] = `
 CSSStyleDeclaration {
   "0": "font",
-  "_importants": Object {
+  "_importants": {
     "font": undefined,
   },
   "_length": 1,
   "_onChange": [Function],
-  "_values": Object {
+  "_values": {
     "font": "sans-serif normal normal 400 normal",
     "font-family": "sans-serif",
     "font-style": "normal",
