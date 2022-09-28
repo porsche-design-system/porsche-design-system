@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree with icon 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -24,11 +24,11 @@ Object {
       ],
       "role": "none",
     },
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
+    {
+      "children": [
+        {
+          "children": [
+            {
               "name": "Some Tag",
               "role": "StaticText",
             },
@@ -45,13 +45,13 @@ Object {
 `;
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
               "name": "Some Tag",
               "role": "StaticText",
             },

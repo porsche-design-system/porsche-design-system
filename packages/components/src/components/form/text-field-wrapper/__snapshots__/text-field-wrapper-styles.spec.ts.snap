@@ -4441,14 +4441,14 @@ p-text-field-wrapper b, p-text-field-wrapper strong {
 p-text-field-wrapper em, p-text-field-wrapper i {
   font-style: normal !important;
 }
-p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper input::-webkit-inner-spin-button, p-text-field-wrapper input[type=\\"search\\"]::-webkit-search-decoration {
+p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper input::-webkit-inner-spin-button, p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none !important;
   appearance: none !important;
 }
-p-text-field-wrapper input[type=\\"search\\"]::-webkit-search-cancel-button {
+p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button {
   display: none !important;
 }
-p-text-field-wrapper input[type=\\"text\\"]::-webkit-contacts-auto-fill-button, p-text-field-wrapper input[type=\\"text\\"]::-webkit-credentials-auto-fill-button {
+p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
 }
 p-text-field-wrapper a::-moz-focus-inner {
@@ -4484,14 +4484,14 @@ prefixed-p-text-field-wrapper b, prefixed-p-text-field-wrapper strong {
 prefixed-p-text-field-wrapper em, prefixed-p-text-field-wrapper i {
   font-style: normal !important;
 }
-prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-field-wrapper input::-webkit-inner-spin-button, prefixed-p-text-field-wrapper input[type=\\"search\\"]::-webkit-search-decoration {
+prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-field-wrapper input::-webkit-inner-spin-button, prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none !important;
   appearance: none !important;
 }
-prefixed-p-text-field-wrapper input[type=\\"search\\"]::-webkit-search-cancel-button {
+prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button {
   display: none !important;
 }
-prefixed-p-text-field-wrapper input[type=\\"text\\"]::-webkit-contacts-auto-fill-button, prefixed-p-text-field-wrapper input[type=\\"text\\"]::-webkit-credentials-auto-fill-button {
+prefixed-p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, prefixed-p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
 }
 prefixed-p-text-field-wrapper a::-moz-focus-inner {

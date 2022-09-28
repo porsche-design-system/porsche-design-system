@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct accessibility tree property if error state added programmatically 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -30,7 +30,7 @@ Object {
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "name": "Some Message",
                   "role": "StaticText",
                 },
@@ -52,24 +52,24 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree property in error state 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -81,7 +81,7 @@ Object {
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "name": "Some Message",
                   "role": "StaticText",
                 },
@@ -103,7 +103,7 @@ Object {
 `;
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
+{
   "name": "",
   "role": "group",
 }

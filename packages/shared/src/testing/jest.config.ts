@@ -14,22 +14,22 @@ export const config: Config.InitialOptions = {
   // modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        isolatedModules: true, // disable type-checking and compile each file as an isolated module
+        diagnostics: false,
+        tsconfig: {
+          moduleResolution: 'node',
+          target: 'es2019',
+          lib: ['es2019', 'dom'],
+          esModuleInterop: true,
+        },
+      },
+    ],
   },
   maxWorkers: maxWorkers,
   testSequencer: '@signed/jest-alphabetical-sequencer',
-  globals: {
-    'ts-jest': {
-      isolatedModules: true, // disable type-checking and compile each file as an isolated module
-      diagnostics: false,
-      tsconfig: {
-        moduleResolution: 'node',
-        target: 'es2019',
-        lib: ['es2019', 'dom'],
-        esModuleInterop: true,
-      },
-    },
-  },
 };
 
 process.env.JEST_PUPPETEER_CONFIG = require.resolve('@porsche-design-system/shared/testing/jest-puppeteer.config.js');

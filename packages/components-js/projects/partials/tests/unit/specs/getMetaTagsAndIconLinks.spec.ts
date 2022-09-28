@@ -10,7 +10,7 @@ jest.mock('../../../src/shared');
 describe('validation', () => {
   it('should throw error on unprovided appTitle', () => {
     expect(() => getMetaTagsAndIconLinks()).toThrowErrorMatchingInlineSnapshot(
-      '"Option \\"appTitle\\" is required to output \\"<meta name=\\"apple-mobile-web-app-title\\" content=\\"appTitle\\" />"'
+      `"Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />"`
     );
   });
 });
