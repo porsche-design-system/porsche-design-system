@@ -108,10 +108,6 @@ export class ButtonPure {
     return isDisabledOrLoading(this.disabled, this.loading);
   }
 
-  private get hasIcon(): boolean {
-    return hasVisibleIcon(this.icon);
-  }
-
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -146,7 +142,7 @@ export class ButtonPure {
       () => this.isDisabledOrLoading
     );
 
-    if (isSizeInherit(this.size) && this.hasIcon) {
+    if (isSizeInherit(this.size) && hasVisibleIcon(this.icon)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;
         this.iconTag.style.width = size;
@@ -156,6 +152,7 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
+    const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 
     const iconProps = {
@@ -176,7 +173,7 @@ export class ButtonPure {
           tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
           ref={(el) => (this.buttonTag = el)}
         >
-          {this.hasIcon &&
+          {hasIcon &&
             (this.loading ? (
               <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
             ) : (
