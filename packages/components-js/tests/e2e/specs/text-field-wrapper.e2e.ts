@@ -523,8 +523,7 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-text-field-wrapper'], 'componentDidLoad: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // p-text should not be used
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
@@ -536,13 +535,9 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined); // p-text should not be used
-
     expect(status.componentDidUpdate['p-text-field-wrapper'], 'componentDidUpdate: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(undefined); // p-text should not be used
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);

@@ -160,7 +160,6 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
     expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined); // p-text should not be used
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 

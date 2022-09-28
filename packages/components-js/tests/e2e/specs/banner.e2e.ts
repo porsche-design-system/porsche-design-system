@@ -163,14 +163,11 @@ describe('close', () => {
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initBanner('error');
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
     expect(status.componentDidLoad['p-content-wrapper'], 'componentDidLoad: p-content-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(undefined); // p-headlinde should not be used within p-banner
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(undefined); // p-text should not be used
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
