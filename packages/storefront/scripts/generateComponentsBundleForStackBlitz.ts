@@ -13,6 +13,10 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   const bundle: { [path: string]: string } = {};
   const files = globby.sync(`../components-${framework}/dist/components-wrapper/**/*.{js,mjs,ts,json}`);
 
+  if (files.length <= 0) {
+    throw new Error(`No build found for @porsche-design-system/components-${framework}`);
+  }
+
   for (const file of files) {
     // Define filename/path as it should be structured in StackBlitz
     const path = file.replace(
