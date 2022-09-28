@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
+
 ### [2.16.2] - 2022-09-15
 
 ### [2.16.2-rc.0] - 2022-09-15
@@ -18,7 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Issue with `Popover` where drop-shadow is not shown correctly in Chrome >= 105
 - Issue with `Carousel` and `wrap-content="true"` where the layout was out of sync with `Content Wrapper` for
   viewports >= 1760px.
-- `Select Wrapper` with custom dropdown keeps attribute changes of native select options in sync if changed programmatically
+- `Select Wrapper` with custom dropdown keeps attribute changes of native select options in sync if changed
+  programmatically
 
 ### [2.16.1] - 2022-09-09
 
