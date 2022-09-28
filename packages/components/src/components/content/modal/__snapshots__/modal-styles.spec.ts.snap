@@ -18,7 +18,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -150,7 +150,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -284,7 +284,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -416,7 +416,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -548,7 +548,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -682,7 +682,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -814,7 +814,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -946,7 +946,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1112,7 +1112,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1244,7 +1244,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1378,7 +1378,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1510,7 +1510,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1642,7 +1642,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1776,7 +1776,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1908,7 +1908,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;

@@ -32,7 +32,9 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
     callback,
   });
 
-  const executionContext = elmHandle.executionContext();
+  // executionContext() became deprecated in 16.1.1 (2022-08-16)
+  // and was made internal in v18
+  const executionContext = (elmHandle as any).executionContext();
 
   // add element event listener
   await executionContext.evaluate(
@@ -47,8 +49,8 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
   );
 };
 
-export const waitForEventSerialization = async (page: Page): Promise<void> => {
-  return page.waitForTimeout(5); // event serialization takes a little bit
+export const waitForEventSerialization = async (): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, 5)); // event serialization takes a little bit
 };
 
 const nodeContextEvents = (waitForEvents: Map<number, WaitForEvent>, eventId: number, ev: any) => {

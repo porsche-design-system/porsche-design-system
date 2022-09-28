@@ -27,7 +27,7 @@ p {
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   bottom: 0;
@@ -108,7 +108,7 @@ p {
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 50%;
@@ -189,7 +189,7 @@ p {
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 50%;
@@ -270,7 +270,7 @@ p {
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 0;

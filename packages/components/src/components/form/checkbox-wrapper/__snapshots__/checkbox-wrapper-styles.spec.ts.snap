@@ -27,10 +27,10 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #323639 !important;
@@ -204,10 +204,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #e00000 !important;
@@ -309,10 +309,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #e00000 !important;
@@ -414,10 +414,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #323639 !important;
@@ -518,10 +518,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #323639 !important;
@@ -622,10 +622,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #018a16 !important;
@@ -727,10 +727,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #018a16 !important;
@@ -832,10 +832,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #e00000 !important;
@@ -938,10 +938,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #e00000 !important;
@@ -1044,10 +1044,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #323639 !important;
@@ -1149,10 +1149,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #323639 !important;
@@ -1254,10 +1254,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #018a16 !important;
@@ -1360,10 +1360,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
 }
 ::slotted(input:checked), ::slotted(input:indeterminate) {
   border-color: #018a16 !important;

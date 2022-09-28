@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should have no regression for dependency tree 1`] = `
-Object {
-  "breakpoint.js": Array [],
-  "colorExternal.js": Array [],
-  "focus.js": Array [],
-  "font/font-behavior.js": Array [],
-  "font/font-family.js": Array [],
-  "font/font-hyphenation.js": Array [],
-  "font/font-size.js": Array [],
-  "font/font-style.js": Array [],
-  "font/font-variant.js": Array [],
-  "font/font-weight.js": Array [],
-  "grid/grid-gap.js": Array [],
-  "grid/grid-safe-zone.js": Array [],
-  "grid/grid-width.js": Array [],
-  "grid/grid.js": Array [
+{
+  "breakpoint.js": [],
+  "colorExternal.js": [],
+  "focus.js": [],
+  "font/font-behavior.js": [],
+  "font/font-family.js": [],
+  "font/font-hyphenation.js": [],
+  "font/font-size.js": [],
+  "font/font-style.js": [],
+  "font/font-variant.js": [],
+  "font/font-weight.js": [],
+  "grid/grid-gap.js": [],
+  "grid/grid-safe-zone.js": [],
+  "grid/grid-width.js": [],
+  "grid/grid.js": [
     "grid/grid-gap.js",
     "grid/grid-safe-zone.js",
     "grid/grid-width.js",
     "mediaQuery.js",
   ],
-  "index.js": Array [
+  "index.js": [
     "breakpoint.js",
     "colorExternal.js",
     "focus.js",
@@ -54,17 +54,17 @@ Object {
     "typography/text/textXLarge.js",
     "typography/text/textXSmall.js",
   ],
-  "mediaQuery.js": Array [],
-  "spacing.js": Array [],
-  "theme/theme-dark-electric.js": Array [
+  "mediaQuery.js": [],
+  "spacing.js": [],
+  "theme/theme-dark-electric.js": [
     "theme/theme-dark.js",
   ],
-  "theme/theme-dark.js": Array [],
-  "theme/theme-light-electric.js": Array [
+  "theme/theme-dark.js": [],
+  "theme/theme-light-electric.js": [
     "theme/theme-light.js",
   ],
-  "theme/theme-light.js": Array [],
-  "typography/heading/headingLarge.js": Array [
+  "theme/theme-light.js": [],
+  "typography/heading/headingLarge.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
@@ -72,7 +72,7 @@ Object {
     "font/font-weight.js",
     "mediaQuery.js",
   ],
-  "typography/heading/headingMedium.js": Array [
+  "typography/heading/headingMedium.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
@@ -80,7 +80,7 @@ Object {
     "font/font-weight.js",
     "mediaQuery.js",
   ],
-  "typography/heading/headingSmall.js": Array [
+  "typography/heading/headingSmall.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
@@ -88,7 +88,7 @@ Object {
     "font/font-weight.js",
     "mediaQuery.js",
   ],
-  "typography/heading/headingXLarge.js": Array [
+  "typography/heading/headingXLarge.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
@@ -96,14 +96,14 @@ Object {
     "font/font-weight.js",
     "mediaQuery.js",
   ],
-  "typography/heading/headingXSmall.js": Array [
+  "typography/heading/headingXSmall.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
   ],
-  "typography/heading/headingXXLarge.js": Array [
+  "typography/heading/headingXXLarge.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-style.js",
@@ -111,7 +111,7 @@ Object {
     "font/font-weight.js",
     "mediaQuery.js",
   ],
-  "typography/text/textLarge.js": Array [
+  "typography/text/textLarge.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-hyphenation.js",
@@ -119,7 +119,7 @@ Object {
     "font/font-variant.js",
     "font/font-weight.js",
   ],
-  "typography/text/textMedium.js": Array [
+  "typography/text/textMedium.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-hyphenation.js",
@@ -127,7 +127,7 @@ Object {
     "font/font-variant.js",
     "font/font-weight.js",
   ],
-  "typography/text/textSmall.js": Array [
+  "typography/text/textSmall.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-hyphenation.js",
@@ -135,7 +135,7 @@ Object {
     "font/font-variant.js",
     "font/font-weight.js",
   ],
-  "typography/text/textXLarge.js": Array [
+  "typography/text/textXLarge.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-hyphenation.js",
@@ -143,7 +143,7 @@ Object {
     "font/font-variant.js",
     "font/font-weight.js",
   ],
-  "typography/text/textXSmall.js": Array [
+  "typography/text/textXSmall.js": [
     "font/font-behavior.js",
     "font/font-family.js",
     "font/font-hyphenation.js",

@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "name": "Some Label",
-              "role": "StaticText",
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "Some Label",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
             },
           ],
           "role": "none",
@@ -17,10 +27,10 @@ Object {
       ],
       "role": "none",
     },
-    Object {
+    {
       "checked": false,
-      "children": Array [
-        Object {
+      "children": [
+        {
           "role": "none",
         },
       ],

@@ -113,11 +113,11 @@ it("submits parent form on click if it's type submit", async () => {
 
   for (const triggerElement of [host, button]) {
     await triggerElement.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
   }
-  await waitForEventSerialization(page); // 🙈
-  await waitForEventSerialization(page); // 🙈
-  await waitForEventSerialization(page); // 🙈
+  await waitForEventSerialization(); // 🙈
+  await waitForEventSerialization(); // 🙈
+  await waitForEventSerialization(); // 🙈
 
   expect(calls).toBe(2);
 });
@@ -210,7 +210,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
   expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab').toBe(0);
   expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab').toBe(0);
@@ -220,7 +220,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
   expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab').toBe(1);
   expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab').toBe(1);
@@ -230,7 +230,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-button-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
   expect(buttonFocusCalls, 'buttonFocusCalls after 3rd tab').toBe(1);
   expect(buttonFocusInCalls, 'buttonFocusInCalls after 3rd tab').toBe(1);
@@ -242,7 +242,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   // tab back
   await page.keyboard.down('ShiftLeft');
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
   expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab back').toBe(2);
   expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab back').toBe(2);
@@ -252,7 +252,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-button-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
   expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab back').toBe(2);
   expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab back').toBe(2);

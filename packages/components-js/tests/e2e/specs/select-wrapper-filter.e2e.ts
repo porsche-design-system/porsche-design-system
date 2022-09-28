@@ -137,7 +137,7 @@ describe('select-wrapper filter', () => {
       expect(focusCalls).toBe(0);
 
       await labelText.click();
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
 
       expect(focusCalls).toBe(1);
     });
@@ -197,7 +197,7 @@ describe('select-wrapper filter', () => {
     expect(focusCalls).toBe(0);
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(focusCalls).toBe(1);
   });
@@ -306,7 +306,7 @@ describe('select-wrapper filter', () => {
       await addEventListener(filterInput, 'focus', () => calls++);
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
 
       expect(calls).toBe(1);
     });

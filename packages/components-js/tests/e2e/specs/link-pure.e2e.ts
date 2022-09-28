@@ -101,7 +101,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
   expect(linkFocusCalls, 'linkFocusCalls after 1st tab').toBe(0);
   expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab').toBe(0);
@@ -111,7 +111,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
   expect(linkFocusCalls, 'linkFocusCalls after 2nd tab').toBe(1);
   expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab').toBe(1);
@@ -121,7 +121,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-link-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
   expect(linkFocusCalls, 'linkFocusCalls after 3rd tab').toBe(1);
   expect(linkFocusInCalls, 'linkFocusInCalls after 3rd tab').toBe(1);
@@ -133,7 +133,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   // tab back
   await page.keyboard.down('ShiftLeft');
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
   expect(linkFocusCalls, 'linkFocusCalls after 1st tab back').toBe(2);
   expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab back').toBe(2);
@@ -143,7 +143,7 @@ it('should trigger focus & blur events at the correct time', async () => {
   expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-link-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
+  await waitForEventSerialization();
   expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
   expect(linkFocusCalls, 'linkFocusCalls after 2nd tab back').toBe(2);
   expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab back').toBe(2);
