@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match flippedBreakpoint snapshot 1`] = `
-Object {
+{
   "0px": "xxs",
   "1000px": "m",
   "1300px": "l",

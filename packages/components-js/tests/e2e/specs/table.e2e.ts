@@ -133,7 +133,7 @@ ${script}`
 
       const scrollButton = await getScrollButton();
       await scrollButton.click();
-      await page.waitForTimeout(SCROLL_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION));
 
       const scrollLeftAfterClick = await getScrollLeft();
       expect(scrollLeftAfterClick, 'after click').toBeGreaterThan(0);
@@ -166,13 +166,13 @@ ${script}`
 
       const firstTableHeadCellButton = await getFirstTableHeadCellButton();
       await firstTableHeadCellButton.click();
-      await waitForEventSerialization(page);
-      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization();
+      await waitForEventSerialization(); // 🙈
       expect(eventCounter).toBe(1);
 
       await firstTableHeadCellButton.click();
-      await waitForEventSerialization(page);
-      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization();
+      await waitForEventSerialization(); // 🙈
       expect(eventCounter).toBe(2);
     });
 

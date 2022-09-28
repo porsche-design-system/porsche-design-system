@@ -28,8 +28,8 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
-    @Prop({ default: [] }) public externalStackBlitzDependencies!: ExternalDependency[];
-    @Prop({ default: [] }) public sharedImportKeys!: SharedImportKey[];
+    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
+    @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
 
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
