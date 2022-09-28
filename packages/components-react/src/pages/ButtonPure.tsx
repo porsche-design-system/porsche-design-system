@@ -141,6 +141,13 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render with no icon">
         <PButtonPure icon="none">Label icon none</PButtonPure>
+        <PButtonPure icon="none" size="inherit" style={{ fontSize: '48px' }}>Label icon none size inherit</PButtonPure>
+        <PButtonPure
+          icon="none"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+          >Label icon none size responsive</PButtonPure
+        >
         <PButtonPure size="small" icon="none">
           Label icon none
           <p slot="subline">Some subline</p>

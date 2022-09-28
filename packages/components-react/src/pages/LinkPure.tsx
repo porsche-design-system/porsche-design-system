@@ -169,6 +169,16 @@ export const LinkPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render with no icon">
         <PLinkPure href="https://www.porsche.com" icon="none">Label icon none</PLinkPure>
+        <PLinkPure href="https://www.porsche.com" icon="none" size="inherit" style={{ fontSize: '48px' }}
+          >Label icon none size inherit</PLinkPure
+        >
+        <PLinkPure
+          href="https://www.porsche.com"
+          icon="none"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+          >Label icon none size responsive</PLinkPure
+        >
         <PLinkPure icon="none"><a href="https://www.porsche.com">Label slotted icon none</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="small" icon="none">
           Label icon none
