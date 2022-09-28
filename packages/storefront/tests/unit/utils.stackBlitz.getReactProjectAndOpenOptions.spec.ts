@@ -100,6 +100,23 @@ describe('extendMarkupWithAppComponent()', () => {
 });
 
 describe('getAppTsx()', () => {
+  it('should match snapshot and start with import React patch', () => {
+    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
+    const extendMarkupWithAppComponentSpy = jest.spyOn(
+      getReactProjectAndOpenOptionsUtils,
+      'extendMarkupWithAppComponent'
+    );
+
+    const result = getAppTsx('some markup', true, []);
+
+    expect(result.startsWith("import * as React from 'react';")).toBe(true);
+    expect(result).toMatchSnapshot();
+  });
+
   it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
     const replaceSharedImportsWithConstantsSpy = jest.spyOn(

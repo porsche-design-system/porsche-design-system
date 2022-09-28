@@ -21,6 +21,11 @@ export const App = (): JSX.Fragment => {
 }"
 `;
 
+exports[`getAppTsx() should match snapshot and start with import React patch 1`] = `
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+some markup"
+`;
+
 exports[`getIndexTsx() should return correct values 1`] = `
 "import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
@@ -42,30 +47,30 @@ root.render(
 
 exports[`getTsconfigJson() should return correct values 1`] = `
 "{
-  "compilerOptions": {
-    "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+  \\"compilerOptions\\": {
+    \\"target\\": \\"es6\\",
+    \\"lib\\": [
+      \\"dom\\",
+      \\"dom.iterable\\",
+      \\"esnext\\"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "strictNullChecks": false,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
+    \\"allowJs\\": true,
+    \\"skipLibCheck\\": true,
+    \\"esModuleInterop\\": true,
+    \\"allowSyntheticDefaultImports\\": true,
+    \\"strict\\": true,
+    \\"strictNullChecks\\": false,
+    \\"forceConsistentCasingInFileNames\\": true,
+    \\"module\\": \\"esnext\\",
+    \\"moduleResolution\\": \\"node\\",
+    \\"resolveJsonModule\\": true,
+    \\"isolatedModules\\": true,
+    \\"noEmit\\": true,
+    \\"jsx\\": \\"react-jsx\\",
+    \\"noFallthroughCasesInSwitch\\": true
   },
-  "include": [
-    "src"
+  \\"include\\": [
+    \\"src\\"
   ]
 }"
 `;
