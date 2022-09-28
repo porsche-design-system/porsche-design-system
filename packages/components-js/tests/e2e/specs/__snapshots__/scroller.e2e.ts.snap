@@ -93,16 +93,6 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -149,16 +139,6 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -288,16 +268,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -344,16 +314,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -482,16 +442,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -538,16 +488,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -686,16 +626,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -742,16 +672,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -890,16 +810,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -946,16 +856,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                     {
                                       "children": [
                                         {
-                                          "children": [
-                                            {
-                                              "children": [
-                                                {
-                                                  "role": "none",
-                                                },
-                                              ],
-                                              "role": "none",
-                                            },
-                                          ],
                                           "role": "none",
                                         },
                                       ],

@@ -30,25 +30,14 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "name": "Close modal",
-                              "role": "StaticText",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
+                      "name": "Close modal",
+                      "role": "StaticText",
                     },
                   ],
                   "role": "none",
                 },
               ],
-              "name": "",
-              "role": "generic",
+              "role": "none",
             },
           ],
           "name": "Close modal",
@@ -63,23 +52,13 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
         {
           "children": [
             {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "name": "Some Heading",
-                      "role": "StaticText",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "level": 1,
               "name": "Some Heading",
-              "role": "heading",
+              "role": "StaticText",
             },
           ],
-          "role": "none",
+          "level": 1,
+          "name": "Some Heading",
+          "role": "heading",
         },
       ],
       "role": "none",

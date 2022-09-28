@@ -34,33 +34,23 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
+                  "role": "none",
+                },
+                {
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            {
-              "name": "Some error message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "name": "Some error message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
@@ -78,30 +68,20 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
-            },
-            {
-              "name": "Some success message.",
-              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "name": "Some success message.",
+      "role": "StaticText",
     },
   ],
   "name": "",
