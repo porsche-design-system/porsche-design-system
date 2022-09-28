@@ -1256,6 +1256,10 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root:active {
   color: #d5001c;
 }
+.root .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
 @media(hover:hover) {
   .root:hover {
     color: #d5001c;
@@ -1321,6 +1325,10 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }
 .root:active {
   color: #d5001c;
+}
+.root .icon {
+  width: 1.5em;
+  height: 1.5em;
 }
 .root ~ .subline {
   font-size: 1rem;
