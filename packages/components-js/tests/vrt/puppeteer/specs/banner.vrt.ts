@@ -18,6 +18,7 @@ it.each(extendedViewports)('should have no visual regression for viewport %s', a
     await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
       scenario: async (page) => {
         await page.waitForFunction(() => document.querySelector('template') === null);
+        await page.evaluate(() => (window as any).componentsReady());
       },
     })
   ).toBeFalsy();
