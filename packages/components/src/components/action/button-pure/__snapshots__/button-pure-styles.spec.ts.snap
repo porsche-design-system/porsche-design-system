@@ -1258,7 +1258,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1388,7 +1388,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   border: 0;
 }
 .root::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
