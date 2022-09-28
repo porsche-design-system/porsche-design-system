@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`button accessibility should expose correct accessibility name when hide-label prop is set 1`] = `
-Object {
+{
   "name": "Some label",
   "role": "button",
 }
 `;
 
 exports[`button accessibility should expose correct accessibility tree if accessibility properties are set: aria-pressed attribute 1`] = `
-Object {
+{
   "name": "Some label",
   "pressed": true,
   "role": "button",
@@ -16,7 +16,7 @@ Object {
 `;
 
 exports[`button accessibility should expose correct accessibility tree if accessibility properties are set: initial aria attributes 1`] = `
-Object {
+{
   "expanded": true,
   "haspopup": "menu",
   "name": "Some more detailed label",
@@ -25,7 +25,7 @@ Object {
 `;
 
 exports[`button accessibility should expose correct initial accessibility tree properties 1`] = `
-Object {
+{
   "name": "Some label",
   "role": "button",
 }

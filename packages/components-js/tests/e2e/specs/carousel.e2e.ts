@@ -457,11 +457,11 @@ describe('events', () => {
     expect(eventCounter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(2);
   });
 
@@ -478,11 +478,11 @@ describe('events', () => {
     expect(eventCounter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(2);
   });
 });

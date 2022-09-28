@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree of tablist 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 1",
                                       "role": "StaticText",
                                     },
@@ -27,9 +27,9 @@ Object {
                                   "name": "Button 1",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 2",
                                       "role": "StaticText",
                                     },
@@ -37,9 +37,9 @@ Object {
                                   "name": "Button 2",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 3",
                                       "role": "StaticText",
                                     },
@@ -50,10 +50,10 @@ Object {
                               ],
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -64,19 +64,19 @@ Object {
                       "name": "",
                       "role": "generic",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -88,11 +88,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -110,19 +120,19 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -134,11 +144,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -175,25 +195,25 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 1",
                                       "role": "StaticText",
                                     },
@@ -202,9 +222,9 @@ Object {
                                   "name": "Button 1",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 2",
                                       "role": "StaticText",
                                     },
@@ -212,9 +232,9 @@ Object {
                                   "name": "Button 2",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 3",
                                       "role": "StaticText",
                                     },
@@ -225,10 +245,10 @@ Object {
                               ],
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -239,19 +259,19 @@ Object {
                       "name": "",
                       "role": "generic",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -263,11 +283,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -285,19 +315,19 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -309,11 +339,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -350,25 +390,25 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 1",
                                       "role": "StaticText",
                                     },
@@ -376,9 +416,9 @@ Object {
                                   "name": "Button 1",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 2",
                                       "role": "StaticText",
                                     },
@@ -386,9 +426,9 @@ Object {
                                   "name": "Button 2",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 3",
                                       "role": "StaticText",
                                     },
@@ -399,10 +439,10 @@ Object {
                               ],
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -413,19 +453,19 @@ Object {
                       "name": "",
                       "role": "generic",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -437,11 +477,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -459,19 +509,19 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -483,11 +533,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -524,25 +584,25 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 1",
                                       "role": "StaticText",
                                     },
@@ -550,9 +610,9 @@ Object {
                                   "name": "Button 1",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 2",
                                       "role": "StaticText",
                                     },
@@ -560,9 +620,9 @@ Object {
                                   "name": "Button 2",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 3",
                                       "role": "StaticText",
                                     },
@@ -570,9 +630,9 @@ Object {
                                   "name": "Button 3",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 4",
                                       "role": "StaticText",
                                     },
@@ -583,10 +643,10 @@ Object {
                               ],
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -597,19 +657,19 @@ Object {
                       "name": "",
                       "role": "generic",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -621,11 +681,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -643,19 +713,19 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -667,11 +737,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -708,25 +788,25 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 1",
                                       "role": "StaticText",
                                     },
@@ -734,9 +814,9 @@ Object {
                                   "name": "Button 1",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 2",
                                       "role": "StaticText",
                                     },
@@ -744,9 +824,9 @@ Object {
                                   "name": "Button 2",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 3",
                                       "role": "StaticText",
                                     },
@@ -754,9 +834,9 @@ Object {
                                   "name": "Button 3",
                                   "role": "button",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
+                                {
+                                  "children": [
+                                    {
                                       "name": "Button 4",
                                       "role": "StaticText",
                                     },
@@ -767,10 +847,10 @@ Object {
                               ],
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
-                            Object {
+                            {
                               "role": "none",
                             },
                           ],
@@ -781,19 +861,19 @@ Object {
                       "name": "",
                       "role": "generic",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -805,11 +885,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],
@@ -827,19 +917,19 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
-                                          "children": Array [
-                                            Object {
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
                                               "role": "none",
                                             },
                                           ],
@@ -851,11 +941,21 @@ Object {
                                   ],
                                   "role": "none",
                                 },
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "children": Array [
-                                        Object {
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
                                           "role": "none",
                                         },
                                       ],

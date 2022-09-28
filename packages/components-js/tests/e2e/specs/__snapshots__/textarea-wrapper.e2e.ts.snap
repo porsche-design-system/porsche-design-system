@@ -1,32 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = error 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "role": "none",
-                },
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
+            },
+            {
+              "name": "Some error message.",
+              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
-    },
-    Object {
-      "name": "Some error message.",
-      "role": "StaticText",
     },
   ],
   "name": "",
@@ -35,29 +45,39 @@ Object {
 `;
 
 exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = success 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
+            },
+            {
+              "name": "Some success message.",
+              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
-    },
-    Object {
-      "name": "Some success message.",
-      "role": "StaticText",
     },
   ],
   "name": "",
@@ -66,7 +86,7 @@ Object {
 `;
 
 exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Textarea when state = error 1`] = `
-Object {
+{
   "invalid": "true",
   "multiline": true,
   "name": "Some label. Some error message.",
@@ -75,7 +95,7 @@ Object {
 `;
 
 exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Textarea when state = none 1`] = `
-Object {
+{
   "multiline": true,
   "name": "Some label",
   "role": "textbox",
@@ -83,7 +103,7 @@ Object {
 `;
 
 exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Textarea when state = success 1`] = `
-Object {
+{
   "multiline": true,
   "name": "Some label. Some success message.",
   "role": "textbox",
@@ -91,32 +111,42 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree properties in error state: Of Message 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "role": "none",
-                },
-                Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
               ],
               "role": "none",
+            },
+            {
+              "name": "Some error message",
+              "role": "StaticText",
             },
           ],
           "role": "none",
         },
       ],
       "role": "none",
-    },
-    Object {
-      "name": "Some error message",
-      "role": "StaticText",
     },
   ],
   "name": "",
@@ -125,7 +155,7 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree properties in error state: Of Textarea 1`] = `
-Object {
+{
   "invalid": "true",
   "multiline": true,
   "name": "Some label. Some error message",
@@ -134,7 +164,7 @@ Object {
 `;
 
 exports[`accessibility should expose correct accessibility tree with description text 1`] = `
-Object {
+{
   "multiline": true,
   "name": "Some label. Some description",
   "role": "textbox",
@@ -142,7 +172,7 @@ Object {
 `;
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
-Object {
+{
   "multiline": true,
   "name": "Some label",
   "role": "textbox",

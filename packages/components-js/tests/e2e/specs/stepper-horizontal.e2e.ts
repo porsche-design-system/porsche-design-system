@@ -169,7 +169,7 @@ describe('scrolling', () => {
 
     await item5.click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
@@ -177,7 +177,7 @@ describe('scrolling', () => {
 
     await item4.click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
@@ -197,7 +197,7 @@ describe('scrolling', () => {
     await setProperty(item1, 'state', 'complete');
     await setProperty(item5, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
@@ -206,7 +206,7 @@ describe('scrolling', () => {
     await setProperty(item5, 'state', 'complete');
     await setProperty(item4, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
@@ -223,7 +223,7 @@ describe('scrolling', () => {
       host.removeChild(host.firstChild);
     });
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const gradient = await getGradientNext();
     const gradientWidth = await getOffsetWidth(gradient);
@@ -246,7 +246,7 @@ describe('scrolling', () => {
       host.appendChild(newStepperHorizontalItem);
     });
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const [item1, , , , , item6] = await getStepItems();
 
@@ -256,7 +256,7 @@ describe('scrolling', () => {
     await setProperty(item1, 'state', 'complete');
     await setProperty(item6, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     const item6Offset = await getOffsetLeft(item6);
     const item6Width = await getOffsetWidth(item6);
@@ -280,11 +280,11 @@ describe('events', () => {
     await reattachElementHandle(host);
 
     await item1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
 
     await item2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(2);
   });
 
@@ -297,11 +297,11 @@ describe('events', () => {
     await addEventListener(host, 'stepChange', () => eventCounter++);
 
     await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
   });
 
@@ -314,11 +314,11 @@ describe('events', () => {
     await addEventListener(host, 'stepChange', () => eventCounter++);
 
     await item3.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
   });
 
@@ -334,11 +334,11 @@ describe('events', () => {
     await addEventListener(host, 'stepChange', () => eventCounter++);
 
     await item2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
   });
 
@@ -351,11 +351,11 @@ describe('events', () => {
     await addEventListener(host, 'stepChange', () => eventCounter++);
 
     await item3.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
   });
 });
