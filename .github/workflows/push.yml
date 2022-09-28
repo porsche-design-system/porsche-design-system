@@ -228,29 +228,29 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-build
           args: --components-js
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run-playwright
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js
