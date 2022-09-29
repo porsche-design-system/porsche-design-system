@@ -39,12 +39,10 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
   });
 
-  it('should call setLineHeightOnSizeInherit() with correct parameters when size="inherit"', () => {
+  it('should call setLineHeightOnSizeInherit() with correct parameters', () => {
     const spySetLineHeight = jest.spyOn(lineHeightUtils, 'setLineHeightOnSizeInherit');
     const component = new ButtonPure();
     component.host = document.createElement('p-button-pure');
-    component.host.style.fontSize = '48px';
-    component.size = 'inherit';
     component['labelTag'] = document.createElement('span');
     component.componentDidLoad();
 
