@@ -6,8 +6,8 @@ import { render } from '@testing-library/react';
 const { version } = require('../../../../components-wrapper/package.json');
 
 const hash = '[a-z0-9]{20}';
-const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/components';
-const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/components';
+const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system\\/components';
+const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche\\.cn\\/porsche-design-system\\/components';
 
 jest.mock('../../../src/shared');
 

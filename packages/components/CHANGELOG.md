@@ -9,6 +9,58 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
+
+### [2.16.2] - 2022-09-15
+
+### [2.16.2-rc.0] - 2022-09-15
+
+#### Fixed
+
+- Issue with `Popover` where drop-shadow is not shown correctly in Chrome >= 105
+- Issue with `Carousel` and `wrap-content="true"` where the layout was out of sync with `Content Wrapper` for
+  viewports >= 1760px.
+- `Select Wrapper` with custom dropdown keeps attribute changes of native select options in sync if changed
+  programmatically
+
+### [2.16.1] - 2022-09-09
+
+#### Fixed
+
+- Issue with `Options` typing import for `Carousel`
+
+### [2.16.0] - 2022-09-08
+
+### [2.15.1-rc.1] - 2022-09-08
+
+#### Added
+
+- `Carousel`
+- `Scroller`
+
+#### Changed
+
+- `Stepper Horizontal` now has `size` property
+- `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered
+  correctly.
+- `Tabs Bar` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered correctly.
+
+### [2.15.1-rc.0] - 2022-08-24
+
+#### Fixed
+
+- `Radio Button Wrapper` visual selection change bug in Safari >= 15.5
+
+### [2.15.0] - 2022-08-22
+
+### [2.15.0-rc.1] - 2022-08-18
+
+#### Changed
+
+- Downgraded `@angular` to `v13` to ensure backwards compatibility of `@porsche-design-system/components-angular`
+
 ### [2.15.0-rc.0] - 2022-08-16
 
 #### Fixed

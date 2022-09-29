@@ -117,7 +117,7 @@ const fixAriaTypes = (str: string): string =>
 const fixMethods = (str: string): string =>
   str
     .replace(/(#+\s)`/g, '`') // remove headline hashes before code
-    .replace(/#+\sReturns(?:\s|.)*?`\n/g, ''); // remove return types
+    .replace(/#+\sReturns[\s\S]*?`\n/g, ''); // remove return types
 
 const fixDeprecatedContrast = (str: string): string =>
   str.replace(/(<span style='color:)red('>\*\*\[DEPRECATED]\*\*<\/span>)/g, '$1#d5001c$2');

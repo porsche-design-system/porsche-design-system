@@ -60,12 +60,12 @@ const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
 };
 
 const waitForToastTimeout = async (): Promise<void> => {
-  await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+  await new Promise((resolve) => setTimeout(resolve, TOAST_TIMEOUT_DURATION_OVERRIDE));
   await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 };
 
-const waitForAnimationFinish = () => page.waitForTimeout(ANIMATION_DURATION);
+const waitForAnimationFinish = () => new Promise((resolve) => setTimeout(resolve, ANIMATION_DURATION));
 
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');

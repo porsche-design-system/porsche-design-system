@@ -6,16 +6,16 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "es2020",
+    "skipLibCheck": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2020",
-    "lib": ["es2018", "dom"],
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
     "paths": {
       "@porsche-design-system/components-angular": ["dist/components-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
     },
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "jest-environment-puppeteer", "jest-expect-message"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

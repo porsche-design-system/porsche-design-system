@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": "#fc1717",
@@ -15,9 +15,9 @@ Object {
 `;
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": undefined,
@@ -29,9 +29,9 @@ Object {
 `;
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": "#01ba1d",
@@ -43,9 +43,9 @@ Object {
 `;
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": "#e00000",
@@ -57,9 +57,9 @@ Object {
 `;
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": undefined,
@@ -71,9 +71,9 @@ Object {
 `;
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
+{
+  "message": {
+    "&__icon": {
       "marginRight": "0.25rem",
     },
     "color": "#018a16",

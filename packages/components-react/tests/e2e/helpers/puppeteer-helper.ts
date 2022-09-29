@@ -12,7 +12,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement();
+  ).asElement() as ElementHandle;
 };
 
 export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
@@ -33,7 +33,7 @@ export const initConsoleObserver = (page: Page): void => {
   page.on('console', (msg) => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {
-      const { description } = msg.args()[0]['_remoteObject'];
+      const { description } = msg.args()[0].remoteObject();
       if (description) {
         console.log(description);
       }

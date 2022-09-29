@@ -3,7 +3,6 @@ import {
   ClickableTests,
   expectA11yToMatchSnapshot,
   getActiveElementId,
-  getAttribute,
   getLifecycleStatus,
   getProperty,
   hasFocus,
@@ -114,13 +113,13 @@ describe('button', () => {
 
     for (const triggerElement of [host, button]) {
       await triggerElement.click();
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
     }
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(2);
   });
@@ -216,8 +215,8 @@ describe('button', () => {
     expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
     expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
     expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab').toBe(0);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab').toBe(0);
@@ -227,7 +226,7 @@ describe('button', () => {
     expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
     expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab').toBe(1);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab').toBe(1);
@@ -237,7 +236,7 @@ describe('button', () => {
     expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-button');
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
     expect(buttonFocusCalls, 'buttonFocusCalls after 3rd tab').toBe(1);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 3rd tab').toBe(1);
@@ -249,7 +248,7 @@ describe('button', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
     expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab back').toBe(2);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab back').toBe(2);
@@ -259,7 +258,7 @@ describe('button', () => {
     expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-button');
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
     expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab back').toBe(2);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab back').toBe(2);

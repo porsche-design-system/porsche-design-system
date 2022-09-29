@@ -96,7 +96,8 @@
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
-    "test:vrt:components-js": "yarn --cwd ./packages/components-js test:vrt",
+    "test:vrt:puppeteer:components-js": "yarn --cwd ./packages/components-js test:vrt:puppeteer",
+    "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
     "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",
@@ -143,12 +144,12 @@
     "prettier": "^2.7.1"
   },
   "resolutions": {
-    "**/react-scripts/jest": ">=28 <29",
-    "**/react-scripts/jest-circus": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/jest": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/@jest/types": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=28 <29",
+    "**/react-scripts/jest": ">=29 <30",
+    "**/react-scripts/jest-circus": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
   }
 }

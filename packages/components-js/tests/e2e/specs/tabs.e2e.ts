@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
-  reattachElement,
+  reattachElementHandle,
   removeAttribute,
   selectNode,
   setContentWithDesignSystem,
@@ -224,7 +224,7 @@ describe('keyboard', () => {
     const host = await getHost();
     await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
 
@@ -258,7 +258,7 @@ describe('events', () => {
     await addEventListener(host, 'tabChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-tabs');
+    await reattachElementHandle(host);
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
@@ -309,7 +309,7 @@ describe('events', () => {
     const [, secondButton] = await getAllTabs();
     await secondButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(200); // to be on the safe side
+    await new Promise((resolve) => setTimeout(resolve, 200)); // to be on the safe side
 
     expect(await getCountedEvents()).toBe(1);
   });
@@ -370,10 +370,9 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 

@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getAnimationIn() should return correct JssStyle for keyframesName: mobileIn and durationVar: --p-duration 1`] = `
-Object {
+{
   "animation": "var(--p-duration,600ms) $mobileIn cubic-bezier(0.45,0,0.55,1) forwards",
 }
 `;
 
 exports[`getAnimationIn() should return correct JssStyle for keyframesName: mobileIn and durationVar: null 1`] = `
-Object {
+{
   "animation": "600ms $mobileIn cubic-bezier(0.45,0,0.55,1) forwards",
 }
 `;
 
 exports[`getAnimationOut() should return correct JssStyle 1`] = `
-Object {
+{
   "animation": "600ms $mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important",
 }
 `;
 
 exports[`getBoxShadow() should return correct JssStyle 1`] = `
-Object {
+{
   "boxShadow": "0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2)",
 }
 `;
@@ -106,12 +106,12 @@ exports[`getComponentCss() should return correct css 1`] = `
 `;
 
 exports[`getKeyframesMobile() should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
-Object {
-  "from": Object {
+{
+  "from": {
     "opacity": 0,
     "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
   },
-  "to": Object {
+  "to": {
     "opacity": 1,
     "transform": "translate3d(0,0,0)",
   },
@@ -119,12 +119,12 @@ Object {
 `;
 
 exports[`getKeyframesMobile() should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
-Object {
-  "from": Object {
+{
+  "from": {
     "opacity": 1,
     "transform": "translate3d(0,0,0)",
   },
-  "to": Object {
+  "to": {
     "opacity": 0,
     "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
   },

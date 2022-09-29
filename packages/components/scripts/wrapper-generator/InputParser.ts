@@ -36,9 +36,9 @@ export class InputParser {
     this.sharedTypes = bundleDtsContent
       .substr(0, bundleDtsContent.indexOf('export namespace Components'))
       // remove unused HTMLStencilElement interface
-      .replace(/.*interface HTMLStencilElement(.|\n)*?}\n/, '')
+      .replace(/.*interface HTMLStencilElement(\s|\S)*?}\n/, '')
       // remove unused EventEmitter interface
-      .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
+      .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
       .replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '')
       // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
@@ -48,7 +48,11 @@ export class InputParser {
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
       // fix consumer typing for accessibility props with string type
-      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;');
+      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
+      // fix consumer typing for CarouselInternationalization prop with string type
+      .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;')
+      // fix consumer typing for ScrollToPosition prop with string type
+      .replace(/(export declare type ScrollToPosition = .*?) \| string;/, '$1;');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
     this.rawLocalJSX = rawLocalJSX;
@@ -98,7 +102,7 @@ export class InputParser {
         .replace(/    |\t\t/g, '  ') // adjust indentation
         .replace(/    \*/g, '   *') // adjust indentation before jsdocs
         .replace(/(  |\t)}$/g, '}') // adjust indentation at closing }
-        .replace(/(\?: \(event: )([A-z]+)(<[A-z]+>\))/g, '$1CustomEvent$3'); // remove stencil custom event
+        .replace(/(\?: \(event: )([a-zA-Z]+)(<[a-zA-Z]+>\))/g, '$1CustomEvent$3'); // remove stencil custom event
     rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
 
     // Unfortunately rawLocalJSXInterface contains all props with optional `?` modifier.
@@ -107,7 +111,7 @@ export class InputParser {
     let [, rawComponentsInterface] = regex.exec(this.rawComponents) || [];
     rawComponentsInterface = cleanInterface(rawComponentsInterface);
 
-    const matches = Array.from(rawComponentsInterface.matchAll(/([a-z]+): (?:\s|.)+?;/g));
+    const matches = Array.from(rawComponentsInterface.matchAll(/([a-z]+): [\s\S]+?;/g));
     matches.forEach((match) => {
       rawLocalJSXInterface = rawLocalJSXInterface.replace(new RegExp(`${match[1]}\\?: (?:\\s|.)+?;`), match[0]);
     });

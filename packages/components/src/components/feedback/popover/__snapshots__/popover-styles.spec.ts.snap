@@ -14,11 +14,12 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
   right: -1rem;
   bottom: -1rem;
   filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   bottom: 0;
@@ -86,11 +87,12 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
   right: -1rem;
   bottom: -1rem;
   filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 50%;
@@ -158,11 +160,12 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
   right: -1rem;
   bottom: -1rem;
   filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 50%;
@@ -230,11 +233,12 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
   right: -1rem;
   bottom: -1rem;
   filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content: \\"\\";
+  content: "";
   position: absolute;
   border-style: solid;
   top: 0;

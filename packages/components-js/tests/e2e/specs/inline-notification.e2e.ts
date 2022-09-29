@@ -4,7 +4,7 @@ import {
   getAttribute,
   getLifecycleStatus,
   initAddEventListener,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -74,9 +74,9 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -90,12 +90,12 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-inline-notification');
+    await reattachElementHandle(host);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -111,7 +111,7 @@ describe('action button', () => {
     await addEventListener(host, 'action', () => calls++);
 
     await actionButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(calls).toBe(1);
   });
 });

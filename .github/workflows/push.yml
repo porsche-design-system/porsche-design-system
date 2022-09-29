@@ -8,7 +8,8 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
+  PDS_NODE_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/playwright:v1.26.0-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -29,25 +30,25 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
         shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Lint'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-lint
           args: --components
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components
@@ -70,39 +71,39 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Unit Test Components Manager Core'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components-js:components-manager-core
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-prod
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js-prod
       - name: 'Unit Test Components Wrapper'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components-js:components-wrapper
       - name: 'Unit Test Partials'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components-js:partials
@@ -131,34 +132,34 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
       - name: 'E2E Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e
           args: --components-js
-  components-js-vrt:
-    name: 'Components JS VRT'
+  components-js-vrt-puppeteer:
+    name: 'Components JS VRT (Puppeteer)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -176,38 +177,89 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-vrt
+          entrypoint: run-test-vrt-puppeteer
           args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: components-js-vrt-regression
-          path: ./packages/components-js/tests/vrt/results
+          name: components-js-vrt-puppeteer-regression
+          path: ./packages/components-js/tests/vrt/puppeteer/results
+  components-js-vrt-playwright:
+    name: 'Components JS VRT (Playwright)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-vrt-playwright-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -227,44 +279,44 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components-angular
       - name: 'Build Components Angular'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-angular
       - name: 'E2E Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e
           args: --components-angular
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --components-angular
@@ -293,54 +345,54 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
       - name: 'Build Components React'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-react
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --components-react
       - name: 'JSDOM Polyfill Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-jsdom-polyfill
           args: --components-react
       - name: 'E2E Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e
           args: --components-react
       - name: 'VRT Test components-react'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --components-react
       - name: 'VRT Test components-react/nextjs'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --components-react/nextjs
@@ -375,24 +427,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Shared'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --shared
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --fallbacks
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --fallbacks
@@ -421,19 +473,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Shared'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --shared
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --shared
@@ -456,34 +508,44 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'Lint'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-lint
           args: --storefront
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --storefront
@@ -506,29 +568,39 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'E2E Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e
           args: --storefront
@@ -557,29 +629,39 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'a11y Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-a11y
           args: --storefront
@@ -608,29 +690,39 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --storefront
@@ -659,39 +751,39 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --core-dependencies
       - name: 'Build Components Prod'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --components
       - name: 'Build Components JS Prod'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --components-js
       - name: 'Build Components Angular Prod'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --components-angular
       - name: 'Build Components React Prod'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --components-react
       - name: 'Build Storefront Prod'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
           args: --storefront
@@ -764,19 +856,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --utilities
@@ -799,24 +891,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --utilities-deprecated
       - name: 'VRT Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt
           args: --utilities-deprecated
@@ -833,7 +925,8 @@ jobs:
       - components-unit
       - components-js-unit
       - components-js-e2e
-      - components-js-vrt
+      - components-js-vrt-puppeteer
+      - components-js-vrt-playwright
       - components-angular
       - components-react
       - fallbacks
@@ -855,14 +948,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
           name: assets-cdn
           path: ./packages/assets/cdn
       - name: 'Deploy Assets to CDN'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           CDN_USER: ${{ secrets.CDN_USER }}
           CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
@@ -875,7 +968,8 @@ jobs:
       - components-unit
       - components-js-unit
       - components-js-e2e
-      - components-js-vrt
+      - components-js-vrt-puppeteer
+      - components-js-vrt-playwright
       - components-angular
       - components-react
       - fallbacks
@@ -903,10 +997,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install' # needed for algolia
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Restore Build Artifact'
@@ -915,7 +1009,7 @@ jobs:
           name: storefront-build
           path: ./packages/storefront/dist
       - name: 'Deploy'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
           ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
@@ -944,7 +1038,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -966,7 +1060,7 @@ jobs:
           name: shared-build
           path: ./packages/shared/dist
       - name: 'Smoke Test'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-smoke
           args: --components-js
@@ -993,10 +1087,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-install
       - name: 'Restore Components JS Build Artifact'
@@ -1010,7 +1104,7 @@ jobs:
           name: components-uxpin-source
           path: ./packages/components-react/projects/uxpin-wrapper
       - name: 'Publish UXPin Library'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-node
         env:
           UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
           UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
@@ -1033,14 +1127,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
       - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
@@ -1064,14 +1158,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: components-angular-prod-build
           path: ./packages/components-angular/dist/components-wrapper
       - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
@@ -1095,14 +1189,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
       - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
@@ -1127,14 +1221,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: assets-build
           path: ./packages/assets/dist
       - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
@@ -1159,14 +1253,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Restore Utilities Deprecated Artifact'
         uses: actions/download-artifact@v2
         with:
           name: utilities-deprecated-full-build
           path: ./packages/utilities-deprecated/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
@@ -1191,9 +1285,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Publish Sketch Library Basic'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -1202,7 +1296,7 @@ jobs:
           entrypoint: run-release-sketch
           args: sketch/basic
       - name: 'Publish Sketch Library Web'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match mediaQuery snapshot 1`] = `
-Array [
+exports[`should match mediaQueries snapshot 1`] = `
+[
   "(min-width:0px)",
   "(min-width:480px)",
   "(min-width:760px)",

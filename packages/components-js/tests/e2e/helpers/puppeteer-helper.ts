@@ -127,16 +127,17 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement();
+  ).asElement() as ElementHandle;
 };
 
-export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle> =>
-  (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle<ShadowRoot>> => {
+  return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+};
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
-  return await element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
+export const getAttribute = (element: ElementHandle, attribute: string): Promise<string> => {
+  return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
@@ -169,19 +170,19 @@ export const getCssClasses = async (element: ElementHandle): Promise<string> => 
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
-export const getActiveElementTagNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+export const getActiveElementTagNameInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
 };
 
-export const getActiveElementClassNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+export const getActiveElementClassNameInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.className);
 };
 
-export const getActiveElementId = async (page: Page): Promise<string> => {
+export const getActiveElementId = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.id);
 };
 
-export const getActiveElementTagName = async (page: Page): Promise<string> => {
+export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 };
 
@@ -238,12 +239,11 @@ export const getElementPositions = (
   }, element);
 };
 
-export const reattachElement = async (page: Page, selector: string): Promise<void> => {
-  await page.evaluate((selector: string) => {
-    const [element] = Array.from(document.getElementsByTagName(selector));
-    element.remove();
-    document.body.appendChild(element);
-  }, selector);
+export const reattachElementHandle = (handle: ElementHandle): Promise<void> => {
+  return handle.evaluate((el) => {
+    el.remove();
+    document.body.appendChild(el);
+  });
 };
 
 export const enableBrowserLogging = (page: Page): void => {
@@ -252,7 +252,7 @@ export const enableBrowserLogging = (page: Page): void => {
   });
 };
 
-export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
+export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
 export const hasFocus = (element: ElementHandle): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);
@@ -266,15 +266,26 @@ export const initConsoleObserver = (page: Page): void => {
   page.on('console', (msg) => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {
-      const { description } = msg.args()[0]['_remoteObject'];
+      const { description } = msg.args()[0].remoteObject();
       if (description) {
         console.log(description);
       }
     }
   });
 };
-export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
-export const getConsoleWarningsAmount = () => consoleMessages.filter((x) => x.type() === 'warning').length;
+
+const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
+const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
+export const getConsoleErrorsAmount = () => getConsoleErrors().length;
+export const getConsoleErrorMessages = () =>
+  getConsoleErrors()
+    .map((msg) => '- ' + msg.text())
+    .join('\n');
+export const getConsoleWarningsAmount = () => getConsoleWarnings().length;
+export const getConsoleWarningMessages = () =>
+  getConsoleWarnings()
+    .map((msg) => '- ' + msg.text())
+    .join('\n');
 
 const thrownErrors: string[] = [];
 
@@ -348,7 +359,7 @@ export const expectA11yToMatchSnapshot = async (
     ...options,
   });
 
-  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+  message ? expect(snapshot).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
 
 export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {

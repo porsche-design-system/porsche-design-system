@@ -7,7 +7,7 @@ import { getTagName } from '../tag-name';
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ) => ValidatorFunction;
 type ValidatorFunctionShapeCreator = <T>(allowedValues: {
   [key in keyof T]: ValidatorFunctionOrCreator;
@@ -26,7 +26,7 @@ export type ValidationError = {
 
 export const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
-    .replace(/"([A-z?]+)":/g, '$1:') // remove double quotes from keys
+    .replace(/"([a-zA-Z?]+)":/g, '$1:') // remove double quotes from keys
     .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
     .replace(/(})/g, ' $1') // add space before following: }
     .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
@@ -34,10 +34,11 @@ export const formatObjectOutput = (value: any): string => {
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return (
-    JSON.stringify(value)
+    JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
       .replace(/'/g, '') // remove single quotes
       // eslint-disable-next-line @typescript-eslint/quotes
       .replace(/"/g, "'") // replace double quotes with single quotes
+      .replace(/'(undefined)'/, '$1') // remove quotes around undefined
       .replace(/,/g, ', ') // add space after comma
   );
 };
@@ -72,12 +73,12 @@ const breakpointCustomizableTemplate =
   ).replace(/"/g, '');
 
 export const getBreakpointCustomizableStructure = <T>(
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
-  if (allowedValues !== 'boolean') {
+  if (allowedValues !== 'boolean' && allowedValues !== 'number') {
     allowedValues = formatArrayOutput(allowedValues)
-      .replace('[', '(') // starting inline type literal array
-      .replace(']', ')[]') // ending inline type literal array
+      .replace(/\[/g, '(') // starting inline type literal array
+      .replace(/]/g, ')[]') // ending inline type literal array
       .replace(/,/g, ' |') as any; // replace commas with a pipe
   }
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
@@ -108,16 +109,18 @@ export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: Validat
 
 export const isBreakpointCustomizableValueInvalid = <T>(
   value: any,
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): boolean => {
-  return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value as T);
+  return allowedValues === 'boolean' || allowedValues === 'number'
+    ? isValueNotOfType(value, allowedValues)
+    : !allowedValues.includes(value as T);
 };
 
-type AllowedTypesKeys = 'string' | 'number' | 'boolean';
+type AllowedTypeKey = 'string' | 'number' | 'boolean';
 
 // TODO: maybe dissolve object structure and have standalone utils
 export const AllowedTypes: {
-  [key in AllowedTypesKeys]: ValidatorFunction;
+  [key in AllowedTypeKey]: ValidatorFunction;
 } & {
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
@@ -153,6 +156,7 @@ export const AllowedTypes: {
   breakpoint: (allowedValues): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
+      // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
 

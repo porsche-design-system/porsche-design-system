@@ -13,7 +13,7 @@ const generateBreakpointMapWithoutUnit = (): void => {
   const targetPath = path.normalize('./src/js/mediaQuery.ts');
   const fileContent = fs.readFileSync(targetPath, 'utf8');
   const newFileContent = fileContent.replace(
-    /(\/\* Auto Generated Start \*\/\s)(?:.|\s)*?(\s\/\* Auto Generated End \*\/)/,
+    /(\/\* Auto Generated Start \*\/\s)[\s\S]*?(\s\/\* Auto Generated End \*\/)/,
     `$1${content}$2`
   );
   fs.writeFileSync(targetPath, newFileContent);

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match snapshot 1`] = `
-Object {
-  "p-accordion": Object {
+{
+  "p-accordion": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -12,30 +12,30 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "size": "small",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "heading": null,
       },
-      Object {
+      {
         "tag": "h2",
       },
-      Object {
+      {
         "open": null,
       },
-      Object {
+      {
         "compact": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-banner": Object {
+  "p-banner": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -45,24 +45,24 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "state": "neutral",
       },
-      Object {
+      {
         "persistent": false,
       },
-      Object {
+      {
         "width": "basic",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-button": Object {
+  "p-button": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -72,56 +72,56 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "tabbable": true,
       },
-      Object {
+      {
         "type": "submit",
       },
-      Object {
+      {
         "disabled": false,
       },
-      Object {
+      {
         "loading": false,
       },
-      Object {
+      {
         "variant": "secondary",
       },
-      Object {
+      {
         "icon": "arrow-head-right",
       },
-      Object {
+      {
         "iconSource": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
-      Object {
+      {
         "propName": "variant",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-button-group": Object {
+  "p-button-group": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -131,15 +131,15 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "direction": "{ base: column, xs: row }",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-button-pure": Object {
+  "p-button-pure": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -149,72 +149,108 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "tabbable": true,
       },
-      Object {
+      {
         "type": "submit",
       },
-      Object {
+      {
         "disabled": false,
       },
-      Object {
+      {
         "loading": false,
       },
-      Object {
+      {
         "size": "small",
       },
-      Object {
+      {
         "weight": "regular",
       },
-      Object {
+      {
         "icon": "arrow-head-right",
       },
-      Object {
+      {
         "iconSource": null,
       },
-      Object {
+      {
         "active": false,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "alignLabel": "right",
       },
-      Object {
+      {
         "stretch": false,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "size",
         "shouldAddValueToClassName": true,
       },
-      Object {
+      {
         "propName": "stretch",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-checkbox-wrapper": Object {
+  "p-carousel": {
+    "hasAriaProp": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": true,
+    "hasSkeleton": false,
+    "hasSlot": true,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": [
+      {
+        "heading": null,
+      },
+      {
+        "description": null,
+      },
+      {
+        "wrapContent": null,
+      },
+      {
+        "slidesPerPage": "1",
+      },
+      {
+        "disablePagination": false,
+      },
+      {
+        "intl": "{}",
+      },
+      {
+        "theme": "light",
+      },
+    ],
+    "shouldPatchSlot": false,
+    "styling": "jss",
+  },
+  "p-checkbox-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -224,40 +260,40 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "observedAttributes": Array [
+    "observedAttributes": [
       "disabled",
       "required",
     ],
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
     ],
     "requiredChild": "input type=checkbox",
     "requiredChildSelector": "input[type=checkbox]",
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
   },
-  "p-content-wrapper": Object {
+  "p-content-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -267,21 +303,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "width": "basic",
       },
-      Object {
+      {
         "backgroundColor": "transparent",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-divider": Object {
+  "p-divider": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -291,21 +327,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "color": "neutral-contrast-low",
       },
-      Object {
+      {
         "orientation": "horizontal",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-fieldset-wrapper": Object {
+  "p-fieldset-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -315,37 +351,37 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "labelSize": "medium",
       },
-      Object {
+      {
         "required": false,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
     ],
     "shouldPatchSlot": true,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "labelSize",
         "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
   },
-  "p-flex": Object {
+  "p-flex": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -355,30 +391,30 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "inline": false,
       },
-      Object {
+      {
         "wrap": "nowrap",
       },
-      Object {
+      {
         "direction": "row",
       },
-      Object {
+      {
         "justifyContent": "flex-start",
       },
-      Object {
+      {
         "alignItems": "stretch",
       },
-      Object {
+      {
         "alignContent": "stretch",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-flex-item": Object {
+  "p-flex-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -388,23 +424,23 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "width": "auto",
       },
-      Object {
+      {
         "offset": "none",
       },
-      Object {
+      {
         "alignSelf": "auto",
       },
-      Object {
+      {
         "grow": "0",
       },
-      Object {
+      {
         "shrink": "1",
       },
-      Object {
+      {
         "flex": "initial",
       },
     ],
@@ -412,7 +448,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-grid": Object {
+  "p-grid": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -422,21 +458,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "direction": "row",
       },
-      Object {
+      {
         "wrap": "wrap",
       },
-      Object {
+      {
         "gutter": "{ base: 16, s: 24, m: 36 }",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-grid-item": Object {
+  "p-grid-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -446,11 +482,11 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "size": "1",
       },
-      Object {
+      {
         "offset": "0",
       },
     ],
@@ -458,7 +494,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-headline": Object {
+  "p-headline": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -468,30 +504,30 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "variant": "headline-1",
       },
-      Object {
+      {
         "tag": null,
       },
-      Object {
+      {
         "align": "left",
       },
-      Object {
+      {
         "color": "default",
       },
-      Object {
+      {
         "ellipsis": false,
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-icon": Object {
+  "p-icon": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -501,33 +537,33 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "name": "arrow-head-right",
       },
-      Object {
+      {
         "source": null,
       },
-      Object {
+      {
         "color": "default",
       },
-      Object {
+      {
         "size": "small",
       },
-      Object {
+      {
         "lazy": false,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-inline-notification": Object {
+  "p-inline-notification": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -537,36 +573,36 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "heading": null,
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "state": "neutral",
       },
-      Object {
+      {
         "persistent": false,
       },
-      Object {
+      {
         "actionLabel": null,
       },
-      Object {
+      {
         "actionLoading": false,
       },
-      Object {
+      {
         "actionIcon": "arrow-head-right",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-link": Object {
+  "p-link": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -576,59 +612,59 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "variant": "secondary",
       },
-      Object {
+      {
         "icon": "arrow-head-right",
       },
-      Object {
+      {
         "iconSource": null,
       },
-      Object {
+      {
         "href": null,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "target": "_self",
       },
-      Object {
+      {
         "download": null,
       },
-      Object {
+      {
         "rel": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "aria": null,
       },
     ],
-    "requiredProps": Array [
+    "requiredProps": [
       "href",
     ],
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
-      Object {
+      {
         "propName": "variant",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-link-pure": Object {
+  "p-link-pure": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -638,75 +674,75 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "alignLabel": "right",
       },
-      Object {
+      {
         "stretch": false,
       },
-      Object {
+      {
         "size": "small",
       },
-      Object {
+      {
         "weight": "regular",
       },
-      Object {
+      {
         "icon": "arrow-head-right",
       },
-      Object {
+      {
         "iconSource": null,
       },
-      Object {
+      {
         "href": null,
       },
-      Object {
+      {
         "active": false,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "target": "_self",
       },
-      Object {
+      {
         "download": null,
       },
-      Object {
+      {
         "rel": null,
       },
-      Object {
+      {
         "aria": null,
       },
     ],
-    "requiredProps": Array [
+    "requiredProps": [
       "href",
     ],
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "size",
         "shouldAddValueToClassName": true,
       },
-      Object {
+      {
         "propName": "stretch",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-link-social": Object {
+  "p-link-social": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -716,46 +752,46 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "icon": null,
       },
-      Object {
+      {
         "iconSource": null,
       },
-      Object {
+      {
         "href": null,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "target": "_self",
       },
-      Object {
+      {
         "rel": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
     ],
-    "requiredProps": Array [
+    "requiredProps": [
       "href",
     ],
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-marque": Object {
+  "p-marque": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -765,27 +801,27 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "trademark": true,
       },
-      Object {
+      {
         "size": "responsive",
       },
-      Object {
+      {
         "href": null,
       },
-      Object {
+      {
         "target": "_self",
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-modal": Object {
+  "p-modal": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -795,27 +831,27 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "disableCloseButton": false,
       },
-      Object {
+      {
         "disableBackdropClick": false,
       },
-      Object {
+      {
         "heading": null,
       },
-      Object {
+      {
         "fullscreen": false,
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-pagination": Object {
+  "p-pagination": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -825,27 +861,30 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
+        "activePage": "1",
+      },
+      {
         "allyLabel": "Pagination",
       },
-      Object {
+      {
         "allyLabelPrev": "Previous page",
       },
-      Object {
+      {
         "allyLabelPage": "Page",
       },
-      Object {
+      {
         "allyLabelNext": "Next page",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-popover": Object {
+  "p-popover": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -855,21 +894,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "direction": "bottom",
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-radio-button-wrapper": Object {
+  "p-radio-button-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -879,40 +918,40 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "observedAttributes": Array [
+    "observedAttributes": [
       "disabled",
       "required",
     ],
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
     ],
     "requiredChild": "input type=radio",
     "requiredChildSelector": "input[type=radio]",
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
   },
-  "p-scroller": Object {
+  "p-scroller": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -920,30 +959,26 @@ Object {
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
-    "isInternal": true,
+    "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "theme": "light",
       },
-      Object {
+      {
         "gradientColorScheme": "default",
       },
-      Object {
+      {
         "scrollToPosition": null,
       },
-      Object {
-        "prevNextButtonJssStyle": null,
+      {
+        "scrollIndicatorPosition": "center",
       },
-    ],
-    "requiredRootNode": Array [
-      "p-tabs-bar",
-      "p-stepper-horizontal",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-segmented-control": Object {
+  "p-segmented-control": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -953,21 +988,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "backgroundColor": "background-default",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "value": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-segmented-control-item": Object {
+  "p-segmented-control-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -977,31 +1012,31 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "value": null,
       },
-      Object {
+      {
         "disabled": false,
       },
-      Object {
+      {
         "label": null,
       },
-      Object {
+      {
         "icon": null,
       },
-      Object {
+      {
         "iconSource": null,
       },
     ],
     "requiredParent": "p-segmented-control",
-    "requiredProps": Array [
+    "requiredProps": [
       "value",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-select-wrapper": Object {
+  "p-select-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -1011,120 +1046,120 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "observedAttributes": Array [
+    "observedAttributes": [
       "disabled",
       "required",
     ],
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "filter": false,
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "dropdownDirection": "auto",
       },
-      Object {
+      {
         "native": false,
       },
     ],
     "requiredChild": "select",
     "requiredChildSelector": "select",
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "description",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "theme",
         "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
   },
-  "p-select-wrapper-dropdown": Object {
+  "p-select-wrapper-dropdown": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isInternal": true,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "selectRef": null,
       },
-      Object {
+      {
         "label": null,
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "state": null,
       },
-      Object {
+      {
         "direction": "auto",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "filter": false,
       },
-      Object {
+      {
         "required": false,
       },
-      Object {
+      {
         "disabled": false,
       },
-      Object {
+      {
         "onOpenChange": null,
       },
-      Object {
+      {
         "isOpenOverride": false,
       },
     ],
-    "requiredProps": Array [
+    "requiredProps": [
       "onOpenChange",
     ],
-    "requiredRootNode": Array [
+    "requiredRootNode": [
       "p-select-wrapper",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-spinner": Object {
+  "p-spinner": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1134,21 +1169,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "size": "small",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-stepper-horizontal": Object {
+  "p-stepper-horizontal": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -1158,15 +1193,18 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
+        "size": "small",
+      },
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-stepper-horizontal-item": Object {
+  "p-stepper-horizontal-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1176,11 +1214,11 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "state": null,
       },
-      Object {
+      {
         "disabled": false,
       },
     ],
@@ -1188,7 +1226,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-switch": Object {
+  "p-switch": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1198,36 +1236,36 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "alignLabel": "right",
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "stretch": false,
       },
-      Object {
+      {
         "checked": false,
       },
-      Object {
+      {
         "disabled": false,
       },
-      Object {
+      {
         "loading": false,
       },
-      Object {
+      {
         "tabbable": true,
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table": Object {
+  "p-table": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1237,15 +1275,15 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "caption": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-body": Object {
+  "p-table-body": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1259,7 +1297,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-cell": Object {
+  "p-table-cell": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1269,8 +1307,8 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "multiline": false,
       },
     ],
@@ -1278,7 +1316,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-head": Object {
+  "p-table-head": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1292,7 +1330,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-head-cell": Object {
+  "p-table-head-cell": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1302,14 +1340,14 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "sort": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "multiline": false,
       },
     ],
@@ -1317,7 +1355,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-head-row": Object {
+  "p-table-head-row": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1331,7 +1369,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-table-row": Object {
+  "p-table-row": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1345,7 +1383,7 @@ Object {
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-tabs": Object {
+  "p-tabs": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -1355,24 +1393,27 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "size": "small",
       },
-      Object {
+      {
         "weight": "regular",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "gradientColorScheme": "default",
+      },
+      {
+        "activeTabIndex": "0",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-tabs-bar": Object {
+  "p-tabs-bar": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -1382,27 +1423,27 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "size": "small",
       },
-      Object {
+      {
         "weight": "regular",
       },
-      Object {
+      {
         "theme": "light",
       },
-      Object {
+      {
         "gradientColorScheme": "default",
       },
-      Object {
+      {
         "activeTabIndex": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-tabs-item": Object {
+  "p-tabs-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1412,19 +1453,19 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
     ],
     "requiredParent": "p-tabs",
-    "requiredProps": Array [
+    "requiredProps": [
       "label",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-tag": Object {
+  "p-tag": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1434,24 +1475,24 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "theme": "light",
       },
-      Object {
+      {
         "color": "background-surface",
       },
-      Object {
+      {
         "icon": null,
       },
-      Object {
+      {
         "iconSource": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-tag-dismissible": Object {
+  "p-tag-dismissible": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1461,21 +1502,21 @@ Object {
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "color": "background-surface",
       },
-      Object {
+      {
         "label": null,
       },
-      Object {
+      {
         "aria": null,
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-text": Object {
+  "p-text": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1485,33 +1526,33 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "tag": "p",
       },
-      Object {
+      {
         "size": "small",
       },
-      Object {
+      {
         "weight": "regular",
       },
-      Object {
+      {
         "align": "left",
       },
-      Object {
+      {
         "color": "default",
       },
-      Object {
+      {
         "ellipsis": false,
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-text-field-wrapper": Object {
+  "p-text-field-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -1521,63 +1562,63 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "observedAttributes": Array [
+    "observedAttributes": [
       "disabled",
       "readonly",
       "required",
     ],
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "unit": null,
       },
-      Object {
+      {
         "unitPosition": "prefix",
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "showCharacterCount": true,
       },
-      Object {
+      {
         "actionIcon": null,
       },
-      Object {
+      {
         "actionLoading": false,
       },
     ],
     "requiredChild": "input type=text",
     "requiredChildSelector": "input[type=text],input[type=number],input[type=email],input[type=tel],input[type=search],input[type=url],input[type=date],input[type=time],input[type=month],input[type=week],input[type=password]",
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "description",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
   },
-  "p-text-list": Object {
+  "p-text-list": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1587,21 +1628,21 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "listType": "unordered",
       },
-      Object {
+      {
         "orderType": "numbered",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": true,
     "styling": "jss",
   },
-  "p-text-list-item": Object {
+  "p-text-list-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1615,7 +1656,7 @@ Object {
     "shouldPatchSlot": true,
     "styling": "jss",
   },
-  "p-textarea-wrapper": Object {
+  "p-textarea-wrapper": {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -1625,51 +1666,51 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "observedAttributes": Array [
+    "observedAttributes": [
       "disabled",
       "readonly",
       "required",
     ],
-    "props": Array [
-      Object {
+    "props": [
+      {
         "label": null,
       },
-      Object {
+      {
         "description": null,
       },
-      Object {
+      {
         "state": "none",
       },
-      Object {
+      {
         "message": null,
       },
-      Object {
+      {
         "hideLabel": false,
       },
-      Object {
+      {
         "showCharacterCount": true,
       },
     ],
     "requiredChild": "textarea",
     "requiredChildSelector": "textarea",
     "shouldPatchSlot": false,
-    "skeletonProps": Array [
-      Object {
+    "skeletonProps": [
+      {
         "propName": "description",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "hideLabel",
         "shouldAddValueToClassName": false,
       },
-      Object {
+      {
         "propName": "label",
         "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
   },
-  "p-toast": Object {
+  "p-toast": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1679,15 +1720,15 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "theme": "light",
       },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
-  "p-toast-item": Object {
+  "p-toast-item": {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1697,18 +1738,18 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": true,
     "isThemeable": true,
-    "props": Array [
-      Object {
+    "props": [
+      {
         "text": null,
       },
-      Object {
+      {
         "state": "neutral",
       },
-      Object {
+      {
         "theme": "light",
       },
     ],
-    "requiredRootNode": Array [
+    "requiredRootNode": [
       "p-toast",
     ],
     "shouldPatchSlot": false,

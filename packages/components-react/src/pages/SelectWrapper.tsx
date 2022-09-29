@@ -427,7 +427,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render in focus state and be open"
         style={{ paddingBottom: 'calc(1rem + 340px)' }}
       >
-        <PSelectWrapper label="Some label">
+        <PSelectWrapper label="Some label" id="last-select-on-page">
           <select id="open-options" name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>

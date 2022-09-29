@@ -44,7 +44,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   iconSource: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
@@ -142,7 +142,7 @@ export class ButtonPure {
       () => this.isDisabledOrLoading
     );
 
-    if (isSizeInherit(this.size)) {
+    if (isSizeInherit(this.size) && hasVisibleIcon(this.icon)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;
         this.iconTag.style.width = size;
@@ -170,7 +170,7 @@ export class ButtonPure {
           {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
-          tabindex={this.tabbable ? 0 : -1}
+          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
           ref={(el) => (this.buttonTag = el)}
         >
           {hasIcon &&

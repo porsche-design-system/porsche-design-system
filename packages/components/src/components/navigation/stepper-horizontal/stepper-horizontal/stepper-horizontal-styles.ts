@@ -1,19 +1,19 @@
-import { getCss } from '../../../../utils';
-import { addImportantToRule, pxToRemWithUnit } from '../../../../styles';
+import { buildResponsiveStyles, getCss } from '../../../../utils';
+import type { StepperHorizontalSize } from './stepper-horizontal-utils';
+import type { BreakpointCustomizable } from '../../../../types';
+import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 
-export const getComponentCss = (): string => {
+export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSize>): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        height: addImportantToRule(pxToRemWithUnit(32)),
-      },
-      '::slotted(*:not(:last-child))': {
-        marginRight: addImportantToRule('1em'),
       },
     },
-    'item-wrapper': {
+    scroller: {
       display: 'flex',
+      ...textSmall,
+      ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => fontSize[s]),
     },
   });
 };

@@ -27,6 +27,21 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-carousel',
+      samples: [
+        [
+          componentsJsPath + '/carousel-example-events.html',
+          componentsAngularPath + '/carousel-example-events.component.ts',
+          componentsReactPath + '/CarouselExampleEvents.tsx',
+        ],
+        [
+          componentsJsPath + '/carousel-example-dynamic-slides.html',
+          componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
+          componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [
@@ -48,6 +63,16 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/modal-example-accessibility.html',
           componentsAngularPath + '/modal-example-accessibility.component.ts',
           componentsReactPath + '/ModalExampleAccessibility.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-scroller',
+      samples: [
+        [
+          componentsJsPath + '/scroller-example.html',
+          componentsAngularPath + '/scroller-example.component.ts',
+          componentsReactPath + '/ScrollerExample.tsx',
         ],
       ],
     },
@@ -165,7 +190,7 @@ const generateCodeSamples = (): void => {
 
             if (framework === 'vanilla-js') {
               // remove getHeadAndData() helper function
-              fileContent = fileContent.replace(/\s\sconst getHeadAndData = (.|\s)*?return(.*\s){3}/, '');
+              fileContent = fileContent.replace(/\s\sconst getHeadAndData = (\s|\S)*?return(.*\s){3}/, '');
             }
 
             return { [framework]: fileContent };

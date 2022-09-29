@@ -14,10 +14,10 @@ afterEach(async () => await page.close());
 const filePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src/routes.tsx');
 const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
+const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];
 const routes: { name: string; path: string; element: string }[] = eval(
   rawRoutes
-    .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
+    .replace(/\.\.\.\[[\s\S]*?\].*/, '') // get rid of generatedRoutes
     .replace(/<(from(?:Pages|Examples)\.\w+)\s\/>/g, "'$1'")
 ).filter(({ element }) => element);
 
