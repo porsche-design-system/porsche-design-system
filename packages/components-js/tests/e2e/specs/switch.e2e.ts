@@ -3,7 +3,6 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
-  getAttribute,
   getLifecycleStatus,
   getProperty,
   hasFocus,
@@ -24,7 +23,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
-const getLabel = () => selectNode(page, 'p-switch >>> span');
+const getLabel = () => selectNode(page, 'p-switch >>> .text');
 
 const clickHandlerScript = `
     <script>
