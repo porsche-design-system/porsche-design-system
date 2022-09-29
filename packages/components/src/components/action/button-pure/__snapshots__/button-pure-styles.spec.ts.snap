@@ -6,28 +6,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block !important;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 @media(min-width:480px) {
   :host {
     display: inline-block !important;
@@ -77,6 +55,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: space-between;
   font-size: 0.75rem;
   line-height: 1.6666666667;
@@ -305,28 +289,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -343,6 +305,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -484,28 +452,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -522,6 +468,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -593,28 +545,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -631,6 +561,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -702,28 +638,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 600;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -740,6 +654,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -811,28 +731,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 600;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -849,6 +747,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -910,6 +814,11 @@ div, ::slotted([slot=subline]) {
   display: flex;
   transition: color var(--p-transition-duration, .24s) ease;
   margin-top: 4px !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   position: absolute;
   height: 1px;
@@ -943,28 +852,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -981,6 +868,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -1043,28 +936,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 100;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1081,6 +952,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -1136,6 +1013,11 @@ div, ::slotted([slot=subline]) {
   display: flex;
   transition: color var(--p-transition-duration, .24s) ease;
   margin-top: 4px !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   position: static;
   width: auto;
@@ -1159,28 +1041,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block !important;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1197,6 +1057,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #d5001c;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
   justify-content: space-between;
   font-size: 3.25rem;
   line-height: 1.2307692308;
@@ -1267,28 +1133,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block !important;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 100;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1305,6 +1149,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #ff0223;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   justify-content: space-between;
   font-size: 3.25rem;
   line-height: 1.2307692308;
@@ -1376,28 +1226,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1414,6 +1242,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -1476,28 +1310,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1514,6 +1326,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: inherit;
   line-height: inherit;
@@ -1559,28 +1377,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 100;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1597,6 +1393,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -1650,28 +1452,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block !important;
   vertical-align: top;
 }
-span {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-size: inherit;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-div, ::slotted([slot=subline]) {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  margin: 0;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1688,6 +1468,12 @@ div, ::slotted([slot=subline]) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 0.75rem;
   line-height: 1.6666666667;

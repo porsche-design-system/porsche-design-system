@@ -26,14 +26,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import {
-  fontSize,
-  fontFamily,
-  fontBehavior,
-  fontHyphenation,
-  fontStyle,
-  fontVariant,
-} from '@porsche-design-system/utilities-v2';
+import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -139,7 +132,7 @@ export const getLinkButtonPureStyles = (
 ): Styles => {
   const { baseColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
-  const fontWeight = getFontWeight(weight);
+
   return {
     '@global': {
       ':host': {
@@ -149,24 +142,6 @@ export const getLinkButtonPureStyles = (
           display: addImportantToRule(responsiveStretch ? 'block' : 'inline-block'),
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
-      },
-      span: {
-        fontFamily,
-        fontStyle,
-        fontVariant,
-        fontWeight,
-        fontSize: 'inherit',
-        ...fontBehavior,
-        ...fontHyphenation,
-      },
-      'div, ::slotted([slot=subline])': {
-        fontFamily,
-        fontStyle,
-        fontVariant,
-        fontWeight: 400, // regular
-        margin: 0,
-        ...fontBehavior,
-        ...fontHyphenation,
       },
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
@@ -209,6 +184,8 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
+      ...textSmall,
+      fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
           buildResponsiveStyles(stretch, (stretched: boolean) => ({
@@ -240,6 +217,7 @@ export const getLinkButtonPureStyles = (
         display: 'flex',
         transition: getTransition('color'),
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
+        ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
