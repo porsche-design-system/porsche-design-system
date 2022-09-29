@@ -39,7 +39,7 @@ export class ToastItem {
   @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOneOfKind(this.host, ['pToast']);
+    throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
   }
 
   public componentWillRender(): void {

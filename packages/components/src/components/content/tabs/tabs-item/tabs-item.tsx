@@ -18,7 +18,7 @@ export class TabsItem {
   @Prop() public label: string;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTabs');
+    throwIfParentIsNotOfKind(this.host, 'p-tabs');
   }
 
   public componentWillRender(): void {

@@ -12,7 +12,7 @@ describe('connectedCallback', () => {
     component.host = document.createElement('p-segmented-control');
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith(component.host, 'pSegmentedControlItem');
+    expect(spy).toBeCalledWith(component.host, 'p-segmented-control-item');
   });
 });
 

@@ -10,7 +10,7 @@ export class TableRow {
   @Element() public host!: HTMLElement;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTableBody');
+    throwIfParentIsNotOfKind(this.host, 'p-table-body');
     attachComponentCss(this.host, getComponentCss);
   }
 

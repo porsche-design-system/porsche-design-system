@@ -1,8 +1,7 @@
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName } from '..';
+import type { TagName } from '@porsche-design-system/shared';
+import { getPrefixedTagNames, getTagName, paramCaseToCamelCase } from '..';
 
-export const isShadowRootParentOfKind = (element: HTMLElement, tagName: TagNameCamelCase): boolean => {
-  const parentElement = (element.getRootNode() as ShadowRoot).host;
-
-  return parentElement && getTagName(parentElement as HTMLElement) === getPrefixedTagNames(element)[tagName];
+export const isShadowRootParentOfKind = (element: HTMLElement, tagName: TagName): boolean => {
+  const parentElement = (element.getRootNode() as ShadowRoot).host as HTMLElement;
+  return parentElement && getTagName(parentElement) === getPrefixedTagNames(element)[paramCaseToCamelCase(tagName)];
 };

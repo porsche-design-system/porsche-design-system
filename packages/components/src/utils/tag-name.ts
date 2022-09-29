@@ -8,15 +8,17 @@ import { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
 export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
-  return /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(getTagName(host))[1] as TagName;
+  const tagName = getTagName(host);
+  const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
+  return (tagNameWithoutPrefix || tagName) as TagName; // return tagName as fallback for default tags
 };
 
 // prevent internal usage of p-headline and p-text
 type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pText'>;
 type PrefixedTagNames = Record<AllowedTagNameCamelCase, string>;
+const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter((item) => item !== 'p-text' && item !== 'p-headline');
 
 export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
-const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter((item) => item !== 'p-text' && item !== 'p-headline');
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = /^([a-z-]+)-p-[a-z-]+$/.exec(getTagName(host)) || [];
