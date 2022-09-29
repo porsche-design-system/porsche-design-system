@@ -7,6 +7,7 @@ import {
   getIndexTsx,
   getTsconfigJson,
   getAppTsx,
+  applyStackBlitzFixForReact,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
@@ -99,26 +100,25 @@ describe('extendMarkupWithAppComponent()', () => {
   });
 });
 
-describe('getAppTsx()', () => {
-  it('should match snapshot and start with import React patch', () => {
-    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
-      getReactProjectAndOpenOptionsUtils,
-      'replaceSharedImportsWithConstants'
-    );
-    const extendMarkupWithAppComponentSpy = jest.spyOn(
-      getReactProjectAndOpenOptionsUtils,
-      'extendMarkupWithAppComponent'
-    );
-
-    const result = getAppTsx('some markup', true, []);
-
-    expect(result.startsWith("import * as React from 'react';")).toBe(true);
+describe('applyStackBlitzFixForReact()', () => {
+  it('should match snapshot', () => {
+    const result = applyStackBlitzFixForReact('export const SomeApp = (): JSX.Fragment => (<>some jsx elements</>)');
     expect(result).toMatchSnapshot();
+  });
+});
+
+describe('getAppTsx()', () => {
+  it('should call convertImportPaths() and applyStackBlitzFixForReact()', () => {
+    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const applyStackBlitzFixForReactSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'applyStackBlitzFixForReact');
+
+    getAppTsx('some markup', true, []);
+
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(applyStackBlitzFixForReactSpy).toBeCalledTimes(1);
   });
 
   it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
-    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
     const replaceSharedImportsWithConstantsSpy = jest.spyOn(
       getReactProjectAndOpenOptionsUtils,
       'replaceSharedImportsWithConstants'
@@ -130,13 +130,11 @@ describe('getAppTsx()', () => {
 
     getAppTsx('some markup', true, []);
 
-    expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
     expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
-    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
     const replaceSharedImportsWithConstantsSpy = jest.spyOn(
       getReactProjectAndOpenOptionsUtils,
       'replaceSharedImportsWithConstants'
@@ -148,7 +146,6 @@ describe('getAppTsx()', () => {
 
     getAppTsx('some markup', false, []);
 
-    expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
   });
@@ -156,10 +153,12 @@ describe('getAppTsx()', () => {
 
 describe('getIndexTsx()', () => {
   it('should return correct values', () => {
-    const spy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
+    const applyStackBlitzFixForReactSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'applyStackBlitzFixForReact');
 
     expect(getIndexTsx()).toMatchSnapshot();
-    expect(spy).toBeCalledTimes(1);
+    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(applyStackBlitzFixForReactSpy).toBeCalledTimes(1);
   });
 });
 
