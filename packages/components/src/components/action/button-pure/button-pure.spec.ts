@@ -1,7 +1,6 @@
 import { ButtonPure } from './button-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
-import * as lineHeightUtils from '../../../utils/typography/setLineHeightOnSizeInherit';
 
 jest.mock('../../../utils/button-handling');
 

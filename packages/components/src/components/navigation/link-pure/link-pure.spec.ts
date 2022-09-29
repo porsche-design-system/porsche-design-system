@@ -2,7 +2,6 @@ import { LinkPure } from './link-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as throwIfInvalidLinkPureUsageUtils from '../../../utils/validation/throwIfInvalidLinkPureUsage';
-import * as lineHeightUtils from '../../../utils/typography/setLineHeightOnSizeInherit';
 
 describe('componentWillLoad', () => {
   it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
