@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`applyStackBlitzFixForReact() should match snapshot 1`] = `
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+export const SomeApp = (): JSX.Element => (<React.Fragment>some jsx elements</React.Fragment>)"
+`;
+
 exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
 "import { PButton, PText } from '@porsche-design-system/components-react';
 
@@ -21,13 +26,9 @@ export const App = (): JSX.Fragment => {
 }"
 `;
 
-exports[`getAppTsx() should match snapshot and start with import React patch 1`] = `
-"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
-some markup"
-`;
-
 exports[`getIndexTsx() should return correct values 1`] = `
-"import { StrictMode } from 'react';
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './App';
 import { PorscheDesignSystemProvider } from './@porsche-design-system/components-react';
