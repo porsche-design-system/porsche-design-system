@@ -86,13 +86,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -257,13 +257,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -357,13 +357,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -457,13 +457,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -556,13 +556,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -655,13 +655,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -755,13 +755,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -856,13 +856,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -957,13 +957,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1058,13 +1058,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -1158,13 +1158,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -1258,13 +1258,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1359,13 +1359,13 @@ label {
   color: #e00000;
 }
 .message {
+  display: flex;
+  margin-top: 0.25rem;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  margin-top: 0.25rem;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
