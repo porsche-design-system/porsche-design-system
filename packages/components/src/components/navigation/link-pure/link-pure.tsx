@@ -24,7 +24,6 @@ import {
   hasVisibleIcon,
   isSizeInherit,
   parseAndGetAriaAttributes,
-  setLineHeightOnSizeInherit,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
@@ -104,6 +103,7 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
   private labelTag: HTMLElement;
+  private sublineTag: HTMLElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -134,14 +134,22 @@ export class LinkPure {
   }
 
   public componentDidLoad(): void {
-    if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
+    if (isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
-        const size = `${calcLineHeightForElement(this.linkTag)}em`;
-        this.iconTag.style.width = size;
-        this.iconTag.style.height = size;
+        const lineHeight = `${calcLineHeightForElement(this.linkTag)}`;
+        this.labelTag.style.lineHeight = lineHeight;
+
+        if (this.sublineTag) {
+          this.sublineTag.style.lineHeight = lineHeight;
+        }
+
+        if (hasVisibleIcon(this.icon)) {
+          const size = `${lineHeight}em`;
+          this.iconTag.style.width = size;
+          this.iconTag.style.height = size;
+        }
       });
     }
-    setLineHeightOnSizeInherit(this.size, this.labelTag);
   }
 
   public render(): JSX.Element {
@@ -179,7 +187,7 @@ export class LinkPure {
           </span>
         </TagType>
         {hasSubline && (
-          <div id="subline" class="subline">
+          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
             <slot name="subline" />
           </div>
         )}

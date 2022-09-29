@@ -51,15 +51,4 @@ describe('componentDidLoad', () => {
 
     expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
   });
-
-  it('should call setLineHeightOnSizeInherit() with correct parameters', () => {
-    const spySetLineHeight = jest.spyOn(lineHeightUtils, 'setLineHeightOnSizeInherit');
-    const component = new LinkPure();
-    component.host = document.createElement('p-link-pure');
-    component['labelTag'] = document.createElement('span');
-    component.componentDidLoad();
-
-    expect(spySetLineHeight).toBeCalledWith(component.size, component['labelTag']);
-    expect(spySetLineHeight).toBeCalledTimes(1);
-  });
 });
