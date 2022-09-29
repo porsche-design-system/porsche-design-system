@@ -10,9 +10,9 @@ const { xSmall: spacingXSmall } = spacing;
 export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
   return {
     message: {
-      ...textSmall,
       display: 'flex',
       marginTop: spacingXSmall,
+      ...textSmall,
       color: getThemedFormStateColors(theme, state).formStateColor,
       transition: getTransition('color'),
       '&__icon': {
