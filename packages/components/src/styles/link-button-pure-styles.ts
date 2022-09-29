@@ -63,7 +63,6 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
       '& ~ .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
-        fontSize: size,
         marginLeft: lineHeightWithUnit,
       },
     };
@@ -212,10 +211,14 @@ export const getLinkButtonPureStyles = (
         ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         transition: getTransition('color'),
-        ...(hasIcon && {
-          ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
-          paddingLeft: pxToRemWithUnit(4),
-        }),
+        ...(hasIcon
+          ? {
+              ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+              paddingLeft: pxToRemWithUnit(4),
+            }
+          : {
+              marginLeft: addImportantToRule(0),
+            }),
       },
     }),
   };

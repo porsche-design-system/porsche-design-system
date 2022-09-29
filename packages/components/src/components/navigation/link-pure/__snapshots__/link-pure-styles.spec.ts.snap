@@ -164,7 +164,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     height: 1.5em;
   }
   .root ~ .subline {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.4;
     margin-left: 1.5em;
   }
@@ -194,7 +194,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     height: 1.3333333333em;
   }
   .root ~ .subline {
-    font-size: 2.25rem;
+    font-size: 1.875rem;
     line-height: 1.3333333333;
     margin-left: 1.3333333333em;
   }
@@ -224,7 +224,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     height: 1.2307692308em;
   }
   .root ~ .subline {
-    font-size: 3.25rem;
+    font-size: 2.25rem;
     line-height: 1.3333333333;
     margin-left: 1.2307692308em;
   }
@@ -1089,7 +1089,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: 1.2307692308em;
 }
 .root ~ .subline {
-  font-size: 3.25rem;
+  font-size: 2.25rem;
   line-height: 1.3333333333;
   margin-left: 1.2307692308em;
 }
@@ -1187,7 +1187,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: 1.2307692308em;
 }
 .root ~ .subline {
-  font-size: 3.25rem;
+  font-size: 2.25rem;
   line-height: 1.3333333333;
   margin-left: 1.2307692308em;
 }
