@@ -5,14 +5,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   display: flex !important;
   outline: 0 !important;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
 button {
   position: relative;
   width: 3rem;
@@ -56,6 +48,11 @@ button:not(:focus-visible) {
   justify-content: flex-start;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;
@@ -91,14 +88,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
 button {
   position: relative;
   width: 3rem;
@@ -142,6 +131,11 @@ button:not(:focus-visible) {
   justify-content: flex-start;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;
@@ -176,14 +170,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
 button {
   position: relative;
   width: 3rem;
@@ -227,6 +213,11 @@ button:not(:focus-visible) {
   justify-content: space-between;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;
@@ -261,14 +252,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
 button {
   position: relative;
   width: 3rem;
@@ -302,6 +285,11 @@ button:not(:focus-visible) {
   justify-content: space-between;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #7c7f81;
@@ -336,14 +324,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
 button {
   position: relative;
   width: 3rem;
@@ -377,6 +357,11 @@ button:not(:focus-visible) {
   justify-content: space-between;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #96989a;
@@ -410,14 +395,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   display: flex !important;
   outline: 0 !important;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
 }
 button {
   position: relative;
@@ -462,6 +439,11 @@ button:not(:focus-visible) {
   justify-content: space-between;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;
@@ -502,14 +484,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   display: flex !important;
   outline: 0 !important;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
 }
 button {
   position: relative;
@@ -554,6 +528,11 @@ button:not(:focus-visible) {
   justify-content: space-between;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;
@@ -587,14 +566,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 ":host {
   display: flex !important;
   outline: 0 !important;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
 }
 button {
   position: relative;
@@ -639,6 +610,11 @@ button:not(:focus-visible) {
   justify-content: flex-start;
 }
 .text {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 0;
   min-height: 0;
   color: #000;

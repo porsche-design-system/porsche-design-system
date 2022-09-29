@@ -14,7 +14,6 @@ import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { FormState } from '../form-state';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 
 const theme: Theme = 'light';
 
@@ -103,11 +102,6 @@ export const getComponentCss = (
       label: {
         position: 'relative',
         display: 'flex',
-      },
-      span: {
-        ...textSmall,
-        margin: 0,
-        color: 'inherit',
       },
     },
     label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),

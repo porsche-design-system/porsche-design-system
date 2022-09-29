@@ -4,15 +4,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -77,6 +68,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -87,7 +79,11 @@ span {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -216,15 +212,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -328,6 +315,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -337,7 +325,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -394,15 +386,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -468,6 +451,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -477,7 +461,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -534,15 +522,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -607,6 +586,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -616,7 +596,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -686,15 +670,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -758,6 +733,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -767,7 +743,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -836,15 +816,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -949,6 +920,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -958,7 +930,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1014,15 +990,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -1128,6 +1095,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1137,7 +1105,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1202,15 +1174,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -1317,6 +1280,7 @@ button+button[type=submit] {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1326,7 +1290,11 @@ button+button[type=submit] {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1383,15 +1351,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -1498,6 +1457,7 @@ button+button[type=submit] {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1507,7 +1467,11 @@ button+button[type=submit] {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1571,15 +1535,6 @@ button+button[type=submit] {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -1691,6 +1646,7 @@ button+button[type=submit] {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1700,7 +1656,11 @@ button+button[type=submit] {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1764,15 +1724,6 @@ button+button[type=submit] {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -1838,6 +1789,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1847,7 +1799,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1903,15 +1859,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -1977,6 +1924,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -1986,7 +1934,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2055,15 +2007,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -2127,6 +2070,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2136,7 +2080,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2205,15 +2153,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -2277,6 +2216,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2286,7 +2226,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2354,15 +2298,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -2467,6 +2402,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2476,7 +2412,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2533,15 +2473,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -2607,6 +2538,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2616,7 +2548,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2673,15 +2609,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -2746,6 +2673,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2755,7 +2683,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2825,15 +2757,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -2897,6 +2820,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -2906,7 +2830,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -2975,15 +2903,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3088,6 +3007,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3097,7 +3017,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3109,9 +3033,6 @@ button:disabled {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3154,15 +3075,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3228,6 +3140,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3237,7 +3150,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3249,9 +3166,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3294,15 +3208,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3367,6 +3272,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3376,7 +3282,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3388,9 +3298,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -3447,15 +3354,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -3519,6 +3417,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3528,7 +3427,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3540,9 +3443,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -3598,15 +3498,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3711,6 +3602,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3720,7 +3612,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3732,9 +3628,6 @@ button:disabled {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3776,15 +3669,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3850,6 +3734,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3859,7 +3744,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -3871,9 +3760,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3915,15 +3801,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -3988,6 +3865,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -3997,7 +3875,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4009,9 +3891,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -4067,15 +3946,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -4139,6 +4009,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -4148,7 +4019,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4160,9 +4035,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -4217,15 +4089,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -4330,6 +4193,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -4339,7 +4203,11 @@ button:disabled {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4351,9 +4219,6 @@ button:disabled {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -4396,15 +4261,6 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -4470,6 +4326,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -4479,7 +4336,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4491,9 +4352,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -4536,15 +4394,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -4609,6 +4458,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -4618,7 +4468,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4630,9 +4484,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -4689,15 +4540,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
-}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -4761,6 +4603,7 @@ span {
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -4770,7 +4613,11 @@ span {
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4782,9 +4629,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .unit {
   position: absolute;
@@ -4840,15 +4684,6 @@ span {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
-}
-span {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-  color: inherit;
 }
 ::slotted(input) {
   display: block !important;
@@ -4953,6 +4788,7 @@ button:disabled {
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -4963,7 +4799,11 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -4975,9 +4815,6 @@ button:disabled {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.label__text--description {
-  color: #96989a;
 }
 .required {
   user-select: none;

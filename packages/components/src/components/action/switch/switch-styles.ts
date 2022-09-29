@@ -114,10 +114,6 @@ export const getComponentCss = (
         display: 'flex',
         outline: 0,
       }),
-      span: {
-        ...textSmall,
-        margin: 0,
-      },
       button: {
         position: 'relative',
         width: pxToRemWithUnit(48),
@@ -161,6 +157,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
+      ...textSmall,
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,

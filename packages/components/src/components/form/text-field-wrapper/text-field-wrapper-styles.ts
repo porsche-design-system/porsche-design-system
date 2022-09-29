@@ -17,7 +17,6 @@ import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../form-state';
 import type { JssStyle } from 'jss';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -46,11 +45,6 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-      },
-      span: {
-        ...textSmall,
-        margin: 0,
-        color: 'inherit',
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
