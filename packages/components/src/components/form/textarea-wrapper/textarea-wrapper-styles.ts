@@ -12,7 +12,6 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { FormState } from '../form-state';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -30,11 +29,6 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-      },
-      span: {
-        ...textSmall,
-        margin: 0,
-        color: 'inherit',
       },
       ...mergeDeep(
         addImportantToEachRule(

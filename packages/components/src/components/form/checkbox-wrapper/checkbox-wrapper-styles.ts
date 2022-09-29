@@ -13,7 +13,6 @@ import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-st
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { FormState } from '../form-state';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -87,11 +86,6 @@ export const getComponentCss = (
       label: {
         position: 'relative',
         display: 'flex',
-      },
-      span: {
-        ...textSmall,
-        margin: 0,
-        color: 'inherit',
       },
     },
     label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
