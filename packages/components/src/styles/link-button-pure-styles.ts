@@ -63,10 +63,8 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
       '& ~ .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
-        '&::before': {
-          fontSize: size,
-          marginLeft: lineHeightWithUnit,
-        },
+        fontSize: size,
+        marginLeft: lineHeightWithUnit,
       },
     };
   }
@@ -200,31 +198,23 @@ export const getLinkButtonPureStyles = (
         width: '1.5em',
         height: '1.5em',
       },
-      label: {
-        ...mergeDeep(
-          buildResponsiveStyles(
-            hideLabel,
-            !hasSlottedAnchor ? getVisibilityJssStyle : getSlottedAnchorVisibilityJssStyle
-          ),
-          hasSubline
-            ? { paddingLeft: pxToRemWithUnit(4) }
-            : buildResponsiveStyles(alignLabel, getLabelAlignmentJssStyle)
+      label: mergeDeep(
+        buildResponsiveStyles(
+          hideLabel,
+          !hasSlottedAnchor ? getVisibilityJssStyle : getSlottedAnchorVisibilityJssStyle
         ),
-      },
+        hasSubline ? { paddingLeft: pxToRemWithUnit(4) } : buildResponsiveStyles(alignLabel, getLabelAlignmentJssStyle)
+      ),
     }),
     ...(hasSubline && {
       subline: {
-        display: 'flex',
-        transition: getTransition('color'),
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
         ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
+        transition: getTransition('color'),
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
           paddingLeft: pxToRemWithUnit(4),
-          '&::before': {
-            content: '""',
-          },
         }),
       },
     }),

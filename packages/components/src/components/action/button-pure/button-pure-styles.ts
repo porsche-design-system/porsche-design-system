@@ -6,7 +6,7 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { getCss } from '../../../utils';
+import { getCss, mergeDeep } from '../../../utils';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -22,18 +22,27 @@ export const getComponentCss = (
   theme: ThemeExtendedElectricDark
 ): string => {
   return getCss(
-    getLinkButtonPureStyles(
-      icon,
-      active,
-      isDisabledOrLoading,
-      stretch,
-      size,
-      weight,
-      hideLabel,
-      alignLabel,
-      hasSubline,
-      false,
-      theme
+    mergeDeep(
+      getLinkButtonPureStyles(
+        icon,
+        active,
+        isDisabledOrLoading,
+        stretch,
+        size,
+        weight,
+        hideLabel,
+        alignLabel,
+        hasSubline,
+        false,
+        theme
+      ),
+      {
+        '@global': {
+          '::slotted(p)': {
+            margin: 0,
+          },
+        },
+      }
     )
   );
 };
