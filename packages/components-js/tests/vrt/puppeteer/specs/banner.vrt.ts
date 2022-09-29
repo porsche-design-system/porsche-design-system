@@ -14,14 +14,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
-      scenario: async (page) => {
-        await page.waitForFunction(() => document.querySelector('template') === null);
-        await page.evaluate(() => (window as any).componentsReady());
-      },
-    })
-  ).toBeFalsy();
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner')).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
