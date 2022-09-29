@@ -17,11 +17,11 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
-      'h5,::slotted([slot=heading])': addImportantToEachRule({
+      h5: {
         ...headingXSmall,
         margin: 0,
         color: textColor,
-      }),
+      },
       p: {
         ...textSmall,
         margin: 0,

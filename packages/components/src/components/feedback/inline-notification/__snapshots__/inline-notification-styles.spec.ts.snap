@@ -18,12 +18,12 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #fec5c5 !important;
   border-left: 0.25rem solid #fc1717 !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -70,12 +70,12 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #fae6e6 !important;
   border-left: 0.25rem solid #e00000 !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -122,12 +122,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -174,12 +174,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -226,12 +226,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -281,12 +281,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -336,12 +336,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -397,12 +397,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -458,12 +458,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -522,12 +522,12 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -586,12 +586,12 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #bfeec6 !important;
   border-left: 0.25rem solid #01ba1d !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -638,12 +638,12 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #e5f3e7 !important;
   border-left: 0.25rem solid #018a16 !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -690,12 +690,12 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #ffe6bf !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -742,12 +742,12 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #fff5e5 !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
-h5,::slotted([slot=heading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
