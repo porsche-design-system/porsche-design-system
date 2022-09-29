@@ -41,12 +41,12 @@ export class SegmentedControl {
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
-    throwIfChildrenAreNotOfKind(this.host, 'pSegmentedControlItem');
+    throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
 
     // child property changes to label or icon are detected via prop watchers within child
     // here we take care of dom changes like adding/removing a child or changing its content
     observeChildren(this.host, () => {
-      throwIfChildrenAreNotOfKind(this.host, 'pSegmentedControlItem');
+      throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
       forceUpdate(this.host);
     });
   }
@@ -59,7 +59,7 @@ export class SegmentedControl {
 
   public componentDidLoad(): void {
     this.host.addEventListener('click', (e) =>
-      this.updateValue(getClickedItem(this.host, 'pSegmentedControlItem', e.composedPath()))
+      this.updateValue(getClickedItem(this.host, 'p-segmented-control-item', e.composedPath()))
     );
   }
 

@@ -70,7 +70,7 @@ export class SelectWrapperDropdown {
   }
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOneOfKind(this.host, ['pSelectWrapper']);
+    throwIfRootNodeIsNotOneOfKind(this.host, ['p-select-wrapper']);
     observeChildren(
       this.selectRef,
       () => {

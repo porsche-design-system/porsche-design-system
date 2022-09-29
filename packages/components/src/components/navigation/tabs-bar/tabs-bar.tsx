@@ -83,7 +83,7 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'pTabs');
+    this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
 
     // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event

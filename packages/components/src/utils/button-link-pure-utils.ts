@@ -10,7 +10,7 @@ export const hasSlottedSubline = (host: HTMLElement): boolean => {
 };
 
 export const warnIfParentIsPTextAndIconIsNone = (host: HTMLElement, iconName: LinkButtonPureIconName): void => {
-  if (!hasVisibleIcon(iconName) && isParentOfKind(host, 'pText')) {
+  if (!hasVisibleIcon(iconName) && isParentOfKind(host, 'p-text')) {
     console.warn(`${getTagName(host)} should not be used inside of p-text. Please use a <button> or <a> tag.`);
   }
 };

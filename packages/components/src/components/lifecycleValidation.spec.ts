@@ -9,7 +9,6 @@ import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParen
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import * as validatePropsUtils from '../utils/validation/validateProps';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
-import { camelCase } from 'change-case';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredParent);
@@ -61,10 +60,7 @@ it.each<TagName>(tagNamesWithRequiredParent)(
 
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(
-      component.host,
-      camelCase(getComponentMeta(tagName).requiredParent as unknown as string)
-    );
+    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredParent as unknown as string);
   }
 );
 
@@ -78,10 +74,7 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
       component.connectedCallback();
     } catch {}
 
-    expect(spy).toBeCalledWith(
-      component.host,
-      getComponentMeta(tagName).requiredRootNode.map((tagName) => camelCase(tagName))
-    );
+    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredRootNode);
   }
 );
 
