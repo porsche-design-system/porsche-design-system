@@ -63,7 +63,7 @@ export const convertImportPaths = (markup: string, framework: 'js' | 'angular' |
   return isStableStorefrontRelease()
     ? markup
     : markup.replace(
-      new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
-      `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
-    );
+        new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
+        `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
+      );
 };

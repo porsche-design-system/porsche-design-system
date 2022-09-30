@@ -42,9 +42,17 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
+// TODO: this workaround is necessary because StackBlitz doesn't reflect the tsconfig file when using create-react-app template which results in highlighting non existing typescript errors
+export const applyStackBlitzFixForReact = (markup: string): string => {
+  return `import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+${markup
+  .replace(/JSX\.Fragment/g, 'JSX.Element')
+  .replace(/<>/g, '<React.Fragment>')
+  .replace(/<\/>/g, '</React.Fragment>')}`;
+};
+
 export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
-  return (
-    "import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)\n" +
+  return applyStackBlitzFixForReact(
     convertImportPaths(
       isExampleMarkup
         ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
@@ -55,8 +63,9 @@ export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImport
 };
 
 export const getIndexTsx = (): string => {
-  return convertImportPaths(
-    `import { StrictMode } from 'react';
+  return applyStackBlitzFixForReact(
+    convertImportPaths(
+      `import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './App';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
@@ -72,7 +81,8 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-    'react'
+      'react'
+    )
   );
 };
 
