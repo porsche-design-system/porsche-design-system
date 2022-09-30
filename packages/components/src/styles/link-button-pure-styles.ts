@@ -63,7 +63,10 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
       '& ~ .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
-        marginLeft: lineHeightWithUnit,
+        '&::before': {
+          fontSize: size,
+          marginLeft: lineHeightWithUnit,
+        },
       },
     };
   }
@@ -207,18 +210,18 @@ export const getLinkButtonPureStyles = (
     }),
     ...(hasSubline && {
       subline: {
+        display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
         ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         transition: getTransition('color'),
-        ...(hasIcon
-          ? {
-              ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
-              paddingLeft: pxToRemWithUnit(4),
-            }
-          : {
-              marginLeft: addImportantToRule(0),
-            }),
+        ...(hasIcon && {
+          ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+          paddingLeft: pxToRemWithUnit(4),
+          '&::before': {
+            content: '""',
+          },
+        }),
       },
     }),
   };
