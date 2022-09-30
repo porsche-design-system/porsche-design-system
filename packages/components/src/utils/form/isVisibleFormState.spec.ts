@@ -1,5 +1,5 @@
 import { isVisibleFormState } from './isVisibleFormState';
-import type { FormState } from '../../components/form/form-state';
+import type { FormState } from '../../components/form-state';
 
 it.each<[FormState, boolean]>([
   ['success', true],

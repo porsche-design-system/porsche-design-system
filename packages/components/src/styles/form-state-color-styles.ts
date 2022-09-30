@@ -1,6 +1,6 @@
 import { getThemedColors } from './';
 import type { ThemeDefault } from '@porsche-design-system/utilities-v2';
-import type { FormState } from '../components/form/form-state';
+import type { FormState } from '../components/form-state';
 
 type ThemedFormStateColors = {
   formStateColor: string | undefined; // form state: "none" => undefined

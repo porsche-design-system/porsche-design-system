@@ -11,7 +11,7 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import { TAG_COLORS } from '../../../../../components/src/components/action/tag/tag-utils';
+import { TAG_COLORS } from '../../../../../components/src/components/tag/tag-utils';
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
