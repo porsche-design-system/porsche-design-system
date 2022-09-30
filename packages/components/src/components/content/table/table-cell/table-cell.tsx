@@ -18,7 +18,7 @@ export class TableCell {
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTableRow');
+    throwIfParentIsNotOfKind(this.host, 'p-table-row');
   }
 
   public componentWillRender(): void {

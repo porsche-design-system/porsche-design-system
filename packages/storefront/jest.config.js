@@ -1,4 +1,5 @@
 module.exports = {
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'ts', 'tsx'],
   transform: {
@@ -13,14 +14,9 @@ module.exports = {
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: ['**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
-  globals: {
-    'ts-jest': {
-      babelConfig: false,
-    },
-  },
   clearMocks: true,
   restoreMocks: true,
   testEnvironmentOptions: {
     url: 'http://localhost/',
-  }
+  },
 };

@@ -191,8 +191,6 @@ export class TextFieldWrapper {
     const disabledOrReadOnly = disabled || readOnly;
 
     const labelProps = {
-      tag: 'span',
-      color: 'inherit',
       onClick: this.onLabelClick,
     };
 
@@ -208,25 +206,20 @@ export class TextFieldWrapper {
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
-              <PrefixedTagNames.pText class="label__text" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-              </PrefixedTagNames.pText>
+              </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
+              <span class="label__text label__text--description" {...labelProps}>
                 {this.description || <slot name="description" />}
-              </PrefixedTagNames.pText>
+              </span>
             )}
             {(this.hasUnit || this.isCounterVisible) && (
-              <PrefixedTagNames.pText
-                class="unit"
-                {...labelProps}
-                ref={(el) => (this.unitOrCounterElement = el)}
-                aria-hidden="true"
-              >
+              <span class="unit" {...labelProps} ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
                 {this.unit}
-              </PrefixedTagNames.pText>
+              </span>
             )}
             <slot />
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}

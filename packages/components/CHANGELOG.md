@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
 
+#### Changed
+
+- Replaced all internal usage of `Text` and `Headline` components
+
 ### [2.16.2] - 2022-09-15
 
 ### [2.16.2-rc.0] - 2022-09-15

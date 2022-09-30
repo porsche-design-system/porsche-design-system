@@ -3,6 +3,7 @@ import type {
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
+  TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
@@ -14,6 +15,7 @@ export const getComponentCss = (
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
+  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
   hasSubline: boolean,
@@ -30,6 +32,7 @@ export const getComponentCss = (
         false,
         stretch,
         size,
+        weight,
         hideLabel,
         alignLabel,
         hasSubline,

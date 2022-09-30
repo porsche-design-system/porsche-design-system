@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"weight":"regular","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: block !important;
+}
+::slotted(p) {
+  margin: 0;
 }
 @media(min-width:480px) {
   :host {
@@ -55,6 +58,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: space-between;
   font-size: 0.75rem;
   line-height: 1.6666666667;
@@ -276,12 +285,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"bold","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -299,6 +311,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -433,99 +451,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
 }
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
+::slotted(p) {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #fff;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  justify-content: flex-start;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #ff0223;
-}
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: 1.5em;
-}
-.icon {
-  flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0 0 0.25rem;
-  order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #ff0223;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: inline-block !important;
-  vertical-align: top;
 }
 .root {
   display: flex;
@@ -543,6 +477,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -607,12 +547,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"regular","hideLabel":true,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -630,6 +573,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -694,12 +643,111 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","hasSubline":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"semibold","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"dark"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  justify-content: flex-start;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+.root:focus::before {
+  outline-color: currentColor;
+}
+.root:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+.root:active {
+  color: #ff0223;
+}
+.root .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+.root ~ .subline {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
+  margin-left: 1.5em;
+}
+.icon {
+  flex-shrink: 0;
+  width: 1.5em;
+  height: 1.5em;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  border: medium none color;
+  margin: 0;
+  white-space: inherit;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  padding: 0 0 0 0.25rem;
+  order: 0;
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #ff0223;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"semibold","hideLabel":true,"alignLabel":"right","hasSubline":true,"theme":"light"} 1`] = `
+":host {
+  position: relative;
+  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -717,6 +765,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -776,9 +830,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .subline {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease;
   margin-top: 4px !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -804,12 +863,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","weight":"bold","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -827,6 +889,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -882,12 +950,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }"
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","weight":"thin","hideLabel":false,"alignLabel":"right","hasSubline":true,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -905,6 +976,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -958,9 +1035,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .subline {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease;
   margin-top: 4px !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -977,11 +1059,109 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }"
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","hasSubline":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","weight":"bold","hideLabel":false,"alignLabel":"left","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: block !important;
+}
+::slotted(p) {
+  margin: 0;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #d5001c;
+  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 700;
+  justify-content: space-between;
+  font-size: 3.25rem;
+  line-height: 1.2307692308;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+.root:focus::before {
+  outline-color: currentColor;
+}
+.root:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+.root:active {
+  color: #d5001c;
+}
+.root .icon {
+  width: 1.2307692308em;
+  height: 1.2307692308em;
+}
+.root ~ .subline {
+  font-size: 2.25rem;
+  line-height: 1.3333333333;
+}
+.root ~ .subline::before {
+  font-size: 3.25rem;
+  margin-left: 1.2307692308em;
+}
+.icon {
+  flex-shrink: 0;
+  width: 1.5em;
+  height: 1.5em;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  border: medium none color;
+  margin: 0;
+  white-space: inherit;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  padding: 0 0.25rem 0 0;
+  order: -1;
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","weight":"thin","hideLabel":false,"alignLabel":"left","hasSubline":false,"theme":"dark"} 1`] = `
+":host {
+  position: relative;
+  outline: 0 !important;
+  display: block !important;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -999,6 +1179,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #ff0223;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   justify-content: space-between;
   font-size: 3.25rem;
   line-height: 1.2307692308;
@@ -1063,98 +1249,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","hasSubline":false,"theme":"light"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: block !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #d5001c;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  justify-content: space-between;
-  font-size: 3.25rem;
-  line-height: 1.2307692308;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root .icon {
-  width: 1.2307692308em;
-  height: 1.2307692308em;
-}
-.root ~ .subline {
-  font-size: 2.25rem;
-  line-height: 1.3333333333;
-}
-.root ~ .subline::before {
-  font-size: 3.25rem;
-  margin-left: 1.2307692308em;
-}
-.icon {
-  flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0.25rem 0 0;
-  order: -1;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1172,6 +1275,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -1227,12 +1336,15 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }"
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1250,6 +1362,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: inherit;
   line-height: inherit;
@@ -1288,12 +1406,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","weight":"thin","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1311,6 +1432,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 100;
   justify-content: flex-start;
   font-size: 1rem;
   line-height: 1.5;
@@ -1357,12 +1484,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"theme":"light"} 1`] = `
 ":host {
   position: relative;
   outline: 0 !important;
   display: inline-block !important;
   vertical-align: top;
+}
+::slotted(p) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1380,6 +1510,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
   justify-content: flex-start;
   font-size: 0.75rem;
   line-height: 1.6666666667;

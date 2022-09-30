@@ -124,7 +124,7 @@ export class StepperHorizontal {
     this.scrollerElement.addEventListener('click', (e) => {
       const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
         this.host,
-        'pStepperHorizontalItem',
+        'p-stepper-horizontal-item',
         e.composedPath()
       );
 
@@ -142,7 +142,7 @@ export class StepperHorizontal {
   };
 
   private validateComponent = (): void => {
-    throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
+    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };

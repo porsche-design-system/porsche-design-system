@@ -7,7 +7,7 @@ it('should return true if every child tag matches', () => {
   parent.appendChild(child1);
   parent.appendChild(child2);
 
-  expect(areAllChildrenOfKind(parent, 'pGridItem')).toBe(true);
+  expect(areAllChildrenOfKind(parent, 'p-grid-item')).toBe(true);
 });
 
 it('should return true if every prefixed child tag matches', () => {
@@ -17,7 +17,7 @@ it('should return true if every prefixed child tag matches', () => {
   parent.appendChild(child1);
   parent.appendChild(child2);
 
-  expect(areAllChildrenOfKind(parent, 'pGridItem')).toBe(true);
+  expect(areAllChildrenOfKind(parent, 'p-grid-item')).toBe(true);
 });
 
 it('should return false if a child tag does not match', () => {
@@ -27,5 +27,5 @@ it('should return false if a child tag does not match', () => {
   parent.appendChild(child1);
   parent.appendChild(child2);
 
-  expect(areAllChildrenOfKind(parent, 'pGridItem')).toBe(false);
+  expect(areAllChildrenOfKind(parent, 'p-grid-item')).toBe(false);
 });

@@ -523,11 +523,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-text-field-wrapper'], 'componentDidLoad: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(3);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
   });
 
   it('should work without unnecessary round trips after prop change', async () => {
@@ -536,16 +535,12 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
-
     expect(status.componentDidUpdate['p-text-field-wrapper'], 'componentDidUpdate: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(0);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
   });
 });
 

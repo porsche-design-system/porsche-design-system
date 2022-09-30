@@ -1,14 +1,29 @@
-import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getTagName, getTagNameWithoutPrefix, getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
 
 describe('getTagName()', () => {
   it.each([
     ['div', 'div'],
     ['p-button', 'p-button'],
     ['SPAN', 'span'],
-  ])('should be called with %s and return %s', (tag, result) => {
+  ])('should for %s element return %s', (tag, result) => {
     const el = document.createElement(tag);
     expect(getTagName(el)).toBe(result);
+  });
+});
+
+describe('getTagNameWithoutPrefix()', () => {
+  it.each([
+    ['p-some-element', 'p-some-element'],
+    ['p-some-other-element', 'p-some-other-element'],
+    ['my-prefix-p-some-element', 'p-some-element'],
+    ['my-other-prefix-p-some-element', 'p-some-element'],
+    ['my-prefix-p-some-other-element', 'p-some-other-element'],
+    ['div', 'div'],
+    ['h1', 'h1'],
+  ])('should for %s element return %s', (tag, result) => {
+    const el = document.createElement(tag);
+    expect(getTagNameWithoutPrefix(el)).toBe(result);
   });
 });
 
@@ -20,11 +35,11 @@ describe('getPrefixedTagNames()', () => {
   it('should return an object with a mapping of all tag names to the prefixed ones', () => {
     const resultWithoutPrefix = getPrefixedTagNames(document.createElement('p-button'));
     expect(resultWithoutPrefix.pButton).toEqual('p-button');
-    expect(Object.keys(resultWithoutPrefix).length).toEqual(TAG_NAMES.length);
+    expect(Object.keys(resultWithoutPrefix).length).toEqual(TAG_NAMES.length - 2); // without p-text and p-headline
 
     const resultWithPrefix = getPrefixedTagNames(document.createElement('my-prefix-p-button'));
     expect(resultWithPrefix.pButton).toEqual('my-prefix-p-button');
-    expect(Object.keys(resultWithPrefix).length).toEqual(TAG_NAMES.length);
+    expect(Object.keys(resultWithPrefix).length).toEqual(TAG_NAMES.length - 2); // without p-text and p-headline
   });
 
   it('should cache result', () => {
@@ -54,18 +69,5 @@ describe('getPrefixedTagNames()', () => {
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('p-button'));
     expect(spy).toBeCalledTimes(1);
-    spy.mockRestore();
-  });
-});
-
-describe('getTagNameWithoutPrefix()', () => {
-  it('should return tag name without prefix', () => {
-    expect(getTagNameWithoutPrefix(document.createElement('p-some-element'))).toBe('p-some-element');
-    expect(getTagNameWithoutPrefix(document.createElement('p-some-other-element'))).toBe('p-some-other-element');
-    expect(getTagNameWithoutPrefix(document.createElement('my-prefix-p-some-element'))).toBe('p-some-element');
-    expect(getTagNameWithoutPrefix(document.createElement('my-other-prefix-p-some-element'))).toBe('p-some-element');
-    expect(getTagNameWithoutPrefix(document.createElement('my-prefix-p-some-other-element'))).toBe(
-      'p-some-other-element'
-    );
   });
 });

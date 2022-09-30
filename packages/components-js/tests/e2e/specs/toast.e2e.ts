@@ -69,7 +69,7 @@ const waitForAnimationFinish = () => new Promise((resolve) => setTimeout(resolve
 
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
-const getToastItemMessage = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-text');
+const getToastItemMessage = () => selectNode(page, 'p-toast >>> p-toast-item >>> p');
 const getCloseButton = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
 
 it.each<ToastState>(TOAST_STATES)('should forward state: %s to p-toast-item', async (state) => {
@@ -160,12 +160,11 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
     expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 
   it('should not update on offsetBottom prop change', async () => {

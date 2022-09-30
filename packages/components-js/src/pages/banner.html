@@ -89,19 +89,12 @@
     </p-banner>
   </div>
 
-  <template class="playground light" title="should show banner in fluid width">
+  <div class="playground light" title="should show banner in fluid width">
     <p-banner width="fluid">
       <span slot="title">Some notification title</span>
       <span slot="description">
         Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
       </span>
     </p-banner>
-  </template>
+  </div>
 </div>
-
-<script>
-  porscheDesignSystem.componentsReady().then(() => {
-    const template = document.querySelector('template');
-    template.outerHTML = template.outerHTML.replace(/template/g, 'div');
-  });
-</script>

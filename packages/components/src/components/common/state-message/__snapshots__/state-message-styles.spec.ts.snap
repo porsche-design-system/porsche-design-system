@@ -6,9 +6,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": "#fc1717",
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -20,9 +25,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": undefined,
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -34,9 +44,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": "#01ba1d",
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -48,9 +63,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": "#e00000",
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -62,9 +82,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": undefined,
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -76,9 +101,14 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "&__icon": {
       "marginRight": "0.25rem",
     },
+    "WebkitTextSizeAdjust": "none",
     "color": "#018a16",
     "display": "flex",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
     "marginTop": "0.25rem",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }

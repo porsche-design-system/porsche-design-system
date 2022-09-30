@@ -5,7 +5,6 @@ export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint
 export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';
 export * from './button-link-pure-utils';
-export * from './change-case';
 export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
@@ -14,13 +13,14 @@ export * from './inject-global-style'; // to trick bundling and avoid separate j
 export * from './jss';
 export { parseJSONAttribute } from './json';
 export * from './line-height';
+export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './pds-fetch';
 export * from './property-observer';
 export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './sync';
-export * from './tag-name';
+export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
 export {
   getDataThemeDarkAttribute,
   isThemeDark,

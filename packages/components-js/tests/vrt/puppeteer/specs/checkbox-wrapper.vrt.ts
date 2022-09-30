@@ -73,13 +73,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover > p-checkbox-wrapper input[type="checkbox"]');
-      await forceHoverState(page, '.hover > .force-label > p-checkbox-wrapper >>> p-text');
+      await forceHoverState(page, '.hover > .force-label > p-checkbox-wrapper >>> span');
       await forceHoverState(page, '.hover > p-checkbox-wrapper span a');
       await forceFocusState(page, '.focus p-checkbox-wrapper input[type="checkbox"]');
       await forceFocusState(page, '.focus > p-checkbox-wrapper span a');
       await forceFocusHoverState(page, '.focus-hover > p-checkbox-wrapper input[type="checkbox"]');
       await forceFocusState(page, '.focus-hover > .force-label > p-checkbox-wrapper input[type="checkbox"]');
-      await forceHoverState(page, '.focus-hover > .force-label > p-checkbox-wrapper >>> p-text');
+      await forceHoverState(page, '.focus-hover > .force-label > p-checkbox-wrapper >>> span');
       await forceFocusHoverState(page, '.focus-hover > p-checkbox-wrapper span a');
     })
   ).toBeFalsy();
