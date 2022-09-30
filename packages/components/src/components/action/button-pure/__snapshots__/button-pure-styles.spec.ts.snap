@@ -97,6 +97,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 0.75rem;
   line-height: 1.6666666667;
+}
+.root ~ .subline::before {
+  font-size: 0.75rem;
   margin-left: 1.6666666667em;
 }
 .icon {
@@ -130,6 +133,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root ~ .subline {
     font-size: 1rem;
     line-height: 1.5;
+  }
+  .root ~ .subline::before {
+    font-size: 1rem;
     margin-left: 1.5em;
   }
   .label {
@@ -160,6 +166,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root ~ .subline {
     font-size: 1.25rem;
     line-height: 1.4;
+  }
+  .root ~ .subline::before {
+    font-size: 1.5rem;
     margin-left: 1.5em;
   }
   .label {
@@ -190,6 +199,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root ~ .subline {
     font-size: 1.875rem;
     line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 2.25rem;
     margin-left: 1.3333333333em;
   }
   .label {
@@ -220,6 +232,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root ~ .subline {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 3.25rem;
     margin-left: 1.2307692308em;
   }
   .label {
@@ -335,6 +350,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -498,6 +516,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -591,6 +612,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -684,6 +708,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -776,6 +803,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .root:active + .subline {
@@ -799,6 +829,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding-left: 0.25rem;
 }
 .subline {
+  display: flex;
   margin-top: 4px !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -817,6 +848,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip-path: inset(50%);
   white-space: nowrap;
   padding-left: 0.25rem;
+}
+.subline::before {
+  content: "";
 }
 @media(hover:hover) {
   .root:hover {
@@ -891,6 +925,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -974,6 +1011,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -994,6 +1034,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding-left: 0.25rem;
 }
 .subline {
+  display: flex;
   margin-top: 4px !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1012,6 +1053,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip: auto;
   clip-path: none;
   padding-left: 0.25rem;
+}
+.subline::before {
+  content: "";
 }"
 `;
 
@@ -1079,6 +1123,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 2.25rem;
   line-height: 1.3333333333;
+}
+.root ~ .subline::before {
+  font-size: 3.25rem;
   margin-left: 1.2307692308em;
 }
 .icon {
@@ -1171,6 +1218,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 2.25rem;
   line-height: 1.3333333333;
+}
+.root ~ .subline::before {
+  font-size: 3.25rem;
   margin-left: 1.2307692308em;
 }
 .icon {
@@ -1261,6 +1311,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 .icon {
@@ -1418,6 +1471,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root ~ .subline {
   font-size: 1rem;
   line-height: 1.5;
+}
+.root ~ .subline::before {
+  font-size: 1rem;
   margin-left: 1.5em;
 }
 @media(hover:hover) {
@@ -1493,6 +1549,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root ~ .subline {
   font-size: 0.75rem;
   line-height: 1.6666666667;
+}
+.root ~ .subline::before {
+  font-size: 0.75rem;
   margin-left: 1.6666666667em;
 }
 @media(min-width:480px) {
@@ -1507,6 +1566,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root ~ .subline {
     font-size: 1rem;
     line-height: 1.5;
+  }
+  .root ~ .subline::before {
+    font-size: 1rem;
     margin-left: 1.5em;
   }
 }
@@ -1523,6 +1585,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root ~ .subline {
     font-size: 1.25rem;
     line-height: 1.4;
+  }
+  .root ~ .subline::before {
+    font-size: 1.5rem;
     margin-left: 1.5em;
   }
 }
@@ -1539,6 +1604,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root ~ .subline {
     font-size: 1.875rem;
     line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 2.25rem;
     margin-left: 1.3333333333em;
   }
 }
@@ -1555,6 +1623,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root ~ .subline {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  .root ~ .subline::before {
+    font-size: 3.25rem;
     margin-left: 1.2307692308em;
   }
 }
