@@ -120,7 +120,7 @@ describe('this.validateComponent()', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component['validateComponent']();
-    expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
+    expect(spy).toBeCalledWith(component.host, 'p-stepper-horizontal-item');
   });
 
   it('should call throwIfChildCountIsExceeded() with correct parameters', () => {

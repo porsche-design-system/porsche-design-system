@@ -12,33 +12,23 @@ exports[`accessibility should expose correct accessibility tree property if erro
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
+                      "role": "none",
+                    },
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
-                },
-                {
-                  "name": "Some Message",
-                  "role": "StaticText",
                 },
               ],
               "role": "none",
             },
           ],
           "role": "none",
+        },
+        {
+          "name": "Some Message",
+          "role": "StaticText",
         },
       ],
       "name": "",
@@ -63,33 +53,23 @@ exports[`accessibility should expose correct accessibility tree property in erro
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
+                      "role": "none",
+                    },
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
-                },
-                {
-                  "name": "Some Message",
-                  "role": "StaticText",
                 },
               ],
               "role": "none",
             },
           ],
           "role": "none",
+        },
+        {
+          "name": "Some Message",
+          "role": "StaticText",
         },
       ],
       "name": "",

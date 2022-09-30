@@ -1,4 +1,4 @@
-import { getTagName } from '../tag-name';
+import { getTagName } from '..';
 
 export const throwIfPropIsUndefined = <T>(element: HTMLElement, propName: string, value: T): void => {
   if (value === undefined) {

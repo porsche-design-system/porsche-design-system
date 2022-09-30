@@ -138,15 +138,7 @@ export class Modal {
             </PrefixedTagNames.pButtonPure>
           )}
           {this.hasHeader && (
-            <div class="header">
-              {this.heading ? (
-                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                  {this.heading}
-                </PrefixedTagNames.pHeadline>
-              ) : (
-                <slot name="heading" />
-              )}
-            </div>
+            <div class="header">{this.heading ? <h1>{this.heading}</h1> : <slot name="heading" />}</div>
           )}
           <slot />
         </div>

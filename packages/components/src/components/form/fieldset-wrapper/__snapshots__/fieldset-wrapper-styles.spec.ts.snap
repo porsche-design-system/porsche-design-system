@@ -16,6 +16,11 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -40,6 +45,11 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -99,6 +109,11 @@ legend {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -122,6 +137,11 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -153,6 +173,11 @@ legend {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -176,6 +201,11 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }

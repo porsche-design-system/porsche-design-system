@@ -40,7 +40,7 @@ export class TableHeadCell {
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
+    throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
   }
 

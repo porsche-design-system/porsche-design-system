@@ -5,7 +5,7 @@ it('should return true if parent tag matches', () => {
   const child = document.createElement('p-grid-item');
   parent.appendChild(child);
 
-  expect(isParentOfKind(child, 'pGrid')).toBe(true);
+  expect(isParentOfKind(child, 'p-grid')).toBe(true);
 });
 
 it('should return false if parent tag does not match', () => {
@@ -13,6 +13,5 @@ it('should return false if parent tag does not match', () => {
   const child = document.createElement('p-grid-item');
   parent.appendChild(child);
 
-  expect(isParentOfKind(child, 'pGrid')).toBe(false);
+  expect(isParentOfKind(child, 'p-grid')).toBe(false);
 });
-

@@ -4,6 +4,7 @@ import type {
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
+  TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
 
@@ -32,6 +33,7 @@ describe('getComponentCss()', () => {
     isDisabledOrLoading: boolean;
     stretch: BreakpointCustomizable<boolean>;
     size: BreakpointCustomizable<TextSize>;
+    weight: TextWeight;
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: AlignLabel;
     hasSubline: boolean;
@@ -43,6 +45,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -54,6 +57,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: true,
       stretch: false,
       size: 'small',
+      weight: 'bold',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -65,6 +69,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: true,
       stretch: false,
       size: 'small',
+      weight: 'thin',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: true,
@@ -76,6 +81,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: true,
       stretch: false,
       size: 'small',
+      weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -87,6 +93,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'semibold',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -98,6 +105,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: true,
       size: 'x-large',
+      weight: 'bold',
       hideLabel: false,
       alignLabel: 'left',
       hasSubline: false,
@@ -109,6 +117,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: true,
       size: 'x-large',
+      weight: 'thin',
       hideLabel: false,
       alignLabel: 'left',
       hasSubline: false,
@@ -120,6 +129,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'regular',
       hideLabel: true,
       alignLabel: 'right',
       hasSubline: false,
@@ -131,6 +141,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'semibold',
       hideLabel: true,
       alignLabel: 'right',
       hasSubline: true,
@@ -142,6 +153,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'bold',
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: 'right',
       hasSubline: false,
@@ -153,6 +165,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'small',
+      weight: 'thin',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -164,6 +177,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: 'inherit',
+      weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -175,6 +189,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: false,
       size: breakpointCustomizableSize,
+      weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
@@ -186,6 +201,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading: false,
       stretch: breakpointCustomizableBoolean,
       size: breakpointCustomizableSize,
+      weight: 'regular',
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: breakpointCustomizableAlignLabel,
       hasSubline: false,
@@ -193,9 +209,20 @@ describe('getComponentCss()', () => {
     },
   ])(
     'should return correct css for %j',
-    ({ icon, active, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, hasSubline, theme }) => {
+    ({ icon, active, isDisabledOrLoading, stretch, size, weight, hideLabel, alignLabel, hasSubline, theme }) => {
       expect(
-        getComponentCss(icon, active, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, hasSubline, theme)
+        getComponentCss(
+          icon,
+          active,
+          isDisabledOrLoading,
+          stretch,
+          size,
+          weight,
+          hideLabel,
+          alignLabel,
+          hasSubline,
+          theme
+        )
       ).toMatchSnapshot();
     }
   );

@@ -2,7 +2,6 @@ import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/co
 import {
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
-  getPrefixedTagNames,
   hasLabel,
   hasMessage,
   setAriaAttributes,
@@ -65,7 +64,7 @@ export class RadioButtonWrapper {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
-  
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -84,16 +83,14 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <Host>
         <label>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class="label" tag="span" color="inherit" onClick={this.onLabelClick}>
+            <span class="label" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-            </PrefixedTagNames.pText>
+            </span>
           )}
           <slot />
         </label>

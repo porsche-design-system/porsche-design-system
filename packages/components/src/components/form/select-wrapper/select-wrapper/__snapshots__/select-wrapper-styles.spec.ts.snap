@@ -60,6 +60,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -70,13 +71,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -100,6 +110,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -248,6 +263,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -257,13 +273,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -287,6 +312,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -364,6 +394,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -373,13 +404,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -403,6 +443,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fc1717;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -480,6 +525,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -489,13 +535,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -519,6 +574,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -595,6 +655,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -604,13 +665,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -634,6 +704,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -710,6 +785,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -719,13 +795,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -749,6 +834,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -826,6 +916,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: static;
   width: fit-content;
   height: auto;
@@ -835,13 +926,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: none;
   white-space: normal;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -865,6 +965,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #01ba1d;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -942,6 +1047,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -952,13 +1058,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -982,6 +1097,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #e00000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1059,6 +1179,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1069,13 +1190,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -1099,6 +1229,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fc1717;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1176,6 +1311,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1186,13 +1322,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1216,6 +1361,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -1292,6 +1442,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1302,13 +1453,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -1332,6 +1492,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
@@ -1408,6 +1573,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1418,13 +1584,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #626669;
@@ -1448,6 +1623,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1525,6 +1705,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1535,13 +1716,22 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .label__text--description {
   color: #b0b1b2;
@@ -1565,6 +1755,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #01ba1d;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1642,6 +1837,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   position: relative;
 }
 .label__text {
+  display: block;
   position: absolute;
   height: 1px;
   width: fit-content;
@@ -1652,16 +1848,22 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0 0 0.25rem;
-  display: block;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #7c7f81;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
   margin-top: -0.25rem;
   padding-bottom: 0.5rem;
-}
-.label__text--description {
-  color: #7c7f81;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .icon {
   position: absolute;
@@ -1683,6 +1885,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .message {
   display: flex;
   margin-top: 0.25rem;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #fc1717;
   transition: color var(--p-transition-duration, .24s) ease;
 }

@@ -102,6 +102,8 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
+  private labelTag: HTMLElement;
+  private sublineTag: HTMLElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -122,6 +124,7 @@ export class LinkPure {
       this.active,
       this.stretch,
       this.size,
+      this.weight,
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
@@ -131,11 +134,20 @@ export class LinkPure {
   }
 
   public componentDidLoad(): void {
-    if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
+    if (isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
-        const size = `${calcLineHeightForElement(this.linkTag)}em`;
-        this.iconTag.style.width = size;
-        this.iconTag.style.height = size;
+        const lineHeight = `${calcLineHeightForElement(this.linkTag)}`;
+        this.labelTag.style.lineHeight = lineHeight;
+
+        if (this.sublineTag) {
+          this.sublineTag.style.lineHeight = lineHeight;
+        }
+
+        if (hasVisibleIcon(this.icon)) {
+          const size = `${lineHeight}em`;
+          this.iconTag.style.width = size;
+          this.iconTag.style.height = size;
+        }
       });
     }
   }
@@ -170,14 +182,14 @@ export class LinkPure {
               aria-hidden="true"
             />
           )}
-          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
-          </PrefixedTagNames.pText>
+          </span>
         </TagType>
         {hasSubline && (
-          <PrefixedTagNames.pText id="subline" class="subline" color="inherit" size="inherit" tag="div">
+          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
             <slot name="subline" />
-          </PrefixedTagNames.pText>
+          </div>
         )}
       </Host>
     );

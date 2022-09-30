@@ -122,8 +122,6 @@ export class SelectWrapper {
     const { disabled } = this.select;
 
     const labelProps = {
-      tag: 'span',
-      color: 'inherit',
       ...(!disabled && {
         onClick: () =>
           (this.hasCustomDropdown ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement) : this.select).focus(),
@@ -137,15 +135,15 @@ export class SelectWrapper {
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
-              <PrefixedTagNames.pText class="label__text" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.select) && <Required />}
-              </PrefixedTagNames.pText>
+              </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
+              <span class="label__text label__text--description" {...labelProps}>
                 {this.description || <slot name="description" />}
-              </PrefixedTagNames.pText>
+              </span>
             )}
             <PrefixedTagNames.pIcon
               class="icon"

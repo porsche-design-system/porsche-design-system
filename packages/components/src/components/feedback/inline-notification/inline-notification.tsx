@@ -80,12 +80,8 @@ export class InlineNotification {
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
-          {hasHeading(this.host, this.heading) && (
-            <PrefixedTagNames.pHeadline id={labelId} variant="headline-5">
-              {this.heading || <slot name="heading" />}
-            </PrefixedTagNames.pHeadline>
-          )}
-          <PrefixedTagNames.pText id={descriptionId}>{this.description || <slot />}</PrefixedTagNames.pText>
+          {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
+          <p id={descriptionId}>{this.description || <slot />}</p>
         </div>
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure

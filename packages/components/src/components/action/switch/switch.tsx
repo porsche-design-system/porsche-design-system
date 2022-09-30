@@ -101,9 +101,9 @@ export class Switch {
 
     return (
       <label class="root">
-        <PrefixedTagNames.pText tag="span" color="inherit" class="text" id="label">
+        <span id="label" class="text">
           <slot />
-        </PrefixedTagNames.pText>
+        </span>
         <button
           {...getButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"

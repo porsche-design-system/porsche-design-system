@@ -1,5 +1,9 @@
-import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
-import { getVisualRegressionStatesTester } from 'shared/src/testing/vrt';
+import {
+  defaultViewports,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 import type { GetMarkup } from '../helpers';
 import {
   forceFocusHoverState,

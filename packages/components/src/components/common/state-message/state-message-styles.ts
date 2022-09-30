@@ -1,7 +1,7 @@
 import type { Styles } from 'jss';
 import type { Theme } from '../../../types';
 import { getTransition } from '../../../styles';
-import { spacing } from '@porsche-design-system/utilities-v2';
+import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../form/form-state';
 
@@ -12,6 +12,7 @@ export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: Fo
     message: {
       display: 'flex',
       marginTop: spacingXSmall,
+      ...textSmall,
       color: getThemedFormStateColors(theme, state).formStateColor,
       transition: getTransition('color'),
       '&__icon': {
