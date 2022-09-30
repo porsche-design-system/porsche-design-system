@@ -1,5 +1,5 @@
-import type { Direction } from '../components/common/scroller/scroller-utils';
-import { getScrollerElements } from '../components/common/scroller/scroller-utils';
+import type { Direction } from '../components/scroller/scroller-utils';
+import { getScrollerElements } from '../components/scroller/scroller-utils';
 
 let supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
 

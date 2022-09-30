@@ -5,7 +5,7 @@ import {
   scrollElementBy,
   scrollElementTo,
 } from './scrolling';
-import * as scrollerUtils from '../components/common/scroller/scroller-utils';
+import * as scrollerUtils from '../components/scroller/scroller-utils';
 
 describe('scrollElementTo()', () => {
   it('should call el.scrollTo() with correct parameter if scrollBehavior is supported', () => {
