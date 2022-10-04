@@ -1,5 +1,5 @@
 import { Text } from './text';
-import * as setLineHeightOnSizeInheritModule from '../../../utils/typography/setLineHeightOnSizeInherit';
+import * as setLineHeightOnSizeInheritModule from '../../utils/typography/setLineHeightOnSizeInherit';
 
 describe('text', () => {
   describe('componentDidLoad', () => {
