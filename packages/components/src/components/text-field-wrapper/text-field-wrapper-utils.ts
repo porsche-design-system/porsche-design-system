@@ -1,7 +1,7 @@
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 import { pxToRemWithUnit } from '../../styles';
 import { getClosestHTMLElement } from '../../utils';
-import { hasCounter } from '../form-utils';
+import { hasCounter } from '../../utils/form/form-utils';
 import type { IconName } from '../../types';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;

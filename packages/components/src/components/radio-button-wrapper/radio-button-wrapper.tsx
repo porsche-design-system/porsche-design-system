@@ -17,8 +17,8 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { getComponentCss, getSlottedCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../form-state';
-import type { FormState } from '../form-state';
+import { FORM_STATES } from '../../utils/form/form-state';
+import type { FormState } from '../../utils/form/form-state';
 import { addChangeListener } from './radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {

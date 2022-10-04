@@ -11,7 +11,7 @@ import {
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (

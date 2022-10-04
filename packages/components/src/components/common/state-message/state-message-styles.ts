@@ -3,7 +3,7 @@ import type { Theme } from '../../../types';
 import { getTransition } from '../../../styles';
 import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import type { FormState } from '../../form-state';
+import type { FormState } from '../../../utils/form/form-state';
 
 const { xSmall: spacingXSmall } = spacing;
 

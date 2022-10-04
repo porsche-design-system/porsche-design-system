@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
-import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../styles';
+import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../utils';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
 import {
   headingLarge,
   headingXLarge,
@@ -12,7 +12,7 @@ import {
   fontWeight,
   textSmall,
 } from '@porsche-design-system/utilities-v2';
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../styles/typography-styles';
+import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
 const headingMap: Record<VariantType, JssStyle> = {

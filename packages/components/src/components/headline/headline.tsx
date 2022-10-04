@@ -8,8 +8,8 @@ import {
   THEMES,
   TEXT_ALIGNS,
   validateProps,
-} from '../../../utils';
-import type { PropTypes, TextAlign, TextColor, Theme } from '../../../types';
+} from '../../utils';
+import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, HEADLINE_TAGS } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';

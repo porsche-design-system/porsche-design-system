@@ -13,7 +13,7 @@ import { getFunctionalComponentStateMessageStyles } from '../common/state-messag
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 
 const theme: Theme = 'light';
 

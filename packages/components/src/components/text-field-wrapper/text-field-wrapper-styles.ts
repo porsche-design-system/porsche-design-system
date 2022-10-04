@@ -15,7 +15,7 @@ import { getFunctionalComponentRequiredStyles } from '../common/required/require
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 

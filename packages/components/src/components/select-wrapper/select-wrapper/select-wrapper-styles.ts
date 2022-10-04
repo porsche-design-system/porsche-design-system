@@ -10,7 +10,7 @@ import {
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { FormState } from '../../form-state';
+import { FormState } from '../../../utils/form/form-state';
 
 const { baseColor: themeLightBaseColor } = getThemedColors('light');
 

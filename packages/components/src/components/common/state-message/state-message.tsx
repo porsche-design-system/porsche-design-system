@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core';
 import { getRole, getPrefixedTagNames } from '../../../utils';
-import type { FormState } from '../../form-state';
+import type { FormState } from '../../../utils/form/form-state';
 
 type StateMessageProps = {
   id?: string;

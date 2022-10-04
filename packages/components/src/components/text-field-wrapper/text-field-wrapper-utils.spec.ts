@@ -12,9 +12,9 @@ import {
   hasLocateAction,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import * as formUtils from '../form-utils';
+import * as formUtils from '../../utils/form/form-utils';
 import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
