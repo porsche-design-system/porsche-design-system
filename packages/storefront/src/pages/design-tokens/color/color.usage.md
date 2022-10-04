@@ -64,7 +64,7 @@ input controls which also reflect their validation state color.
 
 ## Porsche Light Theme
 
-![Porsche Light Theme colors](assets/color-theme-light.png)
+![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
 
@@ -133,13 +133,13 @@ Notification colors are to be used only to display warnings, error or status mes
 
 ### Color proportions
 
-![Porsche Light Theme color proportions](assets/color-theme-proportions-light.png)
+![Porsche Light Theme color proportions](./assets/color-theme-proportions-light.png)
 
 ---
 
 ### Porsche Dark Theme
 
-![Porsche Dark Theme colors](assets/color-theme-dark.png)
+![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
 
@@ -211,7 +211,7 @@ keyboard.
 
 ### Color proportions
 
-![Porsche Dark Theme color proportions](assets/color-theme-proportions-dark.png)
+![Porsche Dark Theme color proportions](./assets/color-theme-proportions-dark.png)
 
 ---
 
@@ -284,4 +284,4 @@ Porsche web applications.
 Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA
 standard.
 
-![Example for accessibility](assets/color-accessibility-dont-01.png)
+![Example for accessibility](./assets/color-accessibility-dont-01.png)

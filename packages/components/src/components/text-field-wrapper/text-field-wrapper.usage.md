@@ -41,7 +41,7 @@ asterisk is an easy way to improve the usability of forms. Please find more info
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="assets/text-field-examples.png" alt="Examples for text field usage" />
+    <img src="./assets/text-field-examples.png" alt="Examples for text field usage" />
 </div>
 
 ## Do's & Don'ts
@@ -51,13 +51,13 @@ asterisk is an easy way to improve the usability of forms. Please find more info
 Don't use the Text Field component if you need to allow users to enter longer text. In this case, you should use the
 Textarea component.
 
-![Longer Text in Text Field](assets/textfield-dont-long-text-inputs.png)
+![Longer Text in Text Field](./assets/textfield-dont-long-text-inputs.png)
 
 ### Description text
 
 Don't use instructional or description text for the label.
 
-![How to use description text](assets/textfield-dont-description-text.png)
+![How to use description text](./assets/textfield-dont-description-text.png)
 
 ---
 

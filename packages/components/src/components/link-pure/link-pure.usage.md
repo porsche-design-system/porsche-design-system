@@ -62,5 +62,5 @@ scannability and legibility. It is recommended to not group more than 6 Links Pu
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="assets/link-pure.png" alt="Example"/>
+    <img src="./assets/link-pure.png" alt="Example"/>
 </div>

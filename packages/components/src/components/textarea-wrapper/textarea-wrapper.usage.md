@@ -43,7 +43,7 @@ asterisk is an easy way to improve the usability of forms. Please find more info
 
  <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="assets/textarea-examples.png" alt="Examples for textarea usage" />
+    <img src="./assets/textarea-examples.png" alt="Examples for textarea usage" />
 </div>
 
 ## Do's & Don'ts
@@ -52,7 +52,7 @@ asterisk is an easy way to improve the usability of forms. Please find more info
 
 Don't use a Text Area when text entry is expected to be short since it could confuse users. Use an input instead.
 
-![Short Text in Text Field](assets/textarea-dont-short-text-inputs.png)
+![Short Text in Text Field](./assets/textarea-dont-short-text-inputs.png)
 
 ### Number of Textareas
 

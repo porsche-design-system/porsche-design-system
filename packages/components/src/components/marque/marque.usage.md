@@ -37,4 +37,4 @@ including crest and logotype, across all media, and **may not be changed**.
 - The Porsche marque **may not be used against coloured or busy backgrounds** (e.g. shading). As the Porsche crest has a
   high level of graphical complexity, excessive visual turmoil may be created.
 
-![Example for Porsche marque](assets/porsche-marque-donts-01.png)
+![Example for Porsche marque](./assets/porsche-marque-donts-01.png)

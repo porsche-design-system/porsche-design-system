@@ -77,7 +77,7 @@ we recommend closing the modal and use an overlay with loading spinner. Please c
 makes sense to not block the user from using your product while waiting for the answer of the api call. For any sort of
 feedback relating to the request use the provided banner component.
 
-![Loading behvior for api calls](assets/modal-dialog-loading-behavior.gif)
+![Loading behvior for api calls](./assets/modal-dialog-loading-behavior.gif)
 
 ---
 
@@ -88,11 +88,11 @@ feedback relating to the request use the provided banner component.
 There should be no more than three actions. Actions should always be located within an action bar at the bottom of the
 Modal. Button order and positioning should follow our guidelines for [Buttons](components/button/usage).
 
-![Usage Buttons](assets/modal-dialog-more-than-three-buttons.png)
+![Usage Buttons](./assets/modal-dialog-more-than-three-buttons.png)
 
 ### Stacking Modals
 
 Modals shouldn’t launch other modals. Stacking Modals makes it hard to dismiss them and confuses the user on their
 levels of importance.
 
-![Stacking modals](assets/modal-stacking-modals.png)
+![Stacking modals](./assets/modal-stacking-modals.png)

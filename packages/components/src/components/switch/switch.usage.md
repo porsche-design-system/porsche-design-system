@@ -64,20 +64,20 @@ The switch should change the state only when the server response is positive. Fo
 
 Don’t use the slide Switch for multiple choice questions
 
-![Multiple choice questions](assets/switch-multiple_choice.png)
+![Multiple choice questions](./assets/switch-multiple_choice.png)
 
 ### Intermediate state
 
 Don’t use slide Switch when an intermediate state is required. [Use Checkbox instead!](components/checkbox)
 
-![Intermediate state](assets/switch-intermediate-state.png)
+![Intermediate state](./assets/switch-intermediate-state.png)
 
 ### Label
 
 Don’t use only the label to describe the states of the Switch. A label next to the Switch must describe the affected
 property.
 
-![Switch Label](assets/switch-label.png)
+![Switch Label](./assets/switch-label.png)
 
 ### Alignment
 

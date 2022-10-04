@@ -26,7 +26,7 @@ Checkboxes can be nested when a parent and child relationship is needed. Users c
 options or only a subset. Checking the parent Checkbox automatically selects all of the nested children Checkboxes.
 Unchecking the parent Checkbox automatically deselects all of the children Checkboxes.
 
-![Example of indeterminate checkbox](assets/checkbox-indeterminate.png)
+![Example of indeterminate checkbox](./assets/checkbox-indeterminate.png)
 
 ### Label
 
@@ -44,7 +44,7 @@ Is used for a single option that the user can turn on or off (e.g. in case of a 
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="assets/checkbox-examples.png" alt="Examples" />
+    <img src="./assets/checkbox-examples.png" alt="Examples" />
 </div>
 
 ---
@@ -55,13 +55,13 @@ Is used for a single option that the user can turn on or off (e.g. in case of a 
 
 Never mix Radio Buttons and Checkboxes.
 
-![Don't mix Checkboxes and Radio Buttons](assets/checkbox-dont-mix.png)
+![Don't mix Checkboxes and Radio Buttons](./assets/checkbox-dont-mix.png)
 
 ### Alignment
 
 Preferably set Checkboxes vertically left-aligned, as this supports scannability way better than a horizontal alignment.
 
-![Don't set checkboxes horizontaly](assets/checkbox-dont-alignment.png)
+![Don't set checkboxes horizontaly](./assets/checkbox-dont-alignment.png)
 
 ---
 

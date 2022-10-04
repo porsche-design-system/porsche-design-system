@@ -43,7 +43,7 @@ allowed to be used for Porsche in both print and digital media.
 Formally, the impression of the Porsche Next is largely determined by the visual character of the "squircle", a
 combination of square and circle, which is reflected in the curves and circular shapes of the typeface.
 
-![Porsche Next Squircles](assets/typography-squircle.png)
+![Porsche Next Squircles](./assets/typography-squircle.png)
 
 ### Download
 
@@ -156,7 +156,7 @@ A first-level headline can be supplemented by a corresponding subline. Sublines 
 
 Examples:
 
-![Headline-subline combinations](assets/typography-headline-subline.png)
+![Headline-subline combinations](./assets/typography-headline-subline.png)
 
 ### Headline
 
@@ -214,7 +214,7 @@ should not have to scroll before being able to read the full content.
 The vertical spacing between copytext paragraphs should be at least 24px, which equals the space of one line of text
 in-between.
 
-![Copytext paragraph spacing](assets/typography-paragraph-spacing.png)
+![Copytext paragraph spacing](./assets/typography-paragraph-spacing.png)
 
 ### Upper case
 
@@ -226,7 +226,7 @@ readability. Upper case text should only be used for:
 - Special components for which readability is generally not critical (such as short tags).
 - Proper names such as GTS or BOSE.
 
-![Example for uppercase text](assets/typography-uppercase.png)
+![Example for uppercase text](./assets/typography-uppercase.png)
 
 ---
 
@@ -257,7 +257,7 @@ undesirable impact on the origin character of the company typeface. This include
 - No use of outline borders on text.
 - No use of opacity for text colors.
 
-![Example for uppercase text](assets/typography-donts.png)
+![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
   @import '~@porsche-design-system/utilities/scss';
