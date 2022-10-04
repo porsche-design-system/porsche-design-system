@@ -12,16 +12,8 @@ import {
   TEXT_SIZES,
   THEMES,
   validateProps,
-} from '../../../utils';
-import type {
-  BreakpointCustomizable,
-  PropTypes,
-  TextAlign,
-  TextColor,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../../types';
+} from '../../utils';
+import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { getComponentCss, getSlottedCss } from './text-styles';
 import type { TextTag } from './text-tag';
 import { TEXT_TAGS } from './text-tag';
