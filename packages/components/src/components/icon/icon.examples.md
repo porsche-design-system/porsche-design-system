@@ -75,7 +75,7 @@ color.
 The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which
 doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be
 sure that the custom icon serves the specific needs like size and viewbox which are described in the
-[design documentation](components/icon/design).
+[usage documentation](components/icon/usage).
 
 <Playground :markup="custom" :config="config"></Playground>
 
