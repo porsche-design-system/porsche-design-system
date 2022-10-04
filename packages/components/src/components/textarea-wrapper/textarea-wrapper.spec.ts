@@ -3,8 +3,8 @@ import { TextareaWrapper } from './textarea-wrapper';
 import * as formUtils from '../../utils/form/form-utils';
 import * as a11yUtils from '../../utils/a11y/a11y';
 
-jest.mock('../../../utils/dom');
-jest.mock('../../../utils/slotted-styles');
+jest.mock('../../utils/dom');
+jest.mock('../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
   // TODO: prove connection between util actually setting member value

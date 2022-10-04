@@ -2,7 +2,7 @@ import { ButtonPure } from './button-pure';
 import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../utils/transition-listener';
 
-jest.mock('../../../utils/button-handling');
+jest.mock('../../utils/button-handling');
 
 describe('componentWillRender', () => {
   it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
