@@ -5,8 +5,8 @@ import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as propertyObserverUtils from '../../utils/property-observer';
 
-jest.mock('../../../utils/dom');
-jest.mock('../../../utils/slotted-styles');
+jest.mock('../../utils/dom');
+jest.mock('../../utils/slotted-styles');
 
 const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
   jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);

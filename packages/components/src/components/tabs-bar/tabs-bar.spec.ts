@@ -3,8 +3,8 @@ import * as tabsBarUtils from './tabs-bar-utils';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as childrenObserverUtils from '../../utils/children-observer';
 
-jest.mock('../../../utils/dom');
-jest.mock('../../../utils/slotted-styles');
+jest.mock('../../utils/dom');
+jest.mock('../../utils/slotted-styles');
 
 describe('connectedCallback', () => {
   it('should call this.setTabElements()', () => {
