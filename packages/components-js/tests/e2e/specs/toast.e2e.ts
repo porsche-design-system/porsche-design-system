@@ -11,7 +11,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
-import { TOAST_STATES } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
+import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 const ANIMATION_DURATION = 600;
