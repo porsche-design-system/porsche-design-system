@@ -58,7 +58,7 @@ still followed by the majority of users on common web pages both on mobile and d
 ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been
 proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007).
 
-![F-shaped reading pattern](assets/patterns-buttons-alignment-left-form.png)
+![F-shaped reading pattern](./assets/patterns-buttons-alignment-left-form.png)
 
 #### **2. Centered alignment**
 
@@ -67,10 +67,10 @@ proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/
 If the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider
 where the Buttons should be placed centered to the images:
 
-![Z-shaped reading pattern](assets/patterns-buttons-alignment-centered-aesthetic.png) If the Button relates to a
+![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-aesthetic.png) If the Button relates to a
 larger part or even the whole page, e.g. a "Load more" Button:
 
-![Z-shaped reading pattern](assets/patterns-buttons-alignment-centered-load-more.png)
+![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)
 
 #### **3. Smaller viewports**
 
@@ -78,7 +78,7 @@ On smaller viewports up to 479 px screen width Buttons are always to be placed s
 easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility.
 "Icon only" Buttons keep their fix size on all viewports.
 
-![Mobile view for Buttons](assets/patterns-buttons-alignment-viewport-xs.png)
+![Mobile view for Buttons](./assets/patterns-buttons-alignment-viewport-xs.png)
 
 ### Multi-line Buttons
 
@@ -87,7 +87,7 @@ short and, therefore, avoid multiline Buttons.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="assets/button-examples.png" alt="Examples for button usage"/>
+    <img src="./assets/button-examples.png" alt="Examples for button usage"/>
 </div>
 
 ## Do's & Don'ts
@@ -97,7 +97,7 @@ short and, therefore, avoid multiline Buttons.
 It is not recommended to use "icon and text" and "icon only" Button variants in direct combination. Always try to stick
 to a homogeneous usage of Button variants in favour of a seamless UX.
 
-![Example for uppercase text](assets/button-dont.png)
+![Example for uppercase text](./assets/button-dont.png)
 
 ---
 

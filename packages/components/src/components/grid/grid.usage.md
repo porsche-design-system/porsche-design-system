@@ -13,7 +13,7 @@
   from the [Content Wrapper](components/content-wrapper) in use. The Grid component can only be combined with the
   "Basic" content width variant.
 
-![Porsche Design System grid architecture](assets/grid-components.png)
+![Porsche Design System grid architecture](./assets/grid-components.png)
 
 ### Overview
 
@@ -25,7 +25,7 @@
 | **L**    | 1300-1759 px      | 12 columns                          | 36 px  | 7%                                |
 | **XL**   | 1760 px or larger | 12 columns                          | 36 px  | 10%                               |
 
-![Porsche Design System grid architecture](assets/grid-viewports.png)
+![Porsche Design System grid architecture](./assets/grid-viewports.png)
 
 ## Grid breakpoints
 
@@ -63,7 +63,7 @@ To provide consistency throughout all Porsche web experiences, all layouts shoul
 and right edge should be used. This can be done by using the "extended" content width variant of the
 [Content Wrapper](components/content-wrapper) component.
 
-![Porsche Design System grid architecture](assets/grid-maxwidth.png)
+![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
 
 ### Layout template
 
@@ -81,7 +81,7 @@ column. The spacing between content elements is therefore defined by the grid gu
 to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should
 be defined by using the [Spacing](components/spacing) component.
 
-![Porsche Design System grid alignment](assets/grid-alignment.png)
+![Porsche Design System grid alignment](./assets/grid-alignment.png)
 
 ### Use the given possibilites wisely
 
@@ -97,7 +97,7 @@ different screen sizes, such as changing:
 When designing responsive layouts, always aim to find the solution that works best for the specific case, keeping the
 user and the specific use context in mind.
 
-![Porsche Design System grid behaviour](assets/grid-behaviour.png)
+![Porsche Design System grid behaviour](./assets/grid-behaviour.png)
 
 ### Don’t be afraid to think outside of the box
 
@@ -110,4 +110,4 @@ Also, for image groups, it is possible to break out of the grid in order to crea
 outer edges (left and right) of the image group should always be placed within the grid, whereas the edges between the
 single images can be placed exactly in the middle of the gutter.
 
-![End-to-end placement](assets/grid-endtoend.png)
+![End-to-end placement](./assets/grid-endtoend.png)

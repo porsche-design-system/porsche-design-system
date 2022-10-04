@@ -28,7 +28,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 If there are at least 6 or 8 pages, an ellipsis ("...") is shown for a dedicated range of pages that are located
 inbetween the visible pagination numbers.
 
-![Example for displaying 8 pages or more](assets/pagination-desktop-plus8.png)
+![Example for displaying 8 pages or more](./assets/pagination-desktop-plus8.png)
 
 ## Positioning and spacing
 

@@ -9,7 +9,7 @@ should be used in combination with the [Responsive Grid](components/grid).
 The Porsche spacing system is based on multiples of eight. The unit of 8px refers to the general base size of 16px (=
 1em), that is also applied in the typography and other component sizes.
 
-![The Porsche spacing formula](assets/spacings-formula.png)
+![The Porsche spacing formula](./assets/spacings-formula.png)
 
 <TableOfContents></TableOfContents>
 
@@ -19,8 +19,8 @@ For layouting we recommend to use the layout spacings that are available for dev
 xx-large. Additional increments of the spacing system can be used for specific requirements as long as it is based on
 the 8px spacing system.
 
-![The Porsche spacing formula](assets/spacings-example-02.png) Example: Mixed use of the spacing system with layout and
-custom spacings.
+![The Porsche spacing formula](./assets/spacings-example-02.png) Example: Mixed use of the spacing system with layout
+and custom spacings.
 
 ## Working with space
 
@@ -83,7 +83,7 @@ Therefore, we should always make sure that the spacings in sketch are set as cor
 developer can easily read them in Abstract's inspect mode - of course, a personal conversation between designer and
 developer is always the best way to get optimal results.
 
-![Abstract inspect view of spacing](assets/spacings-inspect.png)
+![Abstract inspect view of spacing](./assets/spacings-inspect.png)
 
 ### Borders
 
@@ -103,7 +103,7 @@ Developers measure the spacing of typography from the bounding box of the text e
 the bounding box should be placed within the grid parameters, even if the baseline of the typography is not on the grid
 line. It's best to always create texts using the text tool, not as a box!
 
-![Text box placement](assets/spacings-bounding-box.png)
+![Text box placement](./assets/spacings-bounding-box.png)
 
 ### How to handle uneven image heights
 
@@ -117,4 +117,4 @@ implementation of the spacing, the developer should use the spacing variable wit
 the following design case might lead to an implemented spacing value of 16 px, as this the spacing variable the most
 close to 18 px.
 
-![Image placement](assets/spacing-images.png)
+![Image placement](./assets/spacing-images.png)

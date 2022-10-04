@@ -56,7 +56,7 @@ It's recommended to use common sort order for menu items (frequency of use, alph
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-   <img src="assets/select-examples.png" alt="Examples for select usage" />
+   <img src="./assets/select-examples.png" alt="Examples for select usage" />
 </div>
 
 ## Do's & Don'ts
@@ -66,7 +66,7 @@ It's recommended to use common sort order for menu items (frequency of use, alph
 Avoid Select boxes for data that is highly familiar such as the day, month or year. Having to find these options in a
 long menu is tedious, breaks the previous guideline and can create even more work for users.
 
-![Example for alignment](assets/select-dont-content.png)
+![Example for alignment](./assets/select-dont-content.png)
 
 ### Number of options in view
 
@@ -74,7 +74,7 @@ Very long Select boxes that require scrolling make it impossible for users to se
 However this cannot always be avoided. Therefore make sure that when open there is only a maximum of 7 elements in the
 field of view without having to scroll.
 
-![Example for alignment](assets/select-dont-items.png)
+![Example for alignment](./assets/select-dont-items.png)
 
 ### Don’t default to ‘please select’
 

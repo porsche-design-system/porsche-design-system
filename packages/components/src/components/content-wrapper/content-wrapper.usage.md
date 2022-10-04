@@ -36,7 +36,7 @@ visual gap between content area and screen edges.
 
 ### Layout combination of content width variants
 
-![Content Wrapper with Fluid safe zone](assets/content-wrapper-width-variants.png)
+![Content Wrapper with Fluid safe zone](./assets/content-wrapper-width-variants.png)
 
 ## Layout approach or: How to combine Content Wrapper with Grid, Flex or …
 

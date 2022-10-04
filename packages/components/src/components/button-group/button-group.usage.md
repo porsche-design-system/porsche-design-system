@@ -22,14 +22,14 @@ the different actions** and give the user an instant overview on the available o
 be a "cancel" / "submit" combination. This is **valid for all screens or screen areas with a width of 480 px or
 larger.**
 
-![Horizontal alignment of Button groups](assets/patterns-buttons-groups-horizontal.png)
+![Horizontal alignment of Button groups](./assets/patterns-buttons-groups-horizontal.png)
 
 Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (breakpoint XS) or
 screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for
 mobile, spanning full-width. According to the F pattern the primary call-to-action button should always be placed on top
 of the button group ([UX Design](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019).
 
-![Responsive behaviour of horizontally aligned buttons](assets/patterns-buttons-groups-horizontal-responsiveness.png)
+![Responsive behaviour of horizontally aligned buttons](./assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
 #### **2. Vertical alignment**
 
@@ -37,7 +37,7 @@ In case you want the users to **focus on each action separately** you should opt
 the user more space for a careful consideration of the actions provided
 ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019).
 
-![Vertical alignment of Button groups](assets/patterns-buttons-groups-vertical.png)
+![Vertical alignment of Button groups](./assets/patterns-buttons-groups-vertical.png)
 
 In favor of visual harmony, stacked Buttons should always have the same width, aligned with the widest element of the
 stack (whose length depends on the text contained).
@@ -53,7 +53,7 @@ Also, too many buttons might make the user feel insecure about what to do next.
 No matter if Buttons are placed side by side or on top of each other, you should keep a minimum spacing of 16 px
 inbetween.
 
-![Spacing in vertical and horizontal Button groups](assets/patterns-buttons-groups-spacing.png)
+![Spacing in vertical and horizontal Button groups](./assets/patterns-buttons-groups-spacing.png)
 
 ---
 
@@ -69,7 +69,7 @@ content-related.
 In favor of a seamless UX you should homogeneously **stick the Button types "Icon and Text" and "Icon only within a
 group** and avoid mixing them up.
 
-![Do's and Don'ts for mixing Button variants](assets/patterns-buttons-groups-variants.png)
+![Do's and Don'ts for mixing Button variants](./assets/patterns-buttons-groups-variants.png)
 
 ### Differ between Primary, Secondary and Tertiary actions.
 
@@ -85,4 +85,4 @@ Within a Button group, you have several options to provide a clear interactive h
   (outlined Button) or as a Button or Link Pure, in case you want to reduce their priority even more. If this is the
   case for the whole group, you can also go for 100% tertiary Button or 100% Button/Link Pure groups.
 
-![Do's for Button hierarchy](assets/patterns-buttons-groups-hierarchy-1.png)
+![Do's for Button hierarchy](./assets/patterns-buttons-groups-hierarchy-1.png)
