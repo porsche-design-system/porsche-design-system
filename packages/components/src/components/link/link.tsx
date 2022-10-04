@@ -20,7 +20,7 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { LINK_BUTTON_VARIANTS } from '../link-button-variant';
+import { LINK_BUTTON_VARIANTS } from '../../utils/link-button/link-button-variant';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),

@@ -177,13 +177,13 @@ export const config: StorefrontConfig = {
     },
     Icon: {
       // @ts-ignore
-      Examples: [() => import('@/../../components/src/components/icon/icon/icon.examples.md')],
+      Examples: [() => import('@/../components/src/components/icon2/icon/icon.examples.md')],
       // @ts-ignore
-      Usage: [() => import('@/../../components/src/components/icon/icon/icon.usage.md')],
+      Usage: [() => import('@/../components/src/components/icon2/icon/icon.usage.md')],
       // @ts-ignore
-      Guideline: [() => import('@/../../components/src/components/icon/icon/icon.guideline.md')],
+      Guideline: [() => import('@/../components/src/components/icon2/icon/icon.guideline.md')],
       // @ts-ignore
-      Props: [() => import('@/../../components/src/components/icon/icon/icon.props.md')],
+      Props: [() => import('@/../components/src/components/icon2/icon/icon.props.md')],
     },
     Link: {
       // @ts-ignore
@@ -227,7 +227,7 @@ export const config: StorefrontConfig = {
     },
     Notifications: {
       // @ts-ignore
-      Introduction: [() => import('@/../../components/src/components/feedback/notifications.usage.md')],
+      Introduction: [() => import('@/./pages/components/feedback/notifications.usage.md')],
       'Inline Notification': [
         // @ts-ignore
         () => import('@/../components/src/components/inline-notification/inline-notification.examples.md'),
@@ -237,7 +237,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Banner: [() => import('@/../components/src/components/banner/banner.examples.md')],
       // @ts-ignore
-      'Decision Tree': [() => import('@/../../components/src/components/feedback/decision-tree.md')],
+      'Decision Tree': [() => import('@/./pages/components/feedback/decision-tree.md')],
       Props: [
         // @ts-ignore
         () => import('@/../components/src/components/inline-notification/inline-notification.props.md'),

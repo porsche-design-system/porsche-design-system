@@ -1,5 +1,5 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import * as formUtils from '../form-utils';
+import * as formUtils from '../../utils/form/form-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';

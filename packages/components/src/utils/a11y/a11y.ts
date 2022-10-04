@@ -1,7 +1,7 @@
 import { removeAttribute, setAttribute } from '../dom';
 import type { AriaAttributes } from '../../types';
 import { parseJSONAttribute } from '../json';
-import type { FormState } from '../../components/form-state';
+import type { FormState } from '../form/form-state';
 
 export type SetAriaAttributesOptions = {
   label?: string;

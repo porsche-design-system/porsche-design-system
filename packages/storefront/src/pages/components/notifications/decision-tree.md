@@ -21,7 +21,7 @@ Status: Neutral
 - Validation code was sent to phone
 - We sent you an email
 
-![The five basic elements of Porsche forms](./assets/notification-neutral.png)
+![The five basic elements of Porsche forms](assets/notification-neutral.png)
 
 #### Related Components:
 
@@ -43,7 +43,7 @@ Status: Success
 - An Upload was successful
 - A request was submitted successfully
 
-![The five basic elements of Porsche forms](./assets/notification-success.png)
+![The five basic elements of Porsche forms](assets/notification-success.png)
 
 #### Related Components:
 
@@ -64,7 +64,7 @@ Status: Warning
 - About to leave the system
 - About to delete a vehicle or user data
 
-![The five basic elements of Porsche forms](./assets/notification-warning.png)
+![The five basic elements of Porsche forms](assets/notification-warning.png)
 
 #### Related Components:
 
@@ -87,7 +87,7 @@ Status: Error
 - Feedback Page (Success / Error)
 - There is a problem uploading a file
 
-![The five basic elements of Porsche forms](./assets/notification-error.png)
+![The five basic elements of Porsche forms](assets/notification-error.png)
 
 #### Related Components:
 

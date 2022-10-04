@@ -17,8 +17,8 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { FORM_STATES } from '../form-state';
-import type { FormState } from '../form-state';
+import { FORM_STATES } from '../../utils/form/form-state';
+import type { FormState } from '../../utils/form/form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
@@ -35,7 +35,7 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../common/required/required';
-import { addInputEventListenerForCounter } from '../form-utils';
+import { addInputEventListenerForCounter } from '../../utils/form/form-utils';
 import type { IconName } from '../../types';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {

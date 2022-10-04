@@ -34,7 +34,7 @@ import {
   determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
-import type { FormState } from '../../form-state';
+import type { FormState } from '../../../utils/form/form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({

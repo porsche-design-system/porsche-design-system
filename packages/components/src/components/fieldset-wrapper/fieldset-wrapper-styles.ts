@@ -5,7 +5,7 @@ import { addImportantToRule, getThemedColors } from '../../styles';
 import { headingXSmall, headingSmall, spacing } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../form-state';
+import type { FormState } from '../../utils/form/form-state';
 
 const { medium: spacingMedium } = spacing;
 

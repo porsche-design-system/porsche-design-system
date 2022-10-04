@@ -8,7 +8,7 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
-import type { HeadlineTag } from '../typography/headline/headline-utils';
+import type { HeadlineTag } from '../headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,

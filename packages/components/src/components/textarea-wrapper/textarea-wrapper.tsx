@@ -16,10 +16,10 @@ import {
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import { addInputEventListenerForCounter, hasCounter } from '../form-utils';
+import { addInputEventListenerForCounter, hasCounter } from '../../utils/form/form-utils';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../form-state';
-import type { FormState } from '../form-state';
+import { FORM_STATES } from '../../utils/form/form-state';
+import type { FormState } from '../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,

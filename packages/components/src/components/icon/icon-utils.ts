@@ -3,8 +3,8 @@
  * */
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
-import type { IconName, SelectedAriaAttributes } from '../../../types';
-import { paramCaseToCamelCase, parseAndGetAriaAttributes, pdsFetch } from '../../../utils';
+import type { IconName, SelectedAriaAttributes } from '../../types';
+import { paramCaseToCamelCase, parseAndGetAriaAttributes, pdsFetch } from '../../utils';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type IconAriaAttributes = typeof ICON_ARIA_ATTRIBUTES[number];

@@ -10,7 +10,7 @@ import {
   TEXT_COLORS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   validateProps,
-} from '../../../utils';
+} from '../../utils';
 import type {
   IconName,
   IconSize,
@@ -18,7 +18,7 @@ import type {
   SelectedAriaAttributes,
   TextColor,
   ThemeExtendedElectricDark,
-} from '../../../types';
+} from '../../types';
 import { getComponentCss } from './icon-styles';
 
 const propTypes: PropTypes<typeof Icon> = {
