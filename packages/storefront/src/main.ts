@@ -29,7 +29,7 @@ window.componentsReady = componentsReady; // for vrt
  * to https://designsystem.porsche.com/latest/#/components/marque%23code
  * which causes 404)
  */
-window.location.hash = window.location.hash.replace('%23', '#');
+window.location.hash = window.location.hash.replace(/%23/g, '#');
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/(p-|phn-)\w*/];

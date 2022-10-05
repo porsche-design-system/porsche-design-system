@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`accessibility should expose correct initial accessibility tree of tablist 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -23,9 +23,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -33,9 +33,9 @@ Object {
                           "name": "Tab Button 2",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -46,16 +46,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -66,19 +66,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -90,21 +90,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -122,19 +112,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -146,21 +136,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -189,21 +169,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree if activeTabIndex is removed  1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -211,9 +191,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -221,9 +201,9 @@ Object {
                           "name": "Tab Button 2",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -234,16 +214,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -254,19 +234,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -278,21 +258,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -310,19 +280,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -334,21 +304,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -377,21 +337,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree if activeTabIndex is set  1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -399,9 +359,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -410,9 +370,9 @@ Object {
                           "role": "tab",
                           "selected": true,
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -423,16 +383,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -443,19 +403,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -467,21 +427,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -499,19 +449,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -523,21 +473,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -566,21 +506,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -588,9 +528,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -600,9 +540,9 @@ Object {
                           "role": "tab",
                           "selected": true,
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -613,16 +553,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -633,19 +573,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -657,21 +597,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -689,19 +619,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -713,21 +643,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -756,21 +676,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -779,9 +699,9 @@ Object {
                           "role": "tab",
                           "selected": true,
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -789,9 +709,9 @@ Object {
                           "name": "Tab Button 2",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -802,16 +722,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -822,19 +742,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -846,21 +766,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -878,19 +788,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -902,21 +812,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -945,21 +845,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -967,9 +867,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -977,9 +877,9 @@ Object {
                           "name": "Tab Button 2",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -987,9 +887,9 @@ Object {
                           "name": "Tab Button 3",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 4",
                               "role": "StaticText",
                             },
@@ -1001,16 +901,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -1021,19 +921,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -1045,21 +945,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -1077,19 +967,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -1101,21 +991,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -1144,21 +1024,21 @@ Object {
 `;
 
 exports[`accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 1",
                               "role": "StaticText",
                             },
@@ -1166,9 +1046,9 @@ Object {
                           "name": "Tab Button 1",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 2",
                               "role": "StaticText",
                             },
@@ -1176,9 +1056,9 @@ Object {
                           "name": "Tab Button 2",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 3",
                               "role": "StaticText",
                             },
@@ -1186,9 +1066,9 @@ Object {
                           "name": "Tab Button 3",
                           "role": "tab",
                         },
-                        Object {
-                          "children": Array [
-                            Object {
+                        {
+                          "children": [
+                            {
                               "name": "Tab Button 4",
                               "role": "StaticText",
                             },
@@ -1200,16 +1080,16 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
+                    {
                       "role": "none",
                     },
                   ],
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
-                Object {
+                {
                   "role": "none",
                 },
               ],
@@ -1220,19 +1100,19 @@ Object {
           "name": "",
           "role": "generic",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -1244,21 +1124,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
@@ -1276,19 +1146,19 @@ Object {
           ],
           "role": "none",
         },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "children": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -1300,21 +1170,11 @@ Object {
                       ],
                       "role": "none",
                     },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "children": Array [
-                                    Object {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getCloseIconJssStyle() should return correct JssStyle 1`] = `
-Object {
+{
   "marginLeft": "1rem",
 }
 `;
@@ -17,6 +17,22 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   padding: 1rem !important;
   background: #fec5c5 !important;
   border-left: 0.25rem solid #fc1717 !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -54,6 +70,22 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #fae6e6 !important;
   border-left: 0.25rem solid #e00000 !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -89,6 +121,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 1rem !important;
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -126,6 +174,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -161,6 +225,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 1rem !important;
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -201,6 +281,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -239,6 +335,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 1rem !important;
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -285,6 +397,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -329,6 +457,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 1rem !important;
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -378,6 +522,22 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -426,6 +586,22 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #bfeec6 !important;
   border-left: 0.25rem solid #01ba1d !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -461,6 +637,22 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   padding: 1rem !important;
   background: #e5f3e7 !important;
   border-left: 0.25rem solid #018a16 !important;
+}
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -498,6 +690,22 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #ffe6bf !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -534,6 +742,22 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #fff5e5 !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
+h5 {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+p {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
@@ -559,7 +783,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 `;
 
 exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
-Object {
+{
   "display": "grid",
   "gridGap": "0.25rem",
   "maxWidth": "50rem",
@@ -567,8 +791,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#e00000",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -578,8 +802,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: neutral  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#0061bd",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -589,8 +813,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#018a16",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -600,8 +824,8 @@ Object {
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning  1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "color": "#ff9b00",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -611,8 +835,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -628,8 +852,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -645,8 +869,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -662,8 +886,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -679,8 +903,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -696,8 +920,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -713,8 +937,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -730,8 +954,8 @@ Object {
 `;
 
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
-Object {
-  "@media(min-width:760px)": Object {
+{
+  "@media(min-width:760px)": {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",

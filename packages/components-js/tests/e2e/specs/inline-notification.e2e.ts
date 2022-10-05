@@ -74,9 +74,9 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -93,9 +93,9 @@ describe('close button', () => {
     await reattachElementHandle(host);
 
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -111,7 +111,7 @@ describe('action button', () => {
     await addEventListener(host, 'action', () => calls++);
 
     await actionButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(calls).toBe(1);
   });
 });
@@ -119,16 +119,13 @@ describe('action button', () => {
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initInlineNotification({ state: 'error' });
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -138,13 +135,12 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });

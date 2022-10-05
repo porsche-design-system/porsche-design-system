@@ -58,7 +58,7 @@ export class FlexItem {
   @Prop() public flex?: FlexItemFlex = 'initial';
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pFlex');
+    throwIfParentIsNotOfKind(this.host, 'p-flex');
   }
 
   public componentWillRender(): void {

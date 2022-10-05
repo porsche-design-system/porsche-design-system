@@ -65,7 +65,7 @@ span[aria-current] {
   cursor: default;
 }
 span[aria-current]::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;
@@ -118,7 +118,7 @@ span[aria-current]::after {
   pointer-events: none;
 }
 .ellipsis::after {
-  content: \\"…\\";
+  content: "…";
 }"
 `;
 
@@ -187,7 +187,7 @@ span[aria-current] {
   cursor: default;
 }
 span[aria-current]::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;
@@ -210,7 +210,7 @@ span[aria-current]::after {
   pointer-events: none;
 }
 .ellipsis::after {
-  content: \\"…\\";
+  content: "…";
 }"
 `;
 
@@ -279,7 +279,7 @@ span[aria-current] {
   cursor: default;
 }
 span[aria-current]::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;
@@ -302,7 +302,7 @@ span[aria-current]::after {
   pointer-events: none;
 }
 .ellipsis::after {
-  content: \\"…\\";
+  content: "…";
 }"
 `;
 
@@ -371,7 +371,7 @@ span[aria-current] {
   cursor: default;
 }
 span[aria-current]::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;
@@ -394,7 +394,7 @@ span[aria-current]::after {
   pointer-events: none;
 }
 .ellipsis::after {
-  content: \\"…\\";
+  content: "…";
 }"
 `;
 
@@ -463,7 +463,7 @@ span[aria-current] {
   cursor: default;
 }
 span[aria-current]::after {
-  content: \\"\\";
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;
@@ -486,6 +486,6 @@ span[aria-current]::after {
   pointer-events: none;
 }
 .ellipsis::after {
-  content: \\"…\\";
+  content: "…";
 }"
 `;

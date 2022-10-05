@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getBaseChildStyles() should return correct css for child: input, state: error, theme: light and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(input)": Object {
+{
+  "::slotted(input)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -30,27 +30,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(input:disabled)": Object {
+  "::slotted(input:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(input:focus)": Object {
+  "::slotted(input:focus)": {
     "outlineColor": "#e00000",
   },
-  "::slotted(input[readonly])": Object {
+  "::slotted(input[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(input[readonly]:focus)": Object {
+  "::slotted(input[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(input[readonly]:not(:disabled))": Object {
+  "::slotted(input[readonly]:not(:disabled))": {
     "color": "#626669",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(input:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#a30000",
     },
   },
@@ -58,8 +58,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: input, state: none, theme: light and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(input)": Object {
+{
+  "::slotted(input)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -87,27 +87,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(input:disabled)": Object {
+  "::slotted(input:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(input:focus)": Object {
+  "::slotted(input:focus)": {
     "outlineColor": "#626669",
   },
-  "::slotted(input[readonly])": Object {
+  "::slotted(input[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(input[readonly]:focus)": Object {
+  "::slotted(input[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(input[readonly]:not(:disabled))": Object {
+  "::slotted(input[readonly]:not(:disabled))": {
     "color": "#626669",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(input:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#000",
     },
   },
@@ -115,8 +115,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: input, state: success, theme: light and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(input)": Object {
+{
+  "::slotted(input)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -144,27 +144,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(input:disabled)": Object {
+  "::slotted(input:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(input:focus)": Object {
+  "::slotted(input:focus)": {
     "outlineColor": "#018a16",
   },
-  "::slotted(input[readonly])": Object {
+  "::slotted(input[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(input[readonly]:focus)": Object {
+  "::slotted(input[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(input[readonly]:not(:disabled))": Object {
+  "::slotted(input[readonly]:not(:disabled))": {
     "color": "#626669",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(input:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#014d0c",
     },
   },
@@ -172,8 +172,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: select, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(select)": Object {
+{
+  "::slotted(select)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -201,17 +201,17 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(select:disabled)": Object {
+  "::slotted(select:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(select:focus)": Object {
+  "::slotted(select:focus)": {
     "outlineColor": "#fc1717",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(select:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#d30303",
     },
   },
@@ -219,8 +219,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: select, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(select)": Object {
+{
+  "::slotted(select)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -248,17 +248,17 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(select:disabled)": Object {
+  "::slotted(select:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(select:focus)": Object {
+  "::slotted(select:focus)": {
     "outlineColor": "#b0b1b2",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(select:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#e3e4e5",
     },
   },
@@ -266,8 +266,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: select, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(select)": Object {
+{
+  "::slotted(select)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -295,17 +295,17 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(select:disabled)": Object {
+  "::slotted(select:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(select:focus)": Object {
+  "::slotted(select:focus)": {
     "outlineColor": "#01ba1d",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(select:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#017d14",
     },
   },
@@ -313,8 +313,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
-Object {
-  "::slotted(textarea)": Object {
+{
+  "::slotted(textarea)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -341,27 +341,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(textarea:disabled)": Object {
+  "::slotted(textarea:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(textarea:focus)": Object {
+  "::slotted(textarea:focus)": {
     "outlineColor": "#fc1717",
   },
-  "::slotted(textarea[readonly])": Object {
+  "::slotted(textarea[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(textarea[readonly]:focus)": Object {
+  "::slotted(textarea[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(textarea[readonly]:not(:disabled))": Object {
+  "::slotted(textarea[readonly]:not(:disabled))": {
     "color": "#b0b1b2",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#d30303",
     },
   },
@@ -369,8 +369,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(textarea)": Object {
+{
+  "::slotted(textarea)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -397,27 +397,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(textarea:disabled)": Object {
+  "::slotted(textarea:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(textarea:focus)": Object {
+  "::slotted(textarea:focus)": {
     "outlineColor": "#fc1717",
   },
-  "::slotted(textarea[readonly])": Object {
+  "::slotted(textarea[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(textarea[readonly]:focus)": Object {
+  "::slotted(textarea[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(textarea[readonly]:not(:disabled))": Object {
+  "::slotted(textarea[readonly]:not(:disabled))": {
     "color": "#b0b1b2",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#d30303",
     },
   },
@@ -425,8 +425,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(textarea)": Object {
+{
+  "::slotted(textarea)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -453,27 +453,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(textarea:disabled)": Object {
+  "::slotted(textarea:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(textarea:focus)": Object {
+  "::slotted(textarea:focus)": {
     "outlineColor": "#b0b1b2",
   },
-  "::slotted(textarea[readonly])": Object {
+  "::slotted(textarea[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(textarea[readonly]:focus)": Object {
+  "::slotted(textarea[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(textarea[readonly]:not(:disabled))": Object {
+  "::slotted(textarea[readonly]:not(:disabled))": {
     "color": "#b0b1b2",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#e3e4e5",
     },
   },
@@ -481,8 +481,8 @@ Object {
 `;
 
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
-Object {
-  "::slotted(textarea)": Object {
+{
+  "::slotted(textarea)": {
     "WebkitAppearance": "none",
     "WebkitTextSizeAdjust": "none",
     "appearance": "none",
@@ -509,27 +509,27 @@ Object {
     "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
-  "::slotted(textarea:disabled)": Object {
+  "::slotted(textarea:disabled)": {
     "WebkitTextFillColor": "#96989a",
     "borderColor": "#96989a",
     "color": "#96989a",
     "cursor": "not-allowed",
   },
-  "::slotted(textarea:focus)": Object {
+  "::slotted(textarea:focus)": {
     "outlineColor": "#01ba1d",
   },
-  "::slotted(textarea[readonly])": Object {
+  "::slotted(textarea[readonly])": {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
   },
-  "::slotted(textarea[readonly]:focus)": Object {
+  "::slotted(textarea[readonly]:focus)": {
     "outlineColor": "transparent",
   },
-  "::slotted(textarea[readonly]:not(:disabled))": Object {
+  "::slotted(textarea[readonly]:not(:disabled))": {
     "color": "#b0b1b2",
   },
-  "@media(hover:hover)": Object {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+  "@media(hover:hover)": {
+    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
       "borderColor": "#017d14",
     },
   },
@@ -537,24 +537,29 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: error and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#d30303 !important",
           },
         },
       },
-      "@media(min-width:1000px)": Object {
+      "@media(min-width:1000px)": {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -565,7 +570,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media(min-width:1300px)": Object {
+      "@media(min-width:1300px)": {
         "border": "0",
         "clip": "rect(1px,1px,1px,1px)",
         "clipPath": "inset(50%)",
@@ -577,7 +582,7 @@ Object {
         "whiteSpace": "nowrap",
         "width": "fit-content",
       },
-      "@media(min-width:1760px)": Object {
+      "@media(min-width:1760px)": {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -588,7 +593,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media(min-width:480px)": Object {
+      "@media(min-width:480px)": {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -599,7 +604,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media(min-width:760px)": Object {
+      "@media(min-width:760px)": {
         "border": "0",
         "clip": "rect(1px,1px,1px,1px)",
         "clipPath": "inset(50%)",
@@ -611,16 +616,21 @@ Object {
         "whiteSpace": "nowrap",
         "width": "fit-content",
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -628,10 +638,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "unit": Object {
-    "@media(hover:hover)": Object {
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+  "unit": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
           "borderColor": "#d30303 !important",
         },
       },
@@ -642,32 +652,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: error and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#a30000 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -679,32 +699,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: none and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly]))": {
             "borderColor": "#000 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -716,32 +746,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: success and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#014d0c !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -753,33 +793,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: error and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#a30000 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -791,33 +841,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: none and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly]))": {
             "borderColor": "#000 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -829,33 +889,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: success and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#626669",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#014d0c !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#000",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -867,33 +937,40 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: true, theme: error and additionalRefForInputHover: light 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
-        "color": "#96989a",
-      },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#a30000 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#96989a",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -905,32 +982,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: error and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#d30303 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -942,32 +1029,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: none and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly]))": {
             "borderColor": "#fff !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -979,32 +1076,42 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: success and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#017d14 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
+      "hyphens": "auto",
       "margin": 0,
       "overflow": "visible",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "static",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
@@ -1016,33 +1123,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: error and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#d30303 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -1054,33 +1171,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: none and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly]))": {
             "borderColor": "#fff !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -1092,33 +1219,43 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: success and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
+      "&--description": {
         "color": "#b0b1b2",
       },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#017d14 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#fff",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
@@ -1130,33 +1267,40 @@ Object {
 `;
 
 exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: true, theme: error and additionalRefForInputHover: dark 1`] = `
-Object {
-  "label": Object {
-    "&__text": Object {
-      "&+&--description": Object {
+{
+  "label": {
+    "&__text": {
+      "&+&--description": {
+        "WebkitTextSizeAdjust": "none",
+        "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        "hyphens": "auto",
         "marginTop": "-0.25rem",
+        "overflowWrap": "break-word",
         "paddingBottom": "0.5rem",
+        "textSizeAdjust": "none",
       },
-      "&--description": Object {
-        "color": "#7c7f81",
-      },
-      "@media(hover:hover)": Object {
-        "&:hover": Object {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": Object {
+      "@media(hover:hover)": {
+        "&:hover": {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
             "borderColor": "#d30303 !important",
           },
         },
       },
+      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
       "color": "#7c7f81",
       "display": "block",
+      "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
+      "hyphens": "auto",
       "margin": "-1px",
       "overflow": "hidden",
+      "overflowWrap": "break-word",
       "padding": "0 0 0.25rem",
       "position": "absolute",
+      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",

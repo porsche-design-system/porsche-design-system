@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
-import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, mediaQueryMin, fontWeight, textMedium, textLarge } from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -78,6 +78,7 @@ export const getComponentCss = (
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
+  const { baseColor } = getThemedColors('light');
 
   return getCss({
     '@global': {
@@ -116,6 +117,16 @@ export const getComponentCss = (
         [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
         [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
       }),
+      h1: {
+        ...textMedium,
+        fontWeight: fontWeight.semiBold,
+        margin: 0,
+        color: baseColor,
+        [mediaQueryMin('m')]: {
+          ...textLarge,
+          fontWeight: fontWeight.semiBold,
+        },
+      },
     },
     root: mergeDeep(
       {

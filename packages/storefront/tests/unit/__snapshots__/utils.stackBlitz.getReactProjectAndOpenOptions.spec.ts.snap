@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`applyStackBlitzFixForReact() should match snapshot 1`] = `
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+export const SomeApp = (): JSX.Element => (<React.Fragment>some jsx elements</React.Fragment>)"
+`;
+
 exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
 "import { PButton, PText } from '@porsche-design-system/components-react';
 
@@ -18,5 +23,55 @@ export const App = (): JSX.Fragment => {
       <button />
     </>
   );
+}"
+`;
+
+exports[`getIndexTsx() should return correct values 1`] = `
+"import * as React from 'react'; // StackBlitz workaround (not necessary for React >= 17)
+import { StrictMode } from 'react';
+import * as ReactDOMClient from 'react-dom/client';
+import { App } from './App';
+import { PorscheDesignSystemProvider } from './@porsche-design-system/components-react';
+import './style.css';
+
+const rootElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <PorscheDesignSystemProvider>
+      <App />
+    </PorscheDesignSystemProvider>
+  </StrictMode>
+);"
+`;
+
+exports[`getTsconfigJson() should return correct values 1`] = `
+"{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src"
+  ]
 }"
 `;

@@ -56,3 +56,14 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
   }
   return externalDependencies;
 };
+
+export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
+
+export const convertImportPaths = (markup: string, framework: 'js' | 'angular' | 'react'): string => {
+  return isStableStorefrontRelease()
+    ? markup
+    : markup.replace(
+        new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
+        `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
+      );
+};

@@ -22,7 +22,7 @@ const getBackgroundImageStyles = (
   innerCircleColor: string,
   outerCircleColor: string
 ): Styles<'backgroundImage'> => {
-  const maskColor = getThemedColors(theme).backgroundColor.replace('#', '%23');
+  const maskColor = getThemedColors(theme).backgroundColor.replace(/#/g, '%23');
 
   return {
     backgroundImage: `url(${

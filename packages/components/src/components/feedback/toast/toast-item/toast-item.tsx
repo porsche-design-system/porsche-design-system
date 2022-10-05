@@ -39,7 +39,7 @@ export class ToastItem {
   @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOneOfKind(this.host, ['pToast']);
+    throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
   }
 
   public componentWillRender(): void {
@@ -54,9 +54,9 @@ export class ToastItem {
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <PrefixedTagNames.pText id={toastId} class="content" role="status" aria-live="polite">
+        <p id={toastId} class="content" role="status" aria-live="polite">
           {this.text}
-        </PrefixedTagNames.pText>
+        </p>
         <PrefixedTagNames.pButtonPure
           class="close"
           type="button"

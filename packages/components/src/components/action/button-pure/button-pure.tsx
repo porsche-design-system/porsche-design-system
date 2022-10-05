@@ -103,6 +103,8 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
+  private labelTag: HTMLElement;
+  private sublineTag: HTMLElement;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -128,6 +130,7 @@ export class ButtonPure {
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
+      this.weight,
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
@@ -144,9 +147,18 @@ export class ButtonPure {
 
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
-        const size = `${calcLineHeightForElement(this.buttonTag)}em`;
-        this.iconTag.style.width = size;
-        this.iconTag.style.height = size;
+        const lineHeight = `${calcLineHeightForElement(this.buttonTag)}`;
+        this.labelTag.style.lineHeight = lineHeight;
+
+        if (this.sublineTag) {
+          this.sublineTag.style.lineHeight = lineHeight;
+        }
+
+        if (hasVisibleIcon(this.icon)) {
+          const size = `${lineHeight}em`;
+          this.iconTag.style.width = size;
+          this.iconTag.style.height = size;
+        }
       });
     }
   }
@@ -185,14 +197,14 @@ export class ButtonPure {
                 aria-hidden="true"
               />
             ))}
-          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <span class="label" ref={(el) => (this.labelTag = el)}>
             <slot />
-          </PrefixedTagNames.pText>
+          </span>
         </button>
         {hasSubline && (
-          <PrefixedTagNames.pText id="subline" class="subline" tag="div" color="inherit" size="inherit">
+          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
             <slot name="subline" />
-          </PrefixedTagNames.pText>
+          </div>
         )}
       </Host>
     );

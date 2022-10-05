@@ -49,7 +49,7 @@ export class StepperHorizontalItem {
   }
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
+    throwIfParentIsNotOfKind(this.host, 'p-stepper-horizontal');
   }
 
   public componentWillRender(): void {

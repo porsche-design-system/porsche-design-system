@@ -1,6 +1,7 @@
 import { isParentFieldsetWrapperRequired } from './isParentFieldsetWrapperRequired';
 import type { HTMLElementWithRequiredProp } from './isRequired';
 
+// TODO: these tests should verify that isParentOfKind() and isRequired() are called with correct parameters and return their combined result
 describe('without prefix', () => {
   it('should return true if parent is required', () => {
     const parent = document.createElement('p-fieldset-wrapper');
@@ -31,18 +32,18 @@ describe('without prefix', () => {
 describe('with prefix', () => {
   it('should return true if parent is required', () => {
     const parent = document.createElement('prefixed-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
-    const child = document.createElement('prefixed-p-checkbox-wrapper');
+    const child = document.createElement('div');
     parent.appendChild(child);
     parent.required = true;
 
     expect(isParentFieldsetWrapperRequired(child)).toBe(true);
   });
 
-  it('should return false if parent has a different prefix', () => {
-    const parent = document.createElement('another-prefix-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
-    const child = document.createElement('prefixed-p-checkbox-wrapper');
+  it('should return false if parent is not required', () => {
+    const parent = document.createElement('prefixed-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
+    const child = document.createElement('div');
     parent.appendChild(child);
-    parent.required = true;
+    parent.required = false;
 
     expect(isParentFieldsetWrapperRequired(child)).toBe(false);
   });

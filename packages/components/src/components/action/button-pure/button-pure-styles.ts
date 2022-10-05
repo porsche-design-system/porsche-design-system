@@ -3,9 +3,10 @@ import type {
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
+  TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { getCss } from '../../../utils';
+import { getCss, mergeDeep } from '../../../utils';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -14,23 +15,34 @@ export const getComponentCss = (
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
+  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
   hasSubline: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
   return getCss(
-    getLinkButtonPureStyles(
-      icon,
-      active,
-      isDisabledOrLoading,
-      stretch,
-      size,
-      hideLabel,
-      alignLabel,
-      hasSubline,
-      false,
-      theme
+    mergeDeep(
+      getLinkButtonPureStyles(
+        icon,
+        active,
+        isDisabledOrLoading,
+        stretch,
+        size,
+        weight,
+        hideLabel,
+        alignLabel,
+        hasSubline,
+        false,
+        theme
+      ),
+      {
+        '@global': {
+          '::slotted(p)': {
+            margin: 0,
+          },
+        },
+      }
     )
   );
 };

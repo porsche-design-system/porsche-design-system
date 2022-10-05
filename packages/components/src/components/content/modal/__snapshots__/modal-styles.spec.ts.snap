@@ -18,7 +18,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -36,6 +36,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -46,6 +56,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -132,7 +150,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -147,6 +165,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -154,6 +182,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -248,7 +284,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -263,6 +299,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -270,6 +316,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -362,7 +416,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -380,6 +434,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -390,6 +454,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -476,7 +548,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -491,6 +563,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -498,6 +580,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -592,7 +682,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -610,6 +700,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -620,6 +720,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -706,7 +814,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -721,6 +829,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -728,6 +846,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -820,7 +946,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -838,6 +964,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -848,6 +984,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -968,7 +1112,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -986,6 +1130,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -996,6 +1150,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1082,7 +1244,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1097,6 +1259,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1104,6 +1276,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1198,7 +1378,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1213,6 +1393,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1220,6 +1410,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1312,7 +1510,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1330,6 +1528,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1340,6 +1548,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1426,7 +1642,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1441,6 +1657,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1448,6 +1674,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1542,7 +1776,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1560,6 +1794,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1570,6 +1814,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 
@@ -1656,7 +1908,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
 }
 :host::before {
-  content: \\"\\" !important;
+  content: "" !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1671,6 +1923,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
+h1 {
+  font: normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
@@ -1678,6 +1940,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
+  }
+  h1 {
+    font: normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 600;
   }
 }
 

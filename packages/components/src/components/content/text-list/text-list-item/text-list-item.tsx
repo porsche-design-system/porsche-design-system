@@ -10,7 +10,7 @@ export class TextListItem {
   @Element() public host!: HTMLElement;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTextList');
+    throwIfParentIsNotOfKind(this.host, 'p-text-list');
   }
 
   public componentWillRender(): void {

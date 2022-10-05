@@ -5,7 +5,6 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getOnlyChildOfKindHTMLElementOrThrow,
-  getPrefixedTagNames,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -112,34 +111,25 @@ export class TextareaWrapper {
 
   public render(): JSX.Element {
     const labelProps = {
-      tag: 'span',
-      color: 'inherit',
       onClick: this.onLabelClick,
     };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <label class="label">
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class="label__text" {...labelProps}>
+            <span class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.textarea) && <Required />}
-            </PrefixedTagNames.pText>
+            </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
+            <span class="label__text label__text--description" {...labelProps}>
               {this.description || <slot name="description" />}
-            </PrefixedTagNames.pText>
+            </span>
           )}
           {this.isCounterVisible && (
-            <PrefixedTagNames.pText
-              class="counter"
-              {...labelProps}
-              aria-hidden="true"
-              ref={(el) => (this.counterElement = el)}
-            />
+            <span class="counter" {...labelProps} aria-hidden="true" ref={(el) => (this.counterElement = el)} />
           )}
           <slot />
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}

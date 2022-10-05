@@ -13,6 +13,7 @@ import * as getAngularProjectAndOpenOptionsUtils from '../../src/utils/stackblit
 
 describe('openInStackBlitz()', () => {
   const sharedOpenInStackblitzOptions: OpenInStackBlitzOpts = {
+    porscheDesignSystemBundle: {},
     markup: 'Some markup',
     theme: 'light',
     framework: 'vanilla-js',
@@ -24,6 +25,7 @@ describe('openInStackBlitz()', () => {
   const mockedGetBackgroundColor = '#fff';
 
   const sharedFrameworkOptions: StackBlitzFrameworkOpts = {
+    porscheDesignSystemBundle: {},
     markup: sharedOpenInStackblitzOptions.markup,
     externalDependencies: sharedOpenInStackblitzOptions.externalDependencies,
     sharedImportKeys: sharedOpenInStackblitzOptions.sharedImportKeys,

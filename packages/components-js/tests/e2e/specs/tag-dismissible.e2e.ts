@@ -73,7 +73,6 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'label', 'Another label');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-tag-dismissible'], 'componentDidUpdate: p-tag-dismissible').toBe(1);

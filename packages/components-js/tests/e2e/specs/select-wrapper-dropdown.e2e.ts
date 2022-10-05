@@ -924,10 +924,9 @@ describe('select-wrapper dropdown', () => {
       expect(status.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(
         1
       );
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1); // label
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -941,7 +940,7 @@ describe('select-wrapper dropdown', () => {
       const status1 = await getLifecycleStatus(page);
 
       expect(status1.componentDidLoad['p-icon'], '1st componentDidLoad: p-icon').toBe(2);
-      expect(status1.componentDidLoad.all, '1st componentDidLoad: all').toBe(5);
+      expect(status1.componentDidLoad.all, '1st componentDidLoad: all').toBe(4);
 
       expect(
         status1.componentDidUpdate['p-select-wrapper-dropdown'],
@@ -959,7 +958,7 @@ describe('select-wrapper dropdown', () => {
         '2nd componentDidUpdate: p-select-wrapper-dropdown'
       ).toBe(2);
 
-      expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(6);
+      expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(5);
       expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
     });
   });

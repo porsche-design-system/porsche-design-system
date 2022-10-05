@@ -9,7 +9,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../components/form/form-state';
@@ -117,18 +117,21 @@ export const getLabelStyles = (
       display: 'block',
       position: 'relative', // for unit and counter
       '&__text': {
-        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         display: 'block',
+        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
+        ...textSmall,
         color: isDisabled ? disabledColor : baseColor,
-        width: 'fit-content',
         transition: getTransition('color'),
         '&+&--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
+          ...textXSmall,
         },
-        '&--description': {
-          color: isDisabled ? disabledColor : contrastMediumColor,
-        },
+        ...(!isDisabled && {
+          '&--description': {
+            color: contrastMediumColor,
+          },
+        }),
         ...labelTextHoverJssStyle,
       },
     },

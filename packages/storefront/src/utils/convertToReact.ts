@@ -31,7 +31,7 @@ export const transformToSelfClosingTags = (markup: string): string =>
   markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
-  markup.replace(/\sstyle="((?:.|\n)*?)"/g, (m, $style: string) => {
+  markup.replace(/\sstyle="([\s\S]*?)"/g, (m, $style: string) => {
     $style = $style
       .replace(/;/g, ',') // transform semi colons to comma
       .replace(/,\s*$/g, ''); // remove last comma

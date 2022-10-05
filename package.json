@@ -54,8 +54,8 @@
     "start:fallbacks": "yarn --cwd ./packages/fallbacks start",
     "start:storefront": "yarn --cwd ./packages/storefront start",
     "start:utilities-deprecated": "yarn --cwd ./packages/utilities-deprecated start",
-    "build": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components' && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,storefront' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:storefront'",
-    "build-prod": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components-prod' && concurrently -n 'components-js' 'yarn build:components-js-prod' && concurrently --kill-others-on-fail -n 'components-angular,components-react,storefront' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:storefront'",
+    "build": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components' && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react' 'yarn build:components-angular' 'yarn build:components-react' && yarn build:storefront",
+    "build-prod": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components-prod' && concurrently -n 'components-js' 'yarn build:components-js-prod' && concurrently --kill-others-on-fail -n 'components-angular,components-react' 'yarn build:components-angular' 'yarn build:components-react' && yarn build:storefront",
     "build:core-dependencies": "concurrently -n 'shared,fonts,fallbacks' 'yarn build:shared' 'yarn build:fonts' 'yarn build:fallbacks' && concurrently --kill-others-on-fail -n 'email,icons,marque,meta-icons,utilities,utilities-deprecated' 'yarn build:email' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' 'yarn build:utilities' 'yarn build:utilities-deprecated' && concurrently -n 'assets' 'yarn build:assets'",
     "build:assets": "yarn --cwd ./packages/assets build",
     "build:assetsCopyComponentsOnly": "yarn --cwd ./packages/assets buildCopyComponentsOnly",
@@ -144,12 +144,12 @@
     "prettier": "^2.7.1"
   },
   "resolutions": {
-    "**/react-scripts/jest": ">=28 <29",
-    "**/react-scripts/jest-circus": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/jest": ">=28 <29",
-    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/@jest/types": ">=28 <29",
-    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=28 <29",
+    "**/react-scripts/jest": ">=29 <30",
+    "**/react-scripts/jest-circus": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
+    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
+    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
   }
 }

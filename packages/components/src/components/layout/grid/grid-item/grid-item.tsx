@@ -24,7 +24,7 @@ export class GridItem {
   @Prop() public offset?: GridItemOffset = 0;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pGrid');
+    throwIfParentIsNotOfKind(this.host, 'p-grid');
   }
 
   public componentWillRender(): void {
