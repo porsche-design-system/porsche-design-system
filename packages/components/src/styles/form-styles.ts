@@ -12,7 +12,7 @@ import {
 import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
-import type { FormState } from '../components/form/form-state';
+import type { FormState } from '../utils/form/form-state';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 

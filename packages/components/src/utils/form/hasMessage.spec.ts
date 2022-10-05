@@ -1,5 +1,5 @@
 import { hasMessage } from './hasMessage';
-import type { FormState } from '../../components/form/form-state';
+import type { FormState } from './form-state';
 
 const message = 'Some message';
 it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
