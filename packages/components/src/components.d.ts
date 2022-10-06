@@ -41,6 +41,8 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextTag } from "./components/text/text-tag";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
+import { ThemeExtendedElectric as ThemeExtendedElectric1 } from "./utils/theme";
+import { LinkTarget as LinkTarget1 } from "./utils/link-button/link-target";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 export namespace Components {
@@ -1113,6 +1115,56 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PTileLink {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: 'top' | 'bottom';
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: boolean;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Label of the <a />.
+         */
+        "label"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Size of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "size"?: 'inherit';
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget1;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric1;
+    }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
         /**
@@ -1498,6 +1550,12 @@ declare global {
         prototype: HTMLPTextareaWrapperElement;
         new (): HTMLPTextareaWrapperElement;
     };
+    interface HTMLPTileLinkElement extends Components.PTileLink, HTMLStencilElement {
+    }
+    var HTMLPTileLinkElement: {
+        prototype: HTMLPTileLinkElement;
+        new (): HTMLPTileLinkElement;
+    };
     interface HTMLPToastElement extends Components.PToast, HTMLStencilElement {
     }
     var HTMLPToastElement: {
@@ -1562,6 +1620,7 @@ declare global {
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
+        "p-tile-link": HTMLPTileLinkElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
     }
@@ -2692,6 +2751,56 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PTileLink {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: 'top' | 'bottom';
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: boolean;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Label of the <a />.
+         */
+        "label"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Size of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "size"?: 'inherit';
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget1;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric1;
+    }
     interface PToast {
         /**
           * Adapts the toast color depending on the theme.
@@ -2768,6 +2877,7 @@ declare namespace LocalJSX {
         "p-text-list": PTextList;
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
+        "p-tile-link": PTileLink;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
     }
@@ -2827,6 +2937,7 @@ declare module "@stencil/core" {
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
+            "p-tile-link": LocalJSX.PTileLink & JSXBase.HTMLAttributes<HTMLPTileLinkElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
