@@ -29,11 +29,11 @@ jobs:
         run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Production Builds'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
       - name: "Login to AWS ECR"
