@@ -1131,7 +1131,7 @@ export namespace Components {
         /**
           * Description text.
          */
-        "description"?: string;
+        "description": string;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1147,7 +1147,7 @@ export namespace Components {
         /**
           * Label of the <a />.
          */
-        "label"?: string;
+        "label": string;
         /**
           * Specifies the relationship of the target object to the link object.
          */

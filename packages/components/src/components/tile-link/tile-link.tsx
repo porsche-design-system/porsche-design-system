@@ -3,6 +3,8 @@ import { ThemeExtendedElectric } from '../../utils/theme';
 import { LinkTarget } from '../../utils/link-button/link-target';
 import { SelectedAriaAttributes } from '../../types';
 import { LinkAriaAttributes } from '../link/link-utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../utils';
+import { getComponentCss } from './tile-link-styles';
 
 @Component({
   tag: 'p-tile-link',
@@ -15,10 +17,10 @@ export class TileLink {
   @Prop() public size?: 'inherit';
 
   /** Label of the <a />. */
-  @Prop() public label?: string;
+  @Prop() public label: string;
 
   /** Description text. */
-  @Prop() public description?: string;
+  @Prop() public description: string;
 
   /** Alignment of link and description. */
   @Prop() public align?: 'top' | 'bottom' = 'bottom';
@@ -47,7 +49,37 @@ export class TileLink {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
+  public componentWillRender(): void {
+    // TODO add validate Props
+    attachComponentCss(
+      this.host,
+      getComponentCss
+      // this.size,
+      // this.label,
+      // this.description,
+      // this.align,
+      // this.gradient,
+      // this.compact,
+      // this.href,
+      // this.target,
+      // this.download,
+      // this.rel,
+      // this.aria,
+      // this.theme,
+    );
+  }
+
   public render(): JSX.Element {
-    return <button>Hello World</button>;
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    return (
+      <span>
+        <slot />
+        <p>{this.description}</p>
+        <PrefixedTagNames.pLink href={this.href} variant="tertiary">
+          {this.label}
+        </PrefixedTagNames.pLink>
+      </span>
+    );
   }
 }
