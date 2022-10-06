@@ -41,6 +41,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextTag } from "./components/text/text-tag";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
+import { TileLinkAlign, TileLinkWeight } from "./components/tile-link/tile-link-utils";
 import { ThemeExtendedElectric as ThemeExtendedElectric1 } from "./utils/theme";
 import { LinkTarget as LinkTarget1 } from "./utils/link-button/link-target";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -1119,7 +1120,7 @@ export namespace Components {
         /**
           * Alignment of link and description.
          */
-        "align"?: 'top' | 'bottom';
+        "align"?: TileLinkAlign;
         /**
           * Add ARIA attributes.
          */
@@ -1153,7 +1154,7 @@ export namespace Components {
          */
         "rel"?: string;
         /**
-          * Size of the description. Only to be used if custom size 'inherit' is needed.
+          * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
         "size"?: 'inherit';
         /**
@@ -1164,6 +1165,10 @@ export namespace Components {
           * Adapts the link color when used on dark background.
          */
         "theme"?: ThemeExtendedElectric1;
+        /**
+          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "weight"?: TileLinkWeight;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -2755,7 +2760,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of link and description.
          */
-        "align"?: 'top' | 'bottom';
+        "align"?: TileLinkAlign;
         /**
           * Add ARIA attributes.
          */
@@ -2789,7 +2794,7 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
-          * Size of the description. Only to be used if custom size 'inherit' is needed.
+          * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
         "size"?: 'inherit';
         /**
@@ -2800,6 +2805,10 @@ declare namespace LocalJSX {
           * Adapts the link color when used on dark background.
          */
         "theme"?: ThemeExtendedElectric1;
+        /**
+          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "weight"?: TileLinkWeight;
     }
     interface PToast {
         /**

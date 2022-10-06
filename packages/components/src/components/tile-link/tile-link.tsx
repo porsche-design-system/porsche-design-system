@@ -5,6 +5,7 @@ import { SelectedAriaAttributes } from '../../types';
 import { LinkAriaAttributes } from '../link/link-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './tile-link-styles';
+import { TileLinkAlign, TileLinkWeight } from './tile-link-utils';
 
 @Component({
   tag: 'p-tile-link',
@@ -13,8 +14,11 @@ import { getComponentCss } from './tile-link-styles';
 export class TileLink {
   @Element() public host!: HTMLElement;
 
-  /** Size of the description. Only to be used if custom size 'inherit' is needed. */
+  /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public size?: 'inherit';
+
+  /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
+  @Prop() public weight?: TileLinkWeight = 'regular';
 
   /** Label of the <a />. */
   @Prop() public label: string;
@@ -23,7 +27,7 @@ export class TileLink {
   @Prop() public description: string;
 
   /** Alignment of link and description. */
-  @Prop() public align?: 'top' | 'bottom' = 'bottom';
+  @Prop() public align?: TileLinkAlign = 'bottom';
 
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
@@ -54,19 +58,12 @@ export class TileLink {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.theme
-      // this.size,
-      // this.label,
-      // this.description,
-      // this.align,
-      // this.gradient,
-      // this.compact,
-      // this.href,
-      // this.target,
-      // this.download,
-      // this.rel,
-      // this.aria,
-      // this.theme,
+      this.theme,
+      !!this.size,
+      this.weight,
+      this.align,
+      this.gradient,
+      this.compact
     );
   }
 
@@ -78,8 +75,10 @@ export class TileLink {
         <slot />
         <span class="content">
           <p>{this.description}</p>
-          <PrefixedTagNames.pLink class="link" href={this.href} variant="tertiary" theme={this.theme}>
-            {this.label}
+          <PrefixedTagNames.pLink variant="tertiary" theme={this.theme}>
+            <a class="link" href={this.href}>
+              {this.label}
+            </a>
           </PrefixedTagNames.pLink>
         </span>
       </span>
