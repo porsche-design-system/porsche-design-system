@@ -27,7 +27,7 @@ will use your account registration for sending mails. If you are not yet registe
 ## Bug, issue and contribution management at GitHub
 
 Bug reports or feature requests can be forwarded to the Porsche Design System team by creating issues in the
-[public Porsche Design System GitHub repository](https://github.com/porsche-design-system/porsche-ui-contribution). If you want to
+[public Porsche Design System GitHub repository](https://github.com/porsche-design-system/porsche-design-system-contribution). If you want to
 contribute solutions or fixes, you can create pull requests in the
 [private Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system) after you have been
 granted access.
