@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - main
       - v*
       - issue/*
       - housekeeping/*
@@ -1115,7 +1115,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1146,7 +1146,7 @@ jobs:
     name: 'Release Components Angular'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1177,7 +1177,7 @@ jobs:
     name: 'Release Components React'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1209,7 +1209,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1241,7 +1241,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1273,7 +1273,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'

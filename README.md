@@ -18,7 +18,7 @@
 
 1. Clone [`porsche-design-system` repository](https://github.com/porsche-design-system/porsche-design-system)
 1. Switch to **project root directory**
-1. Checkout branch **master** by executing `git checkout master`
+1. Checkout branch **main** by executing `git checkout main`
 1. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
    – by default it's ignored by `.gitignore`)
 1. Make sure that Docker app is running
@@ -277,7 +277,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/components-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -297,7 +297,7 @@ everything works under real conditions.
    `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 #### Stable with skeletons
 
@@ -308,7 +308,7 @@ everything works under real conditions.
    `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}-skeletons | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3-skeletons`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Update sample projects
 
@@ -347,7 +347,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/utilities-deprecated-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -363,7 +363,7 @@ everything works under real conditions.
    `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/utilities-deprecated-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -388,7 +388,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/assets-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]**
@@ -404,7 +404,7 @@ everything works under real conditions.
    `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -417,7 +417,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-basic-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -446,7 +446,7 @@ everything works under real conditions.
    `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-basic-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -460,7 +460,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-web-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -491,7 +491,7 @@ everything works under real conditions.
    e.g. **.Release Porsche Design System - Sketch Library Web v1.1.1 | aa**
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
