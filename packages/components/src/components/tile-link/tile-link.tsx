@@ -35,7 +35,7 @@ export class TileLink {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'dark';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -53,7 +53,8 @@ export class TileLink {
     // TODO add validate Props
     attachComponentCss(
       this.host,
-      getComponentCss
+      getComponentCss,
+      this.theme
       // this.size,
       // this.label,
       // this.description,
@@ -73,12 +74,14 @@ export class TileLink {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <span>
+      <span class="root">
         <slot />
-        <p>{this.description}</p>
-        <PrefixedTagNames.pLink href={this.href} variant="tertiary">
-          {this.label}
-        </PrefixedTagNames.pLink>
+        <span class="content">
+          <p>{this.description}</p>
+          <PrefixedTagNames.pLink class="link" href={this.href} variant="tertiary" theme={this.theme}>
+            {this.label}
+          </PrefixedTagNames.pLink>
+        </span>
       </span>
     );
   }
