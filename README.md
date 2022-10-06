@@ -4,7 +4,7 @@
 
 ## Build status
 
-[![Actions Status](https://github.com/porscheui/porsche-design-system/workflows/Porsche%20Design%20System/badge.svg)](https://github.com/porscheui/porsche-design-system/actions)
+[![Actions Status](https://github.com/porsche-design-system/porsche-design-system/workflows/Porsche%20Design%20System/badge.svg)](https://github.com/porsche-design-system/porsche-design-system/actions)
 
 ## Setup
 
@@ -16,7 +16,7 @@
 
 ### Getting started
 
-1. Clone [`porsche-design-system` repository](https://github.com/porscheui/porsche-design-system)
+1. Clone [`porsche-design-system` repository](https://github.com/porsche-design-system/porsche-design-system)
 1. Switch to **project root directory**
 1. Checkout branch **master** by executing `git checkout master`
 1. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
@@ -172,11 +172,11 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 #### What to do after adjusting docker scripts
 
 1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod
-   builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
+   builds: [#1124](https://github.com/porsche-design-system/porsche-design-system/issues/1124))
 1. Switch to `docker/node` directory
 1. Run `bash build-and-push-base-image.sh`
 1. View new package on
-   [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
+   [GitHub-Packages Page](https://github.com/orgs/porsche-design-system/packages?repo_name=porsche-design-system)
 
 ## Dependency updates
 
@@ -211,7 +211,7 @@ Every week, we update our NPM packages:
 
 ## Build status
 
-[GitHub Actions](https://github.com/porscheui/porsche-design-system/actions)
+[GitHub Actions](https://github.com/porsche-design-system/porsche-design-system/actions)
 
 ## Developing new components
 
@@ -269,11 +269,11 @@ When publishing a stable release then it's necessary an RC release is made immed
 all sample integration projects. The stable release needs to be exactly the same as the RC release to make sure
 everything works under real conditions.
 
-- [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
-- [Angular](https://github.com/porscheui/sample-integration-angular)
-- [React](https://github.com/porscheui/sample-integration-react)
-- [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
-- [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+- [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
+- [Angular](https://github.com/porsche-design-system/sample-integration-angular)
+- [React](https://github.com/porsche-design-system/sample-integration-react)
+- [Gatsby](https://github.com/porsche-design-system/sample-integration-gatsby)
+- [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation
 
@@ -315,11 +315,11 @@ everything works under real conditions.
 
 1. Go to according examples Projects:
 
-- https://github.com/porscheui/sample-integration-angular
-- https://github.com/porscheui/sample-integration-react
-- https://github.com/porscheui/sample-integration-nextjs
-- https://github.com/porscheui/sample-integration-gatsby
-- https://github.com/porscheui/sample-integration-vanillajs
+- https://github.com/porsche-design-system/sample-integration-angular
+- https://github.com/porsche-design-system/sample-integration-react
+- https://github.com/porsche-design-system/sample-integration-nextjs
+- https://github.com/porsche-design-system/sample-integration-gatsby
+- https://github.com/porsche-design-system/sample-integration-vanillajs
 
 1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
 1. Run `yarn`
@@ -341,11 +341,11 @@ When publishing a stable release then it's necessary an RC release is made immed
 all sample integration projects. The stable release needs to be exactly the same as the RC release to make sure
 everything works under real conditions.
 
-- [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
-- [Angular](https://github.com/porscheui/sample-integration-angular)
-- [React](https://github.com/porscheui/sample-integration-react)
-- [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
-- [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+- [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
+- [Angular](https://github.com/porsche-design-system/sample-integration-angular)
+- [React](https://github.com/porsche-design-system/sample-integration-react)
+- [Gatsby](https://github.com/porsche-design-system/sample-integration-gatsby)
+- [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation
 

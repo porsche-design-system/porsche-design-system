@@ -49,10 +49,10 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
 You can find the repository of the Vanilla-JS example project here:
-[Sample integration Vanilla-JS](https://github.com/porscheui/sample-integration-vanillajs)
+[Sample integration Vanilla-JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
 
 ### Get the project up and running
 
 - Clone the repository by executing  
-  `git clone https://github.com/porscheui/sample-integration-vanillajs.git`
+  `git clone https://github.com/porsche-design-system/sample-integration-vanillajs.git`
 - Follow the installation guidelines in the README.md file

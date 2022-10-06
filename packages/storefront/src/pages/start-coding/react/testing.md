@@ -239,4 +239,4 @@ it('should work for PAccordion', async () => {
 ```
 
 We also provide test examples in our
-[sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
+[sample integration project](https://github.com/porsche-design-system/sample-integration-react/tree/master/src/tests).

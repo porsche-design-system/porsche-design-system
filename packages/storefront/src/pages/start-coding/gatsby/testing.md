@@ -59,4 +59,4 @@ You find detailed information on how to use mock functions in **Jest**
 [here](https://jestjs.io/docs/en/mock-functions.html).
 
 We also provide test examples in our
-[sample integration project](https://github.com/porscheui/sample-integration-gatsby/blob/master/src/components/__tests__/applicationTest.test.tsx).
+[sample integration project](https://github.com/porsche-design-system/sample-integration-gatsby/blob/master/src/components/__tests__/applicationTest.test.tsx).

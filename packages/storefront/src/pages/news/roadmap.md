@@ -5,7 +5,7 @@ of enhancements we are working on. It is no delivery commitment as it may be cha
 new requirements.
 
 More details about the actual backlog and work in progress can be found in our project board:  
-[Open Design System Board on GitHub (permission required)](https://github.com/porscheui/porsche-design-system/projects)
+[Open Design System Board on GitHub (permission required)](https://github.com/porsche-design-system/porsche-design-system/projects)
 
 <TableOfContents></TableOfContents>
 

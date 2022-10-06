@@ -17,7 +17,7 @@ publish_jfrog() {
   echo "task: [$(date)] \"publish_jfrog\" (${PACKAGE_LOCATION})"
   source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
-  result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ "${PACKAGE_LOCATION}")
+  result=$(yarn publish --non-interactive --registry=https://porsche-design-system.jfrog.io/porsche-design-system/api/npm/npm/ "${PACKAGE_LOCATION}")
 
   if [[ ${result} == *"Done"* ]]; then
     return 0 # true
@@ -52,7 +52,7 @@ is_version_published() {
 
 add_git_tag() {
   echo "task: [$(date)] \"add_git_tag\" ${GIT_TAG_NAME}, ${GITHUB_SHA}"
-  curl -s -X POST "https://api.github.com/repos/porscheui/porsche-design-system/git/refs" \
+  curl -s -X POST "https://api.github.com/repos/porsche-design-system/porsche-design-system/git/refs" \
     -H "Authorization: token ${GITHUB_TOKEN}" \
     -d @- <<EOF
 {

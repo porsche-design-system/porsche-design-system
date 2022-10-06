@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REGISTRY=ghcr.io/porscheui/porsche-design-system
+REGISTRY=ghcr.io/porsche-design-system/porsche-design-system
 IMAGE=playwright
 TAG=v1.26.0-focal
 

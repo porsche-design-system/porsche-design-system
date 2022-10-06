@@ -152,7 +152,7 @@ your development team to discuss how this new metrics might affect your team’s
 ## Get help
 
 If you run into trouble and need support, the Porsche Design System Team is here to help. Simply go to our contribution
-board and [open an issue](https://github.com/porscheui/porsche-design-system-contribution) to get in touch with us.
+board and [open an issue](https://github.com/porsche-design-system/porsche-design-system-contribution) to get in touch with us.
 We'll always do our best to answer your questions and connect you with the right people quickly.
 
 #### Added
