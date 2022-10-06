@@ -272,7 +272,6 @@ everything works under real conditions.
 - [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
 - [Angular](https://github.com/porsche-design-system/sample-integration-angular)
 - [React](https://github.com/porsche-design-system/sample-integration-react)
-- [Gatsby](https://github.com/porsche-design-system/sample-integration-gatsby)
 - [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation
@@ -318,7 +317,6 @@ everything works under real conditions.
 - https://github.com/porsche-design-system/sample-integration-angular
 - https://github.com/porsche-design-system/sample-integration-react
 - https://github.com/porsche-design-system/sample-integration-nextjs
-- https://github.com/porsche-design-system/sample-integration-gatsby
 - https://github.com/porsche-design-system/sample-integration-vanillajs
 
 1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
@@ -344,7 +342,6 @@ everything works under real conditions.
 - [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
 - [Angular](https://github.com/porsche-design-system/sample-integration-angular)
 - [React](https://github.com/porsche-design-system/sample-integration-react)
-- [Gatsby](https://github.com/porsche-design-system/sample-integration-gatsby)
 - [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation

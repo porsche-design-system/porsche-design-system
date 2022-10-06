@@ -15,9 +15,8 @@ Legend: ✅ Completed
 
 ### Generic Components
 
-- Step
-- Step Navigation
-- Tags
+- Stepper Horizontal ✅
+- Tags ✅
 - Cards
 - Map Styles & Components
 
@@ -25,14 +24,14 @@ Legend: ✅ Completed
 
 - Migrate generic content from Design System- to UX platform
 - Optimize icon workflow
-- Consolidate published npm packages
+- Consolidate published npm packages ✅
 - Enable search feature for Design System ✅
 - Finalize UX platform ✅
 
 ### Loading Behavior
 
 - Improve Loading of layout components
-- Skeleton Loading
+- ~~Skeleton Loading~~ ✅
 - Re-enable SSR support ✅
 
 ---
@@ -103,8 +102,8 @@ Legend: ✅ Completed
 ### Capabilities and Testing
 
 - Enable React testing with Jest and JSDOM ✅
-- Setup sample integration projects for Angular/React/Gatsby/NextJS ✅
-- Enable SSR support for NextJS and Gatsby ✅
+- Setup sample integration projects for Angular/React/NextJS ✅
+- Enable SSR support for NextJS ✅
 
 ### Patterns
 
