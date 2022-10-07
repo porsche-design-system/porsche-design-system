@@ -4,9 +4,18 @@ import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { ThemeExtendedElectric } from '../../utils/theme';
-import { TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+import { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+
+const aspectRatioPaddingTop: { [key in AspectRatio]: string } = {
+  '1:1': '100%',
+  '4:3': '75%',
+  '3:4': '133.33%',
+  '16:9': '56.25%',
+  '9:16': '177.75%',
+};
 
 export const getComponentCss = (
+  aspectRatio: AspectRatio,
   theme: ThemeExtendedElectric,
   isInherit: boolean,
   weight: TileLinkWeight,
@@ -19,37 +28,47 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'inline-block',
-        verticalAlign: 'top',
+        display: 'block',
       }),
       slot: {
         display: 'block',
         position: 'absolute',
-        top: '50%',
-        left: '50%',
-        minHeight: '100%',
-        minWidth: '100%',
-        maxHeight: '100%',
-        maxWidth: '100%',
-        transform: 'translate(-50%, -50%)',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
       },
       p: {
-        position: 'relative',
         color: getThemedTextColor(theme, 'default'),
         ...textSmall,
         ...(isInherit && { fontSize: 'inherit' }),
         fontWeight: getFontWeight(weight),
+        maxWidth: pxToRemWithUnit(550),
         padding: 0,
         margin: 0,
       },
+    },
+    'aspect-ratio-container': {
+      height: 0,
+      paddingTop: aspectRatioPaddingTop[aspectRatio],
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    'aspect-ratio-box': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
     },
     root: {
       display: 'flex',
       position: 'relative',
       alignItems: isTopAligned ? 'start' : 'end',
-      height: pxToRemWithUnit(400),
-      width: pxToRemWithUnit(320),
-      overflow: 'hidden',
+      height: '100%',
+      width: '100%',
+      backgroundColor: 'darkblue',
     },
     content: {
       display: 'flex',
@@ -65,6 +84,15 @@ export const getComponentCss = (
       }),
       zIndex: 1,
     },
-    },
+    // link: {
+    //   '&::before': {
+    //     content: '""',
+    //     position: 'absolute',
+    //     top: 0,
+    //     left: 0,
+    //     height: pxToRemWithUnit(400),
+    //     width: pxToRemWithUnit(320),
+    //   },
+    // },
   });
 };

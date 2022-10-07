@@ -1,11 +1,11 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { ThemeExtendedElectric } from '../../utils/theme';
-import { LinkTarget } from '../../utils/link-button/link-target';
-import { SelectedAriaAttributes } from '../../types';
-import { LinkAriaAttributes } from '../link/link-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './tile-link-styles';
-import { TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+import type { ThemeExtendedElectric } from '../../utils/theme';
+import type { LinkTarget } from '../../utils/link-button/link-target';
+import type { SelectedAriaAttributes } from '../../types';
+import type { LinkAriaAttributes } from '../link/link-utils';
+import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
 
 @Component({
   tag: 'p-tile-link',
@@ -19,6 +19,9 @@ export class TileLink {
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public weight?: TileLinkWeight = 'regular';
+
+  /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
+  @Prop() public aspectRatio?: AspectRatio = '4:3';
 
   /** Label of the <a />. */
   @Prop() public label: string;
@@ -58,6 +61,7 @@ export class TileLink {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.aspectRatio,
       this.theme,
       !!this.size,
       this.weight,
@@ -71,17 +75,21 @@ export class TileLink {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <span class="root">
-        <slot />
-        <span class="content">
-          <p>{this.description}</p>
-          <PrefixedTagNames.pLink variant="tertiary" theme={this.theme}>
-            <a class="link" href={this.href}>
-              {this.label}
-            </a>
-          </PrefixedTagNames.pLink>
-        </span>
-      </span>
+      <div class="aspect-ratio-container">
+        <div class="aspect-ratio-box">
+          <div class="root">
+            <slot />
+            <div class="content">
+              <p>{this.description}</p>
+              <PrefixedTagNames.pLink variant="tertiary" theme={this.theme}>
+                <a class="link" href={this.href}>
+                  {this.label}
+                </a>
+              </PrefixedTagNames.pLink>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

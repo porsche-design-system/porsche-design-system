@@ -41,7 +41,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextTag } from "./components/text/text-tag";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
-import { TileLinkAlign, TileLinkWeight } from "./components/tile-link/tile-link-utils";
+import { AspectRatio, TileLinkAlign, TileLinkWeight } from "./components/tile-link/tile-link-utils";
 import { ThemeExtendedElectric as ThemeExtendedElectric1 } from "./utils/theme";
 import { LinkTarget as LinkTarget1 } from "./utils/link-button/link-target";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -1125,6 +1125,10 @@ export namespace Components {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "aspectRatio"?: AspectRatio;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2765,6 +2769,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+         */
+        "aspectRatio"?: AspectRatio;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
