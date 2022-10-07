@@ -84,15 +84,16 @@ export const getComponentCss = (
       }),
       zIndex: 1,
     },
-    // link: {
-    //   '&::before': {
-    //     content: '""',
-    //     position: 'absolute',
-    //     top: 0,
-    //     left: 0,
-    //     height: pxToRemWithUnit(400),
-    //     width: pxToRemWithUnit(320),
-    //   },
-    // },
+
+    link: {
+      // Pseudo-element to stretch the click-area over the entire surface of the tile
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+      },
+    },
   });
 };
