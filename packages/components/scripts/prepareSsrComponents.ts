@@ -14,7 +14,7 @@ const prepareSsrComponents = (): void => {
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
 
   const componentFileContents = componentPaths
-    // .filter((_,i) => i === 31)
+    // .filter((filePath) => filePath.includes('text-field-wrapper'))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -22,10 +22,10 @@ const prepareSsrComponents = (): void => {
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/@Prop\(.*\) /g, '')
-        .replace(/@Watch\(.*\)\n  /g, '')
         .replace(/@Listen\(.*\)\n  /g, '')
+        .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
-        .replace(/@State\(\)/g, '')
+        .replace(/@State\(\) /g, '')
         .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
         .replace(/\n  public connectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentWillLoad\(\): void {[\S\s]+?\n  }\n/g, '')
@@ -36,18 +36,22 @@ const prepareSsrComponents = (): void => {
         .replace(/\n  public componentDidRender\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\S\s]+?\n  }\n/g, '')
-        .replace(/\n  private .*;/g, '') // private members
+        // .replace(/\n  private .*;/g, '') // private members
         .replace(/\n  private (?!get).*{[\S\s]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         // .replace(/    validateProps\(this, propTypes\);\n/, '') // temporary
         // .replace(/attachComponentCss\(this\.host, (getComponentCss), /, 'return $1(')
         .replace(/\s+ref={.*?}/g, '') // ref props
+        .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
-        .replace(/(public [a-zA-Z]+\??:) [a-zA-Z<>]+/g, '$1 any') // change type if props to any
+        .replace(/ +onClick: .*/g, '') // onClick props
+        .replace(/(public [a-zA-Z]+\??:) [a-zA-Z<>,' ]+/g, '$1 any ') // change type if props to any
         .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
         // .replace(/import .* from '@stencil\/core';\n/, '')
         .replace(/import[\s\S]*?from.*\n/g, '')
-        .replace(/(<\/?)Host(>)/g, '$1$2');
+        .replace(/(getPrefixedTagNames)\(this\.host\)/g, '$1()')
+        .replace(/^/g, "import { getPrefixedTagNames } from '../../getPrefixedTagNames';\n");
+      // .replace(/(<\/?)Host(>)/g, '$1$2');
 
       // console.log(newFileContent)
 
