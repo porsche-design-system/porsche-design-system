@@ -108,8 +108,8 @@ verify_deployment() {
   done
 }
 
-isCurrentBranchMasterBranch() {
-  if [[ "${P_CURRENT_BRANCH}" == "master" ]]; then
+isCurrentBranchMainBranch() {
+  if [[ "${P_CURRENT_BRANCH}" == "main" ]]; then
     return 0
   fi
   return 1
@@ -119,7 +119,7 @@ P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 BUCKET_URL="s3://porsche-design-system-storefront"
 
-if isCurrentBranchMasterBranch; then
+if isCurrentBranchMainBranch; then
   setup
   prepare_deployment "latest"
   add_deployment_version "latest"

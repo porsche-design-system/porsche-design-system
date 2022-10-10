@@ -9,7 +9,7 @@ jobs:
     env:
       OSO_PROJECT_NAME: porsche_design_system
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
-      PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/playwright:v1.26.0-focal
+      PDS_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
@@ -29,11 +29,11 @@ jobs:
         run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
       - name: 'Production Builds'
-        uses: ./.github/actions/docker-run
+        uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build-prod
       - name: "Login to AWS ECR"

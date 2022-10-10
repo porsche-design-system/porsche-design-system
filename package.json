@@ -36,7 +36,7 @@
   "description": "Porsche Design System Monorepo",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+    "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {

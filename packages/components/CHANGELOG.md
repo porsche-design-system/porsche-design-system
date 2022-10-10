@@ -1414,7 +1414,6 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 - Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
-- Test-Projects React, Angular, Gatsby and NextJS
 
 #### Changed
 

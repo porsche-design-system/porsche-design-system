@@ -45,12 +45,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
     },
-    Gatsby: {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/gatsby/getting-started.md')],
-      // @ts-ignore
-      Testing: [() => import('@/pages/start-coding/gatsby/testing.md')],
-    },
   },
   News: {
     Changelog: {
