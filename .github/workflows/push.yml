@@ -1,15 +1,15 @@
 on:
   push:
     branches:
-      - master
+      - main
       - v*
       - issue/*
       - housekeeping/*
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_NODE_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/playwright:v1.26.0-focal
+  PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -1064,58 +1064,58 @@ jobs:
         with:
           entrypoint: run-test-smoke
           args: --components-js
-  release-components-uxpin:
-    name: 'Release Components UXPin'
-    needs:
-      - assets-deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # important for uxpin since it uses the commit history
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-node
-        with:
-          entrypoint: run-install
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-prod-build
-          path: ./packages/components-js/dist
-      - name: 'Restore Components UXPin Source Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-uxpin-source
-          path: ./packages/components-react/projects/uxpin-wrapper
-      - name: 'Publish UXPin Library'
-        uses: ./.github/actions/docker-run-node
-        env:
-          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
-          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
-        with:
-          entrypoint: run-release-uxpin
+#  release-components-uxpin:
+#    name: 'Release Components UXPin'
+#    needs:
+#      - assets-deployment
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 'Checkout'
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0 # important for uxpin since it uses the commit history
+#      - name: 'Cache node_modules'
+#        uses: actions/cache@v2
+#        id: cache
+#        with:
+#          path: '**/node_modules'
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+#      - name: 'Login to GitHub Container Registry'
+#        uses: docker/login-action@v1
+#        with:
+#          registry: ghcr.io
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#      - name: 'Pull Docker Image'
+#        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
+#      - name: 'Install'
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        uses: ./.github/actions/docker-run-node
+#        with:
+#          entrypoint: run-install
+#      - name: 'Restore Components JS Build Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: components-js-prod-build
+#          path: ./packages/components-js/dist
+#      - name: 'Restore Components UXPin Source Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: components-uxpin-source
+#          path: ./packages/components-react/projects/uxpin-wrapper
+#      - name: 'Publish UXPin Library'
+#        uses: ./.github/actions/docker-run-node
+#        env:
+#          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
+#          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
+#        with:
+#          entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1146,7 +1146,7 @@ jobs:
     name: 'Release Components Angular'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1177,7 +1177,7 @@ jobs:
     name: 'Release Components React'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1209,7 +1209,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1241,7 +1241,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1273,7 +1273,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'

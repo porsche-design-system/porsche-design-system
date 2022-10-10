@@ -75,10 +75,10 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
 You can find the repository of the NextJS example project here:
-[Sample integration NextJS](https://github.com/porscheui/sample-integration-nextjs)
+[Sample integration NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Get the project up and running
 
 - Clone the repository by executing  
-  `git clone https://github.com/porscheui/sample-integration-nextjs.git`
+  `git clone https://github.com/porsche-design-system/sample-integration-nextjs.git`
 - Follow the installation guidelines in the README.md file
