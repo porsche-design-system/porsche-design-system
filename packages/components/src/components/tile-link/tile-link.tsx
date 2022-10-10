@@ -81,9 +81,19 @@ export class TileLink {
             <slot />
             <div class="content">
               <p>{this.description}</p>
-              <PrefixedTagNames.pLink class="link" variant="tertiary" theme={this.theme} href={this.href}>
-                {this.label}
-              </PrefixedTagNames.pLink>
+              {this.compact ? (
+                <PrefixedTagNames.pLinkPure theme={this.theme} hideLabel="true" icon="arrow-right">
+                  <a class="link" href={this.href}>
+                    {this.label}
+                  </a>
+                </PrefixedTagNames.pLinkPure>
+              ) : (
+                <PrefixedTagNames.pLink variant="tertiary" theme={this.theme}>
+                  <a class="link" href={this.href}>
+                    {this.label}
+                  </a>
+                </PrefixedTagNames.pLink>
+              )}
             </div>
           </div>
         </div>
