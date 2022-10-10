@@ -1064,52 +1064,52 @@ jobs:
         with:
           entrypoint: run-test-smoke
           args: --components-js
-  release-components-uxpin:
-    name: 'Release Components UXPin'
-    needs:
-      - assets-deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # important for uxpin since it uses the commit history
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-node
-        with:
-          entrypoint: run-install
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-prod-build
-          path: ./packages/components-js/dist
-      - name: 'Restore Components UXPin Source Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-uxpin-source
-          path: ./packages/components-react/projects/uxpin-wrapper
-      - name: 'Publish UXPin Library'
-        uses: ./.github/actions/docker-run-node
-        env:
-          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
-          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
-        with:
-          entrypoint: run-release-uxpin
+#  release-components-uxpin:
+#    name: 'Release Components UXPin'
+#    needs:
+#      - assets-deployment
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 'Checkout'
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0 # important for uxpin since it uses the commit history
+#      - name: 'Cache node_modules'
+#        uses: actions/cache@v2
+#        id: cache
+#        with:
+#          path: '**/node_modules'
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+#      - name: 'Login to GitHub Container Registry'
+#        uses: docker/login-action@v1
+#        with:
+#          registry: ghcr.io
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#      - name: 'Pull Docker Image'
+#        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
+#      - name: 'Install'
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        uses: ./.github/actions/docker-run-node
+#        with:
+#          entrypoint: run-install
+#      - name: 'Restore Components JS Build Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: components-js-prod-build
+#          path: ./packages/components-js/dist
+#      - name: 'Restore Components UXPin Source Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: components-uxpin-source
+#          path: ./packages/components-react/projects/uxpin-wrapper
+#      - name: 'Publish UXPin Library'
+#        uses: ./.github/actions/docker-run-node
+#        env:
+#          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
+#          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
+#        with:
+#          entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
     needs:
