@@ -59,7 +59,6 @@ export const getComponentCss = (
       width: '100%',
       height: '100%',
       transform: 'translate3d(0,0,0)',
-      backgroundColor: 'rgba(14, 20, 24, 0.1)',
     },
     content: {
       position: 'absolute',
@@ -68,7 +67,6 @@ export const getComponentCss = (
       right: 0,
       display: 'flex',
       padding: pxToRemWithUnit(24),
-      paddingTop: '80px',
       flexDirection: isCompact ? 'row' : 'column',
       alignItems: isCompact ? 'center' : 'start',
       height: 'fit-content',
