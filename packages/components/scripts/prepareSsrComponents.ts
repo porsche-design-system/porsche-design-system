@@ -14,7 +14,7 @@ const prepareSsrComponents = (): void => {
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
 
   const componentFileContents = componentPaths
-    // .filter((filePath) => filePath.includes('text-field-wrapper'))
+    // .filter((filePath) => filePath.includes('accordion'))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -50,10 +50,14 @@ const prepareSsrComponents = (): void => {
         // .replace(/import .* from '@stencil\/core';\n/, '')
         .replace(/import[\s\S]*?from.*\n/g, '')
         .replace(/(getPrefixedTagNames)\(this\.host\)/g, '$1()')
-        .replace(/^/g, "import { getPrefixedTagNames } from '../../getPrefixedTagNames';\n");
+        .replace(
+          /^/g,
+          "import { Component } from 'react';\nimport { getPrefixedTagNames } from '../../getPrefixedTagNames';\n"
+        )
+        .replace(/export class [A-Za-z]+/, '$& extends Component');
       // .replace(/(<\/?)Host(>)/g, '$1$2');
 
-      // console.log(newFileContent)
+      // console.log(newFileContent);
 
       return newFileContent;
     });
