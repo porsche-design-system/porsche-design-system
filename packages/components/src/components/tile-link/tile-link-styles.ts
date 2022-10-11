@@ -59,6 +59,7 @@ export const getComponentCss = (
       width: '100%',
       height: '100%',
       transform: 'translate3d(0,0,0)',
+      minWidth: '96px',
     },
     content: {
       position: 'absolute',
@@ -66,10 +67,13 @@ export const getComponentCss = (
       left: 0,
       right: 0,
       display: 'flex',
-      padding: pxToRemWithUnit(24),
+      padding: isTopAligned
+        ? `${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(48)}`
+        : `${pxToRemWithUnit(48)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)}`,
       flexDirection: isCompact ? 'row' : 'column',
       alignItems: isCompact ? 'center' : 'start',
       height: 'fit-content',
+      minWidth: '96px',
       gap: pxToRemWithUnit(24),
       ...(hasGradient && {
         background:
