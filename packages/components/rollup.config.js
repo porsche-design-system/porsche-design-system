@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -17,6 +18,9 @@ const generateUtilsEntryFile = () => {
     .join('\n');
 
   const inputContent = `/* Auto Generated File */
+
+import '../scripts/mockMutationObserver';
+
 export * from './utils';
 ${utilsExports}`;
 
@@ -33,6 +37,9 @@ export default {
     format: 'esm',
   },
   plugins: [
+    replace({
+      ROLLUP_REPLACE_IS_STAGING: '"production"',
+    }),
     nodeResolve(),
     commonjs(),
     typescript({
