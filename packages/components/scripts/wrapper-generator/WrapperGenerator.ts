@@ -1,5 +1,6 @@
 import { AngularWrapperGenerator } from './AngularWrapperGenerator';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
+import { NextJsReactWrapperGenerator } from './NextJsReactWrapperGenerator';
 import { UXPinReactWrapperGenerator } from './UXPinReactWrapperGenerator';
 import type { AbstractWrapperGeneratorConfig } from './AbstractWrapperGenerator';
 
@@ -12,7 +13,7 @@ export class WrapperGenerator {
     if (framework === 'angular') {
       new AngularWrapperGenerator(this.config).generate();
     } else if (framework === 'react') {
-      new ReactWrapperGenerator(this.config).generate();
+      new NextJsReactWrapperGenerator(this.config).generate();
     } else if (framework === 'uxpin') {
       new UXPinReactWrapperGenerator().generate();
     } else {

@@ -44,22 +44,30 @@ const prepareSsrComponents = (): void => {
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/ +onClick: .*/g, '') // onClick props
-        .replace(/(public [a-zA-Z]+\??:) [a-zA-Z<>,' ]+/g, '$1 any ') // change type if props to any
+        .replace(/ +onKeyDown: .*/g, '') // onClick props
+        .replace(/(public [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any ') // change type if props to any
         .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
         // .replace(/tabindex=/g, 'tabIndex=') // fix casing
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
         // remove all imports except for utils which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
-          group.endsWith('utils') ? m.replace(group, '@porsche-design-system/components/dist/utils/utils-entry') : ''
+          group.endsWith('utils')
+            ? m.replace(group, '@porsche-design-system/components/dist/utils/utils-entry')
+            : group.endsWith('state-message') || group.endsWith('required')
+            ? m.replace(group, './' + group.split('/').pop())
+            : ''
         )
-        .replace(/(getPrefixedTagNames)\(this\.host\)/g, '$1()')
+        .replace(/(getPrefixedTagNames)\((?:this\.)?host\)/g, '$1()') // remove this.host param
+        .replace(/(this\.host)\./g, '$1?.')
+        // add new imports
         .replace(
           /^/g,
           "import { Component } from 'react';\nimport { getPrefixedTagNames } from '../../getPrefixedTagNames';\n"
         )
-        .replace(/export class [A-Za-z]+/, '$& extends Component');
-      // .replace(/(<\/?)Host(>)/g, '$1$2');
+        .replace(/export class [A-Za-z]+/, '$& extends Component')
+        .replace(/(<\/?)Host.*(>)/g, '$1$2');
 
       // console.log(newFileContent);
 
