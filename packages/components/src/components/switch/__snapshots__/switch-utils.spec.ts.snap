@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: false 1`] = `
 {
   "aria-busy": null,
   "aria-checked": "false",
@@ -9,7 +9,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: true 1`] = `
 {
   "aria-busy": null,
   "aria-checked": "true",
@@ -18,7 +18,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: false 1`] = `
 {
   "aria-busy": "true",
   "aria-checked": "false",
@@ -27,7 +27,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: true 1`] = `
 {
   "aria-busy": "true",
   "aria-checked": "true",
@@ -36,7 +36,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and isChecked: false 1`] = `
 {
   "aria-busy": null,
   "aria-checked": "false",
@@ -45,7 +45,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: false 1`] = `
 {
   "aria-busy": "true",
   "aria-checked": "false",
@@ -54,7 +54,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: true 1`] = `
 {
   "aria-busy": "true",
   "aria-checked": "true",
