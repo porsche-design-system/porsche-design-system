@@ -27,6 +27,7 @@
     "build:clean:deletePolyfills": "rm -rf ./dist/esm/polyfills",
     "build:clean:deleteGeneratedLoader": "rm -rf ./dist/loader",
     "build-prod": "PDS_IS_STAGING=0 yarn build",
+    "rollup": "rollup -c rollup.config.js",
     "prepareSsrComponents": "ts-node --project tsconfig.node.json scripts/prepareSsrComponents.ts",
     "lint": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}'",
     "test": "yarn test:unit",
