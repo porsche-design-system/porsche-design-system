@@ -47,8 +47,12 @@ const prepareSsrComponents = (): void => {
         .replace(/ +onClick: .*/g, '') // onClick props
         .replace(/(public [a-zA-Z]+\??:) [a-zA-Z<>,' ]+/g, '$1 any ') // change type if props to any
         .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
-        // .replace(/import .* from '@stencil\/core';\n/, '')
-        .replace(/import[\s\S]*?from.*\n/g, '')
+        // .replace(/tabindex=/g, 'tabIndex=') // fix casing
+        .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
+        // remove all imports except for utils which are rewritten
+        .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
+          group.endsWith('utils') ? m.replace(group, '@porsche-design-system/components/dist/utils/utils-entry') : ''
+        )
         .replace(/(getPrefixedTagNames)\(this\.host\)/g, '$1()')
         .replace(
           /^/g,
