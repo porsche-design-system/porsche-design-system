@@ -80,7 +80,7 @@ describe('componentDidLoad', () => {
 
 describe('componentWillRender', () => {
   it('should call syncItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'syncItemsProps');
+    const spy = jest.spyOn(stepperHorizontalUtils, 'syncStepperHorizontalItemsProps');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });

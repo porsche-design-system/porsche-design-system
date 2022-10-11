@@ -1,5 +1,5 @@
 import { pxToRemWithUnit } from '../../styles';
-import type { Direction, GradientColorTheme } from '../scroller/scroller-utils';
+import type { ScrollerDirection, GradientColorTheme } from '../scroller/scroller-utils';
 import { setAttribute } from '../../utils';
 
 export const TAB_SIZES = ['small', 'medium'] as const;
@@ -68,7 +68,7 @@ export const determineEnableTransitionClass = (
 };
 
 export const getPrevNextTabIndex = (
-  direction: Direction,
+  direction: ScrollerDirection,
   tabElementsLength: number,
   focusedTabIndex: number
 ): number => {

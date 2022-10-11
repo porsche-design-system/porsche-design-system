@@ -15,7 +15,12 @@ import {
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
 } from './scroller-utils';
-import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
+import type {
+  ScrollerDirection,
+  GradientColorTheme,
+  ScrollToPosition,
+  ScrollIndicatorPosition,
+} from './scroller-utils';
 import type { PropTypes, ThemeExtendedElectric } from '../../types';
 import { parseJSONAttribute } from '../../utils/json';
 
@@ -97,7 +102,7 @@ export class Scroller {
   }
 
   public render(): JSX.Element {
-    const renderPrevNextButton = (direction: Direction): JSX.Element => {
+    const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (
         <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
@@ -127,7 +132,7 @@ export class Scroller {
             <div class="trigger" />
           </div>
         </div>
-        {['prev', 'next'].map((direction: Direction) => renderPrevNextButton(direction))}
+        {['prev', 'next'].map((direction: ScrollerDirection) => renderPrevNextButton(direction))}
       </div>
     );
   }
@@ -157,7 +162,7 @@ export class Scroller {
     this.intersectionObserver.observe(lastTrigger);
   };
 
-  private scrollOnPrevNextClick = (direction: Direction): void => {
+  private scrollOnPrevNextClick = (direction: ScrollerDirection): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
   };

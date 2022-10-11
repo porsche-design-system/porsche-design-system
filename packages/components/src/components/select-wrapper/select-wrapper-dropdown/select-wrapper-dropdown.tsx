@@ -26,7 +26,7 @@ import {
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
-  getButtonAriaAttributes,
+  getSelectWrapperDropdownButtonAriaAttributes,
   setHighlightedFirstMatchingOptionMaps,
   hasFilterResults,
   getFilterInputAriaAttributes,
@@ -148,7 +148,7 @@ export class SelectWrapperDropdown {
             type="button"
             id={buttonId}
             disabled={this.disabled}
-            {...getButtonAriaAttributes(this.isOpen, labelId, descriptionId, dropdownId)}
+            {...getSelectWrapperDropdownButtonAriaAttributes(this.isOpen, labelId, descriptionId, dropdownId)}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}

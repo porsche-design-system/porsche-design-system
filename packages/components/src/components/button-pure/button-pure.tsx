@@ -30,7 +30,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
@@ -179,7 +179,7 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
+          {...getButtonPureAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
           tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}

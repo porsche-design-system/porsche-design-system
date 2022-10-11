@@ -10,7 +10,11 @@ import {
 } from '../../utils';
 import type { IconName, PropTypes, Theme } from '../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
-import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
+import {
+  INLINE_NOTIFICATION_STATES,
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+} from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
@@ -78,7 +82,12 @@ export class InlineNotification {
 
     return (
       <Host>
-        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
+        <PrefixedTagNames.pIcon
+          class="icon"
+          name={getInlineNotificationIconName(this.state)}
+          color="inherit"
+          aria-hidden="true"
+        />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
           <p id={descriptionId}>{this.description || <slot />}</p>

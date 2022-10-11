@@ -27,7 +27,7 @@ import {
   TAB_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { Direction } from '../scroller/scroller-utils';
+import type { ScrollerDirection } from '../scroller/scroller-utils';
 import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
@@ -67,7 +67,7 @@ export class TabsBar {
 
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
-  private direction: Direction = 'next';
+  private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
   private scrollerElement: HTMLPScrollerElement;
 

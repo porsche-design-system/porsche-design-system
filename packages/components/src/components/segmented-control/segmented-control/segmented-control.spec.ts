@@ -18,7 +18,7 @@ describe('connectedCallback', () => {
 
 describe('componentWillRender', () => {
   it('should call syncItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(segmentedControlUtils, 'syncItemsProps');
+    const spy = jest.spyOn(segmentedControlUtils, 'syncSegmentedControlItemsProps');
 
     const component = new SegmentedControl();
     component.host = document.createElement('p-segmented-control');

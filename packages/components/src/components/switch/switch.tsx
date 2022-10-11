@@ -11,7 +11,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import { getButtonAriaAttributes } from './switch-utils';
+import { getSwitchButtonAriaAttributes } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
@@ -105,7 +105,7 @@ export class Switch {
           <slot />
         </span>
         <button
-          {...getButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
           tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}

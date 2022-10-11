@@ -1,7 +1,7 @@
-import { getButtonAriaAttributes } from './switch-utils';
+import { getSwitchButtonAriaAttributes } from './switch-utils';
 
-describe('getButtonAttributes()', () => {
-  it.each<Parameters<typeof getButtonAriaAttributes>>([
+describe('getSwitchButtonAriaAttributes()', () => {
+  it.each<Parameters<typeof getSwitchButtonAriaAttributes>>([
     [false, false, false],
     [true, false, false],
     [false, true, false],
@@ -10,6 +10,6 @@ describe('getButtonAttributes()', () => {
     [false, true, true],
     [true, true, true],
   ])('should return correct aria attributes for isDisabled: %s, isLoading: %s and isChecked: %s', (...args) => {
-    expect(getButtonAriaAttributes(...args)).toMatchSnapshot();
+    expect(getSwitchButtonAriaAttributes(...args)).toMatchSnapshot();
   });
 });

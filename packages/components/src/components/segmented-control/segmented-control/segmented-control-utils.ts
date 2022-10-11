@@ -58,7 +58,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
   return Math.max(...widths);
 };
 
-export const syncItemsProps = (
+export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   backgroundColor: SegmentedControlBackgroundColor,

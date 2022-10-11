@@ -11,7 +11,11 @@ import {
 import type { PropTypes, Theme, ValidatorFunction } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
-import { getItemMaxWidth, SEGMENTED_CONTROL_BACKGROUND_COLORS, syncItemsProps } from './segmented-control-utils';
+import {
+  getItemMaxWidth,
+  SEGMENTED_CONTROL_BACKGROUND_COLORS,
+  syncSegmentedControlItemsProps,
+} from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
@@ -54,7 +58,7 @@ export class SegmentedControl {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
-    syncItemsProps(this.host, this.value, this.backgroundColor, this.theme);
+    syncSegmentedControlItemsProps(this.host, this.value, this.backgroundColor, this.theme);
   }
 
   public componentDidLoad(): void {

@@ -6,7 +6,7 @@ import { INPUT_HEIGHT } from '../../../styles/form-styles';
 
 const MAX_CHILDREN = 10;
 
-export const getButtonAriaAttributes = (
+export const getSelectWrapperDropdownButtonAriaAttributes = (
   isOpen: boolean,
   labelId: string,
   descriptionId: string,

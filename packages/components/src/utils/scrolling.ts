@@ -1,4 +1,4 @@
-import type { Direction } from '../components/scroller/scroller-utils';
+import type { ScrollerDirection } from '../components/scroller/scroller-utils';
 import { getScrollerElements } from '../components/scroller/scroller-utils';
 
 let supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
@@ -62,7 +62,7 @@ export const FOCUS_PADDING_WIDTH = 4;
 
 export const getScrollActivePosition = (
   elements: HTMLElement[],
-  direction: Direction,
+  direction: ScrollerDirection,
   activeElementIndex: number,
   scrollerElement: HTMLPScrollerElement
 ): number => {

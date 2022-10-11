@@ -20,7 +20,7 @@ import type { StepChangeEvent, StepperHorizontalSize } from './stepper-horizonta
 import {
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
-  syncItemsProps,
+  syncStepperHorizontalItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
@@ -74,7 +74,7 @@ export class StepperHorizontal {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-    syncItemsProps(this.host, this.theme);
+    syncStepperHorizontalItemsProps(this.host, this.theme);
   }
 
   public componentDidLoad(): void {
