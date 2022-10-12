@@ -22,8 +22,8 @@ const prepareSsrComponents = (): void => {
       const newFileContent = fileContent
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
-        .replace(/@Prop\(.*?\) /g, '')
-        .replace(/@Listen\(.*\)\n  /g, '')
+        .replace(/\n  \/\*\*[\s\S]*?@Prop\(.*?\) [\s\S]*?;\n/g, '')
+        .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
@@ -51,7 +51,7 @@ const prepareSsrComponents = (): void => {
         .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
-        .replace(/(public [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any ') // change type if props to any
+        // .replace(/(public [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any ') // change type if props to any
         .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
         // .replace(/tabindex=/g, 'tabIndex=') // fix casing
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
@@ -71,10 +71,14 @@ const prepareSsrComponents = (): void => {
           /^/g,
           "import { Component } from 'react';\nimport { getPrefixedTagNames } from '../../getPrefixedTagNames';\n"
         )
-        .replace(/export class [A-Za-z]+/, '$& extends Component') // make it a real React.Component
+        .replace(/export class [A-Za-z]+/, '$& extends Component<any>') // make it a real React.Component
         .replace(/(<\/?)Host.*(>)/g, '$1$2') // remove Host fragment
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
-        .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`); // inline breakpoint value from utilities-v2 for marque
+        .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
+        .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
+        .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for key of icon component
+        .replace('<slot />', '<>{this.props.children}</>');
 
       // console.log(newFileContent);
 
