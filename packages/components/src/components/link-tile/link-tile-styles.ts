@@ -3,7 +3,7 @@ import { addImportantToEachRule, pxToRemWithUnit } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+import { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 
 const aspectRatioPaddingTop: { [key in AspectRatio]: string } = {
   '1:1': '100%',
@@ -30,7 +30,6 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top' && isCompact;
-  const gradientHeight = isCompact ? pxToRemWithUnit(72) : pxToRemWithUnit(118);
 
   return getCss({
     '@global': {
@@ -39,6 +38,9 @@ export const getComponentCss = (
         height: 'fit-content',
       }),
       '::slotted(*:not(a))': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
         width: '100%',
         height: '100%',
         objectFit: 'cover',
@@ -53,20 +55,18 @@ export const getComponentCss = (
         margin: 0,
       },
     },
-    'aspect-ratio-container': {
+    root: {
       height: 0,
       paddingTop: aspectRatioPaddingTop[aspectRatio],
       position: 'relative',
-      overflow: 'hidden',
+      transform: 'translate3d(0,0,0)',
     },
-    'aspect-ratio-box': {
+    image: {
       position: 'absolute',
       top: 0,
       left: 0,
       width: '100%',
       height: '100%',
-      transform: 'translate3d(0,0,0)',
-      minWidth: '96px',
     },
     content: {
       position: 'absolute',
@@ -74,9 +74,7 @@ export const getComponentCss = (
       left: 0,
       right: 0,
       display: 'flex',
-      padding: isTopAligned
-        ? ` ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${gradientHeight}`
-        : `${gradientHeight} ${pxToRemWithUnit(24)}  ${pxToRemWithUnit(24)}`,
+      padding: pxToRemWithUnit(24),
       alignItems: isCompact ? 'center' : 'start',
       gap: pxToRemWithUnit(24),
       flexDirection: isCompact ? 'row' : 'column',

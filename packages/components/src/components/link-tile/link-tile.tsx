@@ -1,17 +1,17 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
-import { getComponentCss } from './tile-link-styles';
+import { getComponentCss } from './link-tile-styles';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
-import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { getSlottedCss } from '../link-pure/link-pure-styles';
 
 @Component({
-  tag: 'p-tile-link',
+  tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class TileLink {
+export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
@@ -84,22 +84,22 @@ export class TileLink {
       );
 
     return (
-      <div class="aspect-ratio-container">
-        <div class="aspect-ratio-box">
+      <div class="root">
+        <div class="image">
           <slot name="image" />
-          {/* What Aria attribute for gradient as it is only a graphic container? */}
-          <div class="content">
-            <p>{this.description}</p>
-            {this.compact ? (
-              <PrefixedTagNames.pLinkPure hideLabel="true" icon="arrow-right" theme="dark">
-                {anchor}
-              </PrefixedTagNames.pLinkPure>
-            ) : (
-              <PrefixedTagNames.pLink variant="tertiary" theme="dark">
-                {anchor}
-              </PrefixedTagNames.pLink>
-            )}
-          </div>
+        </div>
+        {/* What Aria attribute for gradient as it is only a graphic container? */}
+        <div class="content">
+          <p>{this.description}</p>
+          {this.compact ? (
+            <PrefixedTagNames.pLinkPure hideLabel="true" icon="arrow-right" theme="dark">
+              {anchor}
+            </PrefixedTagNames.pLinkPure>
+          ) : (
+            <PrefixedTagNames.pLink variant="tertiary" theme="dark">
+              {anchor}
+            </PrefixedTagNames.pLink>
+          )}
         </div>
       </div>
     );
