@@ -1,5 +1,5 @@
 import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../styles';
+import {addImportantToEachRule, addImportantToRule, pxToRemWithUnit} from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
@@ -97,10 +97,13 @@ export const getComponentCss = (
             gridTemplateRows: 'auto auto',
           }),
     },
+    link: {
+      position: 'static',
+    },
     anchor: {
       '&::before': {
         content: '""',
-        position: 'fixed',
+        position: addImportantToRule('fixed'),
         top: 0,
         left: 0,
         width: '100%',
@@ -115,7 +118,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
     buildSlottedStyles(host, {
       '::slotted(a)::before': {
         content: '""',
-        position: 'fixed',
+        position: addImportantToRule('fixed'),
         top: 0,
         left: 0,
         width: '100%',
