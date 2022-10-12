@@ -66,7 +66,8 @@ export class TileLink {
       !!this.size,
       this.weight,
       this.align,
-      this.compact
+      this.compact,
+      this.gradient
     );
   }
 
@@ -87,7 +88,6 @@ export class TileLink {
         <div class="aspect-ratio-box">
           <slot name="image" />
           {/* What Aria attribute for gradient as it is only a graphic container? */}
-          {this.gradient && <div class="gradient" />}
           <div class="content">
             <p>{this.description}</p>
             {this.compact ? (

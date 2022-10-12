@@ -26,10 +26,11 @@ export const getComponentCss = (
   isInherit: boolean,
   weight: TileLinkWeight,
   align: TileLinkAlign,
-  isCompact: boolean
+  isCompact: boolean,
+  hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top' && isCompact;
-  const gradientHeight = isCompact ? '50%' : '20%';
+  const gradientHeight = isCompact ? pxToRemWithUnit(72) : pxToRemWithUnit(118);
 
   return getCss({
     '@global': {
@@ -67,33 +68,19 @@ export const getComponentCss = (
       transform: 'translate3d(0,0,0)',
       minWidth: '96px',
     },
-    gradient: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      ...(isTopAligned
-        ? {
-            top: 0,
-            bottom: gradientHeight,
-          }
-        : {
-            top: gradientHeight,
-            bottom: 0,
-          }),
-      background: getGradientBackground(isCompact, isTopAligned),
-    },
     content: {
       position: 'absolute',
       ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
       left: 0,
       right: 0,
       display: 'flex',
-      margin: isTopAligned
-        ? ` ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} 0`
-        : `0 ${pxToRemWithUnit(24)}  ${pxToRemWithUnit(24)}`,
+      padding: isTopAligned
+        ? ` ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${gradientHeight}`
+        : `${gradientHeight} ${pxToRemWithUnit(24)}  ${pxToRemWithUnit(24)}`,
       alignItems: isCompact ? 'center' : 'start',
       gap: pxToRemWithUnit(24),
       flexDirection: isCompact ? 'row' : 'column',
+      background: hasGradient && getGradientBackground(isCompact, isTopAligned),
       ...(isCompact && {
         justifyContent: 'space-between',
       }),
