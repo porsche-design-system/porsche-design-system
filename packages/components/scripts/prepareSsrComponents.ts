@@ -19,7 +19,7 @@ const prepareSsrComponents = (): void => {
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
-      const newFileContent = fileContent
+      let newFileContent = fileContent
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/\n  \/\*\*[\s\S]*?@Prop\(.*?\) [\s\S]*?;\n/g, '')
@@ -49,6 +49,7 @@ const prepareSsrComponents = (): void => {
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props
+        .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
         // .replace(/(public [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any ') // change type if props to any
@@ -80,7 +81,55 @@ const prepareSsrComponents = (): void => {
         .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for key of icon component
         .replace('<slot />', '<>{this.props.children}</>');
 
-      // console.log(newFileContent);
+      // rewire named slots
+      if (newFileContent.includes('<slot name="') && !newFileContent.includes('FunctionalComponent')) {
+        newFileContent = newFileContent.replace(/this\.props\.children/, 'defaultChildren').replace(
+          /public render\(\): JSX\.Element {/,
+          `$&
+    const children = Array.isArray(this.props.children)
+      ? this.props.children
+      : this.props.children
+      ? [this.props.children]
+      : [];
+    const namedSlottedChildren = children.filter((child) => child.props?.slot);
+    const defaultChildren = children.filter((child) => !child.props?.slot);\n`
+        );
+
+        const namedSlots = Array.from(fileContent.matchAll(/<slot name="([a-z]+)" \/>/g));
+        namedSlots.forEach(([match, slotName]) => {
+          newFileContent = newFileContent.replace(
+            match,
+            `namedSlottedChildren.filter(({ props: { slot } }) => slot === '${slotName}')`
+          );
+        });
+
+        newFileContent = newFileContent
+          .replace(
+            /hasLabel\(this\.props\.host, (this\.props\.label)\)/,
+            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'label').length > 0`
+          )
+          .replace(
+            /hasDescription\(this\.props\.host, (this\.props\.description)\)/,
+            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'description').length > 0`
+          )
+          .replace(
+            /hasMessage\(this\.props\.host, (this\.props\.message), (this\.props\.state)\)/,
+            `($1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
+          )
+          .replace(
+            /(<StateMessage.*?message)={(.*?)}/,
+            `$1={$2 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'message')}`
+          )
+          .replace(/namedSlottedChildren\.filter\(\({ props: { slot } }\) => slot === '(?:subline|caption)'\)/, '{$&}')
+          .replace(
+            /= hasSlottedSubline\(this\.props\.host\)/,
+            `= namedSlottedChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
+          )
+          .replace(
+            /= hasNamedSlot\(this\.props\.host, 'caption'\)/,
+            `= namedSlottedChildren.filter(({ props: { slot } }) => slot === 'caption').length > 0`
+          );
+      }
 
       return newFileContent;
     });
