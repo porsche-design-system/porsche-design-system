@@ -308,7 +308,7 @@ describe('updateSlidesAndPagination()', () => {
     const spy = jest.spyOn(carouselUtils, 'getSlidesAndAddNamedSlots').mockReturnValue(getSlidesMock);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
-    expect(component['slides']).toBeUndefined();
+    expect(component['slides']).toEqual([]);
 
     component['updateSlidesAndPagination']();
     expect(spy).toBeCalledWith(component.host);
