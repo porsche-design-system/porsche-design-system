@@ -1,7 +1,8 @@
 import type { ScrollerDirection } from '../components/scroller/scroller-utils';
 import { getScrollerElements } from '../components/scroller/scroller-utils';
+import { hasDocument } from './has-document';
 
-let supportsScrollBehavior = 'scrollBehavior' in document?.documentElement.style;
+let supportsScrollBehavior = hasDocument && 'scrollBehavior' in document.documentElement.style;
 
 // for unit tests
 export const overrideSupportsScrollBehavior = (override: boolean): void => {

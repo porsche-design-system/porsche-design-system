@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable } from '../../types';
-import { getTagName, observeChildren, unobserveChildren } from '../../utils';
+import { getTagName, hasWindow, observeChildren, unobserveChildren } from '../../utils';
 import { pxToRemWithUnit } from '../../styles';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
@@ -33,7 +33,7 @@ export const warnIfCompactAndSizeIsSet = (
 
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 
-export const isResizeObserverDefined = (): boolean => 'ResizeObserver' in window;
+export const isResizeObserverDefined = (): boolean => hasWindow && 'ResizeObserver' in window;
 
 export let useResizeObserverFallback = !isResizeObserverDefined();
 

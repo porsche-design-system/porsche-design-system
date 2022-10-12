@@ -107,7 +107,7 @@ export const updatePagination = (paginationEl: HTMLElement, newIndex: number): v
   }
 };
 
-export let hasInertSupport = HTMLElement.prototype.hasOwnProperty('inert');
+export let hasInertSupport = typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
 
 // for unit tests
 export const overrideHasInertSupport = (override: boolean): void => {

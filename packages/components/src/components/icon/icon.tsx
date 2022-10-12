@@ -6,7 +6,7 @@ import {
   attachComponentCss,
   getShadowRootHTMLElement,
   ICON_SIZES,
-  isBrowser,
+  hasWindow,
   TEXT_COLORS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   validateProps,
@@ -94,7 +94,7 @@ export class Icon {
   }
 
   private initIntersectionObserver(): void {
-    if (this.lazy && isBrowser()) {
+    if (this.lazy && hasWindow) {
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
         this.intersectionObserver = new IntersectionObserver(

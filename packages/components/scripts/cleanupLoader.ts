@@ -28,7 +28,7 @@ ${globalScriptsImport};
 ${isBrowserImport};
 
 export const defineCustomElements = (options) => {
-  if (!isBrowser()) {
+  if (!isBrowser) {
     return promiseResolve();
   }
 
