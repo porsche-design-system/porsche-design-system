@@ -78,7 +78,7 @@ export class LinkTile {
       this.href === undefined ? (
         <slot name="link" />
       ) : (
-        <a class="link" href={this.href} target={this.target} download={this.download} rel={this.rel}>
+        <a class="anchor" href={this.href} target={this.target} download={this.download} rel={this.rel}>
           {this.label}
         </a>
       );
@@ -92,11 +92,11 @@ export class LinkTile {
         <div class="content">
           <p>{this.description}</p>
           {this.compact ? (
-            <PrefixedTagNames.pLinkPure hideLabel="true" icon="arrow-right" theme="dark">
+            <PrefixedTagNames.pLinkPure class="link" hideLabel="true" icon="arrow-right" theme="dark">
               {anchor}
             </PrefixedTagNames.pLinkPure>
           ) : (
-            <PrefixedTagNames.pLink variant="tertiary" theme="dark">
+            <PrefixedTagNames.pLink class="link" variant="tertiary" theme="dark">
               {anchor}
             </PrefixedTagNames.pLink>
           )}

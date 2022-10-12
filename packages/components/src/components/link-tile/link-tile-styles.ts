@@ -82,17 +82,22 @@ export const getComponentCss = (
       ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
       left: 0,
       right: 0,
-      display: 'flex',
-      padding: pxToRemWithUnit(24),
-      alignItems: isCompact ? 'center' : 'start',
-      gap: pxToRemWithUnit(24),
-      flexDirection: isCompact ? 'row' : 'column',
+      display: 'grid',
+      maxHeight: '100%',
+      justifyItems: 'start',
+      padding:  `${pxToRemWithUnit(24)}`,
+      gap: `${pxToRemWithUnit(24)}`,
       background: hasGradient && getGradientBackground(isCompact, isTopAligned),
-      ...(isCompact && {
-        justifyContent: 'space-between',
-      }),
+      ...(isCompact
+        ? {
+            alignItems: 'center',
+            gridTemplateColumns: `auto auto`,
+          }
+        : {
+            gridTemplateRows: 'auto auto',
+          }),
     },
-    link: {
+    anchor: {
       '&::before': {
         content: '""',
         position: 'fixed',
