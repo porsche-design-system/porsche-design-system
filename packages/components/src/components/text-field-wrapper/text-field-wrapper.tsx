@@ -1,8 +1,10 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
+  addInputEventListenerForCounter,
   attachComponentCss,
   attachSlottedCss,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -17,13 +19,11 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { FORM_STATES } from '../../utils/form/form-state';
 import type { FormState } from '../../utils/form/form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
-  addInputEventListenerForCounter,
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasCounterAndIsTypeText,
