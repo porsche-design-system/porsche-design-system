@@ -42,7 +42,6 @@ import { TextTag } from "./components/text/text-tag";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
 import { AspectRatio, TileLinkAlign, TileLinkWeight } from "./components/tile-link/tile-link-utils";
-import { ThemeExtendedElectric as ThemeExtendedElectric1 } from "./utils/theme";
 import { LinkTarget as LinkTarget1 } from "./utils/link-button/link-target";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -1165,10 +1164,6 @@ export namespace Components {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget1;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric1;
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */
@@ -2809,10 +2804,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget1;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric1;
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */

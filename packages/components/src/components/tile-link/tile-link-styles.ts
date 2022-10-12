@@ -3,7 +3,6 @@ import { addImportantToEachRule, pxToRemWithUnit } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { ThemeExtendedElectric } from '../../utils/theme';
 import { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
 
 const aspectRatioPaddingTop: { [key in AspectRatio]: string } = {
@@ -24,7 +23,6 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
 
 export const getComponentCss = (
   aspectRatio: AspectRatio,
-  theme: ThemeExtendedElectric,
   isInherit: boolean,
   weight: TileLinkWeight,
   align: TileLinkAlign,
@@ -45,7 +43,7 @@ export const getComponentCss = (
         objectFit: 'cover',
       },
       p: {
-        color: getThemedTextColor(theme, 'default'),
+        color: getThemedTextColor('dark', 'default'),
         ...textSmall,
         ...(isInherit && { fontSize: 'inherit' }),
         fontWeight: getFontWeight(weight),

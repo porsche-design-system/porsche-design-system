@@ -1,7 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { attachComponentCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './tile-link-styles';
-import type { ThemeExtendedElectric } from '../../utils/theme';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
@@ -41,9 +40,6 @@ export class TileLink {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
 
-  /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'dark';
-
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
 
@@ -62,7 +58,6 @@ export class TileLink {
       this.host,
       getComponentCss,
       this.aspectRatio,
-      this.theme,
       !!this.size,
       this.weight,
       this.align,
@@ -73,25 +68,27 @@ export class TileLink {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
+    const anchor: JSX.Element = (
+      <a class="link" href={this.href} target={this.target} download={this.download} rel={this.rel}>
+        {this.label}
+      </a>
+    );
+
     return (
       <div class="aspect-ratio-container">
         <div class="aspect-ratio-box">
           <slot />
-          {/* What Aria attribute for gradient as it is only a visual container? */}
+          {/* What Aria attribute for gradient as it is only a graphic container? */}
           {this.gradient && <div class="gradient" />}
           <div class="content">
             <p>{this.description}</p>
             {this.compact ? (
-              <PrefixedTagNames.pLinkPure theme={this.theme} hideLabel="true" icon="arrow-right">
-                <a class="link" href={this.href}>
-                  {this.label}
-                </a>
+              <PrefixedTagNames.pLinkPure hideLabel="true" icon="arrow-right" theme="dark">
+                {anchor}
               </PrefixedTagNames.pLinkPure>
             ) : (
-              <PrefixedTagNames.pLink variant="tertiary" theme={this.theme}>
-                <a class="link" href={this.href}>
-                  {this.label}
-                </a>
+              <PrefixedTagNames.pLink variant="tertiary" theme="dark">
+                {anchor}
               </PrefixedTagNames.pLink>
             )}
           </div>
