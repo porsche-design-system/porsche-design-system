@@ -1,4 +1,4 @@
-import { getCss } from '../../utils';
+import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
@@ -37,7 +37,7 @@ export const getComponentCss = (
         display: 'block',
         height: 'fit-content',
       }),
-      '::slotted(*)': {
+      '::slotted(*:not(a))': {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
@@ -109,4 +109,19 @@ export const getComponentCss = (
       },
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildSlottedStyles(host, {
+      '::slotted(a)::before': {
+        content: '""',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+      },
+    })
+  );
 };

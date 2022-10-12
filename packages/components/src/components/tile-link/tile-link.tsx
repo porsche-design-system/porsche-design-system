@@ -1,10 +1,11 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './tile-link-styles';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './tile-link-utils';
+import { getSlottedCss } from '../link-pure/link-pure-styles';
 
 @Component({
   tag: 'p-tile-link',
@@ -52,6 +53,10 @@ export class TileLink {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
+  public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
+  }
+
   public componentWillRender(): void {
     // TODO add validate Props
     attachComponentCss(
@@ -68,16 +73,19 @@ export class TileLink {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const anchor: JSX.Element = (
-      <a class="link" href={this.href} target={this.target} download={this.download} rel={this.rel}>
-        {this.label}
-      </a>
-    );
+    const anchor: JSX.Element =
+      this.href === undefined ? (
+        <slot name="link" />
+      ) : (
+        <a class="link" href={this.href} target={this.target} download={this.download} rel={this.rel}>
+          {this.label}
+        </a>
+      );
 
     return (
       <div class="aspect-ratio-container">
         <div class="aspect-ratio-box">
-          <slot />
+          <slot name="image" />
           {/* What Aria attribute for gradient as it is only a graphic container? */}
           {this.gradient && <div class="gradient" />}
           <div class="content">
