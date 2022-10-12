@@ -28,6 +28,17 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
     const hasChildren = this.inputParser.canHaveChildren(component);
 
+    // add hydrated class
+    tweakedComponent = tweakedComponent.replace(
+      /const props = \{/,
+      `// @ts-ignore
+    if (!process.browser) {
+      className = className ? \`\${className} hydrated\` : 'hydrated';
+    }
+
+    $&`
+    );
+
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
     const spreadProps = propsToSync.map(({ key }) => key).join(', ');
