@@ -4,8 +4,6 @@ import * as globby from 'globby';
 import { TAG_NAMES, INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
-// TODO: typing as component property string
-type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
 
 /*
  * This array includes all properties that are relevant for the skeleton sizes,
@@ -13,7 +11,8 @@ type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: bool
  * so that our skeleton style selectors can work and adjust
  * e.g. color based on the pds-skeleton--theme-dark class.
  */
-const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
+// TODO: typing as component property string
+const SKELETON_RELEVANT_PROPS: { propName: string; shouldAddValueToClassName: boolean }[] = [
   { propName: 'compact', shouldAddValueToClassName: false },
   { propName: 'description', shouldAddValueToClassName: false },
   { propName: 'hideLabel', shouldAddValueToClassName: false },
@@ -56,6 +55,7 @@ const generateComponentMeta = (): void => {
   }[];
   requiredProps?: string[]; // array of props that are mandatory
   hasSlot: boolean;
+  namedSlots?: string[]; // array of named slots
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
@@ -82,6 +82,7 @@ const generateComponentMeta = (): void => {
     }[];
     requiredProps?: string[]; // array of props that are mandatory
     hasSlot: boolean;
+    namedSlots?: string[]; // array of named slots
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
@@ -189,6 +190,12 @@ const generateComponentMeta = (): void => {
       requiredProps.push(invalidLinkUsageProp);
     }
 
+    // named slots
+    const namedSlots = Array.from(source.matchAll(/<slot name="([a-z]+)"/g)).map(([, slotName]) => slotName);
+    if (source.includes('<StateMessage')) {
+      namedSlots.push('message');
+    }
+
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
     const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+\]),.+?\);/.exec(source) || [];
@@ -216,6 +223,7 @@ const generateComponentMeta = (): void => {
       ...(props.length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
       hasSlot,
+      ...(namedSlots.length && { namedSlots: namedSlots }),
       hasSlottedCss,
       hasAriaProp,
       hasObserveAttributes,

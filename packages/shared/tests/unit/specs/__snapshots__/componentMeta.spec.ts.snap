@@ -12,6 +12,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "heading",
+    ],
     "props": [
       {
         "size": "small",
@@ -45,6 +48,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "title",
+      "description",
+    ],
     "props": [
       {
         "state": "neutral",
@@ -149,6 +156,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "subline",
+    ],
     "props": [
       {
         "tabbable": true,
@@ -224,6 +234,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "heading",
+    ],
     "props": [
       {
         "heading": null,
@@ -260,6 +273,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "label",
+      "message",
+    ],
     "observedAttributes": [
       "disabled",
       "required",
@@ -351,6 +368,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "label",
+      "message",
+    ],
     "props": [
       {
         "label": null,
@@ -573,6 +594,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "heading",
+    ],
     "props": [
       {
         "heading": null,
@@ -674,6 +698,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "subline",
+    ],
     "props": [
       {
         "alignLabel": "right",
@@ -831,6 +858,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "heading",
+    ],
     "props": [
       {
         "disableCloseButton": false,
@@ -918,6 +948,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "label",
+      "message",
+    ],
     "observedAttributes": [
       "disabled",
       "required",
@@ -1046,6 +1080,11 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "description",
+      "message",
+    ],
     "observedAttributes": [
       "disabled",
       "required",
@@ -1275,6 +1314,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "caption",
+    ],
     "props": [
       {
         "caption": null,
@@ -1562,6 +1604,11 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "label",
+      "description",
+      "message",
+    ],
     "observedAttributes": [
       "disabled",
       "readonly",
@@ -1666,6 +1713,11 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "namedSlots": [
+      "label",
+      "description",
+      "message",
+    ],
     "observedAttributes": [
       "disabled",
       "readonly",
