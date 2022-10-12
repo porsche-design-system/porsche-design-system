@@ -48,13 +48,14 @@ const prepareSsrComponents = (): void => {
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
+        .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
         .replace(/(public [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any ') // change type if props to any
         .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
         // .replace(/tabindex=/g, 'tabIndex=') // fix casing
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
-        // remove all imports except for utils and functional commponents which are rewritten
+        // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
             ? m.replace(group, '@porsche-design-system/components/dist/utils/utils-entry')
