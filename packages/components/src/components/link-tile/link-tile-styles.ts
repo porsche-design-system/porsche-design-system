@@ -60,6 +60,12 @@ export const getComponentCss = (
       paddingTop: aspectRatioPaddingTop[aspectRatio],
       position: 'relative',
       transform: 'translate3d(0,0,0)',
+      overflow: 'hidden',
+      '&:hover': {
+        '& $image': {
+          transform: 'scale3d(1.05, 1.05, 1.05)',
+        },
+      },
     },
     image: {
       position: 'absolute',
@@ -67,6 +73,9 @@ export const getComponentCss = (
       left: 0,
       width: '100%',
       height: '100%',
+      transition: 'transform 0.24s ease',
+      backfaceVisibility: 'hidden',
+      transform: 'translateZ(0)',
     },
     content: {
       position: 'absolute',
