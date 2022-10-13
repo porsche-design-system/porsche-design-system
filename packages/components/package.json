@@ -48,6 +48,7 @@
     "@porsche-design-system/utilities-v2": "0.0.0",
     "@splidejs/splide": "^4.1.2",
     "@stencil/core": "~2.18.0",
+    "@webcomponents/template-shadowroot": "^0.1.0",
     "jss": "^10.9.2",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.2",

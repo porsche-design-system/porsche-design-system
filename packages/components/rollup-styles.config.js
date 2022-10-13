@@ -6,6 +6,7 @@ import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { pascalCase } from 'change-case';
+import { terser } from 'rollup-plugin-terser';
 
 // TODO: why are there no typings produced?
 
@@ -39,22 +40,42 @@ ${stylesExports}
 
 generateStylesEntryFile();
 
-export default {
-  input,
-  output: {
-    dir: outputDir,
-    format: 'esm',
+export default [
+  {
+    input,
+    output: {
+      dir: outputDir,
+      format: 'esm',
+    },
+    plugins: [
+      replace({
+        ROLLUP_REPLACE_IS_STAGING: '"production"',
+      }),
+      nodeResolve(),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: outputDir,
+      }),
+    ],
   },
-  plugins: [
-    replace({
-      ROLLUP_REPLACE_IS_STAGING: '"production"',
-    }),
-    nodeResolve(),
-    commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      declaration: true,
-      declarationDir: outputDir,
-    }),
-  ],
-};
+  {
+    input: 'src/dsr-ponyfill.ts',
+    output: {
+      dir: 'dist/dsr-ponyfill',
+      format: 'iife',
+    },
+    plugins: [
+      nodeResolve(),
+      typescript({
+        tsconfig: './tsconfig.json',
+      }),
+      terser({
+        output: {
+          comments: false,
+        },
+      }),
+    ],
+  },
+];
