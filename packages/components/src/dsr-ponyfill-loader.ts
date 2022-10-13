@@ -1,7 +1,4 @@
-const div = document.createElement('div');
-div.innerHTML = '<template shadowroot="open"></template>';
-
-if (!div.shadowRoot) {
+if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
   const script = document.createElement('script');
   script.src = 'dsr-ponyfill.min.js';
   document.body.appendChild(script);
