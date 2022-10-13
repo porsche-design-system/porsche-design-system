@@ -22,11 +22,12 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
     let tweakedComponent = super.generateComponent(component, extendedProps, skeletonProps);
+    const hasChildren = this.inputParser.canHaveChildren(component);
 
     // destructure children prop
-    tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, `children, $&`);
-
-    const hasChildren = this.inputParser.canHaveChildren(component);
+    if (hasChildren) {
+      tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, `children, $&`);
+    }
 
     // add hydrated class
     tweakedComponent = tweakedComponent.replace(
@@ -46,14 +47,16 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
       ...(!process.browser
-      ? {
-          children: (
-            <${this.getSsrComponentName(component)}
-              {...{ ${spreadProps ? `${spreadProps} , ` : ''}${hasChildren ? 'children' : ''} }}
-            />
-          ),
-        }
-      : { children }),
+        ? {
+            children: (
+              <${this.getSsrComponentName(component)}
+                {...{ ${spreadProps ? `${spreadProps} , ` : ''}${hasChildren ? 'children' : ''} }}
+              />
+            ),
+          }
+        : {
+            ${hasChildren ? 'children,\n            ' : ''}suppressHydrationWarning: true,
+          }),
 `
     );
 
