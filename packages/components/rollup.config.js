@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 const outputDir = 'dist/utils';
-const input = './src/utils-entry.ts';
+const input = 'src/utils-entry.ts';
 
 const generateUtilsEntryFile = () => {
   const componentsDir = path.resolve(__dirname, 'src/components');
@@ -22,7 +22,8 @@ const generateUtilsEntryFile = () => {
 import '../scripts/mockMutationObserver';
 
 export * from './utils';
-${utilsExports}`;
+${utilsExports}
+`;
 
   fs.writeFileSync(path.resolve(__dirname, input), inputContent);
   console.log(`Successfully generated ${input}`);

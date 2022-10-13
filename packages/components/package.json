@@ -19,6 +19,7 @@
     "build:wrappers:generateWrappers": "ts-node --project tsconfig.node.json scripts/generateWrappers.ts",
     "build:wrappers:prepareSsrComponents": "ts-node --project tsconfig.node.json scripts/prepareSsrComponents.ts",
     "build:wrappers:bundleUtils": "rollup -c rollup.config.js",
+    "rollup": "rollup -c rollup-styles.config.js",
     "build:type": "yarn build:type:addMissingTypeExport && yarn build:type:bundle",
     "build:type:addMissingTypeExport": "ts-node --project tsconfig.node.json scripts/addMissingTypeExport.ts",
     "build:type:bundle": "dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global --external-types --no-banner",
