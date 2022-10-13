@@ -602,9 +602,9 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
-          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+          * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: AspectRatio;
+        "aspectRatio"?: BreakpointCustomizable<AspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2206,9 +2206,9 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
-          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+          * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: AspectRatio;
+        "aspectRatio"?: BreakpointCustomizable<AspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */

@@ -1,16 +1,17 @@
-import { buildSlottedStyles, getCss } from '../../utils';
-import {addImportantToEachRule, addImportantToRule, pxToRemWithUnit} from '../../styles';
+import { buildResponsiveStyles, buildSlottedStyles, getCss } from '../../utils';
+import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 
-const aspectRatioPaddingTop: { [key in AspectRatio]: string } = {
-  '1:1': '100%',
-  '4:3': '75%',
-  '3:4': '133.33%',
-  '16:9': '56.25%',
-  '9:16': '177.75%',
+const aspectRatioPaddingTop: { [key in AspectRatio]: { paddingTop: string } } = {
+  '1:1': { paddingTop: '100%' },
+  '4:3': { paddingTop: '75%' },
+  '3:4': { paddingTop: '133.33%' },
+  '16:9': { paddingTop: '56.25%' },
+  '9:16': { paddingTop: '177.75%' },
 };
 
 const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): string => {
@@ -22,7 +23,7 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
 };
 
 export const getComponentCss = (
-  aspectRatio: AspectRatio,
+  aspectRatio: BreakpointCustomizable<AspectRatio>,
   isInherit: boolean,
   weight: TileLinkWeight,
   align: TileLinkAlign,
@@ -57,7 +58,7 @@ export const getComponentCss = (
     },
     root: {
       height: 0,
-      paddingTop: aspectRatioPaddingTop[aspectRatio],
+      ...buildResponsiveStyles(aspectRatio, (aspectRatio: AspectRatio) => aspectRatioPaddingTop[aspectRatio]),
       position: 'relative',
       transform: 'translate3d(0,0,0)',
       overflow: 'hidden',
@@ -85,7 +86,7 @@ export const getComponentCss = (
       display: 'grid',
       maxHeight: '100%',
       justifyItems: 'start',
-      padding:  `${pxToRemWithUnit(24)}`,
+      padding: `${pxToRemWithUnit(24)}`,
       gap: `${pxToRemWithUnit(24)}`,
       background: hasGradient && getGradientBackground(isCompact, isTopAligned),
       ...(isCompact

@@ -2,7 +2,7 @@ import { Component, Element, h, Prop } from '@stencil/core';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { getSlottedCss } from '../link-pure/link-pure-styles';
@@ -20,8 +20,8 @@ export class LinkTile {
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public weight?: TileLinkWeight = 'regular';
 
-  /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public aspectRatio?: AspectRatio = '4:3';
+  /** Aspect ratio of the link-tile. */
+  @Prop() public aspectRatio?: BreakpointCustomizable<AspectRatio> = '4:3';
 
   /** Label of the <a />. */
   @Prop() public label: string;
