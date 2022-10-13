@@ -65,7 +65,7 @@ const prepareSsrComponents = (): void => {
             : ''
         )
         .replace(/(getPrefixedTagNames)\((?:this\.)?host\)/g, '$1()') // remove this.host param
-        .replace(/(this\.(?:input|select|textarea));/g, '$1 || {};') // fallback for undefined input, select and textarea reference
+        .replace(/(this\.(?:input|select|textarea));/g, '$1 || defaultChildren[0].props;') // fallback for undefined input, select and textarea reference
         .replace(/(this\.host)\./g, '$1?.') // make this.host optional
         // add new imports
         .replace(
@@ -78,7 +78,7 @@ const prepareSsrComponents = (): void => {
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for key of icon component
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for certain private members
         .replace('<slot />', '<>{this.props.children}</>');
 
       // rewire named slots
