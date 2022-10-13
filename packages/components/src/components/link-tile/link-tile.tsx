@@ -1,10 +1,29 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, TEXT_SIZES, validateProps } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import { ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
+import { TextSize } from '../../types';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+
+const propTypes: PropTypes<typeof LinkTile> = {
+  size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<TileLinkWeight>(TILE_LINK_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<AspectRatio>(ASPECT_RATIOS),
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
+  align: AllowedTypes.oneOf<TileLinkAlign>(TILE_LINK_ALIGN),
+  gradient: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
+  href: AllowedTypes.string,
+  target: AllowedTypes.string,
+  download: AllowedTypes.string,
+  rel: AllowedTypes.string,
+  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-link-tile',
@@ -14,7 +33,7 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public size?: 'inherit';
+  @Prop() public size?: TextSize = 'inherit';
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public weight?: TileLinkWeight = 'regular';
@@ -53,7 +72,7 @@ export class LinkTile {
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
   public componentWillRender(): void {
-    // TODO add validate Props
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,
