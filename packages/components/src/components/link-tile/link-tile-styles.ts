@@ -1,5 +1,5 @@
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit } from '../../styles';
+import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
@@ -40,8 +40,7 @@ export const getComponentCss = (
       }),
       '::slotted(*:not(a))': {
         position: 'absolute',
-        top: 0,
-        left: 0,
+        ...getInsetJssStyle(),
         width: '100%',
         height: '100%',
         objectFit: 'cover',
@@ -49,8 +48,7 @@ export const getComponentCss = (
       '::slotted(a)::before': {
         content: '""',
         position: addImportantToRule('fixed'),
-        top: 0,
-        left: 0,
+        ...getInsetJssStyle(),
         width: '100%',
         height: '100%',
       },
@@ -60,7 +58,6 @@ export const getComponentCss = (
         ...(isInherit && { fontSize: 'inherit' }),
         fontWeight: getFontWeight(weight),
         maxWidth: pxToRemWithUnit(550),
-        padding: 0,
         margin: 0,
       },
     },
@@ -78,8 +75,7 @@ export const getComponentCss = (
     },
     image: {
       position: 'absolute',
-      top: 0,
-      left: 0,
+      ...getInsetJssStyle(),
       width: '100%',
       height: '100%',
       transition: 'transform 0.24s ease',
@@ -94,8 +90,8 @@ export const getComponentCss = (
       display: 'grid',
       maxHeight: '100%',
       justifyItems: 'start',
-      padding: `${pxToRemWithUnit(24)}`,
-      gap: `${pxToRemWithUnit(24)}`,
+      padding: pxToRemWithUnit(24),
+      gap: pxToRemWithUnit(24),
       background: hasGradient && getGradientBackground(isCompact, isTopAligned),
       ...(isCompact
         ? {
@@ -106,15 +102,11 @@ export const getComponentCss = (
             gridTemplateRows: 'auto auto',
           }),
     },
-    link: {
-      position: 'static',
-    },
     anchor: {
       '&::before': {
         content: '""',
         position: addImportantToRule('fixed'),
-        top: 0,
-        left: 0,
+        ...getInsetJssStyle(),
         width: '100%',
         height: '100%',
       },
