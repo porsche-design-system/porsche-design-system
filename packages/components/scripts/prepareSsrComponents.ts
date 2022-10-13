@@ -81,6 +81,8 @@ const prepareSsrComponents = (): void => {
         .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for certain private members
         .replace('<slot />', '<>{this.props.children}</>');
 
+      // TODO: take care of isRequiredAndParentNotRequired
+
       // rewire named slots
       if (newFileContent.includes('<slot name="') && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(/this\.props\.children/, 'defaultChildren').replace(
