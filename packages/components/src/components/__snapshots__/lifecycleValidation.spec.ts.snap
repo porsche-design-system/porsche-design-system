@@ -225,6 +225,24 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
+exports[`should call validateProps() with correct parameters via componentWillRender for p-link-tile: propTypes with ValidatorFunctions 1`] = `
+{
+  "align": "oneOf",
+  "aria": "aria",
+  "aspectRatio": "breakpoint",
+  "compact": "boolean",
+  "description": "string",
+  "download": "string",
+  "gradient": "boolean",
+  "href": "string",
+  "label": "string",
+  "rel": "string",
+  "size": "oneOf",
+  "target": "string",
+  "weight": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via componentWillRender for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",

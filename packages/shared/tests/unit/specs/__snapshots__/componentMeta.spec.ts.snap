@@ -791,6 +791,64 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-link-tile": {
+    "hasAriaProp": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSkeleton": false,
+    "hasSlot": true,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "props": [
+      {
+        "size": "inherit",
+      },
+      {
+        "weight": "regular",
+      },
+      {
+        "aspectRatio": "4:3",
+      },
+      {
+        "label": null,
+      },
+      {
+        "description": null,
+      },
+      {
+        "align": "bottom",
+      },
+      {
+        "gradient": true,
+      },
+      {
+        "compact": false,
+      },
+      {
+        "href": null,
+      },
+      {
+        "target": "_self",
+      },
+      {
+        "download": null,
+      },
+      {
+        "rel": null,
+      },
+      {
+        "aria": null,
+      },
+    ],
+    "requiredProps": [
+      "label",
+      "description",
+    ],
+    "shouldPatchSlot": false,
+    "styling": "jss",
+  },
   "p-marque": {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
