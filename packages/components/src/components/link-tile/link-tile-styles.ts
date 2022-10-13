@@ -41,16 +41,12 @@ export const getComponentCss = (
       '::slotted(*:not(a))': {
         position: 'absolute',
         ...getInsetJssStyle(),
-        width: '100%',
-        height: '100%',
         objectFit: 'cover',
       },
       '::slotted(a)::before': {
         content: '""',
         position: addImportantToRule('fixed'),
         ...getInsetJssStyle(),
-        width: '100%',
-        height: '100%',
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
@@ -63,7 +59,7 @@ export const getComponentCss = (
     },
     root: {
       height: 0,
-      ...buildResponsiveStyles(aspectRatio, (aspectRatio: AspectRatio) => aspectRatioPaddingTop[aspectRatio]),
+      ...buildResponsiveStyles(aspectRatio, (ratio: AspectRatio) => aspectRatioPaddingTop[ratio]),
       position: 'relative',
       transform: 'translate3d(0,0,0)',
       overflow: 'hidden',
@@ -76,8 +72,6 @@ export const getComponentCss = (
     image: {
       position: 'absolute',
       ...getInsetJssStyle(),
-      width: '100%',
-      height: '100%',
       transition: 'transform 0.24s ease',
       backfaceVisibility: 'hidden',
       // transform: 'translateZ(0)',
@@ -96,7 +90,7 @@ export const getComponentCss = (
       ...(isCompact
         ? {
             alignItems: 'center',
-            gridTemplateColumns: `auto auto`,
+            gridTemplateColumns: 'auto auto',
           }
         : {
             gridTemplateRows: 'auto auto',
@@ -107,8 +101,6 @@ export const getComponentCss = (
         content: '""',
         position: addImportantToRule('fixed'),
         ...getInsetJssStyle(),
-        width: '100%',
-        height: '100%',
       },
     },
   });
