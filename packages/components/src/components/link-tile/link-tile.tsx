@@ -1,11 +1,10 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
-import { getSlottedCss } from '../link-pure/link-pure-styles';
 
 @Component({
   tag: 'p-link-tile',
@@ -52,10 +51,6 @@ export class LinkTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillRender(): void {
     // TODO add validate Props

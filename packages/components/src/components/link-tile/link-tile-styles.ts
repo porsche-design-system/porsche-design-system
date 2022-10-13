@@ -1,10 +1,10 @@
-import { buildResponsiveStyles, buildSlottedStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit } from '../../styles';
 import { textSmall } from '../../../../utilities/projects/utilities';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 
 const aspectRatioPaddingTop: { [key in AspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -46,6 +46,14 @@ export const getComponentCss = (
         height: '100%',
         objectFit: 'cover',
       },
+      '::slotted(a)::before': {
+        content: '""',
+        position: addImportantToRule('fixed'),
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+      },
       p: {
         color: getThemedTextColor('dark', 'default'),
         ...textSmall,
@@ -76,7 +84,7 @@ export const getComponentCss = (
       height: '100%',
       transition: 'transform 0.24s ease',
       backfaceVisibility: 'hidden',
-      transform: 'translateZ(0)',
+      // transform: 'translateZ(0)',
     },
     content: {
       position: 'absolute',
@@ -112,19 +120,4 @@ export const getComponentCss = (
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '::slotted(a)::before': {
-        content: '""',
-        position: addImportantToRule('fixed'),
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-      },
-    })
-  );
 };
