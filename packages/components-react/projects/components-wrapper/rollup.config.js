@@ -42,6 +42,15 @@ export default [
         declarationDir: outputDir,
         rootDir: 'src',
       }),
+      copy({
+        targets: [
+          { src: `${rootDir}/LICENSE`, dest: outputDir },
+          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
+          { src: `${projectDir}/README.md`, dest: outputDir },
+          { src: `${projectDir}/package.json`, dest: outputDir },
+          { src: '../components/CHANGELOG.md', dest: outputDir },
+        ],
+      }),
     ],
   },
   {
@@ -83,7 +92,17 @@ export default [
         format: 'esm',
       },
     ],
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      typescript(typescriptOpts),
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/utilities/scss.scss`,
+            dest: `${outputDir}/utilities`,
+          },
+        ],
+      }),
+    ],
   },
   {
     input: `${projectDir}/src/testing.ts`,
@@ -92,21 +111,6 @@ export default [
       dir: outputDir,
       format: 'cjs',
     },
-    plugins: [
-      copy({
-        targets: [
-          {
-            src: `${projectDir}/src/utilities/scss.scss`,
-            dest: `${outputDir}/utilities`,
-          },
-          { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
-          { src: `${projectDir}/README.md`, dest: outputDir },
-          { src: `${projectDir}/package.json`, dest: outputDir },
-          { src: '../components/CHANGELOG.md', dest: outputDir },
-        ],
-      }),
-      typescript(typescriptOpts),
-    ],
+    plugins: [typescript(typescriptOpts)],
   },
 ];
