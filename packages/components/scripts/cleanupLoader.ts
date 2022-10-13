@@ -12,23 +12,23 @@ const cleanupLoader = () => {
 
   const directory = path.resolve(srcFilePath, '..');
   // find the file that contains definition of isBrowser util
-  const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^ssr-handling-[\d\w]*.js$/));
+  const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^validateProps-[\d\w]*.js$/));
   const filePath = path.resolve(directory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const [, browserImport] = /export \{.*?isBrowser(?:\$1)? as (\w+).*?};/.exec(fileContent) || [];
+  const [, hasWindowExport] = /export {.*?hasWindow as ([a-zA-Z]+).*?};/.exec(fileContent) || [];
 
-  if (browserImport === undefined) {
-    throw new Error('browserImport could not be extracted.');
+  if (hasWindowExport === undefined) {
+    throw new Error('hasWindowExport could not be extracted.');
   }
 
-  const isBrowserImport = `import { ${browserImport} as isBrowser } from './${fileName}'`;
+  const hasWindowImport = `import { ${hasWindowExport} as hasWindow } from './${fileName}'`;
 
   const content = `${lazyImport};
 ${globalScriptsImport};
-${isBrowserImport};
+${hasWindowImport};
 
 export const defineCustomElements = (options) => {
-  if (!isBrowser) {
+  if (!hasWindow) {
     return promiseResolve();
   }
 
