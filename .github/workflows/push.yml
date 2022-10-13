@@ -1,15 +1,15 @@
 on:
   push:
     branches:
-      - master
+      - main
       - v*
       - issue/*
       - housekeeping/*
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_NODE_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/playwright:v1.26.0-focal
+  PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -1115,7 +1115,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1146,7 +1146,7 @@ jobs:
     name: 'Release Components Angular'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1177,7 +1177,7 @@ jobs:
     name: 'Release Components React'
     needs:
       - release-components-js
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1209,7 +1209,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1241,7 +1241,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -1273,7 +1273,7 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'

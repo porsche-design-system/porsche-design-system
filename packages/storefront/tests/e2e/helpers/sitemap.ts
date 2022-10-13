@@ -4,7 +4,7 @@ import * as path from 'path';
 
 // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
 const whitelistedUrls: string[] = [
-  'https://github.com/porscheui/porsche-design-system',
+  'https://github.com/porsche-design-system/porsche-design-system',
   'https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette',
   'https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch',
   'https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch',

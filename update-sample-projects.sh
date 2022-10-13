@@ -10,7 +10,7 @@ if [[ -z "${2}" ]]; then
   exit 1
 fi
 
-samples=( "angular" "react" "gatsby" "nextjs" "vanillajs" )
+samples=( "angular" "react" "nextjs" "vanillajs" )
 
 for dir in ${samples[@]}; do
   echo "Updating '${1}' to '${2}' in 'sample-integration-${dir}'"

@@ -30,7 +30,7 @@ publish() {
     pushParam=""
 
     # TODO: how to handle v2, v3 branches?
-    if [[ "${P_CURRENT_BRANCH}" == "master" ]]; then
+    if [[ "${P_CURRENT_BRANCH}" == "main" ]]; then
       uxpin_token=$UXPIN_TOKEN_LATEST
       echo "Using UXPIN_TOKEN_LATEST"
 
