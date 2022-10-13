@@ -1,12 +1,18 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, TEXT_SIZES, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  parseAndGetAriaAttributes,
+  TEXT_SIZES,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './link-tile-styles';
-import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
-import { TextSize } from '../../types';
+
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
@@ -92,7 +98,14 @@ export class LinkTile {
       this.href === undefined ? (
         <slot name="link" />
       ) : (
-        <a class="anchor" href={this.href} target={this.target} download={this.download} rel={this.rel}>
+        <a
+          class="anchor"
+          href={this.href}
+          target={this.target}
+          download={this.download}
+          rel={this.rel}
+          {...parseAndGetAriaAttributes(this.aria)}
+        >
           {this.label}
         </a>
       );

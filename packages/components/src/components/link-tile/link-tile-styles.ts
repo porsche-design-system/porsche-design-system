@@ -1,10 +1,11 @@
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
-import { textSmall } from '../../../../utilities/projects/utilities';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable } from '../../types';
 import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 const aspectRatioPaddingTop: { [key in AspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -63,11 +64,13 @@ export const getComponentCss = (
       position: 'relative',
       transform: 'translate3d(0,0,0)',
       overflow: 'hidden',
-      '&:hover': {
-        '& $image': {
-          transform: 'scale3d(1.05, 1.05, 1.05)',
+      ...hoverMediaQuery({
+        '&:hover': {
+          '& $image': {
+            transform: 'scale3d(1.05, 1.05, 1.05)',
+          },
         },
-      },
+      }),
     },
     image: {
       position: 'absolute',

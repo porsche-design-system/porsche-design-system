@@ -24,7 +24,6 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttributes } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { AspectRatio, TileLinkAlign, TileLinkWeight } from "./components/link-tile/link-tile-utils";
-import { LinkTarget as LinkTarget1 } from "./utils/link-button/link-target";
 import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttributes } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -640,7 +639,7 @@ export namespace Components {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget1;
+        "target"?: LinkTarget;
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */
@@ -2244,7 +2243,7 @@ declare namespace LocalJSX {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget1;
+        "target"?: LinkTarget;
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */
