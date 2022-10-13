@@ -47,8 +47,7 @@ export default {
       tsconfig: './tsconfig.json',
       declaration: true,
       declarationDir: outputDir,
-      // rootDir: 'src',
-      compilerOptions: { jsx: 'react-jsx', jsxFactory: null },
+      include: ['src/**/*.ts'],
     }),
   ],
 };

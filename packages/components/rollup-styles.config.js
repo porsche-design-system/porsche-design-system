@@ -2,11 +2,11 @@ import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import { terser } from 'rollup-plugin-terser';
 import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { pascalCase } from 'change-case';
-import { terser } from 'rollup-plugin-terser';
 
 // TODO: why are there no typings produced?
 
@@ -57,25 +57,46 @@ export default [
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: outputDir,
+        include: ['src/**/*.ts'],
       }),
     ],
   },
   {
     input: 'src/dsr-ponyfill.ts',
     output: {
-      dir: 'dist/dsr-ponyfill',
-      format: 'iife',
+      file: 'dist/dsr-ponyfill.min.js',
+      format: 'esm',
     },
     plugins: [
+      // remove check for ponyfill since our loader takes care of it
+      replace({
+        'if (hasNativeDeclarativeShadowRoots())': 'if (false)',
+        delimiters: ['', ''],
+      }),
       nodeResolve(),
       typescript({
         tsconfig: './tsconfig.json',
+        include: ['src/dsr-ponyfill.ts'],
       }),
       terser({
         output: {
           comments: false,
         },
       }),
+    ],
+  },
+  {
+    input: 'src/dsr-ponyfill-loader.ts',
+    output: {
+      file: 'dist/dsr-ponyfill-loader.min.js',
+      format: 'iife',
+    },
+    plugins: [
+      typescript({
+        tsconfig: './tsconfig.json',
+        include: ['src/dsr-ponyfill-loader.ts'],
+      }),
+      terser(),
     ],
   },
 ];
