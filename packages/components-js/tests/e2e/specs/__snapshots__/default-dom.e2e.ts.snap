@@ -226,8 +226,8 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
     <p>
       value</p>
     <p-link class="link hydrated">
-      <slot name="link">
-      </slot>
+      <a class="anchor" href="value" target="_self">
+        value</a>
     </p-link>
   </div>
 </div>"

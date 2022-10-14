@@ -845,6 +845,7 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "label",
       "description",
+      "href",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",

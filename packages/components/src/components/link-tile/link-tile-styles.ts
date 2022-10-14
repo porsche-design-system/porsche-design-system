@@ -1,11 +1,11 @@
-import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import type { BreakpointCustomizable } from '../../types';
+import { textSmall } from '@porsche-design-system/utilities-v2';
+import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },

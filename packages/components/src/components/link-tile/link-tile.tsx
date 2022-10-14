@@ -11,10 +11,9 @@ import {
 import { getComponentCss } from './link-tile-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { LINK_TILE_ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
-
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
