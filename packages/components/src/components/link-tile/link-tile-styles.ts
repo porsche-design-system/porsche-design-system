@@ -4,10 +4,10 @@ import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
-import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
-const aspectRatioPaddingTop: { [key in AspectRatio]: { paddingTop: string } } = {
+const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
   '4:3': { paddingTop: '75%' },
   '3:4': { paddingTop: '133.33%' },
@@ -24,7 +24,7 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
 };
 
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<AspectRatio>,
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   isInherit: boolean,
   weight: TileLinkWeight,
   align: TileLinkAlign,
@@ -42,6 +42,8 @@ export const getComponentCss = (
       '::slotted(*:not(a))': {
         position: 'absolute',
         ...getInsetJssStyle(),
+        height: '100%',
+        width: '100%',
         objectFit: 'cover',
       },
       '::slotted(a)::before': {
@@ -60,7 +62,7 @@ export const getComponentCss = (
     },
     root: {
       height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: AspectRatio) => aspectRatioPaddingTop[ratio]),
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
       position: 'relative',
       transform: 'translate3d(0,0,0)',
       overflow: 'hidden',
@@ -77,7 +79,6 @@ export const getComponentCss = (
       ...getInsetJssStyle(),
       transition: 'transform 0.24s ease',
       backfaceVisibility: 'hidden',
-      // transform: 'translateZ(0)',
     },
     content: {
       position: 'absolute',
@@ -89,7 +90,7 @@ export const getComponentCss = (
       justifyItems: 'start',
       padding: pxToRemWithUnit(24),
       gap: pxToRemWithUnit(24),
-      background: hasGradient && getGradientBackground(isCompact, isTopAligned),
+      ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
       ...(isCompact
         ? {
             alignItems: 'center',

@@ -23,7 +23,7 @@ import { IconAriaAttributes } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttributes } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { AspectRatio, TileLinkAlign, TileLinkWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttributes } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -603,7 +603,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<AspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2207,7 +2207,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<AspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */

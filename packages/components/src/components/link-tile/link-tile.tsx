@@ -11,15 +11,15 @@ import {
 import { getComponentCss } from './link-tile-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
-import type { AspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
-import { ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
+import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
 
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TileLinkWeight>(TILE_LINK_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<AspectRatio>(ASPECT_RATIOS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   align: AllowedTypes.oneOf<TileLinkAlign>(TILE_LINK_ALIGN),
@@ -46,7 +46,7 @@ export class LinkTile {
   @Prop() public weight?: TileLinkWeight = 'regular';
 
   /** Aspect ratio of the link-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<AspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Label of the <a />. */
   @Prop() public label: string;
