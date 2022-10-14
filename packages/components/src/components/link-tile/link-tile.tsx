@@ -5,6 +5,7 @@ import {
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
+  throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
@@ -76,6 +77,10 @@ export class LinkTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
+
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
+  }
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
