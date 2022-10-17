@@ -1,9 +1,9 @@
 import { LinkTile } from './link-tile';
-import * as throwIfInvalidLinkUsageUtils from '../../utils/validation/throwIfInvalidLinkUsage';
+import * as throwIfInvalidLinkPureUsageUtils from '../../utils/validation/throwIfInvalidLinkPureUsage';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkUsage() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfInvalidLinkUsageUtils, 'throwIfInvalidLinkUsage');
+  it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfInvalidLinkPureUsageUtils, 'throwIfInvalidLinkPureUsage');
 
     const component = new LinkTile();
     component.host = document.createElement('p-link-tile');
