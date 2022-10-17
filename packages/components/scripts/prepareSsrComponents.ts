@@ -92,9 +92,8 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
 
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
-            // TODO: minify css
             return `
-    const style = get${componentName}Css(${getComponentCssParams});
+    const style = get${componentName}Css(${getComponentCssParams}).replace(/\\s\\s+|\\.\\\\(?=:)|[\\n\\\\]+| (?={)|;(?=\\s+})|(:|media)\\s(?=.*;?)/g, '$1');
 
     return (
       <>
@@ -164,7 +163,7 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
         .replace(/tabs\.theme \|\| ('light')/, '$1') // tabs
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/(getTextListItemCss\(listType, orderType, isNestedList\))/, "''; // $1") // text-list-item
+        .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(
           /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
