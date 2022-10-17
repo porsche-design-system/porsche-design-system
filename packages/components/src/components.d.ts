@@ -23,7 +23,7 @@ import { IconAriaAttributes } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttributes } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAspectRatio, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttributes } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -595,7 +595,7 @@ export namespace Components {
         /**
           * Alignment of link and description.
          */
-        "align"?: TileLinkAlign;
+        "align"?: LinkTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -643,7 +643,7 @@ export namespace Components {
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "weight"?: TileLinkWeight;
+        "weight"?: LinkTileWeight;
     }
     interface PMarque {
         /**
@@ -2199,7 +2199,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of link and description.
          */
-        "align"?: TileLinkAlign;
+        "align"?: LinkTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -2247,7 +2247,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "weight"?: TileLinkWeight;
+        "weight"?: LinkTileWeight;
     }
     interface PMarque {
         /**
