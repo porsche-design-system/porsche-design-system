@@ -132,7 +132,7 @@ export class Scroller {
             <div class="trigger" />
           </div>
         </div>
-        {['prev', 'next'].map((direction: ScrollerDirection) => renderPrevNextButton(direction))}
+        {['prev', 'next'].map(renderPrevNextButton)}
       </div>
     );
   }
