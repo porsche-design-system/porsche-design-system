@@ -92,6 +92,7 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
 
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
+            // TODO: minify css
             return `
     const style = get${componentName}Css(${getComponentCssParams});
 
