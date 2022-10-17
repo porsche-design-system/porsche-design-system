@@ -1,4 +1,4 @@
-import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
+import { addImportantToEachRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
