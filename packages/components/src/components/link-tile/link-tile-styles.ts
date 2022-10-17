@@ -4,7 +4,7 @@ import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable } from '../../types';
 import { textSmall } from '@porsche-design-system/utilities-v2';
-import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
@@ -26,8 +26,8 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   isInherit: boolean,
-  weight: TileLinkWeight,
-  align: TileLinkAlign,
+  weight: LinkTileWeight,
+  align: LinkTileAlign,
   isCompact: boolean,
   hasGradient: boolean
 ): string => {

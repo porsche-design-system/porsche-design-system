@@ -12,16 +12,16 @@ import { getComponentCss } from './link-tile-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, TileLinkAlign, TileLinkWeight } from './link-tile-utils';
-import { LINK_TILE_ASPECT_RATIOS, TILE_LINK_ALIGN, TILE_LINK_WEIGHTS } from './link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_ALIGN, LINK_TILE_WEIGHTS } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<TileLinkWeight>(TILE_LINK_WEIGHTS),
+  weight: AllowedTypes.oneOf<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<TileLinkAlign>(TILE_LINK_ALIGN),
+  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGN),
   gradient: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   href: AllowedTypes.string,
@@ -42,7 +42,7 @@ export class LinkTile {
   @Prop() public size?: TextSize = 'inherit';
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public weight?: TileLinkWeight = 'regular';
+  @Prop() public weight?: LinkTileWeight = 'regular';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -54,7 +54,7 @@ export class LinkTile {
   @Prop() public description: string;
 
   /** Alignment of link and description. */
-  @Prop() public align?: TileLinkAlign = 'bottom';
+  @Prop() public align?: LinkTileAlign = 'bottom';
 
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
