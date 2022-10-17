@@ -21,7 +21,7 @@ export const parseJSON = (
       return JSON.parse(
         prop
           .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]?([\w]+)[\s"]?:([^//||1||3||4||9||16])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls and aspect ratio, e. g. 1:1, 4:3
+          .replace(/[\s"]?([\a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls and aspect ratio, e. g. 1:1, 4:3
       );
     } catch {
       // prop is string, e.g. "block" or "inline"
