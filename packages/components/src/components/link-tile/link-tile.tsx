@@ -87,7 +87,7 @@ export class LinkTile {
       this.host,
       getComponentCss,
       this.aspectRatio,
-      !!this.size,
+      this.size,
       this.weight,
       this.align,
       this.compact,

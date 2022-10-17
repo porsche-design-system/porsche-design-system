@@ -203,6 +203,10 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/link-social/link-social.props.md')],
     },
+    'Link Tile': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/link-tile/link-tile.examples.md')],
+    },
     Marque: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/marque/marque.examples.md')],
