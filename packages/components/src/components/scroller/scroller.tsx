@@ -109,8 +109,8 @@ export class Scroller {
           <PrefixedTagNames.pButtonPure
             class="button"
             type="button"
-            tabindex="-1"
-            hide-label="true"
+            tabIndex="-1"
+            hideLabel="true"
             size="inherit"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             onClick={() => this.scrollOnPrevNextClick(direction)}
@@ -126,7 +126,7 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper" tabindex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
+          <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
             <slot />
             <div class="trigger" />
             <div class="trigger" />

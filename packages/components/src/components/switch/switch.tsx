@@ -108,7 +108,7 @@ export class Switch {
           {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
-          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+          tabIndex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
           onClick={this.onSwitchClick}
         >
           <span class="toggle">
