@@ -94,7 +94,7 @@ export const getComponentCss = (
       ...(isCompact
         ? {
             alignItems: 'center',
-            gridTemplateColumns: 'auto auto',
+            gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`,
           }
         : {
             gridTemplateRows: 'auto auto',
