@@ -114,6 +114,11 @@ export class LinkTile {
         </a>
       );
 
+    const linkProps = {
+      class: 'link',
+      theme: 'dark',
+    };
+
     return (
       <div class="root">
         <div class="image">
@@ -123,11 +128,11 @@ export class LinkTile {
         <div class="content">
           <p>{this.description}</p>
           {this.compact ? (
-            <PrefixedTagNames.pLinkPure class="link" hideLabel="true" icon="arrow-right" theme="dark">
+            <PrefixedTagNames.pLinkPure {...linkProps} hideLabel="true" icon="arrow-right">
               {anchor}
             </PrefixedTagNames.pLinkPure>
           ) : (
-            <PrefixedTagNames.pLink class="link" variant="tertiary" theme="dark">
+            <PrefixedTagNames.pLink {...linkProps} variant="tertiary">
               {anchor}
             </PrefixedTagNames.pLink>
           )}
