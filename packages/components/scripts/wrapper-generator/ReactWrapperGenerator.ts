@@ -80,7 +80,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...propsToEventListener.map(
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
       ),
-      `const Tag = usePrefix('${component}');`,
+      `const WebComponentTag = usePrefix('${component}');`,
       ...(hasSkeleton ? ['const usesSkeleton = useSkeleton();'] : []),
     ];
     const componentHooks = componentHooksArr.join('\n    ');
@@ -129,7 +129,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   ): JSX.Element => {
     ${[componentHooks, componentEffects, componentProps].filter((x) => x).join('\n\n    ')}
 
-    return <Tag {...props} />;
+    return <WebComponentTag {...props} />;
   }
 );`;
   }

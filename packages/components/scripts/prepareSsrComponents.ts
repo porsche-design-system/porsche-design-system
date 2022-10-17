@@ -98,7 +98,7 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
     return (
       <>
         <template shadowroot="open">
-          <style>{style}</style>
+          <style dangerouslySetInnerHTML={{ __html: style }}></style>
           ${g1.trim().replace(/\n/g, '$&    ')}
         </template>
         {this.children}
@@ -139,15 +139,11 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
         newFileContent = newFileContent
           .replace(
             /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
-            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === '$2').length > 0`
+            `($1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
             /hasMessage\(this\.props\.host, (this\.props\.message), (this\.props\.state)\)/,
             `($1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
-          )
-          .replace(
-            /(<StateMessage.*?message)={(.*?)}/,
-            `$1={$2 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'message')}`
           )
           .replace(/namedSlottedChildren\.filter\(\({ props: { slot } }\) => slot === '(?:subline|caption)'\)/, '{$&}')
           .replace(
@@ -165,10 +161,13 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace('grid.gutter', '{ base: 16, s: 24, m: 36 }') // grid
         .replace(/tabs\.theme \|\| ('light')/, '$1') // tabs
-        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmeted-control
-        .replace(/(getTextListItemCss\(listType, orderType, isNestedList\))/, "''; // $1") // text-list-item
+        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/(getHeadlineTagName|getHTMLElement|getClosestHTMLElement)\(this\.props/, '$1(null'); // headline, text, text-list
+        .replace(/(getTextListItemCss\(listType, orderType, isNestedList\))/, "''; // $1") // text-list-item
+        .replace(
+          /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
+          '$1(null'
+        ); // headline, text, text-list, tag
 
       return newFileContent;
     });
