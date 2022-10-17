@@ -46,9 +46,9 @@ export const getComponentCss = (
         width: '100%',
         objectFit: 'cover',
       },
-      '::slotted(a)::before': {
+      '::slotted(a)::after': {
         content: '""',
-        position: addImportantToRule('fixed'),
+        position: 'fixed',
         ...getInsetJssStyle(),
       },
       p: {
@@ -88,7 +88,10 @@ export const getComponentCss = (
       display: 'grid',
       maxHeight: '100%',
       justifyItems: 'start',
-      padding: pxToRemWithUnit(24),
+      padding:
+        align === 'bottom'
+          ? `${pxToRemWithUnit(48)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)}`
+          : `${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(48)}`,
       gap: pxToRemWithUnit(24),
       ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
       ...(isCompact
@@ -101,9 +104,9 @@ export const getComponentCss = (
           }),
     },
     anchor: {
-      '&::before': {
+      '&::after': {
         content: '""',
-        position: addImportantToRule('fixed'),
+        position: 'fixed',
         ...getInsetJssStyle(),
       },
     },
