@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as globby from 'globby';
-import { paramCase } from 'change-case';
+import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 
 const prepareSsrComponents = (): void => {
@@ -19,6 +19,8 @@ const prepareSsrComponents = (): void => {
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
+      const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
+
       let newFileContent = fileContent
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
@@ -28,12 +30,10 @@ const prepareSsrComponents = (): void => {
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
         .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
-        .replace(/\n  public connectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentWillLoad\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentDidLoad\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentWillUpdate\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentDidUpdate\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillRender\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentDidRender\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\S\s]+?\n  }\n/g, '')
@@ -41,7 +41,7 @@ const prepareSsrComponents = (): void => {
         .replace(/\n  private (?!get).*{[\S\s]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         // .replace(/    validateProps\(this, propTypes\);\n/, '') // temporary
-        // .replace(/attachComponentCss\(this\.host, (getComponentCss), /, 'return $1(')
+        // .replace(/attachComponentCss\(this\.host, (get)Component(Css), /, `return $1${componentName}$2(`)
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
@@ -65,29 +65,66 @@ const prepareSsrComponents = (): void => {
             : ''
         )
         .replace(/(getPrefixedTagNames)\((?:this\.)?host\)/g, '$1()') // remove this.host param
-        .replace(/(this\.(?:input|select|textarea));/g, '$1 || defaultChildren[0].props;') // fallback for undefined input, select and textarea reference
-        .replace(/(this\.host)\./g, '$1?.') // make this.host optional
+        // .replace(/(this\.host)\./g, '$1?.') // make this.host optional
         // add new imports
         .replace(
           /^/g,
-          "import { Component } from 'react';\nimport { getPrefixedTagNames } from '../../getPrefixedTagNames';\n"
+          `import { Component } from 'react';
+import { getPrefixedTagNames } from '../../getPrefixedTagNames';
+import { get${componentName}Css } from '@porsche-design-system/components/dist/styles/styles-entry';
+`
         )
         .replace(/export class [A-Za-z]+/, '$& extends Component<any>') // make it a real React.Component
-        .replace(/(<\/?)Host.*(>)/g, '$1$2') // remove Host fragment
+        .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
-        .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
-        .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
-        .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2') // revert for certain private members
-        .replace('<slot />', '<>{this.props.children}</>');
+        .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`); // inline breakpoint value from utilities-v2 for marque
+      // .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
+      // .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
+      // .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
 
       // TODO: take care of isRequiredAndParentNotRequired
 
-      // rewire named slots
-      if (newFileContent.includes('<slot name="') && !newFileContent.includes('FunctionalComponent')) {
-        newFileContent = newFileContent.replace(/this\.props\.children/, 'defaultChildren').replace(
-          /public render\(\): JSX\.Element {/,
-          `$&
+      // inject DSR template
+      if (!newFileContent.includes('FunctionalComponent')) {
+        const getComponentCssParams = /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(
+          fileContent
+        )![1];
+
+        newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
+          return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
+            return `
+    const style = get${componentName}Css(${getComponentCssParams});
+
+    return (
+      <>
+        <template shadowroot="open">
+          <style>{style}</style>
+          ${g1.trim().replace(/\n/g, '$&    ')}
+        </template>
+        {this.children}
+      </>
+    );`; // TODO: add this.children only when there are children
+          });
+        });
+      }
+
+      newFileContent = newFileContent
+        .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
+        .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
+
+      // remove leftover lifecycles
+      newFileContent = newFileContent
+        .replace(/\n  public connectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
+        .replace(/\n  public componentWillRender\(\): void {[\S\s]+?\n  }\n/g, '');
+
+      // rewire default slot
+      if (newFileContent.includes('<slot') && !newFileContent.includes('FunctionalComponent')) {
+        newFileContent = newFileContent
+          // .replace(/this\.props\.children/, 'defaultChildren')
+          .replace(
+            /public render\(\): JSX\.Element {/,
+            `$&
     const children = Array.isArray(this.props.children)
       ? this.props.children
       : this.props.children
@@ -95,24 +132,14 @@ const prepareSsrComponents = (): void => {
       : [];
     const namedSlottedChildren = children.filter((child) => child.props?.slot);
     const defaultChildren = children.filter((child) => !child.props?.slot);\n`
-        );
+          )
+          .replace(/this\.(?:input|select|textarea)/g, 'defaultChildren[0].props'); // fallback for undefined input, select and textarea reference
 
-        const namedSlots = Array.from(fileContent.matchAll(/<slot name="([a-z]+)" \/>/g));
-        namedSlots.forEach(([match, slotName]) => {
-          newFileContent = newFileContent.replace(
-            match,
-            `namedSlottedChildren.filter(({ props: { slot } }) => slot === '${slotName}')`
-          );
-        });
-
+        // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
-            /hasLabel\(this\.props\.host, (this\.props\.label)\)/,
-            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'label').length > 0`
-          )
-          .replace(
-            /hasDescription\(this\.props\.host, (this\.props\.description)\)/,
-            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'description').length > 0`
+            /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
+            `$1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === '$2').length > 0`
           )
           .replace(
             /hasMessage\(this\.props\.host, (this\.props\.message), (this\.props\.state)\)/,
@@ -124,14 +151,24 @@ const prepareSsrComponents = (): void => {
           )
           .replace(/namedSlottedChildren\.filter\(\({ props: { slot } }\) => slot === '(?:subline|caption)'\)/, '{$&}')
           .replace(
-            /= hasSlottedSubline\(this\.props\.host\)/,
-            `= namedSlottedChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
+            /hasSlottedSubline\(this\.props\.host\)/g,
+            `namedSlottedChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /= hasNamedSlot\(this\.props\.host, 'caption'\)/,
-            `= namedSlottedChildren.filter(({ props: { slot } }) => slot === 'caption').length > 0`
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description)'\)/g,
+            `namedSlottedChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       }
+
+      // fix various issues
+      newFileContent = newFileContent
+        .replace(/(this\.props)\.host/g, '$1') // general
+        .replace('grid.gutter', '{ base: 16, s: 24, m: 36 }') // grid
+        .replace(/tabs\.theme \|\| ('light')/, '$1') // tabs
+        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmeted-control
+        .replace(/(getTextListItemCss\(listType, orderType, isNestedList\))/, "''; // $1") // text-list-item
+        .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
+        .replace(/(getHeadlineTagName|getHTMLElement|getClosestHTMLElement)\(this\.props/, '$1(null'); // headline, text, text-list
 
       return newFileContent;
     });
