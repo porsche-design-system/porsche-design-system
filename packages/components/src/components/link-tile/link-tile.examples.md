@@ -21,6 +21,15 @@ export default class Code extends Vue {
 
 <p-link-tile
   label="Some label"
+  description="Add href as slot"
+>
+  <a slot="link" href="#">Some Link</a>
+  <img slot="image" src="${require('../../assets/porsche_beach.jpg')}" />
+</p-link-tile>
+
+
+<p-link-tile
+  label="Some label"
   description="Size inherit"
   href="#"
   size="inherit"
