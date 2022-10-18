@@ -19,8 +19,6 @@ const generateUtilsEntryFile = () => {
 
   const inputContent = `/* Auto Generated File */
 
-import '../scripts/mockMutationObserver';
-
 export * from './utils';
 ${utilsExports}
 `;
