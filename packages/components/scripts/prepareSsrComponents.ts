@@ -71,6 +71,7 @@ const prepareSsrComponents = (): void => {
           /^/g,
           `import { Component } from 'react';
 import { getPrefixedTagNames } from '../../getPrefixedTagNames';
+import { minifyCss } from '../../minifyCss';
 import { get${componentName}Css } from '@porsche-design-system/components/dist/styles/styles-entry';
 `
         )
@@ -93,7 +94,7 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = get${componentName}Css(${getComponentCssParams}).replace(/\\s\\s+|\\.\\\\(?=:)|[\\n\\\\]+| (?={)|;(?=\\s+})|(:|media)\\s(?=.*;?)/g, '$1');
+    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
 
     return (
       <>
