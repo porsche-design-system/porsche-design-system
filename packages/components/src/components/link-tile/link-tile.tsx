@@ -2,13 +2,14 @@ import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   throwIfInvalidLinkPureUsage,
   validateProps,
 } from '../../utils';
-import { getComponentCss } from './link-tile-styles';
+import { getComponentCss, getSlottedCss } from './link-tile-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
@@ -82,6 +83,10 @@ export class LinkTile {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
+  public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
+  }
+
   public componentWillLoad(): void {
     throwIfInvalidLinkPureUsage(this.host, this.href);
     throwIfAlignTopWithoutCompact(this.host, this.align, this.compact);
@@ -126,11 +131,9 @@ export class LinkTile {
 
     return (
       <div class="root">
-        <div class="image-position-container">
-          <div class="image-overflow-container">
-            <div class="image">
-              <slot />
-            </div>
+        <div class="image-overflow-container">
+          <div class="image">
+            <slot />
           </div>
         </div>
         <div class="content">

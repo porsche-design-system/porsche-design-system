@@ -5,7 +5,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable, TextSize } from '../../types';
 import { fontSize, textMedium } from '@porsche-design-system/utilities-v2';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -46,25 +46,13 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top' && isCompact;
-  const containerSizeStyles = {
-    height: 0,
-    ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
-    position: 'relative',
-  };
-
+  console.log(size);
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
         height: 'fit-content',
       }),
-      '::slotted(*)': {
-        position: 'absolute',
-        ...getInsetJssStyle(),
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
       p: {
         color: getThemedTextColor('dark', 'default'),
         ...textMedium,
@@ -77,8 +65,10 @@ export const getComponentCss = (
       },
     },
     root: {
-      ...containerSizeStyles,
-      transform: 'translate3d(0,0,0)', // needed for hover effect??
+      height: 0,
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
+      position: 'relative',
+      transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
       ...hoverMediaQuery({
         '&:hover': {
           '& $image': {
@@ -87,12 +77,9 @@ export const getComponentCss = (
         },
       }),
     },
-    'image-position-container': {
+    'image-overflow-container': {
       position: 'absolute',
       ...getInsetJssStyle(),
-    },
-    'image-overflow-container': {
-      ...containerSizeStyles,
       overflow: 'hidden',
     },
     image: {
@@ -132,4 +119,18 @@ export const getComponentCss = (
       },
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildSlottedStyles(host, {
+      '& img': {
+        position: 'absolute',
+        ...getInsetJssStyle(),
+        height: '100%',
+        width: '100%',
+        objectFit: 'cover',
+      },
+    })
+  );
 };
