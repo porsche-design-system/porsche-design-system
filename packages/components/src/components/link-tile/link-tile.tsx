@@ -44,10 +44,10 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public size?: TextSize = 'inherit';
+  @Prop() public size?: TextSize = 'medium';
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public weight?: LinkTileWeight = 'regular';
+  @Prop() public weight?: LinkTileWeight = 'semibold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';

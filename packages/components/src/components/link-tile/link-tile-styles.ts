@@ -1,4 +1,4 @@
-import { addImportantToEachRule, pxToRemWithUnit, getInsetJssStyle } from '../../styles';
+import { addImportantToEachRule, pxToRemWithUnit, getInsetJssStyle, getTransition } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -16,18 +16,25 @@ const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: strin
 };
 
 const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): string => {
+  const gradient =
+    'rgba(31, 31, 31, 0.9) 0%, ' +
+    'rgba(31, 31, 31, 0.9) 20%, ' +
+    'rgba(31, 31, 31, 0.852589) 26.67%, ' +
+    'rgba(32, 32, 32, 0.768225) 33.33%, ' +
+    'rgba(33, 33, 33, 0.668116) 40%, ' +
+    'rgba(34, 34, 34, 0.557309) 46.67%, ' +
+    'rgba(35, 35, 35, 0.442691) 53.33% ,' +
+    'rgba(36, 36, 36, 0.331884) 60%,' +
+    'rgba(37, 37, 37, 0.231775) 66.67%,' +
+    'rgba(38, 38, 38, 0.147411) 73.33%,' +
+    'rgba(39, 39, 39, 0.0816599) 80%,' +
+    'rgba(39, 39, 39, 0.03551) 86.67%,' +
+    'rgba(39, 39, 39, 0.0086472) 93.33%,' +
+    'rgba(39, 39, 39, 0)';
+
   return isCompact && isTopAligned
-    ? 'linear-gradient(180deg, #1E1E1E 0%, rgba(30, 30, 30, 0.991353) 6.67%, rgba(30, 30, 30, 0.96449) 13.33%, rgba(31, 31, 31, 0.91834) 20%, rgba(31, 31, 31, 0.852589) 26.67%, rgba(32, 32, 32, 0.768225) 33.33%, rgba(33, 33, 33, 0.668116) 40%, rgba(34, 34, 34, 0.557309) 46.67%, rgba(35, 35, 35, 0.442691) 53.33%, rgba(36, 36, 36, 0.331884) 60%, rgba(37, 37, 37, 0.231775) 66.67%, rgba(38, 38, 38, 0.147411) 73.33%, rgba(39, 39, 39, 0.0816599) 80%, rgba(39, 39, 39, 0.03551) 86.67%, rgba(39, 39, 39, 0.0086472) 93.33%, rgba(39, 39, 39, 0) 100%);'
-    : 'linear-gradient(180deg, ' +
-        'rgba(51, 51, 51, 0) 0%, ' +
-        'rgba(51, 51, 51, 0.12857) 5%, ' +
-        'rgba(51, 51, 51, 0.25715) 10%, ' +
-        'rgba(51, 51, 51, 0.38572) 15%, ' +
-        'rgba(51, 51, 51, 0.51429) 20%, ' +
-        'rgba(51, 51, 51, 0.64286) 25%, ' +
-        'rgba(51, 51, 51, 0.77143) 30%,  ' +
-        'rgba(51, 51, 51, 0.9) 35%, ' +
-        'rgba(51, 51, 51, 0.9) 100%);';
+    ? `linear-gradient(${gradient} 100%);`
+    : `linear-gradient(to top, ${gradient} 100%);`;
 };
 
 export const getComponentCss = (
@@ -39,6 +46,11 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top' && isCompact;
+  const containerSizeStyles = {
+    height: 0,
+    ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
+    position: 'relative',
+  };
 
   return getCss({
     '@global': {
@@ -63,11 +75,8 @@ export const getComponentCss = (
       },
     },
     root: {
-      height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
-      position: 'relative',
+      ...containerSizeStyles,
       transform: 'translate3d(0,0,0)', // needed for hover effect??
-      overflow: 'hidden',
       ...hoverMediaQuery({
         '&:hover': {
           '& $image': {
@@ -81,15 +90,13 @@ export const getComponentCss = (
       ...getInsetJssStyle(),
     },
     'image-overflow-container': {
-      height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
-      position: 'relative',
+      ...containerSizeStyles,
       overflow: 'hidden',
     },
     image: {
       position: 'absolute',
       ...getInsetJssStyle(),
-      transition: 'transform 0.24s ease',
+      transition: getTransition('transform'),
       backfaceVisibility: 'hidden',
     },
     content: {
@@ -102,8 +109,8 @@ export const getComponentCss = (
       justifyItems: 'start',
       padding:
         align === 'bottom'
-          ? `${pxToRemWithUnit(48)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)}`
-          : `${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(48)}`,
+          ? `${pxToRemWithUnit(64)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)}`
+          : `${pxToRemWithUnit(24)} ${pxToRemWithUnit(24)} ${pxToRemWithUnit(64)}`,
       gap: pxToRemWithUnit(24),
       ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
       ...(isCompact
