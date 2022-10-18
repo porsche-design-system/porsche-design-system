@@ -98,6 +98,7 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
 
     return (
       <>
+        {/* @ts-ignore */}
         <template shadowroot="open">
           <style dangerouslySetInnerHTML={{ __html: style }}></style>
           ${g1.trim().replace(/\n/g, '$&    ')}
