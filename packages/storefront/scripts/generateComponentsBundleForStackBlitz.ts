@@ -25,7 +25,7 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
     );
     // Update components-js package imports to local and relative ones since no components-js package will be installed from npm in StackBlitz
     bundle[path] = `${fs
-      .readFileSync(file, 'utf-8')
+      .readFileSync(file, 'utf8')
       .replace(
         /(?<!"name": ")@porsche-design-system\/components-js/g,
         `./${'../'.repeat((file.match(/\//g) || []).length - 3)}components-js`

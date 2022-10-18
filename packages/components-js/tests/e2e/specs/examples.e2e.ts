@@ -19,7 +19,7 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../public/index.html');
-const fileContent = fs.readFileSync(filePath, 'utf-8');
+const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawOptions] = /<select onchange.*([\s\S]*?)<\/select>/.exec(fileContent) || [];
 const routes: { name: string; path: string }[] = rawOptions
