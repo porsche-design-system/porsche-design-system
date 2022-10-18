@@ -61,6 +61,7 @@ export default [
       }),
     ],
   },
+  // TODO: move ponyfill into partials or PorscheDesignSystemProvider
   {
     input: 'src/dsr-ponyfill.ts',
     output: {
