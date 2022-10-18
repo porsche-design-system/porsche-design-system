@@ -46,17 +46,12 @@ export const getComponentCss = (
         display: 'block',
         height: 'fit-content',
       }),
-      '::slotted(*:not(a))': {
+      '::slotted(*)': {
         position: 'absolute',
         ...getInsetJssStyle(),
         height: '100%',
         width: '100%',
         objectFit: 'cover',
-      },
-      '::slotted(a)::after': {
-        content: '""',
-        position: 'fixed',
-        ...getInsetJssStyle(),
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
@@ -71,7 +66,7 @@ export const getComponentCss = (
       height: 0,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
       position: 'relative',
-      transform: 'translate3d(0,0,0)',
+      transform: 'translate3d(0,0,0)', // needed for hover effect??
       overflow: 'hidden',
       ...hoverMediaQuery({
         '&:hover': {
@@ -80,6 +75,16 @@ export const getComponentCss = (
           },
         },
       }),
+    },
+    'image-position-container': {
+      position: 'absolute',
+      ...getInsetJssStyle(),
+    },
+    'image-overflow-container': {
+      height: 0,
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => aspectRatioPaddingTop[ratio]),
+      position: 'relative',
+      overflow: 'hidden',
     },
     image: {
       position: 'absolute',

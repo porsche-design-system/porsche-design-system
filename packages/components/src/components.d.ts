@@ -623,7 +623,7 @@ export namespace Components {
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
-        "href"?: string;
+        "href": string;
         /**
           * Label of the <a />.
          */

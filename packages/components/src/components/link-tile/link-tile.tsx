@@ -68,7 +68,7 @@ export class LinkTile {
   @Prop() public compact?: boolean = false;
 
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string;
+  @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -104,34 +104,37 @@ export class LinkTile {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const anchor: JSX.Element =
-      this.href === undefined ? (
-        <slot name="link" />
-      ) : (
-        <a
-          class="anchor"
-          href={this.href}
-          target={this.target}
-          download={this.download}
-          rel={this.rel}
-          {...parseAndGetAriaAttributes(this.aria)}
-        >
-          {this.label}
-        </a>
-      );
+    const anchor: JSX.Element = (
+      <a
+        class="anchor"
+        href={this.href}
+        target={this.target}
+        download={this.download}
+        aria-describedby="description"
+        rel={this.rel}
+        {...parseAndGetAriaAttributes(this.aria)}
+      >
+        {this.label}
+      </a>
+    );
 
     const linkProps = {
       class: 'link',
       theme: 'dark',
+      aria: this.aria,
     };
 
     return (
       <div class="root">
-        <div class="image">
-          <slot name="image" />
+        <div class="image-position-container">
+          <div class="image-overflow-container">
+            <div class="image">
+              <slot />
+            </div>
+          </div>
         </div>
         <div class="content">
-          <p>{this.description}</p>
+          <p id="description">{this.description}</p>
           {this.compact ? (
             <PrefixedTagNames.pLinkPure {...linkProps} hideLabel="true" icon="arrow-right">
               {anchor}
