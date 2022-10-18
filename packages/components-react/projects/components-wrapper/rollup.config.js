@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import resolve from '@rollup/plugin-node-resolve';
 
 const rootDir = '../..';
 const projectDir = 'projects/components-wrapper';
@@ -19,7 +20,7 @@ const external = [
   'react/jsx-runtime',
 ];
 
-const packageJsonConfig = {
+const subPackageJsonConfig = {
   baseContents: {
     main: 'index.js',
     module: 'esm/index.js',
@@ -36,6 +37,7 @@ export default [
       format: 'cjs',
     },
     plugins: [
+      resolve(),
       typescript({
         ...typescriptOpts,
         declaration: true,
@@ -60,7 +62,7 @@ export default [
       dir: `${outputDir}/esm`,
       format: 'esm',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [resolve(), typescript(typescriptOpts)],
   },
   {
     input: `${projectDir}/src/partials.ts`,
@@ -69,7 +71,7 @@ export default [
       {
         file: `${outputDir}/partials/index.js`,
         format: 'cjs',
-        plugins: [generatePackageJson(packageJsonConfig)],
+        plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
         file: `${outputDir}/partials/esm/index.js`,
@@ -85,7 +87,7 @@ export default [
       {
         file: `${outputDir}/utilities/js/index.js`,
         format: 'cjs',
-        plugins: [generatePackageJson(packageJsonConfig)],
+        plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
         file: `${outputDir}/utilities/js/esm/index.js`,
