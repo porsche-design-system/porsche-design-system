@@ -1,4 +1,5 @@
 import type { JssStyle } from 'jss';
+import { hasDocument } from '../utils';
 
 // inspired by https://www.abeautifulsite.net/posts/testing-support-for-focus-visible/
 export const supportsFocusVisible = (): boolean => {
@@ -17,7 +18,7 @@ export const supportsFocusVisible = (): boolean => {
   return isSupported;
 };
 
-const hasFocusVisibleSupport = supportsFocusVisible();
+const hasFocusVisibleSupport = hasDocument && supportsFocusVisible();
 // getter for easy mocking
 export const getHasFocusVisibleSupport = (): boolean => hasFocusVisibleSupport;
 
