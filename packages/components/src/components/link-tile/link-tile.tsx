@@ -13,7 +13,12 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTar
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
-import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_ALIGN, LINK_TILE_WEIGHTS } from './link-tile-utils';
+import {
+  LINK_TILE_ASPECT_RATIOS,
+  LINK_TILE_ALIGN,
+  LINK_TILE_WEIGHTS,
+  throwIfAlignTopWithoutCompact,
+} from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
@@ -79,6 +84,7 @@ export class LinkTile {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkPureUsage(this.host, this.href);
+    throwIfAlignTopWithoutCompact(this.host, this.align, this.compact);
   }
 
   public componentWillRender(): void {
@@ -124,7 +130,6 @@ export class LinkTile {
         <div class="image">
           <slot name="image" />
         </div>
-        {/* What Aria attribute for gradient as it is only a graphic container? */}
         <div class="content">
           <p>{this.description}</p>
           {this.compact ? (
