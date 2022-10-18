@@ -635,7 +635,7 @@ export namespace Components {
         /**
           * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "size"?: TextSize;
+        "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2239,7 +2239,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "size"?: TextSize;
+        "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Target attribute where the link should be opened.
          */

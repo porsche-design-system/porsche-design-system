@@ -21,8 +21,8 @@ import {
 } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -44,7 +44,7 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public size?: TextSize = 'medium';
+  @Prop() public size?: BreakpointCustomizable<TextSize> = 'medium';
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public weight?: LinkTileWeight = 'semibold';

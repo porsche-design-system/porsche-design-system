@@ -3,9 +3,9 @@ import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable, TextSize } from '../../types';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontSize, textMedium } from '@porsche-design-system/utilities-v2';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -39,7 +39,7 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
-  size: TextSize,
+  size: BreakpointCustomizable<TextSize>,
   weight: LinkTileWeight,
   align: LinkTileAlign,
   isCompact: boolean,
@@ -67,9 +67,11 @@ export const getComponentCss = (
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
-        ...textSmall,
-        ...buildResponsiveStyles(size, (s: TextSize) => fontSize[s]),
-        fontWeight: getFontWeight(weight),
+        ...textMedium,
+        ...mergeDeep(
+          buildResponsiveStyles(size, (s: TextSize) => fontSize[s]),
+          buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
+        ),
         maxWidth: pxToRemWithUnit(550),
         margin: 0,
       },
