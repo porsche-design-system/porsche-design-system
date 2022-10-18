@@ -13,7 +13,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
-import { INLINE_NOTIFICATION_STATES } from '@porsche-design-system/components/src/components/feedback/inline-notification/inline-notification-utils';
+import { INLINE_NOTIFICATION_STATES } from '@porsche-design-system/components/src/components/inline-notification/inline-notification-utils';
 
 let page: Page;
 
