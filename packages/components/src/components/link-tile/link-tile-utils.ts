@@ -3,6 +3,9 @@ import { getTagName } from '../../utils';
 export const LINK_TILE_WEIGHTS = ['regular', 'semibold', 'bold'] as const;
 export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
 
+export const LINK_TILE_SIZE = ['default', 'inherit'] as const;
+export type LinkTileSize = typeof LINK_TILE_SIZE[number];
+
 export const LINK_TILE_ALIGN = ['top', 'bottom'] as const;
 export type LinkTileAlign = typeof LINK_TILE_ALIGN[number];
 

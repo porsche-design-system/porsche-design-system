@@ -18,11 +18,12 @@
       /*}*/
       .container {
         display: grid;
-        grid-template-columns: 20% 30% 30% 20%;
+        grid-template-columns: 30% 30%;
         grid-template-rows: auto;
-        grid-template-areas: 'one two three four';
+        grid-template-areas: 'one two';
         column-gap: 1.33333%;
         row-gap: 10px;
+        font-size: x-large;
       }
       .item {
       }
@@ -35,33 +36,34 @@
 
     <main>
       <div class="container">
-        <!--        <p-link-tile label="Some label" description="Der Mittelmotor-Sportwagen." aspect-ratio="16:9" compact="true">-->
-        <!--          <a slot="link" href="#">Some Link</a>-->
-        <!--          <img src="./assets/white_background.jpg" />-->
-        <!--        </p-link-tile>-->
-        <!--        <p-link-tile-->
-        <!--          label="Some label"-->
-        <!--          description="Der Mittelmotor-Sportwagen"-->
-        <!--          aspect-ratio="4:3"-->
-        <!--          compact="true"-->
-        <!--        >-->
-        <!--          <img src="./assets/porsche_white_background.jpg" />-->
-        <!--          <a slot="link" href="#">Some label</a>-->
-        <!--        </p-link-tile>-->
+        <p-link-tile
+          label="Some label"
+          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
+          aspect-ratio="4:3"
+          aria="{ 'aria-label': 'some label' }"
+          href="#"
+        >
+          <picture>
+            <source media="(min-width:650px)" srcset="./assets/porsche_beach.jpg" />
+            <source media="(min-width:465px)" srcset="./assets/porsche_factory.jpg" />
+            <img src="./assets/surfer.jpg" alt="Flowers" />
+          </picture>
+        </p-link-tile>
 
-        <!--        <p-link-tile-->
-        <!--          label="Some label"-->
-        <!--          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."-->
-        <!--          aspect-ratio="4:3"-->
-        <!--          aria="{ 'aria-label': 'some label' }"-->
-        <!--          href="#"-->
-        <!--        >-->
-        <!--          <picture>-->
-        <!--            <source media="(min-width:650px)" srcset="./assets/porsche_beach.jpg">-->
-        <!--            <source media="(min-width:465px)" srcset="./assets/porsche_factory.jpg">-->
-        <!--            <img src="./assets/surfer.jpg" alt="Flowers">-->
-        <!--          </picture>-->
-        <!--        </p-link-tile>-->
+        <p-link-tile
+          label="Some label"
+          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
+          aspect-ratio="4:3"
+          aria="{ 'aria-label': 'some label' }"
+          size="inherit"
+          href="#"
+        >
+          <picture>
+            <source media="(min-width:650px)" srcset="./assets/porsche_beach.jpg" />
+            <source media="(min-width:465px)" srcset="./assets/porsche_factory.jpg" />
+            <img src="./assets/surfer.jpg" alt="Flowers" />
+          </picture>
+        </p-link-tile>
 
         <p-link-tile label="Some label" description="Der Mittelmotor-Sportwagen." aspect-ratio="16:9" href="#">
           <img src="./assets/porsche_beach.jpg" />

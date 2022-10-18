@@ -23,7 +23,7 @@ import { IconAriaAttributes } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttributes } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAspectRatio, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttributes } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -635,7 +635,7 @@ export namespace Components {
         /**
           * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "size"?: BreakpointCustomizable<TextSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2239,7 +2239,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description. Only to be used if custom size 'inherit' is needed.
          */
-        "size"?: BreakpointCustomizable<TextSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */

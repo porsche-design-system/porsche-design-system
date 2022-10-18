@@ -5,16 +5,16 @@ import {
   attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  TEXT_SIZES,
   throwIfInvalidLinkPureUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, LinkTarget, TextSize } from '../../types';
+import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import {
+  LINK_TILE_SIZE,
   LINK_TILE_ASPECT_RATIOS,
   LINK_TILE_ALIGN,
   LINK_TILE_WEIGHTS,
@@ -22,7 +22,7 @@ import {
 } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZE),
   weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
@@ -45,7 +45,7 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public size?: BreakpointCustomizable<TextSize> = 'medium';
+  @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
   @Prop() public weight?: LinkTileWeight = 'semibold';

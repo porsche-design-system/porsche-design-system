@@ -2,10 +2,17 @@ import { addImportantToEachRule, pxToRemWithUnit, getInsetJssStyle, getTransitio
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import type { BreakpointCustomizable, TextSize } from '../../types';
-import { fontSize, textMedium } from '@porsche-design-system/utilities-v2';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
+import type { BreakpointCustomizable } from '../../types';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
+import {
+  fontBehavior,
+  fontFamily,
+  fontHyphenation,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+} from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -37,16 +44,24 @@ const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): strin
     : `linear-gradient(to top, ${gradient} 100%);`;
 };
 
+const sizeMap = {
+  inherit: {
+    lineHeight: 'inherit',
+    fontSize: 'inherit',
+  },
+  default: { fontSize: '1.25rem', lineHeight: 1.5555555556 },
+};
+
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<LinkTileSize>,
   weight: LinkTileWeight,
   align: LinkTileAlign,
   isCompact: boolean,
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top' && isCompact;
-  console.log(size);
+
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -55,9 +70,11 @@ export const getComponentCss = (
       }),
       p: {
         color: getThemedTextColor('dark', 'default'),
-        ...textMedium,
+        font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1.25rem/1.5555555556 ${fontFamily}`,
+        ...fontBehavior,
+        ...fontHyphenation,
         ...mergeDeep(
-          buildResponsiveStyles(size, (s: TextSize) => fontSize[s]),
+          buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
         ),
         maxWidth: pxToRemWithUnit(550),
