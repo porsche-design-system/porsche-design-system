@@ -1,4 +1,9 @@
-import '../../../../components/scripts/mockMutationObserver';
+// @ts-ignore
+global.MutationObserver = class MutationObserverMock {
+  constructor(callback: any) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
 
 // patch window usage in cross imports from utils of components package via skeleton styles
 // @ts-ignore
