@@ -112,7 +112,7 @@ export class Button {
         {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
         class="root"
         type={this.type}
-        tabIndex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+        tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner
