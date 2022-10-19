@@ -58,7 +58,6 @@ const paddingSizeXS = pxToRemWithUnit(24);
 const gradientPadding = pxToRemWithUnit(64);
 
 const getPaddingStyles = (paddingSize: string, align: LinkTileAlign): JssStyle => ({
-  gap: paddingSize,
   paddingLeft: paddingSize,
   paddingRight: paddingSize,
   ...(align === 'bottom' ? { paddingBottom: paddingSize } : { paddingTop: paddingSize }),
@@ -130,7 +129,7 @@ export const getComponentCss = (
           ? `${gradientPadding} ${paddingSizeXS} ${paddingSizeXS}`
           : `${paddingSizeXS} ${paddingSizeXS} ${gradientPadding}`,
 
-      gap: paddingSizeXS,
+      gap: pxToRemWithUnit(24),
       [mediaQueryMin('s')]: getPaddingStyles(pxToRemWithUnit(32), align),
       [mediaQueryMin('l')]: getPaddingStyles(pxToRemWithUnit(40), align),
       ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
