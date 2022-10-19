@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({

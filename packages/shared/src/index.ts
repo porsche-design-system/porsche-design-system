@@ -1,4 +1,3 @@
-export * from './constants';
 export * from './data';
 export * from './lib/codeSamples';
 export * from './lib/componentMeta';

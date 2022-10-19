@@ -5,9 +5,14 @@ import { PButton } from '../../../projects/components-wrapper/src/public-api';
 import {
   getMergedClassName,
   skipPorscheDesignSystemCDNRequestsDuringTests,
+<<<<<<< HEAD
 } from '../../../projects/components-wrapper/src/utils';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
 import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
+=======
+} from '../../../projects/react-wrapper/src/utils';
+import * as hooks from '../../../projects/react-wrapper/src/hooks';
+>>>>>>> 0d3b136f8 (feat: remove component skeletons | sas | #1221)
 
 describe('getMergedClassName()', () => {
   test.each`
@@ -65,39 +70,10 @@ describe('syncRefs()', () => {
   });
 
   it('should sync refs if ref is set directly', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
     expect(button.className).toBe(INITIAL_CLASS_NAME);
-
-    await userEvent.click(button);
-
-    expect(button.className).toBe(CLASS_NAME);
-  });
-
-  it('should sync refs if ref is set as callback', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
-    const { getByTestId } = render(<Sample isRefCallback />);
-    const button = getByTestId('button');
-
-    expect(button.className).toBe(INITIAL_CLASS_NAME);
-
-    await userEvent.click(button);
-
-    expect(button.className).toBe(CLASS_NAME);
-  });
-
-  it('should use useSkeleton() hook and set skeleton classes', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(true);
-    const { getByTestId } = render(<Sample />);
-    const button = getByTestId('button');
-
-    expect(button.className).toBe(
-      `${INITIAL_CLASS_NAME}${
-        SKELETONS_ACTIVE ? ` ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary` : ''
-      }`
-    );
 
     await userEvent.click(button);
 
