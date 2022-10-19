@@ -9,11 +9,11 @@ const generateOverviewPage = (): void => {
   const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
   const pollComponentsReadyFileContent = fs.readFileSync(pollComponentsReadyFilePath, 'utf8');
 
-  const newFileContent =
-    overviewFileContent
-      .replace("import { pollComponentsReady } from '../pollComponentsReady';", "import type { NextPage } from 'next';")
-      .replace(/\nexport (const OverviewPage)/, pollComponentsReadyFileContent + '\n$1: NextPage') +
-    '\nexport default OverviewPage;\n';
+  const newFileContent = overviewFileContent
+    .replace("import { pollComponentsReady } from '../pollComponentsReady';", "import type { NextPage } from 'next';")
+    .replace(/\nexport (const OverviewPage)/, pollComponentsReadyFileContent + '\n$1: NextPage')
+    .replace(/@porsche-design-system\/components-react/g, '$&/ssr')
+    .replace(/$/, '$&\nexport default OverviewPage;\n');
 
   const targetFileName = '../pages/overview.tsx';
   const targetFilePath = path.resolve(__dirname, targetFileName);

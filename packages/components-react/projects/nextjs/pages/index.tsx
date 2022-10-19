@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { PHeadline } from '@porsche-design-system/components-react';
+import { PHeadline } from '@porsche-design-system/components-react/ssr';
 import { Nav } from '../components';
 
 const HomePage: NextPage = (): JSX.Element => {
