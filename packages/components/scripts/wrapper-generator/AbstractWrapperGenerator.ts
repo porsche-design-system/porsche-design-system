@@ -1,7 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, INTERNAL_TAG_NAMES, PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
-import { paramCase } from 'change-case';
 import { InputParser } from './InputParser';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -13,10 +12,6 @@ export type AdditionalFile = {
   content: string;
   relativePath?: string;
 };
-export type AbstractWrapperGeneratorConfig = {
-  hasSkeletonSupport?: boolean;
-};
-export type SkeletonProps = { propName: string; shouldAddValueToClassName: boolean }[];
 
 export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
@@ -30,8 +25,6 @@ export abstract class AbstractWrapperGenerator {
   private dataStructureBuilder = DataStructureBuilder.Instance;
   protected intrinsicElements = this.inputParser.getIntrinsicElements();
   protected relevantComponentTagNames: TagName[] = [];
-
-  constructor(private config: AbstractWrapperGeneratorConfig = {}) {}
 
   public generate(): void {
     console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
@@ -108,16 +101,10 @@ export abstract class AbstractWrapperGenerator {
     const extendedProps = this.dataStructureBuilder.convertToExtendedProps(component);
     const rawComponentInterface = this.inputParser.getRawComponentInterface(component);
     const nonPrimitiveTypes = this.dataStructureBuilder.extractNonPrimitiveTypes(rawComponentInterface);
-    const componentMeta = getComponentMeta(component);
-    const hasSkeleton = this.config.hasSkeletonSupport && componentMeta.hasSkeleton;
 
-    const importsDefinition = this.generateImports(component, extendedProps, nonPrimitiveTypes, hasSkeleton);
+    const importsDefinition = this.generateImports(component, extendedProps, nonPrimitiveTypes);
     const propsDefinition = this.generateProps(component, rawComponentInterface);
-    const wrapperDefinition = this.generateComponent(
-      component,
-      extendedProps,
-      (hasSkeleton && componentMeta.skeletonProps) || []
-    );
+    const wrapperDefinition = this.generateComponent(component, extendedProps);
 
     const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
 
@@ -147,15 +134,7 @@ export abstract class AbstractWrapperGenerator {
     }
   }
 
-  public getSkeletonClassNames(skeletonProps: SkeletonProps): string[] {
-    return skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
-      return `${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-        shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
-      }\``;
-    });
-  }
-
-  // helper to possible inject additional contents into barrel file
+  // helper to possibly inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {
     return '';
   }
@@ -171,12 +150,8 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // prettier-ignore
-  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[], hasSkeleton?: boolean): string;
+  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
-  public abstract generateComponent(
-    component: TagName,
-    extendedProps: ExtendedProp[],
-    skeletonProps: SkeletonProps
-  ): string;
+  public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
   public abstract getComponentFileName(component: TagName, withOutExtension?: boolean): string;
 }
