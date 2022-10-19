@@ -5,7 +5,7 @@ import type { SkeletonProps } from './AbstractWrapperGenerator';
 import { pascalCase, paramCase } from 'change-case';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
-  protected projectDir = 'nextjs-wrapper';
+  protected projectDir = 'react-ssr-wrapper';
 
   public generateImports(
     component: TagName,

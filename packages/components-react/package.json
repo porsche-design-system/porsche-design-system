@@ -8,10 +8,10 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 3000 -d ./dist/demo-app'",
-    "build": "yarn clean:build && yarn build:react-wrapper && yarn build:nextjs-wrapper && yarn build:uxpin-wrapper && yarn build:jsdom-polyfill",
+    "build": "yarn clean:build && yarn build:react-wrapper && yarn build:react-ssr-wrapper && yarn build:uxpin-wrapper && yarn build:jsdom-polyfill",
     "build-app": "BUILD_PATH='./dist/demo-app' SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "build:react-wrapper": "yarn rollup -c ./projects/react-wrapper/rollup.config.js",
-    "build:nextjs-wrapper": "yarn --cwd ./projects/nextjs-wrapper build",
+    "build:react-ssr-wrapper": "yarn --cwd ./projects/react-ssr-wrapper build",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "build:jsdom-polyfill": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
     "lint": "eslint 'src/**/*.{ts,tsx}'",

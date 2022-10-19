@@ -7,7 +7,7 @@ import { breakpoint } from '@porsche-design-system/utilities-v2';
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
-  const relativeDestinationDirectory = '../components-react/projects/nextjs-wrapper/src/lib/dsr-components';
+  const relativeDestinationDirectory = '../components-react/projects/react-ssr-wrapper/src/lib/dsr-components';
   const destinationDirectory = path.resolve(rootDirectory, relativeDestinationDirectory);
 
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
