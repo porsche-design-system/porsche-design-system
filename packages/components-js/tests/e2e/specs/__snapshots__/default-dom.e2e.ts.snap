@@ -218,15 +218,17 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
 
 exports[`should have no basic DOM regression for p-link-tile 1`] = `
 "<div class="root">
-  <div class="image">
-    <slot name="image">
-    </slot>
+  <div class="image-overflow-container">
+    <div class="image">
+      <slot>
+      </slot>
+    </div>
   </div>
   <div class="content">
-    <p>
+    <p id="description">
       value</p>
     <p-link class="link hydrated">
-      <a class="anchor" href="value" target="_self">
+      <a class="anchor" href="value" target="_self" aria-describedby="description">
         value</a>
     </p-link>
   </div>
