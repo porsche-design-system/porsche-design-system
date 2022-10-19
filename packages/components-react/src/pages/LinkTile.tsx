@@ -174,7 +174,7 @@ export const LinkTilePage = (): JSX.Element => {
             <img
               src="./assets/porsche_factory.jpg"
               srcset="./assets/porsche_office.jpg 1x, ./assets/porsche_beach.jpg 2x"
-              alt={}
+              alt="Office"
             />
           </PLinkTile>
         </div>
