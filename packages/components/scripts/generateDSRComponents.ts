@@ -4,13 +4,11 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 
-const generateSsrComponents = (): void => {
+const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
-  const destinationDirectory = path.resolve(
-    rootDirectory,
-    '../components-react/projects/nextjs-wrapper/src/lib/components-ssr'
-  );
+  const relativeDestinationDirectory = '../components-react/projects/nextjs-wrapper/src/lib/dsr-components';
+  const destinationDirectory = path.resolve(rootDirectory, relativeDestinationDirectory);
 
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
 
@@ -75,7 +73,7 @@ import { minifyCss } from '../../minifyCss';
 import { get${componentName}Css } from '@porsche-design-system/components/dist/styles/styles-entry';
 `
         )
-        .replace(/export class [A-Za-z]+/, '$& extends Component<any>') // make it a real React.Component
+        .replace(/(export class) ([A-Za-z]+)/, '$1 DSR$2 extends Component<any>') // make it a real React.Component
         .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`); // inline breakpoint value from utilities-v2 for marque
@@ -180,12 +178,12 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
   componentFileContents.forEach((fileContent) => {
     const name = /export (?:class|const) ([A-Za-z]+)/.exec(fileContent)![1];
 
-    const fileName = `${paramCase(name)}.tsx`;
+    const fileName = `${paramCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);
-    console.log(`Generated SSR Component into '${fileName}'`);
+    console.log(`Generated DSR Component into '${relativeDestinationDirectory}/${fileName}'`);
   });
 };
 
-generateSsrComponents();
+generateDSRComponents();
