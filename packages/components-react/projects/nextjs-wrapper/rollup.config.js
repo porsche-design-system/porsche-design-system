@@ -29,8 +29,9 @@ export default [
       }),
       generatePackageJson({
         baseContents: {
-          main: 'index.js',
-          module: 'esm/index.js',
+          main: 'public-api.js',
+          module: 'esm/public-api.js',
+          types: 'public-api.d.ts',
           sideEffects: false,
         },
       }),

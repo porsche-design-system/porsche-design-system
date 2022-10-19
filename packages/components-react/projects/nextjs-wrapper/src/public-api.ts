@@ -1,6 +1,6 @@
 // TODO: verify tree shaking
 // @ts-ignore
-if (!document.browser) {
+if (!process.browser) {
   // @ts-ignore
   global.MutationObserver = class MutationObserverMock {
     // @ts-ignore
