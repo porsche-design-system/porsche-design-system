@@ -5,6 +5,7 @@ import type { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
+  protected projectDir = 'react-wrapper';
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;

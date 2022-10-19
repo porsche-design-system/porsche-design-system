@@ -806,12 +806,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: components-angular-prod-build
-          path: ./packages/components-angular/dist/components-wrapper
+          path: ./packages/components-angular/dist/angular-wrapper
       - name: 'Store Components React Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: components-react-prod-build
-          path: ./packages/components-react/dist/components-wrapper
+          path: ./packages/components-react/dist/react-wrapper
       - name: 'Store Components UXPin Source Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -1163,7 +1163,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: components-angular-prod-build
-          path: ./packages/components-angular/dist/components-wrapper
+          path: ./packages/components-angular/dist/angular-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run-playwright
         env:
@@ -1172,7 +1172,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/components-angular/dist/components-wrapper
+          args: packages/components-angular/dist/angular-wrapper
   release-components-react:
     name: 'Release Components React'
     needs:
@@ -1194,7 +1194,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: components-react-prod-build
-          path: ./packages/components-react/dist/components-wrapper
+          path: ./packages/components-react/dist/react-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run-playwright
         env:
@@ -1203,7 +1203,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/components-react/dist/components-wrapper
+          args: packages/components-react/dist/react-wrapper
   release-assets:
     name: 'Release Assets'
     needs:

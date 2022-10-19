@@ -7,10 +7,10 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
-    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 3000 -d ./build'",
-    "build": "yarn clean:build && yarn build:wrappers && yarn build:jsdom-polyfill && yarn build:uxpin-wrapper",
-    "build-app": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
-    "build:wrappers": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 3000 -d ./dist/demo-app'",
+    "build": "yarn clean:build && yarn build:react-wrapper && yarn build:jsdom-polyfill && yarn build:uxpin-wrapper",
+    "build-app": "BUILD_PATH='./dist/demo-app' SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "build:react-wrapper": "yarn rollup -c ./projects/react-wrapper/rollup.config.js",
     "build:jsdom-polyfill": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
@@ -21,7 +21,7 @@
     "test:jsdom-polyfill": "jest --colors -c tests/jsdom-polyfill/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd projects/nextjs clean:node_modules && yarn --cwd projects/uxpin-wrapper clean:node_modules",
-    "clean:build": "rm -rf ./build && rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
+    "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.4.0",

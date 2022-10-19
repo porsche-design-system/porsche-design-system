@@ -1,15 +1,11 @@
 import { render } from '@testing-library/react';
-import type { ToastMessage } from '../../../projects/components-wrapper/src/public-api';
-import {
-  PButton,
-  PorscheDesignSystemProvider,
-  useToastManager,
-} from '../../../projects/components-wrapper/src/public-api';
-import * as hooks from '../../../projects/components-wrapper/src/hooks';
+import type { ToastMessage } from '../../../projects/react-wrapper/src/public-api';
+import { PButton, PorscheDesignSystemProvider, useToastManager } from '../../../projects/react-wrapper/src/public-api';
+import * as hooks from '../../../projects/react-wrapper/src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
-} from '../../../projects/components-wrapper/src/hooks';
+} from '../../../projects/react-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
 import { describeIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 

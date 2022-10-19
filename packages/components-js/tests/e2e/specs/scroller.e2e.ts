@@ -13,7 +13,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ScrollToPosition } from '../../../../components-angular/dist/components-wrapper/lib/types';
+import type { ScrollToPosition } from '../../../../components-angular/dist/angular-wrapper/lib/types'; // TODO: weird path?
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));

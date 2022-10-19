@@ -1,4 +1,4 @@
-import { minifyCss } from '../../../projects/components-wrapper/src/minifyCss';
+import { minifyCss } from '../../../projects/react-wrapper/src/minifyCss';
 
 it.each<{ input: string; result: string }>([
   {

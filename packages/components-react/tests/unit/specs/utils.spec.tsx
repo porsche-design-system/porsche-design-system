@@ -1,12 +1,12 @@
 import { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PButton } from '../../../projects/components-wrapper/src/public-api';
+import { PButton } from '../../../projects/react-wrapper/src/public-api';
 import {
   getMergedClassName,
   skipPorscheDesignSystemCDNRequestsDuringTests,
-} from '../../../projects/components-wrapper/src/utils';
-import * as hooks from '../../../projects/components-wrapper/src/hooks';
+} from '../../../projects/react-wrapper/src/utils';
+import * as hooks from '../../../projects/react-wrapper/src/hooks';
 import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
 describe('getMergedClassName()', () => {

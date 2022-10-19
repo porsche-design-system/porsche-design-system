@@ -3,8 +3,8 @@ import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const rootDir = '../..';
-const projectDir = 'projects/components-wrapper';
-const outputDir = 'dist/components-wrapper';
+const projectDir = 'projects/angular-wrapper';
+const outputDir = 'dist/angular-wrapper';
 
 const typescriptOpts = {
   tsconfig: `${projectDir}/tsconfig.json`,

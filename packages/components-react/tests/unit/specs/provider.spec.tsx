@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as pds from '@porsche-design-system/components-js';
 import { testSnapshot } from '../helpers';
-import { PButton, PorscheDesignSystemProvider } from '../../../projects/components-wrapper/src/public-api';
+import { PButton, PorscheDesignSystemProvider } from '../../../projects/react-wrapper/src/public-api';
 
 jest.mock('@porsche-design-system/components-js', () => ({
   load: jest.fn(),

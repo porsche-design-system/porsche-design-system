@@ -9,7 +9,7 @@ const prepareSsrComponents = (): void => {
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
   const destinationDirectory = path.resolve(
     rootDirectory,
-    '../components-react/projects/components-wrapper/src/lib/components-stencil'
+    '../components-react/projects/react-wrapper/src/lib/components-stencil'
   );
 
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();

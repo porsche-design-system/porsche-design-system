@@ -4,7 +4,7 @@ import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   skipPorscheDesignSystemCDNRequestsDuringTests,
   useToastManager,
-} from '../../../projects/components-wrapper/src/public-api';
+} from '../../../projects/react-wrapper/src/public-api';
 
 it('should expose componentsReady()', () => {
   expect(typeof componentsReady).toBe('function');

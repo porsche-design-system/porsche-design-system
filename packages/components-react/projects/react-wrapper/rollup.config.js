@@ -4,8 +4,8 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 
 const rootDir = '../..';
-const projectDir = 'projects/components-wrapper';
-const outputDir = 'dist/components-wrapper';
+const projectDir = 'projects/react-wrapper';
+const outputDir = 'dist/react-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
 
 const typescriptOpts = {

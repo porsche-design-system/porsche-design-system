@@ -6,7 +6,7 @@ import modify from 'rollup-plugin-modify';
 export default {
   input: 'projects/jsdom-polyfill/src/index.js',
   output: {
-    file: 'dist/components-wrapper/jsdom-polyfill/index.js',
+    file: 'dist/react-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
     exports: 'auto', // fixes rollup warning
   },
