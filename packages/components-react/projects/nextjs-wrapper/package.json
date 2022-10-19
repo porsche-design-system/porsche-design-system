@@ -1,0 +1,13 @@
+{
+  "name": "@porsche-design-system/nextjs-wrapper",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "scripts": {
+    "build": "cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
+    "clean": "yarn clean:node_modules",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log"
+  }
+}

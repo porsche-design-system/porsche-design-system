@@ -15,7 +15,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   ): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes, hasSkeleton);
     const ssrComponentName = this.getSsrComponentName(component);
-    imports += `\nimport { ${ssrComponentName} } from '../components-stencil/${paramCase(ssrComponentName)}';`;
+    imports += `\nimport { ${ssrComponentName} } from '../components-ssr/${paramCase(ssrComponentName)}';`;
 
     return imports;
   }

@@ -5,6 +5,7 @@ const generateWrappers = (): void => {
   const generator = new WrapperGenerator({ hasSkeletonSupport: SKELETONS_ACTIVE });
   generator.generate('angular');
   generator.generate('react');
+  generator.generate('nextjs');
   generator.generate('uxpin');
 };
 

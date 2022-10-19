@@ -4,7 +4,7 @@ import { NextJsReactWrapperGenerator } from './NextJsReactWrapperGenerator';
 import { UXPinReactWrapperGenerator } from './UXPinReactWrapperGenerator';
 import type { AbstractWrapperGeneratorConfig } from './AbstractWrapperGenerator';
 
-type Framework = 'angular' | 'react' | 'uxpin';
+type Framework = 'angular' | 'react' | 'nextjs' | 'uxpin';
 
 export class WrapperGenerator {
   constructor(private config: AbstractWrapperGeneratorConfig) {}
@@ -13,6 +13,8 @@ export class WrapperGenerator {
     if (framework === 'angular') {
       new AngularWrapperGenerator(this.config).generate();
     } else if (framework === 'react') {
+      new ReactWrapperGenerator(this.config).generate();
+    } else if (framework === 'nextjs') {
       new NextJsReactWrapperGenerator(this.config).generate();
     } else if (framework === 'uxpin') {
       new UXPinReactWrapperGenerator().generate();

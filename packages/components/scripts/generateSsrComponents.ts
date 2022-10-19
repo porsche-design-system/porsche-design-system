@@ -4,12 +4,12 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 
-const prepareSsrComponents = (): void => {
+const generateSsrComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
   const destinationDirectory = path.resolve(
     rootDirectory,
-    '../components-react/projects/react-wrapper/src/lib/components-stencil'
+    '../components-react/projects/nextjs-wrapper/src/lib/components-ssr'
   );
 
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
@@ -188,4 +188,4 @@ import { get${componentName}Css } from '@porsche-design-system/components/dist/s
   });
 };
 
-prepareSsrComponents();
+generateSsrComponents();
