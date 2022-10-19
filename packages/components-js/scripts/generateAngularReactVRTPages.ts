@@ -121,6 +121,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
+      const usesSetAllReady = script?.includes('componentsReady()');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -132,13 +133,18 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
       if (framework === 'angular') {
         // imports
-        const angularImports = ['ChangeDetectionStrategy', 'Component', usesOnInit && 'OnInit']
+        const angularImports = [
+          'ChangeDetectionStrategy',
+          'Component',
+          usesOnInit && 'OnInit',
+          usesSetAllReady && 'ChangeDetectorRef',
+        ]
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
 
         const pdsImports = [
-          usesComponentsReady && 'componentsReady',
+          (usesSetAllReady || usesComponentsReady) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -161,7 +167,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         // implementation
         const classImplements = usesOnInit ? 'implements OnInit ' : '';
         let classImplementation = '';
-        if (usesComponentsReady) {
+        if (usesSetAllReady) {
           classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
@@ -238,8 +244,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
       } else if (framework === 'react') {
         // imports
         const reactImports = [
-          (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
-          usesComponentsReady && 'useState',
+          (usesSetAllReady || usesQuerySelector) && !isIconPage && 'useEffect',
+          usesSetAllReady && 'useState',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
@@ -262,8 +268,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-          (usesComponentsReady || usesComponentsReady) &&
-            `import { pollComponentsReady } from '../pollComponentsReady';`,
+          (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -279,7 +284,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
 
         let useStateOrEffect = '';
 
-        if (usesComponentsReady) {
+        if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   pollComponentsReady().then(() => {

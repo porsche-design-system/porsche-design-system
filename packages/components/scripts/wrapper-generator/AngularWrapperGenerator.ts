@@ -27,13 +27,17 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
+    const importsFromComponentsWrapperModule = '';
+
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
 
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
-    return [importsFromAngular, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
+    return [importsFromAngular, importsFromProvider, importsFromTypes, importsFromComponentsWrapperModule]
+      .filter((x) => x)
+      .join('\n');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -79,6 +83,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n    ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+    const implementsOnInit = '';
+    const constructorParams = `c: ChangeDetectorRef, r: ElementRef, protected z: NgZone`;
 
     return `${inputsAndOutputs}
 
@@ -88,10 +94,10 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 @Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)}${genericType} {
+export class ${this.generateComponentName(component)}${genericType}${implementsOnInit} {
   ${classMembers}
 
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+  constructor(${constructorParams}) {
     ${constructorCode}
   }
 }`;
