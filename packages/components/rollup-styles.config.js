@@ -8,8 +8,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { pascalCase } from 'change-case';
 
-// TODO: why are there no typings produced?
-
 const outputDir = 'dist/styles';
 const input = 'src/styles-entry.ts';
 
@@ -45,7 +43,7 @@ export default [
     input,
     output: {
       dir: outputDir,
-      format: 'esm',
+      format: 'cjs',
     },
     plugins: [
       replace({
@@ -73,6 +71,7 @@ export default [
       replace({
         'if (hasNativeDeclarativeShadowRoots())': 'if (false)',
         delimiters: ['', ''],
+        preventAssignment: true,
       }),
       nodeResolve(),
       typescript({
