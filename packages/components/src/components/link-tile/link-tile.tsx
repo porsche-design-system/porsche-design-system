@@ -44,11 +44,11 @@ const propTypes: PropTypes<typeof LinkTile> = {
 export class LinkTile {
   @Element() public host!: HTMLElement;
 
-  /** Font size of the description. Only to be used if custom size 'inherit' is needed. */
+  /** Font size of the description. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
-  /** Font weight of the description. Only to be used if custom size 'inherit' is needed. */
-  @Prop() public weight?: LinkTileWeight = 'semibold';
+  /** Font weight of the description. */
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -68,7 +68,7 @@ export class LinkTile {
   /** Displays the tile-link as compact version with description and link icon only. */
   @Prop() public compact?: boolean = false;
 
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** href of the `<a>`. */
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */

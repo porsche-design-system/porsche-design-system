@@ -55,7 +55,7 @@ const sizeMap = {
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   size: BreakpointCustomizable<LinkTileSize>,
-  weight: LinkTileWeight,
+  weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkTileAlign,
   isCompact: boolean,
   hasGradient: boolean

@@ -621,7 +621,7 @@ export namespace Components {
          */
         "gradient"?: boolean;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * href of the `<a>`.
          */
         "href": string;
         /**
@@ -633,7 +633,7 @@ export namespace Components {
          */
         "rel"?: string;
         /**
-          * Font size of the description. Only to be used if custom size 'inherit' is needed.
+          * Font size of the description.
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
@@ -641,9 +641,9 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+          * Font weight of the description.
          */
-        "weight"?: LinkTileWeight;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -2225,7 +2225,7 @@ declare namespace LocalJSX {
          */
         "gradient"?: boolean;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * href of the `<a>`.
          */
         "href"?: string;
         /**
@@ -2237,7 +2237,7 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
-          * Font size of the description. Only to be used if custom size 'inherit' is needed.
+          * Font size of the description.
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
@@ -2245,9 +2245,9 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Font weight of the description. Only to be used if custom size 'inherit' is needed.
+          * Font weight of the description.
          */
-        "weight"?: LinkTileWeight;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
