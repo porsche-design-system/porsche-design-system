@@ -36,6 +36,7 @@ import { LinkPureSkeletonPage } from './LinkPureSkeleton';
 import { LinkSkeletonPage } from './LinkSkeleton';
 import { LinkSocialPage } from './LinkSocial';
 import { LinkSocialSkeletonPage } from './LinkSocialSkeleton';
+import { LinkTilePage } from './LinkTile';
 import { MarquePage } from './Marque';
 import { ModalBasicPage } from './ModalBasic';
 import { ModalFullscreenPage } from './ModalFullscreen';
@@ -201,6 +202,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Social Skeleton',
     path: '/link-social-skeleton',
     element: <LinkSocialSkeletonPage />,
+  },
+  {
+    name: 'Link Tile',
+    path: '/link-tile',
+    element: <LinkTilePage />,
   },
   {
     name: 'Marque',

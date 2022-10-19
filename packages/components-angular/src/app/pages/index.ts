@@ -48,6 +48,7 @@ import { LinkPureSkeletonComponent } from './link-pure-skeleton.component';
 import { LinkSkeletonComponent } from './link-skeleton.component';
 import { LinkSocialComponent } from './link-social.component';
 import { LinkSocialSkeletonComponent } from './link-social-skeleton.component';
+import { LinkTileComponent } from './link-tile.component';
 import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
 import { ModalFullscreenComponent } from './modal-fullscreen.component';
@@ -116,6 +117,7 @@ export const generatedPages = [
   LinkSkeletonComponent,
   LinkSocialComponent,
   LinkSocialSkeletonComponent,
+  LinkTileComponent,
   MarqueComponent,
   ModalBasicComponent,
   ModalFullscreenComponent,
@@ -283,6 +285,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Link Social Skeleton',
     path: 'link-social-skeleton',
     component: LinkSocialSkeletonComponent,
+  },
+  {
+    name: 'Link Tile',
+    path: 'link-tile',
+    component: LinkTileComponent,
   },
   {
     name: 'Marque',
