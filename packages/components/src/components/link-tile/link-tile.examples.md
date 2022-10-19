@@ -116,27 +116,19 @@ export default class Code extends Vue {
 
 <p-link-tile
   label="Some label"
-  description="Size medium"
+  description="Size default"
   href="#"
-  size="medium"
+  size="default"
 >
   <img src="${require('../../assets/porsche_office.jpg')}" />
 </p-link-tile>
 
-<p-link-tile
-  label="Some label"
-  description="Size large"
-  href="#"
-  size="large"
->
-  <img src="${require('../../assets/porsche_white_background.jpg')}" />
-</p-link-tile>
 
 <p-link-tile
   label="Some label"
-  description="Weight bold"
+  description="Weight semibold"
   href="#"
-  weight="bold"
+  weight="semibold"
 >
   <img src="${require('../../assets/surfer.jpg')}" />
 </p-link-tile>
