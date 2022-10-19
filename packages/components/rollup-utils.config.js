@@ -33,11 +33,12 @@ export default {
   input,
   output: {
     dir: outputDir,
-    format: 'esm',
+    format: 'cjs',
   },
   plugins: [
     replace({
       ROLLUP_REPLACE_IS_STAGING: '"production"',
+      preventAssignment: true,
     }),
     nodeResolve(),
     commonjs(),
