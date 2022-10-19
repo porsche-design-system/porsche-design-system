@@ -237,9 +237,9 @@ exports[`should call validateProps() with correct parameters via componentWillRe
   "href": "string",
   "label": "string",
   "rel": "string",
-  "size": "oneOf",
+  "size": "breakpoint",
   "target": "string",
-  "weight": "oneOf",
+  "weight": "breakpoint",
 }
 `;
 
