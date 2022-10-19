@@ -797,16 +797,16 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
-    "hasSlottedCss": false,
+    "hasSlottedCss": true,
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
     "props": [
       {
-        "size": "inherit",
+        "size": "default",
       },
       {
-        "weight": "regular",
+        "weight": "semibold",
       },
       {
         "aspectRatio": "4:3",
@@ -845,6 +845,7 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "label",
       "description",
+      "href",
       "href",
     ],
     "shouldPatchSlot": false,
