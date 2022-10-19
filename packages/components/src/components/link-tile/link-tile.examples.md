@@ -1,5 +1,47 @@
 # Link Tile
 
+The clickable component `p-link-tile` is a navigational item for grouping and separating related data on a page to tease
+content and navigate to further information within one container. It is set up to be displayed with an image/icon.
+
+<TableOfContents></TableOfContents>
+
+## Basic
+
+The default `p-link-tile` has an image/icon and a content container that contains a description and a navigational item.
+
+<Playground :markup="basic" :config="config"></Playground>
+
+## Aspect Ratio
+
+## Size
+
+## Weight
+
+## Gradient
+
+By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the gradient
+is not necessary for readability, the gradient can be removed by using the supplied boolean property `gradient="false"`.
+
+<Playground :markup="gradient" :config="config"></Playground>
+
+## Compact
+
+A `p-link-tile` can be used without visible label text. It can be removed by the provided boolean property
+`compact="true"`. If used without caption, it is mandatory for **accessibility** reasons to provide a descriptive
+`label text` for screen readers.
+
+<Playground :markup="compact" :config="config"></Playground>
+
+## Alignment
+
+By default, the content container of the `p-link-tile` is aligned at the bottom. In the `compact` variant the content
+container can be positioned at the top of the `p-link-tile` container. For this purpose the property `align="top"` must
+be set.
+
+<Playground :markup="align" :config="config"></Playground>
+
+## temp
+
 <Playground :markup="temp" :config="config"></Playground>
 
 <script lang="ts">
@@ -9,6 +51,50 @@ import Component from 'vue-class-component';
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  basic = `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" />
+  </p-link-tile>
+</div>`;
+
+  gradient = `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    gradient="false"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" />
+  </p-link-tile>
+</div>`;
+
+  compact = `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    compact="true"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" />
+  </p-link-tile>
+</div>`;
+
+  align = `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    compact="true"
+    align="top"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" />
+  </p-link-tile>
+</div>`;
   
   temp = `<div class="container">
 <p-link-tile
@@ -16,17 +102,8 @@ export default class Code extends Vue {
   description="Default"
   href="#"
 >
-  <img slot="image" src="${require('../../assets/porsche_beach.jpg')}" />
+  <img src="${require('../../assets/porsche_beach.jpg')}" />
 </p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Add href as slot"
->
-  <a slot="link" href="#">Some Link</a>
-  <img slot="image" src="${require('../../assets/porsche_beach.jpg')}" />
-</p-link-tile>
-
 
 <p-link-tile
   label="Some label"
@@ -34,7 +111,7 @@ export default class Code extends Vue {
   href="#"
   size="inherit"
 >
-  <img slot="image" src="${require('../../assets/porsche_factory.jpg')}" />
+  <img src="${require('../../assets/porsche_factory.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -43,7 +120,7 @@ export default class Code extends Vue {
   href="#"
   size="medium"
 >
-  <img slot="image" src="${require('../../assets/porsche_office.jpg')}" />
+  <img src="${require('../../assets/porsche_office.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -52,7 +129,7 @@ export default class Code extends Vue {
   href="#"
   size="large"
 >
-  <img slot="image" src="${require('../../assets/porsche_white_background.jpg')}" />
+  <img src="${require('../../assets/porsche_white_background.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -61,7 +138,7 @@ export default class Code extends Vue {
   href="#"
   weight="bold"
 >
-  <img slot="image" src="${require('../../assets/surfer.jpg')}" />
+  <img src="${require('../../assets/surfer.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -70,7 +147,7 @@ export default class Code extends Vue {
   href="#"
   aspect-ratio="1:1"
 >
-  <img slot="image" src="${require('../../assets/porsche_beach.jpg')}" />
+  <img src="${require('../../assets/porsche_beach.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -79,7 +156,7 @@ export default class Code extends Vue {
   href="#"
   aspect-ratio="3:4"
 >
-  <img slot="image" src="${require('../../assets/porsche_factory.jpg')}" />
+  <img src="${require('../../assets/porsche_factory.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -88,7 +165,7 @@ export default class Code extends Vue {
   href="#"
   aspect-ratio="16:9"
 >
-  <img slot="image" src="${require('../../assets/porsche_office.jpg')}" />
+  <img src="${require('../../assets/porsche_office.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -97,7 +174,7 @@ export default class Code extends Vue {
   href="#"
   aspect-ratio="9:16"
 >
-  <img slot="image" src="${require('../../assets/porsche_white_background.jpg')}" />
+  <img src="${require('../../assets/porsche_white_background.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -107,7 +184,7 @@ export default class Code extends Vue {
   align="top"
   compact="true"
 >
-  <img slot="image" src="${require('../../assets/surfer.jpg')}" />
+  <img src="${require('../../assets/surfer.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -116,7 +193,7 @@ export default class Code extends Vue {
   href="#"
   gradient="false"
 >
-  <img slot="image" src="${require('../../assets/porsche_beach.jpg')}" />
+  <img src="${require('../../assets/porsche_beach.jpg')}" />
 </p-link-tile>
 
 <p-link-tile
@@ -125,7 +202,7 @@ export default class Code extends Vue {
   href="#"
   compact="true"
 >
-  <img slot="image" src="${require('../../assets/porsche_office.jpg')}" />
+  <img src="${require('../../assets/porsche_office.jpg')}" />
 </p-link-tile>
 
 </div>`
