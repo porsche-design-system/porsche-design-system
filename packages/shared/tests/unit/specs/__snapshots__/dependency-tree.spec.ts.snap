@@ -2,13 +2,11 @@
 
 exports[`should have no regression for dependency tree 1`] = `
 {
-  "constants/skeleton.js": [],
   "data/table-data-advanced.js": [],
   "data/table-data-basic.js": [],
   "data/table-data-sorting.js": [],
   "data/table-data-vrt.js": [],
   "index.js": [
-    "constants/skeleton.js",
     "data/table-data-advanced.js",
     "data/table-data-basic.js",
     "data/table-data-sorting.js",
