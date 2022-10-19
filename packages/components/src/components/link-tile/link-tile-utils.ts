@@ -1,6 +1,6 @@
 import { getTagName } from '../../utils';
 
-export const LINK_TILE_WEIGHTS = ['regular', 'semibold', 'bold'] as const;
+export const LINK_TILE_WEIGHTS = ['regular', 'semibold'] as const;
 export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
 
 export const LINK_TILE_SIZE = ['default', 'inherit'] as const;

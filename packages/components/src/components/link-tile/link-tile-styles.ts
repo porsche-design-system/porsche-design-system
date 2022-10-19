@@ -55,7 +55,7 @@ const sizeMap = {
 };
 
 const paddingSizeXS = pxToRemWithUnit(24);
-const gradientPadding = pxToRemWithUnit(64);
+const gradientPadding = pxToRemWithUnit(72);
 
 const getPaddingStyles = (paddingSize: string, align: LinkTileAlign): JssStyle => ({
   paddingLeft: paddingSize,
