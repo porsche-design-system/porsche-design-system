@@ -5,7 +5,6 @@ import type { ExtendedProp } from './DataStructureBuilder';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
-  protected projectDir = 'angular-wrapper';
 
   // ngc with { enableIvy: false } can't handle index.ts barrel files 🤷‍♂️
   // https://github.com/ng-packagr/ng-packagr/issues/1013#issuecomment-424877378
