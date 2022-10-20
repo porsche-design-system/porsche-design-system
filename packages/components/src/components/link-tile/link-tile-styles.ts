@@ -131,7 +131,6 @@ export const getComponentCss = (
 
       gap: pxToRemWithUnit(24),
       [mediaQueryMin('s')]: getPaddingStyles(pxToRemWithUnit(32), align),
-      [mediaQueryMin('l')]: getPaddingStyles(pxToRemWithUnit(40), align),
       ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
       ...(isCompact
         ? {
