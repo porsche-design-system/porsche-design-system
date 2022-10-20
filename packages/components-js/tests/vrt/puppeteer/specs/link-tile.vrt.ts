@@ -1,4 +1,9 @@
-import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
+import {
+  defaultViewports,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -7,6 +12,10 @@ import {
   GetMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
+
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'link-tile', '/#link-tile')).toBeFalsy();
+});
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
