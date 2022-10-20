@@ -265,7 +265,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default carousel">
           <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
-            <img [src]="'./assets/porsche_beach.jpg'" />
+            <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
           </p-link-tile>
         </div>
       </div>
@@ -493,7 +493,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default carousel">
           <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
-            <img [src]="'./assets/porsche_beach.jpg'" />
+            <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
           </my-prefix-p-link-tile>
         </div>
       </div>

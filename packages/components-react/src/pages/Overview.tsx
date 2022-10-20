@@ -274,7 +274,7 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default carousel">
             <PLinkTile href="#" label="Some Label" description="Default">
-              <img src="./assets/porsche_beach.jpg" />
+              <img src="./assets/porsche_beach.jpg" alt="Beach" />
             </PLinkTile>
           </div>
         </div>
@@ -505,7 +505,7 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default carousel">
               <PLinkTile href="#" label="Some Label" description="Default">
-                <img src="./assets/porsche_beach.jpg" />
+                <img src="./assets/porsche_beach.jpg" alt="Beach" />
               </PLinkTile>
             </div>
           </div>
