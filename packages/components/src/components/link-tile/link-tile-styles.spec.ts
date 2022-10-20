@@ -4,7 +4,7 @@ describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['4:3', 'default', 'semibold', 'bottom', false, true],
     ['1:1', 'inherit', 'regular', 'bottom', false, true],
-    ['3:4', 'default', 'semibold', 'top', true, true],
+    ['3:4', 'default', 'semibold', 'top', false, true],
     ['16:9', 'inherit', 'regular', 'top', true, false],
     ['9:16', 'default', 'semibold', 'bottom', false, false],
     [

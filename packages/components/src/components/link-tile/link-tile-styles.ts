@@ -1,4 +1,4 @@
-import { addImportantToEachRule, pxToRemWithUnit, getInsetJssStyle, getTransition } from '../../styles';
+import { pxToRemWithUnit, getInsetJssStyle, getTransition, addImportantToRule } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -14,7 +14,7 @@ import {
   fontWeight,
   mediaQueryMin,
 } from '@porsche-design-system/utilities-v2';
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 
 const aspectRatioPaddingTop: { [key in LinkTileAspectRatio]: { paddingTop: string } } = {
   '1:1': { paddingTop: '100%' },
@@ -75,10 +75,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        height: 'fit-content',
-      }),
+        height: addImportantToRule('fit-content'),
+      },
       p: {
         color: getThemedTextColor('dark', 'default'),
         font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1.25rem/1.5555555556 ${fontFamily}`,

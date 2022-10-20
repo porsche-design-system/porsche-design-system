@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        column-gap: 1.33333%;
+        column-gap: 10px;
         row-gap: 10px;
       }
     `,

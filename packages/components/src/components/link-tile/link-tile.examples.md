@@ -100,7 +100,7 @@ export default class Code extends Vue {
     grid-template-columns: 22% 22% 22% 22%;
     grid-template-rows: auto;
     grid-template-areas: 'one two three four';
-    column-gap: 1.33333%;
+    column-gap: 10px;
     row-gap: 10px;
   }
 </style>
