@@ -1,10 +1,10 @@
 import { LinkTile } from './link-tile';
-import * as throwIfInvalidLinkPureUsageUtils from '../../utils/validation/throwIfInvalidLinkPureUsage';
+import * as throwIfPropIsUndefinedUtils from '../../utils/validation/throwIfPropIsUndefined';
 import * as throwIfAlignTopWithoutCompactUtils from './link-tile-utils';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfInvalidLinkPureUsageUtils, 'throwIfInvalidLinkPureUsage');
+  it('should call throwIfPropIsUndefined() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
 
     const component = new LinkTile();
     component.host = document.createElement('p-link-tile');

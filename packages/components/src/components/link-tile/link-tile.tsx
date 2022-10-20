@@ -5,7 +5,7 @@ import {
   attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  throwIfInvalidLinkPureUsage,
+  throwIfPropIsUndefined,
   validateProps,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
@@ -88,7 +88,7 @@ export class LinkTile {
   }
 
   public componentWillLoad(): void {
-    throwIfInvalidLinkPureUsage(this.host, this.href);
+    throwIfPropIsUndefined(this.host, 'href', this.href);
     throwIfAlignTopWithoutCompact(this.host, this.align, this.compact);
   }
 
