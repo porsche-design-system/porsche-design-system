@@ -21,13 +21,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="playground light container" title="should render default link-tile on light background">
       <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light grid" style="font-size: 24px" title="should render different sizes on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Size inherit'" [size]="'inherit'">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
@@ -35,13 +35,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Size breakpoint'"
         [size]="{ base: 'default', xs: 'inherit', s: 'default', m: 'inherit', l: 'default', xl: 'inherit' }"
       >
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light grid" title="should render different weights on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Weight regular'" [weight]="'regular'">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
@@ -49,22 +49,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Weight breakpoint'"
         [weight]="{ base: 'regular', xs: 'semibold', s: 'regular', m: 'semibold', l: 'regular', xl: 'semibold' }"
       >
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light grid" title="should render different aspect ratios on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Aspect ratio 16:9'" aspect-ratio="16:9">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile [label]="'Some label'" [description]="'Aspect ratio 1:1'" [href]="'#'" aspect-ratio="1:1">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Aspect ratio 3:4'" aspect-ratio="3:4">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Aspect ratio 9:16'" aspect-ratio="9:16">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
@@ -72,25 +72,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Aspect ratio breakpoint'"
         [aspectRatio]="{ base: '16:9', xs: '1:1', s: '3:4', m: '9:16', l: '4:3', xl: '16:9'}"
       >
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light container" title="should render compact on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Compact'" [compact]="true">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light container" title="should render align top on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Align top'" [align]="'top'" [compact]="true">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
     <div class="playground light container" title="should render without gradient">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Gradient false'" [gradient]="false">
-        <img [src]="'../assets/porsche_beach.jpg'" [alt]="'Beach'" />
+        <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
       </p-link-tile>
     </div>
 
@@ -100,7 +100,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [label]="'Some label'"
         [description]="'Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background.'"
       >
-        <img [alt]="" />
+        <img [src]="'./assets/solid_white.png'" [alt]="'Solid white'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
@@ -108,14 +108,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background.'"
         [compact]="true"
       >
-        <img [alt]="" />
+        <img [src]="'./assets/solid_white.png'" [alt]="'Solid white'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
         [description]="'Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background.'"
       >
-        <img [src]="'../assets/porsche_office.jpg'" [alt]="'Office'" />
+        <img [src]="'./assets/porsche_office.jpg'" [alt]="'Office'" />
       </p-link-tile>
       <p-link-tile
         [href]="'#'"
@@ -123,7 +123,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background.'"
         [compact]="true"
       >
-        <img [src]="'../assets/porsche_office.jpg'" [alt]="'Office'" />
+        <img [src]="'./assets/porsche_office.jpg'" [alt]="'Office'" />
       </p-link-tile>
     </div>
 
@@ -135,7 +135,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <picture>
           <source [media]="'(min-width: 760px)'" [srcset]="'./assets/porsche_beach.jpg'" />
           <source [media]="'(min-width: 1000px)'" [srcset]="'./assets/porsche_office.jpg'" />
-          <img [src]="'../assets/porsche_office.jpg'" [alt]="'Office'" />
+          <img [src]="'./assets/porsche_office.jpg'" [alt]="'Office'" />
         </picture>
       </p-link-tile>
     </div>
