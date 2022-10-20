@@ -70,10 +70,11 @@ it('should have no cdn requests', async () => {
 
   expect(await button.evaluate((x) => x.shadowRoot !== null), 'shadowRoot is defined').toBeTruthy();
 
-  if (requests.length > 0) {
+  // Has one request due to image of PLinkTile
+  if (requests.length > 1) {
     console.log('HTTP Requests:', requests);
   }
-  expect(requests.length, 'request count').toBe(0);
+  expect(requests.length, 'request count').toBe(1);
 });
 
 it('should have cdn requests', async () => {
@@ -86,5 +87,5 @@ it('should have cdn requests', async () => {
     await (window as any).porscheDesignSystem.componentsReady();
   }, markup);
 
-  expect(requests.length, 'request count').toBeGreaterThan(0);
+  expect(requests.length, 'request count').toBeGreaterThan(1);
 });
