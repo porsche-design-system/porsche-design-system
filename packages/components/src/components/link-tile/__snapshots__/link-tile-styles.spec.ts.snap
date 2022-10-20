@@ -144,11 +144,6 @@ p {
   .root {
     padding-top: 177.75%;
   }
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-top: 2.5rem;
-  }
 }
 
 @media(min-width:1760px) {
@@ -235,14 +230,6 @@ p {
   }
 }
 
-@media(min-width:1300px) {
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-}
-
 @media(hover:hover) {
   .root:hover .image {
     transform: scale3d(1.05, 1.05, 1.05);
@@ -319,14 +306,6 @@ p {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 2rem;
-  }
-}
-
-@media(min-width:1300px) {
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-top: 2.5rem;
   }
 }
 
@@ -408,14 +387,6 @@ p {
   }
 }
 
-@media(min-width:1300px) {
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-}
-
 @media(hover:hover) {
   .root:hover .image {
     transform: scale3d(1.05, 1.05, 1.05);
@@ -490,14 +461,6 @@ p {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 2rem;
-  }
-}
-
-@media(min-width:1300px) {
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-bottom: 2.5rem;
   }
 }
 
@@ -576,14 +539,6 @@ p {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 2rem;
-  }
-}
-
-@media(min-width:1300px) {
-  .content {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-top: 2.5rem;
   }
 }
 

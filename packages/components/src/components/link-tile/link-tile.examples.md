@@ -54,7 +54,7 @@ export default class Code extends Vue {
     label="Some label"
     description="Some Description"
   >
-    <img src="${require('../../assets/porsche_beach.jpg')}" />
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
 </div>`;
 
@@ -65,7 +65,7 @@ export default class Code extends Vue {
     description="Some Description"
     gradient="false"
   >
-    <img src="${require('../../assets/porsche_beach.jpg')}" />
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
 </div>`;
 
@@ -76,7 +76,7 @@ export default class Code extends Vue {
     description="Some Description"
     compact="true"
   >
-    <img src="${require('../../assets/porsche_beach.jpg')}" />
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
 </div>`;
 
@@ -88,7 +88,7 @@ export default class Code extends Vue {
     compact="true"
     align="top"
   >
-    <img src="${require('../../assets/porsche_beach.jpg')}" />
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
 </div>`;
 }
