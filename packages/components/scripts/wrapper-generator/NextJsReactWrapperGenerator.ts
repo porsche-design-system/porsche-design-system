@@ -1,13 +1,19 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
+import type { SkeletonProps } from './AbstractWrapperGenerator';
 import { pascalCase, paramCase } from 'change-case';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
 
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);
+  public generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[],
+    hasSkeleton?: boolean
+  ): string {
+    let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes, hasSkeleton);
     const ssrComponentName = this.getSsrComponentName(component);
     imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${paramCase(
       ssrComponentName.replace('DSR', '')
@@ -16,8 +22,8 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     return imports;
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    let tweakedComponent = super.generateComponent(component, extendedProps);
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
+    let tweakedComponent = super.generateComponent(component, extendedProps, skeletonProps);
     const hasChildren = this.inputParser.canHaveChildren(component);
 
     // destructure children prop

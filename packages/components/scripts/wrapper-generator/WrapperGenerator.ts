@@ -2,17 +2,20 @@ import { AngularWrapperGenerator } from './AngularWrapperGenerator';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { NextJsReactWrapperGenerator } from './NextJsReactWrapperGenerator';
 import { UXPinReactWrapperGenerator } from './UXPinReactWrapperGenerator';
+import type { AbstractWrapperGeneratorConfig } from './AbstractWrapperGenerator';
 
 type Framework = 'angular' | 'react' | 'nextjs' | 'uxpin';
 
 export class WrapperGenerator {
+  constructor(private config: AbstractWrapperGeneratorConfig) {}
+
   public generate(framework: Framework): void {
     if (framework === 'angular') {
-      new AngularWrapperGenerator().generate();
+      new AngularWrapperGenerator(this.config).generate();
     } else if (framework === 'react') {
-      new ReactWrapperGenerator().generate();
+      new ReactWrapperGenerator(this.config).generate();
     } else if (framework === 'nextjs') {
-      new NextJsReactWrapperGenerator().generate();
+      new NextJsReactWrapperGenerator(this.config).generate();
     } else if (framework === 'uxpin') {
       new UXPinReactWrapperGenerator().generate();
     } else {

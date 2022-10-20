@@ -3,6 +3,7 @@
   --p-animation-duration__spinner: 0s;
   --p-animation-duration__banner: 0s;
   --p-override-popover-animation-duration: 0s;
+  --p-override-skeleton-animation-duration: 0s;
   --p-override-toast-skip-timeout: true;
   --p-override-toast-animation-duration: 0s;
 }

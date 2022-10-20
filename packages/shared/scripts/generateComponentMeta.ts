@@ -1,9 +1,38 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
+
+/*
+ * This array includes all properties that are relevant for the skeleton sizes,
+ * it is used to add classes based on set properties in angular and react,
+ * so that our skeleton style selectors can work and adjust
+ * e.g. color based on the pds-skeleton--theme-dark class.
+ */
+// TODO: typing as component property string
+const SKELETON_RELEVANT_PROPS: { propName: string; shouldAddValueToClassName: boolean }[] = [
+  { propName: 'compact', shouldAddValueToClassName: false },
+  { propName: 'description', shouldAddValueToClassName: false },
+  { propName: 'hideLabel', shouldAddValueToClassName: false },
+  { propName: 'itemsPerPage ', shouldAddValueToClassName: true },
+  { propName: 'label', shouldAddValueToClassName: false },
+  { propName: 'labelSize', shouldAddValueToClassName: false },
+  { propName: 'open', shouldAddValueToClassName: false },
+  { propName: 'size', shouldAddValueToClassName: true },
+  { propName: 'stretch', shouldAddValueToClassName: false },
+  { propName: 'theme', shouldAddValueToClassName: true },
+  { propName: 'totalItemsCount', shouldAddValueToClassName: false },
+  { propName: 'variant', shouldAddValueToClassName: true },
+];
+
+/*
+ * An array of all tagNames that should be used when running patchStencil.
+ * These components will get a slot appended to, when Stencil attaches the shadowDOM
+ * and get this slot removed when hydration is finished, to ensure skeleton visibility of child components inside them.
+ */
+const TAG_NAMES_TO_ADD_SLOT_TO: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -32,6 +61,9 @@ const generateComponentMeta = (): void => {
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
   hasObserveChildren: boolean;
+  hasSkeleton: boolean;
+  shouldPatchSlot: boolean;
+  skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = Record<TagName, ComponentMeta>;`,
@@ -56,6 +88,9 @@ const generateComponentMeta = (): void => {
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
     hasObserveChildren: boolean;
+    hasSkeleton: boolean;
+    shouldPatchSlot: boolean;
+    skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -82,6 +117,8 @@ const generateComponentMeta = (): void => {
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
+    const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
+    const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
@@ -92,7 +129,7 @@ const generateComponentMeta = (): void => {
 
     // required root nodes
     let [, requiredRootNodes] =
-      (/throwIfRootNodeIsNotOneOfKind\(.+\[([a-z-,\s']+)]\)/.exec(source) as unknown as [string, TagName[]]) || [];
+      (/throwIfRootNodeIsNotOneOfKind\(.+\[([a-z-,\s']+)\]\)/.exec(source) as unknown as [string, TagName[]]) || [];
     requiredRootNodes = requiredRootNodes
       ? ((requiredRootNodes as unknown as string).replace(/['\s]/g, '').split(',') as TagName[])
       : [];
@@ -127,7 +164,7 @@ const generateComponentMeta = (): void => {
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
-    ).map(([, propName, , propValue]) => {
+    ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
         propValue === 'true'
           ? true
@@ -161,10 +198,19 @@ const generateComponentMeta = (): void => {
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
-    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+]),.+?\);/.exec(source) || [];
+    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+\]),.+?\);/.exec(source) || [];
     if (rawObservedAttributes) {
       observedAttributes = eval(rawObservedAttributes);
     }
+
+    // skeleton props
+    const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
+      ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
+          // extract all matching skeleton relevant props
+          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) || [];
+          return match;
+        })
+      : [];
 
     result[tagName] = {
       isDelegatingFocus,
@@ -183,6 +229,9 @@ const generateComponentMeta = (): void => {
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes: observedAttributes }),
       hasObserveChildren,
+      hasSkeleton,
+      shouldPatchSlot,
+      ...(skeletonProps.length && { skeletonProps: skeletonProps }),
       styling,
     };
     return result;

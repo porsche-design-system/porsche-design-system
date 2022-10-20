@@ -7,12 +7,47 @@ import {
   useBrowserLayoutEffect,
 } from '../../../projects/react-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
+import { describeIfSkeletonsActive } from '@porsche-design-system/shared/testing';
+
+describeIfSkeletonsActive('useSkeleton()', () => {
+  it('should throw error if usesSkeletons was set to true on provider but partial was not used', () => {
+    jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
+    expect(() =>
+      render(
+        <PorscheDesignSystemProvider usesSkeletons={true}>
+          <PButton />
+        </PorscheDesignSystemProvider>
+      )
+    ).toThrowErrorMatchingInlineSnapshot(
+      '"It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function."'
+    );
+  });
+
+  it('should not throw error on usage with partial', () => {
+    const styleElement = document.createElement('style');
+    styleElement.setAttribute('uses-skeleton', 'true'); // needs to be in sync between partial, useSkeleton() & PorscheDesignSystemProvider
+    document.head.appendChild(styleElement);
+
+    expect(() =>
+      render(
+        <PorscheDesignSystemProvider usesSkeletons={true}>
+          <PButton />
+        </PorscheDesignSystemProvider>
+      )
+    ).not.toThrow();
+  });
+
+  // TODO: Add missing tests
+  xit('should return true', () => {});
+  xit('should return false', () => {});
+});
 
 // TODO: Add missing tests
 xdescribe('usePrefix()', () => {});
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
-  it('should prevent usePrefix() to throw exception', () => {
+  it('should prevent usePrefix() or useSkeleton() to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
 

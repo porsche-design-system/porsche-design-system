@@ -1,0 +1,18 @@
+<div
+  class="playground light"
+  title="should render fieldset skeleton with label and text-field-wrapper with defined spacing"
+>
+  <p-fieldset-wrapper label="Some label">
+    <p-text-field-wrapper label="Some label">
+      <input type="text" />
+    </p-text-field-wrapper>
+  </p-fieldset-wrapper>
+</div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelectorAll('p-fieldset-wrapper p-text-field-wrapper').forEach((fieldset) => {
+      fieldset.classList.remove('hydrated');
+    });
+  });
+</script>

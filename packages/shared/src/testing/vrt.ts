@@ -45,6 +45,7 @@ export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
     viewports: [1000],
   });
 };
+export const getVisualRegressionSkeletonTester = getVisualRegressionStatesTester;
 
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {

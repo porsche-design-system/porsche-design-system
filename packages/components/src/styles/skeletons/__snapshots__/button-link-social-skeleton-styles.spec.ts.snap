@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct css 1`] = `
+"p-button:not(.hydrated), p-link:not(.hydrated), p-link-social:not(.hydrated) {
+  position: relative;
+  color: transparent;
+  min-height: 3rem;
+  display: inline-flex;
+  min-width: 12rem;
+}
+p-button:not(.hydrated)::after, p-link:not(.hydrated)::after, p-link-social:not(.hydrated)::after {
+  display: block;
+  top: 0rem;
+  width: 100%;
+  min-height: 100%;
+  color: #626669;
+}
+p-button:not(.hydrated)[hide-label=true], p-button:not(.hydrated).pds-skeleton--hide-label, p-link:not(.hydrated)[hide-label=true], p-link:not(.hydrated).pds-skeleton--hide-label, p-link-social:not(.hydrated)[hide-label=true], p-link-social:not(.hydrated).pds-skeleton--hide-label {
+  min-width: 3rem;
+}
+p-button:not(.hydrated)[theme=dark]::after, p-button:not(.hydrated).pds-skeleton--theme-dark::after, p-link:not(.hydrated)[theme=dark]::after, p-link:not(.hydrated).pds-skeleton--theme-dark::after, p-link-social:not(.hydrated)[theme=dark]::after, p-link-social:not(.hydrated).pds-skeleton--theme-dark::after {
+  color: #b0b1b2;
+}"
+`;
