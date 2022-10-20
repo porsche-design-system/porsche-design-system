@@ -341,7 +341,8 @@ $2`
         fileContent = fileContent
           .replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3')
           .replace(/(<input[^>]*?) v(alue=)/g, '$1 defaultV$2') // for input
-          .replace(/(<input[^>]*?) c(hecked)/g, '$1 defaultC$2'); // for checkbox + radio
+          .replace(/(<input[^>]*?) c(hecked)/g, '$1 defaultC$2') // for checkbox + radio
+          .replace(/(<(?:img|source).*?)(srcset)=(".*")/g, '$1srcSet={$3}'); // for img + source
 
         fileContent = fileContent.replace(/(\n +)(<(?:strong|em)>)/g, "$1{' '}$2"); // for forced whitespace
 

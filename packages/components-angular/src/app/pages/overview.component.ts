@@ -37,6 +37,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       my-prefix-p-banner {
         --p-banner-position-type: static;
       }
+      p-link-tile,
+      my-prefix-p-link-tile {
+        max-width: 400px;
+      }
     `,
   ],
   template: `
@@ -257,6 +261,12 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <div>Slide 2</div>
             <div>Slide 3</div>
           </p-carousel>
+        </div>
+
+        <div class="playground light" title="should render default carousel">
+          <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
+            <img [src]="'./assets/porsche_beach.jpg'" />
+          </p-link-tile>
         </div>
       </div>
 
@@ -479,6 +489,12 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <div>Slide 2</div>
             <div>Slide 3</div>
           </my-prefix-p-carousel>
+        </div>
+
+        <div class="playground light" title="should render default carousel">
+          <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
+            <img [src]="'./assets/porsche_beach.jpg'" />
+          </my-prefix-p-link-tile>
         </div>
       </div>
     </div>

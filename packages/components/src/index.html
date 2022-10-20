@@ -11,21 +11,16 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
 
     <style>
-      /** {*/
-      /*  margin: 0;*/
-      /*  padding: 0;*/
-      /*  box-sizing: border-box;*/
-      /*}*/
       .container {
+        max-width: 300px;
+        margin-bottom: 20px;
+      }
+      .grid {
         display: grid;
-        grid-template-columns: 30% 30%;
-        grid-template-rows: auto;
-        grid-template-areas: 'one two';
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         column-gap: 1.33333%;
         row-gap: 10px;
-        font-size: x-large;
-      }
-      .item {
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -35,180 +30,131 @@
     </header>
 
     <main>
-      <div class="container">
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="4:3"
-          aria="{ 'aria-label': 'some label' }"
-          href="#"
-        >
-          <picture>
-            <source media="(min-width:650px)" srcset="./assets/porsche_beach.jpg" />
-            <source media="(min-width:465px)" srcset="./assets/porsche_factory.jpg" />
-            <img src="./assets/surfer.jpg" alt="Flowers" />
-          </picture>
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="4:3"
-          aria="{ 'aria-label': 'some label' }"
-          size="inherit"
-          href="#"
-        >
-          <picture>
-            <source media="(min-width:650px)" srcset="./assets/porsche_beach.jpg" />
-            <source media="(min-width:465px)" srcset="./assets/porsche_factory.jpg" />
-            <img src="./assets/surfer.jpg" alt="Flowers" />
-          </picture>
-        </p-link-tile>
-
-        <p-link-tile label="Some label" description="Der Mittelmotor-Sportwagen." aspect-ratio="16:9" href="#">
+      <div class="playground light container" title="should render default link-tile on light background">
+        <p-link-tile href="#" label="Some Label" description="Default">
           <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="1:1"
-          href="#"
-          compact="true"
-          align="top"
-          size="{ base: 'small', l: 'large' }"
-          weight="{ base: 'regular', l: 'bold'}"
-        >
-          <img src="./assets/porsche_factory.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="1:1"
-          href="#"
-          compact="true"
-        >
-          <img src="./assets/porsche_factory.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="1:1"
-          href="#"
-        >
-          <img src="./assets/porsche_office.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          href="#"
-          compact="true"
-        >
-          <img src="./assets/porsche_white_background.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          href="#"
-        >
-          <img src="./assets/surfer.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="3:4"
-          href="#"
-          compact="true"
-        >
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="3:4"
-          href="#"
-        >
-          <img src="./assets/porsche_factory.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="4:3"
-          href="#"
-          compact="true"
-        >
-          <img src="./assets/porsche_office.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen. um dem Alltag das Alltägliche zu nehmen."
-          aspect-ratio="4:3"
-          href="#"
-        >
-          <img src="./assets/porsche_white_background.jpg" />
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen"
-          aspect-ratio="4:3"
-          href="#"
-          compact="true"
-        >
-          <img src="./assets/surfer.jpg" />
-        </p-link-tile>
-        <p-link-tile label="Some label" description="Der Mittelmotor-Sportwagen" aspect-ratio="4:3" href="#">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-
-        <p-link-tile label="Some label" description="Der Mittelmotor-Sportwagen slotted link" aspect-ratio="4:3">
-          <img src="./assets/porsche_factory.jpg" />
-          <a slot="link" href="#">Some Link</a>
-        </p-link-tile>
-
-        <p-link-tile
-          label="Some label"
-          description="Der Mittelmotor-Sportwagen slotted link"
-          aspect-ratio="4:3"
-          compact="true"
-        >
-          <img src="./assets/porsche_office.jpg" />
-          <a slot="link" href="#">Some Link</a>
         </p-link-tile>
       </div>
-      <!--      <div style="width: 300px">-->
-      <!--        <p-link-tile-->
-      <!--          label="Some label"-->
-      <!--          description="Mittelmotor-Sportwagen"-->
-      <!--          aspect-ratio="9:16"-->
-      <!--          href="#"-->
-      <!--          compact="true"-->
-      <!--        >-->
-      <!--          <img src="./assets/porsche_1.1.jpg" />-->
-      <!--        </p-link-tile>-->
-      <!--      </div>-->
-      <!--      </div>-->
-      <!--      <p-carousel heading="Some Heading">-->
-      <!--        <p-link-tile-->
-      <!--          label="Some label"-->
-      <!--          description="Der Mittelmotor-Sportwagen, um dem Alltag das Alltägliche zu nehmen.  um dem Alltag das Alltägliche zu nehmen.  um dem Alltag das Alltägliche zu nehmen.  um dem Alltag das Alltägliche zu nehmen."-->
-      <!--          href="#"-->
-      <!--        >-->
-      <!--          <img-->
-      <!--            src="https://files.porsche.com/filestore/image/multimedia/none/carrange-flyout-911/small/3cf76e8c-6694-11e9-80c4-005056bbdc38;sQ;twebp;c1696;gc/porsche-small.webp"-->
-      <!--            width="320"-->
-      <!--            height="400"-->
-      <!--          />-->
-      <!--        </p-link-tile>-->
-      <!--        <div>Slide 2</div>-->
-      <!--        <div>Slide 3</div>-->
-      <!--        <div>Slide 4</div>-->
-      <!--      </p-carousel>-->
+
+      <div
+        class="playground light grid"
+        style="font-size: 24px"
+        title="should render different sizes on light background"
+      >
+        <p-link-tile href="#" label="Some label" description="Size inherit" size="inherit">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Size breakpoint"
+          size="{ base: 'default', xs: 'inherit', s: 'default', m: 'inherit', l: 'default', xl: 'inherit' }"
+        >
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div class="playground light grid" title="should render different weights on light background">
+        <p-link-tile href="#" label="Some label" description="Weight regular" weight="regular">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Weight breakpoint"
+          weight="{ base: 'regular', xs: 'semibold', s: 'regular', m: 'semibold', l: 'regular', xl: 'semibold' }"
+        >
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div class="playground light grid" title="should render different aspect ratios on light background">
+        <p-link-tile href="#" label="Some label" description="Aspect ratio 16:9" aspect-ratio="16:9">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile label="Some label" description="Aspect ratio 1:1" href="#" aspect-ratio="1:1">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some label" description="Aspect ratio 3:4" aspect-ratio="3:4">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some label" description="Aspect ratio 9:16" aspect-ratio="9:16">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Aspect ratio breakpoint"
+          aspect-ratio="{ base: '16:9', xs: '1:1', s: '3:4', m: '9:16', l: '4:3', xl: '16:9'}"
+        >
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div class="playground light container" title="should render compact on light background">
+        <p-link-tile href="#" label="Some label" description="Compact" compact="true">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div class="playground light container" title="should render align top on light background">
+        <p-link-tile href="#" label="Some label" description="Align top" align="top" compact="true">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+      >
+
+      <div class="playground light container" title="should render without gradient">
+        <p-link-tile href="#" label="Some label" description="Gradient false" gradient="false">
+          <img src="./assets/porsche_beach.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div class="playground light grid" title="should render with readable overflowing text on different backgrounds">
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
+        >
+          <img />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
+          compact="true"
+        >
+          <img />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background."
+        >
+          <img src="./assets/porsche_office.jpg" />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some label"
+          description="Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background."
+          compact="true"
+        >
+          <img src="./assets/porsche_office.jpg" />
+        </p-link-tile>
+      </div>
+
+      <div
+        class="playground light container"
+        title="should render with picture tag and multiple sources depending on viewport"
+      >
+        <p-link-tile href="#" label="Some label" description="Picture tag">
+          <picture>
+            <source media="(min-width: 760px)" srcset="./assets/porsche_beach.jpg" />
+            <source media="(min-width: 1000px)" srcset="./assets/porsche_office.jpg" />
+            <img src="./assets/porsche_office.jpg" alt="Office" />
+          </picture>
+        </p-link-tile>
+      </div>
     </main>
 
     <!--    <script>-->
