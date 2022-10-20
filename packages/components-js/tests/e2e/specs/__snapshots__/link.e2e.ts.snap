@@ -7,13 +7,6 @@ exports[`accessibility should expose correct accessibility tree if accessibility
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree if accessibility properties are set 2`] = `
-{
-  "name": "Some more detailed label",
-  "role": "link",
-}
-`;
-
 exports[`accessibility should expose correct accessibility tree if label is hidden 1`] = `
 {
   "name": "Some label",
