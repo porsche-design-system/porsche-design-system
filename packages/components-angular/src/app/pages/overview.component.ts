@@ -263,7 +263,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-carousel>
         </div>
 
-        <div class="playground light" title="should render default carousel">
+        <div class="playground light" title="should render default link tile">
           <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
           </p-link-tile>
@@ -491,7 +491,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </my-prefix-p-carousel>
         </div>
 
-        <div class="playground light" title="should render default carousel">
+        <div class="playground light" title="should render default link tile with custom prefix">
           <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img [src]="'./assets/porsche_beach.jpg'" [alt]="'Beach'" />
           </my-prefix-p-link-tile>
