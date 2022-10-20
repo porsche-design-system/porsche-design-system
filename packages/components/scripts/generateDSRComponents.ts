@@ -69,6 +69,7 @@ const generateDSRComponents = (): void => {
           `import { Component } from 'react';
 import { getPrefixedTagNames } from '../../getPrefixedTagNames';
 import { minifyCss } from '../../minifyCss';
+import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
@@ -86,7 +87,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
+    const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
 
     return (
       <>

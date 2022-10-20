@@ -42,17 +42,6 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-@media(hover:hover) {
-  button:hover {
-    color: #d5001c;
-  }
-}
 
 .root {
   border-bottom: 1px solid #e3e4e5;
@@ -440,12 +429,6 @@ p {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -478,11 +461,6 @@ p {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
               </style>
@@ -593,12 +571,6 @@ span {
 .root::-moz-focus-inner {
   border: 0;
 }
-.root:focus {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -608,11 +580,6 @@ span {
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-@media(hover:hover) {
-  .root:hover, .root:active {
-    color: #151718;
-  }
 }
 
     </style>
@@ -768,12 +735,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -806,11 +767,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
   clip-path: none;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
     </style>
@@ -1075,12 +1031,6 @@ p {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -1113,11 +1063,6 @@ p {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
             </style>
@@ -1225,12 +1170,6 @@ p {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -1263,11 +1202,6 @@ p {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
             </style>
@@ -1391,20 +1325,9 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   border-color: #96989a !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #626669 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
 label {
   position: relative;
   display: flex;
-}
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
 }
 
 .label {
@@ -1955,12 +1878,6 @@ p {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -1993,11 +1910,6 @@ p {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
         </style>
@@ -2088,12 +2000,6 @@ exports[`should render dsr component for PLink 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus) {
-  outline-color: #323639 !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
 span {
   display: block;
   width: 100%;
@@ -2103,11 +2009,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-@media(hover:hover) {
-  ::slotted(a:hover:focus) {
-    outline-color: #151718 !important;
-  }
 }
 
 .root {
@@ -2138,11 +2039,6 @@ span {
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-@media(hover:hover) {
-  .root:hover, .root:active {
-    color: #151718;
-  }
 }
 
     </style>
@@ -2274,11 +2170,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
 
     </style>
     <span
@@ -2364,12 +2255,6 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus) {
-  outline-color: #323639 !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
 span {
   display: block;
   width: 100%;
@@ -2379,11 +2264,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-@media(hover:hover) {
-  ::slotted(a:hover:focus) {
-    outline-color: #151718 !important;
-  }
 }
 
 .root {
@@ -2414,11 +2294,6 @@ span {
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-@media(hover:hover) {
-  .root:hover, .root:active {
-    color: #151718;
-  }
 }
 
     </style>
@@ -2501,12 +2376,6 @@ a::before {
   bottom: 0;
   outline: 1px solid transparent;
   outline-offset: 0px;
-}
-a:focus::before {
-  outline-color: #000;
-}
-a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
 }
 picture {
   display: block;
@@ -2658,12 +2527,6 @@ h1 {
 .root::-moz-focus-inner {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .close {
   position: absolute;
   top: 0;
@@ -2754,12 +2617,6 @@ h1 {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -2792,11 +2649,6 @@ h1 {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
           </style>
@@ -2909,12 +2761,6 @@ span {
 span::-moz-focus-inner {
   border: 0;
 }
-span:focus {
-  outline-color: currentColor;
-}
-span:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 span:active {
   outline: none;
   color: #d5001c;
@@ -2943,14 +2789,6 @@ span[aria-current]::after {
   }
 }
 
-@media(hover:hover) {
-  span:hover {
-    color: #d5001c;
-  }
-  span[aria-current]:hover {
-    color: #000;
-  }
-}
 
 .ellipsis {
   cursor: default;
@@ -3213,12 +3051,6 @@ p {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -3251,11 +3083,6 @@ p {
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
         </style>
@@ -3356,23 +3183,9 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 ::slotted(input:checked:disabled) {
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"&gt;&lt;g fill="%23fff" fill-rule="nonzero"&gt;&lt;path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/&gt;&lt;path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/&gt;&lt;/g&gt;&lt;/svg&gt;'), radial-gradient(circle, #96989a 0.5625rem, #96989a 0.5625rem) !important;
 }
-::slotted(input:focus) {
-  box-shadow: 0 0 0 1px #626669 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  box-shadow: none !important;
-}
 label {
   position: relative;
   display: flex;
-}
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:checked):hover), .label:hover ~ ::slotted(input:not(:disabled):not(:checked)) {
-    background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"&gt;&lt;g fill="%23fff" fill-rule="nonzero"&gt;&lt;path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/&gt;&lt;path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/&gt;&lt;/g&gt;&lt;/svg&gt;'), radial-gradient(circle, #fff 0.5625rem, #000 0.5625rem) !important;
-  }
-  ::slotted(input:not(:disabled):checked:hover), .label:hover ~ ::slotted(input:not(:disabled):checked) {
-    background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"&gt;&lt;g fill="%23fff" fill-rule="nonzero"&gt;&lt;path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/&gt;&lt;path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/&gt;&lt;/g&gt;&lt;/svg&gt;'), radial-gradient(circle, #323639 0.5625rem, #000 0.5625rem) !important;
-  }
 }
 
 .label {
@@ -3460,12 +3273,6 @@ exports[`should render dsr component for PScroller 1`] = `
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
-}
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -3599,12 +3406,6 @@ exports[`should render dsr component for PScroller 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -3629,11 +3430,6 @@ exports[`should render dsr component for PScroller 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
             </style>
@@ -3748,12 +3544,6 @@ exports[`should render dsr component for PScroller 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -3778,11 +3568,6 @@ exports[`should render dsr component for PScroller 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
             </style>
@@ -3895,12 +3680,6 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 span {
   display: block;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3909,14 +3688,6 @@ span {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #626669;
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover {
-    background: #e3e4e5;
-  }
 }
 
 .icon {
@@ -3976,20 +3747,12 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
-::slotted(select:focus) {
-  outline-color: #626669 !important;
-}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #96989a !important;
   border-color: #96989a !important;
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
-}
-@media(hover:hover) {
-  ::slotted(select:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
-  }
 }
 
 .root {
@@ -4059,14 +3822,6 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
 }
 
     </style>
@@ -4279,12 +4034,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .trigger {
   position: absolute;
   top: 0;
@@ -4417,12 +4166,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -4447,11 +4190,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                 </style>
@@ -4566,12 +4304,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -4596,11 +4328,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                 </style>
@@ -4727,12 +4454,6 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 button::before {
   content: "";
   position: absolute;
@@ -4804,21 +4525,6 @@ button {
   outline: none;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-button:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
-}
-button:not(:focus-visible) {
-  box-shadow: none;
-}
-@media(hover:hover) {
-  button:hover {
-    color: #000;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #000;
-  }
 }
 
 .root {
@@ -4911,12 +4617,6 @@ exports[`should render dsr component for PTable 1`] = `
 }
 .scroll-area::-moz-focus-inner {
   border: 0;
-}
-.scroll-area:focus {
-  outline-color: currentColor;
-}
-.scroll-area:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .table {
   position: relative;
@@ -5100,11 +4800,6 @@ exports[`should render dsr component for PTableRow 1`] = `
   display: table-row !important;
   transition: background-color var(--p-transition-duration, .24s) ease !important;
 }
-@media(hover:hover) {
-  :host(:hover) {
-    background-color: #f2f2f2 !important;
-  }
-}
 
     </style>
     <slot />
@@ -5167,19 +4862,8 @@ exports[`should render dsr component for PTabs 1`] = `
 ::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
   color: #d5001c !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
-}
-@media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
-  }
 }
 
 .scroller {
@@ -5245,12 +4929,6 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
-}
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -5384,12 +5062,6 @@ exports[`should render dsr component for PTabs 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -5414,11 +5086,6 @@ exports[`should render dsr component for PTabs 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                     </style>
@@ -5533,12 +5200,6 @@ exports[`should render dsr component for PTabs 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -5563,11 +5224,6 @@ exports[`should render dsr component for PTabs 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                     </style>
@@ -5677,19 +5333,8 @@ exports[`should render dsr component for PTabsBar 1`] = `
 ::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
   color: #d5001c !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
-}
-@media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
-  }
 }
 
 .scroller {
@@ -5755,12 +5400,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
-}
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -5894,12 +5533,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -5924,11 +5557,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                 </style>
@@ -6043,12 +5671,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
 .root:active {
   color: #d5001c;
 }
@@ -6073,11 +5695,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
 }
 
                 </style>
@@ -6161,12 +5778,6 @@ exports[`should render dsr component for PTabsItem 1`] = `
 }
 :host(::-moz-focus-inner) {
   border: 0 !important;
-}
-:host(:focus) {
-  outline-color: #000 !important;
-}
-:host(:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
     </style>
     <slot />
@@ -6265,25 +5876,11 @@ button::before {
   border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
-button:focus::before {
-  border-color: #000;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-@media(hover:hover) {
-  button:hover &gt; .icon {
-    color: #d5001c;
-  }
-  button:hover:focus::before {
-    border-color: #d5001c;
-  }
 }
 
 .icon {
@@ -6446,9 +6043,6 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
-::slotted(input:focus) {
-  outline-color: #626669 !important;
-}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #96989a !important;
@@ -6459,19 +6053,8 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   border-color: #ebebeb !important;
   background-color: #ebebeb !important;
 }
-::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
 ::slotted(input[readonly]:not(:disabled)) {
   color: #626669 !important;
-}
-::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
-  -webkit-background-clip: padding-box !important;
-}
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
-  }
 }
 
 .root {
@@ -6541,11 +6124,6 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
 }
 
     </style>
@@ -6647,9 +6225,6 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   resize: vertical !important;
   min-height: 12rem;
 }
-::slotted(textarea:focus) {
-  outline-color: #626669 !important;
-}
 ::slotted(textarea:disabled) {
   cursor: not-allowed !important;
   color: #96989a !important;
@@ -6660,16 +6235,8 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   border-color: #ebebeb !important;
   background-color: #ebebeb !important;
 }
-::slotted(textarea[readonly]:focus) {
-  outline-color: transparent !important;
-}
 ::slotted(textarea[readonly]:not(:disabled)) {
   color: #626669 !important;
-}
-@media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
-  }
 }
 
 .label {
@@ -6723,11 +6290,6 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
 }
 
     </style>
