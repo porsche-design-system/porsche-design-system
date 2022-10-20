@@ -140,6 +140,7 @@ button::-moz-focus-inner {
       </div>
     </div>
   </template>
+  Some child
 </p-accordion>
 `;
 
@@ -518,6 +519,7 @@ p {
       </p-inline-notification>
     </p-content-wrapper>
   </template>
+  Some child
 </p-banner>
 `;
 
@@ -629,6 +631,7 @@ span {
       </span>
     </button>
   </template>
+  Some child
 </p-button>
 `;
 
@@ -676,6 +679,7 @@ div {
       <slot />
     </div>
   </template>
+  Some child
 </p-button-group>
 `;
 
@@ -818,6 +822,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       </span>
     </button>
   </template>
+  Some child
 </p-button-pure>
 `;
 
@@ -1272,6 +1277,7 @@ p {
       class="pagination"
     />
   </template>
+  Some child
 </p-carousel>
 `;
 
@@ -1373,6 +1379,9 @@ label {
       <slot />
     </label>
   </template>
+  <input
+    type="checkbox"
+  />
 </p-checkbox-wrapper>
 `;
 
@@ -1409,6 +1418,7 @@ exports[`should render dsr component for PContentWrapper 1`] = `
       <slot />
     </div>
   </template>
+  Some child
 </p-content-wrapper>
 `;
 
@@ -1476,6 +1486,7 @@ fieldset {
       <slot />
     </fieldset>
   </template>
+  Some child
 </p-fieldset-wrapper>
 `;
 
@@ -1498,6 +1509,7 @@ exports[`should render dsr component for PFlex 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-flex>
 `;
 
@@ -1520,6 +1532,7 @@ exports[`should render dsr component for PFlexItem 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-flex-item>
 `;
 
@@ -1557,6 +1570,7 @@ exports[`should render dsr component for PGrid 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-grid>
 `;
 
@@ -1593,6 +1607,7 @@ exports[`should render dsr component for PGridItem 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-grid-item>
 `;
 
@@ -1668,6 +1683,7 @@ exports[`should render dsr component for PHeadline 1`] = `
       <slot />
     </h1>
   </template>
+  Some child
 </p-headline>
 `;
 
@@ -1964,6 +1980,7 @@ p {
       Close notification
     </p-button-pure>
   </template>
+  Some child
 </p-inline-notification>
 `;
 
@@ -2087,6 +2104,7 @@ span {
       </span>
     </span>
   </template>
+  Some child
 </p-link>
 `;
 
@@ -2219,6 +2237,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       </span>
     </span>
   </template>
+  Some child
 </p-link-pure>
 `;
 
@@ -2342,6 +2361,7 @@ span {
       </span>
     </span>
   </template>
+  Some child
 </p-link-social>
 `;
 
@@ -2705,6 +2725,7 @@ h1 {
       <slot />
     </div>
   </template>
+  Some child
 </p-modal>
 `;
 
@@ -3137,6 +3158,7 @@ p {
       More information
     </p-button-pure>
   </template>
+  Some child
 </p-popover>
 `;
 
@@ -3231,6 +3253,9 @@ label {
       <slot />
     </label>
   </template>
+  <input
+    type="radio"
+  />
 </p-radio-button-wrapper>
 `;
 
@@ -3624,6 +3649,7 @@ exports[`should render dsr component for PScroller 1`] = `
       </div>
     </div>
   </template>
+  Some child
 </p-scroller>
 `;
 
@@ -3644,6 +3670,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-segmented-control>
 `;
 
@@ -3702,6 +3729,7 @@ span {
       <slot />
     </button>
   </template>
+  Some child
 </p-segmented-control-item>
 `;
 
@@ -3872,6 +3900,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
       </label>
     </div>
   </template>
+  <select />
 </p-select-wrapper>
 `;
 
@@ -4387,6 +4416,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
       <slot />
     </p-scroller>
   </template>
+  Some child
 </p-stepper-horizontal>
 `;
 
@@ -4493,6 +4523,7 @@ button::after {
       <slot />
     </button>
   </template>
+  Some child
 </p-stepper-horizontal-item>
 `;
 
@@ -4590,6 +4621,7 @@ button {
       </button>
     </label>
   </template>
+  Some child
 </p-switch>
 `;
 
@@ -4688,6 +4720,7 @@ exports[`should render dsr component for PTable 1`] = `
       </div>
     </div>
   </template>
+  Some child
 </p-table>
 `;
 
@@ -4705,6 +4738,7 @@ exports[`should render dsr component for PTableBody 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-table-body>
 `;
 
@@ -4727,6 +4761,7 @@ exports[`should render dsr component for PTableCell 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-table-cell>
 `;
 
@@ -4744,6 +4779,7 @@ exports[`should render dsr component for PTableHead 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-table-head>
 `;
 
@@ -4768,6 +4804,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
       <slot />
     </span>
   </template>
+  Some child
 </p-table-head-cell>
 `;
 
@@ -4785,6 +4822,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-table-head-row>
 `;
 
@@ -4804,6 +4842,7 @@ exports[`should render dsr component for PTableRow 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-table-row>
 `;
 
@@ -5289,6 +5328,7 @@ exports[`should render dsr component for PTabs 1`] = `
     </p-tabs-bar>
     <slot />
   </template>
+  Some child
 </p-tabs>
 `;
 
@@ -5757,6 +5797,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
       />
     </p-scroller>
   </template>
+  Some child
 </p-tabs-bar>
 `;
 
@@ -5782,6 +5823,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
     </style>
     <slot />
   </template>
+  Some child
 </p-tabs-item>
 `;
 
@@ -5832,6 +5874,7 @@ span {
       </div>
     </span>
   </template>
+  Some child
 </p-tag>
 `;
 
@@ -5950,6 +5993,7 @@ button::before {
       </p-icon>
     </button>
   </template>
+  Some child
 </p-tag-dismissible>
 `;
 
@@ -6002,6 +6046,7 @@ exports[`should render dsr component for PText 1`] = `
       <slot />
     </p>
   </template>
+  Some child
 </p-text>
 `;
 
@@ -6137,6 +6182,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
       </label>
     </div>
   </template>
+  <input
+    type="text"
+  />
 </p-text-field-wrapper>
 `;
 
@@ -6170,6 +6218,7 @@ exports[`should render dsr component for PTextList 1`] = `
       <slot />
     </ul>
   </template>
+  Some child
 </p-text-list>
 `;
 
@@ -6183,6 +6232,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
     <style />
     <slot />
   </template>
+  Some child
 </p-text-list-item>
 `;
 
@@ -6299,6 +6349,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
       <slot />
     </label>
   </template>
+  <textarea />
 </p-textarea-wrapper>
 `;
 
