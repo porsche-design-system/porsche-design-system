@@ -64,7 +64,7 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-link-tile'], 'componentDidUpdate: p-link-tile').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
+    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1); // p-link should be changed to p-link-pure when compact="true"
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
