@@ -7,14 +7,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `
       .container {
         max-width: 300px;
-        margin-bottom: 20px;
       }
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         column-gap: 1.33333%;
         row-gap: 10px;
-        margin-bottom: 20px;
       }
     `,
   ],
