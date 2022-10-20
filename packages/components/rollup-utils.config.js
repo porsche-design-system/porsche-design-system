@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -29,24 +30,51 @@ ${utilsExports}
 
 generateUtilsEntryFile();
 
-export default {
-  input,
-  output: {
-    dir: outputDir,
-    format: 'cjs',
+const sharedPlugins = [
+  replace({
+    ROLLUP_REPLACE_IS_STAGING: '"production"',
+    preventAssignment: true,
+  }),
+  commonjs(),
+  nodeResolve(),
+];
+
+export default [
+  {
+    input,
+    output: {
+      dir: outputDir,
+      format: 'cjs',
+    },
+    plugins: [
+      ...sharedPlugins,
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: outputDir,
+        include: ['src/**/*.ts'],
+      }),
+      generatePackageJson({
+        baseContents: {
+          main: 'utils-entry.js',
+          module: 'esm/utils-entry.js',
+          types: 'utils-entry.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
-  plugins: [
-    replace({
-      ROLLUP_REPLACE_IS_STAGING: '"production"',
-      preventAssignment: true,
-    }),
-    nodeResolve(),
-    commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      declaration: true,
-      declarationDir: outputDir,
-      include: ['src/**/*.ts'],
-    }),
-  ],
-};
+  {
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+    },
+    plugins: [
+      ...sharedPlugins,
+      typescript({
+        tsconfig: './tsconfig.json',
+      }),
+    ],
+  },
+];

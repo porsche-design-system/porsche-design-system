@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { terser } from 'rollup-plugin-terser';
 import * as globby from 'globby';
 import * as path from 'path';
@@ -38,6 +39,15 @@ ${stylesExports}
 
 generateStylesEntryFile();
 
+const sharedPlugins = [
+  replace({
+    ROLLUP_REPLACE_IS_STAGING: '"production"',
+    preventAssignment: true,
+  }),
+  commonjs(),
+  nodeResolve(),
+];
+
 export default [
   {
     input,
@@ -46,16 +56,33 @@ export default [
       format: 'cjs',
     },
     plugins: [
-      replace({
-        ROLLUP_REPLACE_IS_STAGING: '"production"',
-      }),
-      nodeResolve(),
-      commonjs(),
+      ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: outputDir,
         include: ['src/**/*.ts'],
+      }),
+      generatePackageJson({
+        baseContents: {
+          main: 'styles-entry.js',
+          module: 'esm/styles-entry.js',
+          types: 'styles-entry.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+    },
+    plugins: [
+      ...sharedPlugins,
+      typescript({
+        tsconfig: './tsconfig.json',
       }),
     ],
   },

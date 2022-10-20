@@ -6,7 +6,7 @@ export const mediaQueries = Object.entries(breakpoint)
   .filter(([key]: [Breakpoint, string]) => key !== 'xxl')
   .map(([, val]) => `(min-width:${val})`);
 
-export let mediaQueryLists = hasWindow ? mediaQueries.map(window.matchMedia) : [];
+export let mediaQueryLists = hasWindow && window.matchMedia ? mediaQueries.map(window.matchMedia) : [];
 
 // for unit tests
 export const overrideMediaQueryLists = (override: MediaQueryList[]): void => {

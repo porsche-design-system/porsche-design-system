@@ -12,7 +12,8 @@ const generateDSRComponents = (): void => {
 
   const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
 
-  const stylesBundleImportPath = '@porsche-design-system/components/dist/styles/styles-entry';
+  const stylesBundleImportPath = '@porsche-design-system/components/dist/styles';
+  const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';
 
   const componentFileContents = componentPaths
     // .filter((filePath) => filePath.includes('accordion'))
@@ -56,7 +57,7 @@ const generateDSRComponents = (): void => {
         // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
-            ? m.replace(group, '@porsche-design-system/components/dist/utils/utils-entry')
+            ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') || group.endsWith('required')
             ? m.replace(group, './' + group.split('/').pop())
             : ''
