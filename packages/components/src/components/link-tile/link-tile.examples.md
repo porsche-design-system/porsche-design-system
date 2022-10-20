@@ -40,10 +40,6 @@ be set.
 
 <Playground :markup="align" :config="config"></Playground>
 
-## temp
-
-<Playground :markup="temp" :config="config"></Playground>
-
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -95,109 +91,6 @@ export default class Code extends Vue {
     <img src="${require('../../assets/porsche_beach.jpg')}" />
   </p-link-tile>
 </div>`;
-  
-  temp = `<div class="container">
-<p-link-tile
-  label="Some label"
-  description="Default"
-  href="#"
->
-  <img src="${require('../../assets/porsche_beach.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Size inherit"
-  href="#"
-  size="inherit"
->
-  <img src="${require('../../assets/porsche_factory.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Size default"
-  href="#"
-  size="default"
->
-  <img src="${require('../../assets/porsche_office.jpg')}" />
-</p-link-tile>
-
-
-<p-link-tile
-  label="Some label"
-  description="Weight semibold"
-  href="#"
-  weight="semibold"
->
-  <img src="${require('../../assets/surfer.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Aspect ratio 1:1"
-  href="#"
-  aspect-ratio="1:1"
->
-  <img src="${require('../../assets/porsche_beach.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Aspect ratio 3:4"
-  href="#"
-  aspect-ratio="3:4"
->
-  <img src="${require('../../assets/porsche_factory.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Aspect ratio 16:9"
-  href="#"
-  aspect-ratio="16:9"
->
-  <img src="${require('../../assets/porsche_office.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Aspect ratio 9:16"
-  href="#"
-  aspect-ratio="9:16"
->
-  <img src="${require('../../assets/porsche_white_background.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Compact align top"
-  href="#"
-  align="top"
-  compact="true"
->
-  <img src="${require('../../assets/surfer.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Gradient false"
-  href="#"
-  gradient="false"
->
-  <img src="${require('../../assets/porsche_beach.jpg')}" />
-</p-link-tile>
-
-<p-link-tile
-  label="Some label"
-  description="Compact"
-  href="#"
-  compact="true"
->
-  <img src="${require('../../assets/porsche_office.jpg')}" />
-</p-link-tile>
-
-</div>`
 }
 </script>
 
