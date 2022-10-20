@@ -24,7 +24,7 @@ const generateDSRComponents = (): void => {
       let newFileContent = fileContent
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
-        .replace(/\n  \/\*\*[\s\S]*?@Prop\(.*?\) [\s\S]*?;\n/g, '')
+        .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
@@ -181,7 +181,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(<source) (srcSet=.*?, '?.*?([a-z]+)'?, '([a-z]+)')/g, '$1 key="$3-$4" $2') // marque unique key warning
         .replace(/<li>/g, () => {
           return `<li key=\{${liCounter++}}>`;
-        }); // pagination unique key warning
+        }) // pagination unique key warning
+        .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
+        .replace(/determineDirection\(this\.props\)/, "'down'"); // select-wrapper-dropdown
 
       return newFileContent;
     });
