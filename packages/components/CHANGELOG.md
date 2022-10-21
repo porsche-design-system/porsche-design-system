@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.16.3-rc.0] - 2022-10-21
+
 #### Fixed
 
 - `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
