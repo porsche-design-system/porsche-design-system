@@ -16,17 +16,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
         {
           "children": [
             {
-              "children": [
-                {
-                  "name": "",
-                  "role": "img",
-                },
-              ],
-              "role": "none",
+              "name": "",
+              "role": "img",
             },
           ],
-          "name": "",
-          "role": "generic",
+          "role": "none",
         },
       ],
       "name": "",

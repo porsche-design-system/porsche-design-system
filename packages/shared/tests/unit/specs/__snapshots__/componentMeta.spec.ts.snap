@@ -846,7 +846,6 @@ exports[`should match snapshot 1`] = `
       "label",
       "description",
       "href",
-      "href",
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
