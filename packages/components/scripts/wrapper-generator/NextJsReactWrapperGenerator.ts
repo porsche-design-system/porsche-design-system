@@ -44,7 +44,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
-    const spreadProps = propsToSync.map(({ key }) => key).join(', ');
+    const spreadProps = [...propsToSync.map(({ key }) => key), ...(hasChildren ? ['children'] : [])].join(', ');
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
@@ -52,7 +52,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
         ? {
             children: (
               <${this.getSsrComponentName(component)}
-                {...{ ${spreadProps ? `${spreadProps} , ` : ''}${hasChildren ? 'children' : ''} }}
+                {...{ ${spreadProps} }}
               />
             ),
           }
