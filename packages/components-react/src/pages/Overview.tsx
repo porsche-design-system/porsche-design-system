@@ -272,9 +272,12 @@ export const OverviewPage = (): JSX.Element => {
             </PCarousel>
           </div>
 
-          <div className="playground light" title="should render default link tile">
+          <div className="playground light" title="should render default link-tile">
             <PLinkTile href="#" label="Some Label" description="Default">
-              <img src="./assets/porsche_beach.jpg" alt="Beach" />
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                alt="Beach"
+              />
             </PLinkTile>
           </div>
         </div>
@@ -503,9 +506,12 @@ export const OverviewPage = (): JSX.Element => {
               </PCarousel>
             </div>
 
-            <div className="playground light" title="should render default link tile with custom prefix">
+            <div className="playground light" title="should render default link-tile with custom prefix">
               <PLinkTile href="#" label="Some Label" description="Default">
-                <img src="./assets/porsche_beach.jpg" alt="Beach" />
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                  alt="Beach"
+                />
               </PLinkTile>
             </div>
           </div>
