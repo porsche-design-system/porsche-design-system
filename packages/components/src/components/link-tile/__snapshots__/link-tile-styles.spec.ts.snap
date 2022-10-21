@@ -19,9 +19,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -78,7 +92,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -86,26 +100,16 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 1.5rem 1.5rem 4.5rem;
   gap: 1.5rem;
-  background: linear-gradient(rgba(31, 31, 31, 0.9) 0%, rgba(31, 31, 31, 0.9) 20%, rgba(31, 31, 31, 0.852589) 26.67%, rgba(32, 32, 32, 0.768225) 33.33%, rgba(33, 33, 33, 0.668116) 40%, rgba(34, 34, 34, 0.557309) 46.67%, rgba(35, 35, 35, 0.442691) 53.33% ,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
+  background: linear-gradient(rgba(31, 31, 31, 0.9) 0%,rgba(31, 31, 31, 0.9) 20%,rgba(31, 31, 31, 0.852589) 26.67%,rgba(32, 32, 32, 0.768225) 33.33%,rgba(33, 33, 33, 0.668116) 40%,rgba(34, 34, 34, 0.557309) 46.67%,rgba(35, 35, 35, 0.442691) 53.33%,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
   align-items: center;
   grid-template-columns: auto 1.5rem;
 }
@@ -153,7 +157,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
@@ -165,9 +169,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -184,7 +202,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -192,26 +210,16 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 4.5rem 1.5rem 1.5rem;
   gap: 1.5rem;
-  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%, rgba(31, 31, 31, 0.9) 20%, rgba(31, 31, 31, 0.852589) 26.67%, rgba(32, 32, 32, 0.768225) 33.33%, rgba(33, 33, 33, 0.668116) 40%, rgba(34, 34, 34, 0.557309) 46.67%, rgba(35, 35, 35, 0.442691) 53.33% ,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
+  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%,rgba(31, 31, 31, 0.9) 20%,rgba(31, 31, 31, 0.852589) 26.67%,rgba(32, 32, 32, 0.768225) 33.33%,rgba(33, 33, 33, 0.668116) 40%,rgba(34, 34, 34, 0.557309) 46.67%,rgba(35, 35, 35, 0.442691) 53.33%,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
   grid-template-rows: auto auto;
 }
 .anchor::after {
@@ -231,7 +239,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
@@ -243,9 +251,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -262,7 +284,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -270,26 +292,16 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 1.5rem 1.5rem 4.5rem;
   gap: 1.5rem;
-  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%, rgba(31, 31, 31, 0.9) 20%, rgba(31, 31, 31, 0.852589) 26.67%, rgba(32, 32, 32, 0.768225) 33.33%, rgba(33, 33, 33, 0.668116) 40%, rgba(34, 34, 34, 0.557309) 46.67%, rgba(35, 35, 35, 0.442691) 53.33% ,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
+  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%,rgba(31, 31, 31, 0.9) 20%,rgba(31, 31, 31, 0.852589) 26.67%,rgba(32, 32, 32, 0.768225) 33.33%,rgba(33, 33, 33, 0.668116) 40%,rgba(34, 34, 34, 0.557309) 46.67%,rgba(35, 35, 35, 0.442691) 53.33%,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
   grid-template-rows: auto auto;
 }
 .anchor::after {
@@ -309,7 +321,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
@@ -321,9 +333,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -340,7 +366,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -348,26 +374,16 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 4.5rem 1.5rem 1.5rem;
   gap: 1.5rem;
-  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%, rgba(31, 31, 31, 0.9) 20%, rgba(31, 31, 31, 0.852589) 26.67%, rgba(32, 32, 32, 0.768225) 33.33%, rgba(33, 33, 33, 0.668116) 40%, rgba(34, 34, 34, 0.557309) 46.67%, rgba(35, 35, 35, 0.442691) 53.33% ,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
+  background: linear-gradient(to top, rgba(31, 31, 31, 0.9) 0%,rgba(31, 31, 31, 0.9) 20%,rgba(31, 31, 31, 0.852589) 26.67%,rgba(32, 32, 32, 0.768225) 33.33%,rgba(33, 33, 33, 0.668116) 40%,rgba(34, 34, 34, 0.557309) 46.67%,rgba(35, 35, 35, 0.442691) 53.33%,rgba(36, 36, 36, 0.331884) 60%,rgba(37, 37, 37, 0.231775) 66.67%,rgba(38, 38, 38, 0.147411) 73.33%,rgba(39, 39, 39, 0.0816599) 80%,rgba(39, 39, 39, 0.03551) 86.67%,rgba(39, 39, 39, 0.0086472) 93.33%,rgba(39, 39, 39, 0) 100%);;
   grid-template-rows: auto auto;
 }
 .anchor::after {
@@ -387,7 +403,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
@@ -399,9 +415,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -418,7 +448,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -426,22 +456,12 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 4.5rem 1.5rem 1.5rem;
   gap: 1.5rem;
@@ -464,7 +484,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
@@ -476,9 +496,23 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   display: block;
   height: fit-content !important;
 }
+:host ::slotted(picture), :host ::slotted(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+}
+:host ::slotted(img) {
+  object-fit: cover;
+}
 p {
   color: #fff;
-  font: normal normal 600 1.25rem/1.5555555556 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -495,7 +529,7 @@ p {
   position: relative;
   transform: translate3d(0,0,0);
 }
-.image-overflow-container {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -503,22 +537,12 @@ p {
   bottom: 0;
   overflow: hidden;
 }
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform var(--p-transition-duration, .24s) ease;
-  backface-visibility: hidden;
-}
 .content {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   display: grid;
-  max-height: 100%;
   justify-items: start;
   padding: 1.5rem 1.5rem 4.5rem;
   gap: 1.5rem;
@@ -542,7 +566,7 @@ p {
 }
 
 @media(hover:hover) {
-  .root:hover .image {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05);
   }
 }
