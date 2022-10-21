@@ -9,7 +9,7 @@ content and navigate to further information within one container. It is set up t
 
 The default `p-link-tile` has an image/icon and a content container that contains a description and a navigational item.
 
-<Playground :markup="basic" :config="config"></Playground>
+<Playground :markup="basic"></Playground>
 
 ## Aspect Ratio
 
@@ -22,7 +22,7 @@ The default `p-link-tile` has an image/icon and a content container that contain
 By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the gradient
 is not necessary for readability, the gradient can be removed by using the supplied boolean property `gradient="false"`.
 
-<Playground :markup="gradient" :config="config"></Playground>
+<Playground :markup="gradient"></Playground>
 
 ## Compact
 
@@ -30,7 +30,7 @@ A `p-link-tile` can be used without visible label text. It can be removed by the
 `compact="true"`. If used without caption, it is mandatory for **accessibility** reasons to provide a descriptive
 `label text` for screen readers.
 
-<Playground :markup="compact" :config="config"></Playground>
+<Playground :markup="compact"></Playground>
 
 ## Alignment
 
@@ -38,7 +38,7 @@ By default, the content container of the `p-link-tile` is aligned at the bottom.
 container can be positioned at the top of the `p-link-tile` container. For this purpose the property `align="top"` must
 be set.
 
-<Playground :markup="align" :config="config"></Playground>
+<Playground :markup="align"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -46,7 +46,6 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
 
   basic = `<div class="container">
   <p-link-tile
