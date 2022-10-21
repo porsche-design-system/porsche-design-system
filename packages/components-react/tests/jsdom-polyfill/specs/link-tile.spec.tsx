@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return (
-    <PLinkTile data-testid="host" label="Some label" description="Some description" aspect-ratio="4:3" href="#">
-      <img slot="image" src="" />
+    <PLinkTile data-testid="host" label="Some label" description="Some description" aspectRatio="4:3" href="#">
+      <img src="" />
     </PLinkTile>
   );
 };
