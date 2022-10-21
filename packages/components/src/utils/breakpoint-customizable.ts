@@ -16,6 +16,7 @@ export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
+    console.log(prop);
     try {
       // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
       return JSON.parse(
