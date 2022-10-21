@@ -21,6 +21,7 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
+      const hasChildren = fileContent.includes('<slot');
 
       let newFileContent = fileContent
         .replace(/@Component\({[\S\s]+?\)\n/g, '')
@@ -84,6 +85,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
 
+        const children = hasChildren
+          ? `
+        {this.children}`
+          : '';
+
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
@@ -95,10 +101,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         <template shadowroot="open">
           <style dangerouslySetInnerHTML={{ __html: style }}></style>
           ${g1.trim().replace(/\n/g, '$&    ')}
-        </template>
-        {this.children}
+        </template>${children}
       </>
-    );`; // TODO: add this.children only when there are children
+    );`;
           });
         });
       }
@@ -114,7 +119,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/\n  public componentWillRender\(\): void {[\S\s]+?\n  }\n/g, '');
 
       // rewire default slot
-      if (newFileContent.includes('<slot') && !newFileContent.includes('FunctionalComponent')) {
+      if (hasChildren && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent
           .replace(
             /public render\(\): JSX\.Element {/,
