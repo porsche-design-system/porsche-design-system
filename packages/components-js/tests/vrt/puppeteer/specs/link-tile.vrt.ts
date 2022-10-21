@@ -35,23 +35,28 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const getElementsMarkup: GetMarkup = () => `
         <div class="grid">
           <p-link-tile href="#" label="Some Label" description="Default">
-            <img src="./assets/porsche_beach.jpg" alt="Beach" />
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Beach" />
           </p-link-tile>
-          <p-link-tile href="#" label="Some Label" description="Default" compact="true">
-            <img src="./assets/porsche_beach.jpg" alt="Beach" />
+          <p-link-tile href="#" label="Some Label" description="Compact" compact="true">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Beach" />
+          </p-link-tile>
+          <p-link-tile href="#" label="Some Label" description="Picture tag" compact="true">
+            <picture>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Beach" />
+            </picture>
           </p-link-tile>
         </div>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > div > p-link-tile >>> .root');
-      await forceHoverState(page, '.hover > div > p-link-tile >>> p-link >>> .root');
-      await forceHoverState(page, '.hover > div > p-link-tile >>> p-link-pure >>> .root');
-      await forceFocusState(page, '.focus > div > p-link-tile >>> a');
-      await forceHoverState(page, '.focus-hover > div > p-link-tile >>> p-link >>> .root');
-      await forceHoverState(page, '.focus-hover > div > p-link-tile >>> p-link-pure >>> .root');
-      await forceHoverState(page, '.focus-hover > div > p-link-tile >>> .root');
-      await forceFocusHoverState(page, '.focus-hover > div > p-link-tile >>> a');
+      await forceHoverState(page, '.hover div p-link-tile >>> .root');
+      await forceHoverState(page, '.hover div p-link-tile >>> p-link >>> .root');
+      await forceHoverState(page, '.hover div p-link-tile >>> p-link-pure >>> .root');
+      await forceFocusState(page, '.focus div p-link-tile >>> a');
+      await forceHoverState(page, '.focus-hover div p-link-tile >>> p-link >>> .root');
+      await forceHoverState(page, '.focus-hover div p-link-tile >>> p-link-pure >>> .root');
+      await forceHoverState(page, '.focus-hover div p-link-tile >>> .root');
+      await forceFocusHoverState(page, '.focus-hover div p-link-tile >>> a');
     })
   ).toBeFalsy();
 });
