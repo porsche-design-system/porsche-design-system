@@ -128,7 +128,7 @@ export const LinkTilePage = (): JSX.Element => {
 
       <div
         className="playground light container"
-        title="should render with picture tag and multiple sources depending on viewport"
+        title="should render with picture tag and multiple sources depending on viewport on light background"
       >
         <PLinkTile href="#" label="Some label" description="Picture tag">
           <picture>

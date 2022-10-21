@@ -127,7 +127,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light container"
-      title="should render with picture tag and multiple sources depending on viewport"
+      title="should render with picture tag and multiple sources depending on viewport on light background"
     >
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Picture tag'">
         <picture>
