@@ -70,11 +70,10 @@ it('should have no cdn requests', async () => {
 
   expect(await button.evaluate((x) => x.shadowRoot !== null), 'shadowRoot is defined').toBeTruthy();
 
-  // Has one request due to image of PLinkTile
-  if (requests.length > 1) {
+  if (requests.length > 0) {
     console.log('HTTP Requests:', requests);
   }
-  expect(requests.length, 'request count').toBe(1);
+  expect(requests.length, 'request count').toBe(0);
 });
 
 it('should have cdn requests', async () => {
