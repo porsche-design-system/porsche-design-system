@@ -14,20 +14,20 @@ import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import {
-  LINK_TILE_SIZE,
+  LINK_TILE_SIZES,
   LINK_TILE_ASPECT_RATIOS,
-  LINK_TILE_ALIGN,
+  LINK_TILE_ALIGNS,
   LINK_TILE_WEIGHTS,
-  throwIfAlignTopWithoutCompact,
+  throwIfAlignTopAndNotCompact,
 } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZE),
+  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
   weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGN),
+  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGNS),
   gradient: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   href: AllowedTypes.string,
@@ -89,7 +89,7 @@ export class LinkTile {
 
   public componentWillLoad(): void {
     throwIfPropIsUndefined(this.host, 'href', this.href);
-    throwIfAlignTopWithoutCompact(this.host, this.align, this.compact);
+    throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 
   public componentWillRender(): void {
