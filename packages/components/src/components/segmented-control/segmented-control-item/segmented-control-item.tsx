@@ -59,7 +59,7 @@ export class SegmentedControlItem {
   }
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
+    throwIfParentIsNotOfKind(this.host, 'p-segmented-control');
   }
 
   public componentWillRender(): void {

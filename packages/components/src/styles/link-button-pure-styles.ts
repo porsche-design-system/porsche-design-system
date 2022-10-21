@@ -6,6 +6,7 @@ import type {
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
+  TextWeight,
   ThemeExtendedElectricDark,
 } from '../types';
 import {
@@ -25,15 +26,16 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize } from '@porsche-design-system/utilities-v2';
+import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
+import { getFontWeight } from './font-weight-styles';
 
 const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& $icon': {
+      '& .icon': {
         width: '1.5em',
         height: '1.5em',
       },
@@ -121,6 +123,7 @@ export const getLinkButtonPureStyles = (
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
+  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
   hasSubline: boolean,
@@ -181,6 +184,8 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
+      ...textSmall,
+      fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
           buildResponsiveStyles(stretch, (stretched: boolean) => ({
@@ -195,24 +200,21 @@ export const getLinkButtonPureStyles = (
         width: '1.5em',
         height: '1.5em',
       },
-      label: {
-        ...mergeDeep(
-          buildResponsiveStyles(
-            hideLabel,
-            !hasSlottedAnchor ? getVisibilityJssStyle : getSlottedAnchorVisibilityJssStyle
-          ),
-          hasSubline
-            ? { paddingLeft: pxToRemWithUnit(4) }
-            : buildResponsiveStyles(alignLabel, getLabelAlignmentJssStyle)
+      label: mergeDeep(
+        buildResponsiveStyles(
+          hideLabel,
+          !hasSlottedAnchor ? getVisibilityJssStyle : getSlottedAnchorVisibilityJssStyle
         ),
-      },
+        hasSubline ? { paddingLeft: pxToRemWithUnit(4) } : buildResponsiveStyles(alignLabel, getLabelAlignmentJssStyle)
+      ),
     }),
     ...(hasSubline && {
       subline: {
         display: 'flex',
-        transition: getTransition('color'),
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
+        ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
+        transition: getTransition('color'),
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
           paddingLeft: pxToRemWithUnit(4),

@@ -22,14 +22,13 @@ const initHeadline = (opts?: { variant?: HeadlineVariant; slot?: string; tag?: H
   return setContentWithDesignSystem(
     page,
     `
-        <p-headline ${content.trim()}>
-          ${slot ? slot : 'Some Headline'}
-        </p-headline>`
+    <p-headline ${content.trim()}>
+      ${slot ? slot : 'Some Headline'}
+    </p-headline>`
   );
 };
 
 const getHost = () => selectNode(page, 'p-headline');
-const getText = () => selectNode(page, 'p-headline >>> p-text');
 
 const getHeadlineTagName = async () =>
   await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
@@ -109,11 +108,9 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'variant', 'headline-4');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-headline'], 'componentDidUpdate: p-headline').toBe(1);
-
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -123,11 +120,9 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'variant', 'headline-4');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-headline'], 'componentDidUpdate: p-headline').toBe(1);
-
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 

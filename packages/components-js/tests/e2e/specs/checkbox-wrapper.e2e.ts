@@ -296,14 +296,12 @@ describe('indeterminate state', () => {
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initCheckbox({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -313,12 +311,11 @@ describe('lifecycle', () => {
 
     await input.click();
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-checkbox-wrapper'], 'componentDidUpdate: p-checkbox-wrapper').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 });

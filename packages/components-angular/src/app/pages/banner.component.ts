@@ -1,6 +1,5 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { componentsReady } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-banner',
@@ -97,7 +96,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </p-banner>
       </div>
 
-      <div *ngIf="allReady" class="playground light" title="should show banner in fluid width">
+      <div class="playground light" title="should show banner in fluid width">
         <p-banner [width]="'fluid'">
           <span slot="title">Some notification title</span>
           <span slot="description">
@@ -109,15 +108,4 @@ import { componentsReady } from '@porsche-design-system/components-angular';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BannerComponent implements OnInit {
-  public allReady: boolean = false;
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    componentsReady().then(() => {
-      this.allReady = true;
-      this.cdr.markForCheck();
-    });
-  }
-}
+export class BannerComponent {}

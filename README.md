@@ -4,7 +4,7 @@
 
 ## Build status
 
-[![Actions Status](https://github.com/porscheui/porsche-design-system/workflows/Porsche%20Design%20System/badge.svg)](https://github.com/porscheui/porsche-design-system/actions)
+[![Actions Status](https://github.com/porsche-design-system/porsche-design-system/workflows/Porsche%20Design%20System/badge.svg)](https://github.com/porsche-design-system/porsche-design-system/actions)
 
 ## Setup
 
@@ -16,9 +16,9 @@
 
 ### Getting started
 
-1. Clone [`porsche-design-system` repository](https://github.com/porscheui/porsche-design-system)
+1. Clone [`porsche-design-system` repository](https://github.com/porsche-design-system/porsche-design-system)
 1. Switch to **project root directory**
-1. Checkout branch **master** by executing `git checkout master`
+1. Checkout branch **main** by executing `git checkout main`
 1. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
    – by default it's ignored by `.gitignore`)
 1. Make sure that Docker app is running
@@ -137,12 +137,23 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 1. For the different applications, select one of the following commands:
 
-- `./docker.sh run-test-vrt` (vrt tests for the entire application)
-- `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
+- `./docker.sh run-test-vrt-puppeteer --components-js` (vrt tests for the native web components for Chromium)
+- `./docker.sh run-test-vrt-playwright --components-js` (vrt tests for the native web components for Webkit)
 - `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
 - `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
 - `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
 - `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
+
+#### What to do when VRT Puppeteer tests are failing
+
+1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/(puppeteer?)/results`. Here you can
+   find the belonging `diff` and `regression` images.
+1. Check if you would like to accept the changes
+
+- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the
+  `/vrt/(puppeteer?)/results` folder and delete the images in the `/vrt/(puppeteer?)/results` directory afterwards
+  manually.
+- **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ### Smoke Tests
 
@@ -154,16 +165,6 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-test-smoke` (smoke tests for the entire application)
 - `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
 
-#### What to do when VRT tests are failing
-
-1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the
-   belonging `diff` and `regression` images.
-1. Check if you would like to accept the changes
-
-- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results`
-  folder and delete the images in the `/vrt/results` directory afterwards manually.
-- **If no**: Recheck your code and run the tests again, when you think you fixed it.
-
 ---
 
 ## Docker
@@ -171,11 +172,11 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 #### What to do after adjusting docker scripts
 
 1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod
-   builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
+   builds: [#1124](https://github.com/porsche-design-system/porsche-design-system/issues/1124))
 1. Switch to `docker/node` directory
 1. Run `bash build-and-push-base-image.sh`
 1. View new package on
-   [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
+   [GitHub-Packages Page](https://github.com/orgs/porsche-design-system/packages?repo_name=porsche-design-system)
 
 ## Dependency updates
 
@@ -210,7 +211,7 @@ Every week, we update our NPM packages:
 
 ## Build status
 
-[GitHub Actions](https://github.com/porscheui/porsche-design-system/actions)
+[GitHub Actions](https://github.com/porsche-design-system/porsche-design-system/actions)
 
 ## Developing new components
 
@@ -268,16 +269,15 @@ When publishing a stable release then it's necessary an RC release is made immed
 all sample integration projects. The stable release needs to be exactly the same as the RC release to make sure
 everything works under real conditions.
 
-- [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
-- [Angular](https://github.com/porscheui/sample-integration-angular)
-- [React](https://github.com/porscheui/sample-integration-react)
-- [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
-- [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+- [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
+- [Angular](https://github.com/porsche-design-system/sample-integration-angular)
+- [React](https://github.com/porsche-design-system/sample-integration-react)
+- [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/components-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -297,7 +297,7 @@ everything works under real conditions.
    `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 #### Stable with skeletons
 
@@ -308,17 +308,16 @@ everything works under real conditions.
    `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}-skeletons | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3-skeletons`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Update sample projects
 
 1. Go to according examples Projects:
 
-- https://github.com/porscheui/sample-integration-angular
-- https://github.com/porscheui/sample-integration-react
-- https://github.com/porscheui/sample-integration-nextjs
-- https://github.com/porscheui/sample-integration-gatsby
-- https://github.com/porscheui/sample-integration-vanillajs
+- https://github.com/porsche-design-system/sample-integration-angular
+- https://github.com/porsche-design-system/sample-integration-react
+- https://github.com/porsche-design-system/sample-integration-nextjs
+- https://github.com/porsche-design-system/sample-integration-vanillajs
 
 1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
 1. Run `yarn`
@@ -340,16 +339,15 @@ When publishing a stable release then it's necessary an RC release is made immed
 all sample integration projects. The stable release needs to be exactly the same as the RC release to make sure
 everything works under real conditions.
 
-- [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
-- [Angular](https://github.com/porscheui/sample-integration-angular)
-- [React](https://github.com/porscheui/sample-integration-react)
-- [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
-- [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+- [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
+- [Angular](https://github.com/porsche-design-system/sample-integration-angular)
+- [React](https://github.com/porsche-design-system/sample-integration-react)
+- [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/utilities-deprecated-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -365,7 +363,7 @@ everything works under real conditions.
    `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/utilities-deprecated-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -390,7 +388,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/assets-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]**
@@ -406,7 +404,7 @@ everything works under real conditions.
    `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -419,7 +417,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-basic-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -448,7 +446,7 @@ everything works under real conditions.
    `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-basic-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
@@ -462,7 +460,7 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
+1. Run `git pull origin {main- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-web-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
    **[Unreleased]** (this file will also be used to show on Storefront)
@@ -493,7 +491,7 @@ everything works under real conditions.
    e.g. **.Release Porsche Design System - Sketch Library Web v1.1.1 | aa**
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
 1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 

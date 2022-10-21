@@ -111,14 +111,14 @@ describe('input type="password"', () => {
 
     await setProperty(input, 'disabled', true);
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'disabled border').not.toBe(initialBorderColor);
 
     await setProperty(input, 'disabled', false);
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
@@ -180,17 +180,17 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'value', 'value');
       await page.keyboard.press('Escape');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(1);
 
       await page.keyboard.press('Escape');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(inputEvents).toBe(1);
 
       await setProperty(input, 'value', 'value');
       await page.mouse.click(90, 25);
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(2);
     });
@@ -205,18 +205,18 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'value', 'value');
       await page.keyboard.press('Escape');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(1);
 
       await page.keyboard.press('Escape');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(inputEvents).toBe(1);
 
       await setProperty(input, 'value', 'value');
       const button = await getToggleOrClearButton();
       await button.click();
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(2);
     });
@@ -230,7 +230,7 @@ describe('input type="search"', () => {
       await addEventListener(host, 'action', () => actionEvents++);
 
       await button.click();
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(actionEvents).toBe(1);
     });
   });
@@ -321,14 +321,14 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(button)).toBe(true);
       expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(button)).toBe(false);
       expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
@@ -344,14 +344,14 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(button)).toBe(true);
       expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(button)).toBe(false);
       expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
@@ -367,14 +367,14 @@ describe('input type="search"', () => {
       await addEventListener(form, 'submit', () => formFocusCalls++);
 
       await searchButton.click();
-      await waitForEventSerialization(page);
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
-      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization();
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
+      await waitForEventSerialization(); // 🙈
 
       expect(formFocusCalls).toBe(1);
     });
@@ -399,8 +399,8 @@ describe('focus state', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await label.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
 
     expect(inputFocusSpyCalls).toBe(1);
   });
@@ -415,7 +415,7 @@ describe('focus state', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await unitElement.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(inputFocusSpyCalls).toBe(1);
   });
@@ -523,11 +523,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-text-field-wrapper'], 'componentDidLoad: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(3);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
   });
 
   it('should work without unnecessary round trips after prop change', async () => {
@@ -536,16 +535,12 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
-
     expect(status.componentDidUpdate['p-text-field-wrapper'], 'componentDidUpdate: p-text-field-wrapper').toBe(1);
-    expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(0);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
   });
 });
 

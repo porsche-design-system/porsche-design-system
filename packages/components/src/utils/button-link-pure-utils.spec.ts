@@ -27,7 +27,7 @@ describe('hasSlottedSubline()', () => {
 });
 
 describe('warnIfParentIsPTextAndIconIsNone()', () => {
-  it('should print warning if parent is p-text and icon is none', () => {
+  it('should print warning if parent is p-text and iconName === "none"', () => {
     const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const parent = document.createElement('p-text');
     const child = document.createElement('button');
@@ -44,7 +44,6 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     parent.appendChild(child);
 
     warnIfParentIsPTextAndIconIsNone(child, 'highway');
-
     expect(spy).not.toBeCalled();
   });
 

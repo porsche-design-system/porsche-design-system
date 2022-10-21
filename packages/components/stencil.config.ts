@@ -11,7 +11,7 @@ import type { TagName } from '@porsche-design-system/shared';
  * `npm` is leading to conflicts.
  * By adding a npm script to the PATH that does nothing
  * we can ensure, that our dependencies stay untouched.
- * https://github.com/porscheui/porsche-design-system/issues/318
+ * https://github.com/porsche-design-system/porsche-design-system/issues/318
  */
 const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
 process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;

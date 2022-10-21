@@ -428,7 +428,7 @@ describe('marque', () => {
       expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
       expect(marqueFocusCalls, 'marqueFocusCalls after 1st tab').toBe(0);
       expect(marqueFocusInCalls, 'marqueFocusInCalls after 1st tab').toBe(0);
@@ -438,7 +438,7 @@ describe('marque', () => {
       expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
       expect(marqueFocusCalls, 'marqueFocusCalls after 2nd tab').toBe(1);
       expect(marqueFocusInCalls, 'marqueFocusInCalls after 2nd tab').toBe(1);
@@ -448,7 +448,7 @@ describe('marque', () => {
       expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-link');
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
       expect(marqueFocusCalls, 'marqueFocusCalls after 3rd tab').toBe(1);
       expect(marqueFocusInCalls, 'marqueFocusInCalls after 3rd tab').toBe(1);
@@ -460,7 +460,7 @@ describe('marque', () => {
       // tab back
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
       expect(marqueFocusCalls, 'marqueFocusCalls after 1st tab back').toBe(2);
       expect(marqueFocusInCalls, 'marqueFocusInCalls after 1st tab back').toBe(2);
@@ -470,7 +470,7 @@ describe('marque', () => {
       expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-link');
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
+      await waitForEventSerialization();
       expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
       expect(marqueFocusCalls, 'marqueFocusCalls after 2nd tab back').toBe(2);
       expect(marqueFocusInCalls, 'marqueFocusInCalls after 2nd tab back').toBe(2);

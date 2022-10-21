@@ -5,7 +5,7 @@ it('should throw error if parent tag does not match', () => {
   const child = document.createElement('p-grid-item');
   parent.appendChild(child);
 
-  expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).toThrow();
 });
 
 it('should not throw error if parent tag matches', () => {
@@ -13,7 +13,7 @@ it('should not throw error if parent tag matches', () => {
   const child = document.createElement('p-grid-item');
   parent.appendChild(child);
 
-  expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).not.toThrow();
 });
 
 it('should not throw error if prefixed parent tag matches', () => {
@@ -21,5 +21,5 @@ it('should not throw error if prefixed parent tag matches', () => {
   const child = document.createElement('my-prefix-p-grid-item');
   parent.appendChild(child);
 
-  expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).not.toThrow();
 });

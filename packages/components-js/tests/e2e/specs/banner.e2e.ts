@@ -4,7 +4,7 @@ import {
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -71,22 +71,22 @@ describe('close', () => {
 
     const closeButton = await getCloseButton();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
   });
 
   it('should remove banner from DOM by trigger ESC key', async () => {
     await initBanner();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await page.keyboard.press('Escape');
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
   });
 
@@ -98,9 +98,9 @@ describe('close', () => {
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(calls).toBe(1);
   });
 
@@ -113,12 +113,12 @@ describe('close', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-banner');
+    await reattachElementHandle(host);
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization();
+    await waitForEventSerialization(); // 🙈
 
     expect(calls).toBe(1);
   });
@@ -150,7 +150,7 @@ describe('close', () => {
     expect(banner1Styles).toEqual(banner2Styles);
 
     await closeButtonBanner2.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     const classListBanner1AfterClick = await getCssClasses(banner1);
     const banner1StylesAfterClick = await getComputedElementHandleStyles(banner1);
@@ -163,18 +163,15 @@ describe('close', () => {
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initBanner('error');
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
     expect(status.componentDidLoad['p-content-wrapper'], 'componentDidLoad: p-content-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -191,7 +188,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });

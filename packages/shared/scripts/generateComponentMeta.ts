@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { paramCase } from 'change-case';
 import { TAG_NAMES, INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
@@ -67,7 +66,7 @@ const generateComponentMeta = (): void => {
   skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
-    `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
+    `type ComponentsMeta = Record<TagName, ComponentMeta>;`,
   ].join(glue);
 
   type ComponentMeta = {
@@ -94,11 +93,9 @@ const generateComponentMeta = (): void => {
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
-  type ComponentsMeta = {
-    [key in TagName]: ComponentMeta;
-  };
+  type ComponentsMeta = Record<TagName, ComponentMeta>;
 
-  const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
+  const componentSourceCode: Record<TagName, string> = componentFiles.reduce((result, filePath) => {
     const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
 
     // get rid of functional components like StateMessage
@@ -107,7 +104,7 @@ const generateComponentMeta = (): void => {
     }
 
     return result;
-  }, {} as { [key in TagName]: string });
+  }, {} as Record<TagName, string>);
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
@@ -126,20 +123,18 @@ const generateComponentMeta = (): void => {
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
     // required parent
-    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
-    const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
+    const [, requiredParent] =
+      (/throwIfParentIsNotOfKind\(.+'([a-z-]+)'\)/.exec(source) as unknown as [string, TagName]) || [];
 
-    // required root node
-    const [, requiredRootNodesCamelCase] = /throwIfRootNodeIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
-    const requiredRootNodes = requiredRootNodesCamelCase
-      ? (requiredRootNodesCamelCase
-          .replace(/['\s]/g, '')
-          .split(',')
-          .map((rootNode) => paramCase(rootNode)) as TagName[])
+    // required root nodes
+    let [, requiredRootNodes] =
+      (/throwIfRootNodeIsNotOneOfKind\(.+\[([a-z-,\s']+)\]\)/.exec(source) as unknown as [string, TagName[]]) || [];
+    requiredRootNodes = requiredRootNodes
+      ? ((requiredRootNodes as unknown as string).replace(/['\s]/g, '').split(',') as TagName[])
       : [];
 
     // required child
-    let [, requiredChild] = /getOnlyChildOfKindHTMLElementOrThrow\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
+    let [, requiredChild] = /getOnlyChildOfKindHTMLElementOrThrow\(\s*this\.host,([\s\S]+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
     let requiredChildSelector: string;
 
@@ -167,7 +162,7 @@ const generateComponentMeta = (): void => {
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(.*\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
     ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
         propValue === 'true'
@@ -185,7 +180,7 @@ const generateComponentMeta = (): void => {
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
       // same regex as above without optional ? modifier
-      source.matchAll(/@Prop\(.*\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:: (.+?))?(?:= (.+))?;/g)
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
@@ -196,7 +191,7 @@ const generateComponentMeta = (): void => {
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
-    const [, rawObservedAttributes] = /observeAttributes\([A-z.]+, (\[.+\]),.+?\);/.exec(source) || [];
+    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+\]),.+?\);/.exec(source) || [];
     if (rawObservedAttributes) {
       observedAttributes = eval(rawObservedAttributes);
     }

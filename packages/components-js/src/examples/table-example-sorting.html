@@ -3,10 +3,10 @@
 <script>
   const getHeadAndData = async () => {
     const content = await fetch('assets/table-data-sorting.js').then((res) => res.text());
-    const [, headStr] = /const headSorting = ((.|\s)*?);/.exec(content) || [];
+    const [, headStr] = /const headSorting = ((\s|\S)*?);/.exec(content) || [];
     const head = eval(headStr);
 
-    const [, dataStr] = /const dataSorting = ((.|\s)*?);/.exec(content) || [];
+    const [, dataStr] = /const dataSorting = ((\s|\S)*?);/.exec(content) || [];
     const data = eval(dataStr);
 
     return { headSorting, dataSorting };

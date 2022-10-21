@@ -1,8 +1,9 @@
-import { BreakpointKey, BREAKPOINTS, BreakpointValues, parseJSON } from '../breakpoint-customizable';
+import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
+import type { BreakpointKey, BreakpointValues } from '../breakpoint-customizable';
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
 import type { EventEmitter } from '@stencil/core';
-import { getTagName } from '../tag-name';
+import { getTagName } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
@@ -26,7 +27,7 @@ export type ValidationError = {
 
 export const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
-    .replace(/"([A-z?]+)":/g, '$1:') // remove double quotes from keys
+    .replace(/"([a-zA-Z?]+)":/g, '$1:') // remove double quotes from keys
     .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
     .replace(/(})/g, ' $1') // add space before following: }
     .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
@@ -77,8 +78,8 @@ export const getBreakpointCustomizableStructure = <T>(
 ): string => {
   if (allowedValues !== 'boolean' && allowedValues !== 'number') {
     allowedValues = formatArrayOutput(allowedValues)
-      .replace('[', '(') // starting inline type literal array
-      .replace(']', ')[]') // ending inline type literal array
+      .replace(/\[/g, '(') // starting inline type literal array
+      .replace(/]/g, ')[]') // ending inline type literal array
       .replace(/,/g, ' |') as any; // replace commas with a pipe
   }
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);

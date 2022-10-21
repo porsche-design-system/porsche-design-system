@@ -145,7 +145,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: Spacing;`).join('\n  ');
-    props = props.replace(/(HTMLAttributes<{}> & {\n)/, `$1  ${spacings}\n`);
+    const htmlAttributesType = this.generateHTMLAttributesType();
+    props = props.replace(new RegExp(`(${htmlAttributesType} & {\n)`), `$1  ${spacings}\n`);
 
     return props;
   }
@@ -443,7 +444,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // extract other components and get rid of duplicates
     const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
-      .map((x) => x.replace('<', ''))
+      .map((x) => x.replace(/</g, ''))
       .filter((x, i, a) => a.indexOf(x) === i);
 
     const otherComponents = allComponents.filter((x) => !x.startsWith('Dummy'));
@@ -464,7 +465,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     });
 
     const content = `${imports}
-  
+
 export default (
   <${componentName} ${stringifiedProps}>
     ${children}
@@ -490,7 +491,7 @@ export default (
     });
 
     const content = `import { ${formComponentName} } from '../${formComponentName}';
-  
+
 export default <${formComponentName} ${stringifiedProps} />;
   `;
 

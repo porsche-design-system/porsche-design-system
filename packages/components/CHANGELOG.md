@@ -9,6 +9,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.16.3] - 2022-10-21
+
+### [2.16.3-rc.0] - 2022-10-21
+
+#### Fixed
+
+- `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
+
+#### Changed
+
+- Replaced all internal usage of `Text` and `Headline` components
+
+### [2.16.2] - 2022-09-15
+
+### [2.16.2-rc.0] - 2022-09-15
+
+#### Fixed
+
+- Issue with `Popover` where drop-shadow is not shown correctly in Chrome >= 105
+- Issue with `Carousel` and `wrap-content="true"` where the layout was out of sync with `Content Wrapper` for
+  viewports >= 1760px.
+- `Select Wrapper` with custom dropdown keeps attribute changes of native select options in sync if changed
+  programmatically
+
+### [2.16.1] - 2022-09-09
+
+#### Fixed
+
+- Issue with `Options` typing import for `Carousel`
+
 ### [2.16.0] - 2022-09-08
 
 ### [2.15.1-rc.1] - 2022-09-08
@@ -1388,7 +1418,6 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 - Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
-- Test-Projects React, Angular, Gatsby and NextJS
 
 #### Changed
 

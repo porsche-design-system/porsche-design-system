@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`addImportantToEachRule() should add !important to each rule 1`] = `
-Object {
-  "&:hover": Object {
-    "&:focus": Object {
+{
+  "&:hover": {
+    "&:focus": {
       "color": "orange !important",
     },
     "color": "blue !important",
   },
   "color": "red !important",
-  "content": "\\"\\" !important",
+  "content": """ !important",
   "display": "block !important",
   "margin": "0 !important",
 }
 `;
 
 exports[`getBaseSlottedStyles() should return correct styles 1`] = `
-Object {
-  "& a": Object {
-    "&::-moz-focus-inner": Object {
+{
+  "& a": {
+    "&::-moz-focus-inner": {
       "border": 0,
     },
-    "&:focus": Object {
+    "&:focus": {
       "outlineColor": "currentColor",
     },
-    "&:focus:not(:focus-visible)": Object {
+    "&:focus:not(:focus-visible)": {
       "outlineColor": "transparent",
     },
-    "@media(hover:hover)": Object {
-      "&:hover": Object {
+    "@media(hover:hover)": {
+      "&:hover": {
         "color": "#d5001c",
       },
       "transition": "color var(--p-transition-duration, .24s) ease",
@@ -38,29 +38,29 @@ Object {
     "outlineOffset": "1px",
     "textDecoration": "underline",
   },
-  "& b, & strong": Object {
+  "& b, & strong": {
     "fontWeight": 700,
   },
-  "& em, & i": Object {
+  "& em, & i": {
     "fontStyle": "normal",
   },
 }
 `;
 
 exports[`getBaseSlottedStyles() should return correct styles with dark theme 1`] = `
-Object {
-  "& a": Object {
-    "&::-moz-focus-inner": Object {
+{
+  "& a": {
+    "&::-moz-focus-inner": {
       "border": 0,
     },
-    "&:focus": Object {
+    "&:focus": {
       "outlineColor": "currentColor",
     },
-    "&:focus:not(:focus-visible)": Object {
+    "&:focus:not(:focus-visible)": {
       "outlineColor": "transparent",
     },
-    "@media(hover:hover)": Object {
-      "&:hover": Object {
+    "@media(hover:hover)": {
+      "&:hover": {
         "color": "#d5001c",
       },
       "transition": "color var(--p-transition-duration, .24s) ease",
@@ -70,14 +70,14 @@ Object {
     "outlineOffset": "1px",
     "textDecoration": "underline",
   },
-  "& b, & strong": Object {
+  "& b, & strong": {
     "fontWeight": 700,
   },
-  "& em, & i": Object {
+  "& em, & i": {
     "fontStyle": "normal",
   },
-  "&[data-theme=\\"dark\\"] a:hover": Object {
-    "@media(hover:hover)": Object {
+  "&[data-theme="dark"] a:hover": {
+    "@media(hover:hover)": {
       "color": "#ff0223",
     },
   },
@@ -85,19 +85,19 @@ Object {
 `;
 
 exports[`getBaseSlottedStyles() should return correct styles without dark theme 1`] = `
-Object {
-  "& a": Object {
-    "&::-moz-focus-inner": Object {
+{
+  "& a": {
+    "&::-moz-focus-inner": {
       "border": 0,
     },
-    "&:focus": Object {
+    "&:focus": {
       "outlineColor": "currentColor",
     },
-    "&:focus:not(:focus-visible)": Object {
+    "&:focus:not(:focus-visible)": {
       "outlineColor": "transparent",
     },
-    "@media(hover:hover)": Object {
-      "&:hover": Object {
+    "@media(hover:hover)": {
+      "&:hover": {
         "color": "#d5001c",
       },
       "transition": "color var(--p-transition-duration, .24s) ease",
@@ -107,23 +107,23 @@ Object {
     "outlineOffset": "1px",
     "textDecoration": "underline",
   },
-  "& b, & strong": Object {
+  "& b, & strong": {
     "fontWeight": 700,
   },
-  "& em, & i": Object {
+  "& em, & i": {
     "fontStyle": "normal",
   },
 }
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 1, pseudo: '::before' } 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&::before": Object {
+  "&::before": {
     "bottom": 0,
-    "content": "\\"\\"",
+    "content": """",
     "left": 0,
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
@@ -131,10 +131,10 @@ Object {
     "right": 0,
     "top": 0,
   },
-  "&:focus::before": Object {
+  "&:focus::before": {
     "outlineColor": "deeppink",
   },
-  "&:focus:not(:focus-visible)::before": Object {
+  "&:focus:not(:focus-visible)::before": {
     "outlineColor": "transparent",
   },
   "outline": 0,
@@ -142,13 +142,13 @@ Object {
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 2, pseudo: '::after' } 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&::after": Object {
+  "&::after": {
     "bottom": 0,
-    "content": "\\"\\"",
+    "content": """",
     "left": 0,
     "outline": "1px solid transparent",
     "outlineOffset": "2px",
@@ -156,10 +156,10 @@ Object {
     "right": 0,
     "top": 0,
   },
-  "&:focus::after": Object {
+  "&:focus::after": {
     "outlineColor": "deeppink",
   },
-  "&:focus:not(:focus-visible)::after": Object {
+  "&:focus:not(:focus-visible)::after": {
     "outlineColor": "transparent",
   },
   "outline": 0,
@@ -167,14 +167,14 @@ Object {
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 3 } 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&:focus": Object {
+  "&:focus": {
     "outlineColor": "deeppink",
   },
-  "&:focus:not(:focus-visible)": Object {
+  "&:focus:not(:focus-visible)": {
     "outlineColor": "transparent",
   },
   "outline": "1px solid transparent",
@@ -183,14 +183,14 @@ Object {
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&:focus": Object {
+  "&:focus": {
     "outlineColor": "red",
   },
-  "&:focus:not(:focus-visible)": Object {
+  "&:focus:not(:focus-visible)": {
     "outlineColor": "transparent",
   },
   "outline": "1px solid transparent",
@@ -199,14 +199,14 @@ Object {
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&:focus": Object {
+  "&:focus": {
     "outlineColor": "currentColor",
   },
-  "&:focus:not(:focus-visible)": Object {
+  "&:focus:not(:focus-visible)": {
     "outlineColor": "transparent",
   },
   "outline": "1px solid transparent",
@@ -215,14 +215,14 @@ Object {
 `;
 
 exports[`getFocusJssStyles() should return correct JssStyle for params: {} 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
+{
+  "&::-moz-focus-inner": {
     "border": 0,
   },
-  "&:focus": Object {
+  "&:focus": {
     "outlineColor": "currentColor",
   },
-  "&:focus:not(:focus-visible)": Object {
+  "&:focus:not(:focus-visible)": {
     "outlineColor": "transparent",
   },
   "outline": "1px solid transparent",
@@ -231,7 +231,7 @@ Object {
 `;
 
 exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "height": "auto",
@@ -245,7 +245,7 @@ Object {
 `;
 
 exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",
@@ -260,8 +260,8 @@ Object {
 `;
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'dark' 1`] = `
-Object {
-  "&:hover": Object {
+{
+  "&:hover": {
     "color": "#ff0223",
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
@@ -269,8 +269,8 @@ Object {
 `;
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'light' 1`] = `
-Object {
-  "&:hover": Object {
+{
+  "&:hover": {
     "color": "#d5001c",
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
@@ -278,7 +278,7 @@ Object {
 `;
 
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: 'auto' 1`] = `
-Object {
+{
   "bottom": "auto",
   "left": "auto",
   "right": "auto",
@@ -287,7 +287,7 @@ Object {
 `;
 
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: -1 1`] = `
-Object {
+{
   "bottom": "-1px",
   "left": "-1px",
   "right": "-1px",
@@ -296,7 +296,7 @@ Object {
 `;
 
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: 2 1`] = `
-Object {
+{
   "bottom": "2px",
   "left": "2px",
   "right": "2px",
@@ -305,7 +305,7 @@ Object {
 `;
 
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: undefined 1`] = `
-Object {
+{
   "bottom": 0,
   "left": 0,
   "right": 0,
@@ -314,7 +314,7 @@ Object {
 `;
 
 exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
-Object {
+{
   "clip": "auto",
   "clipPath": "none",
   "height": "auto",
@@ -327,7 +327,7 @@ Object {
 `;
 
 exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
-Object {
+{
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
   "clipPath": "inset(50%)",

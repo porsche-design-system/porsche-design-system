@@ -128,7 +128,7 @@ it('should render and be visible when open', async () => {
 
 it('should not be visible when not open', async () => {
   await initBasicModal({ isOpen: false });
-  await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
+  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // wait for visibility transition to finish
   expect(await getModalVisibility()).toBe('hidden');
 });
 
@@ -191,7 +191,7 @@ describe('can be closed', () => {
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(1);
 
@@ -203,7 +203,7 @@ describe('can be closed', () => {
   it('should not be closed if mousedown inside modal', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(0);
 
@@ -215,7 +215,7 @@ describe('can be closed', () => {
   it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls, 'after mouse down').toBe(0);
 
@@ -228,11 +228,11 @@ describe('can be closed', () => {
   it('should not be closable via backdrop when disableBackdropClick is set', async () => {
     const host = await getHost();
     await setProperty(host, 'disableBackdropClick', true);
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls).toBe(0);
   });
@@ -243,7 +243,7 @@ describe('can be closed', () => {
     await addEventListener(body, 'close', () => bodyCalls++);
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
 
     expect(calls).toBe(1);
     expect(bodyCalls).toBe(0);
@@ -321,20 +321,20 @@ describe('focus behavior', () => {
           });
         </script>`
     );
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
 
     expect(await getModalVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
@@ -559,13 +559,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
 
-    expect(
-      status.componentDidLoad.all,
-      'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -575,16 +571,12 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
 
-    expect(
-      status.componentDidLoad.all,
-      'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
-    ).toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, p-headline').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 
@@ -593,7 +585,7 @@ describe('slotted heading', () => {
     await initBasicModal({ hasSlottedHeading: true });
     const header = await getHeader();
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<slot name=\\"heading\\"></slot>"');
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="heading"></slot>"`);
   });
 
   it('should overwrite slotted heading when setting heading prop', async () => {
@@ -605,9 +597,7 @@ describe('slotted heading', () => {
     await waitForStencilLifecycle(page);
     await waitForComponentsReady(page); // wait for p-headline to initialize
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
-      '"<p-headline class=\\"hydrated\\">Some Heading</p-headline>"'
-    );
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h1>Some Heading</h1>"');
   });
 });
 

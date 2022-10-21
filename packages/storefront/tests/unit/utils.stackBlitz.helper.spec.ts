@@ -6,8 +6,10 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   getExternalDependenciesOrThrow,
+  isStableStorefrontRelease, convertImportPaths,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
+import * as helper from '../../src/utils/stackblitz/helper';
 
 jest.mock('@porsche-design-system/shared/data', () => ({
   headBasic: 'mockedHeadBasic',
@@ -85,5 +87,74 @@ describe('validateExternalDependencies()', () => {
   it('should return passed externalDependencies[] if values are valid', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     expect(getExternalDependenciesOrThrow(externalDependencies)).toBe(externalDependencies);
+  });
+});
+
+describe('isStableStorefrontRelease()', () => {
+  const { location } = window;
+  const mockPathname = jest.fn();
+
+  beforeAll(() => {
+    Object.defineProperty(window, 'location', {
+      value: {
+        get pathname() {
+          return mockPathname();
+        },
+      },
+    });
+  });
+
+  afterAll(() => {
+    // @ts-ignore
+    delete window.location;
+    window.location = location;
+  });
+
+  it.each<[string, boolean]>([
+    ['/issue/123', false],
+    ['/release/123', false],
+    ['/latest', false],
+    ['/latest/', false],
+    ['/', false],
+    ['/v', false],
+    ['/v1/', true],
+    ['/v1', false],
+    ['/v2/', true],
+    ['/v2', false],
+    ['/v33/', true],
+    ['/v33', false],
+  ])('should for path: %s return %s', (path, expected) => {
+    mockPathname.mockReturnValue(path);
+    expect(isStableStorefrontRelease()).toBe(expected);
+  });
+});
+
+describe('convertImportPaths()', () => {
+  const markup = `
+'import * from '@porsche-design-system/components-js';
+'import * from '@porsche-design-system/components-angular';
+'import * from '@porsche-design-system/components-react';`;
+
+  it('should return markup without modification', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
+  });
+
+  it('should return markup without updated import path for js', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
+  });
+
+  it('should return markup without updated import path for angular', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'angular')).toMatchSnapshot();
+  });
+  it('should return markup without updated import path for react', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    expect(convertImportPaths(markup, 'react')).toMatchSnapshot();
   });
 });

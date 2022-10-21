@@ -17,7 +17,7 @@ const validateMarkdownLinks = async (): Promise<void> => {
   if (markdownHrefsStartingWithSlash.length) {
     console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
   }
-  expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
+  expect(markdownHrefsStartingWithSlash.length).toBe(0);
 };
 
 const getHeadline = async (): Promise<string> => {

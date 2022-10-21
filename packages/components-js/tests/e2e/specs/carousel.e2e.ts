@@ -175,7 +175,7 @@ it('should have working pagination and prev/next buttons after reconnect', async
   const buttonNext = await getButtonNext();
   const [slide1, slide2, slide3] = await getSlides();
 
-  await reattachElementHandle(page, host);
+  await reattachElementHandle(host);
   // different refs after reconnect, so we have to select them here
   const [bullet1, bullet2, bullet3] = await getPaginationBullets();
 
@@ -457,11 +457,11 @@ describe('events', () => {
     expect(eventCounter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(2);
   });
 
@@ -474,15 +474,15 @@ describe('events', () => {
     let eventCounter = 0;
     await addEventListener(host, 'carouselChange', () => eventCounter++);
 
-    await reattachElementHandle(page, host);
+    await reattachElementHandle(host);
     expect(eventCounter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization(page);
+    await waitForEventSerialization();
     expect(eventCounter).toBe(2);
   });
 });
@@ -494,12 +494,11 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-carousel'], 'componentDidLoad: p-carousel').toBe(1);
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
-    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 
   it('should work without unnecessary round trips on btn next click', async () => {
@@ -512,7 +511,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 });
 

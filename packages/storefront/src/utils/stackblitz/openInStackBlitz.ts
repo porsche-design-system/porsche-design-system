@@ -10,8 +10,10 @@ import type {
   ExternalDependency,
 } from '../../utils';
 import type { Theme, ColorScheme, Framework } from '../../models';
+import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
+  porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
   framework: Exclude<Framework, 'shared'>;
   theme: Theme;

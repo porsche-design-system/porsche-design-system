@@ -48,9 +48,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    return `export type ${this.generatePropsName(
-      component
-    )}${genericType} = HTMLAttributes<{}> & ${rawComponentInterface};`;
+    const propsName = this.generatePropsName(component) + genericType;
+    const htmlAttributesType = this.generateHTMLAttributesType();
+
+    return `export type ${propsName} = ${htmlAttributesType} & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
@@ -135,5 +136,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   private generatePropsName(component: TagName): string {
     return `${pascalCase(component)}Props`;
+  }
+
+  // Return the `HTMLAttribute` type to be used in the intersection of the component type,
+  // omitting HTML attributes that are overridden by the component
+  protected generateHTMLAttributesType(): string {
+    const overriddenPropNames = ['color'];
+    const omitted = overriddenPropNames.map((propName) => `'${propName}'`).join(` | `);
+    return `Omit<HTMLAttributes<{}>, ${omitted}>`;
   }
 }

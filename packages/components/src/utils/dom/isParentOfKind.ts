@@ -1,7 +1,7 @@
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName } from '../tag-name';
+import type { TagName } from '@porsche-design-system/shared';
+import { getTagNameWithoutPrefix } from '..';
 
-export const isParentOfKind = (element: HTMLElement, tagName: TagNameCamelCase): boolean => {
+export const isParentOfKind = (element: HTMLElement, tagName: TagName): boolean => {
   const { parentElement } = element;
-  return parentElement && getTagName(parentElement) === getPrefixedTagNames(element)[tagName];
+  return parentElement && getTagNameWithoutPrefix(parentElement) === tagName;
 };

@@ -45,7 +45,6 @@ describe('lifecycle', () => {
 
     await setProperty(host, 'icon', 'highway');
     await waitForStencilLifecycle(page);
-
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-tag'], 'componentDidUpdate: p-tag').toBe(1);

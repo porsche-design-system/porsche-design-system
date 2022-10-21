@@ -127,7 +127,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement();
+  ).asElement() as ElementHandle;
 };
 
 export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle<ShadowRoot>> => {
@@ -239,15 +239,7 @@ export const getElementPositions = (
   }, element);
 };
 
-export const reattachElement = async (page: Page, selector: string): Promise<void> => {
-  await page.evaluate((selector: string) => {
-    const [element] = Array.from(document.getElementsByTagName(selector)); // ???
-    element.remove();
-    document.body.appendChild(element);
-  }, selector);
-};
-
-export const reattachElementHandle = (page: Page, handle: ElementHandle): Promise<void> => {
+export const reattachElementHandle = (handle: ElementHandle): Promise<void> => {
   return handle.evaluate((el) => {
     el.remove();
     document.body.appendChild(el);
@@ -260,7 +252,7 @@ export const enableBrowserLogging = (page: Page): void => {
   });
 };
 
-export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
+export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
 export const hasFocus = (element: ElementHandle): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);
@@ -274,7 +266,7 @@ export const initConsoleObserver = (page: Page): void => {
   page.on('console', (msg) => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {
-      const { description } = msg.args()[0]['_remoteObject'];
+      const { description } = msg.args()[0].remoteObject();
       if (description) {
         console.log(description);
       }
@@ -367,7 +359,7 @@ export const expectA11yToMatchSnapshot = async (
     ...options,
   });
 
-  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+  message ? expect(snapshot).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
 
 export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {

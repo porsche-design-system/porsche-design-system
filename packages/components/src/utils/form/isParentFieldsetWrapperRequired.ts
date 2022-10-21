@@ -4,6 +4,6 @@ import { isRequired } from './isRequired';
 
 export const isParentFieldsetWrapperRequired = (element: HTMLElement): boolean => {
   return (
-    isParentOfKind(element, 'pFieldsetWrapper') && isRequired(element.parentElement as HTMLElementWithRequiredProp)
+    isParentOfKind(element, 'p-fieldset-wrapper') && isRequired(element.parentElement as HTMLElementWithRequiredProp)
   );
 };

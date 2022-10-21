@@ -50,7 +50,7 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
     );
     expect(amountOfFilteredViolations).toBe(0);
   } else if (pageUrl.includes('components/tabs/example')) {
-    // TODO: temporary workaround due to https://github.com/porscheui/porsche-design-system/issues/2019. Enable when fixed!
+    // TODO: temporary workaround due to https://github.com/porsche-design-system/porsche-design-system/issues/2019. Enable when fixed!
     const { length: amountOfFilteredViolations } = result.violations.filter(
       (violations) => violations.id !== 'color-contrast'
     );

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should contain correct values for fontBehavior 1`] = `
-Object {
+{
   "WebkitTextSizeAdjust": "none",
   "textSizeAdjust": "none",
 }
@@ -10,31 +10,31 @@ Object {
 exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
 exports[`should contain correct values for fontHyphenation 1`] = `
-Object {
+{
   "hyphens": "auto",
   "overflowWrap": "break-word",
 }
 `;
 
 exports[`should contain correct values for fontSize 1`] = `
-Object {
-  "large": Object {
+{
+  "large": {
     "fontSize": "2.25rem",
     "lineHeight": 1.3333333333,
   },
-  "medium": Object {
+  "medium": {
     "fontSize": "1.5rem",
     "lineHeight": 1.5,
   },
-  "small": Object {
+  "small": {
     "fontSize": "1rem",
     "lineHeight": 1.5,
   },
-  "xLarge": Object {
+  "xLarge": {
     "fontSize": "3.25rem",
     "lineHeight": 1.2307692308,
   },
-  "xSmall": Object {
+  "xSmall": {
     "fontSize": "0.75rem",
     "lineHeight": 1.6666666667,
   },
@@ -46,7 +46,7 @@ exports[`should contain correct values for fontStyle 1`] = `"normal"`;
 exports[`should contain correct values for fontVariant 1`] = `"normal"`;
 
 exports[`should contain correct values for fontWeight 1`] = `
-Object {
+{
   "bold": 700,
   "regular": 400,
   "semiBold": 600,
