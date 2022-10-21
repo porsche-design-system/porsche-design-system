@@ -129,10 +129,8 @@ export class LinkTile {
 
     return (
       <div class="root">
-        <div class="image-overflow-container">
-          <div class="image">
-            <slot />
-          </div>
+        <div class="image-container">
+          <slot />
         </div>
         <div class="content">
           <p id="description">{this.description}</p>

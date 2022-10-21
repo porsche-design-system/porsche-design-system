@@ -1,4 +1,10 @@
-import { pxToRemWithUnit, getInsetJssStyle, getTransition, addImportantToRule } from '../../styles';
+import {
+  pxToRemWithUnit,
+  getInsetJssStyle,
+  getTransition,
+  addImportantToRule,
+  addImportantToEachRule,
+} from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -73,6 +79,17 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         height: addImportantToRule('fit-content'),
+        '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+          position: 'absolute',
+          ...getInsetJssStyle(),
+          height: '100%',
+          width: '100%',
+          transition: getTransition('transform'),
+          backfaceVisibility: 'hidden',
+        }),
+        '& ::slotted(img)': {
+          objectFit: 'cover',
+        },
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
@@ -94,22 +111,16 @@ export const getComponentCss = (
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
       ...hoverMediaQuery({
         '&:hover': {
-          '& $image': {
+          '& ::slotted(picture),::slotted(img)': {
             transform: 'scale3d(1.05, 1.05, 1.05)',
           },
         },
       }),
     },
-    'image-overflow-container': {
+    'image-container': {
       position: 'absolute',
       ...getInsetJssStyle(),
       overflow: 'hidden',
-    },
-    image: {
-      position: 'absolute',
-      ...getInsetJssStyle(),
-      transition: getTransition('transform'),
-      backfaceVisibility: 'hidden',
     },
     content: {
       position: 'absolute',
@@ -148,7 +159,7 @@ export const getComponentCss = (
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      '& img': {
+      '& picture > img': {
         position: 'absolute',
         ...getInsetJssStyle(),
         height: '100%',
