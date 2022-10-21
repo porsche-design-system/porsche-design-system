@@ -117,7 +117,6 @@ export const getComponentCss = (
       left: 0,
       right: 0,
       display: 'grid',
-      maxHeight: '100%',
       justifyItems: 'start',
       padding:
         align === 'bottom'

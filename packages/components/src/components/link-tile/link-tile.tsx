@@ -124,9 +124,7 @@ export class LinkTile {
     );
 
     const linkProps = {
-      class: 'link',
       theme: 'dark',
-      aria: this.aria,
     };
 
     return (
