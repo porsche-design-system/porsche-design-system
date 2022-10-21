@@ -22,15 +22,13 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', async
         .map((pair) => pair.split('='))
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
+
+  // dangerouslySetInnerHTML would obviously be easier than converting to jsx
+  // but this does not work since our wrappers internally set children on the server side.
+  // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
+  // and this is not allowed and throws an exception
   const props = {
     children: requiredChild ? <RequiredChildTag {...requiredChildProps} /> : 'Some child',
-    // dangerouslySetInnerHTML: {
-    //   __html: requiredChild
-    //     ? requiredChild.startsWith('input')
-    //       ? `<${requiredChild} />`
-    //       : `<${requiredChild}></${requiredChild}>`
-    //     : 'Some child',
-    // },
   };
 
   const { container } = render(
