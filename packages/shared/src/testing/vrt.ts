@@ -85,6 +85,7 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
+  javaScriptEnabled?: boolean;
 };
 
 export const vrtTest = (
@@ -93,13 +94,18 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, ...otherOptions } = options || {};
+  const { scenario, javaScriptEnabled, ...otherOptions } = {
+    scenario: undefined,
+    javaScriptEnabled: true,
+    ...options,
+  };
   const { baseUrl } = customOptions ?? defaultOptions;
 
   return vrt.test(
     snapshotId,
     async () => {
       const page = vrt.getPage();
+      await page.setJavaScriptEnabled(javaScriptEnabled);
       await page.goto(baseUrl + url, { waitUntil: 'networkidle0' });
 
       // componentsReady is undefined in utilities package
