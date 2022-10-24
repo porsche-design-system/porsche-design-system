@@ -1,9 +1,10 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 import {
-  getFontLinks,
-  getInitialStyles,
   getBrowserSupportFallbackScript,
   getCookiesFallbackScript,
+  getDSRPonyfill,
+  getFontLinks,
+  getInitialStyles,
 } from '@porsche-design-system/components-react/partials';
 
 const Document = (): JSX.Element => {
@@ -23,6 +24,7 @@ const Document = (): JSX.Element => {
       <body>
         <Main />
         <NextScript />
+        {getDSRPonyfill({ format: 'jsx' })}
         {getBrowserSupportFallbackScript({ format: 'jsx' })}
         {getCookiesFallbackScript({ format: 'jsx' })}
       </body>
