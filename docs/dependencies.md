@@ -1,4 +1,8 @@
-# Dependencies 27.09.2022
+# Dependencies 21.10.2022
+
+## @uxpin/merge-cli
+
+We're staying on version `2.8.0-dev.77` until UXPin integrates the changes made in this package into a stable release.
 
 ## Vue
 

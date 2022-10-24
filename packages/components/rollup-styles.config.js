@@ -3,7 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import { terser } from 'rollup-plugin-terser';
 import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -84,46 +83,6 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
       }),
-    ],
-  },
-  // TODO: move ponyfill into partials or PorscheDesignSystemProvider
-  {
-    input: 'src/dsr-ponyfill.ts',
-    output: {
-      file: 'dist/dsr-ponyfill.min.js',
-      format: 'esm',
-    },
-    plugins: [
-      // remove check for ponyfill since our loader takes care of it
-      replace({
-        'if (hasNativeDeclarativeShadowRoots())': 'if (false)',
-        delimiters: ['', ''],
-        preventAssignment: true,
-      }),
-      nodeResolve(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        include: ['src/dsr-ponyfill.ts'],
-      }),
-      terser({
-        output: {
-          comments: false,
-        },
-      }),
-    ],
-  },
-  {
-    input: 'src/dsr-ponyfill-loader.ts',
-    output: {
-      file: 'dist/dsr-ponyfill-loader.min.js',
-      format: 'iife',
-    },
-    plugins: [
-      typescript({
-        tsconfig: './tsconfig.json',
-        include: ['src/dsr-ponyfill-loader.ts'],
-      }),
-      terser(),
     ],
   },
 ];

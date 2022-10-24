@@ -1,6 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
-import { AbstractWrapperGenerator, SkeletonProps } from './AbstractWrapperGenerator';
+import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
@@ -15,12 +15,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
   }
 
-  public generateImports(
-    component: TagName,
-    extendedProps: ExtendedProp[],
-    nonPrimitiveTypes: string[],
-    hasSkeleton: boolean
-  ): string {
+  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
 
     const angularImports = [
@@ -30,13 +25,10 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       'ElementRef',
       ...(hasEventProps ? ['EventEmitter'] : []),
       'NgZone',
-      ...(hasSkeleton ? ['Inject', 'OnInit'] : []),
     ];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
-    const importsFromComponentsWrapperModule = hasSkeleton
-      ? `import { USES_SKELETONS } from '../../skeleton-helper' `
-      : '';
+    const importsFromComponentsWrapperModule = '';
 
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
@@ -53,11 +45,11 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return '';
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
     const outputProps = extendedProps
       .filter(({ isEvent }) => isEvent)
-      .map((x) => ({ ...x, key: camelCase(x.key.substr(2)) }));
+      .map((x) => ({ ...x, key: camelCase(x.key.substring(2)) }));
 
     const inputs = inputProps.length
       ? `const inputs: string[] = [${inputProps.map(({ key }) => `'${key}'`).join(', ')}];`
@@ -85,23 +77,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
-    const hasSkeleton = !!skeletonProps.length;
-
-    const skeletonsOnInit = hasSkeleton
-      ? `
-  ngOnInit() {
-    if (this.usesSkeletons) {
-      this.el.classList.add(...[${this.getSkeletonClassNames(skeletonProps)
-        .map((skeletonClass) => {
-          return skeletonClass
-            .replace(/(\w*? && `)/, 'this.$1') // add this. to property
-            .replace(/(\w*?\)\.replace)/, 'this.$1'); // add this. to property inside stringify
-        })
-        .join(',')}].filter((x) => x));
-    }
-  }`
-      : '';
-
     const constructorCode = [
       'c.detach();',
       'this.el = r.nativeElement;',
@@ -109,10 +84,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n    ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const implementsOnInit = hasSkeleton ? ' implements OnInit' : '';
-    const constructorParams = `c: ChangeDetectorRef, r: ElementRef, protected z: NgZone${
-      hasSkeleton ? ', @Inject(USES_SKELETONS) public usesSkeletons: boolean' : ''
-    }`;
+    const implementsOnInit = '';
+    const constructorParams = `c: ChangeDetectorRef, r: ElementRef, protected z: NgZone`;
 
     return `${inputsAndOutputs}
 
@@ -127,7 +100,7 @@ export class ${this.generateComponentName(component)}${genericType}${implementsO
 
   constructor(${constructorParams}) {
     ${constructorCode}
-  }${skeletonsOnInit}
+  }
 }`;
   }
 

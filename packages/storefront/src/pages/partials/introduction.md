@@ -22,6 +22,7 @@ import * as partials from '@porsche-design-system/components-js/partials';
 @Component
 export default class Code extends Vue {
   public partialNames = Object.keys(partials)
+    .filter(partial => partial !== 'getDSRPonyfill') // not documented for now
     .sort()
     .map(partial => `<li><a href="partials/${paramCase(partial.replace('get', ''))}">${partial}()</a></li>`)
     .join('');

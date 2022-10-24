@@ -10,6 +10,7 @@ import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLi
 import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 import { generateBrowserSupportFallbackScriptPartial } from './generateBrowserSupportFallbackScriptPartial';
 import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackScriptPartial';
+import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
 
 const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
@@ -33,6 +34,7 @@ const generatePartials = async (): Promise<void> => {
     generateLoaderScriptPartial(),
     generateBrowserSupportFallbackScriptPartial(),
     generateCookiesFallbackScriptPartial(),
+    generateDSRPonyfillPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

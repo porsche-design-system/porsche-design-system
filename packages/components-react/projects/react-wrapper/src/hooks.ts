@@ -28,24 +28,6 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   }
 };
 
-export const useSkeleton = /*#__PURE__*/ (): boolean => {
-  if (process.env.NODE_ENV === 'test' && skipCheck) {
-    return false;
-  } else {
-    const { usesSkeletons } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
-
-    if (usesSkeletons === undefined) {
-      throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
-    } else if (usesSkeletons && typeof window !== 'undefined' && !document.querySelector('style[uses-skeleton]')) {
-      throw new Error(
-        'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
-      );
-    }
-
-    return usesSkeletons;
-  }
-};
-
 export const useEventCallback = /*#__PURE__*/ (
   ref: MutableRefObject<HTMLElement>,
   eventName: string,

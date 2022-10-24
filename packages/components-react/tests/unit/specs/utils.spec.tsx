@@ -7,7 +7,6 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '../../../projects/react-wrapper/src/utils';
 import * as hooks from '../../../projects/react-wrapper/src/hooks';
-import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
 describe('getMergedClassName()', () => {
   test.each`
@@ -65,7 +64,6 @@ describe('syncRefs()', () => {
   });
 
   it('should sync refs if ref is set directly', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
@@ -77,27 +75,10 @@ describe('syncRefs()', () => {
   });
 
   it('should sync refs if ref is set as callback', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
     expect(button.className).toBe(INITIAL_CLASS_NAME);
-
-    await userEvent.click(button);
-
-    expect(button.className).toBe(CLASS_NAME);
-  });
-
-  it('should use useSkeleton() hook and set skeleton classes', async () => {
-    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(true);
-    const { getByTestId } = render(<Sample />);
-    const button = getByTestId('button');
-
-    expect(button.className).toBe(
-      `${INITIAL_CLASS_NAME}${
-        SKELETONS_ACTIVE ? ` ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary` : ''
-      }`
-    );
 
     await userEvent.click(button);
 
