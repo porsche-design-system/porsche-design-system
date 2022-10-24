@@ -16,7 +16,8 @@
   ],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
+    "build": "yarn clean:build && yarn build:bundleDSRPonyfill && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
+    "build:bundleDSRPonyfill": "rollup -c rollup-dsr-ponyfill.config.js",
     "build:package": "rollup -c rollup.config.js",
     "build:partials": "ts-node scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
@@ -42,8 +43,5 @@
     "rollup-plugin-generate-package-json": "^3.2.0",
     "tslib": "^2.4.0",
     "typescript": "~4.8.3"
-  },
-  "files": [
-    "dist/"
-  ]
+  }
 }
