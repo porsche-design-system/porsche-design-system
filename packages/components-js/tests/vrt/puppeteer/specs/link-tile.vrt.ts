@@ -27,7 +27,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <style>
           .grid {
             display: grid;
-            grid-template-columns: 48% 48%;
+            grid-template-columns: 1fr 1fr 1fr;
             column-gap: 1rem;
           }
         </style>`;
