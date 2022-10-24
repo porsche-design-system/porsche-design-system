@@ -52,7 +52,7 @@ const generateDSRComponents = (): void => {
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
-        .replace(/( class)=/g, '$1Name=') // change class prop to className in JSX
+        .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
         // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
