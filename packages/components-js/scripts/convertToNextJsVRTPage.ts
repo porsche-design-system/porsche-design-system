@@ -1,0 +1,66 @@
+import { convertToReactVRTPage } from './convertToReactVRTPage';
+import * as fs from 'fs';
+import * as path from 'path';
+
+type Characteristics = {
+  usesSetAllReady: boolean;
+  usesComponentsReady: boolean;
+  usesToast: boolean;
+  isIconPage: boolean;
+  usesQuerySelector: boolean;
+  usesPrefixing: boolean;
+  isOverviewPage: boolean;
+};
+
+const sourceBasePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src');
+const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
+const pollComponentsReadyFileContent = fs.readFileSync(pollComponentsReadyFilePath, 'utf8');
+
+export const convertToNextJsVRTPage = (
+  fileName: string,
+  fileContent: string,
+  template: string,
+  style: string,
+  script: string,
+  toastText: string,
+  characteristics: Characteristics
+): { fileName: string; fileContent: string } => {
+  const {
+    usesSetAllReady,
+    usesComponentsReady,
+    usesToast,
+    isIconPage,
+    usesQuerySelector,
+    usesPrefixing,
+    isOverviewPage,
+  } = characteristics;
+
+  const { fileName: convertedFileName, fileContent: convertedFileContent } = convertToReactVRTPage(
+    fileName,
+    fileContent,
+    template,
+    style,
+    script,
+    toastText,
+    {
+      usesSetAllReady,
+      usesComponentsReady,
+      usesToast,
+      isIconPage,
+      usesQuerySelector,
+      usesPrefixing,
+      isOverviewPage,
+    }
+  );
+
+  const newFileContent = convertedFileContent
+    .replace('/* Auto Generated File */', "/* Auto Generated File */\nimport type { NextPage } from 'next';")
+    .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
+    .replace(
+      /export\s+(const\s+)(.*)(\s+=\s+\(\):\s+JSX\.Element\s+=>\s+{[\s\S]*};)/,
+      '$1$2: NextPage$3\n\nexport default $2;'
+    )
+    .replace(/@porsche-design-system\/components-react/g, '$&/ssr');
+
+  return { fileName: convertedFileName, fileContent: newFileContent };
+};

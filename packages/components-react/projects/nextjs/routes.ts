@@ -1,6 +1,8 @@
+import { generatedRoutes } from './pages';
+
 export const sitemap = {
   home: { path: '/', name: 'Home' },
-  overview: { path: '/overview', name: 'Overview' },
+  ...generatedRoutes,
 };
 
 export const routes = Object.values(sitemap);

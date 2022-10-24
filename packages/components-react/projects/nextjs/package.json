@@ -6,11 +6,10 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && yarn generateOverviewPage",
+    "prestartAndBuild": "yarn clean:build",
     "start": "yarn prestartAndBuild && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
     "build-app": "yarn prestartAndBuild && next build",
-    "generateOverviewPage": "ts-node scripts/generateOverviewPage.ts",
     "lint": "next lint",
     "test": "yarn test:vrt",
     "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",

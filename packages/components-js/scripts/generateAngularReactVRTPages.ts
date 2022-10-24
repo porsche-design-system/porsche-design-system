@@ -1,20 +1,24 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { capitalCase, paramCase, pascalCase } from 'change-case';
+import { capitalCase, paramCase, pascalCase, camelCase } from 'change-case';
 import * as globby from 'globby';
 import { convertToAngularVRTPage } from './convertToAngularVRTPage';
 import { convertToReactVRTPage } from './convertToReactVRTPage';
+import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
 
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = ['table'];
 /** array of html file names that are converted but without route since it is maintained manually */
 const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview'];
 
-type Framework = 'angular' | 'react';
+type Framework = 'angular' | 'react' | 'nextjs';
 
 const rootDirectory = path.resolve(__dirname, '..');
-const angularPagesDirectory = path.resolve(rootDirectory, '../components-angular/src/app/pages');
-const reactPagesDirectory = path.resolve(rootDirectory, '../components-react/src/pages');
+const pagesDirectories: { [key in Framework]: string } = {
+  angular: path.resolve(rootDirectory, '../components-angular/src/app/pages'),
+  react: path.resolve(rootDirectory, '../components-react/src/pages'),
+  nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
+};
 
 const generateAngularReactVRTPages = (): void => {
   const pagesDirectory = path.resolve(rootDirectory, './src/pages');
@@ -27,6 +31,7 @@ const generateAngularReactVRTPages = (): void => {
 
   generateVRTPages(htmlFileContentMap, 'angular');
   generateVRTPages(htmlFileContentMap, 'react');
+  generateVRTPages(htmlFileContentMap, 'nextjs');
 };
 
 export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
@@ -93,9 +98,6 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
 };
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
-  const comment = '/* Auto Generated File */';
-  const pagesDirectory = framework === 'angular' ? angularPagesDirectory : reactPagesDirectory;
-
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .map(([fileName, fileContent]) => {
@@ -141,7 +143,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
               isIconPage,
               usesQuerySelector,
             })
-          : convertToReactVRTPage(fileName, fileContent, template, style, script, toastText, {
+          : framework === 'react'
+          ? convertToReactVRTPage(fileName, fileContent, template, style, script, toastText, {
               usesSetAllReady,
               usesComponentsReady,
               usesToast,
@@ -149,9 +152,20 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
               usesQuerySelector,
               usesPrefixing,
               isOverviewPage,
-            });
+            })
+          : framework === 'nextjs'
+          ? convertToNextJsVRTPage(fileName, fileContent, template, style, script, toastText, {
+              usesSetAllReady,
+              usesComponentsReady,
+              usesToast,
+              isIconPage,
+              usesQuerySelector,
+              usesPrefixing,
+              isOverviewPage,
+            })
+          : { fileName: '', fileContent: '' };
 
-      writeFile(path.resolve(pagesDirectory, convertedFileName), convertedFileContent);
+      writeFile(path.resolve(pagesDirectories[framework], convertedFileName), convertedFileContent);
 
       return './' + path.parse(convertedFileName).name;
     })
@@ -182,9 +196,19 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
     barrelFileName = 'index.tsx';
+  } else if (framework === 'nextjs') {
+    frameworkImports = [separator].join('\n');
+    frameworkRoutes = `export const generatedRoutes = ${JSON.stringify(
+      importPaths
+        .map((importPath) => {
+          return { path: importPath, name: pascalCase(importPath) };
+        })
+        .reduce((a, v) => ({ ...a, [camelCase(v.path)]: v }), {})
+    )};`;
+    barrelFileName = 'index.tsx';
   }
 
-  const barrelFilePath = path.resolve(pagesDirectory, barrelFileName);
+  const barrelFilePath = path.resolve(pagesDirectories[framework], barrelFileName);
   const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
