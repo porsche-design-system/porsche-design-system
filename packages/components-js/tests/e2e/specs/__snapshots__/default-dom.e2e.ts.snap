@@ -217,7 +217,40 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link-tile 1`] = `
-"<div class="root">
+"<style>
+  p-link-pure a {
+    display: block !important;
+    position: static !important;
+    text-decoration: none !important;
+    font: inherit !important;
+    transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 0 !important;
+  }
+
+  p-link-pure a::-moz-focus-inner {
+    border: 0 !important;
+  }
+
+  p-link-pure a::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    outline: 1px solid transparent !important;
+    outline-offset: 1px !important;
+  }
+
+  p-link-pure a:focus::before {
+    outline-color: currentColor !important;
+  }
+
+  p-link-pure a:focus:not(:focus-visible)::before {
+    outline-color: transparent !important;
+  }
+</style>
+<div class="root">
   <div class="image-container">
     <slot>
     </slot>
@@ -225,7 +258,11 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
   <div class="content">
     <p id="description">
       value</p>
-    <p-link class="hydrated">
+    <p-link-pure class="link-pure hydrated">
+      <a class="anchor" href="value" target="_self" aria-describedby="description">
+        value</a>
+    </p-link-pure>
+    <p-link class="link hydrated">
       <a class="anchor" href="value" target="_self" aria-describedby="description">
         value</a>
     </p-link>
