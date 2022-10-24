@@ -1,4 +1,4 @@
-import { throwIfAlignTopAndNotCompact } from './link-tile-utils';
+import { LinkTileAlign, throwIfAlignTopAndNotCompact } from './link-tile-utils';
 
 describe('throwIfAlignTopAndNotCompact()', () => {
   it('should throw error when used with align top and compact false', () => {
@@ -8,18 +8,12 @@ describe('throwIfAlignTopAndNotCompact()', () => {
     );
   });
 
-  it('should not throw error when used with align top and compact true', () => {
+  it.each<[LinkTileAlign, boolean]>([
+    ['top', true],
+    ['bottom', true],
+    ['bottom', false],
+  ])('should not throw error for align: %s and compact: %s', (align, compact) => {
     const divElement = document.createElement('div');
-    expect(() => throwIfAlignTopAndNotCompact(divElement, 'top', true)).not.toThrow();
-  });
-
-  it('should not throw error when used with align bottom and compact true', () => {
-    const divElement = document.createElement('div');
-    expect(() => throwIfAlignTopAndNotCompact(divElement, 'bottom', true)).not.toThrow();
-  });
-
-  it('should not throw error when used with align bottom and compact false', () => {
-    const divElement = document.createElement('div');
-    expect(() => throwIfAlignTopAndNotCompact(divElement, 'bottom', false)).not.toThrow();
+    expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).not.toThrow();
   });
 });
