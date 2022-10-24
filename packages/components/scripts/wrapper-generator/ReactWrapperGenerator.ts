@@ -73,12 +73,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...propsToEventListener.map(
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substring(2))}', ${key} as any);`
       ),
-<<<<<<< HEAD
       `const Tag = usePrefix('${component}');`,
-      ...(hasSkeleton ? ['const usesSkeleton = useSkeleton();'] : []),
-=======
-      `const WebComponentTag = usePrefix('${component}');`,
->>>>>>> 0d3b136f8 (feat: remove component skeletons | sas | #1221)
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
