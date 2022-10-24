@@ -88,7 +88,6 @@ export class LinkTile {
   }
 
   public componentWillLoad(): void {
-    throwIfPropIsUndefined(this.host, 'href', this.href);
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 
