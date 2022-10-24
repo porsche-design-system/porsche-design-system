@@ -5,7 +5,6 @@ import {
   attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  throwIfPropIsUndefined,
   validateProps,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
@@ -29,7 +28,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   description: AllowedTypes.string,
   align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGNS),
   gradient: AllowedTypes.boolean,
-  compact: AllowedTypes.boolean,
+  compact: AllowedTypes.breakpoint('boolean'),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
@@ -66,7 +65,7 @@ export class LinkTile {
   @Prop() public gradient?: boolean = true;
 
   /** Displays the tile-link as compact version with description and link icon only. */
-  @Prop() public compact?: boolean = false;
+  @Prop() public compact?: BreakpointCustomizable<Boolean> = false;
 
   /** href of the `<a>`. */
   @Prop() public href: string;
@@ -88,7 +87,6 @@ export class LinkTile {
   }
 
   public componentWillLoad(): void {
-    throwIfPropIsUndefined(this.host, 'href', this.href);
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 
@@ -109,19 +107,15 @@ export class LinkTile {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const anchor: JSX.Element = (
-      <a
-        class="anchor"
-        href={this.href}
-        target={this.target}
-        download={this.download}
-        aria-describedby="description"
-        rel={this.rel}
-        {...parseAndGetAriaAttributes(this.aria)}
-      >
-        {this.label}
-      </a>
-    );
+    const anchorProps = {
+      class: 'anchor',
+      href: this.href,
+      target: this.target,
+      download: this.download,
+      'aria-describedby': 'description',
+      rel: this.rel,
+      ...parseAndGetAriaAttributes(this.aria),
+    };
 
     const linkProps = {
       theme: 'dark',
@@ -134,15 +128,12 @@ export class LinkTile {
         </div>
         <div class="content">
           <p id="description">{this.description}</p>
-          {this.compact ? (
-            <PrefixedTagNames.pLinkPure {...linkProps} hideLabel="true" icon="arrow-right">
-              {anchor}
-            </PrefixedTagNames.pLinkPure>
-          ) : (
-            <PrefixedTagNames.pLink {...linkProps} variant="tertiary">
-              {anchor}
-            </PrefixedTagNames.pLink>
-          )}
+          <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel="true" icon="arrow-right">
+            <a {...anchorProps}>{this.label}</a>
+          </PrefixedTagNames.pLinkPure>
+          <PrefixedTagNames.pLink {...linkProps} class="link" variant="tertiary">
+            <a {...anchorProps}>{this.label}</a>
+          </PrefixedTagNames.pLink>
         </div>
       </div>
     );

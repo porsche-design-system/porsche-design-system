@@ -12,7 +12,7 @@ describe('getComponentCss()', () => {
       { base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' },
       { base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular' },
       'top',
-      true,
+      { base: true, xs: false, s: true, m: false, l: true, xl: false },
       true,
     ],
   ])(

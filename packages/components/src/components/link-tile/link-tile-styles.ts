@@ -69,10 +69,10 @@ export const getComponentCss = (
   size: BreakpointCustomizable<LinkTileSize>,
   weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkTileAlign,
-  isCompact: boolean,
+  compact: BreakpointCustomizable<Boolean>,
   hasGradient: boolean
 ): string => {
-  const isTopAligned = align === 'top' && isCompact;
+  const isTopAligned = align === 'top';
 
   return getCss({
     '@global': {
@@ -125,6 +125,10 @@ export const getComponentCss = (
     content: {
       position: 'absolute',
       ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
+      ...buildResponsiveStyles(
+        compact,
+        (isCompact: boolean) => isCompact && (isTopAligned ? { top: 0 } : { bottom: 0 })
+      ),
       left: 0,
       right: 0,
       display: 'grid',
@@ -136,15 +140,25 @@ export const getComponentCss = (
 
       gap: pxToRemWithUnit(24),
       [mediaQueryMin('s')]: getPaddingStyles(pxToRemWithUnit(32), align),
-      ...(hasGradient && { background: getGradientBackground(isCompact, isTopAligned) }),
-      ...(isCompact
-        ? {
-            alignItems: 'center',
-            gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`,
-          }
-        : {
-            gridTemplateRows: 'auto auto',
-          }),
+      ...(hasGradient &&
+        buildResponsiveStyles(compact, (isCompact: boolean) => ({
+          background: getGradientBackground(isCompact, isTopAligned),
+        }))),
+      ...buildResponsiveStyles(compact, (isCompact: boolean) =>
+        isCompact
+          ? { alignItems: 'center', gridTemplateColumns: `auto ${pxToRemWithUnit(24)}` }
+          : { gridTemplateRows: 'auto auto' }
+      ),
+    },
+    'link-pure': {
+      ...buildResponsiveStyles(compact, (isCompact: boolean) =>
+        isCompact ? { display: 'inline-block' } : { display: 'none' }
+      ),
+    },
+    link: {
+      ...buildResponsiveStyles(compact, (isCompact: boolean) =>
+        isCompact ? { display: 'none' } : { display: 'inline-flex' }
+      ),
     },
     anchor: {
       '&::after': {

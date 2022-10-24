@@ -607,7 +607,7 @@ export namespace Components {
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<Boolean>;
         /**
           * Description text.
          */
@@ -2211,7 +2211,7 @@ declare namespace LocalJSX {
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<Boolean>;
         /**
           * Description text.
          */

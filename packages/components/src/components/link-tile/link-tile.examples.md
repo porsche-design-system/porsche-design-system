@@ -1,13 +1,18 @@
 # Link Tile
 
-The clickable component `p-link-tile` is a navigational item for grouping and separating related data on a page to tease
-content and navigate to further information within one container. It is set up to be displayed with an image/icon.
+The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
+information within one container. The component takes its height from the width provided and places the image via
+`object-fit cover`.
+
+**Note:** The component does not take care of processing and aligning the image.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-The default `p-link-tile` has an image/icon and a content container that contains a description and a navigational item.
+An `img`or `picture` tag has to be provided in the slot of the `p-link-tile` component. Additionally, the properties
+`href`, `description` and `label` are required. The `description` property is used as a teaser with a more detailed
+description of the link and where it leads to. The `label` property is used to describe the anchor.
 
 <Playground :markup="basic"></Playground>
 
@@ -96,10 +101,9 @@ export default class Code extends Vue {
 <style>
   .container {
     display: grid;
-    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: auto;
-    grid-template-areas: 'one two three four';
-    column-gap: 10px;
-    row-gap: 10px;
+    column-gap: 1rem;
+    row-gap: 1rem;
   }
 </style>
