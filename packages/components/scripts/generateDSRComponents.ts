@@ -227,6 +227,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-scroller') {
+        newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
       }
 
       return newFileContent;
