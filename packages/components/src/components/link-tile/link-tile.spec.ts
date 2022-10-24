@@ -1,5 +1,4 @@
 import { LinkTile } from './link-tile';
-import * as throwIfPropIsUndefinedUtils from '../../utils/validation/throwIfPropIsUndefined';
 import * as throwIfAlignTopWithoutCompactUtils from './link-tile-utils';
 
 describe('componentWillLoad', () => {
