@@ -103,9 +103,9 @@ it.each<TagName>(tagNamesPublicWithProps)(
 
     // it would be possible to exclude a prop from propTypes via Omit<...>
     // to get confidence that isn't the case, we check against components meta which contains all props
-    const propTypesStructure = (getComponentMeta(tagName).props || []).reduce(
-      (prev, prop) => ({ ...prev, [Object.keys(prop)[0]]: expect.any(Function) }),
-      {}
+    const propTypesStructure = Object.keys(getComponentMeta(tagName).props || {}).reduce(
+      (prev, prop) => ({ ...prev, [prop]: expect.any(Function) }),
+      {} as Record<string, any>
     );
 
     // manual exceptions for props that have no validation

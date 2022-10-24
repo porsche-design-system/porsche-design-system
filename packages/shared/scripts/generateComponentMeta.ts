@@ -10,7 +10,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = `import type { TagName } from './tagNames'`;
+  const imports = `import type { TagName } from './tagNames';`;
 
   const types = [
     `export type ComponentMeta = {
@@ -23,8 +23,11 @@ const generateComponentMeta = (): void => {
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
   props?: {
     [propName: string]: boolean | number | string; // value is the prop's default value
-  }[];
+  };
   requiredProps?: string[]; // array of props that are mandatory
+  hostAttributes?: {
+    [attrName: string]: string;
+  };
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
   hasSlottedCss: boolean;
@@ -47,8 +50,11 @@ const generateComponentMeta = (): void => {
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     props?: {
       [propName: string]: boolean | number | string; // value is the prop's default value
-    }[];
+    };
     requiredProps?: string[]; // array of props that are mandatory
+    hostAttributes?: {
+      [attrName: string]: string;
+    };
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
     hasSlottedCss: boolean;
@@ -127,7 +133,7 @@ const generateComponentMeta = (): void => {
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
-    ).map(([, propName, , propValue]) => {
+    ).reduce((result, [, propName, , propValue]) => {
       const cleanedValue =
         propValue === 'true'
           ? true
@@ -137,9 +143,10 @@ const generateComponentMeta = (): void => {
             propValue?.replace(/'/g, '') || null;
 
       return {
+        ...result,
         [propName]: cleanedValue,
       };
-    });
+    }, {} as ComponentMeta['props']);
 
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
@@ -151,6 +158,20 @@ const generateComponentMeta = (): void => {
     if (invalidLinkUsageProp) {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
+    }
+
+    let hostAttributes: ComponentMeta['hostAttributes'] = {};
+    const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
+    if (rawHostAttributes) {
+      // TODO: handle stuff like {...getDataThemeDarkAttribute(this.theme)}
+      // console.log(rawHostAttributes);
+      hostAttributes = rawHostAttributes
+        .split(' ')
+        .map((attrKeyValuePair) =>
+          Array.from(attrKeyValuePair.matchAll(/([-a-z]+)="(.+?)"/g)).map(([, attr, val]) => [attr, val])
+        )
+        .flat()
+        .reduce((result, [attr, val]) => ({ ...result, [attr]: val }), {} as ComponentMeta['hostAttributes']);
     }
 
     // named slots
@@ -174,8 +195,9 @@ const generateComponentMeta = (): void => {
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
       requiredChildSelector,
-      ...(props.length && { props: props }),
+      ...(Object.keys(props).length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
+      ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
       hasSlot,
       ...(namedSlots.length && { namedSlots: namedSlots }),
       hasSlottedCss,
