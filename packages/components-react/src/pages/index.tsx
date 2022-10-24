@@ -158,7 +158,6 @@ export const generatedRoutes: RouteType[] = [
     element: <LinkSocialPage />,
   },
   {
-  {
     name: 'Link Tile',
     path: '/link-tile',
     element: <LinkTilePage />,

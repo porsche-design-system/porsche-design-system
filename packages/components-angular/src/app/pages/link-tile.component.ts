@@ -36,7 +36,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
-        [description]="'Size breakpoint'"
+        [description]="'Size responsive'"
         [size]="{ base: 'default', xs: 'inherit', s: 'default', m: 'inherit', l: 'default', xl: 'inherit' }"
       >
         <img
@@ -56,7 +56,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
-        [description]="'Weight breakpoint'"
+        [description]="'Weight responsive'"
         [weight]="{ base: 'regular', xs: 'semibold', s: 'regular', m: 'semibold', l: 'regular', xl: 'semibold' }"
       >
         <img
@@ -94,7 +94,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
-        [description]="'Aspect ratio breakpoint'"
+        [description]="'Aspect ratio responsive'"
         [aspectRatio]="{ base: '16:9', xs: '1:1', s: '3:4', m: '9:16', l: '4:3', xl: '16:9'}"
       >
         <img
@@ -104,8 +104,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light container" title="should render compact on light background">
+    <div class="playground light grid" title="should render compact on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Compact'" [compact]="true">
+        <img
+          [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+          [alt]="'Beach'"
+        />
+      </p-link-tile>
+      <p-link-tile
+        [href]="'#'"
+        [label]="'Some label'"
+        [description]="'Compact responsive'"
+        [compact]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+      >
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [alt]="'Beach'"
