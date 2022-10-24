@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { capitalCase, paramCase, pascalCase } from 'change-case';
 import * as globby from 'globby';
-import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
-import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
+import { convertToAngularVRTPage } from './convertToAngularVRTPage';
+import { convertToReactVRTPage } from './convertToReactVRTPage';
 
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = ['table'];
@@ -29,7 +29,12 @@ const generateAngularReactVRTPages = (): void => {
   generateVRTPages(htmlFileContentMap, 'react');
 };
 
-const byAlphabet = (a: string, b: string): number =>
+export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
+export const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
+export const scriptRegEx = /\s*<script\b[^>]*>([\s\S]*?)<\/script\b[^>]*>\s*/i;
+export const styleRegEx = /\s*<style.*>([\s\S]*?)<\/style>\s*/i;
+
+export const byAlphabet = (a: string, b: string): number =>
   a
     .toLowerCase()
     .replace(/(\w+)(?:component|page)/, '$1')
@@ -97,7 +102,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
-      const styleRegEx = /\s*<style.*>([\s\S]*?)<\/style>\s*/i;
       let [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
@@ -105,7 +109,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.replace(/<!-- prettier-ignore -->/g, '');
 
       // extract and replace script if there is any
-      const scriptRegEx = /\s*<script\b[^>]*>([\s\S]*?)<\/script\b[^>]*>\s*/i;
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
@@ -123,263 +126,34 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const usesOnInit = script && !isIconPage;
       const usesSetAllReady = script?.includes('componentsReady()');
 
-      const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
-
       // extract template if there is any, replacing is framework specific
-      const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
 
       fileContent = fileContent.trim();
 
-      if (framework === 'angular') {
-        // imports
-        const angularImports = [
-          'ChangeDetectionStrategy',
-          'Component',
-          usesOnInit && 'OnInit',
-          usesSetAllReady && 'ChangeDetectorRef',
-        ]
-          .filter((x) => x)
-          .sort(byAlphabet)
-          .join(', ');
+      const { fileName: convertedFileName, fileContent: convertedFileContent } =
+        framework === 'angular'
+          ? convertToAngularVRTPage(fileName, fileContent, template, style, script, toastText, {
+              usesOnInit,
+              usesSetAllReady,
+              usesComponentsReady,
+              usesToast,
+              isIconPage,
+              usesQuerySelector,
+            })
+          : convertToReactVRTPage(fileName, fileContent, template, style, script, toastText, {
+              usesSetAllReady,
+              usesComponentsReady,
+              usesToast,
+              isIconPage,
+              usesQuerySelector,
+              usesPrefixing,
+              isOverviewPage,
+            });
 
-        const pdsImports = [
-          (usesSetAllReady || usesComponentsReady) && 'componentsReady',
-          usesToast && 'ToastManager',
-          isIconPage && 'IconName',
-        ]
-          .filter((x) => x)
-          .sort(byAlphabet)
-          .join(', ');
+      writeFile(path.resolve(pagesDirectory, convertedFileName), convertedFileContent);
 
-        const imports = [
-          `import { ${angularImports} } from '@angular/core';`,
-          pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
-          isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-        ]
-          .filter((x) => x)
-          .join('\n');
-
-        // decorator
-        style = style?.trim().replace(/(\n)/g, '$1    ');
-        const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
-
-        // implementation
-        const classImplements = usesOnInit ? 'implements OnInit ' : '';
-        let classImplementation = '';
-        if (usesSetAllReady) {
-          classImplementation = `public allReady: boolean = false;
-
-constructor(private cdr: ChangeDetectorRef) {}
-
-ngOnInit() {
-  componentsReady().then(() => {
-    this.allReady = true;
-    this.cdr.markForCheck();
-  });
-}`;
-        } else if (isIconPage) {
-          classImplementation = `public icons = ICON_NAMES as IconName[];`;
-        } else if (usesToast) {
-          classImplementation = `constructor(private toastManager: ToastManager) {}
-
-ngOnInit() {
-  this.toastManager.addMessage({ text: ${toastText} });
-}`;
-        } else if (usesQuerySelector) {
-          classImplementation = `ngOnInit() {
-  ${script}
-}`;
-        }
-
-        classImplementation = classImplementation
-          .replace(/^(.)/, '\n$1') // leading new line if there is any content
-          .replace(/(.)$/, '$1\n') // trailing new line if there is any content
-          .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
-
-        // conditional template rendering
-        template = template
-          ?.replace(/<template/g, '<div *ngIf="allReady"') // add condition and replace opening tag
-          .replace(/<\/template>/g, '</div>'); // replace closing tag
-        fileContent = fileContent.replace(templateRegEx, template);
-
-        // prefixing
-        fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
-
-        // icons
-        if (isIconPage) {
-          fileContent = fileContent.replace(
-            iconsRegEx,
-            `$1
-  <p-icon
-    *ngFor="let icon of icons"
-    [name]="icon"
-    [size]="'inherit'"
-    [color]="'inherit'"
-    [attr.aria-label]="icon + ' icon'"
-  ></p-icon>
-$2`
-          );
-        }
-
-        fileContent = fileContent
-          .replace(/(\n)([ <>]+)/g, '$1    $2') // fix indentation
-          .replace(/\\/g, '\\\\') // fix \\ in generated output
-          .replace(/`/g, '\\`'); // fix \` in generated output
-
-        fileContent = `${comment}
-${imports}
-
-@Component({
-  selector: 'page-${fileName}',${styles}
-  template: \`
-    ${convertToAngular(fileContent)}
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ${pascalCase(fileName)}Component ${classImplements}{${classImplementation}}
-`;
-
-        fileName = `${fileName}.component.ts`;
-      } else if (framework === 'react') {
-        // imports
-        const reactImports = [
-          (usesSetAllReady || usesQuerySelector) && !isIconPage && 'useEffect',
-          usesSetAllReady && 'useState',
-        ]
-          .filter((x) => x)
-          .sort(byAlphabet)
-          .join(', ');
-
-        const componentImports = Array.from(fileContent.matchAll(/<(?:[a-z-]*)(p-[\w-]+)/g))
-          .map(([, tagName]) => tagName)
-          .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
-          .map((tagName) => pascalCase(tagName));
-        const pdsImports = [
-          ...componentImports,
-          usesPrefixing && 'PorscheDesignSystemProvider',
-          usesToast && 'useToastManager',
-        ]
-          .filter((x) => x)
-          .sort(byAlphabet)
-          .join(', ');
-
-        const imports = [
-          `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
-          reactImports && `import { ${reactImports} } from 'react';`,
-          isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-          (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
-        ]
-          .filter((x) => x)
-          .join('\n');
-
-        // implementation
-        style = style?.trim();
-        const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
-        const styleJsx = style ? '\n      <style dangerouslySetInnerHTML={{ __html: style }} />\n' : '';
-
-        if (usesComponentsReady) {
-          script = script.replace('componentsReady', 'pollComponentsReady');
-        }
-
-        let useStateOrEffect = '';
-
-        if (usesSetAllReady) {
-          useStateOrEffect = `const [allReady, setAllReady] = useState(false);
-useEffect(() => {
-  pollComponentsReady().then(() => {
-    setAllReady(true);
-  });
-}, []);`;
-        } else if (usesToast) {
-          useStateOrEffect = `const { addMessage } = useToastManager();
-useEffect(() => {
-  addMessage({ text: ${toastText} });
-}, [addMessage]);`;
-        } else if (!isIconPage && usesQuerySelector) {
-          useStateOrEffect = `useEffect(() => {
-  ${script}
-}, []);`;
-        }
-
-        const componentLogic = [useStateOrEffect, styleConst]
-          .filter((x) => x)
-          .join('\n\n')
-          .replace(/^(.)/, '\n$1') // leading new line if there is any content
-          .replace(/(.)$/, '$1\n') // trailing new line if there is any content
-          .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
-
-        // conditional template rendering
-        template = template
-          ?.replace(/( *)<template/g, '$1{allReady && (\n$1<div') // add condition and replace opening tag
-          .replace(/( *)<\/template>/g, '$1</div>\n$1)}') // replace closing tag
-          .replace(/(\n)( +<)/g, '$1  $2'); // fix indentation
-        fileContent = fileContent.replace(templateRegEx, template);
-
-        // prefixing
-        const [, prefix] = fileContent.match(/<([\w-]+)-p-[\w-]+/) || [];
-        if (usesPrefixing) {
-          fileContent = fileContent.replace(new RegExp(`(<\/?)${prefix}-`, 'g'), '$1');
-        }
-
-        // icons
-        if (isIconPage) {
-          fileContent = fileContent.replace(
-            iconsRegEx,
-            `$1
-  {ICON_NAMES.map((x) => (
-    <PIcon key={x} name={x as any} size="inherit" color="inherit" aria-label={\`\${x} icon\`} />
-  ))}
-$2`
-          );
-        }
-
-        // attribute conversion
-        fileContent = fileContent
-          .replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3')
-          .replace(/(<input[^>]*?) v(alue=)/g, '$1 defaultV$2') // for input
-          .replace(/(<input[^>]*?) c(hecked)/g, '$1 defaultC$2'); // for checkbox + radio
-
-        fileContent = fileContent.replace(/(\n +)(<(?:strong|em)>)/g, "$1{' '}$2"); // for forced whitespace
-
-        if (isOverviewPage) {
-          // wrap right column with PorscheDesignSystemProvider
-          let i = 0;
-          fileContent = fileContent.replace(/\n\s\s<div style="flex: 1">[\s\S]*?\n\s\s<\/div>/g, (match) => {
-            if (i === 1) {
-              match = match
-                .replace(
-                  match,
-                  `\n<PorscheDesignSystemProvider prefix="${prefix}">${match}\n</PorscheDesignSystemProvider>`
-                )
-                .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
-            }
-            i++;
-            return match;
-          });
-        }
-
-        const fragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider' : '';
-        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1      $2');
-
-        fileContent = `${comment}
-${imports}
-
-export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
-  return (
-    <${fragmentTag}>${styleJsx}
-      ${convertToReact(fileContent)}
-    </${fragmentTag}>
-  );
-};
-`;
-
-        fileName = `${pascalCase(fileName)}.tsx`;
-      }
-
-      writeFile(path.resolve(pagesDirectory, fileName), fileContent);
-
-      return './' + path.parse(fileName).name;
+      return './' + path.parse(convertedFileName).name;
     })
     .sort(byAlphabet);
 
