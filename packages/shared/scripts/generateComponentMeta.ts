@@ -4,40 +4,7 @@ import * as globby from 'globby';
 import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
-// TODO: typing as component property string
-type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
 
-<<<<<<< HEAD
-/*
- * This array includes all properties that are relevant for the skeleton sizes,
- * it is used to add classes based on set properties in angular and react,
- * so that our skeleton style selectors can work and adjust
- * e.g. color based on the pds-skeleton--theme-dark class.
- */
-const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
-  { propName: 'compact', shouldAddValueToClassName: false },
-  { propName: 'description', shouldAddValueToClassName: false },
-  { propName: 'hideLabel', shouldAddValueToClassName: false },
-  { propName: 'itemsPerPage ', shouldAddValueToClassName: true },
-  { propName: 'label', shouldAddValueToClassName: false },
-  { propName: 'labelSize', shouldAddValueToClassName: false },
-  { propName: 'open', shouldAddValueToClassName: false },
-  { propName: 'size', shouldAddValueToClassName: true },
-  { propName: 'stretch', shouldAddValueToClassName: false },
-  { propName: 'theme', shouldAddValueToClassName: true },
-  { propName: 'totalItemsCount', shouldAddValueToClassName: false },
-  { propName: 'variant', shouldAddValueToClassName: true },
-];
-
-/*
- * An array of all tagNames that should be used when running patchStencil.
- * These components will get a slot appended to, when Stencil attaches the shadowDOM
- * and get this slot removed when hydration is finished, to ensure skeleton visibility of child components inside them.
- */
-const TAG_NAMES_TO_ADD_SLOT_TO: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
-
-=======
->>>>>>> 0d3b136f8 (feat: remove component skeletons | sas | #1221)
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
