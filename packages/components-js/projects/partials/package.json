@@ -31,7 +31,8 @@
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/styles": "0.0.0"
+    "@porsche-design-system/styles": "0.0.0",
+    "@webcomponents/template-shadowroot": "^0.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",
