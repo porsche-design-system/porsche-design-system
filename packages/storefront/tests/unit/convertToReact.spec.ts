@@ -78,6 +78,18 @@ describe('transformStandardAttributes()', () => {
   it('should not transform maxlength attribute value to camelCase', () => {
     expect(transformStandardAttributes('<div attr="some maxlength"></div>')).toBe('<div attr="some maxlength"></div>');
   });
+
+  it('should transform srcset attribute to camelCase for img tag', () => {
+    expect(transformStandardAttributes('<img src="./some_png.png" srcset="./some_png.png">')).toBe(
+      '<img src="./some_png.png" srcSet={"./some_png.png"}>'
+    );
+  });
+
+  it('should transform srcset attribute to camelCase for source tag', () => {
+    expect(transformStandardAttributes('<source src="./some_png.png" srcset="./some_png.png">')).toBe(
+      '<source src="./some_png.png" srcSet={"./some_png.png"}>'
+    );
+  });
 });
 
 describe('transformClassAttribute()', () => {

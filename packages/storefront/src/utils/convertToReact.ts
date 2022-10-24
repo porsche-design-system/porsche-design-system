@@ -11,7 +11,7 @@ export const transformStandardAttributes = (markup: string): string =>
     .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
     .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
     .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)))
-    .replace(/(<(?:img|source).*?)(srcset)=(".*")/g, '$1srcSet={$3}');
+    .replace(/(<(?:img|source).*?)srcset=(".*")/g, '$1srcSet={$2}');
 
 export const transformClassAttribute = (markup: string): string =>
   markup.replace(/\sclass="(.*?)"/g, ' className="$1"');
