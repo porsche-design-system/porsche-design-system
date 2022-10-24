@@ -471,7 +471,7 @@ p {
               >
                 <p-icon
                   aria-hidden="true"
-                  class="hydrated"
+                  class="icon hydrated"
                 >
                   <template
                     shadowroot="open"
@@ -591,7 +591,7 @@ span {
     >
       <p-icon
         aria-hidden="true"
-        class="hydrated"
+        class="icon hydrated"
       >
         <template
           shadowroot="open"
@@ -780,7 +780,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="hydrated"
+        class="icon hydrated"
       >
         <template
           shadowroot="open"
@@ -982,7 +982,7 @@ p {
         class="nav"
       >
         <p-button-pure
-          class="hydrated"
+          class="btn hydrated"
         >
           <template
             shadowroot="open"
@@ -1077,7 +1077,7 @@ p {
             >
               <p-icon
                 aria-hidden="true"
-                class="hydrated"
+                class="icon hydrated"
               >
                 <template
                   shadowroot="open"
@@ -1121,7 +1121,7 @@ p {
           </template>
         </p-button-pure>
         <p-button-pure
-          class="hydrated"
+          class="btn hydrated"
         >
           <template
             shadowroot="open"
@@ -1216,7 +1216,7 @@ p {
             >
               <p-icon
                 aria-hidden="true"
-                class="hydrated"
+                class="icon hydrated"
               >
                 <template
                   shadowroot="open"
@@ -1270,14 +1270,26 @@ p {
       >
         <div
           class="splide__list"
-        />
+        >
+          <div
+            class="splide__slide"
+          >
+            <slot
+              name="slide-0"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div
       class="pagination"
     />
   </template>
-  Some child
+  <div
+    slot="slide-0"
+  >
+    Some child
+  </div>
 </p-carousel>
 `;
 
@@ -1935,7 +1947,7 @@ p {
         >
           <p-icon
             aria-hidden="true"
-            class="hydrated"
+            class="icon hydrated"
           >
             <template
               shadowroot="open"
@@ -2678,7 +2690,7 @@ h1 {
           >
             <p-icon
               aria-hidden="true"
-              class="hydrated"
+              class="icon hydrated"
             >
               <template
                 shadowroot="open"
@@ -3113,7 +3125,7 @@ p {
         >
           <p-icon
             aria-hidden="true"
-            class="hydrated"
+            class="icon hydrated"
           >
             <template
               shadowroot="open"
@@ -3321,7 +3333,7 @@ exports[`should render dsr component for PScroller 1`] = `
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-prev .button::before {
   left: 0;
@@ -3335,7 +3347,7 @@ exports[`should render dsr component for PScroller 1`] = `
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-next .button::before {
   right: 0;
@@ -3360,7 +3372,6 @@ exports[`should render dsr component for PScroller 1`] = `
       >
         <div
           class="scroll-wrapper"
-          tabindex="0"
         >
           <slot />
           <div
@@ -3464,7 +3475,7 @@ exports[`should render dsr component for PScroller 1`] = `
             >
               <p-icon
                 aria-hidden="true"
-                class="hydrated"
+                class="icon hydrated"
               >
                 <template
                   shadowroot="open"
@@ -3602,7 +3613,7 @@ exports[`should render dsr component for PScroller 1`] = `
             >
               <p-icon
                 aria-hidden="true"
-                class="hydrated"
+                class="icon hydrated"
               >
                 <template
                   shadowroot="open"
@@ -4085,7 +4096,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-prev .button::before {
   left: 0;
@@ -4099,7 +4110,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-next .button::before {
   right: 0;
@@ -4124,7 +4135,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
           >
             <div
               class="scroll-wrapper"
-              tabindex="0"
             >
               <slot />
               <div
@@ -4228,7 +4238,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="hydrated"
+                    class="icon hydrated"
                   >
                     <template
                       shadowroot="open"
@@ -4366,7 +4376,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="hydrated"
+                    class="icon hydrated"
                   >
                     <template
                       shadowroot="open"
@@ -4991,7 +5001,7 @@ exports[`should render dsr component for PTabs 1`] = `
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-prev .button::before {
   left: 0;
@@ -5005,7 +5015,7 @@ exports[`should render dsr component for PTabs 1`] = `
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-next .button::before {
   right: 0;
@@ -5030,7 +5040,6 @@ exports[`should render dsr component for PTabs 1`] = `
               >
                 <div
                   class="scroll-wrapper"
-                  tabindex="0"
                 >
                   <slot />
                   <div
@@ -5134,7 +5143,7 @@ exports[`should render dsr component for PTabs 1`] = `
                     >
                       <p-icon
                         aria-hidden="true"
-                        class="hydrated"
+                        class="icon hydrated"
                       >
                         <template
                           shadowroot="open"
@@ -5272,7 +5281,7 @@ exports[`should render dsr component for PTabs 1`] = `
                     >
                       <p-icon
                         aria-hidden="true"
-                        class="hydrated"
+                        class="icon hydrated"
                       >
                         <template
                           shadowroot="open"
@@ -5325,10 +5334,17 @@ exports[`should render dsr component for PTabs 1`] = `
           />
         </p-scroller>
       </template>
+      <button
+        type="button"
+      >
+        TabItem
+      </button>
     </p-tabs-bar>
     <slot />
   </template>
-  Some child
+  <p-tabs-item
+    label="TabItem"
+  />
 </p-tabs>
 `;
 
@@ -5463,7 +5479,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-prev .button::before {
   left: 0;
@@ -5477,7 +5493,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-  visibility: visible;
+  visibility: hidden;
 }
 .action-next .button::before {
   right: 0;
@@ -5502,7 +5518,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
           >
             <div
               class="scroll-wrapper"
-              tabindex="0"
             >
               <slot />
               <div
@@ -5606,7 +5621,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="hydrated"
+                    class="icon hydrated"
                   >
                     <template
                       shadowroot="open"
@@ -5744,7 +5759,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="hydrated"
+                    class="icon hydrated"
                   >
                     <template
                       shadowroot="open"

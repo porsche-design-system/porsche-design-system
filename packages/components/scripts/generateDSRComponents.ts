@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
+import type { TagName } from '@porsche-design-system/shared';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -21,6 +22,7 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
+      const tagName = paramCase(`P${componentName}`) as TagName;
       const hasChildren = fileContent.includes('<slot');
 
       let newFileContent = fileContent
@@ -161,7 +163,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
-      let liCounter = 0;
+      let liCounter = 0; // for pagination unique key
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
@@ -191,6 +193,43 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }) // pagination unique key warning
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'"); // select-wrapper-dropdown
+
+      // component based tweaks
+      if (tagName === 'p-carousel') {
+        newFileContent = newFileContent
+          .replace(/this\.slides(\.map)/, `defaultChildren$1`)
+          .replace(/(<div) (className="splide__slide">)/g, '$1 key={i} $2')
+          // patch named slot which usually getSlidesAndAddNamedSlots() takes care of
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child) =>
+      defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, slot: \`slide-\${defaultChildren.indexOf(child)}\` } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-tabs') {
+        newFileContent = newFileContent
+          .replace(/this\.tabsItemElements(\.map)/, `defaultChildren$1`)
+          .replace(
+            /(<button) (type="button">){tab\.label}(<\/button>)/g,
+            '$1 key={tab.props.label} $2{tab.props.label}$3'
+          )
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      defaultChildren.includes(child) && this.props.activeTabIndex !== i
+        ? { ...child, props: { ...child.props, hidden: true } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-scroller') {
+        newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
+      }
 
       return newFileContent;
     });
