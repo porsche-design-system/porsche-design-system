@@ -1270,14 +1270,26 @@ p {
       >
         <div
           class="splide__list"
-        />
+        >
+          <div
+            class="splide__slide"
+          >
+            <slot
+              name="slide-0"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div
       class="pagination"
     />
   </template>
-  Some child
+  <div
+    slot="slide-0"
+  >
+    Some child
+  </div>
 </p-carousel>
 `;
 
@@ -5325,10 +5337,17 @@ exports[`should render dsr component for PTabs 1`] = `
           />
         </p-scroller>
       </template>
+      <button
+        type="button"
+      >
+        TabItem
+      </button>
     </p-tabs-bar>
     <slot />
   </template>
-  Some child
+  <p-tabs-item
+    label="TabItem"
+  />
 </p-tabs>
 `;
 
