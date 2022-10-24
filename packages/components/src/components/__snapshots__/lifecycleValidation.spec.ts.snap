@@ -230,7 +230,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
   "align": "oneOf",
   "aria": "aria",
   "aspectRatio": "breakpoint",
-  "compact": "boolean",
+  "compact": "breakpoint",
   "description": "string",
   "download": "string",
   "gradient": "boolean",

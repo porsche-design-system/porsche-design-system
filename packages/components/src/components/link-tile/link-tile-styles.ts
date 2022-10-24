@@ -146,8 +146,8 @@ export const getComponentCss = (
         }))),
       ...buildResponsiveStyles(compact, (isCompact: boolean) =>
         isCompact
-          ? { alignItems: 'center', gridTemplateColumns: `auto ${pxToRemWithUnit(24)}` }
-          : { gridTemplateRows: 'auto auto' }
+          ? { alignItems: 'center', gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`, gridTemplateRows: 'auto' }
+          : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
       ),
     },
     'link-pure': {
