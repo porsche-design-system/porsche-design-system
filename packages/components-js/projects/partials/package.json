@@ -26,7 +26,7 @@
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
+    "clean:build": "rm -rf ./src/lib && rm -rf ./dist && rm -rf ./dist-tmp"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",

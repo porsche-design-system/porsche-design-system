@@ -7,7 +7,7 @@ export default [
   {
     input: 'src/dsr-ponyfill.ts',
     output: {
-      file: 'dist/dsr-ponyfill.min.js',
+      file: 'dist-tmp/dsr-ponyfill.min.js',
       format: 'iife',
     },
     plugins: [
