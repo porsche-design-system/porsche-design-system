@@ -6,6 +6,11 @@ import {
   getFontLinks,
   getInitialStyles,
 } from '@porsche-design-system/components-react/partials';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const sharedPackageFilePath = require.resolve('@porsche-design-system/shared');
+const sharedTestingStyles = fs.readFileSync(path.resolve(sharedPackageFilePath, '../../dist/css/styles.css'), 'utf8');
 
 const Document = (): JSX.Element => {
   return (
@@ -20,6 +25,11 @@ const Document = (): JSX.Element => {
           .map((url) => (
             <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />
           ))}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: sharedTestingStyles,
+          }}
+        ></style>
       </Head>
       <body>
         <Main />
