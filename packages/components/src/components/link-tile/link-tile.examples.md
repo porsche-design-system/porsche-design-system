@@ -1,8 +1,7 @@
 # Link Tile
 
 The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
-information within one container. The component takes its height from the width provided and places the image via
-`object-fit cover`.
+information within one container.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -10,15 +9,19 @@ information within one container. The component takes its height from the width 
 
 ## Basic
 
-An `img` or `picture` tag has to be provided in the slot of the `p-link-tile` component. Additionally, the properties
-`href`, `description` and `label` are required. The `description` property is used as a teaser with a more detailed
-description of the link and where it leads to. The `label` property is used to describe the anchor.
+An `img` or `picture` tag has to be provided in the slot of the `p-link-tile` component.
+
+Additionally, the properties `href`, `description` and `label` are required. The `description` property is used as a
+teaser with a more detailed description of the link and where it leads to.
+
+The `label` property is used to describe the anchor.
 
 <Playground :markup="basic"></Playground>
 
 ## Aspect Ratio
 
-The height of the component depends on the given aspect ratio.
+The component takes its height from the width provided and places the image via `object-fit cover`. Therefore, you can
+change the height by using different aspect ratios.
 
 <Playground :markup="aspectRatioMarkup">
   <label>
@@ -56,7 +59,6 @@ The `size` property changes the font size of the description.
 The `weight` property changes the font weight of the description.
 
 <Playground :markup="weightMarkup">
-  <label>
     <p-text>Select font weight:</p-text>
     <select v-model="weight" aria-label="Select font weight">
       <option disabled>Select font weight</option>
@@ -64,31 +66,51 @@ The `weight` property changes the font weight of the description.
       <option value="semibold">semibold</option>
       <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular' }">responsive</option>
     </select>
-  </label>
 </Playground>
 
 ## Gradient
 
-By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the gradient
-is not necessary for readability, the gradient can be removed by using the supplied boolean property `gradient`.
+By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the
+underlying image provides enough contrast, you can choose to disable the gradient by setting `gradient="false"`.
 
-<Playground :markup="gradient"></Playground>
+**Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
+
+<Playground :markup="gradientMarkup">
+    <p-text>Select gradient:</p-text>
+    <select v-model="gradient" aria-label="Select gradient">
+      <option disabled>Select gradient</option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+</Playground>
 
 ## Compact
 
-A `p-link-tile` can be used without visible label text. It can be removed by the provided boolean property `compact`. If
-used without visible label, it is mandatory for **accessibility** reasons to provide a descriptive label text for screen
-readers.
+The `label` property stays mandatory when using `compact`, for **accessibility** reasons.
 
-<Playground :markup="compact"></Playground>
+<Playground :markup="compactMarkup">
+  <p-text>Select compact:</p-text>
+  <select v-model="compact" aria-label="Select compact">
+    <option disabled>Select compact</option>
+    <option value="true">true</option>
+    <option value="false">false</option>
+  </select>
+</Playground>
 
 ## Alignment
 
-By default, the content container of the `p-link-tile` is aligned at the bottom. In the `compact` variant the content
-container can be positioned at the top of the `p-link-tile` container. For this purpose the property `align="top"` must
-be set.
+It is possible to align the description on top of the component.
 
-<Playground :markup="align"></Playground>
+**Note:** This is only possible in combination with `compact="true"`
+
+<Playground :markup="alignMarkup">
+  <p-text>Select align:</p-text>
+  <select v-model="align" aria-label="Select align">
+    <option disabled>Select align</option>
+    <option value="top">top</option>
+    <option value="bottom">bottom</option>
+  </select>
+</Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -100,6 +122,9 @@ export default class Code extends Vue {
   aspectRatio = '4:3';
   size = 'default';
   weight = 'semibold';
+  gradient = 'false';
+  compact = 'true';
+  align = 'top';
 
   basic = `<div class="grid">
   <p-link-tile
@@ -107,7 +132,7 @@ export default class Code extends Vue {
     label="Some label"
     description="Some Description"
   >
-    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+    <img src="${require('../../assets/image_grid.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
   <p-link-tile
     href="https://www.porsche.com"
@@ -116,68 +141,86 @@ export default class Code extends Vue {
   >
     <picture>
       <source media="(min-width:500px)" srcset="${require('../../assets/porsche_factory.jpg')}"/>
-      <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+      <img src="${require('../../assets/image_grid.jpg')}" alt="Porsche on Beach" />
     </picture>
-  </p-link-tile>
-</div>`;
-
-  gradient = `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    gradient="false"
-  >
-    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
-  </p-link-tile>
-</div>`;
-
-  compact = `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="true"
-  >
-    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
-  </p-link-tile>
-</div>`;
-
-  align = `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="true"
-    align="top"
-  >
-    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
   </p-link-tile>
 </div>`;
 
   get aspectRatioMarkup() {
     return`<div class="container">
-  <p-link-tile href="#" label="Some Label" description="Default" aspect-ratio="${this.aspectRatio}">
+  <p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
     <img src="${require('../../assets/porsche_beach.jpg')}" alt="Beach"/>
   </p-link-tile>
 </div>`
   }
 
   get sizeMarkup() {
-    return`<div class="container">
-  <p-link-tile href="#" label="Some Label" description="Default" size="${this.size}">
+    return`<div class="grid">
+  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}">
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Beach"/>
+  </p-link-tile>
+  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true">
     <img src="${require('../../assets/porsche_beach.jpg')}" alt="Beach"/>
   </p-link-tile>
 </div>`
   }
 
   get weightMarkup() {
-    return`<div class="container">
-  <p-link-tile href="#" label="Some Label" description="Default" weight="${this.weight}">
+    return`<div class="grid">
+  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Beach"/>
+  </p-link-tile>
+  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
     <img src="${require('../../assets/porsche_beach.jpg')}" alt="Beach"/>
   </p-link-tile>
 </div>`
   }
+
+ get gradientMarkup() { 
+  return `<div class="grid">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    gradient="${this.gradient}"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+  </p-link-tile>
+   <p-link-tile
+      href="https://www.porsche.com"
+      label="Some label"
+      description="Some Description"
+      compact="true"
+      gradient="${this.gradient}"
+    >
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+  </p-link-tile>
+</div>`};
+
+  get compactMarkup() {
+    return `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    compact="${this.compact}"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+  </p-link-tile>
+</div>`};
+
+  get alignMarkup() {
+    return `<div class="container">
+  <p-link-tile
+    href="https://www.porsche.com"
+    label="Some label"
+    description="Some Description"
+    compact="true"
+    align="${this.align}"
+  >
+    <img src="${require('../../assets/porsche_beach.jpg')}" alt="Porsche on Beach" />
+  </p-link-tile>
+</div>`};
 
 }
 </script>
