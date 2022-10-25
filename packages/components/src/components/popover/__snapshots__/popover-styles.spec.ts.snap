@@ -2,9 +2,10 @@
 
 exports[`getComponentCss() should return correct css for direction: bottom 1`] = `
 ":host {
-  vertical-align: top;
   position: relative !important;
   display: inline-block !important;
+  height: 1.5rem !important;
+  vertical-align: top;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -83,9 +84,10 @@ p {
 
 exports[`getComponentCss() should return correct css for direction: left 1`] = `
 ":host {
-  vertical-align: top;
   position: relative !important;
   display: inline-block !important;
+  height: 1.5rem !important;
+  vertical-align: top;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -164,9 +166,10 @@ p {
 
 exports[`getComponentCss() should return correct css for direction: right 1`] = `
 ":host {
-  vertical-align: top;
   position: relative !important;
   display: inline-block !important;
+  height: 1.5rem !important;
+  vertical-align: top;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -245,9 +248,10 @@ p {
 
 exports[`getComponentCss() should return correct css for direction: top 1`] = `
 ":host {
-  vertical-align: top;
   position: relative !important;
   display: inline-block !important;
+  height: 1.5rem !important;
+  vertical-align: top;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
