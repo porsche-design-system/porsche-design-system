@@ -18,6 +18,13 @@ The `label` property is used to describe the anchor.
 
 <Playground :markup="basic"></Playground>
 
+### <A11yIcon></A11yIcon> Accessibility hints
+In general, placing textual contents above an image can easily lead to **contrast issues**. 
+Though we are providing a scalable background gradient to reduce the risk of low contrasts between foreground text and background image, there still can occur issues with color contrast ratios, especially if different aspect ratios for multiple viewport sizes are used.
+So, always **check readability** and play around with the `size` and `weight` properties to achieve the best results. 
+
+---
+
 ## Aspect Ratio
 
 The component takes its height from the width provided and places the image via `object-fit cover`. Therefore, you can
