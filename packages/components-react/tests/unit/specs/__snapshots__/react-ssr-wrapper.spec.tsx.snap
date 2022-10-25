@@ -299,7 +299,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -317,7 +317,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -1775,7 +1774,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -1793,7 +1792,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -2951,9 +2949,10 @@ exports[`should render dsr component for PPopover 1`] = `
   >
     <style>
       :host {
-  vertical-align: top;
   position: relative !important;
   display: inline-block !important;
+  height: 1.5rem !important;
+  vertical-align: top;
 }
 p {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
