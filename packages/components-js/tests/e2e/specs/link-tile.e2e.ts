@@ -36,10 +36,11 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
+    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
     expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -49,9 +50,10 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
     expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+    expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -64,7 +66,6 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-link-tile'], 'componentDidUpdate: p-link-tile').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1); // p-link should be changed to p-link-pure when compact="true"
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
