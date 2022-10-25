@@ -65,7 +65,7 @@ export class LinkTile {
   @Prop() public gradient?: boolean = true;
 
   /** Displays the tile-link as compact version with description and link icon only. */
-  @Prop() public compact?: BreakpointCustomizable<Boolean> = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
   @Prop() public href: string;

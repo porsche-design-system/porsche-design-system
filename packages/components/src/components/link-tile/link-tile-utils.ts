@@ -17,7 +17,7 @@ export type LinkTileAspectRatio = typeof LINK_TILE_ASPECT_RATIOS[number];
 export const throwIfAlignTopAndNotCompact = (
   host: HTMLElement,
   align: LinkTileAlign,
-  compact: BreakpointCustomizable<Boolean>
+  compact: BreakpointCustomizable<boolean>
 ): void => {
   if (align === 'top') {
     if (!compact || (typeof compact === 'string' && compact === 'false')) {

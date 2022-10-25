@@ -69,7 +69,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<LinkTileSize>,
   weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkTileAlign,
-  compact: BreakpointCustomizable<Boolean>,
+  compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top';
