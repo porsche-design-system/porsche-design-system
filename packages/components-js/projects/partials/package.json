@@ -35,12 +35,12 @@
     "@webcomponents/template-shadowroot": "^0.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@rollup/plugin-typescript": "^8.5.0",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
-    "rollup": "^2.79.1",
+    "rollup": "^3.2.3",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "tslib": "^2.4.0",
     "typescript": "~4.8.3"
