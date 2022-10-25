@@ -10,7 +10,7 @@ information within one container. The component takes its height from the width 
 
 ## Basic
 
-An `img`or `picture` tag has to be provided in the slot of the `p-link-tile` component. Additionally, the properties
+An `img` or `picture` tag has to be provided in the slot of the `p-link-tile` component. Additionally, the properties
 `href`, `description` and `label` are required. The `description` property is used as a teaser with a more detailed
 description of the link and where it leads to. The `label` property is used to describe the anchor.
 
@@ -37,7 +37,7 @@ The height of the component depends on the given aspect ratio.
 
 ## Size
 
-The `size` property changes the font-size of the description.
+The `size` property changes the font size of the description.
 
 <Playground :markup="sizeMarkup">
   <label>
@@ -53,7 +53,7 @@ The `size` property changes the font-size of the description.
 
 ## Weight
 
-The `weight` property changes the font-weight of the description.
+The `weight` property changes the font weight of the description.
 
 <Playground :markup="weightMarkup">
   <label>
@@ -70,15 +70,15 @@ The `weight` property changes the font-weight of the description.
 ## Gradient
 
 By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the gradient
-is not necessary for readability, the gradient can be removed by using the supplied boolean property `gradient="false"`.
+is not necessary for readability, the gradient can be removed by using the supplied boolean property `gradient`.
 
 <Playground :markup="gradient"></Playground>
 
 ## Compact
 
-A `p-link-tile` can be used without visible label text. It can be removed by the provided boolean property
-`compact="true"`. If used without caption, it is mandatory for **accessibility** reasons to provide a descriptive
-`label text` for screen readers.
+A `p-link-tile` can be used without visible label text. It can be removed by the provided boolean property `compact`. If
+used without visible label, it is mandatory for **accessibility** reasons to provide a descriptive `label text` for
+screen readers.
 
 <Playground :markup="compact"></Playground>
 
