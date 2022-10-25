@@ -12,7 +12,7 @@ type Characteristics = {
   isOverviewPage: boolean;
 };
 
-const sourceBasePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src');
+const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
 const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
 const pollComponentsReadyFileContent = fs.readFileSync(pollComponentsReadyFilePath, 'utf8');
 
