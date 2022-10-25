@@ -14,7 +14,7 @@
     "clean:build": "rm -rf ../../dist/react-wrapper/nextjs"
   },
   "devDependencies": {
-    "rollup": "^2.79.1",
+    "rollup": "^3.2.3",
     "rollup-plugin-generate-package-json": "^3.2.0"
   }
 }
