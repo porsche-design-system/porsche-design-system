@@ -192,7 +192,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           return `<li key=\{${liCounter++}}>`;
         }) // pagination unique key warning
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDirection\(this\.props\)/, "'down'"); // select-wrapper-dropdown
+        .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
+        .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2'); // button, button-pure
 
       // component based tweaks
       if (tagName === 'p-carousel') {
