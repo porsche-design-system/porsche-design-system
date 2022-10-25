@@ -1,6 +1,7 @@
 import { convertToReactVRTPage } from './convertToReactVRTPage';
 import * as fs from 'fs';
 import * as path from 'path';
+import { paramCase } from 'change-case';
 
 type Characteristics = {
   usesSetAllReady: boolean;
@@ -64,5 +65,5 @@ export const convertToNextJsVRTPage = (
     .replace(/(\w|>)'(\w|<)/g, '$1&apos;$2') // escape single quotes
     .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2'); // escape double quotes
 
-  return { fileName: convertedFileName, fileContent: newFileContent };
+  return { fileName: paramCase(convertedFileName.replace(/\.tsx/, '')) + '.tsx', fileContent: newFileContent };
 };
