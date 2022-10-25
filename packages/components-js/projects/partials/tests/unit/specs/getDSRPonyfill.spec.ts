@@ -4,7 +4,7 @@ import * as path from 'path';
 import { render } from '@testing-library/react';
 
 const filePath = path.resolve(__dirname, '../../../dist-tmp/dsr-ponyfill.min.js');
-const fileContent = fs.readFileSync(filePath, 'utf8');
+const fileContent = fs.readFileSync(filePath, 'utf8').trim();
 
 jest.mock('../../../src/shared');
 

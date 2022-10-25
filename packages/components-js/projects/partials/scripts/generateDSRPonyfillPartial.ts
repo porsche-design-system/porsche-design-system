@@ -19,7 +19,7 @@ export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Eleme
 
   throwIfRunInBrowser('getDSRPonyfill');
 
-  const scriptContent = \`${fileContent}\`;
+  const scriptContent = \`${fileContent.trim()}\`;
 
   const markup = format === 'html' ? \`<script>\${scriptContent}</script>\` : <script dangerouslySetInnerHTML={{__html: scriptContent}} />;
 
