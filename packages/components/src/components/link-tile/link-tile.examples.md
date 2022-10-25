@@ -77,8 +77,8 @@ is not necessary for readability, the gradient can be removed by using the suppl
 ## Compact
 
 A `p-link-tile` can be used without visible label text. It can be removed by the provided boolean property `compact`. If
-used without visible label, it is mandatory for **accessibility** reasons to provide a descriptive `label text` for
-screen readers.
+used without visible label, it is mandatory for **accessibility** reasons to provide a descriptive label text for screen
+readers.
 
 <Playground :markup="compact"></Playground>
 
