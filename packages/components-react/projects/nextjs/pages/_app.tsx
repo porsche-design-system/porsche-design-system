@@ -1,4 +1,3 @@
-import '@porsche-design-system/shared/css/styles.css';
 import type { AppProps } from 'next/app';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { routes } from '../routes';
