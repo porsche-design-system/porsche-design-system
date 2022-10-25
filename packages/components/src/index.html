@@ -11,17 +11,11 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
 
     <style>
-      .container {
-        max-width: 300px;
-        margin-bottom: 20px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        column-gap: 10px;
-        row-gap: 10px;
-        margin-bottom: 20px;
-      }
+      /** {*/
+      /*  margin: 0;*/
+      /*  padding: 0;*/
+      /*  box-sizing: border-box;*/
+      /*}*/
     </style>
   </head>
   <body>
@@ -29,143 +23,17 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main>
-      <div class="playground light container" title="should render default link-tile on light background">
-        <p-link-tile href="#" label="Some Label" description="Default">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
+    <main></main>
 
-      <div
-        class="playground light grid"
-        style="font-size: 24px"
-        title="should render different sizes on light background"
-      >
-        <p-link-tile href="#" label="Some label" description="Size inherit" size="inherit">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Size breakpoint"
-          size="{ base: 'default', xs: 'inherit', s: 'default', m: 'inherit', l: 'default', xl: 'inherit' }"
-        >
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div class="playground light grid" title="should render different weights on light background">
-        <p-link-tile href="#" label="Some label" description="Weight regular" weight="regular">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Weight breakpoint"
-          weight="{ base: 'regular', xs: 'semibold', s: 'regular', m: 'semibold', l: 'regular', xl: 'semibold' }"
-        >
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div class="playground light grid" title="should render different aspect ratios on light background">
-        <p-link-tile href="#" label="Some label" description="Aspect ratio 16:9" aspect-ratio="16:9">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile label="Some label" description="Aspect ratio 1:1" href="#" aspect-ratio="1:1">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile href="#" label="Some label" description="Aspect ratio 3:4" aspect-ratio="3:4">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile href="#" label="Some label" description="Aspect ratio 9:16" aspect-ratio="9:16">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Aspect ratio breakpoint"
-          aspect-ratio="{ base: '16:9', xs: '1:1', s: '3:4', m: '9:16', l: '4:3', xl: '16:9'}"
-        >
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div class="playground light container" title="should render compact on light background">
-        <p-link-tile href="#" label="Some label" description="Compact" compact="true">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div class="playground light container" title="should render align top on light background">
-        <p-link-tile href="#" label="Some label" description="Align top" align="top" compact="true">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-      >
-
-      <div class="playground light container" title="should render without gradient">
-        <p-link-tile href="#" label="Some label" description="Gradient false" gradient="false">
-          <img src="./assets/porsche_beach.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div class="playground light grid" title="should render with readable overflowing text on different backgrounds">
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
-        >
-          <img />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
-          compact="true"
-        >
-          <img />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background."
-        >
-          <img src="./assets/porsche_office.jpg" />
-        </p-link-tile>
-        <p-link-tile
-          href="#"
-          label="Some label"
-          description="Some long text on office background. Some long text on office background. Some long text on office background. Some long text on office background."
-          compact="true"
-        >
-          <img src="./assets/porsche_office.jpg" />
-        </p-link-tile>
-      </div>
-
-      <div
-        class="playground light container"
-        title="should render with picture tag and multiple sources depending on viewport"
-      >
-        <p-link-tile href="#" label="Some label" description="Picture tag">
-          <picture>
-            <source media="(min-width: 760px)" srcset="./assets/porsche_beach.jpg" />
-            <source media="(min-width: 1000px)" srcset="./assets/porsche_office.jpg" />
-            <img src="./assets/porsche_office.jpg" alt="Office" />
-          </picture>
-        </p-link-tile>
-      </div>
-    </main>
-
-    <!--    <script>-->
-    <!--      &lt;!&ndash; START: keep this snippet to log component lifecycle events &ndash;&gt;-->
-    <!--      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>-->
-    <!--        window.addEventListener(`stencil_${x}`, (e) => {-->
-    <!--          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');-->
-    <!--          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());-->
-    <!--        })-->
-    <!--      );-->
-    <!--    </script>-->
+    <script>
+      <!-- START: keep this snippet to log component lifecycle events -->
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+        window.addEventListener(`stencil_${x}`, (e) => {
+          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+        })
+      );
+    </script>
     <!-- /END -->
   </body>
 </html>
