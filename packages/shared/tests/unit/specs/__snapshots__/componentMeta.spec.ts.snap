@@ -661,7 +661,6 @@ exports[`should match snapshot 1`] = `
     "hasAriaProp": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": true,
@@ -713,7 +712,6 @@ exports[`should match snapshot 1`] = `
       "description",
       "href",
     ],
-    "shouldPatchSlot": false,
     "styling": "jss",
   },
   "p-marque": {
