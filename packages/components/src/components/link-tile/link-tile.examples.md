@@ -235,12 +235,12 @@ export default class Code extends Vue {
 <style>
 
   .container {
-    max-width: 400px;
+    max-width: 300px;
     font-size: 40px;
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: auto;
     column-gap: 1rem;
     row-gap: 1rem;
