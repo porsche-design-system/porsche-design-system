@@ -60,7 +60,9 @@ export const convertToNextJsVRTPage = (
       /export\s+(const\s+)(.*)(\s+=\s+\(\):\s+JSX\.Element\s+=>\s+{[\s\S]*};)/,
       '$1$2: NextPage$3\n\nexport default $2;'
     )
-    .replace(/@porsche-design-system\/components-react/g, '$&/ssr');
+    .replace(/@porsche-design-system\/components-react/g, '$&/ssr')
+    .replace(/(\w|>)'(\w|<)/g, '$1&apos;$2') // escape single quotes
+    .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2'); // escape double quotes
 
   return { fileName: convertedFileName, fileContent: newFileContent };
 };

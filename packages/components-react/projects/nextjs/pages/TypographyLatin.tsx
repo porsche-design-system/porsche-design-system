@@ -27,15 +27,15 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
 
       <div className="playground" title="should show typography in basic latin charset">
         <h2>Porsche Next Latin</h2>
-        <h4>Range: U+0020-007F ("Basic Latin")</h4>
+        <h4>Range: U+0020-007F (&quot;Basic Latin&quot;)</h4>
         <PText size="medium" align="center" title="U++0020 | Dec: 32" />
         <PText size="medium" align="center" title="U++0021 | Dec: 33">!</PText>
-        <PText size="medium" align="center" title="U++0022 | Dec: 34">"</PText>
+        <PText size="medium" align="center" title="U++0022 | Dec: 34">&quot;</PText>
         <PText size="medium" align="center" title="U++0023 | Dec: 35">#</PText>
         <PText size="medium" align="center" title="U++0024 | Dec: 36">$</PText>
         <PText size="medium" align="center" title="U++0025 | Dec: 37">%</PText>
         <PText size="medium" align="center" title="U++0026 | Dec: 38">&amp;</PText>
-        <PText size="medium" align="center" title="U++0027 | Dec: 39">'</PText>
+        <PText size="medium" align="center" title="U++0027 | Dec: 39">&apos;</PText>
         <PText size="medium" align="center" title="U++0028 | Dec: 40">(</PText>
         <PText size="medium" align="center" title="U++0029 | Dec: 41">)</PText>
         <PText size="medium" align="center" title="U++002A | Dec: 42">*</PText>
@@ -125,7 +125,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U++007E | Dec: 126">~</PText>
         <PText size="medium" align="center" title="U++007F | Dec: 127">␡</PText>
 
-        <h4>Range: U+0080-00FF ("Latin-1 Supplement")</h4>
+        <h4>Range: U+0080-00FF (&quot;Latin-1 Supplement&quot;)</h4>
         <PText size="medium" align="center" title="U+0080 | Dec: 128"></PText>
         <PText size="medium" align="center" title="U+0081 | Dec: 129"></PText>
         <PText size="medium" align="center" title="U+0082 | Dec: 130"></PText>
@@ -255,7 +255,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+00FE | Dec: 254">þ</PText>
         <PText size="medium" align="center" title="U+00FF | Dec: 255">ÿ</PText>
 
-        <h4>Range: U+0100-017F ("Latin Extended-A")</h4>
+        <h4>Range: U+0100-017F (&quot;Latin Extended-A&quot;)</h4>
         <PText size="medium" align="center" title="U+0100 | Dec: 256">Ā</PText>
         <PText size="medium" align="center" title="U+0101 | Dec: 257">ā</PText>
         <PText size="medium" align="center" title="U+0102 | Dec: 258">Ă</PText>
@@ -385,7 +385,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+017E | Dec: 382">ž</PText>
         <PText size="medium" align="center" title="U+017F | Dec: 383">ſ</PText>
 
-        <h4>Range: U+0180-024F ("Latin Extended-B")</h4>
+        <h4>Range: U+0180-024F (&quot;Latin Extended-B&quot;)</h4>
         <PText size="medium" align="center" title="U+0180 | Dec: 384">ƀ</PText>
         <PText size="medium" align="center" title="U+0181 | Dec: 385">Ɓ</PText>
         <PText size="medium" align="center" title="U+0182 | Dec: 386">Ƃ</PText>
@@ -515,7 +515,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+01FE | Dec: 510">Ǿ</PText>
         <PText size="medium" align="center" title="U+01FF | Dec: 511">ǿ</PText>
 
-        <h4>Range: U+0250-02AF ("IPA Extensions")</h4>
+        <h4>Range: U+0250-02AF (&quot;IPA Extensions&quot;)</h4>
         <PText size="medium" align="center" title="U+0250 | Dec:592">ɐ</PText>
         <PText size="medium" align="center" title="U+0251 | Dec:593">ɑ</PText>
         <PText size="medium" align="center" title="U+0252 | Dec:594">ɒ</PText>
@@ -613,7 +613,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+02AE | Dec:686">ʮ</PText>
         <PText size="medium" align="center" title="U+02AF | Dec:687">ʯ</PText>
 
-        <h4>Range: U+02B0-02FF ("Spacing Modifier Letters")</h4>
+        <h4>Range: U+02B0-02FF (&quot;Spacing Modifier Letters&quot;)</h4>
         <PText size="medium" align="center" title="U+02B0 | Dec:688">ʰ</PText>
         <PText size="medium" align="center" title="U+02B1 | Dec:689">ʱ</PText>
         <PText size="medium" align="center" title="U+02B2 | Dec:690">ʲ</PText>
@@ -695,7 +695,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+02FE | Dec:766">˾</PText>
         <PText size="medium" align="center" title="U+02FF | Dec:767">˿</PText>
 
-        <h4>Range: U+0300-036F ("Combining Diacritical Marks")</h4>
+        <h4>Range: U+0300-036F (&quot;Combining Diacritical Marks&quot;)</h4>
         <PText size="medium" align="center" title="U+0300 | Dec:768">̀</PText>
         <PText size="medium" align="center" title="U+0301 | Dec:769">́</PText>
         <PText size="medium" align="center" title="U+0302 | Dec:770">̂</PText>
@@ -809,7 +809,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+036E | Dec:878">ͮ</PText>
         <PText size="medium" align="center" title="U+036F | Dec:879">ͯ</PText>
 
-        <h4>Range: U+0E00-0E7F ("Thai")</h4>
+        <h4>Range: U+0E00-0E7F (&quot;Thai&quot;)</h4>
         <PText size="medium" align="center" title="U+0E00 | Dec:3584">฀</PText>
         <PText size="medium" align="center" title="U+0E01 | Dec:3585">ก</PText>
         <PText size="medium" align="center" title="U+0E02 | Dec:3586">ข</PText>
@@ -939,7 +939,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+0E7E | Dec:3710">๾</PText>
         <PText size="medium" align="center" title="U+0E7F | Dec:3711">๿</PText>
 
-        <h4>Range: U+1E00-1EFF ("Latin Extended Additional")</h4>
+        <h4>Range: U+1E00-1EFF (&quot;Latin Extended Additional&quot;)</h4>
         <PText size="medium" align="center" title="U+1E00 | Dec:7680">Ḁ</PText>
         <PText size="medium" align="center" title="U+1E01 | Dec:7681">ḁ</PText>
         <PText size="medium" align="center" title="U+1E02 | Dec:7682">Ḃ</PText>
@@ -1197,7 +1197,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+1EFE | Dec:7934">Ỿ</PText>
         <PText size="medium" align="center" title="U+1EFF | Dec:7935">ỿ</PText>
 
-        <h4>Range: U+2000-206F ("General Punctuation")</h4>
+        <h4>Range: U+2000-206F (&quot;General Punctuation&quot;)</h4>
         <PText size="medium" align="center" title="U+2000 | Dec:8192" />
         <PText size="medium" align="center" title="U+2001 | Dec:8193" />
         <PText size="medium" align="center" title="U+2002 | Dec:8194">&ensp;</PText>
@@ -1310,7 +1310,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+206D | Dec:8301">⁭</PText>
         <PText size="medium" align="center" title="U+206E | Dec:8302">⁮</PText>
         <PText size="medium" align="center" title="U+206F | Dec:8303">⁯</PText>
-        <h4>Range: U+2070-209F ("Superscripts and Subscripts")</h4>
+        <h4>Range: U+2070-209F (&quot;Superscripts and Subscripts&quot;)</h4>
         <PText size="medium" align="center" title="U+2070 | Dec:8304">⁰</PText>
         <PText size="medium" align="center" title="U+2071 | Dec:8305">ⁱ</PText>
         <PText size="medium" align="center" title="U+2072 | Dec:8306">⁲</PText>
@@ -1360,7 +1360,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+209E | Dec:8350">₞</PText>
         <PText size="medium" align="center" title="U+209F | Dec:8351">₟</PText>
 
-        <h4>Range: U+20A0-20CF ("Currency Symbols")</h4>
+        <h4>Range: U+20A0-20CF (&quot;Currency Symbols&quot;)</h4>
         <PText size="medium" align="center" title="U+20A0 | Dec:8352">₠</PText>
         <PText size="medium" align="center" title="U+20A1 | Dec:8353">₡</PText>
         <PText size="medium" align="center" title="U+20A2 | Dec:8354">₢</PText>
@@ -1410,7 +1410,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+20CE | Dec:8398">⃎</PText>
         <PText size="medium" align="center" title="U+20CF | Dec:8399">⃏</PText>
 
-        <h4>Range: U+2100-214F ("Letterlike Symbols")</h4>
+        <h4>Range: U+2100-214F (&quot;Letterlike Symbols&quot;)</h4>
         <PText size="medium" align="center" title="U+2100 | Dec:8448">℀</PText>
         <PText size="medium" align="center" title="U+2101 | Dec:8449">℁</PText>
         <PText size="medium" align="center" title="U+2102 | Dec:8450">ℂ</PText>
@@ -1492,7 +1492,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+214E | Dec:8526">ⅎ</PText>
         <PText size="medium" align="center" title="U+214F | Dec:8527">⅏</PText>
 
-        <h4>Range: U+2150-218F ("Number Forms")</h4>
+        <h4>Range: U+2150-218F (&quot;Number Forms&quot;)</h4>
         <PText size="medium" align="center" title="U+2150 | Dec:8528">⅐</PText>
         <PText size="medium" align="center" title="U+2151 | Dec:8529">⅑</PText>
         <PText size="medium" align="center" title="U+2152 | Dec:8530">⅒</PText>
@@ -1558,7 +1558,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+218E | Dec:8590">↎</PText>
         <PText size="medium" align="center" title="U+218F | Dec:8591">↏</PText>
 
-        <h4>Range: U+2190-21FF ("Arrows")</h4>
+        <h4>Range: U+2190-21FF (&quot;Arrows&quot;)</h4>
         <PText size="medium" align="center" title="U+2190 | Dec:8592">←</PText>
         <PText size="medium" align="center" title="U+2191 | Dec:8593">↑</PText>
         <PText size="medium" align="center" title="U+2192 | Dec:8594">→</PText>
@@ -1672,7 +1672,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+21FE | Dec:8702">⇾</PText>
         <PText size="medium" align="center" title="U+21FF | Dec:8703">⇿</PText>
 
-        <h4>Range: U+2200-22FF ("Mathematical Operators")</h4>
+        <h4>Range: U+2200-22FF (&quot;Mathematical Operators&quot;)</h4>
         <PText size="medium" align="center" title="U+2200 | Dec:8704">∀</PText>
         <PText size="medium" align="center" title="U+2201 | Dec:8705">∁</PText>
         <PText size="medium" align="center" title="U+2202 | Dec:8706">∂</PText>
@@ -1930,7 +1930,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+22FE | Dec:8958">⋾</PText>
         <PText size="medium" align="center" title="U+22FF | Dec:8959">⋿</PText>
 
-        <h4>Range: U+25A0-25FF ("Geometric Shapes")</h4>
+        <h4>Range: U+25A0-25FF (&quot;Geometric Shapes&quot;)</h4>
         <PText size="medium" align="center" title="U+25A0 | Dec:9632">■</PText>
         <PText size="medium" align="center" title="U+25A1 | Dec:9633">□</PText>
         <PText size="medium" align="center" title="U+25A2 | Dec:9634">▢</PText>
@@ -2028,7 +2028,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+25FE | Dec:9726">◾</PText>
         <PText size="medium" align="center" title="U+25FF | Dec:9727">◿</PText>
 
-        <h4>Range: U+2600-26FF ("Miscellaneous Symbols")</h4>
+        <h4>Range: U+2600-26FF (&quot;Miscellaneous Symbols&quot;)</h4>
         <PText size="medium" align="center" title="U+2600 | Dec:9728">☀</PText>
         <PText size="medium" align="center" title="U+2601 | Dec:9729">☁</PText>
         <PText size="medium" align="center" title="U+2602 | Dec:9730">☂</PText>
@@ -2286,7 +2286,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+26FE | Dec:9982">⛾</PText>
         <PText size="medium" align="center" title="U+26FF | Dec:9983">⛿</PText>
 
-        <h4>Range: U+FB00-FB4F ("Alphabetic Presentation Forms")</h4>
+        <h4>Range: U+FB00-FB4F (&quot;Alphabetic Presentation Forms&quot;)</h4>
         <PText size="medium" align="center" title="U+FB00 | Dec:64256">ﬀ</PText>
         <PText size="medium" align="center" title="U+FB01 | Dec:64257">ﬁ</PText>
         <PText size="medium" align="center" title="U+FB02 | Dec:64258">ﬂ</PText>
@@ -2368,7 +2368,7 @@ const TypographyLatinPage: NextPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+FB4E | Dec:64334">פֿ</PText>
         <PText size="medium" align="center" title="U+FB4F | Dec:64335">ﭏ</PText>
 
-        <h4>Range: U+FE70-FEFF ("Arabic Presentation Forms-B")</h4>
+        <h4>Range: U+FE70-FEFF (&quot;Arabic Presentation Forms-B&quot;)</h4>
         <PText size="medium" align="center" title="U+FE70 | Dec:65136">ﹰ</PText>
         <PText size="medium" align="center" title="U+FE71 | Dec:65137">ﹱ</PText>
         <PText size="medium" align="center" title="U+FE72 | Dec:65138">ﹲ</PText>

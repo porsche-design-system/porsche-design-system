@@ -104,11 +104,11 @@ const TextPage: NextPage = (): JSX.Element => {
         title="should automatically break words/strings into new line being too long to fit inside their container"
       >
         <PText style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+          This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
         </PText>
         <PText style={{ width: '240px', background: 'deepskyblue' }}>
           <p style={{ overflowWrap: 'normal', wordWrap: 'normal', hyphens: 'manual' }}>
-            This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+            This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
           </p>
         </PText>
       </div>
