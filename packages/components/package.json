@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
-    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-replace": "^4.0.0",
     "@types/react": "^18.0.21",
     "@types/throttle-debounce": "^5.0.0",
     "@types/tinycolor2": "^1.4.3",
