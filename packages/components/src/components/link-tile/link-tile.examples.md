@@ -139,7 +139,7 @@ export default class Code extends Vue {
     label="Some label"
     description="Some Description"
   >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description" />
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
   </p-link-tile>
   <p-link-tile
     href="https://www.porsche.com"
@@ -148,7 +148,7 @@ export default class Code extends Vue {
   >
     <picture>
       <source media="(min-width:400px)" srcset="${require('../../assets/image_grid.png')}"/>
-      <img src="${require('../../assets/image_grid_violet.png')}" alt="Some image description" />
+      <img src="${require('../../assets/image_grid_violet.png')}" alt="Some alt text" />
     </picture>
   </p-link-tile>
 </div>`;
@@ -156,7 +156,7 @@ export default class Code extends Vue {
   get aspectRatioMarkup() {
     return`<div class="container">
   <p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description"/>
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
   </p-link-tile>
 </div>`
   }
@@ -164,10 +164,10 @@ export default class Code extends Vue {
   get sizeMarkup() {
     return`<div class="grid">
   <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description"/>
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
   </p-link-tile>
   <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description"/>
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
   </p-link-tile>
 </div>`
   }
@@ -175,10 +175,10 @@ export default class Code extends Vue {
   get weightMarkup() {
     return`<div class="grid">
   <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description"/>
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
   </p-link-tile>
   <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description"/>
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
   </p-link-tile>
 </div>`
   }
@@ -191,7 +191,7 @@ export default class Code extends Vue {
     description="Some Description"
     gradient="${this.gradient}"
   >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some image description" />
+    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
   </p-link-tile>
    <p-link-tile
       href="https://www.porsche.com"
@@ -200,7 +200,7 @@ export default class Code extends Vue {
       compact="true"
       gradient="${this.gradient}"
     >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some image description" />
+    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
   </p-link-tile>
 </div>`};
 
@@ -212,7 +212,7 @@ export default class Code extends Vue {
     description="Some Description"
     compact="${this.compact}"
   >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description" />
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
   </p-link-tile>
 </div>`};
 
@@ -225,7 +225,7 @@ export default class Code extends Vue {
     compact="true"
     align="${this.align}"
   >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some image description" />
+    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
   </p-link-tile>
 </div>`};
 
