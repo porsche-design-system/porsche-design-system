@@ -53,7 +53,7 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
   const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
-    gridTemplateColumns: '1fr auto',
+    gridTemplateColumns: '1fr auto', // 2 columns for content and close button
     gridTemplateRows: 'auto',
     gridRowGap: pxToRemWithUnit(16),
     alignItems: 'start',
@@ -62,7 +62,8 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
     background: themedColors[`${state}SoftColor`],
     borderLeft: `${pxToRemWithUnit(4)} solid ${themedColors[`${state}Color`]}`,
     [mediaQueryS]: {
-      gridTemplateColumns: 'auto 1fr auto auto',
+      // 4 columns are for icon, content, action button and close button
+      gridTemplateColumns: '2rem 1fr auto auto',
     },
   };
 };
@@ -71,7 +72,6 @@ export const getNotificationIconJssStyle = (state: InlineNotificationState): Jss
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
-    marginRight: pxToRemWithUnit(8),
     color: getThemedColors('light')[`${state}Color`],
   },
 });

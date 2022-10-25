@@ -36,7 +36,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -51,7 +51,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #e00000;
   }
 }
@@ -88,7 +87,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -103,7 +102,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #e00000;
   }
 }
@@ -140,7 +138,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -155,7 +153,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -192,7 +189,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -207,7 +204,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -244,7 +240,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -262,7 +258,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -299,7 +294,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -317,7 +312,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -354,7 +348,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -373,7 +367,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
   .action {
@@ -415,7 +408,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -434,7 +427,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
   .action {
@@ -476,7 +468,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -498,7 +490,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
   .action {
@@ -540,7 +531,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -562,7 +553,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
   .action {
@@ -604,7 +594,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -619,7 +609,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #018a16;
   }
 }
@@ -656,7 +645,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -671,7 +660,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #018a16;
   }
 }
@@ -708,7 +696,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -723,7 +711,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #ff9b00;
   }
 }
@@ -760,7 +747,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto !important;
+    grid-template-columns: 2rem 1fr auto auto !important;
   }
 }
 
@@ -775,7 +762,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #ff9b00;
   }
 }
@@ -795,7 +781,6 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
   "@media(min-width:760px)": {
     "color": "#e00000",
     "display": "inline-flex",
-    "marginRight": "0.5rem",
   },
   "display": "none",
 }
@@ -806,7 +791,6 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
   "@media(min-width:760px)": {
     "color": "#0061bd",
     "display": "inline-flex",
-    "marginRight": "0.5rem",
   },
   "display": "none",
 }
@@ -817,7 +801,6 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
   "@media(min-width:760px)": {
     "color": "#018a16",
     "display": "inline-flex",
-    "marginRight": "0.5rem",
   },
   "display": "none",
 }
@@ -828,7 +811,6 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
   "@media(min-width:760px)": {
     "color": "#ff9b00",
     "display": "inline-flex",
-    "marginRight": "0.5rem",
   },
   "display": "none",
 }
@@ -837,7 +819,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#fec5c5",
@@ -854,7 +836,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#fae6e6",
@@ -871,7 +853,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#c7e4ff",
@@ -888,7 +870,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#e5eff8",
@@ -905,7 +887,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#bfeec6",
@@ -922,7 +904,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#e5f3e7",
@@ -939,7 +921,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#ffe6bf",
@@ -956,7 +938,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "auto 1fr auto auto",
+    "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
   "background": "#fff5e5",
