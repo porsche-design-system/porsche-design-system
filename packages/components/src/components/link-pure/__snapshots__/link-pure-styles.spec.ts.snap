@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: block !important;
+  display: block;
 }
 ::slotted(p) {
   margin: 0;
@@ -17,33 +17,33 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 @media(min-width:480px) {
   :host {
-    display: inline-block !important;
+    display: inline-block;
     vertical-align: top;
   }
 }
 
 @media(min-width:760px) {
   :host {
-    display: block !important;
+    display: block;
   }
 }
 
 @media(min-width:1000px) {
   :host {
-    display: inline-block !important;
+    display: inline-block;
     vertical-align: top;
   }
 }
 
 @media(min-width:1300px) {
   :host {
-    display: block !important;
+    display: block;
   }
 }
 
 @media(min-width:1760px) {
   :host {
-    display: inline-block !important;
+    display: inline-block;
     vertical-align: top;
   }
 }
@@ -295,7 +295,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -397,7 +397,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -478,7 +478,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -608,7 +608,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -780,7 +780,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -882,7 +882,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -963,7 +963,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -1065,7 +1065,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: block !important;
+  display: block;
 }
 ::slotted(p) {
   margin: 0;
@@ -1166,7 +1166,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   position: relative;
   outline: 0 !important;
-  display: block !important;
+  display: block;
 }
 ::slotted(p) {
   margin: 0;
@@ -1267,7 +1267,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -1343,7 +1343,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 ":host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
