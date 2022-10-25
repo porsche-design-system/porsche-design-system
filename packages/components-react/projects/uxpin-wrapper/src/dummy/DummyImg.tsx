@@ -5,8 +5,8 @@ export type DummyImgProps = {
 
 export const DummyImg = (props: DummyImgProps): JSX.Element => {
   const {
-    src = 'https://files.porsche.com/filestore/image/multimedia/none/992-gt3-modelimage-sideshot/model/765dfc51-51bc-11eb-80d1-005056bbdc38/porsche-model.png',
-    alt = '',
+    src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=',
+    alt = 'Some image text',
   } = props;
 
   return <img src={src} alt={alt} />;
