@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { PHeadline } from '@porsche-design-system/components-react/ssr';
-import { Nav } from '../components';
+import { routes } from '../routes';
+import Link from 'next/link';
 
 const HomePage: NextPage = (): JSX.Element => {
   return (
@@ -9,7 +10,15 @@ const HomePage: NextPage = (): JSX.Element => {
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </PHeadline>
 
-      <Nav />
+      <ul>
+        {routes.map((route) => (
+          <li key={route.path}>
+            <Link href={route.path}>
+              <a>{route.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
