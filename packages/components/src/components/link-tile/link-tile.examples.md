@@ -135,118 +135,99 @@ export default class Code extends Vue {
   gradient = 'false';
   compact = 'true';
   align = 'top';
-  containerWidth = 400;
 
-  basic = `<div class="grid">
-  <p-link-tile
+  basic = `<p-link-tile
     href="https://www.porsche.com"
     label="Some label"
     description="Some Description"
+    style="max-width: 400px;"
   >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
+    <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
   </p-link-tile>
   <p-link-tile
     href="https://www.porsche.com"
     label="Some label"
     description="Some Description"
+    style="max-width: 400px;"
   >
     <picture>
-      <source media="(min-width:400px)" srcset="${require('../../assets/image_grid.png')}"/>
-      <img src="${require('../../assets/image_grid_violet.png')}" alt="Some alt text" />
+      <source media="(min-width:400px)" srcset="${require('@/assets/image_grid.png')}"/>
+      <img src="${require('@/assets/image_grid_violet.png')}" alt="Some alt text" />
     </picture>
-  </p-link-tile>
-</div>`;
+  </p-link-tile>`;
 
   get aspectRatioMarkup() {
-    return`<div class="container">
-  <p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
-  }
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`}
 
   get sizeMarkup() {
-    return`<div class="grid">
-  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>
+<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`
   }
 
   get weightMarkup() {
-    return`<div class="grid">
-  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>
+<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`
   }
 
  get gradientMarkup() { 
-  return `<div class="grid">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    gradient="${this.gradient}"
-  >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
-  </p-link-tile>
-   <p-link-tile
-      href="https://www.porsche.com"
-      label="Some label"
-      description="Some Description"
-      compact="true"
-      gradient="${this.gradient}"
-    >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
-
-  get compactMarkup() {
-    return `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="${this.compact}"
-  >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
-
-  get alignMarkup() {
-    return `<div class="container">
-  <p-link-tile
+  return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  gradient="${this.gradient}"
+  style="max-width: 400px;"
+>
+  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+</p-link-tile>
+ <p-link-tile
     href="https://www.porsche.com"
     label="Some label"
     description="Some Description"
     compact="true"
-    align="${this.align}"
+    gradient="${this.gradient}"
+    style="max-width: 400px;"
   >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
+  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+</p-link-tile>`};
+
+  get compactMarkup() {
+    return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="${this.compact}"
+  style="max-width: 400px; font-size: 40px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>`};
+
+  get alignMarkup() {
+    return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="true"
+  align="${this.align}"
+  style="max-width: 400px; font-size: 40px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>`};
 
 }
 </script>
 
 <style>
-
-  .container {
-    max-width: 300px;
-    font-size: 40px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: auto;
-    column-gap: 1rem;
-    row-gap: 1rem;
+  p-link-tile:not(:last-child) {
+    margin-bottom: 1rem;
   }
 </style>
