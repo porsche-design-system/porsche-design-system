@@ -36,7 +36,7 @@ const filterMapDark: { [key in TextColor]: string } = {
   'notification-neutral': 'invert(54%) sepia(61%) saturate(4567%) hue-rotate(192deg) brightness(101%) contrast(105%)',
 };
 
-const getFilterMap = (color: TextColor, theme: ThemeExtendedElectricDark): string => {
+const getFilter = (color: TextColor, theme: ThemeExtendedElectricDark): string => {
   switch (theme) {
     case 'light':
     case 'light-electric':
@@ -57,7 +57,7 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
         verticalAlign: 'top',
       },
       img: {
-        filter: getFilterMap(color, theme),
+        filter: getFilter(color, theme),
       },
       svg: {
         fill: 'currentColor',
