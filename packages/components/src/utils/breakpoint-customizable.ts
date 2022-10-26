@@ -10,7 +10,7 @@ export type BreakpointValues<T> = {
 // string is needed in order to pass and parse objects via prop decorator
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
-type BreakpointValue = string | number | boolean;
+export type BreakpointValue = string | number | boolean;
 
 export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
