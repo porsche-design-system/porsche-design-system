@@ -31,7 +31,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
@@ -235,7 +235,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
@@ -324,7 +324,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
@@ -413,7 +413,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
@@ -502,7 +502,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
@@ -590,7 +590,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   backface-visibility: hidden !important;
 }
 :host ::slotted(img) {
-  object-fit: cover;
+  object-fit: cover !important;
 }
 p {
   color: #fff;
