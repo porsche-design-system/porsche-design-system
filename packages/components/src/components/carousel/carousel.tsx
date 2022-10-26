@@ -88,7 +88,7 @@ export class Carousel {
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
   private pagination: HTMLElement;
-  private slides: HTMLElement[];
+  private slides: HTMLElement[] = [];
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);

@@ -52,9 +52,9 @@ and `v1` in parallel, which could cause design inconsistencies and performance i
 ## How do I submit bug reports or feature requests and how are they handled?
 
 Once you find a reproducible bug, you can either
-[open an issue](https://github.com/porscheui/porsche-ui-contribution/issues/new/choose) in the
-[public-contribution GitHub repository](https://github.com/porscheui/porsche-ui-contribution) or directly submit a fix
-as a pull request within the [private Porsche Design System](https://github.com/porscheui/porsche-design-system). We
+[open an issue](https://github.com/porsche-design-system/porsche-design-system-contribution/issues/new/choose) in the
+[public-contribution GitHub repository](https://github.com/porsche-design-system/porsche-design-system-contribution) or directly submit a fix
+as a pull request within the [private Porsche Design System](https://github.com/porsche-design-system/porsche-design-system). We
 will address and respond to new bug reports as soon as possible, usually within a few days. Bugs should be fixed within
 one sprint depending on current capacity planning. The best approach for urgent bugs is to fix them locally within your
 project and submit the fix or create a PR afterwards.
