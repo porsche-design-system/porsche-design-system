@@ -10,6 +10,7 @@ import {
   TEXT_COLORS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   validateProps,
+  parseAndGetAriaAttributes,
 } from '../../utils';
 import type {
   IconName,
@@ -90,7 +91,13 @@ export class Icon {
   }
 
   public render(): JSX.Element {
-    return <i key={this.key++} class="root" />;
+    const url = buildIconUrl(this.source || this.name);
+
+    return (
+      <i key={this.key++} class="root">
+        <img src={url} alt={(parseAndGetAriaAttributes(this.aria) || {})['aria-label'] || ''} />
+      </i>
+    );
   }
 
   private initIntersectionObserver(): void {
