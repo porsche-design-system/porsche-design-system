@@ -6,7 +6,9 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   getExternalDependenciesOrThrow,
-  isStableStorefrontRelease, convertImportPaths,
+  isStableStorefrontRelease,
+  convertImportPaths,
+  transformSrcAndSrcsetOfImgAndSourceTags,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
 import * as helper from '../../src/utils/stackblitz/helper';
@@ -156,5 +158,20 @@ describe('convertImportPaths()', () => {
     jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'react')).toMatchSnapshot();
+  });
+});
+
+describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
+  it.each<string>([
+    '<source media="(min-width:400px)" srcset="img/image.png">',
+    '<source media="(min-width:400px)" srcset="http://image.png">',
+    '<source media="(min-width:400px)" srcset="https://image.png">',
+    '<source media="(min-width:400px)" srcset="./img/image.png">',
+    '<img src="img/image.png" alt="Some alt text">',
+    '<img src="http://image.png" alt="Some alt text">',
+    '<img src="https://image.png" alt="Some alt text">',
+    '<img src="https:./img/image.png" alt="Some alt text">',
+  ])('should correctly transform src and srcset', (markup) => {
+    expect(transformSrcAndSrcsetOfImgAndSourceTags(markup)).toMatchSnapshot();
   });
 });

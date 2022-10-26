@@ -1,5 +1,5 @@
 import sdk from '@stackblitz/sdk';
-import { getBackgroundColor, transformImgAndSourceTags } from './helper';
+import { getBackgroundColor, transformSrcAndSrcsetOfImgAndSourceTags } from './helper';
 import { getVanillaJsProjectAndOpenOptions } from './getVanillaJsProjectAndOpenOptions';
 import { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptions';
 import { getReactProjectAndOpenOptions } from './getReactProjectAndOpenOptions';
@@ -27,7 +27,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     ...rest,
-    markup: transformImgAndSourceTags(markup),
+    markup: transformSrcAndSrcsetOfImgAndSourceTags(markup),
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
