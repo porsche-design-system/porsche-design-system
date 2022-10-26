@@ -22,7 +22,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some Label" description="Default">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -31,7 +31,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Size inherit" size="inherit">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile
@@ -42,7 +42,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -51,7 +51,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Weight regular" weight="regular">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile
@@ -62,7 +62,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -71,25 +71,25 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Aspect ratio 16:9" aspectRatio="16:9">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile label="Some label" description="Aspect ratio 1:1" href="#" aspectRatio="1:1">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile href="#" label="Some label" description="Aspect ratio 3:4" aspectRatio="3:4">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile href="#" label="Some label" description="Aspect ratio 9:16" aspectRatio="9:16">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile
@@ -100,7 +100,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -109,7 +109,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Compact" compact={true}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile
@@ -120,7 +120,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -129,7 +129,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Align top" align="top" compact={true}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -138,7 +138,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Gradient false" gradient={false}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=="
-            alt="Beach"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -151,7 +151,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
-            alt="Solid white"
+            alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile
@@ -162,7 +162,7 @@ export const LinkTilePage = (): JSX.Element => {
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
-            alt="Solid white"
+            alt="Some alt text"
           />
         </PLinkTile>
       </div>
@@ -175,7 +175,7 @@ export const LinkTilePage = (): JSX.Element => {
           <picture>
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-              alt="Office"
+              alt="Some alt text"
             />
           </picture>
         </PLinkTile>
