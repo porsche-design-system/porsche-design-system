@@ -4,13 +4,13 @@ describe('parseJSON()', () => {
   it.each<string>([
     '{ base: true, s: false }',
     '{ "m": "right", s: "left" }',
-    " { base: 'column', s: 'row' }",
     '{ base: "small", l: "medium", "xl": "large" } ',
-    " { l: 'inherit', s: 'default' }",
-    " {xl: 'initial', l: 'equal'} ",
     '{ base: 36, xs: 6, s: 4, m: 16, l:2, "xl":16 }',
     '{xs: "inherit", m: "default"}',
-    '{ xs: "1:1", s: "3:4", m: "4:3", l: "9:16", xl: "16:9" }',
+    ' { xs: "1:1", s: "3:4", m: "4:3", l: "9:16", xl: "16:9" }',
+    "{ base: 'column', s: 'row' }",
+    "{ l: 'inherit', s: 'default' }",
+    " {xl: 'initial', l: 'equal'} ",
   ])('should return parsed object for %s', (input) => {
     expect(parseJSON(input)).toBeTruthy();
   });
