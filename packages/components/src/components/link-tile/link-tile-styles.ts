@@ -88,7 +88,7 @@ export const getComponentCss = (
           backfaceVisibility: 'hidden',
         }),
         '& ::slotted(img)': {
-          objectFit: 'cover',
+          objectFit: addImportantToRule('cover'),
         },
       },
       p: {
@@ -178,7 +178,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
         ...getInsetJssStyle(),
         height: '100%',
         width: '100%',
-        objectFit: addImportantToRule('cover'),
+        objectFit: 'cover',
       },
     })
   );
