@@ -16,7 +16,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ id, state
       <PrefixedTagNames.pIcon
         class="message__icon"
         name={state === 'error' ? 'exclamation' : 'check'}
-        color="inherit"
+        color={state === 'error' ? 'notification-error' : state === 'success' ? 'notification-success' : 'inherit'}
         aria-hidden="true"
       />
       {message || <slot name="message" />}
