@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Removed `!important` from css `display` style of `Link Pure` and `Button Pure`
+- Removed `!important` keyword from css property `display` of `Link Pure` and `Button Pure`
 
 ### [2.16.3] - 2022-10-21
 
