@@ -14,6 +14,9 @@ describe('parseJSON()', () => {
   ])('should return parsed object for %s', (input) => {
     expect(parseJSON(input)).toBeTruthy();
   });
+  it('should convert single quotes to double quotes', () => {
+    expect(parseJSON(" { base: 'column', s: 'row' }")).toEqual({ base: 'column', s: 'row' });
+  });
   it('should return not formatted string for boolean type', () => {
     expect(parseJSON(false)).toEqual(false);
   });
