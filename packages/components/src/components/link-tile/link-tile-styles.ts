@@ -12,7 +12,6 @@ import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
 import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
-import type { JssStyle } from 'jss';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
@@ -56,15 +55,6 @@ const sizeMap: {
   default: { fontSize: '1.25rem', lineHeight: 1.5555555556 },
 };
 
-const paddingSizeXS = pxToRemWithUnit(24);
-const gradientPadding = pxToRemWithUnit(72);
-
-const getPaddingStyles = (paddingSize: string, align: LinkTileAlign): JssStyle => ({
-  paddingLeft: paddingSize,
-  paddingRight: paddingSize,
-  ...(align === 'bottom' ? { paddingBottom: paddingSize } : { paddingTop: paddingSize }),
-});
-
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   size: BreakpointCustomizable<LinkTileSize>,
@@ -74,6 +64,8 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top';
+  const paddingSizeXS = pxToRemWithUnit(24);
+  const gradientPadding = pxToRemWithUnit(72);
 
   return getCss({
     '@global': {
@@ -140,7 +132,11 @@ export const getComponentCss = (
           : `${paddingSizeXS} ${paddingSizeXS} ${gradientPadding}`,
 
       gap: pxToRemWithUnit(24),
-      [mediaQueryMin('s')]: getPaddingStyles(pxToRemWithUnit(32), align),
+      [mediaQueryMin('s')]: {
+        paddingLeft: pxToRemWithUnit(32),
+        paddingRight: pxToRemWithUnit(32),
+        ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),
+      },
       ...(hasGradient &&
         buildResponsiveStyles(compact, (isCompact: boolean) => ({
           background: getGradientBackground(isCompact, isTopAligned),
