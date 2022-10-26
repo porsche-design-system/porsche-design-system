@@ -91,7 +91,8 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
-          height: '1.5rem', // height of icon
+          width: '1.5rem', // width of icon (to improve ssr support)
+          height: '1.5rem', // height of icon (to improve ssr support)
         }),
         verticalAlign: 'top',
       },
