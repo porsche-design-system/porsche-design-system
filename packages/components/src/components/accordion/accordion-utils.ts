@@ -16,10 +16,7 @@ export const setCollapsibleElementHeight = (
   }
 };
 
-export const getContentHeight = ({ height }: DOMRectReadOnly, isCompact: boolean): string => {
-  const contentPaddingTop = isCompact ? 0 : 8;
-  return pxToRemWithUnit(height + contentPaddingTop);
-};
+export const getContentHeight = ({ height }: DOMRectReadOnly): string => pxToRemWithUnit(height);
 
 export const warnIfCompactAndSizeIsSet = (
   host: HTMLElement,

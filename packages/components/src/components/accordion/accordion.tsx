@@ -84,7 +84,7 @@ export class Accordion {
       observeResize(
         this.content,
         ({ contentRect }) => {
-          this.contentHeight = getContentHeight(contentRect, this.compact);
+          this.contentHeight = getContentHeight(contentRect);
           this.setCollapsibleElementHeight();
         },
         { box: 'border-box' }
@@ -99,7 +99,7 @@ export class Accordion {
 
   public componentDidRender(): void {
     if (useResizeObserverFallback) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
     }
   }
 
@@ -164,7 +164,7 @@ export class Accordion {
 
   private setContentHeight = (): void => {
     if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
       this.setCollapsibleElementHeight();
     }
   };
