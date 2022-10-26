@@ -86,5 +86,5 @@ it('should have cdn requests', async () => {
     await (window as any).porscheDesignSystem.componentsReady();
   }, markup);
 
-  expect(requests.length, 'request count').toBeGreaterThan(1);
+  expect(requests.length, 'request count').toBeGreaterThan(0);
 });
