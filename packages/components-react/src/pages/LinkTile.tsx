@@ -9,8 +9,7 @@ export const LinkTilePage = (): JSX.Element => {
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      column-gap: 10px;
-      row-gap: 10px;
+      gap: 10px;
     }
   `;
 
@@ -147,7 +146,17 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile
           href="#"
           label="Some label"
-          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
+          description="Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box."
+        >
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            alt="Some alt text"
+          />
+        </PLinkTile>
+        <PLinkTile
+          href="#"
+          label="Some super long label which causes line breaks in the link"
+          description="Some description"
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
@@ -157,7 +166,7 @@ export const LinkTilePage = (): JSX.Element => {
         <PLinkTile
           href="#"
           label="Some label"
-          description="Some long text on white background. Some long text on white background. Some long text on white background. Some long text on white background."
+          description="Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box."
           compact={true}
         >
           <img
