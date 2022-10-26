@@ -4,6 +4,7 @@ import {
   getTransition,
   addImportantToRule,
   addImportantToEachRule,
+  getBackfaceVisibilityJssStyle,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
@@ -73,14 +74,16 @@ export const getComponentCss = (
         display: 'block',
         height: addImportantToRule('fit-content'),
         '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+          transition: getTransition('transform'),
+          ...getBackfaceVisibilityJssStyle(),
+        }),
+        '& ::slotted(picture)': {
           position: 'absolute',
           ...getInsetJssStyle(),
+        },
+        '& ::slotted(img)': {
           height: '100%',
           width: '100%',
-          transition: getTransition('transform'),
-          backfaceVisibility: 'hidden',
-        }),
-        '& ::slotted(img)': {
           objectFit: addImportantToRule('cover'),
         },
       },
@@ -168,8 +171,6 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
       '& picture > img': {
-        position: 'absolute',
-        ...getInsetJssStyle(),
         height: '100%',
         width: '100%',
         objectFit: 'cover',
