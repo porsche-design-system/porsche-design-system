@@ -101,6 +101,18 @@ button::-moz-focus-inner {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -111,19 +123,15 @@ button::-moz-focus-inner {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
               </style>
               <i
                 class="root"
-              />
+              >
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+                />
+              </i>
             </template>
           </p-icon>
         </button>
@@ -334,6 +342,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -344,19 +364,15 @@ p {
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
               </style>
               <i
                 class="root"
-              />
+              >
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+                />
+              </i>
             </template>
           </p-icon>
           <div
@@ -379,6 +395,7 @@ p {
           >
             <template
               shadowroot="open"
+              shadowrootdelegatesfocus="true"
             >
               <style>
                 :host {
@@ -480,6 +497,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -490,19 +519,15 @@ p {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                     </style>
                     <i
                       class="root"
-                    />
+                    >
+                      <img
+                        alt=""
+                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                      />
+                    </i>
                   </template>
                 </p-icon>
                 <span
@@ -528,6 +553,7 @@ exports[`should render dsr component for PButton 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -600,6 +626,18 @@ span {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -610,19 +648,15 @@ span {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+            />
+          </i>
         </template>
       </p-icon>
       <span>
@@ -688,6 +722,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -789,6 +824,18 @@ exports[`should render dsr component for PButtonPure 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -799,19 +846,15 @@ exports[`should render dsr component for PButtonPure 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+            />
+          </i>
         </template>
       </p-icon>
       <span
@@ -985,6 +1028,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
           >
             <style>
               :host {
@@ -1086,6 +1130,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -1096,19 +1152,15 @@ p {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                   </style>
                   <i
                     class="root"
-                  />
+                  >
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    />
+                  </i>
                 </template>
               </p-icon>
               <span
@@ -1124,6 +1176,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
           >
             <style>
               :host {
@@ -1225,6 +1278,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -1235,19 +1300,15 @@ p {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                   </style>
                   <i
                     class="root"
-                  />
+                  >
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    />
+                  </i>
                 </template>
               </p-icon>
               <span
@@ -1710,6 +1771,18 @@ exports[`should render dsr component for PIcon 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -1720,19 +1793,15 @@ exports[`should render dsr component for PIcon 1`] = `
   height: 1.5rem;
   color: #000;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
     </style>
     <i
       class="root"
-    />
+    >
+      <img
+        alt=""
+        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+      />
+    </i>
   </template>
 </p-icon>
 `;
@@ -1809,6 +1878,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -1819,19 +1900,15 @@ p {
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
         </style>
         <i
           class="root"
-        />
+        >
+          <img
+            alt=""
+            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+          />
+        </i>
       </template>
     </p-icon>
     <div
@@ -1854,6 +1931,7 @@ p {
     >
       <template
         shadowroot="open"
+        shadowrootdelegatesfocus="true"
       >
         <style>
           :host {
@@ -1955,6 +2033,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -1965,19 +2055,15 @@ p {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
               </style>
               <i
                 class="root"
-              />
+              >
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                />
+              </i>
             </template>
           </p-icon>
           <span
@@ -2000,6 +2086,7 @@ exports[`should render dsr component for PLink 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -2084,6 +2171,18 @@ span {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2094,19 +2193,15 @@ span {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+            />
+          </i>
         </template>
       </p-icon>
       <span>
@@ -2124,6 +2219,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -2215,6 +2311,18 @@ exports[`should render dsr component for PLinkPure 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2225,19 +2333,15 @@ exports[`should render dsr component for PLinkPure 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+            />
+          </i>
         </template>
       </p-icon>
       <span
@@ -2257,6 +2361,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -2341,6 +2446,18 @@ span {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2351,19 +2468,15 @@ span {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+            />
+          </i>
         </template>
       </p-icon>
       <span>
@@ -2381,6 +2494,7 @@ exports[`should render dsr component for PMarque 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -2597,6 +2711,7 @@ h1 {
       >
         <template
           shadowroot="open"
+          shadowrootdelegatesfocus="true"
         >
           <style>
             :host {
@@ -2698,6 +2813,18 @@ h1 {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2708,19 +2835,15 @@ h1 {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                 </style>
                 <i
                   class="root"
-                />
+                >
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  />
+                </i>
               </template>
             </p-icon>
             <span
@@ -2745,6 +2868,7 @@ exports[`should render dsr component for PPagination 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -2852,6 +2976,18 @@ span[aria-current]::after {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2862,19 +2998,15 @@ span[aria-current]::after {
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                 </style>
                 <i
                   class="root"
-                />
+                >
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                  />
+                </i>
               </template>
             </p-icon>
           </span>
@@ -2907,6 +3039,18 @@ span[aria-current]::after {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -2917,19 +3061,15 @@ span[aria-current]::after {
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                 </style>
                 <i
                   class="root"
-                />
+                >
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                  />
+                </i>
               </template>
             </p-icon>
           </span>
@@ -2951,6 +3091,7 @@ exports[`should render dsr component for PPopover 1`] = `
       :host {
   position: relative !important;
   display: inline-block !important;
+  width: 1.5rem !important;
   height: 1.5rem !important;
   vertical-align: top;
 }
@@ -3033,6 +3174,7 @@ p {
     >
       <template
         shadowroot="open"
+        shadowrootdelegatesfocus="true"
       >
         <style>
           :host {
@@ -3134,6 +3276,18 @@ p {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -3144,19 +3298,15 @@ p {
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
               </style>
               <i
                 class="root"
-              />
+              >
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+                />
+              </i>
             </template>
           </p-icon>
           <span
@@ -3391,6 +3541,7 @@ exports[`should render dsr component for PScroller 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
           >
             <style>
               :host {
@@ -3484,6 +3635,18 @@ exports[`should render dsr component for PScroller 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -3494,19 +3657,15 @@ exports[`should render dsr component for PScroller 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                   </style>
                   <i
                     class="root"
-                  />
+                  >
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    />
+                  </i>
                 </template>
               </p-icon>
               <span
@@ -3529,6 +3688,7 @@ exports[`should render dsr component for PScroller 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
           >
             <style>
               :host {
@@ -3622,6 +3782,18 @@ exports[`should render dsr component for PScroller 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -3632,19 +3804,15 @@ exports[`should render dsr component for PScroller 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                   </style>
                   <i
                     class="root"
-                  />
+                  >
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    />
+                  </i>
                 </template>
               </p-icon>
               <span
@@ -3690,6 +3858,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -3881,6 +4050,18 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -3891,19 +4072,15 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
             </style>
             <i
               class="root"
-            />
+            >
+              <img
+                alt=""
+                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              />
+            </i>
           </template>
         </p-icon>
         <slot />
@@ -4154,6 +4331,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
             >
               <template
                 shadowroot="open"
+                shadowrootdelegatesfocus="true"
               >
                 <style>
                   :host {
@@ -4247,6 +4425,18 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -4257,19 +4447,15 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                       </style>
                       <i
                         class="root"
-                      />
+                      >
+                        <img
+                          alt=""
+                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        />
+                      </i>
                     </template>
                   </p-icon>
                   <span
@@ -4292,6 +4478,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
             >
               <template
                 shadowroot="open"
+                shadowrootdelegatesfocus="true"
               >
                 <style>
                   :host {
@@ -4385,6 +4572,18 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -4395,19 +4594,15 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                       </style>
                       <i
                         class="root"
-                      />
+                      >
+                        <img
+                          alt=""
+                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        />
+                      </i>
                     </template>
                   </p-icon>
                   <span
@@ -4435,6 +4630,7 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -4542,6 +4738,7 @@ exports[`should render dsr component for PSwitch 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -5059,6 +5256,7 @@ exports[`should render dsr component for PTabs 1`] = `
                 >
                   <template
                     shadowroot="open"
+                    shadowrootdelegatesfocus="true"
                   >
                     <style>
                       :host {
@@ -5152,6 +5350,18 @@ exports[`should render dsr component for PTabs 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -5162,19 +5372,15 @@ exports[`should render dsr component for PTabs 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                           </style>
                           <i
                             class="root"
-                          />
+                          >
+                            <img
+                              alt=""
+                              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                            />
+                          </i>
                         </template>
                       </p-icon>
                       <span
@@ -5197,6 +5403,7 @@ exports[`should render dsr component for PTabs 1`] = `
                 >
                   <template
                     shadowroot="open"
+                    shadowrootdelegatesfocus="true"
                   >
                     <style>
                       :host {
@@ -5290,6 +5497,18 @@ exports[`should render dsr component for PTabs 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -5300,19 +5519,15 @@ exports[`should render dsr component for PTabs 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                           </style>
                           <i
                             class="root"
-                          />
+                          >
+                            <img
+                              alt=""
+                              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                            />
+                          </i>
                         </template>
                       </p-icon>
                       <span
@@ -5537,6 +5752,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
             >
               <template
                 shadowroot="open"
+                shadowrootdelegatesfocus="true"
               >
                 <style>
                   :host {
@@ -5630,6 +5846,18 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -5640,19 +5868,15 @@ exports[`should render dsr component for PTabsBar 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                       </style>
                       <i
                         class="root"
-                      />
+                      >
+                        <img
+                          alt=""
+                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        />
+                      </i>
                     </template>
                   </p-icon>
                   <span
@@ -5675,6 +5899,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
             >
               <template
                 shadowroot="open"
+                shadowrootdelegatesfocus="true"
               >
                 <style>
                   :host {
@@ -5768,6 +5993,18 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -5778,19 +6015,15 @@ exports[`should render dsr component for PTabsBar 1`] = `
   height: inherit;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
                       </style>
                       <i
                         class="root"
-                      />
+                      >
+                        <img
+                          alt=""
+                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        />
+                      </i>
                     </template>
                   </p-icon>
                   <span
@@ -5898,6 +6131,7 @@ exports[`should render dsr component for PTagDismissible 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
   >
     <style>
       :host {
@@ -5980,6 +6214,18 @@ button::before {
   display: inline-flex;
   vertical-align: top;
 }
+img {
+  filter: none;
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
 .root {
   display: flex;
   flex-shrink: 0;
@@ -5990,19 +6236,15 @@ button::before {
   height: 1.5rem;
   color: currentColor;
 }
-.root &gt; svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  .root &gt; svg {
-    fill: canvasText;
-  }
-}
-
           </style>
           <i
             class="root"
-          />
+          >
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+            />
+          </i>
         </template>
       </p-icon>
     </button>

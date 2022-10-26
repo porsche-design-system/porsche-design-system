@@ -4,6 +4,7 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/shared';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -23,6 +24,7 @@ const generateDSRComponents = (): void => {
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
       const tagName = paramCase(`P${componentName}`) as TagName;
+      const componentMeta = getComponentMeta(tagName);
       const hasChildren = fileContent.includes('<slot');
 
       let newFileContent = fileContent
@@ -93,6 +95,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           : '';
 
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
+          const delegatesFocusProp = componentMeta.isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
     const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
@@ -100,7 +103,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     return (
       <>
         {/* @ts-ignore */}
-        <template shadowroot="open">
+        <template shadowroot="open"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }}></style>
           ${g1.trim().replace(/\n/g, '$&    ')}
         </template>${children}
