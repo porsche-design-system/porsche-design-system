@@ -1,5 +1,5 @@
 import { getTagName } from '../../utils';
-import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 
 export const LINK_TILE_WEIGHTS = ['regular', 'semibold'] as const;
 export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
@@ -19,11 +19,7 @@ export const throwIfAlignTopAndNotCompact = (
   align: LinkTileAlign,
   compact: BreakpointCustomizable<boolean>
 ): void => {
-  if (align === 'top') {
-    if (!compact || (typeof compact === 'string' && compact === 'false')) {
-      throw new Error(
-        `Usage of ${getTagName(host)} is not valid. Top alignment is only possible when compact is true.`
-      );
-    }
+  if (align === 'top' && (!compact || (typeof compact === 'string' && compact === 'false'))) {
+    throw new Error(`Usage of ${getTagName(host)} is not valid. Top alignment is only possible when compact is true.`);
   }
 };
