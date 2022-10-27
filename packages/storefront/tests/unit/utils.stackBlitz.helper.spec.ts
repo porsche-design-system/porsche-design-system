@@ -168,7 +168,7 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
       '<source media="(min-width:400px)" srcset="http://localhost/img/image.png">',
     ],
     ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
-  ])('should for %s correctly transform src and srcset, output: %s ', (input, output) => {
+  ])('should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters', (input, output) => {
     const div = document.createElement('div');
     const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
     const getAttributeSpy = jest.spyOn(div, 'getAttribute');
