@@ -237,6 +237,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
+      } else if (tagName === 'p-icon') {
+        newFileContent = newFileContent
+          .replace(/^/, "import { ICONS_MAP } from '@porsche-design-system/icons';\n") // add missing import
+          .replace(/( } from '@porsche-design-system\/components\/dist\/utils';)/, ', paramCaseToCamelCase$1') // add missing import
+          .replace(
+            /(<i key={this\.key\+\+} className="root") \/>/,
+            `$1 dangerouslySetInnerHTML={{__html: !this.props.source ? ICONS_MAP[paramCaseToCamelCase(this.props.name)] || '' : ''}} />`
+          ); // let svg icons render on server
       }
 
       return newFileContent;
