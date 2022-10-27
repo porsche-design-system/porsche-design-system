@@ -16,7 +16,15 @@
 
 ## ✅ Typography
 
+## ✅ Modal
+
+## ✅ Popover
+
 ## ✅ Banner
+
+- Slotted styles aren't supported (e.g. slotted anchors)
+
+## ✅ Inline Notification
 
 - Slotted styles aren't supported (e.g. slotted anchors)
 
@@ -30,15 +38,30 @@
 
 ## ✅ Button
 
+## ✅ Toast
+
+- Component will be visible programmatically only
+
 ## ✅ Icon
 
 - Icons provided by `source` will reflect `theme` but no `color` prop
 
+## ✅ Radio Button Wrapper
+
+- Required state not supported
+- Slotted styles aren't supported (e.g. slotted anchors)
+
+## ✅ Textarea Wrapper
+
+- Required state not supported
+- `showCharacterCount` not supported
+- Slotted styles aren't supported (e.g. slotted anchors)
+
 ## ⚠️ Checkbox Wrapper
 
 - Indeterminate state
-- Required state
-- No styles for e.g. slotted links
+- Required state not supported
+- Slotted styles aren't supported (e.g. slotted anchors)
 
 ## ✅ Fieldset Wrapper
 
