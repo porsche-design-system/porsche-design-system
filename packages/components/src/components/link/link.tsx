@@ -100,6 +100,13 @@ export class Link {
           name={this.icon}
           source={this.iconSource}
           color="inherit"
+          theme={
+            this.variant === 'tertiary'
+              ? this.theme
+              : this.variant === 'secondary' && this.theme === 'dark'
+              ? 'light'
+              : 'dark'
+          } // relevant for ssr support
           aria-hidden="true"
         />
         <span>
