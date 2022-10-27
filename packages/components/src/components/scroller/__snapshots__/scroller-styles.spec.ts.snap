@@ -54,7 +54,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -70,7 +69,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -151,7 +149,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -167,7 +164,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -248,7 +244,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -264,7 +259,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -345,7 +339,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -361,7 +354,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -442,7 +434,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -458,7 +449,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -539,7 +529,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -555,7 +544,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -636,7 +624,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -652,7 +639,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -733,7 +719,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -749,7 +734,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -830,7 +814,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -846,7 +829,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -927,7 +909,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-prev {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
@@ -943,7 +924,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-next {
   position: relative;
-  margin: -1px, 0;
   padding: 0.25rem 0;
   pointer-events: none;
   display: flex;
