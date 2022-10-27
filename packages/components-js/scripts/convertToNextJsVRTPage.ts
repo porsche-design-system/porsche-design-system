@@ -63,7 +63,8 @@ export const convertToNextJsVRTPage = (
     )
     .replace(/@porsche-design-system\/components-react/g, '$&/ssr')
     .replace(/(\w|>)'(\w|<)/g, '$1&apos;$2') // escape single quotes
-    .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2'); // escape double quotes
+    .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2') // escape double quotes
+    .replace(/(url\()&quot;(.*)&quot;(\);)/, '$1"$2"$3'); // revert escaped double quotes for css styles
 
   return { fileName: paramCase(convertedFileName.replace(/\.tsx/, '')) + '.tsx', fileContent: newFileContent };
 };
