@@ -127,10 +127,16 @@ svg {
               <i
                 class="root"
               >
-                <img
-                  alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
-                />
+                <svg
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m20 8.75-8 6-8-6v1.26L12 16l8-5.99V8.75z"
+                  />
+                </svg>
               </i>
             </template>
           </p-icon>
@@ -368,10 +374,19 @@ svg {
               <i
                 class="root"
               >
-                <img
-                  alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
-                />
+                <svg
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2zm0 4h2v6h-2z"
+                  />
+                  <path
+                    d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 17a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z"
+                  />
+                </svg>
               </i>
             </template>
           </p-icon>
@@ -523,10 +538,16 @@ svg {
                     <i
                       class="root"
                     >
-                      <img
-                        alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-                      />
+                      <svg
+                        height="100%"
+                        viewBox="0 0 24 24"
+                        width="100%"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"
+                        />
+                      </svg>
                     </i>
                   </template>
                 </p-icon>
@@ -627,7 +648,7 @@ span {
   vertical-align: top;
 }
 img {
-  filter: none;
+  filter: invert(100%);
 }
 svg {
   fill: currentColor;
@@ -652,10 +673,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
@@ -850,10 +877,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
@@ -1156,10 +1189,16 @@ svg {
                   <i
                     class="root"
                   >
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                    />
+                    <svg
+                      height="100%"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                      />
+                    </svg>
                   </i>
                 </template>
               </p-icon>
@@ -1304,10 +1343,16 @@ svg {
                   <i
                     class="root"
                   >
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                    />
+                    <svg
+                      height="100%"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                      />
+                    </svg>
                   </i>
                 </template>
               </p-icon>
@@ -1797,10 +1842,16 @@ svg {
     <i
       class="root"
     >
-      <img
-        alt=""
-        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-      />
+      <svg
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+        />
+      </svg>
     </i>
   </template>
 </p-icon>
@@ -1904,10 +1955,19 @@ svg {
         <i
           class="root"
         >
-          <img
-            alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
-          />
+          <svg
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 7h2v2h-2zm0 4h2v6h-2z"
+            />
+            <path
+              d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 17a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z"
+            />
+          </svg>
         </i>
       </template>
     </p-icon>
@@ -2059,10 +2119,16 @@ svg {
               <i
                 class="root"
               >
-                <img
-                  alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-                />
+                <svg
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"
+                  />
+                </svg>
               </i>
             </template>
           </p-icon>
@@ -2172,7 +2238,7 @@ span {
   vertical-align: top;
 }
 img {
-  filter: none;
+  filter: invert(100%);
 }
 svg {
   fill: currentColor;
@@ -2197,10 +2263,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
@@ -2337,10 +2409,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
@@ -2472,10 +2550,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
@@ -2839,10 +2923,16 @@ svg {
                 <i
                   class="root"
                 >
-                  <img
-                    alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-                  />
+                  <svg
+                    height="100%"
+                    viewBox="0 0 24 24"
+                    width="100%"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"
+                    />
+                  </svg>
                 </i>
               </template>
             </p-icon>
@@ -3002,10 +3092,16 @@ svg {
                 <i
                   class="root"
                 >
-                  <img
-                    alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                  />
+                  <svg
+                    height="100%"
+                    viewBox="0 0 24 24"
+                    width="100%"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                    />
+                  </svg>
                 </i>
               </template>
             </p-icon>
@@ -3065,10 +3161,16 @@ svg {
                 <i
                   class="root"
                 >
-                  <img
-                    alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                  />
+                  <svg
+                    height="100%"
+                    viewBox="0 0 24 24"
+                    width="100%"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                    />
+                  </svg>
                 </i>
               </template>
             </p-icon>
@@ -3302,10 +3404,19 @@ svg {
               <i
                 class="root"
               >
-                <img
-                  alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
-                />
+                <svg
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 7h2v2h-2zm0 4h2v6h-2z"
+                  />
+                  <path
+                    d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 17a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z"
+                  />
+                </svg>
               </i>
             </template>
           </p-icon>
@@ -3661,10 +3772,16 @@ svg {
                   <i
                     class="root"
                   >
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                    />
+                    <svg
+                      height="100%"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                      />
+                    </svg>
                   </i>
                 </template>
               </p-icon>
@@ -3808,10 +3925,16 @@ svg {
                   <i
                     class="root"
                   >
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                    />
+                    <svg
+                      height="100%"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                      />
+                    </svg>
                   </i>
                 </template>
               </p-icon>
@@ -4076,10 +4199,16 @@ svg {
             <i
               class="root"
             >
-              <img
-                alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
-              />
+              <svg
+                height="100%"
+                viewBox="0 0 24 24"
+                width="100%"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m20 8.75-8 6-8-6v1.26L12 16l8-5.99V8.75z"
+                />
+              </svg>
             </i>
           </template>
         </p-icon>
@@ -4451,10 +4580,16 @@ svg {
                       <i
                         class="root"
                       >
-                        <img
-                          alt=""
-                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                        />
+                        <svg
+                          height="100%"
+                          viewBox="0 0 24 24"
+                          width="100%"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                          />
+                        </svg>
                       </i>
                     </template>
                   </p-icon>
@@ -4598,10 +4733,16 @@ svg {
                       <i
                         class="root"
                       >
-                        <img
-                          alt=""
-                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                        />
+                        <svg
+                          height="100%"
+                          viewBox="0 0 24 24"
+                          width="100%"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                          />
+                        </svg>
                       </i>
                     </template>
                   </p-icon>
@@ -5376,10 +5517,16 @@ svg {
                           <i
                             class="root"
                           >
-                            <img
-                              alt=""
-                              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                            />
+                            <svg
+                              height="100%"
+                              viewBox="0 0 24 24"
+                              width="100%"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                              />
+                            </svg>
                           </i>
                         </template>
                       </p-icon>
@@ -5523,10 +5670,16 @@ svg {
                           <i
                             class="root"
                           >
-                            <img
-                              alt=""
-                              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                            />
+                            <svg
+                              height="100%"
+                              viewBox="0 0 24 24"
+                              width="100%"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                              />
+                            </svg>
                           </i>
                         </template>
                       </p-icon>
@@ -5872,10 +6025,16 @@ svg {
                       <i
                         class="root"
                       >
-                        <img
-                          alt=""
-                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                        />
+                        <svg
+                          height="100%"
+                          viewBox="0 0 24 24"
+                          width="100%"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
+                          />
+                        </svg>
                       </i>
                     </template>
                   </p-icon>
@@ -6019,10 +6178,16 @@ svg {
                       <i
                         class="root"
                       >
-                        <img
-                          alt=""
-                          src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                        />
+                        <svg
+                          height="100%"
+                          viewBox="0 0 24 24"
+                          width="100%"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                          />
+                        </svg>
                       </i>
                     </template>
                   </p-icon>
@@ -6240,10 +6405,16 @@ svg {
           <i
             class="root"
           >
-            <img
-              alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-            />
+            <svg
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"
+              />
+            </svg>
           </i>
         </template>
       </p-icon>
