@@ -691,67 +691,17 @@ p {
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-tile a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-link-tile b, p-link-tile strong {
-  font-weight: 700 !important;
-}
-p-link-tile em, p-link-tile i {
-  font-style: normal !important;
-}
-p-link-tile a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-link-tile a:focus {
-  outline-color: currentColor !important;
-}
-p-link-tile a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-link-tile a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-link-tile a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+"p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-tile a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-link-tile b, prefixed-p-link-tile strong {
-  font-weight: 700 !important;
-}
-prefixed-p-link-tile em, prefixed-p-link-tile i {
-  font-style: normal !important;
-}
-prefixed-p-link-tile a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-link-tile a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-link-tile a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-link-tile a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-link-tile a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+"prefixed-p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
 `;
