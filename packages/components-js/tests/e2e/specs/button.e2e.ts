@@ -421,7 +421,8 @@ describe('button', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-button'], 'componentDidUpdate: p-button').toBe(1);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     });
   });
 
