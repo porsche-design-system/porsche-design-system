@@ -9,6 +9,7 @@ import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } fr
 type Manifest = {
   [name: string]: string;
 };
+type IconsMap = Manifest;
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
@@ -17,6 +18,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
   const manifest: Manifest = {};
+  const iconsMap: IconsMap = {};
 
   for (const file of files) {
     const svgRawPath = path.normalize(file);
@@ -36,6 +38,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
 
     const nameKey = camelCase(svgRawName);
     manifest[nameKey] = svgOptimizedFilename;
+    iconsMap[nameKey] = svgOptimizedData;
 
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
@@ -59,6 +62,10 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
     result[key] = manifest[key];
     return result;
   }, {} as Manifest);
+  const sortedIconsMap: IconsMap = sortedManifestKeys.reduce((result, key) => {
+    result[key] = iconsMap[key];
+    return result;
+  }, {} as IconsMap);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
@@ -66,6 +73,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
 
 export const CDN_BASE_URL = ${cdn};
 export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
+export const ICONS_MAP = ${JSON.stringify(sortedIconsMap)};
 export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)};
 export type IconName = ${sortedManifestKeys.map((x) => `'${paramCase(x)}'`).join(' | ')};
 export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join(' | ')};`
