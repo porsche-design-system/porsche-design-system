@@ -83,7 +83,7 @@ export const getComponentCss = (
         '& ::slotted(img)': addImportantToEachRule({
           height: '100%',
           width: '100%',
-          objectFit: addImportantToRule('cover'),
+          objectFit: 'cover',
         }),
       },
       p: {
