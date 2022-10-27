@@ -6,7 +6,7 @@
 | **Banner**               | ✅     | - Slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                                                                |
 | **Button**               | ✅     |                                                                                                                                                                                    |
 | **Button Group**         | ✅     |                                                                                                                                                                                    |
-| **Button Pure**          | ✅     | - Prop `size` with value `inherit` is not supported                                                                                                                                |
+| **Button Pure**          | ✅     | - `size="inherit"` is not supported                                                                                                                                                |
 | **Carousel**             | ⛔     | - This component uses `Splide` which relies on a lot of Browser API related calculations and style definitions. That's why it's not supported to be rendered on a node server atm. |
 | **Checkbox Wrapper**     | ⚠️     | - Indeterminate state<br />- Required state not supported<br />- Slotted styles aren't supported (e.g. slotted anchors)                                                            |
 | **Content Wrapper**      | ✅     |                                                                                                                                                                                    |
@@ -18,7 +18,7 @@
 | **Icon**                 | ✅     | - Icons provided by `source` will reflect `theme` but no `color` prop                                                                                                              |
 | **Inline Notification**  | ✅     | - Slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                                                                |
 | **Link**                 | ✅     |                                                                                                                                                                                    |
-| **Link Pure**            | ✅     | - Prop `size` with value `inherit` is not supported                                                                                                                                |
+| **Link Pure**            | ✅     | - `size="inherit"` is not supported                                                                                                                                                |
 | **Link Social**          | ✅     |                                                                                                                                                                                    |
 | **Marque**               | ✅     |                                                                                                                                                                                    |
 | **Modal**                | ✅     |                                                                                                                                                                                    |
@@ -39,5 +39,5 @@
 | **Text**                 | ❔     |                                                                                                                                                                                    |
 | **Text Field Wrapper**   | ❔     |                                                                                                                                                                                    |
 | **Text List**            | ❔     |                                                                                                                                                                                    |
-| **Textarea Wrapper**     | ✅     | - Required state not supported<br />- `showCharacterCount` not supported<br />- Slotted styles (e.g. slotted anchors) aren't supported on purpose                                  |
+| **Textarea Wrapper**     | ✅     | - `showCharacterCount` not supported<br />- Required state not supported<br />- Slotted styles (e.g. slotted anchors) aren't supported on purpose                                  |
 | **Toast**                | ✅     | - Component will be visible programmatically only                                                                                                                                  |
