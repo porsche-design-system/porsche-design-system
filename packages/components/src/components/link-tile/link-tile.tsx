@@ -1,10 +1,11 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import { Component, Element, Fragment, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  parseJSON,
   validateProps,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
@@ -65,7 +66,7 @@ export class LinkTile {
   @Prop() public gradient?: boolean = true;
 
   /** Displays the tile-link as compact version with description and link icon only. */
-  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
+  @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
   @Prop() public href: string;
@@ -92,6 +93,7 @@ export class LinkTile {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -121,6 +123,18 @@ export class LinkTile {
       theme: 'dark',
     };
 
+    const link: JSX.Element = (
+      <PrefixedTagNames.pLink {...linkProps} class="link" variant="tertiary">
+        <a {...anchorProps}>{this.label}</a>
+      </PrefixedTagNames.pLink>
+    );
+
+    const linkPure: JSX.Element = (
+      <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel="true" icon="arrow-right">
+        <a {...anchorProps}>{this.label}</a>
+      </PrefixedTagNames.pLinkPure>
+    );
+
     return (
       <div class="root">
         <div class="image-container">
@@ -128,12 +142,18 @@ export class LinkTile {
         </div>
         <div class="content">
           <p id="description">{this.description}</p>
-          <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel="true" icon="arrow-right">
-            <a {...anchorProps}>{this.label}</a>
-          </PrefixedTagNames.pLinkPure>
-          <PrefixedTagNames.pLink {...linkProps} class="link" variant="tertiary">
-            <a {...anchorProps}>{this.label}</a>
-          </PrefixedTagNames.pLink>
+          {typeof this.compact === 'boolean' ? (
+            this.compact ? (
+              linkPure
+            ) : (
+              link
+            )
+          ) : (
+            <Fragment>
+              {linkPure}
+              {link}
+            </Fragment>
+          )}
         </div>
       </div>
     );

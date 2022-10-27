@@ -150,12 +150,14 @@ export const getComponentCss = (
           : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
       ),
     },
-    'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) =>
-      isCompact ? { display: 'inline-block' } : { display: 'none' }
-    ),
-    link: buildResponsiveStyles(compact, (isCompact: boolean) =>
-      isCompact ? { display: 'none' } : { display: 'inline-flex' }
-    ),
+    ...(typeof compact !== 'boolean' && {
+      'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) =>
+        isCompact ? { display: 'inline-block' } : { display: 'none' }
+      ),
+      link: buildResponsiveStyles(compact, (isCompact: boolean) =>
+        isCompact ? { display: 'none' } : { display: 'inline-flex' }
+      ),
+    }),
     // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
     anchor: {
       '&::after': {
