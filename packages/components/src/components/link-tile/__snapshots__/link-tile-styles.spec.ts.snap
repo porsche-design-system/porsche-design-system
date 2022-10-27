@@ -25,15 +25,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -43,11 +43,11 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 @media(min-width:480px) {
   p {
@@ -91,9 +91,9 @@ p {
 
 .root {
   height: 0;
-  padding-top: 100%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 100%;
 }
 .image-container {
   position: absolute;
@@ -136,6 +136,7 @@ p {
     padding-top: 75%;
   }
   .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
@@ -152,9 +153,14 @@ p {
     padding-top: 133.33%;
   }
   .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    background: linear-gradient(rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     align-items: center;
     grid-template-columns: auto 1.5rem;
     grid-template-rows: auto;
+    top: 0;
   }
   .link-pure {
     display: inline-block;
@@ -169,6 +175,7 @@ p {
     padding-top: 56.25%;
   }
   .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
@@ -185,9 +192,11 @@ p {
     padding-top: 177.75%;
   }
   .content {
+    background: linear-gradient(rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     align-items: center;
     grid-template-columns: auto 1.5rem;
     grid-template-rows: auto;
+    top: 0;
   }
   .link-pure {
     display: inline-block;
@@ -202,6 +211,7 @@ p {
     padding-top: 100%;
   }
   .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
@@ -215,7 +225,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -232,15 +242,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -250,17 +260,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 400;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 100%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 100%;
 }
 .image-container {
   position: absolute;
@@ -307,7 +317,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -324,15 +334,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -342,17 +352,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 133.33%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 133.33%;
 }
 .image-container {
   position: absolute;
@@ -399,7 +409,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -416,15 +426,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -434,17 +444,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 75%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 75%;
 }
 .image-container {
   position: absolute;
@@ -491,7 +501,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -508,15 +518,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -526,17 +536,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 177.75%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 177.75%;
 }
 .image-container {
   position: absolute;
@@ -582,7 +592,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -599,15 +609,15 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   object-fit: cover !important;
 }
 p {
@@ -617,17 +627,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 400;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 56.25%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 56.25%;
 }
 .image-container {
   position: absolute;
@@ -674,8 +684,24 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
 `;

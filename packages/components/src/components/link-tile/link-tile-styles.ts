@@ -22,7 +22,7 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-const getGradientBackground = (isCompact: boolean, isTopAligned: boolean): string => {
+const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): string => {
   const gradient =
     'rgba(31,31,31,0.9) 0%,' +
     'rgba(31,31,31,0.9) 20%,' +
@@ -67,7 +67,6 @@ export const getComponentCss = (
   const isTopAligned = align === 'top';
   const paddingSizeXS = pxToRemWithUnit(24);
   const gradientPadding = pxToRemWithUnit(72);
-
   return getCss({
     '@global': {
       ':host': {
@@ -77,41 +76,41 @@ export const getComponentCss = (
           transition: getTransition('transform'),
           ...getBackfaceVisibilityJssStyle(),
         }),
-        '& ::slotted(picture)': {
+        '& ::slotted(picture)': addImportantToEachRule({
           position: 'absolute',
           ...getInsetJssStyle(),
-        },
-        '& ::slotted(img)': {
+        }),
+        '& ::slotted(img)': addImportantToEachRule({
           height: '100%',
           width: '100%',
-          objectFit: addImportantToRule('cover'),
-        },
+          objectFit: 'cover',
+        }),
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
         ...textSmall,
+        maxWidth: pxToRemWithUnit(550),
+        margin: 0,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
         ),
-        maxWidth: pxToRemWithUnit(550),
-        margin: 0,
       },
     },
     root: {
       height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
-        paddingTop: aspectRatioPaddingTop[ratio],
-      })),
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
       ...hoverMediaQuery({
         '&:hover': {
-          '& ::slotted(picture),::slotted(img)': {
+          '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
             transform: 'scale3d(1.05, 1.05, 1.05)',
-          },
+          }),
         },
       }),
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
+        paddingTop: aspectRatioPaddingTop[ratio],
+      })),
     },
     'image-container': {
       position: 'absolute',
@@ -121,10 +120,6 @@ export const getComponentCss = (
     content: {
       position: 'absolute',
       ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
-      ...buildResponsiveStyles(
-        compact,
-        (isCompact: boolean) => isCompact && (isTopAligned ? { top: 0 } : { bottom: 0 })
-      ),
       left: 0,
       right: 0,
       display: 'grid',
@@ -135,27 +130,36 @@ export const getComponentCss = (
           : `${paddingSizeXS} ${paddingSizeXS} ${gradientPadding}`,
 
       gap: pxToRemWithUnit(24),
-      [mediaQueryMin('s')]: {
-        paddingLeft: pxToRemWithUnit(32),
-        paddingRight: pxToRemWithUnit(32),
-        ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),
-      },
-      ...(hasGradient &&
-        buildResponsiveStyles(compact, (isCompact: boolean) => ({
-          background: getGradientBackground(isCompact, isTopAligned),
-        }))),
-      ...buildResponsiveStyles(compact, (isCompact: boolean) =>
-        isCompact
-          ? { alignItems: 'center', gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`, gridTemplateRows: 'auto' }
-          : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
+      ...mergeDeep(
+        {
+          [mediaQueryMin('s')]: {
+            paddingLeft: pxToRemWithUnit(32),
+            paddingRight: pxToRemWithUnit(32),
+            ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),
+          },
+        },
+        hasGradient &&
+          buildResponsiveStyles(compact, (isCompact: boolean) => ({
+            background: getGradientBackground(isCompact, isTopAligned),
+          })),
+        buildResponsiveStyles(compact, (isCompact: boolean) =>
+          isCompact
+            ? {
+                alignItems: 'center',
+                gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`,
+                gridTemplateRows: 'auto',
+                ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
+              }
+            : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
+        )
       ),
     },
-    'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) =>
-      isCompact ? { display: 'inline-block' } : { display: 'none' }
-    ),
-    link: buildResponsiveStyles(compact, (isCompact: boolean) =>
-      isCompact ? { display: 'none' } : { display: 'inline-flex' }
-    ),
+
+    'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
+      display: isCompact ? 'inline-block' : 'none',
+    })),
+    link: buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+
     // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
     anchor: {
       '&::after': {

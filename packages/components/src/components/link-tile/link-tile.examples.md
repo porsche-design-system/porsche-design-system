@@ -59,7 +59,7 @@ The `size` property changes the font size of the description.
       <option disabled>Select font size</option>
       <option value="default">default</option>
       <option value="inherit">inherit</option>
-      <option value="{base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' }">responsive</option>
+      <option value="{base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default'}">responsive</option>
     </select>
   </label>
 </Playground>
@@ -74,7 +74,7 @@ The `weight` property changes the font weight of the description.
       <option disabled>Select font weight</option>
       <option value="regular">regular</option>
       <option value="semibold">semibold</option>
-      <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular' }">responsive</option>
+      <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular'}">responsive</option>
     </select>
 </Playground>
 
@@ -86,12 +86,12 @@ underlying image provides enough contrast, you can choose to disable the gradien
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
 
 <Playground :markup="gradientMarkup">
-    <p-text>Select gradient:</p-text>
-    <select v-model="gradient" aria-label="Select gradient">
-      <option disabled>Select gradient</option>
-      <option value="true">true</option>
-      <option value="false">false</option>
-    </select>
+  <p-text>Select gradient:</p-text>
+  <select v-model="gradient" aria-label="Select gradient">
+    <option disabled>Select gradient</option>
+    <option value="true">true</option>
+    <option value="false">false</option>
+  </select>
 </Playground>
 
 ## Compact
@@ -104,6 +104,7 @@ The `label` property stays mandatory when using `compact`, for **accessibility**
     <option disabled>Select compact</option>
     <option value="true">true</option>
     <option value="false">false</option>
+    <option value="{base: true, xs: false, s: true, m: false, l: true, xl: false}">responsive</option>
   </select>
 </Playground>
 
@@ -135,118 +136,99 @@ export default class Code extends Vue {
   gradient = 'false';
   compact = 'true';
   align = 'top';
-  containerWidth = 400;
 
-  basic = `<div class="grid">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-  >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-  >
-    <picture>
-      <source media="(min-width:400px)" srcset="${require('../../assets/image_grid.png')}"/>
-      <img src="${require('../../assets/image_grid_violet.png')}" alt="Some alt text" />
-    </picture>
-  </p-link-tile>
-</div>`;
+  basic = `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  style="max-width: 400px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>
+<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  style="max-width: 400px;"
+>
+  <picture>
+    <source media="(min-width:400px)" srcset="${require('@/assets/image_grid.png')}"/>
+    <img src="${require('@/assets/image_grid_violet.png')}" alt="Some alt text" />
+  </picture>
+</p-link-tile>`;
 
   get aspectRatioMarkup() {
-    return`<div class="container">
-  <p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
-  }
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`}
 
   get sizeMarkup() {
-    return`<div class="grid">
-  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-  <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>
+<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`
   }
 
   get weightMarkup() {
-    return`<div class="grid">
-  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-  <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text"/>
-  </p-link-tile>
-</div>`
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>
+<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true" style="max-width: 400px;">
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+</p-link-tile>`
   }
 
  get gradientMarkup() { 
-  return `<div class="grid">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    gradient="${this.gradient}"
-  >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
-  </p-link-tile>
-   <p-link-tile
-      href="https://www.porsche.com"
-      label="Some label"
-      description="Some Description"
-      compact="true"
-      gradient="${this.gradient}"
-    >
-    <img src="${require('../../assets/image_grid_split.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
+  return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  gradient="${this.gradient}"
+  style="max-width: 400px;"
+>
+  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+</p-link-tile>
+<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="true"
+  gradient="${this.gradient}"
+  style="max-width: 400px;"
+>
+  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+</p-link-tile>`};
 
   get compactMarkup() {
-    return `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="${this.compact}"
-  >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
+    return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="${this.compact}"
+  style="max-width: 400px; font-size: 40px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>`};
 
   get alignMarkup() {
-    return `<div class="container">
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="true"
-    align="${this.align}"
-  >
-    <img src="${require('../../assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-</div>`};
+    return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="true"
+  align="${this.align}"
+  style="max-width: 400px; font-size: 40px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>`};
 
 }
 </script>
 
 <style>
-
-  .container {
-    max-width: 300px;
-    font-size: 40px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: auto;
-    column-gap: 1rem;
-    row-gap: 1rem;
+  p-link-tile:not(:last-child) {
+    margin-bottom: 1rem;
   }
 </style>

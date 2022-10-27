@@ -1,4 +1,4 @@
-import { getComponentCss } from './link-tile-styles';
+import { getComponentCss, getSlottedCss } from './link-tile-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -21,4 +21,16 @@ describe('getComponentCss()', () => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
+});
+
+describe('getSlottedCss()', () => {
+  it('should return correct css', () => {
+    const host = document.createElement('p-link-tile');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+
+  it('should return correct css with prefix', () => {
+    const host = document.createElement('prefixed-p-link-tile');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
 });
