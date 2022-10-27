@@ -42,7 +42,6 @@
 
 ## ⛔ Accordion
 
-- Content height doesn't match
 - Icon not colored correctly on dark theme
 
 ## ⛔ Button Group
