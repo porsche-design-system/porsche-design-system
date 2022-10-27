@@ -19,6 +19,9 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
         display: 'inline-flex',
         verticalAlign: 'top',
       },
+      img: {
+        filter: ['dark', 'dark-electric'].includes(theme) ? 'invert(100%)' : 'none',
+      },
       svg: {
         fill: 'currentColor',
         // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706

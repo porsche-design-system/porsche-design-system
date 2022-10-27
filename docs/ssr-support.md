@@ -16,47 +16,40 @@
 
 ## ✅ Typography
 
-## ⚠️ Banner
+## ✅ Banner
 
-- No styles for e.g. slotted links
+- Hint: Slotted styles aren't supported (e.g. slotted anchors)
 
-## ⚠️ Icon
+## ✅ Icon
 
-- Color doesn't match 100% (but almost)
-- Inherited color doesn't work at all
+- Hint: Icons provided by `source` reflect `theme` but no `color` prop
 
 ## ⚠️ Checkbox Wrapper
 
-- Icon not colored correctly for success/error message
 - Indeterminate state
 - Required state
 - No styles for e.g. slotted links
 
-## ⚠️ Fieldset Wrapper
-
-- Icon not colored correctly
+## ✅ Fieldset Wrapper
 
 ## ⚠️ Grid
 
 - Some spacing not correct
 
-## ⛔ Accordion
+## ✅ Accordion
 
-- Icon not colored correctly on dark theme
+## ✅ Button Group
 
-## ⛔ Button Group
+## ✅ Button Pure
 
-- Icon not colored correctly on dark theme
+- Hint: Icons provided by `icon-source` prop aren't supported
+- Hint: Prop `size` with value `inherit` is not supported
 
-## ⛔ Button Pure
+## ✅ Button
 
-- Icon not colored correctly on dark theme
-- Inherited size not calculable
-
-## ⛔ Button
-
-- Icon not colored correctly on dark theme
+- Hint: Icons provided by `icon-source` prop aren't supported
 
 ## ⛔ Carousel
 
-- Doesn't work at all
+- This component uses `Splide` which relies on a lot of Browser API related calculations and style definitions. That's
+  why it's not supported to be rendered on a node server atm.
