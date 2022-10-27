@@ -243,7 +243,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/( } from '@porsche-design-system\/components\/dist\/utils';)/, ', paramCaseToCamelCase, isUrl$1') // add missing import
           .replace(
             /(<i key={this\.key\+\+} className="root") \/>/,
-            `$1 dangerouslySetInnerHTML={{__html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name)] || ''}} />`
+            `$1 dangerouslySetInnerHTML={{__html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || ''}} />`
           ); // let svg icons render on server
       }
 
