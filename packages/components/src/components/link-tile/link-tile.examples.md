@@ -86,12 +86,12 @@ underlying image provides enough contrast, you can choose to disable the gradien
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
 
 <Playground :markup="gradientMarkup">
-    <p-text>Select gradient:</p-text>
-    <select v-model="gradient" aria-label="Select gradient">
-      <option disabled>Select gradient</option>
-      <option value="true">true</option>
-      <option value="false">false</option>
-    </select>
+  <p-text>Select gradient:</p-text>
+  <select v-model="gradient" aria-label="Select gradient">
+    <option disabled>Select gradient</option>
+    <option value="true">true</option>
+    <option value="false">false</option>
+  </select>
 </Playground>
 
 ## Compact
@@ -138,24 +138,24 @@ export default class Code extends Vue {
   align = 'top';
 
   basic = `<p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    style="max-width: 400px;"
-  >
-    <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
-  </p-link-tile>
-  <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    style="max-width: 400px;"
-  >
-    <picture>
-      <source media="(min-width:400px)" srcset="${require('@/assets/image_grid.png')}"/>
-      <img src="${require('@/assets/image_grid_violet.png')}" alt="Some alt text" />
-    </picture>
-  </p-link-tile>`;
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  style="max-width: 400px;"
+>
+  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+</p-link-tile>
+<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  style="max-width: 400px;"
+>
+  <picture>
+    <source media="(min-width:400px)" srcset="${require('@/assets/image_grid.png')}"/>
+    <img src="${require('@/assets/image_grid_violet.png')}" alt="Some alt text" />
+  </picture>
+</p-link-tile>`;
 
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
@@ -190,14 +190,14 @@ export default class Code extends Vue {
 >
   <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
 </p-link-tile>
- <p-link-tile
-    href="https://www.porsche.com"
-    label="Some label"
-    description="Some Description"
-    compact="true"
-    gradient="${this.gradient}"
-    style="max-width: 400px;"
-  >
+<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="Some Description"
+  compact="true"
+  gradient="${this.gradient}"
+  style="max-width: 400px;"
+>
   <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
 </p-link-tile>`};
 

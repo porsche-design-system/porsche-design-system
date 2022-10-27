@@ -76,41 +76,41 @@ export const getComponentCss = (
           transition: getTransition('transform'),
           ...getBackfaceVisibilityJssStyle(),
         }),
-        '& ::slotted(picture)': {
+        '& ::slotted(picture)': addImportantToEachRule({
           position: 'absolute',
           ...getInsetJssStyle(),
-        },
-        '& ::slotted(img)': {
+        }),
+        '& ::slotted(img)': addImportantToEachRule({
           height: '100%',
           width: '100%',
           objectFit: addImportantToRule('cover'),
-        },
+        }),
       },
       p: {
         color: getThemedTextColor('dark', 'default'),
         ...textSmall,
+        maxWidth: pxToRemWithUnit(550),
+        margin: 0,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
         ),
-        maxWidth: pxToRemWithUnit(550),
-        margin: 0,
       },
     },
     root: {
       height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
-        paddingTop: aspectRatioPaddingTop[ratio],
-      })),
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
       ...hoverMediaQuery({
         '&:hover': {
-          '& ::slotted(picture),::slotted(img)': {
+          '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
             transform: 'scale3d(1.05, 1.05, 1.05)',
-          },
+          }),
         },
       }),
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
+        paddingTop: aspectRatioPaddingTop[ratio],
+      })),
     },
     'image-container': {
       position: 'absolute',

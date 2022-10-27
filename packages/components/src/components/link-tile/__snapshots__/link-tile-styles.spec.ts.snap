@@ -25,16 +25,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -43,11 +43,11 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 @media(min-width:480px) {
   p {
@@ -91,9 +91,9 @@ p {
 
 .root {
   height: 0;
-  padding-top: 100%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 100%;
 }
 .image-container {
   position: absolute;
@@ -225,7 +225,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -242,16 +242,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -260,17 +260,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 400;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 100%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 100%;
 }
 .image-container {
   position: absolute;
@@ -317,7 +317,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -334,16 +334,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -352,17 +352,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 133.33%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 133.33%;
 }
 .image-container {
   position: absolute;
@@ -409,7 +409,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -426,16 +426,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -444,17 +444,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 75%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 75%;
 }
 .image-container {
   position: absolute;
@@ -501,7 +501,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -518,16 +518,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -536,17 +536,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.5555555556;
   font-weight: 600;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 177.75%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 177.75%;
 }
 .image-container {
   position: absolute;
@@ -592,7 +592,7 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
   }
 }
 "
@@ -609,16 +609,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   -webkit-backface-visibility: hidden !important;
 }
 :host ::slotted(picture) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 :host ::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important !important;
 }
 p {
   color: #fff;
@@ -627,17 +627,17 @@ p {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
   line-height: inherit;
   font-size: inherit;
   font-weight: 400;
-  max-width: 34.375rem;
-  margin: 0;
 }
 .root {
   height: 0;
-  padding-top: 56.25%;
   position: relative;
   transform: translate3d(0,0,0);
+  padding-top: 56.25%;
 }
 .image-container {
   position: absolute;
@@ -684,7 +684,73 @@ p {
 
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-link-tile a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+p-link-tile b, p-link-tile strong {
+  font-weight: 700 !important;
+}
+p-link-tile em, p-link-tile i {
+  font-style: normal !important;
+}
+p-link-tile a::-moz-focus-inner {
+  border: 0 !important;
+}
+p-link-tile a:focus {
+  outline-color: currentColor !important;
+}
+p-link-tile a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  p-link-tile a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  p-link-tile a:hover {
+    color: #d5001c !important;
+  }
+}
+"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-link-tile a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+prefixed-p-link-tile b, prefixed-p-link-tile strong {
+  font-weight: 700 !important;
+}
+prefixed-p-link-tile em, prefixed-p-link-tile i {
+  font-style: normal !important;
+}
+prefixed-p-link-tile a::-moz-focus-inner {
+  border: 0 !important;
+}
+prefixed-p-link-tile a:focus {
+  outline-color: currentColor !important;
+}
+prefixed-p-link-tile a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  prefixed-p-link-tile a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  prefixed-p-link-tile a:hover {
+    color: #d5001c !important;
   }
 }
 "
