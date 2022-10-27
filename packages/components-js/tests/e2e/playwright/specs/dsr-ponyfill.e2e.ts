@@ -9,14 +9,15 @@ test.describe('should transform dsr template into shadowRoot', async () => {
     <script type="text/javascript" src="http://localhost:8575/index.js"></script>
   </head>
   <body>
-    <menu-toggle>
+    <p-button>
       <template shadowroot="open">
         <button>
           <slot></slot>
         </button>
       </template>
       Open Menu
-    </menu-toggle>
+    </p-button>
+
 
     <!-- ${getDSRPonyfill()} -->
     <!-- <script type="text/javascript">porscheDesignSystem.load();</script> -->
@@ -27,4 +28,8 @@ test.describe('should transform dsr template into shadowRoot', async () => {
 
   const hasTemplateTag = page.evaluate(() => !!document.querySelector('template'));
   expect(hasTemplateTag).toBe(true);
+
+  // TODO: check initial dsr ponyfill working (template tag is gone and shadowRoot initialized)
+  // TODO: check component hydration (no errors, style[jss] selectors and/or hover or prop change)
+  // TODO: add client rendered component by adding p-button initially without template and check it's alive
 });
