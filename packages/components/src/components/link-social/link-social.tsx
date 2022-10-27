@@ -75,7 +75,7 @@ export class LinkSocial {
           name={this.icon}
           source={this.iconSource}
           color="inherit"
-          theme={this.theme} // relevant for ssr support
+          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
           aria-hidden="true"
         />
         <span>
