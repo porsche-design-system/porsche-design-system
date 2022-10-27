@@ -130,7 +130,7 @@ export class Button {
                 : this.variant === 'secondary' && this.theme === 'dark'
                 ? 'light'
                 : 'dark'
-            }
+            } // relevant for ssr support
             aria-hidden="true"
           />
         )}
