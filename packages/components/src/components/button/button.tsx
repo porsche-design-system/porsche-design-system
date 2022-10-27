@@ -124,6 +124,13 @@ export class Button {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
+            theme={
+              this.variant === 'tertiary'
+                ? this.theme
+                : this.variant === 'secondary' && this.theme === 'dark'
+                ? 'light'
+                : 'dark'
+            }
             aria-hidden="true"
           />
         )}
