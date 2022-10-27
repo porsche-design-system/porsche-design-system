@@ -162,16 +162,30 @@ describe('convertImportPaths()', () => {
 });
 
 describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
+  it.each<[string, string]>([
+    [
+      '<source media="(min-width:400px)" srcset="img/image.png">',
+      '<source media="(min-width:400px)" srcset="http://localhost/img/image.png">',
+    ],
+    ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
+  ])('should for %s correctly transform src and srcset, output: %s ', (input, output) => {
+    const div = document.createElement('div');
+    const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
+    const getAttributeSpy = jest.spyOn(div, 'getAttribute');
+
+    expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
+    expect(querySelectorSpy).toBeCalledWith('base');
+    expect(getAttributeSpy).toBeCalledWith('href');
+  });
+
   it.each<string>([
-    '<source media="(min-width:400px)" srcset="img/image.png">',
     '<source media="(min-width:400px)" srcset="http://image.png">',
     '<source media="(min-width:400px)" srcset="https://image.png">',
     '<source media="(min-width:400px)" srcset="./img/image.png">',
-    '<img src="img/image.png" alt="Some alt text">',
     '<img src="http://image.png" alt="Some alt text">',
     '<img src="https://image.png" alt="Some alt text">',
     '<img src="https:./img/image.png" alt="Some alt text">',
-  ])('should correctly transform src and srcset', (markup) => {
-    expect(transformSrcAndSrcsetOfImgAndSourceTags(markup)).toMatchSnapshot();
+  ])('should not transform src and srcset for input: %s ', (input) => {
+    expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(input);
   });
 });

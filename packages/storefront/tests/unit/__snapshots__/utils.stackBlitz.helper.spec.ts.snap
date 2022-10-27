@@ -28,20 +28,4 @@ exports[`convertImportPaths() should return markup without updated import path f
 'import * from './@porsche-design-system/components-react';"
 `;
 
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 1`] = `<source media="(min-width:400px)" srcset="http://localhostundefinedimg/image.png">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 2`] = `<source media="(min-width:400px)" srcset="http://image.png">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 3`] = `<source media="(min-width:400px)" srcset="https://image.png">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 4`] = `<source media="(min-width:400px)" srcset="./img/image.png">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 5`] = `<img src="http://localhostundefinedimg/image.png" alt="Some alt text">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 6`] = `<img src="http://image.png" alt="Some alt text">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 7`] = `<img src="https://image.png" alt="Some alt text">`;
-
-exports[`transformSrcAndSrcsetOfImgAndSourceTags() should correctly transform src and srcset 8`] = `<img src="https:./img/image.png" alt="Some alt text">`;
-
 exports[`validateExternalDependencies() should throw error if invalid externalDependency is passed 1`] = `"Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are 'imask'."`;
