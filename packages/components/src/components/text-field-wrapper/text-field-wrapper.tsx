@@ -147,25 +147,6 @@ export class TextFieldWrapper {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    throwIfUnitLengthExceeded(this.unit);
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.input.disabled,
-      this.hideLabel,
-      this.state,
-      this.hasUnit || this.isCounterVisible,
-      this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.isPassword ? 'password' : this.input.type,
-      this.isWithinForm,
-      this.hasAction,
-      this.hasAction && this.actionLoading
-    );
-  }
-
   public componentDidRender(): void {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
@@ -187,7 +168,24 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const { readOnly, disabled } = this.input;
+    validateProps(this, propTypes);
+    throwIfUnitLengthExceeded(this.unit);
+    const { readOnly, disabled, type } = this.input;
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      disabled,
+      this.hideLabel,
+      this.state,
+      this.hasUnit || this.isCounterVisible,
+      this.isCounterVisible ? 'suffix' : this.unitPosition,
+      this.isPassword ? 'password' : type,
+      this.isWithinForm,
+      this.hasAction,
+      this.hasAction && this.actionLoading
+    );
+
     const disabledOrReadOnly = disabled || readOnly;
 
     const labelProps = {

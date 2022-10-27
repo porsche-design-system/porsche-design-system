@@ -118,26 +118,6 @@ export class ButtonPure {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.icon,
-      this.active,
-      this.isDisabledOrLoading,
-      this.stretch,
-      this.size,
-      this.weight,
-      this.hideLabel,
-      this.alignLabel,
-      hasSlottedSubline(this.host),
-      this.theme
-    );
-  }
-
   public componentDidLoad(): void {
     improveButtonHandlingForCustomElement(
       this.host,
@@ -164,6 +144,24 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.isDisabledOrLoading,
+      this.stretch,
+      this.size,
+      this.weight,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      this.theme
+    );
+
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 

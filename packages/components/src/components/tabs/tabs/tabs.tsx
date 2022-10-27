@@ -60,7 +60,6 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
     observeChildren(this.host, () => {
       this.defineTabsItemElements();
@@ -73,10 +72,6 @@ export class Tabs {
     this.setAccessibilityAttributes();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-  }
-
   public componentDidUpdate(): void {
     this.setAccessibilityAttributes();
   }
@@ -86,7 +81,11 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <PrefixedTagNames.pTabsBar

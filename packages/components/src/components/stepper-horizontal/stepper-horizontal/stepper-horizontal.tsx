@@ -71,12 +71,6 @@ export class StepperHorizontal {
     this.validateComponent();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size);
-    syncStepperHorizontalItemsProps(this.host, this.theme);
-  }
-
   public componentDidLoad(): void {
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
@@ -110,7 +104,12 @@ export class StepperHorizontal {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size);
+    syncStepperHorizontalItemsProps(this.host, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host role="list">
         <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>

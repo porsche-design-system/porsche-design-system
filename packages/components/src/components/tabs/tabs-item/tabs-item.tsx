@@ -21,15 +21,13 @@ export class TabsItem {
     throwIfParentIsNotOfKind(this.host, 'p-tabs');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     const tabs = this.host.parentElement as HTMLPTabsElement;
     if (tabs) {
       attachComponentCss(this.host, getComponentCss, tabs.theme || 'light');
     }
-  }
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

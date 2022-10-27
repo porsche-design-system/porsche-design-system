@@ -46,7 +46,6 @@ export class Banner {
   private inlineNotificationElement: HTMLPInlineNotificationElement;
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
@@ -60,10 +59,6 @@ export class Banner {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-  }
-
   public disconnectedCallback(): void {
     if (!this.persistent) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
@@ -71,6 +66,9 @@ export class Banner {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (

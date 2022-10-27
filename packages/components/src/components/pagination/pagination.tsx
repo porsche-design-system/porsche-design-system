@@ -76,11 +76,6 @@ export class Pagination {
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
-  }
-
   public disconnectedCallback(): void {
     if (this.unlistenResize) {
       this.unlistenResize();
@@ -88,6 +83,9 @@ export class Pagination {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
+
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
 
     const paginationModel = createPaginationModel({

@@ -55,12 +55,6 @@ export class SegmentedControl {
     });
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
-    syncSegmentedControlItemsProps(this.host, this.value, this.backgroundColor, this.theme);
-  }
-
   public componentDidLoad(): void {
     this.host.addEventListener('click', (e) =>
       this.updateValue(getClickedItem(this.host, 'p-segmented-control-item', e.composedPath()))
@@ -72,6 +66,10 @@ export class SegmentedControl {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
+    syncSegmentedControlItemsProps(this.host, this.value, this.backgroundColor, this.theme);
+
     return (
       <Host role="group">
         <slot />

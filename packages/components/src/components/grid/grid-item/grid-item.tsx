@@ -27,16 +27,13 @@ export class GridItem {
     throwIfParentIsNotOfKind(this.host, 'p-grid');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
-
     const grid = this.host.parentElement as HTMLPGridElement;
     if (grid) {
       attachComponentCss(this.host, getComponentCss, this.size, this.offset, grid.gutter);
     }
-  }
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

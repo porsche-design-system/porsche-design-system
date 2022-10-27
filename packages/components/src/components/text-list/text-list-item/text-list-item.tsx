@@ -13,16 +13,14 @@ export class TextListItem {
     throwIfParentIsNotOfKind(this.host, 'p-text-list');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     const list = this.host.parentElement as HTMLPTextListElement;
     if (list) {
       const { listType, orderType } = list;
       const isNestedList = getAttribute(list, 'nested') === '';
       attachComponentCss(this.host, getComponentCss, listType, orderType, isNestedList);
     }
-  }
 
-  public render(): JSX.Element {
     return (
       <Host role="listitem">
         <slot />

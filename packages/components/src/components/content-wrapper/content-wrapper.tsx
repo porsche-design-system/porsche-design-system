@@ -27,12 +27,10 @@ export class ContentWrapper {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.width, this.backgroundColor, this.theme);
-  }
 
-  public render(): JSX.Element {
     return (
       <div class="root">
         <slot />

@@ -83,19 +83,6 @@ export class SelectWrapperDropdown {
     );
   }
 
-  public componentWillRender(): void {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
-      this.isOpen,
-      this.disabled,
-      this.state,
-      this.filter,
-      this.theme
-    );
-  }
-
   public componentDidRender(): void {
     handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
   }
@@ -111,6 +98,17 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
+      this.isOpen,
+      this.disabled,
+      this.state,
+      this.filter,
+      this.theme
+    );
+
     const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';

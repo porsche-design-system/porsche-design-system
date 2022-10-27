@@ -88,7 +88,7 @@ export class Scroller {
     return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -99,9 +99,7 @@ export class Scroller {
       this.scrollIndicatorPosition,
       this.theme
     );
-  }
 
-  public render(): JSX.Element {
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (

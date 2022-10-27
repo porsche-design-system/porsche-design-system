@@ -76,12 +76,10 @@ export class Link {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
-  }
 
-  public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

@@ -39,12 +39,10 @@ export class Grid {
     updateChildren(this.host);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
-  }
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

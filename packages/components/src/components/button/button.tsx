@@ -95,12 +95,10 @@ export class Button {
     );
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {
       class: 'icon',

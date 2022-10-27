@@ -80,19 +80,6 @@ export class TextareaWrapper {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.textarea.disabled,
-      this.hideLabel,
-      this.state,
-      this.isCounterVisible,
-      this.hasCounter
-    );
-  }
-
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
@@ -111,6 +98,17 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.textarea.disabled,
+      this.hideLabel,
+      this.state,
+      this.isCounterVisible,
+      this.hasCounter
+    );
+
     const labelProps = {
       onClick: this.onLabelClick,
     };

@@ -92,11 +92,6 @@ export class Accordion {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
-  }
-
   public componentDidRender(): void {
     if (useResizeObserverFallback) {
       this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
@@ -112,6 +107,9 @@ export class Accordion {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
+
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 

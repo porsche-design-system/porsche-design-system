@@ -42,12 +42,10 @@ export class ToastItem {
     throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
-  }
 
-  public render(): JSX.Element {
     const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

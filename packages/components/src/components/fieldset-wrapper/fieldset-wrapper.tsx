@@ -39,12 +39,10 @@ export class FieldsetWrapper {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, hasLabel(this.host, this.label));
-  }
 
-  public render(): JSX.Element {
     const messageId = 'message';
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 

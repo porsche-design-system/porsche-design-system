@@ -81,7 +81,7 @@ export class Switch {
     );
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -94,9 +94,7 @@ export class Switch {
       this.isDisabledOrLoading,
       this.theme
     );
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (

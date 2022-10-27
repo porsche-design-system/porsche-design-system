@@ -115,11 +115,6 @@ export class TabsBar {
     this.setBarStyle();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
-  }
-
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setBarStyle();
@@ -132,6 +127,9 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (

@@ -130,14 +130,6 @@ export class Carousel {
     this.registerSplideHandlers(this.splide);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfHeadingIsMissing(this.host, this.heading);
-    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-
-    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
-  }
-
   public componentDidUpdate(): void {
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
@@ -151,6 +143,11 @@ export class Carousel {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfHeadingIsMissing(this.host, this.heading);
+    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
+    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const btnProps = {

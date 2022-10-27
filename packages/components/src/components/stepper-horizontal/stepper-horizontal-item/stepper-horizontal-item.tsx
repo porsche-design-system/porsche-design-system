@@ -52,13 +52,11 @@ export class StepperHorizontalItem {
     throwIfParentIsNotOfKind(this.host, 'p-stepper-horizontal');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     throwIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (

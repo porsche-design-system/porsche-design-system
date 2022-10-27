@@ -61,7 +61,7 @@ export class FlexItem {
     throwIfParentIsNotOfKind(this.host, 'p-flex');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -73,9 +73,7 @@ export class FlexItem {
       this.shrink,
       this.flex
     );
-  }
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

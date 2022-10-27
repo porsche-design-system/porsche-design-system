@@ -51,12 +51,10 @@ export class TextList {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.theme);
-  }
 
-  public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);

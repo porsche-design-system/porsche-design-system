@@ -114,25 +114,6 @@ export class LinkPure {
     throwIfInvalidLinkPureUsage(this.host, this.href);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.icon,
-      this.active,
-      this.stretch,
-      this.size,
-      this.weight,
-      this.hideLabel,
-      this.alignLabel,
-      hasSlottedSubline(this.host),
-      !this.href,
-      this.theme
-    );
-  }
-
   public componentDidLoad(): void {
     if (isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
@@ -153,6 +134,23 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.stretch,
+      this.size,
+      this.weight,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      !this.href,
+      this.theme
+    );
+
     const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);

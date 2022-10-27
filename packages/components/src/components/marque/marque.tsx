@@ -36,12 +36,10 @@ export class Marque {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-  }
 
-  public render(): JSX.Element {
     const innerManifest = getInnerManifest(this.trademark);
     const mediumMedia = `(min-width: ${breakpoint.l})`;
 

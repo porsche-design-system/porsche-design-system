@@ -54,16 +54,14 @@ export class Headline {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
-  }
-
   public componentDidLoad(): void {
     setLineHeightOnSizeInherit(this.variant, this.headlineTag);
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
+
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
     return (

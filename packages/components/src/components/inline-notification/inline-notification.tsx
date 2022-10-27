@@ -69,12 +69,10 @@ export class InlineNotification {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
-  }
 
-  public render(): JSX.Element {
     const bannerId = 'banner';
     const labelId = 'label';
     const descriptionId = 'description';

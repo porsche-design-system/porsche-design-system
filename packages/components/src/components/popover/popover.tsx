@@ -51,11 +51,6 @@ export class Popover {
     addDocumentEventListener(this);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction);
-  }
-
   public componentDidRender(): void {
     if (this.open) {
       // calculate / update position only possible after render
@@ -68,6 +63,9 @@ export class Popover {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.direction);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
