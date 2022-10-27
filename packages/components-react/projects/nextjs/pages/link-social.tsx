@@ -52,6 +52,13 @@ const LinkSocialPage: NextPage = (): JSX.Element => {
         <PLinkSocial iconSource="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com">Some label</PLinkSocial>
       </div>
 
+      <div className="playground dark" title="should render with specific icon on dark theme">
+        <PLinkSocial theme="dark" icon="logo-delicious" href="https://www.delicious.com">Some label</PLinkSocial>
+        <PLinkSocial theme="dark" iconSource="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com"
+          >Some label</PLinkSocial
+        >
+      </div>
+
       <div className="playground light" title="should render with multiline label">
         <PLinkSocial style={{ width: '240px' }} icon="logo-facebook" href="https://www.facebook.com">
           Lorem ipsum dolor sit amet, consetetur sadipscing
