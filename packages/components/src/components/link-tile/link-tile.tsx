@@ -92,8 +92,8 @@ export class LinkTile {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes);
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,
