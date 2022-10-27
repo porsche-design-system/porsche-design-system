@@ -219,7 +219,7 @@ describe('componentWillRender', () => {
     component.unit = '123456';
 
     try {
-      component.componentWillRender();
+      component.render();
     } catch {}
 
     expect(spy).toBeCalledWith('123456');

@@ -8,7 +8,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-stepper-horizontal-item') as any;
     component.host.attachShadow({ mode: 'open' });
 
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host);
   });

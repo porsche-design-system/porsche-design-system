@@ -66,7 +66,7 @@ export class ToastItem {
           icon="close"
           hideLabel={true}
           aria-controls={toastId}
-          onClick={this.dismiss.emit}
+          onClick={this.dismiss?.emit}
         >
           Close notification message
         </PrefixedTagNames.pButtonPure>

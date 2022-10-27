@@ -8,7 +8,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-tag');
     component.host.attachShadow({ mode: 'open' });
 
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, 'a,button');
   });

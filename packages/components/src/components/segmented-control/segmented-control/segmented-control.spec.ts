@@ -24,7 +24,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-segmented-control');
     component.host.attachShadow({ mode: 'open' });
 
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, component.value, component.backgroundColor, component.theme);
   });

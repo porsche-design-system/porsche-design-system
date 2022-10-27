@@ -11,7 +11,7 @@ describe('componentWillRender', () => {
     const component = new ButtonPure();
     component.host = document.createElement('p-button-pure');
     component.host.attachShadow({ mode: 'open' });
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
   });

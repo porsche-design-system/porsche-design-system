@@ -128,7 +128,7 @@ describe('componentWillRender', () => {
     component.host.attachShadow({ mode: 'open' });
     component.heading = 'heading';
 
-    component.componentWillRender();
+    component.render();
     expect(spy).toBeCalledWith(component.host, 'heading');
   });
 
@@ -141,7 +141,7 @@ describe('componentWillRender', () => {
     component.host.attachShadow({ mode: 'open' });
     component.disablePagination = true;
 
-    component.componentWillRender();
+    component.render();
     expect(spy).toBeCalledWith(true);
 
     expect(component.disablePagination).toBe(false);

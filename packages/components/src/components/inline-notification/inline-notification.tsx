@@ -107,7 +107,7 @@ export class InlineNotification {
             icon="close"
             hideLabel={true}
             aria-controls={bannerId}
-            onClick={this.dismiss.emit}
+            onClick={this.dismiss?.emit}
           >
             Close notification
           </PrefixedTagNames.pButtonPure>

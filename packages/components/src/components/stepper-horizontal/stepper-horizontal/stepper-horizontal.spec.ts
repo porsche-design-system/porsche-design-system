@@ -85,7 +85,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
 
-    component.componentWillRender();
+    component.render();
     expect(spy).toBeCalledWith(component.host, component.theme);
   });
 });

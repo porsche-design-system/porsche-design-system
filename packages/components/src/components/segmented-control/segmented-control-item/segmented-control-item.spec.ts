@@ -9,7 +9,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-segmented-control-item') as any;
 
     try {
-      component.componentWillRender();
+      component.render();
     } catch {}
 
     expect(spy).toBeCalledWith(component.host, 'value', component.value);

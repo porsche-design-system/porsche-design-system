@@ -24,7 +24,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-link-pure');
     component.host.attachShadow({ mode: 'open' });
     component.href = '#';
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
   });
