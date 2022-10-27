@@ -89,19 +89,16 @@ export const getComponentCss = (
       p: {
         color: getThemedTextColor('dark', 'default'),
         ...textSmall,
+        maxWidth: pxToRemWithUnit(550),
+        margin: 0,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
         ),
-        maxWidth: pxToRemWithUnit(550),
-        margin: 0,
       },
     },
     root: {
       height: 0,
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
-        paddingTop: aspectRatioPaddingTop[ratio],
-      })),
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
       ...hoverMediaQuery({
@@ -111,6 +108,9 @@ export const getComponentCss = (
           }),
         },
       }),
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
+        paddingTop: aspectRatioPaddingTop[ratio],
+      })),
     },
     'image-container': {
       position: 'absolute',
