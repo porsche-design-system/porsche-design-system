@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const PDS_PATCH_START = '//========= PDS PATCH START';
-const PDS_PATCH_EMD = '//========= PDS PATCH END';
+const PDS_PATCH_END = '//========= PDS PATCH END';
 
 /**
  * This script patches stencil core behaviour when initializing web components together with SSR/SSG.
@@ -35,52 +35,51 @@ const patchStencilCore = (): void => {
                             ${PDS_PATCH_START}
                             let ssrInnerHTML = '';
                             if (self.shadowRoot) {
-                                ssrInnerHTML = self.shadowRoot.innerHTML;
-                                self.isSsr = true;
+                              ssrInnerHTML = self.shadowRoot.innerHTML;
+                              self.hasDSR = true;
                             }
-                            ${PDS_PATCH_EMD}\n`;
+                            ${PDS_PATCH_END}\n`;
 
-    const applySnippet = `
+    const metaFlag = `cmpMeta.$flags$ ${PDS_PATCH_START} ${PDS_PATCH_END}`;
+
+    const applySnippetPart1 = `
                             ${PDS_PATCH_START}
-                            if (ssrInnerHTML) {
+                            // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
+                            // and a 2nd attempt fails, therefore this needs to always run without SSR
+                            // and only with SSR for browsers that are not ponyfilled
+                            if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+                                cmpMeta.$flags$ & 16; /* CMP_FLAGS.shadowDelegatesFocus */
+                            ${PDS_PATCH_END}\n`;
+
+    const applySnippetPart2 = `
+                            ${PDS_PATCH_START}
                                 self.shadowRoot.innerHTML = ssrInnerHTML;
                             }
-                            ${PDS_PATCH_EMD}\n`;
+                            ${PDS_PATCH_END}\n\n`;
 
     const cleanupSnippet = `
 
     ${PDS_PATCH_START}
-    if (elm.isSsr) {
+    if (elm.hasDSR) {
         elm.shadowRoot.innerHTML = '';
-        delete elm.isSsr;
+        delete elm.hasDSR;
     }
-    ${PDS_PATCH_EMD}\n`;
+    ${PDS_PATCH_END}\n`;
 
-    // inject extract snippet
-    let newFileContent = fileContent.replace(
-      /\/\/ adding the shadow root build conditionals to minimize runtime\s+if \(supportsShadow\) {/,
-      `$&${extractSnippet}`
-    );
+    const newFileContent = fileContent
+      // inject applying snippets
+      .replace(
+        /(\/\/ adding the shadow root build conditionals to minimize runtime\s+if \(supportsShadow\) {)(\s+if \(BUILD\.shadowDelegatesFocus\) {)([\s\S]+?delegatesFocus: )(?:!!\(cmpMeta\.\$flags\$ & 16).*(,[\s\S]+?;\n)/,
+        `$1${extractSnippet}$2${applySnippetPart1}$3${metaFlag}$4${applySnippetPart2}`
+      )
+      // inject cleanup snippet
+      .replace(
+        /\s+if \(BUILD\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm\);/,
+        `${cleanupSnippet}$&`
+      );
 
-    if (getPatchMarkerCount(newFileContent) !== 1) {
-      throw new Error('Failed patching stencil core. Position for extractSnippet not found.\n');
-    }
-
-    // inject apply snippet
-    newFileContent = newFileContent.replace(/self\.attachShadow\({ mode: 'open' }\);\s+}\n/, `$&${applySnippet}`);
-
-    if (getPatchMarkerCount(newFileContent) !== 2) {
-      throw new Error('Failed patching stencil core. Position for applySnippet not found.\n');
-    }
-
-    // inject cleanup snippet
-    newFileContent = newFileContent.replace(
-      /\s+if \(BUILD\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm\);/,
-      `${cleanupSnippet}$&`
-    );
-
-    if (getPatchMarkerCount(newFileContent) !== 3) {
-      throw new Error('Failed patching stencil core. Position for cleanupSnippet not found.\n');
+    if (getPatchMarkerCount(newFileContent) !== 5) {
+      throw new Error('Failed patching stencil core. Position for snippets not found.\n');
     } else {
       fs.writeFileSync(stencilIndexFilePath, newFileContent);
       process.stdout.write('Successfully patched stencil core.\n');
