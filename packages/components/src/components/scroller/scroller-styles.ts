@@ -18,7 +18,7 @@ export const getComponentCss = (
 
   const actionPrevNextStyles = {
     position: 'relative',
-    margin: '-1px, 0',
+    margin: '-1px, 0', // Fixes gradient height when zoomed
     padding: `${pxToRemWithUnit(4)} 0`,
     pointerEvents: 'none',
     display: 'flex',
@@ -73,7 +73,7 @@ export const getComponentCss = (
     },
     'action-prev': {
       ...actionPrevNextStyles,
-      marginLeft: '-1px',
+      marginLeft: '-1px',  // Fixes gradient height when zoomed
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
       background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
@@ -84,7 +84,7 @@ export const getComponentCss = (
     },
     'action-next': {
       ...actionPrevNextStyles,
-      marginRight: '-1px',
+      marginRight: '-1px',  // Fixes gradient height when zoomed
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
