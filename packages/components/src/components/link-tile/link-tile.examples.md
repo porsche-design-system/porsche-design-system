@@ -59,7 +59,7 @@ The `size` property changes the font size of the description.
       <option disabled>Select font size</option>
       <option value="default">default</option>
       <option value="inherit">inherit</option>
-      <option value="{base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' }">responsive</option>
+      <option value="{base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default'}">responsive</option>
     </select>
   </label>
 </Playground>
@@ -74,7 +74,7 @@ The `weight` property changes the font weight of the description.
       <option disabled>Select font weight</option>
       <option value="regular">regular</option>
       <option value="semibold">semibold</option>
-      <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular' }">responsive</option>
+      <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular'}">responsive</option>
     </select>
 </Playground>
 
@@ -104,6 +104,7 @@ The `label` property stays mandatory when using `compact`, for **accessibility**
     <option disabled>Select compact</option>
     <option value="true">true</option>
     <option value="false">false</option>
+    <option value="{base: true, xs: false, s: true, m: false, l: true, xl: false}">responsive</option>
   </select>
 </Playground>
 
