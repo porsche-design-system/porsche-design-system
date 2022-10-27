@@ -18,11 +18,21 @@
 
 ## ✅ Banner
 
-- Hint: Slotted styles aren't supported (e.g. slotted anchors)
+- Slotted styles aren't supported (e.g. slotted anchors)
+
+## ✅ Accordion
+
+## ✅ Button Group
+
+## ✅ Button Pure
+
+- Prop `size` with value `inherit` is not supported
+
+## ✅ Button
 
 ## ✅ Icon
 
-- Hint: Icons provided by `source` reflect `theme` but no `color` prop
+- Icons provided by `source` will reflect `theme` but no `color` prop
 
 ## ⚠️ Checkbox Wrapper
 
@@ -35,19 +45,6 @@
 ## ⚠️ Grid
 
 - Some spacing not correct
-
-## ✅ Accordion
-
-## ✅ Button Group
-
-## ✅ Button Pure
-
-- Hint: Icons provided by `icon-source` prop aren't supported
-- Hint: Prop `size` with value `inherit` is not supported
-
-## ✅ Button
-
-- Hint: Icons provided by `icon-source` prop aren't supported
 
 ## ⛔ Carousel
 
