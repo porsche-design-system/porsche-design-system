@@ -28,7 +28,7 @@ const generateDSRComponents = (): void => {
       const hasChildren = fileContent.includes('<slot');
 
       let newFileContent = fileContent
-        .replace(/@Component\({[\S\s]+?\)\n/g, '')
+        .replace(/@Component\({[\s\S]+?\)\n/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
@@ -36,16 +36,23 @@ const generateDSRComponents = (): void => {
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
         .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
-        .replace(/\n  public componentWillLoad\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidLoad\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillUpdate\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidUpdate\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidRender\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public disconnectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentShouldUpdate\([\S\s]+?\n  }\n/g, '')
-        .replace(/\n  private (?!get).*{[\S\s]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentWillUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentWillRender\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentDidUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
+        .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
+        .replace(/\n  private (?!get).*{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
-        // .replace(/    validateProps\(this, propTypes\);\n/, '') // temporary
+        .replace(/\s+validateProps\(this, propTypes\);/, '')
+        .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
+        .replace(/\s{2,}(?:warnIf|throwIf|sync[A-Z]).+;/g, '')
+        .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
+        .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
+        .replace(/ as HTML[A-Za-z]+/g, '')
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
@@ -118,11 +125,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
         .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
 
-      // remove leftover lifecycles
-      newFileContent = newFileContent
-        .replace(/\n  public connectedCallback\(\): void {[\S\s]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillRender\(\): void {[\S\s]+?\n  }\n/g, '');
-
       // rewire default slot
       if (hasChildren && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent
@@ -155,7 +157,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlottedChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading)'\)/g,
             `namedSlottedChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -214,6 +216,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-modal') {
+        newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `defaultChildren$1`)
