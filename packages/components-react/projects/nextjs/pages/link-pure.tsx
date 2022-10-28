@@ -50,38 +50,6 @@ const LinkPurePage: NextPage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with different size">
-        <PLinkPure href="https://www.porsche.com" size="x-small">Label size x-small</PLinkPure>
-        <PLinkPure size="x-small"><a href="https://www.porsche.com">Label slotted size x-small</a></PLinkPure>
-        <br />
-        <PLinkPure href="https://www.porsche.com" size="small">Label size small</PLinkPure>
-        <PLinkPure size="small"><a href="https://www.porsche.com">Label slotted size small</a></PLinkPure>
-        <br />
-        <PLinkPure href="https://www.porsche.com" size="medium">Label size medium</PLinkPure>
-        <PLinkPure size="medium"><a href="https://www.porsche.com">Label slotted size medium</a></PLinkPure>
-        <br />
-        <PLinkPure href="https://www.porsche.com" size="large">Label size large</PLinkPure>
-        <PLinkPure size="large"><a href="https://www.porsche.com">Label slotted size large</a></PLinkPure>
-        <br />
-        <PLinkPure href="https://www.porsche.com" size="x-large">Label size x-large</PLinkPure>
-        <PLinkPure size="x-large"><a href="https://www.porsche.com">Label slotted size x-large</a></PLinkPure>
-        <br />
-        <PLinkPure href="https://www.porsche.com" size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PLinkPure>
-        <PLinkPure size="inherit" style={{ fontSize: '48px' }}>
-          <a href="https://www.porsche.com">Label slotted size inherit</a>
-        </PLinkPure>
-      </div>
-
-      <div className="playground light" title="should render with responsive size">
-        <PLinkPure
-          href="https://www.porsche.com"
-          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-          style={{ fontSize: '48px' }}
-        >
-          Label size responsive
-        </PLinkPure>
-      </div>
-
       <div className="playground light" title="should render with different weight">
         <PLinkPure href="https://www.porsche.com" weight="thin">Label weight thin</PLinkPure>
         <PLinkPure weight="thin"><a href="https://www.porsche.com">Label slotted weight thin</a></PLinkPure>
@@ -170,16 +138,6 @@ const LinkPurePage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with no icon">
         <PLinkPure href="https://www.porsche.com" icon="none">Label icon none</PLinkPure>
-        <PLinkPure href="https://www.porsche.com" icon="none" size="inherit" style={{ fontSize: '48px' }}
-          >Label icon none size inherit</PLinkPure
-        >
-        <PLinkPure
-          href="https://www.porsche.com"
-          icon="none"
-          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-          style={{ fontSize: '48px' }}
-          >Label icon none size responsive</PLinkPure
-        >
         <PLinkPure icon="none"><a href="https://www.porsche.com">Label slotted icon none</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="small" icon="none">
           Label icon none
@@ -267,6 +225,51 @@ const LinkPurePage: NextPage = (): JSX.Element => {
           Label stretch
           <p slot="subline">Some subline</p>
         </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should render with different size">
+        <PLinkPure href="https://www.porsche.com" size="x-small">Label size x-small</PLinkPure>
+        <PLinkPure size="x-small"><a href="https://www.porsche.com">Label slotted size x-small</a></PLinkPure>
+        <br />
+        <PLinkPure href="https://www.porsche.com" size="small">Label size small</PLinkPure>
+        <PLinkPure size="small"><a href="https://www.porsche.com">Label slotted size small</a></PLinkPure>
+        <br />
+        <PLinkPure href="https://www.porsche.com" size="medium">Label size medium</PLinkPure>
+        <PLinkPure size="medium"><a href="https://www.porsche.com">Label slotted size medium</a></PLinkPure>
+        <br />
+        <PLinkPure href="https://www.porsche.com" size="large">Label size large</PLinkPure>
+        <PLinkPure size="large"><a href="https://www.porsche.com">Label slotted size large</a></PLinkPure>
+        <br />
+        <PLinkPure href="https://www.porsche.com" size="x-large">Label size x-large</PLinkPure>
+        <PLinkPure size="x-large"><a href="https://www.porsche.com">Label slotted size x-large</a></PLinkPure>
+        <br />
+        <PLinkPure href="https://www.porsche.com" size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PLinkPure>
+        <PLinkPure size="inherit" style={{ fontSize: '48px' }}>
+          <a href="https://www.porsche.com">Label slotted size inherit</a>
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should render with responsive size">
+        <PLinkPure
+          href="https://www.porsche.com"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+        >
+          Label size responsive
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should render with no icon and size inherit">
+        <PLinkPure href="https://www.porsche.com" icon="none" size="inherit" style={{ fontSize: '48px' }}
+          >Label icon none size inherit</PLinkPure
+        >
+        <PLinkPure
+          href="https://www.porsche.com"
+          icon="none"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+          >Label icon none size responsive</PLinkPure
+        >
       </div>
     </>
   );
