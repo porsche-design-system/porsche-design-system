@@ -17,13 +17,9 @@ it.each(extendedViewports)(
     expect(
       await vrtTest(getVisualRegressionTester(viewport), 'modal-scrollable', '/modal-scrollable', {
         javaScriptEnabled: false,
-        scenario: (page) =>
-          page.evaluate(() => {
-            // screenshot triggers resize, so we need to scroll the modal after that
-            window.addEventListener('resize', () => {
-              document.querySelector('p-modal').scrollTo(0, 10000);
-            });
-          }),
+        scenario: async (page) => {
+          await page.tap('#scroll-into-view');
+        },
       })
     ).toBeFalsy();
   }
