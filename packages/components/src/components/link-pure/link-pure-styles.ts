@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import type {
   AlignLabel,
   BreakpointCustomizable,
@@ -7,8 +8,16 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { getFocusJssStyle, getThemedColors, getTransition } from '../../styles';
+import { getFocusJssStyle } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
+
+const slottedAnchorStyles: JssStyle = {
+  display: 'block',
+  position: 'static',
+  textDecoration: 'none',
+  font: 'inherit',
+  color: 'inherit',
+};
 
 export const getComponentCss = (
   icon: LinkButtonPureIconName,
@@ -22,8 +31,6 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
-  const { baseColor, hoverColor, activeColor } = getThemedColors(theme);
-
   return getCss(
     mergeDeep(
       getLinkButtonPureStyles(
@@ -39,18 +46,15 @@ export const getComponentCss = (
         hasSlottedAnchor,
         theme
       ),
-      // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
       {
         '@global': {
           '::slotted': {
+            // TODO:V3 <p> styles should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
             '&(p)': {
               margin: 0,
             },
             '&(a)': {
-              color: active ? activeColor : baseColor, // TODO: chrome hover bug. Remove when fixed.
-            },
-            '&(a:hover)': {
-              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
+              ...slottedAnchorStyles,
             },
           },
         },
@@ -63,17 +67,11 @@ export const getComponentCss = (
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      /**
-       * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
-       */
-      '& a': {
-        display: 'block',
-        position: 'static',
-        textDecoration: 'none',
-        font: 'inherit',
-        // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-        transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
-        ...getFocusJssStyle({ pseudo: '::before', offset: 1 }),
+      // this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
+      '& a': getFocusJssStyle({ pseudo: '::before', offset: 1 }),
+      // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway
+      '& * a': {
+        ...slottedAnchorStyles,
       },
     })
   );
