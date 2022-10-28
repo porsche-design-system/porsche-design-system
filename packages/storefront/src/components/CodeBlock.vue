@@ -5,6 +5,7 @@
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
     </p-tabs-bar>
     <pre
+      v-if="showCodeMarkup"
       :class="highlightedLanguage"
       tabindex="0"
       role="region"
@@ -27,11 +28,13 @@
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
+    @Prop({ default: true }) public showCodeMarkup!: boolean;
 
     allFrameworks: Required<FrameworkMarkup> = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React',
+      'next-js': 'Next JS',
       shared: 'Shared',
     };
 

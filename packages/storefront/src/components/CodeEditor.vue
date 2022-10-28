@@ -6,7 +6,7 @@
     :disabled="framework === 'shared'"
     :loading="isLoading"
     @click="onButtonClick()"
-    >Edit in StackBlitz
+    >{{ buttonLabel }}
   </p-button>
 </template>
 
@@ -30,6 +30,7 @@
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
+    @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
 
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');

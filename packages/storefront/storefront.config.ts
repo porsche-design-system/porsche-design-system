@@ -445,6 +445,8 @@ export const config: StorefrontConfig = {
     Troubleshooting: [() => import('@/pages/help/troubleshooting.md')],
     // @ts-ignore
     'Browser Compatibility': [() => import('@/pages/basics/browser-compatibility.md')],
+    // @ts-ignore
+    'Bug Report': [() => import('@/pages/help/bug-report.md')],
   },
   Accessibility: {
     // @ts-ignore

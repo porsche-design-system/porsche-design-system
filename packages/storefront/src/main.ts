@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
+import OpenInStackBlitz from '@/components/OpenInStackBlitz.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
 import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
@@ -40,6 +41,7 @@ Vue.use({
     vue.component('ColorBadge', ColorBadge);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
+    vue.component('OpenInStackBlitz', OpenInStackBlitz);
     vue.component('TableOfContents', TableOfContents);
     vue.component('PartialDocs', PartialDocs);
   },
