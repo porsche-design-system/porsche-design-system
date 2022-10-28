@@ -19,13 +19,16 @@ const getHost = () => selectNode(page, 'p-link-tile');
 const getRoot = () => selectNode(page, 'p-link-tile >>> .root');
 const getLink = () => selectNode(page, 'p-link-tile >>> a');
 
+const imgSrc =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=';
+
 const initLinkTile = (opts?: { compact?: boolean }): Promise<void> => {
   const { compact = false } = opts || {};
 
   return setContentWithDesignSystem(
     page,
     `<p-link-tile href="#" label="Some label" description="Some description" compact="${compact}" >
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="/>
+  <img src="${imgSrc}"/>
 </p-link-tile>`
   );
 };
@@ -52,6 +55,24 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  it('should work without unnecessary round trips on init for compact responsive', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-link-tile href="#" label="Some label" description="Some description" compact="{ base: true, s: false, l: true }" >
+  <img src="${imgSrc}"/>
+</p-link-tile>`
+    );
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
+    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
+    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
