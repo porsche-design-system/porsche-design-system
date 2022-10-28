@@ -4,11 +4,11 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-/*
+
 it.each(extendedViewports)('should have no visual regression for basic modal for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-basic', '/#modal-basic')).toBeFalsy();
 });
-*/
+
 it.each(extendedViewports)(
   'should have no visual regression for scrollable modal for viewport %s',
   async (viewport) => {
@@ -21,7 +21,7 @@ it.each(extendedViewports)(
     ).toBeFalsy();
   }
 );
-/*
+
 it('should have no visual regression for prefixed modal', async () => {
   // single resolution
   expect(await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/#modal-prefixed')).toBeFalsy();
@@ -73,4 +73,3 @@ it.each(extendedViewports)(
     ).toBeFalsy();
   }
 );
-*/

@@ -8,7 +8,8 @@ test.describe('should have no visual regression for basic modal', async () => {
 test.describe('should have no visual regression for scrollable modal', async () => {
   await executeVisualRegressionTest('modal-scrollable', {
     scenario: async (page) => {
-      await page.tap('#scroll-into-view');
+      const el = await page.$('#scroll-into-view');
+      await el.scrollIntoViewIfNeeded();
     },
   });
 });
