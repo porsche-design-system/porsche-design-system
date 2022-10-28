@@ -3,7 +3,7 @@
     <!--    <CodeBlock :frameworks="['vanilla-js', 'angular', 'react', 'next-js']" :show-code-markup="false"></CodeBlock>-->
     <!--    <slot />-->
     <p-select-wrapper label="Choose Framework">
-      <select name="some-name">
+      <select v-model="framework" name="some-name">
         <option value="vanilla-js">Vanilla Js</option>
         <option value="angular">Angular</option>
         <option value="react">React</option>
@@ -11,16 +11,17 @@
       </select>
     </p-select-wrapper>
     <p-select-wrapper label="Choose PDS version">
-      <select name="some-name">
-        <option value="14.2.1">14.2.1</option>
-        <option value="16.0.0">16.0.0</option>
+      <select v-model="pdsVersion" name="some-name">
+        <option value="2.14.0">2.14.0</option>
+        <option value="2.16.0">2.16.0</option>
         <option value="latest">latest</option>
       </select>
     </p-select-wrapper>
     <CodeEditor
-      :framework="activeFramework"
       :button-label="'Open template in StackBlitz'"
       :markup="markup"
+      :framework="framework"
+      :pds-version="pdsVersion"
     ></CodeEditor>
   </div>
 </template>
@@ -37,10 +38,8 @@
   })
   export default class OpenInStackBlitz extends Vue {
     markup = '<p>Place your reproduction code here</p>';
-
-    public get activeFramework(): Framework {
-      return this.$store.getters.selectedFramework;
-    }
+    framework = 'vanilla-js';
+    pdsVersion = 'latest';
   }
 </script>
 

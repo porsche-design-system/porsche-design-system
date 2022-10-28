@@ -94,11 +94,16 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (
+  pdsVersion: string,
+  externalDependencies: ExternalDependency[]
+): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
     ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
+      '@porsche-design-system/components-react': !!pdsVersion
+        ? pdsVersion
+        : dependencies['@porsche-design-system/components-react'],
     }),
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
@@ -117,6 +122,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     sharedImportKeys,
     externalDependencies,
     porscheDesignSystemBundle,
+    pdsVersion,
   } = opts;
 
   return {
@@ -131,7 +137,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     template: 'create-react-app',
     title,
     description,
-    dependencies: getDependencies(externalDependencies),
+    dependencies: getDependencies(pdsVersion, externalDependencies),
     openFile: 'App.tsx',
   };
 };

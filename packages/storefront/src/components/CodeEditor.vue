@@ -31,6 +31,7 @@
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
     @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
+    @Prop({ default: 'latest' }) public pdsVersion!: string; // TODO typing?
 
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
@@ -45,6 +46,7 @@
         externalDependencies: this.externalStackBlitzDependencies,
         backgroundColorScheme: this.colorScheme,
         sharedImportKeys: this.sharedImportKeys,
+        pdsVersion: this.pdsVersion,
       });
       this.isLoading = false;
     }
