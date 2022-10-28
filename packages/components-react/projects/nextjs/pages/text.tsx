@@ -5,21 +5,6 @@ import { PText } from '@porsche-design-system/components-react/ssr';
 const TextPage: NextPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground" title="should show text in different sizes">
-        <PText size="x-small">The quick brown fox jumps over the lazy dog</PText>
-        <PText>The quick brown fox jumps over the lazy dog</PText>
-        <PText size="medium">The quick brown fox jumps over the lazy dog</PText>
-        <PText size="large">The quick brown fox jumps over the lazy dog</PText>
-        <PText size="x-large">The quick brown fox jumps over the lazy dog</PText>
-        <PText size="inherit" style={{ fontSize: '48px' }}>The quick brown fox jumps over the lazy dog</PText>
-      </div>
-
-      <div className="playground" title="should show text in different sizes on different viewports">
-        <PText size={{ base: 'small', m: 'inherit', l: 'medium' }} style={{ fontSize: '80px' }}>
-          The quick brown fox jumps over the lazy dog
-        </PText>
-      </div>
-
       <div className="playground" title="should show whole text in thin and bold">
         <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
         <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
@@ -110,6 +95,21 @@ const TextPage: NextPage = (): JSX.Element => {
           <p style={{ overflowWrap: 'normal', wordWrap: 'normal', hyphens: 'manual' }}>
             This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
           </p>
+        </PText>
+      </div>
+
+      <div className="playground" title="should show text in different sizes">
+        <PText size="x-small">The quick brown fox jumps over the lazy dog</PText>
+        <PText>The quick brown fox jumps over the lazy dog</PText>
+        <PText size="medium">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="large">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="x-large">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="inherit" style={{ fontSize: '48px' }}>The quick brown fox jumps over the lazy dog</PText>
+      </div>
+
+      <div className="playground" title="should show text in different sizes on different viewports">
+        <PText size={{ base: 'small', m: 'inherit', l: 'medium' }} style={{ fontSize: '80px' }}>
+          The quick brown fox jumps over the lazy dog
         </PText>
       </div>
     </>
