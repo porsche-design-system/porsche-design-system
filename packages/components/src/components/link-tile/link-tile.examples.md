@@ -69,13 +69,13 @@ The `size` property changes the font size of the description.
 The `weight` property changes the font weight of the description.
 
 <Playground :markup="weightMarkup">
-    <p-text>Select font weight:</p-text>
-    <select v-model="weight" aria-label="Select font weight">
-      <option disabled>Select font weight</option>
-      <option value="regular">regular</option>
-      <option value="semibold">semibold</option>
-      <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular'}">responsive</option>
-    </select>
+  <p-text>Select font weight:</p-text>
+  <select v-model="weight" aria-label="Select font weight">
+    <option disabled>Select font weight</option>
+    <option value="regular">regular</option>
+    <option value="semibold">semibold</option>
+    <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular'}">responsive</option>
+  </select>
 </Playground>
 
 ## Gradient
