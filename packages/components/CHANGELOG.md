@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Link Tile`
 
+#### Fixed
+
+- `Scroller` bug where scrollable content was not fully hidden by the gradient, when zoomed into the page.
+
 #### Changed
 
 - Removed `!important` keyword from css property `display` of `Link Pure` and `Button Pure`
