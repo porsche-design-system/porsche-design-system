@@ -70,10 +70,15 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (
+  pdsVersion: string,
+  externalDependencies: ExternalDependency[]
+): StackblitzProjectDependencies => {
   return {
     ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+      '@porsche-design-system/components-js': !!pdsVersion
+        ? pdsVersion
+        : dependencies['@porsche-design-system/components-js'],
     }),
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
@@ -88,6 +93,7 @@ export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptio
     sharedImportKeys,
     externalDependencies,
     porscheDesignSystemBundle,
+    pdsVersion,
   } = opts;
 
   return {
@@ -99,7 +105,7 @@ export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptio
     template: 'javascript',
     title,
     description,
-    dependencies: getDependencies(externalDependencies),
+    dependencies: getDependencies(pdsVersion, externalDependencies),
     openFile: 'index.html',
   };
 };
