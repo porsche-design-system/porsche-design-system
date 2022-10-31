@@ -14,7 +14,7 @@
 | **Fieldset Wrapper**     | ✅     |                                                                                                                                                                                    |
 | **Flex**                 | ✅     |                                                                                                                                                                                    |
 | **Grid**                 | ⚠️     | - Custom `gutter` isn't supported                                                                                                                                                  |
-| **Headline**             | ✅     | - Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                                                         |
+| **Headline**             | ✅     | - `variant="inherit"` is not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                             |
 | **Icon**                 | ✅     | - Icons provided by `source` will reflect `theme` but no `color` prop                                                                                                              |
 | **Inline Notification**  | ✅     | - Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                                                         |
 | **Link**                 | ✅     |                                                                                                                                                                                    |
