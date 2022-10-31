@@ -34,7 +34,6 @@
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React',
-      'next-js': 'Next JS',
       shared: 'Shared',
     };
 
