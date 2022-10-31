@@ -32,7 +32,7 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
   const { semiBold: fontWeightSemiBold } = fontWeight;
   return textSize === 'inherit'
     ? {
-        lineHeight: 1.3333333333, // use some default line-height to improve SSR support, which will be overwritten after hydration
+        lineHeight: textSize,
         fontSize: textSize,
         fontWeight: fontWeightSemiBold,
       }
