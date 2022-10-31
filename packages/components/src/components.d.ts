@@ -23,6 +23,7 @@ import { IconAriaAttributes } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttributes } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
+import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttributes } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -589,6 +590,60 @@ export namespace Components {
           * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PLinkTile {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: LinkTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Aspect ratio of the link-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * href of the `<a>`.
+         */
+        "href": string;
+        /**
+          * Label of the <a />.
+         */
+        "label": string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<LinkTileSize>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -1312,6 +1367,12 @@ declare global {
         prototype: HTMLPLinkSocialElement;
         new (): HTMLPLinkSocialElement;
     };
+    interface HTMLPLinkTileElement extends Components.PLinkTile, HTMLStencilElement {
+    }
+    var HTMLPLinkTileElement: {
+        prototype: HTMLPLinkTileElement;
+        new (): HTMLPLinkTileElement;
+    };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -1531,6 +1592,7 @@ declare global {
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
+        "p-link-tile": HTMLPLinkTileElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
@@ -2132,6 +2194,60 @@ declare namespace LocalJSX {
           * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PLinkTile {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: LinkTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
+          * Aspect ratio of the link-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * href of the `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Label of the <a />.
+         */
+        "label"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<LinkTileSize>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -2737,6 +2853,7 @@ declare namespace LocalJSX {
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
+        "p-link-tile": PLinkTile;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-pagination": PPagination;
@@ -2796,6 +2913,7 @@ declare module "@stencil/core" {
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
+            "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;

@@ -13,6 +13,7 @@ import {
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
+  getBackfaceVisibilityJssStyle,
 } from './common-styles';
 
 describe('getTransition()', () => {
@@ -124,5 +125,11 @@ describe('getTextHiddenJssStyle()', () => {
 describe('getFormTextHiddenJssStyle()', () => {
   it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
     expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+  });
+});
+
+describe('getBackfaceVisibilityJssStyle()', () => {
+  it('should return correct styles', () => {
+    expect(getBackfaceVisibilityJssStyle()).toMatchSnapshot();
   });
 });

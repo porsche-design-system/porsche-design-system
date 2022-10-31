@@ -6,7 +6,9 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   getExternalDependenciesOrThrow,
-  isStableStorefrontRelease, convertImportPaths,
+  isStableStorefrontRelease,
+  convertImportPaths,
+  transformSrcAndSrcsetOfImgAndSourceTags,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
 import * as helper from '../../src/utils/stackblitz/helper';
@@ -156,5 +158,34 @@ describe('convertImportPaths()', () => {
     jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'react')).toMatchSnapshot();
+  });
+});
+
+describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
+  it.each<[string, string]>([
+    [
+      '<source media="(min-width:400px)" srcset="img/image.png">',
+      '<source media="(min-width:400px)" srcset="http://localhost/img/image.png">',
+    ],
+    ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
+  ])('should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters', (input, output) => {
+    const div = document.createElement('div');
+    const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
+    const getAttributeSpy = jest.spyOn(div, 'getAttribute');
+
+    expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
+    expect(querySelectorSpy).toBeCalledWith('base');
+    expect(getAttributeSpy).toBeCalledWith('href');
+  });
+
+  it.each<string>([
+    '<source media="(min-width:400px)" srcset="http://image.png">',
+    '<source media="(min-width:400px)" srcset="https://image.png">',
+    '<source media="(min-width:400px)" srcset="./img/image.png">',
+    '<img src="http://image.png" alt="Some alt text">',
+    '<img src="https://image.png" alt="Some alt text">',
+    '<img src="https:./img/image.png" alt="Some alt text">',
+  ])('should not transform src and srcset for input: %s ', (input) => {
+    expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(input);
   });
 });

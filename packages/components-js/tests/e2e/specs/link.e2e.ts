@@ -237,7 +237,6 @@ describe('accessibility', () => {
       'aria-label': 'Some more detailed label',
     });
     await waitForStencilLifecycle(page);
-
     await expectA11yToMatchSnapshot(page, link);
   });
 
@@ -249,18 +248,6 @@ describe('accessibility', () => {
     await setProperty(host, 'hide-label', 'true');
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, link);
-  });
-
-  it('should expose correct accessibility tree if accessibility properties are set', async () => {
-    await initLink();
-    const host = await getHost();
-    const link = await getLink();
-
-    await setProperty(host, 'aria', {
-      'aria-label': 'Some more detailed label',
-    });
-    await waitForStencilLifecycle(page);
     await expectA11yToMatchSnapshot(page, link);
   });
 });

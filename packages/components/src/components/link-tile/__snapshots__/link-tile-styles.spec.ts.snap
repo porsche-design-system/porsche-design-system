@@ -1,0 +1,707 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' }, size: {
+  base: 'inherit',
+  xs: 'default',
+  s: 'inherit',
+  m: 'default',
+  l: 'inherit',
+  xl: 'default'
+}, weight: {
+  base: 'semibold',
+  xs: 'regular',
+  s: 'semibold',
+  m: 'regular',
+  l: 'semibold',
+  xl: 'regular'
+}, align: top, isCompact: { base: true, xs: false, s: true, m: false, l: true, xl: false } and hasGradient: true 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+@media(min-width:480px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.5555555556;
+    font-weight: 400;
+  }
+}
+
+@media(min-width:760px) {
+  p {
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: 600;
+  }
+}
+
+@media(min-width:1000px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.5555555556;
+    font-weight: 400;
+  }
+}
+
+@media(min-width:1300px) {
+  p {
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: 600;
+  }
+}
+
+@media(min-width:1760px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.5555555556;
+    font-weight: 400;
+  }
+}
+
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 100%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 1.5rem 1.5rem 4.5rem;
+  gap: 1.5rem;
+  background: linear-gradient(rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  align-items: center;
+  grid-template-columns: auto 1.5rem;
+  grid-template-rows: auto;
+}
+.link-pure {
+  display: inline-block;
+}
+.link {
+  display: none;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:480px) {
+  .root {
+    padding-top: 75%;
+  }
+  .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+  }
+  .link-pure {
+    display: none;
+  }
+  .link {
+    display: inline-flex;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    padding-top: 133.33%;
+  }
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    background: linear-gradient(rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+    align-items: center;
+    grid-template-columns: auto 1.5rem;
+    grid-template-rows: auto;
+    top: 0;
+  }
+  .link-pure {
+    display: inline-block;
+  }
+  .link {
+    display: none;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    padding-top: 56.25%;
+  }
+  .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+  }
+  .link-pure {
+    display: none;
+  }
+  .link {
+    display: inline-flex;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    padding-top: 177.75%;
+  }
+  .content {
+    background: linear-gradient(rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+    align-items: center;
+    grid-template-columns: auto 1.5rem;
+    grid-template-rows: auto;
+    top: 0;
+  }
+  .link-pure {
+    display: inline-block;
+  }
+  .link {
+    display: none;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    padding-top: 100%;
+  }
+  .content {
+    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+  }
+  .link-pure {
+    display: none;
+  }
+  .link {
+    display: inline-flex;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size: inherit, weight: regular, align: bottom, isCompact: false and hasGradient: true 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: 400;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 100%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 4.5rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-pure {
+  display: none;
+}
+.link {
+  display: inline-flex;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: default, weight: semibold, align: top, isCompact: false and hasGradient: true 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5555555556;
+  font-weight: 600;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 133.33%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 1.5rem 1.5rem 4.5rem;
+  gap: 1.5rem;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-pure {
+  display: none;
+}
+.link {
+  display: inline-flex;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: true 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5555555556;
+  font-weight: 600;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 75%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 4.5rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-pure {
+  display: none;
+}
+.link {
+  display: inline-flex;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: false 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5555555556;
+  font-weight: 600;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 177.75%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 4.5rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-pure {
+  display: none;
+}
+.link {
+  display: inline-flex;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size: inherit, weight: regular, align: top, isCompact: true and hasGradient: false 1`] = `
+":host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: 400;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 56.25%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 1.5rem 1.5rem 4.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  grid-template-columns: auto 1.5rem;
+  grid-template-rows: auto;
+}
+.link-pure {
+  display: inline-block;
+}
+.link {
+  display: none;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
+`;

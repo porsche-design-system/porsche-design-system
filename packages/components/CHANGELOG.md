@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Link Tile`
+
+#### Changed
+
+- Removed `!important` keyword from css property `display` of `Link Pure` and `Button Pure`
+
 ### [2.16.3] - 2022-10-21
 
 ### [2.16.3-rc.0] - 2022-10-21
