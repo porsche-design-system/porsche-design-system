@@ -173,6 +173,7 @@ export class LinkPure {
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
+              theme={this.theme}
               size="inherit"
               name={this.icon}
               source={this.iconSource}
