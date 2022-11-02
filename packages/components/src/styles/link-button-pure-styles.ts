@@ -139,7 +139,7 @@ export const getLinkButtonPureStyles = (
         position: 'relative',
         outline: addImportantToRule(0),
         ...buildResponsiveStyles(hasSubline ? false : stretch, (responsiveStretch: boolean) => ({
-          display: addImportantToRule(responsiveStretch ? 'block' : 'inline-block'),
+          display: responsiveStretch ? 'block' : 'inline-block',
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
       },

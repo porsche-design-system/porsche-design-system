@@ -10,7 +10,7 @@ export type BreakpointValues<T> = {
 // string is needed in order to pass and parse objects via prop decorator
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
-type BreakpointValue = string | number | boolean;
+export type BreakpointValue = string | number | boolean;
 
 export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
@@ -21,7 +21,7 @@ export const parseJSON = (
       return JSON.parse(
         prop
           .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]?([\w]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
+          .replace(/[\s"]?([a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
       );
     } catch {
       // prop is string, e.g. "block" or "inline"

@@ -37,6 +37,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       my-prefix-p-banner {
         --p-banner-position-type: static;
       }
+      p-link-tile,
+      my-prefix-p-link-tile {
+        max-width: 400px;
+      }
     `,
   ],
   template: `
@@ -257,6 +261,15 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <div>Slide 2</div>
             <div>Slide 3</div>
           </p-carousel>
+        </div>
+
+        <div class="playground light" title="should render default link-tile">
+          <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [alt]="'Beach'"
+            />
+          </p-link-tile>
         </div>
       </div>
 
@@ -479,6 +492,15 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <div>Slide 2</div>
             <div>Slide 3</div>
           </my-prefix-p-carousel>
+        </div>
+
+        <div class="playground light" title="should render default link-tile with custom prefix">
+          <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [alt]="'Beach'"
+            />
+          </my-prefix-p-link-tile>
         </div>
       </div>
     </div>

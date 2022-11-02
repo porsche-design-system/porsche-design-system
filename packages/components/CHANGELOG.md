@@ -9,6 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.17.0] - 2022-10-31
+
+### [2.17.0-rc.0] - 2022-10-31
+
+#### Added
+
+- `Link Tile`
+
+#### Fixed
+
+- `Scroller` bug where scrollable content was not fully hidden by the gradient, when zoomed into the page.
+
+#### Changed
+
+- Removed `!important` keyword from css property `display` of `Link Pure` and `Button Pure`
+
 ### [2.16.3] - 2022-10-21
 
 ### [2.16.3-rc.0] - 2022-10-21

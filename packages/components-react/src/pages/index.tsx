@@ -29,6 +29,7 @@ import { InlineNotificationPage } from './InlineNotification';
 import { LinkPage } from './Link';
 import { LinkPurePage } from './LinkPure';
 import { LinkSocialPage } from './LinkSocial';
+import { LinkTilePage } from './LinkTile';
 import { MarquePage } from './Marque';
 import { ModalBasicPage } from './ModalBasic';
 import { ModalFullscreenPage } from './ModalFullscreen';
@@ -155,6 +156,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Social',
     path: '/link-social',
     element: <LinkSocialPage />,
+  },
+  {
+    name: 'Link Tile',
+    path: '/link-tile',
+    element: <LinkTilePage />,
   },
   {
     name: 'Marque',

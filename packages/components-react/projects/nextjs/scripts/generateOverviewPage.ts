@@ -12,8 +12,8 @@ const generateOverviewPage = (): void => {
   const newFileContent =
     overviewFileContent
       .replace("import { pollComponentsReady } from '../pollComponentsReady';", "import type { NextPage } from 'next';")
-      .replace(/\nexport (const OverviewPage)/, pollComponentsReadyFileContent + '\n$1: NextPage') +
-    '\nexport default OverviewPage;\n';
+      .replace(/\nexport (const OverviewPage)/, pollComponentsReadyFileContent + '\n$1: NextPage')
+      .replace(/\.\/assets\//g, '/static/') + '\nexport default OverviewPage;\n';
 
   const targetFileName = '../pages/overview.tsx';
   const targetFilePath = path.resolve(__dirname, targetFileName);

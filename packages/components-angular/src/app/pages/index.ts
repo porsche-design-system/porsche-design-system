@@ -41,6 +41,7 @@ import { InlineNotificationComponent } from './inline-notification.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
+import { LinkTileComponent } from './link-tile.component';
 import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
 import { ModalFullscreenComponent } from './modal-fullscreen.component';
@@ -98,6 +99,7 @@ export const generatedPages = [
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
+  LinkTileComponent,
   MarqueComponent,
   ModalBasicComponent,
   ModalFullscreenComponent,
@@ -226,6 +228,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Link Social',
     path: 'link-social',
     component: LinkSocialComponent,
+  },
+  {
+    name: 'Link Tile',
+    path: 'link-tile',
+    component: LinkTileComponent,
   },
   {
     name: 'Marque',
