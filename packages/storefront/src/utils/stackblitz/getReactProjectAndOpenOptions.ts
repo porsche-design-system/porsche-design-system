@@ -101,7 +101,7 @@ export const getDependencies = (
   // TODO: pick dependencies?
   return {
     ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-react': !!pdsVersion
+      '@porsche-design-system/components-react': !pdsVersion
         ? pdsVersion
         : dependencies['@porsche-design-system/components-react'],
     }),

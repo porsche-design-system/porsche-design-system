@@ -76,7 +76,7 @@ export const getDependencies = (
 ): StackblitzProjectDependencies => {
   return {
     ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-js': !!pdsVersion
+      '@porsche-design-system/components-js': !pdsVersion
         ? pdsVersion
         : dependencies['@porsche-design-system/components-js'],
     }),
