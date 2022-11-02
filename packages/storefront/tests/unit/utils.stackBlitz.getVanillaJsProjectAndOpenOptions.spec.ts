@@ -4,7 +4,8 @@ import {
   getIndexHtml,
   getDependencies,
   getVanillaJsProjectAndOpenOptions,
-  replaceSharedAsyncFunctionWithConstants, getIndexJs,
+  replaceSharedAsyncFunctionWithConstants,
+  getIndexJs,
 } from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';
 import { getSharedImportConstants } from '../../src/utils/stackblitz/helper';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
@@ -181,9 +182,10 @@ describe('getIndexJs()', () => {
 describe('getDependencies()', () => {
   it('should call getExternalDependencies() with correct parameters', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
+    const pdsVersion = '';
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(pdsVersion, externalDependencies);
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
@@ -194,8 +196,20 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
-      ...{ "@porsche-design-system/components-js": "0.0.0" },
+    expect(getDependencies('', ['imask'])).toEqual({
+      ...{ '@porsche-design-system/components-js': '0.0.0' },
+      ...mockedDependency,
+    });
+  });
+
+  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…) and chosen pds version for bug reporting', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    const mockedDependency = { mockedImask: '0.0.0' };
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+    expect(getDependencies('2.16.0', ['imask'])).toEqual({
+      ...{ '@porsche-design-system/components-js': '2.16.0' },
       ...mockedDependency,
     });
   });
@@ -206,7 +220,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies('', ['imask'])).toEqual({
       ...mockedDependency,
     });
   });
@@ -215,7 +229,7 @@ describe('getDependencies()', () => {
 describe('getVanillaJsProjectAndOpenOptions()', () => {
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     porscheDesignSystemBundle: {
-      '@porsche-design-system/components-js/package.json': 'some package.json'
+      '@porsche-design-system/components-js/package.json': 'some package.json',
     },
     markup: 'Some markup',
     description: 'Some description',
@@ -223,10 +237,11 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
-    const { markup, globalStyles, externalDependencies, sharedImportKeys } = stackBlitzFrameworkOpts;
+    const { markup, globalStyles, externalDependencies, sharedImportKeys, pdsVersion } = stackBlitzFrameworkOpts;
 
     const getIndexHtmlSpy = jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtml');
     const getDependenciesSpy = jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getDependencies');
@@ -235,7 +250,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
     expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys);
-    expect(getDependenciesSpy).toBeCalledWith(externalDependencies);
+    expect(getDependenciesSpy).toBeCalledWith(pdsVersion, externalDependencies);
     expect(getIndexJsSpy).toBeCalled();
   });
 

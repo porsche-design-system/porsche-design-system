@@ -183,9 +183,10 @@ describe('getDependencies()', () => {
 
   it('should call getExternalDependencies() with correct parameters', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
+    const pdsVersion = '';
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(pdsVersion, externalDependencies);
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
@@ -196,8 +197,23 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies('', ['imask'])).toEqual({
       ...expectedStableReleaseDependencies,
+      ...mockedDependency,
+    });
+  });
+
+  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…) and chosen pds version for bug reporting', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    const mockedDependency = { mockedImask: '0.0.0' };
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+    expect(getDependencies('2.16.0', ['imask'])).toEqual({
+      ...{
+        ...expectedDefaultDependencies,
+        '@porsche-design-system/components-react': '2.16.0',
+      },
       ...mockedDependency,
     });
   });
@@ -208,7 +224,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies('', ['imask'])).toEqual({
       ...expectedDefaultDependencies,
       ...mockedDependency,
     });
@@ -227,6 +243,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
@@ -246,7 +263,10 @@ describe('getReactProjectAndOpenOptions()', () => {
     );
     expect(getIndexTsxSpy).toBeCalled();
     expect(getTsconfigJsonSpy).toBeCalled();
-    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
+    expect(getDependenciesSpy).toBeCalledWith(
+      stackBlitzFrameworkOpts.pdsVersion,
+      stackBlitzFrameworkOpts.externalDependencies
+    );
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {
