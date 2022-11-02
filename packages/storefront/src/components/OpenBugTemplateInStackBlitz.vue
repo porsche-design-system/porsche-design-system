@@ -1,14 +1,15 @@
 <template>
   <div class="container">
-    <p-select-wrapper label="Choose Framework">
+    <div>
+      <p-text>Choose your Framework:</p-text>
       <!-- TODO: reuse usedFrameworks as utility-->
-      <select v-model="framework" name="some-name">
-        <option value="vanilla-js">Vanilla Js</option>
-        <option value="angular">Angular</option>
-        <option value="react">React</option>
-      </select>
-    </p-select-wrapper>
-    <p-select-wrapper label="Choose PDS version">
+      <p-segmented-control :value="framework" v-model="framework" aria-label="Choose your Framework:">
+        <p-segmented-control-item value="vanilla-js">Vanilla Js</p-segmented-control-item>
+        <p-segmented-control-item value="angular">Angular</p-segmented-control-item>
+        <p-segmented-control-item value="react">React</p-segmented-control-item>
+      </p-segmented-control>
+    </div>
+    <p-select-wrapper label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion" name="some-name">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
@@ -54,10 +55,16 @@
   .container {
     display: grid;
     gap: 1rem;
-    justify-items: start;
     margin-top: 1rem;
+  }
+  p-segmented-control {
+    margin-top: 0.25rem;
   }
   p-select-wrapper {
     min-width: 200px;
+    justify-self: start;
+  }
+  p-button {
+    justify-self: start;
   }
 </style>
