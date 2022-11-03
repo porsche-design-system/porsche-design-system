@@ -31,7 +31,7 @@
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
     @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
-    @Prop({ default: '' }) public pdsVersion!: string; // TODO typing?
+    @Prop({ default: '' }) public pdsVersion!: string;
 
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
