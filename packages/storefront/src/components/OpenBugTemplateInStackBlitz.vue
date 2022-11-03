@@ -40,9 +40,10 @@
     frameworkNameMap = { 'vanilla-js': 'Vanilla Js', angular: 'Angular', react: 'React' };
 
     private async getVersions(): Promise<string[]> {
-      return fetch('https://registry.npmjs.org/@porsche-design-system/components-js')
-        .then((res) => res.json())
-        .then((res) => Object.keys(res.versions));
+      const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js');
+      const json = await response.json();
+      const rc = /rc/;
+      return Object.keys(json.versions).filter((version) => !rc.test(version));
     }
 
     async mounted(): Promise<void> {
