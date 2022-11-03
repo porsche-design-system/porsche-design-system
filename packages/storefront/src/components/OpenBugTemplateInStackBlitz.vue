@@ -61,7 +61,6 @@
     margin-top: -0.75rem;
   }
   p-select-wrapper {
-    min-width: 200px;
     justify-self: start;
   }
   p-button {
