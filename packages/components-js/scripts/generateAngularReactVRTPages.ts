@@ -94,8 +94,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .map(([fileName, fileContent]) => {
-      const isSkeleton = fileName.includes('skeleton');
-
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
@@ -123,7 +121,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
-      const usesSetAllReady = !isSkeleton && script?.includes('componentsReady()');
+      const usesSetAllReady = script?.includes('componentsReady()');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -146,7 +144,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           .join(', ');
 
         const pdsImports = [
-          (usesSetAllReady || isSkeleton || usesComponentsReady) && 'componentsReady',
+          (usesSetAllReady || usesComponentsReady) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -227,7 +225,7 @@ $2`
         fileContent = fileContent
           .replace(/(\n)([ <>]+)/g, '$1    $2') // fix indentation
           .replace(/\\/g, '\\\\') // fix \\ in generated output
-          .replace(/\`/g, '\\`'); // fix \` in generated output
+          .replace(/`/g, '\\`'); // fix \` in generated output
 
         fileContent = `${comment}
 ${imports}
@@ -270,8 +268,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-          (usesSetAllReady || isSkeleton || usesComponentsReady) &&
-            `import { pollComponentsReady } from '../pollComponentsReady';`,
+          (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -281,7 +278,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style dangerouslySetInnerHTML={{ __html: style }} />\n' : '';
 
-        if (isSkeleton || usesComponentsReady) {
+        if (usesComponentsReady) {
           script = script.replace('componentsReady', 'pollComponentsReady');
         }
 
@@ -299,7 +296,7 @@ useEffect(() => {
 useEffect(() => {
   addMessage({ text: ${toastText} });
 }, [addMessage]);`;
-        } else if (isSkeleton || (!isIconPage && usesQuerySelector)) {
+        } else if (!isIconPage && usesQuerySelector) {
           useStateOrEffect = `useEffect(() => {
   ${script}
 }, []);`;
@@ -348,7 +345,7 @@ $2`
         if (isOverviewPage) {
           // wrap right column with PorscheDesignSystemProvider
           let i = 0;
-          fileContent = fileContent.replace(/\n  <div style="flex: 1">[\s\S]*?\n  <\/div>/g, (match) => {
+          fileContent = fileContent.replace(/\n\s\s<div style="flex: 1">[\s\S]*?\n\s\s<\/div>/g, (match) => {
             if (i === 1) {
               match = match
                 .replace(

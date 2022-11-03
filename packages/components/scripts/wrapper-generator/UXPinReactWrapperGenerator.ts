@@ -1,7 +1,7 @@
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
-import type { AdditionalFile, SkeletonProps } from './AbstractWrapperGenerator';
+import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] };
@@ -32,14 +32,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
   }
 
-  public generateImports(
-    component: TagName,
-    extendedProps: ExtendedProp[],
-    nonPrimitiveTypes: string[],
-    hasSkeleton: boolean
-  ): string {
+  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super
-      .generateImports(component, extendedProps, nonPrimitiveTypes, hasSkeleton)
+      .generateImports(component, extendedProps, nonPrimitiveTypes)
       .replace(/(?:useMergedClass|BreakpointCustomizable)(?:, )?/g, ''); // remove unused imports
 
     if (component === 'p-toast') {
@@ -151,9 +146,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return props;
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     let cleanedComponent = super
-      .generateComponent(component, extendedProps, skeletonProps)
+      .generateComponent(component, extendedProps)
       .replace(/export const P(\w+) =/, 'export const $1 =') // adjust component name to match file name
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
@@ -266,6 +261,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-accordion':
       case 'p-button-group':
       case 'p-checkbox-wrapper':
+      case 'p-link-tile':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
@@ -310,6 +306,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           name: 'Checkbox',
           extraProps: { label: 'My Checkbox', checked: true },
         },
+      },
+      'p-link-tile': {
+        props: { label: 'Some label', description: 'Some description' },
+        children: '<DummyImg uxpId="dummy-img" />',
       },
       'p-modal': {
         props: { heading: 'Heading', open: true },

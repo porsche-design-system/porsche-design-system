@@ -283,7 +283,7 @@ describe('active index position', () => {
     );
 
     await clickElement(prevButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(58);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(57);
   });
 
   it('should have correct scroll position after tab click and next button click', async () => {

@@ -165,3 +165,8 @@ export const getScreenReaderOnlyJssStyle = (): JssStyle => {
     whiteSpace: 'nowrap',
   };
 };
+
+export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
+});

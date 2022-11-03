@@ -67,3 +67,10 @@ export const convertImportPaths = (markup: string, framework: 'js' | 'angular' |
         `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
       );
 };
+
+export const transformSrcAndSrcsetOfImgAndSourceTags = (markup: string): string => {
+  const originUrl = document.location.origin;
+  const baseHref = document.querySelector('base')?.getAttribute('href') || '/';
+
+  return markup.replace(/(<(?:img|source).*?(?:src|srcset)=")([^http|.)].*")/g, `$1${originUrl + baseHref}$2`);
+};
