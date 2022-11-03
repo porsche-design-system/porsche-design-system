@@ -14,7 +14,7 @@
     <CodeEditor
       :button-label="'Open template in StackBlitz'"
       :markup="markup"
-      :framework="framework"
+      :framework="selectedFramework"
       :pds-version="selectedPdsVersion"
     ></CodeEditor>
   </div>
