@@ -1,13 +1,11 @@
 <template>
   <div class="container">
-    <div>
-      <p-text>Choose your Framework:</p-text>
-      <p-segmented-control :value="selectedFramework" v-model="selectedFramework" aria-label="Choose your Framework:">
-        <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
-          frameworkNameMap[framework]
-        }}</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
+    <p-text>Choose your Framework:</p-text>
+    <p-segmented-control :value="selectedFramework" v-model="selectedFramework" aria-label="Choose your Framework:">
+      <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
+        frameworkNameMap[framework]
+      }}</p-segmented-control-item>
+    </p-segmented-control>
     <p-select-wrapper label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion" name="some-name">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
@@ -60,7 +58,7 @@
     margin-top: 1rem;
   }
   p-segmented-control {
-    margin-top: 0.25rem;
+    margin-top: -0.75rem;
   }
   p-select-wrapper {
     min-width: 200px;
