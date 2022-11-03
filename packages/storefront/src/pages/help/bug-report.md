@@ -19,10 +19,14 @@ Please provide a minimal reproduction example of the issue using **StackBlitz**.
 
 <OpenBugTemplateInStackBlitz></OpenBugTemplateInStackBlitz>
 
-[//]: # TODO: (Beschreibung StackBlitz how to + speichern usw.)
+How-to Stackblitz:
 
-Once your reproduction example is set, please share the link with us in a
-[GitHub issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
+1. Before making any changes in Stackblitz, please fork the setup: <img src="../assets/stackblitz_fork.png">
+2. Add your minimal reproduction example.
+3. Make sure to save your changes: <img src="../assets/stackblitz_save.png">
+4. Once your reproduction example is set and saved, copy the **Editor URL**: <img src="../assets/stackblitz_share.png">
+5. Please share the **Editor URL** with us in a
+   [GitHub issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
 
 ## Github Workflow
 
