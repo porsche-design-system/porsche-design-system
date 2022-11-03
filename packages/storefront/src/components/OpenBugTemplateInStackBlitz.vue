@@ -2,11 +2,10 @@
   <div class="container">
     <div>
       <p-text>Choose your Framework:</p-text>
-      <!-- TODO: reuse usedFrameworks as utility-->
-      <p-segmented-control :value="framework" v-model="framework" aria-label="Choose your Framework:">
-        <p-segmented-control-item value="vanilla-js">Vanilla Js</p-segmented-control-item>
-        <p-segmented-control-item value="angular">Angular</p-segmented-control-item>
-        <p-segmented-control-item value="react">React</p-segmented-control-item>
+      <p-segmented-control :value="selectedFramework" v-model="selectedFramework" aria-label="Choose your Framework:">
+        <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
+          frameworkNameMap[framework]
+        }}</p-segmented-control-item>
       </p-segmented-control>
     </div>
     <p-select-wrapper label="Choose your Porsche Design System version:">
@@ -35,9 +34,12 @@
   })
   export default class OpenBugTemplateInStackBlitz extends Vue {
     markup = '<p>Place your reproduction code here</p>';
-    framework: Exclude<Framework, 'shared'> = 'vanilla-js';
+    frameworks: Exclude<Framework, 'shared'>[] = ['vanilla-js', 'angular', 'react'];
+    selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
     selectedPdsVersion = dependencies['@porsche-design-system/components-js'];
     pdsVersions: string[] = [];
+
+    frameworkNameMap = { 'vanilla-js': 'Vanilla Js', angular: 'Angular', react: 'React' };
 
     private async getVersions(): Promise<string[]> {
       return fetch('https://registry.npmjs.org/@porsche-design-system/components-js')
