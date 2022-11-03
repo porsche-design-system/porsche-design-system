@@ -4,20 +4,18 @@
 
 ## Introduction
 
-If you encounter a bug by using Porsche Design System, please report it to us and help us improve.
+If you encounter a bug by using the Porsche Design System, please report it to us and help us improve.
 
 Before reporting a bug:
 
-- Please validate your code and make sure you are using Porsche Design System correctly to make sure, that the issue is
-  not caused by wrong usage.
+- Please ensure you are using the Porsche Design System correctly and the issue is not caused by wrong usage.
 - Please avoid duplicates by using the
   [GitHub issue search](https://github.com/porsche-design-system/porsche-design-system/issues).
 
 ## Reproduction
 
-Please provide a [minimal reproduction example](https://stackoverflow.com/help/minimal-reproducible-example) of the
-issue using **StackBlitz**. You can choose the **framework** and **Design System** version below and open a working
-default template with our setup on **StackBlitz**.
+Please provide a minimal reproduction example of the issue using **StackBlitz**. You can choose the **framework** and
+**Design System** version below and open a working default template with our setup on **StackBlitz**.
 
 <OpenBugTemplateInStackBlitz></OpenBugTemplateInStackBlitz>
 
@@ -28,12 +26,12 @@ Once your reproduction example is set, please share the link with us in a
 
 ## Github Workflow
 
-Bug reports can be created here
+Bug reports should be created here
 [GitHub issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
 
-1. Chose the template **Bug Report** (All the related project information is already pre-filled).
+1. Chose the template **Bug Report**.
 2. Fill out the bug report template. Please try to be as detailed as possible.
-3. When you're finished, click `Submit new issue`.
+3. When you're finished, click **Submit new issue**.
 4. You can track the processing status by subscribing to the issue.
 
 We will take care of the reported issue as soon as possible.
