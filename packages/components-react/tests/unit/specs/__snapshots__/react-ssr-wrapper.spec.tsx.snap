@@ -2304,10 +2304,11 @@ exports[`should render dsr component for PLinkPure 1`] = `
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
