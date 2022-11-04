@@ -231,6 +231,7 @@ describe('getDependencies()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getDependencies(['imask'], '1.2.3')).toEqual({
+      ...{ '@porsche-design-system/components-js': '1.2.3' },
       ...mockedDependency,
     });
   });
@@ -258,7 +259,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys);
+    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys, undefined);
     expect(getDependenciesSpy).toBeCalledWith(externalDependencies, undefined);
     expect(getIndexJsSpy).toBeCalled();
   });
