@@ -28,6 +28,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework } from '@/models';
   import { dependencies } from '../../../components-js/package.json';
+  import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
   @Component({
     components: { CodeEditor },
@@ -38,18 +39,19 @@
     selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
     selectedPdsVersion = dependencies['@porsche-design-system/components-js'];
     pdsVersions: string[] = [];
+    frameworkNameMap = frameworkNameMap;
 
-    frameworkNameMap = { 'vanilla-js': 'Vanilla Js', angular: 'Angular', react: 'React' };
-
-    private async getVersions(): Promise<string[]> {
+    private async fetchVersions(): Promise<{ [key: string]: string }> {
       const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js');
-      const json = await response.json();
-      const rc = /rc/;
-      return Object.keys(json.versions).filter((version) => !rc.test(version));
+      return (await response.json()).versions;
+    }
+
+    private getFilteredKeys(obj: { [key: string]: string }): string[] {
+      return Object.keys(obj).filter((version) => !version.includes('rc') && !version.includes('beta'));
     }
 
     async mounted(): Promise<void> {
-      this.pdsVersions = await this.getVersions();
+      this.pdsVersions = this.getFilteredKeys(await this.fetchVersions());
     }
   }
 </script>
