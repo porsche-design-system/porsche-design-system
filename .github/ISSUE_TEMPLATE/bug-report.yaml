@@ -45,8 +45,8 @@ body:
   - type: input
     id: reproduction
     attributes:
-      label: Minimal Reproduction
-      description: Please provide a minimal reproduction of the issue using [StackBlitz](https://designsystem.porsche.com/latest/help/bug-report#reproduction).
+      label: Reproduction Example
+      description: Please provide a minimal reproduction example of the issue using [StackBlitz](https://designsystem.porsche.com/latest/help/bug-report#reproduction).
       placeholder: e.g. https://stackblitz.com/
     validations:
       required: true
@@ -74,5 +74,5 @@ body:
     id: logs
     attributes:
       label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      description: Please copy and paste all relevant log outputs. This is automatically formatted into code so no backticks are required.
       render: shell
