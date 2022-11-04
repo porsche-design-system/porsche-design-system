@@ -2,7 +2,11 @@
   <div class="container">
     <div>
       <p-text>Choose your Framework:</p-text>
-      <p-segmented-control :value="selectedFramework" v-model="selectedFramework" aria-label="Choose your Framework:">
+      <p-segmented-control
+        :value="selectedFramework"
+        aria-label="Choose your Framework:"
+        @segmentedControlChange="onSegmentedControlChange"
+      >
         <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
           frameworkNameMap[framework]
         }}</p-segmented-control-item>
@@ -48,6 +52,10 @@
 
     private getFilteredKeys(obj: { [key: string]: string }): string[] {
       return Object.keys(obj).filter((version) => !version.includes('rc') && !version.includes('beta'));
+    }
+
+    onSegmentedControlChange(e: CustomEvent) {
+      this.selectedFramework = e.detail.value;
     }
 
     async mounted(): Promise<void> {

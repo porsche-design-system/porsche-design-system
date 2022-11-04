@@ -39,7 +39,7 @@
     public async onButtonClick() {
       this.isLoading = true;
       openInStackBlitz({
-        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
+        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework),
         markup: this.markup,
         framework: this.framework,
         theme: this.theme,
