@@ -10,10 +10,10 @@ import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
   SharedImportKey,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
   ExternalDependency,
 } from '../../utils';
-import type { StackblitzProjectDependencies } from '../../models';
+import type { StackBlitzProjectDependencies } from '../../models';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
@@ -131,7 +131,7 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
   pdsVersion?: string
-): StackblitzProjectDependencies => {
+): StackBlitzProjectDependencies => {
   return {
     ...(isStableStorefrontRelease() && {
       '@porsche-design-system/components-angular': pdsVersion
@@ -153,7 +153,7 @@ export const getDependencies = (
   };
 };
 
-export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
     description,

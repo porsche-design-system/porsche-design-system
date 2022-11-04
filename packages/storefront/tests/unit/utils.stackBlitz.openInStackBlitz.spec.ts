@@ -12,7 +12,7 @@ import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/
 import * as getAngularProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 
 describe('openInStackBlitz()', () => {
-  const sharedOpenInStackblitzOptions: OpenInStackBlitzOpts = {
+  const sharedOpenInStackBlitzOptions: OpenInStackBlitzOpts = {
     porscheDesignSystemBundle: {},
     markup: 'Some markup',
     theme: 'light',
@@ -26,9 +26,9 @@ describe('openInStackBlitz()', () => {
 
   const sharedFrameworkOptions: StackBlitzFrameworkOpts = {
     porscheDesignSystemBundle: {},
-    markup: sharedOpenInStackblitzOptions.markup,
-    externalDependencies: sharedOpenInStackblitzOptions.externalDependencies,
-    sharedImportKeys: sharedOpenInStackblitzOptions.sharedImportKeys,
+    markup: sharedOpenInStackBlitzOptions.markup,
+    externalDependencies: sharedOpenInStackBlitzOptions.externalDependencies,
+    sharedImportKeys: sharedOpenInStackBlitzOptions.sharedImportKeys,
     title: '',
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${mockedGetBackgroundColor}; }`,
@@ -47,7 +47,7 @@ describe('openInStackBlitz()', () => {
 
   it('should call getBackgroundColor() with correct parameters', () => {
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getBackgroundColor');
-    const openInStackBlitzOptions: OpenInStackBlitzOpts = { ...sharedOpenInStackblitzOptions, framework: 'vanilla-js' };
+    const openInStackBlitzOptions: OpenInStackBlitzOpts = { ...sharedOpenInStackBlitzOptions, framework: 'vanilla-js' };
 
     openInStackBlitz(openInStackBlitzOptions);
 
@@ -58,7 +58,7 @@ describe('openInStackBlitz()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getBackgroundColor').mockReturnValue(mockedGetBackgroundColor);
 
     const spy = jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsProjectAndOpenOptions');
-    const openInStackBlitzOptions: OpenInStackBlitzOpts = { ...sharedOpenInStackblitzOptions, framework: 'vanilla-js' };
+    const openInStackBlitzOptions: OpenInStackBlitzOpts = { ...sharedOpenInStackBlitzOptions, framework: 'vanilla-js' };
 
     openInStackBlitz(openInStackBlitzOptions);
 
@@ -70,7 +70,7 @@ describe('openInStackBlitz()', () => {
 
     const spy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularProjectAndOpenOptions');
     const openInStackBlitzOptions: OpenInStackBlitzOpts = {
-      ...sharedOpenInStackblitzOptions,
+      ...sharedOpenInStackBlitzOptions,
       framework: 'angular',
     };
 
@@ -84,7 +84,7 @@ describe('openInStackBlitz()', () => {
 
     const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions');
     const openInStackBlitzOptions: OpenInStackBlitzOpts = {
-      ...sharedOpenInStackblitzOptions,
+      ...sharedOpenInStackBlitzOptions,
       framework: 'react',
     };
 
@@ -108,7 +108,7 @@ describe('openInStackBlitz()', () => {
         .spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions')
         .mockReturnValue(mockedProjectAndOpenOptions);
 
-      openInStackBlitz(sharedOpenInStackblitzOptions);
+      openInStackBlitz(sharedOpenInStackBlitzOptions);
 
       const { openFile, ...project } = mockedProjectAndOpenOptions;
 

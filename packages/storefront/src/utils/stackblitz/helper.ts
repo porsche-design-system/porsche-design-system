@@ -1,6 +1,6 @@
 import * as sharedData from '@porsche-design-system/shared/data';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackblitzProjectDependencies, Theme } from '../../models';
+import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackBlitzProjectDependencies, Theme } from '../../models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColorScheme'> & {
@@ -30,10 +30,10 @@ export type DependencyMap<T> = { [key in ExternalDependency]: { [K in keyof T]?:
 export const getExternalDependencies = <T>(
   additionalDependencies: ExternalDependency[],
   dependenciesMap: DependencyMap<T>
-): StackblitzProjectDependencies =>
+): StackBlitzProjectDependencies =>
   additionalDependencies.reduce(
     (result, current) => ({ ...result, ...dependenciesMap[current] }),
-    {} as StackblitzProjectDependencies
+    {} as StackBlitzProjectDependencies
   );
 
 export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
@@ -44,7 +44,7 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
   return colorScheme === 'surface' ? surface : base;
 };
 
-export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
+export type GetStackBlitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
 
 export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDependency[]): ExternalDependency[] => {
   if (externalDependencies.some((x) => !EXTERNAL_DEPENDENCIES.includes(x))) {

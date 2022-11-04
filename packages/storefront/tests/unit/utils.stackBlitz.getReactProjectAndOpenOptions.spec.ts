@@ -190,7 +190,7 @@ describe('getDependencies()', () => {
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
 
     const mockedDependency = { mockedImask: '0.0.0' };
@@ -202,7 +202,7 @@ describe('getDependencies()', () => {
     });
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…) and chosen pds version for bug reporting', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…) and chosen pds version for bug reporting', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
 
     const mockedDependency = { mockedImask: '0.0.0' };
@@ -217,7 +217,7 @@ describe('getDependencies()', () => {
     });
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
 
     const mockedDependency = { mockedImask: '0.0.0' };
@@ -229,7 +229,7 @@ describe('getDependencies()', () => {
     });
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) when pdsVersion is set', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) when pdsVersion is set', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
 
     const mockedDependency = { mockedImask: '0.0.0' };

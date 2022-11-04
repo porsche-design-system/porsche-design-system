@@ -1,7 +1,7 @@
 import { dependencies } from '../../../../components-js/package.json';
 import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
-import type { StackblitzProjectDependencies } from '../../models';
-import type { DependencyMap, ExternalDependency, GetStackblitzProjectAndOpenOptions, SharedImportKey } from './helper';
+import type { StackBlitzProjectDependencies } from '../../models';
+import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
@@ -73,7 +73,7 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
   pdsVersion?: string
-): StackblitzProjectDependencies => {
+): StackBlitzProjectDependencies => {
   return {
     ...(isStableStorefrontRelease() && {
       '@porsche-design-system/components-js': pdsVersion
@@ -84,7 +84,7 @@ export const getDependencies = (
   };
 };
 
-export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
     description,

@@ -10,11 +10,11 @@ import {
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
 } from '../../utils';
-import type { StackblitzProjectDependencies } from '../../models';
+import type { StackBlitzProjectDependencies } from '../../models';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/;
 
@@ -97,7 +97,7 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
   pdsVersion?: string
-): StackblitzProjectDependencies => {
+): StackBlitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
     ...(isStableStorefrontRelease() && {
@@ -113,7 +113,7 @@ export const getDependencies = (
   };
 };
 
-export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
     description,
