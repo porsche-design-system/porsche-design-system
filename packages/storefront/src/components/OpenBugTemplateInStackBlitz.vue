@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <p-text>Choose your Framework:</p-text>
+      <p-text class="segmented-control-label">Choose your Framework:</p-text>
       <p-segmented-control
         :value="selectedFramework"
         aria-label="Choose your Framework:"
@@ -70,7 +70,7 @@
     gap: 1rem;
     margin-top: 1rem;
   }
-  p-text {
+  .segmented-control-label {
     margin-bottom: 0.25rem;
   }
   p-select-wrapper {
