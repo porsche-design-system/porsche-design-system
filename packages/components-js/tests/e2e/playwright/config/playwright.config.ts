@@ -14,7 +14,7 @@ const config: PlaywrightTestConfig = {
   testDir: '../specs',
   testMatch: '**.e2e.ts',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 9 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -50,27 +50,19 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'desktop chrome',
-    //   use: devices['Desktop Chrome'],
-    // },
+    {
+      name: 'desktop chrome',
+      use: devices['Desktop Chrome'],
+    },
     {
       name: 'desktop safari',
       use: devices['Desktop Safari'],
       // use: { ...devices['Desktop Safari'], headless: false },
     },
-    // {
-    //   name: 'desktop firefox',
-    //   use: devices['Desktop Firefox']
-    // },
-    // {
-    //   name: 'mobile chrome',
-    //   use: devices['Pixel 5'],
-    // },
-    // {
-    //   name: 'mobile safari',
-    //   use: devices['iPhone 13'],
-    // },
+    {
+      name: 'desktop firefox',
+      use: devices['Desktop Firefox'],
+    },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
