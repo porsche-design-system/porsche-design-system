@@ -74,7 +74,7 @@
       framework: keyof PorscheDesignSystemBundleMap,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
-      if (!!pdsVersion && !isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
+      if (!pdsVersion && !isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
         // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
         const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
         porscheDesignSystemBundleMap[framework] = (await response.json()) as PorscheDesignSystemBundle;
