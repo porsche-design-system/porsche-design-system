@@ -271,7 +271,10 @@ describe('getDependencies()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getDependencies(['imask'], '1.2.3')).toEqual({
-      ...expectedDefaultDependencies,
+      ...{
+        ...expectedDefaultDependencies,
+        '@porsche-design-system/components-angular': '1.2.3',
+      },
       ...mockedDependency,
     });
   });

@@ -133,11 +133,13 @@ export const getDependencies = (
   pdsVersion?: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-angular': pdsVersion
-        ? pdsVersion
-        : dependencies['@porsche-design-system/components-angular'],
-    }),
+    ...(pdsVersion
+      ? {
+          '@porsche-design-system/components-angular': pdsVersion,
+        }
+      : isStableStorefrontRelease() && {
+          '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular'],
+        }),
     '@angular/animations': dependencies['@angular/animations'],
     '@angular/common': dependencies['@angular/common'],
     '@angular/compiler': dependencies['@angular/compiler'],
