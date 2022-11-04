@@ -95,8 +95,8 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 };
 
 export const getDependencies = (
-  pdsVersion: string,
-  externalDependencies: ExternalDependency[]
+  externalDependencies: ExternalDependency[],
+  pdsVersion?: string
 ): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
@@ -137,7 +137,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     template: 'create-react-app',
     title,
     description,
-    dependencies: getDependencies(pdsVersion, externalDependencies),
+    dependencies: getDependencies(externalDependencies, pdsVersion),
     openFile: 'App.tsx',
   };
 };

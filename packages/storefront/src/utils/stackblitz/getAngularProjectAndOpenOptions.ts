@@ -129,8 +129,8 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 };
 
 export const getDependencies = (
-  pdsVersion: string,
-  externalDependencies: ExternalDependency[]
+  externalDependencies: ExternalDependency[],
+  pdsVersion?: string
 ): StackblitzProjectDependencies => {
   return {
     ...(isStableStorefrontRelease() && {
@@ -176,6 +176,6 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
     template: 'angular-cli',
     title,
     description,
-    dependencies: getDependencies(pdsVersion, externalDependencies),
+    dependencies: getDependencies(externalDependencies, pdsVersion),
   };
 };
