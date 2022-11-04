@@ -19,9 +19,9 @@ Please provide a minimal reproduction example of the issue using **StackBlitz**.
 
 <OpenBugTemplateInStackBlitz></OpenBugTemplateInStackBlitz>
 
-How-to Stackblitz:
+StackBlitz Workflow:
 
-1. Before making any changes in Stackblitz, please fork the setup:
+1. Before making any changes in StackBlitz, please fork the setup:
    <img src="../assets/stackblitz_fork.png" alt="fork stackblitz reproduction example">
 2. Add your minimal reproduction example.
 3. Make sure to save your changes: <img src="../assets/stackblitz_save.png" alt="save stackblitz reproduction example">
