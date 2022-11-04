@@ -10,10 +10,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 @media(min-width:480px) {
   :host {
@@ -302,10 +303,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #fff;
-}
-::slotted(a:hover) {
-  color: #ff0223;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -404,10 +406,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -485,10 +488,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -615,10 +619,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -787,10 +792,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -889,10 +895,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -970,10 +977,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -1071,10 +1079,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #ff0223;
-}
-::slotted(a:hover) {
-  color: #ff0223;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -1172,10 +1181,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin: 0;
 }
 ::slotted(a) {
-  color: #d5001c;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -1274,10 +1284,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -1350,10 +1361,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   margin: 0;
 }
 ::slotted(a) {
-  color: #000;
-}
-::slotted(a:hover) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
 }
 .root {
   display: flex;
@@ -1425,12 +1437,14 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 
 exports[`getSlottedCss() should return correct css 1`] = `
 "p-link-pure a {
+  outline: 0 !important;
+}
+p-link-pure * a {
   display: block !important;
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
+  color: inherit !important;
 }
 p-link-pure a::-moz-focus-inner {
   border: 0 !important;
@@ -1455,12 +1469,14 @@ p-link-pure a:focus:not(:focus-visible)::before {
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-link-pure a {
+  outline: 0 !important;
+}
+prefixed-p-link-pure * a {
   display: block !important;
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
+  color: inherit !important;
 }
 prefixed-p-link-pure a::-moz-focus-inner {
   border: 0 !important;
