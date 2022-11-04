@@ -39,7 +39,7 @@
     public async onButtonClick() {
       this.isLoading = true;
       openInStackBlitz({
-        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework),
+        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
         markup: this.markup,
         framework: this.framework,
         theme: this.theme,
@@ -71,9 +71,10 @@
     }
 
     private static async fetchPorscheDesignSystemBundle(
-      framework: keyof PorscheDesignSystemBundleMap
+      framework: keyof PorscheDesignSystemBundleMap,
+      pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
-      if (!isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
+      if (!!pdsVersion && !isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
         // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
         const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
         porscheDesignSystemBundleMap[framework] = (await response.json()) as PorscheDesignSystemBundle;

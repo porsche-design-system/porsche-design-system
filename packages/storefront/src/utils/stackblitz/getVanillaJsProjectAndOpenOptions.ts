@@ -26,10 +26,11 @@ export const getIndexHtml = (
   markup: string,
   globalStyles: string,
   externalDependencies: ExternalDependency[],
-  sharedImportKeys: SharedImportKey[]
+  sharedImportKeys: SharedImportKey[],
+  pdsVersion?: string
 ): string => {
   const porscheDesignSystemLoaderScript = `<script src="${
-    isStableStorefrontRelease() ? 'node_modules' : '.'
+    pdsVersion || isStableStorefrontRelease() ? 'node_modules' : '.'
   }/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
@@ -58,11 +59,12 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (): string =>
-  isStableStorefrontRelease()
+export const getIndexJs = (pdsVersion?: string): string => {
+  return pdsVersion || isStableStorefrontRelease()
     ? ''
     : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem`;
+};
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
@@ -75,11 +77,13 @@ export const getDependencies = (
   pdsVersion?: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-js': pdsVersion
-        ? pdsVersion
-        : dependencies['@porsche-design-system/components-js'],
-    }),
+    ...(pdsVersion
+      ? {
+          '@porsche-design-system/components-js': pdsVersion,
+        }
+      : isStableStorefrontRelease() && {
+          '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+        }),
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
@@ -99,8 +103,8 @@ export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptio
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys),
-      'index.js': getIndexJs(),
+      'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys, pdsVersion),
+      'index.js': getIndexJs(pdsVersion),
     },
     template: 'javascript',
     title,
