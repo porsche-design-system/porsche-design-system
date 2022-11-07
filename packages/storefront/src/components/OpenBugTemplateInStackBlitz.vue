@@ -45,15 +45,17 @@
     pdsVersions: string[] = [];
     frameworkNameMap = frameworkNameMap;
 
-    private async fetchVersions(): Promise<{ [key: string]: string }> {
-      const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js');
-      return (await response.json()).versions;
+    private async fetchVersions(): Promise<string[]> {
+      const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js', {
+        headers: {
+          accept: 'application/vnd.npm.install-v1+json',
+        },
+      });
+      return Object.keys((await response.json()).versions);
     }
 
-    private getFilteredKeys(obj: { [key: string]: string }): string[] {
-      return Object.keys(obj)
-        .filter((version) => !version.includes('rc') && !version.includes('beta'))
-        .reverse();
+    private getFilteredVersions(arr: string[]): string[] {
+      return arr.filter((version) => !version.includes('rc') && !version.includes('beta')).reverse();
     }
 
     onSegmentedControlChange(e: CustomEvent) {
@@ -61,7 +63,7 @@
     }
 
     async mounted(): Promise<void> {
-      this.pdsVersions = this.getFilteredKeys(await this.fetchVersions());
+      this.pdsVersions = this.getFilteredVersions(await this.fetchVersions());
     }
   }
 </script>

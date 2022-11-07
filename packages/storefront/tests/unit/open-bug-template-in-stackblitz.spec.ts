@@ -1,21 +1,28 @@
 import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlitz.vue';
+import { json } from 'stream/consumers';
 
 describe('this.fetchVersions()', () => {
   it('should call global fetch() with correct parameters', async () => {
     const url = 'https://registry.npmjs.org/@porsche-design-system/components-js';
-    const spy = jest.spyOn(global, 'fetch');
+    const fetchSpy = jest.spyOn(global, 'fetch');
     const component: any = new OpenBugTemplateInStackBlitz();
 
-    await component['fetchVersions']();
-    expect(spy).toBeCalledWith(url);
+    const result = await component['fetchVersions']();
+
+    expect(fetchSpy).toBeCalledWith(url, { headers: { accept: 'application/vnd.npm.install-v1+json' } });
+
+    expect(result.length).toBeGreaterThan(0);
+    expect(result).toContain('2.17.0');
   });
 });
 
-describe('this.getFilteredKeys()', () => {
-  it('should return filtered keys', async () => {
+describe('this.getFilteredVersions()', () => {
+  it('should return filtered versions', async () => {
     const component: any = new OpenBugTemplateInStackBlitz();
-    expect(component['getFilteredKeys']({ '1.2.3-rc.1': 'test', '1.2.3': 'test', '1.2.3-beta.0': 'test' })).toEqual([
+    expect(component['getFilteredVersions'](['1.2.3-rc.1', '1.2.3', '1.2.4', '1.2.5', '1.2.3-beta.0'])).toEqual([
       '1.2.3',
+      '1.2.4',
+      '1.2.5',
     ]);
   });
 });
