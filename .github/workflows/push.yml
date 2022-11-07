@@ -114,7 +114,7 @@ jobs:
           name: components-js-unit-regression
           path: ./packages/components-js/tests/unit/results
   components-js-e2e-puppeteer:
-    name: 'Components JS E2E Puppeteer'
+    name: 'Components JS E2E (Puppeteer)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -153,13 +153,13 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'E2E Test Puppeteer'
+      - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-puppeteer
           args: --components-js
   components-js-e2e-playwright:
-    name: 'Components JS E2E Playwright'
+    name: 'Components JS E2E (Playwright)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -198,7 +198,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'E2E Test Playwright'
+      - name: 'E2E Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
@@ -243,12 +243,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
+      - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-puppeteer
           args: --components-js
-      - name: 'VRT Regression'
+      - name: 'VRT Regression (Puppeteer)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
@@ -294,12 +294,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
+      - name: 'VRT Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js
-      - name: 'VRT Regression'
+      - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
