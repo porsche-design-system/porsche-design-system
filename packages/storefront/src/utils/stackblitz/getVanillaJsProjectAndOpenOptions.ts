@@ -77,13 +77,9 @@ export const getDependencies = (
   pdsVersion?: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...(pdsVersion
-      ? {
-          '@porsche-design-system/components-js': pdsVersion,
-        }
-      : isStableStorefrontRelease() && {
-          '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
-        }),
+    ...((pdsVersion || isStableStorefrontRelease()) && {
+      '@porsche-design-system/components-js': pdsVersion || dependencies['@porsche-design-system/components-js'],
+    }),
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };

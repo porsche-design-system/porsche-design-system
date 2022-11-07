@@ -111,13 +111,9 @@ export const getDependencies = (
 ): StackBlitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    ...(pdsVersion
-      ? {
-          '@porsche-design-system/components-react': pdsVersion,
-        }
-      : isStableStorefrontRelease() && {
-          '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
-        }),
+    ...((pdsVersion || isStableStorefrontRelease()) && {
+      '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-react'],
+    }),
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
