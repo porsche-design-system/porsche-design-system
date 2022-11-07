@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 import { useEffect, useState } from 'react';
 import { componentsReady } from '@porsche-design-system/components-react/ssr';
 
@@ -58,6 +58,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
     p-banner,
     my-prefix-p-banner {
       --p-banner-position-type: static;
+    }
+    p-link-tile,
+    my-prefix-p-link-tile {
+      max-width: 400px;
     }
   `;
 
@@ -283,6 +287,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
               <div>Slide 3</div>
             </PCarousel>
           </div>
+
+          <div className="playground light" title="should render default link-tile">
+            <PLinkTile href="#" label="Some Label" description="Default">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                alt="Beach"
+              />
+            </PLinkTile>
+          </div>
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
@@ -507,6 +520,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
                 <div>Slide 2</div>
                 <div>Slide 3</div>
               </PCarousel>
+            </div>
+
+            <div className="playground light" title="should render default link-tile with custom prefix">
+              <PLinkTile href="#" label="Some Label" description="Default">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                  alt="Beach"
+                />
+              </PLinkTile>
             </div>
           </div>
         </PorscheDesignSystemProvider>

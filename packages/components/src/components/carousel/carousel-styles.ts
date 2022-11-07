@@ -1,6 +1,12 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
+import {
+  addImportantToEachRule,
+  getBackfaceVisibilityJssStyle,
+  getScreenReaderOnlyJssStyle,
+  getThemedColors,
+  pxToRemWithUnit,
+} from '../../styles';
 import {
   gridMaxWidth,
   gridSafeZone,
@@ -8,7 +14,6 @@ import {
   textSmall,
   mediaQueryMin,
 } from '@porsche-design-system/utilities-v2';
-import type { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -21,11 +26,6 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
-
-  const backfaceVisibility: JssStyle = {
-    backfaceVisibility: 'hidden',
-    WebkitBackfaceVisibility: 'hidden',
-  };
 
   return getCss({
     '@global': {
@@ -75,12 +75,12 @@ export const getComponentCss = (
       '&__list': {
         display: 'flex',
         height: '100%',
-        ...backfaceVisibility,
+        ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
         position: 'relative',
         flexShrink: 0,
-        ...backfaceVisibility,
+        ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
       '&__sr': getScreenReaderOnlyJssStyle(), // appears in the DOM when sliding

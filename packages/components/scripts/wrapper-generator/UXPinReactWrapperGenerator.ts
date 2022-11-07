@@ -262,6 +262,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-accordion':
       case 'p-button-group':
       case 'p-checkbox-wrapper':
+      case 'p-link-tile':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
@@ -306,6 +307,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           name: 'Checkbox',
           extraProps: { label: 'My Checkbox', checked: true },
         },
+      },
+      'p-link-tile': {
+        props: { label: 'Some label', description: 'Some description' },
+        children: '<DummyImg uxpId="dummy-img" />',
       },
       'p-modal': {
         props: { heading: 'Heading', open: true },
