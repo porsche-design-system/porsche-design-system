@@ -32,7 +32,7 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
     .join(', ');
 
   return `${
-    !!reactComponentsToImport.length
+    reactComponentsToImport.length
       ? `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
 `
       : ''
