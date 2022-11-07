@@ -63,13 +63,14 @@ const externalDependencyModuleImportMap: {
 };
 
 export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion?: string): string => {
+  const isPdsVersionAndStableStorefrontRelease = pdsVersion || isStableStorefrontRelease();
   const imports = [
     `import { NgModule${
-      pdsVersion || isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
+      isPdsVersionAndStableStorefrontRelease ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
     } } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(pdsVersion || isStableStorefrontRelease()
+    ...(isPdsVersionAndStableStorefrontRelease
       ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
       : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
@@ -85,7 +86,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
     .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
     .join(', ');
 
-  const ngSchemas = pdsVersion || isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
+  const ngSchemas = isPdsVersionAndStableStorefrontRelease ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
@@ -95,7 +96,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
   bootstrap: [AppComponent],
 })
 export class AppModule {${
-    pdsVersion || isStableStorefrontRelease() ? '' : 'constructor () { porscheDesignSystem.load(); }'
+    isPdsVersionAndStableStorefrontRelease ? '' : 'constructor () { porscheDesignSystem.load(); }'
   }}`;
 };
 
