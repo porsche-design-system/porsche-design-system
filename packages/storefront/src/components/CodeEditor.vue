@@ -39,7 +39,7 @@
     public async onButtonClick() {
       this.isLoading = true;
       openInStackBlitz({
-        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework),
+        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
         markup: this.markup,
         framework: this.framework,
         theme: this.theme,
@@ -52,25 +52,26 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>
+      framework: Exclude<Framework, 'shared'>,
+      pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       switch (framework) {
         case 'vanilla-js':
-          return await CodeEditor.fetchPorscheDesignSystemBundle('js');
+          return await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
         case 'angular':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular', pdsVersion)),
           };
         case 'react':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
           };
       }
     }
 
-    private static async fetchPorscheDesignSystemBundle(
+    public static async fetchPorscheDesignSystemBundle(
       framework: keyof PorscheDesignSystemBundleMap,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
