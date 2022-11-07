@@ -38,7 +38,7 @@
     components: { CodeEditor },
   })
   export default class OpenBugTemplateInStackBlitz extends Vue {
-    markup = '<p>Place your reproduction code here</p>';
+    markup = '<p-text>Place your reproduction code here</p-text>';
     frameworks: Exclude<Framework, 'shared'>[] = ['vanilla-js', 'angular', 'react'];
     selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
     selectedPdsVersion = dependencies['@porsche-design-system/components-js'];
