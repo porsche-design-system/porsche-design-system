@@ -32,6 +32,7 @@ describe('openInStackBlitz()', () => {
     title: '',
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${mockedGetBackgroundColor}; }`,
+    pdsVersion: undefined,
   };
 
   const mockedProjectAndOpenOptions: StackBlitzProjectAndOpenOptions = {

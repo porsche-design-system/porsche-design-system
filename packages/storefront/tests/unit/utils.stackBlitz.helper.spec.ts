@@ -143,6 +143,12 @@ describe('convertImportPaths()', () => {
     expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
   });
 
+  it('should return markup without modification when pdsVersion is passed', () => {
+    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
+  });
+
   it('should return markup without updated import path for js', () => {
     jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
 
@@ -168,15 +174,18 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
       '<source media="(min-width:400px)" srcset="http://localhost/img/image.png">',
     ],
     ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
-  ])('should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters', (input, output) => {
-    const div = document.createElement('div');
-    const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
-    const getAttributeSpy = jest.spyOn(div, 'getAttribute');
+  ])(
+    'should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters',
+    (input, output) => {
+      const div = document.createElement('div');
+      const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
+      const getAttributeSpy = jest.spyOn(div, 'getAttribute');
 
-    expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
-    expect(querySelectorSpy).toBeCalledWith('base');
-    expect(getAttributeSpy).toBeCalledWith('href');
-  });
+      expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
+      expect(querySelectorSpy).toBeCalledWith('base');
+      expect(getAttributeSpy).toBeCalledWith('href');
+    }
+  );
 
   it.each<string>([
     '<source media="(min-width:400px)" srcset="http://image.png">',

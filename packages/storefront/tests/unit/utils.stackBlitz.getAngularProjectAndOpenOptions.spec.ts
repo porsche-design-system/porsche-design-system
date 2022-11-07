@@ -167,6 +167,10 @@ describe('getAppModuleTs()', () => {
     it('should return correct markup with externalDependencies', () => {
       expect(getAppModuleTs(['imask'])).toMatchSnapshot();
     });
+
+    it('should return correct markup with passed pdsVersion', () => {
+      expect(getAppModuleTs([], '1.2.3')).toMatchSnapshot();
+    });
   });
 
   describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
@@ -180,6 +184,10 @@ describe('getAppModuleTs()', () => {
 
     it('should return correct markup with externalDependencies', () => {
       expect(getAppModuleTs(['imask'])).toMatchSnapshot();
+    });
+
+    it('should return correct markup with passed pdsVersion', () => {
+      expect(getAppModuleTs([], '1.2.3')).toMatchSnapshot();
     });
   });
 });
@@ -309,7 +317,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
       false,
       stackBlitzFrameworkOpts.sharedImportKeys
     );
-    expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies);
+    expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
     expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.globalStyles);
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
   });

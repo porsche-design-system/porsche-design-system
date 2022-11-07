@@ -272,9 +272,10 @@ describe('getReactProjectAndOpenOptions()', () => {
     expect(getAppTsxSpy).toBeCalledWith(
       stackBlitzFrameworkOpts.markup,
       false,
-      stackBlitzFrameworkOpts.sharedImportKeys
+      stackBlitzFrameworkOpts.sharedImportKeys,
+      undefined
     );
-    expect(getIndexTsxSpy).toBeCalled();
+    expect(getIndexTsxSpy).toBeCalledWith(undefined);
     expect(getTsconfigJsonSpy).toBeCalled();
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
   });
