@@ -1,7 +1,7 @@
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import { StepperHorizontalItem } from './stepper-horizontal-item';
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call throwIfCurrentAndDisabled() with correct parameter', () => {
     const spy = jest.spyOn(stepperHorizontalItemUtils, 'throwIfCurrentAndDisabled').mockImplementationOnce(() => {});
     const component = new StepperHorizontalItem();

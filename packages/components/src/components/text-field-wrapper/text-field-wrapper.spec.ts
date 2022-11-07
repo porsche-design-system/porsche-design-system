@@ -212,7 +212,7 @@ describe('componentWillLoad', () => {
   );
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call throwIfUnitLengthExceeded() with correct parameter', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
     const component = new TextFieldWrapper();

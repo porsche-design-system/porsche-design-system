@@ -120,7 +120,7 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call warnIfHeadingIsMissing() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
     const component = new Carousel();

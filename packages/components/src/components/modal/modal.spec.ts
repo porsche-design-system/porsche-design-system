@@ -43,7 +43,7 @@ describe('modal', () => {
     });
   });
 
-  describe('componentWillRender', () => {
+  describe('render', () => {
     beforeEach(() => {
       jest.spyOn(console, 'warn').mockImplementation(() => {});
     });

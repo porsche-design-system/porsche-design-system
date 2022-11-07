@@ -78,7 +78,7 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call syncItemsProps() with correct parameters', () => {
     const spy = jest.spyOn(stepperHorizontalUtils, 'syncStepperHorizontalItemsProps');
     const component = new StepperHorizontal();
