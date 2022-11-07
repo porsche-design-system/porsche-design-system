@@ -126,17 +126,16 @@ it('should not submit the form if default is prevented', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <form onsubmit="return false;">
-          <p-button-pure type="submit">Some label</p-button-pure>
-        </form>
-      </div>
-      <script>
-        document.querySelector('#wrapper').addEventListener('click', (e) => {
-          e.preventDefault();
-        });
-      </script>
-    `
+    <div id="wrapper">
+      <form onsubmit="return false;">
+        <p-button-pure type="submit">Some label</p-button-pure>
+      </form>
+    </div>
+    <script>
+      document.querySelector('#wrapper').addEventListener('click', (e) => {
+        e.preventDefault();
+      });
+    </script>`
   );
 
   const button = await getButton();
@@ -153,12 +152,11 @@ it('should not submit the form if button is disabled', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <form onsubmit="return false;">
-          <p-button-pure type="submit" disabled="true">Some label</p-button-pure>
-        </form>
-      </div>
-    `
+    <div id="wrapper">
+      <form onsubmit="return false;">
+        <p-button-pure type="submit" disabled="true">Some label</p-button-pure>
+      </form>
+    </div>`
   );
   const button = await getButton();
   const outerButton = await getHost();
@@ -176,12 +174,11 @@ it('should trigger focus & blur events at the correct time', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-button-pure id="my-button-pure">Some label</p-button-pure>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-button-pure id="my-button-pure">Some label</p-button-pure>
+      <a href="#" id="after">after</a>
+    </div>`
   );
 
   const button = await getHost();
@@ -268,11 +265,10 @@ it('should provide functionality to focus & blur the custom element', async () =
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-button-pure>Some label</p-button-pure>
-      </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-button-pure>Some label</p-button-pure>
+    </div>`
   );
 
   const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button-pure'));
@@ -294,17 +290,16 @@ it('should submit form via enter key when type is submit', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <form>
-        <input type="text" name="test" value="ok">
-        <p-button-pure type="button">Submit</p-button-pure>
-      </form>
+    <form>
+      <input type="text" name="test" value="ok">
+      <p-button-pure type="button">Submit</p-button-pure>
+    </form>
 
-      <script>
-      document.querySelector('form').addEventListener('submit', (e) => {
-        e.preventDefault();
-      })
-      </script>
-    `
+    <script>
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+    })
+    </script>`
   );
 
   let submitCalls = 0;

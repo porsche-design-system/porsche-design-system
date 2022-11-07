@@ -160,8 +160,7 @@ describe('button', () => {
         <form onsubmit="return false;">
           <p-button type="submit" disabled="true">Some label</p-button>
         </form>
-      </div>
-    `
+      </div>`
     );
 
     const host = await getHost();
@@ -185,8 +184,7 @@ describe('button', () => {
         <a href="#" id="before">before</a>
         <p-button id="my-button">Some label</p-button>
         <a href="#" id="after">after</a>
-      </div>
-    `
+      </div>`
     );
 
     const button = await getHost();
@@ -277,8 +275,7 @@ describe('button', () => {
       <div id="wrapper">
         <a href="#" id="before">before</a>
         <p-button>Some label</p-button>
-      </div>
-    `
+      </div>`
     );
 
     const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button'));

@@ -65,9 +65,9 @@ it('should not render label if label prop is not defined but should render if ch
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper>
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper>
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const host = await getHost();
@@ -82,9 +82,9 @@ it('should add/remove message text with message if state changes programmaticall
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const host = await getHost();
@@ -113,9 +113,9 @@ it('should toggle checkbox when input is clicked', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();
@@ -162,9 +162,9 @@ it('should check/uncheck checkbox when checkbox attribute is changed programmati
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();
@@ -182,9 +182,9 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();

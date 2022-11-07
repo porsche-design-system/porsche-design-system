@@ -547,6 +547,7 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                       "role": "StaticText",
                                     },
                                   ],
+                                  "focused": true,
                                   "name": "Button 1",
                                   "role": "button",
                                 },

@@ -48,7 +48,7 @@ type InitOptions = {
   tag?: 'a' | 'button';
 };
 
-const initTabsBar = async (opts?: InitOptions) => {
+const initTabsBar = (opts?: InitOptions) => {
   const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
@@ -64,7 +64,7 @@ const initTabsBar = async (opts?: InitOptions) => {
   ${tabs}
 </p-tabs-bar>${otherMarkup}`;
 
-  await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
 const getHost = () => selectNode(page, 'p-tabs-bar');

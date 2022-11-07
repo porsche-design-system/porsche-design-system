@@ -21,13 +21,13 @@ type InitOpts = {
   withLabel?: boolean;
 };
 
-const initTagDismissible = async (props?: InitOpts) => {
+const initTagDismissible = (props?: InitOpts) => {
   const { withLabel = false } = props || {};
   const attributes = withLabel ? ' label="Some label"' : '';
 
   const content = `<p-tag-dismissible${attributes}>Some Tag</p-tag-dismissible>`;
 
-  await setContentWithDesignSystem(page, content);
+  return setContentWithDesignSystem(page, content);
 };
 
 const getHost = () => selectNode(page, 'p-tag-dismissible');

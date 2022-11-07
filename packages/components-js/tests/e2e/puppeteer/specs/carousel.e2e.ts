@@ -26,7 +26,7 @@ type InitOptions = {
   withFocusableElements?: boolean;
 };
 
-const initCarousel = async (opts?: InitOptions) => {
+const initCarousel = (opts?: InitOptions) => {
   const { slidesPerPage = 1, amountOfSlides = 3, withFocusableElements = false } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
@@ -44,7 +44,7 @@ const initCarousel = async (opts?: InitOptions) => {
   ${slides}
 </p-carousel>${focusableElementAfter}`;
 
-  await setContentWithDesignSystem(page, content);
+  return setContentWithDesignSystem(page, content);
 };
 
 const getHost = () => selectNode(page, 'p-carousel');
