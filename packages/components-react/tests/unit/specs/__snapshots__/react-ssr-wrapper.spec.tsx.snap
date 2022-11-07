@@ -1390,9 +1390,7 @@ svg {
       class="pagination"
     />
   </template>
-  <div
-    slot="slide-0"
-  >
+  <div>
     Some child
   </div>
 </p-carousel>

@@ -204,18 +204,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (tagName === 'p-carousel') {
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `defaultChildren$1`)
-          .replace(/(<div) (className="splide__slide">)/g, '$1 key={i} $2')
-          // patch named slot which usually getSlidesAndAddNamedSlots() takes care of
-          .replace(
-            /const defaultChildren =.*/,
-            `$&
-    const manipulatedChildren = children.map((child) =>
-      defaultChildren.includes(child)
-        ? { ...child, props: { ...child.props, slot: \`slide-\${defaultChildren.indexOf(child)}\` } }
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/(<div) (className="splide__slide">)/g, '$1 key={i} $2');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
       } else if (tagName === 'p-tabs') {
