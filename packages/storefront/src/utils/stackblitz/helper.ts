@@ -59,8 +59,12 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
 
 export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
-export const convertImportPaths = (markup: string, framework: 'js' | 'angular' | 'react'): string => {
-  return isStableStorefrontRelease()
+export const convertImportPaths = (
+  markup: string,
+  framework: 'js' | 'angular' | 'react',
+  pdsVersion?: string
+): string => {
+  return pdsVersion || isStableStorefrontRelease()
     ? markup
     : markup.replace(
         new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),

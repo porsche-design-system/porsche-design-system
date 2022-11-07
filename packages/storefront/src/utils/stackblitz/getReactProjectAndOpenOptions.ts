@@ -31,8 +31,13 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
     .filter((reactComponentName, idx, arr) => arr.findIndex((t) => t === reactComponentName) === idx) // Remove duplicates
     .join(', ');
 
-  return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
+  return `${
+    !!reactComponentsToImport.length
+      ? `import { ${reactComponentsToImport}} from '@porsche-design-system/components-react';
 
+`
+      : ''
+  }
 export const App = (): JSX.Fragment => {
   return (
     <>
@@ -51,18 +56,24 @@ ${markup
   .replace(/<\/>/g, '</React.Fragment>')}`;
 };
 
-export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
+export const getAppTsx = (
+  markup: string,
+  isExampleMarkup: boolean,
+  sharedImportKeys: SharedImportKey[],
+  pdsVersion?: string
+): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
       isExampleMarkup
         ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
         : extendMarkupWithAppComponent(markup),
-      'react'
+      'react',
+      pdsVersion
     )
   );
 };
 
-export const getIndexTsx = (): string => {
+export const getIndexTsx = (pdsVersion?: string): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
       `import { StrictMode } from 'react';
@@ -81,7 +92,8 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-      'react'
+      'react',
+      pdsVersion
     )
   );
 };
@@ -130,9 +142,9 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys),
+      'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
       'index.html': '<div id="root"></div>',
-      'index.tsx': getIndexTsx(),
+      'index.tsx': getIndexTsx(pdsVersion),
       'tsconfig.json': getTsconfigJson(),
       'style.css': globalStyles,
     },

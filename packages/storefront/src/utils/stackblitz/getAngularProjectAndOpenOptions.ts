@@ -62,12 +62,14 @@ const externalDependencyModuleImportMap: {
   },
 };
 
-export const getAppModuleTs = (externalDependencies: ExternalDependency[]): string => {
+export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion?: string): string => {
   const imports = [
-    `import { NgModule${isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'} } from '@angular/core';`,
+    `import { NgModule${
+      pdsVersion || isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
+    } } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(isStableStorefrontRelease()
+    ...(pdsVersion || isStableStorefrontRelease()
       ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
       : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
@@ -83,7 +85,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[]): stri
     .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
     .join(', ');
 
-  const ngSchemas = isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
+  const ngSchemas = pdsVersion || isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
@@ -92,7 +94,9 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[]): stri
   schemas: [${ngSchemas}],
   bootstrap: [AppComponent],
 })
-export class AppModule {${isStableStorefrontRelease() ? '' : 'constructor () { porscheDesignSystem.load(); }'}}`;
+export class AppModule {${
+    pdsVersion || isStableStorefrontRelease() ? '' : 'constructor () { porscheDesignSystem.load(); }'
+  }}`;
 };
 
 export const getIndexHtml = (globalStyles: string): string => {
@@ -171,7 +175,7 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
     files: {
       ...porscheDesignSystemBundle,
       'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
-      'src/app/app.module.ts': getAppModuleTs(externalDependencies),
+      'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
       'src/index.html': getIndexHtml(globalStyles),
       'src/main.ts': getMainTs(),
     },
