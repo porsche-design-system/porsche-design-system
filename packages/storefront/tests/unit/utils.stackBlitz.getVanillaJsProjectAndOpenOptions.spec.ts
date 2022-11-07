@@ -134,6 +134,17 @@ describe('getIndexHtml()', () => {
 
       expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
     });
+
+    it('should return correct markup when pdsVersion is set', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
+    });
   });
 
   describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
@@ -162,20 +173,47 @@ describe('getIndexHtml()', () => {
 
       expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
     });
+
+    it('should return correct markup when pdsVersion is set', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
+    });
   });
 });
 
 describe('getIndexJs()', () => {
-  it('should return correct no script for stable storefront release (e.g. /v2/…, /v3/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
 
-    expect(getIndexJs()).toMatchSnapshot();
+    it('should return correct no script when pdsVersion is set', () => {
+      expect(getIndexJs('1.2.3')).toMatchSnapshot();
+    });
+
+    it('should return correct no script when pdsVersion is not set', () => {
+      expect(getIndexJs()).toMatchSnapshot();
+    });
   });
 
-  it('should return correct script for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
 
-    expect(getIndexJs()).toMatchSnapshot();
+    it('should return correct script', () => {
+      expect(getIndexJs()).toMatchSnapshot();
+    });
+
+    it('should return correct no script when pdsVersion is set', () => {
+      expect(getIndexJs('1.2.3')).toMatchSnapshot();
+    });
   });
 });
 
