@@ -17,12 +17,15 @@ afterEach(async () => await page.close());
 const initHeadline = (opts?: { variant?: HeadlineVariant; slot?: string; tag?: HeadlineTag }): Promise<void> => {
   const { variant, slot, tag } = opts;
 
-  const content = (variant ? `variant="${variant}" ` : '') + (tag ? `tag="${tag}"` : '');
+  const attrs = [
+    variant ? `variant="${typeof variant === 'object' ? JSON.stringify(variant).replace(/"/g, "'") : variant}"` : '',
+    tag ? `tag="${tag}"` : '',
+  ].join(' ');
 
   return setContentWithDesignSystem(
     page,
     `
-    <p-headline ${content.trim()}>
+    <p-headline ${attrs}>
       ${slot ? slot : 'Some Headline'}
     </p-headline>`
   );
@@ -30,8 +33,8 @@ const initHeadline = (opts?: { variant?: HeadlineVariant; slot?: string; tag?: H
 
 const getHost = () => selectNode(page, 'p-headline');
 
-const getHeadlineTagName = async () =>
-  await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
+const getHeadlineTagName = (): Promise<string> =>
+  page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
 
 describe('tag', () => {
   it('should render according to variant', async () => {
