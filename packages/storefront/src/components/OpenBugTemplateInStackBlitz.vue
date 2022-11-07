@@ -51,7 +51,9 @@
     }
 
     private getFilteredKeys(obj: { [key: string]: string }): string[] {
-      return Object.keys(obj).filter((version) => !version.includes('rc') && !version.includes('beta'));
+      return Object.keys(obj)
+        .filter((version) => !version.includes('rc') && !version.includes('beta'))
+        .reverse();
     }
 
     onSegmentedControlChange(e: CustomEvent) {
