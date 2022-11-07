@@ -21,9 +21,9 @@ describe('OpenBugTemplateInStackBlitz.vue', () => {
     it('should return filtered versions', async () => {
       const component: any = new OpenBugTemplateInStackBlitz();
       expect(component['getFilteredVersions'](['1.2.3-rc.1', '1.2.3', '1.2.4', '1.2.5', '1.2.3-beta.0'])).toEqual([
-        '1.2.3',
-        '1.2.4',
         '1.2.5',
+        '1.2.4',
+        '1.2.3',
       ]);
     });
   });
