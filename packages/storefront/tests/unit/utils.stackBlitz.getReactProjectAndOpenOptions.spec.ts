@@ -83,7 +83,7 @@ describe('extendMarkupWithAppComponent()', () => {
     expect(spy).toBeCalledWith(markup, 'react');
   });
 
-  it('should return correct app markup', () => {
+  it('should return correct app markup with components', () => {
     const mockedConvertedMarkup = `<PButton />
 <PText>
   Some Text
@@ -94,6 +94,18 @@ describe('extendMarkupWithAppComponent()', () => {
   </p>
 </PButton>
 <button />`;
+    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
+
+    expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();
+  });
+
+  it('should return correct app markup without components', () => {
+    const mockedConvertedMarkup = `<p>
+  Some Text
+</p>
+<button>
+  Some Button
+</button>`;
     jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
 
     expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();

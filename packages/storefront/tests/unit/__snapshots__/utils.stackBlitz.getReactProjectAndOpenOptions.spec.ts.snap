@@ -5,7 +5,7 @@ exports[`applyStackBlitzFixForReact() should match snapshot 1`] = `
 export const SomeApp = (): JSX.Element => (<React.Fragment>some jsx elements</React.Fragment>)"
 `;
 
-exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
+exports[`extendMarkupWithAppComponent() should return correct app markup with components 1`] = `
 "import { PButton, PText } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Fragment => {
@@ -21,6 +21,21 @@ export const App = (): JSX.Fragment => {
         </p>
       </PButton>
       <button />
+    </>
+  );
+}"
+`;
+
+exports[`extendMarkupWithAppComponent() should return correct app markup without components 1`] = `
+"export const App = (): JSX.Fragment => {
+  return (
+    <>
+      <p>
+        Some Text
+      </p>
+      <button>
+        Some Button
+      </button>
     </>
   );
 }"

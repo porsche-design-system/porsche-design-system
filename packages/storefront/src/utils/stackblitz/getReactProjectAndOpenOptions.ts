@@ -34,10 +34,10 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
   return `${
     reactComponentsToImport.length
       ? `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
+
 `
       : ''
-  }
-export const App = (): JSX.Fragment => {
+  }export const App = (): JSX.Fragment => {
   return (
     <>
       ${convertedMarkup}
