@@ -416,7 +416,7 @@ svg {
                 :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -755,7 +755,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -1067,7 +1067,7 @@ p {
               :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -1221,7 +1221,7 @@ svg {
               :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -1995,7 +1995,7 @@ svg {
           :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -2295,7 +2295,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -2571,6 +2571,261 @@ svg {
 </p-link-social>
 `;
 
+exports[`should render dsr component for PLinkTile 1`] = `
+<p-link-tile
+  class="hydrated"
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+  >
+    <style>
+      :host {
+  display: block;
+  height: fit-content !important;
+}
+:host ::slotted(picture), :host ::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+:host ::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+:host ::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 34.375rem;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5555555556;
+  font-weight: 600;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 75%;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  padding: 4.5rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-pure {
+  display: none;
+}
+.link {
+  display: inline-flex;
+}
+.anchor::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:760px) {
+  .content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <div
+        class="content"
+      >
+        <p
+          id="description"
+        />
+        <p-link
+          class="link hydrated"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+          >
+            <style>
+              :host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+}
+::slotted(a) {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+span {
+  display: block;
+  width: 100%;
+  color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.root {
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: transparent;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.icon {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
+}
+
+            </style>
+            <span
+              class="root"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon hydrated"
+              >
+                <template
+                  shadowroot="open"
+                >
+                  <style>
+                    :host {
+  display: inline-flex;
+  vertical-align: top;
+}
+img {
+  filter: invert(100%);
+}
+svg {
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  svg {
+    fill: canvasText;
+  }
+}
+
+.root {
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: inherit;
+  height: inherit;
+  color: currentColor;
+}
+                  </style>
+                  <i
+                    class="root"
+                  >
+                    <svg
+                      height="100%"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
+                      />
+                    </svg>
+                  </i>
+                </template>
+              </p-icon>
+              <span>
+                <slot />
+              </span>
+            </span>
+          </template>
+          <a
+            aria-describedby="description"
+            class="anchor"
+            target="_self"
+          />
+        </p-link>
+      </div>
+    </div>
+  </template>
+  Some child
+</p-link-tile>
+`;
+
 exports[`should render dsr component for PMarque 1`] = `
 <p-marque
   class="hydrated"
@@ -2800,7 +3055,7 @@ h1 {
             :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -3281,7 +3536,7 @@ p {
           :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -3589,6 +3844,7 @@ exports[`should render dsr component for PScroller 1`] = `
   pointer-events: none;
   display: flex;
   align-items: center;
+  margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
@@ -3603,6 +3859,7 @@ exports[`should render dsr component for PScroller 1`] = `
   pointer-events: none;
   display: flex;
   align-items: center;
+  margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
@@ -3657,7 +3914,7 @@ exports[`should render dsr component for PScroller 1`] = `
               :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -3810,7 +4067,7 @@ svg {
               :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -4397,6 +4654,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   pointer-events: none;
   display: flex;
   align-items: center;
+  margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
@@ -4411,6 +4669,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   pointer-events: none;
   display: flex;
   align-items: center;
+  margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
@@ -4465,7 +4724,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
                   :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -4618,7 +4877,7 @@ svg {
                   :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -5334,6 +5593,7 @@ exports[`should render dsr component for PTabs 1`] = `
   pointer-events: none;
   display: flex;
   align-items: flex-start;
+  margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
@@ -5348,6 +5608,7 @@ exports[`should render dsr component for PTabs 1`] = `
   pointer-events: none;
   display: flex;
   align-items: flex-start;
+  margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
@@ -5402,7 +5663,7 @@ exports[`should render dsr component for PTabs 1`] = `
                       :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -5555,7 +5816,7 @@ svg {
                       :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -5842,6 +6103,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   pointer-events: none;
   display: flex;
   align-items: flex-start;
+  margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
@@ -5856,6 +6118,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   pointer-events: none;
   display: flex;
   align-items: flex-start;
+  margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
@@ -5910,7 +6173,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
                   :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
@@ -6063,7 +6326,7 @@ svg {
                   :host {
   position: relative;
   outline: 0 !important;
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top;
 }
 ::slotted(p) {
