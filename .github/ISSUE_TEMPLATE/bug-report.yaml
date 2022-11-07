@@ -16,7 +16,7 @@ body:
   - type: input
     id: framework
     attributes:
-      label: Framework
+      label: JS Framework
       placeholder: e.g. React
     validations:
       required: true
@@ -34,8 +34,11 @@ body:
       multiple: true
       options:
         - Firefox
+        - Mobile Firefox
         - Chrome
+        - Mobile Chrome
         - Safari
+        - Mobile Safari
         - Microsoft Edge
   - type: input
     id: browser-version
