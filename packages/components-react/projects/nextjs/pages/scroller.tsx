@@ -141,38 +141,6 @@ const ScrollerPage: NextPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render scroller with scroll indicator size according to fontsize large on light background"
-      >
-        <PScroller style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-          <a href="#">Large font</a>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground light"
-        title="should render scroller with scroll indicator size according to inherit size on light background"
-      >
-        <div style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
-          <PScroller style={{ fontSize: 'inherit' }}>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-            <a href="#">Size inherit</a>
-          </PScroller>
-        </div>
-      </div>
-
-      <div
-        className="playground light"
         title="should render scroller only on screen size too small to show 8 buttons on light background"
       >
         <PScroller style={{ maxWidth: 'none' }}>
@@ -201,6 +169,38 @@ const ScrollerPage: NextPage = (): JSX.Element => {
             <span>Start</span>
             <span>Middle</span>
             <span>End</span>
+          </PScroller>
+        </div>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render scroller with scroll indicator size according to fontsize large on light background"
+      >
+        <PScroller style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+        </PScroller>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render scroller with scroll indicator size according to inherit size on light background"
+      >
+        <div style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
+          <PScroller style={{ fontSize: 'inherit' }}>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
           </PScroller>
         </div>
       </div>
