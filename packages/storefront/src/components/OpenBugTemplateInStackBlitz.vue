@@ -52,7 +52,7 @@
     }
 
     private getFilteredVersions(arr: string[]): string[] {
-      return arr.filter((version) => !version.includes('rc') && !version.includes('beta')).reverse();
+      return arr.filter((version) => version.match(/^(?:\d+\.){2}\d+$/)).reverse(); // Match only stable releases
     }
 
     async mounted(): Promise<void> {
