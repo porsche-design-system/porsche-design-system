@@ -48,7 +48,7 @@ type InitOptions = {
   tag?: 'a' | 'button';
 };
 
-const initTabsBar = async (opts?: InitOptions) => {
+const initTabsBar = (opts?: InitOptions) => {
   const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
@@ -64,7 +64,7 @@ const initTabsBar = async (opts?: InitOptions) => {
   ${tabs}
 </p-tabs-bar>${otherMarkup}`;
 
-  await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
 const getHost = () => selectNode(page, 'p-tabs-bar');
@@ -283,7 +283,7 @@ describe('active index position', () => {
     );
 
     await clickElement(prevButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(58);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(57);
   });
 
   it('should have correct scroll position after tab click and next button click', async () => {

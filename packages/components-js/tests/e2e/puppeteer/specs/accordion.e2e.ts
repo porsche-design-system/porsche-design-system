@@ -35,7 +35,7 @@ describe('accordion', () => {
       });
     </script>`;
 
-  const initAccordion = async (opts?: InitOptions) => {
+  const initAccordion = (opts?: InitOptions) => {
     const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
 
     const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
@@ -43,7 +43,7 @@ Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam n
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 </p-accordion>${otherMarkup}`;
 
-    await setContentWithDesignSystem(page, content);
+    return setContentWithDesignSystem(page, content);
   };
 
   const getHost = () => selectNode(page, 'p-accordion');

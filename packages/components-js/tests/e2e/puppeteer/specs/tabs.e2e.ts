@@ -23,7 +23,7 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
+const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
   const { amount = 3, activeTabIndex } = opts ?? {};
 
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
@@ -32,7 +32,7 @@ const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => 
     .join('')}
 </p-tabs>`;
 
-  await setContentWithDesignSystem(page, content);
+  return setContentWithDesignSystem(page, content);
 };
 
 const getHost = () => selectNode(page, 'p-tabs');

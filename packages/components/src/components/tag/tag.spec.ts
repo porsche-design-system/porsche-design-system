@@ -1,7 +1,7 @@
 import * as getDirectChildHTMLElementUtils from '../../utils/dom/getDirectChildHTMLElement';
 import { Tag } from './tag';
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call getDirectChildHTMLElement() with correct parameters', () => {
     const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
     const component = new Tag();

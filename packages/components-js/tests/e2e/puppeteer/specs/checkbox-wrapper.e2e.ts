@@ -10,8 +10,8 @@ import {
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 
@@ -50,14 +50,16 @@ const initCheckbox = (opts?: InitOptions): Promise<void> => {
     ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
     : '';
 
+  const attrs = [`state="${state}"`, !useSlottedLabel ? 'label="Some Label"' : ''].join(' ');
+
   return setContentWithDesignSystem(
     page,
     `
-        <p-checkbox-wrapper state="${state}"${!useSlottedLabel && ' label="Some Label"'}>
-          ${slottedLabel}
-          <input type="checkbox" />
-          ${slottedMessage}
-        </p-checkbox-wrapper>`
+    <p-checkbox-wrapper ${attrs}>
+      ${slottedLabel}
+      <input type="checkbox" />
+      ${slottedMessage}
+    </p-checkbox-wrapper>`
   );
 };
 
@@ -65,9 +67,9 @@ it('should not render label if label prop is not defined but should render if ch
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper>
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper>
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const host = await getHost();
@@ -82,9 +84,9 @@ it('should add/remove message text with message if state changes programmaticall
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const host = await getHost();
@@ -113,9 +115,9 @@ it('should toggle checkbox when input is clicked', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();
@@ -135,12 +137,12 @@ it('should toggle checkbox when input is clicked', async () => {
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
-it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
+it('should toggle checkbox when label text is clicked and set input as active element', async () => {
   await initCheckbox();
 
   const label = await getLabelText();
   const input = await getInput();
-  const isInputChecked = () => getProperty(input, 'checked');
+  const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
   expect(await isInputChecked()).toBe(false);
   expect(await getActiveElementTagName(page)).not.toBe('INPUT');
@@ -149,22 +151,22 @@ it('should toggle checkbox when label text is clicked and not set input as activ
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(true);
-  expect(await getActiveElementTagName(page)).toBe('BODY');
+  expect(await getActiveElementTagName(page)).toBe('INPUT');
 
   await label.click();
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(false);
-  expect(await getActiveElementTagName(page)).toBe('BODY');
+  expect(await getActiveElementTagName(page)).toBe('INPUT');
 });
 
 it('should check/uncheck checkbox when checkbox attribute is changed programmatically', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();
@@ -182,9 +184,9 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
   await setContentWithDesignSystem(
     page,
     `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
   );
 
   const input = await getInput();
@@ -275,9 +277,9 @@ describe('indeterminate state', () => {
     await setContentWithDesignSystem(
       page,
       `
-          <p-checkbox-wrapper label="Some label">
-            <input type="checkbox" name="some-name"/>
-          </p-checkbox-wrapper>`
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`
     );
 
     const input = await getInput();
@@ -332,10 +334,9 @@ describe('accessibility', () => {
     await setContentWithDesignSystem(
       page,
       `
-          <p-checkbox-wrapper label="Some label" message="Some error message." state="error">
-            <input type="checkbox" name="some-name"/>
-          </p-checkbox-wrapper>
-        `
+      <p-checkbox-wrapper label="Some label" message="Some error message." state="error">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`
     );
     const input = await getInput();
     const message = await getMessage();

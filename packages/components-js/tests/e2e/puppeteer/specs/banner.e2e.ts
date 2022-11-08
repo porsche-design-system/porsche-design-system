@@ -46,11 +46,10 @@ it('should forward props correctly to p-inline-notification', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-banner state="error" persistent="true" theme="dark">
-        <span slot="title">Some notification title</span>
-        <span slot="description">Some notification description.</span>
-      </p-banner>
-    `
+    <p-banner state="error" persistent="true" theme="dark">
+      <span slot="title">Some notification title</span>
+      <span slot="description">Some notification description.</span>
+    </p-banner>`
   );
 
   const inlineNotification = await getInlineNotification();
@@ -127,14 +126,14 @@ describe('close', () => {
     await setContentWithDesignSystem(
       page,
       `
-        <p-banner id="banner1" style="--p-banner-position-type: static">
-          <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
-          <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
-        </p-banner>
-        <p-banner id="banner2" style="--p-banner-position-type: static">
-          <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
-          <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
-        </p-banner>`
+      <p-banner id="banner1" style="--p-banner-position-type: static">
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>
+      <p-banner id="banner2" style="--p-banner-position-type: static">
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>`
     );
 
     const banner1 = await selectNode(page, '#banner1');

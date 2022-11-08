@@ -113,8 +113,8 @@ jobs:
         with:
           name: components-js-unit-regression
           path: ./packages/components-js/tests/unit/results
-  components-js-e2e:
-    name: 'Components JS E2E'
+  components-js-e2e-puppeteer:
+    name: 'Components JS E2E (Puppeteer)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -153,10 +153,55 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'E2E Test'
+      - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e
+          entrypoint: run-test-e2e-puppeteer
+          args: --components-js
+  components-js-e2e-playwright:
+    name: 'Components JS E2E (Playwright)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Cache node_modules'
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'E2E Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
           args: --components-js
   components-js-vrt-puppeteer:
     name: 'Components JS VRT (Puppeteer)'
@@ -198,12 +243,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
+      - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-puppeteer
           args: --components-js
-      - name: 'VRT Regression'
+      - name: 'VRT Regression (Puppeteer)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
@@ -249,12 +294,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'VRT Test'
+      - name: 'VRT Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js
-      - name: 'VRT Regression'
+      - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
@@ -969,7 +1014,8 @@ jobs:
       - production-builds
       - components-unit
       - components-js-unit
-      - components-js-e2e
+      - components-js-e2e-puppeteer
+      - components-js-e2e-playwright
       - components-js-vrt-puppeteer
       - components-js-vrt-playwright
       - components-angular
@@ -1013,7 +1059,8 @@ jobs:
       - production-builds
       - components-unit
       - components-js-unit
-      - components-js-e2e
+      - components-js-e2e-puppeteer
+      - components-js-e2e-playwright
       - components-js-vrt-puppeteer
       - components-js-vrt-playwright
       - components-angular

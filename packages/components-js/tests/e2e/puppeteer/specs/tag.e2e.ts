@@ -16,13 +16,13 @@ type InitOpts = {
   withIcon?: boolean;
 };
 
-const initTag = async (props?: InitOpts) => {
+const initTag = (props?: InitOpts) => {
   const { withIcon = false } = props || {};
   const attributes = withIcon ? ' icon="car"' : '';
 
   const content = `<p-tag${attributes}>Some Tag</p-tag>`;
 
-  await setContentWithDesignSystem(page, content);
+  return setContentWithDesignSystem(page, content);
 };
 
 const getHost = () => selectNode(page, 'p-tag');

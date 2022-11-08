@@ -53,9 +53,7 @@ export const getComponentCss = (
             '&(p)': {
               margin: 0,
             },
-            '&(a)': {
-              ...slottedAnchorStyles,
-            },
+            '&(a)': slottedAnchorStyles,
           },
         },
       }
@@ -70,9 +68,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
       // this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
       '& a': getFocusJssStyle({ pseudo: '::before', offset: 1 }),
       // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway
-      '& * a': {
-        ...slottedAnchorStyles,
-      },
+      '& * a': slottedAnchorStyles,
     })
   );
 };

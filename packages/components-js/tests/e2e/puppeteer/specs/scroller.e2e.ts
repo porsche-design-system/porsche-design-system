@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
@@ -8,7 +8,6 @@ import {
   getProperty,
   SCROLL_PERCENTAGE,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -27,7 +26,7 @@ type InitOptions = {
   scrollToPosition?: ScrollToPosition;
 };
 
-const initScroller = async (opts?: InitOptions) => {
+const initScroller = (opts?: InitOptions) => {
   const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
@@ -35,13 +34,13 @@ const initScroller = async (opts?: InitOptions) => {
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const content = `<p-scroller${
-    scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : ''
-  }>
+  const attrs = scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '';
+
+  const content = `<p-scroller ${attrs}>
   ${elements}
 </p-scroller>${otherMarkup}`;
 
-  await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
 
 const getHost = () => selectNode(page, 'p-scroller');
@@ -229,11 +228,11 @@ describe('next/prev buttons', () => {
       await setContentWithDesignSystem(
         page,
         `
-            <div style="width: 150px">
-              <p-scroller>
-                <div ${style}>A</div>
-              </p-scroller>
-            </div>`
+        <div style="width: 150px">
+          <p-scroller>
+            <div ${style}>A</div>
+          </p-scroller>
+        </div>`
       );
     };
 

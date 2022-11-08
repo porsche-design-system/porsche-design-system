@@ -23,7 +23,7 @@ afterEach(async () => await page.close());
 type InitToastOptions = {
   withAnimation?: boolean;
 };
-const initToast = async (opts?: InitToastOptions): Promise<void> => {
+const initToast = (opts?: InitToastOptions): Promise<void> => {
   const { withAnimation } = {
     withAnimation: false,
     ...opts,
@@ -35,7 +35,7 @@ const initToast = async (opts?: InitToastOptions): Promise<void> => {
   ${withAnimation ? `--p-override-toast-animation-duration: ${ANIMATION_DURATION / 1000}s` : ''}
 }</style>`;
 
-  await setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
+  return setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
     injectIntoHead: style,
   });
 };

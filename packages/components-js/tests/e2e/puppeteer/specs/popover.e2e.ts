@@ -86,7 +86,7 @@ describe('mouse behavior', () => {
     await setContentWithDesignSystem(
       page,
       `<p-popover>Some Content</p-popover>
-        <p-popover class="second">Some Content</p-popover>`
+      <p-popover class="second">Some Content</p-popover>`
     );
 
     const firstButton = await getButton();
@@ -177,13 +177,13 @@ describe('keyboard behavior', () => {
     it('should open / close popover', async () => {
       await initPopover();
 
-      page.keyboard.press('Tab');
-      page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getPopover(), 'first enter').not.toBeNull();
 
-      page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getPopover(), 'second enter').toBeNull();
@@ -195,15 +195,15 @@ describe('keyboard behavior', () => {
         `<p-popover>Some Content</p-popover>
         <p-popover class="second">Some Content</p-popover>`
       );
-      page.keyboard.press('Tab');
-      page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getPopover(), 'first popover, first enter').not.toBeNull();
       expect(await getSecondPopover(), 'second popover, first enter').toBeNull();
 
-      page.keyboard.press('Tab');
-      page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getPopover(), 'first popover, second enter').toBeNull();

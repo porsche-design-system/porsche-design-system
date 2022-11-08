@@ -307,19 +307,19 @@ describe('focus behavior', () => {
     await setContentWithDesignSystem(
       page,
       `
-        <button id="btn-open"></button>
-        <p-modal id="modal" heading="Some Heading">
-          Some Content
-        </p-modal>
-        <script>
-          const modal = document.getElementById('modal');
-          document.getElementById('btn-open').addEventListener('click', () => {
-            modal.open = true;
-          });
-          modal.addEventListener('close', () => {
-            modal.open = false;
-          });
-        </script>`
+      <button id="btn-open"></button>
+      <p-modal id="modal" heading="Some Heading">
+        Some Content
+      </p-modal>
+      <script>
+        const modal = document.getElementById('modal');
+        document.getElementById('btn-open').addEventListener('click', () => {
+          modal.open = true;
+        });
+        modal.addEventListener('close', () => {
+          modal.open = false;
+        });
+      </script>`
     );
     await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 

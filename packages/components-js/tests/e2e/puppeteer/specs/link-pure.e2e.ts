@@ -68,12 +68,11 @@ it('should trigger focus & blur events at the correct time', async () => {
   await setContentWithDesignSystem(
     page,
     `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link-pure href="#" id="my-link-pure">Some label</p-link-pure>
-            <a href="#" id="after">after</a>
-          </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link-pure href="#" id="my-link-pure">Some label</p-link-pure>
+      <a href="#" id="after">after</a>
+    </div>`
   );
   const link = await getHost();
   const before = await selectNode(page, '#before');
@@ -159,11 +158,10 @@ it('should provide functionality to focus & blur the custom element', async () =
   await setContentWithDesignSystem(
     page,
     `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link-pure href="#">Some label</p-link-pure>
-          </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link-pure href="#">Some label</p-link-pure>
+    </div>`
   );
 
   const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-pure'));

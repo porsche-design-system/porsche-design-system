@@ -65,12 +65,11 @@ it('should trigger focus & blur events at the correct time', async () => {
   await setContentWithDesignSystem(
     page,
     `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link-social href="#" icon="logo-facebook" id="my-link-social">Some label</p-link-social>
-            <a href="#" id="after">after</a>
-          </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link-social href="#" icon="logo-facebook" id="my-link-social">Some label</p-link-social>
+      <a href="#" id="after">after</a>
+    </div>`
   );
   const link = await getHost();
   const before = await selectNode(page, '#before');
@@ -156,11 +155,10 @@ it('should provide methods to focus & blur the element', async () => {
   await setContentWithDesignSystem(
     page,
     `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
-          </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
+    </div>`
   );
 
   const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-social'));

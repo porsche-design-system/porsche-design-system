@@ -47,7 +47,7 @@ type InitOptions = {
   isWrapped?: boolean;
 };
 
-const initStepperHorizontal = async (opts?: InitOptions) => {
+const initStepperHorizontal = (opts?: InitOptions) => {
   const { amount = 3, currentStep = 0, isWrapped } = opts || {};
 
   const getState = (index: number) =>
@@ -66,7 +66,7 @@ const initStepperHorizontal = async (opts?: InitOptions) => {
   ${steps}
  </p-stepper-horizontal>`;
 
-  await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
 const getHost = () => selectNode(page, 'p-stepper-horizontal');

@@ -15,6 +15,13 @@ exports[`addImportantToEachRule() should add !important to each rule 1`] = `
 }
 `;
 
+exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
+{
+  "WebkitBackfaceVisibility": "hidden",
+  "backfaceVisibility": "hidden",
+}
+`;
+
 exports[`getBaseSlottedStyles() should return correct styles 1`] = `
 {
   "& a": {

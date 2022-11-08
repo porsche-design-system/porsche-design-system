@@ -394,12 +394,11 @@ describe('marque', () => {
       await setContentWithDesignSystem(
         page,
         `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-marque href="#" id="my-link">Some label</p-marque>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+        <div id="wrapper">
+          <a href="#" id="before">before</a>
+          <p-marque href="#" id="my-link">Some label</p-marque>
+          <a href="#" id="after">after</a>
+        </div>`
       );
 
       const marque = await getHost();
@@ -486,11 +485,10 @@ describe('marque', () => {
       await setContentWithDesignSystem(
         page,
         `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-marque href="#">Some label</p-marque>
-      </div>
-    `
+        <div id="wrapper">
+          <a href="#" id="before">before</a>
+          <p-marque href="#">Some label</p-marque>
+        </div>`
       );
 
       const marqueHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-marque'));

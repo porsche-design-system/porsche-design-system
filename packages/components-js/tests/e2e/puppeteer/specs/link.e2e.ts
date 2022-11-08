@@ -64,12 +64,11 @@ it('should trigger focus & blur events at the correct time', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link href="#" id="my-link">Some label</p-link>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link href="#" id="my-link">Some label</p-link>
+      <a href="#" id="after">after</a>
+    </div>`
   );
 
   const link = await getHost();
@@ -156,11 +155,10 @@ it('should provide functionality to focus & blur the custom element', async () =
   await setContentWithDesignSystem(
     page,
     `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link href="#">Some label</p-link>
-      </div>
-    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-link href="#">Some label</p-link>
+    </div>`
   );
 
   const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link'));
@@ -214,7 +212,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-link'], 'componentDidUpdate: p-link').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-ico').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 
@@ -237,7 +236,6 @@ describe('accessibility', () => {
       'aria-label': 'Some more detailed label',
     });
     await waitForStencilLifecycle(page);
-
     await expectA11yToMatchSnapshot(page, link);
   });
 
@@ -249,18 +247,6 @@ describe('accessibility', () => {
     await setProperty(host, 'hide-label', 'true');
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, link);
-  });
-
-  it('should expose correct accessibility tree if accessibility properties are set', async () => {
-    await initLink();
-    const host = await getHost();
-    const link = await getLink();
-
-    await setProperty(host, 'aria', {
-      'aria-label': 'Some more detailed label',
-    });
-    await waitForStencilLifecycle(page);
     await expectA11yToMatchSnapshot(page, link);
   });
 });

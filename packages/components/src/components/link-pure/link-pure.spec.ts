@@ -16,7 +16,7 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
