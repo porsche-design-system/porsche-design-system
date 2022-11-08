@@ -129,7 +129,7 @@ export class LinkTile {
     );
 
     const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel="true" icon="arrow-right">
+      <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel={true} icon="arrow-right">
         <a {...anchorProps}>{this.label}</a>
       </PrefixedTagNames.pLinkPure>
     );
