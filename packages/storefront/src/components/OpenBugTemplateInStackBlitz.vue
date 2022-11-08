@@ -18,10 +18,10 @@
       </select>
     </p-select-wrapper>
     <CodeEditor
-      :button-label="'Open template in StackBlitz'"
+      :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"
-      :pds-version="selectedPdsVersion"
+      :pdsVersion="selectedPdsVersion"
     ></CodeEditor>
   </div>
 </template>
@@ -31,7 +31,6 @@
   import Component from 'vue-class-component';
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework } from '@/models';
-  import { dependencies } from '../../../components-js/package.json';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
   @Component({
@@ -41,8 +40,8 @@
     markup = '<p-text>Place your reproduction code here</p-text>';
     frameworks: Exclude<Framework, 'shared'>[] = ['vanilla-js', 'angular', 'react'];
     selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
-    selectedPdsVersion = dependencies['@porsche-design-system/components-js'];
     pdsVersions: string[] = [];
+    selectedPdsVersion = this.pdsVersions[0];
     frameworkNameMap = frameworkNameMap;
 
     private async fetchVersions(): Promise<string[]> {
@@ -60,6 +59,7 @@
 
     async mounted(): Promise<void> {
       this.pdsVersions = this.getFilteredVersions(await this.fetchVersions());
+      this.selectedPdsVersion = this.pdsVersions[0];
     }
   }
 </script>
