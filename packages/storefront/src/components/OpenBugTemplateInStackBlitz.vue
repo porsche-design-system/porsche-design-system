@@ -1,28 +1,27 @@
 <template>
-  <div class="container">
-    <p-fieldset-wrapper label="Choose your Template:" class="fieldset-wrapper">
-      <p-segmented-control
-        :value="selectedFramework"
-        aria-label="Choose your Framework:"
-        @segmentedControlChange="(e) => (this.selectedFramework = e.detail.value)"
-      >
-        <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
-          frameworkNameMap[framework]
-        }}</p-segmented-control-item>
-      </p-segmented-control>
-      <p-select-wrapper label="Choose your Porsche Design System version:">
-        <select v-model="selectedPdsVersion" name="some-name">
-          <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
-        </select>
-      </p-select-wrapper>
-    </p-fieldset-wrapper>
+  <p-fieldset-wrapper label="Choose your Template:" class="fieldset-wrapper">
+    <p-segmented-control
+      :value="selectedFramework"
+      aria-label="Choose your Framework:"
+      @segmentedControlChange="(e) => (this.selectedFramework = e.detail.value)"
+    >
+      <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
+        frameworkNameMap[framework]
+      }}</p-segmented-control-item>
+    </p-segmented-control>
+    <p-select-wrapper label="Choose your Porsche Design System version:">
+      <select v-model="selectedPdsVersion" name="some-name">
+        <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
+      </select>
+    </p-select-wrapper>
+
     <CodeEditor
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"
       :pdsVersion="selectedPdsVersion"
     ></CodeEditor>
-  </div>
+  </p-fieldset-wrapper>
 </template>
 
 <script lang="ts">
@@ -64,14 +63,11 @@
 </script>
 
 <style>
-  .container {
-    margin: 2rem 0;
+  .fieldset-wrapper {
+    margin: 1rem 0;
   }
   .fieldset-wrapper > * {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     max-width: 20rem;
-  }
-  p-segmented-control {
-    margin-top: 1rem;
   }
 </style>
