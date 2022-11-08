@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <p-text class="segmented-control-label">Choose your Framework:</p-text>
+    <p-fieldset-wrapper label="Choose your Template:" class="fieldset-wrapper">
       <p-segmented-control
         :value="selectedFramework"
         aria-label="Choose your Framework:"
@@ -11,12 +10,12 @@
           frameworkNameMap[framework]
         }}</p-segmented-control-item>
       </p-segmented-control>
-    </div>
-    <p-select-wrapper label="Choose your Porsche Design System version:">
-      <select v-model="selectedPdsVersion" name="some-name">
-        <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
-      </select>
-    </p-select-wrapper>
+      <p-select-wrapper label="Choose your Porsche Design System version:">
+        <select v-model="selectedPdsVersion" name="some-name">
+          <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
+        </select>
+      </p-select-wrapper>
+    </p-fieldset-wrapper>
     <CodeEditor
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
@@ -66,17 +65,13 @@
 
 <style>
   .container {
-    display: grid;
-    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .fieldset-wrapper > * {
+    margin-bottom: 2rem;
+    max-width: 20rem;
+  }
+  p-segmented-control {
     margin-top: 1rem;
-  }
-  .segmented-control-label {
-    margin-bottom: 0.25rem;
-  }
-  p-select-wrapper {
-    justify-self: start;
-  }
-  p-button {
-    justify-self: start;
   }
 </style>
