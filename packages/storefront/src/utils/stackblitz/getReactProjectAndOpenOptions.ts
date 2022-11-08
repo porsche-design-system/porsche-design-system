@@ -31,13 +31,9 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
     .filter((reactComponentName, idx, arr) => arr.findIndex((t) => t === reactComponentName) === idx) // Remove duplicates
     .join(', ');
 
-  return `${
-    reactComponentsToImport.length
-      ? `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
+  return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
 
-`
-      : ''
-  }export const App = (): JSX.Fragment => {
+export const App = (): JSX.Fragment => {
   return (
     <>
       ${convertedMarkup}
