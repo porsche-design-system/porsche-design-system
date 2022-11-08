@@ -31,6 +31,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework } from '@/models';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
+  import { dependencies } from '../../../components-js/package.json';
 
   @Component({
     components: { CodeEditor },
@@ -40,7 +41,7 @@
     frameworks: Exclude<Framework, 'shared'>[] = ['vanilla-js', 'angular', 'react'];
     selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
     pdsVersions: string[] = [];
-    selectedPdsVersion = this.pdsVersions[0];
+    selectedPdsVersion = dependencies['@porsche-design-system/components-js'];
     frameworkNameMap = frameworkNameMap;
 
     private async fetchVersions(): Promise<string[]> {
