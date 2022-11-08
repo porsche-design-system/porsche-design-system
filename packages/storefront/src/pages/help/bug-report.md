@@ -15,7 +15,7 @@ Before reporting a bug:
 ## Reproduction
 
 Please provide a minimal reproduction example of the issue using **StackBlitz**. You can choose the **JS framework** and
-**Design System** version below and open a working default template with our setup on **StackBlitz**.
+**Porsche Design System** version below and open a working default template with our setup on **StackBlitz**.
 
 <OpenBugTemplateInStackBlitz></OpenBugTemplateInStackBlitz>
 
