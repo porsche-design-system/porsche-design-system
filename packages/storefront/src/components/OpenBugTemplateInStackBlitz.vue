@@ -52,7 +52,11 @@
     }
 
     private getFilteredVersions(arr: string[]): string[] {
-      return arr.filter((version) => version.match(/^(?:\d+\.){2}\d+$/)).reverse(); // Match only stable releases
+      return arr
+        .filter((version) => version.match(/^(?:\d+\.){2}\d+$/))
+        .sort(function (a, b) {
+          return b.localeCompare(a, undefined, { numeric: true });
+        }); // Match only stable releases
     }
 
     async mounted(): Promise<void> {
