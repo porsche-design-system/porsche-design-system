@@ -5,7 +5,7 @@
       <p-segmented-control
         :value="selectedFramework"
         aria-label="Choose your Framework:"
-        @segmentedControlChange="onSegmentedControlChange"
+        @segmentedControlChange="(e) => (this.selectedFramework = e.detail.value)"
       >
         <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
           frameworkNameMap[framework]
@@ -56,10 +56,6 @@
 
     private getFilteredVersions(arr: string[]): string[] {
       return arr.filter((version) => !version.includes('rc') && !version.includes('beta')).reverse();
-    }
-
-    onSegmentedControlChange(e: CustomEvent) {
-      this.selectedFramework = e.detail.value;
     }
 
     async mounted(): Promise<void> {
