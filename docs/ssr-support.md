@@ -25,7 +25,7 @@
 | **Pagination**           | ✅     | - `max-number-of-page-links` is not supported                                                                                                                                      |
 | **Popover**              | ✅     |                                                                                                                                                                                    |
 | **Radio Button Wrapper** | ✅     | - Required state not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                     |
-| **Scroller**             | ❔     |                                                                                                                                                                                    |
+| **Scroller**             | ✅     | - Inherited line-height other than a factor of 1.5 is not supported                                                                                                                |
 | **Segmented Control**    | ❔     |                                                                                                                                                                                    |
 | **Select Wrapper**       | ❔     |                                                                                                                                                                                    |
 | **Spinner**              | ✅     |                                                                                                                                                                                    |
