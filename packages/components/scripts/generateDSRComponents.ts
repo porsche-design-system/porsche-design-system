@@ -4,7 +4,7 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -74,12 +74,11 @@ const generateDSRComponents = (): void => {
             ? m.replace(group, './' + group.split('/').pop())
             : ''
         )
-        .replace(/(getPrefixedTagNames)\((?:this\.)?host\)/g, '$1()') // remove this.host param
+        .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
         .replace(
           /^/g,
           `import { Component } from 'react';
-import { getPrefixedTagNames } from '../../getPrefixedTagNames';
 import { minifyCss } from '../../minifyCss';
 import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
@@ -91,8 +90,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}'); // comment out isRequiredAndParentNotRequired for now
 
-      // inject DSR template
       if (!newFileContent.includes('FunctionalComponent')) {
+        // inject DSR template
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
 
@@ -124,6 +123,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
         .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
+
+      // take care of nested components of PrefixedTagNames
+      const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
+        .map(([, cmpName]) => `P${cmpName}`)
+        .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx) // remove duplicates
+        .filter((x) => !INTERNAL_TAG_NAMES.includes(paramCase(x) as TagName))
+        .join(', ');
+      if (componentImports) {
+        newFileContent = newFileContent.replace(/^/, `import { ${componentImports} } from '../components';\n`);
+      }
+
+      newFileContent = newFileContent
+        .replace(/PrefixedTagNames.p([A-Za-z]+)/g, 'P$1') // reference imported components
+        .replace(/<(?:PSelectWrapperDropdown|PToastItem)[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
       if (hasChildren && !newFileContent.includes('FunctionalComponent')) {
@@ -176,6 +189,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/tabs\.theme \|\| ('light')/, '$1') // tabs
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
+        .replace(/const isNestedList.*\n/, '') // text-list
         .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(
           /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
@@ -198,7 +212,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }) // pagination unique key warning
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
-        .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2'); // button, button-pure
+        .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
+        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any ='); // workaround typing issue
 
       // component based tweaks
       if (tagName === 'p-carousel') {

@@ -92,8 +92,8 @@ export class Table {
                 class="scroll-button"
                 aria-hidden="true"
                 type="button"
-                tabIndex="-1"
-                hideLabel="true"
+                tabIndex={-1}
+                hideLabel={true}
                 size="inherit"
                 icon="arrow-head-right"
                 onClick={this.onScrollClick}

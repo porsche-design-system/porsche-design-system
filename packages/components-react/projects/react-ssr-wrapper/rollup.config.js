@@ -18,6 +18,7 @@ export default [
     output: {
       dir: outputDir,
       format: 'cjs',
+      preserveModules: true,
     },
     plugins: [
       resolve(),
@@ -29,8 +30,8 @@ export default [
       }),
       generatePackageJson({
         baseContents: {
-          main: 'public-api.js',
-          module: 'esm/public-api.js',
+          main: 'components-react/projects/react-ssr-wrapper/src/public-api.js',
+          module: 'esm/components-react/projects/react-ssr-wrapper/src/public-api.js',
           types: 'public-api.d.ts',
           sideEffects: false,
         },
@@ -43,6 +44,7 @@ export default [
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
+      preserveModules: true,
     },
     plugins: [resolve(), typescript(typescriptOpts)],
   },

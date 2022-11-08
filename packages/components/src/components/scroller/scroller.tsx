@@ -107,8 +107,8 @@ export class Scroller {
           <PrefixedTagNames.pButtonPure
             class="button"
             type="button"
-            tabIndex="-1"
-            hideLabel="true"
+            tabIndex={-1}
+            hideLabel={true}
             size="inherit"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             onClick={() => this.scrollOnPrevNextClick(direction)}

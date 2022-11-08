@@ -73,7 +73,7 @@ export class Popover {
         <PrefixedTagNames.pButtonPure
           type="button"
           icon="information"
-          hideLabel="true"
+          hideLabel={true}
           onClick={() => (this.open = !this.open)}
           // pass string to avoid another update on p-button on each render because of new object reference
           aria={JSON.stringify({
