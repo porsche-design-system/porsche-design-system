@@ -1,5 +1,4 @@
 import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlitz.vue';
-import { json } from 'stream/consumers';
 
 describe('OpenBugTemplateInStackBlitz.vue', () => {
   describe('this.fetchVersions()', () => {

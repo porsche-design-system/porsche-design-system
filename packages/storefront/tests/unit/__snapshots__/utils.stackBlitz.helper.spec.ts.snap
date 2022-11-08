@@ -7,13 +7,6 @@ exports[`convertImportPaths() should return markup without modification 1`] = `
 'import * from '@porsche-design-system/components-react';"
 `;
 
-exports[`convertImportPaths() should return markup without modification when pdsVersion is passed 1`] = `
-"
-'import * from '@porsche-design-system/components-js';
-'import * from '@porsche-design-system/components-angular';
-'import * from '@porsche-design-system/components-react';"
-`;
-
 exports[`convertImportPaths() should return markup without updated import path for angular 1`] = `
 "
 'import * from '@porsche-design-system/components-js';

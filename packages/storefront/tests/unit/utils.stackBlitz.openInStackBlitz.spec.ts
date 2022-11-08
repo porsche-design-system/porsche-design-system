@@ -20,6 +20,7 @@ describe('openInStackBlitz()', () => {
     backgroundColorScheme: 'default',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   const mockedGetBackgroundColor = '#fff';
@@ -32,7 +33,7 @@ describe('openInStackBlitz()', () => {
     title: '',
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${mockedGetBackgroundColor}; }`,
-    pdsVersion: undefined,
+    pdsVersion: '',
   };
 
   const mockedProjectAndOpenOptions: StackBlitzProjectAndOpenOptions = {

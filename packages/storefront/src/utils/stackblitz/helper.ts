@@ -62,9 +62,9 @@ export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(locatio
 export const convertImportPaths = (
   markup: string,
   framework: 'js' | 'angular' | 'react',
-  pdsVersion?: string
+  pdsVersion: string
 ): string => {
-  return pdsVersion || isStableStorefrontRelease()
+  return isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
     ? markup
     : markup.replace(
         new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
@@ -78,3 +78,6 @@ export const transformSrcAndSrcsetOfImgAndSourceTags = (markup: string): string 
 
   return markup.replace(/(<(?:img|source).*?(?:src|srcset)=")([^http|.)].*")/g, `$1${originUrl + baseHref}$2`);
 };
+
+export const isPdsVersionOrStackBlitzStableStorefrontRelease = (pdsVersion: string): boolean =>
+  !!pdsVersion || isStableStorefrontRelease();

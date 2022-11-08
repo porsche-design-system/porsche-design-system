@@ -1,6 +1,6 @@
-import { FrameworkMarkup } from '@/models';
+import { Framework } from '@/models';
 
-export const frameworkNameMap: Required<FrameworkMarkup> = {
+export const frameworkNameMap: Record<Framework, string> = {
   'vanilla-js': 'Vanilla JS',
   angular: 'Angular',
   react: 'React',

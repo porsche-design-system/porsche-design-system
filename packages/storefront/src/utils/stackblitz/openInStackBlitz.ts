@@ -20,7 +20,7 @@ export type OpenInStackBlitzOpts = {
   backgroundColorScheme: ColorScheme;
   externalDependencies: ExternalDependency[];
   sharedImportKeys: SharedImportKey[];
-  pdsVersion?: string;
+  pdsVersion: string;
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {

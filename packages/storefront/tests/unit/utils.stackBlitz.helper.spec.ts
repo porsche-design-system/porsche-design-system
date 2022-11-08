@@ -9,6 +9,7 @@ import {
   isStableStorefrontRelease,
   convertImportPaths,
   transformSrcAndSrcsetOfImgAndSourceTags,
+  isPdsVersionOrStackBlitzStableStorefrontRelease,
 } from '../../src/utils/stackblitz/helper';
 import type { ExternalDependency } from '../../src/utils';
 import * as helper from '../../src/utils/stackblitz/helper';
@@ -138,32 +139,26 @@ describe('convertImportPaths()', () => {
 'import * from '@porsche-design-system/components-react';`;
 
   it('should return markup without modification', () => {
-    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(true);
-
-    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
-  });
-
-  it('should return markup without modification when pdsVersion is passed', () => {
-    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(true);
+    jest.spyOn(helper, 'isPdsVersionOrStackBlitzStableStorefrontRelease').mockReturnValue(true);
 
     expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
   });
 
   it('should return markup without updated import path for js', () => {
-    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+    jest.spyOn(helper, 'isPdsVersionOrStackBlitzStableStorefrontRelease').mockReturnValue(false);
 
-    expect(convertImportPaths(markup, 'js')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
   });
 
   it('should return markup without updated import path for angular', () => {
-    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+    jest.spyOn(helper, 'isPdsVersionOrStackBlitzStableStorefrontRelease').mockReturnValue(false);
 
-    expect(convertImportPaths(markup, 'angular')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'angular', '1.2.3')).toMatchSnapshot();
   });
   it('should return markup without updated import path for react', () => {
-    jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(false);
+    jest.spyOn(helper, 'isPdsVersionOrStackBlitzStableStorefrontRelease').mockReturnValue(false);
 
-    expect(convertImportPaths(markup, 'react')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'react', '1.2.3')).toMatchSnapshot();
   });
 });
 
@@ -197,4 +192,26 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
   ])('should not transform src and srcset for input: %s ', (input) => {
     expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(input);
   });
+});
+
+describe('isPdsVersionOrStackBlitzStableStorefrontRelease()', () => {
+  it('should call isStableStorefrontRelease() with correct parameters', () => {
+    const spy = jest.spyOn(helper, 'isStableStorefrontRelease');
+    isPdsVersionOrStackBlitzStableStorefrontRelease('');
+    expect(spy).toBeCalledWith();
+  });
+
+  it.each<[string, boolean, boolean]>([
+    ['1.2.3', true, true],
+    ['', true, true],
+    ['1.2.3', false, true],
+    ['', false, false],
+  ])(
+    'should for pdsVersion: %s, isStableStorefrontReleaseReturnValue: %s return %s',
+    (pdsVersion, isStableStorefrontReleaseReturnValue, expected) => {
+      jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValueOnce(isStableStorefrontReleaseReturnValue);
+
+      expect(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)).toBe(expected);
+    }
+  );
 });

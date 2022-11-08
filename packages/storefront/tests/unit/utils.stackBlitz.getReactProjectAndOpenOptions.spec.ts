@@ -83,7 +83,7 @@ describe('extendMarkupWithAppComponent()', () => {
     expect(spy).toBeCalledWith(markup, 'react');
   });
 
-  it('should return correct app markup with components', () => {
+  it('should return correct app markup', () => {
     const mockedConvertedMarkup = `<PButton />
 <PText>
   Some Text
@@ -94,18 +94,6 @@ describe('extendMarkupWithAppComponent()', () => {
   </p>
 </PButton>
 <button />`;
-    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
-
-    expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();
-  });
-
-  it('should return correct app markup without components', () => {
-    const mockedConvertedMarkup = `<p>
-  Some Text
-</p>
-<button>
-  Some Button
-</button>`;
     jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
 
     expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();
@@ -124,7 +112,7 @@ describe('getAppTsx()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
     const applyStackBlitzFixForReactSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'applyStackBlitzFixForReact');
 
-    getAppTsx('some markup', true, []);
+    getAppTsx('some markup', true, [], '');
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(applyStackBlitzFixForReactSpy).toBeCalledTimes(1);
@@ -140,7 +128,7 @@ describe('getAppTsx()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppTsx('some markup', true, []);
+    getAppTsx('some markup', true, [], '');
 
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
     expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
@@ -156,7 +144,7 @@ describe('getAppTsx()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppTsx('some markup', false, []);
+    getAppTsx('some markup', false, [], '');
 
     expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
@@ -168,7 +156,7 @@ describe('getIndexTsx()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
     const applyStackBlitzFixForReactSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'applyStackBlitzFixForReact');
 
-    expect(getIndexTsx()).toMatchSnapshot();
+    expect(getIndexTsx('')).toMatchSnapshot();
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(applyStackBlitzFixForReactSpy).toBeCalledTimes(1);
   });
@@ -197,7 +185,7 @@ describe('getDependencies()', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(externalDependencies, '');
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
@@ -208,7 +196,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...expectedStableReleaseDependencies,
       ...mockedDependency,
     });
@@ -235,7 +223,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...expectedDefaultDependencies,
       ...mockedDependency,
     });
@@ -269,6 +257,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
@@ -285,11 +274,11 @@ describe('getReactProjectAndOpenOptions()', () => {
       stackBlitzFrameworkOpts.markup,
       false,
       stackBlitzFrameworkOpts.sharedImportKeys,
-      undefined
+      ''
     );
-    expect(getIndexTsxSpy).toBeCalledWith(undefined);
+    expect(getIndexTsxSpy).toBeCalledWith('');
     expect(getTsconfigJsonSpy).toBeCalled();
-    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
+    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {

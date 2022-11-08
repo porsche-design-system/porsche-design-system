@@ -1,5 +1,9 @@
 import { dependencies } from '../../../../components-js/package.json';
-import { getExternalDependencies, getSharedImportConstants, isStableStorefrontRelease } from './helper';
+import {
+  getExternalDependencies,
+  getSharedImportConstants,
+  isPdsVersionOrStackBlitzStableStorefrontRelease,
+} from './helper';
 import type { StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
 
@@ -27,10 +31,10 @@ export const getIndexHtml = (
   globalStyles: string,
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[],
-  pdsVersion?: string
+  pdsVersion: string
 ): string => {
   const porscheDesignSystemLoaderScript = `<script src="${
-    pdsVersion || isStableStorefrontRelease() ? 'node_modules' : '.'
+    isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? 'node_modules' : '.'
   }/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
@@ -59,8 +63,8 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (pdsVersion?: string): string => {
-  return pdsVersion || isStableStorefrontRelease()
+export const getIndexJs = (pdsVersion: string): string => {
+  return isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
     ? ''
     : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem`;
@@ -74,10 +78,10 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
-  pdsVersion?: string
+  pdsVersion: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...((pdsVersion || isStableStorefrontRelease()) && {
+    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
       '@porsche-design-system/components-js': pdsVersion || dependencies['@porsche-design-system/components-js'],
     }),
     ...getExternalDependencies(externalDependencies, dependencyMap),

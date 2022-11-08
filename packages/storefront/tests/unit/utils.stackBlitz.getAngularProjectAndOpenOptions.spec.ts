@@ -128,7 +128,7 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', true, []);
+    getAppComponentTs('some markup', true, [], '');
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
@@ -146,7 +146,7 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', false, []);
+    getAppComponentTs('some markup', false, [], '');
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
@@ -161,11 +161,11 @@ describe('getAppModuleTs()', () => {
     });
 
     it('should return correct markup for [] as externalDependencies', () => {
-      expect(getAppModuleTs([])).toMatchSnapshot();
+      expect(getAppModuleTs([], '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
-      expect(getAppModuleTs(['imask'])).toMatchSnapshot();
+      expect(getAppModuleTs(['imask'], '')).toMatchSnapshot();
     });
 
     it('should return correct markup with passed pdsVersion', () => {
@@ -179,11 +179,11 @@ describe('getAppModuleTs()', () => {
     });
 
     it('should return correct markup for [] as externalDependencies', () => {
-      expect(getAppModuleTs([])).toMatchSnapshot();
+      expect(getAppModuleTs([], '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
-      expect(getAppModuleTs(['imask'])).toMatchSnapshot();
+      expect(getAppModuleTs(['imask'], '')).toMatchSnapshot();
     });
 
     it('should return correct markup with passed pdsVersion', () => {
@@ -228,7 +228,7 @@ describe('getDependencies()', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(externalDependencies, '');
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
@@ -239,7 +239,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...expectedStableReleaseDependencies,
       ...mockedDependency,
     });
@@ -264,7 +264,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...expectedDefaultDependencies,
       ...mockedDependency,
     });
@@ -296,6 +296,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
@@ -311,11 +312,12 @@ describe('getAngularProjectAndOpenOptions()', () => {
     expect(getAppComponentTsSpy).toBeCalledWith(
       stackBlitzFrameworkOpts.markup,
       false,
-      stackBlitzFrameworkOpts.sharedImportKeys
+      stackBlitzFrameworkOpts.sharedImportKeys,
+      ''
     );
-    expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
+    expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
     expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.globalStyles);
-    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, undefined);
+    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {

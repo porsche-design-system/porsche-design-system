@@ -102,7 +102,7 @@ describe('getIndexHtml()', () => {
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
       .mockReturnValue(mockedMarkup);
 
-    getIndexHtml(mockedMarkup, '', [], sharedImportKeys);
+    getIndexHtml(mockedMarkup, '', [], sharedImportKeys, '');
 
     expect(getExtendMarkupWithLoadFunctionSpy).toBeCalledWith(mockedMarkup);
     expect(replaceSharedAsyncFunctionWithConstantsSpy).toBeCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
@@ -121,7 +121,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -132,7 +132,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when pdsVersion is set', () => {
@@ -160,7 +160,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -171,7 +171,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when pdsVersion is set', () => {
@@ -198,7 +198,7 @@ describe('getIndexJs()', () => {
     });
 
     it('should return correct no script when pdsVersion is not set', () => {
-      expect(getIndexJs()).toMatchSnapshot();
+      expect(getIndexJs('')).toMatchSnapshot();
     });
   });
 
@@ -208,7 +208,7 @@ describe('getIndexJs()', () => {
     });
 
     it('should return correct script', () => {
-      expect(getIndexJs()).toMatchSnapshot();
+      expect(getIndexJs('')).toMatchSnapshot();
     });
 
     it('should return correct no script when pdsVersion is set', () => {
@@ -222,7 +222,7 @@ describe('getDependencies()', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(externalDependencies, '');
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
@@ -233,7 +233,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...{ '@porsche-design-system/components-js': '0.0.0' },
       ...mockedDependency,
     });
@@ -257,7 +257,7 @@ describe('getDependencies()', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
       ...mockedDependency,
     });
   });
@@ -286,6 +286,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
@@ -297,8 +298,8 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys, undefined);
-    expect(getDependenciesSpy).toBeCalledWith(externalDependencies, undefined);
+    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys, '');
+    expect(getDependenciesSpy).toBeCalledWith(externalDependencies, '');
     expect(getIndexJsSpy).toBeCalled();
   });
 

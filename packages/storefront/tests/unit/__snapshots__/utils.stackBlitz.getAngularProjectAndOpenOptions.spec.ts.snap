@@ -51,7 +51,7 @@ import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
   declarations: [AppComponent],
   schemas: [],
   bootstrap: [AppComponent],

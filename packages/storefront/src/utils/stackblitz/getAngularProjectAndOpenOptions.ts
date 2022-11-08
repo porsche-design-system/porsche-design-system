@@ -3,6 +3,7 @@ import {
   convertImportPaths,
   getExternalDependencies,
   getSharedImportConstants,
+  isPdsVersionOrStackBlitzStableStorefrontRelease,
   isStableStorefrontRelease,
   removeSharedImport,
 } from './helper';
@@ -43,13 +44,15 @@ export class AppComponent {}`;
 export const getAppComponentTs = (
   markup: string,
   isExampleMarkup: boolean,
-  sharedImportKeys: SharedImportKey[]
+  sharedImportKeys: SharedImportKey[],
+  pdsVersion: string
 ): string => {
   return convertImportPaths(
     isExampleMarkup
       ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
       : extendMarkupWithAppComponent(markup),
-    'angular'
+    'angular',
+    pdsVersion
   );
 };
 
@@ -62,15 +65,14 @@ const externalDependencyModuleImportMap: {
   },
 };
 
-export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion?: string): string => {
-  const isPdsVersionOrStableStorefrontRelease = pdsVersion || isStableStorefrontRelease();
+export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion: string): string => {
   const imports = [
     `import { NgModule${
-      isPdsVersionOrStableStorefrontRelease ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
+      isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
     } } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(isPdsVersionOrStableStorefrontRelease
+    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
       ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
       : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
@@ -81,12 +83,12 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
   const ngImports = [
     'BrowserModule',
     'FormsModule',
-    ...(isStableStorefrontRelease() ? ['PorscheDesignSystemModule'] : []),
+    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? ['PorscheDesignSystemModule'] : []),
   ]
     .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
     .join(', ');
 
-  const ngSchemas = isPdsVersionOrStableStorefrontRelease ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
+  const ngSchemas = isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
@@ -96,7 +98,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
   bootstrap: [AppComponent],
 })
 export class AppModule {${
-    isPdsVersionOrStableStorefrontRelease ? '' : 'constructor () { porscheDesignSystem.load(); }'
+    isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? '' : 'constructor () { porscheDesignSystem.load(); }'
   }}`;
 };
 
@@ -135,10 +137,10 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
-  pdsVersion?: string
+  pdsVersion: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...((pdsVersion || isStableStorefrontRelease()) && {
+    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
       '@porsche-design-system/components-angular':
         pdsVersion || dependencies['@porsche-design-system/components-angular'],
     }),
@@ -172,7 +174,12 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
+      'src/app/app.component.ts': getAppComponentTs(
+        markup,
+        !!markup.match(classNameRegex),
+        sharedImportKeys,
+        pdsVersion
+      ),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
       'src/index.html': getIndexHtml(globalStyles),
       'src/main.ts': getMainTs(),

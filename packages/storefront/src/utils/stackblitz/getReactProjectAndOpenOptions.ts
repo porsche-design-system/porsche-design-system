@@ -4,7 +4,7 @@ import {
   convertImportPaths,
   getExternalDependencies,
   getSharedImportConstants,
-  isStableStorefrontRelease,
+  isPdsVersionOrStackBlitzStableStorefrontRelease,
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
@@ -55,7 +55,7 @@ export const getAppTsx = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  pdsVersion?: string
+  pdsVersion: string
 ): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
@@ -68,7 +68,7 @@ export const getAppTsx = (
   );
 };
 
-export const getIndexTsx = (pdsVersion?: string): string => {
+export const getIndexTsx = (pdsVersion: string): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
       `import { StrictMode } from 'react';
@@ -103,11 +103,11 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 
 export const getDependencies = (
   externalDependencies: ExternalDependency[],
-  pdsVersion?: string
+  pdsVersion: string
 ): StackBlitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    ...((pdsVersion || isStableStorefrontRelease()) && {
+    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
       '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-react'],
     }),
     react: dependencies['react'],
