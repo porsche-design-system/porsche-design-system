@@ -35,6 +35,7 @@ export default [
     output: {
       dir: outputDir,
       format: 'cjs',
+      preserveModules: true,
     },
     plugins: [
       resolve(),
@@ -61,6 +62,7 @@ export default [
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
+      preserveModules: true,
     },
     plugins: [resolve(), typescript(typescriptOpts)],
   },
