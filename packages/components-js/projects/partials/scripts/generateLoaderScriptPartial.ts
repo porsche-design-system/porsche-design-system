@@ -32,7 +32,7 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
   throwIfRunInBrowser('getLoaderScript');
 
   const scriptAttributes = 'data-pds-loader-script';
-    const scriptProps = { 'data-pds-loader-script': 'true' };
+  const scriptProps = { 'data-pds-loader-script': 'true' };
 
   const loadCalls = prefix
     ? Array.isArray(prefix)

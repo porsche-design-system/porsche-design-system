@@ -31,6 +31,9 @@ export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): st
 
   throwIfRunInBrowser('getComponentChunkLinks');
 
+  const scriptAttributes = 'data-pds-core-chunk-link ';
+  const scriptProps = { 'data-pds-core-chunk-link': 'true' };
+
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
 
@@ -48,10 +51,10 @@ Please use only valid component chunk names:
 
   const linksHtml = urls
     // core needs crossorigin attribute / we need ternary otherwise false is written into link
-    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? ' crossorigin' : ''}>\`)
+    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? \` \$\{scriptAttributes\}crossorigin\` : ''}>\`)
     .join('');
 
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true', ...scriptProps })} />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 

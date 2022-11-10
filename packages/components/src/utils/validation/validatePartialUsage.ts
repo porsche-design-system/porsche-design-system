@@ -13,13 +13,12 @@ const validateGetFontLinksUsage = (): void => {
 };
 
 const validateGetComponentChunkLinksUsage = (): void => {
-  if (
-    !Array.from(document.querySelectorAll('link[rel="preload"][as="script"][crossorigin]')).find((el) =>
-      /cdn\.ui\.porsche\.c(om|n)\/porsche-design-system\/components\/porsche-design-system\.v(?:\d+\.){3}[\da-z]+\.js/.test(
-        el.getAttribute('href')
-      )
-    )
-  ) {
+  //     !Array.from(document.querySelectorAll('link[rel="preload"][as="script"][crossorigin]')).find((el) =>
+  //       /cdn\.ui\.porsche\.c(om|n)\/porsche-design-system\/components\/porsche-design-system\.v(?:\d+\.){3}[\da-z]+\.js/.test(
+  //         el.getAttribute('href')
+  //       )
+  //     )
+  if (!document.querySelectorAll('link[rel=preload][as=script][data-pds-core-chunk-link][crossorigin]')) {
     partialValidationWarning('getComponentChunkLinks');
   }
 };
