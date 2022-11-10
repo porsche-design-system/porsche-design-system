@@ -36,7 +36,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-    : <style  {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 
   return withoutTags
     ? styles

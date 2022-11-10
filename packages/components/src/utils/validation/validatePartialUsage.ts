@@ -25,25 +25,24 @@ const validateGetComponentChunkLinksUsage = (): void => {
 };
 
 const validateGetLoaderScriptUsage = (): void => {
-  if (
-    !Array.from(document.querySelectorAll('script')).find((el) => {
-      const innerHTML = el.innerHTML;
-
-      return innerHTML.startsWith('var porscheDesignSystem;') && innerHTML.endsWith('porscheDesignSystem.load()');
-    })
-  ) {
+  //     !Array.from(document.querySelectorAll('script')).find((el) => {
+  //       const innerHTML = el.innerHTML;
+  //
+  //       return innerHTML.startsWith('var porscheDesignSystem;') && innerHTML.endsWith('porscheDesignSystem.load()');
+  //     })
+  if (!document.querySelector('script[data-pds-loader-script]')) {
     partialValidationWarning('getLoaderScript');
   }
 };
 
 const partialValidationWarning = (partialName: PartialNames): void => {
-  const partialNameToLinkMap: Record<PartialNames, string> = {
+  const partialNameToLinkPathMap: Record<PartialNames, string> = {
     getFontLink: 'font-links',
     getComponentChunkLinks: 'component-chunk-links',
     getLoaderScript: 'loader-script',
   };
 
   console.warn(
-    `You are not using '${partialName}()'. The Porsche Design System recommends the usage of the '${partialName}()' partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkMap[partialName]} to enhance performance and loading behavior`
+    `You are not using '${partialName}()'. The Porsche Design System recommends the usage of the '${partialName}()' partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior`
   );
 };
