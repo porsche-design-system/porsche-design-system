@@ -3,7 +3,7 @@ import {
   convertImportPaths,
   getExternalDependencies,
   getSharedImportConstants,
-  isPdsVersionOrStackBlitzStableStorefrontRelease,
+  isStableStorefrontReleaseOrForcedPdsVersion,
   isStableStorefrontRelease,
   removeSharedImport,
 } from './helper';
@@ -68,11 +68,11 @@ const externalDependencyModuleImportMap: {
 export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion: string): string => {
   const imports = [
     `import { NgModule${
-      isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
+      isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
     } } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
       ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
       : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
@@ -83,12 +83,12 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
   const ngImports = [
     'BrowserModule',
     'FormsModule',
-    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? ['PorscheDesignSystemModule'] : []),
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? ['PorscheDesignSystemModule'] : []),
   ]
     .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
     .join(', ');
 
-  const ngSchemas = isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
+  const ngSchemas = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
@@ -98,7 +98,7 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
   bootstrap: [AppComponent],
 })
 export class AppModule {${
-    isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? '' : 'constructor () { porscheDesignSystem.load(); }'
+    isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : 'constructor () { porscheDesignSystem.load(); }'
   }}`;
 };
 
@@ -140,7 +140,7 @@ export const getDependencies = (
   pdsVersion: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
       '@porsche-design-system/components-angular':
         pdsVersion || dependencies['@porsche-design-system/components-angular'],
     }),

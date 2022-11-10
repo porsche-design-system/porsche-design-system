@@ -2,7 +2,7 @@ import { dependencies } from '../../../../components-js/package.json';
 import {
   getExternalDependencies,
   getSharedImportConstants,
-  isPdsVersionOrStackBlitzStableStorefrontRelease,
+  isStableStorefrontReleaseOrForcedPdsVersion,
 } from './helper';
 import type { StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
@@ -34,7 +34,7 @@ export const getIndexHtml = (
   pdsVersion: string
 ): string => {
   const porscheDesignSystemLoaderScript = `<script src="${
-    isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) ? 'node_modules' : '.'
+    isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? 'node_modules' : '.'
   }/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
@@ -64,7 +64,7 @@ export const getIndexHtml = (
 };
 
 export const getIndexJs = (pdsVersion: string): string => {
-  return isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? ''
     : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem`;
@@ -81,7 +81,7 @@ export const getDependencies = (
   pdsVersion: string
 ): StackBlitzProjectDependencies => {
   return {
-    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
       '@porsche-design-system/components-js': pdsVersion || dependencies['@porsche-design-system/components-js'],
     }),
     ...getExternalDependencies(externalDependencies, dependencyMap),

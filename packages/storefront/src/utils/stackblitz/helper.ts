@@ -64,7 +64,7 @@ export const convertImportPaths = (
   framework: 'js' | 'angular' | 'react',
   pdsVersion: string
 ): string => {
-  return isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? markup
     : markup.replace(
         new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
@@ -79,5 +79,5 @@ export const transformSrcAndSrcsetOfImgAndSourceTags = (markup: string): string 
   return markup.replace(/(<(?:img|source).*?(?:src|srcset)=")([^http|.)].*")/g, `$1${originUrl + baseHref}$2`);
 };
 
-export const isPdsVersionOrStackBlitzStableStorefrontRelease = (pdsVersion: string): boolean =>
+export const isStableStorefrontReleaseOrForcedPdsVersion = (pdsVersion: string): boolean =>
   !!pdsVersion || isStableStorefrontRelease();

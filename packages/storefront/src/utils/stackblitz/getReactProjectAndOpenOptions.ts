@@ -4,7 +4,7 @@ import {
   convertImportPaths,
   getExternalDependencies,
   getSharedImportConstants,
-  isPdsVersionOrStackBlitzStableStorefrontRelease,
+  isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
@@ -107,7 +107,7 @@ export const getDependencies = (
 ): StackBlitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    ...(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion) && {
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
       '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-react'],
     }),
     react: dependencies['react'],
