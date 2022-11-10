@@ -18,6 +18,9 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "heading",
     ],
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "compact": null,
       "heading": null,
@@ -45,6 +48,10 @@ exports[`should match snapshot 1`] = `
       "title",
       "description",
     ],
+    "nestedComponents": [
+      "p-content-wrapper",
+      "p-inline-notification",
+    ],
     "props": {
       "persistent": false,
       "state": "neutral",
@@ -63,6 +70,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
     "props": {
       "aria": null,
       "disabled": false,
@@ -105,6 +116,10 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "subline",
     ],
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
     "props": {
       "active": false,
       "alignLabel": "right",
@@ -138,6 +153,9 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "heading",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
     ],
     "props": {
       "description": null,
@@ -368,6 +386,10 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "heading",
     ],
+    "nestedComponents": [
+      "p-icon",
+      "p-button-pure",
+    ],
     "props": {
       "actionIcon": "arrow-head-right",
       "actionLabel": null,
@@ -390,6 +412,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "aria": null,
       "download": null,
@@ -419,6 +444,9 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "subline",
+    ],
+    "nestedComponents": [
+      "p-icon",
     ],
     "props": {
       "active": false,
@@ -451,6 +479,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "hideLabel": false,
       "href": null,
@@ -475,6 +506,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-link",
+      "p-link-pure",
+    ],
     "props": {
       "align": "bottom",
       "aria": null,
@@ -532,6 +567,9 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "heading",
     ],
+    "nestedComponents": [
+      "p-button-pure",
+    ],
     "props": {
       "aria": null,
       "disableBackdropClick": false,
@@ -554,6 +592,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "activePage": "1",
       "allyLabel": "Pagination",
@@ -574,6 +615,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
     "props": {
       "aria": null,
       "description": null,
@@ -619,6 +663,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
     "props": {
       "gradientColorScheme": "default",
       "scrollIndicatorPosition": "center",
@@ -660,6 +707,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "disabled": false,
       "icon": null,
@@ -687,6 +737,10 @@ exports[`should match snapshot 1`] = `
       "label",
       "description",
       "message",
+    ],
+    "nestedComponents": [
+      "p-icon",
+      "p-select-wrapper-dropdown",
     ],
     "observedAttributes": [
       "disabled",
@@ -717,6 +771,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": true,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "description": null,
       "direction": "auto",
@@ -772,6 +829,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-scroller",
+    ],
     "props": {
       "size": "small",
       "theme": "light",
@@ -791,6 +851,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "disabled": false,
       "state": null,
@@ -811,6 +874,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+    ],
     "props": {
       "alignLabel": "right",
       "checked": false,
@@ -838,6 +904,9 @@ exports[`should match snapshot 1`] = `
     "isThemeable": false,
     "namedSlots": [
       "caption",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
     ],
     "props": {
       "caption": null,
@@ -909,6 +978,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "hideLabel": false,
       "multiline": false,
@@ -962,6 +1034,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-tabs-bar",
+    ],
     "props": {
       "activeTabIndex": "0",
       "gradientColorScheme": "default",
@@ -984,6 +1059,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-scroller",
+    ],
     "props": {
       "activeTabIndex": null,
       "gradientColorScheme": "default",
@@ -1022,6 +1100,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "color": "background-surface",
       "icon": null,
@@ -1040,6 +1121,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "aria": null,
       "color": "background-surface",
@@ -1085,6 +1169,10 @@ exports[`should match snapshot 1`] = `
       "label",
       "description",
       "message",
+    ],
+    "nestedComponents": [
+      "p-icon",
+      "p-spinner",
     ],
     "observedAttributes": [
       "disabled",
@@ -1182,6 +1270,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-toast-item",
+    ],
     "props": {
       "theme": "light",
     },
@@ -1200,6 +1291,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": true,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+      "p-button-pure",
+    ],
     "props": {
       "state": "neutral",
       "text": null,

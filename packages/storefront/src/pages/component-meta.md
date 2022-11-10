@@ -27,6 +27,7 @@ export default class Code extends Vue {
       'hasEvent',
       'eventNames',
       'namedSlots',
+      'nestedComponents',
       'hasSlottedCss',
     ];
 
