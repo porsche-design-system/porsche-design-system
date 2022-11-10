@@ -29,8 +29,6 @@
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
-    allFrameworks = frameworkNameMap;
-
     frameworkBeforeShared = this.framework;
 
     private destroyed(): void {
@@ -42,7 +40,7 @@
 
     public get usedFrameworks(): FrameworkMarkup {
       return this.frameworks.reduce((prev, key) => {
-        prev[key as Framework] = this.allFrameworks[key as Framework];
+        prev[key as Framework] = frameworkNameMap[key as Framework];
         return prev;
       }, {} as FrameworkMarkup);
     }
