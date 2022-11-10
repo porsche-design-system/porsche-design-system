@@ -2,6 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { pascalCase, paramCase } from 'change-case';
+import { getComponentMeta } from '@porsche-design-system/shared';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
@@ -18,6 +19,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     let tweakedComponent = super.generateComponent(component, extendedProps);
+    const componentMeta = getComponentMeta(component);
     const hasChildren = this.inputParser.canHaveChildren(component);
 
     // destructure children prop
@@ -39,19 +41,23 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
     const spreadProps = [...propsToSync.map(({ key }) => key), ...(hasChildren ? ['children'] : [])].join(', ');
+    const hostAttributes = componentMeta.hostAttributes
+      ? `...${JSON.stringify(componentMeta.hostAttributes)},\n            `
+      : '';
+
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
       ...(!process.browser
         ? {
-            children: (
+            ${hostAttributes}children: (
               <${this.getSsrComponentName(component)}
                 {...{ ${spreadProps} }}
               />
             ),
           }
         : {
-            ${hasChildren ? 'children,' : ''}
+            ${hasChildren ? 'children,\n            ' : ''}suppressHydrationWarning: true,
           }),
 `
     );

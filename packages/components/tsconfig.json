@@ -17,5 +17,5 @@
     "types": ["node", "jest"]
   },
   "include": ["src"],
-  "exclude": ["src/test-utils", "**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts"]
 }

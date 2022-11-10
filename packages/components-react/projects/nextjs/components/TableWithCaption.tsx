@@ -8,6 +8,7 @@ import {
   PTableHeadRow,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
+import Image from 'next/image';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
 // NOTE: this is component is duplicated and adjusted from react
@@ -33,7 +34,7 @@ export const TableWithCaption = (): JSX.Element => {
         {data.map((item, i) => (
           <PTableRow key={i}>
             <PTableCell>
-              <img
+              <Image
                 src={item.imageUrl}
                 width={item.imageWidth}
                 height={item.imageHeight}
