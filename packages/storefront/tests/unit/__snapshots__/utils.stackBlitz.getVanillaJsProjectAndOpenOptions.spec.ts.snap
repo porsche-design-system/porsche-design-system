@@ -34,7 +34,7 @@ exports[`getExtendedMarkupWithLoadFunction() stable storefront release (e.g. /v2
 </script>
 `;
 
-exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup when pdsVersion is set 1`] = `
+exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup when chosen pds version for bug reporting 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -91,7 +91,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 </html>
 `;
 
-exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup when pdsVersion is set 1`] = `
+exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup when chosen pds version for bug reporting 1`] = `
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -148,13 +148,13 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 </html>
 `;
 
-exports[`getIndexJs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct no script when pdsVersion is set 1`] = `""`;
+exports[`getIndexJs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct no script when pds version is chosen for bug reporting 1`] = `""`;
 
 exports[`getIndexJs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct script 1`] = `
 "import * as porscheDesignSystem from './@porsche-design-system/components-js';
 window.porscheDesignSystem = porscheDesignSystem"
 `;
 
-exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pdsVersion is not set 1`] = `""`;
+exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pds version is chosen for bug reporting 1`] = `""`;
 
-exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pdsVersion is set 1`] = `""`;
+exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pds version is not chosen for bug reporting 1`] = `""`;
