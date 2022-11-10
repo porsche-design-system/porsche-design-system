@@ -10,4 +10,10 @@ export const validatePartialUsage = (): void => {
       `Please make sure to apply the 'getInitialFontLinks()' partial as described at https://designsystem.porsche.com/v2/partials/font-links`
     );
   }
+
+  if (!Array.from(head.querySelectorAll('link')).find((el) => el.getAttribute('href').includes('font-face.min'))) {
+    console.warn(
+      `Please make sure to apply the 'getFontFaceStylesheet()' partial as described at https://designsystem.porsche.com/v2/partials/font-face-stylesheet`
+    );
+  }
 };
