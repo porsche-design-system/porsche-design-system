@@ -135,7 +135,7 @@ describe('getIndexHtml()', () => {
       expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
-    it('should return correct markup when pdsVersion is set', () => {
+    it('should return correct markup when chosen pds version for bug reporting', () => {
       jest
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
         .mockReturnValue(mockedMarkupWithLoadFunction);
@@ -174,7 +174,7 @@ describe('getIndexHtml()', () => {
       expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
-    it('should return correct markup when pdsVersion is set', () => {
+    it('should return correct markup when chosen pds version for bug reporting', () => {
       jest
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
         .mockReturnValue(mockedMarkupWithLoadFunction);
@@ -193,11 +193,11 @@ describe('getIndexJs()', () => {
       jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
     });
 
-    it('should return correct no script when pdsVersion is set', () => {
+    it('should return correct no script when pds version is chosen for bug reporting', () => {
       expect(getIndexJs('1.2.3')).toMatchSnapshot();
     });
 
-    it('should return correct no script when pdsVersion is not set', () => {
+    it('should return correct no script when pds version is not chosen for bug reporting', () => {
       expect(getIndexJs('')).toMatchSnapshot();
     });
   });
@@ -211,7 +211,7 @@ describe('getIndexJs()', () => {
       expect(getIndexJs('')).toMatchSnapshot();
     });
 
-    it('should return correct no script when pdsVersion is set', () => {
+    it('should return correct no script when pds version is chosen for bug reporting', () => {
       expect(getIndexJs('1.2.3')).toMatchSnapshot();
     });
   });
@@ -262,7 +262,7 @@ describe('getDependencies()', () => {
     });
   });
 
-  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) when pdsVersion is set', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) and chosen pds version for bug reporting', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
 
     const mockedDependency = { mockedImask: '0.0.0' };

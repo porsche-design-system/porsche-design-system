@@ -270,7 +270,7 @@ describe('getDependencies()', () => {
     });
   });
 
-  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) when pdsVersion is set', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) and chosen pds version for bug reporting', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
 
     const mockedDependency = { mockedImask: '0.0.0' };
