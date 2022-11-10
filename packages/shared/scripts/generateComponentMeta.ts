@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
+import { paramCase } from 'change-case';
 import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
@@ -21,6 +22,7 @@ const generateComponentMeta = (): void => {
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
+  nestedComponents?: TagName[]; // array of other pds components
   props?: {
     [propName: string]: boolean | number | string; // value is the prop's default value
   };
@@ -50,6 +52,7 @@ const generateComponentMeta = (): void => {
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
+    nestedComponents?: TagName[]; // array of other pds components
     props?: {
       [propName: string]: boolean | number | string; // value is the prop's default value
     };
@@ -134,6 +137,11 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    // nested pds components
+    const nestedComponents: TagName[] = Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g))
+      .map(([, tagName]) => paramCase(tagName) as TagName)
+      .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
+
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
@@ -203,6 +211,7 @@ const generateComponentMeta = (): void => {
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
       requiredChildSelector,
+      ...(nestedComponents.length && { nestedComponents: nestedComponents }),
       ...(Object.keys(props).length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
