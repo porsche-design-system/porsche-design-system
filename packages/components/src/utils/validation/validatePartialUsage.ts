@@ -1,24 +1,20 @@
-export const validatePartialUsage = (): void => {
-  const { head, body } = document;
+type PartialNames = 'getFontLink' | 'getComponentChunkLinks' | 'getLoaderScript';
 
-  validateGetFontLinksUsage(head);
-  validateGetComponentChunkLinksUsage(head);
-  validateGetLoaderScriptUsage(body);
+export const validatePartialUsage = (): void => {
+  validateGetFontLinksUsage();
+  validateGetComponentChunkLinksUsage();
+  validateGetLoaderScriptUsage();
 };
 
-const validateGetFontLinksUsage = (documentHead: HTMLElement): void => {
-  if (
-    !Array.from(documentHead.querySelectorAll('link[rel="preload"][as="font"]')).find((el) =>
-      el.getAttribute('href').includes('porsche-next-w-la-regular')
-    )
-  ) {
+const validateGetFontLinksUsage = (): void => {
+  if (!document.querySelectorAll('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
     partialValidationWarning('getFontLink');
   }
 };
 
-const validateGetComponentChunkLinksUsage = (documentHead: HTMLElement): void => {
+const validateGetComponentChunkLinksUsage = (): void => {
   if (
-    !Array.from(documentHead.querySelectorAll('link[rel="preload"][as="script"][crossorigin]')).find((el) =>
+    !Array.from(document.querySelectorAll('link[rel="preload"][as="script"][crossorigin]')).find((el) =>
       /cdn\.ui\.porsche\.c(om|n)\/porsche-design-system\/components\/porsche-design-system\.v(?:\d+\.){3}[\da-z]+\.js/.test(
         el.getAttribute('href')
       )
@@ -28,9 +24,9 @@ const validateGetComponentChunkLinksUsage = (documentHead: HTMLElement): void =>
   }
 };
 
-const validateGetLoaderScriptUsage = (documentBody: HTMLElement): void => {
+const validateGetLoaderScriptUsage = (): void => {
   if (
-    !Array.from(documentBody.querySelectorAll('script')).find((el) => {
+    !Array.from(document.querySelectorAll('script')).find((el) => {
       const innerHTML = el.innerHTML;
 
       return innerHTML.startsWith('var porscheDesignSystem;') && innerHTML.endsWith('porscheDesignSystem.load()');
@@ -39,8 +35,6 @@ const validateGetLoaderScriptUsage = (documentBody: HTMLElement): void => {
     partialValidationWarning('getLoaderScript');
   }
 };
-
-type PartialNames = 'getFontLink' | 'getComponentChunkLinks' | 'getLoaderScript';
 
 const partialValidationWarning = (partialName: PartialNames): void => {
   const partialNameToLinkMap: Record<PartialNames, string> = {
