@@ -14,13 +14,5 @@ export type LoadOptions = {
 };
 
 export const load = (opts: LoadOptions = { prefix: '' }): void => {
-  const { prefix } = opts;
   loadComponentLibrary({ ...CM_CONFIG, ...opts });
-
-  if (prefix && !document.head.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
-    console.warn(
-      `You are using the Porsche Design System with prefixing but without 'getInitialStyles({ prefix: ${prefix} })'.
-Please make sure to apply the 'getInitialStyles()' partial as described at https://designsystem.porsche.com/v2/partials/initial-styles`
-    );
-  }
 };
