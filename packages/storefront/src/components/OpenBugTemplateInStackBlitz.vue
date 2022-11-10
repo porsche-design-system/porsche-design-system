@@ -44,6 +44,7 @@
 
     private async fetchVersions(): Promise<string[]> {
       const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js', {
+        // link to docs: https://github.com/npm/registry/blob/master/docs/responses/package-metadata.md#abbreviated-metadata-format
         headers: {
           accept: 'application/vnd.npm.install-v1+json',
         },
