@@ -30,13 +30,13 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   throwIfRunInBrowser('getInitialStyles');
 
   const styleAttributes = 'pds-initial-styles';
-  const styleProps = { 'pds-initial-styles': 'true' };
+  const styleProps = { [styleAttributes]: 'true' };
 
-  const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
+  const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-    : <style  {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 
   return withoutTags
     ? styles

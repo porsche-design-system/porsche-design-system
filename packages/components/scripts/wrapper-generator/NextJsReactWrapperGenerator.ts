@@ -30,7 +30,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       /const props = \{/,
       `// @ts-ignore
     if (!process.browser) {
-      className = className ? \`\${className} hydrated\` : 'hydrated';
+      className = className ? \`\${className} ssr\` : 'ssr';
     }
 
     $&`
@@ -51,7 +51,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
             ),
           }
         : {
-            ${hasChildren ? 'children,\n            ' : ''}suppressHydrationWarning: true,
+            ${hasChildren ? 'children,' : ''}
           }),
 `
     );
