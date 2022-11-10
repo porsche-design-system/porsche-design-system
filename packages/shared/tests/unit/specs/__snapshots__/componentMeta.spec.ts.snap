@@ -3,7 +3,11 @@
 exports[`should match snapshot 1`] = `
 {
   "p-accordion": {
+    "eventNames": [
+      "accordionChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -25,7 +29,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-banner": {
+    "eventNames": [
+      "dismiss",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -47,6 +55,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -70,6 +79,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button-group": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -84,6 +94,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button-pure": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -113,7 +124,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-carousel": {
+    "eventNames": [
+      "carouselChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
@@ -137,6 +152,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -164,6 +180,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-content-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -180,6 +197,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-divider": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -196,6 +214,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-fieldset-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -218,6 +237,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-flex": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -237,6 +257,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-flex-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -257,6 +278,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-grid": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -273,6 +295,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-grid-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -289,6 +312,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-headline": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -308,6 +332,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-icon": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -327,7 +352,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-inline-notification": {
+    "eventNames": [
+      "dismiss",
+      "action",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -352,6 +382,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -378,6 +409,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-pure": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -411,6 +443,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-social": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -434,6 +467,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-tile": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -465,6 +499,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-marque": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -482,7 +517,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-modal": {
+    "eventNames": [
+      "close",
+    ],
     "hasAriaProp": true,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -503,7 +542,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-pagination": {
+    "eventNames": [
+      "pageChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -523,6 +566,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-popover": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -539,6 +583,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-radio-button-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -566,6 +611,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-scroller": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -582,7 +628,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control": {
+    "eventNames": [
+      "segmentedControlChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
@@ -602,6 +652,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-segmented-control-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -624,6 +675,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -657,6 +709,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-wrapper-dropdown": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": false,
@@ -688,6 +741,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-spinner": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -703,7 +757,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal": {
+    "eventNames": [
+      "stepChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
@@ -722,6 +780,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-stepper-horizontal-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -740,7 +799,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-switch": {
+    "eventNames": [
+      "switchChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -761,7 +824,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-table": {
+    "eventNames": [
+      "sortingChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -779,6 +846,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-body": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -794,6 +862,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-cell": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -812,6 +881,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -827,6 +897,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head-cell": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -848,6 +919,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head-row": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -863,6 +935,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-row": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -877,7 +950,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs": {
+    "eventNames": [
+      "tabChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
@@ -895,7 +972,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs-bar": {
+    "eventNames": [
+      "tabChange",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
@@ -914,6 +995,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tabs-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -932,6 +1014,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -949,6 +1032,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag-dismissible": {
     "hasAriaProp": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -965,6 +1049,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -984,7 +1069,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "eventNames": [
+      "action",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1020,6 +1109,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text-list": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1036,6 +1126,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text-list-item": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1051,6 +1142,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-textarea-wrapper": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1082,6 +1174,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "hasAriaProp": false,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -1095,7 +1188,11 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-toast-item": {
+    "eventNames": [
+      "dismiss",
+    ],
     "hasAriaProp": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,

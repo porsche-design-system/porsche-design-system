@@ -31,6 +31,8 @@ const generateComponentMeta = (): void => {
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
   hasSlottedCss: boolean;
+  hasEvent: boolean;
+  eventNames?: string[];
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
@@ -58,6 +60,8 @@ const generateComponentMeta = (): void => {
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
     hasSlottedCss: boolean;
+    hasEvent: boolean;
+    eventNames?: string[];
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
@@ -85,6 +89,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlot = source.includes('<slot');
     const hasSlottedCss = source.includes('attachSlottedCss');
+    const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
@@ -180,6 +185,9 @@ const generateComponentMeta = (): void => {
       namedSlots.push('message');
     }
 
+    // events
+    const eventNames = Array.from(source.matchAll(/([A-Za-z]+)\??: EventEmitter/g)).map(([, eventName]) => eventName);
+
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
     const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+]),.+?\);/.exec(source) || [];
@@ -201,6 +209,8 @@ const generateComponentMeta = (): void => {
       hasSlot,
       ...(namedSlots.length && { namedSlots: namedSlots }),
       hasSlottedCss,
+      hasEvent,
+      ...(eventNames.length && { eventNames: eventNames }),
       hasAriaProp,
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes: observedAttributes }),
