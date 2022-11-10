@@ -54,9 +54,7 @@
     private getFilteredVersions(arr: string[]): string[] {
       return arr
         .filter((version) => version.match(/^\d+\.\d+\.\d+$/))
-        .sort(function (a, b) {
-          return b.localeCompare(a, undefined, { numeric: true });
-        }); // Match only stable releases
+        .sort((a, b) => b.localeCompare(a, undefined, { numeric: true })); // Match only stable releases
     }
 
     async mounted(): Promise<void> {
