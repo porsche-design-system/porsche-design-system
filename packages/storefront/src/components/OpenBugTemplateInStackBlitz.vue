@@ -10,7 +10,7 @@
       }}</p-segmented-control-item>
     </p-segmented-control>
     <p-select-wrapper label="Choose your Porsche Design System version:">
-      <select v-model="selectedPdsVersion" name="some-name">
+      <select v-model="selectedPdsVersion">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>

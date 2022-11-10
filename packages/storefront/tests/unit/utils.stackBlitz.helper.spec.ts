@@ -207,9 +207,9 @@ describe('isPdsVersionOrStackBlitzStableStorefrontRelease()', () => {
     ['1.2.3', false, true],
     ['', false, false],
   ])(
-    'should for pdsVersion: %s, isStableStorefrontReleaseReturnValue: %s return %s',
-    (pdsVersion, isStableStorefrontReleaseReturnValue, expected) => {
-      jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValueOnce(isStableStorefrontReleaseReturnValue);
+    'should for pdsVersion: %s, isStableStorefrontRelease: %s return %s',
+    (pdsVersion, isStableStorefrontRelease, expected) => {
+      jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(isStableStorefrontRelease);
 
       expect(isPdsVersionOrStackBlitzStableStorefrontRelease(pdsVersion)).toBe(expected);
     }

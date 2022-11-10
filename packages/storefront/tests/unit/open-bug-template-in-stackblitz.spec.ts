@@ -2,7 +2,7 @@ import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlit
 
 describe('OpenBugTemplateInStackBlitz.vue', () => {
   describe('fetchVersions()', () => {
-    it('should call global fetch() with correct parameters', async () => {
+    it('should call fetch() with correct parameters and return string array of versions', async () => {
       const url = 'https://registry.npmjs.org/@porsche-design-system/components-js';
       const fetchSpy = jest.spyOn(global, 'fetch');
       const component: any = new OpenBugTemplateInStackBlitz();
@@ -17,7 +17,7 @@ describe('OpenBugTemplateInStackBlitz.vue', () => {
   });
 
   describe('getFilteredVersions()', () => {
-    it('should return filtered versions', async () => {
+    it('should return stable and sorted versions', async () => {
       const component: any = new OpenBugTemplateInStackBlitz();
       expect(
         component['getFilteredVersions']([
