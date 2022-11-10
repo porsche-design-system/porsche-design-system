@@ -2,7 +2,7 @@
 
 exports[`should render dsr component for PAccordion 1`] = `
 <p-accordion
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -91,7 +91,7 @@ button::-moz-focus-inner {
           />
           <p-icon
             aria-hidden="true"
-            class="icon hydrated"
+            class="icon ssr"
           >
             <template
               shadowroot="open"
@@ -160,7 +160,7 @@ svg {
 
 exports[`should render dsr component for PBanner 1`] = `
 <p-banner
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -246,7 +246,7 @@ exports[`should render dsr component for PBanner 1`] = `
   }
     </style>
     <p-content-wrapper
-      class="hydrated"
+      class="ssr"
     >
       <template
         shadowroot="open"
@@ -278,7 +278,7 @@ exports[`should render dsr component for PBanner 1`] = `
         </div>
       </template>
       <p-inline-notification
-        class="root hydrated"
+        class="root ssr"
       >
         <template
           shadowroot="open"
@@ -338,7 +338,7 @@ p {
           </style>
           <p-icon
             aria-hidden="true"
-            class="icon hydrated"
+            class="icon ssr"
           >
             <template
               shadowroot="open"
@@ -406,7 +406,7 @@ svg {
           </div>
           <p-button-pure
             aria-controls="banner"
-            class="close hydrated"
+            class="close ssr"
           >
             <template
               shadowroot="open"
@@ -502,7 +502,7 @@ svg {
               >
                 <p-icon
                   aria-hidden="true"
-                  class="icon hydrated"
+                  class="icon ssr"
                 >
                   <template
                     shadowroot="open"
@@ -570,7 +570,7 @@ svg {
 
 exports[`should render dsr component for PButton 1`] = `
 <p-button
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -637,7 +637,7 @@ span {
     >
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -697,7 +697,7 @@ svg {
 
 exports[`should render dsr component for PButtonGroup 1`] = `
 <p-button-group
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -745,7 +745,7 @@ div {
 
 exports[`should render dsr component for PButtonPure 1`] = `
 <p-button-pure
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -841,7 +841,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -903,7 +903,7 @@ svg {
 
 exports[`should render dsr component for PCarousel 1`] = `
 <p-carousel
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1057,7 +1057,7 @@ p {
         class="nav"
       >
         <p-button-pure
-          class="btn hydrated"
+          class="btn ssr"
         >
           <template
             shadowroot="open"
@@ -1153,7 +1153,7 @@ p {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon hydrated"
+                class="icon ssr"
               >
                 <template
                   shadowroot="open"
@@ -1211,7 +1211,7 @@ svg {
           </template>
         </p-button-pure>
         <p-button-pure
-          class="btn hydrated"
+          class="btn ssr"
         >
           <template
             shadowroot="open"
@@ -1307,7 +1307,7 @@ svg {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon hydrated"
+                class="icon ssr"
               >
                 <template
                   shadowroot="open"
@@ -1398,7 +1398,7 @@ svg {
 
 exports[`should render dsr component for PCheckboxWrapper 1`] = `
 <p-checkbox-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1502,7 +1502,7 @@ label {
 
 exports[`should render dsr component for PContentWrapper 1`] = `
 <p-content-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1539,7 +1539,7 @@ exports[`should render dsr component for PContentWrapper 1`] = `
 
 exports[`should render dsr component for PDivider 1`] = `
 <p-divider
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1565,7 +1565,7 @@ hr {
 
 exports[`should render dsr component for PFieldsetWrapper 1`] = `
 <p-fieldset-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1607,7 +1607,7 @@ fieldset {
 
 exports[`should render dsr component for PFlex 1`] = `
 <p-flex
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1630,7 +1630,7 @@ exports[`should render dsr component for PFlex 1`] = `
 
 exports[`should render dsr component for PFlexItem 1`] = `
 <p-flex-item
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1653,7 +1653,7 @@ exports[`should render dsr component for PFlexItem 1`] = `
 
 exports[`should render dsr component for PGrid 1`] = `
 <p-grid
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1691,7 +1691,7 @@ exports[`should render dsr component for PGrid 1`] = `
 
 exports[`should render dsr component for PGridItem 1`] = `
 <p-grid-item
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1728,7 +1728,7 @@ exports[`should render dsr component for PGridItem 1`] = `
 
 exports[`should render dsr component for PHeadline 1`] = `
 <p-headline
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1804,7 +1804,7 @@ exports[`should render dsr component for PHeadline 1`] = `
 
 exports[`should render dsr component for PIcon 1`] = `
 <p-icon
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1857,7 +1857,7 @@ svg {
 
 exports[`should render dsr component for PInlineNotification 1`] = `
 <p-inline-notification
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -1917,7 +1917,7 @@ p {
     </style>
     <p-icon
       aria-hidden="true"
-      class="icon hydrated"
+      class="icon ssr"
     >
       <template
         shadowroot="open"
@@ -1985,7 +1985,7 @@ svg {
     </div>
     <p-button-pure
       aria-controls="banner"
-      class="close hydrated"
+      class="close ssr"
     >
       <template
         shadowroot="open"
@@ -2081,7 +2081,7 @@ svg {
         >
           <p-icon
             aria-hidden="true"
-            class="icon hydrated"
+            class="icon ssr"
           >
             <template
               shadowroot="open"
@@ -2146,7 +2146,7 @@ svg {
 
 exports[`should render dsr component for PLink 1`] = `
 <p-link
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -2225,7 +2225,7 @@ span {
     >
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -2285,7 +2285,7 @@ svg {
 
 exports[`should render dsr component for PLinkPure 1`] = `
 <p-link-pure
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -2372,7 +2372,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -2434,7 +2434,7 @@ svg {
 
 exports[`should render dsr component for PLinkSocial 1`] = `
 <p-link-social
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -2513,7 +2513,7 @@ span {
     >
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -2573,7 +2573,7 @@ svg {
 
 exports[`should render dsr component for PLinkTile 1`] = `
 <p-link-tile
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -2680,7 +2680,7 @@ p {
           id="description"
         />
         <p-link
-          class="link hydrated"
+          class="link ssr"
         >
           <template
             shadowroot="open"
@@ -2759,7 +2759,7 @@ span {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon hydrated"
+                class="icon ssr"
               >
                 <template
                   shadowroot="open"
@@ -2828,7 +2828,7 @@ svg {
 
 exports[`should render dsr component for PMarque 1`] = `
 <p-marque
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -2907,7 +2907,7 @@ img {
 
 exports[`should render dsr component for PModal 1`] = `
 <p-modal
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -3045,7 +3045,7 @@ h1 {
       tabindex="-1"
     >
       <p-button-pure
-        class="close hydrated"
+        class="close ssr"
       >
         <template
           shadowroot="open"
@@ -3141,7 +3141,7 @@ h1 {
           >
             <p-icon
               aria-hidden="true"
-              class="icon hydrated"
+              class="icon ssr"
             >
               <template
                 shadowroot="open"
@@ -3208,7 +3208,7 @@ svg {
 
 exports[`should render dsr component for PPagination 1`] = `
 <p-pagination
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -3310,7 +3310,7 @@ span[aria-current]::after {
           >
             <p-icon
               aria-hidden="true"
-              class="hydrated"
+              class="ssr"
             >
               <template
                 shadowroot="open"
@@ -3379,7 +3379,7 @@ svg {
           >
             <p-icon
               aria-hidden="true"
-              class="hydrated"
+              class="ssr"
             >
               <template
                 shadowroot="open"
@@ -3438,7 +3438,7 @@ svg {
 
 exports[`should render dsr component for PPopover 1`] = `
 <p-popover
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -3453,7 +3453,7 @@ exports[`should render dsr component for PPopover 1`] = `
 }
     </style>
     <p-button-pure
-      class="hydrated"
+      class="ssr"
     >
       <template
         shadowroot="open"
@@ -3549,7 +3549,7 @@ exports[`should render dsr component for PPopover 1`] = `
         >
           <p-icon
             aria-hidden="true"
-            class="icon hydrated"
+            class="icon ssr"
           >
             <template
               shadowroot="open"
@@ -3617,7 +3617,7 @@ svg {
 
 exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 <p-radio-button-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -3714,7 +3714,7 @@ label {
 
 exports[`should render dsr component for PScroller 1`] = `
 <p-scroller
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -3830,7 +3830,7 @@ exports[`should render dsr component for PScroller 1`] = `
       >
         <p-button-pure
           aria-hidden="true"
-          class="button hydrated"
+          class="button ssr"
           tabindex="-1"
         >
           <template
@@ -3919,7 +3919,7 @@ exports[`should render dsr component for PScroller 1`] = `
             >
               <p-icon
                 aria-hidden="true"
-                class="icon hydrated"
+                class="icon ssr"
               >
                 <template
                   shadowroot="open"
@@ -3983,7 +3983,7 @@ svg {
       >
         <p-button-pure
           aria-hidden="true"
-          class="button hydrated"
+          class="button ssr"
           tabindex="-1"
         >
           <template
@@ -4072,7 +4072,7 @@ svg {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon hydrated"
+                class="icon ssr"
               >
                 <template
                   shadowroot="open"
@@ -4139,7 +4139,8 @@ svg {
 
 exports[`should render dsr component for PSegmentedControl 1`] = `
 <p-segmented-control
-  class="hydrated"
+  class="ssr"
+  role="group"
 >
   <template
     shadowroot="open"
@@ -4160,7 +4161,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 
 exports[`should render dsr component for PSegmentedControlItem 1`] = `
 <p-segmented-control-item
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -4220,7 +4221,7 @@ span {
 
 exports[`should render dsr component for PSelectWrapper 1`] = `
 <p-select-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -4346,7 +4347,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
       >
         <p-icon
           aria-hidden="true"
-          class="icon hydrated"
+          class="icon ssr"
         >
           <template
             shadowroot="open"
@@ -4405,7 +4406,7 @@ svg {
 
 exports[`should render dsr component for PSpinner 1`] = `
 <p-spinner
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -4503,7 +4504,8 @@ circle:last-child {
 
 exports[`should render dsr component for PStepperHorizontal 1`] = `
 <p-stepper-horizontal
-  class="hydrated"
+  class="ssr"
+  role="list"
 >
   <template
     shadowroot="open"
@@ -4524,7 +4526,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
     </style>
     <p-scroller
-      class="scroller hydrated"
+      class="scroller ssr"
     >
       <template
         shadowroot="open"
@@ -4640,7 +4642,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
           >
             <p-button-pure
               aria-hidden="true"
-              class="button hydrated"
+              class="button ssr"
               tabindex="-1"
             >
               <template
@@ -4729,7 +4731,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="icon hydrated"
+                    class="icon ssr"
                   >
                     <template
                       shadowroot="open"
@@ -4793,7 +4795,7 @@ svg {
           >
             <p-button-pure
               aria-hidden="true"
-              class="button hydrated"
+              class="button ssr"
               tabindex="-1"
             >
               <template
@@ -4882,7 +4884,7 @@ svg {
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="icon hydrated"
+                    class="icon ssr"
                   >
                     <template
                       shadowroot="open"
@@ -4952,7 +4954,8 @@ svg {
 
 exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 <p-stepper-horizontal-item
-  class="hydrated"
+  class="ssr"
+  role="listitem"
 >
   <template
     shadowroot="open"
@@ -5060,7 +5063,7 @@ button::after {
 
 exports[`should render dsr component for PSwitch 1`] = `
 <p-switch
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -5159,7 +5162,7 @@ button {
 
 exports[`should render dsr component for PTable 1`] = `
 <p-table
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -5258,7 +5261,8 @@ exports[`should render dsr component for PTable 1`] = `
 
 exports[`should render dsr component for PTableBody 1`] = `
 <p-table-body
-  class="hydrated"
+  class="ssr"
+  role="rowgroup"
 >
   <template
     shadowroot="open"
@@ -5276,7 +5280,8 @@ exports[`should render dsr component for PTableBody 1`] = `
 
 exports[`should render dsr component for PTableCell 1`] = `
 <p-table-cell
-  class="hydrated"
+  class="ssr"
+  role="cell"
 >
   <template
     shadowroot="open"
@@ -5286,9 +5291,9 @@ exports[`should render dsr component for PTableCell 1`] = `
   display: table-cell !important;
   padding: 0.75rem !important;
   margin: 0 !important;
-  vertical-align: middle !important;
   border-bottom: 1px solid #e3e4e5 !important;
   white-space: nowrap !important;
+  vertical-align: middle;
 }
     </style>
     <slot />
@@ -5299,7 +5304,8 @@ exports[`should render dsr component for PTableCell 1`] = `
 
 exports[`should render dsr component for PTableHead 1`] = `
 <p-table-head
-  class="hydrated"
+  class="ssr"
+  role="rowgroup"
 >
   <template
     shadowroot="open"
@@ -5317,7 +5323,9 @@ exports[`should render dsr component for PTableHead 1`] = `
 
 exports[`should render dsr component for PTableHeadCell 1`] = `
 <p-table-head-cell
-  class="hydrated"
+  class="ssr"
+  role="columnheader"
+  scope="col"
 >
   <template
     shadowroot="open"
@@ -5342,7 +5350,8 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 
 exports[`should render dsr component for PTableHeadRow 1`] = `
 <p-table-head-row
-  class="hydrated"
+  class="ssr"
+  role="row"
 >
   <template
     shadowroot="open"
@@ -5360,7 +5369,8 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 
 exports[`should render dsr component for PTableRow 1`] = `
 <p-table-row
-  class="hydrated"
+  class="ssr"
+  role="row"
 >
   <template
     shadowroot="open"
@@ -5380,7 +5390,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 
 exports[`should render dsr component for PTabs 1`] = `
 <p-tabs
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -5394,7 +5404,7 @@ exports[`should render dsr component for PTabs 1`] = `
 }
     </style>
     <p-tabs-bar
-      class="root hydrated"
+      class="root ssr"
     >
       <template
         shadowroot="open"
@@ -5462,7 +5472,7 @@ exports[`should render dsr component for PTabs 1`] = `
 }
         </style>
         <p-scroller
-          class="scroller hydrated"
+          class="scroller ssr"
           role="tablist"
         >
           <template
@@ -5579,7 +5589,7 @@ exports[`should render dsr component for PTabs 1`] = `
               >
                 <p-button-pure
                   aria-hidden="true"
-                  class="button hydrated"
+                  class="button ssr"
                   tabindex="-1"
                 >
                   <template
@@ -5668,7 +5678,7 @@ exports[`should render dsr component for PTabs 1`] = `
                     >
                       <p-icon
                         aria-hidden="true"
-                        class="icon hydrated"
+                        class="icon ssr"
                       >
                         <template
                           shadowroot="open"
@@ -5732,7 +5742,7 @@ svg {
               >
                 <p-button-pure
                   aria-hidden="true"
-                  class="button hydrated"
+                  class="button ssr"
                   tabindex="-1"
                 >
                   <template
@@ -5821,7 +5831,7 @@ svg {
                     >
                       <p-icon
                         aria-hidden="true"
-                        class="icon hydrated"
+                        class="icon ssr"
                       >
                         <template
                           shadowroot="open"
@@ -5904,7 +5914,7 @@ svg {
 
 exports[`should render dsr component for PTabsBar 1`] = `
 <p-tabs-bar
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -5972,7 +5982,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
     </style>
     <p-scroller
-      class="scroller hydrated"
+      class="scroller ssr"
       role="tablist"
     >
       <template
@@ -6089,7 +6099,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
           >
             <p-button-pure
               aria-hidden="true"
-              class="button hydrated"
+              class="button ssr"
               tabindex="-1"
             >
               <template
@@ -6178,7 +6188,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="icon hydrated"
+                    class="icon ssr"
                   >
                     <template
                       shadowroot="open"
@@ -6242,7 +6252,7 @@ svg {
           >
             <p-button-pure
               aria-hidden="true"
-              class="button hydrated"
+              class="button ssr"
               tabindex="-1"
             >
               <template
@@ -6331,7 +6341,7 @@ svg {
                 >
                   <p-icon
                     aria-hidden="true"
-                    class="icon hydrated"
+                    class="icon ssr"
                   >
                     <template
                       shadowroot="open"
@@ -6404,7 +6414,7 @@ svg {
 
 exports[`should render dsr component for PTabsItem 1`] = `
 <p-tabs-item
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6430,7 +6440,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 
 exports[`should render dsr component for PTag 1`] = `
 <p-tag
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6481,7 +6491,7 @@ span {
 
 exports[`should render dsr component for PTagDismissible 1`] = `
 <p-tag-dismissible
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6558,7 +6568,7 @@ button::before {
       <slot />
       <p-icon
         aria-hidden="true"
-        class="icon hydrated"
+        class="icon ssr"
       >
         <template
           shadowroot="open"
@@ -6615,7 +6625,7 @@ svg {
 
 exports[`should render dsr component for PText 1`] = `
 <p-text
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6668,7 +6678,7 @@ exports[`should render dsr component for PText 1`] = `
 
 exports[`should render dsr component for PTextFieldWrapper 1`] = `
 <p-text-field-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6806,7 +6816,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 
 exports[`should render dsr component for PTextList 1`] = `
 <p-text-list
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6840,7 +6850,8 @@ exports[`should render dsr component for PTextList 1`] = `
 
 exports[`should render dsr component for PTextListItem 1`] = `
 <p-text-list-item
-  class="hydrated"
+  class="ssr"
+  role="listitem"
 >
   <template
     shadowroot="open"
@@ -6854,7 +6865,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 
 exports[`should render dsr component for PTextareaWrapper 1`] = `
 <p-textarea-wrapper
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
@@ -6971,7 +6982,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
-  class="hydrated"
+  class="ssr"
 >
   <template
     shadowroot="open"
