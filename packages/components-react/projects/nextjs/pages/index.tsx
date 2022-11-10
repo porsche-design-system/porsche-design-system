@@ -4,23 +4,21 @@ import { routes } from '../routes';
 import Link from 'next/link';
 
 const HomePage: NextPage = (): JSX.Element => {
-  return (
-    <>
-      <PHeadline>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </PHeadline>
+  return <>
+    <PHeadline>
+      Welcome to <a href="https://nextjs.org">Next.js!</a>
+    </PHeadline>
 
-      <ul>
-        {routes.map((route) => (
-          <li key={route.path}>
-            <Link href={route.path}>
-              <a>{route.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+    <ul>
+      {routes.map((route) => (
+        <li key={route.path}>
+          <Link href={route.path}>
+            {route.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </>;
 };
 
 export default HomePage;
