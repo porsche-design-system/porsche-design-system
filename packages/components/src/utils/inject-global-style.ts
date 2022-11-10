@@ -22,7 +22,7 @@ export const injectGlobalStyle = (): void => {
 You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/performance/loading-behaviour`);
   }
 
-  if (!head.querySelector('style[pds-initial-styles]')) {
+  if (!head.querySelector('style[data-pds-initial-styles]')) {
     const style = document.createElement('style');
     style.setAttribute('pds-initial-styles', '');
     style.innerText = TAG_NAMES.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';

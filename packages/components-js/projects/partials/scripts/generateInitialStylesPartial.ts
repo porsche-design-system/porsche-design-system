@@ -29,7 +29,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleAttributes = 'pds-initial-styles';
+  const styleAttributes = prefix ? \`data-pds-initial-styles-\$\{prefix\}\` : 'data-pds-initial-styles';
   const styleProps = { 'pds-initial-styles': 'true' };
 
   const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
