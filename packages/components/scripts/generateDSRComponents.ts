@@ -247,8 +247,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/( } from '@porsche-design-system\/components\/dist\/utils';)/, ', paramCaseToCamelCase, isUrl$1') // add missing import
           .replace(
             /(<i key={this\.key\+\+} className="root") \/>/,
-            `$1 dangerouslySetInnerHTML={{__html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || ''}} />`
+            `$1 dangerouslySetInnerHTML={{ __html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || '' }} />`
           ); // let svg icons render on server
+      } else if (tagName === 'p-popover') {
+        // only keep :host styles
+        newFileContent = newFileContent.replace(
+          /getPopoverCss\(.+?\)/,
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+        );
+      } else if (tagName === 'p-toast') {
+        // only keep :host styles
+        newFileContent = newFileContent.replace(
+          /getToastCss\(\)/,
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+        );
       }
 
       return newFileContent;

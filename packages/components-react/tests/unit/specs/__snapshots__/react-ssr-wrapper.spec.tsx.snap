@@ -3451,79 +3451,6 @@ exports[`should render dsr component for PPopover 1`] = `
   height: 1.5rem !important;
   vertical-align: top;
 }
-p {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
-.spacer {
-  position: absolute;
-  z-index: 9999;
-  top: -1rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
-  pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
-}
-.spacer::before {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 0 .75rem .75rem;
-  border-color: transparent transparent #fff;
-}
-.popover {
-  position: absolute;
-  max-width: 90vw;
-  width: max-content;
-  box-sizing: border-box;
-  background: #fff;
-  padding: .5rem 1rem;
-  pointer-events: auto;
-  top: 100%;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  list-style-type: none;
-  color: #000;
-  white-space: inherit;
-}
-@keyframes keyframes-fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@media(min-width:480px) {
-    .popover {
-      max-width: 27rem;
-    }
-}
-
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-
     </style>
     <p-button-pure
       class="hydrated"
@@ -7059,41 +6986,6 @@ exports[`should render dsr component for PToast 1`] = `
   max-width: 42rem !important;
   z-index: 999999 !important;
 }
-@keyframes in {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes out {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
-  }
-}
-@media(min-width:760px) {
-    :host {
-      left: 4rem !important;
-      right: auto !important;
-      --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 4rem) !important;
-      bottom: var(--p-toast-position-bottom-internal) !important;
-    }
-}
-
-  .hydrated {
-    animation: 600ms in cubic-bezier(0.45,0,0.55,1) forwards;
-  }
-  .close {
-    animation: 600ms out cubic-bezier(0.5,1,0.89,1) forwards !important;
-  }
     </style>
   </template>
 </p-toast>
