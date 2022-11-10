@@ -2645,6 +2645,7 @@ p {
   display: none;
 }
 .link {
+  min-height: 3rem;
   display: inline-flex;
 }
 .anchor::after {
