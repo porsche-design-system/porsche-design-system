@@ -261,6 +261,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /getToastCss\(\)/,
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
         );
+        // TODO: recover @media query for :host style if needed
       }
 
       return newFileContent;
