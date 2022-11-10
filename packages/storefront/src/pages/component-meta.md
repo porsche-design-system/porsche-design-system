@@ -63,6 +63,10 @@ export default class Code extends Vue {
     max-width: none !important;
   }
 
+  :deep(p-table-cell) {
+    vertical-align: top;
+  }
+
   :deep(code) {
     @include pds-text-x-small;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
