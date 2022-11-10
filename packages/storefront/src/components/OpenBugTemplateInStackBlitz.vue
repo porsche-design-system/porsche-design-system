@@ -1,5 +1,5 @@
 <template>
-  <p-fieldset-wrapper label="Choose your Template:" class="fieldset-wrapper">
+  <p-fieldset-wrapper label="Choose your Template:">
     <p-segmented-control
       :value="selectedFramework"
       aria-label="Choose your Framework:"
@@ -65,12 +65,12 @@
   }
 </script>
 
-<style>
-  .fieldset-wrapper {
+<style scoped lang="scss">
+  p-fieldset-wrapper {
     margin: 1rem 0;
-  }
-  .fieldset-wrapper > * {
-    margin-bottom: 1rem;
-    max-width: 20rem;
+    > * {
+      margin-bottom: 1rem;
+      max-width: 20rem;
+    }
   }
 </style>
