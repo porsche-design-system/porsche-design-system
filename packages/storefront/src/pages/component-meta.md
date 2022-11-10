@@ -24,6 +24,8 @@ export default class Code extends Vue {
       'isDelegatingFocus',
       'isThemeable',
       'props',
+      'hasEvent',
+      'eventNames',
       'namedSlots',
       'hasSlottedCss',
     ];
