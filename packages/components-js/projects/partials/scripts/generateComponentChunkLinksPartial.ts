@@ -47,14 +47,16 @@ Please use only valid component chunk names:
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
-  const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
 
-  const linksHtml = urls
+  const componentNameAndCDNUrl = ['core'].concat(components).map((cmp) => ({ cmpName: cmp, url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\` }));
+  const urls = componentNameAndCDNUrl.map(({url}) => url )
+
+  const linksHtml = componentNameAndCDNUrl
     // core needs crossorigin attribute / we need ternary otherwise false is written into link
-    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? \` \$\{scriptAttributes\}crossorigin\` : ''}>\`)
+    .map(({ cmpName, url }, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? \` \$\{scriptAttributes\}crossorigin\` : \` data-\$\{cmpName\}-chunk-link\`}>\`)
     .join('');
 
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true', ...scriptProps })} />);
+  const linksJsx = componentNameAndCDNUrl.map(({ cmpName, url }, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 ? { crossOrigin: 'true', ...scriptProps } : { [\`data-\${cmpName}-chunk-link\`]: 'true' })} />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 
