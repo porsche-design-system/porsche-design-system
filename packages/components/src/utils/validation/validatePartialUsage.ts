@@ -14,9 +14,32 @@ const validateGetFontLinksUsage = (): void => {
 };
 
 const validateGetComponentChunkLinksUsage = (): void => {
-  if (!document.querySelector('link[rel=preload][as=script][data-pds-core-chunk-link][crossorigin]')) {
-    partialValidationWarning('getComponentChunkLinks');
-  }
+  const prefixes = getPorscheDesignSystemPrefixes();
+  const allNodes = Array.from(document.querySelectorAll('*'));
+  const allTagNamesLowerCase = allNodes.map((node) => node.tagName.toLowerCase());
+
+  const defaultTagNames: string[] = allTagNamesLowerCase.filter((tagName) => tagName.startsWith('p-'));
+  const prefixedTagNames: string[] = allTagNamesLowerCase
+    .filter((tagName) => prefixes.find((prefix) => tagName.startsWith(`${prefix}-p-`)))
+    .map((tagName) => tagName.replace(/(?:\w+-)+p-/, 'p-'));
+
+  const preloadableTagNames = [...new Set(defaultTagNames.concat(prefixedTagNames))].filter(
+    (tagName) =>
+      !tagName.includes('-item') &&
+      !tagName.includes('-body') &&
+      !tagName.includes('-head') &&
+      !tagName.includes('-cell') &&
+      !tagName.includes('-row')
+  );
+
+  preloadableTagNames.forEach((tagName) => {
+    if (!document.querySelector(`link[rel=preload][as=script][data-pds-${tagName}-chunk-link][crossorigin]`)) {
+      console.warn(
+        `The Porsche Design System detected the usage of '${tagName}' without preloading it with 'getComponentChunkLinks()'. We recommend the usage of the
+'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
+      );
+    }
+  });
 };
 
 const validateGetLoaderScriptUsage = (): void => {
@@ -26,12 +49,7 @@ const validateGetLoaderScriptUsage = (): void => {
 };
 
 const validateInitialStylesWithPrefixUsage = (): void => {
-  const prefixes = Object.entries((document as any).porscheDesignSystem)
-    .map(([, value]) => (value as any).prefixes)
-    .filter((prefix, idx, arr) => arr.findIndex((p) => p.target === prefix.target) === idx)
-    .flat();
-
-  prefixes.forEach((prefix) => {
+  getPorscheDesignSystemPrefixes().forEach((prefix) => {
     if (prefix && !document.head.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
       console.warn(
         `You are using the Porsche Design System with prefixing but without 'getInitialStyles({ prefix: ${prefix} })'.
@@ -53,3 +71,11 @@ const partialValidationWarning = (partialName: PartialNames): void => {
 partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior`
   );
 };
+
+const getPorscheDesignSystemPrefixes = (): string[] =>
+  (document as any).porscheDesignSystem
+    ? Object.entries((document as any).porscheDesignSystem)
+        .map(([, value]) => (value as any).prefixes)
+        .filter((prefix, idx, arr) => arr.findIndex((p) => p.target === prefix.target) === idx)
+        .flat()
+    : [];
