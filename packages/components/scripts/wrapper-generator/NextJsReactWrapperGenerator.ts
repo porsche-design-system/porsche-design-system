@@ -24,7 +24,17 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
     // destructure children prop
     if (hasChildren) {
-      tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, `children, $&`);
+      tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, 'children, $&');
+    }
+
+    // destructure internal props
+    if (componentMeta.internalProps) {
+      tweakedComponent = tweakedComponent.replace(/.*\.\.\.rest/, '    // @ts-ignore\n$&');
+
+      Object.entries(componentMeta.internalProps).forEach(([prop, value]) => {
+        value = value ? ' = ' + (typeof value === 'string' ? "'" + value + "'" : value) : '';
+        tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, `${prop}${value}, $&`);
+      });
     }
 
     // add hydrated class
@@ -40,7 +50,11 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
-    const spreadProps = [...propsToSync.map(({ key }) => key), ...(hasChildren ? ['children'] : [])].join(', ');
+    const spreadProps = [
+      ...propsToSync.map(({ key }) => key),
+      ...(componentMeta.internalProps ? Object.keys(componentMeta.internalProps) : []),
+      ...(hasChildren ? ['children'] : []),
+    ].join(', ');
     const hostAttributes = componentMeta.hostAttributes
       ? `...${JSON.stringify(componentMeta.hostAttributes)},\n            `
       : '';
