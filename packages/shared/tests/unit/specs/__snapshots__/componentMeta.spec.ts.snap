@@ -709,6 +709,7 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "internalProps": {
       "backgroundColor": "background",
+      "selected": null,
       "theme": "light",
     },
     "isDelegatingFocus": true,

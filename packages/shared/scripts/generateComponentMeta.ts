@@ -211,12 +211,12 @@ const generateComponentMeta = (): void => {
         .map((x) => x.trim());
       const internalPropParams = attachComponentCssParams
         .slice(2) // get rid of first 2 params: this.host and getComponentCss
-        .filter((param) => param.startsWith('this.host')) // get rid of regular props, states and private members
+        .filter((param) => param.startsWith('this.host.')) // get rid of regular props, states and private members
         .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z]+)'?)?/.exec(param) || []) // extract param and default value if there is any
         .map(([, param, value]) => [param, value]);
 
       internalPropParams.forEach(([prop, value]) => {
-        internalProps[prop] = value;
+        internalProps[prop] = value || null; // null is needed to not loose property in JSON.stringify
       });
     }
 
