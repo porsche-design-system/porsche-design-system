@@ -185,8 +185,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace('grid.gutter', '{ base: 16, s: 24, m: 36 }') // grid
-        .replace(/tabs\.theme \|\| ('light')/, '$1') // tabs
+        .replace('grid.gutter', 'this.props.gutter') // grid
+        .replace('tabs.theme', 'this.props.theme') // tabs-item
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/const isNestedList.*\n/, '') // text-list
@@ -233,8 +233,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const defaultChildren =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      defaultChildren.includes(child) && this.props.activeTabIndex !== i
-        ? { ...child, props: { ...child.props, hidden: true } }
+      typeof child === 'object' && defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, theme: this.props.theme, hidden: this.props.activeTabIndex !== i ? true : null } }
         : child
     );`
           )
@@ -262,6 +262,58 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
         );
         // TODO: recover @media query for :host style if needed
+      } else if (tagName === 'p-grid') {
+        // pass down gutter prop to p-grid-item children
+        newFileContent = newFileContent
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-text-list') {
+        // pass down listType and orderType prop to p-text-list-item children
+        newFileContent = newFileContent
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, listType: this.props.listType, orderType: this.props.orderType } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-segmented-control') {
+        // pass down value, backgroundColor and theme prop to p-segmented-control-item children
+        newFileContent = newFileContent
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, selected: child.props?.value === this.props.value, backgroundColor: this.props.backgroundColor, theme: this.props.theme } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-stepper-horizontal') {
+        // pass down theme prop to p-stepper-horizontal-item children
+        newFileContent = newFileContent
+          .replace(
+            /const defaultChildren =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && defaultChildren.includes(child)
+        ? { ...child, props: { ...child.props, theme: this.props.theme } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       }
 
       return newFileContent;

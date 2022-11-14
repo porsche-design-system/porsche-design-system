@@ -1702,23 +1702,9 @@ exports[`should render dsr component for PGridItem 1`] = `
   width: 8.333333% !important;
   min-width: 8.333333% !important;
   margin-left: 0% !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+  padding-left: NaNrem !important;
+  padding-right: NaNrem !important;
 }
-@media(min-width:760px) {
-  :host {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-  }
-}
-
-@media(min-width:1000px) {
-  :host {
-    padding-left: 1.125rem !important;
-    padding-right: 1.125rem !important;
-  }
-}
-
     </style>
     <slot />
   </template>
@@ -5909,6 +5895,7 @@ svg {
   </template>
   <p-tabs-item
     label="TabItem"
+    theme="light"
   />
 </p-tabs>
 `;
