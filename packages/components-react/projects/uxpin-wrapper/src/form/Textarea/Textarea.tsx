@@ -5,9 +5,9 @@ import { partitionProps } from '../../form-utils';
 
 type TextareaStyleProps = {
   /**
-   * `min-height` style property
+   * `min-height` in pixels
    */
-  height?: string;
+  height?: number;
 };
 
 export type TextareaProps = PTextareaWrapperProps & TextareaStyleProps & DummyTextareaProps;
@@ -19,7 +19,7 @@ export const Textarea = (props: TextareaProps): JSX.Element => {
     dummyTextareaPropsKeys
   );
 
-  const minHeight = parseDimension(height);
+  const minHeight = height || undefined;
   const style: CSSProperties = { minHeight };
 
   return (
@@ -28,19 +28,3 @@ export const Textarea = (props: TextareaProps): JSX.Element => {
     </TextareaWrapper>
   );
 };
-
-// Return the style property to be assigned from the user's input in the UXPin Property Panel
-// - `undefined` if the input is empty or if `0` is entered
-// - the string entered by the user `300px` (to handle units such as `rem`)
-// - a number if the input has no unit (treated as pixels in React)
-function parseDimension(dimension: string | undefined): string | number | undefined {
-  if (!dimension) return undefined;
-  if (!isNumber(dimension)) {
-    return dimension;
-  }
-  return Number(dimension) || undefined;
-}
-
-function isNumber(input: string) {
-  return !Number.isNaN(Number(input));
-}
