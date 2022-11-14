@@ -4,17 +4,17 @@ import {
   convertImportPaths,
   getExternalDependencies,
   getSharedImportConstants,
-  isStableStorefrontRelease,
+  isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
 } from '../../utils';
-import type { StackblitzProjectDependencies } from '../../models';
+import type { StackBlitzProjectDependencies } from '../../models';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/;
 
@@ -51,18 +51,24 @@ ${markup
   .replace(/<\/>/g, '</React.Fragment>')}`;
 };
 
-export const getAppTsx = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
+export const getAppTsx = (
+  markup: string,
+  isExampleMarkup: boolean,
+  sharedImportKeys: SharedImportKey[],
+  pdsVersion: string
+): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
       isExampleMarkup
         ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
         : extendMarkupWithAppComponent(markup),
-      'react'
+      'react',
+      pdsVersion
     )
   );
 };
 
-export const getIndexTsx = (): string => {
+export const getIndexTsx = (pdsVersion: string): string => {
   return applyStackBlitzFixForReact(
     convertImportPaths(
       `import { StrictMode } from 'react';
@@ -81,7 +87,8 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-      'react'
+      'react',
+      pdsVersion
     )
   );
 };
@@ -94,11 +101,14 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (
+  externalDependencies: ExternalDependency[],
+  pdsVersion: string
+): StackBlitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    ...(isStableStorefrontRelease() && {
-      '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
+      '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-react'],
     }),
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
@@ -108,7 +118,7 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
     description,
@@ -117,21 +127,22 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     sharedImportKeys,
     externalDependencies,
     porscheDesignSystemBundle,
+    pdsVersion,
   } = opts;
 
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys),
+      'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
       'index.html': '<div id="root"></div>',
-      'index.tsx': getIndexTsx(),
+      'index.tsx': getIndexTsx(pdsVersion),
       'tsconfig.json': getTsconfigJson(),
       'style.css': globalStyles,
     },
     template: 'create-react-app',
     title,
     description,
-    dependencies: getDependencies(externalDependencies),
+    dependencies: getDependencies(externalDependencies, pdsVersion),
     openFile: 'App.tsx',
   };
 };

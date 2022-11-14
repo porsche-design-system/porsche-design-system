@@ -19,6 +19,7 @@
   import { Prop } from 'vue-property-decorator';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
   import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
+  import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
   @Component
   export default class CodeBlock extends Vue {
@@ -27,13 +28,6 @@
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
-
-    allFrameworks: Required<FrameworkMarkup> = {
-      'vanilla-js': 'Vanilla JS',
-      angular: 'Angular',
-      react: 'React',
-      shared: 'Shared',
-    };
 
     frameworkBeforeShared = this.framework;
 
@@ -46,7 +40,7 @@
 
     public get usedFrameworks(): FrameworkMarkup {
       return this.frameworks.reduce((prev, key) => {
-        prev[key as Framework] = this.allFrameworks[key as Framework];
+        prev[key as Framework] = frameworkNameMap[key as Framework];
         return prev;
       }, {} as FrameworkMarkup);
     }

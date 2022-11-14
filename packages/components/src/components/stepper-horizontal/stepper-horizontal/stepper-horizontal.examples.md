@@ -179,7 +179,7 @@ export default class Code extends Vue {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
   .mock-content {
     margin: 2rem 0;
   }
