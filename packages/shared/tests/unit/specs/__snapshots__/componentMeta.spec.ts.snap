@@ -319,7 +319,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "internalProps": {
-      "gutter": "",
+      "gutter": null,
     },
     "isDelegatingFocus": false,
     "isInternal": false,
@@ -1237,8 +1237,9 @@ exports[`should match snapshot 1`] = `
       "role": "listitem",
     },
     "internalProps": {
-      "listType": "",
-      "orderType": "",
+      "isNestedList": "false",
+      "listType": "unordered",
+      "orderType": "numbered",
     },
     "isDelegatingFocus": false,
     "isInternal": false,
