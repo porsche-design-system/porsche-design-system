@@ -1,3 +1,5 @@
+import { TAG_NAMES } from '@porsche-design-system/shared';
+
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
 export const validatePartialUsage = (): void => {
@@ -15,27 +17,57 @@ const validateGetFontLinksUsage = (): void => {
 
 const validateGetComponentChunkLinksUsage = (): void => {
   const prefixes = getPorscheDesignSystemPrefixes();
-  const allNodes = Array.from(document.querySelectorAll('*'));
-  const allTagNamesLowerCase = allNodes.map((node) => node.tagName.toLowerCase());
 
-  const defaultTagNames = allTagNamesLowerCase.filter((tagName) => tagName.startsWith('p-'));
-  const prefixedTagNames = allTagNamesLowerCase
-    .filter((tagName) => prefixes.find((prefix) => tagName.startsWith(`${prefix}-p-`)))
+  // Component tag names which should not be searched
+  // [ 'p-table-body', 'p-table-head', 'p-table-head-row', 'p-table-head-cell', 'p-table-row', 'p-table-cell', 'p-grid-item', 'p-flex-item', 'p-segmented-control-item', 'p-select-wrapper-dropdown', 'p-tabs-item', 'p-text-list-item', 'p-toast-item', 'p-stepper-horizontal-item']
+
+  const preloadablePdsTagNames = TAG_NAMES.filter(
+    (tagName) =>
+      ![
+        'p-table-body',
+        'p-table-head',
+        'p-table-head-row',
+        'p-table-head-cell',
+        'p-table-row',
+        'p-table-cell',
+        'p-grid-item',
+        'p-flex-item',
+        'p-segmented-control-item',
+        'p-select-wrapper-dropdown',
+        'p-tabs-item',
+        'p-text-list-item',
+        'p-toast-item',
+        'p-stepper-horizontal-item',
+      ].includes(tagName)
+  );
+
+  const allDefaultPdsNodes = Array.from(document.querySelectorAll(preloadablePdsTagNames.join()));
+  const allPrefixedPdsTagNames = prefixes.map((prefix) =>
+    preloadablePdsTagNames.map((tagName) => `${prefix}-${tagName}`)
+  );
+  const allPrefixedPdsNodes = Array.from(document.querySelectorAll(allPrefixedPdsTagNames.join()));
+  const allTagNamesLowerCase = [...allDefaultPdsNodes.concat(allPrefixedPdsNodes)]
+    .map((node) => node.tagName.toLowerCase())
     .map((tagName) => tagName.replace(/(?:\w+-)+p-/, 'p-'));
 
-  const preloadableTagNames = [...new Set(defaultTagNames.concat(prefixedTagNames))].filter(
-    (tagName) =>
-      !tagName.includes('-item') ||
-      !tagName.includes('-body') ||
-      !tagName.includes('-head') ||
-      !tagName.includes('-cell') ||
-      !tagName.includes('-row')
-  );
+  const allTagNamesWithoutDuplicates = new Set(allTagNamesLowerCase);
 
   let usedTagNamesWithoutPreload: string[] = [];
 
-  preloadableTagNames.forEach((tagName) => {
-    if (!document.querySelector(`link[rel=preload][as=script][data-pds-${tagName}-chunk-link][crossorigin]`)) {
+  allTagNamesWithoutDuplicates.forEach((tagName) => {
+    let chunkName = tagName;
+
+    const componentNameToChunkNameMap = {
+      'p-inline-notification': 'p-banner',
+      'p-button-group': 'p-button',
+      'p-tag-dismissible': 'p-tag',
+    };
+
+    if (['p-inline-notification', 'p-button-group', 'p-tag-dismissible'].includes(tagName)) {
+      chunkName = componentNameToChunkNameMap[tagName];
+    }
+
+    if (!document.querySelector(`link[rel=preload][as=script][data-pds-${chunkName}-chunk-link][crossorigin]`)) {
       usedTagNamesWithoutPreload.push(tagName);
     }
   });
