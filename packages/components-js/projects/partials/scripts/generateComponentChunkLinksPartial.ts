@@ -49,7 +49,6 @@ Please use only valid component chunk names:
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
 
   const componentNameAndCDNUrl = ['core'].concat(components).map((cmp) => ({ cmpName: cmp, url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\` }));
-  const urls = componentNameAndCDNUrl.map(({url}) => url )
 
   const linksHtml = componentNameAndCDNUrl
     // core needs crossorigin attribute / we need ternary otherwise false is written into link
@@ -60,7 +59,7 @@ Please use only valid component chunk names:
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 
-  return withoutTags ? urls : markup;
+  return withoutTags ? componentNameAndCDNUrl.map(({url}) => url ) : markup;
 }`;
 
   return [types, func].join('\n\n');

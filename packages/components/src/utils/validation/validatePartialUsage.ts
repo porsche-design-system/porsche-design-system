@@ -18,21 +18,21 @@ const validateGetComponentChunkLinksUsage = (): void => {
   const allNodes = Array.from(document.querySelectorAll('*'));
   const allTagNamesLowerCase = allNodes.map((node) => node.tagName.toLowerCase());
 
-  const defaultTagNames: string[] = allTagNamesLowerCase.filter((tagName) => tagName.startsWith('p-'));
-  const prefixedTagNames: string[] = allTagNamesLowerCase
+  const defaultTagNames = allTagNamesLowerCase.filter((tagName) => tagName.startsWith('p-'));
+  const prefixedTagNames = allTagNamesLowerCase
     .filter((tagName) => prefixes.find((prefix) => tagName.startsWith(`${prefix}-p-`)))
     .map((tagName) => tagName.replace(/(?:\w+-)+p-/, 'p-'));
 
   const preloadableTagNames = [...new Set(defaultTagNames.concat(prefixedTagNames))].filter(
     (tagName) =>
-      !tagName.includes('-item') &&
-      !tagName.includes('-body') &&
-      !tagName.includes('-head') &&
-      !tagName.includes('-cell') &&
+      !tagName.includes('-item') ||
+      !tagName.includes('-body') ||
+      !tagName.includes('-head') ||
+      !tagName.includes('-cell') ||
       !tagName.includes('-row')
   );
 
-  let usedTagNamesWithoutPreload = [];
+  let usedTagNamesWithoutPreload: string[] = [];
 
   preloadableTagNames.forEach((tagName) => {
     if (!document.querySelector(`link[rel=preload][as=script][data-pds-${tagName}-chunk-link][crossorigin]`)) {
