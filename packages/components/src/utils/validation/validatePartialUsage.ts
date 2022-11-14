@@ -1,4 +1,4 @@
-type PartialNames = 'getFontLink' | 'getComponentChunkLinks' | 'getLoaderScript';
+type PartialNames = 'getFontLink' | 'getLoaderScript';
 
 export const validatePartialUsage = (): void => {
   validateGetFontLinksUsage();
@@ -32,14 +32,22 @@ const validateGetComponentChunkLinksUsage = (): void => {
       !tagName.includes('-row')
   );
 
+  let usedTagNamesWithoutPreload = [];
+
   preloadableTagNames.forEach((tagName) => {
     if (!document.querySelector(`link[rel=preload][as=script][data-pds-${tagName}-chunk-link][crossorigin]`)) {
-      console.warn(
-        `The Porsche Design System detected the usage of '${tagName}' without preloading it with 'getComponentChunkLinks()'. We recommend the usage of the
-'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
-      );
+      usedTagNamesWithoutPreload.push(tagName);
     }
   });
+
+  if (usedTagNamesWithoutPreload.length) {
+    console.warn(
+      `The Porsche Design System detected the usage of the components '${usedTagNamesWithoutPreload.join(
+        ', '
+      )}' without preloading. We recommend the usage of the
+'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
+    );
+  }
 };
 
 const validateGetLoaderScriptUsage = (): void => {
@@ -62,7 +70,6 @@ Please make sure to apply the 'getInitialStyles()' partial as described at https
 const partialValidationWarning = (partialName: PartialNames): void => {
   const partialNameToLinkPathMap: Record<PartialNames, string> = {
     getFontLink: 'font-links',
-    getComponentChunkLinks: 'component-chunk-links',
     getLoaderScript: 'loader-script',
   };
 
