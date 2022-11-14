@@ -27,7 +27,7 @@
 | **Radio Button Wrapper** | ✅     | - Required state not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                     |
 | **Scroller**             | ✅     | - Inherited line-height other than a factor of 1.5 is not supported<br />- Optional prev/next arrows aren't supported                                                              |
 | **Segmented Control**    | ❔     |                                                                                                                                                                                    |
-| **Select Wrapper**       | ❔     |                                                                                                                                                                                    |
+| **Select Wrapper**       | ✅     |                                                                                                                                                                                    |
 | **Spinner**              | ✅     |                                                                                                                                                                                    |
 | **Stepper Horizontal**   | ❔     |                                                                                                                                                                                    |
 | **Switch**               | ✅     |                                                                                                                                                                                    |
