@@ -707,6 +707,10 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "hasSlottedCss": false,
+    "internalProps": {
+      "backgroundColor": "background",
+      "theme": "light",
+    },
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
@@ -850,6 +854,9 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "hostAttributes": {
       "role": "listitem",
+    },
+    "internalProps": {
+      "theme": "light",
     },
     "isDelegatingFocus": true,
     "isInternal": false,

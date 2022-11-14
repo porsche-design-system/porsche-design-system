@@ -180,7 +180,9 @@ const generateComponentMeta = (): void => {
     }
 
     // internal props set by parent
-    const internalProps = {};
+    const internalProps: ComponentMeta['internalProps'] = {};
+
+    // extract properties from this.host.parentElement
     const [, parentElement] = /const ([a-z]+) = this\.host\.parentElement/g.exec(source) || [];
     if (parentElement) {
       const props = [
@@ -196,6 +198,24 @@ const generateComponentMeta = (): void => {
       ];
 
       props.forEach(([prop, value]) => {
+        internalProps[prop] = value;
+      });
+    }
+
+    // extract properties from this.host that are set by parent element
+    const [, rawAttachComponentCssParams] = /attachComponentCss\(([\s\S]+?)\);/.exec(source) || [];
+    if (rawAttachComponentCssParams) {
+      const attachComponentCssParams = rawAttachComponentCssParams
+        .replace(/\/\/.*/g, '') // strip comments
+        .split(',')
+        .map((x) => x.trim());
+      const internalPropParams = attachComponentCssParams
+        .slice(2) // get rid of first 2 params: this.host and getComponentCss
+        .filter((param) => param.startsWith('this.host')) // get rid of regular props, states and private members
+        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z]+)'?)?/.exec(param) || []) // extract param and default value if there is any
+        .map(([, param, value]) => [param, value]);
+
+      internalPropParams.forEach(([prop, value]) => {
         internalProps[prop] = value;
       });
     }
