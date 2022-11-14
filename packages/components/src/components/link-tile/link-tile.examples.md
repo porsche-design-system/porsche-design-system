@@ -227,7 +227,7 @@ export default class Code extends Vue {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
   p-link-tile:not(:last-child) {
     margin-bottom: 1rem;
   }

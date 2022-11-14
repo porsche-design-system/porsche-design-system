@@ -71,7 +71,7 @@
   }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   @import '~@porsche-design-system/components-js/utilities/scss';
 
   * {
