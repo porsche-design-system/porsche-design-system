@@ -44,6 +44,21 @@ import { IMaskModule } from 'angular-imask';
 export class AppModule {constructor () { porscheDesignSystem.load(); }}"
 `;
 
+exports[`getAppModuleTs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with passed pdsVersion 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+@NgModule({
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
+  declarations: [AppComponent],
+  schemas: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
 exports[`getAppModuleTs() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup for [] as externalDependencies 1`] = `
 "import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -68,6 +83,21 @@ import { AppComponent } from './app.component';
 import { IMaskModule } from 'angular-imask';
 @NgModule({
   imports: [BrowserModule, FormsModule, PorscheDesignSystemModule, IMaskModule],
+  declarations: [AppComponent],
+  schemas: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
+exports[`getAppModuleTs() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with passed pdsVersion 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+@NgModule({
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
   declarations: [AppComponent],
   schemas: [],
   bootstrap: [AppComponent],
