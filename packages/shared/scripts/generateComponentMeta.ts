@@ -182,26 +182,6 @@ const generateComponentMeta = (): void => {
     // internal props set by parent
     const internalProps: ComponentMeta['internalProps'] = {};
 
-    // extract properties from this.host.parentElement
-    const [, parentElement] = /const ([a-z]+) = this\.host\.parentElement/g.exec(source) || [];
-    if (parentElement) {
-      const props = [
-        // extract things like grid.gutter or tabs.theme with fallback value
-        ...Array.from(
-          source.matchAll(new RegExp(`\\s${parentElement}\\.([a-z]+)(?: \\|\\| '?([\\dA-Za-z]+)'?)?`, 'g'))
-        ).map(([, propName, defaultValue = '']) => [propName, defaultValue]),
-        // extract destructured constants
-        // TODO: fallback value is missing
-        ...Array.from(source.matchAll(new RegExp(`const { (.+) } = ${parentElement}`, 'g')))
-          .map(([, propNames]) => propNames.split(',').map((propName) => [propName.trim(), '']))
-          .flat(),
-      ];
-
-      props.forEach(([prop, value]) => {
-        internalProps[prop] = value;
-      });
-    }
-
     // extract properties from this.host that are set by parent element
     const [, rawAttachComponentCssParams] = /attachComponentCss\(([\s\S]+?)\);/.exec(source) || [];
     if (rawAttachComponentCssParams) {
