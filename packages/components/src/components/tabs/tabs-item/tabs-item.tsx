@@ -1,6 +1,7 @@
+import type { PropTypes } from '../../../types';
+import type { TabsItemInternalHTMLProps } from './tabs-item-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../types';
 import { getComponentCss } from './tabs-item-styles';
 
 const propTypes: PropTypes<typeof TabsItem> = {
@@ -12,7 +13,7 @@ const propTypes: PropTypes<typeof TabsItem> = {
   shadow: true,
 })
 export class TabsItem {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLElement & TabsItemInternalHTMLProps;
 
   /** Defines the label used in tabs. */
   @Prop() public label: string;
@@ -23,10 +24,11 @@ export class TabsItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const tabs = this.host.parentElement as HTMLPTabsElement;
-    if (tabs) {
-      attachComponentCss(this.host, getComponentCss, tabs.theme || 'light');
-    }
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.host.theme || 'light' // default as fallback
+    );
 
     return <slot />;
   }
