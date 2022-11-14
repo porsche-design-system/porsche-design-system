@@ -33,7 +33,7 @@
 | **Switch**               | ✅     |                                                                                                                                                                                    |
 | **Table**                | ✅     | - Nested slotted styles (e.g. slotted anchors or images) aren't supported on purpose<br />- Optional scroll next arrow isn't supported                                             |
 | **Tabs** / **Tabs Bar**  | ❔     | - Optional prev/next arrows aren't supported                                                                                                                                       |
-| **Tag**                  | ❔     |                                                                                                                                                                                    |
+| **Tag**                  | ✅     |                                                                                                                                                                                    |
 | **Tag Dismissible**      | ✅     |                                                                                                                                                                                    |
 | **Text**                 | ✅     | - `size="inherit"` is not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                |
 | **Text Field Wrapper**   | ❔     |                                                                                                                                                                                    |
