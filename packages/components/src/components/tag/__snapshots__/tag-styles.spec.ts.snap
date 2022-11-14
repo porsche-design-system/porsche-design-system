@@ -57,6 +57,39 @@ span {
   hyphens: auto;
   white-space: nowrap;
 }
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+  color: inherit !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  border-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  text-align: left !important;
+}
 ::slotted(br) {
   display: none !important;
 }
@@ -66,6 +99,12 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #ff0223 !important;
+  }
+}
+
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
 }"
@@ -92,6 +131,39 @@ span {
   hyphens: auto;
   white-space: nowrap;
 }
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+  color: inherit !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  border-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  text-align: left !important;
+}
 ::slotted(br) {
   display: none !important;
 }
@@ -101,6 +173,12 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
+}
+
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
 }"
@@ -135,6 +213,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -153,16 +232,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -177,9 +251,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #ff0223;
-  }
-  ::slotted(a:hover) {
-    color: #ff0223 !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #ff0223 !important;
@@ -220,6 +291,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -238,16 +310,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -262,9 +329,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -305,6 +369,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -323,16 +388,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -347,9 +407,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #ff0223;
-  }
-  ::slotted(a:hover) {
-    color: #ff0223 !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #ff0223 !important;
@@ -390,6 +447,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -408,16 +466,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -432,9 +485,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -475,6 +525,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -493,16 +544,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -517,9 +563,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -560,6 +603,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -578,16 +622,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -602,9 +641,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #ff0223;
-  }
-  ::slotted(a:hover) {
-    color: #ff0223 !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #ff0223 !important;
@@ -645,6 +681,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -663,16 +700,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -687,9 +719,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -730,6 +759,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -748,16 +778,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -772,9 +797,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -815,6 +837,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -833,16 +856,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -857,9 +875,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -900,6 +915,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -918,16 +934,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -942,9 +953,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -985,6 +993,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1003,16 +1012,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -1027,9 +1031,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -1070,6 +1071,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1088,16 +1090,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -1112,9 +1109,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -1155,6 +1149,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1173,16 +1168,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -1197,9 +1187,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
@@ -1240,6 +1227,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   outline: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1258,16 +1246,11 @@ span {
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
 }
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
 ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
   background: 0 !important;
   border: 0 !important;
-  color: inherit !important;
   text-align: left !important;
 }
 ::slotted(br) {
@@ -1282,9 +1265,6 @@ span {
 @media(hover:hover) {
   span:hover {
     color: #d5001c;
-  }
-  ::slotted(a:hover) {
-    color: #d5001c !important;
   }
   ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
     border-color: #d5001c !important;
