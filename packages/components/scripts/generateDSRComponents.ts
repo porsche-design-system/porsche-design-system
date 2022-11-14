@@ -49,7 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
-        .replace(/\s{2,}(?:warnIf|throwIf|sync[A-Z]).+;/g, '')
+        .replace(/\s{2,}(?:warnIf|throwIf|sync[A-Z])[\s\S]+?;/g, '')
         .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
