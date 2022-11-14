@@ -27,6 +27,9 @@ const generateComponentMeta = (): void => {
     [propName: string]: boolean | number | string; // value is the prop's default value
   };
   requiredProps?: string[]; // array of props that are mandatory
+  internalProps?: {
+    [propName: string]: boolean | number | string // value is the prop's default value
+  };
   hostAttributes?: {
     [attrName: string]: string;
   };
@@ -57,6 +60,9 @@ const generateComponentMeta = (): void => {
       [propName: string]: boolean | number | string; // value is the prop's default value
     };
     requiredProps?: string[]; // array of props that are mandatory
+    internalProps?: {
+      [propName: string]: boolean | number | string; // value is the prop's default value
+    };
     hostAttributes?: {
       [attrName: string]: string;
     };
@@ -173,6 +179,29 @@ const generateComponentMeta = (): void => {
       requiredProps.push(invalidLinkUsageProp);
     }
 
+    // internal props set by parent
+    const internalProps = {};
+    const [, parentElement] = /const ([a-z]+) = this\.host\.parentElement/g.exec(source) || [];
+    if (parentElement) {
+      const props = [
+        // extract things like grid.gutter or tabs.theme with fallback value
+        ...Array.from(
+          source.matchAll(new RegExp(`\\s${parentElement}\\.([a-z]+)(?: \\|\\| '?([\\dA-Za-z]+)'?)?`, 'g'))
+        ).map(([, propName, defaultValue = '']) => [propName, defaultValue]),
+        // extract destructured constants
+        // TODO: fallback value is missing
+        ...Array.from(source.matchAll(new RegExp(`const { (.+) } = ${parentElement}`, 'g')))
+          .map(([, propNames]) => propNames.split(',').map((propName) => [propName.trim(), '']))
+          .flat(),
+      ];
+
+      props.forEach(([prop, value]) => {
+        internalProps[prop] = value;
+      });
+    }
+
+    // host attributes
+    // TODO: currently only hardcoded attributes are extracted
     let hostAttributes: ComponentMeta['hostAttributes'] = {};
     const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
     if (rawHostAttributes) {
@@ -214,6 +243,7 @@ const generateComponentMeta = (): void => {
       ...(nestedComponents.length && { nestedComponents: nestedComponents }),
       ...(Object.keys(props).length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
+      ...(Object.keys(internalProps).length && { internalProps: internalProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
       hasSlot,
       ...(namedSlots.length && { namedSlots: namedSlots }),

@@ -318,6 +318,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "hasSlottedCss": false,
+    "internalProps": {
+      "gutter": "",
+    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
@@ -1078,6 +1081,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "hasSlottedCss": false,
+    "internalProps": {
+      "theme": "light",
+    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
@@ -1221,6 +1227,10 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "hostAttributes": {
       "role": "listitem",
+    },
+    "internalProps": {
+      "listType": "",
+      "orderType": "",
     },
     "isDelegatingFocus": false,
     "isInternal": false,
