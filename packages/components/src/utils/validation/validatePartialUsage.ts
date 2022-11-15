@@ -15,36 +15,38 @@ const validateGetFontLinksUsage = (): void => {
   }
 };
 
+const coreRelatedChunkSiblings: Element[] = [];
+
+const getAllCoreRelatedChunkSiblings = (node: Element): Element[] => {
+  const nextSibling = node.nextElementSibling as any;
+
+  if (nextSibling.href && nextSibling.href.includes(`porsche-design-system.`)) {
+    coreRelatedChunkSiblings.push(nextSibling);
+    coreRelatedChunkSiblings.concat(getAllCoreRelatedChunkSiblings(nextSibling));
+  }
+  return coreRelatedChunkSiblings;
+};
+
 const validateGetComponentChunkLinksUsage = (): void => {
   const usedPdsVersions = Object.keys((document as any).porscheDesignSystem ?? {});
   const prefixes = getPorscheDesignSystemPrefixes();
 
-  let preloadedChunksForVersion: { [key: string]: HTMLLinkElement[] }[] = [];
+  let chunksLinkNodes: Element[] = [];
+  const preloadChunkLinksForVersion: [{ [key: string]: Element[] }] = [{}];
 
   usedPdsVersions.forEach((version) => {
-    let chunksLinkNodes = [];
     const coreChunkLinkNode = document.querySelector(
       `[href*=porsche-design-system\\.v${version.replace(/\./g, '\\.')}]`
     );
-
-    const getAllChunkSiblings = (node: Element) => {
-      const nextSibling = node.nextSibling as any;
-
-      if (nextSibling.href && nextSibling.href.includes(`porsche-design-system.`)) {
-        chunksLinkNodes.push(nextSibling);
-        chunksLinkNodes.concat(getAllChunkSiblings(nextSibling));
-      } else {
-        return chunksLinkNodes;
-      }
-    };
+    console.log(coreChunkLinkNode);
 
     if (coreChunkLinkNode) {
       chunksLinkNodes.push(coreChunkLinkNode);
-      chunksLinkNodes.concat(getAllChunkSiblings(coreChunkLinkNode));
-      preloadedChunksForVersion.push({ [version]: chunksLinkNodes });
+      chunksLinkNodes.concat(getAllCoreRelatedChunkSiblings(coreChunkLinkNode));
+      preloadChunkLinksForVersion.push({ [version]: chunksLinkNodes });
     } else {
       console.warn(
-        `You are using the Porsche Design System version '${version}' without preloading. We recommend the usage of the
+        `You are using the Porsche Design System version '${version}' without preloading it. We recommend the usage of the
 'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
       );
     }
@@ -81,13 +83,15 @@ const validateGetComponentChunkLinksUsage = (): void => {
 
   const allTagNamesWithoutDuplicates = new Set(allTagNamesLowerCase);
 
-  let usedTagNamesWithoutPreload: string[] = [];
+  const usedTagNamesWithoutPreload: string[] = [];
 
   allTagNamesWithoutDuplicates.forEach((tagName) => {
     if (
-      preloadedChunksForVersion.map((x) => {
+      preloadChunkLinksForVersion.map((x) => {
         const chunkLinkNodes = Object.values(x).flat();
-        return chunkLinkNodes.find((chunkLinkNode) => chunkLinkNode.href.includes(`porsche.design.system.${tagName}`));
+        return chunkLinkNodes.find((chunkLinkNode) =>
+          (chunkLinkNode as HTMLLinkElement).href.includes(`porsche.design.system.${tagName}`)
+        );
       })
     ) {
       usedTagNamesWithoutPreload.push(tagName);
