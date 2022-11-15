@@ -311,6 +311,49 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-text-field-wrapper') {
+        // make private like isSearch, isPassword and hasUnit work
+        const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
+          .map(([match]) => match)
+          .filter((member, idx, arr) => arr.findIndex((m) => member.startsWith(m.split('=')[0])) === idx); // remove duplicates
+
+        const constants = rawPrivateMembers
+          .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
+          .map(
+            (member, i, arr) =>
+              member
+                .replace(
+                  // use local constants
+                  new RegExp('this.(' + arr.map((m) => /^const ([A-Za-z]+)/.exec(m)![1]).join('|') + ')'),
+                  '$1'
+                )
+                .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
+                .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
+                .replace(/this\.input/, 'defaultChildren[0]?.props') // use input child
+                .replace(/this\./, '$&props.') // all others must be actual props
+                .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
+          )
+          .join('\n    ');
+
+        newFileContent = newFileContent
+          .replace(
+            // use local constants instead of previously replaced private members that became something like
+            // this.props.isSearch, this.props.hasUnit, etc.
+            new RegExp(
+              `this\.props\.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
+                .map(([, group]) => group)
+                .join('|')})`,
+              'g'
+            ),
+            '$1'
+          )
+          .replace(
+            // inject local constants
+            / +const style = minifyCss/,
+            `    ${constants}
+
+$&`
+          );
       }
 
       return newFileContent;
