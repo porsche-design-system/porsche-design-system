@@ -88,6 +88,7 @@ export class SegmentedControlItem {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
+            theme={this.host.theme || 'light'}
             aria-hidden="true"
           />
         )}
