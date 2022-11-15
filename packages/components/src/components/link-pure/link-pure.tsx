@@ -17,7 +17,6 @@ import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
@@ -32,7 +31,7 @@ import {
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
@@ -104,10 +103,6 @@ export class LinkPure {
   private iconTag: HTMLElement;
   private labelTag: HTMLElement;
   private sublineTag: HTMLElement;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations

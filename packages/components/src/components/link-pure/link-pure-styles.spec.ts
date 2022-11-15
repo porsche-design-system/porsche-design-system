@@ -1,4 +1,4 @@
-import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { getComponentCss } from './link-pure-styles';
 import type {
   AlignLabel,
   BreakpointCustomizable,
@@ -7,18 +7,6 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../types';
-
-describe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-link-pure');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-link-pure');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-});
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };

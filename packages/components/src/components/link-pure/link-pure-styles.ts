@@ -1,4 +1,3 @@
-import type { JssStyle } from 'jss';
 import type {
   AlignLabel,
   BreakpointCustomizable,
@@ -7,18 +6,9 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../types';
-import { buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { getFocusJssStyle, getInsetJssStyle } from '../../styles';
+import { getCss, mergeDeep } from '../../utils';
+import { getInsetJssStyle } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-
-const slottedAnchorStyles: JssStyle = {
-  display: 'block',
-  position: 'static',
-  textDecoration: 'none',
-  font: 'inherit',
-  color: 'inherit',
-  outline: 0,
-};
 
 export const getComponentCss = (
   icon: LinkButtonPureIconName,
@@ -50,7 +40,14 @@ export const getComponentCss = (
       {
         '@global': {
           '::slotted': {
-            '&(a)': slottedAnchorStyles,
+            '&(a)': {
+              display: 'block',
+              position: 'static',
+              textDecoration: 'none',
+              font: 'inherit',
+              color: 'inherit',
+              outline: 0,
+            },
             '&(a)::before': {
               content: '""',
               position: 'absolute',
@@ -65,23 +62,11 @@ export const getComponentCss = (
               outlineColor: 'transparent',
             },
           },
+          'slot[name=subline]::slotted(*)': {
+            margin: 0,
+          },
         },
       }
     )
-  );
-};
-
-// TODO:V3 should be removed completely, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& > p': {
-        margin: 0,
-      },
-      '& * a': {
-        ...slottedAnchorStyles,
-        ...getFocusJssStyle({ pseudo: '::before', offset: 1 }),
-      },
-    })
   );
 };
