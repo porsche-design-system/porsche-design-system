@@ -24,10 +24,10 @@ Let us notify you whenever there is relevant news for you regarding Porsche Desi
 will use your account registration for sending mails. If you are not yet registered, please sign up via
 [Start Designing](start-designing/introduction) or [Start Coding](start-coding/introduction)
 
-## Bug, issue and contribution management at GitHub
+## Issue and contribution management at GitHub
 
-Bug reports or feature requests can be forwarded to the Porsche Design System team by creating issues in the
-[public Porsche Design System GitHub repository](https://github.com/porsche-design-system/porsche-design-system-contribution). If you want to
-contribute solutions or fixes, you can create pull requests in the
-[private Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system) after you have been
-granted access.
+Feature requests can be forwarded to the Porsche Design System team by creating issues in the
+[public Porsche Design System GitHub repository](https://github.com/porsche-design-system/porsche-design-system-contribution).
+If you want to contribute solutions or fixes, you can create pull requests in the
+[private Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system) after you
+have been granted access.

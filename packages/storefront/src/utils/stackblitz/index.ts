@@ -3,7 +3,7 @@ export type {
   SharedImportKey,
   ExternalDependency,
   DependencyMap,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
 } from './helper';
 export { getVanillaJsProjectAndOpenOptions } from './getVanillaJsProjectAndOpenOptions';
 export { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptions';
