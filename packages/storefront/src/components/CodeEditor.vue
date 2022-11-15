@@ -6,7 +6,7 @@
     :disabled="framework === 'shared'"
     :loading="isLoading"
     @click="onButtonClick()"
-    >Edit in StackBlitz
+    >{{ buttonLabel }}
   </p-button>
 </template>
 
@@ -30,6 +30,8 @@
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
+    @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
+    @Prop({ default: '' }) public pdsVersion!: string;
 
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
@@ -37,40 +39,43 @@
     public async onButtonClick() {
       this.isLoading = true;
       openInStackBlitz({
-        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework),
+        porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
         markup: this.markup,
         framework: this.framework,
         theme: this.theme,
         externalDependencies: this.externalStackBlitzDependencies,
         backgroundColorScheme: this.colorScheme,
         sharedImportKeys: this.sharedImportKeys,
+        pdsVersion: this.pdsVersion,
       });
       this.isLoading = false;
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>
+      framework: Exclude<Framework, 'shared'>,
+      pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       switch (framework) {
         case 'vanilla-js':
-          return await CodeEditor.fetchPorscheDesignSystemBundle('js');
+          return await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
         case 'angular':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular', pdsVersion)),
           };
         case 'react':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js')),
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react')),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
           };
       }
     }
 
-    private static async fetchPorscheDesignSystemBundle(
-      framework: keyof PorscheDesignSystemBundleMap
+    public static async fetchPorscheDesignSystemBundle(
+      framework: keyof PorscheDesignSystemBundleMap,
+      pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
-      if (!isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
+      if (!pdsVersion && !isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
         // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
         const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
         porscheDesignSystemBundleMap[framework] = (await response.json()) as PorscheDesignSystemBundle;

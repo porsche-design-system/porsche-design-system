@@ -187,12 +187,12 @@ const generateComponentMeta = (): void => {
     if (rawAttachComponentCssParams) {
       const attachComponentCssParams = rawAttachComponentCssParams
         .replace(/\/\/.*/g, '') // strip comments
-        .split(',')
+        .split(rawAttachComponentCssParams.includes('\n') ? '\n' : ',')
         .map((x) => x.trim());
       const internalPropParams = attachComponentCssParams
         .slice(2) // get rid of first 2 params: this.host and getComponentCss
         .filter((param) => param.startsWith('this.host.')) // get rid of regular props, states and private members
-        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z]+)'?)?/.exec(param) || []) // extract param and default value if there is any
+        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param) || []) // extract param and default value if there is any
         .map(([, param, value]) => [param, value]);
 
       internalPropParams.forEach(([prop, value]) => {

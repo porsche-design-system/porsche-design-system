@@ -6,15 +6,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 @media(min-width:480px) {
   :host {
@@ -299,15 +313,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -402,15 +430,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -484,15 +526,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -615,15 +671,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -788,15 +858,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -891,15 +975,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -973,15 +1071,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -1075,15 +1187,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -1177,15 +1303,29 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -1280,15 +1420,29 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -1357,15 +1511,29 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
 }
 .root {
   display: flex;
@@ -1436,8 +1604,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-pure a {
-  outline: 0 !important;
+"p-link-pure > p {
+  margin: 0 !important;
 }
 p-link-pure * a {
   display: block !important;
@@ -1445,11 +1613,12 @@ p-link-pure * a {
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
+  outline: 0 !important;
 }
-p-link-pure a::-moz-focus-inner {
+p-link-pure * a::-moz-focus-inner {
   border: 0 !important;
 }
-p-link-pure a::before {
+p-link-pure * a::before {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
@@ -1459,17 +1628,17 @@ p-link-pure a::before {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-link-pure a:focus::before {
+p-link-pure * a:focus::before {
   outline-color: currentColor !important;
 }
-p-link-pure a:focus:not(:focus-visible)::before {
+p-link-pure * a:focus:not(:focus-visible)::before {
   outline-color: transparent !important;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-pure a {
-  outline: 0 !important;
+"prefixed-p-link-pure > p {
+  margin: 0 !important;
 }
 prefixed-p-link-pure * a {
   display: block !important;
@@ -1477,11 +1646,12 @@ prefixed-p-link-pure * a {
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
+  outline: 0 !important;
 }
-prefixed-p-link-pure a::-moz-focus-inner {
+prefixed-p-link-pure * a::-moz-focus-inner {
   border: 0 !important;
 }
-prefixed-p-link-pure a::before {
+prefixed-p-link-pure * a::before {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
@@ -1491,10 +1661,10 @@ prefixed-p-link-pure a::before {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-link-pure a:focus::before {
+prefixed-p-link-pure * a:focus::before {
   outline-color: currentColor !important;
 }
-prefixed-p-link-pure a:focus:not(:focus-visible)::before {
+prefixed-p-link-pure * a:focus:not(:focus-visible)::before {
   outline-color: transparent !important;
 }"
 `;

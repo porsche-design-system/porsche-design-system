@@ -8,7 +8,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { getFocusJssStyle } from '../../styles';
+import { getFocusJssStyle, getInsetJssStyle } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 
 const slottedAnchorStyles: JssStyle = {
@@ -17,6 +17,7 @@ const slottedAnchorStyles: JssStyle = {
   textDecoration: 'none',
   font: 'inherit',
   color: 'inherit',
+  outline: 0,
 };
 
 export const getComponentCss = (
@@ -49,11 +50,20 @@ export const getComponentCss = (
       {
         '@global': {
           '::slotted': {
-            // TODO:V3 <p> styles should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
-            '&(p)': {
-              margin: 0,
-            },
             '&(a)': slottedAnchorStyles,
+            '&(a)::before': {
+              content: '""',
+              position: 'absolute',
+              ...getInsetJssStyle(),
+              outline: '1px solid transparent',
+              outlineOffset: '1px',
+            },
+            '&(a:focus)::before': {
+              outlineColor: 'currentColor',
+            },
+            '&(a:focus:not(:focus-visible))::before': {
+              outlineColor: 'transparent',
+            },
           },
         },
       }
@@ -61,14 +71,17 @@ export const getComponentCss = (
   );
 };
 
-// TODO:V3 ::slotted(a) should be used instead
+// TODO:V3 should be removed completely, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      // this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
-      '& a': getFocusJssStyle({ pseudo: '::before', offset: 1 }),
-      // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway
-      '& * a': slottedAnchorStyles,
+      '& > p': {
+        margin: 0,
+      },
+      '& * a': {
+        ...slottedAnchorStyles,
+        ...getFocusJssStyle({ pseudo: '::before', offset: 1 }),
+      },
     })
   );
 };

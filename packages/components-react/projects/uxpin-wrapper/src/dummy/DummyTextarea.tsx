@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import { ChangeEvent, CSSProperties, FocusEvent } from 'react';
 import { extractPropsKeys } from '../form-utils';
 
 export type DummyTextareaProps = {
@@ -13,6 +13,7 @@ export type DummyTextareaProps = {
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onFocus?: (e: FocusEvent<HTMLTextAreaElement>) => void;
   onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
+  style?: CSSProperties;
 };
 
 export const DummyTextarea = (props: DummyTextareaProps): JSX.Element => {

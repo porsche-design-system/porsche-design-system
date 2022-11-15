@@ -319,7 +319,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "internalProps": {
-      "gutter": null,
+      "gutter": "{ base: 16, s: 24, m: 36 }",
     },
     "isDelegatingFocus": false,
     "isInternal": false,
