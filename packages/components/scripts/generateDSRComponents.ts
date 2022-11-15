@@ -185,11 +185,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace('grid.gutter', 'this.props.gutter') // grid
-        .replace('tabs.theme', 'this.props.theme') // tabs-item
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/const isNestedList.*\n/, '') // text-list
         .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(
           /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
