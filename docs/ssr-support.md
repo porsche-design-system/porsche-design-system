@@ -29,7 +29,7 @@
 | **Segmented Control**    | ❔     |                                                                                                                                                                                    |
 | **Select Wrapper**       | ✅     |                                                                                                                                                                                    |
 | **Spinner**              | ✅     |                                                                                                                                                                                    |
-| **Stepper Horizontal**   | ❔     |                                                                                                                                                                                    |
+| **Stepper Horizontal**   | ✅     | - Optional scroll prev/next arrow isn't supported                                                                                                                                  |
 | **Switch**               | ✅     |                                                                                                                                                                                    |
 | **Table**                | ✅     | - Nested slotted styles (e.g. slotted anchors or images) aren't supported on purpose<br />- Optional scroll next arrow isn't supported                                             |
 | **Tabs** / **Tabs Bar**  | ❔     | - Optional prev/next arrows aren't supported                                                                                                                                       |
