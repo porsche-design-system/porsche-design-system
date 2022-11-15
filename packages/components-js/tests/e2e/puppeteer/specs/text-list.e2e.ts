@@ -18,18 +18,18 @@ const initTextList = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
+    <p-text-list>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+      <p-text-list-item>The quick <a onclick="return false;" href="#">brown fox</a> jumps over the lazy dog</p-text-list-item>
+      <p-text-list-item>
+        The quick brown fox jumps over the lazy dog
         <p-text-list>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-          <p-text-list-item>The quick <a onclick="return false;" href="#">brown fox</a> jumps over the lazy dog</p-text-list-item>
           <p-text-list-item>
             The quick brown fox jumps over the lazy dog
-            <p-text-list>
-              <p-text-list-item>
-                The quick brown fox jumps over the lazy dog
-              </p-text-list-item>
-            </p-text-list>
           </p-text-list-item>
-        </p-text-list>`
+        </p-text-list>
+      </p-text-list-item>
+    </p-text-list>`
   );
 };
 
@@ -53,7 +53,7 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidUpdate['p-text-list'], 'componentDidUpdate: p-text-list').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(8);
     expect(await getProperty(host, 'theme')).toBe('light');
   });
 });
