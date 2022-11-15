@@ -5,7 +5,7 @@ import { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptio
 import { getReactProjectAndOpenOptions } from './getReactProjectAndOpenOptions';
 import type {
   StackBlitzFrameworkOpts,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
 } from '../../utils';
@@ -20,6 +20,7 @@ export type OpenInStackBlitzOpts = {
   backgroundColorScheme: ColorScheme;
   externalDependencies: ExternalDependency[];
   sharedImportKeys: SharedImportKey[];
+  pdsVersion: string;
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
@@ -34,7 +35,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   };
 
   const getProjectAndOpenOptionsCallbackMap: {
-    [key in Exclude<Framework, 'shared'>]: GetStackblitzProjectAndOpenOptions;
+    [key in Exclude<Framework, 'shared'>]: GetStackBlitzProjectAndOpenOptions;
   } = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
