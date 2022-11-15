@@ -9,7 +9,7 @@ export const validatePartialUsage = (): void => {
   validateInitialStylesWithPrefixUsage();
 };
 
-const validateGetFontLinksUsage = (): void => {
+export const validateGetFontLinksUsage = (): void => {
   if (!document.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
     partialValidationWarning('getFontLink');
   }
@@ -31,18 +31,17 @@ const validateGetComponentChunkLinksUsage = (): void => {
   const usedPdsVersions = Object.keys((document as any).porscheDesignSystem ?? {});
   const prefixes = getPorscheDesignSystemPrefixes();
 
+  const preloadChunkLinksForVersion: { [key: string]: Element[] }[] = [];
   let chunksLinkNodes: Element[] = [];
-  const preloadChunkLinksForVersion: [{ [key: string]: Element[] }] = [{}];
 
   usedPdsVersions.forEach((version) => {
     const coreChunkLinkNode = document.querySelector(
       `[href*=porsche-design-system\\.v${version.replace(/\./g, '\\.')}]`
     );
-    console.log(coreChunkLinkNode);
 
     if (coreChunkLinkNode) {
       chunksLinkNodes.push(coreChunkLinkNode);
-      chunksLinkNodes.concat(getAllCoreRelatedChunkSiblings(coreChunkLinkNode));
+      chunksLinkNodes = chunksLinkNodes.concat(getAllCoreRelatedChunkSiblings(coreChunkLinkNode));
       preloadChunkLinksForVersion.push({ [version]: chunksLinkNodes });
     } else {
       console.warn(
@@ -86,16 +85,16 @@ const validateGetComponentChunkLinksUsage = (): void => {
   const usedTagNamesWithoutPreload: string[] = [];
 
   allTagNamesWithoutDuplicates.forEach((tagName) => {
-    if (
-      preloadChunkLinksForVersion.map((x) => {
-        const chunkLinkNodes = Object.values(x).flat();
-        return chunkLinkNodes.find((chunkLinkNode) =>
+    preloadChunkLinksForVersion.forEach((x) => {
+      const chunkLinkNodes = Object.values(x).flat();
+      if (
+        !chunkLinkNodes.find((chunkLinkNode) =>
           (chunkLinkNode as HTMLLinkElement).href.includes(`porsche.design.system.${tagName}`)
-        );
-      })
-    ) {
-      usedTagNamesWithoutPreload.push(tagName);
-    }
+        )
+      ) {
+        usedTagNamesWithoutPreload.push(tagName);
+      }
+    });
   });
 
   if (usedTagNamesWithoutPreload.length) {
@@ -108,13 +107,13 @@ const validateGetComponentChunkLinksUsage = (): void => {
   }
 };
 
-const validateGetLoaderScriptUsage = (): void => {
+export const validateGetLoaderScriptUsage = (): void => {
   if (!document.querySelector('script[data-pds-loader-script]')) {
     partialValidationWarning('getLoaderScript');
   }
 };
 
-const validateInitialStylesWithPrefixUsage = (): void => {
+export const validateInitialStylesWithPrefixUsage = (): void => {
   getPorscheDesignSystemPrefixes().forEach((prefix) => {
     if (prefix && !document.head.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
       console.warn(
