@@ -1,4 +1,5 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getTagName } from '../tag-name';
 
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
@@ -15,41 +16,37 @@ export const validateGetFontLinksUsage = (): void => {
   }
 };
 
-const coreRelatedChunkSiblings: Element[] = [];
-
 const getAllCoreRelatedChunkSiblings = (node: Element): Element[] => {
-  const nextSibling = node.nextElementSibling as any;
+  let nextSibling = node.nextElementSibling as any;
+  const coreRelatedChunkSiblings = [];
 
-  if (nextSibling.href && nextSibling.href.includes(`porsche-design-system.`)) {
+  while (nextSibling?.href && nextSibling.href.includes('porsche-design-system.')) {
     coreRelatedChunkSiblings.push(nextSibling);
-    coreRelatedChunkSiblings.concat(getAllCoreRelatedChunkSiblings(nextSibling));
+    nextSibling = nextSibling.nextElementSibling as any;
   }
   return coreRelatedChunkSiblings;
 };
 
+const temp = (version) => {
+  const coreChunkLinkNode = document.querySelector(`[href*=porsche-design-system.v${version}]`.replace(/\./g, '\\.'));
+
+  if (coreChunkLinkNode) {
+    return [coreChunkLinkNode, ...getAllCoreRelatedChunkSiblings(coreChunkLinkNode)];
+  }
+};
+
 const validateGetComponentChunkLinksUsage = (): void => {
-  const usedPdsVersions = Object.keys((document as any).porscheDesignSystem ?? {});
+  const usedPdsVersions = Object.keys((document as any).porscheDesignSystem || {});
   const prefixes = getPorscheDesignSystemPrefixes();
 
-  const preloadChunkLinksForVersion: { [key: string]: Element[] }[] = [];
-  let chunksLinkNodes: Element[] = [];
-
-  usedPdsVersions.forEach((version) => {
-    const coreChunkLinkNode = document.querySelector(
-      `[href*=porsche-design-system\\.v${version.replace(/\./g, '\\.')}]`
-    );
-
-    if (coreChunkLinkNode) {
-      chunksLinkNodes.push(coreChunkLinkNode);
-      chunksLinkNodes = chunksLinkNodes.concat(getAllCoreRelatedChunkSiblings(coreChunkLinkNode));
-      preloadChunkLinksForVersion.push({ [version]: chunksLinkNodes });
-    } else {
-      console.warn(
-        `You are using the Porsche Design System version '${version}' without preloading it. We recommend the usage of the
-'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
-      );
-    }
-  });
+  const preloadChunkLinksForVersion: { [key: string]: Element[] } = usedPdsVersions.reduce(
+    (result, version) => ({
+      ...result,
+      [version]: temp(version),
+    }),
+    {}
+  );
+  console.log(preloadChunkLinksForVersion);
 
   const preloadablePdsTagNames = TAG_NAMES.filter(
     (tagName) =>
@@ -71,31 +68,21 @@ const validateGetComponentChunkLinksUsage = (): void => {
       ].includes(tagName)
   );
 
-  const allDefaultPdsNodes = Array.from(document.querySelectorAll(preloadablePdsTagNames.join()));
-  const allPrefixedPdsTagNames = prefixes.map((prefix) =>
-    preloadablePdsTagNames.map((tagName) => `${prefix}-${tagName}`)
-  );
-  const allPrefixedPdsNodes = Array.from(document.querySelectorAll(allPrefixedPdsTagNames.join()));
-  const allTagNamesLowerCase = [...allDefaultPdsNodes.concat(allPrefixedPdsNodes)]
-    .map((node) => node.tagName.toLowerCase())
-    .map((tagName) => tagName.replace(/(?:\w+-)+p-/, 'p-'));
+  const allPdsComponentsSelector = prefixes
+    .map((prefix) => {
+      return prefix ? preloadablePdsTagNames.map((tagName) => `${prefix}-${tagName}`) : preloadablePdsTagNames;
+    })
+    .join();
 
-  const allTagNamesWithoutDuplicates = new Set(allTagNamesLowerCase);
+  const allPdsElements = Array.from(document.querySelectorAll(allPdsComponentsSelector));
+
+  const allTagNamesLowerCase = allPdsElements
+    .map(getTagName)
+    .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
+
+  console.log(allTagNamesLowerCase);
 
   const usedTagNamesWithoutPreload: string[] = [];
-
-  allTagNamesWithoutDuplicates.forEach((tagName) => {
-    preloadChunkLinksForVersion.forEach((x) => {
-      const chunkLinkNodes = Object.values(x).flat();
-      if (
-        !chunkLinkNodes.find((chunkLinkNode) =>
-          (chunkLinkNode as HTMLLinkElement).href.includes(`porsche.design.system.${tagName}`)
-        )
-      ) {
-        usedTagNamesWithoutPreload.push(tagName);
-      }
-    });
-  });
 
   if (usedTagNamesWithoutPreload.length) {
     console.warn(
