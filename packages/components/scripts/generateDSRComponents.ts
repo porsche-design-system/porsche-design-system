@@ -49,7 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
-        .replace(/\s{2,}(?:warnIf|throwIf|sync[A-Z])[\s\S]+?;/g, '')
+        .replace(/\s{2,}(?:warnIf|throwIf|sync)[A-Z][A-Za-z]+\([\s\S]+?;/g, '')
         .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
@@ -185,11 +185,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace('grid.gutter', 'this.props.gutter') // grid
-        .replace('tabs.theme', 'this.props.theme') // tabs-item
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/const isNestedList.*\n/, '') // text-list
         .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(
           /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,

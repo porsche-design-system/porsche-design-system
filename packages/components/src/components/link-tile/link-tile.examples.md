@@ -143,7 +143,7 @@ export default class Code extends Vue {
   description="Some Description"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
 </p-link-tile>
 <p-link-tile
   href="https://www.porsche.com"
@@ -152,31 +152,31 @@ export default class Code extends Vue {
   style="max-width: 400px;"
 >
   <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image_grid.png')}"/>
-    <img src="${require('@/assets/image_grid_violet.png')}" alt="Some alt text" />
+    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}"/>
+    <img src="${require('@/assets/image-grid-violet.png')}" alt="Some alt text" />
   </picture>
 </p-link-tile>`;
 
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
 </p-link-tile>`}
 
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
 </p-link-tile>
 <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="max-width: 400px;">
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
 </p-link-tile>`
   }
 
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
 </p-link-tile>
 <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true" style="max-width: 400px;">
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
 </p-link-tile>`
   }
 
@@ -188,7 +188,7 @@ export default class Code extends Vue {
   gradient="${this.gradient}"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid-split.png')}" alt="Some alt text" />
 </p-link-tile>
 <p-link-tile
   href="https://www.porsche.com"
@@ -198,7 +198,7 @@ export default class Code extends Vue {
   gradient="${this.gradient}"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image_grid_split.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid-split.png')}" alt="Some alt text" />
 </p-link-tile>`};
 
   get compactMarkup() {
@@ -209,7 +209,7 @@ export default class Code extends Vue {
   compact="${this.compact}"
   style="max-width: 400px; font-size: 40px;"
 >
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
 </p-link-tile>`};
 
   get alignMarkup() {
@@ -221,13 +221,13 @@ export default class Code extends Vue {
   align="${this.align}"
   style="max-width: 400px; font-size: 40px;"
 >
-  <img src="${require('@/assets/image_grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
 </p-link-tile>`};
 
 }
 </script>
 
-<style>
+<style scoped lang="scss">
   p-link-tile:not(:last-child) {
     margin-bottom: 1rem;
   }

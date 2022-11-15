@@ -175,7 +175,7 @@ export default class Code extends Vue {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   p-scroller > * {
     &:not(:last-child) {
       margin-right: 1rem;

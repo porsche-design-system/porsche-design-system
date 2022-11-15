@@ -1,19 +1,20 @@
 import { dependencies } from '../../../../components-angular/package.json';
 import {
   convertImportPaths,
-  getExternalDependencies,  
+  getExternalDependencies,
   getSharedImportConstants,
+  isStableStorefrontReleaseOrForcedPdsVersion,
   isStableStorefrontRelease,
-  removeSharedImport
+  removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
   SharedImportKey,
-  GetStackblitzProjectAndOpenOptions,
+  GetStackBlitzProjectAndOpenOptions,
   ExternalDependency,
 } from '../../utils';
-import type { StackblitzProjectDependencies } from '../../models';
+import type { StackBlitzProjectDependencies } from '../../models';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
@@ -40,12 +41,19 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
-export const getAppComponentTs = (markup: string, isExampleMarkup: boolean, sharedImportKeys: SharedImportKey[]): string => {
+export const getAppComponentTs = (
+  markup: string,
+  isExampleMarkup: boolean,
+  sharedImportKeys: SharedImportKey[],
+  pdsVersion: string
+): string => {
   return convertImportPaths(
     isExampleMarkup
       ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
       : extendMarkupWithAppComponent(markup),
-    'angular');
+    'angular',
+    pdsVersion
+  );
 };
 
 const externalDependencyModuleImportMap: {
@@ -57,29 +65,30 @@ const externalDependencyModuleImportMap: {
   },
 };
 
-export const getAppModuleTs = (externalDependencies: ExternalDependency[]): string => {
+export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion: string): string => {
   const imports = [
-    `import { NgModule${isStableStorefrontRelease() ? '' : ', CUSTOM_ELEMENTS_SCHEMA'} } from '@angular/core';`,
+    `import { NgModule${
+      isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : ', CUSTOM_ELEMENTS_SCHEMA'
+    } } from '@angular/core';`,
     `import { BrowserModule } from '@angular/platform-browser';`,
     `import { FormsModule } from '@angular/forms';`,
-    ...(isStableStorefrontRelease()
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
       ? [`import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`]
-      : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]
-    ),
+      : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
-  ].concat(
-    externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].import)
-  ).join('\n');
+  ]
+    .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].import))
+    .join('\n');
 
   const ngImports = [
     'BrowserModule',
     'FormsModule',
-    ...(isStableStorefrontRelease() ? ['PorscheDesignSystemModule'] : []),
-  ].concat(
-    externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module)
-  ).join(', ');
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? ['PorscheDesignSystemModule'] : []),
+  ]
+    .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
+    .join(', ');
 
-  const ngSchemas = isStableStorefrontRelease() ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
+  const ngSchemas = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
 
   return `${imports}
 @NgModule({
@@ -88,7 +97,9 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[]): stri
   schemas: [${ngSchemas}],
   bootstrap: [AppComponent],
 })
-export class AppModule {${isStableStorefrontRelease() ? '' : 'constructor () { porscheDesignSystem.load(); }'}}`;
+export class AppModule {${
+    isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : 'constructor () { porscheDesignSystem.load(); }'
+  }}`;
 };
 
 export const getIndexHtml = (globalStyles: string): string => {
@@ -104,7 +115,7 @@ export const getIndexHtml = (globalStyles: string): string => {
   <body>
     <porsche-design-system-app></porsche-design-system-app>
   </body>
-</html>`
+</html>`;
 };
 
 export const getMainTs = (): string => {
@@ -114,7 +125,7 @@ import 'zone.js/dist/zone';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`
+  .catch((err) => console.error(err));`;
 };
 
 export const dependencyMap: DependencyMap<typeof dependencies> = {
@@ -124,11 +135,15 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
   },
 };
 
-export const getDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
+export const getDependencies = (
+  externalDependencies: ExternalDependency[],
+  pdsVersion: string
+): StackBlitzProjectDependencies => {
   return {
-    ...isStableStorefrontRelease() && {
-      '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular']
-    },
+    ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
+      '@porsche-design-system/components-angular':
+        pdsVersion || dependencies['@porsche-design-system/components-angular'],
+    }),
     '@angular/animations': dependencies['@angular/animations'],
     '@angular/common': dependencies['@angular/common'],
     '@angular/compiler': dependencies['@angular/compiler'],
@@ -144,20 +159,34 @@ export const getDependencies = (externalDependencies: ExternalDependency[]): Sta
   };
 };
 
-export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies, porscheDesignSystemBundle } = opts;
+export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
+  const {
+    markup,
+    description,
+    title,
+    globalStyles,
+    sharedImportKeys,
+    externalDependencies,
+    porscheDesignSystemBundle,
+    pdsVersion,
+  } = opts;
 
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'src/app/app.component.ts': getAppComponentTs(markup, !!markup.match(classNameRegex), sharedImportKeys),
-      'src/app/app.module.ts': getAppModuleTs(externalDependencies),
+      'src/app/app.component.ts': getAppComponentTs(
+        markup,
+        !!markup.match(classNameRegex),
+        sharedImportKeys,
+        pdsVersion
+      ),
+      'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
       'src/index.html': getIndexHtml(globalStyles),
       'src/main.ts': getMainTs(),
     },
     template: 'angular-cli',
     title,
     description,
-    dependencies: getDependencies(externalDependencies),
+    dependencies: getDependencies(externalDependencies, pdsVersion),
   };
 };
