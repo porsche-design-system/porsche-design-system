@@ -1,4 +1,6 @@
-import { TAG_NAMES } from '@porsche-design-system/shared';
+// prettier-ignore
+export const COMPONENT_CHUNK_NAMES = ['accordion', 'banner', 'button-group', 'button-pure', 'button', 'carousel', 'checkbox-wrapper', 'content-wrapper', 'divider', 'fieldset-wrapper', 'flex', 'grid', 'headline', 'icon', 'inline-notification', 'link-pure', 'link-social', 'link-tile', 'link', 'marque', 'modal', 'pagination', 'popover', 'radio-button-wrapper', 'scroller', 'segmented-control', 'select-wrapper', 'spinner', 'stepper-horizontal', 'switch', 'table', 'tabs-bar', 'tabs', 'tag-dismissible', 'tag', 'text-field-wrapper', 'text-list', 'text', 'textarea-wrapper', 'toast'];
+
 import { getTagName } from '../../tag-name';
 import { getChunkLinkElementsForVersion, getPorscheDesignSystemPrefixes } from './helper';
 
@@ -30,29 +32,9 @@ const validateGetComponentChunkLinksUsage = (): void => {
   );
   console.log(preloadChunkLinksForVersion);
 
-  const preloadablePdsTagNames = TAG_NAMES.filter(
-    (tagName) =>
-      ![
-        'p-table-body',
-        'p-table-head',
-        'p-table-head-row',
-        'p-table-head-cell',
-        'p-table-row',
-        'p-table-cell',
-        'p-grid-item',
-        'p-flex-item',
-        'p-segmented-control-item',
-        'p-select-wrapper-dropdown',
-        'p-tabs-item',
-        'p-text-list-item',
-        'p-toast-item',
-        'p-stepper-horizontal-item',
-      ].includes(tagName)
-  );
-
   const allPdsComponentsSelector = prefixes
     .map((prefix) => {
-      return prefix ? preloadablePdsTagNames.map((tagName) => `${prefix}-${tagName}`) : preloadablePdsTagNames;
+      return prefix ? COMPONENT_CHUNK_NAMES.map((tagName) => `${prefix}-${tagName}`) : COMPONENT_CHUNK_NAMES;
     })
     .join();
 
