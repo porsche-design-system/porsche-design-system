@@ -2883,15 +2883,26 @@ exports[`should render dsr component for PLinkPure 1`] = `
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
   display: block;
   position: static;
   text-decoration: none;
   font: inherit;
   color: inherit;
+  outline: 0;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
