@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import * as fromComponents from '../../../projects/react-ssr-wrapper/src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../projects/react-ssr-wrapper/src/provider';
 import * as minifyCssUtils from '../../../projects/react-ssr-wrapper/src/minifyCss';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 
@@ -51,4 +51,82 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   );
 
   expect(container.firstElementChild).toMatchSnapshot();
+});
+
+describe('manual test cases', () => {
+  const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
+    'p-grid-item': [
+      () => (
+        <fromComponents.PGrid gutter={16}>
+          <fromComponents.PGridItem>Item 1</fromComponents.PGridItem>
+          <fromComponents.PGridItem>Item 2</fromComponents.PGridItem>
+        </fromComponents.PGrid>
+      ),
+      () => (
+        <fromComponents.PGrid gutter={24}>
+          <fromComponents.PGridItem>Item 1</fromComponents.PGridItem>
+          <fromComponents.PGridItem>Item 2</fromComponents.PGridItem>
+        </fromComponents.PGrid>
+      ),
+    ],
+    'p-tabs-item': [
+      () => (
+        <fromComponents.PTabs theme="dark">
+          <fromComponents.PTabsItem label="Tab 1" />
+          <fromComponents.PTabsItem label="Tab 2" />
+        </fromComponents.PTabs>
+      ),
+    ],
+    'p-text-list-item': [
+      () => (
+        <fromComponents.PTextList listType="ordered" orderType="alphabetically">
+          <fromComponents.PTextListItem>Item 1</fromComponents.PTextListItem>
+          <fromComponents.PTextListItem>Item 2</fromComponents.PTextListItem>
+        </fromComponents.PTextList>
+      ),
+    ],
+    'p-stepper-horizontal-item': [
+      () => (
+        <fromComponents.PStepperHorizontal theme="dark">
+          <fromComponents.PStepperHorizontalItem>Item 1</fromComponents.PStepperHorizontalItem>
+          <fromComponents.PStepperHorizontalItem>Item 2</fromComponents.PStepperHorizontalItem>
+        </fromComponents.PStepperHorizontal>
+      ),
+    ],
+    'p-segmented-control-item': [
+      () => (
+        <fromComponents.PSegmentedControl value={1} backgroundColor="background-surface" theme="dark">
+          <fromComponents.PSegmentedControlItem value={1}>Item 1</fromComponents.PSegmentedControlItem>
+          <fromComponents.PSegmentedControlItem value={2}>Item 2</fromComponents.PSegmentedControlItem>
+        </fromComponents.PSegmentedControl>
+      ),
+    ],
+  };
+
+  it.each<[TagName, () => JSX.Element]>(
+    Object.entries(testCases)
+      .map(([tagName, jsxSnippets]) => jsxSnippets.map((jsxSnippet) => [tagName, jsxSnippet]))
+      .flat() as [TagName, () => JSX.Element][]
+  )('should pass internal props correctly to %s', (tagName, jsxSnippet) => {
+    const { container } = render(<PorscheDesignSystemProvider>{jsxSnippet()}</PorscheDesignSystemProvider>);
+
+    expect(container.firstElementChild).toMatchSnapshot();
+  });
+
+  it('should have a manual test case for each component with an internalProp', () => {
+    const tagNamesWithInternalProps = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).internalProps);
+    const tagNamesWithTestCases = Object.keys(testCases);
+    const hasTestCaseForEveryTagNameWithInternalProp = tagNamesWithInternalProps.every((tagName) =>
+      tagNamesWithTestCases.includes(tagName as TagName)
+    );
+
+    if (!hasTestCaseForEveryTagNameWithInternalProp) {
+      const missingTagNames = tagNamesWithInternalProps
+        .filter((tagName) => !tagNamesWithTestCases.includes(tagName))
+        .join(', ');
+      console.error(`Missing test cases for: ${missingTagNames}`);
+    }
+
+    expect(hasTestCaseForEveryTagNameWithInternalProp).toBeTruthy();
+  });
 });
