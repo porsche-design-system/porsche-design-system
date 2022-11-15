@@ -51,16 +51,6 @@ it.each(extendedViewports)(
     expect(
       await vrtTest(vrt, 'modal-fullscreen-breakpoint', '/modal-fullscreen-breakpoint', { javaScriptEnabled: false })
     ).toBeFalsy();
-
-    expect(
-      await vrtTest(vrt, 'modal-fullscreen-breakpoint-m', '/modal-fullscreen-breakpoint', {
-        javaScriptEnabled: false,
-        scenario: (page) =>
-          page.evaluate(() => {
-            (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
-          }),
-      })
-    ).toBeFalsy();
   }
 );
 
