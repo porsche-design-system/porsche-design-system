@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Improve height calculation for `Accordion`
-- Improve slotted anchor support for `Link Pure` (In case slotted `<a />` is used it must be a direct child of
+- Slotted anchor support for `Link Pure` is stricter (In case slotted `<a />` is used it must be a direct child of
   `<link-pure />`)
 
 ### [2.17.0] - 2022-10-31

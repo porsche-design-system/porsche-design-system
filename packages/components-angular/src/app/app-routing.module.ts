@@ -34,6 +34,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.OverviewComponent,
   },
   {
+    name: 'Overview Notifications',
+    path: 'overview-notifications',
+    component: fromPages.OverviewNotificationsComponent,
+  },
+  {
     name: 'Core Initializer',
     path: 'core-initializer',
     component: fromPages.CoreInitializerComponent,

@@ -1,33 +1,9 @@
 /* Auto Generated File */
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
-import { useEffect, useState } from 'react';
-import { componentsReady } from '@porsche-design-system/components-react/ssr';
-
-/**
- * Since React 18, using componentsReady() within useEffect() constantly resolves with `0` in headless Chrome.
- * Therefore, we make it poll and check that more than `0` components are ready.
- */
-export const pollComponentsReady = async (): Promise<number> => {
-  const amount = await componentsReady();
-  if (amount === 0) {
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    return pollComponentsReady();
-  } else {
-    return amount;
-  }
-};
-
+import { PAccordion, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
-  const [allReady, setAllReady] = useState(false);
-  useEffect(() => {
-    pollComponentsReady().then(() => {
-      setAllReady(true);
-    });
-  }, []);
-
   const style = `
     p-flex-item > p,
     my-prefix-p-flex-item > p,
@@ -56,10 +32,6 @@ const OverviewPage: NextPage = (): JSX.Element => {
       background: deepskyblue;
     }
 
-    p-banner,
-    my-prefix-p-banner {
-      --p-banner-position-type: static;
-    }
     p-link-tile,
     my-prefix-p-link-tile {
       max-width: 400px;
@@ -74,17 +46,6 @@ const OverviewPage: NextPage = (): JSX.Element => {
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <PHeadline>Default Components</PHeadline>
-          </div>
-
-          <div className="playground light" title="should render headline for variant large">
-            <PHeadline variant={{ base: 'large', l: 'x-large' }}>Default Components</PHeadline>
-          </div>
-
-          <div className="playground light" title="should render default banner">
-            <PBanner>
-              <span slot="title">Some slotted banner title</span>
-              <span slot="description">Some slotted banner description</span>
-            </PBanner>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
@@ -281,14 +242,6 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </PStepperHorizontal>
           </div>
 
-          <div className="playground light" title="should render default carousel">
-            <PCarousel heading="Heading">
-              <div>Slide 1</div>
-              <div>Slide 2</div>
-              <div>Slide 3</div>
-            </PCarousel>
-          </div>
-
           <div className="playground light" title="should render default link-tile">
             <PLinkTile href="#" label="Some Label" description="Default">
               <Image
@@ -297,6 +250,14 @@ const OverviewPage: NextPage = (): JSX.Element => {
               />
             </PLinkTile>
           </div>
+
+          <div className="playground light" title="should render default carousel">
+            <PCarousel heading="Heading">
+              <div>Slide 1</div>
+              <div>Slide 2</div>
+              <div>Slide 3</div>
+            </PCarousel>
+          </div>
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
@@ -304,19 +265,6 @@ const OverviewPage: NextPage = (): JSX.Element => {
             <div className="playground light" title="should render default headline with custom prefix">
               <PHeadline>Prefixed Components</PHeadline>
             </div>
-
-            <div className="playground light" title="should render headline for variant large with custom prefix">
-              <PHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PHeadline>
-            </div>
-
-            {allReady && (
-              <div className="playground light" title="should render default banner with custom prefix">
-                <PBanner>
-                  <span slot="title">Some slotted banner title</span>
-                  <span slot="description">Some slotted banner description</span>
-                </PBanner>
-              </div>
-            )}
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
               <PInlineNotification
@@ -515,14 +463,6 @@ const OverviewPage: NextPage = (): JSX.Element => {
               </PStepperHorizontal>
             </div>
 
-            <div className="playground light" title="should render default carousel with custom prefix">
-              <PCarousel heading="Heading">
-                <div>Slide 1</div>
-                <div>Slide 2</div>
-                <div>Slide 3</div>
-              </PCarousel>
-            </div>
-
             <div className="playground light" title="should render default link-tile with custom prefix">
               <PLinkTile href="#" label="Some Label" description="Default">
                 <Image
@@ -530,6 +470,14 @@ const OverviewPage: NextPage = (): JSX.Element => {
                   alt="Beach"
                 />
               </PLinkTile>
+            </div>
+
+            <div className="playground light" title="should render default carousel with custom prefix">
+              <PCarousel heading="Heading">
+                <div>Slide 1</div>
+                <div>Slide 2</div>
+                <div>Slide 3</div>
+              </PCarousel>
             </div>
           </div>
         </PorscheDesignSystemProvider>

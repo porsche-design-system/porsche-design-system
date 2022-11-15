@@ -1,6 +1,5 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { componentsReady } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-overview',
@@ -33,10 +32,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         background: deepskyblue;
       }
     
-      p-banner,
-      my-prefix-p-banner {
-        --p-banner-position-type: static;
-      }
       p-link-tile,
       my-prefix-p-link-tile {
         max-width: 400px;
@@ -48,17 +43,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       <div style="flex: 1">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
-        </div>
-
-        <div class="playground light" title="should render headline for variant large">
-          <p-headline [variant]="{ base: 'large', l: 'x-large' }">Default Components</p-headline>
-        </div>
-
-        <div class="playground light" title="should render default banner">
-          <p-banner>
-            <span slot="title">Some slotted banner title</span>
-            <span slot="description">Some slotted banner description</span>
-          </p-banner>
         </div>
 
         <div class="playground light" title="should render default inline-notification">
@@ -255,14 +239,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-stepper-horizontal>
         </div>
 
-        <div class="playground light" title="should render default carousel">
-          <p-carousel [heading]="'Heading'">
-            <div>Slide 1</div>
-            <div>Slide 2</div>
-            <div>Slide 3</div>
-          </p-carousel>
-        </div>
-
         <div class="playground light" title="should render default link-tile">
           <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
@@ -271,22 +247,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             />
           </p-link-tile>
         </div>
+
+        <div class="playground light" title="should render default carousel">
+          <p-carousel [heading]="'Heading'">
+            <div>Slide 1</div>
+            <div>Slide 2</div>
+            <div>Slide 3</div>
+          </p-carousel>
+        </div>
       </div>
 
       <div style="flex: 1">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
-        </div>
-
-        <div class="playground light" title="should render headline for variant large with custom prefix">
-          <my-prefix-p-headline p-headline [variant]="{ base: 'large', l: 'x-large' }">Prefixed Components</my-prefix-p-headline>
-        </div>
-
-        <div *ngIf="allReady" class="playground light" title="should render default banner with custom prefix">
-          <my-prefix-p-banner p-banner>
-            <span slot="title">Some slotted banner title</span>
-            <span slot="description">Some slotted banner description</span>
-          </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -486,14 +459,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </my-prefix-p-stepper-horizontal>
         </div>
 
-        <div class="playground light" title="should render default carousel with custom prefix">
-          <my-prefix-p-carousel p-carousel [heading]="'Heading'">
-            <div>Slide 1</div>
-            <div>Slide 2</div>
-            <div>Slide 3</div>
-          </my-prefix-p-carousel>
-        </div>
-
         <div class="playground light" title="should render default link-tile with custom prefix">
           <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
@@ -502,20 +467,17 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             />
           </my-prefix-p-link-tile>
         </div>
+
+        <div class="playground light" title="should render default carousel with custom prefix">
+          <my-prefix-p-carousel p-carousel [heading]="'Heading'">
+            <div>Slide 1</div>
+            <div>Slide 2</div>
+            <div>Slide 3</div>
+          </my-prefix-p-carousel>
+        </div>
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewComponent implements OnInit {
-  public allReady: boolean = false;
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    componentsReady().then(() => {
-      this.allReady = true;
-      this.cdr.markForCheck();
-    });
-  }
-}
+export class OverviewComponent {}
