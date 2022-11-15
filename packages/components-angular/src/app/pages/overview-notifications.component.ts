@@ -14,7 +14,8 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         border: 4px solid deeppink;
       }
     
-      my-prefix-p-banner {
+      p-banner:last-child,
+      my-prefix-p-banner:last-child {
         --p-banner-position-top: 150px;
       }
     `,
