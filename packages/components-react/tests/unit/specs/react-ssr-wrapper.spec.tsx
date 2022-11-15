@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 import * as fromComponents from '../../../projects/react-ssr-wrapper/src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../projects/react-ssr-wrapper/src/provider';
 import * as minifyCssUtils from '../../../projects/react-ssr-wrapper/src/minifyCss';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
@@ -99,6 +99,28 @@ describe('manual test cases', () => {
           <fromComponents.PSegmentedControlItem value={1}>Item 1</fromComponents.PSegmentedControlItem>
           <fromComponents.PSegmentedControlItem value={2}>Item 2</fromComponents.PSegmentedControlItem>
         </fromComponents.PSegmentedControl>
+      ),
+    ],
+    'p-text-field-wrapper': [
+      () => (
+        <fromComponents.PTextFieldWrapper label="Counter">
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </fromComponents.PTextFieldWrapper>
+      ),
+      () => (
+        <fromComponents.PTextFieldWrapper label="Counter hidden" showCharacterCount={false}>
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </fromComponents.PTextFieldWrapper>
+      ),
+      () => (
+        <fromComponents.PTextFieldWrapper label="Type password">
+          <input type="password" defaultValue="some password" />
+        </fromComponents.PTextFieldWrapper>
+      ),
+      () => (
+        <fromComponents.PTextFieldWrapper label="Search">
+          <input type="search" />
+        </fromComponents.PTextFieldWrapper>
       ),
     ],
   };
