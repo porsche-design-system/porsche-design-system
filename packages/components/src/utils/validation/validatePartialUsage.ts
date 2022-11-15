@@ -126,7 +126,7 @@ partial as described at https://designsystem.porsche.com/v2/partials/${partialNa
 const getPorscheDesignSystemPrefixes = (): string[] =>
   (document as any).porscheDesignSystem
     ? Object.entries((document as any).porscheDesignSystem)
-        .map(([, value]) => (value as any).prefixes)
-        .filter((prefix, idx, arr) => arr.findIndex((p) => p.target === prefix.target) === idx)
+        .map(([, value]) => (value as any).prefixes.join())
+        .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
         .flat()
     : [];
