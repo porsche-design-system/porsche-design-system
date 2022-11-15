@@ -26,7 +26,7 @@
 | **Popover**              | ✅     |                                                                                                                                                                                    |
 | **Radio Button Wrapper** | ✅     | - Required state not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                     |
 | **Scroller**             | ✅     | - Inherited line-height other than a factor of 1.5 is not supported<br />- Optional prev/next arrows aren't supported                                                              |
-| **Segmented Control**    | ❔     |                                                                                                                                                                                    |
+| **Segmented Control**    | ✅     | - Auto width calculation is not supported<br />- Icons provided by `icon-source` won't be shown in disabled color when element is disabled                                         |
 | **Select Wrapper**       | ✅     |                                                                                                                                                                                    |
 | **Spinner**              | ✅     |                                                                                                                                                                                    |
 | **Stepper Horizontal**   | ✅     | - Optional scroll prev/next arrow isn't supported                                                                                                                                  |
