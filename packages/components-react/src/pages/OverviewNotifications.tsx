@@ -5,12 +5,20 @@ import { useEffect } from 'react';
 export const OverviewNotificationsPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
   useEffect(() => {
-    addMessage({ text: 'Some message' });
+    addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
   }, [addMessage]);
 
   const style = `
+    .playground {
+      height: 400px;
+      padding: 0;
+      margin: 0 7vw;
+      transform: translateX(0);
+      border: 4px solid deeppink;
+    }
+
     my-prefix-p-banner {
-      --p-banner-position-top: 200px;
+      --p-banner-position-top: 150px;
     }
   `;
 
@@ -18,10 +26,10 @@ export const OverviewNotificationsPage = (): JSX.Element => {
     <PorscheDesignSystemProvider>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div title="should render notifications in correct stacking order">
+      <div className="playground light" title="should render notifications in correct stacking order">
         <PToast />
 
-        <PModal heading="Some heading" open={true}>Some Content</PModal>
+        <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 
         <PBanner>
           <span slot="title">Default banner component</span>

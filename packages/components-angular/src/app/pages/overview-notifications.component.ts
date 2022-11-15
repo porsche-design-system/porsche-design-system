@@ -6,16 +6,24 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   selector: 'page-overview-notifications',
   styles: [
     `
+      .playground {
+        height: 400px;
+        padding: 0;
+        margin: 0 7vw;
+        transform: translateX(0);
+        border: 4px solid deeppink;
+      }
+    
       my-prefix-p-banner {
-        --p-banner-position-top: 200px;
+        --p-banner-position-top: 150px;
       }
     `,
   ],
   template: `
-    <div title="should render notifications in correct stacking order">
+    <div class="playground light" title="should render notifications in correct stacking order">
       <p-toast></p-toast>
 
-      <p-modal [heading]="'Some heading'" [open]="true">Some Content</p-modal>
+      <p-modal [heading]="'The quick brown fox jumps over the lazy dog'" [open]="true">Some Content</p-modal>
 
       <p-banner>
         <span slot="title">Default banner component</span>
@@ -34,6 +42,6 @@ export class OverviewNotificationsComponent implements OnInit {
   constructor(private toastManager: ToastManager) {}
 
   ngOnInit() {
-    this.toastManager.addMessage({ text: 'Some message' });
+    this.toastManager.addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
   }
 }

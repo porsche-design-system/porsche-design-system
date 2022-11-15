@@ -1,13 +1,21 @@
 <style>
+  .playground {
+    height: 400px;
+    padding: 0;
+    margin: 0 7vw;
+    transform: translateX(0);
+    border: 4px solid deeppink;
+  }
+
   my-prefix-p-banner {
-    --p-banner-position-top: 200px;
+    --p-banner-position-top: 150px;
   }
 </style>
 
-<div title="should render notifications in correct stacking order">
+<div class="playground light" title="should render notifications in correct stacking order">
   <p-toast></p-toast>
 
-  <p-modal heading="Some heading" open="true">Some Content</p-modal>
+  <p-modal heading="The quick brown fox jumps over the lazy dog" open="true">Some Content</p-modal>
 
   <p-banner>
     <span slot="title">Default banner component</span>
@@ -22,6 +30,6 @@
 
 <script>
   customElements.whenDefined('p-toast').then(() => {
-    document.querySelector('p-toast').addMessage({ text: 'Some message' });
+    document.querySelector('p-toast').addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
   });
 </script>
