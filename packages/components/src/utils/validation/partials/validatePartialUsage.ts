@@ -1,5 +1,6 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { getTagName } from '../tag-name';
+import { getTagName } from '../../tag-name';
+import { getChunkLinkElementsForVersion, getPorscheDesignSystemPrefixes } from './helper';
 
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
@@ -16,25 +17,6 @@ export const validateGetFontLinksUsage = (): void => {
   }
 };
 
-const getAllCoreRelatedChunkSiblings = (node: Element): Element[] => {
-  let nextSibling = node.nextElementSibling as any;
-  const coreRelatedChunkSiblings = [];
-
-  while (nextSibling?.href && nextSibling.href.includes('porsche-design-system.')) {
-    coreRelatedChunkSiblings.push(nextSibling);
-    nextSibling = nextSibling.nextElementSibling as any;
-  }
-  return coreRelatedChunkSiblings;
-};
-
-const temp = (version) => {
-  const coreChunkLinkNode = document.querySelector(`[href*=porsche-design-system.v${version}]`.replace(/\./g, '\\.'));
-
-  if (coreChunkLinkNode) {
-    return [coreChunkLinkNode, ...getAllCoreRelatedChunkSiblings(coreChunkLinkNode)];
-  }
-};
-
 const validateGetComponentChunkLinksUsage = (): void => {
   const usedPdsVersions = Object.keys((document as any).porscheDesignSystem || {});
   const prefixes = getPorscheDesignSystemPrefixes();
@@ -42,7 +24,7 @@ const validateGetComponentChunkLinksUsage = (): void => {
   const preloadChunkLinksForVersion: { [key: string]: Element[] } = usedPdsVersions.reduce(
     (result, version) => ({
       ...result,
-      [version]: temp(version),
+      [version]: getChunkLinkElementsForVersion(version),
     }),
     {}
   );
@@ -122,11 +104,3 @@ const partialValidationWarning = (partialName: PartialNames): void => {
 partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior`
   );
 };
-
-const getPorscheDesignSystemPrefixes = (): string[] =>
-  (document as any).porscheDesignSystem
-    ? Object.entries((document as any).porscheDesignSystem)
-        .map(([, value]) => (value as any).prefixes.join())
-        .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
-        .flat()
-    : [];
