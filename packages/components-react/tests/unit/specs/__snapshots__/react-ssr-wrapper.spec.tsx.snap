@@ -809,7 +809,7 @@ exports[`should render dsr component for PBanner 1`] = `
     :host(.banner--close) {
       animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
-    :host(.hydrated) {
+    :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration__banner,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
@@ -821,7 +821,7 @@ exports[`should render dsr component for PBanner 1`] = `
     :host(.banner--close) {
       animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
-    :host(.hydrated) {
+    :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration__banner,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
@@ -2287,9 +2287,23 @@ exports[`should render dsr component for PGridItem 1`] = `
   width: 8.333333% !important;
   min-width: 8.333333% !important;
   margin-left: 0% !important;
-  padding-left: NaNrem !important;
-  padding-right: NaNrem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
 }
+@media(min-width:760px) {
+  :host {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    padding-left: 1.125rem !important;
+    padding-right: 1.125rem !important;
+  }
+}
+
     </style>
     <slot />
   </template>
@@ -7039,6 +7053,33 @@ span {
   hyphens: auto;
   white-space: nowrap;
 }
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+  color: inherit !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  text-align: left !important;
+}
 ::slotted(br) {
   display: none !important;
 }
@@ -7048,6 +7089,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
 }
@@ -7429,7 +7471,24 @@ exports[`should render dsr component for PTextListItem 1`] = `
   <template
     shadowroot="open"
   >
-    <style />
+    <style>
+      :host {
+  position: relative !important;
+  display: list-item !important;
+  color: inherit !important;
+  list-style-type: none !important;
+  padding-left: 1.5rem !important;
+}
+:host:before {
+  position: absolute !important;
+  content: "" !important;
+  left: 0 !important;
+  top: calc(1.5em / 2 - 0.125em) !important;
+  width: 0.25rem !important;
+  height: 0.25rem !important;
+  background-color: currentColor !important;
+}
+    </style>
     <slot />
   </template>
   Some child
