@@ -6,7 +6,7 @@ export * from './colorScheme';
 export type {
   Project as StackBlitzProject,
   OpenOptions as StackBlitzOpenOptions,
-  ProjectDependencies as StackblitzProjectDependencies,
+  ProjectDependencies as StackBlitzProjectDependencies,
 } from '@stackblitz/sdk';
 
 import type { Project, OpenOptions } from '@stackblitz/sdk';
