@@ -1,4 +1,7 @@
-import { TagName } from '@porsche-design-system/shared';
+import { COMPONENT_TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
+import { getTagNameWithoutPrefix } from '../../tag-name';
+
+type TagNameForVersions = { [key: string]: TagName[] };
 
 export const getPreloadedTagNamesForCoreChunk = (element: HTMLLinkElement): TagName[] => {
   const preloadedTagNames: TagName[] = [];
@@ -21,8 +24,62 @@ export const getPreloadedTagNamesForVersion = (version: string): TagName[] => {
   return coreChunkLinkElement ? getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
 };
 
-export const getPorscheDesignSystemPrefixes = (): string[] =>
-  Object.values(document.porscheDesignSystem)
-    .map((value) => (value as any).prefixes)
-    .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
-    .flat();
+export const getPreloadedTagNamesForVersions = (versions: string[]): TagNameForVersions =>
+  versions.reduce(
+    (result, version) => ({
+      ...result,
+      [version]: getPreloadedTagNamesForVersion(version),
+    }),
+    {}
+  );
+
+export const getPdsComponentsSelector = (prefixes: string[]): string =>
+  prefixes
+    .map((prefix) => {
+      return prefix
+        ? COMPONENT_TAG_NAMES_WITH_CHUNK.map((tagName) => `${prefix}-${tagName}`)
+        : COMPONENT_TAG_NAMES_WITH_CHUNK;
+    })
+    .join();
+
+export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]: string[] }): TagNameForVersions =>
+  Object.entries(prefixesForVersions).reduce((result, [version, prefixes]) => {
+    const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
+
+    const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
+
+    const tagNames = pdsElements
+      .map(getTagNameWithoutPrefix)
+      .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
+
+    return {
+      ...result,
+      [version]: tagNames,
+    };
+  }, {});
+
+export const getUsedTagNamesWithoutPreloadForVersions = (
+  usedTagNamesForVersions: TagNameForVersions,
+  preloadedTagNamesForVersions: TagNameForVersions
+): { [key: string]: string[] } =>
+  Object.entries(usedTagNamesForVersions).reduce((result, [version, tagNames]) => {
+    const tagNamesWithoutPreload = tagNames.filter(
+      (tagName) => !preloadedTagNamesForVersions[version].includes(tagName)
+    );
+
+    return tagNamesWithoutPreload.length
+      ? {
+          ...result,
+          [version]: tagNamesWithoutPreload,
+        }
+      : result;
+  }, {});
+
+export const getPorscheDesignSystemPrefixesForVersions = (): { [key: string]: [string] } =>
+  Object.entries(document.porscheDesignSystem).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key]: value.prefixes,
+    }),
+    {}
+  );
