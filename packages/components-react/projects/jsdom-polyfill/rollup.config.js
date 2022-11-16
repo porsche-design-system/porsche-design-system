@@ -11,7 +11,7 @@ export default {
     exports: 'auto', // fixes rollup warning
   },
   plugins: [
-    commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
+    commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
     resolve(),
     modify({
       find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.[\s\S]*?`\);/,
