@@ -1,13 +1,8 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
 import { PSpinner } from '@porsche-design-system/components-react/ssr';
-import { useEffect } from 'react';
 
 const SpinnerPage: NextPage = (): JSX.Element => {
-  useEffect(() => {
-    (document.querySelector('#setSizeToUndefined') as any).size = undefined;
-  }, []);
-
   return (
     <>
       <div className="playground light" title="should show spinner on light background">
@@ -27,10 +22,6 @@ const SpinnerPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should show spinner in different sizes on different viewports">
         <PSpinner size={{ base: 'small', m: 'medium', l: 'large' }} />
-      </div>
-
-      <div className="playground light" title="should show spinner small when size is undefined">
-        <PSpinner id="setSizeToUndefined" />
       </div>
     </>
   );

@@ -1,19 +1,11 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-button-group',
   template: `
     <div class="playground light" title="should render button-group">
       <p-button-group>
-        <p-button [variant]="'primary'">Some label</p-button>
-        <p-button [variant]="'secondary'">Some label</p-button>
-        <p-button [variant]="'tertiary'">Some label</p-button>
-      </p-button-group>
-    </div>
-
-    <div class="playground light" title="should show p-button-group default style when direction is undefined">
-      <p-button-group id="setDirectionToUndefined">
         <p-button [variant]="'primary'">Some label</p-button>
         <p-button [variant]="'secondary'">Some label</p-button>
         <p-button [variant]="'tertiary'">Some label</p-button>
@@ -51,8 +43,4 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonGroupComponent implements OnInit {
-  ngOnInit() {
-    (document.querySelector('#setDirectionToUndefined') as any).direction = undefined;
-  }
-}
+export class ButtonGroupComponent {}
