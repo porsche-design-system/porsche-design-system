@@ -31,9 +31,6 @@ export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): st
 
   throwIfRunInBrowser('getComponentChunkLinks');
 
-  const scriptAttributes = 'data-pds-core-chunk-link ';
-  const scriptProps = { 'data-pds-core-chunk-link': 'true' };
-
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
 
@@ -47,19 +44,18 @@ Please use only valid component chunk names:
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
+  const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
 
-  const componentNameAndCDNUrl = ['core'].concat(components).map((cmp) => ({ cmpName: cmp, url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\` }));
-
-  const linksHtml = componentNameAndCDNUrl
+  const linksHtml = urls
     // core needs crossorigin attribute / we need ternary otherwise false is written into link
-    .map(({ cmpName, url }, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? \` \$\{scriptAttributes\}crossorigin\` : \` data-\$\{cmpName\}-chunk-link\`}>\`)
+    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? ' crossorigin' : ''}>\`)
     .join('');
 
-  const linksJsx = componentNameAndCDNUrl.map(({ cmpName, url }, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 ? { crossOrigin: 'true', ...scriptProps } : { [\`data-\${cmpName}-chunk-link\`]: 'true' })} />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 
-  return withoutTags ? componentNameAndCDNUrl.map(({url}) => url ) : markup;
+  return withoutTags ? urls : markup;
 }`;
 
   return [types, func].join('\n\n');
