@@ -157,8 +157,9 @@ export class TabsBar {
         tabindex: isFocusable ? '0' : '-1',
         'aria-selected': isSelected ? 'true' : 'false',
       };
+      /* eslint-disable-next-line guard-for-in */
       for (const key in attrs) {
-        setAttribute(tab, key, attrs[key]);
+        setAttribute(tab, key, attrs[key] as string);
       }
     });
   };
