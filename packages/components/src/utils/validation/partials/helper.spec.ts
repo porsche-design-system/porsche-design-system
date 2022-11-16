@@ -133,6 +133,8 @@ describe('getUsedTagNamesForVersions()', () => {
   //   expect(spy).toHaveBeenNthCalledWith(3, 'my-prefix-p-text');
   //   expect(spy).toBeCalledTimes(3);
   // });
+
+  it('should call return tagNames for each version without duplicates', () => {});
 });
 
 describe('getUsedTagNamesWithoutPreloadForVersions()', () => {
