@@ -1,7 +1,9 @@
-import { COMPONENT_TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
-import type { TagName } from '@porsche-design-system/shared';
-import { getPreloadedTagNamesForVersion, getPorscheDesignSystemPrefixesForVersions } from './helper';
-import { getTagNameWithoutPrefix } from '../../tag-name';
+import {
+  getPorscheDesignSystemPrefixesForVersions,
+  getPreloadedTagNamesForVersions,
+  getUsedTagNamesForVersions,
+  getUsedTagNamesWithoutPreloadForVersions,
+} from './helper';
 
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
@@ -16,8 +18,8 @@ export const validatePartialUsage = (): void => {
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
     validateGetLoaderScriptUsage();
+    validateGetInitialStylesUsage();
   }
-  validateGetInitialStylesUsage();
 };
 
 export const validateGetFontLinksUsage = (): void => {
@@ -27,56 +29,16 @@ export const validateGetFontLinksUsage = (): void => {
 };
 
 const validateGetComponentChunkLinksUsage = (): void => {
-  const usedPdsVersions = Object.keys(document.porscheDesignSystem);
-
-  const prefixesForVersion = getPorscheDesignSystemPrefixesForVersions();
-
-  const preloadTagNamesForVersion: { [key: string]: TagName[] } = usedPdsVersions.reduce(
-    (result, version) => ({
-      ...result,
-      [version]: getPreloadedTagNamesForVersion(version),
-    }),
-    {}
+  const registeredPdsVersions = Object.keys(document.porscheDesignSystem);
+  const prefixesForVersions = getPorscheDesignSystemPrefixesForVersions();
+  const preloadTagNamesForVersions = getPreloadedTagNamesForVersions(registeredPdsVersions);
+  const usedTagNamesForVersions = getUsedTagNamesForVersions(prefixesForVersions);
+  const usedTagNamesWithoutPreloadForVersions = getUsedTagNamesWithoutPreloadForVersions(
+    usedTagNamesForVersions,
+    preloadTagNamesForVersions
   );
 
-  const usedTagNamesForVersion: { [key: string]: TagName[] } = Object.entries(prefixesForVersion).reduce(
-    (result, [version, prefixes]) => {
-      const pdsComponentsSelector = prefixes
-        .map((prefix) => {
-          return prefix
-            ? COMPONENT_TAG_NAMES_WITH_CHUNK.map((tagName) => `${prefix}-${tagName}`)
-            : COMPONENT_TAG_NAMES_WITH_CHUNK;
-        })
-        .join();
-
-      const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
-
-      const tagNames = pdsElements
-        .map(getTagNameWithoutPrefix)
-        .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
-
-      return {
-        ...result,
-        [version]: tagNames,
-      };
-    },
-    {}
-  );
-
-  const usedTagNamesWithoutPreloadForVersion: { [key: string]: string[] } = Object.entries(
-    usedTagNamesForVersion
-  ).reduce((result, [version, tagNames]) => {
-    const tagNamesWithoutPreload = tagNames.filter((tagName) => !preloadTagNamesForVersion[version].includes(tagName));
-
-    return tagNamesWithoutPreload.length
-      ? {
-          ...result,
-          [version]: tagNamesWithoutPreload,
-        }
-      : result;
-  }, {});
-
-  Object.entries(usedTagNamesWithoutPreloadForVersion).forEach(([version, tagNames]) => {
+  Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
     console.warn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(
         ', '
