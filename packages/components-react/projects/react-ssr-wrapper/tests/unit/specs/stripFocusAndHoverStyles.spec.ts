@@ -1,4 +1,4 @@
-import { stripFocusAndHoverStyles } from '../../../projects/react-ssr-wrapper/src/stripFocusAndHoverStyles';
+import { stripFocusAndHoverStyles } from '../../../src/stripFocusAndHoverStyles';
 
 it.each<{ input: string; result: string }>([
   {

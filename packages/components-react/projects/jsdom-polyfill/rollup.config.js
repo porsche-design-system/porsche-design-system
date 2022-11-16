@@ -4,9 +4,9 @@ import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
 
 export default {
-  input: 'projects/jsdom-polyfill/src/index.js',
+  input: 'src/index.js',
   output: {
-    file: 'dist/react-wrapper/jsdom-polyfill/index.js',
+    file: '../../dist/react-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
     exports: 'auto', // fixes rollup warning
   },

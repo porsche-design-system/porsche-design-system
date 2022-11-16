@@ -1,12 +1,9 @@
 import { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PButton } from '../../../projects/react-wrapper/src/public-api';
-import {
-  getMergedClassName,
-  skipPorscheDesignSystemCDNRequestsDuringTests,
-} from '../../../projects/react-wrapper/src/utils';
-import * as hooks from '../../../projects/react-wrapper/src/hooks';
+import { PButton } from '../../../src/public-api';
+import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests } from '../../../src/utils';
+import * as hooks from '../../../src/hooks';
 
 describe('getMergedClassName()', () => {
   test.each`

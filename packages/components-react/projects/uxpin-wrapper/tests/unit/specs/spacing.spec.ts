@@ -1,4 +1,4 @@
-import { getPaddingStyles } from '../../../projects/uxpin-wrapper/src/spacing';
+import { getPaddingStyles } from '../../../src/spacing';
 
 describe('getPaddingStyles()', () => {
   it('should correctly map spacings to padding', () => {

@@ -1,19 +1,17 @@
 {
-  "name": "@porsche-design-system/react-ssr-wrapper",
+  "name": "@porsche-design-system/jsdom-polyfill",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "build": "yarn build:copy && yarn build:bundle",
-    "build:copy": "cp ../react-wrapper/tsconfig.json ./ && cp ../react-wrapper/src/public-api.ts ./src && cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
-    "build:bundle": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ../../dist/react-wrapper/ssr"
+    "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^14.1.0",
