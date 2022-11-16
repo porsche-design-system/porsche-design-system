@@ -43,6 +43,8 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
       // @ts-ignore
+      'Ssr Support': [() => import('@/pages/start-coding/next-js/ssr-support.md')],
+      // @ts-ignore
       Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
     },
   },
