@@ -785,7 +785,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
     shadowroot="open"
   >
     <style>
-      :host{counter-reset:section !important;display:block}[role]{display:block;padding:0;margin:0;color:#000;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}
+      :host{display:block;counter-reset:section !important}[role]{display:block;padding:0;margin:0;color:#000;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}
     </style>
     <ol
       role="list"
@@ -801,7 +801,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowroot="open"
     >
       <style>
-        :host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;content:counters(section, ".", lower-latin)!important;right:calc(100% - 24px) !important;top:0 !important;width:auto !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
+        ::slotted(*){--pds-text-list-item-ordered-suffix:"";--pds-text-list-item-unordered-width:0.5rem;--pds-text-list-item-unordered-height:1px;--pds-text-list-item-unordered-top:calc(1.5em / 2)}:host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;left:0 !important;content:counters(section,".",lower-latin) var(--pds-text-list-item-ordered-suffix,".") !important;top:0 !important;width:1.5rem !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
       </style>
       <slot />
     </template>
@@ -815,7 +815,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowroot="open"
     >
       <style>
-        :host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;content:counters(section, ".", lower-latin)!important;right:calc(100% - 24px) !important;top:0 !important;width:auto !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
+        ::slotted(*){--pds-text-list-item-ordered-suffix:"";--pds-text-list-item-unordered-width:0.5rem;--pds-text-list-item-unordered-height:1px;--pds-text-list-item-unordered-top:calc(1.5em / 2)}:host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;left:0 !important;content:counters(section,".",lower-latin) var(--pds-text-list-item-ordered-suffix,".") !important;top:0 !important;width:1.5rem !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
       </style>
       <slot />
     </template>
@@ -7688,8 +7688,8 @@ exports[`should render dsr component for PTextList 1`] = `
   >
     <style>
       :host {
-  counter-reset: section !important;
   display: block;
+  counter-reset: section !important;
 }
 [role] {
   display: block;
@@ -7722,7 +7722,13 @@ exports[`should render dsr component for PTextListItem 1`] = `
     shadowroot="open"
   >
     <style>
-      :host {
+      ::slotted(*) {
+  --pds-text-list-item-ordered-suffix: "";
+  --pds-text-list-item-unordered-width: 0.5rem;
+  --pds-text-list-item-unordered-height: 1px;
+  --pds-text-list-item-unordered-top: calc(1.5em / 2);
+}
+:host {
   position: relative !important;
   display: list-item !important;
   color: inherit !important;
@@ -7731,11 +7737,11 @@ exports[`should render dsr component for PTextListItem 1`] = `
 }
 :host:before {
   position: absolute !important;
-  content: "" !important;
   left: 0 !important;
-  top: calc(1.5em / 2) !important;
-  width: 0.5rem !important;
-  height: 1px !important;
+  content: "" !important;
+  width: var(--pds-text-list-item-unordered-width,0.25rem) !important;
+  height: var(--pds-text-list-item-unordered-height,0.25rem) !important;
+  top: var(--pds-text-list-item-unordered-top,calc(1.5em / 2 - 0.125em)) !important;
   background-color: currentColor !important;
 }
     </style>

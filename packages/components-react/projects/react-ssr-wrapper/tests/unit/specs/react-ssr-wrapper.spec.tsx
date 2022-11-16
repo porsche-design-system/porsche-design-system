@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import * as fromComponents from '../../../projects/react-ssr-wrapper/src/lib/components';
-import { PorscheDesignSystemProvider } from '../../../projects/react-ssr-wrapper/src/provider';
-import * as minifyCssUtils from '../../../projects/react-ssr-wrapper/src/minifyCss';
+import * as fromComponents from '../../../src/lib/components';
+import { PorscheDesignSystemProvider } from '../../../src/provider';
+import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
