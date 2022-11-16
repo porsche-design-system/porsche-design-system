@@ -62,11 +62,15 @@ export class Scroller {
   @Watch('scrollToPosition')
   public scrollToPositionHandler(): void {
     this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
-    const { scrollPosition, isSmooth } = this.scrollToPosition;
-    if (isSmooth) {
-      scrollElementTo(this.scrollAreaElement, scrollPosition);
-    } else {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
+
+    // watcher might trigger before ref is defined with ssr
+    if (this.scrollAreaElement) {
+      const { scrollPosition, isSmooth } = this.scrollToPosition;
+      if (isSmooth) {
+        scrollElementTo(this.scrollAreaElement, scrollPosition);
+      } else {
+        this.scrollAreaElement.scrollLeft = scrollPosition;
+      }
     }
   }
 
