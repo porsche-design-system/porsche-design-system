@@ -3,11 +3,11 @@ import { getTagNameWithoutPrefix } from '../../tag-name';
 
 type TagNameForVersions = { [key: string]: TagName[] };
 
-export const getPreloadedTagNamesForCoreChunk = (element: HTMLLinkElement): TagName[] => {
+export const getPreloadedTagNamesForCoreChunk = (coreChunkLink: HTMLLinkElement): TagName[] => {
   const preloadedTagNames: TagName[] = [];
 
-  let nextSibling = element.nextElementSibling as HTMLLinkElement;
-  while (nextSibling?.href && nextSibling.href.includes('porsche-design-system.')) {
+  let nextSibling = coreChunkLink.nextElementSibling as HTMLLinkElement;
+  while (nextSibling?.href && !!/porsche-design-system\.[a-z]+\./.exec(nextSibling.href)) {
     const tagName = ('p-' + nextSibling.href.split('/').pop().split('.')[1]) as TagName;
     preloadedTagNames.push(tagName);
     nextSibling = nextSibling.nextElementSibling as HTMLLinkElement;
