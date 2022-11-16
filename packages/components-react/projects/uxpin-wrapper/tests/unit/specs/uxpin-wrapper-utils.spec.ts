@@ -1,4 +1,4 @@
-import { partitionProps } from '../../../projects/uxpin-wrapper/src/form-utils';
+import { partitionProps } from '../../../src/form-utils';
 
 const input = { a: 1, b: 2, c: 3 };
 

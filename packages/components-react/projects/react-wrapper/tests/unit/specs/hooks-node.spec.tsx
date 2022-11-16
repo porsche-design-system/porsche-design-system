@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { useBrowserLayoutEffect } from '../../../projects/react-wrapper/src/hooks';
+import { useBrowserLayoutEffect } from '../../../src/hooks';
 import { useEffect } from 'react';
 
 describe('useBrowserLayoutEffect()', () => {

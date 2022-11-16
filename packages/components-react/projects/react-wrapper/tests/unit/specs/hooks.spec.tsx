@@ -1,11 +1,8 @@
 import { render } from '@testing-library/react';
-import type { ToastMessage } from '../../../projects/react-wrapper/src/public-api';
-import { PButton, PorscheDesignSystemProvider, useToastManager } from '../../../projects/react-wrapper/src/public-api';
-import * as hooks from '../../../projects/react-wrapper/src/hooks';
-import {
-  skipCheckForPorscheDesignSystemProviderDuringTests,
-  useBrowserLayoutEffect,
-} from '../../../projects/react-wrapper/src/hooks';
+import type { ToastMessage } from '../../../src/public-api';
+import { PButton, useToastManager } from '../../../src/public-api';
+import * as hooks from '../../../src/hooks';
+import { skipCheckForPorscheDesignSystemProviderDuringTests, useBrowserLayoutEffect } from '../../../src/hooks';
 import { useLayoutEffect } from 'react';
 
 // TODO: Add missing tests
