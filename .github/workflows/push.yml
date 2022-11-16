@@ -422,15 +422,15 @@ jobs:
           entrypoint: run-test-unit
           args: --components-react:react-wrapper
       - name: 'Unit Test uxpin-wrapper'
-          uses: ./.github/actions/docker-run-playwright
-          with:
-            entrypoint: run-test-unit
-            args: --components-react:uxpin-wrapper
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-react:uxpin-wrapper
       - name: 'Unit Test jsdom-polyfill'
-          uses: ./.github/actions/docker-run-playwright
-          with:
-            entrypoint: run-test-unit
-            args: --components-react:jsdom-polyfill
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-react:jsdom-polyfill
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -498,10 +498,10 @@ jobs:
           entrypoint: run-test-vrt
           args: --components-react/nextjs
       - name: 'Unit Test react-ssr-wrapper'
-          uses: ./.github/actions/docker-run-playwright
-          with:
-            entrypoint: run-test-unit
-            args: --components-react:react-ssr-wrapper
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
         uses: actions/upload-artifact@v3
