@@ -1,6 +1,4 @@
-// prettier-ignore
-export const COMPONENT_CHUNK_NAMES = ['accordion', 'banner', 'button-group', 'button-pure', 'button', 'carousel', 'checkbox-wrapper', 'content-wrapper', 'divider', 'fieldset-wrapper', 'flex', 'grid', 'headline', 'icon', 'inline-notification', 'link-pure', 'link-social', 'link-tile', 'link', 'marque', 'modal', 'pagination', 'popover', 'radio-button-wrapper', 'scroller', 'segmented-control', 'select-wrapper', 'spinner', 'stepper-horizontal', 'switch', 'table', 'tabs-bar', 'tabs', 'tag-dismissible', 'tag', 'text-field-wrapper', 'text-list', 'text', 'textarea-wrapper', 'toast'];
-
+import { COMPONENT_CHUNK_NAMES } from '@porsche-design-system/shared';
 import { getChunkLinkElementsForVersion, getPorscheDesignSystemPrefixes } from './helper';
 import { getTagNameWithoutPrefix } from '../../tag-name';
 

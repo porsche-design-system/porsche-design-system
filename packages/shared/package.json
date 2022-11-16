@@ -11,11 +11,12 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "postinstall": "rm -rf ../../node_modules/@types/puppeteer",
-    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "ts-node scripts/generateTagNames.ts",
     "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
     "build:generateCodeSamples": "ts-node scripts/generateCodeSamples.ts",
     "build:bundle": "rollup -c rollup.config.js",
+    "build:generateChunkNames": "ts-node scripts/generateChunkNames.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",

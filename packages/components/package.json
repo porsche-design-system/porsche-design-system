@@ -13,7 +13,6 @@
     "prebuild": "yarn clean:build && yarn prebuild:generateThemesObject && yarn prebuild:generateConstructorMap",
     "prebuild:generateThemesObject": "ts-node --project tsconfig.node.json scripts/generateThemesObject.ts",
     "prebuild:generateConstructorMap": "ts-node --project tsconfig.node.json scripts/generateConstructorMap.ts",
-    "prebuild:addChunkNamesToPartialValidation": "ts-node --project tsconfig.node.json scripts/addChunkNamesToPartialValidation.ts",
     "build": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:cleanReadmes && yarn build:addTableOfContents && yarn build:type && yarn build:generateWrappers && yarn build:copyCjsBuildToComponentsReact && yarn build:clean",
     "build:generateWrappers": "ts-node --project tsconfig.node.json scripts/generateWrappers.ts",
     "build:type": "yarn build:type:addMissingTypeExport && yarn build:type:bundle",
