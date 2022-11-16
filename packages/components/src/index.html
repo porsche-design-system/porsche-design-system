@@ -9,7 +9,38 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.v2.17.0.9a579f8ff7708b1885a9.js"
+      as="script"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.link.ad83794849f270307099.js"
+      as="script"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.button-pure.30ccbf3af509e4f1444b.js"
+      as="script"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.icon.8e3a3734f69eb6533c66.js"
+      as="script"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.v2.16.0.9a579f8ff7708b1885a9.js"
+      as="script"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.link.ad83794849f270307099.js"
+      as="script"
+    />
     <style>
       /** {*/
       /*  margin: 0;*/
@@ -19,11 +50,20 @@
     </style>
   </head>
   <body>
+    <script>
+      document.porscheDesignSystem = {
+        '2.17.0': { prefixes: [''] },
+        '2.16.0': { prefixes: ['my-prefix'] },
+      };
+    </script>
     <header>
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-text>Hallo Welt</p-text>
+      <my-prefix-p-text>Hallo Welt</my-prefix-p-text>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
