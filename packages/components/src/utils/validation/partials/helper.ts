@@ -21,8 +21,11 @@ export const getPreloadedTagNamesForVersion = (version: string): TagName[] => {
   return coreChunkLinkElement ? getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
 };
 
-export const getPorscheDesignSystemPrefixes = (): string[] =>
-  Object.values(document.porscheDesignSystem)
-    .map((value) => (value as any).prefixes)
-    .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
-    .flat();
+export const getPorscheDesignSystemPrefixesForVersions = (): { [key: string]: [string] } =>
+  Object.entries(document.porscheDesignSystem).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key]: value.prefixes,
+    }),
+    {}
+  );

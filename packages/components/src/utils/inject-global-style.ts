@@ -1,5 +1,4 @@
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 
 export const injectGlobalStyle = (): void => {
   if (typeof document === 'undefined') {
@@ -20,18 +19,5 @@ export const injectGlobalStyle = (): void => {
 
     console.warn(`The Porsche Design System had to inject our font-face.css file into your head. Please preload it in the head of your 'index.html'.
 You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/performance/loading-behaviour`);
-  }
-
-  if (!head.querySelector('style[data-pds-initial-styles]')) {
-    const style = document.createElement('style');
-    style.setAttribute('data-pds-initial-styles', '');
-    style.innerText = TAG_NAMES.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
-
-    head.appendChild(style);
-
-    console.warn(
-      `The Porsche Design System had to inject its initial styles into your head.
-Please make sure to apply the 'getInitialStyles()' partial as described at https://designsystem.porsche.com/v2/partials/initial-styles`
-    );
   }
 };

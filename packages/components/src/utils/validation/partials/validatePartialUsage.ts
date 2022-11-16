@@ -1,6 +1,6 @@
 import { COMPONENT_TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import { getPreloadedTagNamesForVersion, getPorscheDesignSystemPrefixes } from './helper';
+import { getPreloadedTagNamesForVersion, getPorscheDesignSystemPrefixesForVersions } from './helper';
 import { getTagNameWithoutPrefix } from '../../tag-name';
 
 type PartialNames = 'getFontLink' | 'getLoaderScript';
@@ -12,12 +12,12 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  if (!(ROLLUP_REPLACE_IS_STAGING === 'staging' && process.env.NODE_ENV === 'development')) {
+  if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
     validateGetLoaderScriptUsage();
-    validateInitialStylesWithPrefixUsage();
   }
+  validateGetInitialStylesUsage();
 };
 
 export const validateGetFontLinksUsage = (): void => {
@@ -29,13 +29,7 @@ export const validateGetFontLinksUsage = (): void => {
 const validateGetComponentChunkLinksUsage = (): void => {
   const usedPdsVersions = Object.keys(document.porscheDesignSystem);
 
-  const prefixesForVersion: { [key: string]: [string] } = Object.entries(document.porscheDesignSystem).reduce(
-    (result, [key, value]) => ({
-      ...result,
-      [key]: value.prefixes,
-    }),
-    {}
-  );
+  const prefixesForVersion = getPorscheDesignSystemPrefixesForVersions();
 
   const preloadTagNamesForVersion: { [key: string]: TagName[] } = usedPdsVersions.reduce(
     (result, version) => ({
@@ -98,15 +92,23 @@ export const validateGetLoaderScriptUsage = (): void => {
   }
 };
 
-export const validateInitialStylesWithPrefixUsage = (): void => {
-  getPorscheDesignSystemPrefixes().forEach((prefix) => {
-    if (prefix && !document.head.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
-      console.warn(
-        `You are using the Porsche Design System with prefixing but without 'getInitialStyles({ prefix: ${prefix} })'.
-Please make sure to apply the 'getInitialStyles()' partial as described at https://designsystem.porsche.com/v2/partials/initial-styles`
-      );
-    }
-  });
+export const validateGetInitialStylesUsage = (): void => {
+  const warningRecommendation =
+    'We recommend the usage of the partial as described at https://designsystem.porsche.com/v2/partials/initial-styles, to ensure that there is no flash of content.';
+
+  Object.values(getPorscheDesignSystemPrefixesForVersions())
+    .flat()
+    .forEach((prefix) => {
+      if (prefix && !document.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
+        console.warn(
+          `You are using the Porsche Design System with prefix: '${prefix}' without using the 'getInitialStyles()' partial. ${warningRecommendation}`
+        );
+      } else if (!document.querySelector('style[data-pds-initial-styles]')) {
+        console.warn(
+          `You are using the Porsche Design System without using the 'getInitialStyles()' partial. ${warningRecommendation}`
+        );
+      }
+    });
 };
 
 const partialValidationWarning = (partialName: PartialNames): void => {
