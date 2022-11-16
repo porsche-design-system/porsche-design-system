@@ -112,7 +112,7 @@ export default [
     input: `${projectDir}/src/testing.ts`,
     external: ['@testing-library/dom'],
     output: {
-      dir: outputDir,
+      file: `${outputDir}/testing/index.js`,
       format: 'cjs',
     },
     plugins: [typescript(typescriptOpts)],
