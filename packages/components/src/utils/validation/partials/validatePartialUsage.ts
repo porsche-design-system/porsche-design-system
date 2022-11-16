@@ -1,8 +1,8 @@
 // prettier-ignore
 export const COMPONENT_CHUNK_NAMES = ['accordion', 'banner', 'button-group', 'button-pure', 'button', 'carousel', 'checkbox-wrapper', 'content-wrapper', 'divider', 'fieldset-wrapper', 'flex', 'grid', 'headline', 'icon', 'inline-notification', 'link-pure', 'link-social', 'link-tile', 'link', 'marque', 'modal', 'pagination', 'popover', 'radio-button-wrapper', 'scroller', 'segmented-control', 'select-wrapper', 'spinner', 'stepper-horizontal', 'switch', 'table', 'tabs-bar', 'tabs', 'tag-dismissible', 'tag', 'text-field-wrapper', 'text-list', 'text', 'textarea-wrapper', 'toast'];
 
-import { getTagName } from '../../tag-name';
 import { getChunkLinkElementsForVersion, getPorscheDesignSystemPrefixes } from './helper';
+import { getTagNameWithoutPrefix } from '../../tag-name';
 
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
@@ -21,7 +21,14 @@ export const validateGetFontLinksUsage = (): void => {
 
 const validateGetComponentChunkLinksUsage = (): void => {
   const usedPdsVersions = Object.keys((document as any).porscheDesignSystem || {});
-  const prefixes = getPorscheDesignSystemPrefixes();
+
+  const prefixesForVersion: { [key: string]: [string] } = Object.entries((document as any).porscheDesignSystem).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key]: (value as any).prefixes,
+    }),
+    {}
+  );
 
   const preloadChunkLinksForVersion: { [key: string]: Element[] } = usedPdsVersions.reduce(
     (result, version) => ({
@@ -30,32 +37,55 @@ const validateGetComponentChunkLinksUsage = (): void => {
     }),
     {}
   );
-  console.log(preloadChunkLinksForVersion);
 
-  const allPdsComponentsSelector = prefixes
-    .map((prefix) => {
-      return prefix ? COMPONENT_CHUNK_NAMES.map((tagName) => `${prefix}-${tagName}`) : COMPONENT_CHUNK_NAMES;
-    })
-    .join();
+  const usedTagNamesForVersion = Object.entries(prefixesForVersion).reduce((result, [version, prefixes]) => {
+    const allPdsComponentsSelector = prefixes
+      .map((prefix) => {
+        return COMPONENT_CHUNK_NAMES.map((tagName) => (prefix ? `${prefix}-p-${tagName}` : `p-${tagName}`));
+      })
+      .join();
 
-  const allPdsElements = Array.from(document.querySelectorAll(allPdsComponentsSelector));
+    const allPdsElements = Array.from(document.querySelectorAll(allPdsComponentsSelector));
 
-  const allTagNamesLowerCase = allPdsElements
-    .map(getTagName)
-    .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
+    const allTagNamesLowerCase = allPdsElements
+      .map(getTagNameWithoutPrefix)
+      .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
 
-  console.log(allTagNamesLowerCase);
+    return {
+      ...result,
+      [version]: allTagNamesLowerCase,
+    };
+  }, {});
 
-  const usedTagNamesWithoutPreload: string[] = [];
+  const usedTagNamesWithoutPreloadForVersion: { [key: string]: string[] } = Object.entries(
+    usedTagNamesForVersion
+  ).reduce((result, [version, tagNames]) => {
+    const tagNamesWithoutPreload = (tagNames as string[]).filter((tagName) => {
+      if (
+        preloadChunkLinksForVersion[version].find((chunkLink: HTMLLinkElement) =>
+          chunkLink.href.includes(`porsche-design-system.${tagName.replace('p-', '')}`)
+        )
+      ) {
+        return tagName;
+      }
+    });
 
-  if (usedTagNamesWithoutPreload.length) {
-    console.warn(
-      `The Porsche Design System detected the usage of the components '${usedTagNamesWithoutPreload.join(
-        ', '
-      )}' without preloading. We recommend the usage of the
+    return {
+      ...result,
+      [version]: tagNamesWithoutPreload,
+    };
+  }, {});
+
+  Object.entries(usedTagNamesWithoutPreloadForVersion).forEach(([version, tagNames]) => {
+    if (tagNames.length) {
+      console.warn(
+        `Usage of Porsche Design System v${version} components '${tagNames.join(
+          ', '
+        )}'detected, without preloading them. We recommend the usage of the
 'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
-    );
-  }
+      );
+    }
+  });
 };
 
 export const validateGetLoaderScriptUsage = (): void => {

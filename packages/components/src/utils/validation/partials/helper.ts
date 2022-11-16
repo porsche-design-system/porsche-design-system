@@ -21,8 +21,8 @@ export const getChunkLinkElementsForVersion = (version) => {
 
 export const getPorscheDesignSystemPrefixes = (): string[] =>
   (document as any).porscheDesignSystem
-    ? Object.entries((document as any).porscheDesignSystem)
-        .map(([, value]) => (value as any).prefixes.join())
+    ? Object.values((document as any).porscheDesignSystem)
+        .map((value) => (value as any).prefixes)
         .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
         .flat()
     : [];
