@@ -9,7 +9,7 @@ type PartialNames = 'getFontLink' | 'getLoaderScript';
 
 declare global {
   interface Document {
-    porscheDesignSystem: { [key: string]: { prefixes: [string] } };
+    porscheDesignSystem: { [key: string]: { prefixes: string[] } };
   }
 }
 
