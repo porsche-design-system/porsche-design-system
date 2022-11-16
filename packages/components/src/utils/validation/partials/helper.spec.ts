@@ -3,6 +3,7 @@ import {
   getPorscheDesignSystemPrefixesForVersions,
   getPreloadedTagNamesForCoreChunk,
   getPreloadedTagNamesForVersion,
+  getPreloadedTagNamesForVersions,
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
@@ -57,13 +58,11 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
 });
 
 describe('getPreloadedTagNamesForVersion()', () => {
+  const version = '1.2.3';
   it('should return empty [] for version when version is not found in dom', () => {
-    const version = '1.2.3';
-
     expect(getPreloadedTagNamesForVersion(version)).toEqual([]);
   });
   it('should call getPreloadedTagNamesForCoreChunk() with correct parameter when version is found in dom', () => {
-    const version = '1.2.3';
     const coreChunkLinkElement = document.createElement('link');
     coreChunkLinkElement.href = `porsche-design-system.v${version}`;
     document.head.appendChild(coreChunkLinkElement);
@@ -76,7 +75,20 @@ describe('getPreloadedTagNamesForVersion()', () => {
 });
 
 describe('getPreloadedTagNamesForVersions()', () => {
-  it('', () => {});
+  const versions = ['1.2.3', '4.5.6', '7.8.9'];
+  it('should return preloaded tag names for versions', () => {
+    expect(getPreloadedTagNamesForVersions(versions)).toEqual({ '1.2.3': [], '4.5.6': [], '7.8.9': [] });
+  });
+  it('should call getPreloadedTagNamesForVersion() with correct parameter', () => {
+    const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
+
+    getPreloadedTagNamesForVersions(versions);
+
+    expect(spy).toBeCalledTimes(3);
+    expect(spy).toBeCalledWith('1.2.3');
+    expect(spy).toBeCalledWith('4.5.6');
+    expect(spy).toBeCalledWith('7.8.9');
+  });
 });
 
 describe('getPdsComponentsSelector()', () => {
