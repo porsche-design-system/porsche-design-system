@@ -3,9 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
-  getClosestHTMLElement,
   getDataThemeDarkAttribute,
-  getPrefixedTagNames,
   THEMES,
   validateProps,
 } from '../../../utils';
@@ -45,14 +43,8 @@ export class TextList {
     attachComponentCss(this.host, getComponentCss, this.theme);
 
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    syncTextListItemsProps(
-      this.host,
-      this.listType,
-      this.orderType,
-      !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem)
-    );
+    syncTextListItemsProps(this.host, this.listType, this.orderType);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

@@ -11,6 +11,6 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.listType, component.orderType, false);
+    expect(spy).toBeCalledWith(component.host, component.listType, component.orderType);
   });
 });

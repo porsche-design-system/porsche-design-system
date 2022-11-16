@@ -7,8 +7,8 @@ export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
-        counterReset: addImportantToRule('section'),
         display: 'block',
+        counterReset: addImportantToRule('section'),
       },
       '[role]': {
         display: 'block',

@@ -19,8 +19,7 @@ export class TextListItem {
       this.host,
       getComponentCss,
       this.host.listType || 'unordered', // default as fallback
-      this.host.orderType || 'numbered', // default as fallback
-      this.host.isNestedList || false
+      this.host.orderType || 'numbered' // default as fallback
     );
 
     return (

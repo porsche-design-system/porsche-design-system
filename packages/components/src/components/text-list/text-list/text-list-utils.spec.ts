@@ -12,32 +12,27 @@ describe('syncTextListItemsProps()', () => {
 
   const listType: ListType = 'ordered';
   const orderType: OrderType = 'numbered';
-  const isNestedList: boolean = true;
 
-  it('should set listType, orderType and isNestedList property on every item', () => {
+  it('should set listType and orderType property on every item', () => {
     expect(child1.listType).toBeUndefined();
     expect(child1.orderType).toBeUndefined();
-    expect(child1.isNestedList).toBeUndefined();
 
     expect(child2.listType).toBeUndefined();
     expect(child2.orderType).toBeUndefined();
-    expect(child2.isNestedList).toBeUndefined();
 
-    syncTextListItemsProps(host, listType, orderType, isNestedList);
+    syncTextListItemsProps(host, listType, orderType);
 
     expect(child1.listType).toBe(listType);
     expect(child1.orderType).toBe(orderType);
-    expect(child1.isNestedList).toBe(isNestedList);
 
     expect(child2.listType).toBe(listType);
     expect(child2.orderType).toBe(orderType);
-    expect(child2.isNestedList).toBe(isNestedList);
   });
 
   it('should call forceUpdate() on every item', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncTextListItemsProps(host, listType, orderType, isNestedList);
+    syncTextListItemsProps(host, listType, orderType);
 
     expect(spy).toBeCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
