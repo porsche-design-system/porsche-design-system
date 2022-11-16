@@ -23,6 +23,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some Label" description="Default">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -32,6 +34,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Size inherit" size="inherit">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -43,6 +47,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -52,6 +58,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Weight regular" weight="regular">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -63,6 +71,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -72,24 +82,32 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Aspect ratio 16:9" aspectRatio="16:9">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile label="Some label" description="Aspect ratio 1:1" href="#" aspectRatio="1:1">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile href="#" label="Some label" description="Aspect ratio 3:4" aspectRatio="3:4">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
         <PLinkTile href="#" label="Some label" description="Aspect ratio 9:16" aspectRatio="9:16">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -101,6 +119,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -110,6 +130,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Compact" compact={true}>
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -121,6 +143,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -130,6 +154,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Align top" align="top" compact={true}>
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -139,6 +165,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         <PLinkTile href="#" label="Some label" description="Gradient false" gradient={false}>
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=="
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -152,6 +180,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -162,6 +192,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -173,6 +205,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            width={50}
+            height={50}
             alt="Some alt text"
           />
         </PLinkTile>
@@ -186,6 +220,8 @@ const LinkTilePage: NextPage = (): JSX.Element => {
           <picture>
             <Image
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+              width={50}
+              height={50}
               alt="Some alt text"
             />
           </picture>

@@ -243,6 +243,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
               [alt]="'Beach'"
             />
           </p-link-tile>
@@ -463,6 +465,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
               [alt]="'Beach'"
             />
           </my-prefix-p-link-tile>
