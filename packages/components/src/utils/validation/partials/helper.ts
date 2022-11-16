@@ -1,28 +1,28 @@
-export const getAllCoreRelatedChunkSiblings = (element: Element): Element[] => {
-  let nextSibling = element.nextElementSibling as any;
-  const coreRelatedChunkSiblings = [];
+import { TagName } from '@porsche-design-system/shared';
 
+export const getPreloadedTagNamesForCoreChunk = (element: HTMLLinkElement): TagName[] => {
+  const preloadedTagNames: TagName[] = [];
+
+  let nextSibling = element.nextElementSibling as HTMLLinkElement;
   while (nextSibling?.href && nextSibling.href.includes('porsche-design-system.')) {
-    coreRelatedChunkSiblings.push(nextSibling);
-    nextSibling = nextSibling.nextElementSibling as any;
+    const tagName = ('p-' + nextSibling.href.split('/').pop().split('.')[1]) as TagName;
+    preloadedTagNames.push(tagName);
+    nextSibling = nextSibling.nextElementSibling as HTMLLinkElement;
   }
-  return coreRelatedChunkSiblings;
+
+  return preloadedTagNames;
 };
 
-export const getChunkLinkElementsForVersion = (version) => {
+export const getPreloadedTagNamesForVersion = (version: string): TagName[] => {
   const coreChunkLinkElement = document.querySelector(
     `[href*=porsche-design-system.v${version}]`.replace(/\./g, '\\.')
-  );
+  ) as HTMLLinkElement;
 
-  if (coreChunkLinkElement) {
-    return [coreChunkLinkElement, ...getAllCoreRelatedChunkSiblings(coreChunkLinkElement)];
-  }
+  return coreChunkLinkElement ? getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
 };
 
 export const getPorscheDesignSystemPrefixes = (): string[] =>
-  (document as any).porscheDesignSystem
-    ? Object.values((document as any).porscheDesignSystem)
-        .map((value) => (value as any).prefixes)
-        .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
-        .flat()
-    : [];
+  Object.values(document.porscheDesignSystem)
+    .map((value) => (value as any).prefixes)
+    .filter((prefix, idx, arr) => arr.indexOf(prefix) === idx)
+    .flat();
