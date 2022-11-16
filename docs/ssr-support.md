@@ -37,7 +37,7 @@
 | **Tag**                  | ✅     |                                                                                                                                                                                    |
 | **Tag Dismissible**      | ✅     |                                                                                                                                                                                    |
 | **Text**                 | ✅     | - `size="inherit"` is not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                                                                |
-| **Text Field Wrapper**   | ✅     | - counter, unit and `type=search` within form are not supported                                                                                                                    |
+| **Text Field Wrapper**   | ✅     | - `show-character-count`, `unit` and `input[type=search]` within form are not supported                                                                                            |
 | **Text List**            | ❔     |                                                                                                                                                                                    |
-| **Textarea Wrapper**     | ✅     | - `showCharacterCount` not supported<br />- Required state not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                           |
+| **Textarea Wrapper**     | ✅     | - `show-character-count` not supported<br />- Required state not supported<br />- Nested slotted styles (e.g. slotted anchors) aren't supported on purpose                         |
 | **Toast**                | ✅     | - Component will be visible programmatically only                                                                                                                                  |
