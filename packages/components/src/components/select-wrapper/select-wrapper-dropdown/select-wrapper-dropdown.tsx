@@ -168,7 +168,7 @@ export class SelectWrapperDropdown {
             id={dropdownId}
             role="listbox"
             tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, this.optionMaps, this.filter)}
+            {...getListAriaAttributes(this.label, this.required, this.optionMaps, this.filter, this.isOpen)}
             onKeyDown={this.onListKeyDown}
             ref={(el) => (this.listElement = el)}
           >

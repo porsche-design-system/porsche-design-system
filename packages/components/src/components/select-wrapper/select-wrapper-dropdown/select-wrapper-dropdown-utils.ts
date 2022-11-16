@@ -49,7 +49,8 @@ export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
   optionMaps: OptionMap[],
-  hasFilter: boolean
+  hasFilter: boolean,
+  isOpen: boolean,
 ): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return {
@@ -59,6 +60,9 @@ export const getListAriaAttributes = (
       !hasFilter && {
         'aria-required': 'true',
       }),
+    ...(!isOpen && {
+      'aria-hidden': 'true'
+    })
   };
 };
 
