@@ -9,6 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- SSR/SSG ready components using Declarative Shadow DOM for NextJs are shipped via
+  `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
+
+```diff
+- import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
++ import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react/ssr';
+```
+
 #### Changed
 
 - Improve height calculation for `Accordion`
