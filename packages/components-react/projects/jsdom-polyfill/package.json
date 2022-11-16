@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "build": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
+    "build": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
