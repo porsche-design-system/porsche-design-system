@@ -32,7 +32,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const styleAttributes = 'pds-initial-styles';
   const styleProps = { [styleAttributes]: 'true' };
 
-  const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
+  const styles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`

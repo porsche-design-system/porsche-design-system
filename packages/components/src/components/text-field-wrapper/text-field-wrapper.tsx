@@ -116,7 +116,7 @@ export class TextFieldWrapper {
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
         .map((type) => `input[type=${type}]`)
-        .join(',')
+        .join()
     );
     this.observeAttributes(); // once initially
     this.isSearch = isType(this.input.type, 'search');

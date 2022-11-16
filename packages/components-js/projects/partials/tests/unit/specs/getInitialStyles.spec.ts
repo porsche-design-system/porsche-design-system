@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
-const tagNames = filteredTagNames.join(',');
-const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join(',');
+const tagNames = filteredTagNames.join();
+const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join();
 
 jest.mock('../../../src/shared');
 
