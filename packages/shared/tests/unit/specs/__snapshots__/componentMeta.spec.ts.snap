@@ -1237,7 +1237,6 @@ exports[`should match snapshot 1`] = `
       "role": "listitem",
     },
     "internalProps": {
-      "isNestedList": "false",
       "listType": "unordered",
       "orderType": "numbered",
     },
