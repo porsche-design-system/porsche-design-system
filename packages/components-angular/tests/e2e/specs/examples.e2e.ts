@@ -15,7 +15,7 @@ const filePath = path.resolve(
   require.resolve('@porsche-design-system/components-angular'),
   '../../../../src/app/app-routing.module.ts'
 );
-const fileContent = fs.readFileSync(filePath, 'utf-8');
+const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];
 const routes: { name: string; path: string; component: string }[] = eval(

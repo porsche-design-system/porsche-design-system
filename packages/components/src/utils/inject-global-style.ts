@@ -25,7 +25,7 @@ You find detailed documentation and examples on how to implement preloading at h
   if (!head.querySelector('style[pds-initial-styles]')) {
     const style = document.createElement('style');
     style.setAttribute('pds-initial-styles', '');
-    style.innerText = TAG_NAMES.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
+    style.innerText = TAG_NAMES.join() + '{visibility:hidden}.hydrated{visibility:inherit}';
 
     head.appendChild(style);
 

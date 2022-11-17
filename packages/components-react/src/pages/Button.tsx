@@ -82,9 +82,22 @@ export const ButtonPage = (): JSX.Element => {
         <PButton hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</PButton>
       </div>
 
-      <div className="playground light" title="should render button secondary with specific icon">
+      <div className="playground light" title="should render button with specific icon">
         <PButton icon="delete">Some label</PButton>
         <PButton iconSource="./assets/icon-custom-kaixin.svg">Some label</PButton>
+        <PButton icon="delete" variant="primary">Some label</PButton>
+        <PButton iconSource="./assets/icon-custom-kaixin.svg" variant="primary">Some label</PButton>
+        <PButton icon="delete" variant="tertiary">Some label</PButton>
+        <PButton iconSource="./assets/icon-custom-kaixin.svg" variant="tertiary">Some label</PButton>
+      </div>
+
+      <div className="playground dark" title="should render button with specific icon on dark theme">
+        <PButton theme="dark" icon="delete">Some label</PButton>
+        <PButton theme="dark" iconSource="./assets/icon-custom-kaixin.svg">Some label</PButton>
+        <PButton theme="dark" icon="delete" variant="primary">Some label</PButton>
+        <PButton theme="dark" iconSource="./assets/icon-custom-kaixin.svg" variant="primary">Some label</PButton>
+        <PButton theme="dark" icon="delete" variant="tertiary">Some label</PButton>
+        <PButton theme="dark" iconSource="./assets/icon-custom-kaixin.svg" variant="tertiary">Some label</PButton>
       </div>
 
       <div className="playground light" title="should render button with multiline label">

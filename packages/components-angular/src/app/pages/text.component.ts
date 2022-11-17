@@ -4,21 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-text',
   template: `
-    <div class="playground" title="should show text in different sizes">
-      <p-text [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text>The quick brown fox jumps over the lazy dog</p-text>
-      <p-text [size]="'medium'">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text [size]="'large'">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text [size]="'x-large'">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text [size]="'inherit'" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
-    </div>
-
-    <div class="playground" title="should show text in different sizes on different viewports">
-      <p-text [size]="{ base: 'small', m: 'inherit', l: 'medium' }" style="font-size: 80px">
-        The quick brown fox jumps over the lazy dog
-      </p-text>
-    </div>
-
     <div class="playground" title="should show whole text in thin and bold">
       <p-text [weight]="'thin'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text [weight]="'regular'">The quick brown fox jumps over the lazy dog</p-text>
@@ -109,6 +94,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </p>
+      </p-text>
+    </div>
+
+    <div class="playground" title="should show text in different sizes">
+      <p-text [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text>The quick brown fox jumps over the lazy dog</p-text>
+      <p-text [size]="'medium'">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text [size]="'large'">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text [size]="'x-large'">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text [size]="'inherit'" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
+    </div>
+
+    <div class="playground" title="should show text in different sizes on different viewports">
+      <p-text [size]="{ base: 'small', m: 'inherit', l: 'medium' }" style="font-size: 80px">
+        The quick brown fox jumps over the lazy dog
       </p-text>
     </div>
   `,

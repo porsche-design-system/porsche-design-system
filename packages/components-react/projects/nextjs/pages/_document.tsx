@@ -1,10 +1,12 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 import {
-  getFontLinks,
-  getInitialStyles,
   getBrowserSupportFallbackScript,
   getCookiesFallbackScript,
+  getDSRPonyfill,
+  getFontLinks,
+  getInitialStyles,
 } from '@porsche-design-system/components-react/partials';
+import { getSharedStyles } from '../styles/getSharedStyles';
 
 const Document = (): JSX.Element => {
   return (
@@ -19,10 +21,12 @@ const Document = (): JSX.Element => {
           .map((url) => (
             <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />
           ))}
+        {getSharedStyles()}
       </Head>
       <body>
         <Main />
         <NextScript />
+        {getDSRPonyfill({ format: 'jsx' })}
         {getBrowserSupportFallbackScript({ format: 'jsx' })}
         {getCookiesFallbackScript({ format: 'jsx' })}
       </body>

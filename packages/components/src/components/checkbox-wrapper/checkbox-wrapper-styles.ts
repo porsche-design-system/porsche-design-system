@@ -46,7 +46,7 @@ export const getComponentCss = (
           backgroundSize: size,
           backgroundPosition: hasVisibleState ? '-2px -2px' : '-1px -1px',
           backgroundColor,
-          transition: ['border-color', 'background-color'].map(getTransition).join(','),
+          transition: ['border-color', 'background-color'].map(getTransition).join(),
           opacity: 1,
           border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
           borderRadius: 0,

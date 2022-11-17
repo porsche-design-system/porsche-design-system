@@ -1,7 +1,7 @@
 import type { AriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes } from '../../utils';
 
-export const getButtonAriaAttributes = (
+export const getSwitchButtonAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
   isChecked: boolean

@@ -88,11 +88,13 @@ export const getComponentCss = (direction: PopoverDirection): string => {
   return getCss({
     '@global': {
       ':host': {
-        verticalAlign: 'top',
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
+          width: '1.5rem', // width of icon (to improve ssr support)
+          height: '1.5rem', // height of icon (to improve ssr support)
         }),
+        verticalAlign: 'top',
       },
       p: {
         ...textSmall,

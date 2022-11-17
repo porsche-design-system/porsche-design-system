@@ -100,6 +100,13 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
+        patterns: [
+          {
+            group: ['**/utils-entry', '**/styles-entry'],
+            caseSensitive: true,
+            message: "Please don't use since it might cause circular dependencies.",
+          },
+        ],
         paths: [
           {
             name: '@porsche-design-system/utilities',

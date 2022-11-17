@@ -24,7 +24,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: 2rem 1fr auto auto;
   }
 }
 
@@ -42,7 +42,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -73,7 +72,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: 2rem 1fr auto auto;
   }
 }
 
@@ -91,7 +90,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #0061bd;
   }
 }
@@ -122,7 +120,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: 2rem 1fr auto auto;
   }
 }
 
@@ -140,7 +138,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #018a16;
   }
 }
@@ -171,7 +168,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: 2rem 1fr auto auto;
   }
 }
 
@@ -189,7 +186,6 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    margin-right: 0.5rem;
     color: #018a16;
   }
 }

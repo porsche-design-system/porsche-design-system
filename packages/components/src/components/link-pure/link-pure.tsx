@@ -17,7 +17,6 @@ import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
@@ -32,7 +31,7 @@ import {
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
@@ -105,32 +104,9 @@ export class LinkPure {
   private labelTag: HTMLElement;
   private sublineTag: HTMLElement;
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
     throwIfInvalidLinkPureUsage(this.host, this.href);
-  }
-
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.icon,
-      this.active,
-      this.stretch,
-      this.size,
-      this.weight,
-      this.hideLabel,
-      this.alignLabel,
-      hasSlottedSubline(this.host),
-      !this.href,
-      this.theme
-    );
   }
 
   public componentDidLoad(): void {
@@ -153,6 +129,23 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.stretch,
+      this.size,
+      this.weight,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      !this.href,
+      this.theme
+    );
+
     const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -175,6 +168,7 @@ export class LinkPure {
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
+              theme={this.theme}
               size="inherit"
               name={this.icon}
               source={this.iconSource}

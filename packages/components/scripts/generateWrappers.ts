@@ -4,6 +4,7 @@ const generateWrappers = (): void => {
   const generator = new WrapperGenerator();
   generator.generate('angular');
   generator.generate('react');
+  generator.generate('nextjs');
   generator.generate('uxpin');
 };
 

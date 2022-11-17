@@ -158,7 +158,10 @@ export const getComponentCss = (
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
-    link: buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+    link: {
+      minHeight: '3rem',
+      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+    },
 
     // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
     anchor: {

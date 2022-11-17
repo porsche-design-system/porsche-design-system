@@ -1,6 +1,7 @@
-import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
-import { ExtendedProp } from './DataStructureBuilder';
+import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
 
@@ -209,7 +210,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
           .replace(
             // patch jsx to wrap component in form
-            /(<Tag {...props} \/>)/,
+            /(<WebComponentTag {...props} \/>)/,
             `isWithinForm ? (
       <form
         onSubmit={(e) => {
@@ -480,9 +481,8 @@ export default (
     formComponentName: FormComponentName,
     extraProps: PresetsProps
   ): AdditionalFile {
-    const { props: propsAsArray } = getComponentMeta(wrapperTagName);
-
-    const defaultProps = convertComponentMetaPropsToObject(propsAsArray);
+    const { props } = getComponentMeta(wrapperTagName);
+    const defaultProps = cleanComponentMetaProps(props);
 
     const stringifiedProps = getStringifiedProps({
       uxpId: paramCase(formComponentName),
@@ -499,12 +499,11 @@ export default <${formComponentName} ${stringifiedProps} />;
   }
 
   private generatePresetsFile(relativePath: string, content: string): AdditionalFile {
-    const presetsFile: AdditionalFile = {
+    return {
       name: '0-default.jsx',
       relativePath: relativePath + '/presets',
       content,
     };
-    return presetsFile;
   }
 
   private generateUXPinConfigFile(): AdditionalFile {
@@ -562,12 +561,8 @@ function wrapAttributeWithDelimiter(attribute: string | number | boolean | strin
   }
 }
 
-function convertComponentMetaPropsToObject(props: ReturnType<typeof getComponentMeta>['props']): PresetsProps {
-  return (
-    props?.reduce((acc, prop) => {
-      const key = Object.keys(prop)[0];
-      const value = Object.values(prop)[0];
-      return value !== null ? { ...acc, [key]: value } : acc; // filter out `null` values that trigger errors in UXPin editor
-    }, {}) || {}
-  );
+function cleanComponentMetaProps(props: ReturnType<typeof getComponentMeta>['props']): PresetsProps {
+  return Object.entries(props || {}).reduce((result, [prop, value]) => {
+    return value !== null ? { ...result, [prop]: value } : result; // filter out `null` values that trigger errors in UXPin editor
+  }, {} as PresetsProps);
 }

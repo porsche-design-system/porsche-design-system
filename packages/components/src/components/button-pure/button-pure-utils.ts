@@ -16,7 +16,7 @@ export const warnIfIsLoadingAndIconIsNone = (
   }
 };
 
-export const getButtonAriaAttributes = (
+export const getButtonPureAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
   hasSubline: boolean,

@@ -94,11 +94,6 @@ export class SelectWrapper {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.select.disabled, this.hideLabel, this.state, this.theme);
-  }
-
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
@@ -119,14 +114,19 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
     const { disabled } = this.select;
+    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.theme);
 
-    const labelProps = {
-      ...(!disabled && {
-        onClick: () =>
-          (this.hasCustomDropdown ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement) : this.select).focus(),
-      }),
-    };
+    const labelProps = disabled
+      ? {}
+      : {
+          onClick: () =>
+            (this.hasCustomDropdown
+              ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement)
+              : this.select
+            ).focus(),
+        };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

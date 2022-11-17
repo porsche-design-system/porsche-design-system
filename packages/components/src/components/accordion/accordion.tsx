@@ -84,7 +84,7 @@ export class Accordion {
       observeResize(
         this.content,
         ({ contentRect }) => {
-          this.contentHeight = getContentHeight(contentRect, this.compact);
+          this.contentHeight = getContentHeight(contentRect);
           this.setCollapsibleElementHeight();
         },
         { box: 'border-box' }
@@ -92,14 +92,9 @@ export class Accordion {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
-  }
-
   public componentDidRender(): void {
     if (useResizeObserverFallback) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
     }
   }
 
@@ -112,6 +107,9 @@ export class Accordion {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
+
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 
@@ -132,7 +130,7 @@ export class Accordion {
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
-              name="arrowHeadDown"
+              name="arrow-head-down"
               theme={this.theme}
               size="inherit"
               aria-hidden="true"
@@ -164,7 +162,7 @@ export class Accordion {
 
   private setContentHeight = (): void => {
     if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
       this.setCollapsibleElementHeight();
     }
   };

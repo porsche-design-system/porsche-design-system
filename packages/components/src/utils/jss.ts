@@ -84,7 +84,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
       host.shadowRoot.adoptedStyleSheets = [newSheet];
     }
   } else {
-    // NOTE: fallback for Firefox and Safari
+    // NOTE: fallback for Safari
     // old style needs to be removed and added again in safari to be recognized
     getShadowRootHTMLElement(host, 'style[jss]')?.remove();
 

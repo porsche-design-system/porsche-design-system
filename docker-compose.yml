@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal-v1
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -41,6 +41,8 @@ services:
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
+      - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/jsdom-polyfill/node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-app/packages/fallbacks/node_modules
@@ -59,7 +61,7 @@ services:
       - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal-v1
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
@@ -69,6 +71,8 @@ services:
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
+      - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-react-jsdom-polyfill-node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-volumes/fallbacks-node_modules
@@ -96,7 +100,9 @@ volumes:
   components-js-node-modules:
   components-angular-node-modules:
   components-react-node-modules:
+  components-react-react-ssr-wrapper-node-modules:
   components-react-uxpin-wrapper-node-modules:
+  components-react-jsdom-polyfill-node-modules:
   components-react-nextjs-node-modules:
   email-node-modules:
   fallbacks-node-modules:

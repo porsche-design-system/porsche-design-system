@@ -39,32 +39,23 @@ export class FieldsetWrapper {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  private get hasLabel(): boolean {
-    return hasLabel(this.host, this.label);
-  }
-
-  private get hasMessage(): boolean {
-    return hasMessage(this.host, this.message, this.state);
-  }
-
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
-  }
-
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, hasLabel(this.host, this.label));
+
     const messageId = 'message';
+    const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={this.hasMessage ? messageId : null}>
-        {this.hasLabel && (
+      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+        {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}
             {this.required && <Required />}
           </legend>
         )}
         <slot />
-        {this.hasMessage && <StateMessage id={messageId} state={this.state} message={this.message} host={this.host} />}
+        {hasMessageValue && <StateMessage id={messageId} state={this.state} message={this.message} host={this.host} />}
       </fieldset>
     );
   }

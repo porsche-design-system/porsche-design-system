@@ -1,5 +1,9 @@
 import type { ElementHandle, Page } from 'puppeteer';
-import { CSS_ANIMATION_DURATION, getElementStyle, selectNode } from '../../../../components-js/tests/e2e/helpers';
+import {
+  CSS_ANIMATION_DURATION,
+  getElementStyle,
+  selectNode,
+} from '../../../../components-js/tests/e2e/puppeteer/helpers';
 import { goto } from '../helpers';
 
 let page: Page;

@@ -1,16 +1,7 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
-import { useEffect, useState } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady';
+import { PAccordion, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 
 export const OverviewPage = (): JSX.Element => {
-  const [allReady, setAllReady] = useState(false);
-  useEffect(() => {
-    pollComponentsReady().then(() => {
-      setAllReady(true);
-    });
-  }, []);
-
   const style = `
     p-flex-item > p,
     my-prefix-p-flex-item > p,
@@ -39,10 +30,6 @@ export const OverviewPage = (): JSX.Element => {
       background: deepskyblue;
     }
 
-    p-banner,
-    my-prefix-p-banner {
-      --p-banner-position-type: static;
-    }
     p-link-tile,
     my-prefix-p-link-tile {
       max-width: 400px;
@@ -57,17 +44,6 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <PHeadline>Default Components</PHeadline>
-          </div>
-
-          <div className="playground light" title="should render headline for variant large">
-            <PHeadline variant={{ base: 'large', l: 'x-large' }}>Default Components</PHeadline>
-          </div>
-
-          <div className="playground light" title="should render default banner">
-            <PBanner>
-              <span slot="title">Some slotted banner title</span>
-              <span slot="description">Some slotted banner description</span>
-            </PBanner>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
@@ -264,21 +240,23 @@ export const OverviewPage = (): JSX.Element => {
             </PStepperHorizontal>
           </div>
 
+          <div className="playground light" title="should render default link-tile">
+            <PLinkTile href="#" label="Some Label" description="Default">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                width={50}
+                height={50}
+                alt="Beach"
+              />
+            </PLinkTile>
+          </div>
+
           <div className="playground light" title="should render default carousel">
             <PCarousel heading="Heading">
               <div>Slide 1</div>
               <div>Slide 2</div>
               <div>Slide 3</div>
             </PCarousel>
-          </div>
-
-          <div className="playground light" title="should render default link-tile">
-            <PLinkTile href="#" label="Some Label" description="Default">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                alt="Beach"
-              />
-            </PLinkTile>
           </div>
         </div>
 
@@ -287,19 +265,6 @@ export const OverviewPage = (): JSX.Element => {
             <div className="playground light" title="should render default headline with custom prefix">
               <PHeadline>Prefixed Components</PHeadline>
             </div>
-
-            <div className="playground light" title="should render headline for variant large with custom prefix">
-              <PHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PHeadline>
-            </div>
-
-            {allReady && (
-              <div className="playground light" title="should render default banner with custom prefix">
-                <PBanner>
-                  <span slot="title">Some slotted banner title</span>
-                  <span slot="description">Some slotted banner description</span>
-                </PBanner>
-              </div>
-            )}
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
               <PInlineNotification
@@ -498,21 +463,23 @@ export const OverviewPage = (): JSX.Element => {
               </PStepperHorizontal>
             </div>
 
+            <div className="playground light" title="should render default link-tile with custom prefix">
+              <PLinkTile href="#" label="Some Label" description="Default">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                  width={50}
+                  height={50}
+                  alt="Beach"
+                />
+              </PLinkTile>
+            </div>
+
             <div className="playground light" title="should render default carousel with custom prefix">
               <PCarousel heading="Heading">
                 <div>Slide 1</div>
                 <div>Slide 2</div>
                 <div>Slide 3</div>
               </PCarousel>
-            </div>
-
-            <div className="playground light" title="should render default link-tile with custom prefix">
-              <PLinkTile href="#" label="Some Label" description="Default">
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                  alt="Beach"
-                />
-              </PLinkTile>
             </div>
           </div>
         </PorscheDesignSystemProvider>
