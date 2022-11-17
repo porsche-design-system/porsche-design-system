@@ -20,7 +20,7 @@ const pagesDirectories: { [key in Framework]: string } = {
   nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
 };
 
-const generateAngularReactVRTPages = (): void => {
+const generateVRTPages = (): void => {
   const pagesDirectory = path.resolve(rootDirectory, './src/pages');
   const htmlFiles = globby.sync(`${pagesDirectory}/**/*.html`);
 
@@ -29,9 +29,9 @@ const generateAngularReactVRTPages = (): void => {
     .map((filePath) => [path.parse(filePath).name, fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
 
-  generateVRTPages(htmlFileContentMap, 'angular');
-  generateVRTPages(htmlFileContentMap, 'react');
-  generateVRTPages(htmlFileContentMap, 'nextjs');
+  generateVRTPagesForJsFramework(htmlFileContentMap, 'angular');
+  generateVRTPagesForJsFramework(htmlFileContentMap, 'react');
+  generateVRTPagesForJsFramework(htmlFileContentMap, 'nextjs');
 };
 
 export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
@@ -97,7 +97,7 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
     .join('\n');
 };
 
-const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
+const generateVRTPagesForJsFramework = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .map(([fileName, fileContent]) => {
@@ -217,4 +217,4 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
   console.log(`Generated VRT pages for components-${framework}`);
 };
 
-generateAngularReactVRTPages();
+generateVRTPages();

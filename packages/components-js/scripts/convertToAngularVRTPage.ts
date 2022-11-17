@@ -1,6 +1,6 @@
 import { pascalCase } from 'change-case';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
-import { byAlphabet, iconsRegEx, templateRegEx } from './generateAngularReactVRTPages';
+import { byAlphabet, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 type Characteristics = {
   usesOnInit: boolean;

@@ -1,6 +1,6 @@
 import { pascalCase } from 'change-case';
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
-import { byAlphabet, iconsRegEx, templateRegEx } from './generateAngularReactVRTPages';
+import { byAlphabet, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 type Characteristics = {
   usesSetAllReady: boolean;
