@@ -28,7 +28,7 @@ export const validateGetFontLinksUsage = (): void => {
   }
 };
 
-const validateGetComponentChunkLinksUsage = (): void => {
+export const validateGetComponentChunkLinksUsage = (): void => {
   const registeredPdsVersions = Object.keys(document.porscheDesignSystem);
   const prefixesForVersions = getPorscheDesignSystemPrefixesForVersions();
   const preloadTagNamesForVersions = getPreloadedTagNamesForVersions(registeredPdsVersions);
@@ -73,7 +73,7 @@ export const validateGetInitialStylesUsage = (): void => {
     });
 };
 
-const partialValidationWarning = (partialName: PartialNames): void => {
+export const partialValidationWarning = (partialName: PartialNames): void => {
   const partialNameToLinkPathMap: Record<PartialNames, string> = {
     getFontLink: 'font-links',
     getLoaderScript: 'loader-script',
