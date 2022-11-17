@@ -18,7 +18,7 @@ document.porscheDesignSystem = {
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  jest.spyOn(console, 'warn').mockImplementation(); // to suppress logs
+  jest.spyOn(global.console, 'warn').mockImplementation(); // to suppress logs
 });
 
 describe('validatePartialUsage()', () => {
@@ -144,7 +144,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
   it('should not warn when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
     jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
-    const spy = jest.spyOn(console, 'warn');
+    const spy = jest.spyOn(global.console, 'warn');
     validateGetComponentChunkLinksUsage();
 
     expect(spy).not.toBeCalled();
@@ -155,9 +155,10 @@ describe('validateGetComponentChunkLinksUsage()', () => {
       .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
       .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
 
-    const spy = jest.spyOn(console, 'warn');
+    const spy = jest.spyOn(global.console, 'warn');
     validateGetComponentChunkLinksUsage();
 
+    // TODO: do we really want to check the whole warning message?
     expect(spy).toBeCalledWith(
       "Usage of Porsche Design System v1.2.3 component 'p-text' detected, without preloading. We recommend the usage of the\n" +
         "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior"

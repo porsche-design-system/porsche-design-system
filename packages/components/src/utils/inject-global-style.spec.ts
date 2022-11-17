@@ -3,7 +3,7 @@ import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  jest.spyOn(console, 'warn').mockImplementation(); // to suppress logs
+  jest.spyOn(global.console, 'warn').mockImplementation(); // to suppress logs
 });
 
 describe('if global styles are missing', () => {
@@ -15,7 +15,7 @@ describe('if global styles are missing', () => {
   });
 
   it('should call console.warn()', () => {
-    const spy = jest.spyOn(console, 'warn');
+    const spy = jest.spyOn(global.console, 'warn');
     injectGlobalStyle();
 
     expect(spy).toBeCalledTimes(1);
@@ -48,7 +48,7 @@ describe('if global styles are there', () => {
   });
 
   it('should not call console.warn()', () => {
-    const spy = jest.spyOn(console, 'warn');
+    const spy = jest.spyOn(global.console, 'warn');
     injectGlobalStyle();
 
     expect(spy).not.toBeCalled();
