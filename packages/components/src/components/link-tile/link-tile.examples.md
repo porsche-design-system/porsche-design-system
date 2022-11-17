@@ -43,7 +43,7 @@ can change the height by using different aspect ratios.
       <option value="4:3">4:3</option>
       <option value="9:16">9:16</option>
       <option value="16:9">16:9</option>
-      <option value="{base: '1:1', xs: '3:4', s: '4:3', m: '9:16', l: '16:9', xl: '1:1' }">responsive</option>
+      <option value="{ base: '3:4', s: '1:1', m: '16:9' }">{ base: '4:3', s: '1:1', m: '16:9' }</option>
     </select>
   </label>
 </Playground>
@@ -59,7 +59,7 @@ The `size` property changes the font size of the description.
       <option disabled>Select font size</option>
       <option value="default">default</option>
       <option value="inherit">inherit</option>
-      <option value="{base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default'}">responsive</option>
+      <option value="{ base: 'inherit', m: 'default' }">{ base: 'inherit', m: 'default' }</option>
     </select>
   </label>
 </Playground>
@@ -74,7 +74,7 @@ The `weight` property changes the font weight of the description.
     <option disabled>Select font weight</option>
     <option value="regular">regular</option>
     <option value="semibold">semibold</option>
-    <option value="{base: 'semibold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semibold', xl: 'regular'}">responsive</option>
+    <option value="{ base: 'semibold', m: 'regular' }">{ base: 'semibold', m: 'regular' }</option>
   </select>
 </Playground>
 
@@ -104,7 +104,7 @@ The `label` property stays mandatory when using `compact`, for **accessibility**
     <option disabled>Select compact</option>
     <option value="true">true</option>
     <option value="false">false</option>
-    <option value="{base: true, xs: false, s: true, m: false, l: true, xl: false}">responsive</option>
+    <option value="{ base: true, m: false }">{ base: true, m: false }</option>
   </select>
 </Playground>
 
@@ -129,7 +129,6 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
-
   aspectRatio = '4:3';
   size = 'default';
   weight = 'semibold';
@@ -137,13 +136,15 @@ export default class Code extends Vue {
   compact = 'true';
   align = 'top';
 
+  imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
+
   basic = `<p-link-tile
   href="https://www.porsche.com"
   label="Some label"
   description="Some Description"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile
   href="https://www.porsche.com"
@@ -152,31 +153,31 @@ export default class Code extends Vue {
   style="max-width: 400px;"
 >
   <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}"/>
-    <img src="${require('@/assets/image-grid-violet.png')}" alt="Some alt text" />
+    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
+    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
   </picture>
 </p-link-tile>`;
 
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="max-width: 400px;">
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`
   }
 
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true" style="max-width: 400px;">
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text"/>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`
   }
 
@@ -188,7 +189,7 @@ export default class Code extends Vue {
   gradient="${this.gradient}"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image-grid-split.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile
   href="https://www.porsche.com"
@@ -198,7 +199,7 @@ export default class Code extends Vue {
   gradient="${this.gradient}"
   style="max-width: 400px;"
 >
-  <img src="${require('@/assets/image-grid-split.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
 
   get compactMarkup() {
@@ -209,7 +210,7 @@ export default class Code extends Vue {
   compact="${this.compact}"
   style="max-width: 400px; font-size: 40px;"
 >
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
 
   get alignMarkup() {
@@ -221,7 +222,7 @@ export default class Code extends Vue {
   align="${this.align}"
   style="max-width: 400px; font-size: 40px;"
 >
-  <img src="${require('@/assets/image-grid.png')}" alt="Some alt text" />
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
 
 }
