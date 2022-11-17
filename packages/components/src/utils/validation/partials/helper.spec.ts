@@ -21,6 +21,7 @@ declare global {
 describe('getPreloadedTagNamesForCoreChunk()', () => {
   let coreChunkLinkElement;
   beforeEach(() => {
+    document.head.innerHTML = ''; // Clear head before each test
     coreChunkLinkElement = document.createElement('link');
     document.head.appendChild(coreChunkLinkElement);
   });
