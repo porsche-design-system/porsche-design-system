@@ -9,7 +9,7 @@ import {
 } from './helper';
 import type { TagName } from '@porsche-design-system/shared';
 import * as helperUtils from './helper';
-// import * as tagNameUtils from '../../tag-name';
+import * as tagNameUtils from '../../tag-name';
 import { COMPONENT_TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 
 declare global {
@@ -139,7 +139,7 @@ describe('getUsedTagNamesForVersions()', () => {
   });
 
   it('should call document.querySelectorAll() with correct parameter', () => {
-    const pdsComponentsSelectorMock = 'somSelector';
+    const pdsComponentsSelectorMock = 'someSelector';
     jest.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
     const spy = jest.spyOn(document, 'querySelectorAll');
     getUsedTagNamesForVersions(prefixesForVersion);
@@ -147,28 +147,40 @@ describe('getUsedTagNamesForVersions()', () => {
     expect(spy).toBeCalledWith(pdsComponentsSelectorMock);
   });
 
-  // it('should call getTagNameWithoutPrefix() with correct parameter', () => {
-  //   const el = document.createElement('p-text');
-  //   const el1 = document.createElement('my-prefix-p-text');
-  //   const el2 = document.createElement('my-prefix-p-text');
-  //   document.body.appendChild(el);
-  //   document.body.appendChild(el1);
-  //   document.body.appendChild(el2);
-  //   console.log(el.tagName);
-  //
-  //   const nodeList = document.childNodes as NodeListOf<Element>;
-  //
-  //   jest.spyOn(document, 'querySelectorAll').mockReturnValue();
-  //   const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
-  //   getUsedTagNamesForVersions(prefixesForVersion);
-  //
-  //   expect(spy).toHaveBeenNthCalledWith(1, 'p-text');
-  //   expect(spy).toHaveBeenNthCalledWith(2, 'my-prefix-p-text');
-  //   expect(spy).toHaveBeenNthCalledWith(3, 'my-prefix-p-text');
-  //   expect(spy).toBeCalledTimes(3);
-  // });
+  it('should call getTagNameWithoutPrefix() with correct parameters', () => {
+    const el = document.createElement('p-text');
+    const el1 = document.createElement('my-prefix-p-text');
+    const el2 = document.createElement('my-prefix-p-text');
 
-  it('should call return tagNames for each version without duplicates', () => {});
+    const mockReturnValue = [el, el1, el2];
+    jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
+    const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
+    getUsedTagNamesForVersions({ '1.2.3': ['p-text', 'my-prefix-p-text'] });
+
+    expect(spy).toHaveBeenNthCalledWith(1, el, 0, mockReturnValue);
+    expect(spy).toHaveBeenNthCalledWith(2, el1, 1, mockReturnValue);
+    expect(spy).toHaveBeenNthCalledWith(3, el2, 2, mockReturnValue);
+    expect(spy).toBeCalledTimes(3);
+  });
+
+  it('should return tagNames for each version without duplicates', () => {
+    const el = document.createElement('p-text');
+    const mockReturnValueArrayFrom = [el];
+    jest.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
+
+    const mockReturnValueMap: TagName[] = ['p-text', 'p-text', 'p-button', 'p-button', 'p-link'];
+    jest.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
+
+    expect(
+      getUsedTagNamesForVersions({
+        '1.2.3': [''],
+        '1.2.4': [''],
+      })
+    ).toEqual({
+      '1.2.3': ['p-text', 'p-button', 'p-link'],
+      '1.2.4': ['p-text', 'p-button', 'p-link'],
+    });
+  });
 });
 
 describe('getUsedTagNamesWithoutPreloadForVersions()', () => {
@@ -201,7 +213,7 @@ describe('getUsedTagNamesWithoutPreloadForVersions()', () => {
 });
 
 describe('getPorscheDesignSystemPrefixesForVersions()', () => {
-  it('should return prefix[] for Pds versions registered on document', () => {
+  it('should return prefix[] for PDS versions registered on document', () => {
     document.porscheDesignSystem = {
       '1.2.3': { prefixes: [''] },
       '1.2.4': { prefixes: ['prefix', 'another-prefix'] },
