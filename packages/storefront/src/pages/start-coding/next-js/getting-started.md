@@ -61,7 +61,8 @@ export default function App({ Component, pageProps }: AppProps) {
 ```
 
 Create `_document.tsx` and add necessary partials `getDSRPonyfill()`, `getInitialStyles()`, `getFontFaceStylesheet()`
-and `getFontLinks()`:
+and `getFontLinks()`. Further details, configuration options and even more partials to improve the UX or loading
+performance can be found [here](partials/introduction):
 
 ```tsx
 // pages/_document.tsx
