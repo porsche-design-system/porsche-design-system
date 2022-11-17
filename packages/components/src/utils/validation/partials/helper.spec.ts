@@ -67,7 +67,7 @@ describe('getPreloadedTagNamesForVersion()', () => {
     expect(getPreloadedTagNamesForVersion(version)).toEqual([]);
   });
 
-  it('should call document.querySelector() with correct parameter', () => {
+  it('should call document.querySelector() with correct parameters', () => {
     const documentQuerySelectorSpy = jest.spyOn(document, 'querySelector');
 
     getPreloadedTagNamesForVersion(version);
@@ -102,7 +102,7 @@ describe('getPreloadedTagNamesForVersions()', () => {
     });
   });
 
-  it('should call getPreloadedTagNamesForVersion() with correct parameter', () => {
+  it('should call getPreloadedTagNamesForVersion() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
 
     getPreloadedTagNamesForVersions(versions);
@@ -130,7 +130,7 @@ describe('getPdsComponentsSelector()', () => {
 describe('getUsedTagNamesForVersions()', () => {
   const prefixesForVersion = { '1.2.3': ['', 'my-prefix', 'some-prefix'], '1.2.4': ['', 'my-prefix', 'some-prefix'] };
 
-  it('should call getPdsComponentsSelector() with correct parameter', () => {
+  it('should call getPdsComponentsSelector() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getPdsComponentsSelector');
     getUsedTagNamesForVersions(prefixesForVersion);
 
@@ -139,7 +139,7 @@ describe('getUsedTagNamesForVersions()', () => {
     expect(spy).toBeCalledTimes(2);
   });
 
-  it('should call document.querySelectorAll() with correct parameter', () => {
+  it('should call document.querySelectorAll() with correct parameters', () => {
     const pdsComponentsSelectorMock = 'someSelector';
     jest.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
     const spy = jest.spyOn(document, 'querySelectorAll');

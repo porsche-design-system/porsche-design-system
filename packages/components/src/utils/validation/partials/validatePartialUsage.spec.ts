@@ -1,13 +1,14 @@
 import {
-  PartialName,
   partialValidationWarning,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,
+  validateGetInitialStylesUsage,
   validateGetLoaderScriptUsage,
   validatePartialUsage,
 } from './validatePartialUsage';
+import type { PartialName } from './validatePartialUsage';
+import type { TagNamesForVersions } from './helper';
 import * as validatePartialUsageUtils from './validatePartialUsage';
-import { TagNamesForVersions } from './helper';
 import * as helperUtils from './helper';
 
 document.porscheDesignSystem = {
@@ -85,15 +86,22 @@ describe('validatePartialUsage()', () => {
 });
 
 describe('validateGetFontLinksUsage()', () => {
-  it('should call partialValidationWarning() with correct parameter', () => {
+  it('should call partialValidationWarning() with correct parameters', () => {
     const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
     validateGetFontLinksUsage();
 
     expect(spy).toBeCalledWith('getFontLink');
   });
 
+  it('should call document.querySelector()', () => {
+    const spy = jest.spyOn(document, 'querySelector');
+    validateGetFontLinksUsage();
+
+    expect(spy).toBeCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
+  });
+
   // TODO: also test with different rel, as and href?
-  it('should not call partialValidationWarning() with "getFontLink" if font link is found', () => {
+  it('should not call partialValidationWarning() if font link is found', () => {
     const fontLink = document.createElement('link');
     fontLink.setAttribute('rel', 'preload');
     fontLink.setAttribute('as', 'font');
@@ -108,21 +116,21 @@ describe('validateGetFontLinksUsage()', () => {
 });
 
 describe('validateGetComponentChunkLinksUsage()', () => {
-  it('should call getPorscheDesignSystemPrefixesForVersions() with correct parameter', () => {
+  it('should call getPorscheDesignSystemPrefixesForVersions() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions');
     validateGetComponentChunkLinksUsage();
 
     expect(spy).toBeCalledWith();
   });
 
-  it('should call getPreloadedTagNamesForVersions() with correct parameter', () => {
+  it('should call getPreloadedTagNamesForVersions() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersions');
     validateGetComponentChunkLinksUsage();
 
     expect(spy).toBeCalledWith(['1.2.3', '1.2.4', '1.2.5']);
   });
 
-  it('should call getUsedTagNamesForVersions() with correct parameter', () => {
+  it('should call getUsedTagNamesForVersions() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getUsedTagNamesForVersions');
     validateGetComponentChunkLinksUsage();
 
@@ -171,11 +179,18 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 });
 
 describe('validateGetLoaderScriptUsage()', () => {
-  it('should call partialValidationWarning() with correct parameter', () => {
+  it('should call partialValidationWarning() with correct parameters', () => {
     const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
     validateGetLoaderScriptUsage();
 
     expect(spy).toBeCalledWith('getLoaderScript');
+  });
+
+  it('should call document.querySelector()', () => {
+    const spy = jest.spyOn(document, 'querySelector');
+    validateGetLoaderScriptUsage();
+
+    expect(spy).toBeCalledWith('script[data-pds-loader-script]');
   });
 
   it('should not call partialValidationWarning() if loader script is found', () => {
@@ -191,29 +206,57 @@ describe('validateGetLoaderScriptUsage()', () => {
 });
 
 describe('validateGetInitialStylesUsage()', () => {
-  it('', () => {});
+  it('should call getPorscheDesignSystemPrefixesForVersions() with correct parameters', () => {
+    const spy = jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions');
+    validateGetInitialStylesUsage();
+
+    expect(spy).toBeCalledWith();
+  });
+
+  it('should should call console.warn thrice when initial style is not found', () => {
+    const spy = jest.spyOn(global.console, 'warn');
+    validateGetInitialStylesUsage();
+
+    expect(spy).toBeCalledTimes(3);
+  });
+
+  it('should call document.querySelector() thrice', () => {
+    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
+      '1.2.3': [''],
+      '1.2.4': ['prefix'],
+      '1.2.5': ['my-prefix'],
+    });
+    const spy = jest.spyOn(document, 'querySelector');
+    validateGetInitialStylesUsage();
+
+    expect(spy).toBeCalledWith('style[data-pds-initial-styles]');
+    expect(spy).toBeCalledWith('style[data-pds-initial-styles-prefix]');
+    expect(spy).toBeCalledWith('style[data-pds-initial-styles-my-prefix]');
+    expect(spy).toBeCalledTimes(3);
+  });
+
+  it('should not call console.warn when initial style tags are found for each prefix', () => {
+    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
+      '1.2.3': [''],
+      '1.2.4': ['prefix'],
+      '1.2.5': ['my-prefix'],
+    });
+    jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('style'));
+    const spy = jest.spyOn(global.console, 'warn');
+    validateGetInitialStylesUsage();
+
+    expect(spy).not.toBeCalled();
+  });
 });
 
 describe('partialValidationWarning()', () => {
-  it('should warn with correct parameter when called with partial getFontLink()', () => {
-    const partialName: PartialNames = 'getFontLink';
-    const spy = jest.spyOn(console, 'warn');
-    partialValidationWarning(partialName);
+  it.each<PartialName>(['getFontLink', 'getLoaderScript'])(
+    'should warn with correct parameters when called with partial %s()',
+    (partialName) => {
+      const spy = jest.spyOn(global.console, 'warn');
+      partialValidationWarning(partialName);
 
-    expect(spy).toBeCalledWith(
-      "You are not using 'getFontLink()'. The Porsche Design System recommends the usage of the 'getFontLink()'\n" +
-        'partial as described at https://designsystem.porsche.com/v2/partials/font-links to enhance performance and loading behavior'
-    );
-  });
-
-  it('should warn with correct parameter when called with partial getLoaderScript()', () => {
-    const partialName: PartialNames = 'getLoaderScript';
-    const spy = jest.spyOn(console, 'warn');
-    partialValidationWarning(partialName);
-
-    expect(spy).toBeCalledWith(
-      "You are not using 'getLoaderScript()'. The Porsche Design System recommends the usage of the 'getLoaderScript()'\n" +
-        'partial as described at https://designsystem.porsche.com/v2/partials/loader-script to enhance performance and loading behavior'
-    );
-  });
+      expect(spy).toBeCalledTimes(1);
+    }
+  );
 });
