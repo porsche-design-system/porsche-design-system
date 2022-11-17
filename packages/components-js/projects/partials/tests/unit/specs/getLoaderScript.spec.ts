@@ -19,7 +19,7 @@ it('should not contain componentsReady', () => {
 describe('format: html', () => {
   it('should return content of components-js tmp build within script tag', () => {
     const result = getLoaderScript();
-    expect(result).toMatch(`<script>${fileContent}</script>`);
+    expect(result).toMatch(`<script data-pds-loader-script>${fileContent}</script>`);
   });
 
   it('should call load method with supplied prefix', () => {
@@ -40,7 +40,7 @@ describe('format: html', () => {
 describe('format: jsx', () => {
   it('should return content of components-js tmp build without script tag', () => {
     const { container } = render(getLoaderScript({ format: 'jsx' }));
-    expect(container.innerHTML).toMatch(`<script>${fileContent}</script>`);
+    expect(container.innerHTML).toMatch(`<script data-pds-loader-script="">${fileContent}</script>`);
   });
 
   it('should call load method with supplied prefix', () => {
