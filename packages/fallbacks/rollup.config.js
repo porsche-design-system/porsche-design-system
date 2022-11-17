@@ -24,7 +24,6 @@ export default [
     input: `${inputDir}/browser-support/browser-support.ts`,
     output: {
       ...outputConfig,
-      format: 'esm',
       file: `${outputDir}/browser-support.min.js`,
     },
     plugins: [typescript(), terser()],
@@ -41,7 +40,6 @@ export default [
     input: `${inputDir}/cookies/cookies.ts`,
     output: {
       ...outputConfig,
-      format: 'esm',
       file: `${outputDir}/cookies.min.js`,
     },
     plugins: [typescript(), terser()],
