@@ -235,6 +235,7 @@ export class TextFieldWrapper {
           ) : (
             this.isSearch && [
               <button
+                key="btn-clear"
                 type="button"
                 tabIndex={-1}
                 hidden={!this.isClearable}
@@ -245,6 +246,7 @@ export class TextFieldWrapper {
               </button>,
               this.hasAction && (
                 <button
+                  key="btn-action"
                   type="button"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
@@ -260,12 +262,12 @@ export class TextFieldWrapper {
                 </button>
               ),
               this.isWithinForm ? (
-                <button type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
+                <button key="btn-submit" type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
                   <span class="sr-only">Search</span>
                   <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>
               ) : (
-                <PrefixedTagNames.pIcon class="icon" name="search" {...iconProps} />
+                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
               ),
             ]
           )}

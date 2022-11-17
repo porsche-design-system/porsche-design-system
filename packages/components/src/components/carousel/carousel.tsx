@@ -192,7 +192,7 @@ export class Carousel {
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div class="splide__slide">
+                <div key={i} class="splide__slide">
                   <slot name={`slide-${i}`} />
                 </div>
               ))}

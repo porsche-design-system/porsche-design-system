@@ -181,7 +181,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
-      let liCounter = 0; // for pagination unique key
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
@@ -202,11 +201,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(host={)this\.props(})/g, '$1null$2') // StateMessage usage
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
-        .replace(/(<div) (className={direction === 'next' \? 'action-next' : 'action-prev'}>)/, '$1 key={direction} $2') // scroller unique key warning
-        .replace(/(<source) (srcSet=.*?, '?.*?([a-z]+)'?, '([a-z]+)')/g, '$1 key="$3-$4" $2') // marque unique key warning
-        .replace(/<li>/g, () => {
-          return `<li key=\{${liCounter++}}>`;
-        }) // pagination unique key warning
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
@@ -214,18 +208,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       // component based tweaks
       if (tagName === 'p-carousel') {
-        newFileContent = newFileContent
-          .replace(/this\.slides(\.map)/, `defaultChildren$1`)
-          .replace(/(<div) (className="splide__slide">)/g, '$1 key={i} $2');
+        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `defaultChildren$1`);
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `defaultChildren$1`)
-          .replace(
-            /(<button) (type="button">){tab\.label}(<\/button>)/g,
-            '$1 key={tab.props.label} $2{tab.props.label}$3'
-          )
           .replace(
             /const defaultChildren =.*/,
             `$&

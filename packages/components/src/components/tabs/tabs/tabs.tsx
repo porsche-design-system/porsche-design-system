@@ -100,7 +100,9 @@ export class Tabs {
           onTabChange={this.onTabChange}
         >
           {this.tabsItemElements.map((tab) => (
-            <button type="button">{tab.label}</button>
+            <button key={tab.label} type="button">
+              {tab.label}
+            </button>
           ))}
         </PrefixedTagNames.pTabsBar>
         <slot />

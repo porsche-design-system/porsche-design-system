@@ -107,7 +107,7 @@ export class Scroller {
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (
-        <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
+        <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButtonPure
             class="button"
             type="button"

@@ -110,7 +110,7 @@ export class Pagination {
             switch (type) {
               case itemTypes.PREVIOUS_PAGE_LINK:
                 return (
-                  <li>
+                  <li key="prev">
                     <span
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}
@@ -124,14 +124,14 @@ export class Pagination {
 
               case itemTypes.ELLIPSIS:
                 return (
-                  <li>
+                  <li key="ellipsis">
                     <span class="ellipsis" />
                   </li>
                 );
 
               case itemTypes.PAGE:
                 return (
-                  <li>
+                  <li key={value}>
                     <span
                       {...spanProps}
                       tabIndex={0}
@@ -145,7 +145,7 @@ export class Pagination {
 
               case itemTypes.NEXT_PAGE_LINK:
                 return (
-                  <li>
+                  <li key="next">
                     <span
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}

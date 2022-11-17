@@ -123,13 +123,13 @@ export class LinkTile {
     };
 
     const link: JSX.Element = (
-      <PrefixedTagNames.pLink {...linkProps} class="link" variant="tertiary">
+      <PrefixedTagNames.pLink {...linkProps} key="link" class="link" variant="tertiary">
         <a {...anchorProps}>{this.label}</a>
       </PrefixedTagNames.pLink>
     );
 
     const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure {...linkProps} class="link-pure" hideLabel={true} icon="arrow-right">
+      <PrefixedTagNames.pLinkPure {...linkProps} key="link-pure" class="link-pure" hideLabel={true} icon="arrow-right">
         <a {...anchorProps}>{this.label}</a>
       </PrefixedTagNames.pLinkPure>
     );
