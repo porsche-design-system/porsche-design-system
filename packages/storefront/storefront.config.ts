@@ -516,6 +516,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
     // @ts-ignore
+    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
+    // @ts-ignore
     'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
     // @ts-ignore
     'Font Links': [() => import('@/pages/partials/font-links.md')],
