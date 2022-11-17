@@ -8,6 +8,7 @@ import {
 type PartialNames = 'getFontLink' | 'getLoaderScript';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
     porscheDesignSystem: { [key: string]: { prefixes: string[] } };
   }

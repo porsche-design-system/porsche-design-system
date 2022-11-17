@@ -17,9 +17,9 @@ export const getPreloadedTagNamesForCoreChunk = (coreChunkLink: HTMLLinkElement)
 };
 
 export const getPreloadedTagNamesForVersion = (version: string): TagName[] => {
-  const coreChunkLinkElement = document.querySelector(
+  const coreChunkLinkElement: HTMLLinkElement = document.querySelector(
     `[href*=porsche-design-system.v${version}]`.replace(/\./g, '\\.')
-  ) as HTMLLinkElement;
+  );
 
   return coreChunkLinkElement ? getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
 };
