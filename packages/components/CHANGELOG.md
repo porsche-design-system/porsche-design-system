@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.18.0-rc.0] - 2022-11-17
+
 #### Added
 
 - SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
