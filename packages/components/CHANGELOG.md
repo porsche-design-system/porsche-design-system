@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- SSR/SSG ready components using Declarative Shadow DOM for NextJs are shipped via
+- SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
   `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
 
 ```diff
