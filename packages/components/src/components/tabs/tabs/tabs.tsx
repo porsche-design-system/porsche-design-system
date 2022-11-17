@@ -99,8 +99,8 @@ export class Tabs {
           activeTabIndex={this.activeTabIndex}
           onTabChange={this.onTabChange}
         >
-          {this.tabsItemElements.map((tab) => (
-            <button key={tab.label} type="button">
+          {this.tabsItemElements.map((tab, index) => (
+            <button key={index} type="button">
               {tab.label}
             </button>
           ))}
