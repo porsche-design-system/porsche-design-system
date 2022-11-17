@@ -29,13 +29,13 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleAttributes = prefix ? \`data-pds-initial-styles-\$\{prefix\}\` : 'data-pds-initial-styles';
-  const styleProps = { 'pds-initial-styles': 'true' };
+  const dataAttribute = prefix ? \`data-pds-initial-styles-\$\{prefix\}\` : 'data-pds-initial-styles'
+  const styleProps = { [dataAttribute]: "" };
 
   const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
 
   const markup = format === 'html'
-    ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
+    ? \`<style \$\{dataAttribute\}>\${styles}</style>\`
     : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 
   return withoutTags
