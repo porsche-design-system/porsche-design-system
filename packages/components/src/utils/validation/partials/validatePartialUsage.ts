@@ -5,7 +5,7 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 
-type PartialNames = 'getFontLink' | 'getLoaderScript';
+export type PartialNames = 'getFontLink' | 'getLoaderScript';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions

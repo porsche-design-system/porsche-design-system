@@ -1,4 +1,6 @@
 import {
+  PartialNames,
+  partialValidationWarning,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,
   validateGetLoaderScriptUsage,
@@ -15,7 +17,8 @@ document.porscheDesignSystem = {
 };
 
 beforeEach(() => {
-  jest.spyOn(console, 'warn').mockImplementation();
+  document.head.innerHTML = ''; // reset between tests
+  jest.spyOn(console, 'warn').mockImplementation(); // to suppress logs
 });
 
 describe('validatePartialUsage()', () => {
@@ -191,5 +194,25 @@ describe('validateGetInitialStylesUsage()', () => {
 });
 
 describe('partialValidationWarning()', () => {
-  it('', () => {});
+  it('should warn with correct parameter when called with partial getFontLink()', () => {
+    const partialName: PartialNames = 'getFontLink';
+    const spy = jest.spyOn(console, 'warn');
+    partialValidationWarning(partialName);
+
+    expect(spy).toBeCalledWith(
+      "You are not using 'getFontLink()'. The Porsche Design System recommends the usage of the 'getFontLink()'\n" +
+        'partial as described at https://designsystem.porsche.com/v2/partials/font-links to enhance performance and loading behavior'
+    );
+  });
+
+  it('should warn with correct parameter when called with partial getLoaderScript()', () => {
+    const partialName: PartialNames = 'getLoaderScript';
+    const spy = jest.spyOn(console, 'warn');
+    partialValidationWarning(partialName);
+
+    expect(spy).toBeCalledWith(
+      "You are not using 'getLoaderScript()'. The Porsche Design System recommends the usage of the 'getLoaderScript()'\n" +
+        'partial as described at https://designsystem.porsche.com/v2/partials/loader-script to enhance performance and loading behavior'
+    );
+  });
 });
