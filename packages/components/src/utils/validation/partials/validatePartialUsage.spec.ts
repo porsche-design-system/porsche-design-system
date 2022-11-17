@@ -1,5 +1,5 @@
 import {
-  PartialNames,
+  PartialName,
   partialValidationWarning,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,

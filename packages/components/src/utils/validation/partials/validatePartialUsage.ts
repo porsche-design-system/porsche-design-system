@@ -5,7 +5,7 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 
-export type PartialNames = 'getFontLink' | 'getLoaderScript';
+export type PartialName = 'getFontLink' | 'getLoaderScript';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -74,8 +74,8 @@ export const validateGetInitialStylesUsage = (): void => {
     });
 };
 
-export const partialValidationWarning = (partialName: PartialNames): void => {
-  const partialNameToLinkPathMap: Record<PartialNames, string> = {
+export const partialValidationWarning = (partialName: PartialName): void => {
+  const partialNameToLinkPathMap: Record<PartialName, string> = {
     getFontLink: 'font-links',
     getLoaderScript: 'loader-script',
   };
