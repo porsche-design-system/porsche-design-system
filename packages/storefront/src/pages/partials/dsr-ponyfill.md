@@ -1,4 +1,4 @@
-# DSR Ponyfill
+# Dsr Ponyfill
 
 **Function name:** `getDSRPonyfill()`
 
