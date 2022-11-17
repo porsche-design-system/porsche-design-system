@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
+- Minor A11y improvements in `Select`
+
 ### [2.17.0] - 2022-10-31
 
 ### [2.17.0-rc.0] - 2022-10-31
