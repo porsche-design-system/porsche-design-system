@@ -1,6 +1,5 @@
 import { injectGlobalStyle } from './inject-global-style';
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
@@ -8,18 +7,18 @@ beforeEach(() => {
 });
 
 describe('if global styles are missing', () => {
-  it('should call document.head.querySelector() twice', () => {
+  it('should call document.head.querySelector()', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     injectGlobalStyle();
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call console.warn() twice', () => {
+  it('should call console.warn()', () => {
     const spy = jest.spyOn(console, 'warn');
     injectGlobalStyle();
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should inject font-face.min.css', () => {
@@ -33,16 +32,6 @@ describe('if global styles are missing', () => {
     expect(linkEl.type).toBe('text/css');
     expect(linkEl.rel).toBe('stylesheet');
   });
-
-  it('should inject initial styles', () => {
-    const selector = 'style[pds-initial-styles]';
-    expect(document.head.querySelector(selector)).toBeNull();
-    injectGlobalStyle();
-
-    const styleEl: HTMLStyleElement = document.head.querySelector(selector);
-    expect(styleEl).not.toBeNull();
-    expect(styleEl.innerText).toBe(TAG_NAMES.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}');
-  });
 });
 
 describe('if global styles are there', () => {
@@ -51,11 +40,11 @@ describe('if global styles are there', () => {
 <style pds-initial-styles>some styles..</style>`;
   });
 
-  it('should call document.head.querySelector() twice', () => {
+  it('should call document.head.querySelector()', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     injectGlobalStyle();
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should not call console.warn()', () => {

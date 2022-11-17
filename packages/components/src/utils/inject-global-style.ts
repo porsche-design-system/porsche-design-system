@@ -5,6 +5,7 @@ export const injectGlobalStyle = (): void => {
     return;
   }
 
+  // TODO: should we test this logic? also warning message and href attribute?
   const styleUrl =
     ROLLUP_REPLACE_IS_STAGING === 'production' ? FONT_FACE_CDN_URL : 'http://localhost:3001/styles/font-face.min.css';
 
