@@ -19,7 +19,8 @@ describe('client build', () => {
       expect(fileContent).not.toContain('shadowroot');
       expect(fileContent).not.toContain('shadowrootdelegatesfocus');
       expect(fileContent).not.toContain('process.browser');
-      expect(fileContent).not.toContain('ssr'); // added className from server build
+      expect(fileContent).not.toContain('"ssr"'); // added className from server build
+      expect(fileContent).not.toContain("'ssr'"); // added className from server build
     }
   );
 });
