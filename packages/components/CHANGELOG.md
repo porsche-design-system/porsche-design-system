@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Improve height calculation for `Accordion`
 - Slotted anchor support for `Link Pure` is stricter (In case slotted `<a>` is used it must be a direct child of
   `Link Pure`)
+- `getFontLinks()` partial now has `{ weights: ['regular', 'semi-bold'] }` for a default
 
 ### [2.17.0] - 2022-10-31
 

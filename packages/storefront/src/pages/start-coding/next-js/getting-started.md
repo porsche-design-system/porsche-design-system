@@ -79,7 +79,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {getFontFaceStylesheet({ format: 'jsx' })}
-        {getFontLinks({ weights: ['regular', 'semi-bold'], format: 'jsx' })}
+        {getFontLinks({ format: 'jsx' })}
         {getInitialStyles({ format: 'jsx' })}
       </Head>
       <body>

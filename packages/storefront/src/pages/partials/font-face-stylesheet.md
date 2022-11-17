@@ -40,7 +40,7 @@ export default class Code extends Vue {
       value: ""
     },
     {
-      value: "{ cdn: 'cn' ",
+      value: "{ cdn: 'cn' }",
       comment: 'force using China CDN',
     },
   ];
