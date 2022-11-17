@@ -214,6 +214,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `defaultChildren$1`)
+          .replace(/(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g, '$1{tab.props.label}$2')
           .replace(
             /const defaultChildren =.*/,
             `$&
