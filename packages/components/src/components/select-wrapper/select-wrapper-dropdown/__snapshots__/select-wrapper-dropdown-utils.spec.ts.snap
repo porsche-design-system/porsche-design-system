@@ -55,27 +55,30 @@ exports[`getFilterInputAriaAttributes() should return correct aria attributes fo
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: true 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], hasFilter: true and isOpen: false 1`] = `
 {
+  "aria-hidden": "true",
   "aria-label": "Some label",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}], hasFilter: false and isOpen: false 1`] = `
 {
   "aria-activedescendant": "option-1",
+  "aria-hidden": "true",
   "aria-label": "Some label",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], hasFilter: false and isOpen: false 1`] = `
 {
+  "aria-hidden": "true",
   "aria-label": "Some label",
   "aria-required": "true",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: true 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}], hasFilter: true and isOpen: true 1`] = `
 {
   "aria-label": "Some label",
 }

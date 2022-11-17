@@ -105,15 +105,15 @@ describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;
 
-  it.each<[string, boolean, OptionMap[], boolean]>([
-    ['Some label', true, generateOptionMaps({ amount }), false],
-    ['Some label', false, generateOptionMaps({ amount }), true],
-    ['Some label', false, generateOptionMaps({ amount, highlightedIndex }), false],
-    ['Some label', true, generateOptionMaps({ amount, highlightedIndex }), true],
+  it.each<[string, boolean, OptionMap[], boolean, boolean]>([
+    ['Some label', true, generateOptionMaps({ amount }), false, false],
+    ['Some label', false, generateOptionMaps({ amount }), true, false],
+    ['Some label', false, generateOptionMaps({ amount, highlightedIndex }), false, false],
+    ['Some label', true, generateOptionMaps({ amount, highlightedIndex }), true, true],
   ])(
-    'should return correct aria attributes for label: %o, isRequired: %o, optionMaps: %j and hasFilter: %o',
-    (label, isRequired, optionMaps, hasFilter) => {
-      expect(getListAriaAttributes(label, isRequired, optionMaps, hasFilter)).toMatchSnapshot();
+    'should return correct aria attributes for label: %o, isRequired: %o, optionMaps: %j, hasFilter: %o and isOpen: %o',
+    (label, isRequired, optionMaps, hasFilter, isOpen) => {
+      expect(getListAriaAttributes(label, isRequired, optionMaps, hasFilter, isOpen)).toMatchSnapshot();
     }
   );
 });
