@@ -107,9 +107,9 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
     getPreloadedTagNamesForVersions(versions);
 
-    expect(spy).toHaveBeenNthCalledWith(1, '1.2.3');
-    expect(spy).toHaveBeenNthCalledWith(2, '4.5.6');
-    expect(spy).toHaveBeenNthCalledWith(3, '7.8.9');
+    expect(spy).toBeCalledWith('1.2.3');
+    expect(spy).toBeCalledWith('4.5.6');
+    expect(spy).toBeCalledWith('7.8.9');
     expect(spy).toBeCalledTimes(3);
   });
 });
@@ -134,8 +134,8 @@ describe('getUsedTagNamesForVersions()', () => {
     const spy = jest.spyOn(helperUtils, 'getPdsComponentsSelector');
     getUsedTagNamesForVersions(prefixesForVersion);
 
-    expect(spy).toHaveBeenNthCalledWith(1, prefixesForVersion['1.2.3']);
-    expect(spy).toHaveBeenNthCalledWith(2, prefixesForVersion['1.2.4']);
+    expect(spy).toBeCalledWith(prefixesForVersion['1.2.3']);
+    expect(spy).toBeCalledWith(prefixesForVersion['1.2.4']);
     expect(spy).toBeCalledTimes(2);
   });
 
@@ -158,9 +158,9 @@ describe('getUsedTagNamesForVersions()', () => {
     const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
     getUsedTagNamesForVersions({ '1.2.3': ['p-text', 'my-prefix-p-text'] });
 
-    expect(spy).toHaveBeenNthCalledWith(1, el, 0, mockReturnValue);
-    expect(spy).toHaveBeenNthCalledWith(2, el1, 1, mockReturnValue);
-    expect(spy).toHaveBeenNthCalledWith(3, el2, 2, mockReturnValue);
+    expect(spy).toBeCalledWith(el, 0, mockReturnValue);
+    expect(spy).toBeCalledWith(el1, 1, mockReturnValue);
+    expect(spy).toBeCalledWith(el2, 2, mockReturnValue);
     expect(spy).toBeCalledTimes(3);
   });
 
