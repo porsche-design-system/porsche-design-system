@@ -16,15 +16,15 @@ describe('connectedCallback', () => {
   });
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call syncItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(segmentedControlUtils, 'syncItemsProps');
+    const spy = jest.spyOn(segmentedControlUtils, 'syncSegmentedControlItemsProps');
 
     const component = new SegmentedControl();
     component.host = document.createElement('p-segmented-control');
     component.host.attachShadow({ mode: 'open' });
 
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, component.value, component.backgroundColor, component.theme);
   });

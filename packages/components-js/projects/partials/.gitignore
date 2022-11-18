@@ -8,3 +8,4 @@
 
 # production
 /dist
+/dist-tmp

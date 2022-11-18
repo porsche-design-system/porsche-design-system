@@ -43,7 +43,7 @@ describe('modal', () => {
     });
   });
 
-  describe('componentWillRender', () => {
+  describe('render', () => {
     beforeEach(() => {
       jest.spyOn(console, 'warn').mockImplementation(() => {});
     });
@@ -51,7 +51,7 @@ describe('modal', () => {
     it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
       const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
       component.open = true;
-      component.componentWillRender();
+      component.render();
 
       expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(
         component.host,
@@ -63,7 +63,7 @@ describe('modal', () => {
     it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
       const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
       component.open = false;
-      component.componentWillRender();
+      component.render();
 
       expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toBeCalled();
     });
@@ -71,7 +71,7 @@ describe('modal', () => {
     it('should not call hasNamedSlot() when heading is provided', () => {
       const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
       component.heading = 'Some Heading';
-      component.componentWillRender();
+      component.render();
 
       expect(hasNamedSlotSpy).not.toBeCalled();
     });
@@ -81,7 +81,7 @@ describe('modal', () => {
       const header = document.createElement('header');
       header.slot = 'heading';
       component.host.appendChild(header);
-      component.componentWillRender();
+      component.render();
 
       expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'heading');
     });

@@ -79,7 +79,7 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
 );
 
 it.each<TagName>(tagNamesPublicWithProps)(
-  'should call validateProps() with correct parameters via componentWillRender for %s',
+  'should call validateProps() with correct parameters via render for %s',
   (tagName) => {
     // extract the structure of the actual propTypes with ValidatorFunctions for a snapshot
     // this works for first level only, so nested ValidatorFunctions inside .oneOf are not considered
@@ -101,11 +101,17 @@ it.each<TagName>(tagNamesPublicWithProps)(
       component.componentWillRender();
     } catch {}
 
+    expect(spy).not.toBeCalled();
+
+    try {
+      component.render();
+    } catch {}
+
     // it would be possible to exclude a prop from propTypes via Omit<...>
     // to get confidence that isn't the case, we check against components meta which contains all props
-    const propTypesStructure = (getComponentMeta(tagName).props || []).reduce(
-      (prev, prop) => ({ ...prev, [Object.keys(prop)[0]]: expect.any(Function) }),
-      {}
+    const propTypesStructure = Object.keys(getComponentMeta(tagName).props || {}).reduce(
+      (prev, prop) => ({ ...prev, [prop]: expect.any(Function) }),
+      {} as Record<string, any>
     );
 
     // manual exceptions for props that have no validation
@@ -130,41 +136,35 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
 });
 
 it.each<TagName>(tagNamesWithJss)(
-  'should call attachComponentCss() with correct parameters in correct lifecycle for %s',
+  'should call attachComponentCss() with correct parameters via render for %s',
   (tagName) => {
     const spy = jest.spyOn(jssUtils, 'attachComponentCss');
-    let spyCalls = 0;
-
     const component = componentFactory(tagName);
+
+    // some components require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
     if (component.connectedCallback) {
       try {
         component.connectedCallback();
       } catch {}
 
-      if (spy.mock.calls.length) {
-        expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-        spyCalls++;
-      }
+      expect(spy).not.toBeCalled();
     }
 
     if (component.componentWillRender) {
-      spy.mockClear(); // might contain something from previous call already
-
-      // some components require a parent and certain props in order to work
-      addParentAndSetRequiredProps(tagName, component);
-
       try {
         component.componentWillRender();
       } catch {}
 
-      if (spy.mock.calls.length) {
-        expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
-        spyCalls++;
-      }
+      expect(spy).not.toBeCalled();
     }
 
-    expect(spyCalls).toBe(1); // via connectedCallback or componentWillRender
+    try {
+      component.render();
+    } catch {}
+
+    expect(spy).toBeCalledTimes(1); // via render
   }
 );
 

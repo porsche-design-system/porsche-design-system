@@ -1,18 +1,15 @@
-import { Component, Element, h, Host, JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
-  getClosestHTMLElement,
   getDataThemeDarkAttribute,
-  getPrefixedTagNames,
   THEMES,
-  updateChildren,
   validateProps,
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { ListType, OrderType } from './text-list-utils';
-import { LIST_TYPES, ORDER_TYPES } from './text-list-utils';
+import { LIST_TYPES, ORDER_TYPES, syncTextListItemsProps } from './text-list-utils';
 import { getComponentCss, getSlottedCss } from './text-list-styles';
 
 const propTypes: PropTypes<typeof TextList> = {
@@ -37,32 +34,20 @@ export class TextList {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  @Watch('listType')
-  public handleListTypeChange(): void {
-    updateChildren(this.host);
-  }
-
-  @Watch('orderType')
-  public handleOrderTypeChange(): void {
-    updateChildren(this.host);
-  }
-
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.theme);
-  }
 
-  public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
+
+    syncTextListItemsProps(this.host, this.listType, this.orderType);
 
     return (
-      <Host nested={isNestedList} {...getDataThemeDarkAttribute(this.theme)}>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <TagType role="list">
           <slot />
         </TagType>

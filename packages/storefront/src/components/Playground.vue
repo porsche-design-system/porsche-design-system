@@ -83,7 +83,7 @@
   const themableComponentsSelector = Object.entries(componentMeta)
     .filter(([, meta]) => meta.isThemeable)
     .map(([tagName]) => tagName)
-    .join(',');
+    .join();
 
   @Component({
     components: {

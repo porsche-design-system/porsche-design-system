@@ -11,10 +11,11 @@ export class TableHeadRow {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head');
-    attachComponentCss(this.host, getComponentCss);
   }
 
   public render(): JSX.Element {
+    attachComponentCss(this.host, getComponentCss);
+
     return (
       <Host role="row">
         <slot />

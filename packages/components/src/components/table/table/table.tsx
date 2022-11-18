@@ -41,7 +41,6 @@ export class Table {
   private tableElement: HTMLElement;
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     attachSlottedCss(this.host, getSlottedCss);
   }
 
@@ -57,15 +56,14 @@ export class Table {
     this.initIntersectionObserver();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-  }
-
   public disconnectedCallback(): void {
     this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
     const captionId = 'caption';
@@ -94,8 +92,8 @@ export class Table {
                 class="scroll-button"
                 aria-hidden="true"
                 type="button"
-                tabindex="-1"
-                hide-label="true"
+                tabIndex={-1}
+                hideLabel={true}
                 size="inherit"
                 icon="arrow-head-right"
                 onClick={this.onScrollClick}

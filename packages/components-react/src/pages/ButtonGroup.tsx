@@ -1,24 +1,11 @@
 /* Auto Generated File */
 import { PButton, PButtonGroup, PButtonPure } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
 
 export const ButtonGroupPage = (): JSX.Element => {
-  useEffect(() => {
-    (document.querySelector('#setDirectionToUndefined') as any).direction = undefined;
-  }, []);
-
   return (
     <>
       <div className="playground light" title="should render button-group">
         <PButtonGroup>
-          <PButton variant="primary">Some label</PButton>
-          <PButton variant="secondary">Some label</PButton>
-          <PButton variant="tertiary">Some label</PButton>
-        </PButtonGroup>
-      </div>
-
-      <div className="playground light" title="should show p-button-group default style when direction is undefined">
-        <PButtonGroup id="setDirectionToUndefined">
           <PButton variant="primary">Some label</PButton>
           <PButton variant="secondary">Some label</PButton>
           <PButton variant="tertiary">Some label</PButton>

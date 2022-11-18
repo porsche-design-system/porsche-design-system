@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type {
   GridDirection,
   GridDirectionType,
@@ -8,9 +8,9 @@ import type {
   GridWrapType,
 } from './grid-utils';
 import { getComponentCss } from './grid-styles';
-import { AllowedTypes, attachComponentCss, updateChildren, validateProps } from '../../../utils';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
 import type { PropTypes } from '../../../types';
-import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
+import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS, syncGridItemsProps } from './grid-utils';
 
 const propTypes: PropTypes<typeof Grid> = {
   direction: AllowedTypes.breakpoint<GridDirectionType>(GRID_DIRECTIONS),
@@ -34,17 +34,11 @@ export class Grid {
   /** Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this. */
   @Prop() public gutter?: GridGutter = { base: 16, s: 24, m: 36 };
 
-  @Watch('gutter')
-  public handleGutterChange(): void {
-    updateChildren(this.host);
-  }
-
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
-  }
+    syncGridItemsProps(this.host, this.gutter);
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

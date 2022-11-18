@@ -43,6 +43,8 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
       // @ts-ignore
+      'Ssr Support': [() => import('@/pages/start-coding/next-js/ssr-support.md')],
+      // @ts-ignore
       Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
     },
   },
@@ -513,6 +515,8 @@ export const config: StorefrontConfig = {
     'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
     // @ts-ignore
     'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
+    // @ts-ignore
+    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
     // @ts-ignore
     'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
     // @ts-ignore

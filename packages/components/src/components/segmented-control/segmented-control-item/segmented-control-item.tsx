@@ -62,7 +62,7 @@ export class SegmentedControlItem {
     throwIfParentIsNotOfKind(this.host, 'p-segmented-control');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     // this additional validation is still needed because undefined is allowed with current propTypes
     throwIfPropIsUndefined(this.host, 'value', this.value);
@@ -75,9 +75,7 @@ export class SegmentedControlItem {
       this.host.backgroundColor || 'background-default', // default as fallback
       this.host.theme || 'light' // default as fallback
     );
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -90,6 +88,7 @@ export class SegmentedControlItem {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
+            theme={this.host.theme || 'light'}
             aria-hidden="true"
           />
         )}

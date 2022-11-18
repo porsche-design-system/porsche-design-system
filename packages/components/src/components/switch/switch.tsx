@@ -11,7 +11,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import { getButtonAriaAttributes } from './switch-utils';
+import { getSwitchButtonAriaAttributes } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
@@ -81,7 +81,7 @@ export class Switch {
     );
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -94,9 +94,7 @@ export class Switch {
       this.isDisabledOrLoading,
       this.theme
     );
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -105,10 +103,10 @@ export class Switch {
           <slot />
         </span>
         <button
-          {...getButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
-          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
           onClick={this.onSwitchClick}
         >
           <span class="toggle">

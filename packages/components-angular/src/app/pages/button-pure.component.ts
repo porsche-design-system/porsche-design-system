@@ -46,29 +46,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-pure>
     </div>
 
-    <div class="playground light" title="should render button with different size">
-      <p-button-pure [size]="'x-small'">Label size x-small</p-button-pure>
-      <br />
-      <p-button-pure [size]="'small'">Label size small</p-button-pure>
-      <br />
-      <p-button-pure [size]="'medium'">Label size medium</p-button-pure>
-      <br />
-      <p-button-pure [size]="'large'">Label size large</p-button-pure>
-      <br />
-      <p-button-pure [size]="'x-large'">Label size x-large</p-button-pure>
-      <br />
-      <p-button-pure [size]="'inherit'" style="font-size: 48px">Label size inherit</p-button-pure>
-    </div>
-
-    <div class="playground light" title="should render button with responsive size">
-      <p-button-pure
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-      >
-        Label size responsive
-      </p-button-pure>
-    </div>
-
     <div class="playground light" title="should render button with different weight">
       <p-button-pure [weight]="'thin'">Label weight thin</p-button-pure>
       <p-button-pure [weight]="'regular'">Label weight regular</p-button-pure>
@@ -140,13 +117,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with no icon">
       <p-button-pure [icon]="'none'">Label icon none</p-button-pure>
-      <p-button-pure [icon]="'none'" [size]="'inherit'" style="font-size: 48px">Label icon none size inherit</p-button-pure>
-      <p-button-pure
-        [icon]="'none'"
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-        >Label icon none size responsive</p-button-pure
-      >
       <p-button-pure [size]="'small'" [icon]="'none'">
         Label icon none
         <p slot="subline">Some subline</p>
@@ -189,6 +159,39 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         Label stretch
         <p slot="subline">Some subline</p>
       </p-button-pure>
+    </div>
+
+    <div class="playground light" title="should render button with different size">
+      <p-button-pure [size]="'x-small'">Label size x-small</p-button-pure>
+      <br />
+      <p-button-pure [size]="'small'">Label size small</p-button-pure>
+      <br />
+      <p-button-pure [size]="'medium'">Label size medium</p-button-pure>
+      <br />
+      <p-button-pure [size]="'large'">Label size large</p-button-pure>
+      <br />
+      <p-button-pure [size]="'x-large'">Label size x-large</p-button-pure>
+      <br />
+      <p-button-pure [size]="'inherit'" style="font-size: 48px">Label size inherit</p-button-pure>
+    </div>
+
+    <div class="playground light" title="should render button with responsive size">
+      <p-button-pure
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px"
+      >
+        Label size responsive
+      </p-button-pure>
+    </div>
+
+    <div class="playground light" title="should render with no icon and size inherit">
+      <p-button-pure [icon]="'none'" [size]="'inherit'" style="font-size: 48px">Label icon none size inherit</p-button-pure>
+      <p-button-pure
+        [icon]="'none'"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px"
+        >Label icon none size responsive</p-button-pure
+      >
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

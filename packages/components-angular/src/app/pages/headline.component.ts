@@ -72,6 +72,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-headline [variant]="{ base: 'large', l: 'x-large' }">Lorem ipsum dolor sit amet et.</p-headline>
     </div>
 
+    <div class="playground" title="should not automatically break words/strings by default">
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+      </p-headline>
+    </div>
+
+    <div
+      class="playground"
+      title="should be possible to overwrite hyphenation/break words behavior"
+      style="hyphens: auto; overflow-wrap: break-word"
+    >
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+      </p-headline>
+    </div>
+
     <div class="playground" title="should consider only font-size definition on host element for variant inherit">
       <div style="height: 72px; border-left: 10px solid deeppink">
         <p-headline
@@ -119,28 +141,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </h3>
         </p-headline>
       </div>
-    </div>
-
-    <div class="playground" title="should not automatically break words/strings by default">
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
-        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-      </p-headline>
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
-        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-      </p-headline>
-    </div>
-
-    <div
-      class="playground"
-      title="should be possible to overwrite hyphenation/break words behavior"
-      style="hyphens: auto; overflow-wrap: break-word"
-    >
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
-        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-      </p-headline>
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
-        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-      </p-headline>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

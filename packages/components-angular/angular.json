@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "components-angular": {
+    "demo-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/components-angular",
+            "outputPath": "dist/demo-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,37 +63,37 @@
           "options": {
             "host": "0.0.0.0",
             "publicHost": "localhost:4200",
-            "browserTarget": "components-angular:build"
+            "browserTarget": "demo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "components-angular:build:production"
+              "browserTarget": "demo-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "components-angular:build"
+            "browserTarget": "demo-app:build"
           }
         }
       }
     },
-    "components-wrapper": {
+    "angular-wrapper": {
       "projectType": "library",
-      "root": "projects/components-wrapper",
-      "sourceRoot": "projects/components-wrapper/src",
+      "root": "projects/angular-wrapper",
+      "sourceRoot": "projects/angular-wrapper/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/components-wrapper/tsconfig.lib.json",
-            "project": "projects/components-wrapper/ng-package.json"
+            "tsConfig": "projects/angular-wrapper/tsconfig.lib.json",
+            "project": "projects/angular-wrapper/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/components-wrapper/tsconfig.lib.prod.json"
+              "tsConfig": "projects/angular-wrapper/tsconfig.lib.prod.json"
             }
           }
         }

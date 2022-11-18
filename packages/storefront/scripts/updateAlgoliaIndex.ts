@@ -24,7 +24,7 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
       const [_, importPath] = importLine.match(/require\([`']@\/(.*?)[`']/) || [];
 
       return fs
-        .readFileSync(path.resolve(__dirname, '../src', importPath), 'utf-8')
+        .readFileSync(path.resolve(__dirname, '../src', importPath), 'utf8')
         .replace(/```[\s\S]*?```/g, '') // remove code blocks
         .replace(/(?<!`)<(script|style)[\s\S]*?<\/\1>(?!`)/gi, '') // remove script and style tags
         .replace(/<!--[\s\S]*?-->/g, '') // remove comments
@@ -66,7 +66,7 @@ const generateIndex = (): StorefrontContent => {
 
   // Uncomment this for easier debugging
   // fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(storefrontContent, null, 2), {
-  //   encoding: 'utf-8',
+  //   encoding: 'utf8',
   // });
 
   return storefrontContent;
@@ -156,7 +156,7 @@ const updateAlgoliaIndex = (): void => {
 
   // Uncomment this for easier debugging
   // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
-  //   encoding: 'utf-8',
+  //   encoding: 'utf8',
   // });
 
   uploadAndOverrideRecords(records);

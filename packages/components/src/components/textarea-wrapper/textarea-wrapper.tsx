@@ -1,10 +1,12 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
+  addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getOnlyChildOfKindHTMLElementOrThrow,
+  hasCounter,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -16,10 +18,9 @@ import {
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import { addInputEventListenerForCounter, hasCounter } from '../../utils/form/form-utils';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../../utils/form/form-state';
 import type { FormState } from '../../utils/form/form-state';
+import { FORM_STATES } from '../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -79,19 +80,6 @@ export class TextareaWrapper {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.textarea.disabled,
-      this.hideLabel,
-      this.state,
-      this.isCounterVisible,
-      this.hasCounter
-    );
-  }
-
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
@@ -110,6 +98,17 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.textarea.disabled,
+      this.hideLabel,
+      this.state,
+      this.isCounterVisible,
+      this.hasCounter
+    );
+
     const labelProps = {
       onClick: this.onLabelClick,
     };

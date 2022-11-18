@@ -1,0 +1,893 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should expose correct initial accessibility tree of tablist 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "RootWebArea",
+}
+`;
+
+exports[`accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "focused": true,
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "RootWebArea",
+}
+`;
+
+exports[`accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "RootWebArea",
+}
+`;
+
+exports[`accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "focused": true,
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 4",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 4",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "RootWebArea",
+}
+`;
+
+exports[`accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "Button 4",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 4",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                            {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "RootWebArea",
+}
+`;

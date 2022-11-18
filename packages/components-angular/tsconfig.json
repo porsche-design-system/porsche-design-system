@@ -12,7 +12,7 @@
     "target": "esnext",
     "lib": ["esnext", "dom"],
     "paths": {
-      "@porsche-design-system/components-angular": ["dist/components-wrapper"],
+      "@porsche-design-system/components-angular": ["dist/angular-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
     },
     "types": ["node", "jest", "jest-environment-puppeteer", "jest-expect-message"]

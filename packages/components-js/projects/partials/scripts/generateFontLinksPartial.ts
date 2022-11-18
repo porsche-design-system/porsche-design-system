@@ -28,7 +28,7 @@ export function getFontLinks(opts?: GetFontLinksOptions): string;
 export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JSX.Element {
   const { subset, weights, cdn, withoutTags, format }: GetFontLinksOptions = {
     subset: 'latin',
-    weights: ['regular'],
+    weights: ['regular', 'semi-bold'],
     cdn: 'auto',
     withoutTags: false,
     format: 'html',

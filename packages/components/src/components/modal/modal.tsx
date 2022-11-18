@@ -88,15 +88,6 @@ export class Modal {
     });
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    if (this.open) {
-      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
-    }
-    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
-  }
-
   public componentDidRender(): void {
     if (this.open) {
       // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
@@ -112,6 +103,13 @@ export class Modal {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    if (this.open) {
+      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
+    }
+    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (

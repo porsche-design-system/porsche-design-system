@@ -1,9 +1,9 @@
-import type { Direction } from './scroller-utils';
+import type { ScrollerDirection } from './scroller-utils';
 import { getScrollerElements, getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
 import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
 
 describe('getScrollPositionAfterPrevNextClick()', () => {
-  it.each<[number, number, Direction, number]>([
+  it.each<[number, number, ScrollerDirection, number]>([
     [100, 0, 'prev', -20],
     [100, 50, 'prev', 30],
     [100, 0, 'next', 20],

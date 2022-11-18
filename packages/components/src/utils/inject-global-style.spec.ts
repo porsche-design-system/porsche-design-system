@@ -41,7 +41,7 @@ describe('if global styles are missing', () => {
 
     const styleEl: HTMLStyleElement = document.head.querySelector(selector);
     expect(styleEl).not.toBeNull();
-    expect(styleEl.innerText).toBe(TAG_NAMES.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}');
+    expect(styleEl.innerText).toBe(TAG_NAMES.join() + '{visibility:hidden}.hydrated{visibility:inherit}');
   });
 });
 

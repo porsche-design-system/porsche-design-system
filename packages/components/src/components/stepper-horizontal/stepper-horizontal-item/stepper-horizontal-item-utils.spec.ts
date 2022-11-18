@@ -1,5 +1,5 @@
 import {
-  getIconName,
+  getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
   throwIfCurrentAndDisabled,
@@ -19,13 +19,13 @@ describe('isStateCompleteOrWarning()', () => {
   });
 });
 
-describe('getIconName()', () => {
+describe('getStepperHorizontalIconName()', () => {
   it('should return success when state is complete', () => {
-    expect(getIconName('complete')).toBe('success');
+    expect(getStepperHorizontalIconName('complete')).toBe('success');
   });
 
   it('should return warning when state is warning', () => {
-    expect(getIconName('warning')).toBe('warning');
+    expect(getStepperHorizontalIconName('warning')).toBe('warning');
   });
 });
 

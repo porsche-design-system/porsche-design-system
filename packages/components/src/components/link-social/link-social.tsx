@@ -53,12 +53,10 @@ export class LinkSocial {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
-  }
 
-  public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -77,6 +75,7 @@ export class LinkSocial {
           name={this.icon}
           source={this.iconSource}
           color="inherit"
+          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
           aria-hidden="true"
         />
         <span>

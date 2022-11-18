@@ -72,6 +72,28 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline variant={{ base: 'large', l: 'x-large' }}>Lorem ipsum dolor sit amet et.</PHeadline>
       </div>
 
+      <div className="playground" title="should not automatically break words/strings by default">
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+        </PHeadline>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+        </PHeadline>
+      </div>
+
+      <div
+        className="playground"
+        title="should be possible to overwrite hyphenation/break words behavior"
+        style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
+      >
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+        </PHeadline>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+        </PHeadline>
+      </div>
+
       <div className="playground" title="should consider only font-size definition on host element for variant inherit">
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
           <PHeadline
@@ -94,28 +116,6 @@ export const HeadlinePage = (): JSX.Element => {
             </h3>
           </PHeadline>
         </div>
-      </div>
-
-      <div className="playground" title="should not automatically break words/strings by default">
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
-          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-        </PHeadline>
-      </div>
-
-      <div
-        className="playground"
-        title="should be possible to overwrite hyphenation/break words behavior"
-        style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
-      >
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
-          <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
-        </PHeadline>
       </div>
     </>
   );

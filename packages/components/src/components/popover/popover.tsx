@@ -31,7 +31,7 @@ export class Popover {
   @Element() public host!: HTMLElement;
 
   /** Preferred direction in which popover should open, given there is enough space in viewport.
-   * Otherwise it will be opened in the direction with most available space. */
+   * Otherwise, it will be opened in the direction with most available space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
 
   /** Descriptive text to show additional information when popover is open  */
@@ -51,11 +51,6 @@ export class Popover {
     addDocumentEventListener(this);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction);
-  }
-
   public componentDidRender(): void {
     if (this.open) {
       // calculate / update position only possible after render
@@ -68,6 +63,9 @@ export class Popover {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.direction);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -75,7 +73,7 @@ export class Popover {
         <PrefixedTagNames.pButtonPure
           type="button"
           icon="information"
-          hideLabel="true"
+          hideLabel={true}
           onClick={() => (this.open = !this.open)}
           // pass string to avoid another update on p-button on each render because of new object reference
           aria={JSON.stringify({
