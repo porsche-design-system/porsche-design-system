@@ -16,8 +16,8 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
+  // Ensure no warning is thrown when started with yarn start
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
-    // Ensure no error is thrown when started with yarn start
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
     validateGetLoaderScriptUsage();
