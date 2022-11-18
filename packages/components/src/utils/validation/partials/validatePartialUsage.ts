@@ -10,12 +10,14 @@ export type PartialName = 'getFontLink' | 'getLoaderScript';
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
+    // Extend Document interface so we don't have to cast it on any
     porscheDesignSystem: { [key: string]: { prefixes: string[] } };
   }
 }
 
 export const validatePartialUsage = (): void => {
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
+    // Ensure no error is thrown when started with yarn start
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
     validateGetLoaderScriptUsage();
