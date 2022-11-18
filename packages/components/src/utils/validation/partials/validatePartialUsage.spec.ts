@@ -183,11 +183,11 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     // TODO: do we really want to check the whole warning message?
     expect(spy).toBeCalledWith(
       "Usage of Porsche Design System v1.2.3 component 'p-text' detected, without preloading. We recommend the usage of the\n" +
-        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior"
+        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior."
     );
     expect(spy).toBeCalledWith(
       "Usage of Porsche Design System v1.2.4 component 'p-text, p-button, p-link' detected, without preloading. We recommend the usage of the\n" +
-        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior"
+        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior."
     );
   });
 });
