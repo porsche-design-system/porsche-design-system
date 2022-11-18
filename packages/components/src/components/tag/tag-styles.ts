@@ -113,41 +113,29 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         }),
       },
       '::slotted': addImportantToEachRule({
-        ...(isFocusable && {
-          '&(a),&(button)': {
-            display: 'inline',
-            position: 'static',
-            textDecoration: 'underline',
-            cursor: 'pointer',
-            font: 'inherit',
-            outline: 0, // reset native blue outline
-            // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-          },
+        '&(a),&(button)': {
+          display: 'inline',
+          position: 'static',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          font: 'inherit',
+          outline: 0, // reset native blue outline
+          color: 'inherit',
+        },
 
-          // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
-          ...Object.entries(getTagFocusJssStyle(outlineColor, hoverColor)).reduce((result, [key, value]) => {
-            result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
-            return result;
-          }, {} as JssStyle),
+        // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
+        ...Object.entries(getTagFocusJssStyle(outlineColor, hoverColor)).reduce((result, [key, value]) => {
+          result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
+          return result;
+        }, {} as JssStyle),
 
-          '&(a)': {
-            color: baseColor, // TODO: chrome hover bug. Remove when fixed.
-            transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
-          },
-          ...hoverMediaQuery({
-            '&(a:hover)': {
-              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
-            },
-          }),
-          '&(button)': {
-            margin: 0,
-            padding: 0,
-            background: 0,
-            border: 0,
-            color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
-            textAlign: 'left',
-          },
-        }),
+        '&(button)': {
+          margin: 0,
+          padding: 0,
+          background: 0,
+          border: 0,
+          textAlign: 'left',
+        },
         '&(br)': {
           display: 'none',
         },

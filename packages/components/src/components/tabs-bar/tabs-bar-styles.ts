@@ -8,7 +8,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
-  ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join(',');
+  ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TabSize>,

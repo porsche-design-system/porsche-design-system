@@ -25,4 +25,10 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
       component[prop] = 'some value';
     });
   }
+
+  if (meta.hasEvent) {
+    meta.eventNames.forEach((event) => {
+      component[event] = jest.fn();
+    });
+  }
 };

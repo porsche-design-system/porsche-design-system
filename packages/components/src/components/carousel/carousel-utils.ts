@@ -107,7 +107,7 @@ export const updatePagination = (paginationEl: HTMLElement, newIndex: number): v
   }
 };
 
-export let hasInertSupport = HTMLElement.prototype.hasOwnProperty('inert');
+export let hasInertSupport = typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
 
 // for unit tests
 export const overrideHasInertSupport = (override: boolean): void => {
@@ -135,7 +135,7 @@ export const updateSlidesInert = (splide: Splide): void => {
       // fallback with tabindex handling for certain elements in lightDOM
       const prefix = getTagName((splide.root.getRootNode() as ShadowRoot).host as HTMLElement).replace('carousel', '');
       const tagNames: TagName[] = ['p-button', 'p-button-pure', 'p-link', 'p-link-pure'];
-      const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join(',');
+      const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join();
 
       slides.forEach((slide, i) =>
         ((slide.firstChild as HTMLSlotElement).assignedNodes()[0] as HTMLElement)

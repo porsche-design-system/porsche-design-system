@@ -27,6 +27,11 @@ export const routes: RouteType[] = [
     element: <fromPages.OverviewPage />,
   },
   {
+    name: 'Overview Notifications',
+    path: '/overview-notifications',
+    element: <fromPages.OverviewNotificationsPage />,
+  },
+  {
     name: 'Core Initializer',
     path: '/core-initializer',
     element: <fromPages.CoreInitializerPage />,

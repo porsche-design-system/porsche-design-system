@@ -4,14 +4,16 @@ import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../
 export const getComponentCss = (multiline: boolean): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        display: 'table-cell',
-        padding: pxToRemWithUnit(12),
-        margin: 0,
+      ':host': {
+        ...addImportantToEachRule({
+          display: 'table-cell',
+          padding: pxToRemWithUnit(12),
+          margin: 0,
+          borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
+          whiteSpace: multiline ? 'normal' : 'nowrap',
+        }),
         verticalAlign: 'middle',
-        borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
-        whiteSpace: multiline ? 'normal' : 'nowrap',
-      }),
+      },
     },
   });
 };

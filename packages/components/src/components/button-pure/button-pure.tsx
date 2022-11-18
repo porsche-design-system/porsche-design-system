@@ -30,7 +30,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
@@ -118,26 +118,6 @@ export class ButtonPure {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.icon,
-      this.active,
-      this.isDisabledOrLoading,
-      this.stretch,
-      this.size,
-      this.weight,
-      this.hideLabel,
-      this.alignLabel,
-      hasSlottedSubline(this.host),
-      this.theme
-    );
-  }
-
   public componentDidLoad(): void {
     improveButtonHandlingForCustomElement(
       this.host,
@@ -164,6 +144,24 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.isDisabledOrLoading,
+      this.stretch,
+      this.size,
+      this.weight,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      this.theme
+    );
+
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 
@@ -179,10 +177,10 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
+          {...getButtonPureAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
-          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
           ref={(el) => (this.buttonTag = el)}
         >
           {hasIcon &&

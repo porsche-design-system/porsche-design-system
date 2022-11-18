@@ -76,7 +76,7 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 ## Sample integration
 
-We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
+We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.  
 You can find the repository of the React example project here:
 [Sample integration React](https://github.com/porsche-design-system/sample-integration-react)
 

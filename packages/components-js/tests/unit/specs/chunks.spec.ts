@@ -330,7 +330,7 @@ describe('chunk content', () => {
   });
 
   describe('TAG_NAMES', () => {
-    const tagNamesRegEx = new RegExp(TAG_NAMES.map((x) => `["']${x}["']`).join(','));
+    const tagNamesRegEx = new RegExp(TAG_NAMES.map((x) => `["']${x}["']`).join());
 
     it('should contain all TAG_NAMES in core chunk', () => {
       const content = getChunkContent(chunkFileNames[0]);

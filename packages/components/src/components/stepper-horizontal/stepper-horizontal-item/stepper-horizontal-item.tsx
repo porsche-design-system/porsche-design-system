@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, Watch } from '@stencil/core';
 import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
 import {
-  getIconName,
+  getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
   STEPPER_ITEM_STATES,
@@ -52,13 +52,11 @@ export class StepperHorizontalItem {
     throwIfParentIsNotOfKind(this.host, 'p-stepper-horizontal');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     throwIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -71,7 +69,7 @@ export class StepperHorizontalItem {
           {isStateCompleteOrWarning(this.state) && (
             <PrefixedTagNames.pIcon
               class="icon"
-              name={getIconName(this.state)}
+              name={getStepperHorizontalIconName(this.state)}
               size="inherit"
               theme={this.host.theme || 'light'}
               color="inherit"

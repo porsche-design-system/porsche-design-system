@@ -6,14 +6,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 @media(min-width:480px) {
   :host {
@@ -298,14 +316,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #fff;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -400,14 +436,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -481,14 +535,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -611,14 +683,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -783,14 +873,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -885,14 +993,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -966,14 +1092,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1067,14 +1211,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #ff0223;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1168,14 +1330,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1270,14 +1450,32 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1346,14 +1544,32 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1421,64 +1637,4 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
 }
 "
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-pure a {
-  display: block !important;
-  position: static !important;
-  text-decoration: none !important;
-  font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
-}
-p-link-pure a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-link-pure a::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-link-pure a:focus::before {
-  outline-color: currentColor !important;
-}
-p-link-pure a:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-pure a {
-  display: block !important;
-  position: static !important;
-  text-decoration: none !important;
-  font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
-}
-prefixed-p-link-pure a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-link-pure a::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-link-pure a:focus::before {
-  outline-color: currentColor !important;
-}
-prefixed-p-link-pure a:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
-}"
 `;

@@ -10,7 +10,11 @@ import {
 } from '../../utils';
 import type { IconName, PropTypes, Theme } from '../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
-import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
+import {
+  INLINE_NOTIFICATION_STATES,
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+} from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
@@ -65,12 +69,10 @@ export class InlineNotification {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
-  }
 
-  public render(): JSX.Element {
     const bannerId = 'banner';
     const labelId = 'label';
     const descriptionId = 'description';
@@ -78,7 +80,12 @@ export class InlineNotification {
 
     return (
       <Host>
-        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
+        <PrefixedTagNames.pIcon
+          class="icon"
+          name={getInlineNotificationIconName(this.state)}
+          color="inherit"
+          aria-hidden="true"
+        />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
           <p id={descriptionId}>{this.description || <slot />}</p>

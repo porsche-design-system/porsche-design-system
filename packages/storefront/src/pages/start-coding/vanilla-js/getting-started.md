@@ -27,8 +27,8 @@ After adding the `@porsche-design-system/components-js` package to your project,
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Porsche Design System</title>
     <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
   </head>
@@ -47,7 +47,7 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 ## Sample integration
 
-We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
+We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.  
 You can find the repository of the Vanilla-JS example project here:
 [Sample integration Vanilla-JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
 

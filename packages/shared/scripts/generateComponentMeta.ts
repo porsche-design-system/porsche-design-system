@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
+import { paramCase } from 'change-case';
 import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
@@ -10,7 +11,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = `import type { TagName } from './tagNames'`;
+  const imports = `import type { TagName } from './tagNames';`;
 
   const types = [
     `export type ComponentMeta = {
@@ -21,12 +22,22 @@ const generateComponentMeta = (): void => {
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
+  nestedComponents?: TagName[]; // array of other pds components
   props?: {
     [propName: string]: boolean | number | string; // value is the prop's default value
-  }[];
+  };
   requiredProps?: string[]; // array of props that are mandatory
+  internalProps?: {
+    [propName: string]: boolean | number | string // value is the prop's default value
+  };
+  hostAttributes?: {
+    [attrName: string]: string;
+  };
   hasSlot: boolean;
+  namedSlots?: string[]; // array of named slots
   hasSlottedCss: boolean;
+  hasEvent: boolean;
+  eventNames?: string[];
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
@@ -44,12 +55,22 @@ const generateComponentMeta = (): void => {
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
+    nestedComponents?: TagName[]; // array of other pds components
     props?: {
       [propName: string]: boolean | number | string; // value is the prop's default value
-    }[];
+    };
     requiredProps?: string[]; // array of props that are mandatory
+    internalProps?: {
+      [propName: string]: boolean | number | string; // value is the prop's default value
+    };
+    hostAttributes?: {
+      [attrName: string]: string;
+    };
     hasSlot: boolean;
+    namedSlots?: string[]; // array of named slots
     hasSlottedCss: boolean;
+    hasEvent: boolean;
+    eventNames?: string[];
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
@@ -77,6 +98,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlot = source.includes('<slot');
     const hasSlottedCss = source.includes('attachSlottedCss');
+    const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
@@ -121,11 +143,16 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    // nested pds components
+    const nestedComponents: TagName[] = Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g))
+      .map(([, tagName]) => paramCase(tagName) as TagName)
+      .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
+
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
-    ).map(([, propName, , propValue]) => {
+    ).reduce((result, [, propName, , propValue]) => {
       const cleanedValue =
         propValue === 'true'
           ? true
@@ -135,9 +162,10 @@ const generateComponentMeta = (): void => {
             propValue?.replace(/'/g, '') || null;
 
       return {
+        ...result,
         [propName]: cleanedValue,
       };
-    });
+    }, {} as ComponentMeta['props']);
 
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
@@ -150,6 +178,52 @@ const generateComponentMeta = (): void => {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
     }
+
+    // internal props set by parent
+    const internalProps: ComponentMeta['internalProps'] = {};
+
+    // extract properties from this.host that are set by parent element
+    const [, rawAttachComponentCssParams] = /attachComponentCss\(([\s\S]+?)\);/.exec(source) || [];
+    if (rawAttachComponentCssParams) {
+      const attachComponentCssParams = rawAttachComponentCssParams
+        .replace(/\/\/.*/g, '') // strip comments
+        .split(rawAttachComponentCssParams.includes('\n') ? '\n' : ',')
+        .map((x) => x.trim());
+      const internalPropParams = attachComponentCssParams
+        .slice(2) // get rid of first 2 params: this.host and getComponentCss
+        .filter((param) => param.startsWith('this.host.')) // get rid of regular props, states and private members
+        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param) || []) // extract param and default value if there is any
+        .map(([, param, value]) => [param, value]);
+
+      internalPropParams.forEach(([prop, value]) => {
+        internalProps[prop] = value || null; // null is needed to not loose property in JSON.stringify
+      });
+    }
+
+    // host attributes
+    // TODO: currently only hardcoded attributes are extracted
+    let hostAttributes: ComponentMeta['hostAttributes'] = {};
+    const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
+    if (rawHostAttributes) {
+      // TODO: handle stuff like {...getDataThemeDarkAttribute(this.theme)}
+      // console.log(rawHostAttributes);
+      hostAttributes = rawHostAttributes
+        .split(' ')
+        .map((attrKeyValuePair) =>
+          Array.from(attrKeyValuePair.matchAll(/([-a-z]+)="(.+?)"/g)).map(([, attr, val]) => [attr, val])
+        )
+        .flat()
+        .reduce((result, [attr, val]) => ({ ...result, [attr]: val }), {} as ComponentMeta['hostAttributes']);
+    }
+
+    // named slots
+    const namedSlots = Array.from(source.matchAll(/<slot name="([a-z]+)"/g)).map(([, slotName]) => slotName);
+    if (source.includes('<StateMessage')) {
+      namedSlots.push('message');
+    }
+
+    // events
+    const eventNames = Array.from(source.matchAll(/([A-Za-z]+)\??: EventEmitter/g)).map(([, eventName]) => eventName);
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
@@ -166,10 +240,16 @@ const generateComponentMeta = (): void => {
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
       requiredChildSelector,
-      ...(props.length && { props: props }),
+      ...(nestedComponents.length && { nestedComponents: nestedComponents }),
+      ...(Object.keys(props).length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
+      ...(Object.keys(internalProps).length && { internalProps: internalProps }),
+      ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
       hasSlot,
+      ...(namedSlots.length && { namedSlots: namedSlots }),
       hasSlottedCss,
+      hasEvent,
+      ...(eventNames.length && { eventNames: eventNames }),
       hasAriaProp,
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes: observedAttributes }),

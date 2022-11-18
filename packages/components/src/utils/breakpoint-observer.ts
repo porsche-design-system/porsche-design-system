@@ -1,11 +1,12 @@
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import { hasWindow } from './has-window';
 
 export const mediaQueries = Object.entries(breakpoint)
   .filter(([key]: [Breakpoint, string]) => key !== 'xxl')
   .map(([, val]) => `(min-width:${val})`);
 
-export let mediaQueryLists = mediaQueries.map(window.matchMedia);
+export let mediaQueryLists = hasWindow && window.matchMedia ? mediaQueries.map(window.matchMedia) : [];
 
 // for unit tests
 export const overrideMediaQueryLists = (override: MediaQueryList[]): void => {

@@ -16,6 +16,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   `getInitialStyles()` partial to reduce flash of content as described here:
   **https://designsystem.porsche.com/v2/partials/initial-styles**
 
+### [2.18.0-rc.0] - 2022-11-17
+
+#### Added
+
+- SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
+  `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
+
+```diff
+- import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
++ import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react/ssr';
+```
+
+#### Changed
+
+- Improve height calculation for `Accordion`
+- Slotted anchor support for `Link Pure` is stricter (In case slotted `<a>` is used it must be a direct child of
+  `Link Pure`)
+- `getFontLinks()` partial now has `{ weights: ['regular', 'semi-bold'] }` for a default
+
 ### [2.17.0] - 2022-10-31
 
 ### [2.17.0-rc.0] - 2022-10-31

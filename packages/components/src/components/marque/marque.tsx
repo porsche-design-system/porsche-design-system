@@ -36,12 +36,10 @@ export class Marque {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-  }
 
-  public render(): JSX.Element {
     const innerManifest = getInnerManifest(this.trademark);
     const mediumMedia = `(min-width: ${breakpoint.l})`;
 
@@ -49,14 +47,24 @@ export class Marque {
       <picture>
         {this.size === 'responsive'
           ? [
-              <source srcSet={buildSrcSet(innerManifest, 'medium', 'webp')} media={mediumMedia} type="image/webp" />,
-              <source srcSet={buildSrcSet(innerManifest, 'medium', 'png')} media={mediumMedia} type="image/png" />,
-              <source srcSet={buildSrcSet(innerManifest, 'small', 'webp')} type="image/webp" />,
-              <source srcSet={buildSrcSet(innerManifest, 'small', 'png')} type="image/png" />,
+              <source
+                key="medium-webp"
+                srcSet={buildSrcSet(innerManifest, 'medium', 'webp')}
+                media={mediumMedia}
+                type="image/webp"
+              />,
+              <source
+                key="medium-png"
+                srcSet={buildSrcSet(innerManifest, 'medium', 'png')}
+                media={mediumMedia}
+                type="image/png"
+              />,
+              <source key="small-webp" srcSet={buildSrcSet(innerManifest, 'small', 'webp')} type="image/webp" />,
+              <source key="small-png" srcSet={buildSrcSet(innerManifest, 'small', 'png')} type="image/png" />,
             ]
           : [
-              <source srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
-              <source srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
+              <source key="webp" srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
+              <source key="png" srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
             ]}
         <img src={`${cdnBaseUrl}/${innerManifest.medium['2x'].png}`} alt="Porsche" />
       </picture>

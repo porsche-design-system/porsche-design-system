@@ -95,12 +95,10 @@ export class Button {
     );
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {
       class: 'icon',
@@ -112,7 +110,7 @@ export class Button {
         {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
         class="root"
         type={this.type}
-        tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+        tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner
@@ -126,6 +124,13 @@ export class Button {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
+            theme={
+              this.variant === 'tertiary'
+                ? this.theme
+                : this.variant === 'secondary' && this.theme === 'dark'
+                ? 'light'
+                : 'dark'
+            } // relevant for ssr support
             aria-hidden="true"
           />
         )}

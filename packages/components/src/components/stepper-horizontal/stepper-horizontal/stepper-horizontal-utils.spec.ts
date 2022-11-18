@@ -1,6 +1,6 @@
 import {
   getIndexOfStepWithStateCurrent,
-  syncItemsProps,
+  syncStepperHorizontalItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
@@ -49,7 +49,7 @@ describe('throwIfMultipleCurrentStates()', () => {
   });
 });
 
-describe('syncItemsProps()', () => {
+describe('syncStepperHorizontalItemsProps()', () => {
   const host = document.createElement('p-stepper-horizontal');
   const child1: HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps = document.createElement(
     'div'
@@ -65,7 +65,7 @@ describe('syncItemsProps()', () => {
     expect(child1.theme).toBeUndefined();
     expect(child2.theme).toBeUndefined();
 
-    syncItemsProps(host, theme);
+    syncStepperHorizontalItemsProps(host, theme);
 
     expect(child1.theme).toBe(theme);
     expect(child2.theme).toBe(theme);
@@ -74,7 +74,7 @@ describe('syncItemsProps()', () => {
   it('should call forceUpdate() on every item', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncItemsProps(host, theme);
+    syncStepperHorizontalItemsProps(host, theme);
 
     expect(spy).toBeCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work

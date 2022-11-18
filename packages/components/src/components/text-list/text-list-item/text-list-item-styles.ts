@@ -1,68 +1,58 @@
 import type { JssStyle } from 'jss';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
-import { getCss, mergeDeep } from '../../../utils';
+import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
-const getNestedListJssStyle = (isNestedList: boolean, listType: ListType): JssStyle =>
-  isNestedList &&
-  listType === 'unordered' && {
-    '&:before': {
-      height: '1px',
-      width: pxToRemWithUnit(8),
-      top: 'calc(1.5em / 2)',
-    },
+const cssVariableOrderedSuffix = '--pds-text-list-item-ordered-suffix';
+const cssVariableUnorderedWidth = '--pds-text-list-item-unordered-width';
+const cssVariableUnorderedHeight = '--pds-text-list-item-unordered-height';
+const cssVariableUnorderedTop = '--pds-text-list-item-unordered-top';
+
+export const getComponentCss = (listType: ListType, orderType: OrderType): string => {
+  const isOrdered = listType === 'ordered';
+  const beforeJssStyles: JssStyle = {
+    position: 'absolute',
+    left: 0,
   };
 
-const getTypeJssStyle = (listType: ListType, orderType: OrderType, isNestedList: boolean): JssStyle => {
-  return listType === 'ordered'
-    ? {
-        paddingLeft: pxToRemWithUnit(40),
-        '&:before': {
-          content: `counters(section, ".", ${orderType === 'numbered' ? 'decimal' : 'lower-latin'}) ${
-            isNestedList ? '' : '"."'
-          }`,
-          right: 'calc(100% - 24px)',
-          top: 0,
-          width: 'auto',
-          height: 'auto',
-          counterIncrement: 'section',
-          textAlign: 'right',
-          backgroundColor: 'transparent',
-          ...textSmall,
-        },
-      }
-    : {
-        '&:before': {
-          content: '""',
-          left: 0,
-          top: 'calc(1.5em / 2 - 0.125em)',
-          width: pxToRemWithUnit(4),
-          height: pxToRemWithUnit(4),
-          backgroundColor: 'currentColor',
-        },
-      };
-};
-
-export const getComponentCss = (listType: ListType, orderType: OrderType, isNestedList: boolean): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(
-        mergeDeep(
-          {
-            position: 'relative',
-            display: 'list-item',
-            color: 'inherit',
-            listStyleType: 'none',
-            paddingLeft: pxToRemWithUnit(24),
-            '&:before': {
-              position: 'absolute',
+      '::slotted(*)': {
+        [cssVariableOrderedSuffix]: '""',
+        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
+        [cssVariableUnorderedHeight]: '1px',
+        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
+      },
+      ':host': addImportantToEachRule({
+        position: 'relative',
+        display: 'list-item',
+        color: 'inherit',
+        listStyleType: 'none',
+        paddingLeft: pxToRemWithUnit(isOrdered ? 40 : 24),
+        '&:before': isOrdered
+          ? {
+              ...beforeJssStyles,
+              content: `counters(section,".",${
+                orderType === 'numbered' ? 'decimal' : 'lower-latin'
+              }) var(${cssVariableOrderedSuffix},".")`,
+              top: 0,
+              width: pxToRemWithUnit(24),
+              height: 'auto',
+              counterIncrement: 'section',
+              textAlign: 'right',
+              backgroundColor: 'transparent',
+              ...textSmall,
+            }
+          : {
+              ...beforeJssStyles,
+              content: '""',
+              width: `var(${cssVariableUnorderedWidth},${pxToRemWithUnit(4)})`,
+              height: `var(${cssVariableUnorderedHeight},${pxToRemWithUnit(4)})`,
+              top: `var(${cssVariableUnorderedTop},calc(1.5em / 2 - 0.125em))`,
+              backgroundColor: 'currentColor',
             },
-          },
-          getTypeJssStyle(listType, orderType, isNestedList),
-          getNestedListJssStyle(isNestedList, listType)
-        )
-      ),
+      }),
     },
   });
 };

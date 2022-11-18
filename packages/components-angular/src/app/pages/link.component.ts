@@ -71,9 +71,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link>
     </div>
 
-    <div class="playground light" title="should render secondary with specific icon">
+    <div class="playground light" title="should render link with specific icon">
       <p-link [icon]="'phone'" [href]="'https://www.porsche.com'">Some label</p-link>
       <p-link [iconSource]="'./assets/icon-custom-kaixin.svg'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [icon]="'phone'" [variant]="'primary'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'primary'" [href]="'https://www.porsche.com'"
+        >Some label</p-link
+      >
+      <p-link [icon]="'phone'" [variant]="'tertiary'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'tertiary'" [href]="'https://www.porsche.com'"
+        >Some label</p-link
+      >
+    </div>
+
+    <div class="playground dark" title="should render link with specific icon on dark theme">
+      <p-link [theme]="'dark'" [icon]="'phone'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [theme]="'dark'" [icon]="'phone'" [variant]="'primary'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'primary'" [href]="'https://www.porsche.com'"
+        >Some label</p-link
+      >
+      <p-link [theme]="'dark'" [icon]="'phone'" [variant]="'tertiary'" [href]="'https://www.porsche.com'">Some label</p-link>
+      <p-link [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'tertiary'" [href]="'https://www.porsche.com'"
+        >Some label</p-link
+      >
     </div>
 
     <div class="playground light" title="should render with multiline label">

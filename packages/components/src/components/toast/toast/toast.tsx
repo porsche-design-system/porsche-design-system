@@ -27,7 +27,6 @@ export class Toast {
   }
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
   }
 
@@ -46,16 +45,16 @@ export class Toast {
     return propertyName !== 'theme';
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    this.toastItemElement?.classList.remove(toastCloseClassName);
-  }
-
   public disconnectedCallback(): void {
     toastManager.unregister();
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss);
+
+    this.toastItemElement?.classList.remove(toastCloseClassName);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const toast = toastManager.getToast();
 

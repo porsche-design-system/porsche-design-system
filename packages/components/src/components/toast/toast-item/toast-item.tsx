@@ -11,7 +11,7 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './toast-item-styles';
-import { getIconName } from '../../inline-notification/inline-notification-utils';
+import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -42,18 +42,21 @@ export class ToastItem {
     throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
-  }
 
-  public render(): JSX.Element {
     const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
+        <PrefixedTagNames.pIcon
+          class="icon"
+          name={getInlineNotificationIconName(this.state)}
+          color="inherit"
+          aria-hidden="true"
+        />
         <p id={toastId} class="content" role="status" aria-live="polite">
           {this.text}
         </p>

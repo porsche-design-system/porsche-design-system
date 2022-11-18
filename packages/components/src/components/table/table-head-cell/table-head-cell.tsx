@@ -44,15 +44,12 @@ export class TableHeadCell {
     throwIfElementHasAttribute(this.host, 'sort');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     const { active, direction } = this.sort || {};
     attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const { active, direction } = this.sort || {};
 
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>

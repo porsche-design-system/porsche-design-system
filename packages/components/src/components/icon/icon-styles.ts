@@ -19,6 +19,17 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
         display: 'inline-flex',
         verticalAlign: 'top',
       },
+      img: {
+        filter: ['dark', 'dark-electric'].includes(theme) ? 'invert(100%)' : 'none',
+      },
+      svg: {
+        fill: 'currentColor',
+        // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706
+        // further information: https://melanie-richards.com/blog/currentcolor-svg-hcm/
+        '@media (forced-colors: active)': {
+          fill: 'canvasText',
+        },
+      },
     },
     root: {
       display: 'flex',
@@ -29,14 +40,6 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
       width: dimension,
       height: dimension,
       color: getThemedTextColor(theme, color),
-      '& > svg': {
-        fill: 'currentColor',
-        // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706
-        // further information: https://melanie-richards.com/blog/currentcolor-svg-hcm/
-        '@media (forced-colors: active)': {
-          fill: 'canvasText',
-        },
-      },
     },
   });
 };

@@ -16,7 +16,8 @@
   ],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
+    "build": "yarn clean:build && yarn build:bundleDSRPonyfill && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
+    "build:bundleDSRPonyfill": "rollup -c rollup-dsr-ponyfill.config.js",
     "build:package": "rollup -c rollup.config.js",
     "build:partials": "ts-node scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
@@ -25,25 +26,25 @@
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
+    "clean:build": "rm -rf ./src/lib && rm -rf ./dist && rm -rf ./dist-tmp"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/styles": "0.0.0"
+    "@porsche-design-system/styles": "0.0.0",
+    "@webcomponents/template-shadowroot": "^0.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
     "rollup": "^2.79.1",
     "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "~4.8.3"
-  },
-  "files": [
-    "dist/"
-  ]
+  }
 }
