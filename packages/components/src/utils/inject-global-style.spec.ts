@@ -11,7 +11,7 @@ describe('if global styles are missing', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     injectGlobalStyle();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
   });
 
   it('should call console.warn()', () => {
@@ -44,7 +44,7 @@ describe('if global styles are there', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     injectGlobalStyle();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
   });
 
   it('should not call console.warn()', () => {
