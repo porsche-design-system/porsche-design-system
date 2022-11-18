@@ -46,7 +46,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
       `Usage of Porsche Design System v${version} component '${tagNames.join(
         ', '
       )}' detected, without preloading. We recommend the usage of the
-'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior`
+'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior.`
     );
   });
 };
@@ -84,6 +84,6 @@ export const partialValidationWarning = (partialName: PartialName): void => {
 
   console.warn(
     `You are not using '${partialName}()'. The Porsche Design System recommends the usage of the '${partialName}()'
-partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior`
+partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior.`
   );
 };

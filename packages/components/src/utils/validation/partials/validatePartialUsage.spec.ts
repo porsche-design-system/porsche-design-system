@@ -163,7 +163,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledWith(usedTagNamesForVersionsMock, preloadTagNamesForVersionsMock);
   });
 
-  it('should not warn when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
+  it('should not call console.warn when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
     jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
     const spy = jest.spyOn(global.console, 'warn');
 
@@ -172,7 +172,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should warn for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
+  it('should call console.warn for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
     jest
       .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
       .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
@@ -274,7 +274,7 @@ describe('validateGetInitialStylesUsage()', () => {
 
 describe('partialValidationWarning()', () => {
   it.each<PartialName>(['getFontLink', 'getLoaderScript'])(
-    'should warn with correct parameters when called with partial %s()',
+    'should call console.warn with correct parameters when called with partial %s()',
     (partialName) => {
       const spy = jest.spyOn(global.console, 'warn');
 
