@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -14,8 +14,8 @@
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "rollup": "^2.79.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.3.0",
     "rollup-plugin-generate-package-json": "^3.2.0"
   }
 }
