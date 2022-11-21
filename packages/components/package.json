@@ -18,7 +18,7 @@
     "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:generateDSRComponents && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
     "build:wrappers:generateWrappers": "ts-node --project tsconfig.node.json scripts/generateWrappers.ts",
     "build:wrappers:generateDSRComponents": "ts-node --project tsconfig.node.json scripts/generateDSRComponents.ts",
-    "build:wrappers:bundleStyles": "rollup -c rollup-styles.config.js",
+    "build:wrappers:bundleStyles": "rollup -c rollup-styles.config.mjs",
     "build:wrappers:bundleUtils": "rollup -c rollup-utils.config.js",
     "build:type": "yarn build:type:addMissingTypeExport && yarn build:type:bundle",
     "build:type:addMissingTypeExport": "ts-node --project tsconfig.node.json scripts/addMissingTypeExport.ts",
