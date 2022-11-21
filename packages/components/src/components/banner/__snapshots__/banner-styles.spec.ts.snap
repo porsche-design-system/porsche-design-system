@@ -83,7 +83,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     :host(.banner--close) {
       animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
-    :host(.hydrated) {
+    :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration__banner,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
@@ -95,7 +95,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     :host(.banner--close) {
       animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
-    :host(.hydrated) {
+    :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration__banner,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }

@@ -21,12 +21,10 @@ export class TableCell {
     throwIfParentIsNotOfKind(this.host, 'p-table-row');
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.multiline);
-  }
 
-  public render(): JSX.Element {
     return (
       <Host role="cell">
         <slot />

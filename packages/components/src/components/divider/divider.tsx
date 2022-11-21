@@ -27,12 +27,10 @@ export class Divider {
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, this.orientation, this.theme);
-  }
 
-  public render(): JSX.Element {
     return <hr />;
   }
 }

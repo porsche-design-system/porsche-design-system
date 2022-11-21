@@ -18,7 +18,8 @@ export * from './pds-fetch';
 export * from './property-observer';
 export * from './scrolling';
 export * from './slotted-styles';
-export * from './ssr-handling';
+export * from './has-document';
+export * from './has-window';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
 export {

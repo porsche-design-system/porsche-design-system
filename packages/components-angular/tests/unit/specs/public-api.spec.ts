@@ -4,7 +4,7 @@ import {
   ToastManager,
   IconName,
   TabChangeEvent,
-} from '../../../projects/components-wrapper/src/public-api';
+} from '../../../projects/angular-wrapper/src/public-api';
 
 it('should expose componentsReady()', () => {
   expect(typeof componentsReady).toBe('function');

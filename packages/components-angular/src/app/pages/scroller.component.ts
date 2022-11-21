@@ -139,38 +139,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render scroller with scroll indicator size according to fontsize large on light background"
-    >
-      <p-scroller style="font-size: 2.25rem; line-height: 1.3333333333">
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-        <a [href]="'#'">Large font</a>
-      </p-scroller>
-    </div>
-
-    <div
-      class="playground light"
-      title="should render scroller with scroll indicator size according to inherit size on light background"
-    >
-      <div style="font-size: 2.25rem; line-height: 1.3333333333">
-        <p-scroller style="font-size: inherit">
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-          <a [href]="'#'">Size inherit</a>
-        </p-scroller>
-      </div>
-    </div>
-
-    <div
-      class="playground light"
       title="should render scroller only on screen size too small to show 8 buttons on light background"
     >
       <p-scroller style="max-width: none">
@@ -199,6 +167,38 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>
+        </p-scroller>
+      </div>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render scroller with scroll indicator size according to fontsize large on light background"
+    >
+      <p-scroller style="font-size: 2.25rem; line-height: 1.3333333333">
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+        <a [href]="'#'">Large font</a>
+      </p-scroller>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render scroller with scroll indicator size according to inherit size on light background"
+    >
+      <div style="font-size: 2.25rem; line-height: 1.3333333333">
+        <p-scroller style="font-size: inherit">
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
+          <a [href]="'#'">Size inherit</a>
         </p-scroller>
       </div>
     </div>

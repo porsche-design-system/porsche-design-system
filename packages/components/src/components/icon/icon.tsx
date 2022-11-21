@@ -6,7 +6,7 @@ import {
   attachComponentCss,
   getShadowRootHTMLElement,
   ICON_SIZES,
-  isBrowser,
+  hasWindow,
   TEXT_COLORS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   validateProps,
@@ -67,11 +67,6 @@ export class Icon {
     this.initIntersectionObserver();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
-  }
-
   public componentWillUpdate(): void {
     // reset old icon if there is any
     if (this.svgContent) {
@@ -90,11 +85,14 @@ export class Icon {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
+
     return <i key={this.key++} class="root" />;
   }
 
   private initIntersectionObserver(): void {
-    if (this.lazy && isBrowser()) {
+    if (this.lazy && hasWindow) {
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
         this.intersectionObserver = new IntersectionObserver(

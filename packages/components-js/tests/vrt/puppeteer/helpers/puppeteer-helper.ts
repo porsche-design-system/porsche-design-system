@@ -1,5 +1,5 @@
 import type { Page, WaitForOptions } from 'puppeteer';
-import { waitForComponentsReady } from '../../../e2e/helpers';
+import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;

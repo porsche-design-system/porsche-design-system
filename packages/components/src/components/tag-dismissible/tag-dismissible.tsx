@@ -35,12 +35,10 @@ export class TagDismissible {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <button type="button" {...parseAndGetAriaAttributes(this.aria)}>

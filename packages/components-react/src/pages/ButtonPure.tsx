@@ -47,29 +47,6 @@ export const ButtonPurePage = (): JSX.Element => {
         </PButtonPure>
       </div>
 
-      <div className="playground light" title="should render button with different size">
-        <PButtonPure size="x-small">Label size x-small</PButtonPure>
-        <br />
-        <PButtonPure size="small">Label size small</PButtonPure>
-        <br />
-        <PButtonPure size="medium">Label size medium</PButtonPure>
-        <br />
-        <PButtonPure size="large">Label size large</PButtonPure>
-        <br />
-        <PButtonPure size="x-large">Label size x-large</PButtonPure>
-        <br />
-        <PButtonPure size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PButtonPure>
-      </div>
-
-      <div className="playground light" title="should render button with responsive size">
-        <PButtonPure
-          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-          style={{ fontSize: '48px' }}
-        >
-          Label size responsive
-        </PButtonPure>
-      </div>
-
       <div className="playground light" title="should render button with different weight">
         <PButtonPure weight="thin">Label weight thin</PButtonPure>
         <PButtonPure weight="regular">Label weight regular</PButtonPure>
@@ -141,13 +118,6 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render with no icon">
         <PButtonPure icon="none">Label icon none</PButtonPure>
-        <PButtonPure icon="none" size="inherit" style={{ fontSize: '48px' }}>Label icon none size inherit</PButtonPure>
-        <PButtonPure
-          icon="none"
-          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-          style={{ fontSize: '48px' }}
-          >Label icon none size responsive</PButtonPure
-        >
         <PButtonPure size="small" icon="none">
           Label icon none
           <p slot="subline">Some subline</p>
@@ -190,6 +160,39 @@ export const ButtonPurePage = (): JSX.Element => {
           Label stretch
           <p slot="subline">Some subline</p>
         </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should render button with different size">
+        <PButtonPure size="x-small">Label size x-small</PButtonPure>
+        <br />
+        <PButtonPure size="small">Label size small</PButtonPure>
+        <br />
+        <PButtonPure size="medium">Label size medium</PButtonPure>
+        <br />
+        <PButtonPure size="large">Label size large</PButtonPure>
+        <br />
+        <PButtonPure size="x-large">Label size x-large</PButtonPure>
+        <br />
+        <PButtonPure size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PButtonPure>
+      </div>
+
+      <div className="playground light" title="should render button with responsive size">
+        <PButtonPure
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+        >
+          Label size responsive
+        </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should render with no icon and size inherit">
+        <PButtonPure icon="none" size="inherit" style={{ fontSize: '48px' }}>Label icon none size inherit</PButtonPure>
+        <PButtonPure
+          icon="none"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+          >Label icon none size responsive</PButtonPure
+        >
       </div>
     </>
   );

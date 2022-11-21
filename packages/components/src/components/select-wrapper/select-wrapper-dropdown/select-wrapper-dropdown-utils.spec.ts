@@ -23,7 +23,7 @@ import {
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
   getFilterInputAriaAttributes,
-  getButtonAriaAttributes,
+  getSelectWrapperDropdownButtonAriaAttributes,
 } from './select-wrapper-dropdown-utils';
 
 const baseOptionMap: OptionMap = {
@@ -74,14 +74,16 @@ export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[]
     value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,
   }));
 
-describe('getButtonAriaAttributes()', () => {
+describe('getSelectWrapperDropdownButtonAriaAttributes()', () => {
   it.each<[boolean, string, string, string]>([
     [true, 'label-id', 'description-id', 'dropdown-id'],
     [false, 'label-id', 'description-id', 'dropdown-id'],
   ])(
     'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o and dropdownId: %o',
     (isOpen, labelId, descriptionId, dropdownId) => {
-      expect(getButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId)).toMatchSnapshot();
+      expect(
+        getSelectWrapperDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId)
+      ).toMatchSnapshot();
     }
   );
 });

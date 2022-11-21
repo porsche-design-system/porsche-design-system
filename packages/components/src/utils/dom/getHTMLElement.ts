@@ -6,5 +6,5 @@ export function getHTMLElement<K extends keyof HTMLElementTagNameMap>(element: H
 // prettier-ignore
 export function getHTMLElement<E extends Element = Element>(element: HTMLElementOrShadowRoot, selector: string): E | null;
 export function getHTMLElement(element: HTMLElementOrShadowRoot, selector: string): any {
-  return element.querySelector(selector);
+  return element?.querySelector(selector);
 }

@@ -38,7 +38,7 @@ export class Tag {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -47,9 +47,7 @@ export class Tag {
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       this.theme
     );
-  }
 
-  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <span>
@@ -59,6 +57,7 @@ export class Tag {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
+            theme={this.theme}
             aria-hidden="true"
           />
         )}

@@ -221,7 +221,7 @@ export const getLinkButtonStyles = (
       border: '1px solid currentColor',
       backgroundColor: isTertiary ? 'transparent' : 'currentColor',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
-      transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
+      transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
       ...(!hasSlottedAnchor && {
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
         ...getFocusJssStyle(),

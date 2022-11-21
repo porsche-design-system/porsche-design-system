@@ -72,9 +72,30 @@ export const LinkPage = (): JSX.Element => {
         </PLink>
       </div>
 
-      <div className="playground light" title="should render secondary with specific icon">
+      <div className="playground light" title="should render link with specific icon">
         <PLink icon="phone" href="https://www.porsche.com">Some label</PLink>
         <PLink iconSource="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">Some label</PLink>
+        <PLink icon="phone" variant="primary" href="https://www.porsche.com">Some label</PLink>
+        <PLink iconSource="./assets/icon-custom-kaixin.svg" variant="primary" href="https://www.porsche.com"
+          >Some label</PLink
+        >
+        <PLink icon="phone" variant="tertiary" href="https://www.porsche.com">Some label</PLink>
+        <PLink iconSource="./assets/icon-custom-kaixin.svg" variant="tertiary" href="https://www.porsche.com"
+          >Some label</PLink
+        >
+      </div>
+
+      <div className="playground dark" title="should render link with specific icon on dark theme">
+        <PLink theme="dark" icon="phone" href="https://www.porsche.com">Some label</PLink>
+        <PLink theme="dark" iconSource="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">Some label</PLink>
+        <PLink theme="dark" icon="phone" variant="primary" href="https://www.porsche.com">Some label</PLink>
+        <PLink theme="dark" iconSource="./assets/icon-custom-kaixin.svg" variant="primary" href="https://www.porsche.com"
+          >Some label</PLink
+        >
+        <PLink theme="dark" icon="phone" variant="tertiary" href="https://www.porsche.com">Some label</PLink>
+        <PLink theme="dark" iconSource="./assets/icon-custom-kaixin.svg" variant="tertiary" href="https://www.porsche.com"
+          >Some label</PLink
+        >
       </div>
 
       <div className="playground light" title="should render with multiline label">

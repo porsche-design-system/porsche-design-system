@@ -81,9 +81,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-button>
     </div>
 
-    <div class="playground light" title="should render button secondary with specific icon">
+    <div class="playground light" title="should render button with specific icon">
       <p-button [icon]="'delete'">Some label</p-button>
       <p-button [iconSource]="'./assets/icon-custom-kaixin.svg'">Some label</p-button>
+      <p-button [icon]="'delete'" [variant]="'primary'">Some label</p-button>
+      <p-button [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'primary'">Some label</p-button>
+      <p-button [icon]="'delete'" [variant]="'tertiary'">Some label</p-button>
+      <p-button [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'tertiary'">Some label</p-button>
+    </div>
+
+    <div class="playground dark" title="should render button with specific icon on dark theme">
+      <p-button [theme]="'dark'" [icon]="'delete'">Some label</p-button>
+      <p-button [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'">Some label</p-button>
+      <p-button [theme]="'dark'" [icon]="'delete'" [variant]="'primary'">Some label</p-button>
+      <p-button [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'primary'">Some label</p-button>
+      <p-button [theme]="'dark'" [icon]="'delete'" [variant]="'tertiary'">Some label</p-button>
+      <p-button [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [variant]="'tertiary'">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button with multiline label">

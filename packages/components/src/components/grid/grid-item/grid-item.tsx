@@ -1,5 +1,11 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
+import type {
+  GridItemInternalHTMLProps,
+  GridItemOffset,
+  GridItemOffsetType,
+  GridItemSize,
+  GridItemSizeType,
+} from './grid-item-utils';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import type { PropTypes } from '../../../types';
@@ -15,7 +21,7 @@ const propTypes: PropTypes<typeof GridItem> = {
   shadow: true,
 })
 export class GridItem {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLElement & GridItemInternalHTMLProps;
 
   /** The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
   @Prop() public size?: GridItemSize = 1;
@@ -27,16 +33,16 @@ export class GridItem {
     throwIfParentIsNotOfKind(this.host, 'p-grid');
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-
-    const grid = this.host.parentElement as HTMLPGridElement;
-    if (grid) {
-      attachComponentCss(this.host, getComponentCss, this.size, this.offset, grid.gutter);
-    }
-  }
-
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      this.offset,
+      this.host.gutter || { base: 16, s: 24, m: 36 } // default as fallback
+    );
+
     return <slot />;
   }
 }

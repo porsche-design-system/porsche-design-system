@@ -58,11 +58,6 @@ export class CheckboxWrapper {
     this.observeAttributes(); // once initially
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
-  }
-
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -81,6 +76,9 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
+
     return (
       <Host>
         <label>

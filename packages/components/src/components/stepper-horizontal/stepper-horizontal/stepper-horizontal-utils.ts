@@ -23,7 +23,7 @@ export const throwIfMultipleCurrentStates = (
   }
 };
 
-export const syncItemsProps = (host: HTMLElement, theme: Theme): void => {
+export const syncStepperHorizontalItemsProps = (host: HTMLElement, theme: Theme): void => {
   Array.from(host.children).forEach(
     (item: HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps) => {
       item.theme = theme;

@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
-{
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id",
-}
-`;
-
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
-{
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
-  "aria-expanded": "true",
-  "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id",
-}
-`;
-
 exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 {
   "aria-autocomplete": "list",
@@ -144,5 +124,25 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-hidden": null,
   "aria-label": null,
   "aria-selected": null,
+}
+`;
+
+exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "description-id",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+}
+`;
+
+exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "description-id",
+  "aria-expanded": "true",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
 }
 `;

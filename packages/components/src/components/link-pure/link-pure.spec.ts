@@ -16,7 +16,7 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('componentWillRender', () => {
+describe('render', () => {
   it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
@@ -24,7 +24,7 @@ describe('componentWillRender', () => {
     component.host = document.createElement('p-link-pure');
     component.host.attachShadow({ mode: 'open' });
     component.href = '#';
-    component.componentWillRender();
+    component.render();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
   });

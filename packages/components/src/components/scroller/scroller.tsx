@@ -15,7 +15,12 @@ import {
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
 } from './scroller-utils';
-import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
+import type {
+  ScrollerDirection,
+  GradientColorTheme,
+  ScrollToPosition,
+  ScrollIndicatorPosition,
+} from './scroller-utils';
 import type { PropTypes, ThemeExtendedElectric } from '../../types';
 import { parseJSONAttribute } from '../../utils/json';
 
@@ -57,11 +62,15 @@ export class Scroller {
   @Watch('scrollToPosition')
   public scrollToPositionHandler(): void {
     this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
-    const { scrollPosition, isSmooth } = this.scrollToPosition;
-    if (isSmooth) {
-      scrollElementTo(this.scrollAreaElement, scrollPosition);
-    } else {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
+
+    // watcher might trigger before ref is defined with ssr
+    if (this.scrollAreaElement) {
+      const { scrollPosition, isSmooth } = this.scrollToPosition;
+      if (isSmooth) {
+        scrollElementTo(this.scrollAreaElement, scrollPosition);
+      } else {
+        this.scrollAreaElement.scrollLeft = scrollPosition;
+      }
     }
   }
 
@@ -83,7 +92,7 @@ export class Scroller {
     return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -94,18 +103,16 @@ export class Scroller {
       this.scrollIndicatorPosition,
       this.theme
     );
-  }
 
-  public render(): JSX.Element {
-    const renderPrevNextButton = (direction: Direction): JSX.Element => {
+    const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (
-        <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
+        <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButtonPure
             class="button"
             type="button"
-            tabindex="-1"
-            hide-label="true"
+            tabIndex={-1}
+            hideLabel={true}
             size="inherit"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             onClick={() => this.scrollOnPrevNextClick(direction)}
@@ -121,13 +128,13 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper" tabindex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
+          <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
             <slot />
             <div class="trigger" />
             <div class="trigger" />
           </div>
         </div>
-        {['prev', 'next'].map((direction: Direction) => renderPrevNextButton(direction))}
+        {(['prev', 'next'] as ScrollerDirection[]).map(renderPrevNextButton)}
       </div>
     );
   }
@@ -157,7 +164,7 @@ export class Scroller {
     this.intersectionObserver.observe(lastTrigger);
   };
 
-  private scrollOnPrevNextClick = (direction: Direction): void => {
+  private scrollOnPrevNextClick = (direction: ScrollerDirection): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
   };

@@ -10,6 +10,7 @@ import {
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { forceUpdate } from '@stencil/core';
+import { hasDocument } from '../../../utils';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
@@ -20,20 +21,26 @@ export type SegmentedControlChangeEvent = { value: string | number };
 const tempFont = 'sans-serif';
 
 // temporary dom node to measure max-width of children content
-export const tempDiv = document.createElement('div');
-tempDiv.style.position = 'absolute';
-tempDiv.style.visibility = 'hidden';
-tempDiv.style.padding = `0 ${ITEM_PADDING}`;
-tempDiv.style.boxSizing = 'border-box';
-tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
+export const tempDiv = hasDocument ? document.createElement('div') : undefined;
+if (tempDiv) {
+  tempDiv.style.position = 'absolute';
+  tempDiv.style.visibility = 'hidden';
+  tempDiv.style.padding = `0 ${ITEM_PADDING}`;
+  tempDiv.style.boxSizing = 'border-box';
+  tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
+}
 
-export const tempLabel = document.createElement('div');
-tempLabel.style.font = LABEL_FONT.replace(fontFamily, tempFont);
+export const tempLabel = hasDocument ? document.createElement('div') : undefined;
+if (tempLabel) {
+  tempLabel.style.font = LABEL_FONT.replace(fontFamily, tempFont);
+}
 
-export const tempIcon = document.createElement('div');
-tempIcon.style.display = 'inline-block';
-tempIcon.style.width = ICON_SIZE;
-tempIcon.style.marginRight = ICON_MARGIN;
+export const tempIcon = hasDocument ? document.createElement('div') : undefined;
+if (tempIcon) {
+  tempIcon.style.display = 'inline-block';
+  tempIcon.style.width = ICON_SIZE;
+  tempIcon.style.marginRight = ICON_MARGIN;
+}
 
 export const getItemMaxWidth = (host: HTMLElement): number => {
   tempDiv.innerHTML = '';
@@ -58,7 +65,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
   return Math.max(...widths);
 };
 
-export const syncItemsProps = (
+export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   backgroundColor: SegmentedControlBackgroundColor,

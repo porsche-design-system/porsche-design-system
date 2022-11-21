@@ -68,6 +68,7 @@ export class Pagination {
   @State() private breakpointMaxNumberOfPageLinks: number;
 
   private navigationElement: HTMLElement;
+  private unlistenResize: () => void;
 
   public componentDidLoad(): void {
     this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
@@ -75,16 +76,16 @@ export class Pagination {
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
-  }
-
   public disconnectedCallback(): void {
-    this.unlistenResize();
+    if (this.unlistenResize) {
+      this.unlistenResize();
+    }
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
+
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
 
     const paginationModel = createPaginationModel({
@@ -109,7 +110,7 @@ export class Pagination {
             switch (type) {
               case itemTypes.PREVIOUS_PAGE_LINK:
                 return (
-                  <li>
+                  <li key="prev">
                     <span
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}
@@ -123,14 +124,14 @@ export class Pagination {
 
               case itemTypes.ELLIPSIS:
                 return (
-                  <li>
+                  <li key="ellipsis">
                     <span class="ellipsis" />
                   </li>
                 );
 
               case itemTypes.PAGE:
                 return (
-                  <li>
+                  <li key={value}>
                     <span
                       {...spanProps}
                       tabIndex={0}
@@ -144,7 +145,7 @@ export class Pagination {
 
               case itemTypes.NEXT_PAGE_LINK:
                 return (
-                  <li>
+                  <li key="next">
                     <span
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}
@@ -161,9 +162,6 @@ export class Pagination {
       </nav>
     );
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  private unlistenResize: () => void = () => {};
 
   private onKeyDown(event: KeyboardEvent, page: number): void {
     /**

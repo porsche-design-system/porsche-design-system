@@ -1,15 +1,19 @@
+import { hasWindow } from './has-window';
+
 export const childrenMutationMap: Map<Node, () => void> = new Map();
 
 const getObservedNode = (mutatedNode: Node): Node =>
   childrenMutationMap.has(mutatedNode) ? mutatedNode : getObservedNode(mutatedNode.parentNode);
 
-const childrenObserver = new MutationObserver((mutations) => {
-  mutations
-    // remove duplicates so we execute callback only once per node
-    .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
-    .map((mutation) => getObservedNode(mutation.target)) // recursively find root node that is initially observed
-    .forEach((node) => childrenMutationMap.get(node)());
-});
+const childrenObserver =
+  hasWindow &&
+  new MutationObserver((mutations) => {
+    mutations
+      // remove duplicates so we execute callback only once per node
+      .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
+      .map((mutation) => getObservedNode(mutation.target)) // recursively find root node that is initially observed
+      .forEach((node) => childrenMutationMap.get(node)());
+  });
 
 export const observeChildren = <T extends HTMLElement, K = keyof T>(
   node: T,

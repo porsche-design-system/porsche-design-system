@@ -6,6 +6,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  isShadowRootParentOfKind,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -16,7 +17,6 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
-import { isShadowRootParentOfKind } from '../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
@@ -27,7 +27,7 @@ import {
   TAB_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { Direction } from '../scroller/scroller-utils';
+import type { ScrollerDirection } from '../scroller/scroller-utils';
 import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
@@ -67,7 +67,7 @@ export class TabsBar {
 
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
-  private direction: Direction = 'next';
+  private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
   private scrollerElement: HTMLPScrollerElement;
 
@@ -115,11 +115,6 @@ export class TabsBar {
     this.setBarStyle();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
-  }
-
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setBarStyle();
@@ -132,6 +127,9 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -150,7 +148,7 @@ export class TabsBar {
   }
 
   private setAccessibilityAttributes = (): void => {
-    for (const [index, tab] of Object.entries(this.tabElements)) {
+    this.tabElements.forEach((tab, index) => {
       const tabIndex = this.activeTabIndex || 0;
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
@@ -159,10 +157,11 @@ export class TabsBar {
         tabindex: isFocusable ? '0' : '-1',
         'aria-selected': isSelected ? 'true' : 'false',
       };
-      for (const [key, value] of Object.entries(attrs)) {
-        setAttribute(tab, key, value);
+      /* eslint-disable-next-line guard-for-in */
+      for (const key in attrs) {
+        setAttribute(tab, key, attrs[key] as string);
       }
-    }
+    });
   };
 
   private setTabElements = (): void => {

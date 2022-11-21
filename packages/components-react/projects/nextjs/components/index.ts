@@ -1,1 +1,1 @@
-export * from './nav';
+export * from './TableWithCaption';

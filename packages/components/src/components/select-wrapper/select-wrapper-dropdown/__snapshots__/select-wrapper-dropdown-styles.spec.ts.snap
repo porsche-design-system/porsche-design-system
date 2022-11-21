@@ -4,7 +4,7 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -33,7 +33,7 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -62,7 +62,7 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -91,7 +91,7 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 'e
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -121,7 +121,7 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 'n
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -151,7 +151,7 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 's
 "button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -191,7 +191,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -524,7 +524,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -851,7 +851,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -1178,7 +1178,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -1499,7 +1499,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -1834,7 +1834,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -2163,7 +2163,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;
@@ -2490,7 +2490,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 48px;
+  height: 3rem;
   width: 100%;
   padding: 0;
   background: transparent;

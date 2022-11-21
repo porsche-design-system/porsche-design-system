@@ -1,5 +1,5 @@
 import { forceHoverState, setContentWithDesignSystem } from '../helpers';
-import { waitForComponentsReady } from '../../../e2e/helpers';
+import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import { Theme } from '@porsche-design-system/components/dist/types/types';
 

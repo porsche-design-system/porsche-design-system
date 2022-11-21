@@ -121,6 +121,7 @@ p {
   display: inline-block;
 }
 .link {
+  min-height: 3rem;
   display: none;
 }
 .anchor::after {
@@ -297,6 +298,7 @@ p {
   display: none;
 }
 .link {
+  min-height: 3rem;
   display: inline-flex;
 }
 .anchor::after {
@@ -389,6 +391,7 @@ p {
   display: none;
 }
 .link {
+  min-height: 3rem;
   display: inline-flex;
 }
 .anchor::after {
@@ -481,6 +484,7 @@ p {
   display: none;
 }
 .link {
+  min-height: 3rem;
   display: inline-flex;
 }
 .anchor::after {
@@ -572,6 +576,7 @@ p {
   display: none;
 }
 .link {
+  min-height: 3rem;
   display: inline-flex;
 }
 .anchor::after {
@@ -664,6 +669,7 @@ p {
   display: inline-block;
 }
 .link {
+  min-height: 3rem;
   display: none;
 }
 .anchor::after {

@@ -2,8 +2,8 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  counter-reset: section !important;
   display: block;
+  counter-reset: section !important;
 }
 [role] {
   display: block;
@@ -20,8 +20,8 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  counter-reset: section !important;
   display: block;
+  counter-reset: section !important;
 }
 [role] {
   display: block;

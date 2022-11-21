@@ -5,6 +5,7 @@ import type { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
+  protected projectDir = 'react-wrapper';
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
@@ -73,7 +74,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...propsToEventListener.map(
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substring(2))}', ${key} as any);`
       ),
-      `const Tag = usePrefix('${component}');`,
+      `const WebComponentTag = usePrefix('${component}');`,
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
@@ -115,7 +116,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   ): JSX.Element => {
     ${[componentHooks, componentEffects, componentProps].filter((x) => x).join('\n\n    ')}
 
-    return <Tag {...props} />;
+    return <WebComponentTag {...props} />;
   }
 );`;
   }
