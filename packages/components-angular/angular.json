@@ -102,6 +102,7 @@
   },
   "defaultProject": "components-angular",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": false
   }
 }
