@@ -61,7 +61,6 @@ export class SelectWrapperDropdown {
   @State() private optionMaps: OptionMap[] = [];
   @State() private searchString = '';
 
-  private buttonElement: HTMLButtonElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
@@ -134,7 +133,7 @@ export class SelectWrapperDropdown {
                 dropdownId,
                 getHighlightedOptionMapIndex(this.optionMaps)
               )}
-              onKeyDown={this.onListKeyDown}
+              onKeyDown={this.onComboboxKeyDown}
               onInput={this.onFilterChange}
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
@@ -144,12 +143,17 @@ export class SelectWrapperDropdown {
         ) : (
           <button
             type="button"
+            role="combobox"
             id={buttonId}
             disabled={this.disabled}
-            {...getSelectWrapperDropdownButtonAriaAttributes(this.isOpen, labelId, descriptionId, dropdownId)}
+            {...getSelectWrapperDropdownButtonAriaAttributes(
+              this.isOpen,
+              labelId,
+              descriptionId,
+              dropdownId,
+              getHighlightedOptionMapIndex(this.optionMaps))}
             onClick={() => this.setDropdownVisibility('toggle')}
-            onKeyDown={this.onButtonKeyDown}
-            ref={(el) => (this.buttonElement = el)}
+            onKeyDown={this.onComboboxKeyDown}
           />
         )}
         {[
@@ -166,8 +170,7 @@ export class SelectWrapperDropdown {
             id={dropdownId}
             role="listbox"
             tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, this.optionMaps, this.filter, this.isOpen)}
-            onKeyDown={this.onListKeyDown}
+            {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
             ref={(el) => (this.listElement = el)}
           >
             {this.filter && !hasFilterResults(this.optionMaps) ? (
@@ -233,35 +236,9 @@ export class SelectWrapperDropdown {
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
-    if (this.filter) {
-      this.inputElement.focus();
-    } else {
-      (this.isOpen ? this.listElement : this.buttonElement).focus();
-    }
   };
 
-  private onButtonKeyDown = (e: KeyboardEvent): void => {
-    switch (e.key) {
-      case 'ArrowUp':
-      case 'Up':
-        e.preventDefault();
-        this.cycleDropdown('up');
-        break;
-      case 'ArrowDown':
-      case 'Down':
-        e.preventDefault();
-        this.cycleDropdown('down');
-        break;
-      case ' ':
-      case 'Spacebar':
-      case 'Enter':
-        e.preventDefault();
-        this.setDropdownVisibility('show');
-        break;
-    }
-  };
-
-  private onListKeyDown = (e: KeyboardEvent): void => {
+  private onComboboxKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
@@ -288,7 +265,11 @@ export class SelectWrapperDropdown {
           }
         } else {
           e.preventDefault();
-          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+          if (this.isOpen) {
+            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+          } else {
+            this.setDropdownVisibility('show');
+          }
         }
         break;
       case 'Escape':
