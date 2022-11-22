@@ -30,7 +30,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
       button: {
         position: 'absolute',
         top: 0,
-        height: `${INPUT_HEIGHT}px`,
+        height: pxToRemWithUnit(INPUT_HEIGHT),
         width: '100%',
         padding: 0,
         background: 'transparent',
