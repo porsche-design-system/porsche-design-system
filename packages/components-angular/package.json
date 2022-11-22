@@ -11,7 +11,7 @@
     "build": "yarn clean:build && yarn build:angular-wrapper",
     "build:angular-wrapper": "ng build angular-wrapper --configuration production && yarn build:bundle",
     "build:bundle": "yarn build:bundle:partialsAndUtilities && yarn build:bundle:typings",
-    "build:bundle:partialsAndUtilities": "yarn rollup -c --bundleConfigAsCjs projects/angular-wrapper/rollup.config.js",
+    "build:bundle:partialsAndUtilities": "yarn rollup -c projects/angular-wrapper/rollup.config.mjs",
     "build:bundle:typings": "yarn build:bundle:typings:partials && yarn build:bundle:typings:utilities",
     "build:bundle:typings:partials": "tsc projects/angular-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/partials --types node,react",
     "build:bundle:typings:utilities": "tsc projects/angular-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/utilities/js --types node,react",
