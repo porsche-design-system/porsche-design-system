@@ -964,15 +964,29 @@ describe('select-wrapper dropdown', () => {
   });
 
   describe('accessibility', () => {
-    it('should expose correct initial accessibility tree and aria properties', async () => {
-      await initSelect({ disabledIndex: 1 });
+    it('should expose correct initial accessibility tree', async () => {
+      await initSelect();
+      const dropdownButton = await getDropdownButton();
       const dropdown = await getDropdown();
 
+      await expectA11yToMatchSnapshot(page, dropdownButton, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: true });
+    });
+
+    it('should expose correct initial accessibility tree in open state', async () => {
+      await initSelect({ disabledIndex: 1 });
+      const host = await getHost();
+      const dropdownButton = await getDropdownButton();
+      const dropdown = await getDropdown();
+
+      await host.click();
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, dropdownButton, { interestingOnly: false });
       await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
       expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
     });
 
-    it('should expose correct accessibility tree if rendered with optgroups', async () => {
+    it('should expose correct accessibility tree if rendered with optgroups in open state', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -990,8 +1004,11 @@ describe('select-wrapper dropdown', () => {
         </p-select-wrapper>`
       );
 
+      const host = await getHost();
       const dropdown = await getDropdown();
 
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
     });
 
@@ -1001,10 +1018,6 @@ describe('select-wrapper dropdown', () => {
       const host = await getHost();
       const dropdownButton = await getDropdownButton();
 
-      const snapshot = await page.accessibility.snapshot({
-        root: dropdownButton,
-      });
-
       await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'Initially' });
 
       await host.click();
@@ -1013,21 +1026,22 @@ describe('select-wrapper dropdown', () => {
       await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'After click' });
     });
 
-    it('should expose correct accessibility tree on selected custom option on click', async () => {
+    it('should expose correct accessibility tree on selected custom option on click in open state', async () => {
       await initSelect();
 
-      const dropdownButton = await getDropdownButton();
+      const host = await getHost();
       const dropdownOption1 = await getDropdownOption1();
       const dropdownOption2 = await getDropdownOption2();
 
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
 
-      await dropdownButton.click();
-      await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
-
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
     });
