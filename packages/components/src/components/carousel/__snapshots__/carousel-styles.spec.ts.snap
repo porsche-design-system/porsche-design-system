@@ -15,6 +15,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -24,6 +25,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {
@@ -179,6 +181,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #fff !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -188,6 +191,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #fff !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {
@@ -319,6 +323,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -328,6 +333,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {
@@ -459,6 +465,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -468,6 +475,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {
@@ -584,6 +592,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -593,6 +602,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {
@@ -733,6 +743,7 @@ h2,::slotted([slot=heading]) {
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -742,6 +753,7 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #000 !important;
+  max-width: 34.375rem !important;
   grid-column: 1 !important;
 }
 @media(min-width:760px) and (max-width:999px) {

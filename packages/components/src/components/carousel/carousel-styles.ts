@@ -44,11 +44,13 @@ export const getComponentCss = (
         ...headingMedium,
         margin: 0,
         color: baseColor,
+        maxWidth: pxToRemWithUnit(900),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmall,
         margin: 0,
         color: baseColor,
+        maxWidth: pxToRemWithUnit(550),
         gridColumn: 1, // to force it into 2nd line
       }),
     },
