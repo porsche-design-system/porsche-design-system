@@ -9,7 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `line-height` calculation for all components is handled CSS only now by using `ex`-unit in combination with `calc()`
+  which results in **larger** `line-height` values for **small** `font-size` definitions and **smaller** `line-height`
+  values for **larger** `font-size` definitions. The change improves performance, SSR support and prepares the
+  introduction of fluid typography in Porsche Design System v3.
+
 #### Fixed
+
 - `Select Wrapper` height if text is zoomed up to 200%
 
 ### [2.18.0-rc.0] - 2022-11-17
