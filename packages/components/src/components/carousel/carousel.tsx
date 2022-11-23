@@ -170,13 +170,13 @@ export class Carousel {
           <div class="nav">
             <PrefixedTagNames.pButtonPure
               {...btnProps}
-              icon="arrow-head-left"
+              icon="arrow-left"
               ref={(ref) => (this.btnPrev = ref)}
               onClick={() => slidePrev(this.splide, this.amountOfPages)}
             />
             <PrefixedTagNames.pButtonPure
               {...btnProps}
-              icon="arrow-head-right"
+              icon="arrow-right"
               ref={(ref) => (this.btnNext = ref)}
               onClick={() => slideNext(this.splide, this.amountOfPages)}
             />
