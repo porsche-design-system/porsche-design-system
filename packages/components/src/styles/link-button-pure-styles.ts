@@ -26,7 +26,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -48,8 +48,8 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
       'x-small': fontSize.xSmall,
       small: fontSize.small,
-      medium: { fontSize: '1.25rem', lineHeight: 1.4 },
-      large: { fontSize: '1.875rem', lineHeight: 1.3333333333 },
+      medium: { fontSize: '1.25rem', lineHeight: fontLineHeight },
+      large: { fontSize: '1.875rem', lineHeight: fontLineHeight },
       'x-large': fontSize.large,
     };
 
