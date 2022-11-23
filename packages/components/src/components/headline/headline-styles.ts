@@ -32,7 +32,6 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
   const { semiBold: fontWeightSemiBold } = fontWeight;
   return textSize === 'inherit'
     ? {
-        lineHeight: textSize,
         fontSize: textSize,
         fontWeight: fontWeightSemiBold,
       }
