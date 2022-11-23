@@ -30,6 +30,5 @@ export {
   THEMES_EXTENDED_ELECTRIC,
   THEMES_EXTENDED_ELECTRIC_DARK,
 } from './theme';
-export * from './transition-listener';
 export * from './typography';
 export * from './validation';
