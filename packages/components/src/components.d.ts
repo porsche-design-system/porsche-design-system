@@ -215,6 +215,10 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
+          * Whether the slides should loop from last to first slide and vice versa.
+         */
+        "loop"?: boolean;
+        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -1806,6 +1810,10 @@ declare namespace LocalJSX {
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
         "intl"?: CarouselInternationalization;
+        /**
+          * Whether the slides should loop from last to first slide and vice versa.
+         */
+        "loop"?: boolean;
         /**
           * Emitted when carousel's content slides.
          */

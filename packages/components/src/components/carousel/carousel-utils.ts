@@ -82,11 +82,16 @@ export const slideNext = (splide: Splide, amountOfPages: number): void => {
   splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
 };
 
-export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
-  const { i18n } = splide.options;
-  btnPrev.aria = { 'aria-label': i18n[isFirstPage(splide) ? 'last' : 'prev'] };
+export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
+  const { i18n, rewind: isLoop } = splide.options;
+  const isFirst = isFirstPage(splide);
+  btnPrev.disabled = isFirst && !isLoop;
+  btnPrev.aria = { 'aria-label': i18n[isFirst ? 'last' : 'prev'] };
+
+  const isLast = isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage));
+  btnNext.disabled = isLast && !isLoop;
   btnNext.aria = {
-    'aria-label': i18n[isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage)) ? 'first' : 'next'],
+    'aria-label': i18n[isLast ? 'first' : 'next'],
   };
 };
 

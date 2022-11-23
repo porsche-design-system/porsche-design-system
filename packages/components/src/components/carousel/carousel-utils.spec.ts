@@ -11,7 +11,7 @@ import {
   slidePrev,
   toSplideBreakpoints,
   updatePagination,
-  updatePrevNextButtonAria,
+  updatePrevNextButtons,
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
@@ -153,7 +153,7 @@ describe('getSlidesAndAddNamedSlots()', () => {
 
     const [child1, child2, child3] = getChildren();
     child2.slot = 'heading';
-    child3.slot = 'post-heading';
+    child3.slot = 'description';
 
     host.append(child1, child2, child3);
     expect(getSlidesAndAddNamedSlots(host)).toEqual([child1]);
@@ -292,7 +292,7 @@ describe('slideNext()', () => {
   );
 });
 
-describe('updatePrevNextButtonAria()', () => {
+describe('updatePrevNextButtons()', () => {
   const getButtons = (): [ButtonPure, ButtonPure] => {
     const btnPrev = document.createElement('button') as HTMLButtonElement & ButtonPure;
     btnPrev.id = 'btnPrev';
@@ -321,7 +321,7 @@ describe('updatePrevNextButtonAria()', () => {
     const spy = jest.spyOn(carouselUtils, 'isFirstPage');
     const splide = getSplide();
 
-    updatePrevNextButtonAria(...getButtons(), splide);
+    updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toBeCalledWith(splide);
   });
 
@@ -330,7 +330,7 @@ describe('updatePrevNextButtonAria()', () => {
     jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const splide = getSplide();
 
-    updatePrevNextButtonAria(...getButtons(), splide);
+    updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toBeCalledWith(splide, 5);
   });
 
@@ -338,7 +338,7 @@ describe('updatePrevNextButtonAria()', () => {
     const spy = jest.spyOn(carouselUtils, 'getAmountOfPages');
     const splide = getSplide();
 
-    updatePrevNextButtonAria(...getButtons(), splide);
+    updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toBeCalledWith(3, 1);
   });
 
@@ -350,13 +350,13 @@ describe('updatePrevNextButtonAria()', () => {
 
     isFirstPageSpy.mockReturnValue(false);
     isLastPageSpy.mockReturnValue(false);
-    updatePrevNextButtonAria(btnPrev, btnNext, splide);
+    updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.aria).toEqual({ 'aria-label': 'custom prev' });
     expect(btnNext.aria).toEqual({ 'aria-label': 'custom next' });
 
     isFirstPageSpy.mockReturnValue(true);
     isLastPageSpy.mockReturnValue(true);
-    updatePrevNextButtonAria(btnPrev, btnNext, splide);
+    updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.aria).toEqual({ 'aria-label': 'custom last' });
     expect(btnNext.aria).toEqual({ 'aria-label': 'custom first' });
   });
