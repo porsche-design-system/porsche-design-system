@@ -44,7 +44,7 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
     expect(getPreloadedTagNamesForCoreChunk(coreChunkLinkElement)).toEqual([]);
   });
 
-  it('should return preloaded tag names for core chunk link if nextSibling.href includes "porsche-design-system."', () => {
+  it('should return all preloaded tag names belonging to one core chunk link if nextSibling.href includes "porsche-design-system."', () => {
     [
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.text.6c494c2050a87f393ea4.js',
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.accordion.672e1be1ea3640e24667.js',
@@ -62,10 +62,6 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
 
 describe('getPreloadedTagNamesForVersion()', () => {
   const version = '1.2.3';
-
-  it('should return empty [] for version if no core chunk link is found', () => {
-    expect(getPreloadedTagNamesForVersion(version)).toEqual([]);
-  });
 
   it('should call document.querySelector() with correct parameters', () => {
     const documentQuerySelectorSpy = jest.spyOn(document, 'querySelector');
@@ -85,6 +81,10 @@ describe('getPreloadedTagNamesForVersion()', () => {
     getPreloadedTagNamesForVersion(version);
 
     expect(spy).toBeCalledWith(querySelectorMockReturn);
+  });
+
+  it('should return empty [] for version if no core chunk link is found', () => {
+    expect(getPreloadedTagNamesForVersion(version)).toEqual([]);
   });
 });
 
@@ -121,7 +121,9 @@ describe('getPdsComponentsSelector()', () => {
 
   // TODO: how to test it without it failing as soon as a new chunk is created?
   it('should return joined and prefixed COMPONENT_TAG_NAMES_WITH_CHUNK for passed prefixes', () => {
-    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toMatchSnapshot();
+    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toEqual(
+      'my-prefix-p-accordion,my-prefix-p-banner,my-prefix-p-button,my-prefix-p-button-group,my-prefix-p-button-pure,my-prefix-p-carousel,my-prefix-p-checkbox-wrapper,my-prefix-p-content-wrapper,my-prefix-p-divider,my-prefix-p-fieldset-wrapper,my-prefix-p-flex,my-prefix-p-grid,my-prefix-p-headline,my-prefix-p-icon,my-prefix-p-inline-notification,my-prefix-p-link,my-prefix-p-link-pure,my-prefix-p-link-social,my-prefix-p-link-tile,my-prefix-p-marque,my-prefix-p-modal,my-prefix-p-pagination,my-prefix-p-popover,my-prefix-p-radio-button-wrapper,my-prefix-p-scroller,my-prefix-p-segmented-control,my-prefix-p-select-wrapper,my-prefix-p-spinner,my-prefix-p-stepper-horizontal,my-prefix-p-switch,my-prefix-p-table,my-prefix-p-tabs,my-prefix-p-tabs-bar,my-prefix-p-tag,my-prefix-p-tag-dismissible,my-prefix-p-text,my-prefix-p-text-field-wrapper,my-prefix-p-text-list,my-prefix-p-textarea-wrapper,my-prefix-p-toast,some-prefix-p-accordion,some-prefix-p-banner,some-prefix-p-button,some-prefix-p-button-group,some-prefix-p-button-pure,some-prefix-p-carousel,some-prefix-p-checkbox-wrapper,some-prefix-p-content-wrapper,some-prefix-p-divider,some-prefix-p-fieldset-wrapper,some-prefix-p-flex,some-prefix-p-grid,some-prefix-p-headline,some-prefix-p-icon,some-prefix-p-inline-notification,some-prefix-p-link,some-prefix-p-link-pure,some-prefix-p-link-social,some-prefix-p-link-tile,some-prefix-p-marque,some-prefix-p-modal,some-prefix-p-pagination,some-prefix-p-popover,some-prefix-p-radio-button-wrapper,some-prefix-p-scroller,some-prefix-p-segmented-control,some-prefix-p-select-wrapper,some-prefix-p-spinner,some-prefix-p-stepper-horizontal,some-prefix-p-switch,some-prefix-p-table,some-prefix-p-tabs,some-prefix-p-tabs-bar,some-prefix-p-tag,some-prefix-p-tag-dismissible,some-prefix-p-text,some-prefix-p-text-field-wrapper,some-prefix-p-text-list,some-prefix-p-textarea-wrapper,some-prefix-p-toast'
+    );
   });
 });
 
