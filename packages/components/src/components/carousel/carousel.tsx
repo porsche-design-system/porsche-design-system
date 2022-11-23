@@ -5,6 +5,7 @@ import {
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
   getSlotTextContent,
+  hasDescription,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -162,7 +163,8 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-          {this.description && <p>{this.description}</p>}
+          {hasDescription(this.host, this.description) &&
+            ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
 
           {/* NOTE: might come back in later version */}
           {/* <slot name="post-heading" /> */}
