@@ -67,7 +67,6 @@ export const getComponentCss = (
         : {
             ...textSmall,
             ...buildResponsiveStyles(variant, getSizeJssStyle),
-            transition: 'font-size 1ms linear',
             overflowWrap: null,
             hyphens: null,
           }),

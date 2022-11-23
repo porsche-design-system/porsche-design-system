@@ -29,10 +29,3 @@ export const calcLineHeightForElement = (tag: HTMLElement): number => {
   // fontSize is "" when element does no longer exist and would throw an exception in calculateLineHeight
   return fontSize && calculateLineHeight(parseFloat(fontSize));
 };
-
-export const generateTypeScale = (fontSizeWithRem: string): { fontSize: string; lineHeight: number } => {
-  return {
-    fontSize: fontSizeWithRem,
-    lineHeight: calculateLineHeight(parseFloat(fontSizeWithRem) * 16),
-  };
-};

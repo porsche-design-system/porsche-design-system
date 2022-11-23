@@ -1,5 +1,5 @@
 import * as lineHeightUtil from './line-height';
-import { calcLineHeightForElement, calculateLineHeight, generateTypeScale, lineHeightMap } from './line-height';
+import { calcLineHeightForElement, calculateLineHeight, lineHeightMap } from './line-height';
 
 describe('calculateLineHeight()', () => {
   const defaultLineHeightMap: Map<number, number> = new Map(lineHeightMap);
@@ -58,21 +58,5 @@ describe('calcLineHeightForElement()', () => {
     calcLineHeightForElement(element);
 
     expect(spy).not.toBeCalled();
-  });
-});
-
-describe('generateTypeScale()', () => {
-  it.each<[string, { fontSize: string; lineHeight: number }]>([
-    ['0.75rem', { fontSize: '0.75rem', lineHeight: 1.6666666667 }],
-    ['1rem', { fontSize: '1rem', lineHeight: 1.5 }],
-  ])('should be called with fontsize: "%s" and return %o', (fontSize, expected) => {
-    expect(generateTypeScale(fontSize)).toEqual(expected);
-  });
-
-  it('should call calculateLineHeight', () => {
-    const spy = jest.spyOn(lineHeightUtil, 'calculateLineHeight');
-    generateTypeScale('0.75rem');
-
-    expect(spy).toBeCalledWith(parseFloat('0.75rem') * 16);
   });
 });
