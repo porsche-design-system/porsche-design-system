@@ -11,11 +11,17 @@ import type { TagNamesForVersions } from './helper';
 import * as validatePartialUsageUtils from './validatePartialUsage';
 import * as helperUtils from './helper';
 
-document.porscheDesignSystem = {
-  '1.2.3': { prefixes: [''] },
-  '1.2.4': { prefixes: ['prefix'] },
-  '1.2.5': { prefixes: ['my-prefix'] },
-};
+beforeAll(() => {
+  document.porscheDesignSystem = {
+    '1.2.3': { prefixes: [''] },
+    '1.2.4': { prefixes: ['prefix'] },
+    '1.2.5': { prefixes: ['my-prefix'] },
+  }; // initialize pds document
+});
+
+afterAll(() => {
+  document.porscheDesignSystem = undefined; // reset pds document
+});
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
@@ -26,6 +32,7 @@ describe('validatePartialUsage()', () => {
   const originalEnv = process.env;
   afterEach(() => {
     process.env = originalEnv;
+    document.clear();
   });
 
   it.each<[string, string]>([
@@ -77,10 +84,10 @@ describe('validatePartialUsage()', () => {
 
       validatePartialUsage();
 
-      expect(validateGetFontLinksUsageSpy).not.toBeCalledWith();
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalledWith();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
-      expect(validateGetInitialStylesUsageSpy).not.toBeCalledWith();
+      expect(validateGetFontLinksUsageSpy).not.toBeCalled();
+      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
+      expect(validateGetLoaderScriptUsageSpy).not.toBeCalled();
+      expect(validateGetInitialStylesUsageSpy).not.toBeCalled();
     }
   );
 });
@@ -109,7 +116,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).not.toBeCalledWith('getFontLink');
+    expect(spy).not.toBeCalled();
   });
 });
 
@@ -215,7 +222,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 
     validateGetLoaderScriptUsage();
 
-    expect(spy).not.toBeCalledWith('getLoaderScript');
+    expect(spy).not.toBeCalled();
   });
 });
 
