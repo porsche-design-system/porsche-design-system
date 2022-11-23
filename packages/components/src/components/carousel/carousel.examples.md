@@ -44,9 +44,17 @@ named slot.
 
 ## Description
 
-Right after the `heading`, an additional `description` can be added.
+Right after the `heading`, an additional `description` can be added either via prop or named slot.
 
 <Playground :markup="description" :config="config"></Playground>
+
+## Loop
+
+By default, the `p-carousel` loops by rewinding and fast forwarding from the last slide to the first slide and first
+slide to the last slide as demonstrated in previous examples.  
+This behavior can be disabled by specifying `loop="false"` which also disables the prev/next buttons.
+
+<Playground :markup="loop" :config="config"></Playground>
 
 ## Wrap Content
 
@@ -145,8 +153,8 @@ export default class Code extends Vue {
     return this.$store.getters.theme;
   }
 
-  basicHeading = "Some Heading";
-  basicDescription = "Some Description";
+  basicHeading = "Some heading";
+  basicDescription = "Some description";
   getSlides = (amount = 6) => Array.from(Array(amount)).map((_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
 
   basic = `<p-carousel heading="${this.basicHeading}">
@@ -165,11 +173,20 @@ export default class Code extends Vue {
 </p-carousel>
 
 <p-carousel>
-  <h3 slot="heading">Some slotted Heading</h3>
+  <h3 slot="heading">Some slotted heading</h3>
   ${this.getSlides(3)}
 </p-carousel>`;
 
   description = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
+  ${this.getSlides(3)}
+</p-carousel>
+
+<p-carousel heading="${this.basicHeading}">
+  <p slot="description">Some slotted description</p>
+  ${this.getSlides(3)}
+</p-carousel>`;
+
+  loop = `<p-carousel loop="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
