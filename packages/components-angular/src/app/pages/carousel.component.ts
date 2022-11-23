@@ -66,7 +66,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render carousel with slotted heading and description on light background">
-      <p-carousel [description]="'Description'">
+      <p-carousel [description]="'Prop description'">
         <h2 slot="heading">Slotted heading</h2>
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -75,17 +75,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should render carousel with slotted heading and description on dark background">
-      <p-carousel [description]="'Description'" [theme]="'dark'">
+      <p-carousel [description]="'Prop description'" [theme]="'dark'">
         <h2 slot="heading">Slotted heading</h2>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground light" title="should render carousel with wrapped content and description on light background">
-      <p-carousel [heading]="'Wrapped content heading'" [description]="'Description'" [wrapContent]="true">
-        <p slot="post-heading">Slotted post-heading</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -94,10 +85,61 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with wrapped slotted heading and description on light background"
+      title="should render carousel with slotted heading and slotted description on light background"
     >
-      <p-carousel [wrapContent]="true" [description]="'Description'">
+      <p-carousel>
+        <h2 slot="heading">Slotted heading</h2>
+        <p slot="description">Slotted description</p>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should render carousel with slotted heading and slotted description on dark background"
+    >
+      <p-carousel [theme]="'dark'">
+        <h2 slot="heading">Slotted heading</h2>
+        <p slot="description">Slotted description</p>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel with loop=false on light background">
+      <p-carousel [heading]="'Heading without loop'" [loop]="false">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground dark" title="should render carousel with loop=false on dark background">
+      <p-carousel [heading]="'Heading without loop'" [loop]="false" [theme]="'dark'">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel with wrapped content and description on light background">
+      <p-carousel [heading]="'Wrapped content heading'" [description]="'Description'" [wrapContent]="true">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with wrapped slotted heading and slotted description on light background"
+    >
+      <p-carousel [wrapContent]="true">
         <h2 slot="heading">Wrapped content slotted heading</h2>
+        <p slot="description">Description</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -122,6 +164,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
         [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
       >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with slotted multiline heading and multiline description on light background"
+    >
+      <p-carousel>
+        <h2 slot="heading">
+          Multiline slotted heading could be quite long especially on smaller screens but it wraps luckily. Let us see if
+          the alignment with prev/next buttons is correct.
+        </h2>
+        <p slot="description">
+          Multiline slotted description could be quite long especially on smaller screens but it wraps luckily. Let us see
+          if the alignment with prev/next buttons is correct.
+        </p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
