@@ -1,4 +1,4 @@
-import { COMPONENT_TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
+import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
 import { getTagNameWithoutPrefix } from '../../tag-name';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
@@ -36,9 +36,7 @@ export const getPreloadedTagNamesForVersions = (versions: string[]): TagNamesFor
 export const getPdsComponentsSelector = (prefixes: string[]): string =>
   prefixes
     .map((prefix) => {
-      return prefix
-        ? COMPONENT_TAG_NAMES_WITH_CHUNK.map((tagName) => `${prefix}-${tagName}`)
-        : COMPONENT_TAG_NAMES_WITH_CHUNK;
+      return prefix ? TAG_NAMES_WITH_CHUNK.map((tagName) => `${prefix}-${tagName}`) : TAG_NAMES_WITH_CHUNK;
     })
     .join();
 

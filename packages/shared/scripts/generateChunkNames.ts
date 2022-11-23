@@ -8,15 +8,13 @@ const generateChunkNames = (): void => {
   const tagNamesWithoutChunk = bundles.map(({ components }) => components.slice(1)).flat();
   const tagNamesWithChunk: TagName[] = TAG_NAMES.filter((chunk) => !tagNamesWithoutChunk.includes(chunk));
 
-  const content = `export const COMPONENT_TAG_NAMES_WITH_CHUNK = [${tagNamesWithChunk
-    .map((x) => `'${x}'`)
-    .join(', ')}] as const;
-export type ComponentChunkName = typeof COMPONENT_TAG_NAMES_WITH_CHUNK[number];`;
+  const content = `export const TAG_NAMES_WITH_CHUNK = [${tagNamesWithChunk.map((x) => `'${x}'`).join(', ')}] as const;
+export type TagNamesWithChunk = typeof TAG_NAMES_WITH_CHUNK[number];`;
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 
-  const targetFileName = 'componentChunkNames.ts';
+  const targetFileName = 'tagNamesWithChunk.ts';
   const targetFile = path.resolve(targetDirectory, targetFileName);
   fs.writeFileSync(targetFile, content);
 
