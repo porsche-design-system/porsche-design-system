@@ -79,7 +79,7 @@ export const getComponentCss = (
     scroller: {
       ...textSmall,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize[s].fontSize })),
     },
     bar: {
       display: 'block',

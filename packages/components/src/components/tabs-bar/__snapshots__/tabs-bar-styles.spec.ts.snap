@@ -50,14 +50,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -124,14 +123,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -198,14 +196,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -272,14 +269,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -346,14 +342,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -420,14 +415,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -494,14 +488,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -598,14 +591,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -623,35 +615,30 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 @media(min-width:480px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:760px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1000px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1300px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1760px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 "
