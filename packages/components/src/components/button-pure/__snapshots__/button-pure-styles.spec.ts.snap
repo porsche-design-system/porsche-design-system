@@ -58,7 +58,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -91,16 +91,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 0.75rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 0.75rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: absolute;
@@ -122,11 +122,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root ~ .subline {
     font-size: 1rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 1rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
   .label {
     position: static;
@@ -150,11 +150,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root ~ .subline {
     font-size: 1.25rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 1.5rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
   .label {
     position: absolute;
@@ -178,11 +178,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root ~ .subline {
     font-size: 1.875rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 2.25rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
   .label {
     position: static;
@@ -206,11 +206,11 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root ~ .subline {
     font-size: 2.25rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 3.25rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
   .label {
     position: absolute;
@@ -281,7 +281,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -314,16 +314,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: absolute;
@@ -442,7 +442,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -475,16 +475,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -533,7 +533,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -566,16 +566,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: absolute;
@@ -624,7 +624,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -657,16 +657,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -715,7 +715,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -747,19 +747,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .root:active + .subline {
   color: #d5001c;
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: absolute;
@@ -776,7 +776,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .subline {
   display: flex;
   margin-top: 4px !important;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -834,7 +834,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -864,16 +864,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -916,7 +916,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -945,16 +945,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -971,7 +971,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .subline {
   display: flex;
   margin-top: 4px !important;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1019,7 +1019,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #d5001c;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1052,16 +1052,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -1109,7 +1109,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #ff0223;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1142,16 +1142,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -1200,7 +1200,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1230,16 +1230,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(0.44118125rem + 2ex);
-  height: calc(0.44118125rem + 2ex);
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
 }
 .label {
   position: static;
@@ -1282,7 +1282,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1347,7 +1347,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1380,11 +1380,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 @media(hover:hover) {
   .root:hover {
@@ -1420,7 +1420,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1453,11 +1453,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }
 .root ~ .subline {
   font-size: 0.75rem;
-  line-height: calc(0.44118125rem + 2ex);
+  line-height: calc(6.21179px + 2.1ex);
 }
 .root ~ .subline::before {
   font-size: 0.75rem;
-  margin-left: calc(0.44118125rem + 2ex);
+  margin-left: calc(6.21179px + 2.1ex);
 }
 @media(min-width:480px) {
   .root {
@@ -1465,11 +1465,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
   .root ~ .subline {
     font-size: 1rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 1rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
 }
 
@@ -1479,11 +1479,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
   .root ~ .subline {
     font-size: 1.25rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 1.5rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
 }
 
@@ -1493,11 +1493,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
   .root ~ .subline {
     font-size: 1.875rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 2.25rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
 }
 
@@ -1507,11 +1507,11 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
   .root ~ .subline {
     font-size: 2.25rem;
-    line-height: calc(0.44118125rem + 2ex);
+    line-height: calc(6.21179px + 2.1ex);
   }
   .root ~ .subline::before {
     font-size: 3.25rem;
-    margin-left: calc(0.44118125rem + 2ex);
+    margin-left: calc(6.21179px + 2.1ex);
   }
 }
 

@@ -32,7 +32,7 @@ span {
   height: 2.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -154,7 +154,7 @@ span {
   height: 2.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -246,7 +246,7 @@ span {
   height: 2.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -338,7 +338,7 @@ span {
   height: 2.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -430,7 +430,7 @@ span {
   height: 2.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
