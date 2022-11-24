@@ -864,7 +864,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                               "role": "StaticText",
                             },
                           ],
-                          "focused": true,
                           "name": "Tab Button 1",
                           "role": "tab",
                         },

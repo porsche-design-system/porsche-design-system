@@ -150,7 +150,7 @@ describe('render', () => {
 
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtonAria').mockImplementation(() => {});
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const refreshSpy: () => Splide = jest.fn();
     const component = new Carousel();
@@ -160,9 +160,9 @@ describe('componentDidUpdate', () => {
     expect(refreshSpy).toBeCalledWith();
   });
 
-  it('should call updatePrevNextButtonAria() with correct parameters', () => {
+  it('should call updatePrevNextButtons() with correct parameters', () => {
     jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
-    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtonAria').mockImplementation(() => {});
+    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = { refresh: () => {} } as Splide;
 
@@ -171,7 +171,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call updateSlidesInert() with correct parameters', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtonAria').mockImplementation(() => {});
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const spy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = { refresh: () => {} } as Splide;
@@ -232,10 +232,8 @@ describe('registerSplideHandlers()', () => {
     expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
   });
 
-  it('should call updatePrevNextButtonAria(), updateSlidesInert() and renderPagination() with correct parameters on mounted event', () => {
-    const updatePrevNextButtonAriaSpy = jest
-      .spyOn(carouselUtils, 'updatePrevNextButtonAria')
-      .mockImplementation(() => {});
+  it('should call updatePrevNextButtons(), updateSlidesInert() and renderPagination() with correct parameters on mounted event', () => {
+    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const updateSlidesInertSpy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
@@ -243,15 +241,13 @@ describe('registerSplideHandlers()', () => {
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
-    expect(updatePrevNextButtonAriaSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
+    expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
     expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(renderPaginationSpy).toBeCalledWith(component['pagination'], component['amountOfPages'], 0);
   });
 
-  it('should call updatePrevNextButtonAria(), updateSlidesInert(), updatePagination() and this.carouselChange.emit() with correct parameters on move event', () => {
-    const updatePrevNextButtonAriaSpy = jest
-      .spyOn(carouselUtils, 'updatePrevNextButtonAria')
-      .mockImplementation(() => {});
+  it('should call updatePrevNextButtons(), updateSlidesInert(), updatePagination() and this.carouselChange.emit() with correct parameters on move event', () => {
+    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const updateSlidesInertSpy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
     const carouselChangeEmitSpy = jest.fn();
@@ -261,7 +257,7 @@ describe('registerSplideHandlers()', () => {
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('move', 1, 0);
-    expect(updatePrevNextButtonAriaSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
+    expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
     expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(updatePaginationSpy).toBeCalledWith(component['pagination'], 1);
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });

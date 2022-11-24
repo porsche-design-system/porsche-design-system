@@ -25,7 +25,7 @@
       .join('');
     content = `
 <p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
-  <div slot="post-heading">
+  <!--<div slot="post-heading">
     <p-tabs-bar active-tab-index="0">
       <button>Schüler</button>
       <button>Studierende & Absolventen</button>
@@ -33,7 +33,7 @@
     </p-tabs-bar>
 
     <p-link-pure href="#">Alle anzeigen</p-link-pure>
-  </div>
+  </div>-->
 
   <div class="card">
     <picture>
