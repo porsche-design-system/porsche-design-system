@@ -4,8 +4,8 @@ import {
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
-
-export type PartialName = 'getFontLinks' | 'getLoaderScript' | 'getComponentChunkLinks' | 'getInitialStyles';
+import { paramCase } from 'change-case';
+import type { PartialName } from '@porsche-design-system/shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -77,11 +77,7 @@ export const throwPartialValidationWarning = (partialName: PartialName, prefix?:
 };
 
 export const getWarningRecommendation = (partialName): string => {
-  const partialNameToLinkPathMap: Record<PartialName, string> = {
-    getFontLinks: 'font-links',
-    getLoaderScript: 'loader-script',
-    getComponentChunkLinks: 'component-chunk-links',
-    getInitialStyles: 'initial-styles',
-  };
-  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]}, to enhance loading and bootstrapping experience.`;
+  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/"partials/${paramCase(
+    partialName.replace('get', '')
+  )}", to enhance loading and bootstrapping experience.`;
 };

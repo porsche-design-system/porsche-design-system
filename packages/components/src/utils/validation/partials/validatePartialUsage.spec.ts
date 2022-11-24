@@ -6,7 +6,7 @@ import {
   validateGetLoaderScriptUsage,
   validatePartialUsage,
 } from './validatePartialUsage';
-import type { PartialName } from './validatePartialUsage';
+import type { PartialName } from '@porsche-design-system/shared';
 import type { TagNamesForVersions } from './helper';
 import * as validatePartialUsageUtils from './validatePartialUsage';
 import * as helperUtils from './helper';
