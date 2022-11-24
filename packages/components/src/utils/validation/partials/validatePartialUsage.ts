@@ -5,7 +5,7 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 
-export type PartialName = 'getFontLink' | 'getLoaderScript';
+export type PartialName = 'getFontLinks' | 'getLoaderScript' | 'getComponentChunkLinks' | 'getInitialStyles';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -27,7 +27,7 @@ export const validatePartialUsage = (): void => {
 
 export const validateGetFontLinksUsage = (): void => {
   if (!document.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
-    partialValidationWarning('getFontLink');
+    throwPartialValidationWarning('getFontLinks');
   }
 };
 
@@ -45,45 +45,43 @@ export const validateGetComponentChunkLinksUsage = (): void => {
     console.warn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(
         ', '
-      )}' detected, without preloading. We recommend the usage of the
-'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior.`
+      )}' detected, without preloading. ${getWarningRecommendation('getComponentChunkLinks')}`
     );
   });
 };
 
 export const validateGetLoaderScriptUsage = (): void => {
   if (!document.querySelector('script[data-pds-loader-script]')) {
-    partialValidationWarning('getLoaderScript');
+    throwPartialValidationWarning('getLoaderScript');
   }
 };
 
 export const validateGetInitialStylesUsage = (): void => {
-  const warningRecommendation =
-    'We recommend the usage of the partial as described at https://designsystem.porsche.com/v2/partials/initial-styles, to ensure that there is no flash of content.';
-
   Object.values(getPorscheDesignSystemPrefixesForVersions())
     .flat()
     .forEach((prefix) => {
       if (prefix && !document.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
-        console.warn(
-          `You are using the Porsche Design System with prefix: '${prefix}' without using the 'getInitialStyles()' partial. ${warningRecommendation}`
-        );
+        throwPartialValidationWarning('getInitialStyles', prefix);
       } else if (!document.querySelector('style[data-pds-initial-styles]')) {
-        console.warn(
-          `You are using the Porsche Design System without using the 'getInitialStyles()' partial. ${warningRecommendation}`
-        );
+        throwPartialValidationWarning('getInitialStyles');
       }
     });
 };
 
-export const partialValidationWarning = (partialName: PartialName): void => {
-  const partialNameToLinkPathMap: Record<PartialName, string> = {
-    getFontLink: 'font-links',
-    getLoaderScript: 'loader-script',
-  };
-
+export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   console.warn(
-    `You are not using '${partialName}()'. The Porsche Design System recommends the usage of the '${partialName}()'
-partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]} to enhance performance and loading behavior.`
+    `You are using the Porsche Design System ${
+      prefix && `with prefix: ${prefix} `
+    }without using the ${partialName}()' partial. ${getWarningRecommendation(partialName)}`
   );
+};
+
+export const getWarningRecommendation = (partialName): string => {
+  const partialNameToLinkPathMap: Record<PartialName, string> = {
+    getFontLinks: 'font-links',
+    getLoaderScript: 'loader-script',
+    getComponentChunkLinks: 'component-chunk-links',
+    getInitialStyles: 'initial-styles',
+  };
+  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialNameToLinkPathMap[partialName]}, to enhance loading and bootstrapping experience.`;
 };

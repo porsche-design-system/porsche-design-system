@@ -1,5 +1,5 @@
 import {
-  partialValidationWarning,
+  throwPartialValidationWarning,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,
   validateGetInitialStylesUsage,
@@ -101,18 +101,18 @@ describe('validateGetFontLinksUsage()', () => {
     expect(spy).toBeCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
   });
 
-  it('should call partialValidationWarning() with correct parameters', () => {
+  it('should call throwPartialValidationWarning() with correct parameters', () => {
     jest.spyOn(document, 'querySelector').mockReturnValue(null);
-    const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetFontLinksUsage();
 
-    expect(spy).toBeCalledWith('getFontLink');
+    expect(spy).toBeCalledWith('getFontLinks');
   });
 
-  it('should not call partialValidationWarning() if font link is found', () => {
+  it('should not call throwPartialValidationWarning() if font link is found', () => {
     jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('link'));
-    const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetFontLinksUsage();
 
@@ -170,15 +170,6 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledWith(usedTagNamesForVersionsMock, preloadTagNamesForVersionsMock);
   });
 
-  it('should not call console.warn when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
-    jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
-    const spy = jest.spyOn(global.console, 'warn');
-
-    validateGetComponentChunkLinksUsage();
-
-    expect(spy).not.toBeCalled();
-  });
-
   it('should call console.warn for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
     jest
       .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
@@ -187,15 +178,30 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    // TODO: do we really want to check the whole warning message?
-    expect(spy).toBeCalledWith(
-      "Usage of Porsche Design System v1.2.3 component 'p-text' detected, without preloading. We recommend the usage of the\n" +
-        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior."
-    );
-    expect(spy).toBeCalledWith(
-      "Usage of Porsche Design System v1.2.4 component 'p-text, p-button, p-link' detected, without preloading. We recommend the usage of the\n" +
-        "'getComponentChunkLinks()' partial as described at https://designsystem.porsche.com/v2/partials/component-chunk-links to enhance performance and loading behavior."
-    );
+    expect(spy).toBeCalledTimes(2);
+  });
+
+  it('should call getWarningRecommendation() with correct parameters for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
+    jest
+      .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
+      .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
+    const spy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
+
+    validateGetComponentChunkLinksUsage();
+
+    expect(spy).toBeCalledWith('getComponentChunkLinks');
+    expect(spy).toBeCalledTimes(2);
+  });
+
+  it('should not call console.warn and should not call getWarningRecommendation() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
+    jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
+    const warnSpy = jest.spyOn(global.console, 'warn');
+    const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
+
+    validateGetComponentChunkLinksUsage();
+
+    expect(warnSpy).not.toBeCalled();
+    expect(getWarningRecommendationSpy).not.toBeCalled();
   });
 });
 
@@ -207,18 +213,18 @@ describe('validateGetLoaderScriptUsage()', () => {
     expect(spy).toBeCalledWith('script[data-pds-loader-script]');
   });
 
-  it('should call partialValidationWarning() with correct parameters', () => {
+  it('should call throwPartialValidationWarning() with correct parameters', () => {
     jest.spyOn(document, 'querySelector').mockReturnValue(null);
-    const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
 
     expect(spy).toBeCalledWith('getLoaderScript');
   });
 
-  it('should not call partialValidationWarning() if loader script is found', () => {
+  it('should not call throwPartialValidationWarning() if loader script is found', () => {
     jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('link'));
-    const spy = jest.spyOn(validatePartialUsageUtils, 'partialValidationWarning');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
 
@@ -233,19 +239,6 @@ describe('validateGetInitialStylesUsage()', () => {
     validateGetInitialStylesUsage();
 
     expect(spy).toBeCalledWith();
-  });
-
-  it('should should call console.warn thrice when initial style is not found', () => {
-    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
-      '1.2.3': [''],
-      '1.2.4': ['prefix'],
-      '1.2.5': ['my-prefix'],
-    });
-    const spy = jest.spyOn(global.console, 'warn');
-
-    validateGetInitialStylesUsage();
-
-    expect(spy).toBeCalledTimes(3);
   });
 
   it('should call document.querySelector() thrice with correct parameters', () => {
@@ -264,14 +257,30 @@ describe('validateGetInitialStylesUsage()', () => {
     expect(spy).toBeCalledTimes(3);
   });
 
-  it('should not call console.warn when initial style tags are found for each prefix', () => {
+  it('should call throwPartialValidationWarning() thrice with correct parameters when initial style is not found', () => {
+    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
+      '1.2.3': [''],
+      '1.2.4': ['prefix'],
+      '1.2.5': ['my-prefix'],
+    });
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
+
+    validateGetInitialStylesUsage();
+
+    expect(spy).toBeCalledWith('getInitialStyles');
+    expect(spy).toBeCalledWith('getInitialStyles', 'prefix');
+    expect(spy).toBeCalledWith('getInitialStyles', 'my-prefix');
+    expect(spy).toBeCalledTimes(3);
+  });
+
+  it('should not call throwPartialValidationWarning() when initial style tags are found for each prefix', () => {
     jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
       '1.2.3': [''],
       '1.2.4': ['prefix'],
       '1.2.5': ['my-prefix'],
     });
     jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('style'));
-    const spy = jest.spyOn(global.console, 'warn');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetInitialStylesUsage();
 
@@ -279,15 +288,17 @@ describe('validateGetInitialStylesUsage()', () => {
   });
 });
 
-describe('partialValidationWarning()', () => {
-  it.each<PartialName>(['getFontLink', 'getLoaderScript'])(
-    'should call console.warn with correct parameters when called with partial %s()',
+describe('throwPartialValidationWarning()', () => {
+  it.each<PartialName>(['getFontLinks', 'getLoaderScript', 'getComponentChunkLinks', 'getInitialStyles'])(
+    'should call console.warn and getWarningRecommendation() with correct parameters when called with partial %s()',
     (partialName) => {
-      const spy = jest.spyOn(global.console, 'warn');
+      const warnSpy = jest.spyOn(global.console, 'warn');
+      const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
 
-      partialValidationWarning(partialName);
+      throwPartialValidationWarning(partialName);
 
-      expect(spy).toBeCalledTimes(1);
+      expect(warnSpy).toBeCalledTimes(1);
+      expect(getWarningRecommendationSpy).toBeCalledWith(partialName);
     }
   );
 });
