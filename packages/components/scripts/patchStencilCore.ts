@@ -41,18 +41,18 @@ const patchStencilCore = (): void => {
                             ${PDS_PATCH_END}\n`;
 
     const applySnippetPart1 = `
-                              ${PDS_PATCH_START}
-                              // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
-                              // and a 2nd attempt fails, therefore this needs to always run without SSR
-                              // and only with SSR for browsers that are not ponyfilled
-                              if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-                              ${PDS_PATCH_END}\n`;
+                                ${PDS_PATCH_START}
+                                // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
+                                // and a 2nd attempt fails, therefore this needs to always run without SSR
+                                // and only with SSR for browsers that are not ponyfilled
+                                if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+                                ${PDS_PATCH_END}\n`;
 
     const applySnippetPart2 = `
-                              ${PDS_PATCH_START}
-                                  self.shadowRoot.innerHTML = ssrInnerHTML;
-                              }
-                              ${PDS_PATCH_END}\n\n`;
+                                ${PDS_PATCH_START}
+                                    self.shadowRoot.innerHTML = ssrInnerHTML;
+                                }
+                                ${PDS_PATCH_END}\n\n`;
 
     const cleanupSnippet = `
 
