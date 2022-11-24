@@ -360,6 +360,25 @@ describe('updatePrevNextButtons()', () => {
     expect(btnPrev.aria).toEqual({ 'aria-label': 'custom last' });
     expect(btnNext.aria).toEqual({ 'aria-label': 'custom first' });
   });
+
+  it('should correctly set disabled property on btnNext and btnPrev parameter', () => {
+    const isFirstPageSpy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const isLastPageSpy = jest.spyOn(carouselUtils, 'isLastPage');
+    const [btnPrev, btnNext] = getButtons();
+    const splide = getSplide();
+
+    isFirstPageSpy.mockReturnValue(false);
+    isLastPageSpy.mockReturnValue(false);
+    updatePrevNextButtons(btnPrev, btnNext, splide);
+    expect(btnPrev.disabled).toEqual(false);
+    expect(btnNext.disabled).toEqual(false);
+
+    isFirstPageSpy.mockReturnValue(true);
+    isLastPageSpy.mockReturnValue(true);
+    updatePrevNextButtons(btnPrev, btnNext, splide);
+    expect(btnPrev.disabled).toEqual(true);
+    expect(btnNext.disabled).toEqual(true);
+  });
 });
 
 const bulletMarkup = '<span class="bullet"></span>';
