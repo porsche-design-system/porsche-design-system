@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Carousel` now has a `rewind` property, better prev/next icons, a `max-width` for `heading` and `description` and
+  support for slotted `description`
+
 #### Fixed
 
 - `Select Wrapper` height if text is zoomed up to 200%
