@@ -1,1 +1,1 @@
-export const fontLineHeight = 'calc(0.44118125rem + 2ex)';
+export const fontLineHeight = 'calc(6.21179px + 2.1ex)';
