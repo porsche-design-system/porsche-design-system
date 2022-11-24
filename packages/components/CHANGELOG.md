@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.18.0-rc.1] - 2022-11-24
+
 #### Added
 
 - `Carousel` now has a `rewind` property, better prev/next icons, a `max-width` for `heading` and `description` and
