@@ -137,7 +137,7 @@ it('should toggle checkbox when input is clicked', async () => {
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
-it('should toggle checkbox when label text is clicked and set input as active element', async () => {
+it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
   await initCheckbox();
 
   const label = await getLabelText();
@@ -151,13 +151,13 @@ it('should toggle checkbox when label text is clicked and set input as active el
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(true);
-  expect(await getActiveElementTagName(page)).toBe('INPUT');
+  expect(await getActiveElementTagName(page)).toBe('BODY');
 
   await label.click();
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(false);
-  expect(await getActiveElementTagName(page)).toBe('INPUT');
+  expect(await getActiveElementTagName(page)).toBe('BODY');
 });
 
 it('should check/uncheck checkbox when checkbox attribute is changed programmatically', async () => {

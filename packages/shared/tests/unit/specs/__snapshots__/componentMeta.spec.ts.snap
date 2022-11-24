@@ -153,6 +153,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "heading",
+      "description",
     ],
     "nestedComponents": [
       "p-button-pure",
@@ -162,6 +163,7 @@ exports[`should match snapshot 1`] = `
       "disablePagination": false,
       "heading": null,
       "intl": "{}",
+      "rewind": true,
       "slidesPerPage": "1",
       "theme": "light",
       "wrapContent": null,
