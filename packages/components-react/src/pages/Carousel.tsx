@@ -110,16 +110,16 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with loop=false on light background">
-        <PCarousel heading="Heading without loop" loop={false}>
+      <div className="playground light" title="should render carousel with rewind=false on light background">
+        <PCarousel heading="Heading without rewind" rewind={false}>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
         </PCarousel>
       </div>
 
-      <div className="playground dark" title="should render carousel with loop=false on dark background">
-        <PCarousel heading="Heading without loop" loop={false} theme="dark">
+      <div className="playground dark" title="should render carousel with rewind=false on dark background">
+        <PCarousel heading="Heading without rewind" rewind={false} theme="dark">
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>

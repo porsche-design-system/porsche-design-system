@@ -109,16 +109,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with loop=false on light background">
-      <p-carousel [heading]="'Heading without loop'" [loop]="false">
+    <div class="playground light" title="should render carousel with rewind=false on light background">
+      <p-carousel [heading]="'Heading without rewind'" [rewind]="false">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
       </p-carousel>
     </div>
 
-    <div class="playground dark" title="should render carousel with loop=false on dark background">
-      <p-carousel [heading]="'Heading without loop'" [loop]="false" [theme]="'dark'">
+    <div class="playground dark" title="should render carousel with rewind=false on dark background">
+      <p-carousel [heading]="'Heading without rewind'" [rewind]="false" [theme]="'dark'">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
