@@ -4,7 +4,7 @@ import { bundles } from '../../components/stencil.config';
 import path from 'path';
 import fs from 'fs';
 
-const generateChunkNames = (): void => {
+const generateTagNamesWithChunk = (): void => {
   const tagNamesWithoutChunk = bundles.map(({ components }) => components.slice(1)).flat();
   const tagNamesWithChunk: TagName[] = TAG_NAMES.filter((chunk) => !tagNamesWithoutChunk.includes(chunk));
 
@@ -21,4 +21,4 @@ export type TagNamesWithChunk = typeof TAG_NAMES_WITH_CHUNK[number];`;
   console.log(`Generated ${targetFileName} for ${tagNamesWithChunk.length} tags`);
 };
 
-generateChunkNames();
+generateTagNamesWithChunk();

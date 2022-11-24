@@ -16,7 +16,7 @@
     "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
     "build:generateCodeSamples": "ts-node scripts/generateCodeSamples.ts",
     "build:bundle": "rollup -c rollup.config.js",
-    "build:generateChunkNames": "ts-node scripts/generateChunkNames.ts",
+    "build:generateChunkNames": "ts-node scripts/generateTagNamesWithChunk.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
