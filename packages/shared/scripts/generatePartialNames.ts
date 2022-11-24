@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-
-import * as partials from '@porsche-design-system/components-js/partials';
+import * as partials from '../../components-js/projects/partials';
 
 const generateTagNamesWithChunk = (): void => {
   const partialNames = Object.keys(partials).sort();
