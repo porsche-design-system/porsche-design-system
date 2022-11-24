@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
   **https://designsystem.porsche.com/v2/partials/initial-styles**
 
+#### Fixed
+- `Select Wrapper` height if text is zoomed up to 200%
+
 ### [2.18.0-rc.0] - 2022-11-17
 
 #### Added
