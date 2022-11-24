@@ -55,6 +55,9 @@
     </div>
 
     <div id="online-shop-highlights" class="online-shop-highlights">
+      <p-link-pure id="before-online-shop-highlights" :href="currentUrl + '#after-online-shop-highlights'"
+        >Online Shop Highlights überspringen</p-link-pure
+      >
       <p-carousel heading="Online Shop Highlights" wrap-content="true" slides-per-page="{ base: 1, s: 2, m: 3 }">
         <div class="shop-card">
           <picture>
@@ -428,6 +431,9 @@
           </div>
         </div>
       </p-carousel>
+      <p-link-pure id="after-online-shop-highlights" :href="currentUrl + '#before-online-shop-highlights'"
+        >Gehe zum Anfang der Online Shop Highlights</p-link-pure
+      >
     </div>
 
     <div class="accessories">
@@ -481,6 +487,7 @@
   import PorscheHeader from '@/components/PorscheHeader.vue';
   import PorscheMainBar from '@/components/PorscheMainBar.vue';
   import PorscheFooter from '@/components/PorscheFooter.vue';
+  import { getAnchorLink } from '@/utils';
 
   @Component({
     components: {
@@ -491,6 +498,8 @@
     },
   })
   export default class ExamplePorscheCom extends Vue {
+    public currentUrl = '';
+
     public carRange: {
       label: string;
       price: string;
@@ -560,6 +569,8 @@
     }
 
     mounted(): void {
+      // cut off trailing `#` character
+      this.currentUrl = getAnchorLink('').slice(0, -1);
       const { hash } = window.location;
 
       if (hash) {
@@ -658,6 +669,7 @@
   }
 
   .online-shop-highlights {
+    position: relative;
     @include pds-grid;
     background: $pds-theme-light-background-surface;
     padding-top: $pds-spacing-large;
@@ -665,6 +677,37 @@
 
     p-carousel {
       grid-column: grid-start / grid-end;
+    }
+
+    p-link-pure {
+      grid-column: content-start / content-end;
+      position: absolute;
+      height: 1px;
+      width: 1px;
+      border: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      white-space: nowrap;
+
+      &:first-child {
+        top: 0.5rem;
+      }
+      &:last-child {
+        bottom: 0.5rem;
+      }
+
+      &:focus {
+        //position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        clip-path: none;
+        white-space: normal;
+      }
     }
   }
 
