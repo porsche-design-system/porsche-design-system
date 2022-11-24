@@ -1,4 +1,4 @@
-import { joinArrayElementsToString, withoutTagsOption } from './utils';
+import { convertPropsToAttributeString, joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
@@ -29,8 +29,8 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleAttributes = prefix ? \`data-pds-initial-styles-\$\{prefix\}\` : 'data-pds-initial-styles'
-  const styleProps = { [styleAttributes]: "" };
+  const styleProps = { [\`data-pds-initial-styles\$\{prefix ? '-' + prefix : ''\}\`]: '' };
+  const styleAttributes = convertPropsToAttributeString(styleProps);
 
   const styles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 

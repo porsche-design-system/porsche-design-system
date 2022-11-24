@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { npmDistTmpSubPath } from '../../components-wrapper/environment';
-import { withoutTagsOption } from './utils';
+import { convertPropsToAttributeString, withoutTagsOption } from './utils';
 
 export const generateLoaderScriptPartial = (): string => {
   const types = `type GetLoaderScriptOptions = {
@@ -31,8 +31,8 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
 
   throwIfRunInBrowser('getLoaderScript');
 
-  const dataAttribute = 'data-pds-loader-script'
-  const scriptProps = { [dataAttribute]: "" };
+  const scriptProps = {['data-pds-loader-script']: ''};
+  const dataAttribute = convertPropsToAttributeString(scriptProps);
 
   const loadCalls = prefix
     ? Array.isArray(prefix)

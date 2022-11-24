@@ -18,3 +18,8 @@ export const joinArrayElementsToString = (array: string[], glue = ', '): string 
 
 export const withoutTagsOption = `/** @deprecated will be removed in v3, use \`format: 'jsx'\` instead */
   withoutTags?: boolean;`;
+
+export const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
+  Object.entries(props)
+    .map(([attr, val]) => `${attr}${val ? '=' + val : ''}`)
+    .join(' ');
