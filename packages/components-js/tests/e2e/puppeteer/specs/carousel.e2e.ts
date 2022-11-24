@@ -24,10 +24,11 @@ type InitOptions = {
   slidesPerPage?: number | string;
   amountOfSlides?: number;
   withFocusableElements?: boolean;
+  loop?: boolean;
 };
 
 const initCarousel = (opts?: InitOptions) => {
-  const { slidesPerPage = 1, amountOfSlides = 3, withFocusableElements = false } = opts || {};
+  const { slidesPerPage = 1, amountOfSlides = 3, withFocusableElements = false, loop = true } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
     .map((_, i) => {
@@ -38,9 +39,11 @@ const initCarousel = (opts?: InitOptions) => {
 
   const focusableElementBefore = withFocusableElements ? '<a id="link-before" href="#">Link before</a>' : '';
   const focusableElementAfter = withFocusableElements ? '<a id="link-after" href="#">Link after</a>' : '';
-  const attrs = slidesPerPage ? ` slides-per-page="${slidesPerPage}"` : '';
+  const attrs = [slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '', loop === false ? 'loop="false"' : ''].join(
+    ' '
+  );
 
-  const content = `${focusableElementBefore}<p-carousel heading="Heading"${attrs}>
+  const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
   ${slides}
 </p-carousel>${focusableElementAfter}`;
 
@@ -203,6 +206,36 @@ it('should have working pagination and prev/next buttons after reconnect', async
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet');
+});
+
+it('should disable prev/next buttons on first/last slide when loop=false', async () => {
+  await initCarousel({ loop: false });
+  const buttonPrev = await getButtonPrev();
+  const buttonNext = await getButtonNext();
+  const [slide1, slide2, slide3] = await getSlides();
+
+  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
+  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide2);
+  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
+  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide3);
+  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
+  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe('true');
+
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide2);
+  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
+  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide1);
+  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
+  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
 });
 
 describe('adding/removing slides', () => {
