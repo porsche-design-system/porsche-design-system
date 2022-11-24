@@ -48,13 +48,14 @@ Right after the `heading`, an additional `description` can be added either via p
 
 <Playground :markup="description" :config="config"></Playground>
 
-## Loop
+## Rewind
 
-By default, the `p-carousel` loops by rewinding and fast forwarding from the last slide to the first slide and first
+By default, the `p-carousel` cycles by rewinding and fast forwarding from the last slide to the first slide and first
 slide to the last slide as demonstrated in previous examples.  
-This behavior can be disabled by specifying `loop="false"` which also disables the prev/next buttons.
+This behavior can be disabled by specifying `rewind="false"` which also disables the prev/next buttons when on the
+first/last slide.
 
-<Playground :markup="loop" :config="config"></Playground>
+<Playground :markup="rewind" :config="config"></Playground>
 
 ## Wrap Content
 
@@ -186,7 +187,7 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  loop = `<p-carousel loop="false" heading="${this.basicHeading}">
+  rewind = `<p-carousel loop="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 

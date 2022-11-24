@@ -215,9 +215,9 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * Whether the slides should loop from last to first slide and vice versa.
+          * Whether the slides should rewind from last to first slide and vice versa.
          */
-        "loop"?: boolean;
+        "rewind"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */
@@ -1811,13 +1811,13 @@ declare namespace LocalJSX {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * Whether the slides should loop from last to first slide and vice versa.
-         */
-        "loop"?: boolean;
-        /**
           * Emitted when carousel's content slides.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * Whether the slides should rewind from last to first slide and vice versa.
+         */
+        "rewind"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */

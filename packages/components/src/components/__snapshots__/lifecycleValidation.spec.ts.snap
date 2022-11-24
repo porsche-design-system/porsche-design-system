@@ -66,7 +66,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "disablePagination": "breakpoint",
   "heading": "string",
   "intl": "shape",
-  "loop": "boolean",
+  "rewind": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
   "wrapContent": "boolean",

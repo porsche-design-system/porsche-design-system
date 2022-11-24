@@ -37,7 +37,7 @@ import { spacing } from '@porsche-design-system/utilities-v2';
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
-  loop: AllowedTypes.boolean,
+  rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
@@ -65,8 +65,8 @@ export class Carousel {
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
 
-  /** Whether the slides should loop from last to first slide and vice versa. */
-  @Prop() public loop?: boolean = true;
+  /** Whether the slides should rewind from last to first slide and vice versa. */
+  @Prop() public rewind?: boolean = true;
 
   /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapContent?: boolean;
@@ -117,7 +117,7 @@ export class Carousel {
     this.splide = new Splide(this.container, {
       arrows: false,
       pagination: false,
-      rewind: this.loop,
+      rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
       perMove: 1,
       mediaQuery: 'min',
