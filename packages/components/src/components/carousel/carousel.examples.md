@@ -187,7 +187,7 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  rewind = `<p-carousel loop="false" heading="${this.basicHeading}">
+  rewind = `<p-carousel rewind="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
