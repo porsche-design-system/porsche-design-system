@@ -1,5 +1,6 @@
-import { convertPropsToAttributeString, joinArrayElementsToString, withoutTagsOption } from './utils';
+import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { convertPropsToAttributeString } from '../src/shared';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
