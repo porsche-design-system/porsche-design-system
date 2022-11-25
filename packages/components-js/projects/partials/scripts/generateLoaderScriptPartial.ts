@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { npmDistTmpSubPath } from '../../components-wrapper/environment';
 import { withoutTagsOption } from './utils';
-import { convertPropsToAttributeString } from '../src/shared';
 
 export const generateLoaderScriptPartial = (): string => {
   const types = `type GetLoaderScriptOptions = {
