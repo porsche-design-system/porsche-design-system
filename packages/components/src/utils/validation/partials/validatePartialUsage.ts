@@ -71,13 +71,13 @@ export const validateGetInitialStylesUsage = (): void => {
 export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   console.warn(
     `You are using the Porsche Design System ${
-      prefix && `with prefix: ${prefix} `
+      prefix ? `with prefix: ${prefix}` : ''
     }without using the ${partialName}()' partial. ${getWarningRecommendation(partialName)}`
   );
 };
 
 export const getWarningRecommendation = (partialName): string => {
-  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/"partials/${paramCase(
+  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${paramCase(
     partialName.replace('get', '')
-  )}", to enhance loading and bootstrapping experience.`;
+  )} to enhance loading and bootstrapping experience.`;
 };
