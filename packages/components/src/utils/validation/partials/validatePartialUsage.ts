@@ -76,7 +76,7 @@ export const throwPartialValidationWarning = (partialName: PartialName, prefix?:
   );
 };
 
-export const getWarningRecommendation = (partialName): string => {
+export const getWarningRecommendation = (partialName: string): string => {
   return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${paramCase(
     partialName.replace('get', '')
   )} to enhance loading and bootstrapping experience.`;
