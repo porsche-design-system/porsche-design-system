@@ -13,7 +13,8 @@ const octokit = new Octokit({
   auth: GITHUB_PERSONAL_ACCESS_TOKEN,
 });
 
-const PAGE_SIZE = 50; // default is 30, max is 100
+const BEFORE_DATE = '<2022-11-21'; // YYYY-MM-DD
+const PAGE_SIZE = 100; // default is 30, max is 100
 const OWNER_AND_REPO: { owner: string; repo: string } = {
   owner: 'porsche-design-system',
   repo: 'porsche-design-system',
@@ -27,11 +28,11 @@ const fetchWorkflowRunIds = async (page: number): Promise<{ totalCount: number; 
       ...OWNER_AND_REPO,
       per_page: PAGE_SIZE,
       page: page,
-      created: '<2021-07-01', // before this date
+      created: BEFORE_DATE,
     }
   );
 
-  return { totalCount: data.total_count, workflowRunIds: data.workflow_runs.map((x) => x.id) };
+  return { totalCount: data.total_count, workflowRunIds: data.workflow_runs.map((run) => run.id) };
 };
 
 const fetchAllWorkflowRunIds = async (): Promise<number[]> => {
@@ -41,6 +42,7 @@ const fetchAllWorkflowRunIds = async (): Promise<number[]> => {
   let totalPages = 5;
   while (currentPage <= totalPages) {
     console.log(`fetchWorkflowRunIds (${currentPage}/${totalPages})`);
+    // TODO: when fetching page 11, it returns 0 results and we are done, but executing the script again continues
     const result = await fetchWorkflowRunIds(currentPage);
     results = [...results, ...result.workflowRunIds];
     console.log(`results: ${results.length}/${result.totalCount}`);
