@@ -4,7 +4,6 @@ import {
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
-import { paramCase } from 'change-case';
 import type { PartialName } from '@porsche-design-system/shared';
 
 declare global {
@@ -45,7 +44,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
     console.warn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(
         ', '
-      )}' detected, without preloading. ${getWarningRecommendation('getComponentChunkLinks')}`
+      )}' detected without preloading. ${getWarningRecommendation('getComponentChunkLinks')}`
     );
   });
 };
@@ -72,12 +71,13 @@ export const throwPartialValidationWarning = (partialName: PartialName, prefix?:
   console.warn(
     `You are using the Porsche Design System ${
       prefix ? `with prefix: ${prefix} ` : ''
-    }without using the ${partialName}()' partial. ${getWarningRecommendation(partialName)}`
+    }without using the ${partialName}() partial. ${getWarningRecommendation(partialName)}`
   );
 };
 
 export const getWarningRecommendation = (partialName: string): string => {
-  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${paramCase(
-    partialName.replace('get', '')
-  )} to enhance loading and bootstrapping experience.`;
+  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialName
+    .replace('get', '')
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .toLowerCase()} to enhance loading behavior.`;
 };

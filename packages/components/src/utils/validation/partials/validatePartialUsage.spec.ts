@@ -1,4 +1,5 @@
 import {
+  getWarningRecommendation,
   throwPartialValidationWarning,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,
@@ -301,4 +302,12 @@ describe('throwPartialValidationWarning()', () => {
       expect(getWarningRecommendationSpy).toBeCalledWith(partialName);
     }
   );
+});
+
+describe('getWarningRecommendation()', () => {
+  it('should return string with correct parameters when called with partial getFontLinks()', () => {
+    expect(getWarningRecommendation('getFontLinks')).toEqual(
+      'We recommend the usage of the getFontLinks() partial as described at https://designsystem.porsche.com/v2/partials/font-links to enhance loading behavior.'
+    );
+  });
 });
