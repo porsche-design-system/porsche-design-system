@@ -26,9 +26,9 @@ const fetchWorkflowRunIds = async (page: number): Promise<{ totalCount: number; 
     'GET /repos/{owner}/{repo}/actions/runs{?actor,branch,event,status,per_page,page,created,exclude_pull_requests,check_suite_id,head_sha}',
     {
       ...OWNER_AND_REPO,
+      created: BEFORE_DATE,
       per_page: PAGE_SIZE,
       page: page,
-      created: BEFORE_DATE,
     }
   );
 
