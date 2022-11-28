@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal-v1
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.28.1-focal
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -61,7 +61,7 @@ services:
       - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal-v1
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.28.1-focal
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
