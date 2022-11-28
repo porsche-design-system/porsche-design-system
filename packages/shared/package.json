@@ -18,6 +18,7 @@
     "build:generateChunkNames": "ts-node scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "ts-node scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js",
+    "clearGitHubActionLogs": "ts-node scripts/clearGitHubActionLogs.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -41,6 +42,7 @@
     "ts-jest": "^29.0.2"
   },
   "devDependencies": {
+    "@octokit/core": "^4.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/madge": "^5.0.0",
     "@types/node": "^18.7.23",
