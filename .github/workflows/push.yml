@@ -127,10 +127,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -223,10 +223,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -331,10 +331,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -403,10 +403,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -485,10 +485,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -552,10 +552,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -699,10 +699,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -766,10 +766,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
@@ -833,10 +833,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Cache puppeteer chrome'
         uses: actions/cache@v3
-        id: cache-puppeteer-chrome
+        id: cache-puppeteer
         with:
-          path: '~/.cache/puppeteer/chrome'
-          key: ${{ runner.os }}-chromium-${{ hashFiles('**/node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-chromium-${{ hashFiles('./node_modules/puppeteer-core/lib/esm/puppeteer/revisions.js') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v2
         with:
