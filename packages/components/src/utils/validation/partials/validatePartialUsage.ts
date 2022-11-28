@@ -71,7 +71,7 @@ export const validateGetInitialStylesUsage = (): void => {
 export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   console.warn(
     `You are using the Porsche Design System ${
-      prefix ? `with prefix: ${prefix}` : ''
+      prefix ? `with prefix: ${prefix} ` : ''
     }without using the ${partialName}()' partial. ${getWarningRecommendation(partialName)}`
   );
 };

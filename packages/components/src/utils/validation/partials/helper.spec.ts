@@ -48,6 +48,7 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
     [
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.text.6c494c2050a87f393ea4.js',
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.accordion.672e1be1ea3640e24667.js',
+      'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.link-pure.6194d2792ab5808e241b.js',
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.v2.17.0.9a579f8ff7708b1885a9.js', // Next core chunk
       'https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.grid.f471d5944c4c0bc0bcb5.js',
     ].forEach((href) => {
@@ -56,7 +57,7 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
       document.head.appendChild(link);
     });
 
-    expect(getPreloadedTagNamesForCoreChunk(coreChunkLinkElement)).toEqual(['p-text', 'p-accordion']);
+    expect(getPreloadedTagNamesForCoreChunk(coreChunkLinkElement)).toEqual(['p-text', 'p-accordion', 'p-link-pure']);
   });
 });
 

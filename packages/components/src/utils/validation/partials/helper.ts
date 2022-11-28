@@ -7,7 +7,7 @@ export const getPreloadedTagNamesForCoreChunk = (coreChunkLink: HTMLLinkElement)
   const preloadedTagNames: TagName[] = [];
 
   let nextSibling = coreChunkLink.nextElementSibling as HTMLLinkElement;
-  while (nextSibling?.href && !!/porsche-design-system\.[a-z]+\./.exec(nextSibling.href)) {
+  while (nextSibling?.href && !!/porsche-design-system\.[a-z-]+\./.exec(nextSibling.href)) {
     const tagName = ('p-' + nextSibling.href.split('/').pop().split('.')[1]) as TagName;
     preloadedTagNames.push(tagName);
     nextSibling = nextSibling.nextElementSibling as HTMLLinkElement;
