@@ -38,7 +38,7 @@
     "imask": "^6.4.3",
     "rxjs": "^7.5.7",
     "tslib": "^2.4.1",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^13.1.0",
@@ -48,7 +48,7 @@
     "@angular/language-service": "^13.3.12",
     "@porsche-design-system/assets": "5.0.2",
     "@types/node": "^18.11.9",
-    "concurrently": "^7.4.0",
+    "concurrently": "^7.6.0",
     "jest-preset-angular": "^12.2.3",
     "local-web-server": "^5.2.1",
     "ng-packagr": "^13.3.1",
