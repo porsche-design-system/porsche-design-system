@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import CustomButton from "../components/CustomButton.vue";
+  import CustomButton from '../components/CustomButton.vue';
+  import { ref } from 'vue';
+
+  const tmp = ref(false);
+
+  function log() {
+    tmp.value = true;
+  }
 </script>
 
 <template>
-  <CustomButton label="Some label" />
+  <CustomButton :onClick="log" label="Some label" :loading="tmp" :style="{ fontSize: '26px' }" class="dark" />
 </template>
-
-<style>
-h1 {
-  margin-bottom: 2rem;
-}
-</style>

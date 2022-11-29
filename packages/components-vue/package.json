@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@porsche-design-system/components-js": "^2.18.0-rc.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
