@@ -31,7 +31,7 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
 
   throwIfRunInBrowser('getLoaderScript');
 
-  const scriptProps = {['data-pds-loader-script']: ''};
+  const scriptProps = {'data-pds-loader-script': ''};
   const dataAttribute = convertPropsToAttributeString(scriptProps);
 
   const loadCalls = prefix
