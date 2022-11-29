@@ -10,8 +10,6 @@ import {
 import type { TagName } from '@porsche-design-system/shared';
 import * as helperUtils from './helper';
 import * as tagNameUtils from '../../tag-name';
-import { TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
-import * as unpackChildrenUtils from '../../dom/unpackChildren';
 
 declare global {
   interface Document {
@@ -118,13 +116,15 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
 describe('getPdsComponentsSelector()', () => {
   it('should return joined TAG_NAMES_WITH_CHUNK if no prefixes are passed', () => {
-    expect(getPdsComponentsSelector([''])).toEqual(TAG_NAMES_WITH_CHUNK.join());
+    expect(getPdsComponentsSelector([''])).toMatchInlineSnapshot(
+      `"p-accordion,p-banner,p-button,p-button-group,p-button-pure,p-carousel,p-checkbox-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-grid,p-headline,p-icon,p-inline-notification,p-link,p-link-pure,p-link-social,p-link-tile,p-marque,p-modal,p-pagination,p-popover,p-radio-button-wrapper,p-scroller,p-segmented-control,p-select-wrapper,p-spinner,p-stepper-horizontal,p-switch,p-table,p-tabs,p-tabs-bar,p-tag,p-tag-dismissible,p-text,p-text-field-wrapper,p-text-list,p-textarea-wrapper,p-toast"`
+    );
   });
 
   // TODO: how to test it without it failing as soon as a new chunk is created?
   it('should return joined and prefixed TAG_NAMES_WITH_CHUNK for passed prefixes', () => {
-    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toEqual(
-      'my-prefix-p-accordion,my-prefix-p-banner,my-prefix-p-button,my-prefix-p-button-group,my-prefix-p-button-pure,my-prefix-p-carousel,my-prefix-p-checkbox-wrapper,my-prefix-p-content-wrapper,my-prefix-p-divider,my-prefix-p-fieldset-wrapper,my-prefix-p-flex,my-prefix-p-grid,my-prefix-p-headline,my-prefix-p-icon,my-prefix-p-inline-notification,my-prefix-p-link,my-prefix-p-link-pure,my-prefix-p-link-social,my-prefix-p-link-tile,my-prefix-p-marque,my-prefix-p-modal,my-prefix-p-pagination,my-prefix-p-popover,my-prefix-p-radio-button-wrapper,my-prefix-p-scroller,my-prefix-p-segmented-control,my-prefix-p-select-wrapper,my-prefix-p-spinner,my-prefix-p-stepper-horizontal,my-prefix-p-switch,my-prefix-p-table,my-prefix-p-tabs,my-prefix-p-tabs-bar,my-prefix-p-tag,my-prefix-p-tag-dismissible,my-prefix-p-text,my-prefix-p-text-field-wrapper,my-prefix-p-text-list,my-prefix-p-textarea-wrapper,my-prefix-p-toast,some-prefix-p-accordion,some-prefix-p-banner,some-prefix-p-button,some-prefix-p-button-group,some-prefix-p-button-pure,some-prefix-p-carousel,some-prefix-p-checkbox-wrapper,some-prefix-p-content-wrapper,some-prefix-p-divider,some-prefix-p-fieldset-wrapper,some-prefix-p-flex,some-prefix-p-grid,some-prefix-p-headline,some-prefix-p-icon,some-prefix-p-inline-notification,some-prefix-p-link,some-prefix-p-link-pure,some-prefix-p-link-social,some-prefix-p-link-tile,some-prefix-p-marque,some-prefix-p-modal,some-prefix-p-pagination,some-prefix-p-popover,some-prefix-p-radio-button-wrapper,some-prefix-p-scroller,some-prefix-p-segmented-control,some-prefix-p-select-wrapper,some-prefix-p-spinner,some-prefix-p-stepper-horizontal,some-prefix-p-switch,some-prefix-p-table,some-prefix-p-tabs,some-prefix-p-tabs-bar,some-prefix-p-tag,some-prefix-p-tag-dismissible,some-prefix-p-text,some-prefix-p-text-field-wrapper,some-prefix-p-text-list,some-prefix-p-textarea-wrapper,some-prefix-p-toast'
+    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toMatchInlineSnapshot(
+      `"my-prefix-p-accordion,my-prefix-p-banner,my-prefix-p-button,my-prefix-p-button-group,my-prefix-p-button-pure,my-prefix-p-carousel,my-prefix-p-checkbox-wrapper,my-prefix-p-content-wrapper,my-prefix-p-divider,my-prefix-p-fieldset-wrapper,my-prefix-p-flex,my-prefix-p-grid,my-prefix-p-headline,my-prefix-p-icon,my-prefix-p-inline-notification,my-prefix-p-link,my-prefix-p-link-pure,my-prefix-p-link-social,my-prefix-p-link-tile,my-prefix-p-marque,my-prefix-p-modal,my-prefix-p-pagination,my-prefix-p-popover,my-prefix-p-radio-button-wrapper,my-prefix-p-scroller,my-prefix-p-segmented-control,my-prefix-p-select-wrapper,my-prefix-p-spinner,my-prefix-p-stepper-horizontal,my-prefix-p-switch,my-prefix-p-table,my-prefix-p-tabs,my-prefix-p-tabs-bar,my-prefix-p-tag,my-prefix-p-tag-dismissible,my-prefix-p-text,my-prefix-p-text-field-wrapper,my-prefix-p-text-list,my-prefix-p-textarea-wrapper,my-prefix-p-toast,some-prefix-p-accordion,some-prefix-p-banner,some-prefix-p-button,some-prefix-p-button-group,some-prefix-p-button-pure,some-prefix-p-carousel,some-prefix-p-checkbox-wrapper,some-prefix-p-content-wrapper,some-prefix-p-divider,some-prefix-p-fieldset-wrapper,some-prefix-p-flex,some-prefix-p-grid,some-prefix-p-headline,some-prefix-p-icon,some-prefix-p-inline-notification,some-prefix-p-link,some-prefix-p-link-pure,some-prefix-p-link-social,some-prefix-p-link-tile,some-prefix-p-marque,some-prefix-p-modal,some-prefix-p-pagination,some-prefix-p-popover,some-prefix-p-radio-button-wrapper,some-prefix-p-scroller,some-prefix-p-segmented-control,some-prefix-p-select-wrapper,some-prefix-p-spinner,some-prefix-p-stepper-horizontal,some-prefix-p-switch,some-prefix-p-table,some-prefix-p-tabs,some-prefix-p-tabs-bar,some-prefix-p-tag,some-prefix-p-tag-dismissible,some-prefix-p-text,some-prefix-p-text-field-wrapper,some-prefix-p-text-list,some-prefix-p-textarea-wrapper,some-prefix-p-toast"`
     );
   });
 });
@@ -167,6 +167,13 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledTimes(3);
     });
 
+    it('should call document.querySelector() with correct parameters', () => {
+      const spy = jest.spyOn(document, 'querySelector');
+      getUsedTagNamesForVersions(prefixesForVersion);
+
+      expect(spy).toBeCalledWith('phn-header');
+    });
+
     it('should return tagNames for each version without duplicates', () => {
       const el = document.createElement('p-text');
       const mockReturnValueArrayFrom = [el];
@@ -196,18 +203,13 @@ describe('getUsedTagNamesForVersions()', () => {
     const child = document.createElement('phn-p-button');
     phnHeader.shadowRoot.append(child);
 
-    it('should call document.querySelector() with correct parameters', () => {
-      const spy = jest.spyOn(document, 'querySelector');
+    it('should call querySelectorAll() with correct parameters', () => {
+      const pdsComponentsSelectorMock = 'someSelector';
+      jest.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
+      const spy = jest.spyOn(document, 'querySelectorAll');
       getUsedTagNamesForVersions(prefixesForVersion);
 
-      expect(spy).toBeCalledWith('phn-header');
-    });
-
-    it('should call unpackChildren() with correct parameters', () => {
-      const spy = jest.spyOn(unpackChildrenUtils, 'unpackChildren');
-      getUsedTagNamesForVersions(prefixesForVersion);
-
-      expect(spy).toBeCalledWith(phnHeader.shadowRoot);
+      expect(spy).toBeCalledWith(pdsComponentsSelectorMock);
     });
 
     it("should return all tagNames (incl. phn header's shadow root) for each version without duplicates", () => {
