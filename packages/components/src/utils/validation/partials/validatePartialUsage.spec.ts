@@ -1,6 +1,7 @@
 import {
   getWarningRecommendation,
   throwPartialValidationWarning,
+  validateFontFaceStylesheetUsage,
   validateGetComponentChunkLinksUsage,
   validateGetFontLinksUsage,
   validateGetInitialStylesUsage,
@@ -11,6 +12,8 @@ import type { PartialName } from '@porsche-design-system/shared';
 import type { TagNamesForVersions } from './helper';
 import * as validatePartialUsageUtils from './validatePartialUsage';
 import * as helperUtils from './helper';
+import * as injectGlobalStyleUtils from '../../inject-global-style';
+import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
 
 beforeAll(() => {
   document.porscheDesignSystem = {
@@ -40,7 +43,7 @@ describe('validatePartialUsage()', () => {
     ['production', 'test'],
     ['production', 'production'],
   ])(
-    'should call validateGetFontLinksUsage(), validateGetComponentChunkLinksUsage(), validateGetLoaderScriptUsage() and validateGetInitialStylesUsage() for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should call validateFontFaceStylesheetUsage(), validateGetFontLinksUsage(), validateGetComponentChunkLinksUsage(), validateGetLoaderScriptUsage() and validateGetInitialStylesUsage() for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
@@ -53,9 +56,14 @@ describe('validatePartialUsage()', () => {
       );
       const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
       const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
+      const validateFontFaceStylesheetUsageSpy = jest.spyOn(
+        validatePartialUsageUtils,
+        'validateFontFaceStylesheetUsage'
+      );
 
       validatePartialUsage();
 
+      expect(validateFontFaceStylesheetUsageSpy).toBeCalledWith();
       expect(validateGetFontLinksUsageSpy).toBeCalledWith();
       expect(validateGetComponentChunkLinksUsagesSpy).toBeCalledWith();
       expect(validateGetLoaderScriptUsageSpy).toBeCalledWith();
@@ -69,7 +77,7 @@ describe('validatePartialUsage()', () => {
     ['staging', 'production'],
     ['production', 'development'],
   ])(
-    'should not call any function for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should not call any function except validateFontFaceStylesheetUsage()  for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
@@ -82,15 +90,67 @@ describe('validatePartialUsage()', () => {
       );
       const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
       const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
+      const validateFontFaceStylesheetUsageSpy = jest.spyOn(
+        validatePartialUsageUtils,
+        'validateFontFaceStylesheetUsage'
+      );
 
       validatePartialUsage();
 
+      expect(validateFontFaceStylesheetUsageSpy).toBeCalledWith();
       expect(validateGetFontLinksUsageSpy).not.toBeCalled();
       expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
       expect(validateGetLoaderScriptUsageSpy).not.toBeCalled();
       expect(validateGetInitialStylesUsageSpy).not.toBeCalled();
     }
   );
+});
+
+describe('validateFontFaceStylesheetUsage()', () => {
+  it("should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING === 'staging'", () => {
+    // @ts-ignore
+    ROLLUP_REPLACE_IS_STAGING = 'staging';
+    const spy = jest.spyOn(document.head, 'querySelector');
+    validateFontFaceStylesheetUsage();
+
+    expect(spy).toBeCalledWith(`link[href="http://localhost:3001/styles/font-face.min.css"]`);
+  });
+
+  it("should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING === 'production'", () => {
+    // @ts-ignore
+    ROLLUP_REPLACE_IS_STAGING = 'production';
+    const spy = jest.spyOn(document.head, 'querySelector');
+    validateFontFaceStylesheetUsage();
+
+    expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
+  });
+
+  it("should call injectGlobalStyle() with correct parameters when ROLLUP_REPLACE_IS_STAGING === 'staging'", () => {
+    // @ts-ignore
+    ROLLUP_REPLACE_IS_STAGING = 'staging';
+    const spy = jest.spyOn(injectGlobalStyleUtils, 'injectGlobalStyle');
+    validateFontFaceStylesheetUsage();
+
+    expect(spy).toBeCalledWith('http://localhost:3001/styles/font-face.min.css');
+  });
+
+  it("should call injectGlobalStyle() with correct parameters when ROLLUP_REPLACE_IS_STAGING === 'production'", () => {
+    // @ts-ignore
+    ROLLUP_REPLACE_IS_STAGING = 'production';
+    const spy = jest.spyOn(injectGlobalStyleUtils, 'injectGlobalStyle');
+    validateFontFaceStylesheetUsage();
+
+    expect(spy).toBeCalledWith(FONT_FACE_CDN_URL);
+  });
+
+  it('should call throwPartialValidationWarning() with correct parameters', () => {
+    jest.spyOn(document, 'querySelector').mockReturnValue(null);
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
+
+    validateFontFaceStylesheetUsage();
+
+    expect(spy).toBeCalledWith('getFontFaceStylesheet');
+  });
 });
 
 describe('validateGetFontLinksUsage()', () => {
@@ -290,7 +350,13 @@ describe('validateGetInitialStylesUsage()', () => {
 });
 
 describe('throwPartialValidationWarning()', () => {
-  it.each<PartialName>(['getFontLinks', 'getLoaderScript', 'getComponentChunkLinks', 'getInitialStyles'])(
+  it.each<PartialName>([
+    'getFontFaceStylesheet',
+    'getFontLinks',
+    'getLoaderScript',
+    'getComponentChunkLinks',
+    'getInitialStyles',
+  ])(
     'should call console.warn and getWarningRecommendation() with correct parameters when called with partial %s()',
     (partialName) => {
       const warnSpy = jest.spyOn(global.console, 'warn');

@@ -1,24 +1,9 @@
-import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
-
-export const injectGlobalStyle = (): void => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  // TODO: should we test this logic? also warning message and href attribute?
-  const styleUrl =
-    ROLLUP_REPLACE_IS_STAGING === 'production' ? FONT_FACE_CDN_URL : 'http://localhost:3001/styles/font-face.min.css';
-
+export const injectGlobalStyle = (styleUrl: string): void => {
   const { head } = document;
-  if (!head.querySelector(`link[href="${styleUrl}"]`)) {
-    const link = document.createElement('link');
-    link.href = styleUrl;
-    link.type = 'text/css';
-    link.rel = 'stylesheet';
+  const link = document.createElement('link');
+  link.href = styleUrl;
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
 
-    head.appendChild(link);
-
-    console.warn(`The Porsche Design System had to inject our font-face.css file into your head. Please preload it in the head of your 'index.html'.
-You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/performance/loading-behaviour`);
-  }
+  head.appendChild(link);
 };

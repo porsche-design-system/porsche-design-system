@@ -5,6 +5,8 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 import type { PartialName } from '@porsche-design-system/shared';
+import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
+import { injectGlobalStyle } from '../../inject-global-style';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -15,12 +17,22 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  // Ensure no warning is thrown when started with yarn start
+  // Ensure no warning is thrown when started with yarn start except for getFontFaceStylesheet()
+  validateFontFaceStylesheetUsage();
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
     validateGetLoaderScriptUsage();
     validateGetInitialStylesUsage();
+  }
+};
+
+export const validateFontFaceStylesheetUsage = (): void => {
+  const styleUrl =
+    ROLLUP_REPLACE_IS_STAGING === 'production' ? FONT_FACE_CDN_URL : 'http://localhost:3001/styles/font-face.min.css';
+  if (!document.head.querySelector(`link[href="${styleUrl}"]`)) {
+    injectGlobalStyle(styleUrl);
+    throwPartialValidationWarning('getFontFaceStylesheet');
   }
 };
 
@@ -70,8 +82,12 @@ export const validateGetInitialStylesUsage = (): void => {
 export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   console.warn(
     `You are using the Porsche Design System ${
-      prefix ? `with prefix: ${prefix} ` : ''
-    }without using the ${partialName}() partial. ${getWarningRecommendation(partialName)}`
+      prefix ? `with prefix: '${prefix}' ` : ''
+    }without using the ${partialName}() partial.${
+      partialName === 'getFontFaceStylesheet'
+        ? ' The Porsche Design System had to inject our font-face.css file into your head.'
+        : ''
+    } ${getWarningRecommendation(partialName)}`
   );
 };
 
