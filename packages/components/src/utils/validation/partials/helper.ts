@@ -1,5 +1,6 @@
 import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
 import { getTagNameWithoutPrefix } from '../../tag-name';
+import { unpackChildren } from '../../dom/unpackChildren';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
 
@@ -43,13 +44,25 @@ export const getPdsComponentsSelector = (prefixes: string[]): string =>
 export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]: string[] }): TagNamesForVersions =>
   Object.entries(prefixesForVersions).reduce((result, [version, prefixes]) => {
     const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
-
     const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
-
     const tagNames = pdsElements
       .map(getTagNameWithoutPrefix)
       .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
 
+    const phnHeader = document.querySelector('phn-header');
+    if (prefixes.indexOf('phn') !== -1 && phnHeader) {
+      const pdsPhnTagNames = [
+        ...new Set(
+          unpackChildren(phnHeader.shadowRoot)
+            .map((el) => el.tagName.toLowerCase())
+            .filter((tagName) => tagName.includes('phn-p-'))
+        ),
+      ];
+      return {
+        ...result,
+        [version]: [...new Set([...tagNames, ...pdsPhnTagNames])],
+      };
+    }
     return {
       ...result,
       [version]: tagNames,
