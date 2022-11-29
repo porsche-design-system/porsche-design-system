@@ -6,16 +6,14 @@ const generateTagNamesWithChunk = (): void => {
   // can't resolve @porsche-design-system/components-js without building it first, therefore we use relative path
   const componentsJsSourceDirectory = path.resolve('../components-js/projects/partials/scripts');
 
-  const partialFiles = globby.sync(`${componentsJsSourceDirectory}/*.ts`);
+  const partialFileNames = globby.sync(`${componentsJsSourceDirectory}/*Partial.ts`);
 
-  const partialNames = partialFiles
-    .filter((file) => !file.includes('utils' || 'buildPartials')) // skip utils files and buildPartial file
+  const partialNames = partialFileNames
     .map((file) => {
       const fileContent = fs.readFileSync(file, 'utf8');
-      const [, partialName] = /export function ([A-z]+)/g.exec(fileContent) || [];
+      const [, partialName] = /export function ([A-Za-z]+)/g.exec(fileContent) || [];
       return partialName;
     })
-    .filter((x) => x) // filter out undefined values;
     .sort();
 
   const content = `export const PARTIAL_NAMES = [${partialNames.map((x) => `'${x}'`).join(', ')}] as const;
