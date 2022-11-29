@@ -268,7 +268,7 @@ describe('validateGetInitialStylesUsage()', () => {
 
     validateGetInitialStylesUsage();
 
-    expect(spy).toBeCalledWith('getInitialStyles');
+    expect(spy).toBeCalledWith('getInitialStyles', '');
     expect(spy).toBeCalledWith('getInitialStyles', 'prefix');
     expect(spy).toBeCalledWith('getInitialStyles', 'my-prefix');
     expect(spy).toBeCalledTimes(3);

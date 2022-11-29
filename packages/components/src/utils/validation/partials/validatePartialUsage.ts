@@ -59,10 +59,10 @@ export const validateGetInitialStylesUsage = (): void => {
   Object.values(getPorscheDesignSystemPrefixesForVersions())
     .flat()
     .forEach((prefix) => {
-      if (prefix && !document.querySelector(`style[data-pds-initial-styles-${prefix}]`)) {
+      if (
+        !document.querySelector(prefix ? `style[data-pds-initial-styles-${prefix}]` : 'style[data-pds-initial-styles]')
+      ) {
         throwPartialValidationWarning('getInitialStyles', prefix);
-      } else if (!document.querySelector('style[data-pds-initial-styles]')) {
-        throwPartialValidationWarning('getInitialStyles');
       }
     });
 };
@@ -76,8 +76,9 @@ export const throwPartialValidationWarning = (partialName: PartialName, prefix?:
 };
 
 export const getWarningRecommendation = (partialName: string): string => {
-  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialName
+  const partialUrl = partialName
     .replace('get', '')
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .toLowerCase()} to enhance loading behavior.`;
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase to param-case
+    .toLowerCase();
+  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialUrl} to enhance loading behavior.`;
 };

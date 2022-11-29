@@ -49,7 +49,7 @@ export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]:
       .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
 
     const phnHeader = document.querySelector('phn-header');
-    if (prefixes.indexOf('phn') !== -1 && phnHeader) {
+    if (prefixes.includes('phn') && phnHeader) {
       const pdsPhnTagNames = Array.from(phnHeader.shadowRoot.querySelectorAll(pdsComponentsSelector))
         .map((el) => el.tagName.toLowerCase())
         .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
