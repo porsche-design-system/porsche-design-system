@@ -8,7 +8,8 @@
     SelectedAriaAttributes,
     ThemeExtendedElectric,
   } from '../../../components-react/projects/react-wrapper/src/lib/types';
-  import { inject, onMounted, onUpdated, ref } from 'vue';
+  import { onMounted, onUpdated, ref } from 'vue';
+  import { usePrefix } from '../../projects/vue-wrapper/src/hooks';
 
   interface Props {
     /**
@@ -54,8 +55,7 @@
     variant?: ButtonVariant;
   }
 
-  const prefix = inject('prefix');
-  const TagName = prefix + '-' + 'p-button';
+  const TagName = usePrefix('p-button');
   const props = defineProps<Props>();
   const compRef = ref<HTMLElement & Props>();
 
