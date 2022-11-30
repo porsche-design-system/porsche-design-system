@@ -1,15 +1,15 @@
 import type { Page, ElementHandle } from '@playwright/test';
 
 export const supportsDeclarativeShadowDOM = async (page: Page): Promise<boolean> => {
-  return await page.evaluate(() => HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot'));
+  return page.evaluate(() => HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot'));
 };
 
-export const waitForComponentsReady = async (page: Page): Promise<void> => {
-  await page.evaluate((): Promise<number> => (window as any).porscheDesignSystem.componentsReady());
+export const waitForComponentsReady = async (page: Page): Promise<number> => {
+  return page.evaluate((): Promise<number> => (window as any).porscheDesignSystem.componentsReady());
 };
 
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
-  await page.waitForTimeout(40);
+  await page.waitForTimeout(40); // TODO: remove timeout
 };
 
 export const setProperty = async <T>(

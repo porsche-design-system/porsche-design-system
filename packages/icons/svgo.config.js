@@ -1,3 +1,6 @@
+/**
+ * @type {import('svgo').Config}
+ */
 module.exports = {
   multipass: true,
   floatPrecision: 3,
