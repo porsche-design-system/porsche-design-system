@@ -31,8 +31,8 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
 
   throwIfRunInBrowser('getLoaderScript');
 
-  const scriptProps = {'data-pds-loader-script': ''};
-  const dataAttribute = convertPropsToAttributeString(scriptProps);
+  const scriptProps = { 'data-pds-loader-script': '' };
+  const scriptAttributes = convertPropsToAttributeString(scriptProps);
 
   const loadCalls = prefix
     ? Array.isArray(prefix)
@@ -43,7 +43,7 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
 
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
-  const markup = format === 'html' ? \`<script \$\{dataAttribute\}>\${scriptContent}</script>\` : <script {...scriptProps} dangerouslySetInnerHTML={{__html: scriptContent}} />;
+  const markup = format === 'html' ? \`<script \$\{scriptAttributes\}>\${scriptContent}</script>\` : <script {...scriptProps} dangerouslySetInnerHTML={{__html: scriptContent}} />;
 
   return withoutTags ? scriptContent : markup;
 }`;
