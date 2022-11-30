@@ -1,4 +1,4 @@
-import type { TagName, TagNameCamelCase } from '@porsche-design-system/shared';
+import type { TagName, TagNameCamelCase, TagNameWithChunk } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCaseToCamelCase } from './paramCaseToCamelCase';
 
@@ -12,6 +12,9 @@ export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
   const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
   return (tagNameWithoutPrefix || tagName) as TagName; // return tagName as fallback for default tags
 };
+
+export const getTagNamesWithoutDuplicates = (tagNames: string[] | TagName[] | TagNameWithChunk[]): string[] =>
+  tagNames.filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
 
 // prevent internal usage of p-headline and p-text
 type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pText'>;

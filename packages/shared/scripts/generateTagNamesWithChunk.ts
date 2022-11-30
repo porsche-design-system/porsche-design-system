@@ -9,7 +9,7 @@ const generateTagNamesWithChunk = (): void => {
   const tagNamesWithChunk: TagName[] = TAG_NAMES.filter((chunk) => !tagNamesWithoutChunk.includes(chunk));
 
   const content = `export const TAG_NAMES_WITH_CHUNK = [${tagNamesWithChunk.map((x) => `'${x}'`).join(', ')}] as const;
-export type TagNamesWithChunk = typeof TAG_NAMES_WITH_CHUNK[number];`;
+export type TagNameWithChunk = typeof TAG_NAMES_WITH_CHUNK[number];`;
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
