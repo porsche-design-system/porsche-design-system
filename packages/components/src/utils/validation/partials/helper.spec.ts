@@ -33,6 +33,7 @@ describe('getPreloadedTagNamesForCoreChunk()', () => {
   it('should return empty [] if nextSibling.href is undefined', () => {
     const nextSibling = document.createElement('link');
     document.head.appendChild(nextSibling);
+
     expect(getPreloadedTagNamesForCoreChunk(coreChunkLinkElement)).toEqual([]);
   });
 
@@ -153,7 +154,6 @@ describe('getUsedTagNamesForVersions()', () => {
       const el = document.createElement('p-text');
       const el1 = document.createElement('my-prefix-p-text');
       const el2 = document.createElement('my-prefix-p-text');
-
       const mockReturnValue = [el, el1, el2];
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
       const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
@@ -194,7 +194,7 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith('p-button', 2, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
       expect(spy).toBeCalledWith('p-button', 3, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
       expect(spy).toBeCalledWith('p-link', 4, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
-      expect(spy).toBeCalledTimes(10); // isAlreadyInArray() is called for each version0
+      expect(spy).toBeCalledTimes(10); // isAlreadyInArray() is called for each version
     });
   });
 
@@ -220,7 +220,6 @@ describe('getUsedTagNamesForVersions()', () => {
       const el = document.createElement('phn-p-text');
       const el1 = document.createElement('phn-p-text');
       const el2 = document.createElement('phn-p-text');
-
       const mockReturnValue = [el, el1, el2];
       jest.spyOn(Array, 'from').mockReturnValueOnce([]); // first Array.from() call is not relevant for this unit test
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
