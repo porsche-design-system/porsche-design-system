@@ -29,8 +29,8 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleAttributes = 'pds-initial-styles';
-  const styleProps = { [styleAttributes]: 'true' };
+  const styleProps = { [\`data-pds-initial-styles\$\{prefix ? '-' + prefix : ''\}\`]: '' };
+  const styleAttributes = convertPropsToAttributeString(styleProps);
 
   const styles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 

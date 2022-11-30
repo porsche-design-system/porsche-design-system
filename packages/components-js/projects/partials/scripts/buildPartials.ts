@@ -16,7 +16,12 @@ const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
 import { throwIfRunInBrowser } from '../shared';
 
-const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');`;
+const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');
+
+const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
+  Object.entries(props)
+    .map(([attr, val]) => \`\${attr}\${val ? '=' + val : ''}\`)
+    .join(' ');`;
 };
 
 const generatePartials = async (): Promise<void> => {
