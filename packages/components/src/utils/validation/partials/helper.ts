@@ -1,6 +1,6 @@
 import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
 import { getTagNameWithoutPrefix } from '../../tag-name';
-import { isAlreadyInArray } from '../../detect-duplicates';
+import { isAlreadyInArray } from '../../is-already-in-array';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
 
@@ -61,6 +61,9 @@ export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]:
       [version]: tagNames.filter(isAlreadyInArray),
     };
   }, {});
+
+const temp: TagName[] = ['p-tag', 'p-button'];
+isAlreadyInArray('p-x', 1, temp);
 
 export const getUsedTagNamesWithoutPreloadForVersions = (
   usedTagNamesForVersions: TagNamesForVersions,

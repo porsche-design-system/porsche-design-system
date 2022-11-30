@@ -10,7 +10,7 @@ import {
 import type { TagName } from '@porsche-design-system/shared';
 import * as helperUtils from './helper';
 import * as tagNameUtils from '../../tag-name';
-import * as detectDuplicatesUtils from '../../detect-duplicates';
+import * as detectDuplicatesUtils from '../../is-already-in-array';
 
 declare global {
   interface Document {

@@ -1,4 +1,4 @@
-import { isAlreadyInArray } from './detect-duplicates';
+import { isAlreadyInArray } from './is-already-in-array';
 
 describe('isAlreadyInArray()', () => {
   it.each([
