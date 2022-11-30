@@ -77,7 +77,6 @@ describe('getPreloadedTagNamesForVersion()', () => {
     const querySelectorMockReturn = document.createElement('link');
     jest.spyOn(document, 'querySelector').mockReturnValue(querySelectorMockReturn);
     const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForCoreChunk');
-
     getPreloadedTagNamesForVersion(version);
 
     expect(spy).toBeCalledWith(querySelectorMockReturn);
@@ -104,7 +103,6 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
   it('should call getPreloadedTagNamesForVersion() with correct parameters', () => {
     const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
-
     getPreloadedTagNamesForVersions(versions);
 
     expect(spy).toBeCalledWith('1.2.3');
@@ -158,7 +156,7 @@ describe('getUsedTagNamesForVersions()', () => {
       const mockReturnValue = [el, el1, el2];
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
       const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
-      getUsedTagNamesForVersions({ '1.2.3': ['p-text', 'my-prefix-p-text'] });
+      getUsedTagNamesForVersions({ '1.2.3': ['p-text', 'my-prefix-p-text'] }); // Pass only one version to reduce number of calls
 
       expect(spy).toBeCalledWith(el, 0, mockReturnValue);
       expect(spy).toBeCalledWith(el1, 1, mockReturnValue);
@@ -173,13 +171,13 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith('phn-header');
     });
 
-    it('should return tagNames for each version without duplicates', () => {
+    it('should call getTagNamesWithoutDuplicates() with correct parameters and return tagNames for each version without duplicates', () => {
       const el = document.createElement('p-text');
       const mockReturnValueArrayFrom = [el];
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
-
       const mockReturnValueMap: TagName[] = ['p-text', 'p-text', 'p-button', 'p-button', 'p-link'];
       jest.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
+      const spy = jest.spyOn(tagNameUtils, 'getTagNamesWithoutDuplicates');
 
       expect(
         getUsedTagNamesForVersions({
@@ -190,6 +188,7 @@ describe('getUsedTagNamesForVersions()', () => {
         '1.2.3': ['p-text', 'p-button', 'p-link'],
         '1.2.4': ['p-text', 'p-button', 'p-link'],
       });
+      expect(spy).toBeCalledWith(['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
     });
   });
 
@@ -211,19 +210,38 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith(pdsComponentsSelectorMock);
     });
 
-    it("should return all tagNames (incl. phn header's shadow root) for each version without duplicates", () => {
+    it('should call getTagNameWithoutPrefix() with correct parameters', () => {
+      const el = document.createElement('phn-p-text');
+      const el1 = document.createElement('phn-p-text');
+      const el2 = document.createElement('phn-p-text');
+
+      const mockReturnValue = [el, el1, el2];
+      jest.spyOn(Array, 'from').mockReturnValueOnce([]); // first Array.from() call is not relevant for this unit test
+      jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
+      const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
+      getUsedTagNamesForVersions(prefixesForVersion);
+
+      expect(spy).toBeCalledWith(el, 0, mockReturnValue);
+      expect(spy).toBeCalledWith(el1, 1, mockReturnValue);
+      expect(spy).toBeCalledWith(el2, 2, mockReturnValue);
+      expect(spy).toBeCalledTimes(3);
+    });
+
+    it('should call getTagNamesWithoutDuplicates() with correct parameters and return all tagNames for each version without duplicates', () => {
       const el = document.createElement('p-button');
       document.body.append(el);
       const elShadow = document.createElement('phn-p-button');
       phnHeader.shadowRoot.append(elShadow);
+      const spy = jest.spyOn(tagNameUtils, 'getTagNamesWithoutDuplicates');
 
       expect(
         getUsedTagNamesForVersions({
           '1.2.3': ['', 'phn'],
         })
       ).toEqual({
-        '1.2.3': ['p-button', 'phn-p-button'],
+        '1.2.3': ['p-button'],
       });
+      expect(spy).toBeCalledWith(['p-button', 'p-button', 'p-button']);
     });
   });
 });

@@ -1,5 +1,5 @@
 import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
-import { getTagNameWithoutPrefix } from '../../tag-name';
+import { getTagNamesWithoutDuplicates, getTagNameWithoutPrefix } from '../../tag-name';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
 
@@ -44,23 +44,20 @@ export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]:
   Object.entries(prefixesForVersions).reduce((result, [version, prefixes]) => {
     const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
     const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
-    const tagNames = pdsElements
-      .map(getTagNameWithoutPrefix)
-      .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
+    const tagNames = pdsElements.map(getTagNameWithoutPrefix);
 
     const phnHeader = document.querySelector('phn-header');
     if (prefixes.includes('phn') && phnHeader) {
-      const pdsPhnTagNames = Array.from(phnHeader.shadowRoot.querySelectorAll(pdsComponentsSelector))
-        .map((el) => el.tagName.toLowerCase())
-        .filter((tagName, idx, arr) => arr.indexOf(tagName) === idx);
+      const phnPdsElements = Array.from(phnHeader.shadowRoot.querySelectorAll(pdsComponentsSelector));
+      const pdsPhnTagNames = phnPdsElements.map(getTagNameWithoutPrefix);
       return {
         ...result,
-        [version]: [...tagNames, ...pdsPhnTagNames].filter((tagName, idx, arr) => arr.indexOf(tagName) === idx),
+        [version]: getTagNamesWithoutDuplicates([...tagNames, ...pdsPhnTagNames]),
       };
     }
     return {
       ...result,
-      [version]: tagNames,
+      [version]: getTagNamesWithoutDuplicates(tagNames),
     };
   }, {});
 
