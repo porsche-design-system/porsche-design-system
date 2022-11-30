@@ -18,11 +18,11 @@ declare global {
 export const validatePartialUsage = (): void => {
   // Ensure no warning is thrown when started with yarn start except for getFontFaceStylesheet()
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
+    validateGetInitialStylesUsage();
     validateFontFaceStylesheetUsage();
+    validateGetLoaderScriptUsage();
     validateGetFontLinksUsage();
     validateGetComponentChunkLinksUsage();
-    validateGetLoaderScriptUsage();
-    validateGetInitialStylesUsage();
   }
 };
 
