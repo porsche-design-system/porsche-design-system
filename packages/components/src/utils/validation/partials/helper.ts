@@ -62,9 +62,6 @@ export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]:
     };
   }, {});
 
-const temp: TagName[] = ['p-tag', 'p-button'];
-isAlreadyInArray('p-x', 1, temp);
-
 export const getUsedTagNamesWithoutPreloadForVersions = (
   usedTagNamesForVersions: TagNamesForVersions,
   preloadedTagNamesForVersions: TagNamesForVersions
