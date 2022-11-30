@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import CustomButton from '../components/CustomButton.vue';
   import { ref } from 'vue';
+  import CustomSwitch from '@/components/CustomSwitch.vue';
 
   const tmp = ref(false);
   const switchStatus = ref(false);
@@ -21,5 +21,5 @@
 </script>
 
 <template>
-  <CustomButton @click="log" :loading="tmp" :style="{ fontSize: '26px' }" class="dark">Some label</CustomButton>
+  <CustomSwitch :onSwitchChange="onSwitchClick">Some switch</CustomSwitch>
 </template>
