@@ -6,7 +6,7 @@ set -o pipefail
 if
   [[ "--components-js" == "${1}" ]]
 then
-  yarn test:smoke:${1:2} --ci
+  PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn test:smoke:${1:2} --ci
 else
-  yarn test:smoke --ci
+  PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn test:smoke --ci
 fi

@@ -26,7 +26,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
-                  "name": "The quick",
+                  "name": "The quick ",
                   "role": "StaticText",
                 },
                 {
@@ -40,7 +40,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                   "role": "link",
                 },
                 {
-                  "name": "jumps over the lazy dog",
+                  "name": " jumps over the lazy dog",
                   "role": "StaticText",
                 },
               ],

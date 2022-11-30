@@ -9,7 +9,7 @@ on:
 name: 'Porsche Design System'
 env:
   PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.26.0-focal-v1
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -33,7 +33,7 @@ jobs:
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
         shell: bash
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -60,7 +60,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -73,7 +73,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -121,7 +121,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -134,7 +134,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -166,7 +166,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -179,7 +179,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -211,7 +211,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -224,7 +224,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -262,7 +262,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -275,7 +275,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -313,7 +313,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -326,7 +326,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -379,7 +379,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -392,7 +392,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -455,7 +455,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -468,7 +468,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -516,7 +516,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -529,7 +529,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -562,7 +562,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -575,7 +575,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -597,7 +597,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -610,7 +610,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -657,7 +657,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -670,7 +670,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -718,7 +718,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -731,7 +731,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -779,7 +779,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -792,7 +792,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -840,7 +840,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -853,7 +853,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -945,7 +945,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -958,7 +958,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -980,7 +980,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -993,7 +993,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -1090,7 +1090,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -1103,7 +1103,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       - name: 'Install' # needed for algolia
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
@@ -1131,7 +1131,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -1180,7 +1180,7 @@ jobs:
           fetch-depth: 0 # important for uxpin since it uses the commit history
       - name: 'Cache node_modules'
         uses: actions/cache@v3
-        id: cache
+        id: cache-node_modules
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -1193,7 +1193,7 @@ jobs:
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-node
         with:
           entrypoint: run-install

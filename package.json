@@ -146,7 +146,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.0"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",
@@ -155,6 +155,8 @@
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
     "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
-    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
+    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
+    "**/ng-packagr/rollup": "^3.5.0",
+    "**/workbox-build/rollup": "^3.5.0"
   }
 }

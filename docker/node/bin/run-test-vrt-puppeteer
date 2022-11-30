@@ -6,5 +6,5 @@ set -o pipefail
 if
   [[ "--components-js" == "${1}" ]]
 then
-  yarn test:vrt:puppeteer:${1:2}
+  PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn test:vrt:puppeteer:${1:2}
 fi
