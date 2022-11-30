@@ -1,6 +1,6 @@
 import { TAG_NAMES } from '../src/lib/tagNames';
 import type { TagName } from '../src/lib/tagNames';
-import { bundles } from '../../components/stencil.config';
+import { bundles } from '@porsche-design-system/components/stencil.config';
 import path from 'path';
 import fs from 'fs';
 
