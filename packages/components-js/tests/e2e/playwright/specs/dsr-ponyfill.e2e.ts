@@ -60,14 +60,15 @@ const getComputedColor = (handle: ElementHandle<HTMLElement>): Promise<string> =
 
 const applyPonyfill = async (page: Page): Promise<void> => {
   await page.addScriptTag({ content: getDSRPonyfill().replace(/<script>([\s\S]*)<\/script>/, '$1') });
-  await page.waitForTimeout(50); // give ponyfill a chance to execute
+  await page.waitForFunction(() => !document.querySelector('template')); // verify ponyfill has executed
 };
 
-// initialize hydration phase for Porsche Design System
 const initPorscheDesignSystem = async (page: Page): Promise<void> => {
   await page.addScriptTag({ content: 'porscheDesignSystem.load();' });
-  await waitForComponentsReady(page);
-  await waitForStencilLifecycle(page);
+
+  await page.waitForSelector('html.hydrated');
+  const amount = await waitForComponentsReady(page); // very unreliable with lazy loading
+  expect(amount).toBe(2);
 };
 
 test('should handle initial phase correctly', async ({ page }) => {
