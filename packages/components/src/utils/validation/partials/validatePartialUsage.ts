@@ -67,9 +67,7 @@ export const validateGetInitialStylesUsage = (): void => {
   Object.values(getPorscheDesignSystemPrefixesForVersions())
     .flat()
     .forEach((prefix) => {
-      if (
-        !document.querySelector(prefix ? `style[data-pds-initial-styles-${prefix}]` : 'style[data-pds-initial-styles]')
-      ) {
+      if (!document.querySelector(`style[data-pds-initial-styles${prefix ? `-${prefix}` : ''}]`)) {
         throwPartialValidationWarning('getInitialStyles', prefix);
       }
     });
