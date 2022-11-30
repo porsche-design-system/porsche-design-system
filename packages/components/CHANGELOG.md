@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Validation to ensure crucial partials are used.  
+  **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
+  `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
+  **https://designsystem.porsche.com/v2/partials/initial-styles**
+
 ### [2.18.0-rc.1] - 2022-11-24
 
 #### Added
