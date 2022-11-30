@@ -1,6 +1,6 @@
-import { isFirstOccurrence } from './detect-duplicates';
+import { isAlreadyInArray } from './detect-duplicates';
 
-describe('isFirstOccurrence()', () => {
+describe('isAlreadyInArray()', () => {
   it.each([
     ['some-element', 0, ['some-element', 'some-element'], true],
     ['some-element', 1, ['some-element', 'some-element'], false],
@@ -18,6 +18,6 @@ describe('isFirstOccurrence()', () => {
     [true, 2, [1, 'some-element', true, undefined], true],
     [undefined, 3, [1, 'some-element', true, undefined], true],
   ])('should for value: %s, index: %s, array: %s return %s', (value, index, array, result) => {
-    expect(isFirstOccurrence(value, index, array)).toEqual(result);
+    expect(isAlreadyInArray(value, index, array)).toEqual(result);
   });
 });

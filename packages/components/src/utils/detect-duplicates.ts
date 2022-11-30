@@ -1,2 +1,6 @@
 // should be used as param for Array.filter()
-export const isFirstOccurrence = (value: any, index: number, array: any[]): boolean => array.indexOf(value) === index;
+export const isAlreadyInArray = (
+  value: string | number | boolean,
+  index: number,
+  array: (string | number | boolean)[]
+): boolean => array.indexOf(value) === index;

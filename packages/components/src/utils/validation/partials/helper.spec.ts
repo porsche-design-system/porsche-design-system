@@ -172,13 +172,13 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith('phn-header');
     });
 
-    it('should call isFirstOccurrence() with correct parameters and return tagNames for each version without duplicates', () => {
+    it('should call isAlreadyInArray() with correct parameters and return tagNames for each version without duplicates', () => {
       const el = document.createElement('p-text');
       const mockReturnValueArrayFrom = [el];
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
       const mockReturnValueMap: TagName[] = ['p-text', 'p-text', 'p-button', 'p-button', 'p-link'];
       jest.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
-      const spy = jest.spyOn(detectDuplicatesUtils, 'isFirstOccurrence');
+      const spy = jest.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
 
       expect(
         getUsedTagNamesForVersions({
@@ -194,7 +194,7 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith('p-button', 2, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
       expect(spy).toBeCalledWith('p-button', 3, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
       expect(spy).toBeCalledWith('p-link', 4, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
-      expect(spy).toBeCalledTimes(10); // isFirstOccurrence() is called for each version0
+      expect(spy).toBeCalledTimes(10); // isAlreadyInArray() is called for each version0
     });
   });
 
@@ -233,12 +233,12 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledTimes(3);
     });
 
-    it('should call isFirstOccurrence() with correct parameters and return all tagNames for each version without duplicates', () => {
+    it('should call isAlreadyInArray() with correct parameters and return all tagNames for each version without duplicates', () => {
       const el = document.createElement('p-button');
       document.body.append(el);
       const elShadow = document.createElement('phn-p-button');
       phnHeader.shadowRoot.append(elShadow);
-      const spy = jest.spyOn(detectDuplicatesUtils, 'isFirstOccurrence');
+      const spy = jest.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
 
       expect(
         getUsedTagNamesForVersions({

@@ -1,6 +1,6 @@
 import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
 import { getTagNameWithoutPrefix } from '../../tag-name';
-import { isFirstOccurrence } from '../../detect-duplicates';
+import { isAlreadyInArray } from '../../detect-duplicates';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
 
@@ -53,12 +53,12 @@ export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]:
       const pdsPhnTagNames = phnPdsElements.map(getTagNameWithoutPrefix);
       return {
         ...result,
-        [version]: [...tagNames, ...pdsPhnTagNames].filter(isFirstOccurrence),
+        [version]: [...tagNames, ...pdsPhnTagNames].filter(isAlreadyInArray),
       };
     }
     return {
       ...result,
-      [version]: tagNames.filter(isFirstOccurrence),
+      [version]: tagNames.filter(isAlreadyInArray),
     };
   }, {});
 
