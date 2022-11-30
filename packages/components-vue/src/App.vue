@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from 'vue-router';
-  import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/hooks';
+  import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/utils';
   porscheDesignSystemProvider();
 </script>
 
@@ -9,6 +9,9 @@
     <nav>
       <p-link-pure icon="none">
         <RouterLink to="/">Custom Button</RouterLink>
+      </p-link-pure>
+      <p-link-pure icon="none">
+        <RouterLink to="/customSwitch">Custom Switch</RouterLink>
       </p-link-pure>
     </nav>
   </header>

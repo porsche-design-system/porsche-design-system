@@ -9,9 +9,9 @@
     ThemeExtendedElectric,
   } from '../../../components-react/projects/react-wrapper/src/lib/types';
   import { onMounted, onUpdated, ref } from 'vue';
-  import { usePrefix } from '../../projects/vue-wrapper/src/hooks';
+  import { syncProperties, usePrefix } from '../../projects/vue-wrapper/src/utils';
 
-  interface Props {
+  export type Props = {
     /**
      * Add ARIA attributes.
      */
@@ -53,25 +53,31 @@
      * The style variant of the button.
      */
     variant?: ButtonVariant;
-  }
+  };
 
-  const TagName = usePrefix('p-button');
-  const props = defineProps<Props>();
-  const compRef = ref<HTMLElement & Props>();
+  const WebComponentTag = usePrefix('p-button');
+
+  const props = withDefaults(defineProps<Props>(), {
+    disabled: false,
+    hideLabel: false,
+    icon: 'arrow-head-right',
+    loading: false,
+    tabbable: true,
+    theme: 'light',
+    type: 'submit',
+    variant: 'secondary',
+  });
+  const pdsComponentRef = ref<Props>({});
 
   onMounted(() => {
-    compRef.value!.loading = props.loading;
-    compRef.value!.icon = props.icon;
-    compRef.value!.variant = props.variant;
+    syncProperties(props, pdsComponentRef.value);
   });
 
   onUpdated(() => {
-    compRef.value!.loading = props.loading;
-    compRef.value!.icon = props.icon;
-    compRef.value!.variant = props.variant;
+    syncProperties(props, pdsComponentRef.value);
   });
 </script>
 
 <template>
-  <TagName ref="compRef" />
+  <WebComponentTag ref="pdsComponentRef"><slot /></WebComponentTag>
 </template>
