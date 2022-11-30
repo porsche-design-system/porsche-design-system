@@ -9,8 +9,8 @@ const generateTagNamesWithChunk = (): void => {
   const partialFileNames = globby.sync(`${componentsJsSourceDirectory}/*Partial.ts`);
 
   const partialNames = partialFileNames
-    .map((file) => {
-      const fileContent = fs.readFileSync(file, 'utf8');
+    .map((fileName) => {
+      const fileContent = fs.readFileSync(fileName, 'utf8');
       const [, partialName] = /export function ([A-Za-z]+)/g.exec(fileContent) || [];
       return partialName;
     })
