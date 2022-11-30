@@ -1,11 +1,5 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import {
-  getTagName,
-  getTagNameWithoutPrefix,
-  getPrefixedTagNames,
-  PREFIXED_TAG_NAMES_CACHE,
-  getTagNamesWithoutDuplicates,
-} from './tag-name';
+import { getTagName, getTagNameWithoutPrefix, getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
 
 describe('getTagName()', () => {
   it.each([
@@ -30,22 +24,6 @@ describe('getTagNameWithoutPrefix()', () => {
   ])('should for %s element return %s', (tag, result) => {
     const el = document.createElement(tag);
     expect(getTagNameWithoutPrefix(el)).toBe(result);
-  });
-});
-
-describe('getTagNamesWithoutDuplicates()', () => {
-  it.each([
-    [['p-some-element', 'p-some-element'], ['p-some-element']],
-    [
-      ['p-some-element', 'p-some-element', 'p-some-other-element'],
-      ['p-some-element', 'p-some-other-element'],
-    ],
-    [
-      ['p-some-element', 'p-some-element', 'my-prefix-p-some-element', 'my-prefix-p-some-element'],
-      ['p-some-element', 'my-prefix-p-some-element'],
-    ],
-  ])('should for %s return %s', (tags, result) => {
-    expect(getTagNamesWithoutDuplicates(tags)).toEqual(result);
   });
 });
 

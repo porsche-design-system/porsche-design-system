@@ -10,6 +10,7 @@ import {
 import type { TagName } from '@porsche-design-system/shared';
 import * as helperUtils from './helper';
 import * as tagNameUtils from '../../tag-name';
+import * as detectDuplicatesUtils from '../../detect-duplicates';
 
 declare global {
   interface Document {
@@ -171,13 +172,13 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledWith('phn-header');
     });
 
-    it('should call getTagNamesWithoutDuplicates() with correct parameters and return tagNames for each version without duplicates', () => {
+    it('should call isFirstOccurrence() with correct parameters and return tagNames for each version without duplicates', () => {
       const el = document.createElement('p-text');
       const mockReturnValueArrayFrom = [el];
       jest.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
       const mockReturnValueMap: TagName[] = ['p-text', 'p-text', 'p-button', 'p-button', 'p-link'];
       jest.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
-      const spy = jest.spyOn(tagNameUtils, 'getTagNamesWithoutDuplicates');
+      const spy = jest.spyOn(detectDuplicatesUtils, 'isFirstOccurrence');
 
       expect(
         getUsedTagNamesForVersions({
@@ -188,7 +189,12 @@ describe('getUsedTagNamesForVersions()', () => {
         '1.2.3': ['p-text', 'p-button', 'p-link'],
         '1.2.4': ['p-text', 'p-button', 'p-link'],
       });
-      expect(spy).toBeCalledWith(['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledWith('p-text', 0, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledWith('p-text', 1, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledWith('p-button', 2, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledWith('p-button', 3, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledWith('p-link', 4, ['p-text', 'p-text', 'p-button', 'p-button', 'p-link']);
+      expect(spy).toBeCalledTimes(10); // isFirstOccurrence() is called for each version0
     });
   });
 
@@ -227,12 +233,12 @@ describe('getUsedTagNamesForVersions()', () => {
       expect(spy).toBeCalledTimes(3);
     });
 
-    it('should call getTagNamesWithoutDuplicates() with correct parameters and return all tagNames for each version without duplicates', () => {
+    it('should call isFirstOccurrence() with correct parameters and return all tagNames for each version without duplicates', () => {
       const el = document.createElement('p-button');
       document.body.append(el);
       const elShadow = document.createElement('phn-p-button');
       phnHeader.shadowRoot.append(elShadow);
-      const spy = jest.spyOn(tagNameUtils, 'getTagNamesWithoutDuplicates');
+      const spy = jest.spyOn(detectDuplicatesUtils, 'isFirstOccurrence');
 
       expect(
         getUsedTagNamesForVersions({
@@ -241,7 +247,10 @@ describe('getUsedTagNamesForVersions()', () => {
       ).toEqual({
         '1.2.3': ['p-button'],
       });
-      expect(spy).toBeCalledWith(['p-button', 'p-button', 'p-button']);
+      expect(spy).toBeCalledWith('p-button', 0, ['p-button', 'p-button', 'p-button']);
+      expect(spy).toBeCalledWith('p-button', 1, ['p-button', 'p-button', 'p-button']);
+      expect(spy).toBeCalledWith('p-button', 2, ['p-button', 'p-button', 'p-button']);
+      expect(spy).toBeCalledTimes(3);
     });
   });
 });
