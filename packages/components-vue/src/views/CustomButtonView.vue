@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import CustomButton from '../components/CustomButton.vue';
+  import PButton from '../../projects/vue-wrapper/src/lib/components/button.wrapper.vue';
   import { ref } from 'vue';
 
   const tmp = ref(false);
@@ -21,5 +21,5 @@
 </script>
 
 <template>
-  <CustomButton @click="log" :loading="tmp" :style="{ fontSize: '26px' }" class="dark">Some label</CustomButton>
+  <PButton @click="log" :loading="tmp" :style="{ fontSize: '26px' }" class="dark">Some label</PButton>
 </template>

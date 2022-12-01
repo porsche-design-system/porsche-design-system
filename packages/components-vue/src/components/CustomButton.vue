@@ -7,7 +7,7 @@
     IconName,
     SelectedAriaAttributes,
     ThemeExtendedElectric,
-  } from '../../../components-react/projects/react-wrapper/src/lib/types';
+  } from '../../projects/vue-wrapper/src/lib/types';
   import { onMounted, onUpdated, ref } from 'vue';
   import { syncProperties, usePrefix } from '../../projects/vue-wrapper/src/utils';
 
