@@ -67,7 +67,9 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private getComponentSubDir(component: TagName): string {
-    return this.shouldGenerateFolderPerComponent(component) ? this.getComponentFileName(component, true) : '';
+    return this.shouldGenerateFolderPerComponent(component)
+      ? path.parse(this.getComponentFileName(component)).name
+      : '';
   }
 
   private generateBarrelFile(): void {
@@ -76,8 +78,8 @@ export abstract class AbstractWrapperGenerator {
     const componentExports = this.relevantComponentTagNames
       .map((component) => {
         const componentSubDir = this.getComponentSubDir(component);
-        const componentFileName = this.getComponentFileName(component, true);
-        return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileName}';`;
+        const componentFileNameWithoutExtension = path.parse(this.getComponentFileName(component)).name;
+        return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
       })
       .join('\n');
 
@@ -153,5 +155,5 @@ export abstract class AbstractWrapperGenerator {
   public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
   public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
-  public abstract getComponentFileName(component: TagName, withOutExtension?: boolean): string;
+  public abstract getComponentFileName(component: TagName): string;
 }
