@@ -26,3 +26,13 @@ export const porscheDesignSystemProvider = (prefix: string = ''): void => {
 export const syncProperties = <T extends object>(props: T, ref: T): void => {
   (Object.keys(props) as (keyof T)[]).forEach((prop) => (ref[prop] = props[prop]));
 };
+
+export const addEventListenerToElementRef = <T extends HTMLElement, E extends string>(
+  elementRef: T,
+  eventName: E,
+  emit: (eventName: E, detail: any) => void
+): void => {
+  elementRef.addEventListener(eventName, (e) => {
+    emit(eventName, (e as CustomEvent).detail);
+  });
+};
