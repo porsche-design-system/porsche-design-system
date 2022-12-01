@@ -5,6 +5,7 @@ const generateWrappers = (): void => {
   generator.generate('angular');
   generator.generate('react');
   generator.generate('nextjs');
+  generator.generate('vue');
   generator.generate('uxpin');
 };
 
