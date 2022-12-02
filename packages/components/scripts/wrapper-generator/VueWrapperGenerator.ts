@@ -29,21 +29,21 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const propsName = this.generatePropsName(component) + genericType;
+    // TODO: Is it needed to support generic type here? there is no component so far with a generic type i think?
+    // const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+    const propsName = this.generatePropsName(component);
 
     return `  export interface ${propsName} extends HTMLElement ${rawComponentInterface
       .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
-      .replace('};', '  }')};`; // Add spaces and remove unnecessary semicolon
+      .replace('};', '  }')}`; // Add spaces and remove unnecessary semicolon
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const propsName = this.generatePropsName(component);
     const eventNames = extendedProps
       .filter(({ isEvent }) => isEvent)
-      .map(({ key }) => camelCase(key.replace('on', '')));
-
-    // TODO: should be improved, also formatting
+      .map(({ key, rawValueType }) => ({ eventName: camelCase(key.replace('on', '')), type: /<(\w+)>/.exec(rawValueType)![1] }));
+    
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
         !(isEvent || defaultValue === undefined) ? ` ${key}: ${defaultValue}` : undefined
@@ -53,12 +53,14 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     return `  const WebComponentTag = usePrefix('${component}');
 
   const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
-  const pdsComponentRef = ref<${propsName}>({} as any);${
+  const pdsComponentRef = ref<${propsName}>({} as ${propsName});${
       eventNames.length
-        ? eventNames.map(
-            (eventName) => `
-  const emit = defineEmits<{ (e: '${eventName}', value: ${pascalCase(eventName) + 'Event'}): void }>();`
-          )
+        ? eventNames.map(({ eventName, type }) => {
+            const value = '';
+
+            return `
+  const emit = defineEmits<{ (e: '${eventName}', value: ${type}): void }>();`;
+          })
         : ''
     }
 
@@ -66,7 +68,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     syncProperties(props, pdsComponentRef.value);${
       eventNames.length
         ? eventNames.map(
-            (eventName) => `
+            ({ eventName }) => `
     addEventListenerToElementRef(pdsComponentRef.value, '${eventName}', emit)`
           )
         : ''
