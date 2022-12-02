@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import CustomSwitch from '@/components/CustomSwitch.vue';
+  import PSwitch from '../../projects/vue-wrapper/src/lib/components/switch.wrapper.vue';
 
   const tmp = ref(false);
   const switchStatus = ref(false);
@@ -21,5 +21,5 @@
 </script>
 
 <template>
-  <CustomSwitch :onSwitchChange="onSwitchClick">Some switch</CustomSwitch>
+  <PSwitch :onSwitchChange="onSwitchClick">Some switch</PSwitch>
 </template>
