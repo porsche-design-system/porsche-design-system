@@ -1,7 +1,7 @@
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { pascalCase } from 'change-case';
+import { camelCase, pascalCase } from 'change-case';
 
 export class VueWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-vue';
@@ -32,12 +32,16 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const propsName = this.generatePropsName(component) + genericType;
 
-    // TODO: improve formatting?
-    return `  export type ${propsName} = ${rawComponentInterface.replace(/\n/g, '\n  ').replace('};', '  };')};`;
+    return `  export interface ${propsName} extends HTMLElement ${rawComponentInterface
+      .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
+      .replace('};', '  }')};`; // Add spaces and remove unnecessary semicolon
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const propsName = this.generatePropsName(component);
+    const eventNames = extendedProps
+      .filter(({ isEvent }) => isEvent)
+      .map(({ key }) => camelCase(key.replace('on', '')));
 
     // TODO: should be improved, also formatting
     const defaultPropsWithValue = extendedProps
@@ -49,10 +53,24 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     return `  const WebComponentTag = usePrefix('${component}');
 
   const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
-  const pdsComponentRef = ref<${propsName}>({});
+  const pdsComponentRef = ref<${propsName}>({} as any);${
+      eventNames.length
+        ? eventNames.map(
+            (eventName) => `
+  const emit = defineEmits<{ (e: '${eventName}', value: ${pascalCase(eventName) + 'Event'}): void }>();`
+          )
+        : ''
+    }
 
   onMounted(() => {
-    syncProperties(props, pdsComponentRef.value);
+    syncProperties(props, pdsComponentRef.value);${
+      eventNames.length
+        ? eventNames.map(
+            (eventName) => `
+    addEventListenerToElementRef(pdsComponentRef.value, '${eventName}', emit)`
+          )
+        : ''
+    }
   });
 
   onUpdated(() => {
