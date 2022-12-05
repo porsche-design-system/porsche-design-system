@@ -28,6 +28,7 @@ const buildConfig = (packagePath) => {
       {
         dir: `${outputDir}/${packagePath}`,
         format: 'cjs',
+        esModule: true,
         plugins: [
           generatePackageJson({
             baseContents: {

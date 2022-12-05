@@ -1,4 +1,14 @@
-# Dependencies 21.10.2022
+# Dependencies 29.11.2022
+
+## Playwright
+
+We have to stay on `1.27.0` for now since later verions supply WebKit 16.4 which causes flaky behavior in our VRT pages.
+See <https://github.com/microsoft/playwright/releases>.
+
+### Affected dependencies:
+
+- `@playwright/test`
+- `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
 
 ## @uxpin/merge-cli
 

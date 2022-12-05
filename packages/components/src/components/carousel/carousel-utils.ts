@@ -58,7 +58,7 @@ export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void
 
 export const getSlidesAndAddNamedSlots = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    (el) => el.slot !== 'heading' && el.slot !== 'post-heading'
+    ({ slot }) => slot !== 'heading' && slot !== 'description'
   ) as HTMLElement[];
   slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
 
@@ -82,11 +82,16 @@ export const slideNext = (splide: Splide, amountOfPages: number): void => {
   splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
 };
 
-export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
-  const { i18n } = splide.options;
-  btnPrev.aria = { 'aria-label': i18n[isFirstPage(splide) ? 'last' : 'prev'] };
+export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
+  const { i18n, rewind } = splide.options;
+  const isFirst = isFirstPage(splide);
+  btnPrev.disabled = isFirst && !rewind;
+  btnPrev.aria = { 'aria-label': i18n[isFirst ? 'last' : 'prev'] };
+
+  const isLast = isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage));
+  btnNext.disabled = isLast && !rewind;
   btnNext.aria = {
-    'aria-label': i18n[isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage)) ? 'first' : 'next'],
+    'aria-label': i18n[isLast ? 'first' : 'next'],
   };
 };
 

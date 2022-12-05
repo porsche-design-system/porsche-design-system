@@ -292,7 +292,7 @@ everything works under real conditions.
 #### Stable
 
 1. Create a commit with following message structure
-   `gRelease Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+   `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
 1. Create pull request and start review
 1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)

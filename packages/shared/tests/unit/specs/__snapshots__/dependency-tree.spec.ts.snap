@@ -13,12 +13,16 @@ exports[`should have no regression for dependency tree 1`] = `
     "data/table-data-vrt.js",
     "lib/codeSamples.js",
     "lib/componentMeta.js",
+    "lib/partialNames.js",
     "lib/tagNames.js",
+    "lib/tagNamesWithChunk.js",
     "styles/getMinifiedCss.js",
   ],
   "lib/codeSamples.js": [],
   "lib/componentMeta.js": [],
+  "lib/partialNames.js": [],
   "lib/tagNames.js": [],
+  "lib/tagNamesWithChunk.js": [],
   "styles/getMinifiedCss.js": [],
 }
 `;

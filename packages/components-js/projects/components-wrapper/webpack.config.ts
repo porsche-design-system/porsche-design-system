@@ -24,7 +24,6 @@ const config: webpack.Configuration = {
     chunkIds: false, // when this is set false, we need to provide a custom plugin to generate our chunkIds
     minimize: true,
     minimizer: [
-      //@ts-ignore
       new TerserPlugin({
         terserOptions: {
           format: {

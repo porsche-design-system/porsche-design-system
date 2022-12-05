@@ -45,7 +45,7 @@ describe('modal', () => {
 
   describe('render', () => {
     beforeEach(() => {
-      jest.spyOn(console, 'warn').mockImplementation(() => {});
+      jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     });
 
     it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {

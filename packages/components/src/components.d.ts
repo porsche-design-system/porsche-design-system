@@ -215,6 +215,10 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
+          * Whether the slides should rewind from last to first slide and vice versa.
+         */
+        "rewind"?: boolean;
+        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -1810,6 +1814,10 @@ declare namespace LocalJSX {
           * Emitted when carousel's content slides.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * Whether the slides should rewind from last to first slide and vice versa.
+         */
+        "rewind"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */
