@@ -10,7 +10,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -18,7 +18,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -31,21 +31,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -55,7 +52,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
@@ -176,7 +172,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -184,7 +180,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -197,21 +193,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -221,7 +214,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
@@ -318,7 +310,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -326,7 +318,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -339,21 +331,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -363,7 +352,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
@@ -460,7 +448,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -468,7 +456,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -481,21 +469,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -505,7 +490,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
@@ -587,7 +571,7 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -595,7 +579,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -608,21 +592,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -632,7 +613,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
@@ -738,7 +718,7 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 600 1.25rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -746,7 +726,7 @@ h2,::slotted([slot=heading]) {
   max-width: 56.25rem !important;
 }
 p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
@@ -759,21 +739,18 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
-    line-height: 1.375 !important;
   }
 }
 
@@ -783,7 +760,6 @@ p,::slotted([slot=description]) {
   }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
   }
 }
 
