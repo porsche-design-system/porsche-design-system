@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types'
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
-import { fontWeight, fontSize, spacing, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, fontSize, spacing, textSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
@@ -63,8 +63,8 @@ export const getComponentCss = (
       padding: 0,
     },
     icon: {
-      width: '1.5em',
-      height: '1.5em',
+      width: fontLineHeight,
+      height: fontLineHeight,
       marginLeft: '1.5rem',
       transformOrigin: '50% 50%',
       transform: open ? 'rotate3d(0,0,1,180deg)' : 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
