@@ -40,22 +40,19 @@ const patchStencilCore = (): void => {
                             }
                             ${PDS_PATCH_END}\n`;
 
-    const metaFlag = `cmpMeta.$flags$ ${PDS_PATCH_START} ${PDS_PATCH_END}`;
-
     const applySnippetPart1 = `
-                            ${PDS_PATCH_START}
-                            // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
-                            // and a 2nd attempt fails, therefore this needs to always run without SSR
-                            // and only with SSR for browsers that are not ponyfilled
-                            if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-                                cmpMeta.$flags$ & 16; /* CMP_FLAGS.shadowDelegatesFocus */
-                            ${PDS_PATCH_END}\n`;
+                                ${PDS_PATCH_START}
+                                // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
+                                // and a 2nd attempt fails, therefore this needs to always run without SSR
+                                // and only with SSR for browsers that are not ponyfilled
+                                if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+                                ${PDS_PATCH_END}\n`;
 
     const applySnippetPart2 = `
-                            ${PDS_PATCH_START}
-                                self.shadowRoot.innerHTML = ssrInnerHTML;
-                            }
-                            ${PDS_PATCH_END}\n\n`;
+                                ${PDS_PATCH_START}
+                                    self.shadowRoot.innerHTML = ssrInnerHTML;
+                                }
+                                ${PDS_PATCH_END}\n\n`;
 
     const cleanupSnippet = `
 
@@ -69,8 +66,8 @@ const patchStencilCore = (): void => {
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(\/\/ adding the shadow root build conditionals to minimize runtime\s+if \(supportsShadow\) {)(\s+if \(BUILD\.shadowDelegatesFocus\) {)([\s\S]+?delegatesFocus: )(?:!!\(cmpMeta\.\$flags\$ & 16).*(,[\s\S]+?;\n)/,
-        `$1${extractSnippet}$2${applySnippetPart1}$3${metaFlag}$4${applySnippetPart2}`
+        /(\/\/ adding the shadow root build conditionals to minimize runtime\s+if \(supportsShadow\) {)(\s+if \(BUILD\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
+        `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
       )
       // inject cleanup snippet
       .replace(
@@ -78,7 +75,7 @@ const patchStencilCore = (): void => {
         `${cleanupSnippet}$&`
       );
 
-    if (getPatchMarkerCount(newFileContent) !== 5) {
+    if (getPatchMarkerCount(newFileContent) !== 4) {
       throw new Error('Failed patching stencil core. Position for snippets not found.\n');
     } else {
       fs.writeFileSync(stencilIndexFilePath, newFileContent);

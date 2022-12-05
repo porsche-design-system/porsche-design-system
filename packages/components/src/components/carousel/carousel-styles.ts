@@ -44,14 +44,15 @@ export const getComponentCss = (
         ...headingMedium,
         margin: 0,
         color: baseColor,
+        maxWidth: pxToRemWithUnit(900),
       }),
-      // NOTE: might come back in later version '::slotted([slot=post-heading])'
-      p: {
+      'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmall,
         margin: 0,
         color: baseColor,
+        maxWidth: pxToRemWithUnit(550),
         gridColumn: 1, // to force it into 2nd line
-      },
+      }),
     },
     splide: {
       overflow: 'hidden',

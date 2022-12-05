@@ -14,6 +14,7 @@ export default [
       dir: 'dist',
       format: 'cjs',
       preserveModules: true,
+      interop: 'auto', // needed for generateScss.ts of utilities package to work with default exports of jss dependencies
       plugins: [
         generatePackageJson({
           baseContents: (packageJson) => ({
