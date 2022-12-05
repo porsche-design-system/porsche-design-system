@@ -28,12 +28,22 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
 
   const finalConfig: webpack.Configuration = {
     entry: tempEntryPointFilePath,
+    ...(!iife && {
+      experiments: {
+        outputModule: true,
+      },
+    }),
     output: {
       path: path.resolve(getProjectRootPath(), targetDirectory),
       filename: 'index.js',
-      library: 'porscheDesignSystem', // needs to be same as CM_KEY
-      ...(iife ? { iife: true } : { libraryTarget: 'umd' }), // iife build for partial, umd build for npm package
-      globalObject: "typeof self !== 'undefined' ? self : this",
+
+      ...(iife
+        ? {
+            iife: true,
+            library: 'porscheDesignSystem', // needs to be same as CM_KEY
+          }
+        : { libraryTarget: 'module' }), // iife build for getLoaderScript partial, module build for npm package
+      // globalObject: "typeof self !== 'undefined' ? self : this",
     },
     plugins: [
       new webpack.DefinePlugin({
