@@ -6,7 +6,7 @@ type AdditionalEntryFile = {
 export type CommonConfig = {
   version: string;
   additionalEntryFiles?: AdditionalEntryFile[];
-  iife?: boolean;
+  format?: 'umd' | 'iife' | 'esm';
 };
 
 export type EntryConfig = CommonConfig & {

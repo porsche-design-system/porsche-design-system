@@ -6,7 +6,7 @@ import { getProjectRootPath } from './config';
 
 export function generateWebPackConfig(targetDirectory: string, config: EntryConfig): webpack.Configuration {
   const entryFile = 'with-prefix.js';
-  const { tempEntryPointFilePath, additionalEntryFiles = [], iife } = config;
+  const { tempEntryPointFilePath, additionalEntryFiles = [], format } = config;
 
   let additionalFileContents = '';
   if (additionalEntryFiles.length) {
@@ -26,24 +26,26 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
 
   const strippedConfig = (({ version, script }) => ({ version, script }))(config);
 
+  const isIifeBuild = format === 'iife';
+  const isEsmBuild = format === 'esm';
+
   const finalConfig: webpack.Configuration = {
     entry: tempEntryPointFilePath,
-    ...(!iife && {
+    ...(isEsmBuild && {
       experiments: {
         outputModule: true,
       },
     }),
     output: {
-      path: path.resolve(getProjectRootPath(), targetDirectory),
+      path: path.resolve(getProjectRootPath(), targetDirectory, isEsmBuild ? 'esm' : ''),
       filename: 'index.js',
-
-      ...(iife
-        ? {
-            iife: true,
+      ...(isEsmBuild
+        ? { libraryTarget: 'module' } // esm build for vue
+        : {
+            ...(isIifeBuild ? { iife: true } : { libraryTarget: 'umd' }), // iife build for getLoaderScript partial, umd build for "old" npm package
             library: 'porscheDesignSystem', // needs to be same as CM_KEY
-          }
-        : { libraryTarget: 'module' }), // iife build for getLoaderScript partial, module build for npm package
-      // globalObject: "typeof self !== 'undefined' ? self : this",
+            globalObject: "typeof self !== 'undefined' ? self : this",
+          }),
     },
     plugins: [
       new webpack.DefinePlugin({
