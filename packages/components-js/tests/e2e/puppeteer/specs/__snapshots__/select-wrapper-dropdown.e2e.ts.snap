@@ -5,7 +5,7 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
   "description": "Some description",
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
@@ -15,7 +15,7 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
   "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
@@ -23,7 +23,7 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
 {
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
@@ -35,7 +35,7 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
       "focused": true,
       "haspopup": "listbox",
       "name": "Option A, Some label",
-      "role": "button",
+      "role": "combobox",
     },
     {
       "children": [
@@ -129,7 +129,7 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
 {
   "haspopup": "listbox",
   "name": "Option A, Some label. Some error message",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
@@ -191,7 +191,7 @@ exports[`select-wrapper dropdown accessibility should expose correct initial acc
       "focused": true,
       "haspopup": "listbox",
       "name": "Option A, Some label",
-      "role": "button",
+      "role": "combobox",
     },
     {
       "children": [
