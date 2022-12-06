@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { pascalCase } from 'change-case';
-import { TagName } from '../src/lib/tagNames';
+import type { TagName } from '../src/lib/tagNames';
 
 type CodeSample = {
   component: TagName;

@@ -6,8 +6,8 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
-import { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
+import type { Page } from 'puppeteer';
+import type { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 

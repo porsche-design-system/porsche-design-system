@@ -1,5 +1,5 @@
-import { Page } from 'puppeteer';
-import { TagName } from '@porsche-design-system/shared';
+import type { Page } from 'puppeteer';
+import type { TagName } from '@porsche-design-system/shared';
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
