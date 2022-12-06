@@ -79,7 +79,14 @@ export abstract class AbstractWrapperGenerator {
       .map((component) => {
         const componentSubDir = this.getComponentSubDir(component);
         const componentFileNameWithoutExtension = path.parse(this.getComponentFileName(component)).name;
-        return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
+        const getBarrelFileContent = this.getBarrelFileContent(
+          componentFileNameWithoutExtension,
+          componentSubDir
+        );
+
+        return getBarrelFileContent
+          ? getBarrelFileContent
+          : `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
       })
       .join('\n');
 
@@ -149,6 +156,13 @@ export abstract class AbstractWrapperGenerator {
   // helper that can be used to have wrapper generated into separate folder
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
     return false;
+  }
+
+  public getBarrelFileContent(
+    componentFileNameWithoutExtension: string,
+    componentSubDir?: string
+  ): string {
+    return '';
   }
 
   // prettier-ignore

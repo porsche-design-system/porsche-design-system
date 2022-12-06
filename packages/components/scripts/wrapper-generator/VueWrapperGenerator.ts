@@ -42,8 +42,11 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const propsName = this.generatePropsName(component);
     const eventNames = extendedProps
       .filter(({ isEvent }) => isEvent)
-      .map(({ key, rawValueType }) => ({ eventName: camelCase(key.replace('on', '')), type: /<(\w+)>/.exec(rawValueType)![1] }));
-    
+      .map(({ key, rawValueType }) => ({
+        eventName: camelCase(key.replace('on', '')),
+        type: /<(\w+)>/.exec(rawValueType)![1],
+      }));
+
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
         !(isEvent || defaultValue === undefined) ? ` ${key}: ${defaultValue}` : undefined
@@ -83,6 +86,15 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 <template>
   <WebComponentTag ref="pdsComponentRef"><slot /></WebComponentTag>
 </template>`;
+  }
+
+  public getBarrelFileContent(
+    componentFileNameWithoutExtension: string,
+    componentSubDir: string
+  ): string {
+    return `export { default as P${pascalCase(componentFileNameWithoutExtension.replace('.wrapper', ''))} } from './${
+      componentSubDir ? componentSubDir + '/' : ''
+    }${componentFileNameWithoutExtension}.vue';`;
   }
 
   private generatePropsName(component: TagName): string {
