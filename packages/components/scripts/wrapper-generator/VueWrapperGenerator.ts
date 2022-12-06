@@ -56,6 +56,8 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       )
       .filter((x) => x);
 
+    const syncProperties = 'syncProperties(pdsComponentRef.value, props);'
+
     return `  const WebComponentTag = usePrefix('${component}');
 
   const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
@@ -69,7 +71,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     }
 
   onMounted(() => {
-    syncProperties(props, pdsComponentRef.value);${
+    ${syncProperties}${
       eventNames.length
         ? eventNames.map(
             ({ eventName }) => `
@@ -80,7 +82,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   });
 
   onUpdated(() => {
-    syncProperties(props, pdsComponentRef.value);
+    ${syncProperties}
   });
 </script>
 
