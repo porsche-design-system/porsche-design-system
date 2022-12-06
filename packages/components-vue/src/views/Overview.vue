@@ -242,6 +242,10 @@
         </PSegmentedControl>
       </div>
 
+      <div class="playground light" title="should render default switch">
+        <PSwitch>Some label</PSwitch>
+      </div>
+
       <div class="playground light" title="should render default stepper-horizontal">
         <PStepperHorizontal>
           <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
@@ -254,6 +258,25 @@
           <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
         </PStepperHorizontal>
+      </div>
+
+      <div className="playground light" title="should render default scroller">
+        <PScroller>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+        </PScroller>
       </div>
 
       <div class="playground light" title="should render default link-tile">
@@ -462,6 +485,10 @@
         </PSegmentedControl>
       </div>
 
+      <div class="playground light" title="should render default switch with custom prefix">
+        <PSwitch>Some label</PSwitch>
+      </div>
+
       <div class="playground light" title="should render default stepper-horizontal with custom prefix">
         <PStepperHorizontal>
           <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
@@ -474,6 +501,25 @@
           <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
         </PStepperHorizontal>
+      </div>
+
+      <div className="playground light" title="should render default scroller with custom prefix">
+        <PScroller>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+          <button>Default</button>
+        </PScroller>
       </div>
 
       <div class="playground light" title="should render default link-tile with custom prefix">

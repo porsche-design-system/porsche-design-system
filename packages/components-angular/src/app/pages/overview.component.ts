@@ -225,6 +225,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-segmented-control>
         </div>
 
+        <div class="playground light" title="should render default switch">
+          <p-switch>Some label</p-switch>
+        </div>
+
         <div class="playground light" title="should render default stepper-horizontal">
           <p-stepper-horizontal>
             <p-stepper-horizontal-item [state]="'current'">Step 1</p-stepper-horizontal-item>
@@ -237,6 +241,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
             <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
           </p-stepper-horizontal>
+        </div>
+
+        <div class="playground light" title="should render default scroller">
+          <p-scroller>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+          </p-scroller>
         </div>
 
         <div class="playground light" title="should render default link-tile">
@@ -447,6 +470,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-segmented-control>
         </div>
 
+        <div class="playground light" title="should render default switch with custom prefix">
+          <my-prefix-p-switch p-switch>Some label</my-prefix-p-switch>
+        </div>
+
         <div class="playground light" title="should render default stepper-horizontal with custom prefix">
           <my-prefix-p-stepper-horizontal p-stepper-horizontal>
             <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item [state]="'current'">Step 1</my-prefix-p-stepper-horizontal-item>
@@ -459,6 +486,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 8</my-prefix-p-stepper-horizontal-item>
             <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 9</my-prefix-p-stepper-horizontal-item>
           </my-prefix-p-stepper-horizontal>
+        </div>
+
+        <div class="playground light" title="should render default scroller with custom prefix">
+          <my-prefix-p-scroller p-scroller>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+            <button>Default</button>
+          </my-prefix-p-scroller>
         </div>
 
         <div class="playground light" title="should render default link-tile with custom prefix">
