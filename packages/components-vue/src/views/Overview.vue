@@ -63,11 +63,11 @@
       </div>
 
       <div class="playground light" title="should render default inline-notification">
-        <PInlineNotification heading="Some heading" description="Some description" />
+        <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
 
       <div class="playground light" title="should render default popover">
-        <PPopover direction="right">Some popover content</PPopover>
+        <PPopover :direction="'right'">Some popover content</PPopover>
       </div>
 
       <div class="playground light" title="should render default divider">
@@ -90,19 +90,19 @@
       </div>
 
       <div class="playground light" title="should render default checkbox-wrapper">
-        <PCheckboxWrapper label="Some label">
+        <PCheckboxWrapper :label="'Some label'">
           <input type="checkbox" />
         </PCheckboxWrapper>
       </div>
 
       <div class="playground light" title="should render default radio-button-wrapper">
-        <PRadioButtonWrapper label="Some label">
+        <PRadioButtonWrapper :label="'Some label'">
           <input type="radio" />
         </PRadioButtonWrapper>
       </div>
 
       <div class="playground light" title="should render default select-wrapper">
-        <PSelectWrapper label="Some label">
+        <PSelectWrapper :label="'Some label'">
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -112,19 +112,19 @@
       </div>
 
       <div class="playground light" title="should render default text-field-wrapper">
-        <PTextFieldWrapper label="Some label">
+        <PTextFieldWrapper :label="'Some label'">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div class="playground light" title="should render default textarea-wrapper">
-        <PTextareaWrapper label="Some label">
+        <PTextareaWrapper :label="'Some label'">
           <textarea />
         </PTextareaWrapper>
       </div>
 
       <div class="playground light" title="should render default fieldset-wrapper">
-        <PFieldsetWrapper label="Some label" />
+        <PFieldsetWrapper :label="'Some label'" />
       </div>
 
       <div class="playground light" title="should render default content-wrapper">
@@ -148,15 +148,15 @@
       </div>
 
       <div class="playground light" title="should render default link">
-        <PLink href="https://www.porsche.com">Some label</PLink>
+        <PLink :href="'https://www.porsche.com'">Some label</PLink>
       </div>
 
       <div class="playground light" title="should render default link-pure">
-        <PLinkPure href="https://www.porsche.com">Some label</PLinkPure>
+        <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
       </div>
 
       <div class="playground light" title="should render default link-social">
-        <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
+        <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
       </div>
 
       <div class="playground light" title="should render default marque">
@@ -164,7 +164,7 @@
       </div>
 
       <div class="playground light" title="should render default pagination">
-        <PPagination totalItemsCount="{500}" itemsPerPage="{25}" activePage="{1}" />
+        <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
       </div>
 
       <div class="playground light" title="should render default table">
@@ -185,15 +185,15 @@
       </div>
 
       <div class="playground light" title="should render default tabs">
-        <PTabs activeTabIndex="{0}">
-          <PTabsItem label="Tab1">Content 1</PTabsItem>
-          <PTabsItem label="Tab2">Content 2</PTabsItem>
-          <PTabsItem label="Tab3">Content 3</PTabsItem>
+        <PTabs :activeTabIndex="0">
+          <PTabsItem :label="'Tab1'">Content 1</PTabsItem>
+          <PTabsItem :label="'Tab2'">Content 2</PTabsItem>
+          <PTabsItem :label="'Tab3'">Content 3</PTabsItem>
         </PTabs>
       </div>
 
       <div class="playground light" title="should render default tabs-bar">
-        <PTabsBar activeTabIndex="{0}">
+        <PTabsBar :activeTabIndex="0">
           <button>Tab1</button>
           <button>Tab2</button>
           <button>Tab3</button>
@@ -201,7 +201,7 @@
       </div>
 
       <div class="playground light" title="should render default accordion">
-        <PAccordion heading="Some accordion heading">
+        <PAccordion :heading="'Some accordion heading'">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
@@ -220,8 +220,8 @@
 
       <div class="playground light" title="should render default grid">
         <PGrid>
-          <PGridItem size="{6}"><p>1</p></PGridItem>
-          <PGridItem size="{6}"><p>2</p></PGridItem>
+          <PGridItem :size="6"><p>1</p></PGridItem>
+          <PGridItem :size="6"><p>2</p></PGridItem>
         </PGrid>
       </div>
 
@@ -234,11 +234,11 @@
       </div>
 
       <div class="playground light" title="should render default segmented-control">
-        <PSegmentedControl value="s">
-          <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl">XL</PSegmentedControlItem>
+        <PSegmentedControl :value="'s'">
+          <PSegmentedControlItem :value="'s'">S</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'m'">M</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -248,7 +248,7 @@
 
       <div class="playground light" title="should render default stepper-horizontal">
         <PStepperHorizontal>
-          <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
@@ -280,18 +280,18 @@
       </div>
 
       <div class="playground light" title="should render default link-tile">
-        <PLinkTile href="#" label="Some Label" description="Default">
+        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="{50}"
-            height="{50}"
+            width="50"
+            height="50"
             alt="Beach"
           />
         </PLinkTile>
       </div>
 
       <div class="playground light" title="should render default carousel">
-        <PCarousel heading="Heading">
+        <PCarousel :heading="'Heading'">
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
@@ -306,11 +306,11 @@
       </div>
 
       <div class="playground light" title="should render default inline-notification with custom prefix">
-        <PInlineNotification heading="Some heading" description="Some description" />
+        <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
 
       <div class="playground light" title="should render default popover with custom prefix">
-        <PPopover direction="right">Some popover content</PPopover>
+        <PPopover :direction="'right'">Some popover content</PPopover>
       </div>
 
       <div class="playground light" title="should render default divider with custom prefix">
@@ -333,19 +333,19 @@
       </div>
 
       <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
-        <PCheckboxWrapper label="Some label">
+        <PCheckboxWrapper :label="'Some label'">
           <input type="checkbox" />
         </PCheckboxWrapper>
       </div>
 
       <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
-        <PRadioButtonWrapper label="Some label">
+        <PRadioButtonWrapper :label="'Some label'">
           <input type="radio" />
         </PRadioButtonWrapper>
       </div>
 
       <div class="playground light" title="should render default select-wrapper with custom prefix">
-        <PSelectWrapper label="Some label">
+        <PSelectWrapper :label="'Some label'">
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -355,19 +355,19 @@
       </div>
 
       <div class="playground light" title="should render default text-field-wrapper with custom prefix">
-        <PTextFieldWrapper label="Some label">
+        <PTextFieldWrapper :label="'Some label'">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div class="playground light" title="should render default textarea-wrapper with custom prefix">
-        <PTextareaWrapper label="Some label">
+        <PTextareaWrapper :label="'Some label'">
           <textarea />
         </PTextareaWrapper>
       </div>
 
       <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-        <PFieldsetWrapper label="Some label" />
+        <PFieldsetWrapper :label="'Some label'" />
       </div>
 
       <div class="playground light" title="should render default content-wrapper with custom prefix">
@@ -391,15 +391,15 @@
       </div>
 
       <div class="playground light" title="should render default link with custom prefix">
-        <PLink href="https://www.porsche.com">Some label</PLink>
+        <PLink :href="'https://www.porsche.com'">Some label</PLink>
       </div>
 
       <div class="playground light" title="should render default link-pure with custom prefix">
-        <PLinkPure href="https://www.porsche.com">Some label</PLinkPure>
+        <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
       </div>
 
       <div class="playground light" title="should render default link-social with custom prefix">
-        <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
+        <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
       </div>
 
       <div class="playground light" title="should render default marque with custom prefix">
@@ -407,7 +407,7 @@
       </div>
 
       <div class="playground light" title="should render default pagination with custom prefix">
-        <PPagination totalItemsCount="{500}" itemsPerPage="{25}" activePage="{1}" />
+        <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
       </div>
 
       <div class="playground light" title="should render default table with custom prefix">
@@ -429,14 +429,14 @@
 
       <div class="playground light" title="should render default tabs with custom prefix">
         <PTabs>
-          <PTabsItem label="Tab1">Content 1</PTabsItem>
-          <PTabsItem label="Tab2">Content 2</PTabsItem>
-          <PTabsItem label="Tab3">Content 3</PTabsItem>
+          <PTabsItem :label="'Tab1'">Content 1</PTabsItem>
+          <PTabsItem :label="'Tab2'">Content 2</PTabsItem>
+          <PTabsItem :label="'Tab3'">Content 3</PTabsItem>
         </PTabs>
       </div>
 
       <div class="playground light" title="should render default tabs-bar with custom prefix">
-        <PTabsBar activeTabIndex="{0}">
+        <PTabsBar :activeTabIndex="0">
           <button>Tab1</button>
           <button>Tab2</button>
           <button>Tab3</button>
@@ -444,7 +444,7 @@
       </div>
 
       <div class="playground light" title="should render default accordion with custom prefix">
-        <PAccordion heading="Some accordion heading">
+        <PAccordion :heading="'Some accordion heading'">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
@@ -463,8 +463,8 @@
 
       <div class="playground light" title="should render default grid with custom prefix">
         <PGrid>
-          <PGridItem size="{6}"><p>1</p></PGridItem>
-          <PGridItem size="{6}"><p>2</p></PGridItem>
+          <PGridItem :size="6"><p>1</p></PGridItem>
+          <PGridItem :size="6"><p>2</p></PGridItem>
         </PGrid>
       </div>
 
@@ -477,11 +477,11 @@
       </div>
 
       <div class="playground light" title="should render default segmented-control with custom prefix">
-        <PSegmentedControl value="s">
-          <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl">XL</PSegmentedControlItem>
+        <PSegmentedControl :value="'s'">
+          <PSegmentedControlItem :value="'s'">S</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'m'">M</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
+          <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -491,7 +491,7 @@
 
       <div class="playground light" title="should render default stepper-horizontal with custom prefix">
         <PStepperHorizontal>
-          <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
@@ -523,18 +523,18 @@
       </div>
 
       <div class="playground light" title="should render default link-tile with custom prefix">
-        <PLinkTile href="#" label="Some Label" description="Default">
+        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="{50}"
-            height="{50}"
+            width="50"
+            height="50"
             alt="Beach"
           />
         </PLinkTile>
       </div>
 
       <div class="playground light" title="should render default carousel with custom prefix">
-        <PCarousel heading="Heading">
+        <PCarousel :heading="'Heading'">
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
