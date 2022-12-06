@@ -23,11 +23,12 @@ export const porscheDesignSystemProvider = (prefix: string = ''): void => {
   provide(prefixInjectionKey, prefix);
 };
 
-export const syncProperties = <T extends object>(props: T, ref: T): void => {
-  (Object.keys(props) as (keyof T)[]).forEach((prop) => (ref[prop] = props[prop]));
+export const syncProperties = <T extends object>(props: T, elementRef: T & Partial<HTMLElement>): void => {
+  (Object.keys(props) as (keyof T)[]).forEach((prop) => (elementRef[prop] = props[prop]));
 };
 
-export const addEventListenerToElementRef = <T extends HTMLElement, E extends string>(
+// TODO: change ref to second position
+export const addEventListenerToElementRef = <T extends Partial<HTMLElement>, E extends string>(
   elementRef: T,
   eventName: E,
   emit: (eventName: E, detail: any) => void
