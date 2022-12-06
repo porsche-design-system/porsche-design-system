@@ -80,6 +80,7 @@
     "build:utilities": "yarn --cwd ./packages/utilities build",
     "build:utilities-deprecated": "yarn --cwd ./packages/utilities-deprecated build",
     "lint:components": "yarn --cwd ./packages/components lint",
+    "lint:components-vue": "yarn --cwd ./packages/components-vue lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
     "test:unit:components": "yarn --cwd ./packages/components test:unit",
     "test:unit:components-js": "yarn --cwd ./packages/components-js test:unit",
