@@ -28,13 +28,11 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n  ')}`;
   }
 
-  //TODO: remove event props
-
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const propsName = this.generatePropsName(component);
+    const componentInterfaceWithoutEventProps = rawComponentInterface.replace(/\n\s+\/\*\*\n[\s\w*.]+\s+\*\/\n\s+on[A-Z].+;/g, '')
 
-    // TODO: Use type as soon as imported Properties are supported https://github.com/vuejs/core/issues/4294
-    return `  type ${propsName} = ${rawComponentInterface
+    return `  type ${propsName} = ${componentInterfaceWithoutEventProps
       .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
       .replace('};', '  }')}`; // Add spaces and remove unnecessary semicolon
   }
@@ -55,7 +53,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       )
       .filter((x) => x);
 
-    const syncProperties = 'syncProperties(pdsComponentRef.value, props);';
+    const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
     const defineProps = `defineProps<${propsName}>()`;
 
     return `  const WebComponentTag = usePrefix('${component}');
