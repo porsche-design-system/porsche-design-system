@@ -30,7 +30,10 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const propsName = this.generatePropsName(component);
-    const componentInterfaceWithoutEventProps = rawComponentInterface.replace(/\n\s+\/\*\*\n[\s\w*.]+\s+\*\/\n\s+on[A-Z].+;/g, '')
+    const componentInterfaceWithoutEventProps = rawComponentInterface.replace(
+      /\n\s+\/\*\*\n[\s\w*.]+\s+\*\/\n\s+on[A-Z].+;/g,
+      ''
+    );
 
     return `  type ${propsName} = ${componentInterfaceWithoutEventProps
       .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
@@ -45,13 +48,14 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
         eventName: camelCase(key.replace('on', '')),
         type: /<(\w+)>/.exec(rawValueType)![1],
       }));
-    const hasEvent = eventNamesAndTypes.length
+    const hasEvent = eventNamesAndTypes.length;
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
         !(isEvent || defaultValue === undefined) ? `${key}: ${defaultValue}` : undefined
       )
-      .filter((x) => x);
+      .filter((x) => x)
+      .join(', ');
 
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
     const defineProps = `defineProps<${propsName}>()`;
@@ -76,7 +80,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
         ? eventNamesAndTypes
             .map(
               ({ eventName }) => `
-    addEventListenerToElementRef(pdsComponentRef.value, '${eventName}', emit)`
+    addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}', emit);`
             )
             .join('')
         : ''
