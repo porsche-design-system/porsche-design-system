@@ -1,56 +1,58 @@
 <script setup lang="ts">
-  import PAccordion from '../../projects/vue-wrapper/src/lib/components/accordion.wrapper.vue';
-  import PBanner from '../../projects/vue-wrapper/src/lib/components/banner.wrapper.vue';
-  import PButton from '../../projects/vue-wrapper/src/lib/components/button.wrapper.vue';
-  import PButtonGroup from '../../projects/vue-wrapper/src/lib/components/button-group.wrapper.vue';
-  import PButtonPure from '../../projects/vue-wrapper/src/lib/components/button-pure.wrapper.vue';
-  import PCarousel from '../../projects/vue-wrapper/src/lib/components/carousel.wrapper.vue';
-  import PCheckboxWrapper from '../../projects/vue-wrapper/src/lib/components/checkbox-wrapper.wrapper.vue';
-  import PContentWrapper from '../../projects/vue-wrapper/src/lib/components/content-wrapper.wrapper.vue';
-  import PDivider from '../../projects/vue-wrapper/src/lib/components/divider.wrapper.vue';
-  import PFieldsetWrapper from '../../projects/vue-wrapper/src/lib/components/fieldset-wrapper.wrapper.vue';
-  import PFlex from '../../projects/vue-wrapper/src/lib/components/flex.wrapper.vue';
-  import PFlexItem from '../../projects/vue-wrapper/src/lib/components/flex-item.wrapper.vue';
-  import PGrid from '../../projects/vue-wrapper/src/lib/components/grid.wrapper.vue';
-  import PGridItem from '../../projects/vue-wrapper/src/lib/components/grid-item.wrapper.vue';
-  import PHeadline from '../../projects/vue-wrapper/src/lib/components/headline.wrapper.vue';
-  import PIcon from '../../projects/vue-wrapper/src/lib/components/icon.wrapper.vue';
-  import PInlineNotification from '../../projects/vue-wrapper/src/lib/components/inline-notification.wrapper.vue';
-  import PLink from '../../projects/vue-wrapper/src/lib/components/link.wrapper.vue';
-  import PLinkPure from '../../projects/vue-wrapper/src/lib/components/link-pure.wrapper.vue';
-  import PLinkSocial from '../../projects/vue-wrapper/src/lib/components/link-social.wrapper.vue';
-  import PLinkTile from '../../projects/vue-wrapper/src/lib/components/link-tile.wrapper.vue';
-  import PMarque from '../../projects/vue-wrapper/src/lib/components/marque.wrapper.vue';
-  import PModal from '../../projects/vue-wrapper/src/lib/components/modal.wrapper.vue';
-  import PPagination from '../../projects/vue-wrapper/src/lib/components/pagination.wrapper.vue';
-  import PPopover from '../../projects/vue-wrapper/src/lib/components/popover.wrapper.vue';
-  import PRadioButtonWrapper from '../../projects/vue-wrapper/src/lib/components/radio-button-wrapper.wrapper.vue';
-  import PScroller from '../../projects/vue-wrapper/src/lib/components/scroller.wrapper.vue';
-  import PSegmentedControl from '../../projects/vue-wrapper/src/lib/components/segmented-control.wrapper.vue';
-  import PSegmentedControlItem from '../../projects/vue-wrapper/src/lib/components/segmented-control-item.wrapper.vue';
-  import PSelectWrapper from '../../projects/vue-wrapper/src/lib/components/select-wrapper.wrapper.vue';
-  import PSpinner from '../../projects/vue-wrapper/src/lib/components/spinner.wrapper.vue';
-  import PStepperHorizontal from '../../projects/vue-wrapper/src/lib/components/stepper-horizontal.wrapper.vue';
-  import PStepperHorizontalItem from '../../projects/vue-wrapper/src/lib/components/stepper-horizontal-item.wrapper.vue';
-  import PSwitch from '../../projects/vue-wrapper/src/lib/components/switch.wrapper.vue';
-  import PTable from '../../projects/vue-wrapper/src/lib/components/table.wrapper.vue';
-  import PTableBody from '../../projects/vue-wrapper/src/lib/components/table-body.wrapper.vue';
-  import PTableCell from '../../projects/vue-wrapper/src/lib/components/table-cell.wrapper.vue';
-  import PTableHead from '../../projects/vue-wrapper/src/lib/components/table-head.wrapper.vue';
-  import PTableHeadCell from '../../projects/vue-wrapper/src/lib/components/table-head-cell.wrapper.vue';
-  import PTableHeadRow from '../../projects/vue-wrapper/src/lib/components/table-head-row.wrapper.vue';
-  import PTableRow from '../../projects/vue-wrapper/src/lib/components/table-row.wrapper.vue';
-  import PTabs from '../../projects/vue-wrapper/src/lib/components/tabs.wrapper.vue';
-  import PTabsBar from '../../projects/vue-wrapper/src/lib/components/tabs-bar.wrapper.vue';
-  import PTabsItem from '../../projects/vue-wrapper/src/lib/components/tabs-item.wrapper.vue';
-  import PTag from '../../projects/vue-wrapper/src/lib/components/tag.wrapper.vue';
-  import PTagDismissible from '../../projects/vue-wrapper/src/lib/components/tag-dismissible.wrapper.vue';
-  import PText from '../../projects/vue-wrapper/src/lib/components/text.wrapper.vue';
-  import PTextFieldWrapper from '../../projects/vue-wrapper/src/lib/components/text-field-wrapper.wrapper.vue';
-  import PTextList from '../../projects/vue-wrapper/src/lib/components/text-list.wrapper.vue';
-  import PTextListItem from '../../projects/vue-wrapper/src/lib/components/text-list-item.wrapper.vue';
-  import PTextareaWrapper from '../../projects/vue-wrapper/src/lib/components/textarea-wrapper.wrapper.vue';
-  import PToast from '../../projects/vue-wrapper/src/lib/components/toast.wrapper.vue';
+  import {
+    PAccordion,
+    PBanner,
+    PButton,
+    PButtonGroup,
+    PButtonPure,
+    PCarousel,
+    PCheckboxWrapper,
+    PContentWrapper,
+    PDivider,
+    PFieldsetWrapper,
+    PFlex,
+    PFlexItem,
+    PGrid,
+    PGridItem,
+    PHeadline,
+    PIcon,
+    PInlineNotification,
+    PLink,
+    PLinkPure,
+    PLinkSocial,
+    PLinkTile,
+    PMarque,
+    PModal,
+    PPagination,
+    PPopover,
+    PRadioButtonWrapper,
+    PScroller,
+    PSegmentedControl,
+    PSegmentedControlItem,
+    PSelectWrapper,
+    PSpinner,
+    PStepperHorizontal,
+    PStepperHorizontalItem,
+    PSwitch,
+    PTable,
+    PTableBody,
+    PTableCell,
+    PTableHead,
+    PTableHeadCell,
+    PTableHeadRow,
+    PTableRow,
+    PTabs,
+    PTabsBar,
+    PTabsItem,
+    PTag,
+    PTagDismissible,
+    PText,
+    PTextFieldWrapper,
+    PTextList,
+    PTextListItem,
+    PTextareaWrapper,
+    PToast,
+  } from '../../projects/vue-wrapper/src/public-api';
 </script>
 
 <template>
