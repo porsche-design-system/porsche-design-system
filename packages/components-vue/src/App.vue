@@ -1,28 +1,29 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from 'vue-router';
+  import router, { routes } from './router';
+  import { ref } from 'vue';
+  import '@porsche-design-system/shared/css/styles.css';
   import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/utils';
+
+  // TODO: solve in a different way
   porscheDesignSystemProvider();
+
+  const options = routes.map((item) => ({ path: item.path, name: item.name }));
+  const selected = ref(options[0].path);
+
+  const onChange = (e: Event & { target: HTMLSelectElement }) => {
+    const { value } = e.target;
+    selected.value = value;
+    router.push(value);
+  };
 </script>
 
 <template>
-  <header>
-    <nav>
-      <p-link-pure icon="none">
-        <RouterLink to="/">Custom Button</RouterLink>
-      </p-link-pure>
-      <p-link-pure icon="none">
-        <RouterLink to="/customSwitch">Custom Switch</RouterLink>
-      </p-link-pure>
-    </nav>
-  </header>
+  <select :value="selected" @change="onChange($event)">
+    <option disabled value="">Select a page</option>
+    <option v-for="item in options" :disabled="item.isDisabled" :value="item.path">{{ item.name }}</option>
+  </select>
 
-  <RouterView />
+  <div id="app">
+    <RouterView />
+  </div>
 </template>
-
-<style scoped>
-  nav {
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-</style>

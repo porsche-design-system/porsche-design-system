@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/shared": "0.0.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^18.11.9",
     "@vitejs/plugin-vue": "^3.2.0",
