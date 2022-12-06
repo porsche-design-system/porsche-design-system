@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 
 export const waitForComponentsReady = async (page: Page): Promise<void> => {
   // componentsReady is exposed via main.ts of angular vrt app

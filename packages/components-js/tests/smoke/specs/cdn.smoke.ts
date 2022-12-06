@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   FALLBACKS_MANIFEST,
   FALLBACKS_CDN_BASE_URL,

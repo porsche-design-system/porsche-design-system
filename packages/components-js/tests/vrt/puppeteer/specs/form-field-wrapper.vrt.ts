@@ -7,7 +7,7 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();

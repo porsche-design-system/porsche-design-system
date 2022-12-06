@@ -25,7 +25,7 @@ console.log('targetDirectory:', targetDirectory);
 //   inlineStyles?: string;
 //   script: string;
 //   copyFiles?: CopyFile[];
-//   iife?: 'umd' | 'iife' | 'esm';
+//   format?: 'umd' | 'iife' | 'esm';
 // }
 
 module.exports = {

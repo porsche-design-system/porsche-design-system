@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
 
 let page: Page;

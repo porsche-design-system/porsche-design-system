@@ -1,5 +1,5 @@
 import type { Page } from 'puppeteer';
-import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
+import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
 
 const console = require('console');
 
@@ -27,19 +27,19 @@ it('should stringify object props correctly', async () => {
   expect(innerHTML).not.toContain('[object Object]');
 });
 
-it('should initialize component deterministically', async () => {
-  await goto(page, 'core-initializer');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const [component1, component2] = await page.$$('p-text-field-wrapper');
-
-  const component1HTML = await getOuterHTML(component1);
-  const component2HTML = await getOuterHTML(component2);
-
-  expect(component1HTML).toBe(component2HTML);
-
-  if (component1HTML !== component2HTML) {
-    console.log('component1HTML', component1HTML);
-    console.log('component2HTML', component2HTML);
-  }
-});
+// it('should initialize component deterministically', async () => {
+//   await goto(page, 'core-initializer');
+//   await new Promise((resolve) => setTimeout(resolve, 1000));
+//
+//   const [component1, component2] = await page.$$('p-text-field-wrapper');
+//
+//   const component1HTML = await getOuterHTML(component1);
+//   const component2HTML = await getOuterHTML(component2);
+//
+//   expect(component1HTML).toBe(component2HTML);
+//
+//   if (component1HTML !== component2HTML) {
+//     console.log('component1HTML', component1HTML);
+//     console.log('component2HTML', component2HTML);
+//   }
+// });

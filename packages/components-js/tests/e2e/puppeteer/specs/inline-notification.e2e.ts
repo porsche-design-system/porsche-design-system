@@ -11,8 +11,8 @@ import {
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
-import { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
+import type { Page } from 'puppeteer';
+import type { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
 import { INLINE_NOTIFICATION_STATES } from '@porsche-design-system/components/src/components/inline-notification/inline-notification-utils';
 
 let page: Page;
