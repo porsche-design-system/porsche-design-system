@@ -17,9 +17,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const vueImports = ['onMounted', 'onUpdated', 'ref'];
     const importsFromVue = `import { ${vueImports.join(', ')} } from 'vue';`;
 
-    const vueTypesImports = ['HTMLAttributes'];
-    const importsTypesFromVue = `import type { ${vueTypesImports.join(', ')} } from 'vue';`;
-
     const utilsImports = ['usePrefix', 'syncProperties', ...(hasEventProps ? ['addEventListenerToElementRef'] : [])];
     const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
@@ -28,16 +25,18 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return `<script setup lang="ts">
-  ${[importsFromVue, importsFromUtils, importsTypesFromVue, importsFromTypes].filter((x) => x).join('\n  ')}`;
+  ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n  ')}`;
   }
 
-  public generateProps(component: TagName, rawComponentInterface: string): string {
-    // TODO: Is it needed to support generic type here? there is no component so far with a generic type i think?
-    // const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const propsName = this.generatePropsName(component);
-    const htmlAttributesType = this.generateHTMLAttributesType();
+  //TODO: remove with defaults if no defaults are present
+  //TODO: solution for multiple events
+  //TODO: remove event props
 
-    return `  export interface ${propsName} extends ${htmlAttributesType} ${rawComponentInterface
+  public generateProps(component: TagName, rawComponentInterface: string): string {
+    const propsName = this.generatePropsName(component);
+
+    // TODO: Use type as soon as imported Properties are supported https://github.com/vuejs/core/issues/4294
+    return `  type ${propsName} = ${rawComponentInterface
       .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
       .replace('};', '  }')}`; // Add spaces and remove unnecessary semicolon
   }
@@ -60,11 +59,9 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     return `  const WebComponentTag = usePrefix('${component}');
 
   const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
-  const pdsComponentRef = ref<${propsName}>({} as ${propsName});${
+  const pdsComponentRef = ref<${propsName} & Partial<HTMLElement>>();${
       eventNames.length
         ? eventNames.map(({ eventName, type }) => {
-            const value = '';
-
             return `
   const emit = defineEmits<{ (e: '${eventName}', value: ${type}): void }>();`;
           })
@@ -92,19 +89,10 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 </template>`;
   }
 
-  public getBarrelFileContent(
-    componentFileNameWithoutExtension: string,
-    componentSubDir: string
-  ): string {
+  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir: string): string {
     return `export { default as P${pascalCase(componentFileNameWithoutExtension.replace('.wrapper', ''))} } from './${
       componentSubDir ? componentSubDir + '/' : ''
     }${componentFileNameWithoutExtension}.vue';`;
-  }
-
-  protected generateHTMLAttributesType(): string {
-    const overriddenPropNames = ['color'];
-    const omitted = overriddenPropNames.map((propName) => `'${propName}'`).join(` | `);
-    return  `Omit<HTMLAttributes, ${omitted}>`;
   }
 
   private generatePropsName(component: TagName): string {
