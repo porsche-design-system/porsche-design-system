@@ -28,7 +28,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n  ')}`;
   }
 
-  //TODO: remove with defaults if no defaults are present
   //TODO: remove event props
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -42,28 +41,32 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const propsName = this.generatePropsName(component);
-    const eventNames = extendedProps
+    const eventNamesAndTypes = extendedProps
       .filter(({ isEvent }) => isEvent)
       .map(({ key, rawValueType }) => ({
         eventName: camelCase(key.replace('on', '')),
         type: /<(\w+)>/.exec(rawValueType)![1],
       }));
+    const hasEvent = eventNamesAndTypes.length
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
-        !(isEvent || defaultValue === undefined) ? ` ${key}: ${defaultValue}` : undefined
+        !(isEvent || defaultValue === undefined) ? `${key}: ${defaultValue}` : undefined
       )
       .filter((x) => x);
 
     const syncProperties = 'syncProperties(pdsComponentRef.value, props);';
+    const defineProps = `defineProps<${propsName}>()`;
 
     return `  const WebComponentTag = usePrefix('${component}');
 
-  const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
+  const props = ${
+    defaultPropsWithValue.length ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
+  };
   const pdsComponentRef = ref<${propsName} & Partial<HTMLElement>>();${
-      eventNames.length
+      hasEvent
         ? `
-  const emit = defineEmits<{ ${eventNames
+  const emit = defineEmits<{ ${eventNamesAndTypes
     .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
     .join(' ')} }>();`
         : ''
@@ -71,8 +74,8 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
   onMounted(() => {
     ${syncProperties}${
-      eventNames.length
-        ? eventNames
+      hasEvent
+        ? eventNamesAndTypes
             .map(
               ({ eventName }) => `
     addEventListenerToElementRef(pdsComponentRef.value, '${eventName}', emit)`
