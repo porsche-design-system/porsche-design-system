@@ -29,7 +29,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   //TODO: remove with defaults if no defaults are present
-  //TODO: solution for multiple events
   //TODO: remove event props
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -56,27 +55,29 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       )
       .filter((x) => x);
 
-    const syncProperties = 'syncProperties(pdsComponentRef.value, props);'
+    const syncProperties = 'syncProperties(pdsComponentRef.value, props);';
 
     return `  const WebComponentTag = usePrefix('${component}');
 
   const props = withDefaults(defineProps<${propsName}>(), {${defaultPropsWithValue} });
   const pdsComponentRef = ref<${propsName} & Partial<HTMLElement>>();${
       eventNames.length
-        ? eventNames.map(({ eventName, type }) => {
-            return `
-  const emit = defineEmits<{ (e: '${eventName}', value: ${type}): void }>();`;
-          })
+        ? `
+  const emit = defineEmits<{ ${eventNames
+    .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
+    .join(' ')} }>();`
         : ''
     }
 
   onMounted(() => {
     ${syncProperties}${
       eventNames.length
-        ? eventNames.map(
-            ({ eventName }) => `
+        ? eventNames
+            .map(
+              ({ eventName }) => `
     addEventListenerToElementRef(pdsComponentRef.value, '${eventName}', emit)`
-          )
+            )
+            .join('')
         : ''
     }
   });
