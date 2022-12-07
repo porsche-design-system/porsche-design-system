@@ -260,7 +260,7 @@
         </PStepperHorizontal>
       </div>
 
-      <div className="playground light" title="should render default scroller">
+      <div class="playground light" title="should render default scroller">
         <PScroller>
           <button>Default</button>
           <button>Default</button>
@@ -503,7 +503,7 @@
         </PStepperHorizontal>
       </div>
 
-      <div className="playground light" title="should render default scroller with custom prefix">
+      <div class="playground light" title="should render default scroller with custom prefix">
         <PScroller>
           <button>Default</button>
           <button>Default</button>
