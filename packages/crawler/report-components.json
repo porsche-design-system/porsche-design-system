@@ -14,81 +14,574 @@
     },
     "consumedTagNamesForVersions": {
         "2.17.0": [
-            "p-link-pure",
-            "p-text",
-            "p-link-pure",
-            "p-link-pure",
-            "p-link-pure",
-            "p-content-wrapper",
-            "p-headline",
-            "p-content-wrapper",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-link-pure",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-link",
-            "p-headline",
-            "p-text",
-            "p-text-field-wrapper",
-            "p-content-wrapper",
-            "p-headline",
-            "p-content-wrapper",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-headline",
-            "p-text",
-            "p-button",
-            "p-content-wrapper",
-            "p-headline",
-            "p-content-wrapper",
-            "p-flex",
-            "p-flex-item",
-            "p-flex",
-            "p-flex-item",
-            "p-flex-item",
-            "p-link-pure",
-            "p-flex-item",
-            "p-flex",
-            "p-flex-item",
-            "p-flex-item",
-            "p-link-pure",
-            "p-flex-item",
-            "p-flex",
-            "p-flex-item",
-            "p-flex-item",
-            "p-link-pure"
+            {
+                "p-link-pure": {
+                    "class": "HomeStageMain__headline__0c558 hydrated",
+                    "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+                    "theme": "dark",
+                    "weight": "semibold"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "HomeStageMain__sublineWrapper__0c558 hydrated",
+                    "size": "{ base: 'small', m: 'medium', l: 'large' }",
+                    "theme": "dark",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "class": "HomeStageTile__headline__65ce6 hydrated",
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "theme": "dark",
+                    "href": "https://shop.porsche.com/ch/de-CH/christmas"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "class": "HomeStageTile__headline__65ce6 hydrated",
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "theme": "dark",
+                    "href": "https://drivenbydreams.ch/"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "class": "HomeStageTile__headline__65ce6 hydrated",
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "theme": "dark",
+                    "href": "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "width": "basic",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "class": "responsive-margin-bottom__headline hydrated",
+                    "theme": "light",
+                    "variant": "headline-2"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "width": "extended",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/718/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/911/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/panamera/panamera-models/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/macan/macan-models/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'large', xl: 'x-large'}",
+                    "theme": "dark",
+                    "data-test": "car-rage-tile_title-link",
+                    "target": "_self",
+                    "href": "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/",
+                    "data-v-5710017a": "",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "size": "{base: 'small', xl: 'medium'}",
+                    "theme": "dark",
+                    "class": "description hydrated",
+                    "data-v-5710017a": "",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-button": {
+                    "icon": "external",
+                    "theme": "dark",
+                    "class": "button hydrated",
+                    "data-test": "car-range-tile_cta-button",
+                    "data-v-5710017a": ""
+                }
+            },
+            {
+                "p-headline": {
+                    "theme": "dark",
+                    "variant": "headline-2",
+                    "data-test": "headlineText",
+                    "class": "ContentInfo__headline__82ddf hydrated",
+                    "data-theme": "dark"
+                }
+            },
+            {
+                "p-text": {
+                    "theme": "dark",
+                    "data-theme": "dark",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-link": {
+                    "class": "ContentInfo__button__82ddf hydrated",
+                    "href": "https://www.porsche.com/swiss/de/swiss-benefits/",
+                    "rel": "noreferrer",
+                    "target": "",
+                    "theme": "dark",
+                    "variant": "tertiary",
+                    "data-test": "contentInfoCtaBtn"
+                }
+            },
+            {
+                "p-headline": {
+                    "data-test": "headline",
+                    "theme": "light",
+                    "variant": "headline-2",
+                    "class": "EnhancedFinder__headline__14f02 hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "data-test": "copytext",
+                    "theme": "light",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-text-field-wrapper": {
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "width": "basic",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "class": "extended-teaser__headline hydrated",
+                    "theme": "light",
+                    "variant": "headline-2"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "class": "extended-teaser__categories hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "variant": "headline-3",
+                    "tag": "h3",
+                    "class": "extended-teaser__slide-title hydrated"
+                }
+            },
+            {
+                "p-text": {
+                    "class": "extended-teaser__slide-description hydrated"
+                }
+            },
+            {
+                "p-button": {
+                    "data-test": "tileButton",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "width": "basic",
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-headline": {
+                    "class": "responsive-margin-bottom__headline hydrated",
+                    "theme": "light",
+                    "variant": "headline-2"
+                }
+            },
+            {
+                "p-content-wrapper": {
+                    "class": "hydrated"
+                }
+            },
+            {
+                "p-flex": {
+                    "class": "teaser-container mobile-side-by-side hydrated",
+                    "wrap": "{base: 'wrap', xs: 'nowrap'}"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "width": "{base: 'full', s: 'auto'}",
+                    "class": "teaser-mobile-side-by-side hydrated",
+                    "target": "",
+                    "style": "cursor: pointer;"
+                }
+            },
+            {
+                "p-flex": {
+                    "class": "tile-flex hydrated",
+                    "direction": "{ base: 'row', xs: 'column' }",
+                    "align-items": "{ base: 'center', xs: 'flex-start' }",
+                    "justify-content": "space-between"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "href": "https://www.porsche.com/swiss/de/motorsportandevents/experience/",
+                    "class": "hydrated",
+                    "theme": "dark"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "width": "{base: 'full', s: 'auto'}",
+                    "class": "teaser-mobile-side-by-side hydrated",
+                    "target": "",
+                    "style": "cursor: pointer;"
+                }
+            },
+            {
+                "p-flex": {
+                    "class": "tile-flex hydrated",
+                    "direction": "{ base: 'row', xs: 'column' }",
+                    "align-items": "{ base: 'center', xs: 'flex-start' }",
+                    "justify-content": "space-between"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "href": "https://www.porsche.com/swiss/de/motorsportandevents/porschedrive/",
+                    "class": "hydrated",
+                    "theme": "dark"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "width": "{base: 'full', s: 'auto'}",
+                    "class": "teaser-mobile-side-by-side hydrated",
+                    "target": "",
+                    "style": "cursor: pointer;"
+                }
+            },
+            {
+                "p-flex": {
+                    "class": "tile-flex hydrated",
+                    "direction": "{ base: 'row', xs: 'column' }",
+                    "align-items": "{ base: 'center', xs: 'flex-start' }",
+                    "justify-content": "space-between"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-flex-item": {
+                    "flex": "equal",
+                    "class": "tile-flex-item hydrated"
+                }
+            },
+            {
+                "p-link-pure": {
+                    "weight": "semibold",
+                    "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                    "href": "https://www.porsche.com/swiss/de/motorsportandevents/motorsport/",
+                    "class": "hydrated",
+                    "theme": "dark"
+                }
+            }
         ],
         "2.16.2": []
     }

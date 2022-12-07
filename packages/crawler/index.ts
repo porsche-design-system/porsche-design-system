@@ -1,6 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { componentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -14,47 +14,63 @@ declare global {
 const width = 1366;
 const height = 768;
 const tagNames = TAG_NAMES;
+const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
+  (result, [key, value]) => ({
+    ...result,
+    [key]: value.props ? Object.keys(value.props) : {},
+  }),
+  {}
+);
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
-  const porscheDesignSystem = await page.evaluate(async (tagNames): Promise<any> => {
-    const porscheDesignSystem = document.porscheDesignSystem;
-    const consumedPdsVersions = Object.keys(porscheDesignSystem);
+  // TODO: rename const?
+  const porscheDesignSystem = await page.evaluate(
+    async ({ tagNames, tagNamesAndProperties }): Promise<any> => {
+      const porscheDesignSystem = document.porscheDesignSystem;
+      const consumedPdsVersions = Object.keys(porscheDesignSystem);
 
-    const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
-      (result, [key, value]) => ({
-        ...result,
-        [key]: value.prefixes,
-      }),
-      {}
-    );
+      const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
+        (result, [key, value]) => ({
+          ...result,
+          [key]: value.prefixes,
+        }),
+        {}
+      );
 
-    const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(consumedPrefixesForVersions).reduce(
-      (result, [version, prefixes]) => {
+      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
+        consumedPrefixesForVersions
+      ).reduce((result, [version, prefixes]) => {
         const pdsComponentsSelector = prefixes
           .map((prefix) => {
             return prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames;
           })
           .join();
-        // TODO: get the set properties
+
         const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
-        // TODO: get and count the tag names with prefixes - and also without prefixes?
-        const usedTagNames = pdsElements.map((el) => el.tagName.toLowerCase());
+        const usedTagNames = pdsElements.map((el) => {
+          const tag = el.tagName.toLowerCase();
+          // TODO: filter properties and only report pds properties
+          const properties = Object.assign({}, ...Array.from(el.attributes, ({ name, value }) => ({ [name]: value })));
+          return { [tag]: properties };
+        });
 
         return {
           ...result,
           [version]: usedTagNames,
         };
-      },
-      {}
-    );
+      }, {});
 
-    return {
-      consumedPdsVersions,
-      consumedPrefixesForVersions,
-      consumedTagNamesForVersions,
-    };
-  }, tagNames);
+      // TODO: get and count the tag names with prefixes - and also without prefixes?
+
+      return {
+        consumedPdsVersions,
+        consumedPrefixesForVersions,
+        consumedTagNamesForVersions,
+      };
+    },
+    { tagNames, tagNamesAndProperties: tagNamesWithProperties }
+  );
 
   return porscheDesignSystem;
 };
