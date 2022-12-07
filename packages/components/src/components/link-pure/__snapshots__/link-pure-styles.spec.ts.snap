@@ -82,7 +82,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -115,16 +115,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 0.75rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 0.75rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -146,11 +146,11 @@ slot[name=subline]::slotted(*) {
   }
   .root ~ .subline {
     font-size: 1rem;
-    line-height: calc(6.21179px + 2.1ex);
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 1rem;
-    margin-left: calc(6.21179px + 2.1ex);
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: static;
@@ -174,11 +174,11 @@ slot[name=subline]::slotted(*) {
   }
   .root ~ .subline {
     font-size: 1.25rem;
-    line-height: calc(6.21179px + 2.1ex);
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 1.5rem;
-    margin-left: calc(6.21179px + 2.1ex);
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: absolute;
@@ -202,11 +202,11 @@ slot[name=subline]::slotted(*) {
   }
   .root ~ .subline {
     font-size: 1.875rem;
-    line-height: calc(6.21179px + 2.1ex);
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 2.25rem;
-    margin-left: calc(6.21179px + 2.1ex);
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: static;
@@ -230,11 +230,11 @@ slot[name=subline]::slotted(*) {
   }
   .root ~ .subline {
     font-size: 2.25rem;
-    line-height: calc(6.21179px + 2.1ex);
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 3.25rem;
-    margin-left: calc(6.21179px + 2.1ex);
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: absolute;
@@ -329,7 +329,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #fff;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -362,16 +362,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -444,7 +444,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -458,16 +458,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -538,7 +538,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -570,19 +570,19 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .root:active + .subline {
   color: #d5001c;
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -599,7 +599,7 @@ slot[name=subline]::slotted(*) {
 .subline {
   display: flex;
   margin-top: 4px !important;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -681,7 +681,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -714,16 +714,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -866,7 +866,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -899,16 +899,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -981,7 +981,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -995,16 +995,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -1075,7 +1075,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1108,16 +1108,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -1189,7 +1189,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #ff0223;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1222,16 +1222,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -1303,7 +1303,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #d5001c;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1336,16 +1336,16 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: calc(6.21179px + 2.1ex);
-  height: calc(6.21179px + 2.1ex);
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -1418,7 +1418,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1507,7 +1507,7 @@ slot[name=subline]::slotted(*) {
   background: transparent;
   color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6.21179px + 2.1ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1540,11 +1540,11 @@ slot[name=subline]::slotted(*) {
 }
 .root ~ .subline {
   font-size: 1rem;
-  line-height: calc(6.21179px + 2.1ex);
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: calc(6.21179px + 2.1ex);
+  margin-left: calc(6px + 2.125ex);
 }
 @media(hover:hover) {
   .root:hover {
