@@ -4,7 +4,6 @@ import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { camelCase, pascalCase } from 'change-case';
 
-
 // TODO: Clean up has props + Add eslint comment to headline
 // TODO: object type props with callback
 // TODO: cast eventName in addEventListener to last event name in defineEmits
@@ -20,8 +19,8 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     const hasProps = getComponentMeta(component).props;
 
-    const vueImports = ['ref', ...(hasProps ? ['onMounted', 'onUpdated'] : [])];
-    const importsFromVue = `import { ${vueImports.join(', ')} } from 'vue';`;
+    const vueImports = ['onMounted', 'onUpdated', 'ref'];
+    const importsFromVue = hasProps ? `import { ${vueImports.join(', ')} } from 'vue';` : '';
 
     const utilsImports = [
       'getPrefixedTagName',
@@ -70,51 +69,37 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       .filter((x) => x)
       .join(', ');
 
+    const eventContent = eventNamesAndTypes
+      .map(({ eventName }) => `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}', emit);`)
+      .join('');
+
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
     const defineProps = `defineProps<${propsName}>()`;
 
-    return `  const webComponentTag = getPrefixedTagName('${component}');
-${
-  hasProps
-    ? `
-  const props = ${
-     defaultPropsWithValue.length ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
-   };`
-    : ''
-}
-  const pdsComponentRef = ref<${hasProps ? `${propsName} & HTMLElement` : 'HTMLElement'}>();${
-      hasEvent
-        ? `
+    const defineEmits = `
   const emit = defineEmits<{ ${eventNamesAndTypes
     .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
-    .join(' ')} }>();`
-        : ''
-    }${
-      hasProps
-        ? `
+    .join(' ')} }>();`;
+
+    const propContent = `
+  const props = ${
+    defaultPropsWithValue.length ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
+  };
+  const pdsComponentRef = ref<${propsName} & HTMLElement>();${hasEvent ? defineEmits : ''}
 
   onMounted(() => {
-    ${syncProperties}${
-            hasEvent
-              ? eventNamesAndTypes
-                  .map(
-                    ({ eventName }) => `
-    addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}', emit);`
-                  )
-                  .join('')
-              : ''
-          }
+    ${syncProperties}${eventContent}
   });
 
   onUpdated(() => {
     ${syncProperties}
-  });`
-        : ''
-    }
+  });`;
+
+    return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? propContent : ''}
 </script>
 
 <template>
-  <component :is="webComponentTag" ref="pdsComponentRef"><slot /></component>
+  <component :is="webComponentTag"${hasProps ? ' ref="pdsComponentRef"' : ''}><slot /></component>
 </template>`;
   }
 
