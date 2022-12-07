@@ -1,9 +1,13 @@
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import { componentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { camelCase, pascalCase } from 'change-case';
 
+
+// TODO: Clean up has props + Add eslint comment to headline
+// TODO: object type props with callback
+// TODO: cast eventName in addEventListener to last event name in defineEmits
 export class VueWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-vue';
   protected projectDir = 'vue-wrapper';
@@ -14,7 +18,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasProps = componentMeta[component].props;
+    const hasProps = getComponentMeta(component).props;
 
     const vueImports = ['ref', ...(hasProps ? ['onMounted', 'onUpdated'] : [])];
     const importsFromVue = `import { ${vueImports.join(', ')} } from 'vue';`;
@@ -37,7 +41,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const propsName = this.generatePropsName(component);
 
-    return componentMeta[component].props
+    return getComponentMeta(component).props
       ? `  type ${propsName} = ${rawComponentInterface
           .replace(
             /\n\s+\/\*\*\n[\s\w*.]+\s+\*\/\n\s+on[A-Z].+;/g, // Remove event prop and description
@@ -56,8 +60,8 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
         eventName: camelCase(key.replace('on', '')),
         type: /<(\w+)>/.exec(rawValueType)![1],
       }));
-    const hasEvent = componentMeta[component].hasEvent;
-    const hasProps = componentMeta[component].props;
+    const hasEvent = getComponentMeta(component).hasEvent;
+    const hasProps = getComponentMeta(component).props;
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
