@@ -9,7 +9,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   protected projectDir = 'vue-wrapper';
 
   public getComponentFileName(component: TagName): string {
-    return `${component.replace('p-', '')}Wrapper.vue`;
+    return `${pascalCase(component.replace('p-', ''))}Wrapper.vue`;
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
