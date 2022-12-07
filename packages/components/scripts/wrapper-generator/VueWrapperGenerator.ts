@@ -4,9 +4,6 @@ import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { camelCase, pascalCase } from 'change-case';
 
-// TODO: Clean up has props + Add eslint comment to headline
-// TODO: object type props with callback
-// TODO: cast eventName in addEventListener to last event name in defineEmits
 export class VueWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-vue';
   protected projectDir = 'vue-wrapper';
@@ -61,20 +58,35 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
         };
       });
 
-    const defaultPropsWithValue = extendedProps
-      .map(({ key, defaultValue, isEvent }) =>
-        !(isEvent || defaultValue === undefined) ? `${key}: ${defaultValue}` : undefined
-      )
-      .filter((x) => x)
-      .join(', ');
+    const disableEslintForLine = ' // eslint-disable-line vue/require-valid-default-prop';
 
-    const hasEvent = getComponentMeta(component).hasEvent;
-    const hasProps = getComponentMeta(component).props;
+    const defaultPropsWithValue = extendedProps
+      .map(({ key, defaultValue, isEvent }) => {
+        // TODO: better approach to identify object? JSON parse does not work with '
+        if (!(isEvent || defaultValue === undefined)) {
+          const transformedDefaultValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
+          return `${key}: ${transformedDefaultValue},${
+            component === 'p-headline' && key === 'color' ? disableEslintForLine : ''
+          }`;
+        } else {
+          return undefined;
+        }
+      })
+      .filter((x) => x)
+      .join('\n     ');
+
+    const componentMeta = getComponentMeta(component);
+    const hasEvent = componentMeta.hasEvent;
+    const hasProps = componentMeta.props;
     const hasDefaultProps = defaultPropsWithValue.length;
 
     const defineProps = `defineProps<${propsName}>()`;
     const props = `const props = ${
-      hasDefaultProps ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
+      hasDefaultProps
+        ? `withDefaults(${defineProps}, {
+     ${defaultPropsWithValue}
+    })`
+        : defineProps
     };`;
 
     const defineEmits = `
