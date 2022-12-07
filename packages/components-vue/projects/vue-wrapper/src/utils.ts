@@ -4,7 +4,7 @@ import { load } from '@porsche-design-system/components-js';
 
 const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<'pdsPrefix'>;
 
-export const usePrefix = (tagName: string): string => {
+export const getPrefixedTagName = (tagName: string): string => {
   if (process.env.NODE_ENV === 'test') {
     return tagName;
   } else {

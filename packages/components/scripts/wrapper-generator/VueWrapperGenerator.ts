@@ -20,7 +20,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const importsFromVue = `import { ${vueImports.join(', ')} } from 'vue';`;
 
     const utilsImports = [
-      'usePrefix',
+      'getPrefixedTagName',
       ...(hasProps ? ['syncProperties'] : []),
       ...(hasEventProps ? ['addEventListenerToElementRef'] : []),
     ];
@@ -69,7 +69,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
     const defineProps = `defineProps<${propsName}>()`;
 
-    return `  const WebComponentTag = usePrefix('${component}');
+    return `  const webComponentTag = getPrefixedTagName('${component}');
 ${
   hasProps
     ? `
@@ -110,7 +110,7 @@ ${
 </script>
 
 <template>
-  <WebComponentTag ref="pdsComponentRef"><slot /></WebComponentTag>
+  <component :is="webComponentTag" ref="pdsComponentRef"><slot /></component>
 </template>`;
   }
 
