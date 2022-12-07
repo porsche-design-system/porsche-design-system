@@ -53,10 +53,13 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const propsName = this.generatePropsName(component);
     const eventNamesAndTypes = extendedProps
       .filter(({ isEvent }) => isEvent)
-      .map(({ key, rawValueType }) => ({
-        eventName: camelCase(key.replace('on', '')),
-        type: /<(\w+)>/.exec(rawValueType)![1],
-      }));
+      .map(({ key, rawValueType }) => {
+        const [, type] = /<(\w+)>/.exec(rawValueType) ?? [];
+        return {
+          eventName: camelCase(key.replace('on', '')),
+          type,
+        };
+      });
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
