@@ -17,7 +17,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
 
 export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:5173';
 
 export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/${url}`);
