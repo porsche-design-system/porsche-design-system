@@ -144,7 +144,7 @@
       </div>
 
       <div class="playground light" title="should render default icon">
-        <PIcon />
+        <PIcon>Some Icon</PIcon>
       </div>
 
       <div class="playground light" title="should render default link">
