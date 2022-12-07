@@ -11,9 +11,6 @@ declare global {
   }
 }
 
-// TODO: make headless before PR
-const width = 1366;
-const height = 768;
 const tagNames = TAG_NAMES;
 const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
   (result, [key, value]) => ({
@@ -24,12 +21,13 @@ const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(compo
 );
 const reportFolderName = 'reports';
 const customerWebsiteMap: Record<string, string> = {
-  'porsche.com': 'https://porsche.com',
-  'finder.porsche.com': 'https://finder.porsche.com',
-  'shop.porsche.com': 'https://shop.porsche.com',
-  'porsche.com-swiss': 'https://www.porsche.com/swiss/de',
+  'porsche.com': 'https://www.porsche.com/germany',
+  'finder.porsche.com': 'https://finder.porsche.com/de/de-DE',
+  'login.porsche.com': 'https://login.porsche.com/login/de/de_DE',
+  'shop.porsche.com': 'https://shop.porsche.com/de/de-DE',
 };
 const dateSplitter = '_';
+// TODO: remove unnecessary comments before PR
 // const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 const reportsMaxAge = 1000 * 60 * 60 * 24; // one day in milliseconds
 // const reportsMaxAge = 1000; // one second
@@ -60,6 +58,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
           .join();
 
         const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
+
         const usedTagNames = pdsElements.map((el) => {
           const tag = el.tagName.toLowerCase();
           // TODO: filter properties and only report pds properties
@@ -104,8 +103,6 @@ const crawlWebsites = async (browser: Browser): Promise<void> => {
     const websiteUrl = customerWebsiteMap[websiteName];
     const page = await browser.newPage();
 
-    // await page.setViewport({ width: width, height: height });
-
     await page.goto(websiteUrl, {
       waitUntil: 'networkidle0',
     });
@@ -115,7 +112,7 @@ const crawlWebsites = async (browser: Browser): Promise<void> => {
     const crawlResults = await crawlComponents(page);
 
     fs.writeFileSync(
-      `./${reportFolderName}/report-${websiteName}${dateSplitter}${new Date().toJSON().slice(0, 10)}.json`,
+      `./${reportFolderName}/${websiteName}${dateSplitter}${new Date().toJSON().slice(0, 10)}.json`,
       JSON.stringify(crawlResults, null, 4)
     );
 
@@ -125,9 +122,9 @@ const crawlWebsites = async (browser: Browser): Promise<void> => {
 const startBrowser = async (): Promise<void> => {
   try {
     const browser = await puppeteer.launch({
+      // TODO: make headless before PR
       headless: false, // The browser is visible
       ignoreHTTPSErrors: true,
-      args: [`--window-size=${width},${height}`], // new option
     });
     removeOldReports();
     await crawlWebsites(browser);
