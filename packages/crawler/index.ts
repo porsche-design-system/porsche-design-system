@@ -17,6 +17,16 @@ const width = 1366;
 const height = 768;
 const tagNames = TAG_NAMES;
 const reportFolderName = 'reports';
+const customerWebsiteMap: Record<string, string> = {
+  'porsche.com': 'https://porsche.com',
+  'finder.porsche.com': 'https://finder.porsche.com',
+  'shop.porsche.com': 'https://shop.porsche.com',
+  'porsche.com-swiss': 'https://www.porsche.com/swiss/de',
+};
+const dateSplitter = '_';
+// const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
+const reportsMaxAge = 1000 * 60 * 60 * 24; // one day in milliseconds
+// const reportsMaxAge = 1000; // one second
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
@@ -62,14 +72,19 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   return porscheDesignSystem;
 };
 
-const crawlWebsites = async (browser: Browser): Promise<void> => {
-  const customerWebsiteMap: Record<string, string> = {
-    'porsche.com': 'https://porsche.com',
-    'finder.porsche.com': 'https://finder.porsche.com',
-    'shop.porsche.com': 'https://shop.porsche.com',
-    'porsche.com-swiss': 'https://www.porsche.com/swiss/de',
-  };
+const removeOldReports = async (): Promise<void> => {
+  const reportFiles = await fs.promises.readdir(reportFolderName);
+  const filesToRemove = reportFiles.filter((fileName: string) => {
+    const dateCreated = Date.parse(fileName.split(dateSplitter)[1].replace('.json', ''));
+    const oldestTimePossible = Date.now() - reportsMaxAge;
+    return dateCreated < oldestTimePossible;
+  });
+  for (const fileName of filesToRemove) {
+    await fs.promises.unlink(`${reportFolderName}/${fileName}`);
+  }
+};
 
+const crawlWebsites = async (browser: Browser): Promise<void> => {
   for (const websiteName in customerWebsiteMap) {
     const websiteUrl = customerWebsiteMap[websiteName];
     const page = await browser.newPage();
@@ -84,9 +99,8 @@ const crawlWebsites = async (browser: Browser): Promise<void> => {
 
     const crawlResults = await crawlComponents(page);
 
-    // TODO: delete old reports?
     fs.writeFileSync(
-      `./${reportFolderName}/report-${websiteName}-${new Date().toJSON().slice(0, 10)}.json`,
+      `./${reportFolderName}/report-${websiteName}${dateSplitter}${new Date().toJSON().slice(0, 10)}.json`,
       JSON.stringify(crawlResults, null, 4)
     );
 
@@ -100,7 +114,7 @@ const startBrowser = async (): Promise<void> => {
       ignoreHTTPSErrors: true,
       args: [`--window-size=${width},${height}`], // new option
     });
-
+    removeOldReports();
     await crawlWebsites(browser);
 
     console.log('Success - please check reports');
