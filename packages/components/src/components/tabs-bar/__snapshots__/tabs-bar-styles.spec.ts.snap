@@ -4,11 +4,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -64,7 +63,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #ff0223;
 }
 .bar--enable-transition {
@@ -77,11 +76,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -137,7 +135,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -150,11 +148,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -210,7 +207,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #00b0f4;
 }
 .bar--enable-transition {
@@ -223,11 +220,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -283,7 +279,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #ff0223;
 }
 .bar--enable-transition {
@@ -296,11 +292,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -356,7 +351,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -369,11 +364,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -429,7 +423,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #00b0f4;
 }
 .bar--enable-transition {
@@ -442,11 +436,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -502,7 +495,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .125em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -515,11 +508,10 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -554,36 +546,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media(min-width:480px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
-@media(min-width:760px) {
-  :host {
-    height: 2.25rem !important;
-  }
-}
-
-@media(min-width:1000px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
-@media(min-width:1300px) {
-  :host {
-    height: 2.25rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
@@ -605,7 +567,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {

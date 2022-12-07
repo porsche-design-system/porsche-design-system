@@ -55,8 +55,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -136,8 +136,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -215,8 +215,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -296,8 +296,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -369,8 +369,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -440,8 +440,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -561,8 +561,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6.21179px + 2.1ex);
+  height: calc(6.21179px + 2.1ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
