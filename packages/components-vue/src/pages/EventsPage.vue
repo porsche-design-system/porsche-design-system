@@ -37,19 +37,19 @@
 
   // unused event parameters are used to verify that types can be imported from package root
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  const onAccordionChange = (e: CustomEvent<AccordionChangeEvent>) => accordionChangeEventCounter.value++;
-  const onPageChange = (e: CustomEvent<PageChangeEvent>) => pageChangeEventCounter.value++;
-  const onTabsBarChange = (e: CustomEvent<TabChangeEvent>) => tabsBarChangeEventCounter.value++;
-  const onTabsChange = (e: CustomEvent<TabChangeEvent>) => tabsChangeEventCounter.value++;
-  const onTextFieldSearchChange = (e: Event & { target: HTMLInputElement }) =>
-    (textFieldSearchValue.value = e.target.value);
-  const onSwitchChange = (e: CustomEvent<SwitchChangeEvent>) => switchChangeEventCounter.value++;
+  const onAccordionChange = (e: AccordionChangeEvent) => accordionChangeEventCounter.value++;
+  const onPageChange = (detail: PageChangeEvent) => pageChangeEventCounter.value++;
+  const onTabsBarChange = (detail: TabChangeEvent) => tabsBarChangeEventCounter.value++;
+  const onTabsChange = (detail: TabChangeEvent) => tabsChangeEventCounter.value++;
+  const onTextFieldSearchChange = (detail: Event) =>
+    (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
+  const onSwitchChange = (detail: SwitchChangeEvent) => switchChangeEventCounter.value++;
   const onModalClose = () => {
     modalCloseEventCounter.value++;
     isModalOpen.value = false;
   };
-  const onTableSortingChange = (e: CustomEvent<SortingChangeEvent>) => tableSortingChangeEventCounter.value++;
-  const onCarouselChange = (e: CustomEvent<CarouselChangeEvent>) => carouselChangeEventCounter.value++;
+  const onTableSortingChange = (detail: SortingChangeEvent) => tableSortingChangeEventCounter.value++;
+  const onCarouselChange = (detail: CarouselChangeEvent) => carouselChangeEventCounter.value++;
   /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 
@@ -95,7 +95,7 @@
   </div>
 
   <div class="playground light">
-    <PModal :open="isModalOpen" @close="onModalClose"> Modal </PModal>
+    <PModal :open="isModalOpen" @close="onModalClose">Modal</PModal>
     <p>{{ modalCloseEventCounter }} <button @click="isModalOpen = true">Open Modal</button></p>
   </div>
 
