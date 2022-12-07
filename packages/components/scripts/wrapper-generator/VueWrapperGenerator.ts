@@ -59,8 +59,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
         eventName: camelCase(key.replace('on', '')),
         type: /<(\w+)>/.exec(rawValueType)![1],
       }));
-    const hasEvent = getComponentMeta(component).hasEvent;
-    const hasProps = getComponentMeta(component).props;
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) =>
@@ -69,33 +67,39 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       .filter((x) => x)
       .join(', ');
 
-    const eventContent = eventNamesAndTypes
+    const hasEvent = getComponentMeta(component).hasEvent;
+    const hasProps = getComponentMeta(component).props;
+    const hasDefaultProps = defaultPropsWithValue.length;
+
+    const defineProps = `defineProps<${propsName}>()`;
+    const props = `const props = ${
+      hasDefaultProps ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
+    };`;
+
+    const addEventListener = eventNamesAndTypes
       .map(({ eventName }) => `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}', emit);`)
       .join('');
-
-    const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
-    const defineProps = `defineProps<${propsName}>()`;
 
     const defineEmits = `
   const emit = defineEmits<{ ${eventNamesAndTypes
     .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
     .join(' ')} }>();`;
 
-    const propContent = `
-  const props = ${
-    defaultPropsWithValue.length ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
-  };
+    const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
+
+    const additionalContent = `
+  ${props}
   const pdsComponentRef = ref<${propsName} & HTMLElement>();${hasEvent ? defineEmits : ''}
 
   onMounted(() => {
-    ${syncProperties}${eventContent}
+    ${syncProperties}${addEventListener}
   });
 
   onUpdated(() => {
     ${syncProperties}
   });`;
 
-    return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? propContent : ''}
+    return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? additionalContent : ''}
 </script>
 
 <template>
