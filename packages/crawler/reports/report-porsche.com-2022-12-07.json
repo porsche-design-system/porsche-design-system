@@ -1,0 +1,14 @@
+{
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": []
+    }
+}

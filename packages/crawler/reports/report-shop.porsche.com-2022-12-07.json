@@ -1,0 +1,34 @@
+{
+    "consumedPdsVersions": [
+        "2.18.0-rc.1"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.18.0-rc.1": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.18.0-rc.1": [
+            "p-marque",
+            "p-accordion",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-link-pure",
+            "p-accordion",
+            "p-link-pure",
+            "p-accordion",
+            "p-link-pure",
+            "p-link-pure",
+            "p-accordion",
+            "p-link-pure"
+        ]
+    }
+}

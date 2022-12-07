@@ -1,6 +1,8 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { Framework } from '@porsche-design-system/storefront/src/models';
+import { Browser } from 'puppeteer';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -14,6 +16,7 @@ declare global {
 const width = 1366;
 const height = 768;
 const tagNames = TAG_NAMES;
+const reportFolderName = 'reports';
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
@@ -59,6 +62,37 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   return porscheDesignSystem;
 };
 
+const crawlWebsites = async (browser: Browser): Promise<void> => {
+  const customerWebsiteMap: Record<string, string> = {
+    'porsche.com': 'https://porsche.com',
+    'finder.porsche.com': 'https://finder.porsche.com',
+    'shop.porsche.com': 'https://shop.porsche.com',
+    'porsche.com-swiss': 'https://www.porsche.com/swiss/de',
+  };
+
+  for (const websiteName in customerWebsiteMap) {
+    const websiteUrl = customerWebsiteMap[websiteName];
+    const page = await browser.newPage();
+
+    // await page.setViewport({ width: width, height: height });
+
+    await page.goto(websiteUrl, {
+      waitUntil: 'networkidle0',
+    });
+
+    console.log('Crawling Page ' + page.url());
+
+    const crawlResults = await crawlComponents(page);
+
+    // TODO: delete old reports?
+    fs.writeFileSync(
+      `./${reportFolderName}/report-${websiteName}-${new Date().toJSON().slice(0, 10)}.json`,
+      JSON.stringify(crawlResults, null, 4)
+    );
+
+    await page.close();
+  }
+};
 const startBrowser = async (): Promise<void> => {
   try {
     const browser = await puppeteer.launch({
@@ -66,23 +100,8 @@ const startBrowser = async (): Promise<void> => {
       ignoreHTTPSErrors: true,
       args: [`--window-size=${width},${height}`], // new option
     });
-    const page = await browser.newPage();
-    // await page.setViewport({ width: width, height: height });
-    // await page.goto(`https://porsche.com`);
-    // await page.goto(`https://finder.porsche.com`);
-    // await page.goto(`https://shop.porsche.com/`);
-    await page.goto('https://www.porsche.com/swiss/de/', {
-      waitUntil: 'networkidle0',
-    });
 
-    console.log('Crawling Page ' + page.url());
-
-    const crawlResults = await crawlComponents(page);
-    // fs.writeFileSync(`report-components.json`, JSON.stringify(crawlResults.componentsStats, null, 4));
-
-    // TODO: add date and URL
-    // TODO: delete old reports?
-    fs.writeFileSync(`report-components.json`, JSON.stringify(crawlResults, null, 4));
+    await crawlWebsites(browser);
 
     console.log('Success - please check reports');
     browser.close();
