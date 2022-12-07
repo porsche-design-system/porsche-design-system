@@ -8,7 +8,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
@@ -48,8 +48,8 @@ const spriteStepSize = 0.625; // 10px / font size in px
 const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
 const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
 const counterCirclePosition = '0.1875em'; // (button height - height of circle) / 2
-const counterCircleSize = '1.125em'; // 18px / font size
-const counterValuePosition = '0.4375em'; // (button height - height of sprite) / font size in px / 2
+const counterCircleSize = `calc(${fontLineHeight} - ${counterCirclePosition} * 2)`;
+const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`; // (button height - height of sprite) / font size in px / 2
 const counterValueSize = spriteHeight;
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
@@ -77,11 +77,10 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
       },
       button: {
         position: 'relative',
-        height: '1.5em',
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: `0 0 0 calc(1.5em + ${pxToRemWithUnit(4)})`, // icon height + 4px
+        padding: `0 0 0 calc(${fontLineHeight} + ${pxToRemWithUnit(4)})`, // icon height + 4px
         background: 0,
         border: 0,
         ...textSmall,
@@ -97,7 +96,8 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                 // circle of counter element
                 content: '""',
                 position: 'absolute',
-                top: counterCirclePosition,
+                top: '50%',
+                transform: 'translateY(-50%)',
                 left: counterCirclePosition,
                 height: counterCircleSize,
                 width: counterCircleSize,
@@ -115,7 +115,8 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                 // value of counter element
                 content: '""',
                 position: 'absolute',
-                top: counterValuePosition,
+                top: '50%',
+                transform: 'translateY(-50%)',
                 left: counterValuePosition,
                 width: counterValueSize,
                 height: counterValueSize,
@@ -147,8 +148,8 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
       icon: {
         position: 'absolute',
         left: 0,
-        height: 'inherit',
-        width: '1.5em', // needed for Safari
+        height: fontLineHeight,
+        width: fontLineHeight,
         color: isDisabled ? disabledColor : iconColor,
         transition: getTransition('color'),
       },
