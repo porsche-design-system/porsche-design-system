@@ -563,11 +563,11 @@ jobs:
 #      with:
 #        entrypoint: run-test-unit
 #        args: --components-vue
-#    - name: 'E2E Test components-vue'
-#      uses: ./.github/actions/docker-run-playwright
-#      with:
-#        entrypoint: run-test-e2e
-#        args: --components-vue
+    - name: 'E2E Test components-vue'
+      uses: ./.github/actions/docker-run-playwright
+      with:
+        entrypoint: run-test-e2e
+        args: --components-vue
     - name: 'VRT Test components-vue'
       uses: ./.github/actions/docker-run-playwright
       with:
