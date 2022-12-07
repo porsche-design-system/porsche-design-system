@@ -1,5 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
+import { TAG_NAMES } from '@porsche-design-system/shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -9,14 +10,14 @@ declare global {
   }
 }
 
+// TODO: make headless before PR
 const width = 1366;
 const height = 768;
+const tagNames = TAG_NAMES;
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
-  const porscheDesignSystem = await page.evaluate(async (): Promise<any> => {
-    // TODO: get all tagNames
-    const tagNames = ['p-flex', 'p-accordion', 'p-text', 'p-flex-item', 'p-icon', 'p-marque'];
+  const porscheDesignSystem = await page.evaluate(async (tagNames): Promise<any> => {
     const porscheDesignSystem = document.porscheDesignSystem;
     const consumedPdsVersions = Object.keys(porscheDesignSystem);
 
@@ -53,7 +54,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
       consumedPrefixesForVersions,
       consumedTagNamesForVersions,
     };
-  });
+  }, tagNames);
 
   return porscheDesignSystem;
 };
