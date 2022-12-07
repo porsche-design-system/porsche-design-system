@@ -78,7 +78,7 @@ ${
    };`
     : ''
 }
-  const pdsComponentRef = ref<${hasProps ? `${propsName} & Partial<HTMLElement` : 'Partial<HTMLElement'}>>();${
+  const pdsComponentRef = ref<${hasProps ? `${propsName} & HTMLElement` : 'HTMLElement'}>();${
       hasEvent
         ? `
   const emit = defineEmits<{ ${eventNamesAndTypes
