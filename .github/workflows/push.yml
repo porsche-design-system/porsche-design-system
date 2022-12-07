@@ -557,7 +557,7 @@ jobs:
       uses: ./.github/actions/docker-run-playwright
       with:
         entrypoint: run-build
-        args: --components-vuee
+        args: --components-vue
 #    - name: 'Unit Test vue-wrapper'
 #      uses: ./.github/actions/docker-run-playwright
 #      with:
