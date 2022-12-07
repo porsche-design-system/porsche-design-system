@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import PButton from '../../projects/vue-wrapper/src/lib/components/button.wrapper.vue';
+  import PButton from '../../projects/vue-wrapper/src/lib/components/ButtonWrapper.vue';
   import { ref } from 'vue';
 
   const tmp = ref(false);
