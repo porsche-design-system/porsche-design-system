@@ -41,8 +41,7 @@
   const onPageChange = (detail: PageChangeEvent) => pageChangeEventCounter.value++;
   const onTabsBarChange = (detail: TabChangeEvent) => tabsBarChangeEventCounter.value++;
   const onTabsChange = (detail: TabChangeEvent) => tabsChangeEventCounter.value++;
-  const onTextFieldSearchChange = (detail: Event) =>
-    (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
+  const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
   const onSwitchChange = (detail: SwitchChangeEvent) => switchChangeEventCounter.value++;
   const onModalClose = () => {
     modalCloseEventCounter.value++;
