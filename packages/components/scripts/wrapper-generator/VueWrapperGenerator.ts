@@ -41,13 +41,11 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const propsName = this.generatePropsName(component);
 
     return getComponentMeta(component).props
-      ? `  type ${propsName} = ${rawComponentInterface
-          .replace(
-            /\n\s+\/\*\*\n[\s\w*.]+\s+\*\/\n\s+on[A-Z].+;/g, // Remove event prop and description
-            ''
-          )
-          .replace(/\n/g, '\n  ') // Add spaces because it is inside a <script> tag
-          .replace('};', '  }')}` // Add spaces and remove unnecessary semicolon
+      ? `  type ${propsName} = {${rawComponentInterface
+    .slice(1, -1)
+    .split(';\n')
+    .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+    .join(';\n')}  }`
       : '';
   }
 
