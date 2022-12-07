@@ -1391,7 +1391,37 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/components-react/dist/react-wrapper
-  # TODO: release-components-vue
+  release-components-vue:
+    name: 'Release Components Vue'
+    needs:
+      - release-components-js
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-vue-prod-build
+          path: ./packages/components-vue/dist/vue-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-vue/dist/vue-wrapper
   release-assets:
     name: 'Release Assets'
     needs:
