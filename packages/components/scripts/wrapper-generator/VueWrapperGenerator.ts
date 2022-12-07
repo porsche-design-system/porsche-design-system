@@ -74,14 +74,21 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       hasDefaultProps ? `withDefaults(${defineProps}, { ${defaultPropsWithValue} })` : defineProps
     };`;
 
-    const addEventListener = eventNamesAndTypes
-      .map(({ eventName }) => `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}', emit);`)
-      .join('');
-
     const defineEmits = `
   const emit = defineEmits<{ ${eventNamesAndTypes
     .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
     .join(' ')} }>();`;
+
+    const addEventListener = eventNamesAndTypes
+      .map(({ eventName }, index) => {
+        const { eventName: lastEventName } = [...eventNamesAndTypes].pop() ?? {}; // We need to cast eventNames to the last eventName defined in defineEmits
+        const typeCast =
+          eventNamesAndTypes.length > 1 && index + 1 < eventNamesAndTypes.length ? ` as '${lastEventName}'` : '';
+
+        return `
+    addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
+      })
+      .join('');
 
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
 
