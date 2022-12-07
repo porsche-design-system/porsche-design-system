@@ -20,7 +20,9 @@
 <template>
   <select :value="selected" @change="onChange($event)">
     <option disabled value="">Select a page</option>
-    <option v-for="item in options" :disabled="item.isDisabled" :value="item.path">{{ item.name }}</option>
+    <option v-for="(item, index) in options" v-bind:key="index" :disabled="item.isDisabled" :value="item.path">
+      {{ item.name }}
+    </option>
   </select>
 
   <div id="app">
