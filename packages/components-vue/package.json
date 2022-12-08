@@ -5,8 +5,8 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
-    "build": "yarn clean:build && vite build && vue-tsc --emitDeclarationOnly",
-    "build-app": "yarn clean:build && vue-tsc --noEmit && vite build",
+    "build": "yarn clean:build:package && vite build && vue-tsc --emitDeclarationOnly",
+    "build-app": "yarn clean:build:app && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "test": "yarn test:e2e && yarn test:vrt",
@@ -14,7 +14,9 @@
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=VRT PORT=5173 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist"
+    "clean:build": "rm -rf ./dist",
+    "clean:build:app": "rm -rf ./dist/demo-app",
+    "clean:build:package": "rm -rf ./dist/vue-wrapper"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "^2.18.0-rc.1",
