@@ -44,12 +44,14 @@ const getColors = (
 };
 
 // following constants are defined in em to ensure proportional size based on parents font size
+// TODO: to be sure counter sizing and positioning is in sync with icon, then we need to use a svg instead
+// TODO: simplify calculation of positioning by using css grid and/or svg
 const spriteStepSize = 0.625; // 10px / font size in px
 const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
 const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
-const counterCirclePosition = '0.1875em'; // (button height - height of circle) / 2
+const counterCirclePosition = '0.171875em'; // 2.75px
 const counterCircleSize = `calc(${fontLineHeight} - ${counterCirclePosition} * 2)`;
-const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`; // (button height - height of sprite) / font size in px / 2
+const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`;
 const counterValueSize = spriteHeight;
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
