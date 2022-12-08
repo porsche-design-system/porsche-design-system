@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
-import { componentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import { Browser } from 'puppeteer';
+import { componentMeta } from '@porsche-design-system/shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -14,7 +13,6 @@ declare global {
 // TODO: do we want to crawl different viewports?
 const width = 1366;
 const height = 768;
-const tagNames = TAG_NAMES;
 const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
   (result, [key, value]) => ({
     ...result,
@@ -34,27 +32,14 @@ const dateSplitter = '_';
 // TODO: how long should the old reports stay?
 const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 
-// TODO: define correct return types
+// TODO: define correct return type
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   const pdsCrawlerReport = await page.evaluate(
-    async ({ tagNames, tagNamesWithProperties }): Promise<any> => {
+    // TODO: define correct return type
+    async ({ tagNamesWithProperties }): Promise<any> => {
+      const tagNames = Object.keys(tagNamesWithProperties);
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
-
-      const getAllChildElements = (el: Element): Element[] => {
-        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
-        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
-        return childrenChildren.flat();
-      };
-
-      // all dom elements on the page
-      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
-        return allDOMElements.filter((el: Element) => {
-          return el.matches(pdsComponentsSelector);
-        });
-      };
-
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
         (result, [key, value]) => ({
           ...result,
@@ -63,18 +48,29 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         {}
       );
 
-      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
-        consumedPrefixesForVersions
-      ).reduce((result, [version, prefixes]) => {
-        const pdsComponentsSelector = prefixes
+      const getPdsComponentsSelector = (prefixes: string[]): string =>
+        prefixes
           .map((prefix) => {
             return prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames;
           })
           .join();
 
-        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
+      const getAllChildElements = (el: Element): Element[] => {
+        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
+        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
+        return childrenChildren.flat();
+      };
 
-        const consumedTagNames = pdsElements.map((el) => {
+      // crawl all dom elements from body
+      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
+      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
+        return allDOMElements.filter((el: Element) => {
+          return el.matches(pdsComponentsSelector);
+        });
+      };
+
+      const getConsumedTagNames = (pdsElements: Element[]): { [p: string]: { [p: string]: unknown } }[] =>
+        pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
           const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
           const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
@@ -95,6 +91,14 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
           return { [tagName]: consumedPdsProperties };
         });
 
+      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
+        consumedPrefixesForVersions
+      ).reduce((result, [version, prefixes]) => {
+        const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
+        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
+        const consumedTagNames = getConsumedTagNames(pdsElements);
+
+        // TODO: group tag names by prefix
         return {
           ...result,
           [version]: consumedTagNames,
@@ -109,25 +113,25 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         consumedTagNamesForVersions,
       };
     },
-    { tagNames, tagNamesWithProperties }
+    { tagNamesWithProperties }
   );
 
   return pdsCrawlerReport;
 };
 
-const removeOldReports = async (): Promise<void> => {
-  const reportFiles = await fs.promises.readdir(reportFolderName);
+const removeOldReports = (): void => {
+  const reportFiles = fs.readdirSync(reportFolderName);
   const filesToRemove = reportFiles.filter((fileName: string) => {
     const dateCreated = Date.parse(fileName.split(dateSplitter)[0]);
     const oldestTimePossible = Date.now() - reportsMaxAge;
     return dateCreated < oldestTimePossible;
   });
   for (const fileName of filesToRemove) {
-    await fs.promises.unlink(`${reportFolderName}/${fileName}`);
+    fs.unlinkSync(`${reportFolderName}/${fileName}`);
   }
 };
 
-const crawlWebsites = async (browser: Browser): Promise<void> => {
+const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   for (const websiteName in customerWebsiteMap) {
     const websiteUrl = customerWebsiteMap[websiteName];
     const page = await browser.newPage();
