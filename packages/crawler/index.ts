@@ -55,6 +55,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
         const consumedTagNames = getConsumedTagNames(pdsElements);
 
+        // TODO: group tag names by prefix
         return {
           ...result,
           [version]: consumedTagNames,
@@ -82,7 +83,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         });
       };
 
-      const getConsumedTagNames = (pdsElements: Element[]): any =>
+      const getConsumedTagNames = (pdsElements: Element[]): { [p: string]: { [p: string]: unknown } }[] =>
         pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
           const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
