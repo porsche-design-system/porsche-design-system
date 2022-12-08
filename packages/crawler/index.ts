@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
 import { componentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import { Browser } from 'puppeteer';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -127,7 +126,7 @@ const removeOldReports = async (): Promise<void> => {
   }
 };
 
-const crawlWebsites = async (browser: Browser): Promise<void> => {
+const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   for (const websiteName in customerWebsiteMap) {
     const websiteUrl = customerWebsiteMap[websiteName];
     const page = await browser.newPage();
