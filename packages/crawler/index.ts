@@ -36,7 +36,7 @@ const reportsMaxAge = 1000 * 60 * 60 * 24; // one day in milliseconds
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   // TODO: rename const?
   const porscheDesignSystem = await page.evaluate(
-    async ({ tagNames, tagNamesAndProperties }): Promise<any> => {
+    async ({ tagNames, tagNamesWithProperties }): Promise<any> => {
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
 
@@ -59,28 +59,43 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 
         const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
 
-        const usedTagNames = pdsElements.map((el) => {
+        const consumedTagNames = pdsElements.map((el) => {
           const tag = el.tagName.toLowerCase();
-          // TODO: filter properties and only report pds properties
-          const properties = Object.assign({}, ...Array.from(el.attributes, ({ name, value }) => ({ [name]: value })));
-          return { [tag]: properties };
+          // TODO: does not work for prefixes yet
+          const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
+            return key.match(new RegExp(`^${tag}$`)) ? value : result;
+          }, [] as string[]);
+
+          const allAppliedProperties = Object.assign(
+            {},
+            ...Array.from(el.attributes, ({ name, value }) => {
+              return { [name]: value };
+            })
+          );
+
+          const consumedPdsProperties = Object.fromEntries(
+            Object.entries(allAppliedProperties).filter(([key]) => allPdsPropertiesForTagName.includes(key))
+          );
+
+          return { [tag]: consumedPdsProperties };
         });
 
         return {
           ...result,
-          [version]: usedTagNames,
+          [version]: consumedTagNames,
         };
       }, {});
 
       // TODO: get and count the tag names with prefixes - and also without prefixes?
 
       return {
+        tagNamesWithProperties,
         consumedPdsVersions,
         consumedPrefixesForVersions,
         consumedTagNamesForVersions,
       };
     },
-    { tagNames, tagNamesAndProperties: tagNamesWithProperties }
+    { tagNames, tagNamesWithProperties }
   );
 
   return porscheDesignSystem;

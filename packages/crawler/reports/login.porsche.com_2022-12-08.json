@@ -1,0 +1,623 @@
+{
+    "tagNamesWithProperties": {
+        "p-accordion": [
+            "size",
+            "theme",
+            "heading",
+            "tag",
+            "open",
+            "compact"
+        ],
+        "p-banner": [
+            "state",
+            "persistent",
+            "width",
+            "theme"
+        ],
+        "p-button": [
+            "tabbable",
+            "type",
+            "disabled",
+            "loading",
+            "variant",
+            "icon",
+            "iconSource",
+            "hideLabel",
+            "theme",
+            "aria"
+        ],
+        "p-button-group": [
+            "direction"
+        ],
+        "p-button-pure": [
+            "tabbable",
+            "type",
+            "disabled",
+            "loading",
+            "size",
+            "weight",
+            "icon",
+            "iconSource",
+            "active",
+            "hideLabel",
+            "alignLabel",
+            "stretch",
+            "theme",
+            "aria"
+        ],
+        "p-carousel": [
+            "heading",
+            "description",
+            "rewind",
+            "wrapContent",
+            "slidesPerPage",
+            "disablePagination",
+            "intl",
+            "theme"
+        ],
+        "p-checkbox-wrapper": [
+            "label",
+            "state",
+            "message",
+            "hideLabel"
+        ],
+        "p-content-wrapper": [
+            "width",
+            "backgroundColor",
+            "theme"
+        ],
+        "p-divider": [
+            "color",
+            "orientation",
+            "theme"
+        ],
+        "p-fieldset-wrapper": [
+            "label",
+            "labelSize",
+            "required",
+            "state",
+            "message"
+        ],
+        "p-flex": [
+            "inline",
+            "wrap",
+            "direction",
+            "justifyContent",
+            "alignItems",
+            "alignContent"
+        ],
+        "p-flex-item": [
+            "width",
+            "offset",
+            "alignSelf",
+            "grow",
+            "shrink",
+            "flex"
+        ],
+        "p-grid": [
+            "direction",
+            "wrap",
+            "gutter"
+        ],
+        "p-grid-item": [
+            "size",
+            "offset"
+        ],
+        "p-headline": [
+            "variant",
+            "tag",
+            "align",
+            "color",
+            "ellipsis",
+            "theme"
+        ],
+        "p-icon": [
+            "name",
+            "source",
+            "color",
+            "size",
+            "lazy",
+            "theme",
+            "aria"
+        ],
+        "p-inline-notification": [
+            "heading",
+            "description",
+            "state",
+            "persistent",
+            "actionLabel",
+            "actionLoading",
+            "actionIcon",
+            "theme"
+        ],
+        "p-link": [
+            "variant",
+            "icon",
+            "iconSource",
+            "href",
+            "theme",
+            "target",
+            "download",
+            "rel",
+            "hideLabel",
+            "aria"
+        ],
+        "p-link-pure": [
+            "alignLabel",
+            "stretch",
+            "size",
+            "weight",
+            "icon",
+            "iconSource",
+            "href",
+            "active",
+            "hideLabel",
+            "theme",
+            "target",
+            "download",
+            "rel",
+            "aria"
+        ],
+        "p-link-social": [
+            "icon",
+            "iconSource",
+            "href",
+            "theme",
+            "target",
+            "rel",
+            "hideLabel"
+        ],
+        "p-link-tile": [
+            "size",
+            "weight",
+            "aspectRatio",
+            "label",
+            "description",
+            "align",
+            "gradient",
+            "compact",
+            "href",
+            "target",
+            "download",
+            "rel",
+            "aria"
+        ],
+        "p-marque": [
+            "trademark",
+            "size",
+            "href",
+            "target",
+            "aria"
+        ],
+        "p-modal": [
+            "disableCloseButton",
+            "disableBackdropClick",
+            "heading",
+            "fullscreen",
+            "aria"
+        ],
+        "p-pagination": [
+            "activePage",
+            "allyLabel",
+            "allyLabelPrev",
+            "allyLabelPage",
+            "allyLabelNext",
+            "theme"
+        ],
+        "p-popover": [
+            "direction",
+            "description",
+            "aria"
+        ],
+        "p-radio-button-wrapper": [
+            "label",
+            "state",
+            "message",
+            "hideLabel"
+        ],
+        "p-scroller": [
+            "theme",
+            "gradientColorScheme",
+            "scrollToPosition",
+            "scrollIndicatorPosition"
+        ],
+        "p-segmented-control": [
+            "backgroundColor",
+            "theme",
+            "value"
+        ],
+        "p-segmented-control-item": [
+            "value",
+            "disabled",
+            "label",
+            "icon",
+            "iconSource"
+        ],
+        "p-select-wrapper": [
+            "label",
+            "description",
+            "state",
+            "message",
+            "hideLabel",
+            "filter",
+            "theme",
+            "dropdownDirection",
+            "native"
+        ],
+        "p-select-wrapper-dropdown": [
+            "selectRef",
+            "label",
+            "description",
+            "message",
+            "state",
+            "direction",
+            "theme",
+            "filter",
+            "required",
+            "disabled",
+            "onOpenChange",
+            "isOpenOverride"
+        ],
+        "p-spinner": [
+            "size",
+            "theme",
+            "aria"
+        ],
+        "p-stepper-horizontal": [
+            "size",
+            "theme"
+        ],
+        "p-stepper-horizontal-item": [
+            "state",
+            "disabled"
+        ],
+        "p-switch": [
+            "alignLabel",
+            "hideLabel",
+            "stretch",
+            "checked",
+            "disabled",
+            "loading",
+            "tabbable",
+            "theme"
+        ],
+        "p-table": [
+            "caption"
+        ],
+        "p-table-body": {},
+        "p-table-cell": [
+            "multiline"
+        ],
+        "p-table-head": {},
+        "p-table-head-cell": [
+            "sort",
+            "hideLabel",
+            "multiline"
+        ],
+        "p-table-head-row": {},
+        "p-table-row": {},
+        "p-tabs": [
+            "size",
+            "weight",
+            "theme",
+            "gradientColorScheme",
+            "activeTabIndex"
+        ],
+        "p-tabs-bar": [
+            "size",
+            "weight",
+            "theme",
+            "gradientColorScheme",
+            "activeTabIndex"
+        ],
+        "p-tabs-item": [
+            "label"
+        ],
+        "p-tag": [
+            "theme",
+            "color",
+            "icon",
+            "iconSource"
+        ],
+        "p-tag-dismissible": [
+            "color",
+            "label",
+            "aria"
+        ],
+        "p-text": [
+            "tag",
+            "size",
+            "weight",
+            "align",
+            "color",
+            "ellipsis",
+            "theme"
+        ],
+        "p-text-field-wrapper": [
+            "label",
+            "unit",
+            "unitPosition",
+            "description",
+            "state",
+            "message",
+            "hideLabel",
+            "showCharacterCount",
+            "actionIcon",
+            "actionLoading"
+        ],
+        "p-text-list": [
+            "listType",
+            "orderType",
+            "theme"
+        ],
+        "p-text-list-item": {},
+        "p-textarea-wrapper": [
+            "label",
+            "description",
+            "state",
+            "message",
+            "hideLabel",
+            "showCharacterCount"
+        ],
+        "p-toast": [
+            "theme"
+        ],
+        "p-toast-item": [
+            "text",
+            "state",
+            "theme"
+        ]
+    },
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": [
+            {
+                "p-content-wrapper": {
+                    "width": "fluid"
+                }
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-headline": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-select-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-text": {
+                    "tag": "div"
+                }
+            },
+            {
+                "p-button-pure": {
+                    "icon": "none"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button-pure": {
+                    "icon": "arrow-head-left"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary",
+                    "type": "submit"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-popover": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-content-wrapper": {}
+            }
+        ]
+    }
+}
