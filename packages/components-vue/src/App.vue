@@ -2,7 +2,7 @@
   import router, { routes } from './router';
   import { ref } from 'vue';
   import '@porsche-design-system/shared/css/styles.css';
-  import { PorscheDesignSystemProvider } from '../projects/vue-wrapper/src/public-api';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 
   const options = routes.map(({ path, name }) => ({ path, name }));
   const selected = ref(options[0].path);

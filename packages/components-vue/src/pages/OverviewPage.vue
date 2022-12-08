@@ -53,7 +53,7 @@
     PTextListItem,
     PTextareaWrapper,
     PToast,
-  } from '../../projects/vue-wrapper/src/public-api';
+  } from '@porsche-design-system/components-vue';
 </script>
 
 <template>

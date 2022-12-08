@@ -14,7 +14,7 @@
     PTabsBar,
     PTabsItem,
     PTextFieldWrapper,
-  } from '../../projects/vue-wrapper/src/public-api';
+  } from '@porsche-design-system/components-vue';
   import type {
     AccordionChangeEvent,
     CarouselChangeEvent,
@@ -22,7 +22,7 @@
     SortingChangeEvent,
     SwitchChangeEvent,
     TabChangeEvent,
-  } from '../../projects/vue-wrapper/src/public-api';
+  } from '@porsche-design-system/components-vue';
 
   const accordionChangeEventCounter = ref(0);
   const pageChangeEventCounter = ref(0);
