@@ -119,15 +119,15 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   return pdsCrawlerReport;
 };
 
-const removeOldReports = async (): Promise<void> => {
-  const reportFiles = await fs.promises.readdir(reportFolderName);
+const removeOldReports = (): void => {
+  const reportFiles = fs.readdirSync(reportFolderName);
   const filesToRemove = reportFiles.filter((fileName: string) => {
     const dateCreated = Date.parse(fileName.split(dateSplitter)[1].replace('.json', ''));
     const oldestTimePossible = Date.now() - reportsMaxAge;
     return dateCreated < oldestTimePossible;
   });
   for (const fileName of filesToRemove) {
-    await fs.promises.unlink(`${reportFolderName}/${fileName}`);
+    fs.unlinkSync(`${reportFolderName}/${fileName}`);
   }
 };
 
