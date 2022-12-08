@@ -1,16 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
+import * as fromPages from '../pages';
 
 export const routes: RouteRecordRaw[] = [
   {
     path: '/events',
     name: 'Events',
-    component: () => import('../pages/EventsPage.vue'),
+    component: fromPages.EventsPage,
   },
   {
     path: '/overview',
     name: 'Overview',
-    component: () => import('../pages/OverviewPage.vue'),
+    component: fromPages.OverviewPage,
   },
 ];
 

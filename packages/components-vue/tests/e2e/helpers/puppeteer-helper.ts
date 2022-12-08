@@ -23,6 +23,9 @@ export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/${url}`);
   await page.waitForSelector('html.hydrated');
   await waitForComponentsReady(page);
+
+  // it looks like vue event binding is a bit unreliable and happens after onMounted
+  await new Promise((resolve) => setTimeout(resolve, 100));
 };
 
 const consoleMessages: ConsoleMessage[] = [];
