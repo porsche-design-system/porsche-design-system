@@ -1,6 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
-import { componentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { componentMeta } from '@porsche-design-system/shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -13,7 +13,6 @@ declare global {
 // TODO: do we want to crawl different viewports?
 const width = 1366;
 const height = 768;
-const tagNames = TAG_NAMES;
 const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
   (result, [key, value]) => ({
     ...result,
@@ -36,7 +35,8 @@ const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   const pdsCrawlerReport = await page.evaluate(
-    async ({ tagNames, tagNamesWithProperties }): Promise<any> => {
+    async ({ tagNamesWithProperties }): Promise<any> => {
+      const tagNames = Object.keys(tagNamesWithProperties);
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
 
@@ -108,7 +108,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         consumedTagNamesForVersions,
       };
     },
-    { tagNames, tagNamesWithProperties }
+    { tagNamesWithProperties }
   );
 
   return pdsCrawlerReport;
