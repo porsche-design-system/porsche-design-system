@@ -11,6 +11,8 @@ declare global {
   }
 }
 
+const width = 1366;
+const height = 768;
 const tagNames = TAG_NAMES;
 const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
   (result, [key, value]) => ({
@@ -27,10 +29,8 @@ const customerWebsiteMap: Record<string, string> = {
   'shop.porsche.com': 'https://shop.porsche.com/de/de-DE',
 };
 const dateSplitter = '_';
-// TODO: remove unnecessary comments before PR
-// const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
-const reportsMaxAge = 1000 * 60 * 60 * 24; // one day in milliseconds
-// const reportsMaxAge = 1000; // one second
+// TODO: how long should the old reports stay?
+const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
@@ -39,6 +39,20 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
     async ({ tagNames, tagNamesAndProperties }): Promise<any> => {
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
+
+      const getAllChildElements = (el: Element): Element[] => {
+        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
+        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
+        return childrenChildren.flat();
+      };
+
+      // all dom elements on the page
+      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
+      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
+        return allDOMElements.filter((el: Element) => {
+          return el.matches(pdsComponentsSelector);
+        });
+      };
 
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
         (result, [key, value]) => ({
@@ -57,7 +71,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
           })
           .join();
 
-        const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
+        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
 
         const usedTagNames = pdsElements.map((el) => {
           const tag = el.tagName.toLowerCase();
@@ -102,6 +116,8 @@ const crawlWebsites = async (browser: Browser): Promise<void> => {
   for (const websiteName in customerWebsiteMap) {
     const websiteUrl = customerWebsiteMap[websiteName];
     const page = await browser.newPage();
+    // we need this setViewport, because for example porsche.com has different components depending on screen size
+    await page.setViewport({ width: width, height: height });
 
     await page.goto(websiteUrl, {
       waitUntil: 'networkidle0',
@@ -125,6 +141,7 @@ const startBrowser = async (): Promise<void> => {
       // TODO: make headless before PR
       headless: false, // The browser is visible
       ignoreHTTPSErrors: true,
+      args: [`--window-size=${width},${height}`],
     });
     removeOldReports();
     await crawlWebsites(browser);
