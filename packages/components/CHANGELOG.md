@@ -12,11 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `line-height` calculation for all components is handled CSS only now by using `ex`-unit in combination with `calc()`
-  which results in **larger** `line-height` values for **small** `font-size` definitions and **smaller** `line-height`
-  values for **larger** `font-size` definitions. The calculated values by CSS slightly differ compared to the ones
-  calculated by JavaScript, e.g. 16/24px (JS) => 16/24px (CSS), 24/36px (JS) => 24/32.89px (CSS), 36/48px (JS) =>
-  36/46.23px (CSS), 52/64px (JS) => 52/64.02px (CSS). The change improves performance, SSR support and prepares the
-  introduction of fluid typography in Porsche Design System v3.
+  which gives the best performance, the easiest possible integration and respects UI best practices in having **larger**
+  `line-height` values for **small** `font-size` definitions and **smaller** `line-height` values for **larger**
+  `font-size` definitions. The calculated values by CSS slightly differ compared to the ones calculated by JavaScript,
+  e.g. 16/24px (JS) => 16/24px (CSS), 22/32px (JS) => 22/30.75px (CSS), 32/44px (JS) => 32/42px (CSS), 52/64px (JS) =>
+  52/64.5px (CSS).
 
 #### Added
 
