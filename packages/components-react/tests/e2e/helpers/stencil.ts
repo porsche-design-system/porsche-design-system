@@ -3,9 +3,9 @@ import type { TagName } from '@porsche-design-system/shared';
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
-export const waitForComponentsReady = async (page: Page): Promise<void> => {
+export const waitForComponentsReady = (page: Page): Promise<number> => {
   // componentsReady is exposed via index.tsx of react vrt app
-  await page.evaluate((): Promise<void> => (window as any).componentsReady());
+  return page.evaluate(() => (window as any).componentsReady());
 };
 
 type LifecycleStatus = {

@@ -5,13 +5,12 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const clickElement = async (el: ElementHandle) => {
+const clickElement = async (el: ElementHandle): Promise<void> => {
   await el.click();
   await new Promise((resolve) => setTimeout(resolve, 50));
 };
 
-const getCounterValue = async (el: ElementHandle): Promise<string> =>
-  await el.evaluate((element) => element.innerHTML, el);
+const getCounterValue = (el: ElementHandle): Promise<string> => el.evaluate((element) => element.innerHTML);
 
 describe('pagination', () => {
   it('should emit events once', async () => {
