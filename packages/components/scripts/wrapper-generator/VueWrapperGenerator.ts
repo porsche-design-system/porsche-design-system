@@ -39,10 +39,10 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
     return getComponentMeta(component).props
       ? `  type ${propsName} = {${rawComponentInterface
-    .slice(1, -1)
-    .split(';\n')
-    .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
-    .join(';\n')}  }`
+          .slice(1, -1)
+          .split(';\n')
+          .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+          .join(';\n')}  }`
       : '';
   }
 
@@ -62,7 +62,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) => {
-        // TODO: better approach to identify object? JSON parse does not work with '
+        // TODO: better approach to identify object?
         if (!(isEvent || defaultValue === undefined)) {
           const transformedDefaultValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
           return `${key}: ${transformedDefaultValue},${
@@ -78,6 +78,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const componentMeta = getComponentMeta(component);
     const hasEvent = componentMeta.hasEvent;
     const hasProps = componentMeta.props;
+    const hasSlot = componentMeta.hasSlot;
     const hasDefaultProps = defaultPropsWithValue.length;
 
     const defineProps = `defineProps<${propsName}>()`;
@@ -119,11 +120,15 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     ${syncProperties}
   });`;
 
+    const componentProps = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
+    // TODO: how is this called in vue?
+    const vueComponent = hasSlot ? `<component ${componentProps}><slot /></component>` : `<component ${componentProps} />`;
+
     return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? additionalContent : ''}
 </script>
 
 <template>
-  <component :is="webComponentTag"${hasProps ? ' ref="pdsComponentRef"' : ''}><slot /></component>
+  ${vueComponent}
 </template>`;
   }
 
