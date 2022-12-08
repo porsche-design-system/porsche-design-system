@@ -2,10 +2,7 @@
   import router, { routes } from './router';
   import { ref } from 'vue';
   import '@porsche-design-system/shared/css/styles.css';
-  import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/public-api';
-
-  // TODO: solve in a different way
-  porscheDesignSystemProvider();
+  import { PorscheDesignSystemProvider } from '../projects/vue-wrapper/src/public-api';
 
   const options = routes.map((item) => ({ path: item.path, name: item.name }));
   const selected = ref(options[0].path);
@@ -18,14 +15,16 @@
 </script>
 
 <template>
-  <select :value="selected" @change="onChange($event)">
-    <option disabled value="">Select a page</option>
-    <option v-for="(item, index) in options" v-bind:key="index" :value="item.path">
-      {{ item.name }}
-    </option>
-  </select>
+  <PorscheDesignSystemProvider>
+    <select :value="selected" @change="onChange($event)">
+      <option disabled value="">Select a page</option>
+      <option v-for="(item, index) in options" v-bind:key="index" :value="item.path">
+        {{ item.name }}
+      </option>
+    </select>
 
-  <div id="app">
-    <RouterView />
-  </div>
+    <div id="app">
+      <RouterView />
+    </div>
+  </PorscheDesignSystemProvider>
 </template>

@@ -1,8 +1,7 @@
-import { inject, provide } from 'vue';
+import { inject } from 'vue';
 import type { InjectionKey } from 'vue';
-import { load } from '@porsche-design-system/components-js';
 
-const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<'pdsPrefix'>;
+export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<'pdsPrefix'>;
 
 export const getPrefixedTagName = (tagName: string): string => {
   if (process.env.NODE_ENV === 'test') {
@@ -16,11 +15,6 @@ export const getPrefixedTagName = (tagName: string): string => {
 
     return prefix ? prefix + '-' + tagName : tagName;
   }
-};
-
-export const porscheDesignSystemProvider = (prefix: string = ''): void => {
-  load({ prefix });
-  provide(prefixInjectionKey, prefix);
 };
 
 export const syncProperties = <T extends HTMLElement>(elementRef: T, props: Partial<T>): void => {
