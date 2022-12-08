@@ -4,7 +4,7 @@
   import '@porsche-design-system/shared/css/styles.css';
   import { PorscheDesignSystemProvider } from '../projects/vue-wrapper/src/public-api';
 
-  const options = routes.map((item) => ({ path: item.path, name: item.name }));
+  const options = routes.map(({ path, name }) => ({ path, name }));
   const selected = ref(options[0].path);
 
   const onChange = (e: Event) => {
