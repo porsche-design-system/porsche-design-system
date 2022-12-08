@@ -2,7 +2,7 @@
   import router, { routes } from './router';
   import { ref } from 'vue';
   import '@porsche-design-system/shared/css/styles.css';
-  import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/utils';
+  import { porscheDesignSystemProvider } from '../projects/vue-wrapper/src/public-api';
 
   // TODO: solve in a different way
   porscheDesignSystemProvider();
