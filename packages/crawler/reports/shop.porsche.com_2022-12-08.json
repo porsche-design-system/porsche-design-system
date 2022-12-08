@@ -1,0 +1,335 @@
+{
+    "consumedPdsVersions": [
+        "2.18.0-rc.1"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.18.0-rc.1": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.18.0-rc.1": [
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link": {}
+            },
+            {
+                "p-link": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-modal": {}
+            },
+            {
+                "p-button-group": {}
+            },
+            {
+                "p-button": {}
+            },
+            {
+                "p-button": {}
+            }
+        ]
+    }
+}

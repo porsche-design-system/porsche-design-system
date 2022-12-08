@@ -1,0 +1,254 @@
+{
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": [
+            {
+                "p-content-wrapper": {
+                    "width": "fluid"
+                }
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-headline": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-select-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-text": {
+                    "tag": "div"
+                }
+            },
+            {
+                "p-button-pure": {
+                    "icon": "none"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button-pure": {
+                    "icon": "arrow-head-left"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary",
+                    "type": "submit"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-popover": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-content-wrapper": {}
+            }
+        ]
+    }
+}

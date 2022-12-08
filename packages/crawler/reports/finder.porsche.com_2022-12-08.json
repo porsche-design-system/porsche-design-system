@@ -1,0 +1,56 @@
+{
+    "consumedPdsVersions": [
+        "2.14.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.14.0": [
+            "fn"
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.14.0": [
+            {
+                "fn-p-icon": {}
+            },
+            {
+                "fn-p-marque": {}
+            },
+            {
+                "fn-p-icon": {}
+            },
+            {
+                "fn-p-icon": {}
+            },
+            {
+                "fn-p-icon": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link": {}
+            },
+            {
+                "fn-p-link-pure": {}
+            },
+            {
+                "fn-p-link-pure": {}
+            },
+            {
+                "fn-p-link-pure": {}
+            }
+        ]
+    }
+}
