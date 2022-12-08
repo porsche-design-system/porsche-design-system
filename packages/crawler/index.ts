@@ -60,10 +60,10 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
 
         const consumedTagNames = pdsElements.map((el) => {
-          const tag = el.tagName.toLowerCase();
-          // TODO: does not work for prefixes yet
+          const tagName = el.tagName.toLowerCase();
+          const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
           const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
-            return key.match(new RegExp(`^${tag}$`)) ? value : result;
+            return key.match(new RegExp(`^${tagNameWithoutPrefix ? tagNameWithoutPrefix : tagName}$`)) ? value : result;
           }, [] as string[]);
 
           const allAppliedProperties = Object.assign(
@@ -77,7 +77,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
             Object.entries(allAppliedProperties).filter(([key]) => allPdsPropertiesForTagName.includes(key))
           );
 
-          return { [tag]: consumedPdsProperties };
+          return { [tagName]: consumedPdsProperties };
         });
 
         return {
@@ -89,7 +89,6 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
       // TODO: get and count the tag names with prefixes - and also without prefixes?
 
       return {
-        tagNamesWithProperties,
         consumedPdsVersions,
         consumedPrefixesForVersions,
         consumedTagNamesForVersions,
