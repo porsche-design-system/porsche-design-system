@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
-    "build": "echo 'not implemented, yet'",
+    "build": "yarn clean:build && vite build && vue-tsc --emitDeclarationOnly",
     "build-app": "yarn clean:build && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
