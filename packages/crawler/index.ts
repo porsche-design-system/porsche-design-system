@@ -48,20 +48,6 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         {}
       );
 
-      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
-        consumedPrefixesForVersions
-      ).reduce((result, [version, prefixes]) => {
-        const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
-        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
-        const consumedTagNames = getConsumedTagNames(pdsElements);
-
-        // TODO: group tag names by prefix
-        return {
-          ...result,
-          [version]: consumedTagNames,
-        };
-      }, {});
-
       const getPdsComponentsSelector = (prefixes: string[]): string =>
         prefixes
           .map((prefix) => {
@@ -104,6 +90,20 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 
           return { [tagName]: consumedPdsProperties };
         });
+
+      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
+        consumedPrefixesForVersions
+      ).reduce((result, [version, prefixes]) => {
+        const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
+        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
+        const consumedTagNames = getConsumedTagNames(pdsElements);
+
+        // TODO: group tag names by prefix
+        return {
+          ...result,
+          [version]: consumedTagNames,
+        };
+      }, {});
 
       // TODO: get and count the tag names with prefixes - and also without prefixes? Also split tag names into different arrays for every prefix
 
