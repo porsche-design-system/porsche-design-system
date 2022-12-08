@@ -15,6 +15,9 @@
                 }
             },
             {
+                "p-spinner": {}
+            },
+            {
                 "p-flex": {
                     "direction": "column"
                 }
