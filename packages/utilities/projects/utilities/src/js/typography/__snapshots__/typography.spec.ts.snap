@@ -15,7 +15,7 @@ exports[`should contain correct values for headingLarge 1`] = `
     "fontSize": "1.875rem",
   },
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 1.5rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -35,7 +35,7 @@ exports[`should contain correct values for headingMedium 1`] = `
     "fontSize": "1.5rem",
   },
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 1.25rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -55,7 +55,7 @@ exports[`should contain correct values for headingSmall 1`] = `
     "fontSize": "1.125rem",
   },
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -75,7 +75,7 @@ exports[`should contain correct values for headingXLarge 1`] = `
     "fontSize": "2.25rem",
   },
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 1.75rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 1.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -83,7 +83,7 @@ exports[`should contain correct values for headingXLarge 1`] = `
 exports[`should contain correct values for headingXSmall 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -103,7 +103,7 @@ exports[`should contain correct values for headingXXLarge 1`] = `
     "fontSize": "2.625rem",
   },
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 600 2rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 2rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "textSizeAdjust": "none",
 }
 `;
@@ -111,7 +111,7 @@ exports[`should contain correct values for headingXXLarge 1`] = `
 exports[`should contain correct values for textLarge 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 400 2.25rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
@@ -121,7 +121,7 @@ exports[`should contain correct values for textLarge 1`] = `
 exports[`should contain correct values for textMedium 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 400 1.5rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
@@ -131,7 +131,7 @@ exports[`should contain correct values for textMedium 1`] = `
 exports[`should contain correct values for textSmall 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 400 1rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
@@ -141,7 +141,7 @@ exports[`should contain correct values for textSmall 1`] = `
 exports[`should contain correct values for textXLarge 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 400 3.25rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 3.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
@@ -151,7 +151,7 @@ exports[`should contain correct values for textXLarge 1`] = `
 exports[`should contain correct values for textXSmall 1`] = `
 {
   "WebkitTextSizeAdjust": "none",
-  "font": "normal normal 400 0.75rem/calc(0.44118125rem + 2ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
