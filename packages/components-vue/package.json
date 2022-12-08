@@ -5,7 +5,11 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
-    "build": "yarn clean:build && vite build && vue-tsc --emitDeclarationOnly",
+    "build": "yarn clean:build && yarn build:lib && yarn build:partials && yarn build:utilities && vue-tsc --emitDeclarationOnly && yarn build:partials:move-file",
+    "build:lib": "vite build",
+    "build:partials": "vite build -c vite.partials.config.ts",
+    "build:partials:move-file": "cp ./dist/partial/partials.js ./dist/vue-wrapper && rm -rf ./dist/partial",
+    "build:utilities": "vite build -c vite.utilities.config.ts",
     "build-app": "yarn clean:build && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
