@@ -32,28 +32,14 @@ const dateSplitter = '_';
 // TODO: how long should the old reports stay?
 const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 
-// TODO: define correct return types
+// TODO: define correct return type
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
   const pdsCrawlerReport = await page.evaluate(
+    // TODO: define correct return type
     async ({ tagNamesWithProperties }): Promise<any> => {
       const tagNames = Object.keys(tagNamesWithProperties);
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
-
-      const getAllChildElements = (el: Element): Element[] => {
-        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
-        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
-        return childrenChildren.flat();
-      };
-
-      // all dom elements on the page
-      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
-        return allDOMElements.filter((el: Element) => {
-          return el.matches(pdsComponentsSelector);
-        });
-      };
-
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
         (result, [key, value]) => ({
           ...result,
@@ -65,15 +51,39 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
       const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
         consumedPrefixesForVersions
       ).reduce((result, [version, prefixes]) => {
-        const pdsComponentsSelector = prefixes
+        const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
+        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
+        const consumedTagNames = getConsumedTagNames(pdsElements);
+
+        return {
+          ...result,
+          [version]: consumedTagNames,
+        };
+      }, {});
+
+      const getPdsComponentsSelector = (prefixes: string[]): string =>
+        prefixes
           .map((prefix) => {
             return prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames;
           })
           .join();
 
-        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
+      const getAllChildElements = (el: Element): Element[] => {
+        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
+        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
+        return childrenChildren.flat();
+      };
 
-        const consumedTagNames = pdsElements.map((el) => {
+      // crawl all dom elements from body
+      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
+      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
+        return allDOMElements.filter((el: Element) => {
+          return el.matches(pdsComponentsSelector);
+        });
+      };
+
+      const getConsumedTagNames = (pdsElements: Element[]): any =>
+        pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
           const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
           const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
@@ -93,12 +103,6 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 
           return { [tagName]: consumedPdsProperties };
         });
-
-        return {
-          ...result,
-          [version]: consumedTagNames,
-        };
-      }, {});
 
       // TODO: get and count the tag names with prefixes - and also without prefixes? Also split tag names into different arrays for every prefix
 
