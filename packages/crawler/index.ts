@@ -11,6 +11,7 @@ declare global {
   }
 }
 
+// TODO: do we want to crawl different viewports?
 const width = 1366;
 const height = 768;
 const tagNames = TAG_NAMES;
@@ -27,6 +28,7 @@ const customerWebsiteMap: Record<string, string> = {
   'finder.porsche.com': 'https://finder.porsche.com/de/de-DE',
   'login.porsche.com': 'https://login.porsche.com/login/de/de_DE',
   'shop.porsche.com': 'https://shop.porsche.com/de/de-DE',
+  'porsche.com.swiss': 'https://www.porsche.com/swiss/de/',
 };
 const dateSplitter = '_';
 // TODO: how long should the old reports stay?
@@ -34,8 +36,7 @@ const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 
 // TODO: define correct return types
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
-  // TODO: rename const?
-  const porscheDesignSystem = await page.evaluate(
+  const pdsCrawlerReport = await page.evaluate(
     async ({ tagNames, tagNamesWithProperties }): Promise<any> => {
       const porscheDesignSystem = document.porscheDesignSystem;
       const consumedPdsVersions = Object.keys(porscheDesignSystem);
@@ -77,7 +78,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
           const tagName = el.tagName.toLowerCase();
           const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(p-[a-z-]+)$/.exec(tagName) || [];
           const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
-            return key.match(new RegExp(`^${tagNameWithoutPrefix ? tagNameWithoutPrefix : tagName}$`)) ? value : result;
+            return key === `${tagNameWithoutPrefix ? tagNameWithoutPrefix : tagName}` ? value : result;
           }, [] as string[]);
 
           const allAppliedProperties = Object.assign(
@@ -100,7 +101,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
         };
       }, {});
 
-      // TODO: get and count the tag names with prefixes - and also without prefixes?
+      // TODO: get and count the tag names with prefixes - and also without prefixes? Also split tag names into different arrays for every prefix
 
       return {
         consumedPdsVersions,
@@ -111,7 +112,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
     { tagNames, tagNamesWithProperties }
   );
 
-  return porscheDesignSystem;
+  return pdsCrawlerReport;
 };
 
 const removeOldReports = async (): Promise<void> => {
