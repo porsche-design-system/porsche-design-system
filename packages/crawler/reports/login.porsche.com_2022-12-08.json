@@ -23,13 +23,22 @@
                 "p-flex-item": {}
             },
             {
+                "p-flex-item": {}
+            },
+            {
                 "p-flex": {}
             },
             {
                 "p-flex-item": {}
             },
             {
+                "p-flex-item": {}
+            },
+            {
                 "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
             },
             {
                 "p-flex-item": {}
@@ -38,6 +47,18 @@
                 "p-flex": {
                     "direction": "column"
                 }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
             },
             {
                 "p-flex-item": {}
@@ -46,9 +67,6 @@
                 "p-marque": {}
             },
             {
-                "p-flex-item": {}
-            },
-            {
                 "p-flex": {
                     "direction": "column"
                 }
@@ -57,19 +75,31 @@
                 "p-flex-item": {}
             },
             {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
                 "p-headline": {}
             },
             {
-                "p-flex-item": {}
-            },
-            {
-                "p-flex-item": {}
-            },
-            {
                 "p-text-field-wrapper": {}
-            },
-            {
-                "p-flex-item": {}
             },
             {
                 "p-button": {
@@ -77,10 +107,13 @@
                 }
             },
             {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
             },
             {
                 "p-flex-item": {}
@@ -89,13 +122,16 @@
                 "p-select-wrapper": {}
             },
             {
-                "p-flex-item": {}
+                "p-select-wrapper-dropdown": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
             },
             {
                 "p-text-field-wrapper": {}
-            },
-            {
-                "p-flex-item": {}
             },
             {
                 "p-button": {
@@ -103,7 +139,7 @@
                 }
             },
             {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-flex": {}
@@ -114,13 +150,7 @@
                 }
             },
             {
-                "p-divider": {}
-            },
-            {
                 "p-flex-item": {}
-            },
-            {
-                "p-text": {}
             },
             {
                 "p-flex-item": {
@@ -131,7 +161,10 @@
                 "p-divider": {}
             },
             {
-                "p-flex-item": {}
+                "p-text": {}
+            },
+            {
+                "p-divider": {}
             },
             {
                 "p-flex": {}
@@ -147,12 +180,27 @@
                 }
             },
             {
-                "p-flex-item": {}
-            },
-            {
                 "p-flex": {
                     "direction": "column"
                 }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
             },
             {
                 "p-flex-item": {}
@@ -163,22 +211,16 @@
                 }
             },
             {
-                "p-flex-item": {}
-            },
-            {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-text-field-wrapper": {}
             },
             {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-text-field-wrapper": {}
-            },
-            {
-                "p-flex-item": {}
             },
             {
                 "p-button": {
@@ -187,7 +229,7 @@
                 }
             },
             {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-flex": {}
@@ -198,13 +240,7 @@
                 }
             },
             {
-                "p-divider": {}
-            },
-            {
                 "p-flex-item": {}
-            },
-            {
-                "p-text": {}
             },
             {
                 "p-flex-item": {
@@ -215,7 +251,10 @@
                 "p-divider": {}
             },
             {
-                "p-flex-item": {}
+                "p-text": {}
+            },
+            {
+                "p-divider": {}
             },
             {
                 "p-flex": {
@@ -229,22 +268,19 @@
                 "p-popover": {}
             },
             {
+                "p-icon": {}
+            },
+            {
                 "p-button-pure": {}
             },
             {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
-                "p-flex-item": {}
+                "p-button-pure": {}
             },
             {
-                "p-flex-item": {}
-            },
-            {
-                "p-flex-item": {}
-            },
-            {
-                "p-flex-item": {}
+                "p-icon": {}
             },
             {
                 "p-content-wrapper": {}

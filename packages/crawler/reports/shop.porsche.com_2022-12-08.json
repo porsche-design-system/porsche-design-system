@@ -16,36 +16,6 @@
                 "p-link-pure": {}
             },
             {
-                "p-marque": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-marque": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-link": {}
-            },
-            {
-                "p-button-pure": {}
-            },
-            {
                 "p-divider": {}
             },
             {
@@ -55,6 +25,33 @@
                 "p-icon": {}
             },
             {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
                 "p-button-pure": {}
             },
             {
@@ -64,39 +61,6 @@
                 "p-icon": {}
             },
             {
-                "p-link-pure": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-icon": {}
-            },
-            {
                 "p-icon": {}
             },
             {
@@ -154,22 +118,16 @@
                 "p-link-pure": {}
             },
             {
-                "p-link-pure": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-link-pure": {}
-            },
-            {
-                "p-link-pure": {}
+                "p-icon": {}
             },
             {
                 "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
             },
             {
                 "p-icon": {}
@@ -193,6 +151,51 @@
                 "p-icon": {}
             },
             {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
                 "p-icon": {}
             },
             {
@@ -230,6 +233,9 @@
             },
             {
                 "p-link-pure": {}
+            },
+            {
+                "p-icon": {}
             },
             {
                 "p-icon": {}
@@ -247,22 +253,43 @@
                 "p-link": {}
             },
             {
+                "p-icon": {}
+            },
+            {
                 "p-link": {}
             },
             {
-                "p-link-social": {}
+                "p-icon": {}
             },
             {
                 "p-link-social": {}
             },
             {
-                "p-link-social": {}
+                "p-icon": {}
             },
             {
                 "p-link-social": {}
             },
             {
+                "p-icon": {}
+            },
+            {
                 "p-link-social": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-link-social": {}
+            },
+            {
+                "p-icon": {}
             },
             {
                 "p-link-pure": {}
@@ -329,6 +356,18 @@
             },
             {
                 "p-button": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-icon": {}
             }
         ]
     }
