@@ -23,7 +23,7 @@
     "clean:build:package": "rm -rf ./dist/vue-wrapper"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "^2.18.0-rc.1",
+    "@porsche-design-system/components-vue": "^2.18.0-rc.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
