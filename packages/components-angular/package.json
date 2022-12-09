@@ -47,6 +47,7 @@
     "@angular/compiler-cli": "^13.3.12",
     "@angular/language-service": "^13.3.12",
     "@porsche-design-system/assets": "5.0.2",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@types/node": "^18.11.9",
     "concurrently": "^7.6.0",
     "jest-preset-angular": "^12.2.3",
