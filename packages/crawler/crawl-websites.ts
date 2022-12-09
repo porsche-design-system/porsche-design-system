@@ -1,0 +1,37 @@
+import fs from 'fs';
+import { crawlerConfig as config } from './crawler-config';
+import * as puppeteer from 'puppeteer';
+import { componentMeta } from '@porsche-design-system/shared';
+import { crawlComponents, TagNamesWithProperties } from './crawl-components';
+
+export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
+  const tagNamesWithProperties: TagNamesWithProperties = Object.entries(componentMeta).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key]: value.props ? Object.keys(value.props) : {},
+    }),
+    {}
+  );
+
+  for (const websiteName in config.customerWebsiteMap) {
+    const websiteUrl = config.customerWebsiteMap[websiteName];
+    const page = await browser.newPage();
+    // we need this setViewport, because for example porsche.com has different components depending on screen size
+    await page.setViewport({ width: config.width, height: config.height });
+
+    await page.goto(websiteUrl, {
+      waitUntil: 'networkidle0',
+    });
+
+    console.log('Crawling Page ' + page.url());
+
+    const crawlResults = await crawlComponents(page, tagNamesWithProperties);
+
+    fs.writeFileSync(
+      `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}${websiteName}.json`,
+      JSON.stringify(crawlResults, null, 4)
+    );
+
+    await page.close();
+  }
+};
