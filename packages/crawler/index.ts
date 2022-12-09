@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
-import { crawlerConfig as config } from './crawler-config';
-import { removeOldReports } from './helper';
-import { crawlWebsites } from './crawl-websites';
+import { crawlerConfig as config } from './constants';
+import { removeOldReports } from './src/helper';
+import { crawlWebsites } from './src/crawl-websites';
 
 const startBrowser = async (): Promise<void> => {
   try {

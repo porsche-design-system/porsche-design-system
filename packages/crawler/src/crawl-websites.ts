@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { crawlerConfig as config } from './crawler-config';
+import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { componentMeta } from '@porsche-design-system/shared';
 import { crawlComponents, TagNamesWithProperties } from './crawl-components';

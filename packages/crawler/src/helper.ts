@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { crawlerConfig as config } from './crawler-config';
+import { crawlerConfig as config } from '../constants';
 
 export const removeOldReports = (): void => {
   fs.readdirSync(config.reportFolderName)
