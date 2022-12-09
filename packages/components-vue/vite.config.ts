@@ -1,10 +1,9 @@
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import * as path from 'path';
 
-const rootDir = '../..';
 const projectDir = 'projects/vue-wrapper';
 const outputDir = 'dist/vue-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
@@ -15,14 +14,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     viteStaticCopy({
-      targets: [
-        { src: path.resolve(projectDir, 'package.json'), dest: path.resolve(outputDir) },
-        { src: path.resolve(rootDir, 'LICENSE'), dest: path.resolve(outputDir) },
-        { src: path.resolve(rootDir, 'OSS_NOTICE'), dest: path.resolve(outputDir) },
-        { src: path.resolve(projectDir, 'README.md'), dest: path.resolve(outputDir) },
-        { src: path.resolve(projectDir, 'package.json'), dest: path.resolve(outputDir) },
-        { src: path.resolve(`${rootDir}/packages/components`, 'CHANGELOG.md'), dest: path.resolve(outputDir) },
-      ],
+      targets: [{ src: path.resolve(projectDir, 'package.json'), dest: path.resolve(outputDir) }],
     }),
   ],
   build: {
