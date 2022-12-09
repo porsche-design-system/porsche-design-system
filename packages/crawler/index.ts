@@ -36,25 +36,19 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
       );
 
       const getPdsComponentsSelector = (prefixes: string[]): string =>
-        prefixes
-          .map((prefix) => {
-            return prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames;
-          })
-          .join();
+        prefixes.map((prefix) => (prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames)).join();
 
       const getAllChildElements = (el: Element): Element[] => {
-        const children = Array.from(el.children).concat(Array.from(el.shadowRoot?.children || [])) as Element[];
-        const childrenChildren = children.concat(children.map(getAllChildElements).flat());
-        return childrenChildren.flat();
+        const children = Array.from(el.children)
+          .concat(Array.from(el.shadowRoot?.children || []))
+          .flat() as Element[];
+        return children.concat(children.map(getAllChildElements).flat());
       };
 
       // crawl all dom elements from body
       const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] => {
-        return allDOMElements.filter((el: Element) => {
-          return el.matches(pdsComponentsSelector);
-        });
-      };
+      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] =>
+        allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
       const getConsumedTagNames = (pdsElements: Element[]): { [p: string]: { [p: string]: unknown } }[] =>
         pdsElements.map((el) => {
@@ -81,9 +75,9 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
       const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
         consumedPrefixesForVersions
       ).reduce((result, [version, prefixes]) => {
-        const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
-        const pdsElements = Array.from(querySelectorAllDeep(pdsComponentsSelector));
-        const consumedTagNames = getConsumedTagNames(pdsElements);
+        const consumedTagNames = getConsumedTagNames(
+          Array.from(querySelectorAllDeep(getPdsComponentsSelector(prefixes)))
+        );
 
         // TODO: group tag names by prefix
         return {
@@ -107,8 +101,7 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 };
 
 const removeOldReports = (): void => {
-  const reportFiles = fs.readdirSync(config.reportFolderName);
-  reportFiles
+  fs.readdirSync(config.reportFolderName)
     .filter((fileName: string) => {
       const dateCreated = Date.parse(fileName.split(config.dateSplitter)[0]);
       const oldestTimePossible = Date.now() - config.reportsMaxAge;
@@ -154,7 +147,7 @@ const startBrowser = async (): Promise<void> => {
     await crawlWebsites(browser);
 
     console.log('Success - please check reports');
-    browser.close();
+    await browser.close();
   } catch (err) {
     console.log('Could not create a browser instance => : ', err);
   }
