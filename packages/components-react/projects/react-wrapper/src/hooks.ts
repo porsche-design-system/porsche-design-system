@@ -14,11 +14,16 @@ export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
   skipCheck = true;
 };
 
+export const getPrefixFromContext = (): string => {
+  const { prefix } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
+  return prefix;
+};
+
 export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return tagName;
   } else {
-    const { prefix } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
+    const prefix = getPrefixFromContext();
 
     if (prefix === undefined) {
       throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
