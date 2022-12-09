@@ -1,6 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
 import { componentMeta } from '@porsche-design-system/shared';
+import { crawlerConfig as config } from './crawler-config';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -10,9 +11,6 @@ declare global {
   }
 }
 
-// TODO: do we want to crawl different viewports?
-const width = 1366;
-const height = 768;
 const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(componentMeta).reduce(
   (result, [key, value]) => ({
     ...result,
@@ -20,17 +18,6 @@ const tagNamesWithProperties: { [key: string]: string[] } = Object.entries(compo
   }),
   {}
 );
-const reportFolderName = 'reports';
-const customerWebsiteMap: Record<string, string> = {
-  'porsche.com': 'https://www.porsche.com/germany',
-  'finder.porsche.com': 'https://finder.porsche.com/de/de-DE',
-  'login.porsche.com': 'https://login.porsche.com/login/de/de_DE',
-  'shop.porsche.com': 'https://shop.porsche.com/de/de-DE',
-  'porsche.com.swiss': 'https://www.porsche.com/swiss/de/',
-};
-const dateSplitter = '_';
-// TODO: how long should the old reports stay?
-const reportsMaxAge = 1000 * 60 * 60 * 24 * 7; // one week in milliseconds
 
 // TODO: define correct return type
 const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
@@ -120,24 +107,24 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 };
 
 const removeOldReports = (): void => {
-  const reportFiles = fs.readdirSync(reportFolderName);
+  const reportFiles = fs.readdirSync(config.reportFolderName);
   reportFiles
     .filter((fileName: string) => {
-      const dateCreated = Date.parse(fileName.split(dateSplitter)[0]);
-      const oldestTimePossible = Date.now() - reportsMaxAge;
+      const dateCreated = Date.parse(fileName.split(config.dateSplitter)[0]);
+      const oldestTimePossible = Date.now() - config.reportsMaxAge;
       return dateCreated < oldestTimePossible;
     })
     .map((fileName: string) => {
-      fs.unlinkSync(`${reportFolderName}/${fileName}`);
+      fs.unlinkSync(`${config.reportFolderName}/${fileName}`);
     });
 };
 
 const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
-  for (const websiteName in customerWebsiteMap) {
-    const websiteUrl = customerWebsiteMap[websiteName];
+  for (const websiteName in config.customerWebsiteMap) {
+    const websiteUrl = config.customerWebsiteMap[websiteName];
     const page = await browser.newPage();
     // we need this setViewport, because for example porsche.com has different components depending on screen size
-    await page.setViewport({ width: width, height: height });
+    await page.setViewport({ width: config.width, height: config.height });
 
     await page.goto(websiteUrl, {
       waitUntil: 'networkidle0',
@@ -148,7 +135,7 @@ const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
     const crawlResults = await crawlComponents(page);
 
     fs.writeFileSync(
-      `./${reportFolderName}/${new Date().toJSON().slice(0, 10)}${dateSplitter}${websiteName}.json`,
+      `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}${websiteName}.json`,
       JSON.stringify(crawlResults, null, 4)
     );
 
@@ -161,7 +148,7 @@ const startBrowser = async (): Promise<void> => {
       // TODO: make headless before PR
       headless: false, // The browser is visible
       ignoreHTTPSErrors: true,
-      args: [`--window-size=${width},${height}`],
+      args: [`--window-size=${config.width},${config.height}`],
     });
     removeOldReports();
     await crawlWebsites(browser);
