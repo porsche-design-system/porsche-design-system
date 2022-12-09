@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^10.0.0",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@types/html-minifier": "^4.0.2",
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
