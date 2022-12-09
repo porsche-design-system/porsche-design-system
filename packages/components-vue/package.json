@@ -12,7 +12,7 @@
     "build:bundle:typings": "yarn build:bundle:typings:partials && yarn build:bundle:typings:utilities",
     "build:bundle:typings:partials": "tsc projects/vue-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node,react",
     "build:bundle:typings:utilities": "tsc projects/vue-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/utilities/js --types node,react",
-    "build-app": "yarn clean:build:app && vue-tsc --noEmit && vite build",
+    "build-app": "yarn clean:build:app && vue-tsc --noEmit && vite build -c vite.app.config.ts",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "test": "yarn test:e2e && yarn test:vrt",

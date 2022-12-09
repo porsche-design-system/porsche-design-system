@@ -23,6 +23,6 @@
     "vue": ">=3.0.0 <4.0.0"
   },
   "main": "public-api.js",
-  "module": "public-api.mjs",
+  "module": "public-api.js",
   "types": "public-api.d.ts"
 }
