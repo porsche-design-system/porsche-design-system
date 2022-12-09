@@ -95,6 +95,8 @@
     "test:unit:components-react:react-ssr-wrapper": "yarn --cwd ./packages/components-react test:unit:react-ssr-wrapper",
     "test:unit:components-react:uxpin-wrapper": "yarn --cwd ./packages/components-react test:unit:uxpin-wrapper",
     "test:unit:components-react:jsdom-polyfill": "yarn --cwd ./packages/components-react test:unit:jsdom-polyfill",
+    "test:unit:components-vue": "yarn --cwd ./packages/components-vue test:unit",
+    "test:unit:components-vue:vue-wrapper": "yarn --cwd ./packages/components-vue test:unit:vue-wrapper",
     "test:unit:fallbacks": "yarn --cwd ./packages/fallbacks test:unit",
     "test:unit:shared": "yarn --cwd ./packages/shared test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
