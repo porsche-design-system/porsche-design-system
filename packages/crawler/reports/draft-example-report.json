@@ -1,0 +1,59 @@
+{
+  "aggregatedComsumedTagNames": {
+    "p-button": {
+      "amount": 23,
+      "properties": {
+        "property2": {
+          "amount": 2,
+          "values": {
+            "small": 2,
+            "big": 3
+          }
+        },
+        "property1": 3
+      },
+      "unusedProperties": ["prop1", "prop2"]
+    }
+  },
+
+
+  "aggregatedUnusedTagNames": ["p-component", "comp2"],
+
+
+  "aggregatedComsumedTagNamesForPrefixesAndVersions": {
+    "2.17.0": [
+      "": {
+        "p-button": {
+          "amount": 23,
+          "properties": {
+            "property2": {
+              "amount": 2,
+              "values": {
+                "small": 2,
+                "big": 3
+              }
+            },
+            "property1": 3
+          }
+        }
+      },
+      "phn": {
+        "p-button": {
+          "amount": 23,
+          "properties": {
+            "property2": {
+              "amount": 2,
+              "values": {
+                "small": 2,
+                "big": 3
+              },
+
+            },
+            "property1": 3
+          }
+        }
+      }
+    ]
+  },
+
+
