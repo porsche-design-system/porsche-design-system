@@ -1,17 +1,11 @@
 import fs from 'fs';
 import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
-import { componentMeta } from '@porsche-design-system/shared';
-import { crawlComponents, TagNamesWithProperties } from './crawl-components';
+import { crawlComponents } from './crawl-components';
+import { TagNamesWithProperties, getTagNamesWithProperties } from './helper';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
-  const tagNamesWithProperties: TagNamesWithProperties = Object.entries(componentMeta).reduce(
-    (result, [key, value]) => ({
-      ...result,
-      [key]: value.props ? Object.keys(value.props) : {},
-    }),
-    {}
-  );
+  const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
 
   for (const websiteName in config.customerWebsiteMap) {
     const websiteUrl = config.customerWebsiteMap[websiteName];

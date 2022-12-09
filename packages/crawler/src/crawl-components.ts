@@ -1,4 +1,5 @@
 import * as puppeteer from 'puppeteer';
+import { TagNamesWithProperties } from './crawl-websites';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -7,8 +8,6 @@ declare global {
     porscheDesignSystem: { [key: string]: { prefixes: string[] } };
   }
 }
-
-export type TagNamesWithProperties = Record<string, string[]>;
 
 // TODO: define correct return type
 export const crawlComponents = async (
