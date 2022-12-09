@@ -6,8 +6,7 @@ import { crawlWebsites } from './src/crawl-websites';
 const startBrowser = async (): Promise<void> => {
   try {
     const browser = await puppeteer.launch({
-      // TODO: make headless before PR
-      headless: false, // The browser is visible
+      headless: true,
       ignoreHTTPSErrors: true,
       args: [`--window-size=${config.width},${config.height}`],
     });
