@@ -1,6 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import { crawlerConfig as config } from './constants';
-import { removeOldReports } from './src/helper';
+import { removeOutdatedReports } from './src/helper';
 import { crawlWebsites } from './src/crawl-websites';
 
 const startBrowser = async (): Promise<void> => {
@@ -10,7 +10,7 @@ const startBrowser = async (): Promise<void> => {
       ignoreHTTPSErrors: true,
       args: [`--window-size=${config.width},${config.height}`],
     });
-    removeOldReports();
+    removeOutdatedReports();
     await crawlWebsites(browser);
 
     console.log('Success - please check reports');

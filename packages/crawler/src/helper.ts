@@ -1,13 +1,11 @@
 import fs from 'fs';
 import { crawlerConfig as config } from '../constants';
 
-export const removeOldReports = (): void => {
+export const removeOutdatedReports = (): void => {
   fs.readdirSync(config.reportFolderName)
-    .filter((fileName: string) => {
-      const dateCreated = Date.parse(fileName.split(config.dateSplitter)[0]);
-      const oldestTimePossible = Date.now() - config.reportsMaxAge;
-      return dateCreated < oldestTimePossible;
-    })
+    .filter(
+      (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
+    )
     .map((fileName: string) => {
       fs.unlinkSync(`${config.reportFolderName}/${fileName}`);
     });
