@@ -1,0 +1,84 @@
+{
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": [
+            {
+                "phn-p-button": {}
+            },
+            {
+                "phn-p-icon": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-marque": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-icon": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-link-pure": {}
+            },
+            {
+                "phn-p-icon": {}
+            },
+            {
+                "phn-p-button-pure": {}
+            },
+            {
+                "phn-p-flex": {}
+            },
+            {
+                "phn-p-icon": {}
+            },
+            {
+                "phn-p-text": {}
+            },
+            {
+                "phn-p-icon": {}
+            }
+        ]
+    }
+}

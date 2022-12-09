@@ -121,14 +121,15 @@ const crawlComponents = async (page: puppeteer.Page): Promise<any> => {
 
 const removeOldReports = (): void => {
   const reportFiles = fs.readdirSync(reportFolderName);
-  const filesToRemove = reportFiles.filter((fileName: string) => {
-    const dateCreated = Date.parse(fileName.split(dateSplitter)[0]);
-    const oldestTimePossible = Date.now() - reportsMaxAge;
-    return dateCreated < oldestTimePossible;
-  });
-  for (const fileName of filesToRemove) {
-    fs.unlinkSync(`${reportFolderName}/${fileName}`);
-  }
+  reportFiles
+    .filter((fileName: string) => {
+      const dateCreated = Date.parse(fileName.split(dateSplitter)[0]);
+      const oldestTimePossible = Date.now() - reportsMaxAge;
+      return dateCreated < oldestTimePossible;
+    })
+    .map((fileName: string) => {
+      fs.unlinkSync(`${reportFolderName}/${fileName}`);
+    });
 };
 
 const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {

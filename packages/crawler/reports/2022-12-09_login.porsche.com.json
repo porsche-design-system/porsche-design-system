@@ -1,0 +1,290 @@
+{
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": [
+            {
+                "p-content-wrapper": {
+                    "width": "fluid"
+                }
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-marque": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-headline": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-select-wrapper": {}
+            },
+            {
+                "p-select-wrapper-dropdown": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary"
+                }
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-text": {
+                    "tag": "div"
+                }
+            },
+            {
+                "p-button-pure": {
+                    "icon": "none"
+                }
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-button-pure": {
+                    "icon": "arrow-head-left"
+                }
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-text-field-wrapper": {}
+            },
+            {
+                "p-button": {
+                    "variant": "primary",
+                    "type": "submit"
+                }
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-flex": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-flex-item": {}
+            },
+            {
+                "p-flex-item": {
+                    "grow": "1"
+                }
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-text": {}
+            },
+            {
+                "p-divider": {}
+            },
+            {
+                "p-flex": {
+                    "direction": "column"
+                }
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-popover": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-button-pure": {}
+            },
+            {
+                "p-icon": {}
+            },
+            {
+                "p-content-wrapper": {}
+            }
+        ]
+    }
+}
