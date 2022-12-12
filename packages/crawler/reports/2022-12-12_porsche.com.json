@@ -1,4 +1,10 @@
 {
+    "consumedPdsVersionsWithPrefixes": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
     "aggregatedConsumedTagNames": {
         "p-button": {
             "amount": 1,
@@ -28,15 +34,6 @@
             "amount": 1,
             "properties": {}
         }
-    },
-    "consumedPdsVersions": [
-        "2.17.0"
-    ],
-    "consumedPrefixesForVersions": {
-        "2.17.0": [
-            "",
-            "phn"
-        ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
         "2.17.0": {
@@ -73,7 +70,7 @@
             }
         }
     },
-    "consumedTagNamesForVersions": {
+    "consumedTagNamesForVersionsAndPrefixes": {
         "2.17.0": {
             "": [],
             "phn": [

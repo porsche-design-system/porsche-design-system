@@ -20,6 +20,7 @@ export const crawlerConfig: CrawlerConfig = {
   // TODO: how long should the old reports stay?
   reportsMaxAge: 1000 * 60 * 60 * 24 * 7,
   // TODO: do we want to crawl different viewports?
+  // TODO: compare with our desktop breakpoint, maybe fetch viewoirt from Puppeteer
   width: 1366,
   height: 768,
 };

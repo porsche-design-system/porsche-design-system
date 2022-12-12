@@ -1,7 +1,12 @@
 {
+    "consumedPdsVersionsWithPrefixes": {
+        "2.18.0-rc.1": [
+            ""
+        ]
+    },
     "aggregatedConsumedTagNames": {
         "p-link-pure": {
-            "amount": 39,
+            "amount": 38,
             "properties": {}
         },
         "p-divider": {
@@ -13,15 +18,15 @@
             "properties": {}
         },
         "p-icon": {
-            "amount": 63,
+            "amount": 65,
             "properties": {}
         },
         "p-link": {
-            "amount": 3,
+            "amount": 4,
             "properties": {}
         },
         "p-button-pure": {
-            "amount": 3,
+            "amount": 5,
             "properties": {}
         },
         "p-link-social": {
@@ -41,19 +46,11 @@
             "properties": {}
         }
     },
-    "consumedPdsVersions": [
-        "2.18.0-rc.1"
-    ],
-    "consumedPrefixesForVersions": {
-        "2.18.0-rc.1": [
-            ""
-        ]
-    },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
         "2.18.0-rc.1": {
             "": {
                 "p-link-pure": {
-                    "amount": 39,
+                    "amount": 38,
                     "properties": {}
                 },
                 "p-divider": {
@@ -65,15 +62,15 @@
                     "properties": {}
                 },
                 "p-icon": {
-                    "amount": 63,
+                    "amount": 65,
                     "properties": {}
                 },
                 "p-link": {
-                    "amount": 3,
+                    "amount": 4,
                     "properties": {}
                 },
                 "p-button-pure": {
-                    "amount": 3,
+                    "amount": 5,
                     "properties": {}
                 },
                 "p-link-social": {
@@ -95,7 +92,7 @@
             }
         }
     },
-    "consumedTagNamesForVersions": {
+    "consumedTagNamesForVersionsAndPrefixes": {
         "2.18.0-rc.1": {
             "": [
                 {
@@ -267,7 +264,10 @@
                     "p-icon": {}
                 },
                 {
-                    "p-link-pure": {}
+                    "p-button-pure": {}
+                },
+                {
+                    "p-button-pure": {}
                 },
                 {
                     "p-icon": {}
@@ -307,6 +307,15 @@
                 },
                 {
                     "p-icon": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
                 },
                 {
                     "p-icon": {}

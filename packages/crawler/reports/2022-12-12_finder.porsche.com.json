@@ -1,4 +1,9 @@
 {
+    "consumedPdsVersionsWithPrefixes": {
+        "2.14.0": [
+            "fn"
+        ]
+    },
     "aggregatedConsumedTagNames": {
         "p-icon": {
             "amount": 13,
@@ -20,14 +25,6 @@
             "amount": 3,
             "properties": {}
         }
-    },
-    "consumedPdsVersions": [
-        "2.14.0"
-    ],
-    "consumedPrefixesForVersions": {
-        "2.14.0": [
-            "fn"
-        ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
         "2.14.0": {
@@ -55,7 +52,7 @@
             }
         }
     },
-    "consumedTagNamesForVersions": {
+    "consumedTagNamesForVersionsAndPrefixes": {
         "2.14.0": {
             "fn": [
                 {

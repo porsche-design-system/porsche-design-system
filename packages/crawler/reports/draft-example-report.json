@@ -1,63 +1,69 @@
 {
+  "consumedPdsVersionsWithPrefixes": {
+    "2.17.0": ["", "phn"],
+    "2.16.2": ["pnav-footer"]
+  },
   "aggregatedConsumedTagNames": {
     "p-button": {
       "amount": 23,
       "properties": {
-        "property1": {
-          "amount": 2,
+        "theme": {
+          "amount": 9,
           "values": {
-            "small": 2,
-            "big": 3
+            "dark": 8,
+            "light": 1
           }
         },
-        "property2": 3
+        "width": {
+          "amount": 4,
+          "values": {
+            "basic": 3,
+            "extended": 1
+          }
+        }
       },
-      "unusedProperties": ["prop1", "prop2"]
+      "property2": 3
     }
   },
   "aggregatedUnusedTagNames": ["p-component1", "p-component2"],
-  "consumedPdsVersions": ["2.17.0", "2.16.2"],
-  "consumedPrefixesForVersions": {
-    "2.17.0": ["", "phn"],
-    "2.16.2": ["pnav-footer"]
-  },
   "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
     "2.17.0": {
       "prefix1": {
         "p-button": {
           "amount": 23,
           "properties": {
-            "property1": {
-              "amount": 2,
+            "theme": {
+              "amount": 9,
               "values": {
-                "small": 2,
-                "big": 2
+                "dark": 8,
+                "light": 1
               }
             },
-            "property2": 3
-          }
+            "width": {
+              "amount": 4,
+              "values": {
+                "basic": 3,
+                "extended": 1
+              }
+            }
+          },
+          "unusedProperties": ["prop1", "prop2"]
         }
       },
-      "prefix2": {
-        "p-button": {
-          "amount": 23,
-          "properties": {
-            "property2": {
-              "amount": 2,
-              "values": {
-                "small": 2,
-                "big": 3
-              }
-            },
-            "property1": 3
-          }
-        }
-      }
-    }
+      "prefix2": {}
+    },
+    "2.18.0": {}
   },
-  "consumedTagNamesForVersions": {
+  "consumedTagNamesForVersionsAndPrefixes": {
     "2.17.0": {
       "prefix1": [
+        {
+          "p-link-pure": {
+            "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+            "theme": "dark",
+            "weight": "semibold"
+          }
+        },
         {
           "p-link-pure": {
             "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
@@ -69,6 +75,13 @@
           "p-text": {
             "size": "{ base: 'small', m: 'medium', l: 'large' }",
             "theme": "dark"
+          }
+        },
+        {
+          "p-link-pure": {
+            "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+            "theme": "dark",
+            "weight": "semibold"
           }
         }
       ],

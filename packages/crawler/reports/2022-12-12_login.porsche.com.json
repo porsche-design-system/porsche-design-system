@@ -1,4 +1,9 @@
 {
+    "consumedPdsVersionsWithPrefixes": {
+        "2.17.0": [
+            ""
+        ]
+    },
     "aggregatedConsumedTagNames": {
         "p-content-wrapper": {
             "amount": 2,
@@ -105,14 +110,6 @@
             "amount": 1,
             "properties": {}
         }
-    },
-    "consumedPdsVersions": [
-        "2.17.0"
-    ],
-    "consumedPrefixesForVersions": {
-        "2.17.0": [
-            ""
-        ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
         "2.17.0": {
@@ -225,7 +222,7 @@
             }
         }
     },
-    "consumedTagNamesForVersions": {
+    "consumedTagNamesForVersionsAndPrefixes": {
         "2.17.0": {
             "": [
                 {

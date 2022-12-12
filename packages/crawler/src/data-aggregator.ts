@@ -18,10 +18,6 @@ export class DataAggregator {
     this.consumedTagNamesForVersions = consumedTagNamesForVersions;
   }
 
-  getConsumedPdsVersions = (): string[] => {
-    return Object.keys(this.consumedTagNamesForVersions);
-  };
-
   getConsumedPrefixesForVersions = (): { [pdsVersion: string]: string[] } => {
     return Object.entries(this.consumedTagNamesForVersions).reduce(
       (result, [pdsVersion, prefixesWithData]) => ({

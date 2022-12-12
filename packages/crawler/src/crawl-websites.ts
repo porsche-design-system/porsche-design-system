@@ -23,12 +23,11 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
 
     console.log('Crawling page ' + page.url());
 
-    const consumedTagNamesForVersions = await crawlComponents(page, tagNamesWithProperties);
-    const dataAggregator = new DataAggregator(consumedTagNamesForVersions);
+    const consumedTagNamesForVersionsAndPrefixes = await crawlComponents(page, tagNamesWithProperties);
+    const dataAggregator = new DataAggregator(consumedTagNamesForVersionsAndPrefixes);
 
     console.log('Aggregating data for ' + page.url());
-    const consumedPdsVersions = dataAggregator.getConsumedPdsVersions();
-    const consumedPrefixesForVersions = dataAggregator.getConsumedPrefixesForVersions();
+    const consumedPdsVersionsWithPrefixes = dataAggregator.getConsumedPrefixesForVersions();
     const aggregatedConsumedTagNamesForVersionsAndPrefixes =
       dataAggregator.getAggregatedConsumedTagNamesForVersionsAndPrefixes();
     const aggregatedConsumedTagNames = dataAggregator.getAggregatedConsumedTagNames();
@@ -37,11 +36,10 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
       `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}${websiteName}.json`,
       JSON.stringify(
         {
+          consumedPdsVersionsWithPrefixes,
           aggregatedConsumedTagNames,
-          consumedPdsVersions,
-          consumedPrefixesForVersions,
           aggregatedConsumedTagNamesForVersionsAndPrefixes,
-          consumedTagNamesForVersions,
+          consumedTagNamesForVersionsAndPrefixes,
         },
         null,
         4
