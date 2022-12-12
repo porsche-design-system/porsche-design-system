@@ -20,9 +20,10 @@ export const validatePartialUsage = (): void => {
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetInitialStylesUsage();
     validateFontFaceStylesheetUsage();
-    validateGetLoaderScriptUsage();
     validateGetFontLinksUsage();
-    validateGetComponentChunkLinksUsage();
+    // TODO: integration test (real world test) first, before rollout
+    // validateGetLoaderScriptUsage();
+    // validateGetComponentChunkLinksUsage();
   }
 };
 
@@ -33,7 +34,7 @@ export const validateFontFaceStylesheetUsage = (): void => {
 };
 
 export const validateGetFontLinksUsage = (): void => {
-  if (!document.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
+  if (!document.head.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
     throwPartialValidationWarning('getFontLinks');
   }
 };
@@ -58,7 +59,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
 };
 
 export const validateGetLoaderScriptUsage = (): void => {
-  if (!document.querySelector('script[data-pds-loader-script]')) {
+  if (!document.body.querySelector('script[data-pds-loader-script]')) {
     throwPartialValidationWarning('getLoaderScript');
   }
 };
@@ -67,7 +68,7 @@ export const validateGetInitialStylesUsage = (): void => {
   Object.values(getPorscheDesignSystemPrefixesForVersions())
     .flat()
     .forEach((prefix) => {
-      if (!document.querySelector(`style[data-pds-initial-styles${prefix ? `-${prefix}` : ''}]`)) {
+      if (!document.head.querySelector(`style[data-pds-initial-styles${prefix ? `-${prefix}` : ''}]`)) {
         throwPartialValidationWarning('getInitialStyles', prefix);
       }
     });
