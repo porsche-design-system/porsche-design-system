@@ -3,10 +3,16 @@ module.exports = {
   rootDir: '../../../',
   verbose: true,
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/tests/unit/config/setup.ts'],
   testMatch: ['**/tests/unit/specs/**/*.spec.{tsx,ts}'],
-//  collectCoverageFrom: ['!<rootDir>/node_modules/', 'projects/vue-wrapper/src/!(lib)**'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
   restoreMocks: true,
+  testEnvironmentOptions: {
+    customExportConditions: ['node', 'node-addons'],
+  },
+  transform: {
+    '^.+\\.vue$': '@vue/vue3-jest',
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest',
+  },
 };
