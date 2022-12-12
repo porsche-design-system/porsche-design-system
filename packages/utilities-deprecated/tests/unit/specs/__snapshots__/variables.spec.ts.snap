@@ -145,95 +145,95 @@ exports[`should contain correct values for font 1`] = `
   "size": {
     "12": {
       "fontSize": "0.75rem",
-      "lineHeight": 1.6666666667,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "16": {
       "fontSize": "1rem",
-      "lineHeight": 1.5,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "18": {
       "fontSize": "1.125rem",
-      "lineHeight": 1.5555555556,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "20": {
       "fontSize": "1.25rem",
-      "lineHeight": 1.4,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "22": {
       "fontSize": "1.375rem",
-      "lineHeight": 1.4545454545,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "24": {
       "fontSize": "1.5rem",
-      "lineHeight": 1.5,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "28": {
       "fontSize": "1.75rem",
-      "lineHeight": 1.4285714286,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "30": {
       "fontSize": "1.875rem",
-      "lineHeight": 1.3333333333,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "32": {
       "fontSize": "2rem",
-      "lineHeight": 1.375,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "36": {
       "fontSize": "2.25rem",
-      "lineHeight": 1.3333333333,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "42": {
       "fontSize": "2.625rem",
-      "lineHeight": 1.2380952381,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "44": {
       "fontSize": "2.75rem",
-      "lineHeight": 1.1818181818,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "48": {
       "fontSize": "3rem",
-      "lineHeight": 1.25,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "52": {
       "fontSize": "3.25rem",
-      "lineHeight": 1.2307692308,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "60": {
       "fontSize": "3.75rem",
-      "lineHeight": 1.2,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "62": {
       "fontSize": "3.875rem",
-      "lineHeight": 1.2258064516,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "72": {
       "fontSize": "4.5rem",
-      "lineHeight": 1.2222222222,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "84": {
       "fontSize": "5.25rem",
-      "lineHeight": 1.1904761905,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "large": {
       "fontSize": "2.25rem",
-      "lineHeight": 1.3333333333,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "medium": {
       "fontSize": "1.5rem",
-      "lineHeight": 1.5,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "small": {
       "fontSize": "1rem",
-      "lineHeight": 1.5,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "xLarge": {
       "fontSize": "3.25rem",
-      "lineHeight": 1.2307692308,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
     "xSmall": {
       "fontSize": "0.75rem",
-      "lineHeight": 1.6666666667,
+      "lineHeight": "calc(6px + 2.125ex)",
     },
   },
   "weight": {

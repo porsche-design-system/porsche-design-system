@@ -60,6 +60,14 @@
  * @param $font-size - internally unused, but present for backwards compatibility reasons
  */
 @function p-calculate-line-height($font-size) {
+  @if __p-is-rem($font-size) {
+    $font-size: p-rem-to-px($font-size);
+  } @else if __p-is-px($font-size) {
+    $font-size: $font-size;
+  } @else {
+    @error 'p-calculate-line-height() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
+  }
+
   @return calc(6px + 2.125ex);
 }
 
