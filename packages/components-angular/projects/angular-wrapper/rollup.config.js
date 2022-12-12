@@ -16,6 +16,7 @@ const external = [
   '@porsche-design-system/components-js/utilities/js',
 ];
 
+// identical with rollup.config.js from components-vue
 // 1 input, 2 output formats
 // typings are generated via separate tsc command since @rollup/plugin-typescript can't handle it properly
 const buildConfig = (packagePath) => {

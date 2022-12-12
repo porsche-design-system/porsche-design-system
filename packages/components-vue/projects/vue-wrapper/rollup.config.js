@@ -16,6 +16,9 @@ const external = [
   '@porsche-design-system/components-js/utilities/js',
 ];
 
+// identical with rollup.config.js from components-angular
+// 1 input, 2 output formats
+// typings are generated via separate tsc command since @rollup/plugin-typescript can't handle it properly
 const buildConfig = (packagePath) => {
   const relativePackagePath = packagePath.split('/').pop();
 
@@ -25,17 +28,22 @@ const buildConfig = (packagePath) => {
     output: [
       {
         dir: `${outputDir}/${packagePath}`,
-        format: 'esm',
+        format: 'cjs',
+        esModule: true,
         plugins: [
           generatePackageJson({
             baseContents: {
               main: `${relativePackagePath}.js`,
-              module: `${relativePackagePath}.js`,
+              module: `esm/${relativePackagePath}.js`,
               types: `${relativePackagePath}.d.ts`,
               sideEffects: false,
             },
           }),
         ],
+      },
+      {
+        dir: `${outputDir}/${packagePath}/esm`,
+        format: 'esm',
       },
     ],
     plugins: [
