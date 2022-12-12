@@ -4,17 +4,13 @@ import type { InjectionKey } from 'vue';
 export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<'pdsPrefix'>;
 
 export const getPrefixedTagName = (tagName: string): string => {
-  if (process.env.NODE_ENV === 'test') {
-    return tagName;
-  } else {
-    const prefix = inject(prefixInjectionKey);
+  const prefix = inject(prefixInjectionKey);
 
-    if (prefix === undefined) {
-      throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
-    }
-
-    return prefix ? prefix + '-' + tagName : tagName;
+  if (prefix === undefined) {
+    throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
   }
+
+  return prefix ? prefix + '-' + tagName : tagName;
 };
 
 export const syncProperties = <T extends HTMLElement>(elementRef: T, props: Partial<T>): void => {
