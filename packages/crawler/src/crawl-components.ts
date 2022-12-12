@@ -1,26 +1,26 @@
 import * as puppeteer from 'puppeteer';
 import { TagNamesWithProperties } from './helper';
+import { TagName } from 'shared/src';
+import { ConsumedTagNamesForVersions } from './data-aggregator';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
     // Extend Document interface, so we don't have to cast it on any
-    porscheDesignSystem: { [key: string]: { prefixes: string[] } };
+    porscheDesignSystem: { [version: string]: { prefixes: string[] } };
   }
 }
 
-// TODO: define correct return type
 export const crawlComponents = async (
   page: puppeteer.Page,
   tagNamesWithProperties: TagNamesWithProperties
-): Promise<any> => {
+): Promise<ConsumedTagNamesForVersions> => {
   const pdsCrawlerReport = await page.evaluate(
-    // TODO: define correct return type
-    async ({ tagNamesWithProperties }): Promise<any> => {
+    async ({ tagNamesWithProperties }): Promise<ConsumedTagNamesForVersions> => {
       const tagNames = Object.keys(tagNamesWithProperties);
-      const porscheDesignSystem = document.porscheDesignSystem;
-      const consumedPdsVersions = Object.keys(porscheDesignSystem);
-      const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(porscheDesignSystem).reduce(
+      const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(
+        document.porscheDesignSystem
+      ).reduce(
         (result, [key, value]) => ({
           ...result,
           [key]: value.prefixes,
@@ -49,9 +49,15 @@ export const crawlComponents = async (
       ): { [p: string]: { [p: string]: unknown } }[] =>
         pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
-          const allPdsPropertiesForTagName = Object.entries(tagNamesWithProperties).reduce((result, [key, value]) => {
-            return (prefix ? `${prefix}-${key}` : key) === tagName ? value : result;
-          }, [] as string[]);
+          const componentName = Object.keys(tagNamesWithProperties).find(
+            (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
+          ) as TagName;
+
+          if (!componentName) {
+            throw new Error('Can not find component name');
+          }
+
+          const allPdsPropertiesForTagName = tagNamesWithProperties[componentName];
 
           const allAppliedProperties = Object.assign(
             {},
@@ -64,12 +70,10 @@ export const crawlComponents = async (
             Object.entries(allAppliedProperties).filter(([key]) => allPdsPropertiesForTagName.includes(key))
           );
 
-          return { [tagName]: consumedPdsProperties };
+          return { [componentName]: consumedPdsProperties };
         });
 
-      const consumedTagNamesForVersions: { [key: string]: string[] } = Object.entries(
-        consumedPrefixesForVersions
-      ).reduce((result, [version, prefixes]) => {
+      return Object.entries(consumedPrefixesForVersions).reduce((result, [version, prefixes]) => {
         const consumedTagNamesForPrefixes = prefixes.reduce((result, prefix: string) => {
           const consumedTagNames = getConsumedTagNames(
             prefix,
@@ -87,14 +91,6 @@ export const crawlComponents = async (
           [version]: consumedTagNamesForPrefixes,
         };
       }, {});
-
-      // TODO: get and count the tag names with prefixes - and also without prefixes?
-
-      return {
-        consumedPdsVersions,
-        consumedPrefixesForVersions,
-        consumedTagNamesForVersions,
-      };
     },
     { tagNamesWithProperties }
   );

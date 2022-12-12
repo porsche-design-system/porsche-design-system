@@ -1,4 +1,111 @@
 {
+    "aggregatedConsumedTagNames": {
+        "p-content-wrapper": {
+            "amount": 2,
+            "properties": {
+                "width": {
+                    "amount": 1,
+                    "values": {
+                        "fluid": 1
+                    }
+                }
+            }
+        },
+        "p-flex": {
+            "amount": 11,
+            "properties": {
+                "direction": {
+                    "amount": 5,
+                    "values": {
+                        "column": 5
+                    }
+                }
+            }
+        },
+        "p-flex-item": {
+            "amount": 34,
+            "properties": {
+                "grow": {
+                    "amount": 4,
+                    "values": {
+                        "1": 4
+                    }
+                }
+            }
+        },
+        "p-marque": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-headline": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-text-field-wrapper": {
+            "amount": 4,
+            "properties": {}
+        },
+        "p-button": {
+            "amount": 3,
+            "properties": {
+                "variant": {
+                    "amount": 3,
+                    "values": {
+                        "primary": 3
+                    }
+                },
+                "type": {
+                    "amount": 1,
+                    "values": {
+                        "submit": 1
+                    }
+                }
+            }
+        },
+        "p-icon": {
+            "amount": 10,
+            "properties": {}
+        },
+        "p-select-wrapper": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-select-wrapper-dropdown": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-divider": {
+            "amount": 4,
+            "properties": {}
+        },
+        "p-text": {
+            "amount": 3,
+            "properties": {
+                "tag": {
+                    "amount": 1,
+                    "values": {
+                        "div": 1
+                    }
+                }
+            }
+        },
+        "p-button-pure": {
+            "amount": 5,
+            "properties": {
+                "icon": {
+                    "amount": 2,
+                    "values": {
+                        "none": 1,
+                        "arrow-head-left": 1
+                    }
+                }
+            }
+        },
+        "p-popover": {
+            "amount": 1,
+            "properties": {}
+        }
+    },
     "consumedPdsVersions": [
         "2.17.0"
     ],
@@ -6,6 +113,117 @@
         "2.17.0": [
             ""
         ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.17.0": {
+            "": {
+                "p-content-wrapper": {
+                    "amount": 2,
+                    "properties": {
+                        "width": {
+                            "amount": 1,
+                            "values": {
+                                "fluid": 1
+                            }
+                        }
+                    }
+                },
+                "p-flex": {
+                    "amount": 11,
+                    "properties": {
+                        "direction": {
+                            "amount": 5,
+                            "values": {
+                                "column": 5
+                            }
+                        }
+                    }
+                },
+                "p-flex-item": {
+                    "amount": 34,
+                    "properties": {
+                        "grow": {
+                            "amount": 4,
+                            "values": {
+                                "1": 4
+                            }
+                        }
+                    }
+                },
+                "p-marque": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-headline": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-text-field-wrapper": {
+                    "amount": 4,
+                    "properties": {}
+                },
+                "p-button": {
+                    "amount": 3,
+                    "properties": {
+                        "variant": {
+                            "amount": 3,
+                            "values": {
+                                "primary": 3
+                            }
+                        },
+                        "type": {
+                            "amount": 1,
+                            "values": {
+                                "submit": 1
+                            }
+                        }
+                    }
+                },
+                "p-icon": {
+                    "amount": 10,
+                    "properties": {}
+                },
+                "p-select-wrapper": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-select-wrapper-dropdown": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-divider": {
+                    "amount": 4,
+                    "properties": {}
+                },
+                "p-text": {
+                    "amount": 3,
+                    "properties": {
+                        "tag": {
+                            "amount": 1,
+                            "values": {
+                                "div": 1
+                            }
+                        }
+                    }
+                },
+                "p-button-pure": {
+                    "amount": 5,
+                    "properties": {
+                        "icon": {
+                            "amount": 2,
+                            "values": {
+                                "none": 1,
+                                "arrow-head-left": 1
+                            }
+                        }
+                    }
+                },
+                "p-popover": {
+                    "amount": 1,
+                    "properties": {}
+                }
+            }
+        }
     },
     "consumedTagNamesForVersions": {
         "2.17.0": {

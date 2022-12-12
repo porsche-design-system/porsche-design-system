@@ -1,28 +1,44 @@
 {
-  "aggregatedComsumedTagNames": {
+  "aggregatedConsumedTagNames": {
     "p-button": {
       "amount": 23,
       "properties": {
-        "property2": {
+        "property1": {
           "amount": 2,
           "values": {
             "small": 2,
             "big": 3
           }
         },
-        "property1": 3
+        "property2": 3
       },
       "unusedProperties": ["prop1", "prop2"]
     }
   },
-
-
-  "aggregatedUnusedTagNames": ["p-component", "comp2"],
-
-
-  "aggregatedComsumedTagNamesForPrefixesAndVersions": {
-    "2.17.0": [
-      "": {
+  "aggregatedUnusedTagNames": ["p-component1", "p-component2"],
+  "consumedPdsVersions": ["2.17.0", "2.16.2"],
+  "consumedPrefixesForVersions": {
+    "2.17.0": ["", "phn"],
+    "2.16.2": ["pnav-footer"]
+  },
+  "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+    "2.17.0": {
+      "prefix1": {
+        "p-button": {
+          "amount": 23,
+          "properties": {
+            "property1": {
+              "amount": 2,
+              "values": {
+                "small": 2,
+                "big": 2
+              }
+            },
+            "property2": 3
+          }
+        }
+      },
+      "prefix2": {
         "p-button": {
           "amount": 23,
           "properties": {
@@ -36,24 +52,41 @@
             "property1": 3
           }
         }
-      },
-      "phn": {
-        "p-button": {
-          "amount": 23,
-          "properties": {
-            "property2": {
-              "amount": 2,
-              "values": {
-                "small": 2,
-                "big": 3
-              },
-
-            },
-            "property1": 3
+      }
+    }
+  },
+  "consumedTagNamesForVersions": {
+    "2.17.0": {
+      "prefix1": [
+        {
+          "p-link-pure": {
+            "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+            "theme": "dark",
+            "weight": "semibold"
+          }
+        },
+        {
+          "p-text": {
+            "size": "{ base: 'small', m: 'medium', l: 'large' }",
+            "theme": "dark"
           }
         }
-      }
-    ]
-  },
-
-
+      ],
+      "prefix2": [
+        {
+          "p-link-pure": {
+            "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+            "theme": "dark",
+            "weight": "semibold"
+          }
+        },
+        {
+          "p-text": {
+            "size": "{ base: 'small', m: 'medium', l: 'large' }",
+            "theme": "dark"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,4 +1,46 @@
 {
+    "aggregatedConsumedTagNames": {
+        "p-link-pure": {
+            "amount": 39,
+            "properties": {}
+        },
+        "p-divider": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-marque": {
+            "amount": 2,
+            "properties": {}
+        },
+        "p-icon": {
+            "amount": 63,
+            "properties": {}
+        },
+        "p-link": {
+            "amount": 3,
+            "properties": {}
+        },
+        "p-button-pure": {
+            "amount": 3,
+            "properties": {}
+        },
+        "p-link-social": {
+            "amount": 5,
+            "properties": {}
+        },
+        "p-modal": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-button-group": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-button": {
+            "amount": 2,
+            "properties": {}
+        }
+    },
     "consumedPdsVersions": [
         "2.18.0-rc.1"
     ],
@@ -6,6 +48,52 @@
         "2.18.0-rc.1": [
             ""
         ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.18.0-rc.1": {
+            "": {
+                "p-link-pure": {
+                    "amount": 39,
+                    "properties": {}
+                },
+                "p-divider": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-marque": {
+                    "amount": 2,
+                    "properties": {}
+                },
+                "p-icon": {
+                    "amount": 63,
+                    "properties": {}
+                },
+                "p-link": {
+                    "amount": 3,
+                    "properties": {}
+                },
+                "p-button-pure": {
+                    "amount": 3,
+                    "properties": {}
+                },
+                "p-link-social": {
+                    "amount": 5,
+                    "properties": {}
+                },
+                "p-modal": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-button-group": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-button": {
+                    "amount": 2,
+                    "properties": {}
+                }
+            }
+        }
     },
     "consumedTagNamesForVersions": {
         "2.18.0-rc.1": {

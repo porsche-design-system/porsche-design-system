@@ -3,6 +3,7 @@ import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { crawlComponents } from './crawl-components';
 import { TagNamesWithProperties, getTagNamesWithProperties } from './helper';
+import { DataAggregator } from './data-aggregator';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
@@ -20,13 +21,31 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
       waitUntil: 'networkidle0',
     });
 
-    console.log('Crawling Page ' + page.url());
+    console.log('Crawling page ' + page.url());
 
-    const crawlResults = await crawlComponents(page, tagNamesWithProperties);
+    const consumedTagNamesForVersions = await crawlComponents(page, tagNamesWithProperties);
+    const dataAggregator = new DataAggregator(consumedTagNamesForVersions);
+
+    console.log('Aggregating data for ' + page.url());
+    const consumedPdsVersions = dataAggregator.getConsumedPdsVersions();
+    const consumedPrefixesForVersions = dataAggregator.getConsumedPrefixesForVersions();
+    const aggregatedConsumedTagNamesForVersionsAndPrefixes =
+      dataAggregator.getAggregatedConsumedTagNamesForVersionsAndPrefixes();
+    const aggregatedConsumedTagNames = dataAggregator.getAggregatedConsumedTagNames();
 
     fs.writeFileSync(
       `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}${websiteName}.json`,
-      JSON.stringify(crawlResults, null, 4)
+      JSON.stringify(
+        {
+          aggregatedConsumedTagNames,
+          consumedPdsVersions,
+          consumedPrefixesForVersions,
+          aggregatedConsumedTagNamesForVersionsAndPrefixes,
+          consumedTagNamesForVersions,
+        },
+        null,
+        4
+      )
     );
 
     await page.close();

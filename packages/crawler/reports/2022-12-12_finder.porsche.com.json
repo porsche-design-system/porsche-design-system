@@ -1,0 +1,142 @@
+{
+    "aggregatedConsumedTagNames": {
+        "p-icon": {
+            "amount": 13,
+            "properties": {}
+        },
+        "p-marque": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-link": {
+            "amount": 6,
+            "properties": {}
+        },
+        "p-link-pure": {
+            "amount": 3,
+            "properties": {}
+        },
+        "p-text": {
+            "amount": 3,
+            "properties": {}
+        }
+    },
+    "consumedPdsVersions": [
+        "2.14.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.14.0": [
+            "fn"
+        ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.14.0": {
+            "fn": {
+                "p-icon": {
+                    "amount": 13,
+                    "properties": {}
+                },
+                "p-marque": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-link": {
+                    "amount": 6,
+                    "properties": {}
+                },
+                "p-link-pure": {
+                    "amount": 3,
+                    "properties": {}
+                },
+                "p-text": {
+                    "amount": 3,
+                    "properties": {}
+                }
+            }
+        }
+    },
+    "consumedTagNamesForVersions": {
+        "2.14.0": {
+            "fn": [
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-marque": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-link-pure": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-link-pure": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-link-pure": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-text": {}
+                }
+            ]
+        }
+    }
+}

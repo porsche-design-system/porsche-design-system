@@ -1,0 +1,152 @@
+{
+    "aggregatedConsumedTagNames": {
+        "p-button": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-icon": {
+            "amount": 5,
+            "properties": {}
+        },
+        "p-flex": {
+            "amount": 6,
+            "properties": {}
+        },
+        "p-marque": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-text": {
+            "amount": 8,
+            "properties": {}
+        },
+        "p-link-pure": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-button-pure": {
+            "amount": 1,
+            "properties": {}
+        }
+    },
+    "consumedPdsVersions": [
+        "2.17.0"
+    ],
+    "consumedPrefixesForVersions": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.17.0": {
+            "": {},
+            "phn": {
+                "p-button": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-icon": {
+                    "amount": 5,
+                    "properties": {}
+                },
+                "p-flex": {
+                    "amount": 6,
+                    "properties": {}
+                },
+                "p-marque": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-text": {
+                    "amount": 8,
+                    "properties": {}
+                },
+                "p-link-pure": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-button-pure": {
+                    "amount": 1,
+                    "properties": {}
+                }
+            }
+        }
+    },
+    "consumedTagNamesForVersions": {
+        "2.17.0": {
+            "": [],
+            "phn": [
+                {
+                    "p-button": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-marque": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-link-pure": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-button-pure": {}
+                },
+                {
+                    "p-flex": {}
+                },
+                {
+                    "p-icon": {}
+                },
+                {
+                    "p-text": {}
+                },
+                {
+                    "p-icon": {}
+                }
+            ]
+        }
+    }
+}

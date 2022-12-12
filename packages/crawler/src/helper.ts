@@ -1,16 +1,16 @@
 import fs from 'fs';
 import { crawlerConfig as config } from '../constants';
-import { componentMeta } from '@porsche-design-system/shared';
+import { componentMeta, TagName } from '@porsche-design-system/shared';
 
-export type TagNamesWithProperties = Record<string, string[]>;
+export type TagNamesWithProperties = Record<TagName, string[]>;
 
 export const getTagNamesWithProperties = (): TagNamesWithProperties =>
   Object.entries(componentMeta).reduce(
     (result, [key, value]) => ({
       ...result,
-      [key]: value.props ? Object.keys(value.props) : {},
+      [key]: value.props ? Object.keys(value.props) : [],
     }),
-    {}
+    {} as TagNamesWithProperties
   );
 
 export const removeOutdatedReports = (): void => {
