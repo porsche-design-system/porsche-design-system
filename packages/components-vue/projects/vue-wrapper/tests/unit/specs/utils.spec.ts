@@ -6,13 +6,47 @@ import {
 } from '../../../src/utils';
 import * as Vue from 'vue';
 
-xdescribe('getPrefixedTagName()', () => {
+describe('getPrefixedTagName()', () => {
   it('should call inject() with correctParameters', () => {
-    const spy = jest.spyOn(Vue, 'inject');
+    const spy = jest.spyOn(Vue, 'inject').mockReturnValue('');
 
     getPrefixedTagName('p-text');
 
     expect(spy).toBeCalledWith(prefixInjectionKey);
+  });
+
+  it('should call throw error if prefix is undefined', () => {
+    jest.spyOn(Vue, 'inject').mockReturnValue(undefined);
+
+    let error;
+    try {
+      getPrefixedTagName('p-text');
+    } catch (e) {
+      error = e;
+    }
+
+    expect(error).toBeDefined();
+  });
+
+  it('should return tagName if no prefix is defined', () => {
+    jest.spyOn(Vue, 'inject').mockReturnValue('');
+    const tagName = 'p-text';
+    getPrefixedTagName('p-text');
+
+    expect(getPrefixedTagName(tagName)).toBe(tagName);
+  });
+
+  it('should return prefixed tagName if prefix is defined', () => {
+    const prefix = 'my-prefix';
+    jest.spyOn(Vue, 'inject').mockReturnValue(prefix);
+    const tagName = 'p-text';
+
+    expect(getPrefixedTagName(tagName)).toBe(prefix + '-' + tagName);
+
+    const prefix2 = 'another-prefix'
+    jest.spyOn(Vue, 'inject').mockReturnValue(prefix2);
+
+    expect(getPrefixedTagName(tagName)).toBe(prefix2 + '-' + tagName);
   });
 });
 
@@ -26,6 +60,8 @@ describe('syncProperties()', () => {
     } & Partial<HTMLElement> = { customProp1: 'some prop', customProp2: true, customProp3: 1, customProp4: {} };
 
     const element = document.createElement('custom-el');
+
+    // TODO: Resolve any casting
 
     expect((element as any).customProp1).toBeUndefined();
     expect((element as any).customProp2).toBeUndefined();
@@ -42,7 +78,7 @@ describe('syncProperties()', () => {
 });
 
 describe('addEventListenerToElementRef()', () => {
-  it('should call addEventListener() with correct parameter on passed element', () => {
+  it('should call addEventListener() with correct parameters on passed element', () => {
     const element = document.createElement('custom-el');
     const eventName = 'someEventName';
     const spy = jest.spyOn(element, 'addEventListener');
@@ -52,17 +88,16 @@ describe('addEventListenerToElementRef()', () => {
     expect(spy).toBeCalledWith(eventName, expect.any(Function));
   });
 
-  xit('should add event listener with correct callback to passed element', () => {
+  it('should call passed emit() with correct parameters', () => {
     const element = document.createElement('custom-el');
     const eventName = 'someEventName';
-    const emit = (eventName, detail) => {};
+    const emit = jest.fn();
 
-    // const spy = jest.spyOn(this, 'emit');
+    const event = new CustomEvent(eventName, { detail: 'someDetail' });
 
     addEventListenerToElementRef(element, eventName, emit);
+    element.dispatchEvent(event);
 
-    element.dispatchEvent(eventName as unknown as Event);
-
-  //  expect(spy).toBeCalledWith(eventName);
+    expect(emit).toBeCalledWith(eventName, event.detail);
   });
 });
