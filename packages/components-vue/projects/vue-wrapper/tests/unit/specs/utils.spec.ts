@@ -1,12 +1,22 @@
-import { addEventListenerToElementRef, syncProperties } from '../../../src/utils';
+import {
+  addEventListenerToElementRef,
+  getPrefixedTagName,
+  prefixInjectionKey,
+  syncProperties,
+} from '../../../src/utils';
+import * as Vue from 'vue';
 
-describe('getPrefixedTagName', () => {
-  it('should', () => {
-    expect(true).toBe(true);
+xdescribe('getPrefixedTagName()', () => {
+  it('should call inject() with correctParameters', () => {
+    const spy = jest.spyOn(Vue, 'inject');
+
+    getPrefixedTagName('p-text');
+
+    expect(spy).toBeCalledWith(prefixInjectionKey);
   });
 });
 
-describe('syncProperties', () => {
+describe('syncProperties()', () => {
   it('should sync passed properties with passed element', () => {
     const props: {
       customProp1: string;
@@ -16,6 +26,12 @@ describe('syncProperties', () => {
     } & Partial<HTMLElement> = { customProp1: 'some prop', customProp2: true, customProp3: 1, customProp4: {} };
 
     const element = document.createElement('custom-el');
+
+    expect((element as any).customProp1).toBeUndefined();
+    expect((element as any).customProp2).toBeUndefined();
+    expect((element as any).customProp3).toBeUndefined();
+    expect((element as any).customProp4).toBeUndefined();
+
     syncProperties(element, props);
 
     expect((element as any).customProp1).toBe(props.customProp1);
@@ -25,8 +41,8 @@ describe('syncProperties', () => {
   });
 });
 
-describe('addEventListenerToElementRef', () => {
-  it('should add event listener with correct callback to passed element', () => {
+describe('addEventListenerToElementRef()', () => {
+  it('should call addEventListener() with correct parameter on passed element', () => {
     const element = document.createElement('custom-el');
     const eventName = 'someEventName';
     const spy = jest.spyOn(element, 'addEventListener');
