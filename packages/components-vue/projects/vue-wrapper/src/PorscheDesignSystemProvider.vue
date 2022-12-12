@@ -3,7 +3,7 @@
   import { provide } from 'vue';
   import { prefixInjectionKey } from './utils';
 
-  const props = withDefaults(defineProps<{ prefix: string }>(), {
+  const props = withDefaults(defineProps<{ prefix?: string }>(), {
     prefix: '',
   });
 
