@@ -87,17 +87,22 @@ Additional text sizes can be defined based on the Porsche type scale system.
 <p-text size="inherit" tag="span" class="type-scale f-72">72</p-text>
 <p-text size="inherit" tag="span" class="type-scale f-84">84</p-text>
 
-### Type Scale Calculator
+### Type Scale (font-size / line-height)
 
-<label for="px-unit">Enter a font-size in px unit based on Porsche Type Scale.</label>  
-<input type="number" v-model="size" id="px-unit" />
+`line-height` calculation is handled using the x-height of the `Porsche Next` font + some px compensation which gives
+the best performance, the easiest possible integration and respects UI best practices in having **larger** `line-height`
+values for **small** `font-size` definitions and **smaller** `line-height` values for **larger** `font-size`
+definitions.
 
 ```
-{{this.typeScale(size +'px')}}
+font-size: 1rem;
+line-height: {{this.fontLineHeight}}; // optimal line-height is universally defined relative to the font-size
 ```
 
-**Example Text** <p-text size="inherit" :style="typeScale(size +'px', false)">The quick brown fox jumps over the lazy
-dog</p-text>
+##### References:
+
+- [https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/)
+- [https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit](https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit)
 
 ### Fallback fonts
 
@@ -327,21 +332,10 @@ undesirable impact on the origin character of the company typeface. This include
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { calculateLineHeight } from '@porsche-design-system/utilities';
+import { fontLineHeight } from '@porsche-design-system/components-js/utilities/js';
 
 @Component
 export default class PlaygroundTypography extends Vue {
-  public size: string = '16';
-  public typeScale(fontSize: string, comment: boolean = true): string {
-    const fittedLineHeightFactor = calculateLineHeight(fontSize);
-    const fittedLineHeightPx = Math.round(fontSize.slice(0, -2) * fittedLineHeightFactor);
-    const fontSizeRem = fontSize.slice(0, -2) / 16;
-    
-    if (comment) {
-      return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
-    }
-    
-    return "font-size: "+ fontSizeRem +"rem; line-height: "+ fittedLineHeightFactor +";";
-  }
+  public fontLineHeight = fontLineHeight;
 }
 </script>
