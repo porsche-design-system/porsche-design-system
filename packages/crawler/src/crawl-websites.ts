@@ -8,8 +8,11 @@ import { DataAggregator } from './data-aggregator';
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
 
-  for (const websiteName in config.customerWebsiteMap) {
-    const websiteUrl = config.customerWebsiteMap[websiteName];
+  for (const websiteUrl of config.customerWebsites) {
+    const parsedUrl = new URL(websiteUrl);
+    let websiteName = parsedUrl.hostname;
+    const topLevelDir = parsedUrl.pathname.match(/^\/([^/]+)\//g);
+    websiteName += topLevelDir && topLevelDir.length ? '-' + topLevelDir[0].replace(/\//g, '').replace(/_/g, '-') : '';
     const page = await browser.newPage();
     // we need this setViewport, because for example porsche.com has different components depending on screen size
     await page.setViewport({ width: config.width, height: config.height });

@@ -1,5 +1,5 @@
 export type CrawlerConfig = {
-  customerWebsiteMap: Record<string, string>;
+  customerWebsites: string[];
   reportFolderName: string;
   dateSplitter: string;
   reportsMaxAge: number;
@@ -8,13 +8,13 @@ export type CrawlerConfig = {
 };
 
 export const crawlerConfig: CrawlerConfig = {
-  customerWebsiteMap: {
-    'porsche.com': 'https://www.porsche.com/germany',
-    'finder.porsche.com': 'https://finder.porsche.com/de/de-DE',
-    'login.porsche.com': 'https://login.porsche.com/login/de/de_DE',
-    'shop.porsche.com': 'https://shop.porsche.com/de/de-DE',
-    'porsche.com.swiss': 'https://www.porsche.com/swiss/de/',
-  },
+  customerWebsites: [
+    'https://www.porsche.com/germany',
+    'https://finder.porsche.com/de/de-DE',
+    'https://login.porsche.com/login/de/de_DE',
+    'https://shop.porsche.com/de/de-DE',
+    'https://www.porsche.com/swiss/de',
+  ],
   reportFolderName: 'reports',
   dateSplitter: '_',
   // TODO: how long should the old reports stay?
