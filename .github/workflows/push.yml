@@ -558,11 +558,11 @@ jobs:
       with:
         entrypoint: run-build
         args: --components-vue
-#    - name: 'Unit Test vue-wrapper'
-#      uses: ./.github/actions/docker-run-playwright
-#      with:
-#        entrypoint: run-test-unit
-#        args: --components-vue
+    - name: 'Unit Test vue-wrapper'
+      uses: ./.github/actions/docker-run-playwright
+      with:
+        entrypoint: run-test-unit
+        args: --components-vue
     - name: 'E2E Test components-vue'
       uses: ./.github/actions/docker-run-playwright
       with:
