@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
+- Screen reader announcements in `Select Wrapper`
+
 #### Added
 
 - Validation to ensure crucial partials are used.  
