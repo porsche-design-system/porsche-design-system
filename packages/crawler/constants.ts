@@ -1,11 +1,12 @@
+import { PuppeteerLaunchOptions, Viewport } from 'puppeteer';
+
 export type CrawlerConfig = {
   customerWebsites: string[];
   reportFolderName: string;
   dateSplitter: string;
   reportsMaxAge: number;
-  width: number;
-  height: number;
   jsonSpace: number;
+  viewport: Viewport;
 };
 export const crawlerConfig: CrawlerConfig = {
   customerWebsites: [
@@ -20,9 +21,17 @@ export const crawlerConfig: CrawlerConfig = {
   jsonSpace: 4,
   // TODO: how long should the old reports stay?
   reportsMaxAge: 1000 * 60 * 60 * 24 * 7, // one week
-  // TODO: compare with our desktop breakpoint, maybe fetch viewport from Puppeteer
-  width: 1366,
-  height: 768,
+  viewport: {
+    width: 1920, // our xxl size
+    height: 800, // some height
+  },
+};
+
+export const puppeteerConfig: PuppeteerLaunchOptions = {
+  headless: true,
+  ignoreHTTPSErrors: true,
+  args: [`--window-size=${crawlerConfig.viewport.width},${crawlerConfig.viewport.height}`],
+  defaultViewport: crawlerConfig.viewport,
 };
 
 export type WebsiteUrl = typeof crawlerConfig.customerWebsites[number];
