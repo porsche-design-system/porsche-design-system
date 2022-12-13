@@ -46,6 +46,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
       websiteUrl,
       JSON.stringify(
         {
+          url: websiteUrl,
           consumedPdsVersionsWithPrefixes,
           consumedTagNamesForVersionsAndPrefixes,
         },
@@ -54,6 +55,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
       ),
       JSON.stringify(
         {
+          url: websiteUrl,
           consumedPdsVersionsWithPrefixes,
           aggregatedConsumedTagNames,
           aggregatedConsumedTagNamesForVersionsAndPrefixes,
