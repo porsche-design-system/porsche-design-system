@@ -147,7 +147,8 @@ $2`
     });
   }
 
-  const fragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider' : '';
+  const openingFragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider prefix="my-prefix"' : '';
+  const closingFragmentTag = openingFragmentTag.split(' ')[0];
   fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1      $2');
 
   fileContent = `${comment}
@@ -155,9 +156,9 @@ ${imports}
 
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
-    <${fragmentTag}>${styleJsx}
+    <${openingFragmentTag}>${styleJsx}
       ${convertToReact(fileContent)}
-    </${fragmentTag}>
+    </${closingFragmentTag}>
   );
 };
 `;
