@@ -18,7 +18,7 @@ export const ToastPrefixedPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider>
+    <PorscheDesignSystemProvider prefix="my-prefix">
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render prefixed toast neutral on light background">

@@ -25,7 +25,7 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider>
+    <PorscheDesignSystemProvider prefix="my-prefix">
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
