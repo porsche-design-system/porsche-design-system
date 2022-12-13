@@ -52,7 +52,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
           consumedTagNamesForVersionsAndPrefixes,
         },
         null,
-        4
+        config.jsonSpace
       ),
       JSON.stringify(
         {
@@ -61,7 +61,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
           aggregatedConsumedTagNamesForVersionsAndPrefixes,
         },
         null,
-        4
+        config.jsonSpace
       )
     );
 

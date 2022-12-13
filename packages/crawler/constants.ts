@@ -5,6 +5,7 @@ export type CrawlerConfig = {
   reportsMaxAge: number;
   width: number;
   height: number;
+  jsonSpace: number;
 };
 export const crawlerConfig: CrawlerConfig = {
   customerWebsites: [
@@ -16,10 +17,10 @@ export const crawlerConfig: CrawlerConfig = {
   ],
   reportFolderName: 'reports',
   dateSplitter: '_',
+  jsonSpace: 4,
   // TODO: how long should the old reports stay?
-  reportsMaxAge: 1000 * 60 * 60 * 24 * 7,
-  // TODO: do we want to crawl different viewports?
-  // TODO: compare with our desktop breakpoint, maybe fetch viewoirt from Puppeteer
+  reportsMaxAge: 1000 * 60 * 60 * 24 * 7, // one week
+  // TODO: compare with our desktop breakpoint, maybe fetch viewport from Puppeteer
   width: 1366,
   height: 768,
 };
