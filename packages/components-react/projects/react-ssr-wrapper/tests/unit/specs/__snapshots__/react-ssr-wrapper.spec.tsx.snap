@@ -3410,7 +3410,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
