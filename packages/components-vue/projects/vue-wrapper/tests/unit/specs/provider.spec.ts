@@ -13,4 +13,13 @@ describe('PorscheDesignSystemProvider', () => {
 
     expect(container.firstElementChild.tagName).toBe('MY-PREFIX-P-BUTTON');
   });
+  it('should throw error if not provided', () => {
+    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
+    expect(() => render(PButton)).toThrowErrorMatchingInlineSnapshot(
+      '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
+    );
+
+    spy.mockRestore();
+  });
 });

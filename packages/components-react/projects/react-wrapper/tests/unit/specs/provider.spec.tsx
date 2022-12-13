@@ -68,7 +68,6 @@ describe('PorscheDesignSystemProvider', () => {
   });
 
   it('should throw error if not provided', () => {
-    let error = '';
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
     expect(() => render(<PButton>Some Button</PButton>)).toThrowErrorMatchingInlineSnapshot(
