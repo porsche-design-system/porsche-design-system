@@ -12,7 +12,6 @@ export default [
     output: {
       dir: outputDir,
       format: 'cjs',
-      esModule: true,
       plugins: [
         generatePackageJson({
           baseContents: {

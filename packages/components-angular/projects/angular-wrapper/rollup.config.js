@@ -29,7 +29,6 @@ const buildConfig = (packagePath) => {
       {
         dir: `${outputDir}/${packagePath}`,
         format: 'cjs',
-        esModule: true,
         plugins: [
           generatePackageJson({
             baseContents: {
@@ -47,12 +46,14 @@ const buildConfig = (packagePath) => {
       },
     ],
     plugins: [
+      // TODO: only copy stuff once when needed instead of twice (= for each sub package)
       copy({
         targets: [
           {
             src: `${projectDir}/src/utilities/scss.scss`,
             dest: `${outputDir}/utilities`,
           },
+          // TODO: stop copying unrelated files into the root of the package when bundling sub packages
           { src: `${rootDir}/LICENSE`, dest: outputDir },
           { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
           { src: `${rootDir}/packages/components/CHANGELOG.md`, dest: outputDir },
