@@ -3,16 +3,21 @@ import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { crawlComponents } from './crawl-components';
 import { TagNamesWithProperties, getTagNamesWithProperties } from './helper';
-import { DataAggregator } from './data-aggregator';
+import {
+  getAggregatedConsumedTagNames,
+  getAggregatedConsumedTagNamesForVersionsAndPrefixes,
+  getConsumedPrefixesForVersions,
+  getRawDataWithoutVersionsAndPrefixes,
+  TagNameWithPropertiesData,
+} from './data-aggregator';
+import { writeGeneralReport, writeWebsiteReport } from './fs-report-writer';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
+  // data for all websites
+  let generalRawData = [] as TagNameWithPropertiesData[];
 
   for (const websiteUrl of config.customerWebsites) {
-    const parsedUrl = new URL(websiteUrl);
-    let websiteName = parsedUrl.hostname;
-    const topLevelDir = parsedUrl.pathname.match(/^\/([^/]+)\//g);
-    websiteName += topLevelDir && topLevelDir.length ? '-' + topLevelDir[0].replace(/\//g, '').replace(/_/g, '-') : '';
     const page = await browser.newPage();
     // we need this setViewport, because for example porsche.com has different components depending on screen size
     await page.setViewport({ width: config.width, height: config.height });
@@ -26,23 +31,34 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
 
     console.log('Crawling page ' + page.url());
 
+    // get raw data
     const consumedTagNamesForVersionsAndPrefixes = await crawlComponents(page, tagNamesWithProperties);
-    const dataAggregator = new DataAggregator(consumedTagNamesForVersionsAndPrefixes);
+    const rawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(
+      consumedTagNamesForVersionsAndPrefixes
+    );
+    generalRawData = generalRawData.concat(rawDataWithoutVersionsAndPrefixes);
 
     console.log('Aggregating data for ' + page.url());
-    const consumedPdsVersionsWithPrefixes = dataAggregator.getConsumedPrefixesForVersions();
-    const aggregatedConsumedTagNamesForVersionsAndPrefixes =
-      dataAggregator.getAggregatedConsumedTagNamesForVersionsAndPrefixes();
-    const aggregatedConsumedTagNames = dataAggregator.getAggregatedConsumedTagNames();
-
-    fs.writeFileSync(
-      `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}${websiteName}.json`,
+    const consumedPdsVersionsWithPrefixes = getConsumedPrefixesForVersions(consumedTagNamesForVersionsAndPrefixes);
+    const aggregatedConsumedTagNamesForVersionsAndPrefixes = getAggregatedConsumedTagNamesForVersionsAndPrefixes(
+      consumedTagNamesForVersionsAndPrefixes
+    );
+    const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(rawDataWithoutVersionsAndPrefixes);
+    writeWebsiteReport(
+      websiteUrl,
+      JSON.stringify(
+        {
+          consumedPdsVersionsWithPrefixes,
+          consumedTagNamesForVersionsAndPrefixes,
+        },
+        null,
+        4
+      ),
       JSON.stringify(
         {
           consumedPdsVersionsWithPrefixes,
           aggregatedConsumedTagNames,
           aggregatedConsumedTagNamesForVersionsAndPrefixes,
-          consumedTagNamesForVersionsAndPrefixes,
         },
         null,
         4
@@ -51,4 +67,17 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
 
     await page.close();
   }
+
+  const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
+
+  writeGeneralReport(
+    JSON.stringify(
+      {
+        crawledWebsites: config.customerWebsites,
+        aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
+      },
+      null,
+      4
+    )
+  );
 };

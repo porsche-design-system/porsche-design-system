@@ -1,0 +1,55 @@
+{
+    "consumedPdsVersionsWithPrefixes": {
+        "2.14.0": [
+            "fn"
+        ]
+    },
+    "aggregatedConsumedTagNames": {
+        "p-icon": {
+            "amount": 13,
+            "properties": {}
+        },
+        "p-marque": {
+            "amount": 1,
+            "properties": {}
+        },
+        "p-link": {
+            "amount": 6,
+            "properties": {}
+        },
+        "p-link-pure": {
+            "amount": 3,
+            "properties": {}
+        },
+        "p-text": {
+            "amount": 3,
+            "properties": {}
+        }
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.14.0": {
+            "fn": {
+                "p-icon": {
+                    "amount": 13,
+                    "properties": {}
+                },
+                "p-marque": {
+                    "amount": 1,
+                    "properties": {}
+                },
+                "p-link": {
+                    "amount": 6,
+                    "properties": {}
+                },
+                "p-link-pure": {
+                    "amount": 3,
+                    "properties": {}
+                },
+                "p-text": {
+                    "amount": 3,
+                    "properties": {}
+                }
+            }
+        }
+    }
+}

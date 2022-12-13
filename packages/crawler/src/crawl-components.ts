@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import { TagNamesWithProperties } from './helper';
 import { TagName } from 'shared/src';
-import { ConsumedTagNamesForVersions } from './data-aggregator';
+import { ConsumedTagNamesForVersionsAndPrefixes } from './data-aggregator';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -14,9 +14,9 @@ declare global {
 export const crawlComponents = async (
   page: puppeteer.Page,
   tagNamesWithProperties: TagNamesWithProperties
-): Promise<ConsumedTagNamesForVersions> => {
+): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
   const pdsCrawlerReport = await page.evaluate(
-    async ({ tagNamesWithProperties }): Promise<ConsumedTagNamesForVersions> => {
+    async ({ tagNamesWithProperties }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(tagNamesWithProperties);
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(
         document.porscheDesignSystem

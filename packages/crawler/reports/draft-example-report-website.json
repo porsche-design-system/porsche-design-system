@@ -1,4 +1,5 @@
 {
+  "url": "https://www.porsche.com/germany",
   "consumedPdsVersionsWithPrefixes": {
     "2.17.0": ["", "phn"],
     "2.16.2": ["pnav-footer"]
@@ -21,9 +22,9 @@
             "extended": 1
           }
         }
-      },
-      "property2": 3
-    }
+      }
+    },
+    "p-component1": {}
   },
   "aggregatedUnusedTagNames": ["p-component1", "p-component2"],
   "aggregatedConsumedTagNamesForVersionsAndPrefixes": {

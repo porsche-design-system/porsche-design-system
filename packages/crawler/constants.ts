@@ -6,7 +6,6 @@ export type CrawlerConfig = {
   width: number;
   height: number;
 };
-
 export const crawlerConfig: CrawlerConfig = {
   customerWebsites: [
     'https://www.porsche.com/germany',
@@ -24,3 +23,5 @@ export const crawlerConfig: CrawlerConfig = {
   width: 1366,
   height: 768,
 };
+
+export type WebsiteUrl = typeof crawlerConfig.customerWebsites[number];
