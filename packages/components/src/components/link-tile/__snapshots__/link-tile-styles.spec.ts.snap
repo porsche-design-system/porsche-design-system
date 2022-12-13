@@ -45,21 +45,18 @@ p {
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 600;
 }
 @media(min-width:480px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
 
 @media(min-width:760px) {
   p {
-    line-height: inherit;
     font-size: inherit;
     font-weight: 600;
   }
@@ -68,14 +65,12 @@ p {
 @media(min-width:1000px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
 
 @media(min-width:1300px) {
   p {
-    line-height: inherit;
     font-size: inherit;
     font-weight: 600;
   }
@@ -84,7 +79,6 @@ p {
 @media(min-width:1760px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
@@ -263,7 +257,6 @@ p {
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 400;
 }
@@ -357,7 +350,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -450,7 +442,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -543,7 +534,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -634,7 +624,6 @@ p {
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 400;
 }
