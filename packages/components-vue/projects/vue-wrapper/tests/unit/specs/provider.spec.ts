@@ -3,6 +3,15 @@ import { PorscheDesignSystemProvider, PButton } from '../../../src/public-api';
 import { h, ref } from 'vue';
 import * as pds from '@porsche-design-system/components-js';
 
+jest.mock('@porsche-design-system/components-js', () => {
+  const ActualPDS = jest.requireActual('@porsche-design-system/components-js');
+
+  return {
+    ...ActualPDS,
+    load: jest.fn().mockImplementation(ActualPDS.load),
+  };
+});
+
 describe('PorscheDesignSystemProvider', () => {
   it('should render unprefixed components', () => {
     const { container } = render(PorscheDesignSystemProvider, { slots: { default: PButton } });
@@ -17,6 +26,30 @@ describe('PorscheDesignSystemProvider', () => {
     });
 
     expect(container.firstElementChild.tagName).toBe('MY-PREFIX-P-BUTTON');
+  });
+
+  it('should support changing prefix at runtime', async () => {
+    function testComponent() {
+      const prefix = ref('my-prefix');
+
+      return h(PorscheDesignSystemProvider, { prefix: prefix.value }, () =>
+        h(PButton, { 'data-testid': 'button', onClick: () => (prefix.value = 'new-prefix') }, () => 'Some label')
+      );
+    }
+
+    const { container, getByTestId } = render(testComponent);
+    const spy = jest.spyOn(pds, 'load');
+    const button = getByTestId('button');
+
+    expect(container).toMatchSnapshot();
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith({ prefix: 'my-prefix' });
+
+    await fireEvent.click(button);
+
+    expect(container).toMatchSnapshot();
+    expect(pds.load).toBeCalledTimes(2);
+    expect(pds.load).toBeCalledWith({ prefix: 'new-prefix' });
   });
 
   it('should render components wrapped with nested provider and prefix', () => {

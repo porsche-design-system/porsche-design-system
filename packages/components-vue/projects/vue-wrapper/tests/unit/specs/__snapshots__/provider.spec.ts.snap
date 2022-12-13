@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PorscheDesignSystemProvider should render components wrapped with nested provider and prefix 1`] = `
+<div>
+  
+  <my-prefix-p-button>
+    
+    Some label
+    
+  </my-prefix-p-button>
+  
+  <another-prefix-p-button>
+    
+    Some label
+    
+  </another-prefix-p-button>
+  
+  <p-button>
+    
+    Some label
+    
+  </p-button>
+  
+  
+  
+</div>
+`;
+
+exports[`PorscheDesignSystemProvider should support changing prefix at runtime 1`] = `
+<div>
+  
+  <my-prefix-p-button
+    data-testid="button"
+  >
+    
+    Some label
+    
+  </my-prefix-p-button>
+  
+</div>
+`;
+
+exports[`PorscheDesignSystemProvider should support changing prefix at runtime 2`] = `
+<div>
+  
+  <my-prefix-p-button
+    data-testid="button"
+  >
+    
+    Some label
+    
+  </my-prefix-p-button>
+  
+</div>
+`;
