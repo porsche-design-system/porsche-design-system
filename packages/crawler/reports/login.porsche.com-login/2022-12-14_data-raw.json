@@ -14,7 +14,8 @@
                             "width": "fluid",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<myaccess-login-background _ngcontent-serverapp-c85=\"\" _nghost-serverapp-c84=\"\">...</myaccess-login-background><p-flex _ngcontent-serverapp-c85=\"\" direction=\"column\" class=\"site hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -26,7 +27,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item _ngcontent-serverapp-c85=\"\" class=\"site-content hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c85=\"\" class=\"hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -38,7 +40,8 @@
                             "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<router-outlet _ngcontent-serverapp-c85=\"\"></router-outlet><login-component class=\"ng-star-inserted\">...</login-component>"
                     }
                 },
                 {
@@ -50,7 +53,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<myservices-common-footer _ngcontent-serverapp-c85=\"\" _nghost-serverapp-c73=\"\" class=\"ng-tns-c73-0 ng-star-inserted\">...</myservices-common-footer>"
                     }
                 },
                 {
@@ -62,7 +66,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item class=\"hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\"></p-flex-item>"
                     }
                 },
                 {
@@ -77,7 +82,8 @@
                             "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex class=\"hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -104,7 +110,8 @@
                             "justifyContent": "flex-end",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item class=\"full-width-below-xs login-container hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\"></p-flex-item>"
                     }
                 },
                 {
@@ -119,7 +126,8 @@
                             "grow": 1,
                             "shrink": 0,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex direction=\"column\" class=\"hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -146,7 +154,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item class=\"space-bottom-56 hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\"><!----></p-flex-item><p-flex-item class=\"hydrated\"><!----></p-flex-item>"
                     }
                 },
                 {
@@ -158,7 +167,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-marque class=\"hydrated\"></p-marque>"
                     }
                 },
                 {
@@ -170,7 +180,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<step-porsche-id-login-component _nghost-serverapp-c80=\"\">...</step-porsche-id-login-component>"
                     }
                 },
                 {
@@ -182,7 +193,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<step-credential-login-component>...</step-credential-login-component>"
                     }
                 },
                 {
@@ -227,7 +239,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-40 hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-16 hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-40 hydrated\" aria-hidden=\"false\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-32 hydrated\" aria-hidden=\"false\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-40 move-off-screen hydrated\" aria-hidden=\"true\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-32 move-off-screen hydrated\" aria-hidden=\"true\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"space-bottom-24 hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -239,7 +252,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-headline _ngcontent-serverapp-c80=\"\" class=\"hydrated\">Schön, Sie zu sehen.</p-headline>"
                     }
                 },
                 {
@@ -251,7 +265,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<myaccess-common-error-message _ngcontent-serverapp-c80=\"\" _nghost-serverapp-c76=\"\"><!----></myaccess-common-error-message>"
                     }
                 },
                 {
@@ -263,7 +278,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text-field-wrapper _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-text-field-wrapper>"
                     }
                 },
                 {
@@ -275,7 +291,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-button _ngcontent-serverapp-c80=\"\" data-protractor-id=\"enter-password-btn\" variant=\"primary\" tabindex=\"0\" class=\"hydrated\">Weiter und Passwort eingeben</p-button>"
                     }
                 },
                 {
@@ -287,7 +304,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex _ngcontent-serverapp-c80=\"\" class=\"phone-number-input hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -299,7 +317,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-button _ngcontent-serverapp-c80=\"\" data-protractor-id=\"get-verification-code-btn\" variant=\"primary\" tabindex=\"-1\" class=\"hydrated\">Weiter und Verifizierungscode eingeben</p-button>"
                     }
                 },
                 {
@@ -311,7 +330,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<myaccess-divider _ngcontent-serverapp-c80=\"\" _nghost-serverapp-c78=\"\">...</myaccess-divider>"
                     }
                 },
                 {
@@ -323,7 +343,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -349,7 +370,8 @@
                             "hideLabel": false,
                             "showCharacterCount": true,
                             "actionLoading": false
-                        }
+                        },
+                        "slot": "<input _ngcontent-serverapp-c80=\"\" data-protractor-id=\"email-input\" formcontrolname=\"email\" type=\"email\" name=\"username\" id=\"username\" autocomplete=\"username\" tabindex=\"0\" class=\"ng-untouched ng-pristine ng-valid\" aria-label=\"Porsche ID (E-Mail-Adresse)\">"
                     }
                 },
                 {
@@ -389,7 +411,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -401,7 +424,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-select-wrapper _ngcontent-serverapp-c80=\"\" tabindex=\"-1\" aria-hidden=\"true\" class=\"hydrated\">...</p-select-wrapper>"
                     }
                 },
                 {
@@ -413,7 +437,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text-field-wrapper _ngcontent-serverapp-c80=\"\" class=\"hydrated\">...</p-text-field-wrapper>"
                     }
                 },
                 {
@@ -428,7 +453,8 @@
                             "theme": "light",
                             "dropdownDirection": "auto",
                             "native": false
-                        }
+                        },
+                        "slot": "<select _ngcontent-serverapp-c80=\"\" formcontrolname=\"countryCode\" data-protractor-id=\"country-code-select\" tabindex=\"-1\" name=\"country-code-select\" aria-hidden=\"true\" class=\"ng-untouched ng-pristine ng-valid\">...</select>"
                     }
                 },
                 {
@@ -481,7 +507,8 @@
                             "hideLabel": false,
                             "showCharacterCount": true,
                             "actionLoading": false
-                        }
+                        },
+                        "slot": "<input _ngcontent-serverapp-c80=\"\" formcontrolname=\"phone\" data-protractor-id=\"phone-input\" name=\"phoneNumber\" id=\"phone\" inputmode=\"numeric\" tabindex=\"-1\" type=\"tel\" class=\"ng-untouched ng-pristine ng-valid\">"
                     }
                 },
                 {
@@ -518,7 +545,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item _ngcontent-serverapp-c78=\"\" grow=\"1\" class=\"divide hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c78=\"\" class=\"divider-or-divider hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c78=\"\" grow=\"1\" class=\"divide hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -530,7 +558,8 @@
                             "grow": "1",
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-divider _ngcontent-serverapp-c78=\"\" class=\"hydrated\"></p-divider>"
                     }
                 },
                 {
@@ -542,7 +571,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text _ngcontent-serverapp-c78=\"\" class=\"hydrated\">oder</p-text>"
                     }
                 },
                 {
@@ -554,7 +584,8 @@
                             "grow": "1",
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-divider _ngcontent-serverapp-c78=\"\" class=\"hydrated\"></p-divider>"
                     }
                 },
                 {
@@ -597,7 +628,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-text _ngcontent-serverapp-c80=\"\" tag=\"div\" class=\"ng-star-inserted hydrated\">...</p-text>"
                     }
                 },
                 {
@@ -610,7 +642,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<p-button-pure _ngcontent-serverapp-c80=\"\" icon=\"none\" tabindex=\"0\" aria-hidden=\"false\" aria-label=\"register now button\" data-protractor-id=\"register-link\" class=\"register-link hydrated\">Jetzt registrieren</p-button-pure>"
                     }
                 },
                 {
@@ -640,7 +673,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item class=\"space-bottom-40 hydrated\">...</p-flex-item><p-flex-item class=\"space-bottom-16 hydrated\">...</p-flex-item><p-flex-item class=\"space-bottom-40 hydrated\">...</p-flex-item><p-flex-item class=\"space-bottom-40 move-off-screen hydrated\">...</p-flex-item><p-flex-item class=\"space-bottom-32 hydrated\">...</p-flex-item><p-flex-item class=\"space-bottom-24 hydrated\">...</p-flex-item><p-flex-item class=\"hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -652,7 +686,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-button-pure data-protractor-id=\"back-to-mail-btn\" icon=\"arrow-head-left\" tabindex=\"0\" aria-hidden=\"true\" class=\"ng-star-inserted hydrated\">Zurück zur E-Mail-Adresse </p-button-pure>"
                     }
                 },
                 {
@@ -664,7 +699,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<myaccess-common-error-message _nghost-serverapp-c76=\"\"><!----></myaccess-common-error-message>"
                     }
                 },
                 {
@@ -676,7 +712,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text-field-wrapper class=\"hydrated\">...</p-text-field-wrapper>"
                     }
                 },
                 {
@@ -688,7 +725,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text-field-wrapper class=\"hydrated\">...</p-text-field-wrapper>"
                     }
                 },
                 {
@@ -700,7 +738,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-button data-ol-has-click-handler=\"\" data-protractor-id=\"login-btn\" variant=\"primary\" type=\"submit\" tabindex=\"-1\" aria-hidden=\"true\" class=\"hydrated\">Jetzt anmelden</p-button>"
                     }
                 },
                 {
@@ -712,7 +751,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<myaccess-divider _nghost-serverapp-c78=\"\">...</myaccess-divider>"
                     }
                 },
                 {
@@ -724,7 +764,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex direction=\"column\" class=\"hydrated\">...</p-flex>"
                     }
                 },
                 {
@@ -768,7 +809,8 @@
                             "hideLabel": false,
                             "showCharacterCount": true,
                             "actionLoading": false
-                        }
+                        },
+                        "slot": "<input data-protractor-id=\"password-input\" formcontrolname=\"password\" type=\"password\" name=\"password\" id=\"current-password\" autocomplete=\"current-password\" tabindex=\"-1\" aria-hidden=\"false\" class=\"ng-untouched ng-pristine ng-valid\" aria-label=\"Passwort\">"
                     }
                 },
                 {
@@ -794,7 +836,8 @@
                             "hideLabel": false,
                             "showCharacterCount": true,
                             "actionLoading": false
-                        }
+                        },
+                        "slot": "<span slot=\"description\">...</span>"
                     }
                 },
                 {
@@ -831,7 +874,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item _ngcontent-serverapp-c78=\"\" grow=\"1\" class=\"divide hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c78=\"\" class=\"divider-or-divider hydrated\">...</p-flex-item><p-flex-item _ngcontent-serverapp-c78=\"\" grow=\"1\" class=\"divide hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -843,7 +887,8 @@
                             "grow": "1",
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-divider _ngcontent-serverapp-c78=\"\" class=\"hydrated\"></p-divider>"
                     }
                 },
                 {
@@ -855,7 +900,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-text _ngcontent-serverapp-c78=\"\" class=\"hydrated\">oder</p-text>"
                     }
                 },
                 {
@@ -867,7 +913,8 @@
                             "grow": "1",
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-divider _ngcontent-serverapp-c78=\"\" class=\"hydrated\"></p-divider>"
                     }
                 },
                 {
@@ -910,7 +957,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<div class=\"space-bottom-16 ng-star-inserted\">...</div><div class=\"ng-star-inserted\">...</div>"
                     }
                 },
                 {
@@ -1018,7 +1066,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<div _ngcontent-serverapp-c73=\"\" class=\"mobileIndicator\"></div><div _ngcontent-serverapp-c73=\"\" class=\"row ng-tns-c73-0 ng-star-inserted\">...</div>"
                     }
                 }
             ]

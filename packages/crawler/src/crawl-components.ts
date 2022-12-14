@@ -43,6 +43,20 @@ export const crawlComponents = async (
       const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] =>
         allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
+      const getSlotInfo = (el: Element): string | null =>
+        el.shadowRoot
+          ?.querySelector('slot')
+          ?.assignedElements()
+          ?.reduce((result, slotEl) => {
+            if (slotEl.children.length) {
+              const copy = slotEl.cloneNode(true) as Element;
+              // we save only the highest dom level in the reports, in order not to make them too big
+              copy.innerHTML = '...';
+              return result + copy.outerHTML;
+            }
+            return result + slotEl.outerHTML;
+          }, '' as string) || null;
+
       const getAllConsumedProperties = <
         PComponentName extends keyof HTMLElementTagNameMap,
         PComponentElement extends HTMLElementTagNameMap[PComponentName],
@@ -92,9 +106,14 @@ export const crawlComponents = async (
             throw new Error('Can not find component name');
           }
 
+          const slotInfo = getSlotInfo(el);
+
           return {
             [componentName]: {
-              properties: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+              ...{
+                properties: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+              },
+              ...(slotInfo ? { slot: slotInfo } : {}),
             },
           } as TagNameWithPropertiesData;
         });

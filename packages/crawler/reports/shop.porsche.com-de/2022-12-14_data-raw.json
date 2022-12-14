@@ -20,7 +20,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">...</a>"
                     }
                 },
                 {
@@ -38,7 +39,8 @@
                             "aria": {
                                 "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
                             }
-                        }
+                        },
+                        "slot": "<a href=\"/\">...</a>"
                     }
                 },
                 {
@@ -83,7 +85,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/faq\">Hilfe</a>"
                     }
                 },
                 {
@@ -127,7 +130,8 @@
                             "theme": "light",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/neuheiten\">Neuheiten entdecken</a>"
                     }
                 },
                 {
@@ -247,7 +251,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/highlights\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -306,7 +311,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-herren-bekleidung\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -343,7 +349,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-damenbekleidung-stilvolle-designs\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -358,7 +365,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-bekleidung\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -395,155 +403,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-right",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-left",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-right",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-left",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "properties": {
-                            "alignLabel": "right",
-                            "stretch": false,
-                            "size": "small",
-                            "weight": "regular",
-                            "icon": "none",
-                            "active": false,
-                            "hideLabel": false,
-                            "theme": "light",
-                            "target": "_self"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-right",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-left",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "properties": {
-                            "alignLabel": "right",
-                            "stretch": false,
-                            "size": "small",
-                            "weight": "regular",
-                            "icon": "none",
-                            "active": false,
-                            "hideLabel": false,
-                            "theme": "light",
-                            "target": "_self"
-                        }
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "properties": {
-                            "alignLabel": "right",
-                            "stretch": false,
-                            "size": "small",
-                            "weight": "regular",
-                            "icon": "none",
-                            "active": false,
-                            "hideLabel": false,
-                            "theme": "light",
-                            "target": "_self"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-right",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-left",
-                            "color": "inherit",
-                            "size": "small",
-                            "lazy": false,
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "properties": {
-                            "alignLabel": "right",
-                            "stretch": false,
-                            "size": "small",
-                            "weight": "regular",
-                            "icon": "none",
-                            "active": false,
-                            "hideLabel": false,
-                            "theme": "light",
-                            "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-accessoires\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -602,6 +463,29 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-multimedia-elektronik-zubehoer\">Alle Produkte</a>"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
                         }
                     }
                 },
@@ -617,6 +501,45 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-gepaeck-taschen-koffer\">Alle Produkte</a>"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "light",
+                            "target": "_self"
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-lifestyle-home-produkte\">Alle Produkte</a>"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
                         }
                     }
                 },
@@ -632,6 +555,51 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-modellautos\">Alle Produkte</a>"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
                         }
                     }
                 },
@@ -647,7 +615,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-modelluebersicht-unsere-fahrzeuge\">Alle Produkte</a>"
                     }
                 },
                 {
@@ -662,7 +631,56 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\"/de/de-DE/c/porsche-fahrzeugzubehoer-und-pflegeprodukte\">Alle Produkte</a>"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "light",
+                            "target": "_self"
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">...</a>"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "light",
+                            "target": "_self"
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://my.porsche.com/core/de/de_DE/home\">My Porsche</a>"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "light",
+                            "target": "_self"
+                        },
+                        "slot": "<a href=\"/de/de-DE/faq\">Hilfe</a>"
                     }
                 },
                 {
@@ -680,7 +698,8 @@
                             "aria": {
                                 "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
                             }
-                        }
+                        },
+                        "slot": "<a href=\"/\">...</a>"
                     }
                 },
                 {
@@ -893,7 +912,8 @@
                             "theme": "light",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "slot": "<a aria-labelledby=\"product-slider-headline-2V55P4615Z9Y96TP5ISJ4g\" href=\"/de/de-DE/c/unsere-bestseller\">Unsere Bestseller</a>"
                     }
                 },
                 {
@@ -952,7 +972,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a href=\" \">mehr anzeigen</a>"
                     }
                 },
                 {
@@ -1014,7 +1035,8 @@
                             "aria": {
                                 "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
                             }
-                        }
+                        },
+                        "slot": "<a href=\"/\">...</a>"
                     }
                 },
                 {
@@ -1025,7 +1047,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://www.porsche.com/germany/shop-newsletter/\">Newsletter abonnieren</a>"
                     }
                 },
                 {
@@ -1047,7 +1070,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "slot": "<a target=\"_self\" rel=\"nofollow noopener\" href=\"/de/de-DE/contact\">Kontaktieren Sie uns</a>"
                     }
                 },
                 {
@@ -1068,7 +1092,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": true
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://www.facebook.com/porsche\">facebook</a>"
                     }
                 },
                 {
@@ -1089,7 +1114,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": true
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://www.instagram.com/porsche/\">instagram</a>"
                     }
                 },
                 {
@@ -1110,7 +1136,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": true
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://www.pinterest.de/porsche/\">pinterest</a>"
                     }
                 },
                 {
@@ -1131,7 +1158,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": true
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://twitter.com/Porsche\">twitter</a>"
                     }
                 },
                 {
@@ -1152,7 +1180,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": true
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" href=\"https://www.linkedin.com/company/porsche-ag\">linkedin</a>"
                     }
                 },
                 {
@@ -1178,7 +1207,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" data-testid=\"document-T_AND_C\" href=\"https://prod-slppecomm-marketplaces.s3.eu-central-1.amazonaws.com/legal-documents/de/de-DE/TermsAndConditions.pdf\">Allgemeine Geschäftsbedingungen</a>"
                     }
                 },
                 {
@@ -1193,7 +1223,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" rel=\"nofollow noopener\" data-testid=\"document-DATA_PRIVACY\" href=\"https://prod-slppecomm-marketplaces.s3.eu-central-1.amazonaws.com/legal-documents/de/de-DE/DataPrivacy.pdf\">Datenschutzerklärung</a>"
                     }
                 },
                 {
@@ -1208,7 +1239,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/psm\">Impressum und rechtliche Hinweise</a>"
                     }
                 },
                 {
@@ -1223,7 +1255,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/cookiepolicy\">Cookie Policy</a>"
                     }
                 },
                 {
@@ -1238,7 +1271,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://www.porsche.com/germany/verbrauchsinformationen/\">Verbrauchsinformationen</a>"
                     }
                 },
                 {
@@ -1253,7 +1287,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"https://shop.porsche.com/licenses\">Open Source Software Notice</a>"
                     }
                 },
                 {
@@ -1268,7 +1303,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/search?brands=Porsche+Design\">Porsche Design</a>"
                     }
                 },
                 {
@@ -1283,7 +1319,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/search?brands=Porsche+Lifestyle\">Porsche Lifestyle</a>"
                     }
                 },
                 {
@@ -1298,7 +1335,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/search?brands=Porsche+Tequipment\">Porsche Tequipment</a>"
                     }
                 },
                 {
@@ -1313,7 +1351,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/search?brands=Porsche+Classic\">Porsche Classic</a>"
                     }
                 },
                 {
@@ -1328,7 +1367,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/search?brands=Porsche+Museum\">Porsche Museum</a>"
                     }
                 },
                 {
@@ -1343,7 +1383,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/p/restaurant-christophorus-gutschein-B-CHR00000001/CHRGUT20001\">Restaurant Christophorus</a>"
                     }
                 },
                 {
@@ -1358,7 +1399,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_self\" href=\"/de/de-DE/account/orders\">Meine Bestellungen</a>"
                     }
                 },
                 {
@@ -1373,7 +1415,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://www.porsche.com/germany?int_ref=porscheshop&amp;int_medium=link&amp;int_id=DE&amp;int_position=footer\">Porsche Homepage</a>"
                     }
                 },
                 {
@@ -1388,7 +1431,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://my.porsche.com/core/de/de_DE/home\">My Porsche</a>"
                     }
                 },
                 {
@@ -1403,7 +1447,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://www.porsche.com/germany/modelstart?int_ref=porscheshop&amp;int_medium=link&amp;int_id=DE&amp;int_position=footer\">Porsche Car Configurator</a>"
                     }
                 },
                 {
@@ -1418,7 +1463,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://finder.porsche.com/de/de_DE?int_ref=porscheshop&amp;#38;int_medium=link&amp;#38;int_id=DE&amp;#38;int_position=footer\">Porsche Neu- und Gebrauchtwagensuche</a>"
                     }
                 },
                 {
@@ -1433,7 +1479,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<a target=\"_blank\" href=\"https://www.porsche.com/germany/models?int_ref=porscheshop&amp;#38;int_medium=link&amp;#38;int_id=DE&amp;#38;int_position=footer\">Porsche Modelle vergleichen</a>"
                     }
                 },
                 {
@@ -1443,7 +1490,8 @@
                             "disableBackdropClick": false,
                             "heading": "Bitte melden Sie sich erneut an.",
                             "fullscreen": false
-                        }
+                        },
+                        "slot": "<span class=\"_1x2twma0\">Leider ist Ihre Sitzung abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren.</span><sl-p-button-group class=\"esfa5v0 hydrated\">...</sl-p-button-group>"
                     }
                 },
                 {
@@ -1453,7 +1501,8 @@
                                 "base": "column",
                                 "xs": "row"
                             }
-                        }
+                        },
+                        "slot": "<sl-p-button class=\"hydrated\">Anmelden mit Porsche ID</sl-p-button><sl-p-button class=\"hydrated\">Schließen</sl-p-button>"
                     }
                 },
                 {

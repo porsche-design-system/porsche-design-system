@@ -139,7 +139,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Modelle</p-headline>"
                     }
                 },
                 {
@@ -159,7 +160,8 @@
                             "width": "extended",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<div class=\"car-range-grid\">...</div>"
                     }
                 },
                 {
@@ -199,7 +201,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>Zweisitzer mit hoher Fahrdynamik dank Mittelmotor.</span>"
                     }
                 },
                 {
@@ -264,7 +267,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>Sportwagenikone mit Heckmotor und höchster Performance.</span>"
                     }
                 },
                 {
@@ -329,7 +333,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>Vollelektrische Sportlimousine mit Kofferraum in Front und Heck.</span>"
                     }
                 },
                 {
@@ -394,7 +399,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>Sportliche Luxuslimousine mit Platz für 4.</span>"
                     }
                 },
                 {
@@ -459,7 +465,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>Kompakter SUV mit hoher Vielseitigkeit.</span>"
                     }
                 },
                 {
@@ -524,7 +531,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span>SUV mit bis zu 5 Sitzen und dennoch in erster Linie ein Sportwagen.</span>"
                     }
                 },
                 {
@@ -636,7 +644,8 @@
                             "hideLabel": false,
                             "showCharacterCount": true,
                             "actionLoading": false
-                        }
+                        },
+                        "slot": "<input data-test=\"inputField\" type=\"search\" name=\"some-name\" role=\"combobox\" autocomplete=\"off\" aria-autocomplete=\"list\" aria-haspopup=\"listbox\" disabled=\"true\" aria-controls=\"autocompleteDropdown\" placeholder=\"PLZ oder Ort\" aria-label=\"Geben Sie einen Ort für Ihre Suche an\" aria-expanded=\"false\">"
                     }
                 },
                 {
@@ -667,7 +676,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<p-headline class=\"extended-teaser__headline hydrated\" theme=\"light\" variant=\"headline-2\">Online Shop Highlights</p-headline>"
                     }
                 },
                 {
@@ -1046,7 +1056,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<p-flex class=\"teaser-container mobile-side-by-side hydrated\" wrap=\"{base: 'wrap', xs: 'nowrap'}\">...</p-flex>"
                     }
                 },
                 {
@@ -1055,7 +1066,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Entdecken</p-headline>"
                     }
                 },
                 {
@@ -1078,7 +1090,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">...</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">...</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">...</p-flex-item>"
                     }
                 },
                 {
@@ -1090,7 +1103,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">...</p-flex>"
                     }
                 },
                 {
@@ -1102,7 +1116,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">...</p-flex>"
                     }
                 },
                 {
@@ -1114,7 +1129,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">...</p-flex>"
                     }
                 },
                 {
@@ -1126,7 +1142,8 @@
                             "justifyContent": "space-between",
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -1138,7 +1155,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<picture class=\"card-img media-image\">...</picture>"
                     }
                 },
                 {
@@ -1150,7 +1168,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<div class=\"text-wrapper\">...</div>"
                     }
                 },
                 {
@@ -1166,7 +1185,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<span>Experience - Fahrtrainings &amp; Reisen</span>"
                     }
                 },
                 {
@@ -1189,7 +1209,8 @@
                             "justifyContent": "space-between",
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -1201,7 +1222,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<picture class=\"card-img media-image\">...</picture>"
                     }
                 },
                 {
@@ -1213,7 +1235,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<div class=\"text-wrapper\">...</div>"
                     }
                 },
                 {
@@ -1229,7 +1252,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<span>Drive - Abonnieren oder mieten</span>"
                     }
                 },
                 {
@@ -1252,7 +1276,8 @@
                             "justifyContent": "space-between",
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">...</p-flex-item>"
                     }
                 },
                 {
@@ -1264,7 +1289,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<picture class=\"card-img media-image\">...</picture>"
                     }
                 },
                 {
@@ -1276,7 +1302,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "equal"
-                        }
+                        },
+                        "slot": "<div class=\"text-wrapper\">...</div>"
                     }
                 },
                 {
@@ -1292,7 +1319,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<span>Motorsport - Events &amp; Strecken</span>"
                     }
                 },
                 {
@@ -1342,7 +1370,8 @@
                             "justifyContent": "space-between",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s\">...</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s\">...</phn-menu-desktop-level-1>"
                     }
                 },
                 {
@@ -1367,7 +1396,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-718\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-911\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Taycan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Panamera\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Macan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Cayenne\">...</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex>"
                     }
                 },
                 {
@@ -1379,7 +1409,8 @@
                             "justifyContent": "flex-end",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">...</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">...</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">...</phn-menu-button>"
                     }
                 },
                 {
@@ -1469,7 +1500,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "center",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s\">...</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">...</div>"
                     }
                 },
                 {
@@ -1481,7 +1513,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>"
                     }
                 },
                 {
@@ -1521,7 +1554,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<span class=\"sc-phn-dealer-search\">Händler</span>"
                     }
                 },
                 {
@@ -1550,7 +1584,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s\">...</phn-myporsche-button-content>"
                     }
                 },
                 {
@@ -1562,7 +1597,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<div class=\"icon-container sc-phn-myporsche-button-content\">...</div><div class=\"sc-phn-myporsche-button-content\">...</div>"
                     }
                 },
                 {
@@ -1610,7 +1646,8 @@
                             "width": "basic",
                             "backgroundColor": "transparent",
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-grid class=\"hydrated\">...</pnav-footer-p-grid>"
                     }
                 },
                 {
@@ -1623,7 +1660,8 @@
                                 "s": 24,
                                 "m": 36
                             }
-                        }
+                        },
+                        "slot": "<pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item>"
                     }
                 },
                 {
@@ -1631,7 +1669,8 @@
                         "properties": {
                             "size": "12",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">...</pnav-current-region>"
                     }
                 },
                 {
@@ -1639,7 +1678,8 @@
                         "properties": {
                             "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">...</pnav-newsletter>"
                     }
                 },
                 {
@@ -1647,7 +1687,8 @@
                         "properties": {
                             "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
                             "offset": "{ base: 0, s: 1, m: 0 }"
-                        }
+                        },
+                        "slot": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">...</pnav-contact>"
                     }
                 },
                 {
@@ -1655,7 +1696,8 @@
                         "properties": {
                             "size": "{ base: 12, m: 4, l: 6 }",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">...</pnav-social-media>"
                     }
                 },
                 {
@@ -1663,7 +1705,8 @@
                         "properties": {
                             "size": "{ base: 12, l: 9 }",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">...</pnav-further-links>"
                     }
                 },
                 {
@@ -1671,7 +1714,8 @@
                         "properties": {
                             "size": "12",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
                     }
                 },
                 {
@@ -1679,7 +1723,8 @@
                         "properties": {
                             "size": "12",
                             "offset": 0
-                        }
+                        },
+                        "slot": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">...</pnav-fine-print>"
                     }
                 },
                 {
@@ -1703,7 +1748,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "center",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">...</pnav-footer-p-text>"
                     }
                 },
                 {
@@ -1728,7 +1774,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>"
                     }
                 },
                 {
@@ -1859,7 +1906,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1869,7 +1917,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1879,7 +1928,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1889,7 +1939,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1899,7 +1950,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1909,7 +1961,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -1919,7 +1972,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": "true"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">...</a>"
                     }
                 },
                 {
@@ -2008,7 +2062,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item>"
                     }
                 },
                 {
@@ -2020,7 +2075,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">...</pnav-footer-p-flex>"
                     }
                 },
                 {
@@ -2032,7 +2088,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">...</pnav-footer-p-flex-item>"
                     }
                 },
                 {
@@ -2044,7 +2101,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>"
                     }
                 },
                 {
@@ -2056,7 +2114,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2068,7 +2127,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2080,7 +2140,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2092,7 +2153,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2104,7 +2166,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2116,7 +2179,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2128,7 +2192,8 @@
                             "grow": 0,
                             "shrink": 1,
                             "flex": "initial"
-                        }
+                        },
+                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2169,7 +2234,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2198,7 +2264,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2227,7 +2294,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2256,7 +2324,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2285,7 +2354,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2314,7 +2384,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2343,7 +2414,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<slot></slot>"
                     }
                 },
                 {
@@ -2365,7 +2437,22 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>"
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "slot": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>"
                     }
                 },
                 {
@@ -2391,20 +2478,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "dark"
-                        }
+                        },
+                        "slot": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>"
                     }
                 }
             ]

@@ -44,7 +44,8 @@
                             "justifyContent": "space-between",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s hydrated\">...</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s hydrated\">...</phn-menu-desktop-level-1>"
                     }
                 },
                 {
@@ -69,7 +70,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-718\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-911\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Taycan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Panamera\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Macan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Cayenne\">...</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex>"
                     }
                 },
                 {
@@ -81,7 +83,8 @@
                             "justifyContent": "flex-end",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">...</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">...</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">...</phn-menu-button>"
                     }
                 },
                 {
@@ -171,7 +174,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "center",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s hydrated\">...</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">...</div>"
                     }
                 },
                 {
@@ -183,7 +187,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>"
                     }
                 },
                 {
@@ -223,7 +228,8 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self"
-                        }
+                        },
+                        "slot": "<span class=\"sc-phn-dealer-search\">Händler</span>"
                     }
                 },
                 {
@@ -252,7 +258,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "slot": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s hydrated\">...</phn-myporsche-button-content>"
                     }
                 },
                 {
@@ -264,7 +271,8 @@
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
-                        }
+                        },
+                        "slot": "<div class=\"icon-container sc-phn-myporsche-button-content\">...</div><div class=\"sc-phn-myporsche-button-content\">...</div>"
                     }
                 },
                 {
