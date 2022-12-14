@@ -1,24 +1,25 @@
 import type { FontSize, FontSizeLineHeight } from './font-shared';
+import { fontLineHeight } from './font-line-height';
 
 export const fontSize: { [key in FontSize]: FontSizeLineHeight } = {
   xSmall: {
     fontSize: '0.75rem',
-    lineHeight: 1.6666666667,
+    lineHeight: fontLineHeight,
   },
   small: {
     fontSize: '1rem',
-    lineHeight: 1.5,
+    lineHeight: fontLineHeight,
   },
   medium: {
     fontSize: '1.5rem',
-    lineHeight: 1.5,
+    lineHeight: fontLineHeight,
   },
   large: {
     fontSize: '2.25rem',
-    lineHeight: 1.3333333333,
+    lineHeight: fontLineHeight,
   },
   xLarge: {
     fontSize: '3.25rem',
-    lineHeight: 1.2307692308,
+    lineHeight: fontLineHeight,
   },
 };

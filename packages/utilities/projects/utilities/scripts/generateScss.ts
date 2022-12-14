@@ -66,13 +66,12 @@ interface Mixins {
 const generateMixins = (mixins: Mixins): void => {
   for (const [filename, map] of Object.entries(mixins)) {
     const content = Object.entries(map)
-      .map(
-        ([k, v]) =>
-          `@mixin ${paramCase(`pds-${k}`)} {${getCss({ _key_: v }).replace(
-            /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s*]*)}/g, // search for styles only
-            '$1'
-          )}}`
-      )
+      .map(([k, v]) => {
+        return `@mixin ${paramCase(`pds-${k}`)} {${getCss({ _key_: v }).replace(
+          /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s*+]*)}/g, // search for styles only
+          '$1'
+        )}}`;
+      })
       .join('\n\n');
 
     writeFile(filename, content);

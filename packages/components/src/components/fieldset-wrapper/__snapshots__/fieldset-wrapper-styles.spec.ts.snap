@@ -16,7 +16,7 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -45,7 +45,7 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -70,35 +70,31 @@ legend {
   margin: 0 0 1rem;
   padding: 0;
   color: #000;
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 }
 @media(min-width:760px) and (max-width:999px) {
   legend {
     font-size: 1.125rem;
-    line-height: 1.5555555556;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   legend {
     font-size: 1.25rem;
-    line-height: 1.4;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
   legend {
     font-size: 1.375rem;
-    line-height: 1.4545454545;
   }
 }
 
 @media(min-width:1760px) {
   legend {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 
@@ -109,7 +105,7 @@ legend {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -137,7 +133,7 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -162,7 +158,7 @@ legend {
   margin: 0 0 1rem;
   padding: 0;
   color: #000;
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 }
@@ -173,7 +169,7 @@ legend {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -201,7 +197,7 @@ fieldset {
 .message {
   display: flex;
   margin-top: 1rem;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;

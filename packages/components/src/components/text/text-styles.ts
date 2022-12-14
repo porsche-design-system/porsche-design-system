@@ -21,7 +21,6 @@ export const getComponentCss = (
     const fontWeightValue = getFontWeight(weight);
     return textSize === 'inherit'
       ? {
-          lineHeight: textSize,
           fontSize: textSize,
           fontWeight: fontWeightValue,
         }
@@ -48,7 +47,6 @@ export const getComponentCss = (
       color: getThemedTextColor(theme, color),
       listStyleType: 'none',
       whiteSpace: 'inherit',
-      transition: 'font-size 1ms linear',
       ...(ellipsis && getEllipsisJssStyle()),
       ...buildResponsiveStyles(size, getSizeJssStyle),
     },

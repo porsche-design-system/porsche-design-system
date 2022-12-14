@@ -6,22 +6,18 @@ export const titleLarge = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '2rem',
-  lineHeight: 1.375,
+  lineHeight: 'calc(6px + 2.125ex)',
   '@media (min-width: 760px) and (max-width: 1000px)': {
-    fontSize: '2.625rem',
-    lineHeight: 1.2380952381
+    fontSize: '2.625rem'
   },
   '@media (min-width: 1000px) and (max-width: 1300px)': {
-    fontSize: '3.25rem',
-    lineHeight: 1.2307692308
+    fontSize: '3.25rem'
   },
   '@media (min-width: 1300px) and (max-width: 1760px)': {
-    fontSize: '3.875rem',
-    lineHeight: 1.2258064516
+    fontSize: '3.875rem'
   },
   '@media (min-width: 1760px)': {
-    fontSize: '4.5rem',
-    lineHeight: 1.2222222222
+    fontSize: '4.5rem'
   }
 };
 
@@ -33,22 +29,18 @@ export const headline1 = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '1.75rem',
-  lineHeight: 1.4285714286,
+  lineHeight: 'calc(6px + 2.125ex)',
   '@media (min-width: 760px) and (max-width: 1000px)': {
-    fontSize: '2.25rem',
-    lineHeight: 1.3333333333
+    fontSize: '2.25rem'
   },
   '@media (min-width: 1000px) and (max-width: 1300px)': {
-    fontSize: '2.75rem',
-    lineHeight: 1.1818181818
+    fontSize: '2.75rem'
   },
   '@media (min-width: 1300px) and (max-width: 1760px)': {
-    fontSize: '3.25rem',
-    lineHeight: 1.2307692308
+    fontSize: '3.25rem'
   },
   '@media (min-width: 1760px)': {
-    fontSize: '3.75rem',
-    lineHeight: 1.2
+    fontSize: '3.75rem'
   }
 };
 
@@ -56,22 +48,18 @@ export const headline2 = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '1.5rem',
-  lineHeight: 1.5,
+  lineHeight: 'calc(6px + 2.125ex)',
   '@media (min-width: 760px) and (max-width: 1000px)': {
-    fontSize: '1.875rem',
-    lineHeight: 1.3333333333
+    fontSize: '1.875rem'
   },
   '@media (min-width: 1000px) and (max-width: 1300px)': {
-    fontSize: '2.25rem',
-    lineHeight: 1.3333333333
+    fontSize: '2.25rem'
   },
   '@media (min-width: 1300px) and (max-width: 1760px)': {
-    fontSize: '2.625rem',
-    lineHeight: 1.2380952381
+    fontSize: '2.625rem'
   },
   '@media (min-width: 1760px)': {
-    fontSize: '3rem',
-    lineHeight: 1.25
+    fontSize: '3rem'
   }
 };
 
@@ -79,22 +67,18 @@ export const headline3 = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '1.25rem',
-  lineHeight: 1.4,
+  lineHeight: 'calc(6px + 2.125ex)',
   '@media (min-width: 760px) and (max-width: 1000px)': {
-    fontSize: '1.5rem',
-    lineHeight: 1.5
+    fontSize: '1.5rem'
   },
   '@media (min-width: 1000px) and (max-width: 1300px)': {
-    fontSize: '1.75rem',
-    lineHeight: 1.4285714286
+    fontSize: '1.75rem'
   },
   '@media (min-width: 1300px) and (max-width: 1760px)': {
-    fontSize: '2rem',
-    lineHeight: 1.375
+    fontSize: '2rem'
   },
   '@media (min-width: 1760px)': {
-    fontSize: '2.25rem',
-    lineHeight: 1.3333333333
+    fontSize: '2.25rem'
   }
 };
 
@@ -102,22 +86,18 @@ export const headline4 = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '1rem',
-  lineHeight: 1.5,
+  lineHeight: 'calc(6px + 2.125ex)',
   '@media (min-width: 760px) and (max-width: 1000px)': {
-    fontSize: '1.125rem',
-    lineHeight: 1.5555555556
+    fontSize: '1.125rem'
   },
   '@media (min-width: 1000px) and (max-width: 1300px)': {
-    fontSize: '1.25rem',
-    lineHeight: 1.4
+    fontSize: '1.25rem'
   },
   '@media (min-width: 1300px) and (max-width: 1760px)': {
-    fontSize: '1.375rem',
-    lineHeight: 1.4545454545
+    fontSize: '1.375rem'
   },
   '@media (min-width: 1760px)': {
-    fontSize: '1.5rem',
-    lineHeight: 1.5
+    fontSize: '1.5rem'
   }
 };
 
@@ -125,7 +105,7 @@ export const headline5 = {
   fontFamily,
   fontWeight: fontWeight.semibold,
   fontSize: '1rem',
-  lineHeight: 1.5
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const headline = {
@@ -140,35 +120,35 @@ export const textXSmall = {
   fontFamily,
   fontWeight: fontWeight.regular,
   fontSize: '0.75rem',
-  lineHeight: 1.6666666667
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const textSmall = {
   fontFamily,
   fontWeight: fontWeight.regular,
   fontSize: '1rem',
-  lineHeight: 1.5
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const textMedium = {
   fontFamily,
   fontWeight: fontWeight.regular,
   fontSize: '1.5rem',
-  lineHeight: 1.5
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const textLarge = {
   fontFamily,
   fontWeight: fontWeight.regular,
   fontSize: '2.25rem',
-  lineHeight: 1.3333333333
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const textXLarge = {
   fontFamily,
   fontWeight: fontWeight.regular,
   fontSize: '3.25rem',
-  lineHeight: 1.2307692308
+  lineHeight: 'calc(6px + 2.125ex)'
 };
 
 export const text = {
