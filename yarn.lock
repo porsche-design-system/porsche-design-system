@@ -3870,7 +3870,7 @@
 
 "@uxpin/merge-cli@2.9.0":
   version "2.9.0"
-  resolved "https://npm.pkg.github.com/download/@UXPin/merge-cli/2.9.0/9a42ebba405d581bbac47ed1c9e951df1c4762f8#9a42ebba405d581bbac47ed1c9e951df1c4762f8"
+  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-2.9.0.tgz#9a42ebba405d581bbac47ed1c9e951df1c4762f8"
   integrity sha512-EsFwS9Ymhky/2dIFEXnXoIDnOVy21OmitASNqKWoHwaklrSSYJkmS70yRQxoRnb468vwNxjEc0aw5fGiHNNAxw==
   dependencies:
     "@babel/core" "^7.2.2"
