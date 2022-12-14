@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.18.0] - 2022-12-15
+
 ### [2.18.0-rc.2] - 2022-12-14
 
 #### Added
