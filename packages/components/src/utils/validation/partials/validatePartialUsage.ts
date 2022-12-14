@@ -19,6 +19,7 @@ export const validatePartialUsage = (): void => {
   // Ensure no warning is thrown when started with yarn start except for getFontFaceStylesheet()
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetInitialStylesUsage();
+    // TODO: should be named like validateGetFontFaceStylesheetUsage()
     validateFontFaceStylesheetUsage();
     validateGetFontLinksUsage();
     // TODO: integration test (real world test) first, before rollout
