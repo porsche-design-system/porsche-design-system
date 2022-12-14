@@ -4,6 +4,6 @@
 
 <template>
   <div class="playground light">
-    <ToastComponent />
+    <ToastComponent text="Some message" />
   </div>
 </template>

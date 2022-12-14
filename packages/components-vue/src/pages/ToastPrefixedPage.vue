@@ -6,7 +6,7 @@
 <template>
   <PorscheDesignSystemProvider prefix="my-prefix">
     <div class="playground light">
-      <ToastComponent />
+      <ToastComponent text="Some message" />
     </div>
   </PorscheDesignSystemProvider>
 </template>

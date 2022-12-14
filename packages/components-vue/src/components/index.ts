@@ -1,1 +1,1 @@
-export { default as ToastComponent } from './ToastComponent';
+export { default as ToastComponent } from './ToastComponent.vue';
