@@ -3,7 +3,7 @@ import { PorscheDesignSystemProvider, PButton } from '../../../src/public-api';
 import { h } from 'vue';
 
 describe('PorscheDesignSystemProvider', () => {
-  it('should render unprefixed components', () => {
+  it('should render default components', () => {
     const { container } = render(PorscheDesignSystemProvider, { slots: { default: PButton } });
 
     expect(container.firstElementChild.tagName).toBe('P-BUTTON');
@@ -17,7 +17,6 @@ describe('PorscheDesignSystemProvider', () => {
 
     expect(container.firstElementChild.tagName).toBe('MY-PREFIX-P-BUTTON');
   });
-
 
   it('should render components wrapped with nested provider and prefix', () => {
     const { container } = render(
@@ -33,8 +32,9 @@ describe('PorscheDesignSystemProvider', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should throw error if not provided', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+  it('should throw error if PorscheDesignSystemProvider is missing ', () => {
+    const spy = jest.spyOn(global.console, 'error');
+    jest.spyOn(global.console, 'warn').mockImplementation(() => {}); // suppress vue warning
 
     expect(() => render(PButton)).toThrowErrorMatchingInlineSnapshot(
       '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
