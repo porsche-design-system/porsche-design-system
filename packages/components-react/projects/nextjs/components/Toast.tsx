@@ -6,7 +6,7 @@ export const Toast = ({ text, theme }: { text: string; theme?: Theme }): JSX.Ele
   const { addMessage } = useToastManager();
   useEffect(() => {
     addMessage({ text });
-  }, []);
+  }, [addMessage, text]);
 
   return <PToast theme={theme} />;
 };
