@@ -103,6 +103,7 @@ line-height: {{this.fontLineHeight}}; // optimal line-height is universally defi
 
 - [https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/)
 - [https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit](https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit)
+- [https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#relative_length_units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#relative_length_units)
 
 ### Fallback fonts
 
