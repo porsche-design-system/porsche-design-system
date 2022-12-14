@@ -1,65 +1,20 @@
 <template>
   <div class="main-app">
     <div class="type-scale">
-      <p-headline ref="largeTitle" variant="large-title"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headline1" variant="headline-1"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headline2" variant="headline-2"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headline3" variant="headline-3"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headline4" variant="headline-4"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headline5" variant="headline-5"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
-      <p-headline ref="headlineInherit" variant="inherit" style="font-size: 50px"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet.</p-headline
-      >
+      <p-headline ref="largeTitle" variant="large-title">{{ dummyHeading }}</p-headline>
+      <p-headline ref="headline1" variant="headline-1">{{ dummyHeading }}verhaftet.</p-headline>
+      <p-headline ref="headline2" variant="headline-2">{{ dummyHeading }}</p-headline>
+      <p-headline ref="headline3" variant="headline-3">{{ dummyHeading }}</p-headline>
+      <p-headline ref="headline4" variant="headline-4">{{ dummyHeading }}</p-headline>
+      <p-headline ref="headline5" variant="headline-5">{{ dummyHeading }}</p-headline>
+      <p-headline ref="headlineInherit" variant="inherit" style="font-size: 50px">{{ dummyHeading }}</p-headline>
 
-      <p-text ref="textXSmall" size="x-small"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
-      <p-text ref="textSmall" size="small"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
-      <p-text ref="textMedium" size="medium"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
-      <p-text ref="textLarge" size="large"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
-      <p-text ref="textXLarge" size="x-large"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
-      <p-text ref="textInherit" size="inherit" style="font-size: 50px"
-        >Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens
-        verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens
-        aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p-text
-      >
+      <p-text ref="textXSmall" size="x-small">{{ dummyText }}</p-text>
+      <p-text ref="textSmall" size="small">{{ dummyText }}</p-text>
+      <p-text ref="textMedium" size="medium">{{ dummyText }}</p-text>
+      <p-text ref="textLarge" size="large">{{ dummyText }}</p-text>
+      <p-text ref="textXLarge" size="x-large">{{ dummyText }}</p-text>
+      <p-text ref="textInherit" size="inherit" style="font-size: 50px">{{ dummyText }}</p-text>
     </div>
   </div>
 </template>
@@ -71,6 +26,11 @@
 
   @Component
   export default class ExampleTypeScale extends Vue {
+    public dummyHeading =
+      'Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet.';
+    public dummyText =
+      'Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.';
+
     async mounted(): Promise<void> {
       await componentsReady();
       this.setTypeScaleInfoOnRefs();
@@ -88,6 +48,7 @@
 
         (host as HTMLElement)?.setAttribute('data-font-size', fontSize);
         (host as HTMLElement)?.setAttribute('data-line-height', lineHeight);
+        (host as HTMLElement)?.setAttribute('data-viewport-width', window.innerWidth + 'px');
       }
     }
   }
@@ -101,7 +62,7 @@
   }
 
   .type-scale {
-    grid-area: 1 / content-start / 1 / content-end;
+    grid-column: content-start / content-end;
     display: grid;
     grid-gap: $pds-grid-gap;
 
@@ -119,12 +80,14 @@
     &::before {
       @include pds-text-x-small;
       display: block;
-      content: 'p-headline - variant: "' attr(variant) '" | ' attr(data-font-size) '/' attr(data-line-height) '';
+      content: 'p-headline - variant: "' attr(variant) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
+        attr(data-viewport-width) '';
       color: deeppink;
     }
   }
 
   p-text::before {
-    content: 'p-text - size: "' attr(size) '" | ' attr(data-font-size) '/' attr(data-line-height) '';
+    content: 'p-text - size: "' attr(size) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
+      attr(data-viewport-width) '';
   }
 </style>
