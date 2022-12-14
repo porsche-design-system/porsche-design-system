@@ -1,13 +1,8 @@
 /* Auto Generated File */
-import { PToast, useToastManager } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
+import { PToast } from '@porsche-design-system/components-react';
+import { Toast } from '../components';
 
 export const ToastOffsetPage = (): JSX.Element => {
-  const { addMessage } = useToastManager();
-  useEffect(() => {
-    addMessage({ text: 'Some message' });
-  }, [addMessage]);
-
   const style = `
     .playground {
       height: 300px;
@@ -26,7 +21,7 @@ export const ToastOffsetPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render toast neutral on light background with custom bottom position">
-        <PToast />
+        <Toast text="Some message" />
       </div>
     </>
   );

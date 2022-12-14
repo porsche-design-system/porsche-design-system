@@ -1,13 +1,8 @@
 /* Auto Generated File */
-import { PToast, useToastManager } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
+import { PToast } from '@porsche-design-system/components-react';
+import { Toast } from '../components';
 
 export const ToastBasicLongTextPage = (): JSX.Element => {
-  const { addMessage } = useToastManager();
-  useEffect(() => {
-    addMessage({ text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.' });
-  }, [addMessage]);
-
   const style = `
     .playground {
       height: 300px;
@@ -22,7 +17,7 @@ export const ToastBasicLongTextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render toast multiline message on light background">
-        <PToast />
+        <Toast text="Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded." />
       </div>
     </>
   );

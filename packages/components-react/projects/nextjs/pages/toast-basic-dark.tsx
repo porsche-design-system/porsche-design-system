@@ -1,14 +1,9 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PToast, useToastManager } from '@porsche-design-system/components-react/ssr';
-import { useEffect } from 'react';
+import { PToast } from '@porsche-design-system/components-react/ssr';
+import { Toast } from '../components';
 
 const ToastBasicDarkPage: NextPage = (): JSX.Element => {
-  const { addMessage } = useToastManager();
-  useEffect(() => {
-    addMessage({ text: 'Some message' });
-  }, [addMessage]);
-
   const style = `
     .playground {
       height: 300px;
@@ -23,7 +18,7 @@ const ToastBasicDarkPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground dark" title="should render toast neutral on dark background">
-        <PToast theme="dark" />
+        <Toast text="Some message" theme="dark" />
       </div>
     </>
   );
