@@ -13,6 +13,7 @@ import PartialDocs from '@/components/PartialDocs.vue';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import InstantSearch from 'vue-instantsearch';
+import TypeScale from '@/components/TypeScale.vue';
 
 Vue.use(InstantSearch);
 
@@ -44,6 +45,7 @@ Vue.use({
     vue.component('OpenBugTemplateInStackBlitz', OpenBugTemplateInStackBlitz);
     vue.component('TableOfContents', TableOfContents);
     vue.component('PartialDocs', PartialDocs);
+    vue.component('TypeScale', TypeScale);
   },
 });
 
