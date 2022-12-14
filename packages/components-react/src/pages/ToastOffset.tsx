@@ -1,5 +1,4 @@
 /* Auto Generated File */
-import { PToast } from '@porsche-design-system/components-react';
 import { Toast } from '../components';
 
 export const ToastOffsetPage = (): JSX.Element => {

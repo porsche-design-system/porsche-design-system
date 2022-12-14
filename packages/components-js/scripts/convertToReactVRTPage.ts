@@ -48,12 +48,12 @@ export const convertToReactVRTPage = (
     .map((tagName) => pascalCase(tagName));
 
   const pdsImports = [...componentImports, usesPrefixing && 'PorscheDesignSystemProvider']
-    .filter((x) => x && !(usesPrefixing && x === 'PToast'))
+    .filter((x) => x && x !== 'PToast')
     .sort(byAlphabet)
     .join(', ');
 
   const imports = [
-    `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
+    pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
     reactImports && `import { ${reactImports} } from 'react';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,

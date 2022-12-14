@@ -1,6 +1,5 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PToast } from '@porsche-design-system/components-react/ssr';
 import { Toast } from '../components';
 
 const ToastOffsetPage: NextPage = (): JSX.Element => {
