@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.5.2",
+    "@porsche-design-system/assets": "5.0.2",
     "@types/node": "^18.11.9",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",

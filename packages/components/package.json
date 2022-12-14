@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
+    "@porsche-design-system/assets": "5.0.2",
     "@rollup/plugin-replace": "^5.0.1",
     "@types/react": "^18.0.25",
     "@types/throttle-debounce": "^5.0.0",
