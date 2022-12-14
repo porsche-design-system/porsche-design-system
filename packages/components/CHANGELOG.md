@@ -15,11 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   which gives the best performance, the easiest possible integration and respects UI best practices in having **larger**
   `line-height` values for **small** `font-size` definitions and **smaller** `line-height` values for **larger**
   `font-size` definitions. The calculated values by CSS slightly differ compared to the ones calculated by JavaScript,
-  which might result in minor visual changes, e.g.:
-  - 16/24px (JS) => 16/24px (CSS)
-  - 22/32px (JS) => 22/30.75px (CSS)
-  - 32/44px (JS) => 32/42px (CSS)
-  - 52/64px (JS) => 52/64.5px (CSS)
+  which might result in minor visual changes.
 
 #### Added
 
