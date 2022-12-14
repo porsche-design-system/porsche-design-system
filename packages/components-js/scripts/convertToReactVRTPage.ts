@@ -46,12 +46,13 @@ export const convertToReactVRTPage = (
     .map(([, tagName]) => tagName)
     .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
     .map((tagName) => pascalCase(tagName));
+
   const pdsImports = [
     ...componentImports,
     usesPrefixing && 'PorscheDesignSystemProvider',
     usesToast && 'useToastManager',
   ]
-    .filter((x) => x)
+    .filter((x) => x && !(usesPrefixing && x === 'PToast'))
     .sort(byAlphabet)
     .join(', ');
 
@@ -60,6 +61,7 @@ export const convertToReactVRTPage = (
     reactImports && `import { ${reactImports} } from 'react';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
+    usesToast && usesPrefixing && `import { Toast } from '../components';`,
   ]
     .filter((x) => x)
     .join('\n');
@@ -157,7 +159,7 @@ ${imports}
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
     <${openingFragmentTag}>${styleJsx}
-      ${convertToReact(fileContent)}
+      ${convertToReact(fileContent).replace(/<PToast/g, usesPrefixing ? '<Toast' : '$&')}
     </${closingFragmentTag}>
   );
 };
