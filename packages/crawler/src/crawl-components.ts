@@ -43,14 +43,45 @@ export const crawlComponents = async (
       const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] =>
         allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
-      const getConsumedTagNames = <
-        K extends keyof HTMLElementTagNameMap,
-        P extends keyof HTMLElementTagNameMap[K],
-        V extends keyof HTMLElementTagNameMap[K][P]
+      const getAllConsumedProperties = <
+        PComponentName extends keyof HTMLElementTagNameMap,
+        PComponentElement extends HTMLElementTagNameMap[PComponentName],
+        PComponentPropertyName extends keyof PComponentElement,
+        PComponentPropertyValue extends keyof PComponentElement[PComponentPropertyName]
       >(
-        prefix: string,
-        pdsElements: Element[]
-      ): TagNameWithPropertiesData[] => {
+        el: Element,
+        allPdsPropertiesForComponentName: string[]
+      ) => {
+        const pEl = el as PComponentElement;
+
+        // currently we have a circular object, for login.porsche.com, 'p-select-wrapper-dropdown'.selectRef
+        // therefore we need to stringify it explicitly, with checking circular dependencies (if there are any)
+        // TODO: discuss with team if there's a better solution
+        const stringifyCircular = (obj: PComponentPropertyValue): string | PComponentPropertyValue => {
+          try {
+            JSON.stringify(obj);
+            return obj;
+          } catch (e) {
+            // if there are circular dependencies - stringify object differently
+            return Object.prototype.toString.call(obj);
+          }
+        };
+
+        const checkCircularIfObject = (val: PComponentPropertyValue): PComponentPropertyValue | string => {
+          // check if it's an object and stringify circular
+          return typeof val === 'object' && !Array.isArray(val) && val !== null ? stringifyCircular(val) : val;
+        };
+
+        return allPdsPropertiesForComponentName.reduce((result, propName) => {
+          const propValue = pEl[propName as PComponentPropertyName] as PComponentPropertyValue;
+          return {
+            ...result,
+            [propName]: checkCircularIfObject(propValue),
+          };
+        }, {});
+      };
+
+      const getConsumedTagNames = (prefix: string, pdsElements: Element[]): TagNameWithPropertiesData[] => {
         return pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
           const componentName = Object.keys(tagNamesWithProperties).find(
@@ -61,37 +92,9 @@ export const crawlComponents = async (
             throw new Error('Can not find component name');
           }
 
-          const allPdsPropertiesForComponentName = tagNamesWithProperties[componentName];
-
-          const pEl = el as HTMLElementTagNameMap[K];
-
-          // currently we have a circular object, for login.porsche.com, 'p-select-wrapper-dropdown'.selectRef
-          // therefore we need to stringify it explicitly, with checking circular dependencies (if there are any)
-          // TODO: discuss with team if there's a better solution
-          const stringifyCircular = (obj: V): string | V => {
-            try {
-              JSON.stringify(obj);
-              return obj;
-            } catch (e) {
-              // if there are circular dependencies - stringify object differently
-              return Object.prototype.toString.call(obj);
-            }
-          };
-
-          const checkCircularIfObject = (val: V): V | string => {
-            // check if it's an object and stringify circular
-            return typeof val === 'object' && !Array.isArray(val) && val !== null ? stringifyCircular(val) : val;
-          };
-
-          const allConsumedProperties = allPdsPropertiesForComponentName.reduce((result, propName) => {
-            const propValue = pEl[propName as P] as V;
-            return {
-              ...result,
-              [propName]: checkCircularIfObject(propValue),
-            };
-          }, {});
-
-          return { [componentName]: allConsumedProperties } as TagNameWithPropertiesData;
+          return {
+            [componentName]: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+          } as TagNameWithPropertiesData;
         });
       };
 
