@@ -1,6 +1,5 @@
 import { ButtonPure } from './button-pure';
 import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
-import * as transitionListenerUtils from '../../utils/transition-listener';
 
 jest.mock('../../utils/button-handling');
 
@@ -14,27 +13,5 @@ describe('render', () => {
     component.render();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
-  });
-});
-
-describe('componentDidLoad', () => {
-  let spy: jest.SpyInstance;
-  beforeEach(() => {
-    spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
-  });
-
-  it('should not call transitionListener for default size', () => {
-    const component = new ButtonPure();
-    component.componentDidLoad();
-
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should call transitionListener() with correct parameters when size="inherit"', () => {
-    const component = new ButtonPure();
-    component.size = 'inherit';
-    component.componentDidLoad();
-
-    expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
   });
 });

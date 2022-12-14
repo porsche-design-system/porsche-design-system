@@ -9,14 +9,7 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../types';
-import {
-  buildResponsiveStyles,
-  generateTypeScale,
-  hasVisibleIcon,
-  isSizeInherit,
-  mergeDeep,
-  paramCaseToCamelCase,
-} from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isSizeInherit, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
   addImportantToRule,
   getFocusJssStyle,
@@ -26,7 +19,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -34,38 +27,27 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
-      lineHeight: 'inherit',
-      '& .icon': {
-        width: '1.5em',
-        height: '1.5em',
-      },
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
     type FontSizeLineHeight = typeof fontSize.small;
-    const { fontSize: size, lineHeight }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
-    const lineHeightWithUnit = `${lineHeight}em`;
+    const { fontSize: size }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
       'x-small': fontSize.xSmall,
       small: fontSize.small,
-      medium: { fontSize: '1.25rem', lineHeight: 1.4 },
-      large: { fontSize: '1.875rem', lineHeight: 1.3333333333 },
+      medium: { fontSize: '1.25rem', lineHeight: fontLineHeight },
+      large: { fontSize: '1.875rem', lineHeight: fontLineHeight },
       'x-large': fontSize.large,
     };
 
     return {
-      ...generateTypeScale(size),
-      '& .icon': {
-        // TODO: should be referenced
-        width: lineHeightWithUnit,
-        height: lineHeightWithUnit,
-      },
+      fontSize: size,
       '& ~ .subline': {
         // TODO: should be referenced
         ...sublineSize[textSize],
         '&::before': {
           fontSize: size,
-          marginLeft: lineHeightWithUnit,
+          marginLeft: fontLineHeight,
         },
       },
     };
@@ -162,7 +144,7 @@ export const getLinkButtonPureStyles = (
       border: 'none',
       background: 'transparent',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
-      transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
+      transition: getTransition('color'),
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
         ...hoverMediaQuery({
@@ -197,8 +179,8 @@ export const getLinkButtonPureStyles = (
     ...(hasIcon && {
       icon: {
         flexShrink: '0',
-        width: '1.5em',
-        height: '1.5em',
+        width: fontLineHeight,
+        height: fontLineHeight,
       },
       label: mergeDeep(
         buildResponsiveStyles(

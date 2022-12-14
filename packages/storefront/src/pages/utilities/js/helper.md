@@ -31,7 +31,7 @@ p {
   font-family: "Porsche Next", "Arial Narrow", Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 100;
   font-size: 2.25rem;
-  line-height: 1.33333;
+  line-height: calc(6px + 2.125ex);
 }
 ```
 
@@ -55,7 +55,7 @@ const StyledP = styled.p`
 ```
 p {
   font-size: 2rem;
-  line-height: 1.375;
+  line-height: calc(6px + 2.125ex);
 }
 ```
 
@@ -80,7 +80,7 @@ const StyledP = styled.p`
 
 ```
 p {
-  line-height: 1.375;
+  line-height: calc(6px + 2.125ex);
 }
 ```
 

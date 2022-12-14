@@ -13,7 +13,7 @@ import { getFocus, headingMedium } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
 const formatAndNeutralizeStyle = (style: string): string => {
-  const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'lgIjNy';
+  const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'fnSkiW';
 
   const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
   style = prettier.format(style, { parser: 'scss' });

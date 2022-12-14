@@ -17,17 +17,14 @@ import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
-  calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
   hasVisibleIcon,
-  isSizeInherit,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   throwIfInvalidLinkPureUsage,
-  transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -99,33 +96,9 @@ export class LinkPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  private linkTag: HTMLElement;
-  private iconTag: HTMLElement;
-  private labelTag: HTMLElement;
-  private sublineTag: HTMLElement;
-
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
     throwIfInvalidLinkPureUsage(this.host, this.href);
-  }
-
-  public componentDidLoad(): void {
-    if (isSizeInherit(this.size)) {
-      transitionListener(this.linkTag, 'font-size', () => {
-        const lineHeight = `${calcLineHeightForElement(this.linkTag)}`;
-        this.labelTag.style.lineHeight = lineHeight;
-
-        if (this.sublineTag) {
-          this.sublineTag.style.lineHeight = lineHeight;
-        }
-
-        if (hasVisibleIcon(this.icon)) {
-          const size = `${lineHeight}em`;
-          this.iconTag.style.width = size;
-          this.iconTag.style.height = size;
-        }
-      });
-    }
   }
 
   public render(): JSX.Element {
@@ -162,7 +135,6 @@ export class LinkPure {
             ...(hasSubline && { 'aria-describedby': 'subline' }),
             ...parseAndGetAriaAttributes(this.aria),
           })}
-          ref={(el) => (this.linkTag = el)}
         >
           {hasVisibleIcon(this.icon) && (
             <PrefixedTagNames.pIcon
@@ -172,16 +144,15 @@ export class LinkPure {
               size="inherit"
               name={this.icon}
               source={this.iconSource}
-              ref={(el) => (this.iconTag = el)}
               aria-hidden="true"
             />
           )}
-          <span class="label" ref={(el) => (this.labelTag = el)}>
+          <span class="label">
             <slot />
           </span>
         </TagType>
         {hasSubline && (
-          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
+          <div id="subline" class="subline">
             <slot name="subline" />
           </div>
         )}
