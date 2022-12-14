@@ -578,7 +578,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: components-vue-vrt-regression
-        path: ./packages/components-vuee/tests/vrt/results
+        path: ./packages/components-vue/tests/vrt/results
   fallbacks:
     name: 'Fallbacks'
     runs-on: ubuntu-latest
