@@ -144,7 +144,7 @@ export const getLinkButtonPureStyles = (
       border: 'none',
       background: 'transparent',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
-      transition: `${getTransition('color')}`,
+      transition: getTransition('color'),
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
         ...hoverMediaQuery({
