@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { default as ToastComponent } from '../components/ToastComponent.vue';
+  import { ToastComponent } from '../components';
 </script>
 
 <template>
