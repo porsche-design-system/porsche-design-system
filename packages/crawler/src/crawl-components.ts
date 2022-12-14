@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import { TagNamesWithProperties } from './helper';
 import { TagName } from 'shared/src';
-import { ConsumedTagNamesForVersionsAndPrefixes } from './data-aggregator';
+import { ConsumedTagNamesForVersionsAndPrefixes, TagNameWithPropertiesData } from './data-aggregator';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -43,11 +43,15 @@ export const crawlComponents = async (
       const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] =>
         allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
-      const getConsumedTagNames = (
+      const getConsumedTagNames = <
+        K extends keyof HTMLElementTagNameMap,
+        P extends keyof HTMLElementTagNameMap[K],
+        V extends keyof HTMLElementTagNameMap[K][P]
+      >(
         prefix: string,
         pdsElements: Element[]
-      ): { [p: string]: { [p: string]: unknown } }[] =>
-        pdsElements.map((el) => {
+      ): TagNameWithPropertiesData[] => {
+        return pdsElements.map((el) => {
           const tagName = el.tagName.toLowerCase();
           const componentName = Object.keys(tagNamesWithProperties).find(
             (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
@@ -57,21 +61,39 @@ export const crawlComponents = async (
             throw new Error('Can not find component name');
           }
 
-          const allPdsPropertiesForTagName = tagNamesWithProperties[componentName];
+          const allPdsPropertiesForComponentName = tagNamesWithProperties[componentName];
 
-          const allAppliedProperties = Object.assign(
-            {},
-            ...Array.from(el.attributes, ({ name, value }) => {
-              return { [name]: value };
-            })
-          );
+          const pEl = el as HTMLElementTagNameMap[K];
 
-          const consumedPdsProperties = Object.fromEntries(
-            Object.entries(allAppliedProperties).filter(([key]) => allPdsPropertiesForTagName.includes(key))
-          );
+          // currently we have a circular object, for login.porsche.com, 'p-select-wrapper-dropdown'.selectRef
+          // therefore we need to stringify it explicitly, with checking circular dependencies (if there are any)
+          // TODO: discuss with team if there's a better solution
+          const stringifyCircular = (obj: V): string | V => {
+            try {
+              JSON.stringify(obj);
+              return obj;
+            } catch (e) {
+              // if there are circular dependencies - stringify object differently
+              return Object.prototype.toString.call(obj);
+            }
+          };
 
-          return { [componentName]: consumedPdsProperties };
+          const checkCircularIfObject = (val: V): V | string => {
+            // check if it's an object and stringify circular
+            return typeof val === 'object' && !Array.isArray(val) && val !== null ? stringifyCircular(val) : val;
+          };
+
+          const allConsumedProperties = allPdsPropertiesForComponentName.reduce((result, propName) => {
+            const propValue = pEl[propName as P] as V;
+            return {
+              ...result,
+              [propName]: checkCircularIfObject(propValue),
+            };
+          }, {});
+
+          return { [componentName]: allConsumedProperties } as TagNameWithPropertiesData;
         });
+      };
 
       return Object.entries(consumedPrefixesForVersions).reduce((result, [version, prefixes]) => {
         const consumedTagNamesForPrefixes = prefixes.reduce((result, prefix: string) => {

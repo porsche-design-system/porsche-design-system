@@ -1,5 +1,4 @@
 import { TagName } from 'shared/src';
-import { crawlerConfig } from '../constants';
 
 export type PropertiesData = {
   [propName: string]: boolean | number | string;

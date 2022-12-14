@@ -1,0 +1,259 @@
+{
+    "url": "https://finder.porsche.com/de/de-DE",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.14.0": [
+            "fn"
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.14.0": {
+            "fn": [
+                {
+                    "p-text": {
+                        "tag": "span",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "medium",
+                        "weight": "regular",
+                        "icon": "arrow-head-right",
+                        "href": "/de/de-DE/driveabo",
+                        "active": true,
+                        "hideLabel": true,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "span",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "medium",
+                        "weight": "regular",
+                        "icon": "arrow-head-right",
+                        "href": "/de/de-DE/finanzierung",
+                        "active": true,
+                        "hideLabel": true,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "span",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "medium",
+                        "weight": "regular",
+                        "icon": "arrow-head-right",
+                        "href": "/de/de-DE/leasing",
+                        "active": true,
+                        "hideLabel": true,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "user",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "bookmark",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "source": "/assets/icons/search-agent.svg",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-marque": {
+                        "trademark": true,
+                        "size": "responsive",
+                        "target": "_self"
+                    }
+                }
+            ]
+        }
+    }
+}
