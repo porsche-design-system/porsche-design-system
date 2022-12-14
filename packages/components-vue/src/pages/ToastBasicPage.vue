@@ -7,3 +7,12 @@
     <ToastComponent text="Some message" />
   </div>
 </template>
+
+<style scoped>
+  .playground {
+    height: 300px;
+    padding: 0;
+    transform: translateX(0);
+    border: 1px solid deeppink;
+  }
+</style>
