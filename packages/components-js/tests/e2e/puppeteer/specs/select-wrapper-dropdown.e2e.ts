@@ -40,7 +40,7 @@ describe('select-wrapper dropdown', () => {
   const hiddenClass = 'option--hidden';
 
   const getDropdown = () => selectNode(page, dropdownSelector);
-  const getDropdownButton = () => selectNode(page, `${dropdownSelector} >>> [type="button"]`);
+  const getDropdownCombobox = () => selectNode(page, `${dropdownSelector} >>> [role="combobox"]`);
   const getDropdownList = () => selectNode(page, `${dropdownSelector} >>> [role="listbox"]`);
   const getDropdownOption1 = () => selectNode(page, `${dropdownSelector} >>> .option:nth-child(1)`);
   const getDropdownOption2 = () => selectNode(page, `${dropdownSelector} >>> .option:nth-child(2)`);
@@ -50,7 +50,7 @@ describe('select-wrapper dropdown', () => {
   const getDropdownOptgroup = () => selectNode(page, `${dropdownSelector} >>> .optgroup`);
   const getDropdownCheckmarkIcon = () => selectNode(page, `${dropdownSelector} >>> .icon`);
 
-  const getDropdownAriaActiveDescendant = async () => getAttribute(await getDropdownList(), 'aria-activedescendant');
+  const getComboboxAriaActiveDescendant = async () => getAttribute(await getDropdownCombobox(), 'aria-activedescendant');
   const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
   const getDropdownOpacity = async () => getElementStyle(await getDropdownList(), 'opacity');
@@ -158,7 +158,6 @@ describe('select-wrapper dropdown', () => {
 
     expect(dropdownOptgroup).not.toBeNull();
     expect(await getElementIndex(dropdownList, '[aria-selected=true]')).toBe(1);
-    expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
     expect(await getAmountOfDropdownOptgroups()).toEqual(await getAmountOfOptgroups());
   });
 
@@ -207,35 +206,35 @@ describe('select-wrapper dropdown', () => {
     expect(dropdown).toBeNull();
   });
 
-  it('should disable button when select is disabled programmatically', async () => {
+  it('should disable combobox when select is disabled programmatically', async () => {
     await initSelect();
     const select = await getSelect();
-    const button = await getDropdownButton();
+    const dropdownCombobox = await getDropdownCombobox();
 
-    const getButtonCursorStyle = () => getElementStyle(button, 'cursor');
+    const getComboboxCursorStyle = () => getElementStyle(dropdownCombobox, 'cursor');
 
-    expect(await getButtonCursorStyle(), 'initially').toBe('pointer');
+    expect(await getComboboxCursorStyle(), 'initially').toBe('pointer');
 
     await setProperty(select, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    expect(await getButtonCursorStyle(), 'when disabled = true').toBe('not-allowed');
+    expect(await getComboboxCursorStyle(), 'when disabled = true').toBe('not-allowed');
 
     await setProperty(select, 'disabled', false);
     await waitForStencilLifecycle(page);
 
-    expect(await getButtonCursorStyle(), 'when disabled = false').toBe('pointer');
+    expect(await getComboboxCursorStyle(), 'when disabled = false').toBe('pointer');
   });
 
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
     await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
-    const dropdownButton = await getDropdownButton();
+    const dropdownCombobox = await getDropdownCombobox();
     const text = await selectNode(page, 'p-text');
 
     expect(await getDropdownOpacity()).toBe('0');
 
-    await dropdownButton.click();
+    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('1');
 
@@ -243,11 +242,11 @@ describe('select-wrapper dropdown', () => {
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('0');
 
-    await dropdownButton.click();
+    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('1');
 
-    await dropdownButton.click();
+    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('0');
   });
@@ -465,8 +464,8 @@ describe('select-wrapper dropdown', () => {
       </p-select-wrapper>`
     );
 
-    const dropdownButton = await getDropdownButton();
-    await dropdownButton.click();
+    const dropdownCombobox = await getDropdownCombobox();
+    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
     expect(getPageThrownErrorsAmount(), 'get errorsAmount after click').toBe(0);
@@ -487,16 +486,16 @@ describe('select-wrapper dropdown', () => {
   });
 
   describe('hover state', () => {
-    it('should change border-color when dropdown button is hovered', async () => {
+    it('should change border-color when dropdown combobox is hovered', async () => {
       await initSelect();
       await page.mouse.move(0, 300); // avoid potential hover initially
 
-      const dropdownButton = await getDropdownButton();
-      const initialStyle = await getElementStyle(dropdownButton, 'borderColor');
+      const dropdownCombobox = await getDropdownCombobox();
+      const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
       expect(initialStyle).toBe('rgb(98, 102, 105)');
 
-      await dropdownButton.hover();
-      const hoverStyle = await getElementStyle(dropdownButton, 'borderColor');
+      await dropdownCombobox.hover();
+      const hoverStyle = await getElementStyle(dropdownCombobox, 'borderColor');
       expect(hoverStyle).toBe('rgb(0, 0, 0)');
     });
   });
@@ -507,8 +506,8 @@ describe('select-wrapper dropdown', () => {
     it('should set direction to up', async () => {
       await initSelect({ dropdownDirection: 'up' });
 
-      const dropdownButton = await getDropdownButton();
-      await dropdownButton.click();
+      const dropdownCombobox = await getDropdownCombobox();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderBottom');
@@ -518,8 +517,8 @@ describe('select-wrapper dropdown', () => {
     it('should set direction to down', async () => {
       await initSelect({ dropdownDirection: 'down' });
 
-      const dropdownButton = await getDropdownButton();
-      await dropdownButton.click();
+      const dropdownCombobox = await getDropdownCombobox();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderTop');
@@ -533,8 +532,8 @@ describe('select-wrapper dropdown', () => {
       });
       await initSelect({ amount: 5, markupBefore: '<div style="height: 550px;"></div>' });
 
-      const dropdownButton = await getDropdownButton();
-      await dropdownButton.click();
+      const dropdownCombobox = await getDropdownCombobox();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderBottom');
@@ -546,6 +545,7 @@ describe('select-wrapper dropdown', () => {
     it('should highlight first position on arrow down', async () => {
       await initSelect();
       const select = await getSelect();
+      const host = await getHost();
 
       let calls = 0;
       await addEventListener(select, 'change', () => calls++);
@@ -571,7 +571,10 @@ describe('select-wrapper dropdown', () => {
       expect(await getSelectedIndex(), 'for selected index').toBe(1);
 
       expect(calls, 'for calls').toBe(1);
-      expect(await getDropdownAriaActiveDescendant(), 'for active descendant').toEqual(
+
+      await host.click();
+      await waitForStencilLifecycle(page);
+      expect(await getComboboxAriaActiveDescendant(), 'for active descendant').toEqual(
         `option-${await getSelectedDropdownOptionIndex()}`
       );
     });
@@ -760,14 +763,14 @@ describe('select-wrapper dropdown', () => {
     it('should open/close select on mouseclick', async () => {
       await initSelect();
 
-      const dropdownButton = await getDropdownButton();
-      await dropdownButton.click();
+      const dropdownCombobox = await getDropdownCombobox();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
       expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option  after 1st click').toBe(0);
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
@@ -798,10 +801,10 @@ describe('select-wrapper dropdown', () => {
 
     it('should select second option on mouseclick', async () => {
       await initSelect();
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
       const dropdownOption2 = await getDropdownOption2();
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
@@ -840,9 +843,9 @@ describe('select-wrapper dropdown', () => {
         ${initCustomElement}
         <${customElementName}></${customElementName}>`
       );
-      const dropdownButton = await selectNode(
+      const dropdownCombobox = await selectNode(
         page,
-        `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> button`
+        `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> [role="combobox"]`
       );
 
       const nestedDropdownSelector = `${customElementName} >>> ${dropdownSelector}`;
@@ -854,7 +857,7 @@ describe('select-wrapper dropdown', () => {
 
       expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
       await page.mouse.click(dropdownOption2BoundingBox.x + 2, dropdownOption2BoundingBox.y + 2);
       await waitForStencilLifecycle(page);
@@ -882,36 +885,36 @@ describe('select-wrapper dropdown', () => {
       await initSelect();
 
       const host = await getHost();
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
       const dropdownList = await getDropdownList();
 
-      let buttonMouseDownEventCounter = 0;
-      let buttonKeyDownEventCounter = 0;
+      let comboboxMouseDownEventCounter = 0;
+      let comboboxKeyDownEventCounter = 0;
       let listKeyDownEventCounter = 0;
-      await addEventListener(dropdownButton, 'mousedown', () => buttonMouseDownEventCounter++);
-      await addEventListener(dropdownButton, 'keydown', () => buttonKeyDownEventCounter++);
+      await addEventListener(dropdownCombobox, 'mousedown', () => comboboxMouseDownEventCounter++);
+      await addEventListener(dropdownCombobox, 'keydown', () => comboboxKeyDownEventCounter++);
       await addEventListener(dropdownList, 'keydown', () => listKeyDownEventCounter++);
 
       // Remove and re-attach component to check if events are duplicated / fire at all
       await reattachElementHandle(host);
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
-      expect(buttonMouseDownEventCounter, 'after 1st click').toBe(1);
+      expect(comboboxMouseDownEventCounter, 'after 1st click').toBe(1);
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
 
-      expect(buttonMouseDownEventCounter, 'after 2nd click').toBe(2);
+      expect(comboboxMouseDownEventCounter, 'after 2nd click').toBe(2);
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
-      expect(buttonKeyDownEventCounter, 'after key presses for button').toBe(1);
-      expect(listKeyDownEventCounter, 'after key presses for list').toBe(1);
+      expect(comboboxKeyDownEventCounter, 'after key presses for combobox').toBe(2);
+      expect(listKeyDownEventCounter, 'after key presses for list').toBe(0);
     });
   });
 
@@ -932,10 +935,10 @@ describe('select-wrapper dropdown', () => {
 
     it('should work without unnecessary round trips if second option is clicked', async () => {
       await initSelect();
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
       const dropdownOption2 = await getDropdownOption2();
 
-      await dropdownButton.click();
+      await dropdownCombobox.click();
       await waitForStencilLifecycle(page);
       const status1 = await getLifecycleStatus(page);
 
@@ -964,15 +967,28 @@ describe('select-wrapper dropdown', () => {
   });
 
   describe('accessibility', () => {
-    it('should expose correct initial accessibility tree and aria properties', async () => {
-      await initSelect({ disabledIndex: 1 });
+    it('should expose correct initial accessibility tree', async () => {
+      await initSelect();
+      const dropdownCombobox = await getDropdownCombobox();
       const dropdown = await getDropdown();
 
-      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
-      expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
+      await expectA11yToMatchSnapshot(page, dropdownCombobox, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: true });
     });
 
-    it('should expose correct accessibility tree if rendered with optgroups', async () => {
+    it('should expose correct initial accessibility tree in open state', async () => {
+      await initSelect({ disabledIndex: 1 });
+      const host = await getHost();
+      const dropdownCombobox = await getDropdownCombobox();
+      const dropdown = await getDropdown();
+
+      await host.click();
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, dropdownCombobox, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
+    });
+
+    it('should expose correct accessibility tree if rendered with optgroups in open state', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -990,44 +1006,45 @@ describe('select-wrapper dropdown', () => {
         </p-select-wrapper>`
       );
 
+      const host = await getHost();
       const dropdown = await getDropdown();
 
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
+      expect(await getComboboxAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
     });
 
     it('should expose correct accessibility tree if open/closed', async () => {
       await initSelect();
 
       const host = await getHost();
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
 
-      const snapshot = await page.accessibility.snapshot({
-        root: dropdownButton,
-      });
-
-      await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'Initially' });
+      await expectA11yToMatchSnapshot(page, dropdownCombobox, { message: 'Initially' });
 
       await host.click();
       await waitForStencilLifecycle(page);
 
-      await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'After click' });
+      await expectA11yToMatchSnapshot(page, dropdownCombobox, { message: 'After click' });
     });
 
-    it('should expose correct accessibility tree on selected custom option on click', async () => {
+    it('should expose correct accessibility tree on selected custom option on click in open state', async () => {
       await initSelect();
 
-      const dropdownButton = await getDropdownButton();
+      const host = await getHost();
       const dropdownOption1 = await getDropdownOption1();
       const dropdownOption2 = await getDropdownOption2();
 
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
 
-      await dropdownButton.click();
-      await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
-
+      await host.click();
+      await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
     });
@@ -1037,9 +1054,9 @@ describe('select-wrapper dropdown', () => {
       const host = await getHost();
       await setProperty(host, 'description', 'Some description');
       await waitForStencilLifecycle(page);
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
 
-      await expectA11yToMatchSnapshot(page, dropdownButton);
+      await expectA11yToMatchSnapshot(page, dropdownCombobox);
     });
 
     it('should expose correct accessibility tree in error state', async () => {
@@ -1048,9 +1065,9 @@ describe('select-wrapper dropdown', () => {
       await setProperty(host, 'state', 'error');
       await setProperty(host, 'message', 'Some error message');
       await waitForStencilLifecycle(page);
-      const dropdownButton = await getDropdownButton();
+      const dropdownCombobox = await getDropdownCombobox();
 
-      await expectA11yToMatchSnapshot(page, dropdownButton);
+      await expectA11yToMatchSnapshot(page, dropdownCombobox);
     });
   });
 });
