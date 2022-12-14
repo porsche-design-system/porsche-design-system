@@ -1,23 +1,19 @@
-import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '../../font';
+import { fontBehavior, fontFamily, fontLineHeight, fontStyle, fontVariant, fontWeight } from '../../font';
 import { mediaQueryMin, mediaQueryMinMax } from '../../mediaQuery';
 
 export const headingSmall = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1rem/1.5 ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1rem/${fontLineHeight} ${fontFamily}`,
   ...fontBehavior,
   [mediaQueryMinMax('s', 'm')]: {
     fontSize: '1.125rem',
-    lineHeight: 1.5555555556,
   },
   [mediaQueryMinMax('m', 'l')]: {
     fontSize: '1.25rem',
-    lineHeight: 1.4,
   },
   [mediaQueryMinMax('l', 'xl')]: {
     fontSize: '1.375rem',
-    lineHeight: 1.4545454545,
   },
   [mediaQueryMin('xl')]: {
     fontSize: '1.5rem',
-    lineHeight: 1.5,
   },
 };

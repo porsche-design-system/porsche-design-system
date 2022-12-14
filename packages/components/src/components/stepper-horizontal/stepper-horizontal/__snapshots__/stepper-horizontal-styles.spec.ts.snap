@@ -6,13 +6,13 @@ exports[`getComponentCss() should return correct css for size: "medium" 1`] = `
 }
 .scroller {
   display: flex;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }"
 `;
 
@@ -22,13 +22,13 @@ exports[`getComponentCss() should return correct css for size: "small" 1`] = `
 }
 .scroller {
   display: flex;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }"
 `;
 
@@ -38,46 +38,46 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 .scroller {
   display: flex;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 @media(min-width:480px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
 }
 
 @media(min-width:760px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
 }
 
 @media(min-width:1000px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
 }
 
 @media(min-width:1300px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
 }
 
 @media(min-width:1760px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
 }
 "

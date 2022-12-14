@@ -102,7 +102,7 @@ p {
   font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 ```
 
@@ -129,34 +129,30 @@ h1 {
   font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
-  line-height: 1.4285714286;
+  line-height: calc(6px + 2.125ex);
 }
 
 @media (min-width: 760px) and (max-width: 999px) {
   h1 {
     font-size: 2.25rem;
-    line-height: 1.2222222222;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1299px) {
   h1 {
     font-size: 2.75rem;
-    line-height: 1.1818181818;
   }
 }
 
 @media (min-width: 1300px) and (max-width: 1759px) {
   h1 {
     font-size: 3.25rem;
-    line-height: 1.2307692308;
   }
 }
 
 @media (min-width: 1760px) {
   h1 {
     font-size: 3.75rem;
-    line-height: 1.2;
   }
 }
 ```

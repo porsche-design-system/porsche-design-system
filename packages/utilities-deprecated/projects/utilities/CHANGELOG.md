@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `line-height` calculation uses `ex`-unit in combination with `calc()` which gives the best performance, the easiest
+  possible integration and respects UI best practices in having **larger** `line-height` values for **small**
+  `font-size` definitions and **smaller** `line-height` values for **larger** `font-size` definitions. The calculated
+  values by CSS slightly differ compared to the ones before calculated by JavaScript or SCSS, which might result in
+  minor visual changes.
+
 ### [5.3.1] - 2022-06-22
 
 ### [5.3.1-rc.0] - 2022-06-21

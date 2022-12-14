@@ -9,10 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
-#### Fixed
-
-- Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
-- Screen reader announcements in `Select Wrapper`
+### [2.18.0-rc.2] - 2022-12-14
 
 #### Added
 
@@ -20,6 +17,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
   **https://designsystem.porsche.com/v2/partials/initial-styles**
+
+#### Changed
+
+- `line-height` calculation for all components is handled CSS only now by using `ex`-unit in combination with `calc()`
+  which gives the best performance, the easiest possible integration and respects UI best practices in having **larger**
+  `line-height` values for **small** `font-size` definitions and **smaller** `line-height` values for **larger**
+  `font-size` definitions. The calculated values by CSS slightly differ compared to the ones calculated by JavaScript,
+  which might result in minor visual changes.
+
+#### Fixed
+
+- Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
+- Screen reader announcements in `Select Wrapper`
 
 ### [2.18.0-rc.1] - 2022-11-24
 

@@ -54,28 +54,14 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
   };
 };
 
-// TODO: caching?
-export const calculateLineHeight = (fontSize: string): number => {
+// keep unused parameter for backwards compatibility
+export const calculateLineHeight = (fontSize: string): string => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error(`font size needs to be value + px or rem and not 0, e.g. 15rem or 16px, received: '${fontSize}'`);
   }
-  const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSize) : fontSizeValue;
-  const fontSizeLength = parseFloat(fontSizePx);
 
-  const e = 2.71828;
-  const exactLineHeightFactor = 0.911 / (2.97 + 0.005 * Math.pow(e, 0.2 * fontSizeLength)) + 1.2;
-  const exactLineHeightPx = fontSizeLength * exactLineHeightFactor;
-  let remainingPx = exactLineHeightPx % 4;
-
-  if (remainingPx > 2) {
-    remainingPx = remainingPx - 4;
-  }
-
-  const roundingFactor = 10000000000;
-  const fittedLineHeightPx = exactLineHeightPx - remainingPx;
-  const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
-  return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;
+  return 'calc(6px + 2.125ex)';
 };
 
 // Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers

@@ -22,7 +22,7 @@ const locale = lang in locales ? lang : 'en';
 
 const { title, content } = locales[locale];
 // prettier-ignore
-const htmlMarkup = \`<strong>\${title}</strong>${isBrowser ? browserOverlayMarkup : defaultOverlayMarkup}\`;
+const htmlMarkup = \`<h2>\${title}</h2>${isBrowser ? browserOverlayMarkup : defaultOverlayMarkup}\`;
 
 // prettier-ignore
 const css = \`${minifyCSS(`
@@ -55,7 +55,7 @@ const css = \`${minifyCSS(`
     font-size: 1rem;
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-weight: normal;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     color: #000;
   }
 
@@ -67,10 +67,10 @@ const css = \`${minifyCSS(`
     fill: #ff9b00;
   }
 
-  #ID > div strong {
-    display: block;
+  #ID > div h2 {
     margin: 0 0 1rem;
     font-size: 1.5rem;
+    line-height: calc(6px + 2.125ex);
   }
 
   #ID > div > p {
@@ -112,8 +112,9 @@ ${
       margin: 0 0 1rem;
     }
 
-    #ID > div > strong {
+    #ID > div > h2 {
       font-size: 3rem;
+      line-height: calc(6px + 2.125ex);
     }
 
     #ID > div > div {
@@ -156,7 +157,7 @@ ${
 // prettier-ignore
 const html = \`${minifyHTML(`<div>
   STYLE
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false" aria-hidden="true">
     <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
     <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
   </svg>

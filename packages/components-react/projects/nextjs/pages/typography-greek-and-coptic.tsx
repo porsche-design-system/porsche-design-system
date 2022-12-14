@@ -10,9 +10,10 @@ const TypographyGreekAndCopticPage: NextPage = (): JSX.Element => {
     }
 
     p-text {
-      display: inline-block;
-      text-align: center;
+      display: inline-flex;
       vertical-align: top;
+      align-items: center;
+      justify-content: center;
       margin: 4px;
       padding: 4px;
       background: #f1f1f1;

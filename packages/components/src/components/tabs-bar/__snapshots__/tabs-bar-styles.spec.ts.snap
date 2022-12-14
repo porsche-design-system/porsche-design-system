@@ -4,11 +4,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -50,14 +49,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -65,7 +63,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #ff0223;
 }
 .bar--enable-transition {
@@ -78,11 +76,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -124,14 +121,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -139,7 +135,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -152,11 +148,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -198,14 +193,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1.5rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -213,7 +207,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #00b0f4;
 }
 .bar--enable-transition {
@@ -226,11 +220,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -272,14 +265,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -287,7 +279,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #ff0223;
 }
 .bar--enable-transition {
@@ -300,11 +292,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -346,14 +337,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -361,7 +351,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -374,11 +364,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -420,14 +409,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -435,7 +423,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #00b0f4;
 }
 .bar--enable-transition {
@@ -448,11 +436,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -494,14 +481,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -509,7 +495,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: .125em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -522,11 +508,10 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
-  margin: 0 !important;
+  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -561,36 +546,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media(min-width:480px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
-@media(min-width:760px) {
-  :host {
-    height: 2.25rem !important;
-  }
-}
-
-@media(min-width:1000px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
-@media(min-width:1300px) {
-  :host {
-    height: 2.25rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    height: 3.25rem !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
@@ -598,14 +553,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 
 .scroller {
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .bar {
   display: block;
@@ -613,7 +567,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   width: 0;
   height: .09375em;
   left: 0;
-  bottom: -.5em;
+  bottom: -0.25rem;
   background: #d5001c;
 }
 .bar--enable-transition {
@@ -623,35 +577,30 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 @media(min-width:480px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:760px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1000px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1300px) {
   .scroller {
     font-size: 1rem;
-    line-height: 1.5;
   }
 }
 
 @media(min-width:1760px) {
   .scroller {
     font-size: 1.5rem;
-    line-height: 1.5;
   }
 }
 "

@@ -3,17 +3,14 @@ import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
-  calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  isSizeInherit,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
-  transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -101,11 +98,6 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
-  private buttonTag: HTMLElement;
-  private iconTag: HTMLElement;
-  private labelTag: HTMLElement;
-  private sublineTag: HTMLElement;
-
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
   }
@@ -124,23 +116,6 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabledOrLoading
     );
-
-    if (isSizeInherit(this.size)) {
-      transitionListener(this.buttonTag, 'font-size', () => {
-        const lineHeight = `${calcLineHeightForElement(this.buttonTag)}`;
-        this.labelTag.style.lineHeight = lineHeight;
-
-        if (this.sublineTag) {
-          this.sublineTag.style.lineHeight = lineHeight;
-        }
-
-        if (hasVisibleIcon(this.icon)) {
-          const size = `${lineHeight}em`;
-          this.iconTag.style.width = size;
-          this.iconTag.style.height = size;
-        }
-      });
-    }
   }
 
   public render(): JSX.Element {
@@ -169,7 +144,6 @@ export class ButtonPure {
       class: 'icon',
       size: 'inherit',
       theme: this.theme,
-      ref: (el: HTMLElement) => (this.iconTag = el),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -181,7 +155,6 @@ export class ButtonPure {
           class="root"
           type={this.type}
           tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
-          ref={(el) => (this.buttonTag = el)}
         >
           {hasIcon &&
             (this.loading ? (
@@ -195,12 +168,12 @@ export class ButtonPure {
                 aria-hidden="true"
               />
             ))}
-          <span class="label" ref={(el) => (this.labelTag = el)}>
+          <span class="label">
             <slot />
           </span>
         </button>
         {hasSubline && (
-          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
+          <div id="subline" class="subline">
             <slot name="subline" />
           </div>
         )}
