@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [5.4.0-rc.0] - 2022-12-14
+
 #### Changed
 
 - `line-height` calculation uses `ex`-unit in combination with `calc()` which gives the best performance, the easiest
