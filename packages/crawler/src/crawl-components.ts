@@ -93,7 +93,9 @@ export const crawlComponents = async (
           }
 
           return {
-            [componentName]: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+            [componentName]: {
+              properties: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+            },
           } as TagNameWithPropertiesData;
         });
       };

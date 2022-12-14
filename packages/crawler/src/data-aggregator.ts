@@ -3,7 +3,14 @@ import { TagName } from 'shared/src';
 export type PropertiesData = {
   [propName: string]: boolean | number | string;
 };
-export type TagNameWithPropertiesData = Record<TagName, PropertiesData>;
+export type TagNameWithPropertiesData = Record<
+  TagName,
+  {
+    properties: PropertiesData;
+    slot?: string;
+    hostPdsComponent?: TagName;
+  }
+>;
 
 export type ConsumedTagNamesForVersionsAndPrefixes = {
   [version: string]: {
@@ -28,7 +35,7 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
   return tagNamesWithProperties.reduce((result, tagNameWithPropertiesData) => {
     const tagName = Object.keys(tagNameWithPropertiesData)[0];
     const amount = result[tagName]?.amount;
-    const propertiesData = Object.entries(tagNameWithPropertiesData)[0][1];
+    const propertiesData = Object.entries(tagNameWithPropertiesData)[0][1].properties;
 
     if (result[tagName]) {
       result[tagName].amount = amount + 1;
