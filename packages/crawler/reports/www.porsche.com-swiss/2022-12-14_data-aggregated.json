@@ -10,57 +10,335 @@
         ]
     },
     "aggregatedConsumedTagNames": {
-        "p-icon": {
-            "amount": 32,
+        "p-link-pure": {
+            "amount": 21,
             "properties": {
-                "name": {
-                    "amount": 32,
+                "alignLabel": {
+                    "amount": 21,
                     "values": {
-                        "arrow-head-right": 15,
-                        "external": 6,
-                        "menuDotsVertical": 1,
-                        "user": 1,
+                        "right": 21
+                    }
+                },
+                "stretch": {
+                    "amount": 21,
+                    "values": {
+                        "false": 21
+                    }
+                },
+                "size": {
+                    "amount": 21,
+                    "values": {
+                        "{ base: 'medium', m: 'large', l: 'x-large' }": 1,
+                        "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 6,
+                        "{ base: 'large', xl: 'x-large'}": 6,
+                        "inherit": 1,
+                        "small": 7
+                    }
+                },
+                "weight": {
+                    "amount": 21,
+                    "values": {
+                        "semibold": 13,
+                        "regular": 8
+                    }
+                },
+                "icon": {
+                    "amount": 21,
+                    "values": {
+                        "arrow-head-right": 13,
                         "pin": 1,
-                        "shoppingBag": 1,
-                        "logo-linkedin": 1,
-                        "logo-xing": 1,
-                        "logo-twitter": 1,
-                        "logo-youtube": 1,
-                        "logo-pinterest": 1,
-                        "logo-instagram": 1,
-                        "logo-facebook": 1
+                        "none": 7
+                    }
+                },
+                "href": {
+                    "amount": 21,
+                    "values": {
+                        "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo/": 1,
+                        "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
+                        "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
+                        "https://drivenbydreams.ch/": 1,
+                        "https://www.porsche.com/swiss/de/models/718/": 1,
+                        "https://www.porsche.com/swiss/de/models/911/": 1,
+                        "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
+                        "https://www.porsche.com/swiss/de/models/panamera/panamera-models/": 1,
+                        "https://www.porsche.com/swiss/de/models/macan/macan-models/": 1,
+                        "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/": 1,
+                        "https://www.porsche.com/swiss/de/motorsportandevents/experience/": 1,
+                        "https://www.porsche.com/swiss/de/motorsportandevents/porschedrive/": 1,
+                        "https://www.porsche.com/swiss/de/motorsportandevents/motorsport/": 1,
+                        "https://www.porsche.com/swiss/de/dealersearch/": 1,
+                        "https://www.porsche.com/swiss/de/aboutporsche/overview/": 1,
+                        "https://www.porsche.com/swiss/de/aboutporsche/responsibility/": 1,
+                        "https://www.porsche.com/swiss/de/aboutporsche/jobs/": 1,
+                        "https://www.porsche.com/swiss/de/motorsportandevents/porschepartnerforum/": 1,
+                        "https://www.porsche.com/swiss/de/aboutporsche/service/": 1,
+                        "https://www.porsche.com/swiss/de/aboutporsche/pressreleases/": 1,
+                        "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1
+                    }
+                },
+                "active": {
+                    "amount": 21,
+                    "values": {
+                        "false": 21
+                    }
+                },
+                "hideLabel": {
+                    "amount": 21,
+                    "values": {
+                        "false": 21
+                    }
+                },
+                "theme": {
+                    "amount": 21,
+                    "values": {
+                        "dark": 20,
+                        "light": 1
+                    }
+                },
+                "target": {
+                    "amount": 21,
+                    "values": {
+                        "_self": 21
+                    }
+                }
+            }
+        },
+        "p-text": {
+            "amount": 39,
+            "properties": {
+                "tag": {
+                    "amount": 39,
+                    "values": {
+                        "p": 30,
+                        "div": 2,
+                        "span": 7
+                    }
+                },
+                "size": {
+                    "amount": 39,
+                    "values": {
+                        "{ base: 'small', m: 'medium', l: 'large' }": 1,
+                        "{base: 'small', xl: 'medium'}": 6,
+                        "small": 17,
+                        "inherit": 15
+                    }
+                },
+                "weight": {
+                    "amount": 39,
+                    "values": {
+                        "regular": 39
+                    }
+                },
+                "align": {
+                    "amount": 39,
+                    "values": {
+                        "left": 33,
+                        "center": 6
                     }
                 },
                 "color": {
-                    "amount": 32,
+                    "amount": 39,
                     "values": {
-                        "inherit": 28,
+                        "default": 24,
+                        "inherit": 15
+                    }
+                },
+                "ellipsis": {
+                    "amount": 39,
+                    "values": {
+                        "false": 39
+                    }
+                },
+                "theme": {
+                    "amount": 39,
+                    "values": {
+                        "dark": 16,
+                        "light": 23
+                    }
+                }
+            }
+        },
+        "p-icon": {
+            "amount": 44,
+            "properties": {
+                "name": {
+                    "amount": 44,
+                    "values": {
+                        "arrow-head-right": 18,
+                        "external": 6,
+                        "search": 1,
+                        "close": 1,
+                        "": 7,
+                        "shoppingBag": 1,
+                        "pin": 1,
+                        "user": 1,
+                        "menuDotsVertical": 1,
+                        "logo-facebook": 1,
+                        "logo-instagram": 1,
+                        "logo-pinterest": 1,
+                        "logo-youtube": 1,
+                        "logo-twitter": 1,
+                        "logo-xing": 1,
+                        "logo-linkedin": 1
+                    }
+                },
+                "color": {
+                    "amount": 44,
+                    "values": {
+                        "inherit": 40,
                         "default": 4
                     }
                 },
                 "size": {
-                    "amount": 32,
+                    "amount": 44,
                     "values": {
-                        "inherit": 31,
-                        "small": 1
+                        "inherit": 41,
+                        "small": 3
                     }
                 },
                 "lazy": {
-                    "amount": 32,
+                    "amount": 44,
                     "values": {
-                        "false": 32
+                        "false": 44
                     }
                 },
                 "theme": {
-                    "amount": 32,
+                    "amount": 44,
                     "values": {
-                        "light": 32
+                        "light": 44
                     }
                 },
                 "source": {
                     "amount": 1,
                     "values": {
                         "https://nav.porsche.com/00BC524/footer/assets/flags/CH.svg": 1
+                    }
+                }
+            }
+        },
+        "p-content-wrapper": {
+            "amount": 7,
+            "properties": {
+                "width": {
+                    "amount": 7,
+                    "values": {
+                        "basic": 6,
+                        "extended": 1
+                    }
+                },
+                "backgroundColor": {
+                    "amount": 7,
+                    "values": {
+                        "transparent": 7
+                    }
+                },
+                "theme": {
+                    "amount": 7,
+                    "values": {
+                        "light": 7
+                    }
+                }
+            }
+        },
+        "p-headline": {
+            "amount": 17,
+            "properties": {
+                "variant": {
+                    "amount": 17,
+                    "values": {
+                        "headline-2": 5,
+                        "headline-4": 7,
+                        "medium": 5
+                    }
+                },
+                "align": {
+                    "amount": 17,
+                    "values": {
+                        "left": 17
+                    }
+                },
+                "color": {
+                    "amount": 17,
+                    "values": {
+                        "default": 17
+                    }
+                },
+                "ellipsis": {
+                    "amount": 17,
+                    "values": {
+                        "false": 17
+                    }
+                },
+                "theme": {
+                    "amount": 17,
+                    "values": {
+                        "light": 11,
+                        "dark": 6
+                    }
+                },
+                "tag": {
+                    "amount": 12,
+                    "values": {
+                        "h3": 7,
+                        "h2": 5
+                    }
+                }
+            }
+        },
+        "p-button": {
+            "amount": 14,
+            "properties": {
+                "tabbable": {
+                    "amount": 14,
+                    "values": {
+                        "true": 7,
+                        "false": 7
+                    }
+                },
+                "type": {
+                    "amount": 14,
+                    "values": {
+                        "submit": 14
+                    }
+                },
+                "disabled": {
+                    "amount": 14,
+                    "values": {
+                        "false": 14
+                    }
+                },
+                "loading": {
+                    "amount": 14,
+                    "values": {
+                        "false": 14
+                    }
+                },
+                "variant": {
+                    "amount": 14,
+                    "values": {
+                        "secondary": 13,
+                        "primary": 1
+                    }
+                },
+                "icon": {
+                    "amount": 14,
+                    "values": {
+                        "external": 6,
+                        "": 7,
+                        "arrow-head-right": 1
+                    }
+                },
+                "hideLabel": {
+                    "amount": 14,
+                    "values": {
+                        "false": 14
+                    }
+                },
+                "theme": {
+                    "amount": 14,
+                    "values": {
+                        "dark": 6,
+                        "light": 8
                     }
                 }
             }
@@ -85,8 +363,8 @@
                     "amount": 3,
                     "values": {
                         "https://www.porsche.com/swiss/de/swiss-benefits/": 1,
-                        "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1,
-                        "https://www.porsche.com/swiss/de/dialogue/newsletter/": 1
+                        "https://www.porsche.com/swiss/de/dialogue/newsletter/": 1,
+                        "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1
                     }
                 },
                 "theme": {
@@ -116,316 +394,190 @@
                 }
             }
         },
-        "p-text": {
-            "amount": 31,
+        "p-text-field-wrapper": {
+            "amount": 1,
             "properties": {
-                "tag": {
-                    "amount": 31,
+                "label": {
+                    "amount": 1,
                     "values": {
-                        "p": 22,
-                        "div": 2,
-                        "span": 7
+                        "Geben Sie einen Ort für Ihre Suche an": 1
                     }
                 },
-                "size": {
-                    "amount": 31,
+                "unit": {
+                    "amount": 1,
                     "values": {
-                        "small": 9,
-                        "{base: 'small', xl: 'medium'}": 6,
-                        "{ base: 'small', m: 'medium', l: 'large' }": 1,
-                        "inherit": 15
+                        "": 1
                     }
                 },
-                "weight": {
-                    "amount": 31,
+                "unitPosition": {
+                    "amount": 1,
                     "values": {
-                        "regular": 31
+                        "prefix": 1
                     }
                 },
-                "align": {
-                    "amount": 31,
+                "description": {
+                    "amount": 1,
                     "values": {
-                        "left": 25,
-                        "center": 6
+                        "": 1
                     }
                 },
-                "color": {
-                    "amount": 31,
+                "state": {
+                    "amount": 1,
                     "values": {
-                        "default": 16,
-                        "inherit": 15
+                        "none": 1
                     }
                 },
-                "ellipsis": {
-                    "amount": 31,
+                "message": {
+                    "amount": 1,
                     "values": {
-                        "false": 31
-                    }
-                },
-                "theme": {
-                    "amount": 31,
-                    "values": {
-                        "dark": 16,
-                        "light": 15
-                    }
-                }
-            }
-        },
-        "p-headline": {
-            "amount": 7,
-            "properties": {
-                "variant": {
-                    "amount": 7,
-                    "values": {
-                        "headline-2": 2,
-                        "medium": 5
-                    }
-                },
-                "align": {
-                    "amount": 7,
-                    "values": {
-                        "left": 7
-                    }
-                },
-                "color": {
-                    "amount": 7,
-                    "values": {
-                        "default": 7
-                    }
-                },
-                "ellipsis": {
-                    "amount": 7,
-                    "values": {
-                        "false": 7
-                    }
-                },
-                "theme": {
-                    "amount": 7,
-                    "values": {
-                        "dark": 6,
-                        "light": 1
-                    }
-                },
-                "tag": {
-                    "amount": 5,
-                    "values": {
-                        "h2": 5
-                    }
-                }
-            }
-        },
-        "p-button": {
-            "amount": 7,
-            "properties": {
-                "tabbable": {
-                    "amount": 7,
-                    "values": {
-                        "true": 7
-                    }
-                },
-                "type": {
-                    "amount": 7,
-                    "values": {
-                        "submit": 7
-                    }
-                },
-                "disabled": {
-                    "amount": 7,
-                    "values": {
-                        "false": 7
-                    }
-                },
-                "loading": {
-                    "amount": 7,
-                    "values": {
-                        "false": 7
-                    }
-                },
-                "variant": {
-                    "amount": 7,
-                    "values": {
-                        "secondary": 6,
-                        "primary": 1
-                    }
-                },
-                "icon": {
-                    "amount": 7,
-                    "values": {
-                        "external": 6,
-                        "arrow-head-right": 1
+                        "": 1
                     }
                 },
                 "hideLabel": {
-                    "amount": 7,
+                    "amount": 1,
                     "values": {
-                        "false": 7
+                        "false": 1
                     }
                 },
-                "theme": {
-                    "amount": 7,
+                "showCharacterCount": {
+                    "amount": 1,
                     "values": {
-                        "dark": 6,
-                        "light": 1
-                    }
-                }
-            }
-        },
-        "p-link-pure": {
-            "amount": 18,
-            "properties": {
-                "alignLabel": {
-                    "amount": 18,
-                    "values": {
-                        "right": 18
+                        "true": 1
                     }
                 },
-                "stretch": {
-                    "amount": 18,
+                "actionLoading": {
+                    "amount": 1,
                     "values": {
-                        "false": 18
-                    }
-                },
-                "size": {
-                    "amount": 18,
-                    "values": {
-                        "{ base: 'large', xl: 'x-large'}": 6,
-                        "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 3,
-                        "{ base: 'medium', m: 'large', l: 'x-large' }": 1,
-                        "inherit": 1,
-                        "small": 7
-                    }
-                },
-                "weight": {
-                    "amount": 18,
-                    "values": {
-                        "semibold": 10,
-                        "regular": 8
-                    }
-                },
-                "icon": {
-                    "amount": 18,
-                    "values": {
-                        "arrow-head-right": 10,
-                        "pin": 1,
-                        "none": 7
-                    }
-                },
-                "href": {
-                    "amount": 18,
-                    "values": {
-                        "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/": 1,
-                        "https://www.porsche.com/swiss/de/models/macan/macan-models/": 1,
-                        "https://www.porsche.com/swiss/de/models/panamera/panamera-models/": 1,
-                        "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
-                        "https://www.porsche.com/swiss/de/models/911/": 1,
-                        "https://www.porsche.com/swiss/de/models/718/": 1,
-                        "https://drivenbydreams.ch/": 1,
-                        "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
-                        "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
-                        "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo/": 1,
-                        "https://www.porsche.com/swiss/de/dealersearch/": 1,
-                        "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1,
-                        "https://www.porsche.com/swiss/de/aboutporsche/pressreleases/": 1,
-                        "https://www.porsche.com/swiss/de/aboutporsche/service/": 1,
-                        "https://www.porsche.com/swiss/de/motorsportandevents/porschepartnerforum/": 1,
-                        "https://www.porsche.com/swiss/de/aboutporsche/jobs/": 1,
-                        "https://www.porsche.com/swiss/de/aboutporsche/responsibility/": 1,
-                        "https://www.porsche.com/swiss/de/aboutporsche/overview/": 1
-                    }
-                },
-                "active": {
-                    "amount": 18,
-                    "values": {
-                        "false": 18
-                    }
-                },
-                "hideLabel": {
-                    "amount": 18,
-                    "values": {
-                        "false": 18
-                    }
-                },
-                "theme": {
-                    "amount": 18,
-                    "values": {
-                        "dark": 17,
-                        "light": 1
-                    }
-                },
-                "target": {
-                    "amount": 18,
-                    "values": {
-                        "_self": 18
-                    }
-                }
-            }
-        },
-        "p-content-wrapper": {
-            "amount": 3,
-            "properties": {
-                "width": {
-                    "amount": 3,
-                    "values": {
-                        "extended": 1,
-                        "basic": 2
-                    }
-                },
-                "backgroundColor": {
-                    "amount": 3,
-                    "values": {
-                        "transparent": 3
-                    }
-                },
-                "theme": {
-                    "amount": 3,
-                    "values": {
-                        "light": 3
+                        "false": 1
                     }
                 }
             }
         },
         "p-flex": {
-            "amount": 9,
+            "amount": 13,
             "properties": {
                 "inline": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "false": 8,
+                        "false": 12,
                         "true": 1
                     }
                 },
                 "wrap": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "nowrap": 6,
+                        "{base: 'wrap', xs: 'nowrap'}": 1,
+                        "nowrap": 9,
                         "wrap": 3
                     }
                 },
                 "direction": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "row": 9
+                        "row": 10,
+                        "{ base: 'row', xs: 'column' }": 3
                     }
                 },
                 "justifyContent": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "flex-start": 7,
-                        "flex-end": 1,
-                        "space-between": 1
+                        "flex-start": 8,
+                        "space-between": 4,
+                        "flex-end": 1
                     }
                 },
                 "alignItems": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "stretch": 7,
+                        "stretch": 8,
+                        "{ base: 'center', xs: 'flex-start' }": 3,
                         "center": 2
                     }
                 },
                 "alignContent": {
-                    "amount": 9,
+                    "amount": 13,
                     "values": {
-                        "stretch": 9
+                        "stretch": 13
+                    }
+                }
+            }
+        },
+        "p-flex-item": {
+            "amount": 18,
+            "properties": {
+                "width": {
+                    "amount": 18,
+                    "values": {
+                        "{base: 'full', s: 'auto'}": 3,
+                        "auto": 6,
+                        "full": 2,
+                        "{ base: 'full', s: 'half', m: 'one-third' }": 7
+                    }
+                },
+                "offset": {
+                    "amount": 18,
+                    "values": {
+                        "none": 18
+                    }
+                },
+                "alignSelf": {
+                    "amount": 18,
+                    "values": {
+                        "auto": 18
+                    }
+                },
+                "grow": {
+                    "amount": 18,
+                    "values": {
+                        "0": 18
+                    }
+                },
+                "shrink": {
+                    "amount": 18,
+                    "values": {
+                        "1": 18
+                    }
+                },
+                "flex": {
+                    "amount": 18,
+                    "values": {
+                        "initial": 12,
+                        "equal": 6
+                    }
+                }
+            }
+        },
+        "p-marque": {
+            "amount": 1,
+            "properties": {
+                "trademark": {
+                    "amount": 1,
+                    "values": {
+                        "true": 1
+                    }
+                },
+                "size": {
+                    "amount": 1,
+                    "values": {
+                        "responsive": 1
+                    }
+                },
+                "href": {
+                    "amount": 1,
+                    "values": {
+                        "https://www.porsche.com/swiss/de": 1
+                    }
+                },
+                "target": {
+                    "amount": 1,
+                    "values": {
+                        "_self": 1
+                    }
+                },
+                "aria": {
+                    "amount": 1,
+                    "values": {
+                        "[object Object]": 1
                     }
                 }
             }
@@ -507,37 +659,81 @@
                 }
             }
         },
-        "p-marque": {
+        "p-grid": {
             "amount": 1,
             "properties": {
-                "trademark": {
+                "direction": {
                     "amount": 1,
                     "values": {
-                        "true": 1
+                        "row": 1
                     }
                 },
-                "size": {
+                "wrap": {
                     "amount": 1,
                     "values": {
-                        "responsive": 1
+                        "wrap": 1
                     }
                 },
-                "href": {
-                    "amount": 1,
-                    "values": {
-                        "https://www.porsche.com/swiss/de": 1
-                    }
-                },
-                "target": {
-                    "amount": 1,
-                    "values": {
-                        "_self": 1
-                    }
-                },
-                "aria": {
+                "gutter": {
                     "amount": 1,
                     "values": {
                         "[object Object]": 1
+                    }
+                }
+            }
+        },
+        "p-grid-item": {
+            "amount": 7,
+            "properties": {
+                "size": {
+                    "amount": 7,
+                    "values": {
+                        "12": 3,
+                        "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2,
+                        "{ base: 12, m: 4, l: 6 }": 1,
+                        "{ base: 12, l: 9 }": 1
+                    }
+                },
+                "offset": {
+                    "amount": 7,
+                    "values": {
+                        "0": 6,
+                        "{ base: 0, s: 1, m: 0 }": 1
+                    }
+                }
+            }
+        },
+        "p-link-social": {
+            "amount": 7,
+            "properties": {
+                "icon": {
+                    "amount": 7,
+                    "values": {
+                        "logo-facebook": 1,
+                        "logo-instagram": 1,
+                        "logo-pinterest": 1,
+                        "logo-youtube": 1,
+                        "logo-twitter": 1,
+                        "logo-xing": 1,
+                        "logo-linkedin": 1
+                    }
+                },
+                "theme": {
+                    "amount": 7,
+                    "values": {
+                        "dark": 7
+                    }
+                },
+                "target": {
+                    "amount": 7,
+                    "values": {
+                        "_self": 7
+                    }
+                },
+                "hideLabel": {
+                    "amount": 7,
+                    "values": {
+                        "true": 7
                     }
                 }
             }
@@ -564,164 +760,299 @@
                     }
                 }
             }
-        },
-        "p-flex-item": {
-            "amount": 9,
-            "properties": {
-                "width": {
-                    "amount": 9,
-                    "values": {
-                        "{ base: 'full', s: 'half', m: 'one-third' }": 7,
-                        "full": 2
-                    }
-                },
-                "offset": {
-                    "amount": 9,
-                    "values": {
-                        "none": 9
-                    }
-                },
-                "alignSelf": {
-                    "amount": 9,
-                    "values": {
-                        "auto": 9
-                    }
-                },
-                "grow": {
-                    "amount": 9,
-                    "values": {
-                        "0": 9
-                    }
-                },
-                "shrink": {
-                    "amount": 9,
-                    "values": {
-                        "1": 9
-                    }
-                },
-                "flex": {
-                    "amount": 9,
-                    "values": {
-                        "initial": 9
-                    }
-                }
-            }
-        },
-        "p-link-social": {
-            "amount": 7,
-            "properties": {
-                "icon": {
-                    "amount": 7,
-                    "values": {
-                        "logo-linkedin": 1,
-                        "logo-xing": 1,
-                        "logo-twitter": 1,
-                        "logo-youtube": 1,
-                        "logo-pinterest": 1,
-                        "logo-instagram": 1,
-                        "logo-facebook": 1
-                    }
-                },
-                "theme": {
-                    "amount": 7,
-                    "values": {
-                        "dark": 7
-                    }
-                },
-                "target": {
-                    "amount": 7,
-                    "values": {
-                        "_self": 7
-                    }
-                },
-                "hideLabel": {
-                    "amount": 7,
-                    "values": {
-                        "true": 7
-                    }
-                }
-            }
-        },
-        "p-grid-item": {
-            "amount": 7,
-            "properties": {
-                "size": {
-                    "amount": 7,
-                    "values": {
-                        "12": 3,
-                        "{ base: 12, l: 9 }": 1,
-                        "{ base: 12, m: 4, l: 6 }": 1,
-                        "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2
-                    }
-                },
-                "offset": {
-                    "amount": 7,
-                    "values": {
-                        "0": 6,
-                        "{ base: 0, s: 1, m: 0 }": 1
-                    }
-                }
-            }
-        },
-        "p-grid": {
-            "amount": 1,
-            "properties": {
-                "direction": {
-                    "amount": 1,
-                    "values": {
-                        "row": 1
-                    }
-                },
-                "wrap": {
-                    "amount": 1,
-                    "values": {
-                        "wrap": 1
-                    }
-                },
-                "gutter": {
-                    "amount": 1,
-                    "values": {
-                        "[object Object]": 1
-                    }
-                }
-            }
         }
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
         "2.17.0": {
             "": {
-                "p-icon": {
-                    "amount": 17,
+                "p-link-pure": {
+                    "amount": 13,
                     "properties": {
-                        "name": {
-                            "amount": 17,
+                        "alignLabel": {
+                            "amount": 13,
                             "values": {
-                                "arrow-head-right": 11,
-                                "external": 6
+                                "right": 13
                             }
                         },
-                        "color": {
-                            "amount": 17,
+                        "stretch": {
+                            "amount": 13,
                             "values": {
-                                "inherit": 17
+                                "false": 13
                             }
                         },
                         "size": {
-                            "amount": 17,
+                            "amount": 13,
                             "values": {
-                                "inherit": 17
+                                "{ base: 'medium', m: 'large', l: 'x-large' }": 1,
+                                "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 6,
+                                "{ base: 'large', xl: 'x-large'}": 6
                             }
                         },
-                        "lazy": {
-                            "amount": 17,
+                        "weight": {
+                            "amount": 13,
                             "values": {
-                                "false": 17
+                                "semibold": 13
+                            }
+                        },
+                        "icon": {
+                            "amount": 13,
+                            "values": {
+                                "arrow-head-right": 13
+                            }
+                        },
+                        "href": {
+                            "amount": 13,
+                            "values": {
+                                "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo/": 1,
+                                "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
+                                "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
+                                "https://drivenbydreams.ch/": 1,
+                                "https://www.porsche.com/swiss/de/models/718/": 1,
+                                "https://www.porsche.com/swiss/de/models/911/": 1,
+                                "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
+                                "https://www.porsche.com/swiss/de/models/panamera/panamera-models/": 1,
+                                "https://www.porsche.com/swiss/de/models/macan/macan-models/": 1,
+                                "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/": 1,
+                                "https://www.porsche.com/swiss/de/motorsportandevents/experience/": 1,
+                                "https://www.porsche.com/swiss/de/motorsportandevents/porschedrive/": 1,
+                                "https://www.porsche.com/swiss/de/motorsportandevents/motorsport/": 1
+                            }
+                        },
+                        "active": {
+                            "amount": 13,
+                            "values": {
+                                "false": 13
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 13,
+                            "values": {
+                                "false": 13
                             }
                         },
                         "theme": {
-                            "amount": 17,
+                            "amount": 13,
                             "values": {
-                                "light": 17
+                                "dark": 13
+                            }
+                        },
+                        "target": {
+                            "amount": 13,
+                            "values": {
+                                "_self": 13
+                            }
+                        }
+                    }
+                },
+                "p-text": {
+                    "amount": 16,
+                    "properties": {
+                        "tag": {
+                            "amount": 16,
+                            "values": {
+                                "p": 16
+                            }
+                        },
+                        "size": {
+                            "amount": 16,
+                            "values": {
+                                "{ base: 'small', m: 'medium', l: 'large' }": 1,
+                                "{base: 'small', xl: 'medium'}": 6,
+                                "small": 9
+                            }
+                        },
+                        "weight": {
+                            "amount": 16,
+                            "values": {
+                                "regular": 16
+                            }
+                        },
+                        "align": {
+                            "amount": 16,
+                            "values": {
+                                "left": 16
+                            }
+                        },
+                        "color": {
+                            "amount": 16,
+                            "values": {
+                                "default": 16
+                            }
+                        },
+                        "ellipsis": {
+                            "amount": 16,
+                            "values": {
+                                "false": 16
+                            }
+                        },
+                        "theme": {
+                            "amount": 16,
+                            "values": {
+                                "dark": 8,
+                                "light": 8
+                            }
+                        }
+                    }
+                },
+                "p-icon": {
+                    "amount": 29,
+                    "properties": {
+                        "name": {
+                            "amount": 29,
+                            "values": {
+                                "arrow-head-right": 14,
+                                "external": 6,
+                                "search": 1,
+                                "close": 1,
+                                "": 7
+                            }
+                        },
+                        "color": {
+                            "amount": 29,
+                            "values": {
+                                "inherit": 29
+                            }
+                        },
+                        "size": {
+                            "amount": 29,
+                            "values": {
+                                "inherit": 27,
+                                "small": 2
+                            }
+                        },
+                        "lazy": {
+                            "amount": 29,
+                            "values": {
+                                "false": 29
+                            }
+                        },
+                        "theme": {
+                            "amount": 29,
+                            "values": {
+                                "light": 29
+                            }
+                        }
+                    }
+                },
+                "p-content-wrapper": {
+                    "amount": 6,
+                    "properties": {
+                        "width": {
+                            "amount": 6,
+                            "values": {
+                                "basic": 5,
+                                "extended": 1
+                            }
+                        },
+                        "backgroundColor": {
+                            "amount": 6,
+                            "values": {
+                                "transparent": 6
+                            }
+                        },
+                        "theme": {
+                            "amount": 6,
+                            "values": {
+                                "light": 6
+                            }
+                        }
+                    }
+                },
+                "p-headline": {
+                    "amount": 12,
+                    "properties": {
+                        "variant": {
+                            "amount": 12,
+                            "values": {
+                                "headline-2": 5,
+                                "headline-4": 7
+                            }
+                        },
+                        "align": {
+                            "amount": 12,
+                            "values": {
+                                "left": 12
+                            }
+                        },
+                        "color": {
+                            "amount": 12,
+                            "values": {
+                                "default": 12
+                            }
+                        },
+                        "ellipsis": {
+                            "amount": 12,
+                            "values": {
+                                "false": 12
+                            }
+                        },
+                        "theme": {
+                            "amount": 12,
+                            "values": {
+                                "light": 11,
+                                "dark": 1
+                            }
+                        },
+                        "tag": {
+                            "amount": 7,
+                            "values": {
+                                "h3": 7
+                            }
+                        }
+                    }
+                },
+                "p-button": {
+                    "amount": 13,
+                    "properties": {
+                        "tabbable": {
+                            "amount": 13,
+                            "values": {
+                                "true": 6,
+                                "false": 7
+                            }
+                        },
+                        "type": {
+                            "amount": 13,
+                            "values": {
+                                "submit": 13
+                            }
+                        },
+                        "disabled": {
+                            "amount": 13,
+                            "values": {
+                                "false": 13
+                            }
+                        },
+                        "loading": {
+                            "amount": 13,
+                            "values": {
+                                "false": 13
+                            }
+                        },
+                        "variant": {
+                            "amount": 13,
+                            "values": {
+                                "secondary": 13
+                            }
+                        },
+                        "icon": {
+                            "amount": 13,
+                            "values": {
+                                "external": 6,
+                                "": 7
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 13,
+                            "values": {
+                                "false": 13
+                            }
+                        },
+                        "theme": {
+                            "amount": 13,
+                            "values": {
+                                "dark": 6,
+                                "light": 7
                             }
                         }
                     }
@@ -773,271 +1104,233 @@
                         }
                     }
                 },
-                "p-text": {
-                    "amount": 8,
+                "p-text-field-wrapper": {
+                    "amount": 1,
                     "properties": {
-                        "tag": {
-                            "amount": 8,
+                        "label": {
+                            "amount": 1,
                             "values": {
-                                "p": 8
+                                "Geben Sie einen Ort für Ihre Suche an": 1
                             }
                         },
-                        "size": {
-                            "amount": 8,
+                        "unit": {
+                            "amount": 1,
                             "values": {
-                                "small": 1,
-                                "{base: 'small', xl: 'medium'}": 6,
-                                "{ base: 'small', m: 'medium', l: 'large' }": 1
+                                "": 1
                             }
                         },
-                        "weight": {
-                            "amount": 8,
+                        "unitPosition": {
+                            "amount": 1,
                             "values": {
-                                "regular": 8
+                                "prefix": 1
                             }
                         },
-                        "align": {
-                            "amount": 8,
+                        "description": {
+                            "amount": 1,
                             "values": {
-                                "left": 8
+                                "": 1
                             }
                         },
-                        "color": {
-                            "amount": 8,
+                        "state": {
+                            "amount": 1,
                             "values": {
-                                "default": 8
+                                "none": 1
                             }
                         },
-                        "ellipsis": {
-                            "amount": 8,
+                        "message": {
+                            "amount": 1,
                             "values": {
-                                "false": 8
-                            }
-                        },
-                        "theme": {
-                            "amount": 8,
-                            "values": {
-                                "dark": 8
-                            }
-                        }
-                    }
-                },
-                "p-headline": {
-                    "amount": 2,
-                    "properties": {
-                        "variant": {
-                            "amount": 2,
-                            "values": {
-                                "headline-2": 2
-                            }
-                        },
-                        "align": {
-                            "amount": 2,
-                            "values": {
-                                "left": 2
-                            }
-                        },
-                        "color": {
-                            "amount": 2,
-                            "values": {
-                                "default": 2
-                            }
-                        },
-                        "ellipsis": {
-                            "amount": 2,
-                            "values": {
-                                "false": 2
-                            }
-                        },
-                        "theme": {
-                            "amount": 2,
-                            "values": {
-                                "dark": 1,
-                                "light": 1
-                            }
-                        }
-                    }
-                },
-                "p-button": {
-                    "amount": 6,
-                    "properties": {
-                        "tabbable": {
-                            "amount": 6,
-                            "values": {
-                                "true": 6
-                            }
-                        },
-                        "type": {
-                            "amount": 6,
-                            "values": {
-                                "submit": 6
-                            }
-                        },
-                        "disabled": {
-                            "amount": 6,
-                            "values": {
-                                "false": 6
-                            }
-                        },
-                        "loading": {
-                            "amount": 6,
-                            "values": {
-                                "false": 6
-                            }
-                        },
-                        "variant": {
-                            "amount": 6,
-                            "values": {
-                                "secondary": 6
-                            }
-                        },
-                        "icon": {
-                            "amount": 6,
-                            "values": {
-                                "external": 6
+                                "": 1
                             }
                         },
                         "hideLabel": {
-                            "amount": 6,
+                            "amount": 1,
                             "values": {
-                                "false": 6
+                                "false": 1
                             }
                         },
-                        "theme": {
-                            "amount": 6,
+                        "showCharacterCount": {
+                            "amount": 1,
                             "values": {
-                                "dark": 6
+                                "true": 1
+                            }
+                        },
+                        "actionLoading": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
                             }
                         }
                     }
                 },
-                "p-link-pure": {
-                    "amount": 10,
+                "p-flex": {
+                    "amount": 4,
                     "properties": {
-                        "alignLabel": {
-                            "amount": 10,
+                        "inline": {
+                            "amount": 4,
                             "values": {
-                                "right": 10
+                                "false": 4
                             }
                         },
-                        "stretch": {
-                            "amount": 10,
+                        "wrap": {
+                            "amount": 4,
                             "values": {
-                                "false": 10
+                                "{base: 'wrap', xs: 'nowrap'}": 1,
+                                "nowrap": 3
                             }
                         },
-                        "size": {
-                            "amount": 10,
+                        "direction": {
+                            "amount": 4,
                             "values": {
-                                "{ base: 'large', xl: 'x-large'}": 6,
-                                "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 3,
-                                "{ base: 'medium', m: 'large', l: 'x-large' }": 1
+                                "row": 1,
+                                "{ base: 'row', xs: 'column' }": 3
                             }
                         },
-                        "weight": {
-                            "amount": 10,
+                        "justifyContent": {
+                            "amount": 4,
                             "values": {
-                                "semibold": 10
+                                "flex-start": 1,
+                                "space-between": 3
                             }
                         },
-                        "icon": {
-                            "amount": 10,
+                        "alignItems": {
+                            "amount": 4,
                             "values": {
-                                "arrow-head-right": 10
+                                "stretch": 1,
+                                "{ base: 'center', xs: 'flex-start' }": 3
                             }
                         },
-                        "href": {
-                            "amount": 10,
+                        "alignContent": {
+                            "amount": 4,
                             "values": {
-                                "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/": 1,
-                                "https://www.porsche.com/swiss/de/models/macan/macan-models/": 1,
-                                "https://www.porsche.com/swiss/de/models/panamera/panamera-models/": 1,
-                                "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
-                                "https://www.porsche.com/swiss/de/models/911/": 1,
-                                "https://www.porsche.com/swiss/de/models/718/": 1,
-                                "https://drivenbydreams.ch/": 1,
-                                "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
-                                "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
-                                "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo/": 1
-                            }
-                        },
-                        "active": {
-                            "amount": 10,
-                            "values": {
-                                "false": 10
-                            }
-                        },
-                        "hideLabel": {
-                            "amount": 10,
-                            "values": {
-                                "false": 10
-                            }
-                        },
-                        "theme": {
-                            "amount": 10,
-                            "values": {
-                                "dark": 10
-                            }
-                        },
-                        "target": {
-                            "amount": 10,
-                            "values": {
-                                "_self": 10
+                                "stretch": 4
                             }
                         }
                     }
                 },
-                "p-content-wrapper": {
-                    "amount": 2,
+                "p-flex-item": {
+                    "amount": 9,
                     "properties": {
                         "width": {
-                            "amount": 2,
+                            "amount": 9,
                             "values": {
-                                "extended": 1,
-                                "basic": 1
+                                "{base: 'full', s: 'auto'}": 3,
+                                "auto": 6
                             }
                         },
-                        "backgroundColor": {
-                            "amount": 2,
+                        "offset": {
+                            "amount": 9,
                             "values": {
-                                "transparent": 2
+                                "none": 9
                             }
                         },
-                        "theme": {
-                            "amount": 2,
+                        "alignSelf": {
+                            "amount": 9,
                             "values": {
-                                "light": 2
+                                "auto": 9
+                            }
+                        },
+                        "grow": {
+                            "amount": 9,
+                            "values": {
+                                "0": 9
+                            }
+                        },
+                        "shrink": {
+                            "amount": 9,
+                            "values": {
+                                "1": 9
+                            }
+                        },
+                        "flex": {
+                            "amount": 9,
+                            "values": {
+                                "initial": 3,
+                                "equal": 6
                             }
                         }
                     }
                 }
             },
             "phn": {
+                "p-button": {
+                    "amount": 1,
+                    "properties": {
+                        "tabbable": {
+                            "amount": 1,
+                            "values": {
+                                "true": 1
+                            }
+                        },
+                        "type": {
+                            "amount": 1,
+                            "values": {
+                                "submit": 1
+                            }
+                        },
+                        "disabled": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "loading": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "variant": {
+                            "amount": 1,
+                            "values": {
+                                "primary": 1
+                            }
+                        },
+                        "icon": {
+                            "amount": 1,
+                            "values": {
+                                "arrow-head-right": 1
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "theme": {
+                            "amount": 1,
+                            "values": {
+                                "light": 1
+                            }
+                        }
+                    }
+                },
                 "p-icon": {
                     "amount": 5,
                     "properties": {
                         "name": {
                             "amount": 5,
                             "values": {
-                                "menuDotsVertical": 1,
-                                "user": 1,
-                                "pin": 1,
+                                "arrow-head-right": 1,
                                 "shoppingBag": 1,
-                                "arrow-head-right": 1
+                                "pin": 1,
+                                "user": 1,
+                                "menuDotsVertical": 1
                             }
                         },
                         "color": {
                             "amount": 5,
                             "values": {
-                                "default": 3,
-                                "inherit": 2
+                                "inherit": 2,
+                                "default": 3
                             }
                         },
                         "size": {
                             "amount": 5,
                             "values": {
-                                "small": 1,
-                                "inherit": 4
+                                "inherit": 4,
+                                "small": 1
                             }
                         },
                         "lazy": {
@@ -1050,55 +1343,6 @@
                             "amount": 5,
                             "values": {
                                 "light": 5
-                            }
-                        }
-                    }
-                },
-                "p-text": {
-                    "amount": 8,
-                    "properties": {
-                        "tag": {
-                            "amount": 8,
-                            "values": {
-                                "div": 2,
-                                "p": 6
-                            }
-                        },
-                        "size": {
-                            "amount": 8,
-                            "values": {
-                                "inherit": 8
-                            }
-                        },
-                        "weight": {
-                            "amount": 8,
-                            "values": {
-                                "regular": 8
-                            }
-                        },
-                        "align": {
-                            "amount": 8,
-                            "values": {
-                                "left": 2,
-                                "center": 6
-                            }
-                        },
-                        "color": {
-                            "amount": 8,
-                            "values": {
-                                "inherit": 8
-                            }
-                        },
-                        "ellipsis": {
-                            "amount": 8,
-                            "values": {
-                                "false": 8
-                            }
-                        },
-                        "theme": {
-                            "amount": 8,
-                            "values": {
-                                "light": 8
                             }
                         }
                     }
@@ -1128,9 +1372,9 @@
                         "justifyContent": {
                             "amount": 6,
                             "values": {
+                                "space-between": 1,
                                 "flex-start": 4,
-                                "flex-end": 1,
-                                "space-between": 1
+                                "flex-end": 1
                             }
                         },
                         "alignItems": {
@@ -1144,6 +1388,155 @@
                             "amount": 6,
                             "values": {
                                 "stretch": 6
+                            }
+                        }
+                    }
+                },
+                "p-marque": {
+                    "amount": 1,
+                    "properties": {
+                        "trademark": {
+                            "amount": 1,
+                            "values": {
+                                "true": 1
+                            }
+                        },
+                        "size": {
+                            "amount": 1,
+                            "values": {
+                                "responsive": 1
+                            }
+                        },
+                        "href": {
+                            "amount": 1,
+                            "values": {
+                                "https://www.porsche.com/swiss/de": 1
+                            }
+                        },
+                        "target": {
+                            "amount": 1,
+                            "values": {
+                                "_self": 1
+                            }
+                        },
+                        "aria": {
+                            "amount": 1,
+                            "values": {
+                                "[object Object]": 1
+                            }
+                        }
+                    }
+                },
+                "p-text": {
+                    "amount": 8,
+                    "properties": {
+                        "tag": {
+                            "amount": 8,
+                            "values": {
+                                "p": 6,
+                                "div": 2
+                            }
+                        },
+                        "size": {
+                            "amount": 8,
+                            "values": {
+                                "inherit": 8
+                            }
+                        },
+                        "weight": {
+                            "amount": 8,
+                            "values": {
+                                "regular": 8
+                            }
+                        },
+                        "align": {
+                            "amount": 8,
+                            "values": {
+                                "center": 6,
+                                "left": 2
+                            }
+                        },
+                        "color": {
+                            "amount": 8,
+                            "values": {
+                                "inherit": 8
+                            }
+                        },
+                        "ellipsis": {
+                            "amount": 8,
+                            "values": {
+                                "false": 8
+                            }
+                        },
+                        "theme": {
+                            "amount": 8,
+                            "values": {
+                                "light": 8
+                            }
+                        }
+                    }
+                },
+                "p-link-pure": {
+                    "amount": 1,
+                    "properties": {
+                        "alignLabel": {
+                            "amount": 1,
+                            "values": {
+                                "right": 1
+                            }
+                        },
+                        "stretch": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "size": {
+                            "amount": 1,
+                            "values": {
+                                "inherit": 1
+                            }
+                        },
+                        "weight": {
+                            "amount": 1,
+                            "values": {
+                                "regular": 1
+                            }
+                        },
+                        "icon": {
+                            "amount": 1,
+                            "values": {
+                                "pin": 1
+                            }
+                        },
+                        "href": {
+                            "amount": 1,
+                            "values": {
+                                "https://www.porsche.com/swiss/de/dealersearch/": 1
+                            }
+                        },
+                        "active": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 1,
+                            "values": {
+                                "false": 1
+                            }
+                        },
+                        "theme": {
+                            "amount": 1,
+                            "values": {
+                                "light": 1
+                            }
+                        },
+                        "target": {
+                            "amount": 1,
+                            "values": {
+                                "_self": 1
                             }
                         }
                     }
@@ -1224,56 +1617,24 @@
                             }
                         }
                     }
-                },
-                "p-link-pure": {
+                }
+            }
+        },
+        "2.16.2": {
+            "pnav-footer": {
+                "p-content-wrapper": {
                     "amount": 1,
                     "properties": {
-                        "alignLabel": {
+                        "width": {
                             "amount": 1,
                             "values": {
-                                "right": 1
+                                "basic": 1
                             }
                         },
-                        "stretch": {
+                        "backgroundColor": {
                             "amount": 1,
                             "values": {
-                                "false": 1
-                            }
-                        },
-                        "size": {
-                            "amount": 1,
-                            "values": {
-                                "inherit": 1
-                            }
-                        },
-                        "weight": {
-                            "amount": 1,
-                            "values": {
-                                "regular": 1
-                            }
-                        },
-                        "icon": {
-                            "amount": 1,
-                            "values": {
-                                "pin": 1
-                            }
-                        },
-                        "href": {
-                            "amount": 1,
-                            "values": {
-                                "https://www.porsche.com/swiss/de/dealersearch/": 1
-                            }
-                        },
-                        "active": {
-                            "amount": 1,
-                            "values": {
-                                "false": 1
-                            }
-                        },
-                        "hideLabel": {
-                            "amount": 1,
-                            "values": {
-                                "false": 1
+                                "transparent": 1
                             }
                         },
                         "theme": {
@@ -1281,43 +1642,25 @@
                             "values": {
                                 "light": 1
                             }
-                        },
-                        "target": {
-                            "amount": 1,
-                            "values": {
-                                "_self": 1
-                            }
                         }
                     }
                 },
-                "p-marque": {
+                "p-grid": {
                     "amount": 1,
                     "properties": {
-                        "trademark": {
+                        "direction": {
                             "amount": 1,
                             "values": {
-                                "true": 1
+                                "row": 1
                             }
                         },
-                        "size": {
+                        "wrap": {
                             "amount": 1,
                             "values": {
-                                "responsive": 1
+                                "wrap": 1
                             }
                         },
-                        "href": {
-                            "amount": 1,
-                            "values": {
-                                "https://www.porsche.com/swiss/de": 1
-                            }
-                        },
-                        "target": {
-                            "amount": 1,
-                            "values": {
-                                "_self": 1
-                            }
-                        },
-                        "aria": {
+                        "gutter": {
                             "amount": 1,
                             "values": {
                                 "[object Object]": 1
@@ -1325,63 +1668,161 @@
                         }
                     }
                 },
-                "p-button": {
-                    "amount": 1,
+                "p-grid-item": {
+                    "amount": 7,
                     "properties": {
-                        "tabbable": {
-                            "amount": 1,
+                        "size": {
+                            "amount": 7,
                             "values": {
-                                "true": 1
+                                "12": 3,
+                                "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2,
+                                "{ base: 12, m: 4, l: 6 }": 1,
+                                "{ base: 12, l: 9 }": 1
                             }
                         },
-                        "type": {
-                            "amount": 1,
+                        "offset": {
+                            "amount": 7,
                             "values": {
-                                "submit": 1
-                            }
-                        },
-                        "disabled": {
-                            "amount": 1,
-                            "values": {
-                                "false": 1
-                            }
-                        },
-                        "loading": {
-                            "amount": 1,
-                            "values": {
-                                "false": 1
-                            }
-                        },
-                        "variant": {
-                            "amount": 1,
-                            "values": {
-                                "primary": 1
-                            }
-                        },
-                        "icon": {
-                            "amount": 1,
-                            "values": {
-                                "arrow-head-right": 1
-                            }
-                        },
-                        "hideLabel": {
-                            "amount": 1,
-                            "values": {
-                                "false": 1
-                            }
-                        },
-                        "theme": {
-                            "amount": 1,
-                            "values": {
-                                "light": 1
+                                "0": 6,
+                                "{ base: 0, s: 1, m: 0 }": 1
                             }
                         }
                     }
-                }
-            }
-        },
-        "2.16.2": {
-            "pnav-footer": {
+                },
+                "p-headline": {
+                    "amount": 5,
+                    "properties": {
+                        "variant": {
+                            "amount": 5,
+                            "values": {
+                                "medium": 5
+                            }
+                        },
+                        "tag": {
+                            "amount": 5,
+                            "values": {
+                                "h2": 5
+                            }
+                        },
+                        "align": {
+                            "amount": 5,
+                            "values": {
+                                "left": 5
+                            }
+                        },
+                        "color": {
+                            "amount": 5,
+                            "values": {
+                                "default": 5
+                            }
+                        },
+                        "ellipsis": {
+                            "amount": 5,
+                            "values": {
+                                "false": 5
+                            }
+                        },
+                        "theme": {
+                            "amount": 5,
+                            "values": {
+                                "dark": 5
+                            }
+                        }
+                    }
+                },
+                "p-flex": {
+                    "amount": 3,
+                    "properties": {
+                        "inline": {
+                            "amount": 3,
+                            "values": {
+                                "true": 1,
+                                "false": 2
+                            }
+                        },
+                        "wrap": {
+                            "amount": 3,
+                            "values": {
+                                "nowrap": 1,
+                                "wrap": 2
+                            }
+                        },
+                        "direction": {
+                            "amount": 3,
+                            "values": {
+                                "row": 3
+                            }
+                        },
+                        "justifyContent": {
+                            "amount": 3,
+                            "values": {
+                                "flex-start": 3
+                            }
+                        },
+                        "alignItems": {
+                            "amount": 3,
+                            "values": {
+                                "center": 1,
+                                "stretch": 2
+                            }
+                        },
+                        "alignContent": {
+                            "amount": 3,
+                            "values": {
+                                "stretch": 3
+                            }
+                        }
+                    }
+                },
+                "p-icon": {
+                    "amount": 10,
+                    "properties": {
+                        "name": {
+                            "amount": 10,
+                            "values": {
+                                "arrow-head-right": 3,
+                                "logo-facebook": 1,
+                                "logo-instagram": 1,
+                                "logo-pinterest": 1,
+                                "logo-youtube": 1,
+                                "logo-twitter": 1,
+                                "logo-xing": 1,
+                                "logo-linkedin": 1
+                            }
+                        },
+                        "source": {
+                            "amount": 1,
+                            "values": {
+                                "https://nav.porsche.com/00BC524/footer/assets/flags/CH.svg": 1
+                            }
+                        },
+                        "color": {
+                            "amount": 10,
+                            "values": {
+                                "default": 1,
+                                "inherit": 9
+                            }
+                        },
+                        "size": {
+                            "amount": 10,
+                            "values": {
+                                "inherit": 10
+                            }
+                        },
+                        "lazy": {
+                            "amount": 10,
+                            "values": {
+                                "false": 10
+                            }
+                        },
+                        "theme": {
+                            "amount": 10,
+                            "values": {
+                                "light": 10
+                            }
+                        }
+                    }
+                },
                 "p-text": {
                     "amount": 15,
                     "properties": {
@@ -1433,25 +1874,121 @@
                         }
                     }
                 },
-                "p-divider": {
-                    "amount": 1,
+                "p-link": {
+                    "amount": 2,
                     "properties": {
-                        "color": {
-                            "amount": 1,
+                        "variant": {
+                            "amount": 2,
                             "values": {
-                                "neutral-contrast-low": 1
+                                "secondary": 2
                             }
                         },
-                        "orientation": {
-                            "amount": 1,
+                        "icon": {
+                            "amount": 2,
                             "values": {
-                                "horizontal": 1
+                                "arrow-head-right": 2
+                            }
+                        },
+                        "href": {
+                            "amount": 2,
+                            "values": {
+                                "https://www.porsche.com/swiss/de/dialogue/newsletter/": 1,
+                                "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1
                             }
                         },
                         "theme": {
-                            "amount": 1,
+                            "amount": 2,
                             "values": {
-                                "dark": 1
+                                "dark": 2
+                            }
+                        },
+                        "target": {
+                            "amount": 2,
+                            "values": {
+                                "_self": 2
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 2,
+                            "values": {
+                                "false": 2
+                            }
+                        }
+                    }
+                },
+                "p-link-social": {
+                    "amount": 7,
+                    "properties": {
+                        "icon": {
+                            "amount": 7,
+                            "values": {
+                                "logo-facebook": 1,
+                                "logo-instagram": 1,
+                                "logo-pinterest": 1,
+                                "logo-youtube": 1,
+                                "logo-twitter": 1,
+                                "logo-xing": 1,
+                                "logo-linkedin": 1
+                            }
+                        },
+                        "theme": {
+                            "amount": 7,
+                            "values": {
+                                "dark": 7
+                            }
+                        },
+                        "target": {
+                            "amount": 7,
+                            "values": {
+                                "_self": 7
+                            }
+                        },
+                        "hideLabel": {
+                            "amount": 7,
+                            "values": {
+                                "true": 7
+                            }
+                        }
+                    }
+                },
+                "p-flex-item": {
+                    "amount": 9,
+                    "properties": {
+                        "width": {
+                            "amount": 9,
+                            "values": {
+                                "full": 2,
+                                "{ base: 'full', s: 'half', m: 'one-third' }": 7
+                            }
+                        },
+                        "offset": {
+                            "amount": 9,
+                            "values": {
+                                "none": 9
+                            }
+                        },
+                        "alignSelf": {
+                            "amount": 9,
+                            "values": {
+                                "auto": 9
+                            }
+                        },
+                        "grow": {
+                            "amount": 9,
+                            "values": {
+                                "0": 9
+                            }
+                        },
+                        "shrink": {
+                            "amount": 9,
+                            "values": {
+                                "1": 9
+                            }
+                        },
+                        "flex": {
+                            "amount": 9,
+                            "values": {
+                                "initial": 9
                             }
                         }
                     }
@@ -1492,13 +2029,13 @@
                         "href": {
                             "amount": 7,
                             "values": {
-                                "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1,
-                                "https://www.porsche.com/swiss/de/aboutporsche/pressreleases/": 1,
-                                "https://www.porsche.com/swiss/de/aboutporsche/service/": 1,
-                                "https://www.porsche.com/swiss/de/motorsportandevents/porschepartnerforum/": 1,
-                                "https://www.porsche.com/swiss/de/aboutporsche/jobs/": 1,
+                                "https://www.porsche.com/swiss/de/aboutporsche/overview/": 1,
                                 "https://www.porsche.com/swiss/de/aboutporsche/responsibility/": 1,
-                                "https://www.porsche.com/swiss/de/aboutporsche/overview/": 1
+                                "https://www.porsche.com/swiss/de/aboutporsche/jobs/": 1,
+                                "https://www.porsche.com/swiss/de/motorsportandevents/porschepartnerforum/": 1,
+                                "https://www.porsche.com/swiss/de/aboutporsche/service/": 1,
+                                "https://www.porsche.com/swiss/de/aboutporsche/pressreleases/": 1,
+                                "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1
                             }
                         },
                         "active": {
@@ -1527,322 +2064,25 @@
                         }
                     }
                 },
-                "p-headline": {
-                    "amount": 5,
-                    "properties": {
-                        "variant": {
-                            "amount": 5,
-                            "values": {
-                                "medium": 5
-                            }
-                        },
-                        "tag": {
-                            "amount": 5,
-                            "values": {
-                                "h2": 5
-                            }
-                        },
-                        "align": {
-                            "amount": 5,
-                            "values": {
-                                "left": 5
-                            }
-                        },
-                        "color": {
-                            "amount": 5,
-                            "values": {
-                                "default": 5
-                            }
-                        },
-                        "ellipsis": {
-                            "amount": 5,
-                            "values": {
-                                "false": 5
-                            }
-                        },
-                        "theme": {
-                            "amount": 5,
-                            "values": {
-                                "dark": 5
-                            }
-                        }
-                    }
-                },
-                "p-flex-item": {
-                    "amount": 9,
-                    "properties": {
-                        "width": {
-                            "amount": 9,
-                            "values": {
-                                "{ base: 'full', s: 'half', m: 'one-third' }": 7,
-                                "full": 2
-                            }
-                        },
-                        "offset": {
-                            "amount": 9,
-                            "values": {
-                                "none": 9
-                            }
-                        },
-                        "alignSelf": {
-                            "amount": 9,
-                            "values": {
-                                "auto": 9
-                            }
-                        },
-                        "grow": {
-                            "amount": 9,
-                            "values": {
-                                "0": 9
-                            }
-                        },
-                        "shrink": {
-                            "amount": 9,
-                            "values": {
-                                "1": 9
-                            }
-                        },
-                        "flex": {
-                            "amount": 9,
-                            "values": {
-                                "initial": 9
-                            }
-                        }
-                    }
-                },
-                "p-flex": {
-                    "amount": 3,
-                    "properties": {
-                        "inline": {
-                            "amount": 3,
-                            "values": {
-                                "false": 2,
-                                "true": 1
-                            }
-                        },
-                        "wrap": {
-                            "amount": 3,
-                            "values": {
-                                "wrap": 2,
-                                "nowrap": 1
-                            }
-                        },
-                        "direction": {
-                            "amount": 3,
-                            "values": {
-                                "row": 3
-                            }
-                        },
-                        "justifyContent": {
-                            "amount": 3,
-                            "values": {
-                                "flex-start": 3
-                            }
-                        },
-                        "alignItems": {
-                            "amount": 3,
-                            "values": {
-                                "stretch": 2,
-                                "center": 1
-                            }
-                        },
-                        "alignContent": {
-                            "amount": 3,
-                            "values": {
-                                "stretch": 3
-                            }
-                        }
-                    }
-                },
-                "p-icon": {
-                    "amount": 10,
-                    "properties": {
-                        "name": {
-                            "amount": 10,
-                            "values": {
-                                "logo-linkedin": 1,
-                                "logo-xing": 1,
-                                "logo-twitter": 1,
-                                "logo-youtube": 1,
-                                "logo-pinterest": 1,
-                                "logo-instagram": 1,
-                                "logo-facebook": 1,
-                                "arrow-head-right": 3
-                            }
-                        },
-                        "color": {
-                            "amount": 10,
-                            "values": {
-                                "inherit": 9,
-                                "default": 1
-                            }
-                        },
-                        "size": {
-                            "amount": 10,
-                            "values": {
-                                "inherit": 10
-                            }
-                        },
-                        "lazy": {
-                            "amount": 10,
-                            "values": {
-                                "false": 10
-                            }
-                        },
-                        "theme": {
-                            "amount": 10,
-                            "values": {
-                                "light": 10
-                            }
-                        },
-                        "source": {
-                            "amount": 1,
-                            "values": {
-                                "https://nav.porsche.com/00BC524/footer/assets/flags/CH.svg": 1
-                            }
-                        }
-                    }
-                },
-                "p-link-social": {
-                    "amount": 7,
-                    "properties": {
-                        "icon": {
-                            "amount": 7,
-                            "values": {
-                                "logo-linkedin": 1,
-                                "logo-xing": 1,
-                                "logo-twitter": 1,
-                                "logo-youtube": 1,
-                                "logo-pinterest": 1,
-                                "logo-instagram": 1,
-                                "logo-facebook": 1
-                            }
-                        },
-                        "theme": {
-                            "amount": 7,
-                            "values": {
-                                "dark": 7
-                            }
-                        },
-                        "target": {
-                            "amount": 7,
-                            "values": {
-                                "_self": 7
-                            }
-                        },
-                        "hideLabel": {
-                            "amount": 7,
-                            "values": {
-                                "true": 7
-                            }
-                        }
-                    }
-                },
-                "p-link": {
-                    "amount": 2,
-                    "properties": {
-                        "variant": {
-                            "amount": 2,
-                            "values": {
-                                "secondary": 2
-                            }
-                        },
-                        "icon": {
-                            "amount": 2,
-                            "values": {
-                                "arrow-head-right": 2
-                            }
-                        },
-                        "href": {
-                            "amount": 2,
-                            "values": {
-                                "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1,
-                                "https://www.porsche.com/swiss/de/dialogue/newsletter/": 1
-                            }
-                        },
-                        "theme": {
-                            "amount": 2,
-                            "values": {
-                                "dark": 2
-                            }
-                        },
-                        "target": {
-                            "amount": 2,
-                            "values": {
-                                "_self": 2
-                            }
-                        },
-                        "hideLabel": {
-                            "amount": 2,
-                            "values": {
-                                "false": 2
-                            }
-                        }
-                    }
-                },
-                "p-grid-item": {
-                    "amount": 7,
-                    "properties": {
-                        "size": {
-                            "amount": 7,
-                            "values": {
-                                "12": 3,
-                                "{ base: 12, l: 9 }": 1,
-                                "{ base: 12, m: 4, l: 6 }": 1,
-                                "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2
-                            }
-                        },
-                        "offset": {
-                            "amount": 7,
-                            "values": {
-                                "0": 6,
-                                "{ base: 0, s: 1, m: 0 }": 1
-                            }
-                        }
-                    }
-                },
-                "p-grid": {
+                "p-divider": {
                     "amount": 1,
                     "properties": {
-                        "direction": {
+                        "color": {
                             "amount": 1,
                             "values": {
-                                "row": 1
+                                "neutral-contrast-low": 1
                             }
                         },
-                        "wrap": {
+                        "orientation": {
                             "amount": 1,
                             "values": {
-                                "wrap": 1
-                            }
-                        },
-                        "gutter": {
-                            "amount": 1,
-                            "values": {
-                                "[object Object]": 1
-                            }
-                        }
-                    }
-                },
-                "p-content-wrapper": {
-                    "amount": 1,
-                    "properties": {
-                        "width": {
-                            "amount": 1,
-                            "values": {
-                                "basic": 1
-                            }
-                        },
-                        "backgroundColor": {
-                            "amount": 1,
-                            "values": {
-                                "transparent": 1
+                                "horizontal": 1
                             }
                         },
                         "theme": {
                             "amount": 1,
                             "values": {
-                                "light": 1
+                                "dark": 1
                             }
                         }
                     }

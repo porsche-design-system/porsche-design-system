@@ -9,14 +9,47 @@
         "2.14.0": {
             "fn": [
                 {
-                    "p-text": {
-                        "tag": "span",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "left",
+                    "p-marque": {
+                        "trademark": true,
+                        "size": "responsive",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "source": "/assets/icons/search-agent.svg",
                         "color": "inherit",
-                        "ellipsis": false,
+                        "size": "small",
+                        "lazy": false,
                         "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "bookmark",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "user",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
                     }
                 },
                 {
@@ -29,28 +62,12 @@
                     }
                 },
                 {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "medium",
-                        "weight": "regular",
+                    "p-link": {
+                        "variant": "secondary",
                         "icon": "arrow-head-right",
-                        "href": "/de/de-DE/driveabo",
-                        "active": true,
-                        "hideLabel": true,
                         "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "span",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "left",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
+                        "target": "_self",
+                        "hideLabel": false
                     }
                 },
                 {
@@ -63,28 +80,66 @@
                     }
                 },
                 {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "medium",
-                        "weight": "regular",
+                    "p-link": {
+                        "variant": "secondary",
                         "icon": "arrow-head-right",
-                        "href": "/de/de-DE/finanzierung",
-                        "active": true,
-                        "hideLabel": true,
                         "theme": "light",
-                        "target": "_self"
+                        "target": "_self",
+                        "hideLabel": false
                     }
                 },
                 {
-                    "p-text": {
-                        "tag": "span",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "left",
+                    "p-icon": {
+                        "name": "arrow-head-right",
                         "color": "inherit",
-                        "ellipsis": false,
+                        "size": "inherit",
+                        "lazy": false,
                         "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
                     }
                 },
                 {
@@ -120,137 +175,82 @@
                     }
                 },
                 {
-                    "p-link": {
-                        "variant": "tertiary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
+                    "p-text": {
+                        "tag": "span",
                         "size": "inherit",
-                        "lazy": false,
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
                         "theme": "light"
                     }
                 },
                 {
-                    "p-link": {
-                        "variant": "tertiary",
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "medium",
+                        "weight": "regular",
                         "icon": "arrow-head-right",
+                        "href": "/de/de-DE/finanzierung",
+                        "active": true,
+                        "hideLabel": true,
                         "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "tertiary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "secondary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "secondary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "secondary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "user",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "bookmark",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "source": "/assets/icons/search-agent.svg",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-marque": {
-                        "trademark": true,
-                        "size": "responsive",
                         "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "span",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "medium",
+                        "weight": "regular",
+                        "icon": "arrow-head-right",
+                        "href": "/de/de-DE/driveabo",
+                        "active": true,
+                        "hideLabel": true,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "span",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
                     }
                 }
             ]

@@ -9,1184 +9,114 @@
         "2.18.0-rc.1": {
             "sl": [
                 {
-                    "p-icon": {
-                        "name": "close",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button-pure": {
-                        "tabbable": true,
-                        "type": "button",
-                        "disabled": false,
-                        "loading": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "close",
-                        "active": false,
-                        "hideLabel": true,
+                    "p-link-pure": {
                         "alignLabel": "right",
                         "stretch": false,
-                        "theme": "light"
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
                     }
                 },
                 {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self",
+                        "aria": {
+                            "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
+                        }
                     }
                 },
                 {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
+                    "p-divider": {
+                        "color": "neutral-contrast-high",
+                        "orientation": "horizontal",
                         "theme": "dark"
-                    }
-                },
-                {
-                    "p-button": {
-                        "tabbable": true,
-                        "type": "submit",
-                        "disabled": false,
-                        "loading": false,
-                        "variant": "tertiary",
-                        "icon": "arrow-head-right",
-                        "hideLabel": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button": {
-                        "tabbable": true,
-                        "type": "submit",
-                        "disabled": false,
-                        "loading": false,
-                        "variant": "secondary",
-                        "icon": "arrow-head-right",
-                        "hideLabel": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button-group": {
-                        "direction": {
-                            "base": "column",
-                            "xs": "row"
-                        }
-                    }
-                },
-                {
-                    "p-modal": {
-                        "disableCloseButton": false,
-                        "disableBackdropClick": false,
-                        "heading": "Bitte melden Sie sich erneut an.",
-                        "fullscreen": false
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "logo-linkedin",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-social": {
-                        "icon": "logo-linkedin",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": true
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "logo-twitter",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-social": {
-                        "icon": "logo-twitter",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": true
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "logo-pinterest",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-social": {
-                        "icon": "logo-pinterest",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": true
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "logo-instagram",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-social": {
-                        "icon": "logo-instagram",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": true
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "logo-facebook",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-social": {
-                        "icon": "logo-facebook",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": true
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrowRight",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "secondary",
-                        "icon": "arrowRight",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrowRight",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "secondary",
-                        "icon": "arrowRight",
-                        "theme": "dark",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "dark",
-                        "target": "_self",
-                        "aria": {
-                            "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
-                        }
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "car",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "duration",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "truck",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-down",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "arrow-head-down",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "tertiary",
-                        "icon": "arrow-head-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "source": "/_next/static/media/multicolor.0794a88f.svg",
-                        "color": "default",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-head-right",
-                        "source": "/_next/static/media/multicolor.0794a88f.svg",
-                        "color": "default",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button-pure": {
-                        "tabbable": true,
-                        "type": "submit",
-                        "disabled": false,
-                        "loading": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "arrow-right",
-                        "active": false,
-                        "hideLabel": true,
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button-pure": {
-                        "tabbable": true,
-                        "type": "submit",
-                        "disabled": false,
-                        "loading": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "arrow-left",
-                        "active": false,
-                        "hideLabel": true,
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self",
-                        "aria": {
-                            "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
-                        }
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-left",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "arrow-right",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "close",
-                        "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-button-pure": {
-                        "tabbable": true,
-                        "type": "button",
-                        "disabled": false,
-                        "loading": false,
-                        "size": "small",
-                        "weight": "regular",
-                        "icon": "close",
-                        "active": false,
-                        "hideLabel": true,
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "user",
-                        "color": "inherit",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
                     }
                 },
                 {
                     "p-marque": {
                         "trademark": true,
                         "size": "responsive",
+                        "href": "/de/de-DE",
                         "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "search",
+                        "color": "default",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "left",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "information",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "information",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "shopping-bag",
+                        "color": "inherit",
+                        "size": "medium",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "shopping-bag",
+                        "color": "default",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
                     }
                 },
                 {
@@ -1211,57 +141,71 @@
                     }
                 },
                 {
+                    "p-marque": {
+                        "trademark": true,
+                        "size": "responsive",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "user",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "tabbable": true,
+                        "type": "button",
+                        "disabled": false,
+                        "loading": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "close",
+                        "active": false,
+                        "hideLabel": true,
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "close",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
                     "p-icon": {
                         "name": "arrow-right",
                         "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link": {
-                        "variant": "tertiary",
-                        "icon": "arrow-right",
-                        "theme": "light",
-                        "target": "_self",
-                        "hideLabel": false
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "shopping-bag",
-                        "color": "default",
-                        "size": "inherit",
+                        "size": "small",
                         "lazy": false,
                         "theme": "light"
                     }
                 },
                 {
                     "p-icon": {
-                        "name": "shopping-bag",
+                        "name": "arrow-left",
                         "color": "inherit",
-                        "size": "medium",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "information",
-                        "color": "inherit",
-                        "size": "inherit",
+                        "size": "small",
                         "lazy": false,
                         "theme": "light"
                     }
                 },
                 {
                     "p-link-pure": {
-                        "alignLabel": "left",
+                        "alignLabel": "right",
                         "stretch": false,
                         "size": "small",
                         "weight": "regular",
-                        "icon": "information",
+                        "icon": "none",
                         "active": false,
                         "hideLabel": false,
                         "theme": "light",
@@ -1270,26 +214,351 @@
                 },
                 {
                     "p-icon": {
-                        "name": "search",
-                        "color": "default",
-                        "size": "inherit",
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
                         "lazy": false,
                         "theme": "light"
                     }
                 },
                 {
-                    "p-marque": {
-                        "trademark": true,
-                        "size": "responsive",
-                        "href": "/de/de-DE",
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
                         "target": "_self"
                     }
                 },
                 {
-                    "p-divider": {
-                        "color": "neutral-contrast-high",
-                        "orientation": "horizontal",
-                        "theme": "dark"
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
                     }
                 },
                 {
@@ -1309,6 +578,268 @@
                     }
                 },
                 {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "tabbable": true,
+                        "type": "submit",
+                        "disabled": false,
+                        "loading": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "arrow-left",
+                        "active": false,
+                        "hideLabel": true,
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "tabbable": true,
+                        "type": "submit",
+                        "disabled": false,
+                        "loading": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "arrow-right",
+                        "active": false,
+                        "hideLabel": true,
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-left",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "source": "/_next/static/media/multicolor.0794a88f.svg",
+                        "color": "default",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "theme": "light",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-right",
+                        "color": "inherit",
+                        "size": "small",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "arrow-head-down",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-down",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "truck",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "duration",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "car",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
                     "p-link-pure": {
                         "alignLabel": "right",
                         "stretch": false,
@@ -1317,8 +848,449 @@
                         "icon": "none",
                         "active": false,
                         "hideLabel": false,
-                        "theme": "light",
+                        "theme": "dark",
+                        "target": "_self",
+                        "aria": {
+                            "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
+                        }
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrowRight",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrowRight",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link": {
+                        "variant": "secondary",
+                        "icon": "arrowRight",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": false
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrowRight",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "icon": "logo-facebook",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": true
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "logo-facebook",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "icon": "logo-instagram",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": true
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "logo-instagram",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "icon": "logo-pinterest",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": true
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "logo-pinterest",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "icon": "logo-twitter",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": true
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "logo-twitter",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "icon": "logo-linkedin",
+                        "theme": "dark",
+                        "target": "_self",
+                        "hideLabel": true
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "logo-linkedin",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
                         "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "dark",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-modal": {
+                        "disableCloseButton": false,
+                        "disableBackdropClick": false,
+                        "heading": "Bitte melden Sie sich erneut an.",
+                        "fullscreen": false
+                    }
+                },
+                {
+                    "p-button-group": {
+                        "direction": {
+                            "base": "column",
+                            "xs": "row"
+                        }
+                    }
+                },
+                {
+                    "p-button": {
+                        "tabbable": true,
+                        "type": "submit",
+                        "disabled": false,
+                        "loading": false,
+                        "variant": "secondary",
+                        "icon": "arrow-head-right",
+                        "hideLabel": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-button": {
+                        "tabbable": true,
+                        "type": "submit",
+                        "disabled": false,
+                        "loading": false,
+                        "variant": "tertiary",
+                        "icon": "arrow-head-right",
+                        "hideLabel": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "dark"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "arrow-head-right",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "tabbable": true,
+                        "type": "button",
+                        "disabled": false,
+                        "loading": false,
+                        "size": "small",
+                        "weight": "regular",
+                        "icon": "close",
+                        "active": false,
+                        "hideLabel": true,
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "close",
+                        "color": "inherit",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
                     }
                 }
             ]

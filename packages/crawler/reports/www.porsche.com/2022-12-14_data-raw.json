@@ -11,98 +11,21 @@
             "": [],
             "phn": [
                 {
-                    "p-icon": {
-                        "name": "menuDotsVertical",
-                        "color": "default",
-                        "size": "small",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "div",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "left",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "user",
-                        "color": "default",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-flex": {
-                        "inline": false,
-                        "wrap": "nowrap",
-                        "direction": "row",
-                        "justifyContent": "flex-start",
-                        "alignItems": "stretch",
-                        "alignContent": "stretch"
-                    }
-                },
-                {
-                    "p-button-pure": {
+                    "p-button": {
                         "tabbable": true,
                         "type": "submit",
                         "disabled": false,
                         "loading": false,
-                        "size": "inherit",
-                        "weight": "regular",
-                        "icon": "none",
-                        "active": false,
+                        "variant": "primary",
+                        "icon": "arrow-head-right",
                         "hideLabel": false,
-                        "alignLabel": "right",
-                        "stretch": false,
                         "theme": "light"
                     }
                 },
                 {
                     "p-icon": {
-                        "name": "pin",
+                        "name": "arrow-head-right",
                         "color": "inherit",
-                        "size": "inherit",
-                        "lazy": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-link-pure": {
-                        "alignLabel": "right",
-                        "stretch": false,
-                        "size": "inherit",
-                        "weight": "regular",
-                        "icon": "pin",
-                        "href": "https://www.porsche.com/germany/dealersearch/",
-                        "active": false,
-                        "hideLabel": false,
-                        "theme": "light",
-                        "target": "_self"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "div",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "left",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "name": "shoppingBag",
-                        "color": "default",
                         "size": "inherit",
                         "lazy": false,
                         "theme": "light"
@@ -113,103 +36,7 @@
                         "inline": false,
                         "wrap": "nowrap",
                         "direction": "row",
-                        "justifyContent": "flex-start",
-                        "alignItems": "stretch",
-                        "alignContent": "stretch"
-                    }
-                },
-                {
-                    "p-flex": {
-                        "inline": false,
-                        "wrap": "wrap",
-                        "direction": "row",
-                        "justifyContent": "flex-start",
-                        "alignItems": "center",
-                        "alignContent": "stretch"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-text": {
-                        "tag": "p",
-                        "size": "inherit",
-                        "weight": "regular",
-                        "align": "center",
-                        "color": "inherit",
-                        "ellipsis": false,
-                        "theme": "light"
-                    }
-                },
-                {
-                    "p-flex": {
-                        "inline": false,
-                        "wrap": "nowrap",
-                        "direction": "row",
-                        "justifyContent": "flex-end",
-                        "alignItems": "stretch",
-                        "alignContent": "stretch"
-                    }
-                },
-                {
-                    "p-flex": {
-                        "inline": false,
-                        "wrap": "nowrap",
-                        "direction": "row",
-                        "justifyContent": "flex-start",
+                        "justifyContent": "space-between",
                         "alignItems": "stretch",
                         "alignContent": "stretch"
                     }
@@ -230,14 +57,144 @@
                         "inline": false,
                         "wrap": "nowrap",
                         "direction": "row",
-                        "justifyContent": "space-between",
+                        "justifyContent": "flex-start",
+                        "alignItems": "stretch",
+                        "alignContent": "stretch"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "inline": false,
+                        "wrap": "nowrap",
+                        "direction": "row",
+                        "justifyContent": "flex-end",
+                        "alignItems": "stretch",
+                        "alignContent": "stretch"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "p",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "center",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "inline": false,
+                        "wrap": "wrap",
+                        "direction": "row",
+                        "justifyContent": "flex-start",
+                        "alignItems": "center",
+                        "alignContent": "stretch"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "inline": false,
+                        "wrap": "nowrap",
+                        "direction": "row",
+                        "justifyContent": "flex-start",
                         "alignItems": "stretch",
                         "alignContent": "stretch"
                     }
                 },
                 {
                     "p-icon": {
-                        "name": "arrow-head-right",
+                        "name": "shoppingBag",
+                        "color": "default",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "div",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "size": "inherit",
+                        "weight": "regular",
+                        "icon": "pin",
+                        "href": "https://www.porsche.com/germany/dealersearch/",
+                        "active": false,
+                        "hideLabel": false,
+                        "theme": "light",
+                        "target": "_self"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "pin",
                         "color": "inherit",
                         "size": "inherit",
                         "lazy": false,
@@ -245,14 +202,57 @@
                     }
                 },
                 {
-                    "p-button": {
+                    "p-button-pure": {
                         "tabbable": true,
                         "type": "submit",
                         "disabled": false,
                         "loading": false,
-                        "variant": "primary",
-                        "icon": "arrow-head-right",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "icon": "none",
+                        "active": false,
                         "hideLabel": false,
+                        "alignLabel": "right",
+                        "stretch": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "inline": false,
+                        "wrap": "nowrap",
+                        "direction": "row",
+                        "justifyContent": "flex-start",
+                        "alignItems": "stretch",
+                        "alignContent": "stretch"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "user",
+                        "color": "default",
+                        "size": "inherit",
+                        "lazy": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-text": {
+                        "tag": "div",
+                        "size": "inherit",
+                        "weight": "regular",
+                        "align": "left",
+                        "color": "inherit",
+                        "ellipsis": false,
+                        "theme": "light"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "name": "menuDotsVertical",
+                        "color": "default",
+                        "size": "small",
+                        "lazy": false,
                         "theme": "light"
                     }
                 }
