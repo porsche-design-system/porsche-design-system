@@ -1,10 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": [
-    "env.d.ts",
-    "projects/vue-wrapper/src/public-api.ts",
-    "projects/vue-wrapper/src/utils.ts",
-    "projects/vue-wrapper/src/**/*.vue"
+  "include": ["env.d.ts", "projects/vue-wrapper/src/**/*"],
+  "exclude": [
+    "projects/vue-wrapper/src/utilities",
+    "projects/vue-wrapper/src/partials.ts",
   ],
   "compilerOptions": {
     "outDir": "dist/vue-wrapper",
