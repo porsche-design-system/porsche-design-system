@@ -190,7 +190,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       } else {
         // other components receive their component name as default
         cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${path.parse(this.getComponentFileName(component)).name}', $1`) // set default children value in props destructuring
+          .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
 
@@ -442,7 +442,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   private generateMainComponentPreset(component: TagName, props?: PresetsProps, children?: string): AdditionalFile {
-    const componentName = path.parse(this.getComponentFileName(component)).name;
+    const componentName = this.stripFileExtension(component);
 
     // extract other components and get rid of duplicates
     const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
@@ -512,7 +512,7 @@ export default <${formComponentName} ${stringifiedProps} />;
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
-          ? path.parse(this.getComponentFileName(component)).name + '/'
+          ? this.stripFileExtension(component) + '/'
           : '';
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;

@@ -135,7 +135,7 @@ export abstract class AbstractWrapperGenerator {
     }
   }
 
-  private stripFileExtension(component: TagName): string {
+  public stripFileExtension(component: TagName): string {
     return path.parse(this.getComponentFileName(component)).name;
   }
 
