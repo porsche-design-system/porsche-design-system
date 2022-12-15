@@ -35,7 +35,7 @@ export const convertToReactVRTPage = (
 
   // imports
   const reactImports = [
-    (usesSetAllReady || usesQuerySelector) && !isIconPage && 'useEffect',
+    (usesSetAllReady || usesQuerySelector) && !isIconPage && !usesToast && 'useEffect',
     usesSetAllReady && 'useState',
   ]
     .filter((x) => x)
@@ -46,20 +46,18 @@ export const convertToReactVRTPage = (
     .map(([, tagName]) => tagName)
     .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
     .map((tagName) => pascalCase(tagName));
-  const pdsImports = [
-    ...componentImports,
-    usesPrefixing && 'PorscheDesignSystemProvider',
-    usesToast && 'useToastManager',
-  ]
-    .filter((x) => x)
+
+  const pdsImports = [...componentImports, usesPrefixing && 'PorscheDesignSystemProvider']
+    .filter((x) => x && x !== 'PToast')
     .sort(byAlphabet)
     .join(', ');
 
   const imports = [
-    `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
+    pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
     reactImports && `import { ${reactImports} } from 'react';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
+    usesToast && `import { Toast } from '../components';`,
   ]
     .filter((x) => x)
     .join('\n');
@@ -83,10 +81,7 @@ useEffect(() => {
   });
 }, []);`;
   } else if (usesToast) {
-    useStateOrEffect = `const { addMessage } = useToastManager();
-useEffect(() => {
-  addMessage({ text: ${toastText} });
-}, [addMessage]);`;
+    fileContent = fileContent.replace(/<[a-z-]*p-toast/, `$& text="${toastText.slice(1, -1)}"`);
   } else if (!isIconPage && usesQuerySelector) {
     useStateOrEffect = `useEffect(() => {
   ${script}
@@ -157,7 +152,7 @@ ${imports}
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
     <${openingFragmentTag}>${styleJsx}
-      ${convertToReact(fileContent)}
+      ${convertToReact(fileContent).replace(/<PToast/g, '<Toast')}
     </${closingFragmentTag}>
   );
 };

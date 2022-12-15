@@ -1,14 +1,9 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PBanner, PModal, PorscheDesignSystemProvider, PToast, useToastManager } from '@porsche-design-system/components-react/ssr';
-import { useEffect } from 'react';
+import { PBanner, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { Toast } from '../components';
 
 const OverviewNotificationsPage: NextPage = (): JSX.Element => {
-  const { addMessage } = useToastManager();
-  useEffect(() => {
-    addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
-  }, [addMessage]);
-
   const style = `
     .playground {
       height: 400px;
@@ -29,7 +24,7 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
-        <PToast />
+        <Toast text="The quick brown fox jumps over the lazy dog" />
 
         <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 

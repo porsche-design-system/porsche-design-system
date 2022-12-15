@@ -28,9 +28,9 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "4.1.4",
-    "@porsche-design-system/components-js": "2.18.0-rc.1",
+    "@porsche-design-system/components-js": "2.18.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.3.1",
+    "@porsche-design-system/utilities": "5.4.0",
     "@stackblitz/sdk": "^1.8.1",
     "algoliasearch": "^4.14.2",
     "change-case": "^4.1.2",
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.5.2",
+    "@porsche-design-system/assets": "5.0.2",
     "@types/node": "^18.11.9",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",

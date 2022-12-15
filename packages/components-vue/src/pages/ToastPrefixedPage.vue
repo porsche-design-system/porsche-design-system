@@ -1,12 +1,21 @@
 <script setup lang="ts">
-  import { default as ToastComponent } from '../components/ToastComponent.vue';
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+  import { ToastComponent } from '../components';
 </script>
 
 <template>
   <PorscheDesignSystemProvider prefix="my-prefix">
     <div class="playground light">
-      <ToastComponent />
+      <ToastComponent text="Some message" />
     </div>
   </PorscheDesignSystemProvider>
 </template>
+
+<style scoped>
+  .playground {
+    height: 300px;
+    padding: 0;
+    transform: translateX(0);
+    border: 1px solid deeppink;
+  }
+</style>

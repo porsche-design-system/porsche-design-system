@@ -29,23 +29,3 @@ exports[`PorscheDesignSystemProvider should render unprefixed components 1`] = `
   </p-button>
 </div>
 `;
-
-exports[`PorscheDesignSystemProvider should support changing prefix at runtime 1`] = `
-<div>
-  <my-prefix-p-button
-    data-testid="button"
-  >
-    Some Button
-  </my-prefix-p-button>
-</div>
-`;
-
-exports[`PorscheDesignSystemProvider should support changing prefix at runtime 2`] = `
-<div>
-  <new-prefix-p-button
-    data-testid="button"
-  >
-    Some Button
-  </new-prefix-p-button>
-</div>
-`;

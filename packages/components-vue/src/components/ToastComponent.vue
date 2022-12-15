@@ -2,10 +2,14 @@
   import { PToast, useToastManager } from '@porsche-design-system/components-vue';
   import { onMounted } from 'vue';
 
+  const props = withDefaults(defineProps<{ text: string }>(), {
+    text: 'Some message',
+  });
+
   const { addMessage } = useToastManager();
 
   onMounted(() => {
-    addMessage({ text: 'some message' });
+    addMessage({ text: props.text });
   });
 </script>
 
