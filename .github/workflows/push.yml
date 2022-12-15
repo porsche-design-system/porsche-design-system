@@ -992,7 +992,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: components-uxpin-source
-          path: ./packages/components-react/projects/uxpin-wrapper # upload entire folder to have all generated files including uxpin.config.js
+          path: |
+            ./packages/components-react/projects/uxpin-wrapper/src
+            ./packages/components-react/projects/uxpin-wrapper/uxpin.config.js
       - name: 'Store Components Vue Build Artifact'
         uses: actions/upload-artifact@v3
         with:
