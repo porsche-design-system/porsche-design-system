@@ -76,7 +76,8 @@
                             "[object Object]": 3
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-divider": {
                 "amount": 1,
@@ -101,7 +102,8 @@
                             "dark": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 2,
@@ -132,7 +134,8 @@
                             "_self": 2
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 62,
@@ -196,7 +199,8 @@
                             "/_next/static/media/multicolor.0794a88f.svg": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link": {
                 "amount": 4,
@@ -237,7 +241,8 @@
                             "false": 4
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-pure": {
                 "amount": 5,
@@ -327,7 +332,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link-social": {
                 "amount": 5,
@@ -362,7 +368,8 @@
                             "true": 5
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-modal": {
                 "amount": 1,
@@ -393,7 +400,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-group": {
                 "amount": 1,
@@ -406,7 +414,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button": {
                 "amount": 2,
@@ -462,7 +471,8 @@
                             "light": 2
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             }
         },
         "unusedTagNames": [
@@ -585,7 +595,8 @@
                                     "[object Object]": 3
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-divider": {
                         "amount": 1,
@@ -610,7 +621,8 @@
                                     "dark": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-marque": {
                         "amount": 2,
@@ -641,7 +653,8 @@
                                     "_self": 2
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 62,
@@ -705,7 +718,8 @@
                                     "/_next/static/media/multicolor.0794a88f.svg": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link": {
                         "amount": 4,
@@ -746,7 +760,8 @@
                                     "false": 4
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button-pure": {
                         "amount": 5,
@@ -836,7 +851,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link-social": {
                         "amount": 5,
@@ -871,7 +887,8 @@
                                     "true": 5
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-modal": {
                         "amount": 1,
@@ -902,7 +919,8 @@
                                     "false": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button-group": {
                         "amount": 1,
@@ -915,7 +933,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button": {
                         "amount": 2,
@@ -971,7 +990,8 @@
                                     "light": 2
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [

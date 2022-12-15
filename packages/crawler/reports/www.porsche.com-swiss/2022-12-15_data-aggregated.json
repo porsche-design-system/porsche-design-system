@@ -104,7 +104,8 @@
                             "_self": 21
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text": {
                 "amount": 39,
@@ -161,7 +162,8 @@
                             "light": 23
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 44,
@@ -221,7 +223,8 @@
                             "https://nav.porsche.com/00BC524/footer/assets/flags/CH.svg": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-content-wrapper": {
                 "amount": 7,
@@ -247,7 +250,8 @@
                             "light": 7
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-headline": {
                 "amount": 17,
@@ -294,7 +298,8 @@
                             "h2": 5
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button": {
                 "amount": 14,
@@ -354,7 +359,8 @@
                             "light": 8
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link": {
                 "amount": 3,
@@ -407,7 +413,8 @@
                             "false": 3
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text-field-wrapper": {
                 "amount": 1,
@@ -468,7 +475,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex": {
                 "amount": 13,
@@ -519,7 +527,8 @@
                             "stretch": 13
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex-item": {
                 "amount": 18,
@@ -566,7 +575,8 @@
                             "equal": 6
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 1,
@@ -603,7 +613,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-pure": {
                 "amount": 1,
@@ -682,7 +693,8 @@
                             "light": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-grid": {
                 "amount": 1,
@@ -707,7 +719,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-grid-item": {
                 "amount": 7,
@@ -730,7 +743,8 @@
                             "{ base: 0, s: 1, m: 0 }": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link-social": {
                 "amount": 7,
@@ -767,7 +781,8 @@
                             "true": 7
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-divider": {
                 "amount": 1,
@@ -792,7 +807,8 @@
                             "dark": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             }
         },
         "unusedTagNames": [
@@ -919,7 +935,8 @@
                                     "_self": 13
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text": {
                         "amount": 16,
@@ -971,7 +988,8 @@
                                     "light": 8
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 29,
@@ -1013,7 +1031,8 @@
                                     "light": 29
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-content-wrapper": {
                         "amount": 6,
@@ -1039,7 +1058,8 @@
                                     "light": 6
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-headline": {
                         "amount": 12,
@@ -1084,7 +1104,8 @@
                                     "h3": 7
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button": {
                         "amount": 13,
@@ -1142,7 +1163,8 @@
                                     "light": 7
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link": {
                         "amount": 1,
@@ -1191,7 +1213,8 @@
                                     "false": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text-field-wrapper": {
                         "amount": 1,
@@ -1252,7 +1275,8 @@
                                     "false": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex": {
                         "amount": 4,
@@ -1299,7 +1323,8 @@
                                     "stretch": 4
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex-item": {
                         "amount": 9,
@@ -1344,7 +1369,8 @@
                                     "equal": 6
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [
@@ -1449,7 +1475,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 5,
@@ -1492,7 +1519,8 @@
                                     "light": 5
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex": {
                         "amount": 6,
@@ -1539,7 +1567,8 @@
                                     "stretch": 6
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-marque": {
                         "amount": 1,
@@ -1576,7 +1605,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text": {
                         "amount": 8,
@@ -1627,7 +1657,8 @@
                                     "light": 8
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link-pure": {
                         "amount": 1,
@@ -1694,7 +1725,8 @@
                                     "_self": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button-pure": {
                         "amount": 1,
@@ -1773,7 +1805,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [
@@ -1853,7 +1886,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-grid": {
                         "amount": 1,
@@ -1878,7 +1912,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-grid-item": {
                         "amount": 7,
@@ -1901,7 +1936,8 @@
                                     "{ base: 0, s: 1, m: 0 }": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-headline": {
                         "amount": 5,
@@ -1944,7 +1980,8 @@
                                     "dark": 5
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex": {
                         "amount": 3,
@@ -1990,7 +2027,8 @@
                                     "stretch": 3
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 10,
@@ -2041,7 +2079,8 @@
                                     "light": 10
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text": {
                         "amount": 15,
@@ -2094,7 +2133,8 @@
                                     "light": 7
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link": {
                         "amount": 2,
@@ -2138,7 +2178,8 @@
                                     "false": 2
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link-social": {
                         "amount": 7,
@@ -2175,7 +2216,8 @@
                                     "true": 7
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex-item": {
                         "amount": 9,
@@ -2219,7 +2261,8 @@
                                     "initial": 9
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link-pure": {
                         "amount": 7,
@@ -2292,7 +2335,8 @@
                                     "_self": 7
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-divider": {
                         "amount": 1,
@@ -2317,7 +2361,8 @@
                                     "dark": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [

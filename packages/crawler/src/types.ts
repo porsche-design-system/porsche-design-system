@@ -6,7 +6,7 @@ export type Properties = {
   [propName: string]: PropValue;
 };
 
-export type TagNameWithProperties = Record<
+export type TagNameData = Record<
   TagName,
   {
     properties: Properties;
@@ -22,25 +22,22 @@ export type PropertiesAggregated = {
     values: PropertyValuesAggregated;
   };
 };
-
-export type TagNameWithPropertiesAggregated = Record<
-  TagName,
-  {
-    amount: number;
-    hostPdsComponent: number;
-    slot: number;
-    properties: PropertiesAggregated;
-    unusedProperties: string[];
-  }
->;
+export type TagNameAggregated = {
+  amount: number;
+  hostPdsComponent: number;
+  slot: number;
+  properties: PropertiesAggregated;
+  unusedProperties: string[];
+};
+export type TagNamesAggregated = Record<TagName, TagNameAggregated>;
 
 export type AggregatedData = {
-  tagNames: TagNameWithPropertiesAggregated;
+  tagNames: TagNamesAggregated;
   unusedTagNames: TagName[];
 };
 
 export type ConsumedTagNamesForVersionsAndPrefixes = {
   [version: string]: {
-    [prefix: string]: TagNameWithProperties[];
+    [prefix: string]: TagNameData[];
   };
 };

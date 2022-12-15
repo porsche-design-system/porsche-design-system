@@ -67,7 +67,8 @@
                             "dark": 6
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 133,
@@ -144,7 +145,8 @@
                             "https://nav.porsche.com/00BC524/footer/assets/flags/CH.svg": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex": {
                 "amount": 30,
@@ -197,7 +199,8 @@
                             "stretch": 30
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 6,
@@ -236,7 +239,8 @@
                             "[object Object]": 2
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text": {
                 "amount": 53,
@@ -293,7 +297,8 @@
                             "dark": 16
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link-pure": {
                 "amount": 63,
@@ -404,7 +409,8 @@
                             "[object Object]": 3
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-pure": {
                 "amount": 12,
@@ -499,7 +505,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link": {
                 "amount": 13,
@@ -555,7 +562,8 @@
                             "noreferrer": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-content-wrapper": {
                 "amount": 9,
@@ -582,7 +590,8 @@
                             "light": 9
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex-item": {
                 "amount": 52,
@@ -633,7 +642,8 @@
                             "equal": 6
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-headline": {
                 "amount": 18,
@@ -680,7 +690,8 @@
                             "h2": 5
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text-field-wrapper": {
                 "amount": 5,
@@ -745,7 +756,8 @@
                             "false": 5
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-select-wrapper": {
                 "amount": 1,
@@ -806,7 +818,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-select-wrapper-dropdown": {
                 "amount": 1,
@@ -873,7 +886,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-divider": {
                 "amount": 6,
@@ -900,7 +914,8 @@
                             "dark": 2
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-popover": {
                 "amount": 1,
@@ -925,7 +940,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link-social": {
                 "amount": 12,
@@ -962,7 +978,8 @@
                             "true": 12
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-modal": {
                 "amount": 1,
@@ -993,7 +1010,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-group": {
                 "amount": 1,
@@ -1006,7 +1024,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-grid": {
                 "amount": 1,
@@ -1031,7 +1050,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-grid-item": {
                 "amount": 7,
@@ -1054,7 +1074,8 @@
                             "{ base: 0, s: 1, m: 0 }": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             }
         },
         "unusedTagNames": [

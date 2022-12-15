@@ -1,12 +1,7 @@
 import { TagName } from 'shared/src';
 import { componentMeta } from '@porsche-design-system/shared';
-import {
-  AggregatedData,
-  ConsumedTagNamesForVersionsAndPrefixes,
-  TagNameWithProperties,
-  TagNameWithPropertiesAggregated,
-} from './types';
-import { incrementProperties, incrementPropertyValues } from './helper';
+import { AggregatedData, ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesAggregated } from './types';
+import { incrementTagName } from './helper';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -20,47 +15,22 @@ export const getConsumedPrefixesForVersions = (
   );
 };
 
-export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNameWithPropertiesAggregated): TagName[] => {
+export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
   // "Object.keys" returns string[], therefore we need type casting here
   return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
-export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameWithProperties[]): any =>
-  tagNamesWithProperties.reduce((result, tagNameWithProperties) => {
-    const tagName = Object.keys(tagNameWithProperties)[0];
-    const amount = result[tagName]?.amount;
-    const componentData = Object.entries(tagNameWithProperties)[0][1];
-    const propertiesData = componentData.properties;
-
-    if (result[tagName]) {
-      result[tagName].amount = amount + 1;
-      // count properties
-    } else {
-      result[tagName] = {
-        amount: 1,
-        hostPdsComponent: 0,
-        slot: 0,
-        properties: {},
-      };
-    }
-
-    if (componentData.hostPdsComponent) {
-      result[tagName].hostPdsComponent = result[tagName].hostPdsComponent + 1;
-    }
-
-    if (componentData.slot) {
-      result[tagName].slot = result[tagName].slot + 1;
-    }
-
-    result[tagName].properties = incrementProperties(result[tagName].properties, propertiesData);
-
+export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameData[]): any =>
+  tagNamesWithProperties.reduce((result, tagNameData) => {
+    const tagName = Object.keys(tagNameData)[0];
+    result[tagName] = incrementTagName(result[tagName], tagNameData);
     return result;
   }, {} as { [key: string]: any });
-export const getAggregatedData = (tagNamesWithProperties: TagNameWithProperties[]): AggregatedData => {
+export const getAggregatedData = (tagNamesWithProperties: TagNameData[]): AggregatedData => {
   // TODO: get rid of this "as"
   const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(
     tagNamesWithProperties
-  ) as TagNameWithPropertiesAggregated;
+  ) as TagNamesAggregated;
   const unusedTagNames = getUnusedTagNames(tagNamesWithPropertiesAggregated);
   return {
     tagNames: tagNamesWithPropertiesAggregated,
@@ -88,21 +58,21 @@ export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
 };
 
 // TODO: define return styles after we clarified output format with the team
-export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameWithProperties[]): any => {
+export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameData[]): any => {
   return getAggregatedData(rawDataWithoutVersionsAndPrefixes);
 };
 
 export const getRawDataWithoutVersionsAndPrefixes = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
-): TagNameWithProperties[] => {
+): TagNameData[] => {
   return Object.entries(consumedTagNamesForVersions).reduce(
     (result, [pdsVersion, prefixesWithData]) =>
       result.concat(
         Object.entries(prefixesWithData).reduce(
           (result, [prefix, tagNamesWithProperties]) => result.concat(tagNamesWithProperties),
-          [] as TagNameWithProperties[]
+          [] as TagNameData[]
         )
       ),
-    [] as TagNameWithProperties[]
+    [] as TagNameData[]
   );
 };

@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { crawlComponents } from './crawl-components';
@@ -10,12 +9,12 @@ import {
   getRawDataWithoutVersionsAndPrefixes,
 } from './data-aggregator';
 import { writeGeneralReport, writeWebsiteReport } from './fs-report-writer';
-import { TagNameWithProperties } from './types';
+import { TagNameData } from './types';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
   // data for all websites
-  let generalRawData = [] as TagNameWithProperties[];
+  let generalRawData = [] as TagNameData[];
 
   for (const websiteUrl of config.customerWebsites) {
     const page = await browser.newPage();

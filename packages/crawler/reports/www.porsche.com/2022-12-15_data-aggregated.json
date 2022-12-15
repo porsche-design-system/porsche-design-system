@@ -61,7 +61,8 @@
                             "light": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 5,
@@ -104,7 +105,8 @@
                             "light": 5
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex": {
                 "amount": 6,
@@ -151,7 +153,8 @@
                             "stretch": 6
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 1,
@@ -188,7 +191,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text": {
                 "amount": 8,
@@ -239,7 +243,8 @@
                             "light": 8
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-link-pure": {
                 "amount": 1,
@@ -306,7 +311,8 @@
                             "_self": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-pure": {
                 "amount": 1,
@@ -385,7 +391,8 @@
                             "light": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             }
         },
         "unusedTagNames": [
@@ -554,7 +561,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 5,
@@ -597,7 +605,8 @@
                                     "light": 5
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex": {
                         "amount": 6,
@@ -644,7 +653,8 @@
                                     "stretch": 6
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-marque": {
                         "amount": 1,
@@ -681,7 +691,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text": {
                         "amount": 8,
@@ -732,7 +743,8 @@
                                     "light": 8
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-link-pure": {
                         "amount": 1,
@@ -799,7 +811,8 @@
                                     "_self": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button-pure": {
                         "amount": 1,
@@ -878,7 +891,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [

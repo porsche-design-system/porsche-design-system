@@ -31,7 +31,8 @@
                             "light": 2
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex": {
                 "amount": 11,
@@ -77,7 +78,8 @@
                             "stretch": 11
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-flex-item": {
                 "amount": 34,
@@ -124,7 +126,8 @@
                             "initial": 34
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 1,
@@ -149,7 +152,8 @@
                             "_self": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-headline": {
                 "amount": 1,
@@ -186,7 +190,8 @@
                             "light": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text-field-wrapper": {
                 "amount": 4,
@@ -250,7 +255,8 @@
                             "false": 4
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button": {
                 "amount": 3,
@@ -305,7 +311,8 @@
                             "light": 3
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 10,
@@ -348,7 +355,8 @@
                             "light": 10
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-select-wrapper": {
                 "amount": 1,
@@ -409,7 +417,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-select-wrapper-dropdown": {
                 "amount": 1,
@@ -476,7 +485,8 @@
                             "false": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-divider": {
                 "amount": 4,
@@ -501,7 +511,8 @@
                             "light": 4
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-text": {
                 "amount": 3,
@@ -552,7 +563,8 @@
                             "light": 3
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-button-pure": {
                 "amount": 5,
@@ -642,7 +654,8 @@
                             "{\"aria-expanded\":false,\"aria-label\":\"Information icon\"}": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             },
             "p-popover": {
                 "amount": 1,
@@ -667,7 +680,8 @@
                             "[object Object]": 1
                         }
                     }
-                }
+                },
+                "unusedProperties": []
             }
         },
         "unusedTagNames": [
@@ -741,7 +755,8 @@
                                     "light": 2
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex": {
                         "amount": 11,
@@ -787,7 +802,8 @@
                                     "stretch": 11
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-flex-item": {
                         "amount": 34,
@@ -834,7 +850,8 @@
                                     "initial": 34
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-marque": {
                         "amount": 1,
@@ -859,7 +876,8 @@
                                     "_self": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-headline": {
                         "amount": 1,
@@ -896,7 +914,8 @@
                                     "light": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text-field-wrapper": {
                         "amount": 4,
@@ -960,7 +979,8 @@
                                     "false": 4
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button": {
                         "amount": 3,
@@ -1015,7 +1035,8 @@
                                     "light": 3
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 10,
@@ -1058,7 +1079,8 @@
                                     "light": 10
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-select-wrapper": {
                         "amount": 1,
@@ -1119,7 +1141,8 @@
                                     "false": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-select-wrapper-dropdown": {
                         "amount": 1,
@@ -1186,7 +1209,8 @@
                                     "false": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-divider": {
                         "amount": 4,
@@ -1211,7 +1235,8 @@
                                     "light": 4
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-text": {
                         "amount": 3,
@@ -1262,7 +1287,8 @@
                                     "light": 3
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-button-pure": {
                         "amount": 5,
@@ -1352,7 +1378,8 @@
                                     "{\"aria-expanded\":false,\"aria-label\":\"Information icon\"}": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     },
                     "p-popover": {
                         "amount": 1,
@@ -1377,7 +1404,8 @@
                                     "[object Object]": 1
                                 }
                             }
-                        }
+                        },
+                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [
