@@ -43,7 +43,7 @@
 
     private setTypeScaleInfoOnRefs(): void {
       for (const host of Object.values(this.$refs)) {
-        const el = (host as HTMLElement).shadowRoot?.firstElementChild as HTMLElement;
+        const el = (host as HTMLElement).shadowRoot?.lastElementChild as HTMLElement;
         const { fontSize, lineHeight } = window.getComputedStyle(el);
 
         (host as HTMLElement)?.setAttribute('data-font-size', fontSize);
