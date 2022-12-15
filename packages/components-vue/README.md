@@ -1,53 +1,38 @@
-# components-vue
+# Porsche Design System Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue wrappers for Porsche Design System web components package.
 
-## Recommended IDE Setup
+For basic testing of wrapper components, this project was bootstrapped with
+[Create vue](https://github.com/vuejs/create-vue).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
-disable Vetur) +
-[TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Available Scripts
 
-## Type Support for `.vue` Imports in TS
+In the project directory, you can run:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for
-type checking. In editors, we need
-[TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to
-make the TypeScript language service aware of `.vue` types.
+### `yarn start`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a
-[Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more
-performant. You can enable it by the following steps:
+Runs the app in the development mode. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+The page will hot reload if you make edits.
 
-## Customize configuration
+### `yarn test`
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Launches `unit` `e2e` and `vrt` tests.
 
-## Project Setup
+### `yarn build`
 
-```sh
-npm install
-```
+Builds the `vue-wrapper` for production to the `dist/vue-wrapper` folder.
 
-### Compile and Hot-Reload for Development
+### `yarn build-app`
 
-```sh
-npm run dev
-```
+Builds the `vue app` for production to the `dist/demo-app` folder.
 
-### Type-Check, Compile and Minify for Production
+## Contribution
 
-```sh
-npm run build
-```
+This package covers 2 different kind of tasks. **1st** it holds all auto generated Vue wrappers, **2nd** it tests all
+components within a standard Create vue installation to be sure they are rendered correctly.
 
-### Lint with [ESLint](https://eslint.org/)
+### Vue wrapper components
 
-```sh
-npm run lint
-```
+All vue wrapper components live in the `projects` folder under `vue-wrapper/src/lib`. Don't make any changes to these
+files because they are auto generated.
