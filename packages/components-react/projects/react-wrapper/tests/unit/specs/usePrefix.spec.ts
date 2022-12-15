@@ -32,20 +32,34 @@ describe('usePrefix()', () => {
     expect(usePrefix(tagName)).toBe(tagName);
   });
 
-  it('should call useContext() with correct parameter if process.env.NODE_ENV is set to !== "test"', () => {
-    process.env = { ...originalEnv, NODE_ENV: 'development' };
+  describe('process.env.NODE_ENV !== "test"', () => {
+    beforeEach(() => {
+      process.env = { ...originalEnv, NODE_ENV: 'development' };
+    });
 
-    usePrefix('p-text');
-    expect(React.useContext).toBeCalledWith(PorscheDesignSystemContext);
+    it('should call useContext() with correct parameter', () => {
+      usePrefix('p-text');
+      expect(React.useContext).toBeCalledWith(PorscheDesignSystemContext);
+    });
+
+    it('should return prefixed tagName', () => {
+      const tagName = 'p-text';
+
+      // Prefix is set in useContext() mock
+      expect(usePrefix(tagName)).toBe('my-prefix-' + tagName);
+    });
+
+    it('should throw error if useContext() returns undefined ', () => {
+      jest.spyOn(React, 'useContext').mockReturnValue(undefined);
+
+      let error;
+      try {
+        usePrefix('p-text');
+      } catch (e) {
+        error = e;
+      }
+
+      expect(error).toBeDefined();
+    });
   });
-
-  it('should return prefixed tagName if process.env.NODE_ENV is set to !== "test"', () => {
-    process.env = { ...originalEnv, NODE_ENV: 'development' };
-    const tagName = 'p-text';
-
-    // Prefix is set in useContext() mock
-    expect(usePrefix(tagName)).toBe('my-prefix-' + tagName);
-  });
-
-  // Thrown error is tested in provider spec
 });
