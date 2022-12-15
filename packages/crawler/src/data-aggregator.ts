@@ -1,47 +1,11 @@
 import { TagName } from 'shared/src';
 import { componentMeta } from '@porsche-design-system/shared';
-
-export type PropValue = boolean | number | string;
-export type Properties = {
-  [propName: string]: PropValue;
-};
-export type TagNameWithProperties = Record<
-  TagName,
-  {
-    properties: Properties;
-    slot?: string;
-    hostPdsComponent?: TagName;
-  }
->;
-
-export type PropertiesAggregated = {
-  [propName: string]: {
-    amount: number;
-    values: Record<number | string, number>;
-  };
-};
-
-export type TagNameWithPropertiesAggregated = Record<
-  TagName,
-  {
-    amount: number;
-    hostPdsComponent: number;
-    slot: number;
-    properties: PropertiesAggregated;
-    unusedProperties: string[];
-  }
->;
-
-export type AggregatedData = {
-  tagNames: TagNameWithPropertiesAggregated;
-  unusedTagNames: TagName[];
-};
-
-export type ConsumedTagNamesForVersionsAndPrefixes = {
-  [version: string]: {
-    [prefix: string]: TagNameWithProperties[];
-  };
-};
+import {
+  AggregatedData,
+  ConsumedTagNamesForVersionsAndPrefixes,
+  TagNameWithProperties,
+  TagNameWithPropertiesAggregated,
+} from './types';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -57,12 +21,11 @@ export const getConsumedPrefixesForVersions = (
 
 export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNameWithPropertiesAggregated): TagName[] => {
   // "Object.keys" returns string[], therefore we need type casting here
-  const allPdsTagNames = Object.keys(componentMeta) as TagName[];
-  return allPdsTagNames.filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
+  return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
-export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameWithProperties[]): any => {
-  return tagNamesWithProperties.reduce((result, tagNameWithProperties) => {
+export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameWithProperties[]): any =>
+  tagNamesWithProperties.reduce((result, tagNameWithProperties) => {
     const tagName = Object.keys(tagNameWithProperties)[0];
     const amount = result[tagName]?.amount;
     const componentData = Object.entries(tagNameWithProperties)[0][1];
@@ -109,7 +72,6 @@ export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagN
 
     return result;
   }, {} as { [key: string]: any });
-};
 export const getAggregatedData = (tagNamesWithProperties: TagNameWithProperties[]): AggregatedData => {
   // TODO: get rid of this "as"
   const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(

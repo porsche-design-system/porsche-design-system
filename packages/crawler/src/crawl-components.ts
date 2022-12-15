@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import { TagNamesWithProperties } from './helper';
 import { TagName } from 'shared/src';
-import { ConsumedTagNamesForVersionsAndPrefixes, TagNameWithProperties } from './data-aggregator';
+import { ConsumedTagNamesForVersionsAndPrefixes, TagNameWithProperties } from './types';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
