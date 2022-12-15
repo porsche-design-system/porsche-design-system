@@ -154,6 +154,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
 
+    cleanedComponent = this.insertComponentAnnotation(cleanedComponent, component);
+
     // destructure spacing props
     const spacings = this.spacingProps.join(', ');
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
@@ -438,6 +440,37 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     const configFile = this.generateUXPinConfigFile();
 
     return [...componentPresetFiles, configFile];
+  }
+
+  // Component declaration can be preceded by JSDoc comments
+  // to customize the behavior in UXPin Editor or Preview (E.g.: render in a React Portal)
+  // https://www.uxpin.com/docs/merge/adjusting-components/
+  private insertComponentAnnotation(cleanedComponent: string, component: TagName): string {
+    const comments = this.getAllComponentComments(component);
+    if (comments.length) {
+      const annotations = `/**
+${comments.join(`\n`)}
+*/
+`;
+      return annotations + cleanedComponent;
+    } else {
+      return cleanedComponent;
+    }
+  }
+
+  private getAllComponentComments(component: TagName): string[] {
+    const comments = this.shouldRenderInReactPortal(component) ? ['* @uxpinuseportal'] : [];
+    return comments;
+  }
+
+  private shouldRenderInReactPortal(component: TagName): boolean {
+    switch (component) {
+      case 'p-modal':
+      case 'p-toast':
+        return true;
+      default:
+        return false;
+    }
   }
 
   private generateMainComponentPreset(component: TagName, props?: PresetsProps, children?: string): AdditionalFile {
