@@ -39,7 +39,5 @@ describe('PorscheDesignSystemProvider', () => {
     expect(() => render(PButton)).toThrowErrorMatchingInlineSnapshot(
       '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
     );
-
-    spy.mockRestore();
   });
 });
