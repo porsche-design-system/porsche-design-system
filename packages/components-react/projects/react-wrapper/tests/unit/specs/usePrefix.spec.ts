@@ -4,9 +4,8 @@ import { PorscheDesignSystemContext } from '../../../src/provider';
 
 // Test is in a separate file as this mocks useContext() for the whole test-suit
 jest.mock('react', () => {
-  const ActualReact = jest.requireActual('react');
   return {
-    ...ActualReact,
+    ...jest.requireActual('react'),
     useContext: jest.fn().mockReturnValue({ prefix: 'my-prefix' }), // what you want to return when useContext get fired goes here
   };
 });
