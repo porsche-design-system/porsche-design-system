@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-accordion: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-accordion: propTypes with ValidatorFunctions 1`] = `
 {
   "compact": "boolean",
   "heading": "string",
@@ -11,7 +11,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-banner: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-banner: propTypes with ValidatorFunctions 1`] = `
 {
   "persistent": "boolean",
   "state": "oneOf",
@@ -20,7 +20,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-button: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-button: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "disabled": "boolean",
@@ -35,13 +35,13 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-button-group: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-button-group: propTypes with ValidatorFunctions 1`] = `
 {
   "direction": "breakpoint",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-button-pure: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-button-pure: propTypes with ValidatorFunctions 1`] = `
 {
   "active": "boolean",
   "alignLabel": "breakpoint",
@@ -60,19 +60,20 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-carousel: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
   "disablePagination": "breakpoint",
   "heading": "string",
   "intl": "shape",
+  "rewind": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
   "wrapContent": "boolean",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-checkbox-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-checkbox-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "hideLabel": "breakpoint",
   "label": "string",
@@ -81,7 +82,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-content-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-content-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "backgroundColor": "oneOf",
   "theme": "oneOf",
@@ -89,7 +90,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-divider: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-divider: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
   "orientation": "breakpoint",
@@ -97,7 +98,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-fieldset-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-fieldset-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "label": "string",
   "labelSize": "oneOf",
@@ -107,7 +108,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-flex: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-flex: propTypes with ValidatorFunctions 1`] = `
 {
   "alignContent": "breakpoint",
   "alignItems": "breakpoint",
@@ -118,7 +119,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-flex-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-flex-item: propTypes with ValidatorFunctions 1`] = `
 {
   "alignSelf": "breakpoint",
   "flex": "breakpoint",
@@ -129,7 +130,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-grid: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-grid: propTypes with ValidatorFunctions 1`] = `
 {
   "direction": "breakpoint",
   "gutter": "breakpoint",
@@ -137,14 +138,14 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-grid-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-grid-item: propTypes with ValidatorFunctions 1`] = `
 {
   "offset": "breakpoint",
   "size": "breakpoint",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-headline: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-headline: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",
   "color": "oneOf",
@@ -154,7 +155,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-icon: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-icon: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "color": "oneOf",
@@ -166,7 +167,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-inline-notification: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-inline-notification: propTypes with ValidatorFunctions 1`] = `
 {
   "actionIcon": "string",
   "actionLabel": "string",
@@ -179,7 +180,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-link: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-link: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "download": "string",
@@ -194,7 +195,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-link-pure: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-link-pure: propTypes with ValidatorFunctions 1`] = `
 {
   "active": "boolean",
   "alignLabel": "breakpoint",
@@ -213,7 +214,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-link-social: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-link-social: propTypes with ValidatorFunctions 1`] = `
 {
   "hideLabel": "breakpoint",
   "href": "string",
@@ -225,7 +226,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-link-tile: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-link-tile: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",
   "aria": "aria",
@@ -243,7 +244,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-marque: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "href": "string",
@@ -253,7 +254,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-modal: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-modal: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "disableBackdropClick": "boolean",
@@ -264,7 +265,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-pagination: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
   "allyLabel": "string",
@@ -278,7 +279,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-popover: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-popover: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "description": "string",
@@ -286,7 +287,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-radio-button-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-radio-button-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "hideLabel": "breakpoint",
   "label": "string",
@@ -295,7 +296,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-scroller: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",
@@ -304,7 +305,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
 {
   "backgroundColor": "oneOf",
   "theme": "oneOf",
@@ -312,7 +313,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-segmented-control-item: propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
   "icon": "string",
@@ -322,7 +323,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-select-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-select-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
   "dropdownDirection": "oneOf",
@@ -336,7 +337,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-spinner: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-spinner: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "size": "breakpoint",
@@ -344,21 +345,21 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
 {
   "size": "breakpoint",
   "theme": "oneOf",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-stepper-horizontal-item: propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
   "state": "oneOf",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-switch: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-switch: propTypes with ValidatorFunctions 1`] = `
 {
   "alignLabel": "breakpoint",
   "checked": "boolean",
@@ -371,19 +372,19 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-table: propTypes with ValidatorFunctions 1`] = `
 {
   "caption": "string",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-cell: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-table-cell: propTypes with ValidatorFunctions 1`] = `
 {
   "multiline": "boolean",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
 {
   "hideLabel": "breakpoint",
   "multiline": "boolean",
@@ -391,7 +392,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-tabs: propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
   "gradientColorScheme": "oneOf",
@@ -401,7 +402,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs-bar: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-tabs-bar: propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
   "gradientColorScheme": "oneOf",
@@ -411,13 +412,13 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-tabs-item: propTypes with ValidatorFunctions 1`] = `
 {
   "label": "string",
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-tag: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-tag: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
   "icon": "string",
@@ -426,7 +427,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-tag-dismissible: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-tag-dismissible: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "color": "oneOf",
@@ -434,7 +435,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-text: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-text: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",
   "color": "oneOf",
@@ -446,7 +447,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-text-field-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-text-field-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "actionIcon": "oneOf",
   "actionLoading": "boolean",
@@ -461,7 +462,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-text-list: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-text-list: propTypes with ValidatorFunctions 1`] = `
 {
   "listType": "oneOf",
   "orderType": "oneOf",
@@ -469,7 +470,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-textarea-wrapper: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-textarea-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
   "hideLabel": "breakpoint",
@@ -480,7 +481,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-toast: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-toast: propTypes with ValidatorFunctions 1`] = `
 {
   "theme": "oneOf",
 }

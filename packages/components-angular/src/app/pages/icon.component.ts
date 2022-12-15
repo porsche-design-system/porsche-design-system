@@ -55,7 +55,29 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
     </div>
 
     <div class="playground light" title="should render with custom icon">
-      <p-icon [source]="'./assets/icon-custom-kaixin.svg'" aria-label="Icon for social media platform Kaixin"></p-icon>
+      <p-icon
+        [theme]="'light'"
+        [source]="'./assets/icon-custom-kaixin.svg'"
+        aria-label="Icon for social media platform Kaixin"
+      ></p-icon>
+      <p-icon
+        [theme]="'light-electric'"
+        [source]="'./assets/icon-custom-kaixin.svg'"
+        aria-label="Icon for social media platform Kaixin"
+      ></p-icon>
+    </div>
+
+    <div class="playground dark" title="should render with custom icon on dark theme">
+      <p-icon
+        [theme]="'dark'"
+        [source]="'./assets/icon-custom-kaixin.svg'"
+        aria-label="Icon for social media platform Kaixin"
+      ></p-icon>
+      <p-icon
+        [theme]="'dark-electric'"
+        [source]="'./assets/icon-custom-kaixin.svg'"
+        aria-label="Icon for social media platform Kaixin"
+      ></p-icon>
     </div>
 
     <div class="playground light overview" title="should render all available icons and apply coloring programmatically">

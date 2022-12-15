@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { optimize, OptimizedSvg, OptimizeOptions } from 'svgo';
+import { optimize, Config } from 'svgo';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
@@ -9,20 +9,22 @@ import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } fr
 type Manifest = {
   [name: string]: string;
 };
+type IconsMap = Manifest;
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: OptimizeOptions): void => {
+const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Config): void => {
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
   const manifest: Manifest = {};
+  const iconsMap: IconsMap = {};
 
   for (const file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
-    const svgOptimizedData = (optimize(svgRawData, config) as OptimizedSvg).data;
+    const svgOptimizedData = optimize(svgRawData, config).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
     const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
@@ -36,6 +38,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
 
     const nameKey = camelCase(svgRawName);
     manifest[nameKey] = svgOptimizedFilename;
+    iconsMap[nameKey] = svgOptimizedData;
 
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
@@ -59,6 +62,10 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
     result[key] = manifest[key];
     return result;
   }, {} as Manifest);
+  const sortedIconsMap: IconsMap = sortedManifestKeys.reduce((result, key) => {
+    result[key] = iconsMap[key];
+    return result;
+  }, {} as IconsMap);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
@@ -66,6 +73,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Op
 
 export const CDN_BASE_URL = ${cdn};
 export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
+export const ICONS_MAP = ${JSON.stringify(sortedIconsMap)};
 export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)};
 export type IconName = ${sortedManifestKeys.map((x) => `'${paramCase(x)}'`).join(' | ')};
 export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join(' | ')};`
@@ -77,7 +85,7 @@ export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join('
 const generate = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
   const files = globby.sync('./src/**/*.svg').sort();
-  const config: OptimizeOptions = require('../svgo.config.js');
+  const config: Config = require('../svgo.config.js');
 
   createManifestAndOptimizeIcons(cdn, files, config);
 };

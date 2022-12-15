@@ -1,0 +1,39 @@
+{
+  "name": "@porsche-design-system/components-angular",
+  "version": "2.18.0",
+  "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "web",
+    "component",
+    "library",
+    "angular",
+    "js"
+  ],
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://designsystem.porsche.com",
+  "dependencies": {
+    "@porsche-design-system/components-js": "2.18.0",
+    "tslib": "^2.0.1"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=13.0.0 <16.0.0",
+    "@angular/core": ">=13.0.0 <16.0.0"
+  },
+  "exports": {
+    "./partials": {
+      "types": "./partials/partials.d.ts",
+      "import": "./partials/esm/partials.js",
+      "require": "./partials/partials.js"
+    },
+    "./utilities/js": {
+      "types": "./utilities/js/js.d.ts",
+      "import": "./utilities/js/esm/js.js",
+      "require": "./utilities/js/js.js"
+    }
+  }
+}

@@ -50,6 +50,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-social [iconSource]="'./assets/icon-custom-kaixin.svg'" [href]="'https://www.kaixin.com'">Some label</p-link-social>
     </div>
 
+    <div class="playground dark" title="should render with specific icon on dark theme">
+      <p-link-social [theme]="'dark'" [icon]="'logo-delicious'" [href]="'https://www.delicious.com'">Some label</p-link-social>
+      <p-link-social [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [href]="'https://www.kaixin.com'"
+        >Some label</p-link-social
+      >
+    </div>
+
     <div class="playground light" title="should render with multiline label">
       <p-link-social style="width: 240px" [icon]="'logo-facebook'" [href]="'https://www.facebook.com'">
         Lorem ipsum dolor sit amet, consetetur sadipscing

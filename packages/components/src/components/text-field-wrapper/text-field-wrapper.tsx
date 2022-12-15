@@ -1,8 +1,10 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
+  addInputEventListenerForCounter,
   attachComponentCss,
   attachSlottedCss,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -17,7 +19,6 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { FORM_STATES } from '../../utils/form/form-state';
 import type { FormState } from '../../utils/form/form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -35,7 +36,6 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../common/required/required';
-import { addInputEventListenerForCounter } from '../../utils/form/form-utils';
 import type { IconName } from '../../types';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
@@ -116,7 +116,7 @@ export class TextFieldWrapper {
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
         .map((type) => `input[type=${type}]`)
-        .join(',')
+        .join()
     );
     this.observeAttributes(); // once initially
     this.isSearch = isType(this.input.type, 'search');
@@ -147,25 +147,6 @@ export class TextFieldWrapper {
     }
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    throwIfUnitLengthExceeded(this.unit);
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.input.disabled,
-      this.hideLabel,
-      this.state,
-      this.hasUnit || this.isCounterVisible,
-      this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.isPassword ? 'password' : this.input.type,
-      this.isWithinForm,
-      this.hasAction,
-      this.hasAction && this.actionLoading
-    );
-  }
-
   public componentDidRender(): void {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
@@ -187,7 +168,24 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const { readOnly, disabled } = this.input;
+    validateProps(this, propTypes);
+    throwIfUnitLengthExceeded(this.unit);
+    const { readOnly, disabled, type } = this.input;
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      disabled,
+      this.hideLabel,
+      this.state,
+      this.hasUnit || this.isCounterVisible,
+      this.isCounterVisible ? 'suffix' : this.unitPosition,
+      this.isPassword ? 'password' : type,
+      this.isWithinForm,
+      this.hasAction,
+      this.hasAction && this.actionLoading
+    );
+
     const disabledOrReadOnly = disabled || readOnly;
 
     const labelProps = {
@@ -237,6 +235,7 @@ export class TextFieldWrapper {
           ) : (
             this.isSearch && [
               <button
+                key="btn-clear"
                 type="button"
                 tabIndex={-1}
                 hidden={!this.isClearable}
@@ -247,6 +246,7 @@ export class TextFieldWrapper {
               </button>,
               this.hasAction && (
                 <button
+                  key="btn-action"
                   type="button"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
@@ -262,12 +262,12 @@ export class TextFieldWrapper {
                 </button>
               ),
               this.isWithinForm ? (
-                <button type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
+                <button key="btn-submit" type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
                   <span class="sr-only">Search</span>
                   <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>
               ) : (
-                <PrefixedTagNames.pIcon class="icon" name="search" {...iconProps} />
+                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
               ),
             ]
           )}

@@ -1,4 +1,4 @@
-import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 
 describe('warnIfIsLoadingAndIconIsNone()', () => {
   it('should print warning if property icon = none and loading = true', () => {
@@ -16,8 +16,8 @@ describe('warnIfIsLoadingAndIconIsNone()', () => {
   });
 });
 
-describe('getButtonAttributes()', () => {
-  it.each<Parameters<typeof getButtonAriaAttributes>>([
+describe('getButtonPureAriaAttributes()', () => {
+  it.each<Parameters<typeof getButtonPureAriaAttributes>>([
     [false, false, false, {}],
     [true, false, false, {}],
     [false, true, false, {}],
@@ -37,7 +37,7 @@ describe('getButtonAttributes()', () => {
   ])(
     'should return correct aria attributes for isDisabled: %s, isLoading: %s, hasSubline: %s and aria: %s',
     (...args) => {
-      expect(getButtonAriaAttributes(...args)).toMatchSnapshot();
+      expect(getButtonPureAriaAttributes(...args)).toMatchSnapshot();
     }
   );
 });

@@ -9,6 +9,60 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.18.0] - 2022-12-15
+
+### [2.18.0-rc.2] - 2022-12-14
+
+#### Added
+
+- Validation to ensure crucial partials are used.  
+  **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
+  `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
+  **https://designsystem.porsche.com/v2/partials/initial-styles**
+
+#### Changed
+
+- `line-height` calculation for all components is handled CSS only now by using `ex`-unit in combination with `calc()`
+  which gives the best performance, the easiest possible integration and respects UI best practices in having **larger**
+  `line-height` values for **small** `font-size` definitions and **smaller** `line-height` values for **larger**
+  `font-size` definitions. The calculated values by CSS slightly differ compared to the ones calculated by JavaScript,
+  which might result in minor visual changes.
+
+#### Fixed
+
+- Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
+- Screen reader announcements in `Select Wrapper`
+
+### [2.18.0-rc.1] - 2022-11-24
+
+#### Added
+
+- `Carousel` now has a `rewind` property, better prev/next icons, a `max-width` for `heading` and `description` and
+  support for slotted `description`
+
+#### Fixed
+
+- `Select Wrapper` height if text is zoomed up to 200%
+
+### [2.18.0-rc.0] - 2022-11-17
+
+#### Added
+
+- SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
+  `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
+
+```diff
+- import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
++ import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react/ssr';
+```
+
+#### Changed
+
+- Improve height calculation for `Accordion`
+- Slotted anchor support for `Link Pure` is stricter (In case slotted `<a>` is used it must be a direct child of
+  `Link Pure`)
+- `getFontLinks()` partial now has `{ weights: ['regular', 'semi-bold'] }` for a default
+
 ### [2.17.0] - 2022-10-31
 
 ### [2.17.0-rc.0] - 2022-10-31
@@ -241,9 +295,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - **[EXPERIMENTAL]** `getInitialStyles` partial now accepts a `skeletonTagNames` array of component names that will
   initially have skeleton styles while the Porsche Design System is loading
-- **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`, `Link Social`
-  , `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have initial skeleton
-  styles when passed as `skeletonTagNames` to the `getInitialStyles` partial
+- **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`,
+  `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have initial
+  skeleton styles when passed as `skeletonTagNames` to the `getInitialStyles` partial
 
 ### [2.9.2] - 2022-03-24
 
@@ -296,12 +350,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
-- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()` ,
+- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`,
   `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
 
 #### Deprecated
 
-- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()` ,
+- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`,
   `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()` is deprecated and will be
   removed in `v3.0.0`. Please use `format: 'jsx'` instead.
 
@@ -462,8 +516,8 @@ color contrast and might even be removed in an upcoming major release again.
 
 #### Added
 
-- New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`
-  , `Spinner`
+- New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`,
+  `Spinner`
 
 #### Fixed
 
@@ -745,7 +799,7 @@ intranet applications).
 In case of a micro-frontend architecture, multiple instances and versions of the Porsche Design System can be combined
 in a final application by configurable prefixing technique of the Porsche Design System components during runtime.
 Please refer to our framework specific guidelines
-[Vanilla JS](https://designsystem.porsche.com/latest/start-coding/vanilla-js) ,
+[Vanilla JS](https://designsystem.porsche.com/latest/start-coding/vanilla-js),
 [Angular](https://designsystem.porsche.com/latest/start-coding/angular) and
 [React](https://designsystem.porsche.com/latest/start-coding/react).
 
@@ -981,8 +1035,8 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 #### Added
 
 - `Grid` now has a `wrap` and `gutter` property
-- Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`, `Flex`
-  , `Tabs` and `Text List`) will now throw an error if used without that parent
+- Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`,
+  `Flex`, `Tabs` and `Text List`) will now throw an error if used without that parent
 
 #### Fixed
 
@@ -1372,7 +1426,7 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 #### Added
 
 - `Fieldset Wrapper` component
-- Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. `<h1>-<h6>` or `<p>` ,
+- Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. `<h1>-<h6>` or `<p>`,
   `<blockquote>`, etc.) directly as slotted content.
 - Possibility to include anchor tags directly as slots of `Link`, `Link Pure` and `Link Social`
 - `Text` new `weight` property `semibold`

@@ -1,13 +1,13 @@
 import {
   INLINE_NOTIFICATION_STATES,
   InlineNotificationState,
-  getIconName,
+  getInlineNotificationIconName,
   getContentAriaAttributes,
 } from './inline-notification-utils';
 
-describe('getIconName()', () => {
+describe('getInlineNotificationIconName()', () => {
   it.each<InlineNotificationState>(INLINE_NOTIFICATION_STATES)('should return correct icon for state: %s', (state) => {
-    expect(getIconName(state)).toMatchSnapshot();
+    expect(getInlineNotificationIconName(state)).toMatchSnapshot();
   });
 });
 

@@ -4,7 +4,8 @@ import {
   getIndexHtml,
   getDependencies,
   getVanillaJsProjectAndOpenOptions,
-  replaceSharedAsyncFunctionWithConstants, getIndexJs,
+  replaceSharedAsyncFunctionWithConstants,
+  getIndexJs,
 } from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';
 import { getSharedImportConstants } from '../../src/utils/stackblitz/helper';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
@@ -101,7 +102,7 @@ describe('getIndexHtml()', () => {
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
       .mockReturnValue(mockedMarkup);
 
-    getIndexHtml(mockedMarkup, '', [], sharedImportKeys);
+    getIndexHtml(mockedMarkup, '', [], sharedImportKeys, '');
 
     expect(getExtendMarkupWithLoadFunctionSpy).toBeCalledWith(mockedMarkup);
     expect(replaceSharedAsyncFunctionWithConstantsSpy).toBeCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
@@ -120,7 +121,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -131,7 +132,18 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
+    });
+
+    it('should return correct markup when chosen pds version for bug reporting', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
   });
 
@@ -148,7 +160,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -159,22 +171,49 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
+    });
+
+    it('should return correct markup when chosen pds version for bug reporting', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
   });
 });
 
 describe('getIndexJs()', () => {
-  it('should return correct no script for stable storefront release (e.g. /v2/…, /v3/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+  describe('stable storefront release (e.g. /v2/…, /v3/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+    });
 
-    expect(getIndexJs()).toMatchSnapshot();
+    it('should return correct no script when pds version is chosen for bug reporting', () => {
+      expect(getIndexJs('1.2.3')).toMatchSnapshot();
+    });
+
+    it('should return correct no script when pds version is not chosen for bug reporting', () => {
+      expect(getIndexJs('')).toMatchSnapshot();
+    });
   });
 
-  it('should return correct script for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
-    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+  describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+    beforeEach(() => {
+      jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+    });
 
-    expect(getIndexJs()).toMatchSnapshot();
+    it('should return correct script', () => {
+      expect(getIndexJs('')).toMatchSnapshot();
+    });
+
+    it('should return correct no script when pds version is chosen for bug reporting', () => {
+      expect(getIndexJs('1.2.3')).toMatchSnapshot();
+    });
   });
 });
 
@@ -183,30 +222,54 @@ describe('getDependencies()', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
 
-    getDependencies(externalDependencies);
+    getDependencies(externalDependencies, '');
 
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
 
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
-      ...{ "@porsche-design-system/components-js": "0.0.0" },
+    expect(getDependencies(['imask'], '')).toEqual({
+      ...{ '@porsche-design-system/components-js': '0.0.0' },
       ...mockedDependency,
     });
   });
 
-  it('should return correct StackblitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
+  it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…) and chosen pds version for bug reporting', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
+
+    const mockedDependency = { mockedImask: '0.0.0' };
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+    expect(getDependencies(['imask'], '1.2.3')).toEqual({
+      ...{ '@porsche-design-system/components-js': '1.2.3' },
+      ...mockedDependency,
+    });
+  });
+
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
 
     const mockedDependency = { mockedImask: '0.0.0' };
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
-    expect(getDependencies(['imask'])).toEqual({
+    expect(getDependencies(['imask'], '')).toEqual({
+      ...mockedDependency,
+    });
+  });
+
+  it('should return correct StackBlitzProjectDependencies with externalDependency for development mode or non stable storefront release (e.g. /issue/…, /release/…) and chosen pds version for bug reporting', () => {
+    jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(false);
+
+    const mockedDependency = { mockedImask: '0.0.0' };
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+
+    expect(getDependencies(['imask'], '1.2.3')).toEqual({
+      ...{ '@porsche-design-system/components-js': '1.2.3' },
       ...mockedDependency,
     });
   });
@@ -215,7 +278,7 @@ describe('getDependencies()', () => {
 describe('getVanillaJsProjectAndOpenOptions()', () => {
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     porscheDesignSystemBundle: {
-      '@porsche-design-system/components-js/package.json': 'some package.json'
+      '@porsche-design-system/components-js/package.json': 'some package.json',
     },
     markup: 'Some markup',
     description: 'Some description',
@@ -223,6 +286,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     globalStyles: 'body {}',
     externalDependencies: [],
     sharedImportKeys: [],
+    pdsVersion: '',
   };
 
   it('should call several functions with correct parameters', () => {
@@ -234,8 +298,8 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys);
-    expect(getDependenciesSpy).toBeCalledWith(externalDependencies);
+    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys, '');
+    expect(getDependenciesSpy).toBeCalledWith(externalDependencies, '');
     expect(getIndexJsSpy).toBeCalled();
   });
 

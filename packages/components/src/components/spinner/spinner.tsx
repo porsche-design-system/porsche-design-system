@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Watch, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../types';
 import type { SpinnerSize, SpinnerAriaAttributes, SpinnerSizeType } from './spinner-utils';
 import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
@@ -33,21 +33,11 @@ export class Spinner {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttributes>;
 
-  @Watch('size')
-  public watchSizeHandler(newValue: SpinnerSize): void {
-    verifySpinnerSize(newValue);
-  }
-
-  public componentWillLoad(): void {
-    verifySpinnerSize(this.size);
-  }
-
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.theme);
-  }
-
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    verifySpinnerSize(this.size); // TODO: redundant?
+    attachComponentCss(this.host, getComponentCss, this.size, this.theme);
+
     return (
       <span class="root" role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
         {/* empty element needed to announce aria-label in screen readers */}

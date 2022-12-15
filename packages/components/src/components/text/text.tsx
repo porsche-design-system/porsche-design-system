@@ -5,7 +5,6 @@ import {
   attachSlottedCss,
   getDataThemeDarkAttribute,
   getHTMLElement,
-  setLineHeightOnSizeInherit,
   TEXT_COLORS,
   TEXT_WEIGHTS,
   TEXT_ALIGNS,
@@ -56,13 +55,11 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  private textTag: HTMLElement;
-
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -74,20 +71,14 @@ export class Text {
       this.ellipsis,
       this.theme
     );
-  }
 
-  public componentDidLoad(): void {
-    setLineHeightOnSizeInherit(this.size, this.textTag);
-  }
-
-  public render(): JSX.Element {
     const firstChild = getHTMLElement(this.host, ':first-child');
     const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType class="root" ref={(el) => (this.textTag = el)}>
+        <TagType class="root">
           <slot />
         </TagType>
       </Host>

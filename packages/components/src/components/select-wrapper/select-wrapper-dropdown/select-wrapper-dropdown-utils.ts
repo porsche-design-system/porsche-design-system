@@ -6,11 +6,12 @@ import { INPUT_HEIGHT } from '../../../styles/form-styles';
 
 const MAX_CHILDREN = 10;
 
-export const getButtonAriaAttributes = (
+export const getSelectWrapperDropdownButtonAriaAttributes = (
   isOpen: boolean,
   labelId: string,
   descriptionId: string,
-  dropdownId: string
+  dropdownId: string,
+  activeDescendantId: number
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
@@ -18,6 +19,9 @@ export const getButtonAriaAttributes = (
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-controls': dropdownId,
+    ...(isOpen && {
+      'aria-activedescendant': `option-${activeDescendantId}`,
+    }),
   };
 };
 
@@ -48,22 +52,23 @@ export const getFilterInputAriaAttributes = (
 export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
-  optionMaps: OptionMap[],
-  hasFilter: boolean
+  hasFilter: boolean,
+  isOpen: boolean,
 ): AriaAttributes => {
-  const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return {
-    ...(highlightedIndex >= 0 && !hasFilter && { 'aria-activedescendant': `option-${highlightedIndex}` }),
     'aria-label': label,
     ...(isRequired &&
       !hasFilter && {
         'aria-required': 'true',
       }),
+    ...(!isOpen && {
+      'aria-hidden': 'true'
+    })
   };
 };
 
 export const getOptionAriaAttributes = (option: OptionMap): AriaAttributes => ({
-  'aria-selected': option.highlighted ? 'true' : null,
+  'aria-selected': option.selected ? 'true' : 'false',
   'aria-disabled': option.disabled ? 'true' : null,
   'aria-hidden': option.hidden || option.initiallyHidden ? 'true' : null,
   'aria-label': option.value ? null : 'Empty value',

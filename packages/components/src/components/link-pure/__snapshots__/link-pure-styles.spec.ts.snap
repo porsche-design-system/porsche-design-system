@@ -6,14 +6,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 @media(min-width:480px) {
   :host {
@@ -63,8 +81,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -72,7 +90,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 600;
   justify-content: space-between;
   font-size: 0.75rem;
-  line-height: 1.6666666667;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -96,22 +113,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.6666666667em;
-  height: 1.6666666667em;
-}
 .root ~ .subline {
   font-size: 0.75rem;
-  line-height: 1.6666666667;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 0.75rem;
-  margin-left: 1.6666666667em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -130,19 +143,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root {
     justify-content: flex-start;
     font-size: 1rem;
-    line-height: 1.5;
-  }
-  .root .icon {
-    width: 1.5em;
-    height: 1.5em;
   }
   .root ~ .subline {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 1rem;
-    margin-left: 1.5em;
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: static;
@@ -163,19 +171,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root {
     justify-content: space-between;
     font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  .root .icon {
-    width: 1.5em;
-    height: 1.5em;
   }
   .root ~ .subline {
     font-size: 1.25rem;
-    line-height: 1.4;
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 1.5rem;
-    margin-left: 1.5em;
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: absolute;
@@ -196,19 +199,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root {
     justify-content: flex-start;
     font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  .root .icon {
-    width: 1.3333333333em;
-    height: 1.3333333333em;
   }
   .root ~ .subline {
     font-size: 1.875rem;
-    line-height: 1.3333333333;
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 2.25rem;
-    margin-left: 1.3333333333em;
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: static;
@@ -229,19 +227,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root {
     justify-content: space-between;
     font-size: 3.25rem;
-    line-height: 1.2307692308;
-  }
-  .root .icon {
-    width: 1.2307692308em;
-    height: 1.2307692308em;
   }
   .root ~ .subline {
     font-size: 2.25rem;
-    line-height: 1.3333333333;
+    line-height: calc(6px + 2.125ex);
   }
   .root ~ .subline::before {
     font-size: 3.25rem;
-    margin-left: 1.2307692308em;
+    margin-left: calc(6px + 2.125ex);
   }
   .label {
     position: absolute;
@@ -262,11 +255,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root {
     justify-content: flex-start;
     font-size: inherit;
-    line-height: inherit;
-  }
-  .root .icon {
-    width: 1.5em;
-    height: 1.5em;
   }
   .label {
     position: static;
@@ -298,14 +286,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #fff;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -322,8 +328,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #fff;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -331,7 +337,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -355,22 +360,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #ff0223;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -400,14 +401,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -424,8 +443,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -433,27 +452,22 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 400;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -481,14 +495,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -505,15 +537,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -537,25 +568,21 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .root:active + .subline {
   color: #d5001c;
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -572,7 +599,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .subline {
   display: flex;
   margin-top: 4px !important;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -611,14 +638,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -635,8 +680,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -644,7 +689,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 600;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -668,22 +712,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -783,14 +823,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -807,8 +865,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -816,7 +874,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 100;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -840,22 +897,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -885,14 +938,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -909,8 +980,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -918,27 +989,22 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 100;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -966,14 +1032,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -990,8 +1074,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -999,7 +1083,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 100;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1023,22 +1106,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -1067,14 +1146,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #ff0223;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1091,8 +1188,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #ff0223;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1100,7 +1197,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 700;
   justify-content: space-between;
   font-size: 3.25rem;
-  line-height: 1.2307692308;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1124,22 +1220,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #ff0223;
 }
-.root .icon {
-  width: 1.2307692308em;
-  height: 1.2307692308em;
-}
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: 1.3333333333;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: 1.2307692308em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -1168,14 +1260,32 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #d5001c;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1192,8 +1302,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: none;
   background: transparent;
   color: #d5001c;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1201,7 +1311,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-weight: 600;
   justify-content: space-between;
   font-size: 3.25rem;
-  line-height: 1.2307692308;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1225,22 +1334,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.2307692308em;
-  height: 1.2307692308em;
-}
 .root ~ .subline {
   font-size: 2.25rem;
-  line-height: 1.3333333333;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 3.25rem;
-  margin-left: 1.2307692308em;
+  margin-left: calc(6px + 2.125ex);
 }
 .icon {
   flex-shrink: 0;
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   position: static;
@@ -1270,14 +1375,32 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1294,8 +1417,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1303,7 +1426,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   font-weight: 400;
   justify-content: flex-start;
   font-size: inherit;
-  line-height: inherit;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1326,10 +1448,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }
 .root:active {
   color: #d5001c;
-}
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
 }
 @media(hover:hover) {
   .root:hover {
@@ -1346,14 +1464,32 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   display: inline-block;
   vertical-align: top;
 }
-::slotted(p) {
-  margin: 0;
-}
 ::slotted(a) {
-  color: #000;
+  display: block;
+  position: static;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  outline: 0;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+::slotted(a:focus)::before {
+  outline-color: currentColor;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
+slot[name=subline]::slotted(*) {
+  margin: 0;
 }
 .root {
   display: flex;
@@ -1370,8 +1506,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   border: none;
   background: transparent;
   color: #000;
-  transition: color var(--p-transition-duration, .24s) ease, font-size 1ms linear;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  transition: color var(--p-transition-duration, .24s) ease;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -1379,7 +1515,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   font-weight: 700;
   justify-content: flex-start;
   font-size: 1rem;
-  line-height: 1.5;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1403,17 +1538,13 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root:active {
   color: #d5001c;
 }
-.root .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
 .root ~ .subline {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
 }
 .root ~ .subline::before {
   font-size: 1rem;
-  margin-left: 1.5em;
+  margin-left: calc(6px + 2.125ex);
 }
 @media(hover:hover) {
   .root:hover {
@@ -1421,64 +1552,4 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   }
 }
 "
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-pure a {
-  display: block !important;
-  position: static !important;
-  text-decoration: none !important;
-  font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
-}
-p-link-pure a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-link-pure a::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-link-pure a:focus::before {
-  outline-color: currentColor !important;
-}
-p-link-pure a:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-pure a {
-  display: block !important;
-  position: static !important;
-  text-decoration: none !important;
-  font: inherit !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 0 !important;
-}
-prefixed-p-link-pure a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-link-pure a::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-link-pure a:focus::before {
-  outline-color: currentColor !important;
-}
-prefixed-p-link-pure a:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
-}"
 `;

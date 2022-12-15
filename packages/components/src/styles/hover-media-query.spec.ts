@@ -65,12 +65,12 @@ it.each<TagName>(tagNamesWithJss)(
       } catch {}
     }
 
-    if (component.componentWillRender) {
+    if (component.render) {
       // some components like grid-item and text-list-item require a parent to apply styles
-      // some components like require a parent and certain props in order to work
+      // some components require a parent and certain props in order to work
       addParentAndSetRequiredProps(tagName, component);
 
-      component.componentWillRender();
+      component.render();
     }
 
     const [result] = spy.mock.results;

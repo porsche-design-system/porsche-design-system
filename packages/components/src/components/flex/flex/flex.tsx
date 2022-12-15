@@ -57,7 +57,7 @@ export class Flex {
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -69,9 +69,7 @@ export class Flex {
       this.alignItems,
       this.alignContent
     );
-  }
 
-  public render(): JSX.Element {
     return <slot />;
   }
 }

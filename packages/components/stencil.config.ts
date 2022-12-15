@@ -20,9 +20,7 @@ const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
 // specify chunking of components that can't be used standalone
 // it's important to list the parent component first since it affects the chunk name
-const bundles: { components: TagName[] }[] = [
-  { components: ['p-banner', 'p-inline-notification'] },
-  { components: ['p-button', 'p-button-group'] },
+export const bundles: { components: TagName[] }[] = [
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
   { components: ['p-segmented-control', 'p-segmented-control-item'] },
@@ -39,7 +37,6 @@ const bundles: { components: TagName[] }[] = [
     ],
   },
   { components: ['p-tabs', 'p-tabs-item'] },
-  { components: ['p-tag', 'p-tag-dismissible'] },
   { components: ['p-text-list', 'p-text-list-item'] },
   { components: ['p-toast', 'p-toast-item'] },
   { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },

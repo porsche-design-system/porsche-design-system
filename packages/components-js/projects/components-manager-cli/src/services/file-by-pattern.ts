@@ -43,7 +43,7 @@ export async function filenameByPattern(pattern: string): Promise<string> {
 
 export async function fileContentByPattern(pattern: string): Promise<string> {
   const filePath = await filePathByPattern(pattern);
-  return await fs.promises.readFile(filePath, { encoding: 'utf-8' });
+  return await fs.promises.readFile(filePath, { encoding: 'utf8' });
 }
 
 export async function copyFileByPattern(pattern: string, targetDirectory: string): Promise<void> {

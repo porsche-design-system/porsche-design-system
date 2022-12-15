@@ -5,6 +5,7 @@ import {
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
   getSlotTextContent,
+  hasDescription,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -26,7 +27,7 @@ import {
   slideNext,
   slidePrev,
   updatePagination,
-  updatePrevNextButtonAria,
+  updatePrevNextButtons,
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
@@ -36,6 +37,7 @@ import { spacing } from '@porsche-design-system/utilities-v2';
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
+  rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
@@ -62,6 +64,9 @@ export class Carousel {
 
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
+
+  /** Whether the slides should rewind from last to first slide and vice versa. */
+  @Prop() public rewind?: boolean = true;
 
   /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapContent?: boolean;
@@ -112,6 +117,8 @@ export class Carousel {
     this.splide = new Splide(this.container, {
       arrows: false,
       pagination: false,
+      rewind: this.rewind,
+      rewindByDrag: true, // only works when rewind: true
       perMove: 1,
       mediaQuery: 'min',
       padding: {
@@ -130,17 +137,9 @@ export class Carousel {
     this.registerSplideHandlers(this.splide);
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-    warnIfHeadingIsMissing(this.host, this.heading);
-    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-
-    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
-  }
-
   public componentDidUpdate(): void {
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
-    updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
+    updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     updateSlidesInert(this.splide);
   }
 
@@ -151,6 +150,11 @@ export class Carousel {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    warnIfHeadingIsMissing(this.host, this.heading);
+    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
+    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const btnProps = {
@@ -165,7 +169,8 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-          {this.description && <p>{this.description}</p>}
+          {hasDescription(this.host, this.description) &&
+            ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
 
           {/* NOTE: might come back in later version */}
           {/* <slot name="post-heading" /> */}
@@ -173,13 +178,13 @@ export class Carousel {
           <div class="nav">
             <PrefixedTagNames.pButtonPure
               {...btnProps}
-              icon="arrow-head-left"
+              icon="arrow-left"
               ref={(ref) => (this.btnPrev = ref)}
               onClick={() => slidePrev(this.splide, this.amountOfPages)}
             />
             <PrefixedTagNames.pButtonPure
               {...btnProps}
-              icon="arrow-head-right"
+              icon="arrow-right"
               ref={(ref) => (this.btnNext = ref)}
               onClick={() => slideNext(this.splide, this.amountOfPages)}
             />
@@ -195,7 +200,7 @@ export class Carousel {
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div class="splide__slide">
+                <div key={i} class="splide__slide">
                   <slot name={`slide-${i}`} />
                 </div>
               ))}
@@ -210,13 +215,13 @@ export class Carousel {
 
   private registerSplideHandlers(splide: Splide): void {
     splide.on('mounted', () => {
-      updatePrevNextButtonAria(this.btnPrev, this.btnNext, splide);
+      updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
       renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
-      updatePrevNextButtonAria(this.btnPrev, this.btnNext, splide);
+      updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
       updatePagination(this.pagination, activeIndex);
       this.carouselChange.emit({ activeIndex, previousIndex });

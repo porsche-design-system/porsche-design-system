@@ -55,7 +55,7 @@ export const getBaseChildStyles = (
       hyphens: null,
       textIndent: 0,
       color: baseColor,
-      transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
+      transition: ['color', 'border-color', 'background-color'].map(getTransition).join(),
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({

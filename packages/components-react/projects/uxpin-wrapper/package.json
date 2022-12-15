@@ -8,21 +8,24 @@
   "scripts": {
     "prestart": "yarn clean:build && yarn build",
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
-    "build": "cp ../components-wrapper/src/provider.tsx ./src && cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
+    "build": "cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
+    "test": "yarn test:unit",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge",
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.17.0",
+    "@porsche-design-system/components-js": "2.18.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
-    "@types/react": "^18.0.21",
-    "@uxpin/merge-cli": "2.8.0-dev.77",
-    "babel-loader": "^8.2.4",
-    "typescript": "~4.8.3"
+    "@porsche-design-system/assets": "5.0.2",
+    "@types/react": "^18.0.25",
+    "@uxpin/merge-cli": "2.9.0",
+    "babel-loader": "^8.3.0",
+    "typescript": "~4.9.3"
   }
 }

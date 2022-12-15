@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getDataThemeDarkAttribute,
-  setLineHeightOnSizeInherit,
   THEMES,
   TEXT_ALIGNS,
   validateProps,
@@ -48,27 +47,19 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  private headlineTag: HTMLElement;
-
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
-  }
 
-  public componentDidLoad(): void {
-    setLineHeightOnSizeInherit(this.variant, this.headlineTag);
-  }
-
-  public render(): JSX.Element {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagName class="root" ref={(el) => (this.headlineTag = el)}>
+        <TagName class="root">
           <slot />
         </TagName>
       </Host>

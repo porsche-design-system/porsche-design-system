@@ -48,38 +48,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-pure>
     </div>
 
-    <div class="playground light" title="should render with different size">
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-small'">Label size x-small</p-link-pure>
-      <p-link-pure [size]="'x-small'"><a [href]="'https://www.porsche.com'">Label slotted size x-small</a></p-link-pure>
-      <br />
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'">Label size small</p-link-pure>
-      <p-link-pure [size]="'small'"><a [href]="'https://www.porsche.com'">Label slotted size small</a></p-link-pure>
-      <br />
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'medium'">Label size medium</p-link-pure>
-      <p-link-pure [size]="'medium'"><a [href]="'https://www.porsche.com'">Label slotted size medium</a></p-link-pure>
-      <br />
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'large'">Label size large</p-link-pure>
-      <p-link-pure [size]="'large'"><a [href]="'https://www.porsche.com'">Label slotted size large</a></p-link-pure>
-      <br />
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-large'">Label size x-large</p-link-pure>
-      <p-link-pure [size]="'x-large'"><a [href]="'https://www.porsche.com'">Label slotted size x-large</a></p-link-pure>
-      <br />
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'inherit'" style="font-size: 48px">Label size inherit</p-link-pure>
-      <p-link-pure [size]="'inherit'" style="font-size: 48px">
-        <a [href]="'https://www.porsche.com'">Label slotted size inherit</a>
-      </p-link-pure>
-    </div>
-
-    <div class="playground light" title="should render with responsive size">
-      <p-link-pure
-        [href]="'https://www.porsche.com'"
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-      >
-        Label size responsive
-      </p-link-pure>
-    </div>
-
     <div class="playground light" title="should render with different weight">
       <p-link-pure [href]="'https://www.porsche.com'" [weight]="'thin'">Label weight thin</p-link-pure>
       <p-link-pure [weight]="'thin'"><a [href]="'https://www.porsche.com'">Label slotted weight thin</a></p-link-pure>
@@ -168,16 +136,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with no icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Label icon none</p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'" [size]="'inherit'" style="font-size: 48px"
-        >Label icon none size inherit</p-link-pure
-      >
-      <p-link-pure
-        [href]="'https://www.porsche.com'"
-        [icon]="'none'"
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-        >Label icon none size responsive</p-link-pure
-      >
       <p-link-pure [icon]="'none'"><a [href]="'https://www.porsche.com'">Label slotted icon none</a></p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'">
         Label icon none
@@ -265,6 +223,51 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         Label stretch
         <p slot="subline">Some subline</p>
       </p-link-pure>
+    </div>
+
+    <div class="playground light" title="should render with different size">
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-small'">Label size x-small</p-link-pure>
+      <p-link-pure [size]="'x-small'"><a [href]="'https://www.porsche.com'">Label slotted size x-small</a></p-link-pure>
+      <br />
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'">Label size small</p-link-pure>
+      <p-link-pure [size]="'small'"><a [href]="'https://www.porsche.com'">Label slotted size small</a></p-link-pure>
+      <br />
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'medium'">Label size medium</p-link-pure>
+      <p-link-pure [size]="'medium'"><a [href]="'https://www.porsche.com'">Label slotted size medium</a></p-link-pure>
+      <br />
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'large'">Label size large</p-link-pure>
+      <p-link-pure [size]="'large'"><a [href]="'https://www.porsche.com'">Label slotted size large</a></p-link-pure>
+      <br />
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-large'">Label size x-large</p-link-pure>
+      <p-link-pure [size]="'x-large'"><a [href]="'https://www.porsche.com'">Label slotted size x-large</a></p-link-pure>
+      <br />
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'inherit'" style="font-size: 48px">Label size inherit</p-link-pure>
+      <p-link-pure [size]="'inherit'" style="font-size: 48px">
+        <a [href]="'https://www.porsche.com'">Label slotted size inherit</a>
+      </p-link-pure>
+    </div>
+
+    <div class="playground light" title="should render with responsive size">
+      <p-link-pure
+        [href]="'https://www.porsche.com'"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px"
+      >
+        Label size responsive
+      </p-link-pure>
+    </div>
+
+    <div class="playground light" title="should render with no icon and size inherit">
+      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'" [size]="'inherit'" style="font-size: 48px"
+        >Label icon none size inherit</p-link-pure
+      >
+      <p-link-pure
+        [href]="'https://www.porsche.com'"
+        [icon]="'none'"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px"
+        >Label icon none size responsive</p-link-pure
+      >
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

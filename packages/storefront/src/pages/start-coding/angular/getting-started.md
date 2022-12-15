@@ -71,7 +71,7 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 ## Sample integration
 
-We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
+We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.  
 You can find the repository of the Angular example project here:
 [Sample integration Angular](https://github.com/porsche-design-system/sample-integration-angular)
 

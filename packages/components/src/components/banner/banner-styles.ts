@@ -80,7 +80,7 @@ export const getComponentCss = (): string => {
         [mediaQueryS]: {
           top: `var(${bannerPositionTopVar})`,
         },
-        '&(.hydrated)': {
+        '&(.hydrated),&(.ssr)': {
           [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
           [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
         },

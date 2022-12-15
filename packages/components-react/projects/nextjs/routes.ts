@@ -1,7 +1,9 @@
+import { generatedRoutes } from './pages';
+
 export const sitemap = {
   home: { path: '/', name: 'Home' },
-  overview: { path: '/overview', name: 'Overview' },
-  other: { path: '/other', name: 'Other' },
+  table: { path: '/table', name: 'Table' },
+  ...generatedRoutes,
 };
 
-export const routes = Object.values(sitemap);
+export const routes = Object.values(sitemap).sort((a, b) => a.name.localeCompare(b.name));

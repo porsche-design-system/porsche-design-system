@@ -17,6 +17,7 @@ import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from '
 import { TAB_SIZES, TAB_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLOR_THEMES } from '../../scroller/scroller-utils';
+import { syncTabsItemsProps } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -60,7 +61,6 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
     observeChildren(this.host, () => {
       this.defineTabsItemElements();
@@ -73,10 +73,6 @@ export class Tabs {
     this.setAccessibilityAttributes();
   }
 
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
-  }
-
   public componentDidUpdate(): void {
     this.setAccessibilityAttributes();
   }
@@ -86,7 +82,12 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
+    attachComponentCss(this.host, getComponentCss);
+    syncTabsItemsProps(this.host, this.theme);
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <PrefixedTagNames.pTabsBar
@@ -98,8 +99,10 @@ export class Tabs {
           activeTabIndex={this.activeTabIndex}
           onTabChange={this.onTabChange}
         >
-          {this.tabsItemElements.map((tab) => (
-            <button type="button">{tab.label}</button>
+          {this.tabsItemElements.map((tab, index) => (
+            <button key={index} type="button">
+              {tab.label}
+            </button>
           ))}
         </PrefixedTagNames.pTabsBar>
         <slot />

@@ -1,8 +1,14 @@
-# Dependencies 21.10.2022
+# Dependencies 29.11.2022
 
-## @uxpin/merge-cli
+## Playwright
 
-We're staying on version `2.8.0-dev.77` until UXPin integrates the changes made in this package into a stable release.
+We have to stay on `1.27.0` for now since later verions supply WebKit 16.4 which causes flaky behavior in our VRT pages.
+See <https://github.com/microsoft/playwright/releases>.
+
+### Affected dependencies:
+
+- `@playwright/test`
+- `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
 
 ## Vue
 

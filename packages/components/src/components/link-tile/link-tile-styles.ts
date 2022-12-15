@@ -45,15 +45,13 @@ const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTop
 };
 
 const sizeMap: {
-  inherit: { lineHeight: string; fontSize: string };
-  default: { lineHeight: number; fontSize: string };
+  inherit: { fontSize: string };
+  default: { fontSize: string };
 } = {
   inherit: {
-    lineHeight: 'inherit',
     fontSize: 'inherit',
   },
-  // these values are calculated and no util exists
-  default: { fontSize: '1.25rem', lineHeight: 1.5555555556 },
+  default: { fontSize: '1.25rem' },
 };
 
 export const getComponentCss = (
@@ -158,7 +156,10 @@ export const getComponentCss = (
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
-    link: buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+    link: {
+      minHeight: '3rem',
+      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+    },
 
     // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
     anchor: {

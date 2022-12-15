@@ -5,5 +5,5 @@ export function getClosestHTMLElement<K extends keyof HTMLElementTagNameMap>(ele
 // prettier-ignore
 export function getClosestHTMLElement<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
 export function getClosestHTMLElement(element: HTMLElement, selector: string): any {
-  return element.closest(selector);
+  return element?.closest(selector);
 }

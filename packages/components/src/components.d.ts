@@ -215,6 +215,10 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
+          * Whether the slides should rewind from last to first slide and vice versa.
+         */
+        "rewind"?: boolean;
+        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -741,7 +745,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
+          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
     }
@@ -1811,6 +1815,10 @@ declare namespace LocalJSX {
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
         /**
+          * Whether the slides should rewind from last to first slide and vice versa.
+         */
+        "rewind"?: boolean;
+        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -2353,7 +2361,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
+          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
     }

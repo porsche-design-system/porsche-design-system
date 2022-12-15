@@ -14,7 +14,7 @@ export const isStateCompleteOrWarning = (state: StepperState): boolean => {
   return state === 'complete' || state === 'warning';
 };
 
-export const getIconName = (state: StepperState): Extract<IconName, 'success' | 'warning'> => {
+export const getStepperHorizontalIconName = (state: StepperState): Extract<IconName, 'success' | 'warning'> => {
   return state === 'complete' ? 'success' : 'warning';
 };
 

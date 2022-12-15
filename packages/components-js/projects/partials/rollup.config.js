@@ -3,14 +3,16 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
+const outputDir = 'dist';
 const input = 'src/index.ts';
 
 export default [
   {
     input,
     output: {
-      dir: 'dist',
+      dir: outputDir,
       format: 'cjs',
+      esModule: true,
       plugins: [
         generatePackageJson({
           baseContents: {
@@ -22,14 +24,14 @@ export default [
         }),
       ],
     },
-    // Our partials contain jsx. We resolve react/jsx-runtime into the build to make it readable in VanillaJS and Angular.
-    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }), nodeResolve(), commonjs()],
+    // Our partials contain jsx. We bundle react/jsx-runtime into the build to make it work in VanillaJS and Angular.
+    plugins: [commonjs(), nodeResolve(), typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
   },
   {
     input,
     external: ['react/jsx-runtime'],
     output: {
-      dir: 'dist/esm',
+      dir: `${outputDir}/esm`,
       format: 'esm',
     },
     plugins: [typescript()],

@@ -6,14 +6,6 @@
   </p-button-group>
 </div>
 
-<div class="playground light" title="should show p-button-group default style when direction is undefined">
-  <p-button-group id="setDirectionToUndefined">
-    <p-button variant="primary">Some label</p-button>
-    <p-button variant="secondary">Some label</p-button>
-    <p-button variant="tertiary">Some label</p-button>
-  </p-button-group>
-</div>
-
 <div class="playground light" title="should render button-group with responsive direction">
   <p-button-group direction="{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }">
     <p-button variant="primary">Some label</p-button>
@@ -42,7 +34,3 @@
     <p-button>Some label</p-button>
   </p-button-group>
 </div>
-
-<script>
-  document.querySelector('#setDirectionToUndefined').direction = undefined;
-</script>

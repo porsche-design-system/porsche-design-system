@@ -10,9 +10,11 @@
       "packages/components-js/projects/components-manager-core",
       "packages/components-js/projects/partials",
       "packages/components-js/dist/components-wrapper",
-      "packages/components-angular/dist/components-wrapper",
-      "packages/components-react/dist/components-wrapper",
+      "packages/components-angular/dist/angular-wrapper",
+      "packages/components-react/dist/react-wrapper",
+      "packages/components-react/projects/jsdom-polyfill",
       "packages/components-react/projects/nextjs",
+      "packages/components-react/projects/react-ssr-wrapper",
       "packages/components-react/projects/uxpin-wrapper",
       "packages/utilities-deprecated/projects/utilities",
       "packages/utilities/projects/utilities",
@@ -44,8 +46,8 @@
     "preinstall:assets": "mkdir -p ./packages/assets/bin && touch ./packages/assets/bin/serve-cdn.js",
     "preinstall:components-manager-cli": "mkdir -p ./packages/components-js/projects/components-manager-cli/dist/bin && touch ./packages/components-js/projects/components-manager-cli/dist/bin/cm.js",
     "preinstall:components-js": "TARGET=./packages/components-js/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-js/projects/components-wrapper/package.json $TARGET",
-    "preinstall:components-angular": "TARGET=./packages/components-angular/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/components-wrapper/package.json $TARGET",
-    "preinstall:components-react": "TARGET=./packages/components-react/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/components-wrapper/package.json $TARGET",
+    "preinstall:components-angular": "TARGET=./packages/components-angular/dist/angular-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/angular-wrapper/package.json $TARGET",
+    "preinstall:components-react": "TARGET=./packages/components-react/dist/react-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/react-wrapper/package.json $TARGET",
     "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
@@ -84,14 +86,17 @@
     "test:unit:components-js:partials": "yarn --cwd ./packages/components-js test:unit:partials",
     "test:unit:components-angular": "yarn --cwd ./packages/components-angular test:unit",
     "test:unit:components-react": "yarn --cwd ./packages/components-react test:unit",
+    "test:unit:components-react:react-wrapper": "yarn --cwd ./packages/components-react test:unit:react-wrapper",
+    "test:unit:components-react:react-ssr-wrapper": "yarn --cwd ./packages/components-react test:unit:react-ssr-wrapper",
+    "test:unit:components-react:uxpin-wrapper": "yarn --cwd ./packages/components-react test:unit:uxpin-wrapper",
+    "test:unit:components-react:jsdom-polyfill": "yarn --cwd ./packages/components-react test:unit:jsdom-polyfill",
     "test:unit:fallbacks": "yarn --cwd ./packages/fallbacks test:unit",
     "test:unit:shared": "yarn --cwd ./packages/shared test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
     "test:unit:utilities": "yarn --cwd ./packages/utilities test:unit",
     "test:unit:utilities-deprecated": "yarn --cwd ./packages/utilities-deprecated test:unit",
-    "test:jsdom-polyfill": "concurrently --kill-others-on-fail -n 'components-react' 'yarn test:jsdom-polyfill:components-react'",
-    "test:jsdom-polyfill:components-react": "yarn --cwd ./packages/components-react test:jsdom-polyfill",
-    "test:e2e:components-js": "yarn --cwd ./packages/components-js test:e2e",
+    "test:e2e:puppeteer:components-js": "yarn --cwd ./packages/components-js test:e2e:puppeteer",
+    "test:e2e:playwright:components-js": "yarn --cwd ./packages/components-js test:e2e:playwright",
     "test:e2e:components-angular": "yarn --cwd ./packages/components-angular test:e2e",
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
@@ -141,7 +146,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.0"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",
@@ -150,6 +155,8 @@
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
     "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
-    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
+    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
+    "**/ng-packagr/rollup": "^3.5.0",
+    "**/workbox-build/rollup": "^3.5.0"
   }
 }

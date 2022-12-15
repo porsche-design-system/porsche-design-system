@@ -17,22 +17,18 @@ import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
-  calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
   hasVisibleIcon,
-  isSizeInherit,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   throwIfInvalidLinkPureUsage,
-  transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
@@ -100,21 +96,12 @@ export class LinkPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  private linkTag: HTMLElement;
-  private iconTag: HTMLElement;
-  private labelTag: HTMLElement;
-  private sublineTag: HTMLElement;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
     throwIfInvalidLinkPureUsage(this.host, this.href);
   }
 
-  public componentWillRender(): void {
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
@@ -131,28 +118,7 @@ export class LinkPure {
       !this.href,
       this.theme
     );
-  }
 
-  public componentDidLoad(): void {
-    if (isSizeInherit(this.size)) {
-      transitionListener(this.linkTag, 'font-size', () => {
-        const lineHeight = `${calcLineHeightForElement(this.linkTag)}`;
-        this.labelTag.style.lineHeight = lineHeight;
-
-        if (this.sublineTag) {
-          this.sublineTag.style.lineHeight = lineHeight;
-        }
-
-        if (hasVisibleIcon(this.icon)) {
-          const size = `${lineHeight}em`;
-          this.iconTag.style.width = size;
-          this.iconTag.style.height = size;
-        }
-      });
-    }
-  }
-
-  public render(): JSX.Element {
     const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -169,25 +135,24 @@ export class LinkPure {
             ...(hasSubline && { 'aria-describedby': 'subline' }),
             ...parseAndGetAriaAttributes(this.aria),
           })}
-          ref={(el) => (this.linkTag = el)}
         >
           {hasVisibleIcon(this.icon) && (
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
+              theme={this.theme}
               size="inherit"
               name={this.icon}
               source={this.iconSource}
-              ref={(el) => (this.iconTag = el)}
               aria-hidden="true"
             />
           )}
-          <span class="label" ref={(el) => (this.labelTag = el)}>
+          <span class="label">
             <slot />
           </span>
         </TagType>
         {hasSubline && (
-          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
+          <div id="subline" class="subline">
             <slot name="subline" />
           </div>
         )}

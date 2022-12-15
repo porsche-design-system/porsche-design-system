@@ -3,17 +3,14 @@ import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
-  calcLineHeightForElement,
   getPrefixedTagNames,
   hasSlottedSubline,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  isSizeInherit,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
-  transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -30,7 +27,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
@@ -101,11 +98,6 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
-  private buttonTag: HTMLElement;
-  private iconTag: HTMLElement;
-  private labelTag: HTMLElement;
-  private sublineTag: HTMLElement;
-
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
   }
@@ -118,7 +110,15 @@ export class ButtonPure {
     }
   }
 
-  public componentWillRender(): void {
+  public componentDidLoad(): void {
+    improveButtonHandlingForCustomElement(
+      this.host,
+      () => this.type,
+      () => this.isDisabledOrLoading
+    );
+  }
+
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
@@ -136,34 +136,7 @@ export class ButtonPure {
       hasSlottedSubline(this.host),
       this.theme
     );
-  }
 
-  public componentDidLoad(): void {
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => this.type,
-      () => this.isDisabledOrLoading
-    );
-
-    if (isSizeInherit(this.size)) {
-      transitionListener(this.buttonTag, 'font-size', () => {
-        const lineHeight = `${calcLineHeightForElement(this.buttonTag)}`;
-        this.labelTag.style.lineHeight = lineHeight;
-
-        if (this.sublineTag) {
-          this.sublineTag.style.lineHeight = lineHeight;
-        }
-
-        if (hasVisibleIcon(this.icon)) {
-          const size = `${lineHeight}em`;
-          this.iconTag.style.width = size;
-          this.iconTag.style.height = size;
-        }
-      });
-    }
-  }
-
-  public render(): JSX.Element {
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 
@@ -171,7 +144,6 @@ export class ButtonPure {
       class: 'icon',
       size: 'inherit',
       theme: this.theme,
-      ref: (el: HTMLElement) => (this.iconTag = el),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -179,11 +151,10 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
+          {...getButtonPureAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
-          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
-          ref={(el) => (this.buttonTag = el)}
+          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
         >
           {hasIcon &&
             (this.loading ? (
@@ -197,12 +168,12 @@ export class ButtonPure {
                 aria-hidden="true"
               />
             ))}
-          <span class="label" ref={(el) => (this.labelTag = el)}>
+          <span class="label">
             <slot />
           </span>
         </button>
         {hasSubline && (
-          <div id="subline" class="subline" ref={(el) => (this.sublineTag = el)}>
+          <div id="subline" class="subline">
             <slot name="subline" />
           </div>
         )}
