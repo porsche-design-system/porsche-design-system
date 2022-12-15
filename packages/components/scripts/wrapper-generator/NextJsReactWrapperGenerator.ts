@@ -8,7 +8,9 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);
+    let imports = super
+      .generateImports(component, extendedProps, nonPrimitiveTypes)
+      .replace(/from '\.\.\/\.\.\/(?:hooks|utils)'/g, "from '@porsche-design-system/components-react'");
     const ssrComponentName = this.getSsrComponentName(component);
     imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${paramCase(
       ssrComponentName.replace('DSR', '')

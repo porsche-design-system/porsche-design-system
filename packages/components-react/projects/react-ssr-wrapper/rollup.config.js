@@ -9,7 +9,12 @@ const typescriptOpts = {
   tsconfig: 'tsconfig.json',
 };
 
-const external = ['@porsche-design-system/components-js', 'react', 'react/jsx-runtime'];
+const external = [
+  '@porsche-design-system/components-js',
+  '@porsche-design-system/components-react',
+  'react',
+  'react/jsx-runtime',
+];
 
 export default [
   {

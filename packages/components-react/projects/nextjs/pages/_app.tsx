@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 import { routes } from '../routes';
 import { useState } from 'react';
 import { useRouter } from 'next/router';

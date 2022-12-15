@@ -1,6 +1,13 @@
 export { componentsReady } from '@porsche-design-system/components-js';
 export * from './lib/components';
 export * from './lib/types';
-export { PorscheDesignSystemProvider } from './provider';
-export { skipCheckForPorscheDesignSystemProviderDuringTests, useToastManager } from './hooks';
-export { skipPorscheDesignSystemCDNRequestsDuringTests } from './utils';
+export { PorscheDesignSystemProvider, PorscheDesignSystemContext } from './provider';
+export {
+  skipCheckForPorscheDesignSystemProviderDuringTests,
+  useToastManager,
+  usePrefix,
+  useMergedClass,
+  useEventCallback,
+  useBrowserLayoutEffect,
+} from './hooks';
+export { skipPorscheDesignSystemCDNRequestsDuringTests, syncRef, getMergedClassName } from './utils';
