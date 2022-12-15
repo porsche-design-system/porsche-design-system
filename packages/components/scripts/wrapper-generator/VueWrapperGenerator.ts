@@ -31,18 +31,18 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return `<script setup lang="ts">
-  ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n  ')}`;
+${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n')}`;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const propsName = this.generatePropsName(component);
 
     return getComponentMeta(component).props
-      ? `  type ${propsName} = {${rawComponentInterface
-          .slice(1, -1)
-          .split(';\n')
-          .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
-          .join(';\n')}  }`
+      ? `type ${propsName} = {${rawComponentInterface
+          .slice(1, -1) // remove brackets
+          .split(';\n') // split into props with description
+          .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/)) // remove event properties and their description
+          .join(';\n')}};` // rejoin with correct indentation
       : '';
   }
 
