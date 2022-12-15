@@ -74,18 +74,16 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
       .filter((x) => x)
       .join('\n');
 
-    const componentMeta = getComponentMeta(component);
-    const hasEvent = componentMeta.hasEvent;
-    const hasProps = componentMeta.props;
-    const hasSlot = componentMeta.hasSlot;
+    const { hasEvent, hasSlot } = getComponentMeta(component);
+    const hasProps = !!extendedProps.length;
     const hasDefaultProps = defaultPropsWithValue.length;
 
     const defineProps = `defineProps<${propsName}>()`;
     const props = `const props = ${
       hasDefaultProps
         ? `withDefaults(${defineProps}, {
-     ${defaultPropsWithValue}
-    })`
+ ${defaultPropsWithValue}
+})`
         : defineProps
     };`;
 
