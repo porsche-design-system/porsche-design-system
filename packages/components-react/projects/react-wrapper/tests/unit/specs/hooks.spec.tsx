@@ -5,7 +5,6 @@ import * as hooks from '../../../src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
-  usePrefix,
 } from '../../../src/hooks';
 import { useLayoutEffect } from 'react';
 
