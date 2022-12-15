@@ -9,6 +9,7 @@
         "p-marque": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "trademark": {
                     "amount": 1,
@@ -33,6 +34,7 @@
         "p-icon": {
             "amount": 12,
             "hostPdsComponent": 9,
+            "slot": 0,
             "properties": {
                 "name": {
                     "amount": 12,
@@ -78,6 +80,7 @@
         "p-link": {
             "amount": 6,
             "hostPdsComponent": 0,
+            "slot": 6,
             "properties": {
                 "variant": {
                     "amount": 6,
@@ -115,6 +118,7 @@
         "p-link-pure": {
             "amount": 3,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "alignLabel": {
                     "amount": 3,
@@ -183,6 +187,7 @@
         "p-text": {
             "amount": 3,
             "hostPdsComponent": 3,
+            "slot": 3,
             "properties": {
                 "tag": {
                     "amount": 3,
@@ -235,6 +240,7 @@
                 "p-marque": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "trademark": {
                             "amount": 1,
@@ -259,6 +265,7 @@
                 "p-icon": {
                     "amount": 12,
                     "hostPdsComponent": 9,
+                    "slot": 0,
                     "properties": {
                         "name": {
                             "amount": 12,
@@ -304,6 +311,7 @@
                 "p-link": {
                     "amount": 6,
                     "hostPdsComponent": 0,
+                    "slot": 6,
                     "properties": {
                         "variant": {
                             "amount": 6,
@@ -341,6 +349,7 @@
                 "p-link-pure": {
                     "amount": 3,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "alignLabel": {
                             "amount": 3,
@@ -409,6 +418,7 @@
                 "p-text": {
                     "amount": 3,
                     "hostPdsComponent": 3,
+                    "slot": 3,
                     "properties": {
                         "tag": {
                             "amount": 3,

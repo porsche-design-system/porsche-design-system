@@ -13,6 +13,7 @@
         "p-link-pure": {
             "amount": 21,
             "hostPdsComponent": 0,
+            "slot": 4,
             "properties": {
                 "alignLabel": {
                     "amount": 21,
@@ -107,6 +108,7 @@
         "p-text": {
             "amount": 39,
             "hostPdsComponent": 7,
+            "slot": 17,
             "properties": {
                 "tag": {
                     "amount": 39,
@@ -163,6 +165,7 @@
         "p-icon": {
             "amount": 44,
             "hostPdsComponent": 40,
+            "slot": 0,
             "properties": {
                 "name": {
                     "amount": 44,
@@ -222,6 +225,7 @@
         "p-content-wrapper": {
             "amount": 7,
             "hostPdsComponent": 0,
+            "slot": 6,
             "properties": {
                 "width": {
                     "amount": 7,
@@ -247,6 +251,7 @@
         "p-headline": {
             "amount": 17,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "variant": {
                     "amount": 17,
@@ -293,6 +298,7 @@
         "p-button": {
             "amount": 14,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "tabbable": {
                     "amount": 14,
@@ -352,6 +358,7 @@
         "p-link": {
             "amount": 3,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "variant": {
                     "amount": 3,
@@ -404,6 +411,7 @@
         "p-text-field-wrapper": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "label": {
                     "amount": 1,
@@ -464,6 +472,7 @@
         "p-flex": {
             "amount": 13,
             "hostPdsComponent": 0,
+            "slot": 13,
             "properties": {
                 "inline": {
                     "amount": 13,
@@ -514,6 +523,7 @@
         "p-flex-item": {
             "amount": 18,
             "hostPdsComponent": 0,
+            "slot": 18,
             "properties": {
                 "width": {
                     "amount": 18,
@@ -560,6 +570,7 @@
         "p-marque": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "trademark": {
                     "amount": 1,
@@ -596,6 +607,7 @@
         "p-button-pure": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "tabbable": {
                     "amount": 1,
@@ -674,6 +686,7 @@
         "p-grid": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "direction": {
                     "amount": 1,
@@ -698,6 +711,7 @@
         "p-grid-item": {
             "amount": 7,
             "hostPdsComponent": 0,
+            "slot": 7,
             "properties": {
                 "size": {
                     "amount": 7,
@@ -720,6 +734,7 @@
         "p-link-social": {
             "amount": 7,
             "hostPdsComponent": 0,
+            "slot": 7,
             "properties": {
                 "icon": {
                     "amount": 7,
@@ -756,6 +771,7 @@
         "p-divider": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "color": {
                     "amount": 1,
@@ -784,6 +800,7 @@
                 "p-link-pure": {
                     "amount": 13,
                     "hostPdsComponent": 0,
+                    "slot": 3,
                     "properties": {
                         "alignLabel": {
                             "amount": 13,
@@ -864,6 +881,7 @@
                 "p-text": {
                     "amount": 16,
                     "hostPdsComponent": 0,
+                    "slot": 6,
                     "properties": {
                         "tag": {
                             "amount": 16,
@@ -915,6 +933,7 @@
                 "p-icon": {
                     "amount": 29,
                     "hostPdsComponent": 29,
+                    "slot": 0,
                     "properties": {
                         "name": {
                             "amount": 29,
@@ -956,6 +975,7 @@
                 "p-content-wrapper": {
                     "amount": 6,
                     "hostPdsComponent": 0,
+                    "slot": 5,
                     "properties": {
                         "width": {
                             "amount": 6,
@@ -981,6 +1001,7 @@
                 "p-headline": {
                     "amount": 12,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "variant": {
                             "amount": 12,
@@ -1025,6 +1046,7 @@
                 "p-button": {
                     "amount": 13,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "tabbable": {
                             "amount": 13,
@@ -1082,6 +1104,7 @@
                 "p-link": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "variant": {
                             "amount": 1,
@@ -1130,6 +1153,7 @@
                 "p-text-field-wrapper": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 1,
                     "properties": {
                         "label": {
                             "amount": 1,
@@ -1190,6 +1214,7 @@
                 "p-flex": {
                     "amount": 4,
                     "hostPdsComponent": 0,
+                    "slot": 4,
                     "properties": {
                         "inline": {
                             "amount": 4,
@@ -1236,6 +1261,7 @@
                 "p-flex-item": {
                     "amount": 9,
                     "hostPdsComponent": 0,
+                    "slot": 9,
                     "properties": {
                         "width": {
                             "amount": 9,
@@ -1282,6 +1308,7 @@
                 "p-button": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "tabbable": {
                             "amount": 1,
@@ -1336,6 +1363,7 @@
                 "p-icon": {
                     "amount": 5,
                     "hostPdsComponent": 2,
+                    "slot": 0,
                     "properties": {
                         "name": {
                             "amount": 5,
@@ -1378,6 +1406,7 @@
                 "p-flex": {
                     "amount": 6,
                     "hostPdsComponent": 0,
+                    "slot": 6,
                     "properties": {
                         "inline": {
                             "amount": 6,
@@ -1424,6 +1453,7 @@
                 "p-marque": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "trademark": {
                             "amount": 1,
@@ -1460,6 +1490,7 @@
                 "p-text": {
                     "amount": 8,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "tag": {
                             "amount": 8,
@@ -1510,6 +1541,7 @@
                 "p-link-pure": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 1,
                     "properties": {
                         "alignLabel": {
                             "amount": 1,
@@ -1576,6 +1608,7 @@
                 "p-button-pure": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 1,
                     "properties": {
                         "tabbable": {
                             "amount": 1,
@@ -1658,6 +1691,7 @@
                 "p-content-wrapper": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 1,
                     "properties": {
                         "width": {
                             "amount": 1,
@@ -1682,6 +1716,7 @@
                 "p-grid": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 1,
                     "properties": {
                         "direction": {
                             "amount": 1,
@@ -1706,6 +1741,7 @@
                 "p-grid-item": {
                     "amount": 7,
                     "hostPdsComponent": 0,
+                    "slot": 7,
                     "properties": {
                         "size": {
                             "amount": 7,
@@ -1728,6 +1764,7 @@
                 "p-headline": {
                     "amount": 5,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "variant": {
                             "amount": 5,
@@ -1770,6 +1807,7 @@
                 "p-flex": {
                     "amount": 3,
                     "hostPdsComponent": 0,
+                    "slot": 3,
                     "properties": {
                         "inline": {
                             "amount": 3,
@@ -1815,6 +1853,7 @@
                 "p-icon": {
                     "amount": 10,
                     "hostPdsComponent": 9,
+                    "slot": 0,
                     "properties": {
                         "name": {
                             "amount": 10,
@@ -1865,6 +1904,7 @@
                 "p-text": {
                     "amount": 15,
                     "hostPdsComponent": 7,
+                    "slot": 11,
                     "properties": {
                         "tag": {
                             "amount": 15,
@@ -1917,6 +1957,7 @@
                 "p-link": {
                     "amount": 2,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "variant": {
                             "amount": 2,
@@ -1960,6 +2001,7 @@
                 "p-link-social": {
                     "amount": 7,
                     "hostPdsComponent": 0,
+                    "slot": 7,
                     "properties": {
                         "icon": {
                             "amount": 7,
@@ -1996,6 +2038,7 @@
                 "p-flex-item": {
                     "amount": 9,
                     "hostPdsComponent": 0,
+                    "slot": 9,
                     "properties": {
                         "width": {
                             "amount": 9,
@@ -2039,6 +2082,7 @@
                 "p-link-pure": {
                     "amount": 7,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "alignLabel": {
                             "amount": 7,
@@ -2111,6 +2155,7 @@
                 "p-divider": {
                     "amount": 1,
                     "hostPdsComponent": 0,
+                    "slot": 0,
                     "properties": {
                         "color": {
                             "amount": 1,

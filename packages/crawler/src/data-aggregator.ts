@@ -37,7 +37,6 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
     const amount = result[tagName]?.amount;
     const componentData = Object.entries(tagNameWithPropertiesData)[0][1];
     const propertiesData = componentData.properties;
-    const hostPdsComponent = componentData.hostPdsComponent;
 
     if (result[tagName]) {
       result[tagName].amount = amount + 1;
@@ -46,12 +45,17 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
       result[tagName] = {
         amount: 1,
         hostPdsComponent: 0,
+        slot: 0,
         properties: {},
       };
     }
 
-    if (hostPdsComponent) {
+    if (componentData.hostPdsComponent) {
       result[tagName].hostPdsComponent = result[tagName].hostPdsComponent + 1;
+    }
+
+    if (componentData.slot) {
+      result[tagName].slot = result[tagName].slot + 1;
     }
 
     if (!result[tagName].properties) {

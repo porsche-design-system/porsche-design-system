@@ -10,6 +10,7 @@
         "p-button": {
             "amount": 20,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "tabbable": {
                     "amount": 20,
@@ -70,6 +71,7 @@
         "p-icon": {
             "amount": 133,
             "hostPdsComponent": 78,
+            "slot": 0,
             "properties": {
                 "name": {
                     "amount": 133,
@@ -146,6 +148,7 @@
         "p-flex": {
             "amount": 30,
             "hostPdsComponent": 0,
+            "slot": 30,
             "properties": {
                 "inline": {
                     "amount": 30,
@@ -198,6 +201,7 @@
         "p-marque": {
             "amount": 6,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "trademark": {
                     "amount": 6,
@@ -236,6 +240,7 @@
         "p-text": {
             "amount": 53,
             "hostPdsComponent": 10,
+            "slot": 21,
             "properties": {
                 "tag": {
                     "amount": 53,
@@ -292,6 +297,7 @@
         "p-link-pure": {
             "amount": 63,
             "hostPdsComponent": 0,
+            "slot": 43,
             "properties": {
                 "alignLabel": {
                     "amount": 63,
@@ -402,6 +408,7 @@
         "p-button-pure": {
             "amount": 12,
             "hostPdsComponent": 2,
+            "slot": 2,
             "properties": {
                 "tabbable": {
                     "amount": 12,
@@ -496,6 +503,7 @@
         "p-link": {
             "amount": 13,
             "hostPdsComponent": 0,
+            "slot": 10,
             "properties": {
                 "variant": {
                     "amount": 13,
@@ -551,6 +559,7 @@
         "p-content-wrapper": {
             "amount": 9,
             "hostPdsComponent": 0,
+            "slot": 8,
             "properties": {
                 "width": {
                     "amount": 9,
@@ -577,6 +586,7 @@
         "p-flex-item": {
             "amount": 52,
             "hostPdsComponent": 0,
+            "slot": 48,
             "properties": {
                 "width": {
                     "amount": 52,
@@ -627,6 +637,7 @@
         "p-headline": {
             "amount": 18,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "variant": {
                     "amount": 18,
@@ -673,6 +684,7 @@
         "p-text-field-wrapper": {
             "amount": 5,
             "hostPdsComponent": 0,
+            "slot": 5,
             "properties": {
                 "label": {
                     "amount": 5,
@@ -737,6 +749,7 @@
         "p-select-wrapper": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "label": {
                     "amount": 1,
@@ -797,6 +810,7 @@
         "p-select-wrapper-dropdown": {
             "amount": 1,
             "hostPdsComponent": 1,
+            "slot": 0,
             "properties": {
                 "selectRef": {
                     "amount": 1,
@@ -863,6 +877,7 @@
         "p-divider": {
             "amount": 6,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "color": {
                     "amount": 6,
@@ -889,6 +904,7 @@
         "p-popover": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 0,
             "properties": {
                 "direction": {
                     "amount": 1,
@@ -913,6 +929,7 @@
         "p-link-social": {
             "amount": 12,
             "hostPdsComponent": 0,
+            "slot": 12,
             "properties": {
                 "icon": {
                     "amount": 12,
@@ -949,6 +966,7 @@
         "p-modal": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "disableCloseButton": {
                     "amount": 1,
@@ -979,6 +997,7 @@
         "p-button-group": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "direction": {
                     "amount": 1,
@@ -991,6 +1010,7 @@
         "p-grid": {
             "amount": 1,
             "hostPdsComponent": 0,
+            "slot": 1,
             "properties": {
                 "direction": {
                     "amount": 1,
@@ -1015,6 +1035,7 @@
         "p-grid-item": {
             "amount": 7,
             "hostPdsComponent": 0,
+            "slot": 7,
             "properties": {
                 "size": {
                     "amount": 7,
