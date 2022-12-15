@@ -62,10 +62,9 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) => {
-        // TODO: better approach to identify object?
         if (!(isEvent || defaultValue === undefined)) {
-          const transformedDefaultValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
-          return `${key}: ${transformedDefaultValue},${
+          // Check if default value is complex type and transform it into callback
+          return `${key}: ${defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue},${
             component === 'p-headline' && key === 'color' ? eslintAnnotation : ''
           }`;
         } else {
@@ -73,7 +72,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         }
       })
       .filter((x) => x)
-      .join('\n     ');
+      .join('\n');
 
     const componentMeta = getComponentMeta(component);
     const hasEvent = componentMeta.hasEvent;
