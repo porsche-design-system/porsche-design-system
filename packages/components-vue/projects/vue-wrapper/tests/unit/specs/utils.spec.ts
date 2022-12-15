@@ -3,7 +3,10 @@ import {
   getPrefixedTagName,
   prefixInjectionKey,
   syncProperties,
+  useToastManager,
 } from '../../../src/utils';
+import type { ToastMessage } from '../../../src/public-api';
+import * as utils from '../../../src/utils';
 import * as Vue from 'vue';
 
 describe('getPrefixedTagName()', () => {
@@ -118,5 +121,44 @@ describe('addEventListenerToElementRef()', () => {
     element.dispatchEvent(event);
 
     expect(emit).toBeCalledWith(eventName, event.detail);
+  });
+});
+
+describe('useToastManager()', () => {
+  beforeEach(() => {
+    jest.spyOn(Vue, 'inject').mockReturnValue(''); // Needed so that the error is not thrown in getPrefixedTagName() without PorscheDesignSystemProvider
+  });
+
+  it('should call getPrefixedTagName() with correct parameters', () => {
+    const spy = jest.spyOn(utils, 'getPrefixedTagName');
+
+    useToastManager();
+
+    expect(spy).toBeCalledWith('p-toast');
+  });
+
+  it('should provide addMessage()', () => {
+    expect(useToastManager()).toEqual({ addMessage: expect.anything() });
+  });
+
+  describe('addMessage()', () => {
+    it('should call addMessage() on toast element', async () => {
+      const toastElement = document.createElement('p-toast') as HTMLElement & {
+        addMessage(message: ToastMessage): void;
+      };
+      const addMessageMock = jest.fn();
+      toastElement.addMessage = addMessageMock;
+      document.body.appendChild(toastElement);
+      customElements.define('p-toast', class PToast extends HTMLElement {});
+
+      const { addMessage } = useToastManager();
+      const message: ToastMessage = { text: 'Test', state: 'success' };
+      addMessage(message);
+
+      // wait for customElements.whenDefined to be resolved
+      await new Promise((resolve) => setTimeout(resolve));
+
+      expect(addMessageMock).toBeCalledWith(message);
+    });
   });
 });
