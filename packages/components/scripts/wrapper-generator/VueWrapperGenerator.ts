@@ -14,7 +14,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasProps = getComponentMeta(component).props;
+    const hasProps = !!extendedProps.length;
 
     const vueImports = ['onMounted', 'onUpdated', 'ref'];
     const importsFromVue = hasProps ? `import { ${vueImports.join(', ')} } from 'vue';` : '';
