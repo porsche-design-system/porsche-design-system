@@ -58,7 +58,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         };
       });
 
-    const disableEslintForLine = ' // eslint-disable-line vue/require-valid-default-prop';
+    const eslintAnnotation = ' // eslint-disable-line vue/require-valid-default-prop';
 
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) => {
@@ -66,7 +66,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         if (!(isEvent || defaultValue === undefined)) {
           const transformedDefaultValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
           return `${key}: ${transformedDefaultValue},${
-            component === 'p-headline' && key === 'color' ? disableEslintForLine : ''
+            component === 'p-headline' && key === 'color' ? eslintAnnotation : ''
           }`;
         } else {
           return undefined;
