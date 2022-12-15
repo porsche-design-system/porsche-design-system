@@ -318,47 +318,6 @@ everything works under real conditions.
 
 ---
 
-## Porsche Design System - Utilities
-
-### Note
-
-When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in
-all sample integration projects. The stable release needs to be exactly the same as the RC release to make sure
-everything works under real conditions.
-
-- [Vanilla JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
-- [Angular](https://github.com/porsche-design-system/sample-integration-angular)
-- [React](https://github.com/porsche-design-system/sample-integration-react)
-- [NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
-
-### Preparation
-
-1. Switch to **project root directory**
-1. Run `git pull origin {main- or v-branch}`
-1. Create a new branch e.g. **release/utilities-deprecated-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
-   **[Unreleased]** (this file will also be used to show on Storefront)
-
-- `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md`
-
-1. Run `./docker.sh run-prepare-release-utilities-deprecated ${TARGET_VERSION}` (If something goes wrong, make sure to
-   revert all local changes before executing the task again.)
-
-### Release
-
-1. Create a commit with following message structure
-   `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/utilities-deprecated-v1.2.3`
-1. Create pull request and start review
-1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
-
-### Communicate
-
-1. Write a Slack notification by coping last entry of `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md`
-   in public Porsche Design System Slack channel
-
----
-
 ## Porsche Design System - New Icons
 
 1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category **"./packages/icons/src/CHOOSE_RIGHT_CATEGORY"**

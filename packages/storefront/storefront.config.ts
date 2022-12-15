@@ -59,8 +59,6 @@ export const config: StorefrontConfig = {
         () => import('@/../../../sketch/basic/CHANGELOG.md'),
       ],
       // @ts-ignore
-      Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
-      // @ts-ignore
       Assets: [() => import('@/../../assets/CHANGELOG.md')],
     },
     // @ts-ignore
@@ -485,26 +483,6 @@ export const config: StorefrontConfig = {
     Marque: [() => import('@/pages/assets/marque.md')],
     // @ts-ignore
     Fonts: [() => import('@/pages/assets/fonts.md')],
-  },
-  Utilities: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/utilities/introduction.md')],
-    Scss: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/scss/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/scss/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/scss/helper.md')],
-    },
-    Js: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/js/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/js/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/js/helper.md')],
-    },
   },
   Partials: {
     // @ts-ignore

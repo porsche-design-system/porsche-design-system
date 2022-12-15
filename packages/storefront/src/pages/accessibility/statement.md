@@ -90,24 +90,24 @@ We continually assess and work to ensure that our Web presence is in conformance
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/scss";
+  @import "~@porsche-design-system/components-js/utilities/scss";
 
 .p-accessibility-statement {
   p-text,
   p-text-list {
-    margin-top: $p-spacing-16;
+    margin-top: $pds-spacing-medium;
   }
 
   p-text + p-headline[variant="headline-3"],
   p-text-list + p-headline[variant="headline-3"] {
-    margin-top: $p-spacing-48;
+    margin-top: $pds-spacing-x-large;
   }
 
   p-text + p-headline[variant="headline-4"],
   p-text-list + p-headline[variant="headline-4"],
   p-text + p-headline[variant="headline-5"],
   p-text-list + p-headline[variant="headline-5"] {
-    margin-top: $p-spacing-32;
+    margin-top: $pds-spacing-large;
   }
 }
 </style>

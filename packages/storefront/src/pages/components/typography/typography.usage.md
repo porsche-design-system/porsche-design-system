@@ -266,66 +266,14 @@ undesirable impact on the origin character of the company typeface. This include
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   
   .type-scale {
     display: inline-block;
     margin-right: 1rem;
     
     &.highlight {
-      color: $p-color-theme-light-notification-success;
-    }
-    
-    &.f-18 {
-      @include p-generate-type-scale(18px);
-    }
-    
-    &.f-20 {
-      @include p-generate-type-scale(20px);
-    }
-    
-    &.f-22 {
-      @include p-generate-type-scale(22px);
-    }
-    
-    &.f-28 {
-      @include p-generate-type-scale(28px);
-    }
-    
-    &.f-30 {
-      @include p-generate-type-scale(30px);
-    }
-    
-    &.f-32 {
-      @include p-generate-type-scale(32px);
-    }
-    
-    &.f-42 {
-      @include p-generate-type-scale(42px);
-    }
-    
-    &.f-44 {
-      @include p-generate-type-scale(44px);
-    }
-    
-    &.f-48 {
-      @include p-generate-type-scale(48px);
-    }
-    
-    &.f-60 {
-      @include p-generate-type-scale(60px);
-    }
-    
-    &.f-62 {
-      @include p-generate-type-scale(62px);
-    }
-    
-    &.f-72 {
-      @include p-generate-type-scale(72px);
-    }
-    
-    &.f-84 {
-      @include p-generate-type-scale(84px);
+      color: $pds-theme-light-notification-success;
     }
   }
 </style>

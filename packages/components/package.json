@@ -43,7 +43,6 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.4.0",
     "@porsche-design-system/utilities-v2": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "~2.19.3",

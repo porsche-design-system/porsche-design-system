@@ -488,7 +488,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;
@@ -498,9 +498,9 @@ export default class Code extends Vue {
 
   :deep(.example-flex) {
     & > * {
-      @include p-text-small;
+      @include pds-text-small;
       padding: 0 6vw;
-      color: $p-color-theme-light-default;
+      color: $pds-theme-light-base;
       text-align: center;
 
       &:nth-child(1n) {
@@ -517,7 +517,7 @@ export default class Code extends Vue {
 
       &:nth-child(4n) {
         background-color: $color-blue-4;
-        color: $p-color-theme-dark-default;
+        color: $pds-theme-dark-base;
       }
 
       &[align-self] {
@@ -525,7 +525,7 @@ export default class Code extends Vue {
       }
 
       &[align-self='baseline']:nth-child(1) {
-        margin-top: $p-spacing-24;
+        margin-top: 1.5rem;
       }
     }
 
@@ -544,7 +544,7 @@ export default class Code extends Vue {
     }
 
     &[align-items='baseline'] > :nth-child(2) {
-      margin-top: $p-spacing-24;
+      margin-top: 1.5rem;
     }
   }
 </style>

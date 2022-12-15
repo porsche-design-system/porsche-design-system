@@ -170,7 +170,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/scss";
+  @import "~@porsche-design-system/components-js/utilities/scss";
   
   :deep(.example-link) {
     display: inline-block;
@@ -182,12 +182,12 @@ export default class Code extends Vue {
     &::before {
       content: "";
       display: block;
-      margin-top: -$p-spacing-8;
+      margin-top: -.5rem;
     }
     > * {
-      margin-top: $p-spacing-8;
+      margin-top: .5rem;
       &:not(:last-child) {
-        margin-right: $p-spacing-8;
+        margin-right: .5rem;
       }
     }
   }

@@ -109,10 +109,6 @@ module.exports = {
         ],
         paths: [
           {
-            name: '@porsche-design-system/utilities',
-            message: 'Please use @porsche-design-system/utilities-v2 instead since the one used is not performant.',
-          },
-          {
             name: '@porsche-design-system/utilities-v2',
             importNames: ['color'],
             message: 'Please use getThemedColors() instead.',

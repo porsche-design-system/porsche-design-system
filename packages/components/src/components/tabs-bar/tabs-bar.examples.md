@@ -221,12 +221,12 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   :deep(div[role=tabpanel]) {
     outline: 1px solid transparent;
     outline-offset: 2px;
-    margin-top: p-px-to-rem(8px);
+    margin-top: $pds-spacing-small;
   }
 
   :deep(.example--light div[role=tabpanel]:focus) {
