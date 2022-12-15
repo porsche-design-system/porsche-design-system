@@ -447,21 +447,19 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   // https://www.uxpin.com/docs/merge/adjusting-components/
   private insertComponentAnnotation(cleanedComponent: string, component: TagName): string {
     const comments = this.getAllComponentComments(component);
-    if (!comments.length) return cleanedComponent;
-
-    const annotations = `/**
+    if (comments.length) {
+      const annotations = `/**
 ${comments.join(`\n`)}
 */
 `;
-    return annotations + cleanedComponent;
+      return annotations + cleanedComponent;
+    } else {
+      return cleanedComponent;
+    }
   }
 
   private getAllComponentComments(component: TagName): string[] {
-    const comments: string[] = [];
-
-    if (this.shouldRenderInReactPortal(component)) {
-      comments.push('* @uxpinuseportal');
-    }
+    const comments = this.shouldRenderInReactPortal(component) ? ['* @uxpinuseportal'] : [];
     return comments;
   }
 
