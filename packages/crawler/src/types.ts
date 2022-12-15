@@ -15,10 +15,11 @@ export type TagNameWithProperties = Record<
   }
 >;
 
+export type PropertyValuesAggregated = Record<number | string, number>;
 export type PropertiesAggregated = {
   [propName: string]: {
     amount: number;
-    values: Record<number | string, number>;
+    values: PropertyValuesAggregated;
   };
 };
 

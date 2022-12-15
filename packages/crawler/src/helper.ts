@@ -1,8 +1,24 @@
 import fs from 'fs';
 import { crawlerConfig as config } from '../constants';
 import { componentMeta, TagName } from '@porsche-design-system/shared';
+import { PropertyValuesAggregated, PropValue } from './types';
 
 export type TagNamesWithProperties = Record<TagName, string[]>;
+
+export const incrementPropertyValues = (
+  propValuesAggregated: PropertyValuesAggregated,
+  propValue: PropValue
+): PropertyValuesAggregated => {
+  const propValueAsKey = propValue as number | string;
+  const propValueAmount = propValuesAggregated[propValueAsKey];
+  const propValuesAggregatedNew = { ...propValuesAggregated };
+  if (!propValueAmount) {
+    propValuesAggregatedNew[propValueAsKey] = 1;
+  } else {
+    propValuesAggregatedNew[propValueAsKey] = propValueAmount + 1;
+  }
+  return propValuesAggregatedNew;
+};
 
 export const getTagNamesWithProperties = (): TagNamesWithProperties =>
   Object.entries(componentMeta).reduce(

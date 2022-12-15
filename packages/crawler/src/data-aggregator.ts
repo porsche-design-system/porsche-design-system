@@ -6,6 +6,7 @@ import {
   TagNameWithProperties,
   TagNameWithPropertiesAggregated,
 } from './types';
+import { incrementPropertyValues } from './helper';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -62,12 +63,7 @@ export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagN
       }
 
       const resultProp = result[tagName].properties[propName];
-      const resultPropValueName = resultProp.values[propValue as string];
-      if (!resultPropValueName) {
-        resultProp.values[propValue as string] = 1;
-      } else {
-        resultProp.values[propValue as string] = resultPropValueName + 1;
-      }
+      resultProp.values = incrementPropertyValues(resultProp.values, propValue);
     }, {} as any);
 
     return result;
