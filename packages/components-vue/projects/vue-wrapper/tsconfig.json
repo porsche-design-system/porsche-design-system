@@ -7,5 +7,5 @@
     "resolveJsonModule": true,
     "jsx": "preserve"
   },
-  "include": ["./src/*", "./src/partials.ts", "./src/utilities/js.ts"]
+  "include": ["./src/*"]
 }
