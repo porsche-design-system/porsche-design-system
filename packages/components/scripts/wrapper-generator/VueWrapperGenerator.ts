@@ -51,7 +51,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     const eventNamesAndTypes = extendedProps
       .filter(({ isEvent }) => isEvent)
       .map(({ key, rawValueType }) => {
-        const [, type] = /<(\w+)>/.exec(rawValueType) ?? [];
+        const [, type] = /<(\w+)>/.exec(rawValueType) || [];
         return {
           eventName: camelCase(key.replace('on', '')),
           type,
@@ -97,7 +97,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
     const addEventListener = eventNamesAndTypes
       .map(({ eventName }, index) => {
-        const { eventName: lastEventName } = [...eventNamesAndTypes].pop() ?? {}; // We need to cast eventNames to the last eventName defined in defineEmits
+        const { eventName: lastEventName } = [...eventNamesAndTypes].pop() || {}; // We need to cast eventNames to the last eventName defined in defineEmits
         const typeCast =
           eventNamesAndTypes.length > 1 && index + 1 < eventNamesAndTypes.length ? ` as '${lastEventName}'` : '';
 
@@ -122,7 +122,9 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentProps = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
     // TODO: how is this called in vue?
-    const vueComponent = hasSlot ? `<component ${componentProps}><slot /></component>` : `<component ${componentProps} />`;
+    const vueComponent = hasSlot
+      ? `<component ${componentProps}><slot /></component>`
+      : `<component ${componentProps} />`;
 
     return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? additionalContent : ''}
 </script>
