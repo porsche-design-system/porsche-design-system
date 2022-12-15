@@ -61,7 +61,7 @@ export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNameWithP
   return allPdsTagNames.filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
-export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameWithProperties[]): any => {
+export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameWithProperties[]): any => {
   return tagNamesWithProperties.reduce((result, tagNameWithProperties) => {
     const tagName = Object.keys(tagNameWithProperties)[0];
     const amount = result[tagName]?.amount;
@@ -88,10 +88,6 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
       result[tagName].slot = result[tagName].slot + 1;
     }
 
-    if (!result[tagName].properties) {
-      result[tagName].properties = {};
-    }
-
     Object.entries(propertiesData).reduce((propResult, [propName, propValue]) => {
       if (!result[tagName].properties[propName]) {
         result[tagName].properties[propName] = {
@@ -114,9 +110,9 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
     return result;
   }, {} as { [key: string]: any });
 };
-export const aggregateData = (tagNamesWithProperties: TagNameWithProperties[]): AggregatedData => {
+export const getAggregatedData = (tagNamesWithProperties: TagNameWithProperties[]): AggregatedData => {
   // TODO: get rid of this "as"
-  const tagNamesWithPropertiesAggregated = aggregateTagNamesWithProperties(
+  const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(
     tagNamesWithProperties
   ) as TagNameWithPropertiesAggregated;
   const unusedTagNames = getUnusedTagNames(tagNamesWithPropertiesAggregated);
@@ -136,7 +132,7 @@ export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
       [pdsVersion]: Object.entries(prefixesWithData).reduce(
         (result, [prefix, tagNamesWithProperties]) => ({
           ...result,
-          [prefix]: aggregateData(tagNamesWithProperties),
+          [prefix]: getAggregatedData(tagNamesWithProperties),
         }),
         {}
       ),
@@ -147,7 +143,7 @@ export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
 
 // TODO: define return styles after we clarified output format with the team
 export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameWithProperties[]): any => {
-  return aggregateData(rawDataWithoutVersionsAndPrefixes);
+  return getAggregatedData(rawDataWithoutVersionsAndPrefixes);
 };
 
 export const getRawDataWithoutVersionsAndPrefixes = (
