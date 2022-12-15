@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import { TagNamesWithProperties } from './helper';
 import { TagName } from 'shared/src';
-import { ConsumedTagNamesForVersionsAndPrefixes, TagNameWithPropertiesData } from './data-aggregator';
+import { ConsumedTagNamesForVersionsAndPrefixes, TagNameWithProperties } from './data-aggregator';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -112,7 +112,7 @@ export const crawlComponents = async (
         }, {});
       };
 
-      const getConsumedTagNames = (prefix: string, pdsElements: Element[]): TagNameWithPropertiesData[] => {
+      const getConsumedTagNames = (prefix: string, pdsElements: Element[]): TagNameWithProperties[] => {
         return pdsElements.map((el) => {
           const componentName = getComponentNameByPrefix(el, prefix);
 
@@ -131,7 +131,7 @@ export const crawlComponents = async (
               ...(slotInfo ? { slot: slotInfo } : {}),
               ...(hostPdsComponent ? { hostPdsComponent: hostPdsComponent } : {}),
             },
-          } as TagNameWithPropertiesData;
+          } as TagNameWithProperties;
         });
       };
 

@@ -8,14 +8,14 @@ import {
   getAggregatedConsumedTagNamesForVersionsAndPrefixes,
   getConsumedPrefixesForVersions,
   getRawDataWithoutVersionsAndPrefixes,
-  TagNameWithPropertiesData,
+  TagNameWithProperties,
 } from './data-aggregator';
 import { writeGeneralReport, writeWebsiteReport } from './fs-report-writer';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
   const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
   // data for all websites
-  let generalRawData = [] as TagNameWithPropertiesData[];
+  let generalRawData = [] as TagNameWithProperties[];
 
   for (const websiteUrl of config.customerWebsites) {
     const page = await browser.newPage();
