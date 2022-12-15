@@ -17,7 +17,7 @@ describe('usePrefix()', () => {
     process.env = originalEnv;
   });
 
-  it('should return tagName if process.env.NODE_ENV is set to "test" and skipCheck is true', () => {
+  it('should return passed tagName if process.env.NODE_ENV is set to "test" and skipCheck is true', () => {
     process.env = { ...originalEnv, NODE_ENV: 'test' };
     skipCheckForPorscheDesignSystemProviderDuringTests();
     const tagName = 'p-text';
@@ -25,7 +25,7 @@ describe('usePrefix()', () => {
     expect(usePrefix(tagName)).toBe(tagName);
   });
 
-  it('should return tagName if process.env.NODE_ENV is set to "test" and skipCheck is false', () => {
+  it('should return passed tagName if process.env.NODE_ENV is set to "test" and skipCheck is false', () => {
     process.env = { ...originalEnv, NODE_ENV: 'test' };
     const tagName = 'p-text';
 
