@@ -28,6 +28,15 @@ export const crawlComponents = async (
         {}
       );
 
+      const getComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
+        const tagName = el.tagName.toLowerCase();
+        return (
+          (Object.keys(tagNamesWithProperties).find(
+            (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
+          ) as TagName) || null
+        );
+      };
+
       const getPdsComponentsSelector = (prefix: string): string =>
         (prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
 
@@ -56,6 +65,14 @@ export const crawlComponents = async (
             }
             return result + slotEl.outerHTML;
           }, '' as string) || null;
+
+      const getHostPdsComponent = (el: Element, prefix: string): TagName | null => {
+        const rootNode = (el.getRootNode() as ShadowRoot).host;
+        if (rootNode) {
+          return getComponentNameByPrefix(rootNode, prefix);
+        }
+        return null;
+      };
 
       const getAllConsumedProperties = <
         PComponentName extends keyof HTMLElementTagNameMap,
@@ -97,16 +114,14 @@ export const crawlComponents = async (
 
       const getConsumedTagNames = (prefix: string, pdsElements: Element[]): TagNameWithPropertiesData[] => {
         return pdsElements.map((el) => {
-          const tagName = el.tagName.toLowerCase();
-          const componentName = Object.keys(tagNamesWithProperties).find(
-            (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
-          ) as TagName;
+          const componentName = getComponentNameByPrefix(el, prefix);
 
           if (!componentName) {
-            throw new Error('Can not find component name');
+            throw new Error('Could not find component name');
           }
 
           const slotInfo = getSlotInfo(el);
+          const hostPdsComponent = getHostPdsComponent(el, prefix);
 
           return {
             [componentName]: {
@@ -114,6 +129,7 @@ export const crawlComponents = async (
                 properties: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
               },
               ...(slotInfo ? { slot: slotInfo } : {}),
+              ...(hostPdsComponent ? { hostPdsComponent: hostPdsComponent } : {}),
             },
           } as TagNameWithPropertiesData;
         });
