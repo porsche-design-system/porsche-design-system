@@ -1,4 +1,4 @@
-# Porsche Design System - Components React
+# Porsche Design System - Components Vue
 
 Porsche Design System is a component library designed to help developers create the best experience for software or
 services distributed by Dr. Ing. h.c. F. Porsche AG. Visit the [Porsche Design System](https://designsystem.porsche.com)
@@ -22,34 +22,36 @@ yarn add @porsche-design-system/components-vue
 
 ### Usage
 
-After adding the `@porsche-design-system/components-vue` package to your project, you've to ...
-
-```tsx
-// main.ts
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import { load } from '@porsche-design-system/components-js';
-
-load({ prefix: 'my-prefix' });
-const app = createApp(App);
-
-app.use(router);
-app.mount('#app');
-app.provide('prefix', 'my-prefix');
-```
-
-or use the porscheDesignSystemProvider hook
+After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard
+vue setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file.
 
 ```tsx
 // App.vue
+<script setup lang="ts">
+  import { RouterLink, RouterView } from 'vue-router';
+  import { PorscheDesignSystemProvider, PLinkPure } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <header>
+      <nav>
+        <PLinkPure>
+          <RouterLink to="/">Home</RouterLink>
+        </PLinkPure>
+        <PLinkPure>
+          <RouterLink to="/somePage">Some Page</RouterLink>
+        </PLinkPure>
+      </nav>
+    </header>
+
+    <div id="app">
+      <RouterView />
+    </div>
+  </PorscheDesignSystemProvider>
+</template>
 ```
 
-Change your App file to use at least one Porsche Design System component, for example:
-
-```tsx
-// App.vue
-```
 
 ## Methodology
 
