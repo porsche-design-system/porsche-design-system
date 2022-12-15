@@ -1,0 +1,5 @@
+@import '~@porsche-design-system/utilities/scss';
+
+.sr-only {
+  @include p-sr-only;
+}
