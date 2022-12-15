@@ -6,7 +6,7 @@ import {
   TagNameWithProperties,
   TagNameWithPropertiesAggregated,
 } from './types';
-import { incrementPropertyValues } from './helper';
+import { incrementProperties, incrementPropertyValues } from './helper';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -52,19 +52,7 @@ export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagN
       result[tagName].slot = result[tagName].slot + 1;
     }
 
-    Object.entries(propertiesData).reduce((propResult, [propName, propValue]) => {
-      if (!result[tagName].properties[propName]) {
-        result[tagName].properties[propName] = {
-          amount: 1,
-          values: {},
-        };
-      } else {
-        result[tagName].properties[propName].amount++;
-      }
-
-      const resultProp = result[tagName].properties[propName];
-      resultProp.values = incrementPropertyValues(resultProp.values, propValue);
-    }, {} as any);
+    result[tagName].properties = incrementProperties(result[tagName].properties, propertiesData);
 
     return result;
   }, {} as { [key: string]: any });
