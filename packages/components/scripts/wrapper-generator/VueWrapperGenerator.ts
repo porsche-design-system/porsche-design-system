@@ -93,7 +93,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
 
     const addEventListener = eventNamesAndTypes
       .map(({ eventName }, index) => {
-        const { eventName: lastEventName } = [...eventNamesAndTypes].pop() || {}; // We need to cast eventNames to the last eventName defined in defineEmits
+        const { eventName: lastEventName } = eventNamesAndTypes.at(-1) || {}; // We need to cast eventNames to the last eventName defined in defineEmits
         const typeCast =
           eventNamesAndTypes.length > 1 && index + 1 < eventNamesAndTypes.length ? ` as '${lastEventName}'` : '';
 
