@@ -1,6 +1,12 @@
 import { TagName } from 'shared/src';
 import { componentMeta } from '@porsche-design-system/shared';
-import { AggregatedData, ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesAggregated } from './types';
+import {
+  AggregatedData,
+  AggregatedTagNamesForVersionsAndPrefixes,
+  ConsumedTagNamesForVersionsAndPrefixes,
+  TagNameData,
+  TagNamesAggregated,
+} from './types';
 import { incrementTagName } from './helper';
 
 export const getConsumedPrefixesForVersions = (
@@ -20,35 +26,23 @@ export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggr
   return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
-export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameData[]): any =>
+export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameData[]): TagNamesAggregated =>
   tagNamesWithProperties.reduce((result, tagNameData) => {
-    const tagName = Object.keys(tagNameData)[0];
+    const tagName = Object.keys(tagNameData)[0] as TagName;
     result[tagName] = incrementTagName(result[tagName], tagNameData);
     return result;
-  }, {} as { [key: string]: any });
-export const getAggregatedData = (tagNamesWithProperties: TagNameData[]): AggregatedData => {
-  // TODO: get rid of this "as"
-  const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(
-    tagNamesWithProperties
-  ) as TagNamesAggregated;
-  const unusedTagNames = getUnusedTagNames(tagNamesWithPropertiesAggregated);
-  return {
-    tagNames: tagNamesWithPropertiesAggregated,
-    unusedTagNames,
-  };
-};
+  }, {} as TagNamesAggregated);
 
-// TODO: define return styles after we clarified output format with the team
 export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
-): any => {
+): AggregatedTagNamesForVersionsAndPrefixes => {
   return Object.entries(consumedTagNamesForVersions).reduce(
     (result, [pdsVersion, prefixesWithData]) => ({
       ...result,
       [pdsVersion]: Object.entries(prefixesWithData).reduce(
         (result, [prefix, tagNamesWithProperties]) => ({
           ...result,
-          [prefix]: getAggregatedData(tagNamesWithProperties),
+          [prefix]: getAggregatedConsumedTagNames(tagNamesWithProperties),
         }),
         {}
       ),
@@ -57,9 +51,13 @@ export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
   );
 };
 
-// TODO: define return styles after we clarified output format with the team
-export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameData[]): any => {
-  return getAggregatedData(rawDataWithoutVersionsAndPrefixes);
+export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameData[]): AggregatedData => {
+  const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(rawDataWithoutVersionsAndPrefixes);
+  const unusedTagNames = getUnusedTagNames(tagNamesWithPropertiesAggregated);
+  return {
+    tagNames: tagNamesWithPropertiesAggregated,
+    unusedTagNames,
+  };
 };
 
 export const getRawDataWithoutVersionsAndPrefixes = (

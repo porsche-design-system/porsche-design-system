@@ -36,6 +36,12 @@ export type AggregatedData = {
   unusedTagNames: TagName[];
 };
 
+export type AggregatedTagNamesForVersionsAndPrefixes = {
+  [version: string]: {
+    [prefix: string]: AggregatedData[];
+  };
+};
+
 export type ConsumedTagNamesForVersionsAndPrefixes = {
   [version: string]: {
     [prefix: string]: TagNameData[];
