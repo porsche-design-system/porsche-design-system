@@ -31,7 +31,19 @@
                         }
                     }
                 },
-                "unusedProperties": []
+                "unusedProperties": [
+                    "isDelegatingFocus",
+                    "isInternal",
+                    "isThemeable",
+                    "props",
+                    "hasSlot",
+                    "hasSlottedCss",
+                    "hasEvent",
+                    "hasAriaProp",
+                    "hasObserveAttributes",
+                    "hasObserveChildren",
+                    "styling"
+                ]
             },
             "p-icon": {
                 "amount": 12,
@@ -78,7 +90,19 @@
                         }
                     }
                 },
-                "unusedProperties": []
+                "unusedProperties": [
+                    "isDelegatingFocus",
+                    "isInternal",
+                    "isThemeable",
+                    "props",
+                    "hasSlot",
+                    "hasSlottedCss",
+                    "hasEvent",
+                    "hasAriaProp",
+                    "hasObserveAttributes",
+                    "hasObserveChildren",
+                    "styling"
+                ]
             },
             "p-link": {
                 "amount": 6,
@@ -117,7 +141,21 @@
                         }
                     }
                 },
-                "unusedProperties": []
+                "unusedProperties": [
+                    "isDelegatingFocus",
+                    "isInternal",
+                    "isThemeable",
+                    "nestedComponents",
+                    "props",
+                    "requiredProps",
+                    "hasSlot",
+                    "hasSlottedCss",
+                    "hasEvent",
+                    "hasAriaProp",
+                    "hasObserveAttributes",
+                    "hasObserveChildren",
+                    "styling"
+                ]
             },
             "p-link-pure": {
                 "amount": 3,
@@ -187,7 +225,22 @@
                         }
                     }
                 },
-                "unusedProperties": []
+                "unusedProperties": [
+                    "isDelegatingFocus",
+                    "isInternal",
+                    "isThemeable",
+                    "nestedComponents",
+                    "props",
+                    "requiredProps",
+                    "hasSlot",
+                    "namedSlots",
+                    "hasSlottedCss",
+                    "hasEvent",
+                    "hasAriaProp",
+                    "hasObserveAttributes",
+                    "hasObserveChildren",
+                    "styling"
+                ]
             },
             "p-text": {
                 "amount": 3,
@@ -237,7 +290,19 @@
                         }
                     }
                 },
-                "unusedProperties": []
+                "unusedProperties": [
+                    "isDelegatingFocus",
+                    "isInternal",
+                    "isThemeable",
+                    "props",
+                    "hasSlot",
+                    "hasSlottedCss",
+                    "hasEvent",
+                    "hasAriaProp",
+                    "hasObserveAttributes",
+                    "hasObserveChildren",
+                    "styling"
+                ]
             }
         },
         "unusedTagNames": [
@@ -320,7 +385,19 @@
                                 }
                             }
                         },
-                        "unusedProperties": []
+                        "unusedProperties": [
+                            "isDelegatingFocus",
+                            "isInternal",
+                            "isThemeable",
+                            "props",
+                            "hasSlot",
+                            "hasSlottedCss",
+                            "hasEvent",
+                            "hasAriaProp",
+                            "hasObserveAttributes",
+                            "hasObserveChildren",
+                            "styling"
+                        ]
                     },
                     "p-icon": {
                         "amount": 12,
@@ -367,7 +444,19 @@
                                 }
                             }
                         },
-                        "unusedProperties": []
+                        "unusedProperties": [
+                            "isDelegatingFocus",
+                            "isInternal",
+                            "isThemeable",
+                            "props",
+                            "hasSlot",
+                            "hasSlottedCss",
+                            "hasEvent",
+                            "hasAriaProp",
+                            "hasObserveAttributes",
+                            "hasObserveChildren",
+                            "styling"
+                        ]
                     },
                     "p-link": {
                         "amount": 6,
@@ -406,7 +495,21 @@
                                 }
                             }
                         },
-                        "unusedProperties": []
+                        "unusedProperties": [
+                            "isDelegatingFocus",
+                            "isInternal",
+                            "isThemeable",
+                            "nestedComponents",
+                            "props",
+                            "requiredProps",
+                            "hasSlot",
+                            "hasSlottedCss",
+                            "hasEvent",
+                            "hasAriaProp",
+                            "hasObserveAttributes",
+                            "hasObserveChildren",
+                            "styling"
+                        ]
                     },
                     "p-link-pure": {
                         "amount": 3,
@@ -476,7 +579,22 @@
                                 }
                             }
                         },
-                        "unusedProperties": []
+                        "unusedProperties": [
+                            "isDelegatingFocus",
+                            "isInternal",
+                            "isThemeable",
+                            "nestedComponents",
+                            "props",
+                            "requiredProps",
+                            "hasSlot",
+                            "namedSlots",
+                            "hasSlottedCss",
+                            "hasEvent",
+                            "hasAriaProp",
+                            "hasObserveAttributes",
+                            "hasObserveChildren",
+                            "styling"
+                        ]
                     },
                     "p-text": {
                         "amount": 3,
@@ -526,7 +644,19 @@
                                 }
                             }
                         },
-                        "unusedProperties": []
+                        "unusedProperties": [
+                            "isDelegatingFocus",
+                            "isInternal",
+                            "isThemeable",
+                            "props",
+                            "hasSlot",
+                            "hasSlottedCss",
+                            "hasEvent",
+                            "hasAriaProp",
+                            "hasObserveAttributes",
+                            "hasObserveChildren",
+                            "styling"
+                        ]
                     }
                 },
                 "unusedTagNames": [

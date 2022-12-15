@@ -8,9 +8,20 @@ import {
   PropValue,
   TagNameAggregated,
   TagNameData,
+  TagNamesAggregated,
 } from './types';
 
 export type TagNamesWithProperties = Record<TagName, string[]>;
+
+export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
+  // "Object.keys" returns string[], therefore we need type casting here
+  return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
+};
+
+export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] => {
+  // "Object.keys" returns string[], therefore we need type casting here
+  return (Object.keys(componentMeta[tagName]) as string[]).filter((property) => !propertiesAggregated[property]);
+};
 
 export const incrementPropertyValues = (
   propValuesAggregated: PropertyValuesAggregated,
@@ -75,6 +86,10 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
   }
 
   tagNameAggregatedNew.properties = incrementProperties(tagNameAggregatedNew.properties, propertiesData);
+  tagNameAggregatedNew.unusedProperties = getUnusedProperties(
+    tagNameAggregatedNew.properties,
+    Object.keys(tagNameData)[0] as TagName
+  );
 
   return tagNameAggregatedNew;
 };

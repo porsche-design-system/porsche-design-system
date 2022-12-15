@@ -7,7 +7,7 @@ import {
   TagNameData,
   TagNamesAggregated,
 } from './types';
-import { incrementTagName } from './helper';
+import { getUnusedTagNames, incrementTagName } from './helper';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -19,11 +19,6 @@ export const getConsumedPrefixesForVersions = (
     }),
     {}
   );
-};
-
-export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
-  // "Object.keys" returns string[], therefore we need type casting here
-  return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
 export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameData[]): TagNamesAggregated =>
