@@ -24,7 +24,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@porsche-design-system/assets": "5.0.2",
     "@types/react": "^18.0.25",
-    "@uxpin/merge-cli": "2.8.0-dev.77",
+    "@uxpin/merge-cli": "2.9.0",
     "babel-loader": "^8.3.0",
     "typescript": "~4.9.3"
   }
