@@ -10,10 +10,6 @@ See <https://github.com/microsoft/playwright/releases>.
 - `@playwright/test`
 - `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
 
-## @uxpin/merge-cli
-
-We're staying on version `2.8.0-dev.77` until UXPin integrates the changes made in this package into a stable release.
-
 ## Vue
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
