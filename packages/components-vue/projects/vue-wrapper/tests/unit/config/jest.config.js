@@ -7,7 +7,7 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
   restoreMocks: true,
-  testEnvironmentOptions: {
+  testEnvironmentOptions: { // https://github.com/vuejs/vue-jest/issues/479
     customExportConditions: ['node', 'node-addons'],
   },
   transform: {
