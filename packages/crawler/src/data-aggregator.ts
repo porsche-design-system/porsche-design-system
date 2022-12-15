@@ -35,7 +35,9 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
   return tagNamesWithProperties.reduce((result, tagNameWithPropertiesData) => {
     const tagName = Object.keys(tagNameWithPropertiesData)[0];
     const amount = result[tagName]?.amount;
-    const propertiesData = Object.entries(tagNameWithPropertiesData)[0][1].properties;
+    const componentData = Object.entries(tagNameWithPropertiesData)[0][1];
+    const propertiesData = componentData.properties;
+    const hostPdsComponent = componentData.hostPdsComponent;
 
     if (result[tagName]) {
       result[tagName].amount = amount + 1;
@@ -43,8 +45,17 @@ export const aggregateTagNamesWithProperties = (tagNamesWithProperties: TagNameW
     } else {
       result[tagName] = {
         amount: 1,
+        hostPdsComponent: 0,
         properties: {},
       };
+    }
+
+    if (hostPdsComponent) {
+      result[tagName].hostPdsComponent = result[tagName].hostPdsComponent + 1;
+    }
+
+    if (!result[tagName].properties) {
+      result[tagName].properties = {};
     }
 
     Object.entries(propertiesData).reduce((propResult, [propName, propValue]) => {

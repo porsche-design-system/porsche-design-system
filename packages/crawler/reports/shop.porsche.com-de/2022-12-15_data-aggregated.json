@@ -8,6 +8,7 @@
     "aggregatedConsumedTagNames": {
         "p-link-pure": {
             "amount": 38,
+            "hostPdsComponent": 0,
             "properties": {
                 "alignLabel": {
                     "amount": 38,
@@ -77,6 +78,7 @@
         },
         "p-divider": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "color": {
                     "amount": 1,
@@ -100,6 +102,7 @@
         },
         "p-marque": {
             "amount": 2,
+            "hostPdsComponent": 0,
             "properties": {
                 "trademark": {
                     "amount": 2,
@@ -129,6 +132,7 @@
         },
         "p-icon": {
             "amount": 62,
+            "hostPdsComponent": 17,
             "properties": {
                 "name": {
                     "amount": 62,
@@ -191,6 +195,7 @@
         },
         "p-link": {
             "amount": 4,
+            "hostPdsComponent": 0,
             "properties": {
                 "variant": {
                     "amount": 4,
@@ -230,6 +235,7 @@
         },
         "p-button-pure": {
             "amount": 5,
+            "hostPdsComponent": 1,
             "properties": {
                 "tabbable": {
                     "amount": 5,
@@ -318,6 +324,7 @@
         },
         "p-link-social": {
             "amount": 5,
+            "hostPdsComponent": 0,
             "properties": {
                 "icon": {
                     "amount": 5,
@@ -351,6 +358,7 @@
         },
         "p-modal": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "disableCloseButton": {
                     "amount": 1,
@@ -380,6 +388,7 @@
         },
         "p-button-group": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "direction": {
                     "amount": 1,
@@ -391,6 +400,7 @@
         },
         "p-button": {
             "amount": 2,
+            "hostPdsComponent": 0,
             "properties": {
                 "tabbable": {
                     "amount": 2,
@@ -449,6 +459,7 @@
             "sl": {
                 "p-link-pure": {
                     "amount": 38,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "alignLabel": {
                             "amount": 38,
@@ -518,6 +529,7 @@
                 },
                 "p-divider": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "color": {
                             "amount": 1,
@@ -541,6 +553,7 @@
                 },
                 "p-marque": {
                     "amount": 2,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "trademark": {
                             "amount": 2,
@@ -570,6 +583,7 @@
                 },
                 "p-icon": {
                     "amount": 62,
+                    "hostPdsComponent": 17,
                     "properties": {
                         "name": {
                             "amount": 62,
@@ -632,6 +646,7 @@
                 },
                 "p-link": {
                     "amount": 4,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "variant": {
                             "amount": 4,
@@ -671,6 +686,7 @@
                 },
                 "p-button-pure": {
                     "amount": 5,
+                    "hostPdsComponent": 1,
                     "properties": {
                         "tabbable": {
                             "amount": 5,
@@ -759,6 +775,7 @@
                 },
                 "p-link-social": {
                     "amount": 5,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "icon": {
                             "amount": 5,
@@ -792,6 +809,7 @@
                 },
                 "p-modal": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "disableCloseButton": {
                             "amount": 1,
@@ -821,6 +839,7 @@
                 },
                 "p-button-group": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "direction": {
                             "amount": 1,
@@ -832,6 +851,7 @@
                 },
                 "p-button": {
                     "amount": 2,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "tabbable": {
                             "amount": 2,

@@ -9,6 +9,7 @@
     "aggregatedConsumedTagNames": {
         "p-button": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "tabbable": {
                     "amount": 1,
@@ -62,6 +63,7 @@
         },
         "p-icon": {
             "amount": 5,
+            "hostPdsComponent": 2,
             "properties": {
                 "name": {
                     "amount": 5,
@@ -103,6 +105,7 @@
         },
         "p-flex": {
             "amount": 6,
+            "hostPdsComponent": 0,
             "properties": {
                 "inline": {
                     "amount": 6,
@@ -148,6 +151,7 @@
         },
         "p-marque": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "trademark": {
                     "amount": 1,
@@ -183,6 +187,7 @@
         },
         "p-text": {
             "amount": 8,
+            "hostPdsComponent": 0,
             "properties": {
                 "tag": {
                     "amount": 8,
@@ -232,6 +237,7 @@
         },
         "p-link-pure": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "alignLabel": {
                     "amount": 1,
@@ -297,6 +303,7 @@
         },
         "p-button-pure": {
             "amount": 1,
+            "hostPdsComponent": 0,
             "properties": {
                 "tabbable": {
                     "amount": 1,
@@ -379,6 +386,7 @@
             "phn": {
                 "p-button": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "tabbable": {
                             "amount": 1,
@@ -432,6 +440,7 @@
                 },
                 "p-icon": {
                     "amount": 5,
+                    "hostPdsComponent": 2,
                     "properties": {
                         "name": {
                             "amount": 5,
@@ -473,6 +482,7 @@
                 },
                 "p-flex": {
                     "amount": 6,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "inline": {
                             "amount": 6,
@@ -518,6 +528,7 @@
                 },
                 "p-marque": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "trademark": {
                             "amount": 1,
@@ -553,6 +564,7 @@
                 },
                 "p-text": {
                     "amount": 8,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "tag": {
                             "amount": 8,
@@ -602,6 +614,7 @@
                 },
                 "p-link-pure": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "alignLabel": {
                             "amount": 1,
@@ -667,6 +680,7 @@
                 },
                 "p-button-pure": {
                     "amount": 1,
+                    "hostPdsComponent": 0,
                     "properties": {
                         "tabbable": {
                             "amount": 1,
