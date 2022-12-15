@@ -1,3 +1,4 @@
+export type Theme = 'light' | 'dark';
 export type ThemeColorSet = {
   brand: string;
   base: string;

@@ -1,7 +1,7 @@
 import * as fromTheme from './';
 
 it('should provide all theme exports', () => {
-  expect(Object.keys(fromTheme).length).toBe(4);
+  expect(Object.keys(fromTheme).length).toBe(2);
 });
 
 it.each<keyof typeof fromTheme>(Object.keys(fromTheme) as (keyof typeof fromTheme)[])(
