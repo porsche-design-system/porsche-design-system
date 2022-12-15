@@ -87,8 +87,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         : defineProps
     };`;
 
-    const defineEmits = `
-  const emit = defineEmits<{ ${eventNamesAndTypes
+    const defineEmits = `const emit = defineEmits<{ ${eventNamesAndTypes
     .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
     .join(' ')} }>();`;
 
@@ -98,8 +97,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         const typeCast =
           eventNamesAndTypes.length > 1 && index + 1 < eventNamesAndTypes.length ? ` as '${lastEventName}'` : '';
 
-        return `
-    addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
+        return `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
       })
       .join('');
 
