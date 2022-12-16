@@ -12,5 +12,6 @@ exports[`should match snapshot 1`] = `
   "getInitialStyles",
   "getLoaderScript",
   "getMetaTagsAndIconLinks",
+  "getNormalizeStyles",
 ]
 `;
