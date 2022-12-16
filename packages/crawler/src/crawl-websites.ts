@@ -1,6 +1,6 @@
 import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
-import { crawlComponents } from './crawl-components';
+import { evaluatePage } from './evaluate-page';
 import { getPdsTagNamesNamesWithPropertyNames } from './helper';
 import {
   getAggregatedConsumedTagNames,
@@ -27,27 +27,26 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
     });
 
     console.log('Crawling page ' + page.url());
-
-    // get raw data
-    const consumedTagNamesForVersionsAndPrefixes = await crawlComponents(page, pdsTagNamesWithPropertyNames);
-    const rawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(
-      consumedTagNamesForVersionsAndPrefixes
-    );
-    generalRawData = generalRawData.concat(rawDataWithoutVersionsAndPrefixes);
-
+    // getting raw data
+    const pdsCrawlerRawData = await evaluatePage(page, pdsTagNamesWithPropertyNames);
+    // raw data in another format - without versions and prefixes
+    const pdsCrawlerRawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(pdsCrawlerRawData);
     console.log('Aggregating data for ' + page.url());
-    const consumedPdsVersionsWithPrefixes = getConsumedPrefixesForVersions(consumedTagNamesForVersionsAndPrefixes);
-    const aggregatedConsumedTagNamesForVersionsAndPrefixes = getAggregatedConsumedTagNamesForVersionsAndPrefixes(
-      consumedTagNamesForVersionsAndPrefixes
-    );
-    const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(rawDataWithoutVersionsAndPrefixes);
+    // info about used versions and prefixes
+    const consumedPdsVersionsWithPrefixes = getConsumedPrefixesForVersions(pdsCrawlerRawData);
+    // aggregated data
+    const aggregatedConsumedTagNamesForVersionsAndPrefixes =
+      getAggregatedConsumedTagNamesForVersionsAndPrefixes(pdsCrawlerRawData);
+    // aggregated data without versions and prefixes
+    const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
+
     writeWebsiteReport(
       websiteUrl,
       JSON.stringify(
         {
           url: websiteUrl,
           consumedPdsVersionsWithPrefixes,
-          consumedTagNamesForVersionsAndPrefixes,
+          consumedTagNamesForVersionsAndPrefixes: pdsCrawlerRawData,
         },
         null,
         config.jsonSpace
@@ -64,9 +63,13 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
       )
     );
 
+    // collecting data for general report (over all websites)
+    generalRawData = generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
+
     await page.close();
   }
 
+  // creating general report (over all websites)
   const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
 
   writeGeneralReport(

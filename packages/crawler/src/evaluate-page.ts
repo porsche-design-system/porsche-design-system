@@ -10,11 +10,11 @@ declare global {
   }
 }
 
-export const crawlComponents = async (
+export const evaluatePage = async (
   page: puppeteer.Page,
   pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames
 ): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
-  const pdsCrawlerReport = await page.evaluate(
+  const pdsCrawlerRawData = await page.evaluate(
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(
@@ -156,5 +156,5 @@ export const crawlComponents = async (
     { pdsTagNamesWithPropertyNames }
   );
 
-  return pdsCrawlerReport;
+  return pdsCrawlerRawData;
 };
