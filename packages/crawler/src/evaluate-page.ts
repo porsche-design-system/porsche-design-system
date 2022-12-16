@@ -17,15 +17,6 @@ export const evaluatePage = async (
   const pdsCrawlerRawData = await page.evaluate(
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
-      const consumedPdsVersionsAndPrefixes: { [key: string]: string[] } = Object.entries(
-        document.porscheDesignSystem
-      ).reduce(
-        (result, [key, value]) => ({
-          ...result,
-          [key]: value.prefixes,
-        }),
-        {}
-      );
 
       const getComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
         const tagName = el.tagName.toLowerCase();
@@ -48,7 +39,7 @@ export const evaluatePage = async (
 
       // get all dom elements from body
       const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const getAllElementsBySelector = (pdsComponentsSelector: string): Element[] =>
+      const getAllPdsElementsBySelector = (pdsComponentsSelector: string): Element[] =>
         allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
       const getSlotInfo = (el: Element): string | null =>
@@ -111,7 +102,7 @@ export const evaluatePage = async (
         }, {});
       };
 
-      const getConsumedTagNames = (prefix: string, pdsElements: Element[]): TagNameData[] => {
+      const getConsumedTagNamesForPrefix = (prefix: string, pdsElements: Element[]): TagNameData[] => {
         return pdsElements.map((el) => {
           const componentName = getComponentNameByPrefix(el, prefix);
 
@@ -134,15 +125,15 @@ export const evaluatePage = async (
         });
       };
 
-      return Object.entries(consumedPdsVersionsAndPrefixes).reduce(
-        (result, [version, prefixes]) => ({
+      return Object.entries(document.porscheDesignSystem).reduce(
+        (result, [version, { prefixes }]) => ({
           ...result,
           [version]: prefixes.reduce((result, prefix: string) => {
             return {
               ...result,
-              [prefix]: getConsumedTagNames(
+              [prefix]: getConsumedTagNamesForPrefix(
                 prefix,
-                Array.from(getAllElementsBySelector(getPdsComponentsSelector(prefix)))
+                Array.from(getAllPdsElementsBySelector(getPdsComponentsSelector(prefix)))
               ),
             };
           }, {}),
