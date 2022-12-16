@@ -88,14 +88,13 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
     };`;
 
     const defineEmits = `const emit = defineEmits<{ ${eventNamesAndTypes
-    .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
-    .join(' ')} }>();`;
+      .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
+      .join(' ')} }>();`;
 
     const addEventListener = eventNamesAndTypes
-      .map(({ eventName }, index) => {
-        const { eventName: lastEventName } = eventNamesAndTypes.at(-1) || {}; // We need to cast eventNames to the last eventName defined in defineEmits
-        const typeCast =
-          eventNamesAndTypes.length > 1 && index + 1 < eventNamesAndTypes.length ? ` as '${lastEventName}'` : '';
+      .map(({ eventName }, index, arr) => {
+        const { eventName: lastEventName } = arr.at(-1) || {}; // We need to cast eventNames to the last eventName defined in defineEmits
+        const typeCast = index + 1 < arr.length ? ` as '${lastEventName}'` : '';
 
         return `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
       })
