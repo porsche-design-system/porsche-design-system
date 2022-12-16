@@ -509,7 +509,8 @@
                     "disabled": {
                         "amount": 12,
                         "values": {
-                            "false": 12
+                            "false": 11,
+                            "true": 1
                         }
                     },
                     "loading": {

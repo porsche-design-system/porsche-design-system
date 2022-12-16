@@ -336,7 +336,8 @@
                     "disabled": {
                         "amount": 5,
                         "values": {
-                            "false": 5
+                            "false": 4,
+                            "true": 1
                         }
                     },
                     "loading": {
@@ -994,7 +995,8 @@
                             "disabled": {
                                 "amount": 5,
                                 "values": {
-                                    "false": 5
+                                    "false": 4,
+                                    "true": 1
                                 }
                             },
                             "loading": {

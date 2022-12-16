@@ -746,7 +746,7 @@
                         "properties": {
                             "tabbable": true,
                             "type": "submit",
-                            "disabled": false,
+                            "disabled": true,
                             "loading": false,
                             "size": "small",
                             "weight": "regular",
