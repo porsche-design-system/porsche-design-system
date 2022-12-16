@@ -9,9 +9,8 @@ import {
   TagNameAggregated,
   TagNameData,
   TagNamesAggregated,
+  TagNamesWithPropertyNames,
 } from './types';
-
-export type TagNamesWithProperties = Record<TagName, string[]>;
 
 export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
   // "Object.keys" returns string[], therefore we need type casting here
@@ -94,13 +93,13 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
   return tagNameAggregatedNew;
 };
 
-export const getTagNamesWithProperties = (): TagNamesWithProperties =>
+export const getPdsTagNamesNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
   Object.entries(componentMeta).reduce(
     (result, [key, value]) => ({
       ...result,
       [key]: value.props ? Object.keys(value.props) : [],
     }),
-    {} as TagNamesWithProperties
+    {} as TagNamesWithPropertyNames
   );
 
 export const removeOutdatedReports = (): void => {

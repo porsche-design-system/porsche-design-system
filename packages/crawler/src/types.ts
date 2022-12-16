@@ -1,5 +1,7 @@
 import { TagName } from 'shared/src';
 
+export type TagNamesWithPropertyNames = Record<TagName, string[]>;
+
 export type PropValue = boolean | number | string;
 
 export type Properties = {

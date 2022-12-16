@@ -1,7 +1,7 @@
 import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { crawlComponents } from './crawl-components';
-import { TagNamesWithProperties, getTagNamesWithProperties } from './helper';
+import { getPdsTagNamesNamesWithPropertyNames } from './helper';
 import {
   getAggregatedConsumedTagNames,
   getAggregatedConsumedTagNamesForVersionsAndPrefixes,
@@ -9,10 +9,10 @@ import {
   getRawDataWithoutVersionsAndPrefixes,
 } from './data-aggregator';
 import { writeGeneralReport, writeWebsiteReport } from './fs-report-writer';
-import { TagNameData } from './types';
+import { TagNameData, TagNamesWithPropertyNames } from './types';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
-  const tagNamesWithProperties: TagNamesWithProperties = getTagNamesWithProperties();
+  const pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames = getPdsTagNamesNamesWithPropertyNames();
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
@@ -29,7 +29,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
     console.log('Crawling page ' + page.url());
 
     // get raw data
-    const consumedTagNamesForVersionsAndPrefixes = await crawlComponents(page, tagNamesWithProperties);
+    const consumedTagNamesForVersionsAndPrefixes = await crawlComponents(page, pdsTagNamesWithPropertyNames);
     const rawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(
       consumedTagNamesForVersionsAndPrefixes
     );

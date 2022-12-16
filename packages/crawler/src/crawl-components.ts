@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
-import { TagNamesWithProperties } from './helper';
 import { TagName } from 'shared/src';
-import { ConsumedTagNamesForVersionsAndPrefixes, TagNameData } from './types';
+import { ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesWithPropertyNames } from './types';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -13,11 +12,11 @@ declare global {
 
 export const crawlComponents = async (
   page: puppeteer.Page,
-  tagNamesWithProperties: TagNamesWithProperties
+  pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames
 ): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
   const pdsCrawlerReport = await page.evaluate(
-    async ({ tagNamesWithProperties }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
-      const tagNames = Object.keys(tagNamesWithProperties);
+    async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
+      const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
       const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(
         document.porscheDesignSystem
       ).reduce(
@@ -31,7 +30,7 @@ export const crawlComponents = async (
       const getComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
         const tagName = el.tagName.toLowerCase();
         return (
-          (Object.keys(tagNamesWithProperties).find(
+          (Object.keys(pdsTagNamesWithPropertyNames).find(
             (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
           ) as TagName) || null
         );
@@ -47,9 +46,9 @@ export const crawlComponents = async (
         return children.concat(children.map(getAllChildElements).flat());
       };
 
-      // crawl all dom elements from body
+      // get all dom elements from body
       const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const querySelectorAllDeep = (pdsComponentsSelector: string): Element[] =>
+      const getAllElementsBySelector = (pdsComponentsSelector: string): Element[] =>
         allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
       const getSlotInfo = (el: Element): string | null =>
@@ -126,7 +125,7 @@ export const crawlComponents = async (
           return {
             [componentName]: {
               ...{
-                properties: getAllConsumedProperties(el, tagNamesWithProperties[componentName]),
+                properties: getAllConsumedProperties(el, pdsTagNamesWithPropertyNames[componentName]),
               },
               ...(slotInfo ? { slot: slotInfo } : {}),
               ...(hostPdsComponent ? { hostPdsComponent: hostPdsComponent } : {}),
@@ -139,7 +138,7 @@ export const crawlComponents = async (
         const consumedTagNamesForPrefixes = prefixes.reduce((result, prefix: string) => {
           const consumedTagNames = getConsumedTagNames(
             prefix,
-            Array.from(querySelectorAllDeep(getPdsComponentsSelector(prefix)))
+            Array.from(getAllElementsBySelector(getPdsComponentsSelector(prefix)))
           );
 
           return {
@@ -154,7 +153,7 @@ export const crawlComponents = async (
         };
       }, {});
     },
-    { tagNamesWithProperties }
+    { pdsTagNamesWithPropertyNames }
   );
 
   return pdsCrawlerReport;
