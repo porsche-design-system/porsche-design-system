@@ -5,8 +5,19 @@ import {
   ConsumedTagNamesForVersionsAndPrefixes,
   TagNameData,
   TagNamesAggregated,
+  TagNamesWithPropertyNames,
 } from './types';
 import { getUnusedTagNames, incrementTagName } from './count-data-helper';
+import { componentMeta } from '@porsche-design-system/shared';
+
+export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
+  Object.entries(componentMeta).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key]: value.props ? Object.keys(value.props) : [],
+    }),
+    {} as TagNamesWithPropertyNames
+  );
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes

@@ -1,18 +1,18 @@
 import { crawlerConfig as config } from '../constants';
 import * as puppeteer from 'puppeteer';
 import { evaluatePage } from './evaluate-page';
-import { getPdsTagNamesNamesWithPropertyNames } from './helper';
 import {
   getAggregatedConsumedTagNames,
   getAggregatedConsumedTagNamesForVersionsAndPrefixes,
   getConsumedPrefixesForVersions,
+  getPdsTagNamesWithPropertyNames,
   getRawDataWithoutVersionsAndPrefixes,
 } from './convert-data-helper';
 import { writeGeneralReport, writeWebsiteReport } from './fs-helper';
 import { TagNameData, TagNamesWithPropertyNames } from './types';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
-  const pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames = getPdsTagNamesNamesWithPropertyNames();
+  const pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
@@ -34,6 +34,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
     console.log('Aggregating data for ' + page.url());
     // info about used versions and prefixes
     const consumedPdsVersionsWithPrefixes = getConsumedPrefixesForVersions(pdsCrawlerRawData);
+
     // aggregated data
     const aggregatedConsumedTagNamesForVersionsAndPrefixes =
       getAggregatedConsumedTagNamesForVersionsAndPrefixes(pdsCrawlerRawData);
@@ -69,6 +70,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
     await page.close();
   }
 
+  console.log('Aggregating general data..');
   // creating general report (over all websites)
   const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
 
@@ -79,7 +81,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
         aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
       },
       null,
-      4
+      config.jsonSpace
     )
   );
 };
