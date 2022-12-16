@@ -27,7 +27,7 @@ export const addEventListenerToElementRef = <T extends HTMLElement, E extends st
     emit(eventName, (e as CustomEvent).detail);
   });
 };
-// TODO: Check naming with Alvaro
+
 export const useToastManager = (): { addMessage: (message: ToastMessage) => void } => {
   const tagName = getPrefixedTagName('p-toast');
 
