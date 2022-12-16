@@ -17,7 +17,7 @@ export const evaluatePage = async (
   const pdsCrawlerRawData = await page.evaluate(
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
-      const consumedPrefixesForVersions: { [key: string]: string[] } = Object.entries(
+      const consumedPdsVersionsAndPrefixes: { [key: string]: string[] } = Object.entries(
         document.porscheDesignSystem
       ).reduce(
         (result, [key, value]) => ({
@@ -134,24 +134,21 @@ export const evaluatePage = async (
         });
       };
 
-      return Object.entries(consumedPrefixesForVersions).reduce((result, [version, prefixes]) => {
-        const consumedTagNamesForPrefixes = prefixes.reduce((result, prefix: string) => {
-          const consumedTagNames = getConsumedTagNames(
-            prefix,
-            Array.from(getAllElementsBySelector(getPdsComponentsSelector(prefix)))
-          );
-
-          return {
-            ...result,
-            [prefix]: consumedTagNames,
-          };
-        }, {});
-
-        return {
+      return Object.entries(consumedPdsVersionsAndPrefixes).reduce(
+        (result, [version, prefixes]) => ({
           ...result,
-          [version]: consumedTagNamesForPrefixes,
-        };
-      }, {});
+          [version]: prefixes.reduce((result, prefix: string) => {
+            return {
+              ...result,
+              [prefix]: getConsumedTagNames(
+                prefix,
+                Array.from(getAllElementsBySelector(getPdsComponentsSelector(prefix)))
+              ),
+            };
+          }, {}),
+        }),
+        {}
+      );
     },
     { pdsTagNamesWithPropertyNames }
   );
