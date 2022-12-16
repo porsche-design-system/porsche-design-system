@@ -18,7 +18,7 @@ export const evaluatePage = async (
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
 
-      const getComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
+      const getPdsComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
         const tagName = el.tagName.toLowerCase();
         return (
           (Object.keys(pdsTagNamesWithPropertyNames).find(
@@ -27,20 +27,12 @@ export const evaluatePage = async (
         );
       };
 
-      const getPdsComponentsSelector = (prefix: string): string =>
-        (prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
-
       const getAllChildElements = (el: Element): Element[] => {
         const children = Array.from(el.children)
           .concat(Array.from(el.shadowRoot?.children || []))
           .flat() as Element[];
         return children.concat(children.map(getAllChildElements).flat());
       };
-
-      // get all dom elements from body
-      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const getAllPdsElementsBySelector = (pdsComponentsSelector: string): Element[] =>
-        allDOMElements.filter((el: Element) => el.matches(pdsComponentsSelector));
 
       const getSlotInfo = (el: Element): string | null =>
         el.shadowRoot
@@ -59,7 +51,7 @@ export const evaluatePage = async (
       const getHostPdsComponent = (el: Element, prefix: string): TagName | null => {
         const rootNode = (el.getRootNode() as ShadowRoot).host;
         if (rootNode) {
-          return getComponentNameByPrefix(rootNode, prefix);
+          return getPdsComponentNameByPrefix(rootNode, prefix);
         }
         return null;
       };
@@ -104,7 +96,7 @@ export const evaluatePage = async (
 
       const getConsumedTagNamesForPrefix = (prefix: string, pdsElements: Element[]): TagNameData[] => {
         return pdsElements.map((el) => {
-          const componentName = getComponentNameByPrefix(el, prefix);
+          const componentName = getPdsComponentNameByPrefix(el, prefix);
 
           if (!componentName) {
             throw new Error('Could not find component name');
@@ -125,18 +117,23 @@ export const evaluatePage = async (
         });
       };
 
+      // get all dom elements from body
+      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
+      const getAllPdsElementsForPrefix = (prefix: string): Element[] =>
+        allDOMElements.filter((el: Element) =>
+          el.matches((prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join())
+        );
+
       return Object.entries(document.porscheDesignSystem).reduce(
         (result, [version, { prefixes }]) => ({
           ...result,
-          [version]: prefixes.reduce((result, prefix: string) => {
-            return {
+          [version]: prefixes.reduce(
+            (result, prefix: string) => ({
               ...result,
-              [prefix]: getConsumedTagNamesForPrefix(
-                prefix,
-                Array.from(getAllPdsElementsBySelector(getPdsComponentsSelector(prefix)))
-              ),
-            };
-          }, {}),
+              [prefix]: getConsumedTagNamesForPrefix(prefix, getAllPdsElementsForPrefix(prefix)),
+            }),
+            {}
+          ),
         }),
         {}
       );
