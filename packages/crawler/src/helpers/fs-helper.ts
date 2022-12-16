@@ -1,4 +1,4 @@
-import { crawlerConfig as config, WebsiteUrl } from '../constants';
+import { crawlerConfig as config, WebsiteUrl } from '../../constants';
 import fs from 'fs';
 
 export const writeWebsiteReport = (websiteUrl: WebsiteUrl, rawData: string, aggregatedData: string) => {

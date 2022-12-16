@@ -6,7 +6,7 @@ import {
   TagNameData,
   TagNamesAggregated,
   TagNamesWithPropertyNames,
-} from './types';
+} from '../types';
 import { getUnusedTagNames, incrementTagName } from './count-data-helper';
 import { componentMeta } from '@porsche-design-system/shared';
 

@@ -6,7 +6,7 @@ import {
   TagNameAggregated,
   TagNameData,
   TagNamesAggregated,
-} from './types';
+} from '../types';
 import { componentMeta, TagName } from '@porsche-design-system/shared';
 
 export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
