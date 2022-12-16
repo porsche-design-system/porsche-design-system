@@ -271,9 +271,9 @@
                         }
                     },
                     "aria": {
-                        "amount": 2,
+                        "amount": 3,
                         "values": {
-                            "[object Object]": 2
+                            "[object Object]": 3
                         }
                     }
                 },

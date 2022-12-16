@@ -58,7 +58,10 @@
                             "trademark": true,
                             "size": "responsive",
                             "href": "/de/de-DE",
-                            "target": "_self"
+                            "target": "_self",
+                            "aria": {
+                                "aria-label": "Porsche Shop"
+                            }
                         }
                     }
                 },

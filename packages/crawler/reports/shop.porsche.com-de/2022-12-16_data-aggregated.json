@@ -160,6 +160,12 @@
                         "values": {
                             "_self": 2
                         }
+                    },
+                    "aria": {
+                        "amount": 1,
+                        "values": {
+                            "[object Object]": 1
+                        }
                     }
                 },
                 "unusedProperties": [
@@ -811,6 +817,12 @@
                                 "amount": 2,
                                 "values": {
                                     "_self": 2
+                                }
+                            },
+                            "aria": {
+                                "amount": 1,
+                                "values": {
+                                    "[object Object]": 1
                                 }
                             }
                         },
