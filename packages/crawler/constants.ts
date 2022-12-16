@@ -1,13 +1,5 @@
-import { PuppeteerLaunchOptions, Viewport } from 'puppeteer';
-
-export type CrawlerConfig = {
-  customerWebsites: string[];
-  reportFolderName: string;
-  dateSplitter: string;
-  reportsMaxAge: number;
-  jsonSpace: number;
-  viewport: Viewport;
-};
+import { PuppeteerLaunchOptions } from 'puppeteer';
+import { CrawlerConfig } from './src/types';
 export const crawlerConfig: CrawlerConfig = {
   customerWebsites: [
     'https://www.porsche.com/germany',
@@ -19,7 +11,6 @@ export const crawlerConfig: CrawlerConfig = {
   reportFolderName: 'reports',
   dateSplitter: '_',
   jsonSpace: 4,
-  // TODO: how long should the old reports stay?
   reportsMaxAge: 1000 * 60 * 60 * 24 * 7, // one week
   viewport: {
     width: 1920, // our xxl size

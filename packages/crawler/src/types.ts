@@ -1,6 +1,30 @@
 import { TagName } from 'shared/src';
+import { Viewport } from 'puppeteer';
+
+/* Generics */
+
+type VersionsAndPrefixesMap<T> = {
+  [version: string]: {
+    [prefix: string]: T;
+  };
+};
+
+/* Crawler Config Type */
+
+export type CrawlerConfig = {
+  customerWebsites: string[];
+  reportFolderName: string;
+  dateSplitter: string;
+  reportsMaxAge: number;
+  jsonSpace: number;
+  viewport: Viewport;
+};
+
+/* PDS Components info */
 
 export type TagNamesWithPropertyNames = Record<TagName, string[]>;
+
+/* Raw Data */
 
 export type PropValue = boolean | number | string;
 
@@ -17,13 +41,19 @@ export type TagNameData = Record<
   }
 >;
 
+export type ConsumedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<TagNameData[]>;
+
+/* Aggregated Data */
+
 export type PropertyValuesAggregated = Record<number | string, number>;
+
 export type PropertiesAggregated = {
   [propName: string]: {
     amount: number;
     values: PropertyValuesAggregated;
   };
 };
+
 export type TagNameAggregated = {
   amount: number;
   hostPdsComponent: number;
@@ -31,6 +61,7 @@ export type TagNameAggregated = {
   properties: PropertiesAggregated;
   unusedProperties: string[];
 };
+
 export type TagNamesAggregated = Record<TagName, TagNameAggregated>;
 
 export type AggregatedData = {
@@ -38,12 +69,4 @@ export type AggregatedData = {
   unusedTagNames: TagName[];
 };
 
-type VersionsAndPrefixesMap<T> = {
-  [version: string]: {
-    [prefix: string]: T;
-  };
-};
-
 export type AggregatedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<AggregatedData[]>;
-
-export type ConsumedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<TagNameData[]>;

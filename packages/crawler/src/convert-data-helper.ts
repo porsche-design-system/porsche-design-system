@@ -1,5 +1,4 @@
 import { TagName } from 'shared/src';
-import { componentMeta } from '@porsche-design-system/shared';
 import {
   AggregatedData,
   AggregatedTagNamesForVersionsAndPrefixes,
@@ -7,7 +6,7 @@ import {
   TagNameData,
   TagNamesAggregated,
 } from './types';
-import { getUnusedTagNames, incrementTagName } from './helper';
+import { getUnusedTagNames, incrementTagName } from './count-data-helper';
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes

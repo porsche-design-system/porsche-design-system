@@ -29,3 +29,14 @@ export const writeGeneralReport = (aggregatedData: string) => {
     aggregatedData
   );
 };
+
+export const removeOutdatedReports = (): void => {
+  fs.readdirSync(config.reportFolderName)
+    .filter(
+      (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
+    )
+    .map((fileName: string) => {
+      console.log(`Removing file ${fileName}`);
+      fs.unlinkSync(`${config.reportFolderName}/${fileName}`);
+    });
+};

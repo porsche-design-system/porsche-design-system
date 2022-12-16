@@ -7,8 +7,8 @@ import {
   getAggregatedConsumedTagNamesForVersionsAndPrefixes,
   getConsumedPrefixesForVersions,
   getRawDataWithoutVersionsAndPrefixes,
-} from './data-aggregator';
-import { writeGeneralReport, writeWebsiteReport } from './fs-report-writer';
+} from './convert-data-helper';
+import { writeGeneralReport, writeWebsiteReport } from './fs-helper';
 import { TagNameData, TagNamesWithPropertyNames } from './types';
 
 export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
