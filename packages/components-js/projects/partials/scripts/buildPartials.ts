@@ -11,6 +11,7 @@ import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 import { generateBrowserSupportFallbackScriptPartial } from './generateBrowserSupportFallbackScriptPartial';
 import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackScriptPartial';
 import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
+import { generateNormalizeStylesPartial } from './generateNormalizeStylesPartial';
 
 const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
@@ -40,6 +41,7 @@ const generatePartials = async (): Promise<void> => {
     generateBrowserSupportFallbackScriptPartial(),
     generateCookiesFallbackScriptPartial(),
     generateDSRPonyfillPartial(),
+    generateNormalizeStylesPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
