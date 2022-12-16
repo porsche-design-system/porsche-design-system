@@ -36,14 +36,12 @@ export type AggregatedData = {
   unusedTagNames: TagName[];
 };
 
-export type AggregatedTagNamesForVersionsAndPrefixes = {
+type VersionsAndPrefixesMap<T> = {
   [version: string]: {
-    [prefix: string]: AggregatedData[];
+    [prefix: string]: T;
   };
 };
 
-export type ConsumedTagNamesForVersionsAndPrefixes = {
-  [version: string]: {
-    [prefix: string]: TagNameData[];
-  };
-};
+export type AggregatedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<AggregatedData[]>;
+
+export type ConsumedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<TagNameData[]>;
