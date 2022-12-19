@@ -26,7 +26,7 @@ export type TagNamesWithPropertyNames = Record<TagName, string[]>;
 
 /* Raw Data */
 
-export type PropValue = boolean | number | string;
+export type PropValue = boolean | number | string | object;
 
 export type Properties = {
   [propName: string]: PropValue;
