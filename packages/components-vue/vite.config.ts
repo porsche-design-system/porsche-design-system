@@ -8,7 +8,7 @@ const projectDir = 'projects/vue-wrapper';
 const outputDir = 'dist/vue-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
 
-// https://vitejs.dev/config/
+// Config to build vue-wrapper components library
 export default defineConfig({
   plugins: [
     vue(),
