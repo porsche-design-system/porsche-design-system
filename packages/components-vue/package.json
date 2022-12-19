@@ -16,8 +16,7 @@
     "build:partialsAndUtilities:typings": "yarn build:bundle:typings:partials && yarn build:bundle:typings:utilities",
     "build:partialsAndUtilities:typings:partials": "tsc projects/vue-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node,react",
     "build:partialsAndUtilities:typings:utilities": "tsc projects/vue-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/utilities/js --types node,react",
-    "build-app": "yarn clean:build:app && vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
-    "preview": "vite preview",
+    "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
     "replace": "yarn replace:initialStyles && yarn replace:fontLatin",
     "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
@@ -29,9 +28,7 @@
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=VRT PORT=5173 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist",
-    "clean:build:app": "rm -rf ./dist/demo-app",
-    "clean:build:package": "rm -rf ./dist/vue-wrapper"
+    "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
     "@porsche-design-system/components-vue": "^2.18.0",
