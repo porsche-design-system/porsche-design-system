@@ -18,20 +18,13 @@ describe('getPrefixedTagName()', () => {
     expect(spy).toBeCalledWith(prefixInjectionKey);
   });
 
-  it('should call throw error if prefix is undefined', () => {
+  it('should throw error if inject returns undefined', () => {
     jest.spyOn(Vue, 'inject').mockReturnValue(undefined);
 
-    let error;
-    try {
-      getPrefixedTagName('p-text');
-    } catch (e) {
-      error = e;
-    }
-
-    expect(error).toBeDefined();
+    expect(() => getPrefixedTagName('p-text')).toThrowError();
   });
 
-  it('should return passed tagName if inject() returns ""', () => {
+  it('should return passed parameter if inject() returns ""', () => {
     jest.spyOn(Vue, 'inject').mockReturnValue('');
     const tagName = 'p-text';
     getPrefixedTagName('p-text');
