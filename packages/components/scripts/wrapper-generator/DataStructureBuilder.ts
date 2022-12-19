@@ -37,9 +37,9 @@ export class DataStructureBuilder {
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
         // extract potential generic and array
-        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
-        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
-        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) ?? [];
+        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) || [];
+        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) || [];
+        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) || [];
 
         if (genericType) {
           if (!whitelistedTypes.includes(genericRootType)) {
