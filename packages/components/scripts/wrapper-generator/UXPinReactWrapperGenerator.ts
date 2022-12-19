@@ -4,7 +4,6 @@ import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
-import * as path from 'path';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] };
 
