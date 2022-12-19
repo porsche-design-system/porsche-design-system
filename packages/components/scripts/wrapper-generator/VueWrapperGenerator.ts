@@ -30,20 +30,20 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
+    // TODO: Abstract Wrapper generator public to handle indentation
     return `<script setup lang="ts">
 ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n')}`;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const propsName = this.generatePropsName(component);
+    const componentInterfaceWithoutEventProps = rawComponentInterface
+      .slice(1, -1)
+      .split(';\n')
+      .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+      .join(';\n');
 
-    return getComponentMeta(component).props
-      ? `type ${propsName} = {${rawComponentInterface
-          .slice(1, -1) // remove brackets
-          .split(';\n') // split into props with description
-          .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/)) // remove event properties and their description
-          .join(';\n')}};` // rejoin with correct indentation
-      : '';
+    return getComponentMeta(component).props ? `type ${propsName} = {${componentInterfaceWithoutEventProps}};` : '';
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
@@ -58,15 +58,19 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         };
       });
 
-    const eslintAnnotation = ' // eslint-disable-line vue/require-valid-default-prop';
-
     const defaultPropsWithValue = extendedProps
       .map(({ key, defaultValue, isEvent }) => {
         if (!(isEvent || defaultValue === undefined)) {
           // Check if default value is complex type and transform it into callback
-          return `${key}: ${defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue},${
-            component === 'p-headline' && key === 'color' ? eslintAnnotation : ''
-          }`;
+          // TODO: get this from extended props
+          const defaultPropValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
+
+          const eslintAnnotation =
+            component === 'p-headline' && key === 'color'
+              ? " // eslint-disable-line vue/require-valid-default-prop';\n"
+              : '';
+
+          return `${key}: ${defaultPropValue},${eslintAnnotation}`;
         } else {
           return undefined;
         }
@@ -74,7 +78,8 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
       .filter((x) => x)
       .join('\n');
 
-    const { hasEvent, hasSlot } = getComponentMeta(component);
+    const hasChildren = this.inputParser.canHaveChildren(component);
+    const hasEvent = extendedProps.some(({ isEvent }) => isEvent);
     const hasProps = !!extendedProps.length;
     const hasDefaultProps = defaultPropsWithValue.length;
 
@@ -82,14 +87,18 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
     const props = `const props = ${
       hasDefaultProps
         ? `withDefaults(${defineProps}, {
- ${defaultPropsWithValue}
-})`
+   ${defaultPropsWithValue}
+  })`
         : defineProps
     };`;
 
-    const defineEmits = `const emit = defineEmits<{ ${eventNamesAndTypes
-      .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
-      .join(' ')} }>();`;
+    const pdsComponentRef = `const pdsComponentRef = ref<${propsName} & HTMLElement>();`;
+
+    const defineEmits = hasEvent
+      ? `const emit = defineEmits<{ ${eventNamesAndTypes
+          .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
+          .join(' ')} }>();`
+      : '';
 
     const addEventListener = eventNamesAndTypes
       .map(({ eventName }, index, arr) => {
@@ -102,25 +111,24 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
 
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
 
-    const additionalContent = `
-  ${props}
-  const pdsComponentRef = ref<${propsName} & HTMLElement>();${hasEvent ? defineEmits : ''}
+    const content = `
+${[props, pdsComponentRef, defineEmits].join('\n')}
 
-  onMounted(() => {
-    ${syncProperties}${addEventListener}
-  });
+onMounted(() => {
+  ${[syncProperties, addEventListener].join('\n  ')}
+});
 
-  onUpdated(() => {
-    ${syncProperties}
-  });`;
+onUpdated(() => {
+  ${syncProperties}
+});`;
 
-    const componentProps = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
-    // TODO: how is this called in vue?
-    const vueComponent = hasSlot
-      ? `<component ${componentProps}><slot /></component>`
-      : `<component ${componentProps} />`;
+    const componentAttr = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
 
-    return `  const webComponentTag = getPrefixedTagName('${component}');${hasProps ? additionalContent : ''}
+    const vueComponent = hasChildren
+      ? `<component ${componentAttr}><slot /></component>`
+      : `<component ${componentAttr} />`;
+
+    return `const webComponentTag = getPrefixedTagName('${component}');${hasProps ? content : ''}
 </script>
 
 <template>
