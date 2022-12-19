@@ -1,15 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { withoutTagsOption } from './utils';
 
 export const generateNormalizeStylesPartial = (): string => {
   const types = `type GetNormalizeStylesOptions = {
   cdn?: Cdn;
+  prefix?: string;
+  ${withoutTagsOption}
   format?: Format;
 };
-type GetNormalizeStylesOptionsFormatHtml = GetCookiesFallbackScriptOptions & { format: 'html' };
-type GetNormalizeStylesOptionsFormatJsx = GetCookiesFallbackScriptOptions & { format: 'jsx' };`;
+type GetNormalizeStylesOptionsFormatHtml = Omit<GetNormalizeStylesOptions, 'withoutTags'> & { format: 'html' };
+type GetNormalizeStylesOptionsFormatJsx = Omit<GetNormalizeStylesOptions, 'withoutTags'> & { format: 'jsx' };
+type GetNormalizeStylesOptionsWithoutTags = Omit<GetNormalizeStylesOptions, 'format'>;`;
 
-  const normalizeCssFilePath = path.resolve('src/css/normalize.css');
+  // TODO: better get normalize.css from cdn?
+  // inject --> <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  const normalizeCssFilePath = path.resolve('../../../../node_modules/normalize.css/normalize.css');
   const normalizeCss = fs
     .readFileSync(normalizeCssFilePath, 'utf8')
     .replace(/\/\*(?:(?!\*\/).|[\n\r])*\*\//g, '') // remove jsdoc
@@ -19,8 +25,9 @@ type GetNormalizeStylesOptionsFormatJsx = GetCookiesFallbackScriptOptions & { fo
   const normalizeStylesFunction = `export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatHtml): string;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatJsx): JSX.Element;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | JSX.Element {
-  const { cdn, format }: GetNormalizeStylesOptions = {
+  const { cdn, prefix, format }: GetNormalizeStylesOptions = {
     cdn: 'auto',
+    prefix: '',
     format: 'html',
     ...opts,
   };
@@ -33,7 +40,7 @@ export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | J
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const normalizeStyles = \`${normalizeCss}\`;
 
-  return format === 'html' ? \`<style \$\{styleAttributes\}>\${normalizeStyles}</style>\` : <style dangerouslySetInnerHTML={{ __html: normalizeStyles }}/>;
+  return format === 'html' ? \`<style \$\{styleAttributes\}>\${normalizeStyles}</style>\` : <style {...styleProps} dangerouslySetInnerHTML={{ __html: normalizeStyles }}/>;
 }`;
 
   return [types, normalizeStylesFunction].join('\n\n');
