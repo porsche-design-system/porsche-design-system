@@ -12,7 +12,6 @@ type VersionsAndPrefixesMap<T> = {
 /* Crawler Config Type */
 
 export type CrawlerConfig = {
-  customerWebsites: string[];
   reportFolderName: string;
   dateSplitter: string;
   reportsMaxAge: number;

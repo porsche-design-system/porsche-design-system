@@ -1,7 +1,7 @@
-import { crawlerConfig as config, WebsiteUrl } from '../../constants';
+import { crawlerConfig as config } from '../../constants';
 import fs from 'fs';
 
-export const writeWebsiteReport = (websiteUrl: WebsiteUrl, rawData: string, aggregatedData: string) => {
+export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregatedData: string) => {
   const parsedUrl = new URL(websiteUrl);
   let websiteName = parsedUrl.hostname;
   const topLevelDir = parsedUrl.pathname.match(/^\/([^/]+)\//g);

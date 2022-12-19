@@ -1,13 +1,6 @@
 import { PuppeteerLaunchOptions } from 'puppeteer';
 import { CrawlerConfig } from './src/types';
 export const crawlerConfig: CrawlerConfig = {
-  customerWebsites: [
-    'https://www.porsche.com/germany',
-    'https://finder.porsche.com/de/de-DE',
-    'https://login.porsche.com/login/de/de_DE',
-    'https://shop.porsche.com/de/de-DE',
-    'https://www.porsche.com/swiss/de',
-  ],
   reportFolderName: 'reports',
   dateSplitter: '_',
   jsonSpace: 4,
@@ -24,5 +17,3 @@ export const puppeteerConfig: PuppeteerLaunchOptions = {
   args: [`--window-size=${crawlerConfig.viewport.width},${crawlerConfig.viewport.height}`],
   defaultViewport: crawlerConfig.viewport,
 };
-
-export type WebsiteUrl = typeof crawlerConfig.customerWebsites[number];

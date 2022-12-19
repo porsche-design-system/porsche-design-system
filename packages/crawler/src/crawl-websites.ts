@@ -11,12 +11,12 @@ import {
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
 import { TagNameData, TagNamesWithPropertyNames } from './types';
 
-export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> => {
+export const crawlWebsites = async (browser: puppeteer.Browser, customerWebsites: string[]): Promise<void> => {
   const pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
-  for (const websiteUrl of config.customerWebsites) {
+  for (const websiteUrl of customerWebsites) {
     const page = await browser.newPage();
     // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
     await page.setUserAgent(
@@ -77,7 +77,7 @@ export const crawlWebsites = async (browser: puppeteer.Browser): Promise<void> =
   writeGeneralReport(
     JSON.stringify(
       {
-        crawledWebsites: config.customerWebsites,
+        crawledWebsites: customerWebsites,
         aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
       },
       null,
