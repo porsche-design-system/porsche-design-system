@@ -1,4 +1,4 @@
-# Initial Styles
+# Normalize Styles
 
 **Function name:** `getNormalizeStyles()`
 
