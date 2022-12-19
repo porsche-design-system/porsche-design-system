@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
-import { puppeteerConfig } from './constants';
-import { crawlWebsites } from './src/crawl-websites';
-import { removeOutdatedReports } from './src/helpers/fs-helper';
+import { puppeteerConfig } from '../constants';
+import { crawlWebsites } from './crawl-websites';
+import { removeOutdatedReports } from './helpers/fs-helper';
 
 const startBrowser = async (): Promise<void> => {
   const browser = await puppeteer.launch(puppeteerConfig);
