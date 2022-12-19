@@ -32,7 +32,7 @@ describe('getPrefixedTagName()', () => {
     expect(getPrefixedTagName(tagName)).toBe(tagName);
   });
 
-  it('should return prefixed tagName if prefix is defined', () => {
+  it('should return prefixed parameter if prefix is defined', () => {
     const prefix = 'my-prefix';
     jest.spyOn(Vue, 'inject').mockReturnValue(prefix);
     const tagName = 'p-text';
@@ -52,14 +52,7 @@ describe('syncProperties()', () => {
       customProp1: string;
       customProp2: boolean;
       customProp3: number;
-      customProp4: {};
-    };
-
-    const props: PropsType & Partial<HTMLElement> = {
-      customProp1: 'some prop',
-      customProp2: true,
-      customProp3: 1,
-      customProp4: {},
+      customProp4: object;
     };
 
     const element = document.createElement('custom-el') as HTMLElement & PropsType;
@@ -69,20 +62,25 @@ describe('syncProperties()', () => {
     expect(element.customProp3).toBeUndefined();
     expect(element.customProp4).toBeUndefined();
 
-    syncProperties(element, props);
+    const props1: PropsType = {
+      customProp1: 'some prop',
+      customProp2: true,
+      customProp3: 1,
+      customProp4: {},
+    };
+    syncProperties(element, props1);
 
-    expect(element.customProp1).toBe(props.customProp1);
-    expect(element.customProp2).toBe(props.customProp2);
-    expect(element.customProp3).toBe(props.customProp3);
-    expect(element.customProp4).toBe(props.customProp4);
+    expect(element.customProp1).toBe(props1.customProp1);
+    expect(element.customProp2).toBe(props1.customProp2);
+    expect(element.customProp3).toBe(props1.customProp3);
+    expect(element.customProp4).toBe(props1.customProp4);
 
-    const props2: PropsType & Partial<HTMLElement> = {
+    const props2: PropsType = {
       customProp1: 'another prop',
       customProp2: false,
       customProp3: 2,
       customProp4: { key: 'value' },
     };
-
     syncProperties(element, props2);
 
     expect(element.customProp1).toBe(props2.customProp1);
@@ -106,11 +104,11 @@ describe('addEventListenerToElementRef()', () => {
   it('should call passed emit() with correct parameters', () => {
     const element = document.createElement('custom-el');
     const emit = jest.fn();
-
     const eventName = 'someEventName';
-    const event = new CustomEvent(eventName, { detail: 'someDetail' });
 
     addEventListenerToElementRef(element, eventName, emit);
+
+    const event = new CustomEvent(eventName, { detail: 'someDetail' });
     element.dispatchEvent(event);
 
     expect(emit).toBeCalledWith(eventName, event.detail);
