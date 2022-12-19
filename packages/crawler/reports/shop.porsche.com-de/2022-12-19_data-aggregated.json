@@ -78,20 +78,10 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "requiredProps",
-                    "hasSlot",
-                    "namedSlots",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "iconSource",
+                    "href",
+                    "download",
+                    "rel"
                 ]
             },
             "p-divider": {
@@ -118,19 +108,7 @@
                         }
                     }
                 },
-                "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "props",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
-                ]
+                "unusedProperties": []
             },
             "p-marque": {
                 "amount": 2,
@@ -168,19 +146,7 @@
                         }
                     }
                 },
-                "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "props",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
-                ]
+                "unusedProperties": []
             },
             "p-icon": {
                 "amount": 65,
@@ -246,17 +212,7 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "props",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "aria"
                 ]
             },
             "p-link": {
@@ -300,19 +256,11 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "requiredProps",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "iconSource",
+                    "href",
+                    "download",
+                    "rel",
+                    "aria"
                 ]
             },
             "p-button-pure": {
@@ -405,19 +353,7 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "hasSlot",
-                    "namedSlots",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "iconSource"
                 ]
             },
             "p-link-social": {
@@ -455,19 +391,9 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "requiredProps",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "iconSource",
+                    "href",
+                    "rel"
                 ]
             },
             "p-modal": {
@@ -501,20 +427,7 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "hasSlot",
-                    "namedSlots",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "eventNames",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "aria"
                 ]
             },
             "p-button-group": {
@@ -529,19 +442,7 @@
                         }
                     }
                 },
-                "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "props",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
-                ]
+                "unusedProperties": []
             },
             "p-button": {
                 "amount": 2,
@@ -599,18 +500,8 @@
                     }
                 },
                 "unusedProperties": [
-                    "isDelegatingFocus",
-                    "isInternal",
-                    "isThemeable",
-                    "nestedComponents",
-                    "props",
-                    "hasSlot",
-                    "hasSlottedCss",
-                    "hasEvent",
-                    "hasAriaProp",
-                    "hasObserveAttributes",
-                    "hasObserveChildren",
-                    "styling"
+                    "iconSource",
+                    "aria"
                 ]
             }
         },
@@ -736,20 +627,10 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "requiredProps",
-                            "hasSlot",
-                            "namedSlots",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "iconSource",
+                            "href",
+                            "download",
+                            "rel"
                         ]
                     },
                     "p-divider": {
@@ -776,19 +657,7 @@
                                 }
                             }
                         },
-                        "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "props",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
-                        ]
+                        "unusedProperties": []
                     },
                     "p-marque": {
                         "amount": 2,
@@ -826,19 +695,7 @@
                                 }
                             }
                         },
-                        "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "props",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
-                        ]
+                        "unusedProperties": []
                     },
                     "p-icon": {
                         "amount": 65,
@@ -904,17 +761,7 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "props",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "aria"
                         ]
                     },
                     "p-link": {
@@ -958,19 +805,11 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "requiredProps",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "iconSource",
+                            "href",
+                            "download",
+                            "rel",
+                            "aria"
                         ]
                     },
                     "p-button-pure": {
@@ -1063,19 +902,7 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "hasSlot",
-                            "namedSlots",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "iconSource"
                         ]
                     },
                     "p-link-social": {
@@ -1113,19 +940,9 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "requiredProps",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "iconSource",
+                            "href",
+                            "rel"
                         ]
                     },
                     "p-modal": {
@@ -1159,20 +976,7 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "hasSlot",
-                            "namedSlots",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "eventNames",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "aria"
                         ]
                     },
                     "p-button-group": {
@@ -1187,19 +991,7 @@
                                 }
                             }
                         },
-                        "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "props",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
-                        ]
+                        "unusedProperties": []
                     },
                     "p-button": {
                         "amount": 2,
@@ -1257,18 +1049,8 @@
                             }
                         },
                         "unusedProperties": [
-                            "isDelegatingFocus",
-                            "isInternal",
-                            "isThemeable",
-                            "nestedComponents",
-                            "props",
-                            "hasSlot",
-                            "hasSlottedCss",
-                            "hasEvent",
-                            "hasAriaProp",
-                            "hasObserveAttributes",
-                            "hasObserveChildren",
-                            "styling"
+                            "iconSource",
+                            "aria"
                         ]
                     }
                 },
