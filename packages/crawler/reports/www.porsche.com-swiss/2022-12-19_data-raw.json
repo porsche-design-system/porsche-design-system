@@ -13,6 +13,107 @@
         "2.17.0": {
             "": [
                 {
+                    "p-button-pure": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "close",
+                            "active": false,
+                            "hideLabel": "true",
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "close",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "hostPdsComponent": "p-button-pure"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-5",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        }
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "tertiary",
+                            "icon": "arrow-head-right",
+                            "href": "https://cc.porsche.com/icc/ccCall.do?rt=1671183271&screen=1280x720&userID=CHSD&lang=sd&PARAM=parameter_internet_sd&ORDERTYPE=Y1ADE1&CNR=C10&MODELYEAR=2023&hookURL=https%3a%2f%2fwww.porsche.com%2fswiss%2fde%2fmodelstart%2fall%2f&option1=0L&option2=GD&option3=Q1J&option4=G1X&option5=48D&option6=3FG&option7=VW6&option8=P4S&option9=5MH&option10=8LU&option11=2ZP",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        }
+                    }
+                },
+                {
+                    "p-text-list": {
+                        "properties": {
+                            "listType": "unordered",
+                            "orderType": "numbered",
+                            "theme": "light"
+                        },
+                        "slot": "<p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">karminrot</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">21-Zoll RS Spyder Design Räder</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">Interieur-Paket GTS karminrot</p-text-list-item>"
+                    }
+                },
+                {
+                    "p-text-list-item": {
+                        "properties": {}
+                    }
+                },
+                {
+                    "p-text-list-item": {
+                        "properties": {}
+                    }
+                },
+                {
+                    "p-text-list-item": {
+                        "properties": {}
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
                     "p-link-pure": {
                         "properties": {
                             "alignLabel": "right",
@@ -20,7 +121,7 @@
                             "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo/",
+                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
@@ -61,7 +162,7 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ",
+                            "href": "https://shop.porsche.com/ch/de-CH",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
@@ -89,7 +190,7 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/",
+                            "href": "https://finder.porsche.com/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
@@ -117,7 +218,7 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://drivenbydreams.ch/",
+                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
