@@ -15,8 +15,7 @@ export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggr
 };
 
 export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] => {
-  // "Object.keys" returns string[], therefore we need type casting here
-  return (Object.keys(componentMeta[tagName]) as string[]).filter((property) => !propertiesAggregated[property]);
+  return Object.keys(componentMeta[tagName]).filter((property) => !propertiesAggregated[property]);
 };
 
 export const incrementPropertyValues = (
@@ -58,11 +57,8 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
   let tagNameAggregatedNew = { ...tagNameAggregated };
   const componentData = Object.values(tagNameData)[0];
 
-  const amount = tagNameAggregatedNew?.amount;
-  const propertiesData = componentData.properties;
-
   if (tagNameAggregated) {
-    tagNameAggregatedNew.amount = amount + 1;
+    tagNameAggregatedNew.amount = tagNameAggregatedNew.amount + 1;
   } else {
     tagNameAggregatedNew = {
       amount: 1,
@@ -81,7 +77,7 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
     tagNameAggregatedNew.slot = tagNameAggregatedNew.slot + 1;
   }
 
-  tagNameAggregatedNew.properties = incrementProperties(tagNameAggregatedNew.properties, propertiesData);
+  tagNameAggregatedNew.properties = incrementProperties(tagNameAggregatedNew.properties, componentData.properties);
   tagNameAggregatedNew.unusedProperties = getUnusedProperties(
     tagNameAggregatedNew.properties,
     Object.keys(tagNameData)[0] as TagName
