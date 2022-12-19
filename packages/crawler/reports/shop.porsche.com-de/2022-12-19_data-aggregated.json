@@ -183,17 +183,17 @@
                 ]
             },
             "p-icon": {
-                "amount": 62,
+                "amount": 65,
                 "hostPdsComponent": 17,
                 "slot": 0,
                 "properties": {
                     "name": {
-                        "amount": 62,
+                        "amount": 65,
                         "values": {
                             "search": 1,
                             "information": 1,
                             "shopping-bag": 2,
-                            "arrow-right": 28,
+                            "arrow-right": 31,
                             "user": 1,
                             "close": 2,
                             "arrow-left": 12,
@@ -211,30 +211,30 @@
                         }
                     },
                     "color": {
-                        "amount": 62,
+                        "amount": 65,
                         "values": {
                             "default": 3,
-                            "inherit": 59
+                            "inherit": 62
                         }
                     },
                     "size": {
-                        "amount": 62,
+                        "amount": 65,
                         "values": {
                             "inherit": 23,
                             "medium": 1,
-                            "small": 38
+                            "small": 41
                         }
                     },
                     "lazy": {
-                        "amount": 62,
+                        "amount": 65,
                         "values": {
-                            "false": 62
+                            "false": 65
                         }
                     },
                     "theme": {
-                        "amount": 62,
+                        "amount": 65,
                         "values": {
-                            "light": 61,
+                            "light": 64,
                             "dark": 1
                         }
                     },
@@ -336,7 +336,8 @@
                     "disabled": {
                         "amount": 5,
                         "values": {
-                            "false": 5
+                            "false": 4,
+                            "true": 1
                         }
                     },
                     "loading": {
@@ -841,17 +842,17 @@
                         ]
                     },
                     "p-icon": {
-                        "amount": 62,
+                        "amount": 65,
                         "hostPdsComponent": 17,
                         "slot": 0,
                         "properties": {
                             "name": {
-                                "amount": 62,
+                                "amount": 65,
                                 "values": {
                                     "search": 1,
                                     "information": 1,
                                     "shopping-bag": 2,
-                                    "arrow-right": 28,
+                                    "arrow-right": 31,
                                     "user": 1,
                                     "close": 2,
                                     "arrow-left": 12,
@@ -869,30 +870,30 @@
                                 }
                             },
                             "color": {
-                                "amount": 62,
+                                "amount": 65,
                                 "values": {
                                     "default": 3,
-                                    "inherit": 59
+                                    "inherit": 62
                                 }
                             },
                             "size": {
-                                "amount": 62,
+                                "amount": 65,
                                 "values": {
                                     "inherit": 23,
                                     "medium": 1,
-                                    "small": 38
+                                    "small": 41
                                 }
                             },
                             "lazy": {
-                                "amount": 62,
+                                "amount": 65,
                                 "values": {
-                                    "false": 62
+                                    "false": 65
                                 }
                             },
                             "theme": {
-                                "amount": 62,
+                                "amount": 65,
                                 "values": {
-                                    "light": 61,
+                                    "light": 64,
                                     "dark": 1
                                 }
                             },
@@ -994,7 +995,8 @@
                             "disabled": {
                                 "amount": 5,
                                 "values": {
-                                    "false": 5
+                                    "false": 4,
+                                    "true": 1
                                 }
                             },
                             "loading": {

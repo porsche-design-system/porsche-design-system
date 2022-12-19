@@ -84,12 +84,12 @@
                 ]
             },
             "p-icon": {
-                "amount": 133,
+                "amount": 136,
                 "hostPdsComponent": 78,
                 "slot": 0,
                 "properties": {
                     "name": {
-                        "amount": 133,
+                        "amount": 136,
                         "values": {
                             "arrow-head-right": 38,
                             "shoppingBag": 2,
@@ -104,7 +104,7 @@
                             "information": 2,
                             "search": 2,
                             "shopping-bag": 2,
-                            "arrow-right": 28,
+                            "arrow-right": 31,
                             "close": 3,
                             "arrow-left": 12,
                             "truck": 1,
@@ -123,30 +123,30 @@
                         }
                     },
                     "color": {
-                        "amount": 133,
+                        "amount": 136,
                         "values": {
-                            "inherit": 123,
+                            "inherit": 126,
                             "default": 10
                         }
                     },
                     "size": {
-                        "amount": 133,
+                        "amount": 136,
                         "values": {
                             "inherit": 84,
-                            "small": 48,
+                            "small": 51,
                             "medium": 1
                         }
                     },
                     "lazy": {
-                        "amount": 133,
+                        "amount": 136,
                         "values": {
-                            "false": 133
+                            "false": 136
                         }
                     },
                     "theme": {
-                        "amount": 133,
+                        "amount": 136,
                         "values": {
-                            "light": 132,
+                            "light": 135,
                             "dark": 1
                         }
                     },
@@ -509,7 +509,8 @@
                     "disabled": {
                         "amount": 12,
                         "values": {
-                            "false": 12
+                            "false": 11,
+                            "true": 1
                         }
                     },
                     "loading": {
