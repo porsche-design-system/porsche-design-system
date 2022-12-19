@@ -25,7 +25,7 @@ type GetNormalizeStylesOptionsWithoutTags = Omit<GetNormalizeStylesOptions, 'for
   const normalizeStylesFunction = `export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatHtml): string;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatJsx): JSX.Element;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | JSX.Element {
-  const { cdn, prefix, format }: GetNormalizeStylesOptions = {
+  const { prefix, format }: GetNormalizeStylesOptions = {
     cdn: 'auto',
     prefix: '',
     format: 'html',
@@ -37,7 +37,6 @@ export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | J
   const styleProps = { ['data-pds-normalize-styles']: '' };
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
-  const cdnBaseUrl = getCdnBaseUrl(cdn);
   const normalizeStyles = \`${normalizeCss}\`;
 
   return format === 'html' ? \`<style \$\{styleAttributes\}>\${normalizeStyles}</style>\` : <style {...styleProps} dangerouslySetInnerHTML={{ __html: normalizeStyles }}/>;

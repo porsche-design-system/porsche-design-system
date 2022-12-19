@@ -529,6 +529,8 @@ export const config: StorefrontConfig = {
     'Loader Script': [() => import('@/pages/partials/loader-script.md')],
     // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
+    // @ts-ignore
+    'Normalize Styles': [() => import('@/pages/partials/normalize-styles.md')],
   },
   Performance: {
     // @ts-ignore
