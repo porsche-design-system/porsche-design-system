@@ -9,15 +9,7 @@ Porsche Design System Crawler is designed to crawl over all relevant portfolio f
 - Information about PDS components' slot's contents
 - Information about parent PDS component
 
-## Available Scripts
-
-### Project setup
-
-```
-yarn install
-```
-
-### Start Crawler
+## Start Crawler
 
 ```
 yarn start:crawler
