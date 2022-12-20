@@ -57,11 +57,9 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       });
 
     const defaultPropsWithValue = extendedProps
-      .map(({ key, defaultValue, isEvent }) => {
+      .map(({ key, defaultValue, isEvent, isDefaultValueComplexType }) => {
         if (!(isEvent || defaultValue === undefined)) {
-          // Check if default value is complex type and transform it into callback
-          // TODO: get this from extended props
-          const defaultPropValue = defaultValue.startsWith('{') ? `() => (${defaultValue})` : defaultValue;
+          const defaultPropValue = isDefaultValueComplexType ? `() => (${defaultValue})` : defaultValue;
 
           const eslintAnnotation =
             component === 'p-headline' && key === 'color'
