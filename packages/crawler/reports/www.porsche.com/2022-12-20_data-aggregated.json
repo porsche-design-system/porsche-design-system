@@ -434,7 +434,6 @@
             "p-segmented-control",
             "p-segmented-control-item",
             "p-select-wrapper",
-            "p-select-wrapper-dropdown",
             "p-spinner",
             "p-stepper-horizontal",
             "p-stepper-horizontal-item",
@@ -455,8 +454,7 @@
             "p-text-list",
             "p-text-list-item",
             "p-textarea-wrapper",
-            "p-toast",
-            "p-toast-item"
+            "p-toast"
         ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
@@ -494,7 +492,6 @@
                     "p-segmented-control",
                     "p-segmented-control-item",
                     "p-select-wrapper",
-                    "p-select-wrapper-dropdown",
                     "p-spinner",
                     "p-stepper-horizontal",
                     "p-stepper-horizontal-item",
@@ -516,8 +513,7 @@
                     "p-text-list",
                     "p-text-list-item",
                     "p-textarea-wrapper",
-                    "p-toast",
-                    "p-toast-item"
+                    "p-toast"
                 ]
             },
             "phn": {
@@ -948,7 +944,6 @@
                     "p-segmented-control",
                     "p-segmented-control-item",
                     "p-select-wrapper",
-                    "p-select-wrapper-dropdown",
                     "p-spinner",
                     "p-stepper-horizontal",
                     "p-stepper-horizontal-item",
@@ -969,8 +964,7 @@
                     "p-text-list",
                     "p-text-list-item",
                     "p-textarea-wrapper",
-                    "p-toast",
-                    "p-toast-item"
+                    "p-toast"
                 ]
             }
         }

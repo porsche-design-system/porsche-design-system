@@ -459,23 +459,6 @@
                     }
                 },
                 {
-                    "p-select-wrapper-dropdown": {
-                        "properties": {
-                            "selectRef": "[object HTMLSelectElement]",
-                            "label": "Land",
-                            "state": "none",
-                            "direction": "auto",
-                            "theme": "light",
-                            "filter": false,
-                            "required": false,
-                            "disabled": false,
-                            "onOpenChange": {},
-                            "isOpenOverride": false
-                        },
-                        "hostPdsComponent": "p-select-wrapper"
-                    }
-                },
-                {
                     "p-icon": {
                         "properties": {
                             "name": "arrow-head-down",
@@ -495,8 +478,7 @@
                             "size": "small",
                             "lazy": false,
                             "theme": "light"
-                        },
-                        "hostPdsComponent": "p-select-wrapper-dropdown"
+                        }
                     }
                 },
                 {

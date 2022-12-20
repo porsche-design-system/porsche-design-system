@@ -8,28 +8,29 @@ import {
   TagNamesWithPropertyNames,
 } from '../types';
 import { getUnusedTagNames, incrementTagName } from './count-data-helper';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
 export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
   Object.values(TAG_NAMES).reduce((result, tagName) => {
     const componentMeta = getComponentMeta(tagName);
-    return {
-      ...result,
-      [tagName]: componentMeta.props ? Object.keys(componentMeta.props) : [],
-    };
+    return !INTERNAL_TAG_NAMES.includes(tagName)
+      ? {
+          ...result,
+          [tagName]: componentMeta.props ? Object.keys(componentMeta.props) : [],
+        }
+      : { ...result };
   }, {} as TagNamesWithPropertyNames);
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
-): { [pdsVersion: string]: string[] } => {
-  return Object.entries(consumedTagNamesForVersions).reduce(
+): { [pdsVersion: string]: string[] } =>
+  Object.entries(consumedTagNamesForVersions).reduce(
     (result, [pdsVersion, prefixesWithData]) => ({
       ...result,
       [pdsVersion]: Object.keys(prefixesWithData),
     }),
     {}
   );
-};
 
 export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagNameData[]): TagNamesAggregated =>
   tagNamesWithProperties.reduce((result, tagNameData) => {
@@ -40,8 +41,8 @@ export const getAggregatedTagNamesWithProperties = (tagNamesWithProperties: TagN
 
 export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
-): AggregatedTagNamesForVersionsAndPrefixes => {
-  return Object.entries(consumedTagNamesForVersions).reduce(
+): AggregatedTagNamesForVersionsAndPrefixes =>
+  Object.entries(consumedTagNamesForVersions).reduce(
     (result, [pdsVersion, prefixesWithData]) => ({
       ...result,
       [pdsVersion]: Object.entries(prefixesWithData).reduce(
@@ -54,7 +55,6 @@ export const getAggregatedConsumedTagNamesForVersionsAndPrefixes = (
     }),
     {}
   );
-};
 
 export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes: TagNameData[]): AggregatedData => {
   const tagNamesWithPropertiesAggregated = getAggregatedTagNamesWithProperties(rawDataWithoutVersionsAndPrefixes);
@@ -67,8 +67,8 @@ export const getAggregatedConsumedTagNames = (rawDataWithoutVersionsAndPrefixes:
 
 export const getRawDataWithoutVersionsAndPrefixes = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
-): TagNameData[] => {
-  return Object.entries(consumedTagNamesForVersions).reduce(
+): TagNameData[] =>
+  Object.entries(consumedTagNamesForVersions).reduce(
     (result, [pdsVersion, prefixesWithData]) =>
       result.concat(
         Object.entries(prefixesWithData).reduce(
@@ -78,4 +78,3 @@ export const getRawDataWithoutVersionsAndPrefixes = (
       ),
     [] as TagNameData[]
   );
-};

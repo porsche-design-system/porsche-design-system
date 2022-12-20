@@ -326,7 +326,7 @@
             },
             "p-icon": {
                 "amount": 10,
-                "hostPdsComponent": 10,
+                "hostPdsComponent": 9,
                 "slot": 0,
                 "properties": {
                     "name": {
@@ -432,77 +432,6 @@
                     }
                 },
                 "unusedProperties": []
-            },
-            "p-select-wrapper-dropdown": {
-                "amount": 1,
-                "hostPdsComponent": 1,
-                "slot": 0,
-                "properties": {
-                    "selectRef": {
-                        "amount": 1,
-                        "values": {
-                            "[object HTMLSelectElement]": 1
-                        }
-                    },
-                    "label": {
-                        "amount": 1,
-                        "values": {
-                            "Land": 1
-                        }
-                    },
-                    "state": {
-                        "amount": 1,
-                        "values": {
-                            "none": 1
-                        }
-                    },
-                    "direction": {
-                        "amount": 1,
-                        "values": {
-                            "auto": 1
-                        }
-                    },
-                    "theme": {
-                        "amount": 1,
-                        "values": {
-                            "light": 1
-                        }
-                    },
-                    "filter": {
-                        "amount": 1,
-                        "values": {
-                            "false": 1
-                        }
-                    },
-                    "required": {
-                        "amount": 1,
-                        "values": {
-                            "false": 1
-                        }
-                    },
-                    "disabled": {
-                        "amount": 1,
-                        "values": {
-                            "false": 1
-                        }
-                    },
-                    "onOpenChange": {
-                        "amount": 1,
-                        "values": {
-                            "[object Object]": 1
-                        }
-                    },
-                    "isOpenOverride": {
-                        "amount": 1,
-                        "values": {
-                            "false": 1
-                        }
-                    }
-                },
-                "unusedProperties": [
-                    "description",
-                    "message"
-                ]
             },
             "p-divider": {
                 "amount": 4,
@@ -741,8 +670,7 @@
             "p-text-list",
             "p-text-list-item",
             "p-textarea-wrapper",
-            "p-toast",
-            "p-toast-item"
+            "p-toast"
         ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
@@ -1068,7 +996,7 @@
                     },
                     "p-icon": {
                         "amount": 10,
-                        "hostPdsComponent": 10,
+                        "hostPdsComponent": 9,
                         "slot": 0,
                         "properties": {
                             "name": {
@@ -1174,77 +1102,6 @@
                             }
                         },
                         "unusedProperties": []
-                    },
-                    "p-select-wrapper-dropdown": {
-                        "amount": 1,
-                        "hostPdsComponent": 1,
-                        "slot": 0,
-                        "properties": {
-                            "selectRef": {
-                                "amount": 1,
-                                "values": {
-                                    "[object HTMLSelectElement]": 1
-                                }
-                            },
-                            "label": {
-                                "amount": 1,
-                                "values": {
-                                    "Land": 1
-                                }
-                            },
-                            "state": {
-                                "amount": 1,
-                                "values": {
-                                    "none": 1
-                                }
-                            },
-                            "direction": {
-                                "amount": 1,
-                                "values": {
-                                    "auto": 1
-                                }
-                            },
-                            "theme": {
-                                "amount": 1,
-                                "values": {
-                                    "light": 1
-                                }
-                            },
-                            "filter": {
-                                "amount": 1,
-                                "values": {
-                                    "false": 1
-                                }
-                            },
-                            "required": {
-                                "amount": 1,
-                                "values": {
-                                    "false": 1
-                                }
-                            },
-                            "disabled": {
-                                "amount": 1,
-                                "values": {
-                                    "false": 1
-                                }
-                            },
-                            "onOpenChange": {
-                                "amount": 1,
-                                "values": {
-                                    "[object Object]": 1
-                                }
-                            },
-                            "isOpenOverride": {
-                                "amount": 1,
-                                "values": {
-                                    "false": 1
-                                }
-                            }
-                        },
-                        "unusedProperties": [
-                            "description",
-                            "message"
-                        ]
                     },
                     "p-divider": {
                         "amount": 4,
@@ -1483,8 +1340,7 @@
                     "p-text-list",
                     "p-text-list-item",
                     "p-textarea-wrapper",
-                    "p-toast",
-                    "p-toast-item"
+                    "p-toast"
                 ]
             }
         }

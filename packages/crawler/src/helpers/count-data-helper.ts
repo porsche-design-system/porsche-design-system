@@ -7,16 +7,16 @@ import {
   TagNameData,
   TagNamesAggregated,
 } from '../types';
-import { getComponentMeta, TagName, TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta, TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
-export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
+export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] =>
   // "Object.keys" returns string[], therefore we need type casting here
-  return (Object.values(TAG_NAMES) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
-};
+  (Object.values(TAG_NAMES) as TagName[]).filter(
+    (tagName) => !tagNamesWithPropertiesAggregated[tagName] && !INTERNAL_TAG_NAMES.includes(tagName)
+  );
 
-export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] => {
-  return Object.keys(getComponentMeta(tagName).props || {}).filter((property) => !propertiesAggregated[property]);
-};
+export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] =>
+  Object.keys(getComponentMeta(tagName).props || {}).filter((property) => !propertiesAggregated[property]);
 
 export const incrementPropertyValues = (
   propValuesAggregated: PropertyValuesAggregated,
@@ -36,22 +36,23 @@ export const incrementPropertyValues = (
 export const incrementProperties = (
   propertiesAgregated: PropertiesAggregated,
   properties: Properties
-): PropertiesAggregated => {
-  const propertiesAgregatedNew = { ...propertiesAgregated };
-  return Object.entries(properties).reduce((result, [propName, propValue]) => {
-    if (!result[propName]) {
-      result[propName] = {
-        amount: 1,
-        values: {},
-      };
-    } else {
-      result[propName].amount++;
-    }
-    result[propName].values = incrementPropertyValues(result[propName].values, propValue);
+): PropertiesAggregated =>
+  Object.entries(properties).reduce(
+    (result, [propName, propValue]) => {
+      if (!result[propName]) {
+        result[propName] = {
+          amount: 1,
+          values: {},
+        };
+      } else {
+        result[propName].amount++;
+      }
+      result[propName].values = incrementPropertyValues(result[propName].values, propValue);
 
-    return result;
-  }, propertiesAgregatedNew as PropertiesAggregated);
-};
+      return result;
+    },
+    { ...propertiesAgregated } as PropertiesAggregated
+  );
 
 export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameData: TagNameData): TagNameAggregated => {
   let tagNameAggregatedNew = { ...tagNameAggregated };
