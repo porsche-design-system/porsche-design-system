@@ -30,7 +30,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    // TODO: Abstract Wrapper generator public to handle indentation
     return [importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
   }
 
@@ -77,24 +76,18 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       .filter((x) => x)
       .join('\n');
 
-    const hasChildren = this.inputParser.canHaveChildren(component);
-    const hasEvent = extendedProps.some(({ isEvent }) => isEvent);
-    const hasProps = !!extendedProps.length;
-    const hasDefaultProps = defaultPropsWithValue.length;
-
     const defineProps = `defineProps<${propsName}>()`;
-
-    const props = `const props = ${
-      hasDefaultProps
-        ? `withDefaults(${defineProps}, {
+    const propsContent = defaultPropsWithValue.length
+      ? `withDefaults(${defineProps}, {
 ${defaultPropsWithValue}
 })`
-        : defineProps
-    };`;
+      : defineProps;
+
+    const props = `const props = ${propsContent};`;
 
     const pdsComponentRef = `const pdsComponentRef = ref<${propsName} & HTMLElement>();`;
 
-    const defineEmits = hasEvent
+    const defineEmits = extendedProps.some(({ isEvent }) => isEvent)
       ? `const emit = defineEmits<{ ${eventNamesAndTypes
           .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
           .join(' ')} }>();`
@@ -122,9 +115,10 @@ onUpdated(() => {
   ${syncProperties}
 });`;
 
+    const hasProps = !!extendedProps.length;
     const componentAttr = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
 
-    const vueComponent = hasChildren
+    const vueComponent = this.inputParser.canHaveChildren(component)
       ? `<component ${componentAttr}><slot /></component>`
       : `<component ${componentAttr} />`;
 
@@ -143,12 +137,10 @@ onUpdated(() => {
 
   public getModifiedContent(content: string): string {
     const [, scriptContent, templateContent] = /(.*)(<template>.*)/s.exec(content) || [];
-    const indentedScriptcontent = scriptContent
-      .split('\n')
-      .join('\n  ');
+    const indentedScriptContent = scriptContent.split('\n').join('\n  ');
 
     return `<script setup lang="ts">
-  ${indentedScriptcontent}
+  ${indentedScriptContent}
 </script>
 
 ${templateContent}`;
