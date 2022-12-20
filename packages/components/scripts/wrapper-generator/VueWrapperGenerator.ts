@@ -30,7 +30,8 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return [importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
+    return `<script setup lang="ts">
+${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n')}`;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -57,9 +58,9 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       });
 
     const defaultPropsWithValue = extendedProps
-      .map(({ key, defaultValue, isEvent, isDefaultValueComplexType }) => {
+      .map(({ key, defaultValue, isEvent, isDefaultValueComplex }) => {
         if (!(isEvent || defaultValue === undefined)) {
-          const defaultPropValue = isDefaultValueComplexType ? `() => (${defaultValue})` : defaultValue;
+          const defaultPropValue = isDefaultValueComplex ? `() => (${defaultValue})` : defaultValue;
 
           const eslintAnnotation =
             component === 'p-headline' && key === 'color'
@@ -119,6 +120,8 @@ onUpdated(() => {
       : `<component ${componentAttr} />`;
 
     return `const webComponentTag = getPrefixedTagName('${component}');${hasProps ? content : ''}
+</script>
+
 <template>
   ${vueComponent}
 </template>`;
@@ -130,15 +133,11 @@ onUpdated(() => {
     }${componentFileNameWithoutExtension}.vue';`;
   }
 
-  public getModifiedContent(content: string): string {
-    const [, scriptContent, templateContent] = /([.\S\s]*)(<template>[.\S\s]*)/.exec(content) || [];
-    const indentedScriptContent = scriptContent.split('\n').slice(0, -1).join('\n  ');
-
-    return `<script setup lang="ts">
-  ${indentedScriptContent}
-</script>
-
-${templateContent}`;
+  public transformContent(content: string): string {
+    return content.replace(/(<script setup lang="ts">)([\S\s]*)(\s<\/script>)/, (match, grp1, grp2, grp3) => {
+      // Indent content in between script tags
+      return grp1 + grp2.replace('\n', '$&  ') + grp3;
+    });
   }
 
   private generatePropsName(component: TagName): string {

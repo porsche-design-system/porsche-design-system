@@ -9,7 +9,7 @@ export type ExtendedProp = {
   canBeUndefined: boolean;
   isEvent: boolean;
   defaultValue: string;
-  isDefaultValueComplexType: boolean;
+  isDefaultValueComplex: boolean;
 };
 
 export class DataStructureBuilder {
@@ -123,7 +123,7 @@ export class DataStructureBuilder {
       canBeUndefined: !!propValueType.match(/undefined/),
       isEvent: isEvent,
       defaultValue: !isEvent ? defaultValueForProp : '',
-      isDefaultValueComplexType: defaultValueForProp ? this.valueCanBeObject(defaultValueForProp, sharedTypes) : false,
+      isDefaultValueComplex: defaultValueForProp ? this.valueCanBeObject(defaultValueForProp, sharedTypes) : false,
     };
     return extendedProp;
   }

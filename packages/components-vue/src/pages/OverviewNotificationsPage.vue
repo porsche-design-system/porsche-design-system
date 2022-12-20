@@ -7,7 +7,7 @@
   <div class="playground light" title="should render notifications in correct stacking order">
     <ToastComponent text="The quick brown fox jumps over the lazy dog" />
 
-    <PModal heading="The quick brown fox jumps over the lazy dog" :open="true">Some Content</PModal>
+    <PModal :heading="'The quick brown fox jumps over the lazy dog'" :open="true">Some Content</PModal>
 
     <PBanner>
       <span slot="title">Default banner component</span>
