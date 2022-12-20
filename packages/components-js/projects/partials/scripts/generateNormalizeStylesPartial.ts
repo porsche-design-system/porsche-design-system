@@ -1,33 +1,52 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { withoutTagsOption } from './utils';
+import { getBaseSlottedStyles } from '@porsche-design-system/components/src/styles';
+import normalize from 'normalize-jss';
+import { create, Styles } from 'jss';
+import jssPluginGlobal from 'jss-plugin-global';
+import jssPluginNested from 'jss-plugin-nested';
+import jssPluginCamelCase from 'jss-plugin-camel-case';
+import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+
+global.ROLLUP_REPLACE_IS_STAGING = 'production';
 
 export const generateNormalizeStylesPartial = (): string => {
   const types = `type GetNormalizeStylesOptions = {
   cdn?: Cdn;
-  prefix?: string;
-  ${withoutTagsOption}
   format?: Format;
 };
-type GetNormalizeStylesOptionsFormatHtml = Omit<GetNormalizeStylesOptions, 'withoutTags'> & { format: 'html' };
-type GetNormalizeStylesOptionsFormatJsx = Omit<GetNormalizeStylesOptions, 'withoutTags'> & { format: 'jsx' };
-type GetNormalizeStylesOptionsWithoutTags = Omit<GetNormalizeStylesOptions, 'format'>;`;
+type GetNormalizeStylesOptionsWithoutTags = GetNormalizeStylesOptionsWithoutTags & { format: 'html' };
+type GetNormalizeStylesOptionsWithoutTags = GetNormalizeStylesOptionsWithoutTags & { format: 'jsx' }`;
+  `;`;
 
-  // TODO: better get normalize.css from cdn?
-  // inject --> <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  const normalizeCssFilePath = path.resolve('../../../../node_modules/normalize.css/normalize.css');
-  const normalizeCss = fs
-    .readFileSync(normalizeCssFilePath, 'utf8')
-    .replace(/\/\*(?:(?!\*\/).|[\n\r])*\*\//g, '') // remove jsdoc
-    .replace(/\n|\r/g, '') // remove line breaks
-    .replace(/\s/g, ''); // remove whitespaces
+  const minifyCss = (css: string): string =>
+    css.replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
+
+  const jss = create({
+    plugins: [
+      jssPluginGlobal(),
+      jssPluginNested(),
+      jssPluginCamelCase(),
+      jssPluginSortMediaQueries({ combineMediaQueries: true }),
+    ],
+  });
+
+  const getCss = (jssStyles: Styles): string =>
+    jss
+      .createStyleSheet(jssStyles, {
+        generateId: (rule) => rule.key,
+      })
+      .toString();
+
+  const normalizeCss = minifyCss(getCss(normalize));
+
+  // TODO:
+  const normalizePDSCss = getCss({
+    '@global': { ...getBaseSlottedStyles({ withDarkTheme: true }) },
+  });
 
   const normalizeStylesFunction = `export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatHtml): string;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatJsx): JSX.Element;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | JSX.Element {
-  const { prefix, format }: GetNormalizeStylesOptions = {
-    cdn: 'auto',
-    prefix: '',
+  const { format }: GetNormalizeStylesOptions = {
     format: 'html',
     ...opts,
   };
