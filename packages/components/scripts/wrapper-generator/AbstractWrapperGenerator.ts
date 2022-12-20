@@ -107,7 +107,7 @@ export abstract class AbstractWrapperGenerator {
     const propsDefinition = this.generateProps(component, rawComponentInterface);
     const wrapperDefinition = this.generateComponent(component, extendedProps);
 
-    const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
+    const content = this.transformContent([importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n'));
 
     const componentSubDir = this.getComponentSubDir(component);
     if (componentSubDir) {
@@ -117,7 +117,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFileName = this.getComponentFileName(component);
     const targetFile = path.resolve(this.componentsDir, componentSubDir, targetFileName);
 
-    fs.writeFileSync(targetFile, this.getModifiedContent(content));
+    fs.writeFileSync(targetFile, content);
     // console.log(`Generated wrapper: ${targetFileName}`);
   }
 
@@ -158,9 +158,11 @@ export abstract class AbstractWrapperGenerator {
     return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
   }
 
-  public getModifiedContent(content: string): string {
-    return content
+  // Can be used to transform content e.g. indentation
+  public transformContent(content: string): string {
+    return content;
   }
+
   // prettier-ignore
   public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
