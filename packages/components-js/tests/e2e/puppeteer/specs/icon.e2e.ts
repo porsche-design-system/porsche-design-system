@@ -27,7 +27,7 @@ type InitOptions = {
 const initOptions: InitOptions[] = [{}, { isLazy: true }];
 
 const initIcon = async (opts?: InitOptions): Promise<void> => {
-  const { name, isLazy, isScrollable } = opts ?? {};
+  const { name, isLazy, isScrollable } = opts || {};
 
   const nameAttribute = name ? `name="${name}"` : '';
   const lazyAttribute = isLazy ? `lazy="${isLazy}"` : '';
@@ -79,7 +79,7 @@ describe('loading behavior', () => {
 
       if (url.endsWith('.svg')) {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
-        const delay = timeouts[svgRequestCounter] ?? 0;
+        const delay = timeouts[svgRequestCounter] || 0;
 
         // console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
         setTimeout(() => {

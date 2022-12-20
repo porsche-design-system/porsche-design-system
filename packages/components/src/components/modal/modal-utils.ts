@@ -29,7 +29,7 @@ export const getFirstAndLastFocusableElement = (
   closeButton: HTMLElement
 ): FirstAndLastFocusableElement => {
   const focusableElements = (closeButton ? [closeButton] : []).concat(unpackChildren(host).filter(isFocusableElement));
-  return [focusableElements[0], focusableElements[focusableElements.length - 1]];
+  return [focusableElements[0], focusableElements.pop()];
 };
 
 export let documentKeydownListener: (e: KeyboardEvent) => void;
@@ -47,12 +47,21 @@ export const setScrollLock = (
   if (isOpen) {
     focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
-      const { key } = e;
+      const { key, shiftKey } = e;
+      const { activeElement, firstElementChild } = host.shadowRoot;
       if (key === 'Escape') {
         closeModal();
-      } else if (!focusableElements?.filter((x) => x).length && key === 'Tab') {
-        // if we don't have any focusableElements we need to prevent Tab here
-        e.preventDefault();
+      } else if (key === 'Tab') {
+        if (shiftKey && activeElement === firstElementChild) {
+          // when modal is opened initially, the dialog is focused and shift + tab would break out of cycle
+          e.preventDefault();
+          focusableElements[1]?.focus();
+        } else if (!focusableElements.filter((x) => x).length) {
+          // if we don't have any focusableElements we need to prevent Tab here
+          e.preventDefault();
+        }
+        // all other cases respect the natural tab order
+        // the cycle itself is accomplished within setFirstAndLastFocusableElementKeydownListener
       }
     };
     document.addEventListener('keydown', documentKeydownListener);
@@ -77,7 +86,7 @@ export const setFirstAndLastFocusableElementKeydownListener = (
   }
 
   // create, apply and save new handlers for future removal
-  if (focusableElements?.filter((x) => x).length) {
+  if (focusableElements.filter((x) => x).length) {
     FOCUSABLE_ELEMENT_CACHE = [...focusableElements]; // prevent mutation
     KEYDOWN_EVENT_HANDLER_CACHE = focusableElements.map((el, idx) => {
       const handler = (e: KeyboardEvent): void => {

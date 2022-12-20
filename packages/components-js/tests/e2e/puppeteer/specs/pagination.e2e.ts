@@ -22,7 +22,7 @@ const getNav = () => selectNode(page, 'p-pagination >>> nav');
 const getPaginationItems = async () => (await (await getNav()).$$('span')).slice(1, -1); // without prev and next
 
 const initPagination = (opts?: { activePage?: number }) => {
-  const { activePage = 1 } = opts ?? {};
+  const { activePage = 1 } = opts || {};
 
   return setContentWithDesignSystem(
     page,

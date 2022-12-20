@@ -28,7 +28,7 @@ describe('button', () => {
   const getButton = () => selectNode(page, 'p-button >>> button');
 
   const initButton = (opts?: { isLoading?: boolean; isDisabled?: boolean }): Promise<void> => {
-    const { isLoading = false, isDisabled = false } = opts ?? {};
+    const { isLoading = false, isDisabled = false } = opts || {};
     const loading = isLoading ? `loading="${isLoading}"` : '';
     const disabled = isDisabled ? `disabled="${isDisabled}"` : '';
 

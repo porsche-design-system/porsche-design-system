@@ -98,7 +98,7 @@ export const vrtTest = (
     javaScriptEnabled: true,
     ...options,
   };
-  const { baseUrl } = customOptions ?? defaultOptions;
+  const { baseUrl } = customOptions || defaultOptions;
 
   return vrt.test(
     snapshotId,

@@ -27,7 +27,7 @@ const getSpan = () => selectNode(page, 'p-link-pure >>> span');
 const getSlottedLink = () => selectNode(page, 'p-link-pure a');
 
 const initLinkPure = (opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
-  const { useSlottedAnchor = false, withSubline = false } = opts ?? {};
+  const { useSlottedAnchor = false, withSubline = false } = opts || {};
 
   return setContentWithDesignSystem(
     page,
