@@ -10,7 +10,7 @@
         "tagNames": {
             "p-button": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "tabbable": {
@@ -70,7 +70,7 @@
             "p-icon": {
                 "amount": 5,
                 "hostPdsComponent": 2,
-                "children": 0,
+                "children": null,
                 "properties": {
                     "name": {
                         "amount": 5,
@@ -116,7 +116,7 @@
             },
             "p-flex": {
                 "amount": 6,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 6,
                 "properties": {
                     "inline": {
@@ -164,8 +164,8 @@
             },
             "p-marque": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "trademark": {
                         "amount": 1,
@@ -202,7 +202,7 @@
             },
             "p-text": {
                 "amount": 8,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 8,
                 "properties": {
                     "tag": {
@@ -254,7 +254,7 @@
             },
             "p-link-pure": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "alignLabel": {
@@ -327,7 +327,7 @@
             },
             "p-button-pure": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "tabbable": {
@@ -520,7 +520,7 @@
                 "tagNames": {
                     "p-button": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "tabbable": {
@@ -580,7 +580,7 @@
                     "p-icon": {
                         "amount": 5,
                         "hostPdsComponent": 2,
-                        "children": 0,
+                        "children": null,
                         "properties": {
                             "name": {
                                 "amount": 5,
@@ -626,7 +626,7 @@
                     },
                     "p-flex": {
                         "amount": 6,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 6,
                         "properties": {
                             "inline": {
@@ -674,8 +674,8 @@
                     },
                     "p-marque": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "trademark": {
                                 "amount": 1,
@@ -712,7 +712,7 @@
                     },
                     "p-text": {
                         "amount": 8,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 8,
                         "properties": {
                             "tag": {
@@ -764,7 +764,7 @@
                     },
                     "p-link-pure": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "alignLabel": {
@@ -837,7 +837,7 @@
                     },
                     "p-button-pure": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "tabbable": {

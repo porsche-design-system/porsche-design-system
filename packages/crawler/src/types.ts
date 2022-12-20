@@ -55,8 +55,8 @@ export type PropertiesAggregated = {
 
 export type TagNameAggregated = {
   amount: number;
-  hostPdsComponent: number;
-  children: number;
+  hostPdsComponent: number | null;
+  children: number | null;
   properties: PropertiesAggregated;
   unusedProperties: string[];
 };

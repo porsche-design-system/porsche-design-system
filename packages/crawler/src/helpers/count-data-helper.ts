@@ -63,19 +63,20 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
   } else {
     tagNameAggregatedNew = {
       amount: 1,
-      hostPdsComponent: 0,
-      children: 0,
+      hostPdsComponent: null,
+      children: null,
       properties: {},
       unusedProperties: [],
     };
   }
 
   if (componentData.hostPdsComponent) {
-    tagNameAggregatedNew.hostPdsComponent = tagNameAggregatedNew.hostPdsComponent + 1;
+    tagNameAggregatedNew.hostPdsComponent =
+      (tagNameAggregatedNew.hostPdsComponent ? tagNameAggregatedNew.hostPdsComponent : 0) + 1;
   }
 
   if (componentData.children) {
-    tagNameAggregatedNew.children = tagNameAggregatedNew.children + 1;
+    tagNameAggregatedNew.children = (tagNameAggregatedNew.children ? tagNameAggregatedNew.children : 0) + 1;
   }
 
   tagNameAggregatedNew.properties = incrementProperties(tagNameAggregatedNew.properties, componentData.properties);

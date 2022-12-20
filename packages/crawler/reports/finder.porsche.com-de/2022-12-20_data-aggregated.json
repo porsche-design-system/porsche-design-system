@@ -9,8 +9,8 @@
         "tagNames": {
             "p-marque": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "trademark": {
                         "amount": 1,
@@ -39,7 +39,7 @@
             "p-icon": {
                 "amount": 12,
                 "hostPdsComponent": 9,
-                "children": 0,
+                "children": null,
                 "properties": {
                     "name": {
                         "amount": 12,
@@ -87,7 +87,7 @@
             },
             "p-link": {
                 "amount": 6,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 6,
                 "properties": {
                     "variant": {
@@ -132,7 +132,7 @@
             },
             "p-link-pure": {
                 "amount": 3,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 3,
                 "properties": {
                     "alignLabel": {
@@ -312,8 +312,8 @@
                 "tagNames": {
                     "p-marque": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "trademark": {
                                 "amount": 1,
@@ -342,7 +342,7 @@
                     "p-icon": {
                         "amount": 12,
                         "hostPdsComponent": 9,
-                        "children": 0,
+                        "children": null,
                         "properties": {
                             "name": {
                                 "amount": 12,
@@ -390,7 +390,7 @@
                     },
                     "p-link": {
                         "amount": 6,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 6,
                         "properties": {
                             "variant": {
@@ -435,7 +435,7 @@
                     },
                     "p-link-pure": {
                         "amount": 3,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 3,
                         "properties": {
                             "alignLabel": {

@@ -9,7 +9,7 @@
         "tagNames": {
             "p-link-pure": {
                 "amount": 38,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 38,
                 "properties": {
                     "alignLabel": {
@@ -86,8 +86,8 @@
             },
             "p-divider": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "color": {
                         "amount": 1,
@@ -112,8 +112,8 @@
             },
             "p-marque": {
                 "amount": 2,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "trademark": {
                         "amount": 2,
@@ -151,7 +151,7 @@
             "p-icon": {
                 "amount": 65,
                 "hostPdsComponent": 17,
-                "children": 0,
+                "children": null,
                 "properties": {
                     "name": {
                         "amount": 65,
@@ -217,7 +217,7 @@
             },
             "p-link": {
                 "amount": 4,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 4,
                 "properties": {
                     "variant": {
@@ -358,7 +358,7 @@
             },
             "p-link-social": {
                 "amount": 5,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 5,
                 "properties": {
                     "icon": {
@@ -398,7 +398,7 @@
             },
             "p-modal": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "disableCloseButton": {
@@ -432,7 +432,7 @@
             },
             "p-button-group": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "direction": {
@@ -446,7 +446,7 @@
             },
             "p-button": {
                 "amount": 2,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 2,
                 "properties": {
                     "tabbable": {
@@ -556,7 +556,7 @@
                 "tagNames": {
                     "p-link-pure": {
                         "amount": 38,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 38,
                         "properties": {
                             "alignLabel": {
@@ -633,8 +633,8 @@
                     },
                     "p-divider": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "color": {
                                 "amount": 1,
@@ -659,8 +659,8 @@
                     },
                     "p-marque": {
                         "amount": 2,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "trademark": {
                                 "amount": 2,
@@ -698,7 +698,7 @@
                     "p-icon": {
                         "amount": 65,
                         "hostPdsComponent": 17,
-                        "children": 0,
+                        "children": null,
                         "properties": {
                             "name": {
                                 "amount": 65,
@@ -764,7 +764,7 @@
                     },
                     "p-link": {
                         "amount": 4,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 4,
                         "properties": {
                             "variant": {
@@ -905,7 +905,7 @@
                     },
                     "p-link-social": {
                         "amount": 5,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 5,
                         "properties": {
                             "icon": {
@@ -945,7 +945,7 @@
                     },
                     "p-modal": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "disableCloseButton": {
@@ -979,7 +979,7 @@
                     },
                     "p-button-group": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "direction": {
@@ -993,7 +993,7 @@
                     },
                     "p-button": {
                         "amount": 2,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 2,
                         "properties": {
                             "tabbable": {

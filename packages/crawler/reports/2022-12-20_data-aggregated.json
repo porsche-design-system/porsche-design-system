@@ -10,7 +10,7 @@
         "tagNames": {
             "p-button": {
                 "amount": 20,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 20,
                 "properties": {
                     "tabbable": {
@@ -76,7 +76,7 @@
             "p-icon": {
                 "amount": 138,
                 "hostPdsComponent": 79,
-                "children": 0,
+                "children": null,
                 "properties": {
                     "name": {
                         "amount": 138,
@@ -155,7 +155,7 @@
             },
             "p-flex": {
                 "amount": 30,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 30,
                 "properties": {
                     "inline": {
@@ -209,8 +209,8 @@
             },
             "p-marque": {
                 "amount": 6,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "trademark": {
                         "amount": 6,
@@ -308,7 +308,7 @@
             },
             "p-link-pure": {
                 "amount": 63,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 63,
                 "properties": {
                     "alignLabel": {
@@ -522,7 +522,7 @@
             },
             "p-link": {
                 "amount": 14,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 14,
                 "properties": {
                     "variant": {
@@ -584,7 +584,7 @@
             },
             "p-content-wrapper": {
                 "amount": 9,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 8,
                 "properties": {
                     "width": {
@@ -612,7 +612,7 @@
             },
             "p-flex-item": {
                 "amount": 52,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 48,
                 "properties": {
                     "width": {
@@ -667,7 +667,7 @@
             },
             "p-headline": {
                 "amount": 20,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 20,
                 "properties": {
                     "variant": {
@@ -717,7 +717,7 @@
             },
             "p-text-field-wrapper": {
                 "amount": 5,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 5,
                 "properties": {
                     "label": {
@@ -785,7 +785,7 @@
             },
             "p-select-wrapper": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "label": {
@@ -847,8 +847,8 @@
             },
             "p-divider": {
                 "amount": 6,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "color": {
                         "amount": 6,
@@ -875,8 +875,8 @@
             },
             "p-popover": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "direction": {
                         "amount": 1,
@@ -901,7 +901,7 @@
             },
             "p-link-social": {
                 "amount": 12,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 12,
                 "properties": {
                     "icon": {
@@ -943,7 +943,7 @@
             },
             "p-modal": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "disableCloseButton": {
@@ -977,7 +977,7 @@
             },
             "p-button-group": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "direction": {
@@ -991,7 +991,7 @@
             },
             "p-text-list": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "listType": {
@@ -1017,14 +1017,14 @@
             },
             "p-text-list-item": {
                 "amount": 3,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 3,
                 "properties": {},
                 "unusedProperties": []
             },
             "p-grid": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "direction": {
@@ -1050,7 +1050,7 @@
             },
             "p-grid-item": {
                 "amount": 7,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 7,
                 "properties": {
                     "size": {

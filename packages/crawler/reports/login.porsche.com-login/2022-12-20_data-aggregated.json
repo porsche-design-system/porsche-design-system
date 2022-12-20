@@ -9,7 +9,7 @@
         "tagNames": {
             "p-content-wrapper": {
                 "amount": 2,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 2,
                 "properties": {
                     "width": {
@@ -36,7 +36,7 @@
             },
             "p-flex": {
                 "amount": 11,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 11,
                 "properties": {
                     "inline": {
@@ -83,7 +83,7 @@
             },
             "p-flex-item": {
                 "amount": 34,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 30,
                 "properties": {
                     "width": {
@@ -134,8 +134,8 @@
             },
             "p-marque": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "trademark": {
                         "amount": 1,
@@ -163,7 +163,7 @@
             },
             "p-headline": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "variant": {
@@ -203,7 +203,7 @@
             },
             "p-text-field-wrapper": {
                 "amount": 4,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 4,
                 "properties": {
                     "label": {
@@ -270,7 +270,7 @@
             },
             "p-button": {
                 "amount": 3,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 3,
                 "properties": {
                     "tabbable": {
@@ -330,7 +330,7 @@
             "p-icon": {
                 "amount": 10,
                 "hostPdsComponent": 9,
-                "children": 0,
+                "children": null,
                 "properties": {
                     "name": {
                         "amount": 10,
@@ -376,7 +376,7 @@
             },
             "p-select-wrapper": {
                 "amount": 1,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 1,
                 "properties": {
                     "label": {
@@ -438,8 +438,8 @@
             },
             "p-divider": {
                 "amount": 4,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "color": {
                         "amount": 4,
@@ -464,7 +464,7 @@
             },
             "p-text": {
                 "amount": 3,
-                "hostPdsComponent": 0,
+                "hostPdsComponent": null,
                 "children": 3,
                 "properties": {
                     "tag": {
@@ -609,8 +609,8 @@
             },
             "p-popover": {
                 "amount": 1,
-                "hostPdsComponent": 0,
-                "children": 0,
+                "hostPdsComponent": null,
+                "children": null,
                 "properties": {
                     "direction": {
                         "amount": 1,
@@ -682,7 +682,7 @@
                 "tagNames": {
                     "p-content-wrapper": {
                         "amount": 2,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 2,
                         "properties": {
                             "width": {
@@ -709,7 +709,7 @@
                     },
                     "p-flex": {
                         "amount": 11,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 11,
                         "properties": {
                             "inline": {
@@ -756,7 +756,7 @@
                     },
                     "p-flex-item": {
                         "amount": 34,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 30,
                         "properties": {
                             "width": {
@@ -807,8 +807,8 @@
                     },
                     "p-marque": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "trademark": {
                                 "amount": 1,
@@ -836,7 +836,7 @@
                     },
                     "p-headline": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "variant": {
@@ -876,7 +876,7 @@
                     },
                     "p-text-field-wrapper": {
                         "amount": 4,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 4,
                         "properties": {
                             "label": {
@@ -943,7 +943,7 @@
                     },
                     "p-button": {
                         "amount": 3,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 3,
                         "properties": {
                             "tabbable": {
@@ -1003,7 +1003,7 @@
                     "p-icon": {
                         "amount": 10,
                         "hostPdsComponent": 9,
-                        "children": 0,
+                        "children": null,
                         "properties": {
                             "name": {
                                 "amount": 10,
@@ -1049,7 +1049,7 @@
                     },
                     "p-select-wrapper": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 1,
                         "properties": {
                             "label": {
@@ -1111,8 +1111,8 @@
                     },
                     "p-divider": {
                         "amount": 4,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "color": {
                                 "amount": 4,
@@ -1137,7 +1137,7 @@
                     },
                     "p-text": {
                         "amount": 3,
-                        "hostPdsComponent": 0,
+                        "hostPdsComponent": null,
                         "children": 3,
                         "properties": {
                             "tag": {
@@ -1282,8 +1282,8 @@
                     },
                     "p-popover": {
                         "amount": 1,
-                        "hostPdsComponent": 0,
-                        "children": 0,
+                        "hostPdsComponent": null,
+                        "children": null,
                         "properties": {
                             "direction": {
                                 "amount": 1,
