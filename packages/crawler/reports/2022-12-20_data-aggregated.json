@@ -178,7 +178,7 @@
                         "values": {
                             "row": 21,
                             "column": 5,
-                            "[object Object]": 1,
+                            "{\"base\":\"column\",\"xs\":\"row\"}": 1,
                             "{ base: 'row', xs: 'column' }": 3
                         }
                     },
@@ -241,7 +241,8 @@
                     "aria": {
                         "amount": 3,
                         "values": {
-                            "[object Object]": 3
+                            "{\"aria-label\":\"Porsche.com Homepage\"}": 2,
+                            "{\"aria-label\":\"Porsche Shop\"}": 1
                         }
                     }
                 },
@@ -411,7 +412,7 @@
                     "aria": {
                         "amount": 3,
                         "values": {
-                            "[object Object]": 3
+                            "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}": 3
                         }
                     }
                 },
@@ -511,7 +512,7 @@
                         "amount": 2,
                         "values": {
                             "{\"aria-expanded\":false,\"aria-label\":\"Information icon\"}": 1,
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht\",\"aria-expanded\":\"false\",\"aria-haspopup\":\"dialog\"}": 1
                         }
                     }
                 },
@@ -618,7 +619,10 @@
                         "amount": 52,
                         "values": {
                             "auto": 36,
-                            "[object Object]": 4,
+                            "{\"base\":\"half\",\"xs\":\"full\"}": 1,
+                            "{\"base\":\"auto\",\"s\":\"half\"}": 1,
+                            "{\"base\":\"two-third\",\"xs\":\"full\"}": 1,
+                            "{\"base\":\"one-third\",\"xs\":\"auto\"}": 1,
                             "{base: 'full', s: 'auto'}": 3,
                             "full": 2,
                             "{ base: 'full', s: 'half', m: 'one-third' }": 7
@@ -889,7 +893,7 @@
                     "aria": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Information icon\"}": 1
                         }
                     }
                 },
@@ -979,7 +983,7 @@
                     "direction": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"base\":\"column\",\"xs\":\"row\"}": 1
                         }
                     }
                 },
@@ -1038,7 +1042,7 @@
                     "gutter": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"base\":16,\"s\":24,\"m\":36}": 1
                         }
                     }
                 },

@@ -36,9 +36,7 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
-                            }
+                            "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
                         "slot": "<a href=\"/\">...</a>"
                     }
@@ -59,9 +57,7 @@
                             "size": "responsive",
                             "href": "/de/de-DE",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Porsche Shop"
-                            }
+                            "aria": "{\"aria-label\":\"Porsche Shop\"}"
                         }
                     }
                 },
@@ -165,11 +161,7 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light",
-                            "aria": {
-                                "aria-label": "Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht",
-                                "aria-expanded": "false",
-                                "aria-haspopup": "dialog"
-                            }
+                            "aria": "{\"aria-label\":\"Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht\",\"aria-expanded\":\"false\",\"aria-haspopup\":\"dialog\"}"
                         }
                     }
                 },
@@ -701,9 +693,7 @@
                             "hideLabel": false,
                             "theme": "light",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
-                            }
+                            "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
                         "slot": "<a href=\"/\">...</a>"
                     }
@@ -1075,9 +1065,7 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany"
-                            }
+                            "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
                         "slot": "<a href=\"/\">...</a>"
                     }
@@ -1547,10 +1535,7 @@
                 {
                     "p-button-group": {
                         "properties": {
-                            "direction": {
-                                "base": "column",
-                                "xs": "row"
-                            }
+                            "direction": "{\"base\":\"column\",\"xs\":\"row\"}"
                         },
                         "slot": "<sl-p-button class=\"hydrated\">Anmelden mit Porsche ID</sl-p-button><sl-p-button class=\"hydrated\">Schließen</sl-p-button>"
                     }

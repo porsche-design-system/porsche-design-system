@@ -73,7 +73,7 @@
                     "aria": {
                         "amount": 3,
                         "values": {
-                            "[object Object]": 3
+                            "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}": 3
                         }
                     }
                 },
@@ -142,7 +142,7 @@
                     "aria": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Porsche Shop\"}": 1
                         }
                     }
                 },
@@ -348,7 +348,7 @@
                     "aria": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht\",\"aria-expanded\":\"false\",\"aria-haspopup\":\"dialog\"}": 1
                         }
                     }
                 },
@@ -438,7 +438,7 @@
                     "direction": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"base\":\"column\",\"xs\":\"row\"}": 1
                         }
                     }
                 },
@@ -620,7 +620,7 @@
                             "aria": {
                                 "amount": 3,
                                 "values": {
-                                    "[object Object]": 3
+                                    "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}": 3
                                 }
                             }
                         },
@@ -689,7 +689,7 @@
                             "aria": {
                                 "amount": 1,
                                 "values": {
-                                    "[object Object]": 1
+                                    "{\"aria-label\":\"Porsche Shop\"}": 1
                                 }
                             }
                         },
@@ -895,7 +895,7 @@
                             "aria": {
                                 "amount": 1,
                                 "values": {
-                                    "[object Object]": 1
+                                    "{\"aria-label\":\"Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht\",\"aria-expanded\":\"false\",\"aria-haspopup\":\"dialog\"}": 1
                                 }
                             }
                         },
@@ -985,7 +985,7 @@
                             "direction": {
                                 "amount": 1,
                                 "values": {
-                                    "[object Object]": 1
+                                    "{\"base\":\"column\",\"xs\":\"row\"}": 1
                                 }
                             }
                         },

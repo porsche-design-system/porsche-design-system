@@ -73,10 +73,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": {
-                                "base": "half",
-                                "xs": "full"
-                            },
+                            "width": "{\"base\":\"half\",\"xs\":\"full\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 1,
@@ -89,10 +86,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": {
-                                "base": "auto",
-                                "s": "half"
-                            },
+                            "width": "{\"base\":\"auto\",\"s\":\"half\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -117,10 +111,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": {
-                                "base": "two-third",
-                                "xs": "full"
-                            },
+                            "width": "{\"base\":\"two-third\",\"xs\":\"full\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 1,
@@ -133,10 +124,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": {
-                                "base": "one-third",
-                                "xs": "auto"
-                            },
+                            "width": "{\"base\":\"one-third\",\"xs\":\"auto\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -405,10 +393,7 @@
                         "properties": {
                             "inline": false,
                             "wrap": "nowrap",
-                            "direction": {
-                                "base": "column",
-                                "xs": "row"
-                            },
+                            "direction": "{\"base\":\"column\",\"xs\":\"row\"}",
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
                             "alignContent": "stretch"
@@ -974,9 +959,7 @@
                         "properties": {
                             "direction": "bottom",
                             "description": "Sie erhalten einen Link per E-Mail, über den Sie sich direkt anmelden können, ohne ein Passwort einzugeben.",
-                            "aria": {
-                                "aria-label": "Information icon"
-                            }
+                            "aria": "{\"aria-label\":\"Information icon\"}"
                         }
                     }
                 },

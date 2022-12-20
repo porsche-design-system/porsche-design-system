@@ -194,7 +194,7 @@
                     "aria": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Porsche.com Homepage\"}": 1
                         }
                     }
                 },
@@ -704,7 +704,7 @@
                             "aria": {
                                 "amount": 1,
                                 "values": {
-                                    "[object Object]": 1
+                                    "{\"aria-label\":\"Porsche.com Homepage\"}": 1
                                 }
                             }
                         },

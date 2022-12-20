@@ -56,9 +56,7 @@
                             "size": "responsive",
                             "href": "https://www.porsche.com/germany",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Porsche.com Homepage"
-                            }
+                            "aria": "{\"aria-label\":\"Porsche.com Homepage\"}"
                         }
                     }
                 },

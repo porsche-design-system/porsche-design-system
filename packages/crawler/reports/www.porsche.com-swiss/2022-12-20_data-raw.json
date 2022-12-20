@@ -1512,9 +1512,7 @@
                             "size": "responsive",
                             "href": "https://www.porsche.com/swiss/de",
                             "target": "_self",
-                            "aria": {
-                                "aria-label": "Porsche.com Homepage"
-                            }
+                            "aria": "{\"aria-label\":\"Porsche.com Homepage\"}"
                         }
                     }
                 },
@@ -1787,11 +1785,7 @@
                         "properties": {
                             "direction": "row",
                             "wrap": "wrap",
-                            "gutter": {
-                                "base": 16,
-                                "s": 24,
-                                "m": 36
-                            }
+                            "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
                         },
                         "slot": "<pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">...</pnav-footer-p-grid-item>"
                     }

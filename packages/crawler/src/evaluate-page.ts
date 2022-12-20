@@ -67,29 +67,16 @@ export const evaluatePage = async (
       ) => {
         const pEl = el as PComponentElement;
 
-        // currently we have a circular object, for login.porsche.com, 'p-select-wrapper-dropdown'.selectRef
-        // therefore we need to stringify it explicitly, with checking circular dependencies (if there are any)
-        // TODO: discuss with team if there's a better solution
-        const stringifyCircular = (obj: PComponentPropertyValue): string | PComponentPropertyValue => {
-          try {
-            JSON.stringify(obj);
-            return obj;
-          } catch (e) {
-            // if there are circular dependencies - stringify object differently
-            return Object.prototype.toString.call(obj);
-          }
-        };
-
-        const checkCircularIfObject = (val: PComponentPropertyValue): PComponentPropertyValue | string => {
-          // check if it's an object and stringify circular
-          return typeof val === 'object' && !Array.isArray(val) && val !== null ? stringifyCircular(val) : val;
+        const stringifyIfObject = (val: PComponentPropertyValue): PComponentPropertyValue | string => {
+          // check if it's an object and stringify
+          return typeof val === 'object' ? JSON.stringify(val) : val;
         };
 
         return allPdsPropertiesForComponentName.reduce((result, propName) => {
           const propValue = pEl[propName as PComponentPropertyName] as PComponentPropertyValue;
           return {
             ...result,
-            [propName]: checkCircularIfObject(propValue),
+            [propName]: stringifyIfObject(propValue),
           };
         }, {});
       };

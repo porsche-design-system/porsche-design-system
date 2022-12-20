@@ -56,7 +56,7 @@
                         "values": {
                             "column": 5,
                             "row": 5,
-                            "[object Object]": 1
+                            "{\"base\":\"column\",\"xs\":\"row\"}": 1
                         }
                     },
                     "justifyContent": {
@@ -90,7 +90,10 @@
                         "amount": 34,
                         "values": {
                             "auto": 30,
-                            "[object Object]": 4
+                            "{\"base\":\"half\",\"xs\":\"full\"}": 1,
+                            "{\"base\":\"auto\",\"s\":\"half\"}": 1,
+                            "{\"base\":\"two-third\",\"xs\":\"full\"}": 1,
+                            "{\"base\":\"one-third\",\"xs\":\"auto\"}": 1
                         }
                     },
                     "offset": {
@@ -624,7 +627,7 @@
                     "aria": {
                         "amount": 1,
                         "values": {
-                            "[object Object]": 1
+                            "{\"aria-label\":\"Information icon\"}": 1
                         }
                     }
                 },
@@ -726,7 +729,7 @@
                                 "values": {
                                     "column": 5,
                                     "row": 5,
-                                    "[object Object]": 1
+                                    "{\"base\":\"column\",\"xs\":\"row\"}": 1
                                 }
                             },
                             "justifyContent": {
@@ -760,7 +763,10 @@
                                 "amount": 34,
                                 "values": {
                                     "auto": 30,
-                                    "[object Object]": 4
+                                    "{\"base\":\"half\",\"xs\":\"full\"}": 1,
+                                    "{\"base\":\"auto\",\"s\":\"half\"}": 1,
+                                    "{\"base\":\"two-third\",\"xs\":\"full\"}": 1,
+                                    "{\"base\":\"one-third\",\"xs\":\"auto\"}": 1
                                 }
                             },
                             "offset": {
@@ -1294,7 +1300,7 @@
                             "aria": {
                                 "amount": 1,
                                 "values": {
-                                    "[object Object]": 1
+                                    "{\"aria-label\":\"Information icon\"}": 1
                                 }
                             }
                         },
