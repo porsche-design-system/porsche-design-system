@@ -63,7 +63,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
           const eslintAnnotation =
             component === 'p-headline' && key === 'color'
-              ? " // eslint-disable-line vue/require-valid-default-prop"
+              ? ' // eslint-disable-line vue/require-valid-default-prop'
               : '';
 
           return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
@@ -103,10 +103,10 @@ ${defaultPropsWithValue}
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
 
     const content = `
-${[props, pdsComponentRef, defineEmits].join('\n')}
+${[props, pdsComponentRef, defineEmits].filter((x) => x).join('\n')}
 
 onMounted(() => {
-  ${[syncProperties, addEventListener].join('\n  ')}
+  ${[syncProperties, addEventListener].filter((x) => x).join('\n  ')}
 });
 
 onUpdated(() => {
@@ -135,10 +135,6 @@ onUpdated(() => {
   public getModifiedContent(content: string): string {
     const [, scriptContent, templateContent] = /(.*)(<template>.*)/s.exec(content) || [];
     const indentedScriptContent = scriptContent.split('\n').join('\n  ');
-
-    if(content.includes('p-button-pure')){
-      console.log(scriptContent)
-    }
 
     return `<script setup lang="ts">
   ${indentedScriptContent}
