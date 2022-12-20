@@ -67,8 +67,6 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
               : '';
 
           return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
-        } else {
-          return undefined;
         }
       })
       .filter((x) => x)
