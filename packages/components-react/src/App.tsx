@@ -4,7 +4,7 @@ import { routes } from './routes';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(useLocation().pathname);
+  const [selected, setSelected] = useState('');
 
   return (
     <>

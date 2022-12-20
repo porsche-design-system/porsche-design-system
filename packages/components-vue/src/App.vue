@@ -5,7 +5,7 @@
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 
   const options = routes.map(({ path, name }) => ({ path, name }));
-  const selected = ref(options[0].path);
+  const selected = ref();
 
   const onChange = (e: Event) => {
     const { value } = e.target as HTMLSelectElement;
