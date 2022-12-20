@@ -31,8 +31,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     // TODO: Abstract Wrapper generator public to handle indentation
-    return `<script setup lang="ts">
-${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n')}`;
+    return [importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -67,10 +66,10 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
 
           const eslintAnnotation =
             component === 'p-headline' && key === 'color'
-              ? " // eslint-disable-line vue/require-valid-default-prop';\n"
+              ? " // eslint-disable-line vue/require-valid-default-prop';"
               : '';
 
-          return `${key}: ${defaultPropValue},${eslintAnnotation}`;
+          return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
         } else {
           return undefined;
         }
@@ -84,11 +83,12 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
     const hasDefaultProps = defaultPropsWithValue.length;
 
     const defineProps = `defineProps<${propsName}>()`;
+
     const props = `const props = ${
       hasDefaultProps
         ? `withDefaults(${defineProps}, {
-   ${defaultPropsWithValue}
-  })`
+${defaultPropsWithValue}
+})`
         : defineProps
     };`;
 
@@ -107,7 +107,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
 
         return `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
       })
-      .join('');
+      .join('\n  ');
 
     const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
 
@@ -129,7 +129,6 @@ onUpdated(() => {
       : `<component ${componentAttr} />`;
 
     return `const webComponentTag = getPrefixedTagName('${component}');${hasProps ? content : ''}
-</script>
 
 <template>
   ${vueComponent}
@@ -140,6 +139,19 @@ onUpdated(() => {
     return `export { default as P${pascalCase(componentFileNameWithoutExtension.replace('Wrapper', ''))} } from './${
       componentSubDir ? componentSubDir + '/' : ''
     }${componentFileNameWithoutExtension}.vue';`;
+  }
+
+  public getModifiedContent(content: string): string {
+    const [, scriptContent, templateContent] = /(.*)(<template>.*)/s.exec(content) || [];
+    const indentedScriptcontent = scriptContent
+      .split('\n')
+      .join('\n  ');
+
+    return `<script setup lang="ts">
+  ${indentedScriptcontent}
+</script>
+
+${templateContent}`;
   }
 
   private generatePropsName(component: TagName): string {
