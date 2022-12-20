@@ -1,10 +1,7 @@
-export type FontSize = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
-export type FontWeight = 'thin' | 'regular' | 'semiBold' | 'bold';
-export type FontSizeLineHeight = { fontSize: string; lineHeight: string };
-export type FontBehavior = {
-  WebkitTextSizeAdjust: 'none';
-  textSizeAdjust: 'none';
-};
+export type FontSize = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+export type FontWeight = 'regular' | 'semiBold' | 'bold';
+export type FontStyle = 'normal' | 'italic';
+
 export type FontHyphenation = {
   overflowWrap: 'break-word';
   hyphens: 'auto';

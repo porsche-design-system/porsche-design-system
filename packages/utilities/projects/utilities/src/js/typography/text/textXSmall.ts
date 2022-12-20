@@ -1,15 +1,6 @@
-import {
-  fontBehavior,
-  fontFamily,
-  fontHyphenation,
-  fontLineHeight,
-  fontStyle,
-  fontVariant,
-  fontWeight,
-} from '../../font';
+import { fontFamily, fontHyphenation, fontLineHeight, fontSize, fontStyle, fontVariant, fontWeight } from '../../font';
 
 export const textXSmall = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.regular} 0.75rem/${fontLineHeight} ${fontFamily}`,
-  ...fontBehavior,
+  font: `${fontStyle.normal} ${fontVariant} ${fontWeight.regular} ${fontSize.fluid.textXSmall}/${fontLineHeight} ${fontFamily}`,
   ...fontHyphenation,
 };

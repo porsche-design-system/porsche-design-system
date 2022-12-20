@@ -1,4 +1,3 @@
-import { fontBehavior } from './font-behavior';
 import { fontFamily } from './font-family';
 import { fontHyphenation } from './font-hyphenation';
 import { fontLineHeight } from './font-line-height';
@@ -7,4 +6,4 @@ import { fontWeight } from './font-weight';
 import { fontStyle } from './font-style';
 import { fontVariant } from './font-variant';
 
-export { fontBehavior, fontFamily, fontHyphenation, fontLineHeight, fontSize, fontWeight, fontStyle, fontVariant };
+export { fontFamily, fontHyphenation, fontLineHeight, fontSize, fontWeight, fontStyle, fontVariant };
