@@ -44,6 +44,7 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
       - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/jsdom-polyfill/node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
+      - components-vue-node-modules:/opt/porsche-design-system-app/packages/components-vue/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-app/packages/fallbacks/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
@@ -74,6 +75,7 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
       - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-react-jsdom-polyfill-node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
+      - components-vue-node-modules:/opt/porsche-design-system-volumes/components-vue-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-volumes/fallbacks-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
@@ -104,6 +106,7 @@ volumes:
   components-react-uxpin-wrapper-node-modules:
   components-react-jsdom-polyfill-node-modules:
   components-react-nextjs-node-modules:
+  components-vue-node-modules:
   email-node-modules:
   fallbacks-node-modules:
   fonts-node-modules:
