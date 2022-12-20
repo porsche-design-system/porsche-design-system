@@ -2,7 +2,6 @@
   import {
     PorscheDesignSystemProvider,
     PAccordion,
-    PBanner,
     PButton,
     PButtonGroup,
     PButtonPure,
@@ -23,7 +22,6 @@
     PLinkSocial,
     PLinkTile,
     PMarque,
-    PModal,
     PPagination,
     PPopover,
     PRadioButtonWrapper,
@@ -52,7 +50,6 @@
     PTextList,
     PTextListItem,
     PTextareaWrapper,
-    PToast,
   } from '@porsche-design-system/components-vue';
 </script>
 
