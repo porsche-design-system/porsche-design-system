@@ -91,7 +91,7 @@ export class DataStructureBuilder {
         for (const nonPrimitiveType of nonPrimitiveTypes) {
           // Extract typeDefinition of every nonPrimitiveType found before
           const [, typeDef] =
-            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) ?? [];
+            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) || [];
 
           if (typeDef && this.valueCanBeObject(typeDef, sharedTypes)) {
             result = true;

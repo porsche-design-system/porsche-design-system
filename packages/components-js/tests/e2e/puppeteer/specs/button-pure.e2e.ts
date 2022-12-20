@@ -28,7 +28,7 @@ const getHost = () => selectNode(page, 'p-button-pure');
 const getButton = () => selectNode(page, 'p-button-pure >>> button');
 
 const initButtonPure = (opts?: { isLoading?: boolean; isDisabled?: boolean; withSubline?: boolean }): Promise<void> => {
-  const { isLoading = false, isDisabled = false, withSubline = false } = opts ?? {};
+  const { isLoading = false, isDisabled = false, withSubline = false } = opts || {};
   const loading = isLoading ? `loading="${isLoading}"` : '';
   const disabled = isDisabled ? `disabled="${isDisabled}"` : '';
 

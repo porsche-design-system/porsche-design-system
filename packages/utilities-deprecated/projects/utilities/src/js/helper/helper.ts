@@ -6,7 +6,7 @@ const FONT_SIZE_REGEX = /^(\d+(?:\.\d+)?)(rem|px)$/;
 const REM_BASE = 16;
 
 export const pxToRem = (px: string): string => {
-  const [, fontSizeValue, fontSizeUnit] = px?.match(FONT_SIZE_REGEX) ?? [];
+  const [, fontSizeValue, fontSizeUnit] = px?.match(FONT_SIZE_REGEX) || [];
   if (fontSizeUnit !== 'px' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 16px');
   } else {
@@ -15,7 +15,7 @@ export const pxToRem = (px: string): string => {
 };
 
 export const remToPx = (rem: string): string => {
-  const [, fontSizeValue, fontSizeUnit] = rem?.match(FONT_SIZE_REGEX) ?? [];
+  const [, fontSizeValue, fontSizeUnit] = rem?.match(FONT_SIZE_REGEX) || [];
   if (fontSizeUnit !== 'rem' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 1.5rem');
   } else {
@@ -40,7 +40,7 @@ export const generateFontDefinition = (
 };
 
 export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
-  const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
+  const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) || [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');
   } else if (fontSizeValue === undefined || fontSizeValue === '0') {
@@ -56,7 +56,7 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
 
 // keep unused parameter for backwards compatibility
 export const calculateLineHeight = (fontSize: string): string => {
-  const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
+  const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) || [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error(`font size needs to be value + px or rem and not 0, e.g. 15rem or 16px, received: '${fontSize}'`);
   }

@@ -75,7 +75,7 @@ describe('select-wrapper filter', () => {
   };
 
   const initSelect = (opts?: InitOptions): Promise<void> => {
-    const { amount = 3, isNative = false, markupBefore = '', disabledIndex, selectedIndex } = opts ?? {};
+    const { amount = 3, isNative = false, markupBefore = '', disabledIndex, selectedIndex } = opts || {};
 
     const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : '', selectedIndex === idx ? 'selected' : ''].join(' ');

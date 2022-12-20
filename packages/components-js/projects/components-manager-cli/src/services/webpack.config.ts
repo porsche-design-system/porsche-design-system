@@ -17,7 +17,7 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
         .join(listItemPrefix)}`
     );
     additionalFileContents =
-      '\n\n' + additionalEntryFiles.map((file) => fs.readFileSync(file.filePath, 'utf8')).join('\n\n') ?? '';
+      '\n\n' + additionalEntryFiles.map((file) => fs.readFileSync(file.filePath, 'utf8')).join('\n\n') || '';
   }
   const tmpEntryFileContent = `export * from './${entryFile}'${additionalFileContents}`;
 

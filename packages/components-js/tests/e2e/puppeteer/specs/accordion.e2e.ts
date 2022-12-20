@@ -36,7 +36,7 @@ describe('accordion', () => {
     </script>`;
 
   const initAccordion = (opts?: InitOptions) => {
-    const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
+    const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts || {};
 
     const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt

@@ -47,7 +47,7 @@ describe('table', () => {
   };
 
   const initTable = (opts?: InitOptions): Promise<void> => {
-    const { columnAmount = 5, rowAmount = 3, isSortable = false, hasSlottedCaption = false } = opts ?? {};
+    const { columnAmount = 5, rowAmount = 3, isSortable = false, hasSlottedCaption = false } = opts || {};
 
     const script = isSortable
       ? `

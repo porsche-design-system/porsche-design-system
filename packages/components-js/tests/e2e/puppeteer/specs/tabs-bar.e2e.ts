@@ -49,7 +49,7 @@ type InitOptions = {
 };
 
 const initTabsBar = (opts?: InitOptions) => {
-  const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
+  const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts || {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const tabs = Array.from(Array(amount))

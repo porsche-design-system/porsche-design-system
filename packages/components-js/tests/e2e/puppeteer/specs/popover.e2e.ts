@@ -34,7 +34,7 @@ type InitOptions = {
   withButtonOutside?: boolean;
 };
 const initPopover = (opts?: InitOptions): Promise<void> => {
-  const { direction = 'bottom', withLink = false, withButtonOutside = false } = opts ?? {};
+  const { direction = 'bottom', withLink = false, withButtonOutside = false } = opts || {};
 
   const linkMarkup = withLink ? '<a href="#">Some Link</a>' : '';
   const buttonMarkup = withButtonOutside ? '<button>Some Button</button>' : '';

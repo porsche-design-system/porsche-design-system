@@ -24,7 +24,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
-  const { amount = 3, activeTabIndex } = opts ?? {};
+  const { amount = 3, activeTabIndex } = opts || {};
 
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))

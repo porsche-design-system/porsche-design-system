@@ -36,7 +36,7 @@ describe('select-wrapper native', () => {
       useSlottedDescription = false,
       useSlottedMessage = false,
       state = 'none',
-    } = opts ?? {};
+    } = opts || {};
 
     const label = !useSlottedLabel ? 'label="Some label"' : '';
     const description = !useSlottedDescription ? 'description="Some description"' : '';
