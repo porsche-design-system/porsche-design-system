@@ -49,7 +49,7 @@ const initBasicModal = (opts?: {
     aria,
     hasSlottedHeading,
     disableCloseButton,
-  } = opts ?? {};
+  } = opts || {};
 
   const attributes = [
     !hasSlottedHeading && `heading="${heading}"`,

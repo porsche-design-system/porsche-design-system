@@ -50,7 +50,8 @@ describe('select-wrapper dropdown', () => {
   const getDropdownOptgroup = () => selectNode(page, `${dropdownSelector} >>> .optgroup`);
   const getDropdownCheckmarkIcon = () => selectNode(page, `${dropdownSelector} >>> .icon`);
 
-  const getComboboxAriaActiveDescendant = async () => getAttribute(await getDropdownCombobox(), 'aria-activedescendant');
+  const getComboboxAriaActiveDescendant = async () =>
+    getAttribute(await getDropdownCombobox(), 'aria-activedescendant');
   const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
   const getDropdownOpacity = async () => getElementStyle(await getDropdownList(), 'opacity');
@@ -94,7 +95,7 @@ describe('select-wrapper dropdown', () => {
       selectedIndex,
       hiddenIndex,
       beginUnique,
-    } = opts ?? {};
+    } = opts || {};
 
     const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
       const attrs = [

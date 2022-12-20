@@ -32,7 +32,7 @@ describe('radio-button-wrapper', () => {
   };
 
   const initRadioButton = (opts?: InitOptions): Promise<void> => {
-    const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts ?? {};
+    const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts || {};
 
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
@@ -44,11 +44,11 @@ describe('radio-button-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-radio-button-wrapper state="${state}" ${useSlottedLabel ? '' : 'label="Some label"'}>
-          ${slottedLabel}
-          <input type="radio" />
-          ${slottedMessage}
-        </p-radio-button-wrapper>`
+      <p-radio-button-wrapper state="${state}" ${useSlottedLabel ? '' : 'label="Some label"'}>
+        ${slottedLabel}
+        <input type="radio" />
+        ${slottedMessage}
+      </p-radio-button-wrapper>`
     );
   };
 
