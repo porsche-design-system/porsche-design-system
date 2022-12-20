@@ -63,7 +63,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
 
           const eslintAnnotation =
             component === 'p-headline' && key === 'color'
-              ? " // eslint-disable-line vue/require-valid-default-prop';"
+              ? " // eslint-disable-line vue/require-valid-default-prop"
               : '';
 
           return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
@@ -121,7 +121,6 @@ onUpdated(() => {
       : `<component ${componentAttr} />`;
 
     return `const webComponentTag = getPrefixedTagName('${component}');${hasProps ? content : ''}
-
 <template>
   ${vueComponent}
 </template>`;
@@ -136,6 +135,10 @@ onUpdated(() => {
   public getModifiedContent(content: string): string {
     const [, scriptContent, templateContent] = /(.*)(<template>.*)/s.exec(content) || [];
     const indentedScriptContent = scriptContent.split('\n').join('\n  ');
+
+    if(content.includes('p-button-pure')){
+      console.log(scriptContent)
+    }
 
     return `<script setup lang="ts">
   ${indentedScriptContent}
