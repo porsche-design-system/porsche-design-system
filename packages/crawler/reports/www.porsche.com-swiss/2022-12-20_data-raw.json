@@ -27,7 +27,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Close popup"
                     }
                 },
                 {
@@ -50,7 +51,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Taycan GTS"
                     }
                 },
                 {
@@ -61,7 +63,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "(Ab)  179.800,00 CHF inkl. MWst."
                     }
                 },
                 {
@@ -73,7 +76,8 @@
                             "theme": "light",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "children": "Diese Konfiguration"
                     }
                 },
                 {
@@ -88,17 +92,20 @@
                 },
                 {
                     "p-text-list-item": {
-                        "properties": {}
+                        "properties": {},
+                        "children": "karminrot"
                     }
                 },
                 {
                     "p-text-list-item": {
-                        "properties": {}
+                        "properties": {},
+                        "children": "21-Zoll RS Spyder Design Räder"
                     }
                 },
                 {
                     "p-text-list-item": {
-                        "properties": {}
+                        "properties": {},
+                        "children": "Interieur-Paket GTS karminrot"
                     }
                 },
                 {
@@ -126,7 +133,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Soul, electrified."
                     }
                 },
                 {
@@ -139,7 +147,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Der Taycan GTS."
                     }
                 },
                 {
@@ -167,7 +176,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Highlights für Porsche Fans und Fahrer im Shop."
                     }
                 },
                 {
@@ -195,7 +205,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Finden Sie Ihr Traumfahrzeug – Neu oder gebraucht."
                     }
                 },
                 {
@@ -223,7 +234,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Die 911 GTS Modelle."
                     }
                 },
                 {
@@ -256,7 +268,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Modelle"
                     }
                 },
                 {
@@ -282,7 +295,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "718"
                     }
                 },
                 {
@@ -322,7 +336,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "718 konfigurieren"
                     }
                 },
                 {
@@ -350,7 +365,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "911"
                     }
                 },
                 {
@@ -390,7 +406,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "911 konfigurieren"
                     }
                 },
                 {
@@ -418,7 +435,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Taycan"
                     }
                 },
                 {
@@ -458,7 +476,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Taycan konfigurieren"
                     }
                 },
                 {
@@ -486,7 +505,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Panamera"
                     }
                 },
                 {
@@ -526,7 +546,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Panamera konfigurieren"
                     }
                 },
                 {
@@ -554,7 +575,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Macan"
                     }
                 },
                 {
@@ -594,7 +616,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Macan konfigurieren"
                     }
                 },
                 {
@@ -622,7 +645,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Cayenne"
                     }
                 },
                 {
@@ -662,7 +686,8 @@
                             "icon": "external",
                             "hideLabel": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Cayenne konfigurieren"
                     }
                 },
                 {
@@ -685,7 +710,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Swiss Benefits"
                     }
                 },
                 {
@@ -698,7 +724,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Exklusiv in der Schweiz - exklusiv für Sie. Freuen Sie sich beim Kauf eines Neuwagens in einem Schweizer Porsche Zentrum auf besondere Vorteile. Für detaillierte Informationen steht Ihnen Ihr Porsche Zentrum gerne zur Verfügung."
                     }
                 },
                 {
@@ -711,7 +738,8 @@
                             "target": "",
                             "rel": "noreferrer",
                             "hideLabel": false
-                        }
+                        },
+                        "children": "Zu den Vorteilen"
                     }
                 },
                 {
@@ -734,7 +762,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Finden Sie Ihren Porsche Neu- oder Gebrauchtwagen."
                     }
                 },
                 {
@@ -747,7 +776,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "So finden Sie ganz einfach Ihren Traum Porsche. Geben Sie Ihren Standort ein und stöbern Sie in den besten Fahrzeugangeboten in Ihrer Nähe."
                     }
                 },
                 {
@@ -808,7 +838,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Online Shop Highlights"
                     }
                 },
                 {
@@ -829,7 +860,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Schlüsselanhänger Wappen"
                     }
                 },
                 {
@@ -842,7 +874,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Schlüsselanhänger aus Echtleder in Form des Porsche Wappens."
                     }
                 },
                 {
@@ -856,7 +889,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Schlüsselanhänger"
                     }
                 },
                 {
@@ -880,7 +914,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Porsche Thermobecher"
                     }
                 },
                 {
@@ -893,7 +928,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Hochwertiger Thermo-Isolierbecher aus doppelwandigem Edelstahl."
                     }
                 },
                 {
@@ -907,7 +943,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Thermobecher"
                     }
                 },
                 {
@@ -931,7 +968,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "911 Soundbar – Limited Edition"
                     }
                 },
                 {
@@ -944,7 +982,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "2.1-Virtual-Surround-System mit Original-Abgasanlage des 911 GT3 als Subwoofer-Erweiterung."
                     }
                 },
                 {
@@ -958,7 +997,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Soundbar"
                     }
                 },
                 {
@@ -982,7 +1022,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "50Y Sunglasses P´8478"
                     }
                 },
                 {
@@ -995,7 +1036,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Porsche Design Pilotenbrille für Damen und Herren mit polarisierten Base-2-Curve-Gläsern und Wechselgläsern. "
                     }
                 },
                 {
@@ -1009,7 +1051,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Sonnenbrille"
                     }
                 },
                 {
@@ -1033,7 +1076,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Roadster Hardcase 4W Trolley S"
                     }
                 },
                 {
@@ -1046,7 +1090,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Kleiner Designer-Trolley aus leichtem Kunststoff mit 4 Rädern im exklusiven Design."
                     }
                 },
                 {
@@ -1060,7 +1105,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Trolley"
                     }
                 },
                 {
@@ -1084,7 +1130,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Trainingsjacke – RS 2.7"
                     }
                 },
                 {
@@ -1097,7 +1144,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Sportlich-moderne Trainingsjacke für Herren mit Stehkragen und RS 2.7 Druck."
                     }
                 },
                 {
@@ -1111,7 +1159,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Trainingsjacke"
                     }
                 },
                 {
@@ -1135,7 +1184,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "50Y Cardholder 4"
                     }
                 },
                 {
@@ -1148,7 +1198,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Exklusives Visitenkartenetui für Herren aus Leder. 50Y Porsche Design Limited Edition."
                     }
                 },
                 {
@@ -1162,7 +1213,8 @@
                             "icon": "",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Cardholder"
                     }
                 },
                 {
@@ -1205,7 +1257,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Entdecken"
                     }
                 },
                 {
@@ -1477,7 +1530,8 @@
                             "icon": "arrow-head-right",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Skip to main content"
                     }
                 },
                 {
@@ -1552,7 +1606,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "718"
                     }
                 },
                 {
@@ -1565,7 +1620,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "911"
                     }
                 },
                 {
@@ -1578,7 +1634,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Taycan"
                     }
                 },
                 {
@@ -1591,7 +1648,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Panamera"
                     }
                 },
                 {
@@ -1604,7 +1662,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Macan"
                     }
                 },
                 {
@@ -1617,7 +1676,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Cayenne"
                     }
                 },
                 {
@@ -1667,7 +1727,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Shop"
                     }
                 },
                 {
@@ -1752,7 +1813,8 @@
                             "color": "inherit",
                             "ellipsis": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "My Porsche"
                     }
                 },
                 {
@@ -1862,7 +1924,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Aktuelle Region / Sprache"
                     }
                 },
                 {
@@ -1913,7 +1976,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Newsletter"
                     }
                 },
                 {
@@ -1926,7 +1990,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Aktuelle Nachrichten direkt in Ihrem Posteingang"
                     }
                 },
                 {
@@ -1938,7 +2003,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "children": "Abonnieren"
                     }
                 },
                 {
@@ -1962,7 +2028,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Kontakt"
                     }
                 },
                 {
@@ -1975,7 +2042,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Haben Sie Fragen?"
                     }
                 },
                 {
@@ -1987,7 +2055,8 @@
                             "theme": "dark",
                             "target": "_self",
                             "hideLabel": false
-                        }
+                        },
+                        "children": "Kontakt Formular"
                     }
                 },
                 {
@@ -2011,7 +2080,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Social Media"
                     }
                 },
                 {
@@ -2024,7 +2094,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Treten Sie mit uns über die sozialen Medien in Kontakt."
                     }
                 },
                 {
@@ -2340,7 +2411,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Unternehmen"
                     }
                 },
                 {
@@ -2356,7 +2428,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Auf einen Blick"
                     }
                 },
                 {
@@ -2387,7 +2460,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Nachhaltigkeit"
                     }
                 },
                 {
@@ -2418,7 +2492,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Karriere"
                     }
                 },
                 {
@@ -2449,7 +2524,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Partner Forum"
                     }
                 },
                 {
@@ -2480,7 +2556,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Gesellschaften & Dienstleistungen"
                     }
                 },
                 {
@@ -2511,7 +2588,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Presse"
                     }
                 },
                 {
@@ -2542,7 +2620,8 @@
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
-                        }
+                        },
+                        "children": "Kontakt"
                     }
                 },
                 {
@@ -2607,7 +2686,8 @@
                             "color": "default",
                             "ellipsis": false,
                             "theme": "dark"
-                        }
+                        },
+                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 169 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km "
                     }
                 },
                 {

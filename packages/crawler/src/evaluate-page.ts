@@ -34,19 +34,16 @@ export const evaluatePage = async (
         return children.concat(children.map(getAllChildElements).flat());
       };
 
-      const getSlotInfo = (el: Element): string | null =>
-        el.shadowRoot
-          ?.querySelector('slot')
-          ?.assignedElements()
-          ?.reduce((result, slotEl) => {
-            if (slotEl.children.length) {
-              const copy = slotEl.cloneNode(true) as Element;
-              // we save only the highest dom level in the reports, in order not to make them too big
-              copy.innerHTML = '(the content was stripped)';
-              return result + copy.outerHTML;
-            }
-            return result + slotEl.outerHTML;
-          }, '' as string) || null;
+      const getChildren = (el: Element): string | null =>
+        Array.from(el.children).reduce((result, slotEl) => {
+          if (slotEl.children.length) {
+            const copy = slotEl.cloneNode(true) as Element;
+            // we save only the highest dom level in the reports, in order not to make them too big
+            copy.innerHTML = '(the content was stripped)';
+            return result + copy.outerHTML;
+          }
+          return result + slotEl.outerHTML;
+        }, '' as string) || el.textContent;
 
       const getHostPdsComponent = (el: Element, prefix: string): TagName | null => {
         const rootNode = (el.getRootNode() as ShadowRoot).host;
@@ -89,7 +86,7 @@ export const evaluatePage = async (
             throw new Error('Could not find component name');
           }
 
-          const slotInfo = getSlotInfo(el);
+          const slotInfo = getChildren(el);
           const hostPdsComponent = getHostPdsComponent(el, prefix);
 
           return {

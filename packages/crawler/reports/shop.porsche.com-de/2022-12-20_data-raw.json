@@ -162,7 +162,8 @@
                             "stretch": false,
                             "theme": "light",
                             "aria": "{\"aria-label\":\"Hinweis zur Verwendung des Menüs: Navigation oder ein Untermenü kann mit Enter geöffnet werden, mit ESC wird die Navigation oder ein Untermenü geschlossen, der Fokus bleibt in der aktuellen Ansicht\",\"aria-expanded\":\"false\",\"aria-haspopup\":\"dialog\"}"
-                        }
+                        },
+                        "children": "Menü"
                     }
                 },
                 {
@@ -200,7 +201,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Schließen"
                     }
                 },
                 {
@@ -746,7 +748,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Vorherige Inhalt"
                     }
                 },
                 {
@@ -764,7 +767,8 @@
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Nächster Inhalt"
                     }
                 },
                 {
@@ -1551,7 +1555,8 @@
                             "icon": "arrow-head-right",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Anmelden mit Porsche ID"
                     }
                 },
                 {
@@ -1565,7 +1570,8 @@
                             "icon": "arrow-head-right",
                             "hideLabel": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": "Schließen"
                     }
                 },
                 {
@@ -1608,6 +1614,7 @@
                             "stretch": false,
                             "theme": "light"
                         },
+                        "children": "Close modal",
                         "hostPdsComponent": "p-modal"
                     }
                 },

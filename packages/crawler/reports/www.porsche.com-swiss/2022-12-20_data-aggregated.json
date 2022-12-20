@@ -14,7 +14,7 @@
             "p-button-pure": {
                 "amount": 2,
                 "hostPdsComponent": 0,
-                "children": 1,
+                "children": 2,
                 "properties": {
                     "tabbable": {
                         "amount": 2,
@@ -163,7 +163,7 @@
             "p-headline": {
                 "amount": 19,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 19,
                 "properties": {
                     "variant": {
                         "amount": 19,
@@ -213,7 +213,7 @@
             "p-link": {
                 "amount": 4,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 4,
                 "properties": {
                     "variant": {
                         "amount": 4,
@@ -299,14 +299,14 @@
             "p-text-list-item": {
                 "amount": 3,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 3,
                 "properties": {},
                 "unusedProperties": []
             },
             "p-link-pure": {
                 "amount": 21,
                 "hostPdsComponent": 0,
-                "children": 4,
+                "children": 21,
                 "properties": {
                     "alignLabel": {
                         "amount": 21,
@@ -407,7 +407,7 @@
             "p-text": {
                 "amount": 39,
                 "hostPdsComponent": 7,
-                "children": 17,
+                "children": 39,
                 "properties": {
                     "tag": {
                         "amount": 39,
@@ -492,7 +492,7 @@
             "p-button": {
                 "amount": 14,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 14,
                 "properties": {
                     "tabbable": {
                         "amount": 14,
@@ -918,7 +918,7 @@
                     "p-button-pure": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 1,
                         "properties": {
                             "tabbable": {
                                 "amount": 1,
@@ -1047,7 +1047,7 @@
                     "p-headline": {
                         "amount": 14,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 14,
                         "properties": {
                             "variant": {
                                 "amount": 14,
@@ -1095,7 +1095,7 @@
                     "p-link": {
                         "amount": 2,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 2,
                         "properties": {
                             "variant": {
                                 "amount": 2,
@@ -1178,14 +1178,14 @@
                     "p-text-list-item": {
                         "amount": 3,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 3,
                         "properties": {},
                         "unusedProperties": []
                     },
                     "p-link-pure": {
                         "amount": 13,
                         "hostPdsComponent": 0,
-                        "children": 3,
+                        "children": 13,
                         "properties": {
                             "alignLabel": {
                                 "amount": 13,
@@ -1272,7 +1272,7 @@
                     "p-text": {
                         "amount": 16,
                         "hostPdsComponent": 0,
-                        "children": 6,
+                        "children": 16,
                         "properties": {
                             "tag": {
                                 "amount": 16,
@@ -1352,7 +1352,7 @@
                     "p-button": {
                         "amount": 13,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 13,
                         "properties": {
                             "tabbable": {
                                 "amount": 13,
@@ -1617,7 +1617,7 @@
                     "p-button": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 1,
                         "properties": {
                             "tabbable": {
                                 "amount": 1,
@@ -1809,7 +1809,7 @@
                     "p-text": {
                         "amount": 8,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 8,
                         "properties": {
                             "tag": {
                                 "amount": 8,
@@ -2146,7 +2146,7 @@
                     "p-headline": {
                         "amount": 5,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 5,
                         "properties": {
                             "variant": {
                                 "amount": 5,
@@ -2291,7 +2291,7 @@
                     "p-text": {
                         "amount": 15,
                         "hostPdsComponent": 7,
-                        "children": 11,
+                        "children": 15,
                         "properties": {
                             "tag": {
                                 "amount": 15,
@@ -2345,7 +2345,7 @@
                     "p-link": {
                         "amount": 2,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 2,
                         "properties": {
                             "variant": {
                                 "amount": 2,
@@ -2482,7 +2482,7 @@
                     "p-link-pure": {
                         "amount": 7,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 7,
                         "properties": {
                             "alignLabel": {
                                 "amount": 7,

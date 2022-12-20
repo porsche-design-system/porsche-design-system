@@ -11,7 +11,7 @@
             "p-button": {
                 "amount": 20,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 20,
                 "properties": {
                     "tabbable": {
                         "amount": 20,
@@ -251,7 +251,7 @@
             "p-text": {
                 "amount": 53,
                 "hostPdsComponent": 10,
-                "children": 21,
+                "children": 53,
                 "properties": {
                     "tag": {
                         "amount": 53,
@@ -309,7 +309,7 @@
             "p-link-pure": {
                 "amount": 63,
                 "hostPdsComponent": 0,
-                "children": 43,
+                "children": 63,
                 "properties": {
                     "alignLabel": {
                         "amount": 63,
@@ -425,7 +425,7 @@
             "p-button-pure": {
                 "amount": 13,
                 "hostPdsComponent": 2,
-                "children": 2,
+                "children": 13,
                 "properties": {
                     "tabbable": {
                         "amount": 13,
@@ -523,7 +523,7 @@
             "p-link": {
                 "amount": 14,
                 "hostPdsComponent": 0,
-                "children": 10,
+                "children": 14,
                 "properties": {
                     "variant": {
                         "amount": 14,
@@ -668,7 +668,7 @@
             "p-headline": {
                 "amount": 20,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 20,
                 "properties": {
                     "variant": {
                         "amount": 20,
@@ -1018,7 +1018,7 @@
             "p-text-list-item": {
                 "amount": 3,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 3,
                 "properties": {},
                 "unusedProperties": []
             },

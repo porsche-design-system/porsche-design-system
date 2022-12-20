@@ -266,7 +266,7 @@
             "p-button-pure": {
                 "amount": 5,
                 "hostPdsComponent": 1,
-                "children": 0,
+                "children": 5,
                 "properties": {
                     "tabbable": {
                         "amount": 5,
@@ -447,7 +447,7 @@
             "p-button": {
                 "amount": 2,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 2,
                 "properties": {
                     "tabbable": {
                         "amount": 2,
@@ -813,7 +813,7 @@
                     "p-button-pure": {
                         "amount": 5,
                         "hostPdsComponent": 1,
-                        "children": 0,
+                        "children": 5,
                         "properties": {
                             "tabbable": {
                                 "amount": 5,
@@ -994,7 +994,7 @@
                     "p-button": {
                         "amount": 2,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 2,
                         "properties": {
                             "tabbable": {
                                 "amount": 2,

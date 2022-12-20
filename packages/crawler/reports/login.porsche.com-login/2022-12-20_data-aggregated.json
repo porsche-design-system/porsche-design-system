@@ -164,7 +164,7 @@
             "p-headline": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 1,
                 "properties": {
                     "variant": {
                         "amount": 1,
@@ -271,7 +271,7 @@
             "p-button": {
                 "amount": 3,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 3,
                 "properties": {
                     "tabbable": {
                         "amount": 3,
@@ -465,7 +465,7 @@
             "p-text": {
                 "amount": 3,
                 "hostPdsComponent": 0,
-                "children": 1,
+                "children": 3,
                 "properties": {
                     "tag": {
                         "amount": 3,
@@ -517,7 +517,7 @@
             "p-button-pure": {
                 "amount": 5,
                 "hostPdsComponent": 1,
-                "children": 0,
+                "children": 5,
                 "properties": {
                     "tabbable": {
                         "amount": 5,
@@ -837,7 +837,7 @@
                     "p-headline": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 1,
                         "properties": {
                             "variant": {
                                 "amount": 1,
@@ -944,7 +944,7 @@
                     "p-button": {
                         "amount": 3,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 3,
                         "properties": {
                             "tabbable": {
                                 "amount": 3,
@@ -1138,7 +1138,7 @@
                     "p-text": {
                         "amount": 3,
                         "hostPdsComponent": 0,
-                        "children": 1,
+                        "children": 3,
                         "properties": {
                             "tag": {
                                 "amount": 3,
@@ -1190,7 +1190,7 @@
                     "p-button-pure": {
                         "amount": 5,
                         "hostPdsComponent": 1,
-                        "children": 0,
+                        "children": 5,
                         "properties": {
                             "tabbable": {
                                 "amount": 5,

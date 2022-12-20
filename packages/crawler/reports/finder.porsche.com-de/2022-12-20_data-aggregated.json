@@ -133,7 +133,7 @@
             "p-link-pure": {
                 "amount": 3,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 3,
                 "properties": {
                     "alignLabel": {
                         "amount": 3,
@@ -436,7 +436,7 @@
                     "p-link-pure": {
                         "amount": 3,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 3,
                         "properties": {
                             "alignLabel": {
                                 "amount": 3,

@@ -11,7 +11,7 @@
             "p-button": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 1,
                 "properties": {
                     "tabbable": {
                         "amount": 1,
@@ -203,7 +203,7 @@
             "p-text": {
                 "amount": 8,
                 "hostPdsComponent": 0,
-                "children": 0,
+                "children": 8,
                 "properties": {
                     "tag": {
                         "amount": 8,
@@ -521,7 +521,7 @@
                     "p-button": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 1,
                         "properties": {
                             "tabbable": {
                                 "amount": 1,
@@ -713,7 +713,7 @@
                     "p-text": {
                         "amount": 8,
                         "hostPdsComponent": 0,
-                        "children": 0,
+                        "children": 8,
                         "properties": {
                             "tag": {
                                 "amount": 8,
