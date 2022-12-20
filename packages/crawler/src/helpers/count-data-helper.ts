@@ -7,15 +7,15 @@ import {
   TagNameData,
   TagNamesAggregated,
 } from '../types';
-import { componentMeta, TagName } from '@porsche-design-system/shared';
+import { getComponentMeta, TagName, TAG_NAMES } from '@porsche-design-system/shared';
 
 export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] => {
   // "Object.keys" returns string[], therefore we need type casting here
-  return (Object.keys(componentMeta) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
+  return (Object.values(TAG_NAMES) as TagName[]).filter((tagName) => !tagNamesWithPropertiesAggregated[tagName]);
 };
 
 export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] => {
-  return Object.keys(componentMeta[tagName].props || {}).filter((property) => !propertiesAggregated[property]);
+  return Object.keys(getComponentMeta(tagName).props || {}).filter((property) => !propertiesAggregated[property]);
 };
 
 export const incrementPropertyValues = (

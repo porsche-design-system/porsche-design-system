@@ -1,4 +1,4 @@
-import { TagName } from 'shared/src';
+import { TAG_NAMES, TagName } from 'shared/src';
 import {
   AggregatedData,
   AggregatedTagNamesForVersionsAndPrefixes,
@@ -8,16 +8,16 @@ import {
   TagNamesWithPropertyNames,
 } from '../types';
 import { getUnusedTagNames, incrementTagName } from './count-data-helper';
-import { componentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/shared';
 
 export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
-  Object.entries(componentMeta).reduce(
-    (result, [key, value]) => ({
+  Object.values(TAG_NAMES).reduce((result, tagName) => {
+    const componentMeta = getComponentMeta(tagName);
+    return {
       ...result,
-      [key]: value.props ? Object.keys(value.props) : [],
-    }),
-    {} as TagNamesWithPropertyNames
-  );
+      [tagName]: componentMeta.props ? Object.keys(componentMeta.props) : [],
+    };
+  }, {} as TagNamesWithPropertyNames);
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
