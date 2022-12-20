@@ -117,7 +117,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFileName = this.getComponentFileName(component);
     const targetFile = path.resolve(this.componentsDir, componentSubDir, targetFileName);
 
-    fs.writeFileSync(targetFile, content);
+    fs.writeFileSync(targetFile, this.getModifiedContent(content));
     // console.log(`Generated wrapper: ${targetFileName}`);
   }
 
@@ -158,6 +158,9 @@ export abstract class AbstractWrapperGenerator {
     return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
   }
 
+  public getModifiedContent(content: string): string {
+    return content
+  }
   // prettier-ignore
   public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
