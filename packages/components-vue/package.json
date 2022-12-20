@@ -13,7 +13,7 @@
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly",
     "build:partialsAndUtilities": "yarn build:partialsAndUtilities:lib && yarn build:partialsAndUtilities:typings",
     "build:partialsAndUtilities:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
-    "build:partialsAndUtilities:typings": "yarn build:bundle:typings:partials && yarn build:bundle:typings:utilities",
+    "build:partialsAndUtilities:typings": "yarn build:partialsAndUtilities:typings:partials && yarn build:partialsAndUtilities:typings:utilities",
     "build:partialsAndUtilities:typings:partials": "tsc projects/vue-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node,react",
     "build:partialsAndUtilities:typings:utilities": "tsc projects/vue-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/utilities/js --types node,react",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
