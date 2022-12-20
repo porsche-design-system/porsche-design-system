@@ -1,10 +1,8 @@
 import { config } from '../storefront.config';
-import { AlgoliaRecord, StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
+import type { AlgoliaRecord, StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
 import * as path from 'path';
 import * as fs from 'fs';
-
 import algoliasearch from 'algoliasearch';
-
 import { paramCase } from 'change-case';
 
 export type StorefrontContentTabPage = { [tab: string]: string };
