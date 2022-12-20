@@ -63,10 +63,10 @@ const initBasicModal = (opts?: {
   return setContentWithDesignSystem(
     page,
     `
-      <p-modal ${attributes}>
-        ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
-        ${content}
-      </p-modal>`
+    <p-modal ${attributes}>
+      ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
+      ${content}
+    </p-modal>`
   );
 };
 
@@ -74,15 +74,15 @@ const initAdvancedModal = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `<p-modal heading="Some Heading">
-        Some Content
-        <p-button id="btn-content-1">Content Button 1</p-button>
-        <p-button id="btn-content-2">Content Button 2</p-button>
+      Some Content
+      <p-button id="btn-content-1">Content Button 1</p-button>
+      <p-button id="btn-content-2">Content Button 2</p-button>
 
-        <div>
-          <p-button id="btn-footer-1">Footer Button 1</p-button>
-          <p-button id="btn-footer-2">Footer Button 2</p-button>
-        </div>
-      </p-modal>`
+      <div>
+        <p-button id="btn-footer-1">Footer Button 1</p-button>
+        <p-button id="btn-footer-2">Footer Button 2</p-button>
+      </div>
+    </p-modal>`
   );
 };
 
@@ -98,12 +98,17 @@ const closeModal = async () => {
 
 const getModalVisibility = async () => await getElementStyle(await getModal(), 'visibility');
 
-const addButtonBehindModal = () =>
+const addButtonsBeforeAndAfterModal = () =>
   page.evaluate(() => {
-    const button = document.createElement('button');
-    button.innerText = 'Button Behind';
-    button.id = 'btn-behind';
-    document.body.append(button);
+    const buttonBefore = document.createElement('button');
+    buttonBefore.innerText = 'Button Before';
+    buttonBefore.id = 'btn-before';
+    document.body.prepend(buttonBefore);
+
+    const buttonAfter = document.createElement('button');
+    buttonAfter.innerText = 'Button After';
+    buttonAfter.id = 'btn-after';
+    document.body.append(buttonAfter);
   });
 
 const expectDialogToBeFocused = async (failMessage?: string) => {
@@ -251,19 +256,19 @@ describe('can be closed', () => {
 });
 
 describe('focus behavior', () => {
-  it('should focus dialog', async () => {
+  it('should focus dialog after open', async () => {
     await initAdvancedModal();
     await openModal();
     await expectDialogToBeFocused();
   });
 
-  it('should focus dialog when there is no focusable content element', async () => {
+  it('should focus dialog after open when there is no focusable content element', async () => {
     await initBasicModal({ isOpen: false });
     await openModal();
     await expectDialogToBeFocused();
   });
 
-  it('should focus dialog when there is a focusable content element', async () => {
+  it('should focus dialog after open when there is a focusable content element', async () => {
     await initBasicModal({
       isOpen: false,
       content: `<a href="https://porsche.com">Some link in content</a>`,
@@ -291,12 +296,25 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
   });
 
-  it('should not allow focusing element behind of modal', async () => {
+  it('should not allow focusing element behind of modal when pressing Tab', async () => {
     await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
-    await addButtonBehindModal();
+    await addButtonsBeforeAndAfterModal();
     await openModal();
 
     await expectDialogToBeFocused();
+    await page.keyboard.press('Tab');
+    await expectCloseButtonToBeFocused();
+    await page.keyboard.press('Tab');
+    await expectCloseButtonToBeFocused();
+  });
+
+  it('should not allow focusing element behind of modal when pressing Shift Tab', async () => {
+    await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+    await addButtonsBeforeAndAfterModal();
+    await openModal();
+
+    await expectDialogToBeFocused();
+    await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await expectCloseButtonToBeFocused();
     await page.keyboard.press('Tab');
@@ -369,7 +387,7 @@ describe('focus behavior', () => {
 
     it('should not allow focusing element behind of modal', async () => {
       await initAdvancedModal();
-      await addButtonBehindModal();
+      await addButtonsBeforeAndAfterModal();
       await openModal();
       await expectDialogToBeFocused('initially');
       await page.keyboard.press('Tab');
@@ -431,7 +449,7 @@ describe('focus behavior', () => {
 
     it('should not focus element behind modal if modal has no focusable element', async () => {
       await initBasicModal(initModalOpts);
-      await addButtonBehindModal();
+      await addButtonsBeforeAndAfterModal();
       await openModal();
       await expectDialogToBeFocused();
 
