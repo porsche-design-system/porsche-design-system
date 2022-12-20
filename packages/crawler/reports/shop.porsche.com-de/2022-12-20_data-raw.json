@@ -21,7 +21,7 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">...</a>"
+                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -38,7 +38,7 @@
                             "target": "_self",
                             "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
-                        "slot": "<a href=\"/\">...</a>"
+                        "slot": "<a href=\"/\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -646,7 +646,7 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">...</a>"
+                        "slot": "<a target=\"_blank\" rel=\"noreferrer\" href=\"https://www.porsche.com/germany/\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -695,7 +695,7 @@
                             "target": "_self",
                             "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
-                        "slot": "<a href=\"/\">...</a>"
+                        "slot": "<a href=\"/\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -1067,7 +1067,7 @@
                             "target": "_self",
                             "aria": "{\"aria-label\":\"Ändern Sie Ihr Land, aktuell befinden Sie sich hier: Europe / Germany\"}"
                         },
-                        "slot": "<a href=\"/\">...</a>"
+                        "slot": "<a href=\"/\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -1529,7 +1529,7 @@
                             "heading": "Bitte melden Sie sich erneut an.",
                             "fullscreen": false
                         },
-                        "slot": "<span class=\"_1x2twma0\">Leider ist Ihre Sitzung abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren.</span><sl-p-button-group class=\"esfa5v0 hydrated\">...</sl-p-button-group>"
+                        "slot": "<span class=\"_1x2twma0\">Leider ist Ihre Sitzung abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren.</span><sl-p-button-group class=\"esfa5v0 hydrated\">(the content was stripped)</sl-p-button-group>"
                     }
                 },
                 {

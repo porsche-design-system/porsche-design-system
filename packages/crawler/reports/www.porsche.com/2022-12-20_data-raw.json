@@ -46,7 +46,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s hydrated\">...</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s hydrated\">...</phn-menu-desktop-level-1>"
+                        "slot": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s hydrated\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s hydrated\">(the content was stripped)</phn-menu-desktop-level-1>"
                     }
                 },
                 {
@@ -70,7 +70,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-718\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-911\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Taycan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Panamera\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Macan\">...</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Cayenne\">...</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex>"
+                        "slot": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-718\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-911\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Taycan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Panamera\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Macan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" id=\"car-series-mega-menu-Cayenne\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>"
                     }
                 },
                 {
@@ -83,7 +83,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">...</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">...</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">...</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">...</phn-menu-button>"
+                        "slot": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">(the content was stripped)</phn-menu-button>"
                     }
                 },
                 {
@@ -174,7 +174,7 @@
                             "alignItems": "center",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s hydrated\">...</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">...</div>"
+                        "slot": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s hydrated\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -259,7 +259,7 @@
                             "stretch": false,
                             "theme": "light"
                         },
-                        "slot": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s hydrated\">...</phn-myporsche-button-content>"
+                        "slot": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s hydrated\">(the content was stripped)</phn-myporsche-button-content>"
                     }
                 },
                 {
@@ -272,7 +272,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<div class=\"icon-container sc-phn-myporsche-button-content\">...</div><div class=\"sc-phn-myporsche-button-content\">...</div>"
+                        "slot": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>"
                     }
                 },
                 {

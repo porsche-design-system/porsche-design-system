@@ -42,7 +42,7 @@ export const evaluatePage = async (
             if (slotEl.children.length) {
               const copy = slotEl.cloneNode(true) as Element;
               // we save only the highest dom level in the reports, in order not to make them too big
-              copy.innerHTML = '...';
+              copy.innerHTML = '(the content was stripped)';
               return result + copy.outerHTML;
             }
             return result + slotEl.outerHTML;
