@@ -42,8 +42,8 @@ export const build = async () => {
   const webpackConfig = generateWebPackConfig(targetDirectory, {
     version: version || fallbackVersion,
     script: scriptUrl,
-    stylesUrl: stylesUrl ?? '',
-    inlineStyles: inlineStylesContent ?? '',
+    stylesUrl: stylesUrl || '',
+    inlineStyles: inlineStylesContent || '',
     additionalEntryFiles,
     tempEntryPointFilePath,
     iife,

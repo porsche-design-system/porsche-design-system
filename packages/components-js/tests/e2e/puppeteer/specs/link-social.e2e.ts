@@ -21,16 +21,16 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const initLinkSocial = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
-  const { useSlottedAnchor = false } = opts ?? {};
+  const { useSlottedAnchor = false } = opts || {};
 
   return setContentWithDesignSystem(
     page,
     `
-      <p-link-social onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''} icon="logo-facebook">
-        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
-        Some label
-        ${useSlottedAnchor ? '</a>' : ''}
-      </p-link-social>`
+    <p-link-social onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''} icon="logo-facebook">
+      ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
+      Some label
+      ${useSlottedAnchor ? '</a>' : ''}
+    </p-link-social>`
   );
 };
 

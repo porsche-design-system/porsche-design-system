@@ -41,7 +41,7 @@ type InitOptions = {
 };
 
 const initCheckbox = (opts?: InitOptions): Promise<void> => {
-  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts ?? {};
+  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts || {};
 
   const slottedLabel = useSlottedLabel
     ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'

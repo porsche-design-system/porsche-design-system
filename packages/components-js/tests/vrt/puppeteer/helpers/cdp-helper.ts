@@ -30,7 +30,7 @@ export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
   opts?: { themes?: Theme[]; states?: StateType[]; withSurface?: boolean }
 ): string => {
-  const { themes = ['light', 'dark'], states = ALL_STATES, withSurface = false } = opts ?? {};
+  const { themes = ['light', 'dark'], states = ALL_STATES, withSurface = false } = opts || {};
 
   return states
     .map((state) =>

@@ -28,7 +28,7 @@ const initInlineNotification = (opts?: {
   persistent?: boolean;
   actionLabel?: string;
 }): Promise<void> => {
-  const { state, persistent, actionLabel } = opts ?? {};
+  const { state, persistent, actionLabel } = opts || {};
   const attributes = [
     'heading="Some inline-notification heading."',
     'description="Some inline-notification description."',

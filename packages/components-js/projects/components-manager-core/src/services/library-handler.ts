@@ -25,7 +25,7 @@ export type LoadComponentLibraryOptions = {
  * @param options - LoadComponentLibraryOptions
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
-  const data = getLibraryHandlerData(version) ?? {};
+  const data = getLibraryHandlerData(version) || {};
   const { isLoaded, prefixes, registerCustomElements } = data;
   if (!isLoaded) {
     addScript(script);

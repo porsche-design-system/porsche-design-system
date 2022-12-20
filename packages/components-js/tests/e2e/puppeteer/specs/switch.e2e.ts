@@ -41,7 +41,7 @@ type InitOptions = {
 };
 
 const initSwitch = (opts?: InitOptions): Promise<void> => {
-  const { isDisabled = false, isLoading = false, otherMarkup = '' } = opts ?? {};
+  const { isDisabled = false, isLoading = false, otherMarkup = '' } = opts || {};
   return setContentWithDesignSystem(
     page,
     `<p-switch disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`

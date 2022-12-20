@@ -45,7 +45,7 @@ const initTextarea = (opts?: InitOptions): Promise<void> => {
     state = 'none',
     hasLabel = false,
     maxLength,
-  } = opts ?? {};
+  } = opts || {};
 
   const link = '<a href="#" onclick="return false;">link</a>';
   const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
@@ -57,12 +57,12 @@ const initTextarea = (opts?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
-        <p-textarea-wrapper ${attrs}>
-          ${slottedLabel}
-          ${slottedDescription}
-          <textarea${maxLength ? ` maxlength="${maxLength}"` : ''}></textarea>
-          ${slottedMessage}
-        </p-textarea-wrapper>`
+    <p-textarea-wrapper ${attrs}>
+      ${slottedLabel}
+      ${slottedDescription}
+      <textarea${maxLength ? ` maxlength="${maxLength}"` : ''}></textarea>
+      ${slottedMessage}
+    </p-textarea-wrapper>`
   );
 };
 

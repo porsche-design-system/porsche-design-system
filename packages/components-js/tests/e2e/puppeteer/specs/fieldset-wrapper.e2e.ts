@@ -17,7 +17,7 @@ type InitOptions = {
 };
 
 const initFieldset = async (opts?: InitOptions) => {
-  const { state = 'none' } = opts ?? {};
+  const { state = 'none' } = opts || {};
 
   await setContentWithDesignSystem(
     page,

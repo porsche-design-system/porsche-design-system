@@ -37,9 +37,9 @@ export class DataStructureBuilder {
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
         // extract potential generic and array
-        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
-        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
-        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) ?? [];
+        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) || [];
+        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) || [];
+        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) || [];
 
         if (genericType) {
           if (!whitelistedTypes.includes(genericRootType)) {
@@ -90,7 +90,7 @@ export class DataStructureBuilder {
         for (const nonPrimitiveType of nonPrimitiveTypes) {
           // Extract typeDefinition of every nonPrimitiveType found before
           const [, typeDef] =
-            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) ?? [];
+            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) || [];
 
           if (typeDef && this.valueCanBeObject(typeDef, sharedTypes)) {
             result = true;
