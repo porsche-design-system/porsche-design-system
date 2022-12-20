@@ -60,7 +60,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search\">Finden Sie Ihren Porsche</a>"
+                        "children": "<a href=\"/de/de-DE/search\">Finden Sie Ihren Porsche</a>"
                     }
                 },
                 {
@@ -84,7 +84,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search\">Alle Modellreihen durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search\">Alle Modellreihen durchsuchen</a>"
                     }
                 },
                 {
@@ -108,7 +108,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search\">Alle Angebote durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search\">Alle Angebote durchsuchen</a>"
                     }
                 },
                 {
@@ -132,7 +132,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search?condition=new\">Porsche Neuwagen durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=new\">Porsche Neuwagen durchsuchen</a>"
                     }
                 },
                 {
@@ -156,7 +156,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search?condition=porsche_approved\">Porsche Approved Fahrzeuge durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=porsche_approved\">Porsche Approved Fahrzeuge durchsuchen</a>"
                     }
                 },
                 {
@@ -180,7 +180,7 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "slot": "<a href=\"/de/de-DE/search?condition=used\">Porsche Gebrauchtwagen durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=used\">Porsche Gebrauchtwagen durchsuchen</a>"
                     }
                 },
                 {
@@ -234,7 +234,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -277,7 +277,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -320,7 +320,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 }

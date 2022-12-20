@@ -35,7 +35,7 @@ export type TagNameData = Record<
   TagName,
   {
     properties: Properties;
-    slot?: string;
+    children?: string;
     hostPdsComponent?: TagName;
   }
 >;
@@ -56,7 +56,7 @@ export type PropertiesAggregated = {
 export type TagNameAggregated = {
   amount: number;
   hostPdsComponent: number;
-  slot: number;
+  children: number;
   properties: PropertiesAggregated;
   unusedProperties: string[];
 };

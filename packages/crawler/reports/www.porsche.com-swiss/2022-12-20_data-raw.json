@@ -83,7 +83,7 @@
                             "orderType": "numbered",
                             "theme": "light"
                         },
-                        "slot": "<p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">karminrot</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">21-Zoll RS Spyder Design Räder</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">Interieur-Paket GTS karminrot</p-text-list-item>"
+                        "children": "<p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">karminrot</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">21-Zoll RS Spyder Design Räder</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">Interieur-Paket GTS karminrot</p-text-list-item>"
                     }
                 },
                 {
@@ -245,7 +245,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Modelle</p-headline>"
+                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Modelle</p-headline>"
                     }
                 },
                 {
@@ -266,7 +266,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<div class=\"car-range-grid\">(the content was stripped)</div>"
+                        "children": "<div class=\"car-range-grid\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -308,7 +308,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>Zweisitzer mit hoher Fahrdynamik dank Mittelmotor.</span>"
+                        "children": "<span>Zweisitzer mit hoher Fahrdynamik dank Mittelmotor.</span>"
                     }
                 },
                 {
@@ -376,7 +376,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>Sportwagenikone mit Heckmotor und höchster Performance.</span>"
+                        "children": "<span>Sportwagenikone mit Heckmotor und höchster Performance.</span>"
                     }
                 },
                 {
@@ -444,7 +444,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>Vollelektrische Sportlimousine mit Kofferraum in Front und Heck.</span>"
+                        "children": "<span>Vollelektrische Sportlimousine mit Kofferraum in Front und Heck.</span>"
                     }
                 },
                 {
@@ -512,7 +512,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>Sportliche Luxuslimousine mit Platz für 4.</span>"
+                        "children": "<span>Sportliche Luxuslimousine mit Platz für 4.</span>"
                     }
                 },
                 {
@@ -580,7 +580,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>Kompakter SUV mit hoher Vielseitigkeit.</span>"
+                        "children": "<span>Kompakter SUV mit hoher Vielseitigkeit.</span>"
                     }
                 },
                 {
@@ -648,7 +648,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span>SUV mit bis zu 5 Sitzen und dennoch in erster Linie ein Sportwagen.</span>"
+                        "children": "<span>SUV mit bis zu 5 Sitzen und dennoch in erster Linie ein Sportwagen.</span>"
                     }
                 },
                 {
@@ -763,7 +763,7 @@
                             "showCharacterCount": true,
                             "actionLoading": false
                         },
-                        "slot": "<input data-test=\"inputField\" type=\"search\" name=\"some-name\" role=\"combobox\" autocomplete=\"off\" aria-autocomplete=\"list\" aria-haspopup=\"listbox\" disabled=\"true\" aria-controls=\"autocompleteDropdown\" placeholder=\"PLZ oder Ort\" aria-label=\"Geben Sie einen Ort für Ihre Suche an\" aria-expanded=\"false\">"
+                        "children": "<input data-test=\"inputField\" type=\"search\" name=\"some-name\" role=\"combobox\" autocomplete=\"off\" aria-autocomplete=\"list\" aria-haspopup=\"listbox\" disabled=\"true\" aria-controls=\"autocompleteDropdown\" placeholder=\"PLZ oder Ort\" aria-label=\"Geben Sie einen Ort für Ihre Suche an\" aria-expanded=\"false\">"
                     }
                 },
                 {
@@ -797,7 +797,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<p-headline class=\"extended-teaser__headline hydrated\" theme=\"light\" variant=\"headline-2\">Online Shop Highlights</p-headline>"
+                        "children": "<p-headline class=\"extended-teaser__headline hydrated\" theme=\"light\" variant=\"headline-2\">Online Shop Highlights</p-headline>"
                     }
                 },
                 {
@@ -1184,7 +1184,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<p-flex class=\"teaser-container mobile-side-by-side hydrated\" wrap=\"{base: 'wrap', xs: 'nowrap'}\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"teaser-container mobile-side-by-side hydrated\" wrap=\"{base: 'wrap', xs: 'nowrap'}\">(the content was stripped)</p-flex>"
                     }
                 },
                 {
@@ -1194,7 +1194,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Entdecken</p-headline>"
+                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Entdecken</p-headline>"
                     }
                 },
                 {
@@ -1218,7 +1218,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item>"
                     }
                 },
                 {
@@ -1231,7 +1231,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
                     }
                 },
                 {
@@ -1244,7 +1244,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
                     }
                 },
                 {
@@ -1257,7 +1257,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
                     }
                 },
                 {
@@ -1270,7 +1270,7 @@
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
                         },
-                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
                     }
                 },
                 {
@@ -1283,7 +1283,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
                     }
                 },
                 {
@@ -1296,7 +1296,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -1313,7 +1313,7 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "slot": "<span>Experience - Fahrtrainings &amp; Reisen</span>"
+                        "children": "<span>Experience - Fahrtrainings &amp; Reisen</span>"
                     }
                 },
                 {
@@ -1338,7 +1338,7 @@
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
                         },
-                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
                     }
                 },
                 {
@@ -1351,7 +1351,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
                     }
                 },
                 {
@@ -1364,7 +1364,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -1381,7 +1381,7 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "slot": "<span>Drive - Abonnieren oder mieten</span>"
+                        "children": "<span>Drive - Abonnieren oder mieten</span>"
                     }
                 },
                 {
@@ -1406,7 +1406,7 @@
                             "alignItems": "{ base: 'center', xs: 'flex-start' }",
                             "alignContent": "stretch"
                         },
-                        "slot": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
                     }
                 },
                 {
@@ -1419,7 +1419,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
                     }
                 },
                 {
@@ -1432,7 +1432,7 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "slot": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -1449,7 +1449,7 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "slot": "<span>Motorsport - Events &amp; Strecken</span>"
+                        "children": "<span>Motorsport - Events &amp; Strecken</span>"
                     }
                 },
                 {
@@ -1502,7 +1502,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s\">(the content was stripped)</phn-menu-desktop-level-1>"
+                        "children": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s\">(the content was stripped)</phn-menu-desktop-level-1>"
                     }
                 },
                 {
@@ -1526,7 +1526,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-718\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-911\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Taycan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Panamera\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Macan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Cayenne\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>"
+                        "children": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-718\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-911\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Taycan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Panamera\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Macan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Cayenne\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>"
                     }
                 },
                 {
@@ -1539,7 +1539,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button>"
+                        "children": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button>"
                     }
                 },
                 {
@@ -1630,7 +1630,7 @@
                             "alignItems": "center",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>"
+                        "children": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -1643,7 +1643,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>"
+                        "children": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>"
                     }
                 },
                 {
@@ -1684,7 +1684,7 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "slot": "<span class=\"sc-phn-dealer-search\">Händler</span>"
+                        "children": "<span class=\"sc-phn-dealer-search\">Händler</span>"
                     }
                 },
                 {
@@ -1715,7 +1715,7 @@
                             "stretch": false,
                             "theme": "light"
                         },
-                        "slot": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s\">(the content was stripped)</phn-myporsche-button-content>"
+                        "children": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s\">(the content was stripped)</phn-myporsche-button-content>"
                     }
                 },
                 {
@@ -1728,7 +1728,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>"
+                        "children": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>"
                     }
                 },
                 {
@@ -1777,7 +1777,7 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "slot": "<pnav-footer-p-grid class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid>"
+                        "children": "<pnav-footer-p-grid class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid>"
                     }
                 },
                 {
@@ -1787,7 +1787,7 @@
                             "wrap": "wrap",
                             "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
                         },
-                        "slot": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>"
+                        "children": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>"
                     }
                 },
                 {
@@ -1796,7 +1796,7 @@
                             "size": "12",
                             "offset": 0
                         },
-                        "slot": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">(the content was stripped)</pnav-current-region>"
+                        "children": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">(the content was stripped)</pnav-current-region>"
                     }
                 },
                 {
@@ -1805,7 +1805,7 @@
                             "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
                             "offset": 0
                         },
-                        "slot": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">(the content was stripped)</pnav-newsletter>"
+                        "children": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">(the content was stripped)</pnav-newsletter>"
                     }
                 },
                 {
@@ -1814,7 +1814,7 @@
                             "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
                             "offset": "{ base: 0, s: 1, m: 0 }"
                         },
-                        "slot": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">(the content was stripped)</pnav-contact>"
+                        "children": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">(the content was stripped)</pnav-contact>"
                     }
                 },
                 {
@@ -1823,7 +1823,7 @@
                             "size": "{ base: 12, m: 4, l: 6 }",
                             "offset": 0
                         },
-                        "slot": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">(the content was stripped)</pnav-social-media>"
+                        "children": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">(the content was stripped)</pnav-social-media>"
                     }
                 },
                 {
@@ -1832,7 +1832,7 @@
                             "size": "{ base: 12, l: 9 }",
                             "offset": 0
                         },
-                        "slot": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">(the content was stripped)</pnav-further-links>"
+                        "children": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">(the content was stripped)</pnav-further-links>"
                     }
                 },
                 {
@@ -1841,7 +1841,7 @@
                             "size": "12",
                             "offset": 0
                         },
-                        "slot": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
+                        "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
                     }
                 },
                 {
@@ -1850,7 +1850,7 @@
                             "size": "12",
                             "offset": 0
                         },
-                        "slot": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">(the content was stripped)</pnav-fine-print>"
+                        "children": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">(the content was stripped)</pnav-fine-print>"
                     }
                 },
                 {
@@ -1875,7 +1875,7 @@
                             "alignItems": "center",
                             "alignContent": "stretch"
                         },
-                        "slot": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">(the content was stripped)</pnav-footer-p-text>"
+                        "children": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">(the content was stripped)</pnav-footer-p-text>"
                     }
                 },
                 {
@@ -1901,7 +1901,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>"
+                        "children": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>"
                     }
                 },
                 {
@@ -2035,7 +2035,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2046,7 +2046,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2057,7 +2057,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2068,7 +2068,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2079,7 +2079,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2090,7 +2090,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2101,7 +2101,7 @@
                             "target": "_self",
                             "hideLabel": "true"
                         },
-                        "slot": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
                 },
                 {
@@ -2198,7 +2198,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
+                        "children": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
                     }
                 },
                 {
@@ -2211,7 +2211,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex>"
+                        "children": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex>"
                     }
                 },
                 {
@@ -2224,7 +2224,7 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "slot": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
+                        "children": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
                     }
                 },
                 {
@@ -2237,7 +2237,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>"
+                        "children": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>"
                     }
                 },
                 {
@@ -2250,7 +2250,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2263,7 +2263,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2276,7 +2276,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2289,7 +2289,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2302,7 +2302,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2315,7 +2315,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2328,7 +2328,7 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "slot": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>"
                     }
                 },
                 {
@@ -2370,7 +2370,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2401,7 +2401,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2432,7 +2432,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2463,7 +2463,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2494,7 +2494,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2525,7 +2525,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2556,7 +2556,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "slot": "<slot></slot>",
+                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -2580,7 +2580,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>"
                     }
                 },
                 {
@@ -2594,7 +2594,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>"
                     }
                 },
                 {
@@ -2621,7 +2621,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "slot": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>"
                     }
                 }
             ]

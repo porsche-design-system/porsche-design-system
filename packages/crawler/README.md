@@ -6,7 +6,7 @@ Porsche Design System Crawler is designed to crawl over all relevant portfolio f
 - Used PDS components and configuration per component
 - PDS components and properties which are never used
 - Aggregated data - amout of PDS components and properties
-- Information about PDS components' slot's contents
+- Information about PDS components' slot's contents (children)
 - Information about parent PDS component
 
 ## Start Crawler

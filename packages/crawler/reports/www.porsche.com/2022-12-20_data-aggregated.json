@@ -11,7 +11,7 @@
             "p-button": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "slot": 0,
+                "children": 0,
                 "properties": {
                     "tabbable": {
                         "amount": 1,
@@ -70,7 +70,7 @@
             "p-icon": {
                 "amount": 5,
                 "hostPdsComponent": 2,
-                "slot": 0,
+                "children": 0,
                 "properties": {
                     "name": {
                         "amount": 5,
@@ -117,7 +117,7 @@
             "p-flex": {
                 "amount": 6,
                 "hostPdsComponent": 0,
-                "slot": 6,
+                "children": 6,
                 "properties": {
                     "inline": {
                         "amount": 6,
@@ -165,7 +165,7 @@
             "p-marque": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "slot": 0,
+                "children": 0,
                 "properties": {
                     "trademark": {
                         "amount": 1,
@@ -203,7 +203,7 @@
             "p-text": {
                 "amount": 8,
                 "hostPdsComponent": 0,
-                "slot": 0,
+                "children": 0,
                 "properties": {
                     "tag": {
                         "amount": 8,
@@ -255,7 +255,7 @@
             "p-link-pure": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "slot": 1,
+                "children": 1,
                 "properties": {
                     "alignLabel": {
                         "amount": 1,
@@ -328,7 +328,7 @@
             "p-button-pure": {
                 "amount": 1,
                 "hostPdsComponent": 0,
-                "slot": 1,
+                "children": 1,
                 "properties": {
                     "tabbable": {
                         "amount": 1,
@@ -521,7 +521,7 @@
                     "p-button": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "slot": 0,
+                        "children": 0,
                         "properties": {
                             "tabbable": {
                                 "amount": 1,
@@ -580,7 +580,7 @@
                     "p-icon": {
                         "amount": 5,
                         "hostPdsComponent": 2,
-                        "slot": 0,
+                        "children": 0,
                         "properties": {
                             "name": {
                                 "amount": 5,
@@ -627,7 +627,7 @@
                     "p-flex": {
                         "amount": 6,
                         "hostPdsComponent": 0,
-                        "slot": 6,
+                        "children": 6,
                         "properties": {
                             "inline": {
                                 "amount": 6,
@@ -675,7 +675,7 @@
                     "p-marque": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "slot": 0,
+                        "children": 0,
                         "properties": {
                             "trademark": {
                                 "amount": 1,
@@ -713,7 +713,7 @@
                     "p-text": {
                         "amount": 8,
                         "hostPdsComponent": 0,
-                        "slot": 0,
+                        "children": 0,
                         "properties": {
                             "tag": {
                                 "amount": 8,
@@ -765,7 +765,7 @@
                     "p-link-pure": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "slot": 1,
+                        "children": 1,
                         "properties": {
                             "alignLabel": {
                                 "amount": 1,
@@ -838,7 +838,7 @@
                     "p-button-pure": {
                         "amount": 1,
                         "hostPdsComponent": 0,
-                        "slot": 1,
+                        "children": 1,
                         "properties": {
                             "tabbable": {
                                 "amount": 1,

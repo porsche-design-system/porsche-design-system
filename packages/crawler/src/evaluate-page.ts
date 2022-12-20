@@ -97,7 +97,7 @@ export const evaluatePage = async (
               ...{
                 properties: getAllConsumedProperties(el, pdsTagNamesWithPropertyNames[componentName]),
               },
-              ...(slotInfo ? { slot: slotInfo } : {}),
+              ...(slotInfo ? { children: slotInfo } : {}),
               ...(hostPdsComponent ? { hostPdsComponent: hostPdsComponent } : {}),
             },
           } as TagNameData;

@@ -64,7 +64,7 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
     tagNameAggregatedNew = {
       amount: 1,
       hostPdsComponent: 0,
-      slot: 0,
+      children: 0,
       properties: {},
       unusedProperties: [],
     };
@@ -74,8 +74,8 @@ export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameDa
     tagNameAggregatedNew.hostPdsComponent = tagNameAggregatedNew.hostPdsComponent + 1;
   }
 
-  if (componentData.slot) {
-    tagNameAggregatedNew.slot = tagNameAggregatedNew.slot + 1;
+  if (componentData.children) {
+    tagNameAggregatedNew.children = tagNameAggregatedNew.children + 1;
   }
 
   tagNameAggregatedNew.properties = incrementProperties(tagNameAggregatedNew.properties, componentData.properties);
