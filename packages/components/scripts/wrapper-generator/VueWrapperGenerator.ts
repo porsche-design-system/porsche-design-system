@@ -131,8 +131,8 @@ onUpdated(() => {
   }
 
   public getModifiedContent(content: string): string {
-    const [, scriptContent, templateContent] = /(.*)(<template>.*)/s.exec(content) || [];
-    const indentedScriptContent = scriptContent.split('\n').join('\n  ');
+    const [, scriptContent, templateContent] = /([.\S\s]*)(<template>[.\S\s]*)/.exec(content) || [];
+    const indentedScriptContent = scriptContent.split('\n').slice(0, -1).join('\n  ');
 
     return `<script setup lang="ts">
   ${indentedScriptContent}
