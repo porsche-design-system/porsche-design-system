@@ -4,7 +4,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    // "strict": true, // getComponentMeta is not working with this, TODO: discuss it with team
+    "strict": true,
     "skipLibCheck": true
   }
 }
