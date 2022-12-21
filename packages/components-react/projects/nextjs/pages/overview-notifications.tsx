@@ -33,7 +33,7 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
           </PBanner>
-          <!-- Marker to set the PorscheDesignSystemProvider to the correct place -->
+
           <div style={{ flex: 1 }}>
             <PBanner>
               <span slot="title">Prefixed banner component</span>

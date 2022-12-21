@@ -31,7 +31,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
           <span slot="title">Default banner component</span>
           <span slot="description">Some slotted banner description</span>
         </p-banner>
-        <!-- Marker to set the PorscheDesignSystemProvider to the correct place -->
+
         <div style="flex: 1">
           <my-prefix-p-banner p-banner>
             <span slot="title">Prefixed banner component</span>
