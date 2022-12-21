@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PorscheDesignSystemProvider, PModal, PBanner } from '@porsche-design-system/components-vue';
+  import { PModal, PBanner } from '@porsche-design-system/components-vue';
   import { ToastComponent } from '../components';
 </script>
 
