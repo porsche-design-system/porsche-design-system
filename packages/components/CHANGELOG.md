@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Stepper Horizontal` calculation of scroll position when used within any parent that has a padding
+- `Stepper Horizontal` calculation of scroll position when used within any parent that has a margin or padding
 
 ### [2.19.0-rc.0] - 2022-12-21
 

@@ -67,7 +67,7 @@ export const getScrollActivePosition = (
   activeElementIndex: number,
   scrollerElement: HTMLPScrollerElement
 ): number => {
-  let { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
+  const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
     elements[activeElementIndex <= 0 ? 0 : activeElementIndex];
   // offsetLeft: is the number of pixels that the upper left corner of the current element is offset to the left within the offsetParent node
   // offsetParent: is a reference to the element which is the closest (nearest in the containment hierarchy) positioned ancestor element
@@ -77,7 +77,7 @@ export const getScrollActivePosition = (
   // this obviously leads to completely wrong calculations which are being corrected
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
-  activeElementOffsetLeft =
+  const correctedActiveElementOffsetLeft =
     elements[0].offsetLeft === 0 ? activeElementOffsetLeft : activeElementOffsetLeft - scrollerElement.offsetLeft;
 
   const [scrollAreaElement, prevGradientElement] = getScrollerElements(scrollerElement);
@@ -86,10 +86,10 @@ export const getScrollActivePosition = (
   if (direction === 'next') {
     if (activeElementIndex === elements.length - 1) {
       // go to last element
-      scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
+      scrollPosition = correctedActiveElementOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
       // go to next element
-      scrollPosition = activeElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = correctedActiveElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
     if (activeElementIndex === 0) {
@@ -98,7 +98,7 @@ export const getScrollActivePosition = (
     } else {
       // go to prev element
       scrollPosition =
-        activeElementOffsetLeft +
+        correctedActiveElementOffsetLeft +
         activeElementOffsetWidth +
         prevGradientElement.offsetWidth -
         scrollAreaElement.offsetWidth;
