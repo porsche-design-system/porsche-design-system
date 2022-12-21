@@ -2,6 +2,7 @@
   import {
     PorscheDesignSystemProvider,
     PAccordion,
+    PBanner,
     PButton,
     PButtonGroup,
     PButtonPure,
@@ -58,6 +59,13 @@
     <div style="flex: 1">
       <div class="playground light" title="should render default headline">
         <PHeadline>Default Components</PHeadline>
+      </div>
+
+      <div class="playground light" title="should render default banner">
+        <PBanner>
+          <span slot="title">Default banner component</span>
+          <span slot="description">Some slotted banner description</span>
+        </PBanner>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -301,6 +309,13 @@
       <div style="flex: 1">
         <div class="playground light" title="should render default headline with custom prefix">
           <PHeadline>Prefixed Components</PHeadline>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <PBanner>
+            <span slot="title">Default banner component</span>
+            <span slot="description">Some slotted banner description</span>
+          </PBanner>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -574,5 +589,10 @@
   p-link-tile,
   my-prefix-p-link-tile {
     max-width: 400px;
+  }
+
+  p-banner,
+  my-prefix-p-banner {
+    --p-banner-position-type: static;
   }
 </style>

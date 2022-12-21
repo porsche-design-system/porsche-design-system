@@ -14,13 +14,6 @@
       <span slot="title">Default banner component</span>
       <span slot="description">Some slotted banner description</span>
     </PBanner>
-
-    <PorscheDesignSystemProvider prefix="my-prefix">
-      <PBanner>
-        <span slot="title">Prefixed banner component</span>
-        <span slot="description">Some slotted banner description</span>
-      </PBanner>
-    </PorscheDesignSystemProvider>
   </div>
   <!-- eslint-enable -->
 </template>
@@ -32,10 +25,5 @@
     margin: 0 7vw;
     transform: translateX(0);
     border: 4px solid deeppink;
-  }
-
-  p-banner:last-child,
-  my-prefix-p-banner:last-child {
-    --p-banner-position-top: 150px;
   }
 </style>
