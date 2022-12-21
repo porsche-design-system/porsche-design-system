@@ -60,14 +60,14 @@
       <div class="playground light" title="should render default headline">
         <PHeadline>Default Components</PHeadline>
       </div>
-
+      <!-- eslint-disable vue/no-deprecated-slot-attribute -->
       <div class="playground light" title="should render default banner">
         <PBanner>
           <span slot="title">Default banner component</span>
           <span slot="description">Some slotted banner description</span>
         </PBanner>
       </div>
-
+      <!-- eslint-enable -->
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
@@ -310,14 +310,14 @@
         <div class="playground light" title="should render default headline with custom prefix">
           <PHeadline>Prefixed Components</PHeadline>
         </div>
-
+        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <div class="playground light" title="should render default banner with custom prefix">
           <PBanner>
-            <span slot="title">Default banner component</span>
+            <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>
           </PBanner>
         </div>
-
+        <!-- eslint-enable -->
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
@@ -558,7 +558,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   p-flex-item > p,
   my-prefix-p-flex-item > p,
   p-grid-item > p,
