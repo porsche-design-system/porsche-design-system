@@ -13,7 +13,6 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
       border: 4px solid deeppink;
     }
 
-    p-banner:last-child,
     my-prefix-p-banner:last-child {
       --p-banner-position-top: 150px;
     }
@@ -33,14 +32,16 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
           </PBanner>
+        </div>
 
+        <PorscheDesignSystemProvider prefix="my-prefix">
           <div style={{ flex: 1 }}>
             <PBanner>
               <span slot="title">Prefixed banner component</span>
               <span slot="description">Some slotted banner description</span>
             </PBanner>
           </div>
-        </div>
+        </PorscheDesignSystemProvider>
       </div>
     </>
   );
