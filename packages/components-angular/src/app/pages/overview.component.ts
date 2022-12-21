@@ -36,6 +36,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       my-prefix-p-link-tile {
         max-width: 400px;
       }
+    
+      p-banner,
+      my-prefix-p-banner {
+        --p-banner-position-type: static;
+      }
     `,
   ],
   template: `
@@ -43,6 +48,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div style="flex: 1">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner">
+          <p-banner>
+            <span slot="title">Default banner component</span>
+            <span slot="description">Some slotted banner description</span>
+          </p-banner>
         </div>
 
         <div class="playground light" title="should render default inline-notification">
@@ -285,6 +297,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div style="flex: 1">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <my-prefix-p-banner p-banner>
+            <span slot="title">Prefixed banner component</span>
+            <span slot="description">Some slotted banner description</span>
+          </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">

@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PBanner, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PBanner, PModal } from '@porsche-design-system/components-react/ssr';
 import { Toast } from '../components';
 
 const OverviewNotificationsPage: NextPage = (): JSX.Element => {
@@ -12,10 +12,6 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
       transform: translateX(0);
       border: 4px solid deeppink;
     }
-
-    my-prefix-p-banner:last-child {
-      --p-banner-position-top: 150px;
-    }
   `;
 
   return (
@@ -23,25 +19,14 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
-        <div style={{ flex: 1 }}>
-          <Toast text="The quick brown fox jumps over the lazy dog" />
+        <Toast text="The quick brown fox jumps over the lazy dog" />
 
-          <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
+        <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 
-          <PBanner>
-            <span slot="title">Default banner component</span>
-            <span slot="description">Some slotted banner description</span>
-          </PBanner>
-        </div>
-
-        <PorscheDesignSystemProvider prefix="my-prefix">
-          <div style={{ flex: 1 }}>
-            <PBanner>
-              <span slot="title">Prefixed banner component</span>
-              <span slot="description">Some slotted banner description</span>
-            </PBanner>
-          </div>
-        </PorscheDesignSystemProvider>
+        <PBanner>
+          <span slot="title">Default banner component</span>
+          <span slot="description">Some slotted banner description</span>
+        </PBanner>
       </div>
     </>
   );

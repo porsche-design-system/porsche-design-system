@@ -13,31 +13,18 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         transform: translateX(0);
         border: 4px solid deeppink;
       }
-    
-      my-prefix-p-banner:last-child {
-        --p-banner-position-top: 150px;
-      }
     `,
   ],
   template: `
     <div class="playground light" title="should render notifications in correct stacking order">
-      <div style="flex: 1">
-        <p-toast></p-toast>
+      <p-toast></p-toast>
 
-        <p-modal [heading]="'The quick brown fox jumps over the lazy dog'" [open]="true">Some Content</p-modal>
+      <p-modal [heading]="'The quick brown fox jumps over the lazy dog'" [open]="true">Some Content</p-modal>
 
-        <p-banner>
-          <span slot="title">Default banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </p-banner>
-      </div>
-
-      <div style="flex: 1">
-        <my-prefix-p-banner p-banner>
-          <span slot="title">Prefixed banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </my-prefix-p-banner>
-      </div>
+      <p-banner>
+        <span slot="title">Default banner component</span>
+        <span slot="description">Some slotted banner description</span>
+      </p-banner>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
