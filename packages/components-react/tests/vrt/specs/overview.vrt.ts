@@ -7,7 +7,10 @@ import {
 it('should have no visual regression', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'overview', '/overview', {
-      scenario: (page) => openPopoversAndHighlightSpacer(page),
+      scenario: async (page) => {
+        await openPopoversAndHighlightSpacer(page);
+        await page.mouse.click(0, 0); // Click top left corner of the page to remove focus on banner
+      },
     })
   ).toBeFalsy();
 });
