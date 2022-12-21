@@ -123,7 +123,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: { [key: string]: str
       const usesToast = script?.includes('p-toast');
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
-      const isOverviewPage = fileName.includes('overview');
+      const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
       const usesSetAllReady = script?.includes('componentsReady()');
