@@ -259,6 +259,19 @@ const StepperHorizontalPage: NextPage = (): JSX.Element => {
           <PStepperHorizontalItem>Breakpoint 9</PStepperHorizontalItem>
         </PStepperHorizontal>
       </div>
+
+      <div
+        className="playground light"
+        style={{ padding: '0 50px' }}
+        title="should render stepper horizontal with parent padding on light background"
+      >
+        <PStepperHorizontal>
+          <PStepperHorizontalItem>Parent padding 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 2</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 3</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 4</PStepperHorizontalItem>
+        </PStepperHorizontal>
+      </div>
     </>
   );
 };
