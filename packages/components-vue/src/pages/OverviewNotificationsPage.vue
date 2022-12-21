@@ -4,6 +4,7 @@
 </script>
 
 <template>
+  <!-- eslint-disable vue/no-deprecated-slot-attribute -->
   <div class="playground light" title="should render notifications in correct stacking order">
     <ToastComponent text="The quick brown fox jumps over the lazy dog" />
 
@@ -21,6 +22,7 @@
       </PBanner>
     </PorscheDesignSystemProvider>
   </div>
+  <!-- eslint-enable -->
 </template>
 
 <style scoped>
