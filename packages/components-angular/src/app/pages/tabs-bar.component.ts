@@ -255,6 +255,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <a [href]="'#'">Parent padding 2</a>
         <a [href]="'#'">Parent padding 3</a>
         <a [href]="'#'">Parent padding 4</a>
+        <a [href]="'#'">Parent padding 5</a>
+        <a [href]="'#'">Parent padding 6</a>
+        <a [href]="'#'">Parent padding 7</a>
+        <a [href]="'#'">Parent padding 8</a>
+        <a [href]="'#'">Parent padding 9</a>
+        <a [href]="'#'">Parent padding 10</a>
       </p-tabs-bar>
     </div>
   `,

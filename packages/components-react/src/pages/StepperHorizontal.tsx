@@ -269,6 +269,11 @@ export const StepperHorizontalPage = (): JSX.Element => {
           <PStepperHorizontalItem>Parent padding 2</PStepperHorizontalItem>
           <PStepperHorizontalItem>Parent padding 3</PStepperHorizontalItem>
           <PStepperHorizontalItem>Parent padding 4</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 5</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 6</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 7</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 8</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Parent padding 9</PStepperHorizontalItem>
         </PStepperHorizontal>
       </div>
     </>
