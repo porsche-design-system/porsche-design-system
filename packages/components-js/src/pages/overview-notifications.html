@@ -14,19 +14,23 @@
 </style>
 
 <div class="playground light" title="should render notifications in correct stacking order">
-  <p-toast></p-toast>
+  <div style="flex: 1">
+    <p-toast></p-toast>
 
-  <p-modal heading="The quick brown fox jumps over the lazy dog" open="true">Some Content</p-modal>
+    <p-modal heading="The quick brown fox jumps over the lazy dog" open="true">Some Content</p-modal>
 
-  <p-banner>
-    <span slot="title">Default banner component</span>
-    <span slot="description">Some slotted banner description</span>
-  </p-banner>
-
-  <my-prefix-p-banner>
-    <span slot="title">Prefixed banner component</span>
-    <span slot="description">Some slotted banner description</span>
-  </my-prefix-p-banner>
+    <p-banner>
+      <span slot="title">Default banner component</span>
+      <span slot="description">Some slotted banner description</span>
+    </p-banner>
+    <!-- Marker to set the PorscheDesignSystemProvider to the correct place -->
+    <div style="flex: 1">
+      <my-prefix-p-banner>
+        <span slot="title">Prefixed banner component</span>
+        <span slot="description">Some slotted banner description</span>
+      </my-prefix-p-banner>
+    </div>
+  </div>
 </div>
 
 <script>

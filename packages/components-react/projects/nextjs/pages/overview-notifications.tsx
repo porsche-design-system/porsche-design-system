@@ -20,25 +20,29 @@ const OverviewNotificationsPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider prefix="my-prefix">
+    <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
-        <Toast text="The quick brown fox jumps over the lazy dog" />
+        <div style={{ flex: 1 }}>
+          <Toast text="The quick brown fox jumps over the lazy dog" />
 
-        <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
+          <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 
-        <PBanner>
-          <span slot="title">Default banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </PBanner>
-
-        <PBanner>
-          <span slot="title">Prefixed banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </PBanner>
+          <PBanner>
+            <span slot="title">Default banner component</span>
+            <span slot="description">Some slotted banner description</span>
+          </PBanner>
+          <!-- Marker to set the PorscheDesignSystemProvider to the correct place -->
+          <div style={{ flex: 1 }}>
+            <PBanner>
+              <span slot="title">Prefixed banner component</span>
+              <span slot="description">Some slotted banner description</span>
+            </PBanner>
+          </div>
+        </div>
       </div>
-    </PorscheDesignSystemProvider>
+    </>
   );
 };
 
