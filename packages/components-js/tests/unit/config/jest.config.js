@@ -7,4 +7,15 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
   restoreMocks: true,
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        // override tsconfig.json in package root
+        tsconfig: {
+          esModuleInterop: false,
+        },
+      },
+    ],
+  },
 };

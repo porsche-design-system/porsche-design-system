@@ -1,0 +1,28 @@
+{
+  "name": "@porsche-design-system/components-vue",
+  "version": "2.19.0-rc.0",
+  "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "web",
+    "component",
+    "library",
+    "vue",
+    "js"
+  ],
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://designsystem.porsche.com",
+  "dependencies": {
+    "@porsche-design-system/components-js": "2.19.0-rc.0"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0 <4.0.0"
+  },
+  "main": "public-api.js",
+  "module": "public-api.js",
+  "types": "public-api.d.ts"
+}

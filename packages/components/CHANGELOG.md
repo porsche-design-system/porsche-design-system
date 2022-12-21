@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.19.0-rc.0] - 2022-12-21
+
+#### Added
+
+- Vue: typed components are available via the `@porsche-design-system/components-vue` package
+
 #### Fixed
 
 - `Modal` focus cycle when pressing Shift Tab right after it was opened

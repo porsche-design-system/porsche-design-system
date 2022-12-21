@@ -1,0 +1,22 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "projects/vue-wrapper/src"],
+  "exclude": [
+    "projects/vue-wrapper/src/utilities/js.ts",
+    "projects/vue-wrapper/src/partials.ts",
+  ],
+  "compilerOptions": {
+    "outDir": "dist/vue-wrapper",
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./projects/vue-wrapper/src/public-api.ts"]
+    },
+    "types": ["node"]
+  },
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

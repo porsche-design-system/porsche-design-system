@@ -9,8 +9,8 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { Page } from 'puppeteer';
+import type { FormState } from '@porsche-design-system/components/src/types';
 
 describe('select-wrapper native', () => {
   let page: Page;

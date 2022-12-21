@@ -8,8 +8,8 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
-import { Page } from 'puppeteer';
+import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
+import type { Page } from 'puppeteer';
 
 let page: Page;
 

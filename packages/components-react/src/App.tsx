@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { routes } from './routes';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(useLocation().pathname);
+  const [selected, setSelected] = useState('');
 
   return (
     <>

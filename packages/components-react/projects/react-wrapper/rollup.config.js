@@ -73,7 +73,6 @@ export default [
       {
         file: `${outputDir}/partials/index.js`,
         format: 'cjs',
-        esModule: true,
         plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {

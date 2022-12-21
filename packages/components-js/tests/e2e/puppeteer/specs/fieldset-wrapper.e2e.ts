@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   selectNode,

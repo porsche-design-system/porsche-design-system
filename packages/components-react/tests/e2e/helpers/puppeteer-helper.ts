@@ -1,4 +1,4 @@
-import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import type { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {

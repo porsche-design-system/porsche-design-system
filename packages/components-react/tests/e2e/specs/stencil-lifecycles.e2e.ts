@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import { getLifecycleStatus, goto, selectNode, waitForComponentsReady } from '../helpers';
 
 let page: Page;
