@@ -68,7 +68,7 @@ export const getScrollActivePosition = (
   scrollerElement: HTMLPScrollerElement
 ): number => {
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
-    elements[activeElementIndex <= 0 ? 0 : activeElementIndex];
+    elements[activeElementIndex <= 0 ? 0 : activeElementIndex] || {}; // empty object fallback for tabs without children
   // offsetLeft: is the number of pixels that the upper left corner of the current element is offset to the left within the offsetParent node
   // offsetParent: is a reference to the element which is the closest (nearest in the containment hierarchy) positioned ancestor element
   // which usually is an element with a non-static position
@@ -78,7 +78,7 @@ export const getScrollActivePosition = (
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
   const correctedActiveElementOffsetLeft =
-    elements[0].offsetLeft === 0 ? activeElementOffsetLeft : activeElementOffsetLeft - scrollerElement.offsetLeft;
+    elements[0]?.offsetLeft === 0 ? activeElementOffsetLeft : activeElementOffsetLeft - scrollerElement.offsetLeft;
 
   const [scrollAreaElement, prevGradientElement] = getScrollerElements(scrollerElement);
 
