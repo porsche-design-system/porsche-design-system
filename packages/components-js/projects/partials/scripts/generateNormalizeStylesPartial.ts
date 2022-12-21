@@ -1,4 +1,3 @@
-import { getBaseSlottedStyles } from '@porsche-design-system/components/src/styles';
 import normalize from 'normalize-jss';
 import { create, Styles } from 'jss';
 import jssPluginGlobal from 'jss-plugin-global';
@@ -36,12 +35,39 @@ type GetNormalizeStylesOptionsWithoutTags = GetNormalizeStylesOptionsWithoutTags
       })
       .toString();
 
-  const normalizeCss = minifyCss(getCss(normalize));
+  const fontWeight = {
+    thin: 100,
+    regular: 400,
+    semiBold: 600,
+    bold: 700,
+  };
 
-  // TODO:
-  const normalizePDSCss = getCss({
-    '@global': { ...getBaseSlottedStyles({ withDarkTheme: true }) },
-  });
+  const normalizeCss = normalize[Object.keys(normalize)[0]];
+
+  normalizeCss['html']['textSizeAdjust'] = 'none';
+  normalizeCss['html']['WebkitTextSizeAdjust'] = 'none'; // stop iOS safari from adjusting font size when screen rotation is changing
+
+  normalizeCss['a']['color'] = 'inherit';
+  normalizeCss['a']['textDecoration'] = 'underline';
+  normalizeCss['a']['outline'] = '1px solid transparent';
+  normalizeCss['a']['outlineOffset'] = '1px';
+  normalizeCss['a::-moz-focus-inner'] = {};
+  normalizeCss['a::-moz-focus-inner']['border'] = 0;
+  normalizeCss['a:focus'] = {};
+  normalizeCss['a:focus']['outlineColor'] = 'currentcolor';
+  normalizeCss['a:focus:not(:focus-visible)'] = {};
+  normalizeCss['a:focus:not(:focus-visible)']['outlineColor'] = 'transparent';
+
+  normalizeCss['b, strong']['fontWeight'] = fontWeight.bold;
+
+  normalizeCss['em, i'] = {};
+  normalizeCss['em, i']['fontStyle'] = 'normal';
+
+  const normalizePDSCss = minifyCss(
+    getCss({
+      '@global': normalizeCss,
+    })
+  );
 
   const normalizeStylesFunction = `export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatHtml): string;
 export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatJsx): JSX.Element;
@@ -56,7 +82,7 @@ export function getNormalizeStyles(opts?: GetNormalizeStylesOptions): string | J
   const styleProps = { ['data-pds-normalize-styles']: '' };
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
-  const normalizeStyles = \`${normalizeCss}\`;
+  const normalizeStyles = \`${normalizePDSCss}\`;
 
   return format === 'html' ? \`<style \$\{styleAttributes\}>\${normalizeStyles}</style>\` : <style {...styleProps} dangerouslySetInnerHTML={{ __html: normalizeStyles }}/>;
 }`;
