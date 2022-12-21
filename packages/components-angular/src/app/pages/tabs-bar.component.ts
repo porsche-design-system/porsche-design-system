@@ -244,6 +244,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <a [href]="'#'">Tab 10</a>
       </p-tabs-bar>
     </div>
+
+    <div
+      class="playground light"
+      style="padding: 0 50px"
+      title="should render tabs-bar with parent padding on light background"
+    >
+      <p-tabs-bar [activeTabIndex]="0">
+        <a [href]="'#'">Parent padding 1</a>
+        <a [href]="'#'">Parent padding 2</a>
+        <a [href]="'#'">Parent padding 3</a>
+        <a [href]="'#'">Parent padding 4</a>
+      </p-tabs-bar>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
