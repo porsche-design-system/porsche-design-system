@@ -3,13 +3,12 @@ import * as path from 'path';
 import * as prettier from 'prettier';
 import * as font from '../src/js/font';
 import * as grid from '../src/js/grid/grid';
-import * as gridGap from '../src/js/grid/grid-gap';
-import * as gridMinWidth from '../src/js/grid/grid-width';
-import * as gridMaxWidth from '../src/js/grid/grid-width';
-import * as gridSafeZone from '../src/js/grid/grid-safe-zone';
+import * as gridGap from '../src/js/grid/gridGap';
+import * as gridMinWidth from '../src/js/grid/gridWidth';
+import * as gridMaxWidth from '../src/js/grid/gridWidth';
+import * as gridSafeZone from '../src/js/grid/gridSafeZone';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
-import * as colorExternal from '../src/js/colorExternal';
 import * as heading from '../src/js/typography/heading';
 import * as text from '../src/js/typography/text';
 import * as breakpoint from '../src/js/breakpoint';
@@ -83,7 +82,6 @@ generateVariables({
   font,
   theme,
   spacing,
-  colorExternal,
   breakpoint,
   gridGap,
   gridMinWidth,

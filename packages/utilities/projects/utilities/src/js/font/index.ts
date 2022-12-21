@@ -1,9 +1,9 @@
-import { fontFamily } from './font-family';
-import { fontHyphenation } from './font-hyphenation';
-import { fontLineHeight } from './font-line-height';
-import { fontSize } from './font-size';
-import { fontWeight } from './font-weight';
-import { fontStyle } from './font-style';
-import { fontVariant } from './font-variant';
+import { fontFamily } from './fontFamily';
+import { fontHyphenation } from './fontHyphenation';
+import { fontLineHeight } from './fontLineHeight';
+import { fontSize } from './fontSize';
+import { fontWeight } from './fontWeight';
+import { fontStyle } from './fontStyle';
+import { fontVariant } from './fontVariant';
 
 export { fontFamily, fontHyphenation, fontLineHeight, fontSize, fontWeight, fontStyle, fontVariant };

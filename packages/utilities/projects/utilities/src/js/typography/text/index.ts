@@ -1,7 +1,23 @@
-import { textXSmall } from './textXSmall';
-import { textSmall } from './textSmall';
-import { textMedium } from './textMedium';
-import { textLarge } from './textLarge';
-import { textXLarge } from './textXLarge';
+import { textXSmallFluid } from './textXSmallFluid';
+import { textXSmallStatic } from './textXSmallStatic';
+import { textSmallFluid } from './textSmallFluid';
+import { textSmallStatic } from './textSmallStatic';
+import { textMediumFluid } from './textMediumFluid';
+import { textMediumStatic } from './textMediumStatic';
+import { textLargeFluid } from './textLargeFluid';
+import { textLargeStatic } from './textLargeStatic';
+import { textXLargeFluid } from './textXLargeFluid';
+import { textXLargeStatic } from './textXLargeStatic';
 
-export { textXSmall, textSmall, textMedium, textLarge, textXLarge };
+export {
+  textXSmallFluid,
+  textXSmallStatic,
+  textSmallFluid,
+  textSmallStatic,
+  textMediumFluid,
+  textMediumStatic,
+  textLargeFluid,
+  textLargeStatic,
+  textXLargeFluid,
+  textXLargeStatic,
+};
