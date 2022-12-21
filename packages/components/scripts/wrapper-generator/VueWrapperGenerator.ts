@@ -124,7 +124,8 @@ onUpdated(() => {
 
 <template>
   ${vueComponent}
-</template>`;
+</template>
+`;
   }
 
   public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir: string): string {
@@ -134,9 +135,9 @@ onUpdated(() => {
   }
 
   public transformContent(content: string): string {
+    // fix indentation vor everything within script tags
     return content.replace(/(<script setup lang="ts">)([\S\s]*)(\s<\/script>)/, (match, grp1, grp2, grp3) => {
-      // Indent content in between script tags
-      return grp1 + grp2.replace('\n', '$&  ') + grp3;
+      return grp1 + grp2.replace(/\n/g, '$&  ') + grp3;
     });
   }
 
