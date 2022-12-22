@@ -53,10 +53,6 @@ const buildConfig = (packagePath) => {
             src: `${projectDir}/src/utilities/scss.scss`,
             dest: `${outputDir}/utilities`,
           },
-          // TODO: stop copying unrelated files into the root of the package when bundling sub packages
-          { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
-          { src: `${rootDir}/packages/components/CHANGELOG.md`, dest: outputDir },
         ],
       }),
       typescript(typescriptOpts),
