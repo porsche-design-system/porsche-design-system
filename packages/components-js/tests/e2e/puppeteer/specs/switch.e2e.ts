@@ -113,8 +113,8 @@ describe('events', () => {
     const { counter, targets } = await getEventSummary(wrapper, 'click');
 
     expect(counter).toBe(2);
-    for (const event of targets) {
-      expect(event.id).toBe('hostElement');
+    for (const target of targets) {
+      expect(target.id).toBe('hostElement');
     }
   });
 
