@@ -1,10 +1,5 @@
 import { ElementHandle, Page } from 'puppeteer';
-
-import type {
-  GridDirection,
-  GridGutter,
-  GridWrap,
-} from '@porsche-design-system/components/src/components/layout/grid/grid/grid-utils';
+import type { GridDirection, GridGutter, GridWrap } from '@porsche-design-system/components/dist/types/bundle';
 import {
   getElementStyle,
   selectNode,
