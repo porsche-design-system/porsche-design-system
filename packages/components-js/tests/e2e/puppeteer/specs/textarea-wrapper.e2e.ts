@@ -1,8 +1,6 @@
 import {
-  addEventListener,
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -10,16 +8,14 @@ import {
   getElementInnerText,
   getElementStyle,
   setAttribute,
+  addEventListenerNew,
+  getEventSummary,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-textarea-wrapper');
@@ -83,15 +79,12 @@ it('should focus textarea when label is clicked', async () => {
   const label = await getLabel();
   const textarea = await getTextarea();
 
-  let textareaFocusSpyCalls = 0;
-  await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
-
-  expect(textareaFocusSpyCalls).toBe(0);
+  await addEventListenerNew(textarea, 'focus');
+  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
   await label.click();
   await waitForStencilLifecycle(page);
-
-  expect(textareaFocusSpyCalls).toBe(1);
+  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
 });
 
 it('should focus textarea when counter text is clicked', async () => {
@@ -99,15 +92,12 @@ it('should focus textarea when counter text is clicked', async () => {
   const counter = await getCounter();
   const textarea = await getTextarea();
 
-  let textareaFocusSpyCalls = 0;
-  await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
-
-  expect(textareaFocusSpyCalls).toBe(0);
+  await addEventListenerNew(textarea, 'focus');
+  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
   await counter.click();
   await waitForStencilLifecycle(page);
-
-  expect(textareaFocusSpyCalls).toBe(1);
+  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
 });
 
 it('should display correct counter when typing', async () => {
