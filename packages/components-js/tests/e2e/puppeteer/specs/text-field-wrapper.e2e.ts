@@ -1,29 +1,27 @@
 import {
-  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
-  waitForStencilLifecycle,
+  waitFortencilLifecycle,
   getElementInnerText,
   setAttribute,
+  getEventSummary,
+  addEventListenerNew,
+  waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import before from 'node:test';
 
-let page: Page;
 const CSS_TRANSITION_DURATION = 240;
 
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+let page: Page;
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-text-field-wrapper');
@@ -147,23 +145,22 @@ describe('input type="password"', () => {
     const button = await getToggleOrClearButton();
     const input = await getInput();
 
-    let inputFocusCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusCalls++);
+    await addEventListenerNew(input, 'focus');
 
     expect(await getAttribute(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(0);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
     await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(input, 'type')).toBe('text');
-    expect(inputFocusCalls).toBe(1);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(1);
 
     await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(2);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(2);
   });
 });
 
@@ -174,51 +171,43 @@ describe('input type="search"', () => {
       await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
       const input = await getInput();
 
-      let inputEvents = 0;
-      await addEventListener(input, 'input', () => inputEvents++);
+      await addEventListenerNew(input, 'input');
       await input.focus();
 
       await setProperty(input, 'value', 'value');
       await page.keyboard.press('Escape');
-      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(1);
+      expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await page.keyboard.press('Escape');
-      await waitForEventSerialization();
-      expect(inputEvents).toBe(1);
+      expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await setProperty(input, 'value', 'value');
       await page.mouse.click(90, 25);
-      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(2);
+      expect((await getEventSummary(input, 'input')).counter).toBe(2);
     });
 
     it('should emit input events for input with text-field-wrapper', async () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
 
-      let inputEvents = 0;
-      await addEventListener(input, 'input', () => inputEvents++);
+      await addEventListenerNew(input, 'input');
       await input.focus();
 
       await setProperty(input, 'value', 'value');
       await page.keyboard.press('Escape');
-      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(1);
+      expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await page.keyboard.press('Escape');
-      await waitForEventSerialization();
-      expect(inputEvents).toBe(1);
+      expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await setProperty(input, 'value', 'value');
       const button = await getToggleOrClearButton();
       await button.click();
-      await waitForEventSerialization();
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(2);
+      expect((await getEventSummary(input, 'input')).counter).toBe(2);
     });
 
     it('should emit action event when action button is clicked', async () => {
@@ -226,12 +215,10 @@ describe('input type="search"', () => {
       const host = await getHost();
       const button = await getLocateActionButton();
 
-      let actionEvents = 0;
-      await addEventListener(host, 'action', () => actionEvents++);
+      await addEventListenerNew(host, 'action');
 
       await button.click();
-      await waitForEventSerialization();
-      expect(actionEvents).toBe(1);
+      expect((await getEventSummary(host, 'action')).counter).toBe(1);
     });
   });
 
@@ -362,21 +349,12 @@ describe('input type="search"', () => {
       const searchButton = await getSubmitButton();
 
       const form = await selectNode(page, 'form');
-
-      let formFocusCalls = 0;
-      await addEventListener(form, 'submit', () => formFocusCalls++);
+      await addEventListenerNew(form, 'submit');
 
       await searchButton.click();
-      await waitForEventSerialization();
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-      await waitForEventSerialization(); // 🙈
-
-      expect(formFocusCalls).toBe(1);
+      // need to wait longer than timeout of improveButtonHandlingForCustomElement() util
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
   });
 
@@ -394,15 +372,11 @@ describe('focus state', () => {
     const label = await getLabel();
     const input = await getInput();
 
-    let inputFocusSpyCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
+    await addEventListenerNew(input, 'focus');
+    expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
-    expect(inputFocusSpyCalls).toBe(0);
     await label.click();
-    await waitForEventSerialization();
-    await waitForEventSerialization(); // 🙈
-
-    expect(inputFocusSpyCalls).toBe(1);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
 
   it('should focus input when unit element is clicked', async () => {
@@ -410,14 +384,11 @@ describe('focus state', () => {
     const unitElement = await getCounterOrUnit();
     const input = await getInput();
 
-    let inputFocusSpyCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
+    await addEventListenerNew(input, 'focus');
+    expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
-    expect(inputFocusSpyCalls).toBe(0);
     await unitElement.click();
-    await waitForEventSerialization();
-
-    expect(inputFocusSpyCalls).toBe(1);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
 
   it('should focus input when counter text is clicked', async () => {
@@ -425,15 +396,11 @@ describe('focus state', () => {
     const counter = await getCounterOrUnit();
     const input = await getInput();
 
-    let inputFocusSpyCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
-
-    expect(inputFocusSpyCalls).toBe(0);
+    await addEventListenerNew(input, 'focus');
+    expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
     await counter.click();
-    await waitForStencilLifecycle(page);
-
-    expect(inputFocusSpyCalls).toBe(1);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
 });
 
@@ -556,9 +523,9 @@ describe('accessibility', () => {
     await setContentWithDesignSystem(
       page,
       `
-        <p-text-field-wrapper label="Some label" description="Some description">
-          <input type="text">
-        </p-text-field-wrapper>`
+      <p-text-field-wrapper label="Some label" description="Some description">
+        <input type="text">
+      </p-text-field-wrapper>`
     );
     const input = await getInput();
 
