@@ -7,7 +7,6 @@ import {
   getLifecycleStatus,
   getProperty,
   hasFocus,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -15,10 +14,7 @@ import {
 } from '../helpers';
 
 let page: Page;
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
