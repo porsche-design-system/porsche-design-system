@@ -11,7 +11,7 @@ import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
 import * as text from '../src/js/typography/text';
-import * as breakpoint from '../src/js/breakpoint';
+import * as breakpoint from '../src/js/mediaQuery/breakpoint';
 import { paramCase, camelCase } from 'change-case';
 import { getCss } from '@porsche-design-system/shared';
 
