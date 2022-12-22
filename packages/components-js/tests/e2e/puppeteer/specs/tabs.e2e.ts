@@ -1,12 +1,12 @@
 import {
-  addEventListener,
+  addEventListenerNew,
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
-  initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
   reattachElementHandle,
@@ -248,32 +248,23 @@ describe('keyboard', () => {
 });
 
 describe('events', () => {
-  beforeEach(async () => await initAddEventListener(page));
-
   it('should trigger tabChange event on tab click', async () => {
     await initTabs({ activeTabIndex: 1 }); // start with other index than first
     const host = await getHost();
     const [firstButton, secondButton, thirdButton] = await getAllTabs();
-    let eventCounter = 0;
-    await addEventListener(host, 'tabChange', () => eventCounter++);
+    await addEventListenerNew(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await firstButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
 
     await secondButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(2);
 
     await thirdButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(3);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(3);
   });
 
   it('should not dispatch tabChange event initially', async () => {
