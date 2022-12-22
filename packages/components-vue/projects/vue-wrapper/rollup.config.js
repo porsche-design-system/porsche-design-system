@@ -2,7 +2,6 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const rootDir = '../..';
 const projectDir = 'projects/vue-wrapper';
 const outputDir = 'dist/vue-wrapper';
 
@@ -53,10 +52,6 @@ const buildConfig = (packagePath) => {
             src: `${projectDir}/src/utilities/scss.scss`,
             dest: `${outputDir}/utilities`,
           },
-          // TODO: stop copying unrelated files into the root of the package when bundling sub packages
-          { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
-          { src: `${rootDir}/packages/components/CHANGELOG.md`, dest: outputDir },
         ],
       }),
       typescript(typescriptOpts),
