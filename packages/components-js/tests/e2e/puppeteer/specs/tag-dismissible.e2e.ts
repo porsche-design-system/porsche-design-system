@@ -2,7 +2,6 @@ import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -11,10 +10,7 @@ import {
 
 let page: Page;
 
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 type InitOpts = {
@@ -38,8 +34,8 @@ describe('focus', () => {
     await setContentWithDesignSystem(
       page,
       `
-    <a href="#" id="before">before</a>
-    <p-tag-dismissible>Some Tag</p-tag-dismissible>`
+      <a href="#" id="before">before</a>
+      <p-tag-dismissible>Some Tag</p-tag-dismissible>`
     );
 
     const host = await getHost();
