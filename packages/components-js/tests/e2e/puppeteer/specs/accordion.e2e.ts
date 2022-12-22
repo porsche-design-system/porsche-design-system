@@ -1,6 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
@@ -198,7 +198,7 @@ describe('events', () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(host, 'accordionChange');
+    await addEventListener(host, 'accordionChange');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
 
     await button.click();
@@ -208,7 +208,7 @@ describe('events', () => {
   it('should emit accordionChange event on enter press', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const host = await getHost();
-    await addEventListenerNew(host, 'accordionChange');
+    await addEventListener(host, 'accordionChange');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
 
     await page.keyboard.press('Tab');
