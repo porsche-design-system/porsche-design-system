@@ -1,4 +1,53 @@
-import { JSHandle, Page } from 'puppeteer';
+import type { ElementHandle, JSHandle, Page } from 'puppeteer';
+
+type SerializedTarget = {
+  nodeName: string;
+  nodeValue: string;
+  nodeType: number;
+  tagName: string;
+  className: string;
+  id: string;
+};
+
+export const addEventListenerNew = (handle: ElementHandle, eventName: string): Promise<void> => {
+  return handle.evaluate((el, evtName) => {
+    const counterKey = `${evtName}Counter`;
+    const detailsKey = `${evtName}Details`;
+    const targetsKey = `${evtName}Targets`;
+
+    el.addEventListener(evtName, (e: CustomEvent & { target: HTMLElement }) => {
+      const { detail, target } = e;
+      const serializedTarget: SerializedTarget = {
+        nodeName: target.nodeName,
+        nodeValue: target.nodeValue,
+        nodeType: target.nodeType,
+        tagName: target.tagName,
+        className: target.className,
+        id: target.id,
+      };
+      el[counterKey] = (el[counterKey] || 0) + 1;
+      el[detailsKey] = [...el[detailsKey], detail];
+      el[targetsKey] = [...el[targetsKey], serializedTarget];
+    });
+  }, eventName);
+};
+
+export const getEventSummary = (
+  handle: ElementHandle,
+  eventName: string
+): Promise<{ counter: number; details: any[]; targets: SerializedTarget[] }> => {
+  return handle.evaluate((el, evtName) => {
+    const counterKey = `${evtName}Counter`;
+    const detailsKey = `${evtName}Details`;
+    const targetsKey = `${evtName}Targets`;
+
+    return {
+      counter: el[counterKey] || 0,
+      details: el[detailsKey] || [],
+      targets: el[targetsKey] || [],
+    };
+  }, eventName);
+};
 
 /**
  * copied and stripped down from
@@ -12,6 +61,9 @@ type WaitForEvent = {
 
 const events = new Map<number, WaitForEvent>();
 
+/**
+ * @deprecated use `addEventListenerNew()`  instead
+ */
 export const initAddEventListener = async (page: Page) => {
   events.clear();
 
@@ -24,6 +76,9 @@ export const initAddEventListener = async (page: Page) => {
   await page.evaluate(browserContextEvents);
 };
 
+/**
+ * @deprecated use `addEventListenerNew()`
+ */
 export const addEventListener = async (elmHandle: JSHandle, eventName: string, callback: (ev: any) => void) => {
   // NODE CONTEXT
   const id = events.size;
@@ -49,6 +104,9 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
   );
 };
 
+/**
+ * @deprecated use `addEventListenerNew()` and `getEventSummary()` instead
+ */
 export const waitForEventSerialization = async (): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, 5)); // event serialization takes a little bit
 };
