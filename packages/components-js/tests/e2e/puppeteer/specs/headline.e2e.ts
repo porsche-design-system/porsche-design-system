@@ -10,7 +10,6 @@ import type { Page } from 'puppeteer';
 import type { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 

@@ -8,7 +8,7 @@ import {
   getElementInnerText,
   getElementStyle,
   setAttribute,
-  addEventListenerNew,
+  addEventListener,
   getEventSummary,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
@@ -79,7 +79,7 @@ it('should focus textarea when label is clicked', async () => {
   const label = await getLabel();
   const textarea = await getTextarea();
 
-  await addEventListenerNew(textarea, 'focus');
+  await addEventListener(textarea, 'focus');
   expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
   await label.click();
@@ -92,7 +92,7 @@ it('should focus textarea when counter text is clicked', async () => {
   const counter = await getCounter();
   const textarea = await getTextarea();
 
-  await addEventListenerNew(textarea, 'focus');
+  await addEventListener(textarea, 'focus');
   expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
   await counter.click();

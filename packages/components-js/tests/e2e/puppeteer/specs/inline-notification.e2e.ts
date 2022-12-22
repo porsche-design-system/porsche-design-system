@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getEventSummary,
@@ -65,7 +65,7 @@ describe('close button', () => {
 
     const host = await getHost();
     const closeButton = await getCloseButton();
-    await addEventListenerNew(host, 'dismiss');
+    await addEventListener(host, 'dismiss');
 
     await closeButton.click();
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
@@ -76,7 +76,7 @@ describe('close button', () => {
 
     const host = await getHost();
     const closeButton = await getCloseButton();
-    await addEventListenerNew(host, 'dismiss');
+    await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
@@ -92,7 +92,7 @@ describe('action button', () => {
 
     const host = await getHost();
     const actionButton = await getActionButton();
-    await addEventListenerNew(host, 'action');
+    await addEventListener(host, 'action');
 
     await actionButton.click();
     expect((await getEventSummary(host, 'action')).counter).toBe(1);

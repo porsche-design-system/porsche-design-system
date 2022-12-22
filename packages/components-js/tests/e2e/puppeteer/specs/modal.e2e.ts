@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -14,7 +14,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForComponentsReady,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
@@ -159,7 +158,7 @@ describe('can be closed', () => {
   beforeEach(async () => {
     await initBasicModal();
     host = await getHost();
-    await addEventListenerNew(host, 'close');
+    await addEventListener(host, 'close');
   });
 
   it('should be closable via x button', async () => {
@@ -237,7 +236,7 @@ describe('can be closed', () => {
 
   it('should not bubble close event', async () => {
     const body = await selectNode(page, 'body');
-    await addEventListenerNew(body, 'close');
+    await addEventListener(body, 'close');
     await page.mouse.move(5, 5);
     await page.mouse.down();
 

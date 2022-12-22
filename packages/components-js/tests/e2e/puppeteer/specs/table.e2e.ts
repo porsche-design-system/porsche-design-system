@@ -1,6 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getEventSummary,
@@ -156,7 +156,7 @@ describe('events', () => {
     await initTable({ isSortable: true });
 
     const host = await getHost();
-    await addEventListenerNew(host, 'sortingChange');
+    await addEventListener(host, 'sortingChange');
 
     const firstTableHeadCellButton = await getFirstTableHeadCellButton();
     await firstTableHeadCellButton.click();

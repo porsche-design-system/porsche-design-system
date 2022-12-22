@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getEventSummary,
   getLifecycleStatus,
@@ -141,7 +141,7 @@ describe('events', () => {
     const host = await getHost();
     const [button1, button2] = await getAllItemButtons();
 
-    await addEventListenerNew(host, 'segmentedControlChange');
+    await addEventListener(host, 'segmentedControlChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
@@ -159,7 +159,7 @@ describe('events', () => {
     const secondItemHost = await getSecondItemHost();
     const [, button2] = await getAllItemButtons();
 
-    await addEventListenerNew(host, 'segmentedControlChange');
+    await addEventListener(host, 'segmentedControlChange');
 
     await setProperty(secondItemHost, 'disabled', true);
     await waitForStencilLifecycle(page);
@@ -174,7 +174,7 @@ describe('events', () => {
     const firstItemHost = await getFirstItemHost();
     const button = await getFirstItemButton();
 
-    await addEventListenerNew(host, 'segmentedControlChange');
+    await addEventListener(host, 'segmentedControlChange');
 
     expect(await getProperty(firstItemHost, 'selected')).toBe(true);
 

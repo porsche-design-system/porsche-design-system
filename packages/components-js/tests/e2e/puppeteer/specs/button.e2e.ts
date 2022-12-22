@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   ClickableTests,
   expectA11yToMatchSnapshot,
   getActiveElementId,
@@ -51,7 +51,7 @@ for (const { state, setContent } of clickableTests) {
     await setContent();
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(host, 'click');
+    await addEventListener(host, 'click');
 
     await host.click();
     await button.click();
@@ -75,7 +75,7 @@ it('should dispatch correct click events', async () => {
   const wrapper = await selectNode(page, 'div');
   const host = await getHost();
   const button = await getButton();
-  await addEventListenerNew(wrapper, 'click');
+  await addEventListener(wrapper, 'click');
 
   await button.click();
   await host.click();
@@ -97,7 +97,7 @@ it("should submit parent form on click if it's type submit", async () => {
   const button = await getButton();
   const host = await getHost();
   const form = await selectNode(page, 'form');
-  await addEventListenerNew(form, 'submit');
+  await addEventListener(form, 'submit');
 
   await button.click();
   await host.click();
@@ -125,7 +125,7 @@ it('should not submit the form if default is prevented', async () => {
 
   const button = await getButton();
   const form = await selectNode(page, 'form');
-  await addEventListenerNew(form, 'submit');
+  await addEventListener(form, 'submit');
 
   await button.click();
   expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -145,7 +145,7 @@ it('should not submit the form if button is disabled', async () => {
   const host = await getHost();
   const button = await getButton();
   const form = await selectNode(page, 'form');
-  await addEventListenerNew(form, 'submit');
+  await addEventListener(form, 'submit');
 
   await button.click();
   await host.click();
@@ -168,12 +168,12 @@ it('should trigger focus & blur events at the correct time', async () => {
   const before = await selectNode(page, '#before');
   const after = await selectNode(page, '#after');
 
-  await addEventListenerNew(before, 'focus');
-  await addEventListenerNew(button, 'focus');
-  await addEventListenerNew(button, 'focusin');
-  await addEventListenerNew(button, 'blur');
-  await addEventListenerNew(button, 'focusout');
-  await addEventListenerNew(after, 'focus');
+  await addEventListener(before, 'focus');
+  await addEventListener(button, 'focus');
+  await addEventListener(button, 'focusin');
+  await addEventListener(button, 'blur');
+  await addEventListener(button, 'focusout');
+  await addEventListener(after, 'focus');
 
   expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
   expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
@@ -276,7 +276,7 @@ it('should submit form via enter key when type is submit', async () => {
 
   const host = await getHost();
   const form = await selectNode(page, 'form');
-  await addEventListenerNew(form, 'submit');
+  await addEventListener(form, 'submit');
 
   const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
     await el.focus();

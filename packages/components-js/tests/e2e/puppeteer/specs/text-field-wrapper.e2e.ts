@@ -1,22 +1,20 @@
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
+  getElementInnerText,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
   selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
-  waitFortencilLifecycle,
-  getElementInnerText,
-  setAttribute,
-  getEventSummary,
-  addEventListenerNew,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import before from 'node:test';
 
 const CSS_TRANSITION_DURATION = 240;
 
@@ -145,7 +143,7 @@ describe('input type="password"', () => {
     const button = await getToggleOrClearButton();
     const input = await getInput();
 
-    await addEventListenerNew(input, 'focus');
+    await addEventListener(input, 'focus');
 
     expect(await getAttribute(input, 'type')).toBe('password');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
@@ -171,7 +169,7 @@ describe('input type="search"', () => {
       await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
       const input = await getInput();
 
-      await addEventListenerNew(input, 'input');
+      await addEventListener(input, 'input');
       await input.focus();
 
       await setProperty(input, 'value', 'value');
@@ -192,7 +190,7 @@ describe('input type="search"', () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
 
-      await addEventListenerNew(input, 'input');
+      await addEventListener(input, 'input');
       await input.focus();
 
       await setProperty(input, 'value', 'value');
@@ -215,7 +213,7 @@ describe('input type="search"', () => {
       const host = await getHost();
       const button = await getLocateActionButton();
 
-      await addEventListenerNew(host, 'action');
+      await addEventListener(host, 'action');
 
       await button.click();
       expect((await getEventSummary(host, 'action')).counter).toBe(1);
@@ -349,7 +347,7 @@ describe('input type="search"', () => {
       const searchButton = await getSubmitButton();
 
       const form = await selectNode(page, 'form');
-      await addEventListenerNew(form, 'submit');
+      await addEventListener(form, 'submit');
 
       await searchButton.click();
       // need to wait longer than timeout of improveButtonHandlingForCustomElement() util
@@ -372,7 +370,7 @@ describe('focus state', () => {
     const label = await getLabel();
     const input = await getInput();
 
-    await addEventListenerNew(input, 'focus');
+    await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
     await label.click();
@@ -384,7 +382,7 @@ describe('focus state', () => {
     const unitElement = await getCounterOrUnit();
     const input = await getInput();
 
-    await addEventListenerNew(input, 'focus');
+    await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
     await unitElement.click();
@@ -396,7 +394,7 @@ describe('focus state', () => {
     const counter = await getCounterOrUnit();
     const input = await getInput();
 
-    await addEventListenerNew(input, 'focus');
+    await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
 
     await counter.click();

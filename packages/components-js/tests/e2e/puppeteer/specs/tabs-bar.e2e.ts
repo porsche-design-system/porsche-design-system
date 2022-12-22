@@ -1,6 +1,6 @@
 import type { ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   FOCUS_PADDING,
@@ -583,7 +583,7 @@ describe('events', () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const host = await getHost();
     const [firstButton, secondButton, thirdButton] = await getAllButtons();
-    await addEventListenerNew(host, 'tabChange');
+    await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);

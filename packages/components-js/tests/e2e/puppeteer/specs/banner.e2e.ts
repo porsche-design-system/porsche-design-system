@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   getCssClasses,
   getEventSummary,
   getLifecycleStatus,
@@ -17,7 +17,6 @@ const CSS_FADE_IN_DURATION = 600;
 const CSS_FADE_OUT_DURATION = 600;
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -86,7 +85,7 @@ describe('close', () => {
     await initBanner();
     const host = await getHost();
     const closeButton = await getCloseButton();
-    await addEventListenerNew(host, 'dismiss');
+    await addEventListener(host, 'dismiss');
 
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
@@ -97,7 +96,7 @@ describe('close', () => {
     await initBanner();
     const host = await getHost();
     const closeButton = await getCloseButton();
-    await addEventListenerNew(host, 'dismiss');
+    await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);

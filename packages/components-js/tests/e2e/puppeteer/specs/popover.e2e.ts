@@ -12,7 +12,6 @@ import type { PopoverDirection } from '@porsche-design-system/components/dist/ty
 import type { Page } from 'puppeteer';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 

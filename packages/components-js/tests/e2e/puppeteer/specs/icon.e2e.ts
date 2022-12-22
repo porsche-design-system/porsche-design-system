@@ -9,11 +9,10 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { IconName } from '@porsche-design-system/components/dist/types/bundle';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 

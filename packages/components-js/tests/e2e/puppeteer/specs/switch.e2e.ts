@@ -1,6 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getEventSummary,
@@ -65,7 +65,7 @@ describe('events', () => {
 
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(host, 'switchChange');
+    await addEventListener(host, 'switchChange');
 
     await button.click();
     const { counter } = await getEventSummary(host, 'switchChange');
@@ -78,7 +78,7 @@ describe('events', () => {
 
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(host, 'switchChange');
+    await addEventListener(host, 'switchChange');
 
     await button.click();
     const { counter } = await getEventSummary(host, 'switchChange');
@@ -91,7 +91,7 @@ describe('events', () => {
 
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(host, 'switchChange');
+    await addEventListener(host, 'switchChange');
 
     await button.click();
     await host.click();
@@ -106,7 +106,7 @@ describe('events', () => {
     const wrapper = await selectNode(page, 'div');
     const host = await getHost();
     const button = await getButton();
-    await addEventListenerNew(wrapper, 'click');
+    await addEventListener(wrapper, 'click');
 
     await button.click();
     await host.click();
@@ -132,12 +132,12 @@ describe('events', () => {
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
-    await addEventListenerNew(before, 'focus');
-    await addEventListenerNew(host, 'focus');
-    await addEventListenerNew(host, 'focusin');
-    await addEventListenerNew(host, 'blur');
-    await addEventListenerNew(host, 'focusout');
-    await addEventListenerNew(after, 'focus');
+    await addEventListener(before, 'focus');
+    await addEventListener(host, 'focus');
+    await addEventListener(host, 'focusin');
+    await addEventListener(host, 'blur');
+    await addEventListener(host, 'focusout');
+    await addEventListener(after, 'focus');
 
     expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
     expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);

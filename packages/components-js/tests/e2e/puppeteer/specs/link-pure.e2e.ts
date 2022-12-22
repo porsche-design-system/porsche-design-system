@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getEventSummary,
@@ -45,7 +45,7 @@ it('should dispatch correct click events', async () => {
   const host = await getHost();
   const link = await getLink();
 
-  await addEventListenerNew(wrapper, 'click');
+  await addEventListener(wrapper, 'click');
 
   await link.click();
   await host.click();
@@ -71,12 +71,12 @@ it('should trigger focus & blur events at the correct time', async () => {
   const before = await selectNode(page, '#before');
   const after = await selectNode(page, '#after');
 
-  await addEventListenerNew(before, 'focus');
-  await addEventListenerNew(link, 'focus');
-  await addEventListenerNew(link, 'focusin');
-  await addEventListenerNew(link, 'blur');
-  await addEventListenerNew(link, 'focusout');
-  await addEventListenerNew(after, 'focus');
+  await addEventListener(before, 'focus');
+  await addEventListener(link, 'focus');
+  await addEventListener(link, 'focusin');
+  await addEventListener(link, 'blur');
+  await addEventListener(link, 'focusout');
+  await addEventListener(after, 'focus');
 
   expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
   expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls initially').toBe(0);

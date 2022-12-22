@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
@@ -11,7 +11,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
 let requestedImagePath: string;
@@ -374,7 +374,7 @@ describe('with link', () => {
     const host = await getHost();
     const link = await getLink();
 
-    await addEventListenerNew(wrapper, 'click');
+    await addEventListener(wrapper, 'click');
 
     await link.click();
     await host.click();
@@ -401,12 +401,12 @@ describe('with link', () => {
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
-    await addEventListenerNew(before, 'focus');
-    await addEventListenerNew(marque, 'focus');
-    await addEventListenerNew(marque, 'focusin');
-    await addEventListenerNew(marque, 'blur');
-    await addEventListenerNew(marque, 'focusout');
-    await addEventListenerNew(after, 'focus');
+    await addEventListener(before, 'focus');
+    await addEventListener(marque, 'focus');
+    await addEventListener(marque, 'focusin');
+    await addEventListener(marque, 'blur');
+    await addEventListener(marque, 'focusout');
+    await addEventListener(after, 'focus');
 
     expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
     expect((await getEventSummary(marque, 'focus')).counter, 'marqueFocusCalls initially').toBe(0);

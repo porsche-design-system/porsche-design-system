@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
@@ -17,7 +17,7 @@ import {
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -252,7 +252,7 @@ describe('events', () => {
     await initTabs({ activeTabIndex: 1 }); // start with other index than first
     const host = await getHost();
     const [firstButton, secondButton, thirdButton] = await getAllTabs();
-    await addEventListenerNew(host, 'tabChange');
+    await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);

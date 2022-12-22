@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`select-wrapper native accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
   "children": [
     {
@@ -24,7 +24,7 @@ exports[`select-wrapper native accessibility should expose correct initial acces
 }
 `;
 
-exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = error 1`] = `
+exports[`accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = error 1`] = `
 {
   "children": [
     {
@@ -58,7 +58,7 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 }
 `;
 
-exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = success 1`] = `
+exports[`accessibility should update accessibility tree with message text if state changes programmatically: Of Message when state = success 1`] = `
 {
   "children": [
     {
@@ -89,7 +89,7 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 }
 `;
 
-exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = error 1`] = `
+exports[`accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = error 1`] = `
 {
   "children": [
     {
@@ -114,7 +114,7 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 }
 `;
 
-exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = none 1`] = `
+exports[`accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = none 1`] = `
 {
   "children": [
     {
@@ -138,7 +138,7 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 }
 `;
 
-exports[`select-wrapper native accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = success 1`] = `
+exports[`accessibility should update accessibility tree with message text if state changes programmatically: Of Select when state = success 1`] = `
 {
   "children": [
     {

@@ -1,6 +1,6 @@
 import type { ElementHandle, Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagNameInShadowRoot,
@@ -12,7 +12,6 @@ import {
   selectNode,
   setContentWithDesignSystem,
   waitForComponentsReady,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -484,7 +483,7 @@ describe('events', () => {
     const prevButton = await getButtonPrev();
     const nextButton = await getButtonNext();
 
-    await addEventListenerNew(host, 'carouselChange');
+    await addEventListener(host, 'carouselChange');
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
 
     await nextButton.click();
@@ -500,7 +499,7 @@ describe('events', () => {
     const prevButton = await getButtonPrev();
     const nextButton = await getButtonNext();
 
-    await addEventListenerNew(host, 'carouselChange');
+    await addEventListener(host, 'carouselChange');
 
     await reattachElementHandle(host);
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);

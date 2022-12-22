@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getCssClasses,
@@ -542,7 +542,7 @@ describe('keyboard and click events', () => {
     const select = await getSelect();
     const host = await getHost();
 
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
     expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
@@ -615,7 +615,7 @@ describe('keyboard and click events', () => {
     await initSelect();
     const select = await getSelect();
 
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
     expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
@@ -630,7 +630,7 @@ describe('keyboard and click events', () => {
     await initSelect();
     const select = await getSelect();
 
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
     expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
@@ -880,9 +880,9 @@ describe('keyboard and click events', () => {
     const dropdownCombobox = await getDropdownCombobox();
     const dropdownList = await getDropdownList();
 
-    await addEventListenerNew(dropdownCombobox, 'mousedown');
-    await addEventListenerNew(dropdownCombobox, 'keydown');
-    await addEventListenerNew(dropdownList, 'keydown');
+    await addEventListener(dropdownCombobox, 'mousedown');
+    await addEventListener(dropdownCombobox, 'keydown');
+    await addEventListener(dropdownList, 'keydown');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);

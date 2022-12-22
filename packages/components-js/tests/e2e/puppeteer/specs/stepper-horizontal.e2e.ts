@@ -1,6 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListenerNew,
+  addEventListener,
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   FOCUS_PADDING,
@@ -18,7 +18,6 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -270,7 +269,7 @@ describe('events', () => {
     const host = await getHost();
     const [item1, item2] = await getStepItems();
 
-    await addEventListenerNew(host, 'stepChange');
+    await addEventListener(host, 'stepChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
@@ -287,7 +286,7 @@ describe('events', () => {
     const host = await getHost();
     const [item1] = await getStepItems();
 
-    await addEventListenerNew(host, 'stepChange');
+    await addEventListener(host, 'stepChange');
 
     await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
@@ -301,7 +300,7 @@ describe('events', () => {
     const host = await getHost();
     const [item1, , item3] = await getStepItems();
 
-    await addEventListenerNew(host, 'stepChange');
+    await addEventListener(host, 'stepChange');
 
     await item3.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
@@ -318,7 +317,7 @@ describe('events', () => {
     await setProperty(item2, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    await addEventListenerNew(host, 'stepChange');
+    await addEventListener(host, 'stepChange');
 
     await item2.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
@@ -332,7 +331,7 @@ describe('events', () => {
     const host = await getHost();
     const [item1, , item3] = await getStepItems();
 
-    await addEventListenerNew(host, 'stepChange');
+    await addEventListener(host, 'stepChange');
 
     await item3.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);

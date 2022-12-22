@@ -1,5 +1,5 @@
 import {
-  addEventListenerNew,
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementIndex,
@@ -125,7 +125,7 @@ describe('focus state', () => {
 
     const labelText = await getLabelText();
     const filterInput = await getFilterInput();
-    await addEventListenerNew(filterInput, 'focus');
+    await addEventListener(filterInput, 'focus');
 
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(0);
 
@@ -182,7 +182,7 @@ it('should focus filter when tab key is pressed', async () => {
   await initSelect();
 
   const filterInput = await getFilterInput();
-  await addEventListenerNew(filterInput, 'focus');
+  await addEventListener(filterInput, 'focus');
 
   expect((await getEventSummary(filterInput, 'focus')).counter).toBe(0);
 
@@ -290,7 +290,7 @@ describe('keyboard and click events', () => {
     await initSelect();
 
     const filterInput = await getFilterInput();
-    await addEventListenerNew(filterInput, 'focus');
+    await addEventListener(filterInput, 'focus');
 
     await page.keyboard.press('Tab');
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(1);
@@ -300,7 +300,7 @@ describe('keyboard and click events', () => {
     await initSelect();
     const select = await getSelect();
 
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option initially').toBe(0);
     expect(await getSelectedDropdownOptionIndex(), 'for selected option initially').toBe(0);
@@ -371,7 +371,7 @@ describe('keyboard and click events', () => {
   it('should open dropdown with spacebar', async () => {
     await initSelect();
     const select = await getSelect();
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
 
@@ -388,7 +388,7 @@ describe('keyboard and click events', () => {
     await initSelect();
 
     const select = await getSelect();
-    await addEventListenerNew(select, 'change');
+    await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -520,7 +520,7 @@ describe('keyboard and click events', () => {
     await initSelect();
 
     const filterInput = await getFilterInput();
-    await addEventListenerNew(filterInput, 'blur');
+    await addEventListener(filterInput, 'blur');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');

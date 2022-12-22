@@ -14,7 +14,6 @@ import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
