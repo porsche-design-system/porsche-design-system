@@ -12,7 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ScrollToPosition } from '../../../../components-angular/dist/angular-wrapper/lib/types'; // TODO: weird path?
+import type { ScrollToPosition } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
