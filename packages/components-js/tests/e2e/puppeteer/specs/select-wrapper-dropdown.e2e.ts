@@ -112,11 +112,11 @@ const initSelect = (opts?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `${markupBefore}
-      <p-select-wrapper label="Some label" ${attrs}>
-        <select>
-          ${options}
-        </select>
-      </p-select-wrapper>`
+    <p-select-wrapper label="Some label" ${attrs}>
+      <select>
+        ${options}
+      </select>
+    </p-select-wrapper>`
   );
 };
 
@@ -134,18 +134,18 @@ it('should render with optgroups', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-select-wrapper label="Some label">
-        <select>
-          <optgroup label="Some optgroup label 1">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-          </optgroup>
-          <optgroup label="Some optgroup label 1">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-          </optgroup>
-        </select>
-      </p-select-wrapper>`
+    <p-select-wrapper label="Some label">
+      <select>
+        <optgroup label="Some optgroup label 1">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+        </optgroup>
+        <optgroup label="Some optgroup label 1">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+        </optgroup>
+      </select>
+    </p-select-wrapper>`
   );
 
   const dropdownList = await getDropdownList();
@@ -160,16 +160,16 @@ it('should render with a mix of options and optgroup', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-select-wrapper label="Some label">
-        <select>
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <optgroup label="Some optgroup label 2">
-            <option value="c">Option C</option>
-            <option value="d">Option D</option>
-          </optgroup>
-        </select>
-      </p-select-wrapper>`
+    <p-select-wrapper label="Some label">
+      <select>
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <optgroup label="Some optgroup label 2">
+          <option value="c">Option C</option>
+          <option value="d">Option D</option>
+        </optgroup>
+      </select>
+    </p-select-wrapper>`
   );
 
   const dropdownOptgroup = await getDropdownOptgroup();
@@ -437,26 +437,26 @@ it('should not throw error with long option list and the same item is selected a
   await setContentWithDesignSystem(
     page,
     `
-       <p-select-wrapper label="Some label">
-         <select name="some-name">
-           <option value="default" disabled selected>Bitte wählen Sie Ihr Land</option>
-           <option value="AF">Afghanistan</option>
-           <option value="AX">Åland Islands</option>
-           <option value="AL">Albania</option>
-           <option value="DZ">Algeria</option>
-           <option value="AS">American Samoa</option>
-           <option value="AD">Andorra</option>
-           <option value="AO">Angola</option>
-           <option value="AI">Anguilla</option>
-           <option value="AQ">Antarctica</option>
-           <option value="AG">Antigua and Barbuda</option>
-           <option value="AR">Argentina</option>
-           <option value="AM">Armenia</option>
-           <option value="AW">Aruba</option>
-           <option value="AU">Australia</option>
-           <option value="AT">Austria</option
-        </select>
-      </p-select-wrapper>`
+    <p-select-wrapper label="Some label">
+      <select name="some-name">
+        <option value="default" disabled selected>Bitte wählen Sie Ihr Land</option>
+        <option value="AF">Afghanistan</option>
+        <option value="AX">Åland Islands</option>
+        <option value="AL">Albania</option>
+        <option value="DZ">Algeria</option>
+        <option value="AS">American Samoa</option>
+        <option value="AD">Andorra</option>
+        <option value="AO">Angola</option>
+        <option value="AI">Anguilla</option>
+        <option value="AQ">Antarctica</option>
+        <option value="AG">Antigua and Barbuda</option>
+        <option value="AR">Argentina</option>
+        <option value="AM">Armenia</option>
+        <option value="AW">Aruba</option>
+        <option value="AU">Australia</option>
+        <option value="AT">Austria</option
+      </select>
+    </p-select-wrapper>`
   );
 
   const dropdownCombobox = await getDropdownCombobox();
@@ -979,18 +979,18 @@ describe('accessibility', () => {
     await setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper label="Some label">
-          <select>
-            <optgroup label="Some optgroup label 1">
-              <option value="a">Option A</option>
-              <option value="b">Option B</option>
-            </optgroup>
-            <optgroup label="Some optgroup label 1">
-              <option value="a">Option A</option>
-              <option value="b">Option B</option>
-            </optgroup>
-          </select>
-        </p-select-wrapper>`
+      <p-select-wrapper label="Some label">
+        <select>
+          <optgroup label="Some optgroup label 1">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+          </optgroup>
+          <optgroup label="Some optgroup label 1">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+          </optgroup>
+        </select>
+      </p-select-wrapper>`
     );
 
     const host = await getHost();
