@@ -6,7 +6,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));

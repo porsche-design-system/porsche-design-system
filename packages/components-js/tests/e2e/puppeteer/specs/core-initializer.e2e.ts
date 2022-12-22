@@ -1,5 +1,5 @@
 import { goto } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 describe('core-initializer', () => {
   let page: Page;
