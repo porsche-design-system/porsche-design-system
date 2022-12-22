@@ -2,7 +2,6 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const rootDir = '../..';
 const projectDir = 'projects/vue-wrapper';
 const outputDir = 'dist/vue-wrapper';
 
