@@ -9,7 +9,6 @@ import {
 } from '../helpers';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
