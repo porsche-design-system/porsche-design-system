@@ -120,8 +120,7 @@ it('should not submit the form if default is prevented', async () => {
       document.querySelector('#wrapper').addEventListener('click', (e) => {
         e.preventDefault();
       });
-    </script>
-    `
+    </script>`
   );
 
   const button = await getButton();
