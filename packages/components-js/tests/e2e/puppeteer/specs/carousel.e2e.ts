@@ -1,13 +1,13 @@
 import type { ElementHandle, Page } from 'puppeteer';
 import {
-  addEventListener,
+  addEventListenerNew,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getCssClasses,
+  getEventSummary,
   getLifecycleStatus,
-  initAddEventListener,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
@@ -460,8 +460,6 @@ describe('focus behavior', () => {
 });
 
 describe('events', () => {
-  beforeEach(async () => await initAddEventListener(page));
-
   it('should not emit carouselChange event initially', async () => {
     await setContentWithDesignSystem(page, '');
     await page.evaluate(() => {
@@ -486,17 +484,14 @@ describe('events', () => {
     const prevButton = await getButtonPrev();
     const nextButton = await getButtonNext();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'carouselChange', () => eventCounter++);
-    expect(eventCounter).toBe(0);
+    await addEventListenerNew(host, 'carouselChange');
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
   });
 
   it('should correctly emit carouselChange event after reconnect', async () => {
@@ -505,19 +500,16 @@ describe('events', () => {
     const prevButton = await getButtonPrev();
     const nextButton = await getButtonNext();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'carouselChange', () => eventCounter++);
+    await addEventListenerNew(host, 'carouselChange');
 
     await reattachElementHandle(host);
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
 
     await nextButton.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
 
     await prevButton.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
   });
 });
 
