@@ -7,19 +7,17 @@ import {
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForComponentsReady,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'puppeteer';
-import type { SelectedAriaAttributes } from '@porsche-design-system/components/src/types';
-import type { ModalAriaAttributes } from '@porsche-design-system/components/src/components/content/modal/modal-utils';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { ModalAriaAttributes, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 import type { TagName } from '@porsche-design-system/shared';
 
 let page: Page;
@@ -49,7 +47,7 @@ const initBasicModal = (opts?: {
     aria,
     hasSlottedHeading,
     disableCloseButton,
-  } = opts ?? {};
+  } = opts || {};
 
   const attributes = [
     !hasSlottedHeading && `heading="${heading}"`,
@@ -63,10 +61,10 @@ const initBasicModal = (opts?: {
   return setContentWithDesignSystem(
     page,
     `
-      <p-modal ${attributes}>
-        ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
-        ${content}
-      </p-modal>`
+    <p-modal ${attributes}>
+      ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
+      ${content}
+    </p-modal>`
   );
 };
 
@@ -74,15 +72,15 @@ const initAdvancedModal = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `<p-modal heading="Some Heading">
-        Some Content
-        <p-button id="btn-content-1">Content Button 1</p-button>
-        <p-button id="btn-content-2">Content Button 2</p-button>
+      Some Content
+      <p-button id="btn-content-1">Content Button 1</p-button>
+      <p-button id="btn-content-2">Content Button 2</p-button>
 
-        <div>
-          <p-button id="btn-footer-1">Footer Button 1</p-button>
-          <p-button id="btn-footer-2">Footer Button 2</p-button>
-        </div>
-      </p-modal>`
+      <div>
+        <p-button id="btn-footer-1">Footer Button 1</p-button>
+        <p-button id="btn-footer-2">Footer Button 2</p-button>
+      </div>
+    </p-modal>`
   );
 };
 
@@ -98,12 +96,17 @@ const closeModal = async () => {
 
 const getModalVisibility = async () => await getElementStyle(await getModal(), 'visibility');
 
-const addButtonBehindModal = () =>
+const addButtonsBeforeAndAfterModal = () =>
   page.evaluate(() => {
-    const button = document.createElement('button');
-    button.innerText = 'Button Behind';
-    button.id = 'btn-behind';
-    document.body.append(button);
+    const buttonBefore = document.createElement('button');
+    buttonBefore.innerText = 'Button Before';
+    buttonBefore.id = 'btn-before';
+    document.body.prepend(buttonBefore);
+
+    const buttonAfter = document.createElement('button');
+    buttonAfter.innerText = 'Button After';
+    buttonAfter.id = 'btn-after';
+    document.body.append(buttonAfter);
   });
 
 const expectDialogToBeFocused = async (failMessage?: string) => {
@@ -150,13 +153,12 @@ it('should have correct transform when closed and opened', async () => {
 });
 
 describe('can be closed', () => {
-  let calls = 0;
+  let host: ElementHandle;
 
   beforeEach(async () => {
-    calls = 0;
     await initBasicModal();
-    await initAddEventListener(page);
-    await addEventListener(await getHost(), 'close', () => calls++);
+    host = await getHost();
+    await addEventListener(host, 'close');
   });
 
   it('should be closable via x button', async () => {
@@ -169,14 +171,14 @@ describe('can be closed', () => {
     await closeBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
   });
 
   it('should be closable via esc key', async () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
   });
 
   it('should not be closable via esc key when disableCloseButton is set', async () => {
@@ -185,85 +187,78 @@ describe('can be closed', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(0);
   });
 
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(1);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(1);
 
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(1);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(1);
   });
 
   it('should not be closed if mousedown inside modal', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
   it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.move(5, 5);
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
   it('should not be closable via backdrop when disableBackdropClick is set', async () => {
     const host = await getHost();
     await setProperty(host, 'disableBackdropClick', true);
-    await waitForEventSerialization();
 
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(0);
   });
 
   it('should not bubble close event', async () => {
     const body = await selectNode(page, 'body');
-    let bodyCalls = 0;
-    await addEventListener(body, 'close', () => bodyCalls++);
+    await addEventListener(body, 'close');
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls).toBe(1);
-    expect(bodyCalls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
+    expect((await getEventSummary(body, 'close')).counter).toBe(0);
   });
 });
 
 describe('focus behavior', () => {
-  it('should focus dialog', async () => {
+  it('should focus dialog after open', async () => {
     await initAdvancedModal();
     await openModal();
     await expectDialogToBeFocused();
   });
 
-  it('should focus dialog when there is no focusable content element', async () => {
+  it('should focus dialog after open when there is no focusable content element', async () => {
     await initBasicModal({ isOpen: false });
     await openModal();
     await expectDialogToBeFocused();
   });
 
-  it('should focus dialog when there is a focusable content element', async () => {
+  it('should focus dialog after open when there is a focusable content element', async () => {
     await initBasicModal({
       isOpen: false,
       content: `<a href="https://porsche.com">Some link in content</a>`,
@@ -291,12 +286,25 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
   });
 
-  it('should not allow focusing element behind of modal', async () => {
+  it('should not allow focusing element behind of modal when pressing Tab', async () => {
     await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
-    await addButtonBehindModal();
+    await addButtonsBeforeAndAfterModal();
     await openModal();
 
     await expectDialogToBeFocused();
+    await page.keyboard.press('Tab');
+    await expectCloseButtonToBeFocused();
+    await page.keyboard.press('Tab');
+    await expectCloseButtonToBeFocused();
+  });
+
+  it('should not allow focusing element behind of modal when pressing Shift Tab', async () => {
+    await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+    await addButtonsBeforeAndAfterModal();
+    await openModal();
+
+    await expectDialogToBeFocused();
+    await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await expectCloseButtonToBeFocused();
     await page.keyboard.press('Tab');
@@ -369,7 +377,7 @@ describe('focus behavior', () => {
 
     it('should not allow focusing element behind of modal', async () => {
       await initAdvancedModal();
-      await addButtonBehindModal();
+      await addButtonsBeforeAndAfterModal();
       await openModal();
       await expectDialogToBeFocused('initially');
       await page.keyboard.press('Tab');
@@ -431,7 +439,7 @@ describe('focus behavior', () => {
 
     it('should not focus element behind modal if modal has no focusable element', async () => {
       await initBasicModal(initModalOpts);
-      await addButtonBehindModal();
+      await addButtonsBeforeAndAfterModal();
       await openModal();
       await expectDialogToBeFocused();
 

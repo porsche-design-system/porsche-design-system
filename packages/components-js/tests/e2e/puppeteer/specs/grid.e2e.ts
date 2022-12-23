@@ -1,10 +1,5 @@
-import { ElementHandle, Page } from 'puppeteer';
-
-import type {
-  GridDirection,
-  GridGutter,
-  GridWrap,
-} from '@porsche-design-system/components/src/components/layout/grid/grid/grid-utils';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { GridDirection, GridGutter, GridWrap } from '@porsche-design-system/components/dist/types/bundle';
 import {
   getElementStyle,
   selectNode,
@@ -33,20 +28,20 @@ const initGrid = async (opts?: InitOptions) => {
     direction = 'row',
     wrap = 'wrap',
     gutter = { base: 16, s: 24, m: 36 },
-  } = opts ?? {};
+  } = opts || {};
   const styles = `<style>
-      p-grid-item > p {
-      margin: 0;
-      padding: 4px 0;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
+p-grid-item > p {
+  margin: 0;
+  padding: 4px 0;
+  text-align: center;
+  color: white;
+  background-color: lightskyblue;
+}
 
-    p-grid ~ p-grid p {
-      margin-top: 4px;
-    }
-    </style>`;
+p-grid ~ p-grid p {
+  margin-top: 4px;
+}
+</style>`;
 
   const gridGutterString = stringify(gutter).replace(/"/g, '');
 

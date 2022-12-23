@@ -296,6 +296,7 @@ describe('getFirstAndLastFocusableElement()', () => {
 describe('setScrollLock()', () => {
   const closeModal = () => {};
   const host = document.createElement('div');
+  host.attachShadow({ mode: 'open' });
   const closeBtn = document.createElement('button');
   closeBtn.id = 'btn-close';
 
@@ -410,7 +411,6 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
 
   it('should not add new handlers if there are no focusableElements', () => {
     setFirstAndLastFocusableElementKeydownListener([] as any);
-    setFirstAndLastFocusableElementKeydownListener(null);
     setFirstAndLastFocusableElementKeydownListener([undefined, undefined]);
 
     expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(0);

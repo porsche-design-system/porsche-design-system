@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import type { TagName } from '@porsche-design-system/shared';
 import { setContentWithDesignSystem } from '../helpers';
 

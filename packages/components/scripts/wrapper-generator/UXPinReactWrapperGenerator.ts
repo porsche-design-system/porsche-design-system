@@ -29,8 +29,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     ];
   }
 
-  public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
-    return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
+  public getComponentFileName(component: TagName): string {
+    return `${pascalCase(component.replace('p-', ''))}.tsx`;
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
@@ -191,7 +191,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       } else {
         // other components receive their component name as default
         cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${this.getComponentFileName(component, true)}', $1`) // set default children value in props destructuring
+          .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
 
@@ -474,7 +474,7 @@ ${comments.join(`\n`)}
   }
 
   private generateMainComponentPreset(component: TagName, props?: PresetsProps, children?: string): AdditionalFile {
-    const componentName = this.getComponentFileName(component as TagName, true);
+    const componentName = this.stripFileExtension(component);
 
     // extract other components and get rid of duplicates
     const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
@@ -544,7 +544,7 @@ export default <${formComponentName} ${stringifiedProps} />;
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
-          ? this.getComponentFileName(component, true) + '/'
+          ? this.stripFileExtension(component) + '/'
           : '';
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;

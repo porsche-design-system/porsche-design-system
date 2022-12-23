@@ -7,6 +7,7 @@ if
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react/nextjs" == "${1}" ]] ||
+  [[ "--components-vue" == "${1}" ]] ||
   [[ "--fallbacks" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities-deprecated" == "${1}" ]]

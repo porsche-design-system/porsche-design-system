@@ -6,7 +6,7 @@ set -o pipefail
 echo "task: [$(date)] installing dependencies"
 
 if [ "$CI" != true ]; then
-  yarn install
+  PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn install --frozen-lockfile
 else
   # If you need reproducible dependencies, which is usually the case with the continuous integration systems, you should pass --frozen-lockfile flag.
   PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn install --frozen-lockfile

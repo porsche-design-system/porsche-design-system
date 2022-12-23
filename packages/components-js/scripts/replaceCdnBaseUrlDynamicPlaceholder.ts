@@ -18,13 +18,22 @@ const readAndWriteFile = (targetFile: string): void => {
 };
 
 const replaceCdnBaseUrlDynamicPlaceholder = () => {
-  const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
-  const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../..');
-  const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
+  const componentsJsUmdFilePath = require.resolve('@porsche-design-system/components-js');
+  const componentsJsEsmFilePath = path.resolve(componentsJsUmdFilePath, '../esm/index.js');
+  const packageDir = path.resolve(path.dirname(componentsJsUmdFilePath), '../..');
+  const componentsJsIifeFilePath = path.resolve(
+    path.dirname(componentsJsUmdFilePath),
+    '../..',
+    npmDistTmpSubPath,
+    'index.js'
+  );
 
-  readAndWriteFile(componentsJsFilePath); // core loader
-  readAndWriteFile(tmpFilePath); // tmp core loader
-  readAndWriteFile(path.resolve(packageDir, globby.sync('./dist/components/porsche-design-system.v*')[0])); // core on cdn
+  [
+    componentsJsUmdFilePath, // core loader umd build
+    componentsJsEsmFilePath, // core loader esm build
+    componentsJsIifeFilePath, // temporary core loader used for getLoaderScript partial
+    path.resolve(packageDir, globby.sync('./dist/components/porsche-design-system.v*')[0]), // core chunk on cdn
+  ].forEach(readAndWriteFile);
 
   console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "${CDN_BASE_URL_DYNAMIC}"`);
 };

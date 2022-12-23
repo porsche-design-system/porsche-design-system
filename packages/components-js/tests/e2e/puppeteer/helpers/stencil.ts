@@ -2,8 +2,8 @@ import type { Page } from 'puppeteer';
 import type { TagName } from '@porsche-design-system/shared';
 import { LIFECYCLE_STATUS_KEY } from './puppeteer-helper';
 
-export const waitForComponentsReady = async (page: Page): Promise<number> => {
-  return await page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+export const waitForComponentsReady = (page: Page): Promise<number> => {
+  return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {

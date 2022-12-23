@@ -2,19 +2,13 @@ import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import {
   expectToSkipFocusOnComponent,
   getActiveElementTagName,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForEventSerialization,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
@@ -52,7 +46,6 @@ ${component}
     const elTagName = await host.evaluate((el) => el.tagName);
 
     await page.keyboard.press('Tab');
-    await waitForEventSerialization();
 
     expect(await getActiveElementTagName(page)).toBe(elTagName);
     expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();

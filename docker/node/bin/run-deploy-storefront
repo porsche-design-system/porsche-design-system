@@ -115,6 +115,13 @@ isCurrentBranchMainBranch() {
   return 1
 }
 
+isCurrentBranchMainOrVBranch() {
+  if [[ $(isCurrentBranchMainBranch) || "${P_CURRENT_BRANCH}" == v* ]]; then
+    return 0
+  fi
+  return 1
+}
+
 P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 BUCKET_URL="s3://porsche-design-system-storefront"
@@ -134,7 +141,9 @@ else
   add_deployment_version "${P_CURRENT_BRANCH}"
   update_base_tag "${P_CURRENT_BRANCH}"
   upload_s3 "${P_CURRENT_BRANCH}"
-  update_algolia_index "${P_CURRENT_BRANCH}"
+  if isCurrentBranchMainOrVBranch; then
+    update_algolia_index "${P_CURRENT_BRANCH}"
+  fi
   purge_cloudfront "${P_CURRENT_BRANCH}"
   verify_deployment "${P_CURRENT_BRANCH}"
 fi
