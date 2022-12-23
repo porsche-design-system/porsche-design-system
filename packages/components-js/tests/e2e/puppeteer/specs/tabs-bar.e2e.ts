@@ -1,4 +1,4 @@
-import { ElementHandle, KeyInput, Page } from 'puppeteer';
+import type { ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
@@ -8,11 +8,11 @@ import {
   getConsoleErrorsAmount,
   getElementPositions,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
   getScrollLeft,
-  initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
   reattachElementHandle,
@@ -24,20 +24,19 @@ import {
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
-import { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable, TabSize } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const clickHandlerScript = `
-    <script>
-      const tabsBar = document.querySelector('p-tabs-bar')
-      tabsBar.addEventListener('tabChange', (e) => {
-          e.target.activeTabIndex = e.detail.activeTabIndex;
-      });
-    </script>`;
+<script>
+  const tabsBar = document.querySelector('p-tabs-bar');
+  tabsBar.addEventListener('tabChange', (e) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
+  });
+</script>`;
 
 type InitOptions = {
   amount?: number;
@@ -580,32 +579,23 @@ describe('keyboard', () => {
 });
 
 describe('events', () => {
-  beforeEach(async () => await initAddEventListener(page));
-
   it('should trigger event on button click', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const host = await getHost();
     const [firstButton, secondButton, thirdButton] = await getAllButtons();
-    let eventCounter = 0;
-    await addEventListener(host, 'tabChange', () => eventCounter++);
+    await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await firstButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
 
     await secondButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(2);
 
     await thirdButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(3);
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(3);
   });
 
   it('should not dispatch event initially with valid activeTabIndex', async () => {
