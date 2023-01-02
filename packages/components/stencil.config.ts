@@ -73,5 +73,6 @@ export const config: Config = {
     // emit lifecycle events like componentWillLoad, didLoad, willUpdate, didUpdate only in dev build for e2e tests
     ...(isDevBuild && { lifecycleDOMEvents: true }),
     tagNameTransform: true,
+    initializeNextTick: true,
   },
 };
