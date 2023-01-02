@@ -34,11 +34,11 @@
     "@types/jest-expect-message": "^1.1.0",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
-    "jest-puppeteer": "^6.1.1",
+    "jest-puppeteer": "^6.2.0",
     "jss": "^10.9.2",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.2",
-    "puppeteer": "~19.3.0",
+    "puppeteer": "~19.4.1",
     "ts-jest": "^29.0.3"
   },
   "devDependencies": {
