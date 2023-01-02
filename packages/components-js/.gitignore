@@ -3,8 +3,8 @@
 
 /projects/components-wrapper/environment.js
 
-/tests/vrt/playwright/results
 /tests/vrt/puppeteer/results
+/tests/vrt/playwright/results
 /tests/unit/results
 /playwright-report/
 /playwright/.cache/
