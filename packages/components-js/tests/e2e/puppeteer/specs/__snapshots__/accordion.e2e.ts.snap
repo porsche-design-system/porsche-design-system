@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accordion accessibility should expose correct accessibility tree properties in open state: Of Button 1`] = `
+exports[`accessibility should expose correct accessibility tree properties in open state: Of Button 1`] = `
 {
   "expanded": true,
   "focused": true,
@@ -9,7 +9,7 @@ exports[`accordion accessibility should expose correct accessibility tree proper
 }
 `;
 
-exports[`accordion accessibility should expose correct accessibility tree properties in open state: Of Panel 1`] = `
+exports[`accessibility should expose correct accessibility tree properties in open state: Of Panel 1`] = `
 {
   "children": [
     {
@@ -33,7 +33,7 @@ exports[`accordion accessibility should expose correct accessibility tree proper
 }
 `;
 
-exports[`accordion accessibility should expose correct initial accessibility tree and aria properties: Of Button 1`] = `
+exports[`accessibility should expose correct initial accessibility tree and aria properties: Of Button 1`] = `
 {
   "name": "Some Accordion",
   "role": "button",

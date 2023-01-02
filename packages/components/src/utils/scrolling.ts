@@ -68,17 +68,28 @@ export const getScrollActivePosition = (
   scrollerElement: HTMLPScrollerElement
 ): number => {
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
-    elements[activeElementIndex] || {};
+    elements[activeElementIndex <= 0 ? 0 : activeElementIndex] || {}; // empty object fallback for tabs without children
+  // offsetLeft: is the number of pixels that the upper left corner of the current element is offset to the left within the offsetParent node
+  // offsetParent: is a reference to the element which is the closest (nearest in the containment hierarchy) positioned ancestor element
+  // which usually is an element with a non-static position
+  // - in chrome this seems to respect shadow DOM and therefore is the div.scroll-wrapper element in p-scroller
+  // - in firefox and safari this is not the case and some other parent element (up to the body element) is used
+  // this obviously leads to completely wrong calculations which are being corrected
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
+  const correctedActiveElementOffsetLeft =
+    elements[0]?.offsetLeft === 0 ? activeElementOffsetLeft : activeElementOffsetLeft - scrollerElement.offsetLeft;
+
   const [scrollAreaElement, prevGradientElement] = getScrollerElements(scrollerElement);
 
   let scrollPosition: number;
   if (direction === 'next') {
     if (activeElementIndex === elements.length - 1) {
       // go to last element
-      scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
+      scrollPosition = correctedActiveElementOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
       // go to next element
-      scrollPosition = activeElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = correctedActiveElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
     if (activeElementIndex === 0) {
@@ -87,7 +98,7 @@ export const getScrollActivePosition = (
     } else {
       // go to prev element
       scrollPosition =
-        activeElementOffsetLeft +
+        correctedActiveElementOffsetLeft +
         activeElementOffsetWidth +
         prevGradientElement.offsetWidth -
         scrollAreaElement.offsetWidth;

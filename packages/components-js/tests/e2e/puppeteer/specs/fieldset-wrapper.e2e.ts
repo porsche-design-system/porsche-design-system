@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   selectNode,
@@ -6,7 +6,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -17,7 +17,7 @@ type InitOptions = {
 };
 
 const initFieldset = async (opts?: InitOptions) => {
-  const { state = 'none' } = opts ?? {};
+  const { state = 'none' } = opts || {};
 
   await setContentWithDesignSystem(
     page,

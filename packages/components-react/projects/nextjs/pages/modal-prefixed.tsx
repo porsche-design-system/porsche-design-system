@@ -12,7 +12,7 @@ const ModalPrefixedPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider>
+    <PorscheDesignSystemProvider prefix="my-prefix">
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show prefixed modal on light background">

@@ -13,11 +13,6 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         transform: translateX(0);
         border: 4px solid deeppink;
       }
-    
-      p-banner:last-child,
-      my-prefix-p-banner:last-child {
-        --p-banner-position-top: 150px;
-      }
     `,
   ],
   template: `
@@ -30,11 +25,6 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         <span slot="title">Default banner component</span>
         <span slot="description">Some slotted banner description</span>
       </p-banner>
-
-      <my-prefix-p-banner p-banner>
-        <span slot="title">Prefixed banner component</span>
-        <span slot="description">Some slotted banner description</span>
-      </my-prefix-p-banner>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

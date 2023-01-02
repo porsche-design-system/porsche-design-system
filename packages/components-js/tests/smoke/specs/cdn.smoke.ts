@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   FALLBACKS_MANIFEST,
   FALLBACKS_CDN_BASE_URL,
@@ -18,7 +18,6 @@ import { setContentWithDesignSystem } from '../helpers';
 
 describe('cdn', () => {
   let page: Page;
-
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 

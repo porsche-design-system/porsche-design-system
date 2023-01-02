@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`select-wrapper filter accessibility should expose correct accessibility tree if description is set 1`] = `
+exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
   "autocomplete": "list",
   "description": "Some description",
@@ -10,7 +10,7 @@ exports[`select-wrapper filter accessibility should expose correct accessibility
 }
 `;
 
-exports[`select-wrapper filter accessibility should expose correct accessibility tree in error state 1`] = `
+exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
   "autocomplete": "list",
   "haspopup": "listbox",
@@ -19,7 +19,7 @@ exports[`select-wrapper filter accessibility should expose correct accessibility
 }
 `;
 
-exports[`select-wrapper filter accessibility should expose correct accessibility tree of option list if filter value has no match 1`] = `
+exports[`accessibility should expose correct accessibility tree of option list if filter value has no match 1`] = `
 {
   "children": [
     {
@@ -52,7 +52,7 @@ exports[`select-wrapper filter accessibility should expose correct accessibility
 }
 `;
 
-exports[`select-wrapper filter accessibility should expose correct initial accessibility tree and aria properties of filter 1`] = `
+exports[`accessibility should expose correct initial accessibility tree and aria properties of filter 1`] = `
 {
   "autocomplete": "list",
   "children": [

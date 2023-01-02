@@ -258,6 +258,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-stepper-horizontal-item>Breakpoint 9</p-stepper-horizontal-item>
       </p-stepper-horizontal>
     </div>
+
+    <div
+      class="playground light"
+      style="padding: 0 50px"
+      title="should render stepper horizontal with parent padding on light background"
+    >
+      <p-stepper-horizontal>
+        <p-stepper-horizontal-item>Parent padding 1</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 2</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 3</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 4</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 5</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 6</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 7</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 8</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Parent padding 9</p-stepper-horizontal-item>
+      </p-stepper-horizontal>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

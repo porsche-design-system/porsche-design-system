@@ -6,7 +6,7 @@ import type { ToastMessage } from './public-api';
 })
 export class ToastManager {
   public addMessage(message: ToastMessage): void {
-    const toast = document.querySelector('p-toast,[p-toast]') as HTMLElement & {
+    const toast = document.body.querySelector('p-toast,[p-toast]') as HTMLElement & {
       addMessage(message: ToastMessage): void;
     };
     customElements.whenDefined(toast.tagName.toLowerCase()).then(() => toast.addMessage(message));

@@ -67,7 +67,7 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private getComponentSubDir(component: TagName): string {
-    return this.shouldGenerateFolderPerComponent(component) ? this.getComponentFileName(component, true) : '';
+    return this.shouldGenerateFolderPerComponent(component) ? this.stripFileExtension(component) : '';
   }
 
   private generateBarrelFile(): void {
@@ -76,8 +76,9 @@ export abstract class AbstractWrapperGenerator {
     const componentExports = this.relevantComponentTagNames
       .map((component) => {
         const componentSubDir = this.getComponentSubDir(component);
-        const componentFileName = this.getComponentFileName(component, true);
-        return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileName}';`;
+        const componentFileNameWithoutExtension = this.stripFileExtension(component);
+
+        return this.getBarrelFileContent(componentFileNameWithoutExtension, componentSubDir);
       })
       .join('\n');
 
@@ -106,7 +107,7 @@ export abstract class AbstractWrapperGenerator {
     const propsDefinition = this.generateProps(component, rawComponentInterface);
     const wrapperDefinition = this.generateComponent(component, extendedProps);
 
-    const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
+    const content = this.transformContent([importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n'));
 
     const componentSubDir = this.getComponentSubDir(component);
     if (componentSubDir) {
@@ -134,6 +135,10 @@ export abstract class AbstractWrapperGenerator {
     }
   }
 
+  public stripFileExtension(component: TagName): string {
+    return path.parse(this.getComponentFileName(component)).name;
+  }
+
   // helper to possibly inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {
     return '';
@@ -149,9 +154,18 @@ export abstract class AbstractWrapperGenerator {
     return false;
   }
 
+  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
+    return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
+  }
+
+  // Can be used to transform content e.g. indentation
+  public transformContent(content: string): string {
+    return content;
+  }
+
   // prettier-ignore
   public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
   public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
-  public abstract getComponentFileName(component: TagName, withOutExtension?: boolean): string;
+  public abstract getComponentFileName(component: TagName): string;
 }

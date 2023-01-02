@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
 
 const SOME_CLASS_1 = 'someClass1';
@@ -6,7 +6,6 @@ const SOME_CLASS_2 = 'someClass2';
 const HYDRATED_CLASS = 'hydrated';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 

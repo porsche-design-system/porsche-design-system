@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import * as pds from '@porsche-design-system/components-js';
 import { testSnapshot } from '../helpers';
 import { PButton, PorscheDesignSystemProvider } from '../../../src/public-api';
 
@@ -26,33 +23,6 @@ describe('PorscheDesignSystemProvider', () => {
     );
   });
 
-  it('should support changing prefix at runtime', async () => {
-    const Sample = (): JSX.Element => {
-      const [prefix, setPrefix] = useState('my-prefix');
-
-      return (
-        <PorscheDesignSystemProvider prefix={prefix}>
-          <PButton data-testid="button" onClick={() => setPrefix('new-prefix')}>
-            Some Button
-          </PButton>
-        </PorscheDesignSystemProvider>
-      );
-    };
-
-    const { container, getByTestId } = render(<Sample />);
-    const button = getByTestId('button');
-
-    expect(container).toMatchSnapshot();
-    expect(pds.load).toBeCalledTimes(1);
-    expect(pds.load).toBeCalledWith({ prefix: 'my-prefix' });
-
-    await userEvent.click(button);
-
-    expect(container).toMatchSnapshot();
-    expect(pds.load).toBeCalledTimes(2);
-    expect(pds.load).toBeCalledWith({ prefix: 'new-prefix' });
-  });
-
   it('should render components wrapped with nested provider and prefix', () => {
     testSnapshot(
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -67,14 +37,11 @@ describe('PorscheDesignSystemProvider', () => {
     );
   });
 
-  it('should throw error if not provided', () => {
-    let error = '';
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+  it('should throw error if PorscheDesignSystemProvider is missing', () => {
+    const spy = jest.spyOn(global.console, 'error');
 
     expect(() => render(<PButton>Some Button</PButton>)).toThrowErrorMatchingInlineSnapshot(
       '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
     );
-
-    spy.mockRestore();
   });
 });

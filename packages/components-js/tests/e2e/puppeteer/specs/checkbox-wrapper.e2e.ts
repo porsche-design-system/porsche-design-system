@@ -14,7 +14,6 @@ import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -41,7 +40,7 @@ type InitOptions = {
 };
 
 const initCheckbox = (opts?: InitOptions): Promise<void> => {
-  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts ?? {};
+  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts || {};
 
   const slottedLabel = useSlottedLabel
     ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'

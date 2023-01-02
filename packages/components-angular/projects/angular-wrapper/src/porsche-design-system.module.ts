@@ -16,7 +16,7 @@ export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> 
 })
 export class PorscheDesignSystemModule {
   constructor(@Optional() configParam: DefaultConfig) {
-    const configs = (configParam ?? ([new DefaultConfig()] as unknown)) as PorscheDesignSystemModuleConfig[];
+    const configs = (configParam || ([new DefaultConfig()] as unknown)) as PorscheDesignSystemModuleConfig[];
     configs.forEach(({ prefix }) => load({ prefix }));
   }
 
