@@ -30,7 +30,7 @@
     "madge": "^5.0.1",
     "prettier": "^2.8.1",
     "react-jss": "^10.9.2",
-    "rollup": "^3.7.4",
+    "rollup": "^3.9.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "sass": "^1.56.1",

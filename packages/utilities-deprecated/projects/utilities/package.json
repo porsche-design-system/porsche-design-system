@@ -45,7 +45,7 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^10.0.1",
-    "rollup": "^3.7.4",
+    "rollup": "^3.9.0",
     "tslib": "^2.4.1",
     "typescript": "~4.9.3"
   },
