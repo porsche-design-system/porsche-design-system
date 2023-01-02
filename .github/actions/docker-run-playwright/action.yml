@@ -2,4 +2,4 @@ name: Docker Run
 description: Run scripts in custom docker image
 runs:
   using: docker
-  image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-vue
+  image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.29.1-focal

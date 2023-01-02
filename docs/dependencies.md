@@ -1,15 +1,5 @@
 # Dependencies 02.01.2023
 
-## Playwright
-
-We have to stay on `1.27.0` for now since later versions supply WebKit 16.4 which causes flaky behavior in our VRT
-pages. See <https://github.com/microsoft/playwright/releases>.
-
-### Affected dependencies:
-
-- `@playwright/test`
-- `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
-
 ## Vue
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
