@@ -70,13 +70,10 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
+    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
     if (useResizeObserverFallback) {
       resizeObserverFallback(this.host, this.setContentHeight, true);
     }
-  }
-
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
 
   public componentDidLoad(): void {

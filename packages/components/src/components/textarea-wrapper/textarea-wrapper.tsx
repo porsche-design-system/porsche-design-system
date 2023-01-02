@@ -64,12 +64,9 @@ export class TextareaWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes(); // on every reconnect
-  }
 
-  public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
-    this.observeAttributes(); // once initially
+    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
     this.hasCounter = hasCounter(this.textarea);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
   }
@@ -142,9 +139,5 @@ export class TextareaWrapper {
 
   private onLabelClick = (): void => {
     this.textarea.focus();
-  };
-
-  private observeAttributes = (): void => {
-    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 }

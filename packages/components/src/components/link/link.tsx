@@ -72,7 +72,7 @@ export class Link {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 

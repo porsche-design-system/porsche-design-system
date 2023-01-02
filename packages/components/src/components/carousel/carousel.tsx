@@ -97,16 +97,13 @@ export class Carousel {
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
-    this.observeBreakpointChange();
 
     if (this.splide) {
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
     }
-  }
 
-  public componentWillLoad(): void {
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // dynamic change is not supported right now
 
     this.updateSlidesAndPagination();

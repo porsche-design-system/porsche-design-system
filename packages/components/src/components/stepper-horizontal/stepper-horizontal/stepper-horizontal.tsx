@@ -53,6 +53,7 @@ export class StepperHorizontal {
 
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
+    this.validateComponent();
 
     // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
@@ -64,11 +65,6 @@ export class StepperHorizontal {
     });
 
     this.observeBreakpointChange();
-  }
-
-  public componentWillLoad(): void {
-    // Initial validation
-    this.validateComponent();
   }
 
   public componentDidLoad(): void {

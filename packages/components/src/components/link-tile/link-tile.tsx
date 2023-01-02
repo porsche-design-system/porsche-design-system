@@ -85,9 +85,6 @@ export class LinkTile {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-  }
-
-  public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 

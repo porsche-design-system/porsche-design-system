@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
+  FORM_STATES,
   getDataThemeDarkAttribute,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -24,7 +25,6 @@ import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
-import { FORM_STATES } from '../../../utils/form/form-state';
 import type { FormState } from '../../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
@@ -80,12 +80,9 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes(); // on every reconnect
-  }
 
-  public componentWillLoad(): void {
     this.select = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'select');
-    this.observeAttributes(); // once initially
+    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
 
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
     if (this.hasCustomDropdown) {
@@ -176,9 +173,5 @@ export class SelectWrapper {
         )}
       </Host>
     );
-  }
-
-  private observeAttributes(): void {
-    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 }

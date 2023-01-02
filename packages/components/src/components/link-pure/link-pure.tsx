@@ -96,7 +96,7 @@ export class LinkPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
     throwIfInvalidLinkPureUsage(this.host, this.href);
   }

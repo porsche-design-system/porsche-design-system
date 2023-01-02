@@ -108,17 +108,15 @@ export class TextFieldWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes(); // on every reconnect
-  }
 
-  public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
         .map((type) => `input[type=${type}]`)
         .join()
     );
-    this.observeAttributes(); // once initially
+    observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+
     this.isSearch = isType(this.input.type, 'search');
     this.isPassword = isType(this.input.type, 'password');
     this.isWithinForm = isWithinForm(this.host);
@@ -302,10 +300,6 @@ export class TextFieldWrapper {
     this.onLabelClick();
     this.input.value = '';
     dispatchInputEvent(this.input);
-  };
-
-  private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private setInputStyles = (): void => {

@@ -51,13 +51,10 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes(); // on every reconnect
-  }
 
-  public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     addChangeListener(this.input);
-    this.observeAttributes(); // once initially
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 
   public componentDidRender(): void {
@@ -106,9 +103,5 @@ export class RadioButtonWrapper {
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.click();
     }
-  };
-
-  private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 }

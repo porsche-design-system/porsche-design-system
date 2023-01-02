@@ -49,7 +49,7 @@ export class LinkSocial {
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 

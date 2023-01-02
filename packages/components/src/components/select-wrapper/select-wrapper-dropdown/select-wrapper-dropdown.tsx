@@ -80,15 +80,16 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
+
+    this.setOptionMaps();
+    this.observeOptions();
+
+    observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public componentDidRender(): void {
     handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
-  }
-
-  public componentWillLoad(): void {
-    this.observeProperties();
-    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
@@ -151,7 +152,8 @@ export class SelectWrapperDropdown {
               labelId,
               descriptionId,
               dropdownId,
-              getHighlightedOptionMapIndex(this.optionMaps))}
+              getHighlightedOptionMapIndex(this.optionMaps)
+            )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
           />
@@ -212,13 +214,6 @@ export class SelectWrapperDropdown {
         ]}
       </Host>
     );
-  }
-
-  private observeProperties(): void {
-    this.setOptionMaps(); // initial
-    this.observeOptions(); // initial
-
-    observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
   }
 
   private observeOptions(): void {

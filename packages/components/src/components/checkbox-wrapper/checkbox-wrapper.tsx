@@ -50,12 +50,9 @@ export class CheckboxWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes(); // on every reconnect
-  }
 
-  public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
-    this.observeAttributes(); // once initially
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 
   public componentDidRender(): void {
@@ -105,9 +102,5 @@ export class CheckboxWrapper {
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.click();
     }
-  };
-
-  private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 }

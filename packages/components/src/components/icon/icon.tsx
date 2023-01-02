@@ -63,7 +63,7 @@ export class Icon {
   private key = 0; // use unique random key to trick stencil cache
   private svgContent = '';
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.initIntersectionObserver();
   }
 

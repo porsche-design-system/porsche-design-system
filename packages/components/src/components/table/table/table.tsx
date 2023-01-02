@@ -42,10 +42,10 @@ export class Table {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
+    warnIfCaptionIsUndefined(this.host, this.caption);
   }
 
   public componentWillLoad(): void {
-    warnIfCaptionIsUndefined(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<SortingChangeEvent>) => {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
