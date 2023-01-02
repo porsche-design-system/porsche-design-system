@@ -9,13 +9,13 @@ const initComponent = (): SelectWrapper => {
   return component;
 };
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   it('should call isCustomDropdown() with correct parameters', () => {
     const component = initComponent();
     component.native = true;
 
     const spy = jest.spyOn(selectWrapperUtils, 'isCustomDropdown');
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(false, true);
   });

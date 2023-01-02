@@ -2,14 +2,14 @@ import { LinkPure } from './link-pure';
 import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
 import * as throwIfInvalidLinkPureUsageUtils from '../../utils/validation/throwIfInvalidLinkPureUsage';
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
     const spy = jest.spyOn(throwIfInvalidLinkPureUsageUtils, 'throwIfInvalidLinkPureUsage');
 
     const component = new LinkPure();
     component.host = document.createElement('p-link-pure');
     component.href = '#';
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, component.href);
   });

@@ -23,15 +23,13 @@ describe('connectedCallback', () => {
     component.connectedCallback();
     expect(spy).toBeCalledWith();
   });
-});
 
-describe('componentWillLoad', () => {
   it('should call this.validateComponent()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
     const spy = jest.spyOn(component, 'validateComponent' as any);
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toBeCalledWith();
   });
 });

@@ -6,7 +6,7 @@ import * as a11yUtils from '../../utils/a11y/a11y';
 jest.mock('../../utils/dom');
 jest.mock('../../utils/slotted-styles');
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   // TODO: prove connection between util actually setting member value
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
@@ -18,7 +18,7 @@ describe('componentWillLoad', () => {
     const component = new TextareaWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(textarea);
     expect(component['hasCounter']).toBe(true);

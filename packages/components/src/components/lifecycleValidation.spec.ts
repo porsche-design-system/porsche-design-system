@@ -31,13 +31,13 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 });
 
 it.each<TagName>(tagNamesWithRequiredChild)(
-  'should call getOnlyChildOfKindHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
+  'should call getOnlyChildOfKindHTMLElementOrThrow() with correct parameters via connectedCallback for %s',
   (tagName) => {
     const spy = jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow');
     const component = componentFactory(tagName);
 
     try {
-      component.componentWillLoad();
+      component.connectedCallback();
     } catch {}
 
     expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
@@ -187,28 +187,16 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   const el = document.createElement('div');
 
   it('should call observeAttributes() with correct parameters via connectedCallback', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
-  });
-
-  it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
     jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-
-    if (tagName === 'p-select-wrapper') {
-      (component as any).native = true;
-    }
-
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
     jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
-    component.componentWillLoad(); // to ensure reference too "el" is in component instance
+    component.connectedCallback(); // to ensure reference too "el" is in component instance
 
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
     component.disconnectedCallback();
@@ -217,7 +205,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   });
 });
 
-// TODO: p-select-wrapper-dropdown is ignored since it behaved different as an internal component
+// TODO: p-select-wrapper-dropdown is ignored since it behaves different as an internal component
 describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !== 'p-select-wrapper-dropdown'))(
   '%s',
   (tagName) => {

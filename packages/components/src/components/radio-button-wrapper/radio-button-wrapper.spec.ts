@@ -1,7 +1,7 @@
 import { RadioButtonWrapper } from './radio-button-wrapper';
 import * as radioButtonWrapperUtils from './radio-button-wrapper-utils';
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   it('should call addChangeListener() with correct parameters', () => {
     const spy = jest.spyOn(radioButtonWrapperUtils, 'addChangeListener');
 
@@ -13,7 +13,7 @@ describe('componentWillLoad', () => {
     input.type = 'radio';
     component.host.appendChild(input);
 
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(input);
   });

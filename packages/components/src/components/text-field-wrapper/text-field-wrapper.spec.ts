@@ -11,7 +11,7 @@ jest.mock('../../utils/slotted-styles');
 const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
   jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   it('should call isType() with correct parameters and set isSearch', () => {
     const input = document.createElement('input');
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
@@ -22,12 +22,12 @@ describe('componentWillLoad', () => {
     expect(component['isSearch']).toBe(undefined);
 
     spy.mockReturnValue(true);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toHaveBeenNthCalledWith(1, input.type, 'search');
     expect(component['isSearch']).toBe(true);
 
     spy.mockReturnValue(false);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isSearch']).toBe(false);
   });
 
@@ -41,12 +41,12 @@ describe('componentWillLoad', () => {
     expect(component['isPassword']).toBe(undefined);
 
     spy.mockReturnValue(true);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toHaveBeenNthCalledWith(2, input.type, 'password');
     expect(component['isPassword']).toBe(true);
 
     spy.mockReturnValue(false);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isPassword']).toBe(false);
   });
 
@@ -60,11 +60,11 @@ describe('componentWillLoad', () => {
     expect(component['isWithinForm']).toBe(undefined);
 
     spy.mockReturnValue(true);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isWithinForm']).toBe(true);
 
     spy.mockReturnValue(false);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isWithinForm']).toBe(false);
   });
 
@@ -78,11 +78,11 @@ describe('componentWillLoad', () => {
     expect(component['hasAction']).toBe(undefined);
 
     spy.mockReturnValue(true);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['hasAction']).toBe(true);
 
     spy.mockReturnValue(false);
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['hasAction']).toBe(false);
   });
 
@@ -97,7 +97,7 @@ describe('componentWillLoad', () => {
     const component = new TextFieldWrapper();
     expect(component['isClearable']).toBe(false);
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isClearable']).toBe(false);
   });
 
@@ -112,11 +112,11 @@ describe('componentWillLoad', () => {
     expect(component['isClearable']).toBe(false);
 
     input.value = 'search';
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isClearable']).toBe(true);
 
     input.value = '';
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(component['isClearable']).toBe(false);
   });
 
@@ -129,7 +129,7 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
 
     const component = new TextFieldWrapper();
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(component['input'], ['value'], expect.any(Function));
   });
@@ -145,7 +145,7 @@ describe('componentWillLoad', () => {
     const component = new TextFieldWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(input);
     expect(component['hasCounter']).toBe(true);
@@ -163,7 +163,7 @@ describe('componentWillLoad', () => {
     component.unit = 'EUR';
 
     expect(component['hasUnit']).toBe(undefined);
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).not.toBeCalled();
     expect(component['hasUnit']).toBe(false);
@@ -182,7 +182,7 @@ describe('componentWillLoad', () => {
     component.showCharacterCount = false;
 
     expect(component['hasUnit']).toBe(undefined);
-    component.componentWillLoad();
+    component.connectedCallback();
 
     expect(spy).toBeCalledWith(input, 'EUR');
     expect(component['hasUnit']).toBe(true);
@@ -204,7 +204,7 @@ describe('componentWillLoad', () => {
       component.unit = 'EUR';
 
       expect(component['hasUnit']).toBe(undefined);
-      component.componentWillLoad();
+      component.connectedCallback();
 
       expect(spy).toBeCalledWith(input, 'EUR');
       expect(component['hasUnit']).toBe(true);

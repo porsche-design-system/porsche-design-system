@@ -15,14 +15,6 @@ const splideMock = {
 } as Splide;
 
 describe('connectedCallback', () => {
-  it('should call this.observeBreakpointChange()', () => {
-    const component = new Carousel();
-    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
-
-    component.connectedCallback();
-    expect(spy).toBeCalledWith();
-  });
-
   describe('on reconnect', () => {
     it('should call this.updateSlidesAndPagination()', () => {
       const component = new Carousel();
@@ -43,16 +35,14 @@ describe('connectedCallback', () => {
       expect(spy).toBeCalledWith(component['splide']);
     });
   });
-});
 
-describe('componentWillLoad', () => {
   it('should call parseJSON() with correct parameters and set slidesPerPage', () => {
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValueOnce(5).mockReturnValueOnce(10);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.slidesPerPage = 2;
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toBeCalledWith(2);
 
     expect(component.slidesPerPage).toBe(5);
@@ -63,7 +53,7 @@ describe('componentWillLoad', () => {
     component.host = document.createElement('p-carousel');
     const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any);
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toBeCalledWith();
   });
 
@@ -72,7 +62,7 @@ describe('componentWillLoad', () => {
     component.host = document.createElement('p-carousel');
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toBeCalledWith();
   });
 });

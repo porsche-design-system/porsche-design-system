@@ -1,7 +1,7 @@
 import { LinkTile } from './link-tile';
 import * as throwIfAlignTopWithoutCompactUtils from './link-tile-utils';
 
-describe('componentWillLoad', () => {
+describe('connectedCallback', () => {
   it('should call throwIfAlignTopAndNotCompact() with correct parameters', () => {
     const spy = jest.spyOn(throwIfAlignTopWithoutCompactUtils, 'throwIfAlignTopAndNotCompact');
 
@@ -9,7 +9,7 @@ describe('componentWillLoad', () => {
     component.host = document.createElement('p-link-tile');
     component.href = '#';
 
-    component.componentWillLoad();
+    component.connectedCallback();
     expect(spy).toBeCalledWith(component.host, component.align, component.compact);
   });
 });
