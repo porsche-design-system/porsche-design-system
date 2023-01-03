@@ -71,18 +71,18 @@
     "@playwright/test": "1.27.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.18",
     "concurrently": "^7.6.0",
-    "devtools-protocol": "^0.0.1075693",
+    "devtools-protocol": "^0.0.1087818",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.7",
     "jsdom": "^20.0.3",
     "local-web-server": "^5.2.1",
     "terser-webpack-plugin": "^5.3.6",
     "ts-node": "^10.9.1",
-    "typescript": "~4.9.3",
+    "typescript": "~4.9.4",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.1"
   }
 }
