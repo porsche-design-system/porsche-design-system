@@ -1,7 +1,7 @@
 {
     "url": "https://finder.porsche.com/de/de-DE",
     "consumedPdsVersionsWithPrefixes": {
-        "2.14.0": [
+        "2.18.0": [
             "fn"
         ]
     },
@@ -77,7 +77,8 @@
                     "theme": {
                         "amount": 12,
                         "values": {
-                            "light": 12
+                            "light": 9,
+                            "dark": 3
                         }
                     }
                 },
@@ -204,56 +205,6 @@
                     "rel",
                     "aria"
                 ]
-            },
-            "p-text": {
-                "amount": 3,
-                "hostPdsComponent": 3,
-                "children": 3,
-                "properties": {
-                    "tag": {
-                        "amount": 3,
-                        "values": {
-                            "span": 3
-                        }
-                    },
-                    "size": {
-                        "amount": 3,
-                        "values": {
-                            "inherit": 3
-                        }
-                    },
-                    "weight": {
-                        "amount": 3,
-                        "values": {
-                            "regular": 3
-                        }
-                    },
-                    "align": {
-                        "amount": 3,
-                        "values": {
-                            "left": 3
-                        }
-                    },
-                    "color": {
-                        "amount": 3,
-                        "values": {
-                            "inherit": 3
-                        }
-                    },
-                    "ellipsis": {
-                        "amount": 3,
-                        "values": {
-                            "false": 3
-                        }
-                    },
-                    "theme": {
-                        "amount": 3,
-                        "values": {
-                            "light": 3
-                        }
-                    }
-                },
-                "unusedProperties": []
             }
         },
         "unusedTagNames": [
@@ -299,6 +250,7 @@
             "p-tabs-item",
             "p-tag",
             "p-tag-dismissible",
+            "p-text",
             "p-text-field-wrapper",
             "p-text-list",
             "p-text-list-item",
@@ -307,7 +259,7 @@
         ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
-        "2.14.0": {
+        "2.18.0": {
             "fn": {
                 "tagNames": {
                     "p-marque": {
@@ -380,7 +332,8 @@
                             "theme": {
                                 "amount": 12,
                                 "values": {
-                                    "light": 12
+                                    "light": 9,
+                                    "dark": 3
                                 }
                             }
                         },
@@ -507,56 +460,6 @@
                             "rel",
                             "aria"
                         ]
-                    },
-                    "p-text": {
-                        "amount": 3,
-                        "hostPdsComponent": 3,
-                        "children": 3,
-                        "properties": {
-                            "tag": {
-                                "amount": 3,
-                                "values": {
-                                    "span": 3
-                                }
-                            },
-                            "size": {
-                                "amount": 3,
-                                "values": {
-                                    "inherit": 3
-                                }
-                            },
-                            "weight": {
-                                "amount": 3,
-                                "values": {
-                                    "regular": 3
-                                }
-                            },
-                            "align": {
-                                "amount": 3,
-                                "values": {
-                                    "left": 3
-                                }
-                            },
-                            "color": {
-                                "amount": 3,
-                                "values": {
-                                    "inherit": 3
-                                }
-                            },
-                            "ellipsis": {
-                                "amount": 3,
-                                "values": {
-                                    "false": 3
-                                }
-                            },
-                            "theme": {
-                                "amount": 3,
-                                "values": {
-                                    "light": 3
-                                }
-                            }
-                        },
-                        "unusedProperties": []
                     }
                 },
                 "unusedTagNames": [
@@ -602,6 +505,7 @@
                     "p-tabs-item",
                     "p-tag",
                     "p-tag-dismissible",
+                    "p-text",
                     "p-text-field-wrapper",
                     "p-text-list",
                     "p-text-list-item",

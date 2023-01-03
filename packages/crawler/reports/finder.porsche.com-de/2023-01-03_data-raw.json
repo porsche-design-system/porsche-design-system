@@ -1,12 +1,12 @@
 {
     "url": "https://finder.porsche.com/de/de-DE",
     "consumedPdsVersionsWithPrefixes": {
-        "2.14.0": [
+        "2.18.0": [
             "fn"
         ]
     },
     "consumedTagNamesForVersionsAndPrefixes": {
-        "2.14.0": {
+        "2.18.0": {
             "fn": [
                 {
                     "p-marque": {
@@ -70,7 +70,7 @@
                             "color": "inherit",
                             "size": "inherit",
                             "lazy": false,
-                            "theme": "light"
+                            "theme": "dark"
                         },
                         "hostPdsComponent": "p-link"
                     }
@@ -94,7 +94,7 @@
                             "color": "inherit",
                             "size": "inherit",
                             "lazy": false,
-                            "theme": "light"
+                            "theme": "dark"
                         },
                         "hostPdsComponent": "p-link"
                     }
@@ -118,7 +118,7 @@
                             "color": "inherit",
                             "size": "inherit",
                             "lazy": false,
-                            "theme": "light"
+                            "theme": "dark"
                         },
                         "hostPdsComponent": "p-link"
                     }
@@ -225,21 +225,6 @@
                     }
                 },
                 {
-                    "p-text": {
-                        "properties": {
-                            "tag": "span",
-                            "size": "inherit",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "inherit",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<slot></slot>",
-                        "hostPdsComponent": "p-link-pure"
-                    }
-                },
-                {
                     "p-link-pure": {
                         "properties": {
                             "alignLabel": "right",
@@ -269,21 +254,6 @@
                     }
                 },
                 {
-                    "p-text": {
-                        "properties": {
-                            "tag": "span",
-                            "size": "inherit",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "inherit",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<slot></slot>",
-                        "hostPdsComponent": "p-link-pure"
-                    }
-                },
-                {
                     "p-link-pure": {
                         "properties": {
                             "alignLabel": "right",
@@ -309,21 +279,6 @@
                             "lazy": false,
                             "theme": "light"
                         },
-                        "hostPdsComponent": "p-link-pure"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "span",
-                            "size": "inherit",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "inherit",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<slot></slot>",
                         "hostPdsComponent": "p-link-pure"
                     }
                 }

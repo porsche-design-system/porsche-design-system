@@ -13,114 +13,6 @@
         "2.17.0": {
             "": [
                 {
-                    "p-button-pure": {
-                        "properties": {
-                            "tabbable": true,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "size": "small",
-                            "weight": "regular",
-                            "icon": "close",
-                            "active": false,
-                            "hideLabel": "true",
-                            "alignLabel": "right",
-                            "stretch": false,
-                            "theme": "light"
-                        },
-                        "children": "Close popup"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "close",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button-pure"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Taycan GTS"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-5",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "(Ab)  179.800,00 CHF inkl. MWst."
-                    }
-                },
-                {
-                    "p-link": {
-                        "properties": {
-                            "variant": "tertiary",
-                            "icon": "arrow-head-right",
-                            "href": "https://cc.porsche.com/icc/ccCall.do?rt=1671183271&screen=1280x720&userID=CHSD&lang=sd&PARAM=parameter_internet_sd&ORDERTYPE=Y1ADE1&CNR=C10&MODELYEAR=2023&hookURL=https%3a%2f%2fwww.porsche.com%2fswiss%2fde%2fmodelstart%2fall%2f&option1=0L&option2=GD&option3=Q1J&option4=G1X&option5=48D&option6=3FG&option7=VW6&option8=P4S&option9=5MH&option10=8LU&option11=2ZP",
-                            "theme": "light",
-                            "target": "_self",
-                            "hideLabel": false
-                        },
-                        "children": "Diese Konfiguration"
-                    }
-                },
-                {
-                    "p-text-list": {
-                        "properties": {
-                            "listType": "unordered",
-                            "orderType": "numbered",
-                            "theme": "light"
-                        },
-                        "children": "<p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">karminrot</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">21-Zoll RS Spyder Design Räder</p-text-list-item><p-text-list-item data-v-930eddb5=\"\" role=\"listitem\" class=\"hydrated\">Interieur-Paket GTS karminrot</p-text-list-item>"
-                    }
-                },
-                {
-                    "p-text-list-item": {
-                        "properties": {},
-                        "children": "karminrot"
-                    }
-                },
-                {
-                    "p-text-list-item": {
-                        "properties": {},
-                        "children": "21-Zoll RS Spyder Design Räder"
-                    }
-                },
-                {
-                    "p-text-list-item": {
-                        "properties": {},
-                        "children": "Interieur-Paket GTS karminrot"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-head-right",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-link"
-                    }
-                },
-                {
                     "p-link-pure": {
                         "properties": {
                             "alignLabel": "right",
@@ -128,7 +20,7 @@
                             "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts/",
+                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
@@ -148,7 +40,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Der Taycan GTS."
+                        "children": "Der Taycan Turbo Cross Turismo."
                     }
                 },
                 {
@@ -171,13 +63,13 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://shop.porsche.com/ch/de-CH",
+                            "href": "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Highlights für Porsche Fans und Fahrer im Shop."
+                        "children": "Exklusive Highlights mit Stil und Eleganz."
                     }
                 },
                 {
@@ -200,13 +92,13 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://finder.porsche.com/",
+                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Finden Sie Ihr Traumfahrzeug – Neu oder gebraucht."
+                        "children": "Der neue 911 Carrera T."
                     }
                 },
                 {
@@ -229,13 +121,13 @@
                             "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/",
+                            "href": "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Die 911 GTS Modelle."
+                        "children": "Die neuen 718 Style Edition Modelle."
                     }
                 },
                 {
@@ -2687,7 +2579,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 169 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km "
+                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 129 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km "
                     }
                 },
                 {

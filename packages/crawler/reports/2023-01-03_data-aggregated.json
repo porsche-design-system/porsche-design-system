@@ -74,14 +74,14 @@
                 ]
             },
             "p-icon": {
-                "amount": 138,
-                "hostPdsComponent": 79,
+                "amount": 136,
+                "hostPdsComponent": 77,
                 "children": null,
                 "properties": {
                     "name": {
-                        "amount": 138,
+                        "amount": 136,
                         "values": {
-                            "arrow-head-right": 39,
+                            "arrow-head-right": 38,
                             "shoppingBag": 2,
                             "pin": 2,
                             "user": 4,
@@ -95,7 +95,7 @@
                             "search": 2,
                             "shopping-bag": 2,
                             "arrow-right": 31,
-                            "close": 4,
+                            "close": 3,
                             "arrow-left": 12,
                             "truck": 1,
                             "duration": 1,
@@ -113,31 +113,31 @@
                         }
                     },
                     "color": {
-                        "amount": 138,
+                        "amount": 136,
                         "values": {
-                            "inherit": 128,
+                            "inherit": 126,
                             "default": 10
                         }
                     },
                     "size": {
-                        "amount": 138,
+                        "amount": 136,
                         "values": {
-                            "inherit": 86,
+                            "inherit": 84,
                             "small": 51,
                             "medium": 1
                         }
                     },
                     "lazy": {
-                        "amount": 138,
+                        "amount": 136,
                         "values": {
-                            "false": 138
+                            "false": 136
                         }
                     },
                     "theme": {
-                        "amount": 138,
+                        "amount": 136,
                         "values": {
-                            "light": 137,
-                            "dark": 1
+                            "light": 132,
+                            "dark": 4
                         }
                     },
                     "source": {
@@ -249,57 +249,57 @@
                 "unusedProperties": []
             },
             "p-text": {
-                "amount": 53,
-                "hostPdsComponent": 10,
-                "children": 53,
+                "amount": 50,
+                "hostPdsComponent": 7,
+                "children": 50,
                 "properties": {
                     "tag": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
                             "p": 38,
                             "div": 5,
-                            "span": 10
+                            "span": 7
                         }
                     },
                     "size": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
-                            "inherit": 26,
+                            "inherit": 23,
                             "small": 20,
                             "{ base: 'small', m: 'medium', l: 'large' }": 1,
                             "{base: 'small', xl: 'medium'}": 6
                         }
                     },
                     "weight": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
-                            "regular": 53
+                            "regular": 50
                         }
                     },
                     "align": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
                             "center": 12,
-                            "left": 41
+                            "left": 38
                         }
                     },
                     "color": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
-                            "inherit": 28,
+                            "inherit": 25,
                             "default": 25
                         }
                     },
                     "ellipsis": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
-                            "false": 53
+                            "false": 50
                         }
                     },
                     "theme": {
-                        "amount": 53,
+                        "amount": 50,
                         "values": {
-                            "light": 37,
+                            "light": 34,
                             "dark": 16
                         }
                     }
@@ -359,10 +359,10 @@
                             "/de/de-DE/leasing": 1,
                             "/de/de-DE/finanzierung": 1,
                             "/de/de-DE/driveabo": 1,
-                            "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts/": 1,
-                            "https://shop.porsche.com/ch/de-CH": 1,
-                            "https://finder.porsche.com/": 1,
-                            "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/": 1,
+                            "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/": 1,
+                            "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale": 1,
+                            "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
+                            "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open": 1,
                             "https://www.porsche.com/swiss/de/models/718/": 1,
                             "https://www.porsche.com/swiss/de/models/911/": 1,
                             "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
@@ -423,89 +423,89 @@
                 ]
             },
             "p-button-pure": {
-                "amount": 13,
+                "amount": 12,
                 "hostPdsComponent": 2,
-                "children": 13,
+                "children": 12,
                 "properties": {
                     "tabbable": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "true": 13
+                            "true": 12
                         }
                     },
                     "type": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "submit": 9,
+                            "submit": 8,
                             "button": 4
                         }
                     },
                     "disabled": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "false": 13
+                            "false": 12
                         }
                     },
                     "loading": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "false": 13
+                            "false": 12
                         }
                     },
                     "size": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
                             "inherit": 2,
-                            "small": 11
+                            "small": 10
                         }
                     },
                     "weight": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "regular": 13
+                            "regular": 12
                         }
                     },
                     "icon": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
                             "none": 4,
                             "arrow-head-left": 1,
                             "arrow-head-right": 2,
                             "information": 1,
-                            "close": 3,
+                            "close": 2,
                             "arrow-left": 1,
                             "arrow-right": 1
                         }
                     },
                     "active": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "false": 13
+                            "false": 12
                         }
                     },
                     "hideLabel": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
                             "false": 7,
-                            "true": 6
+                            "true": 5
                         }
                     },
                     "alignLabel": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "right": 13
+                            "right": 12
                         }
                     },
                     "stretch": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "false": 13
+                            "false": 12
                         }
                     },
                     "theme": {
-                        "amount": 13,
+                        "amount": 12,
                         "values": {
-                            "light": 13
+                            "light": 12
                         }
                     },
                     "aria": {
@@ -521,49 +521,48 @@
                 ]
             },
             "p-link": {
-                "amount": 14,
+                "amount": 13,
                 "hostPdsComponent": null,
-                "children": 14,
+                "children": 13,
                 "properties": {
                     "variant": {
-                        "amount": 14,
+                        "amount": 13,
                         "values": {
                             "secondary": 7,
-                            "tertiary": 7
+                            "tertiary": 6
                         }
                     },
                     "icon": {
-                        "amount": 14,
+                        "amount": 13,
                         "values": {
-                            "arrow-head-right": 11,
+                            "arrow-head-right": 10,
                             "arrow-right": 1,
                             "arrowRight": 2
                         }
                     },
                     "theme": {
-                        "amount": 14,
+                        "amount": 13,
                         "values": {
-                            "light": 9,
+                            "light": 8,
                             "dark": 5
                         }
                     },
                     "target": {
-                        "amount": 14,
+                        "amount": 13,
                         "values": {
-                            "_self": 13,
+                            "_self": 12,
                             "": 1
                         }
                     },
                     "hideLabel": {
-                        "amount": 14,
+                        "amount": 13,
                         "values": {
-                            "false": 14
+                            "false": 13
                         }
                     },
                     "href": {
-                        "amount": 4,
+                        "amount": 3,
                         "values": {
-                            "https://cc.porsche.com/icc/ccCall.do?rt=1671183271&screen=1280x720&userID=CHSD&lang=sd&PARAM=parameter_internet_sd&ORDERTYPE=Y1ADE1&CNR=C10&MODELYEAR=2023&hookURL=https%3a%2f%2fwww.porsche.com%2fswiss%2fde%2fmodelstart%2fall%2f&option1=0L&option2=GD&option3=Q1J&option4=G1X&option5=48D&option6=3FG&option7=VW6&option8=P4S&option9=5MH&option10=8LU&option11=2ZP": 1,
                             "https://www.porsche.com/swiss/de/swiss-benefits/": 1,
                             "https://www.porsche.com/swiss/de/dialogue/newsletter/": 1,
                             "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/": 1
@@ -666,42 +665,40 @@
                 "unusedProperties": []
             },
             "p-headline": {
-                "amount": 20,
+                "amount": 18,
                 "hostPdsComponent": null,
-                "children": 20,
+                "children": 18,
                 "properties": {
                     "variant": {
-                        "amount": 20,
+                        "amount": 18,
                         "values": {
                             "headline-2": 6,
-                            "headline-3": 1,
-                            "headline-5": 1,
                             "headline-4": 7,
                             "medium": 5
                         }
                     },
                     "align": {
-                        "amount": 20,
+                        "amount": 18,
                         "values": {
-                            "left": 20
+                            "left": 18
                         }
                     },
                     "color": {
-                        "amount": 20,
+                        "amount": 18,
                         "values": {
-                            "default": 20
+                            "default": 18
                         }
                     },
                     "ellipsis": {
-                        "amount": 20,
+                        "amount": 18,
                         "values": {
-                            "false": 20
+                            "false": 18
                         }
                     },
                     "theme": {
-                        "amount": 20,
+                        "amount": 18,
                         "values": {
-                            "light": 14,
+                            "light": 12,
                             "dark": 6
                         }
                     },
@@ -989,39 +986,6 @@
                 },
                 "unusedProperties": []
             },
-            "p-text-list": {
-                "amount": 1,
-                "hostPdsComponent": null,
-                "children": 1,
-                "properties": {
-                    "listType": {
-                        "amount": 1,
-                        "values": {
-                            "unordered": 1
-                        }
-                    },
-                    "orderType": {
-                        "amount": 1,
-                        "values": {
-                            "numbered": 1
-                        }
-                    },
-                    "theme": {
-                        "amount": 1,
-                        "values": {
-                            "light": 1
-                        }
-                    }
-                },
-                "unusedProperties": []
-            },
-            "p-text-list-item": {
-                "amount": 3,
-                "hostPdsComponent": null,
-                "children": 3,
-                "properties": {},
-                "unusedProperties": []
-            },
             "p-grid": {
                 "amount": 1,
                 "hostPdsComponent": null,
@@ -1102,6 +1066,8 @@
             "p-tabs-item",
             "p-tag",
             "p-tag-dismissible",
+            "p-text-list",
+            "p-text-list-item",
             "p-textarea-wrapper",
             "p-toast"
         ]

@@ -809,10 +809,9 @@
                 {
                     "p-icon": {
                         "properties": {
-                            "name": "arrow-head-right",
-                            "source": "/_next/static/media/multicolor.0794a88f.svg",
-                            "color": "default",
-                            "size": "inherit",
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
                             "lazy": false,
                             "theme": "light"
                         }
@@ -821,9 +820,10 @@
                 {
                     "p-icon": {
                         "properties": {
-                            "name": "arrow-right",
-                            "color": "inherit",
-                            "size": "small",
+                            "name": "arrow-head-right",
+                            "source": "/_next/static/media/multicolor.0794a88f.svg",
+                            "color": "default",
+                            "size": "inherit",
                             "lazy": false,
                             "theme": "light"
                         }
