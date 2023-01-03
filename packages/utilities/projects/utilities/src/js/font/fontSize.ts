@@ -15,6 +15,7 @@ const typeScaleFluid = [
   'clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)',
 ];
 
+// TODO: https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html
 type FontSizeKey =
   | 'textXSmall'
   | 'textSmall'

@@ -10,6 +10,7 @@ export const spacing: {
     xLarge: '48px',
     xxLarge: '80px',
   },
+  // TODO: shall we really use rem instead of px here?
   fluid: {
     xSmall: 'clamp(.25rem, 0.28vw + 0.19rem, .5rem)',
     small: '.75rem',

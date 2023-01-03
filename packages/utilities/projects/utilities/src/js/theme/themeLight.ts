@@ -1,6 +1,7 @@
 import type { ThemeColorSet } from './themeShared';
 
 export const themeLight: ThemeColorSet = {
+  // TODO: main or primary?
   main: '#010205',
   background: {
     base: '#FFF',
