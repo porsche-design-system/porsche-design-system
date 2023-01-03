@@ -1,7 +1,13 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../styles';
+import {
+  addImportantToEachRule,
+  getTransition,
+  getThemedColors,
+  pxToRemWithUnit,
+  addImportantToRule,
+} from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -21,19 +27,14 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({
-          position: 'relative',
-          ...buildResponsiveStyles(size, (s: TabSize) => ({
-            height: s === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
-          })),
-        }),
+        position: addImportantToRule('relative'),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
         [transformSelector('::slotted([role])')]: {
           display: 'inline-block',
-          margin: 0,
+          margin: `0 0 calc(.5em - ${pxToRemWithUnit(4)}) 0`,
           padding: 0,
           verticalAlign: 'top',
           fontFamily: 'inherit',
@@ -79,7 +80,7 @@ export const getComponentCss = (
     scroller: {
       ...textSmall,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize[s].fontSize })),
     },
     bar: {
       display: 'block',
@@ -87,7 +88,7 @@ export const getComponentCss = (
       width: 0,
       height: weight === 'semibold' ? '.125em' : '.09375em',
       left: 0,
-      bottom: '-.5em',
+      bottom: `-${pxToRemWithUnit(4)}`,
       background: activeColor,
       '&--enable-transition': {
         willChange: 'width',

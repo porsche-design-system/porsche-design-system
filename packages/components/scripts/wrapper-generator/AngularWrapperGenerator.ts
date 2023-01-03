@@ -2,6 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
+import * as path from 'path';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
@@ -11,8 +12,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   // https://github.com/ng-packagr/ng-packagr/issues/1013#issuecomment-424877378
   protected barrelFileName = 'barrel.ts';
 
-  public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
-    return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
+  public getComponentFileName(component: TagName): string {
+    return `${component.replace('p-', '')}.wrapper.ts`;
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
@@ -107,7 +108,9 @@ export class ${this.generateComponentName(component)}${genericType}${implementsO
   public getAdditionalBarrelFileContent(): string {
     const componentNames = this.relevantComponentTagNames.map(this.generateComponentName);
     const imports = this.relevantComponentTagNames
-      .map((cmp, idx) => `import { ${componentNames[idx]} } from './${this.getComponentFileName(cmp, true)}';`)
+      .map(
+        (cmp, idx) => `import { ${componentNames[idx]} } from './${path.parse(this.getComponentFileName(cmp)).name}';`
+      )
       .join('\n');
 
     const exports = `export const DECLARATIONS = [

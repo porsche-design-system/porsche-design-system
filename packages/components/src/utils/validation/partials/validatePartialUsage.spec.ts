@@ -64,9 +64,10 @@ describe('validatePartialUsage()', () => {
 
       expect(validateFontFaceStylesheetUsageSpy).toBeCalledWith();
       expect(validateGetFontLinksUsageSpy).toBeCalledWith();
-      expect(validateGetComponentChunkLinksUsagesSpy).toBeCalledWith();
-      expect(validateGetLoaderScriptUsageSpy).toBeCalledWith();
       expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
+      // TODO: integration test (real world test) first, before rollout
+      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
+      expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
     }
   );
 
@@ -125,7 +126,7 @@ describe('validateFontFaceStylesheetUsage()', () => {
 
 describe('validateGetFontLinksUsage()', () => {
   it('should call document.querySelector() with correct parameters', () => {
-    const spy = jest.spyOn(document, 'querySelector');
+    const spy = jest.spyOn(document.head, 'querySelector');
 
     validateGetFontLinksUsage();
 
@@ -133,7 +134,7 @@ describe('validateGetFontLinksUsage()', () => {
   });
 
   it('should call throwPartialValidationWarning() with correct parameters', () => {
-    jest.spyOn(document, 'querySelector').mockReturnValue(null);
+    jest.spyOn(document.head, 'querySelector').mockReturnValue(null);
     const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetFontLinksUsage();
@@ -142,7 +143,7 @@ describe('validateGetFontLinksUsage()', () => {
   });
 
   it('should not call throwPartialValidationWarning() if font link is found', () => {
-    jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('link'));
+    jest.spyOn(document.head, 'querySelector').mockReturnValue(document.createElement('link'));
     const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetFontLinksUsage();
@@ -238,14 +239,14 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
 describe('validateGetLoaderScriptUsage()', () => {
   it('should call document.querySelector() with correct parameters', () => {
-    const spy = jest.spyOn(document, 'querySelector');
+    const spy = jest.spyOn(document.body, 'querySelector');
     validateGetLoaderScriptUsage();
 
     expect(spy).toBeCalledWith('script[data-pds-loader-script]');
   });
 
   it('should call throwPartialValidationWarning() with correct parameters', () => {
-    jest.spyOn(document, 'querySelector').mockReturnValue(null);
+    jest.spyOn(document.body, 'querySelector').mockReturnValue(null);
     const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
@@ -254,7 +255,7 @@ describe('validateGetLoaderScriptUsage()', () => {
   });
 
   it('should not call throwPartialValidationWarning() if loader script is found', () => {
-    jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('link'));
+    jest.spyOn(document.body, 'querySelector').mockReturnValue(document.createElement('link'));
     const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
@@ -278,7 +279,7 @@ describe('validateGetInitialStylesUsage()', () => {
       '1.2.4': ['prefix'],
       '1.2.5': ['my-prefix'],
     });
-    const spy = jest.spyOn(document, 'querySelector');
+    const spy = jest.spyOn(document.head, 'querySelector');
 
     validateGetInitialStylesUsage();
 
@@ -310,7 +311,7 @@ describe('validateGetInitialStylesUsage()', () => {
       '1.2.4': ['prefix'],
       '1.2.5': ['my-prefix'],
     });
-    jest.spyOn(document, 'querySelector').mockReturnValue(document.createElement('style'));
+    jest.spyOn(document.head, 'querySelector').mockReturnValue(document.createElement('style'));
     const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationWarning');
 
     validateGetInitialStylesUsage();

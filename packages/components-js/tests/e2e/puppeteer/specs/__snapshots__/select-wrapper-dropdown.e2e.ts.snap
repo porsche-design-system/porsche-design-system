@@ -1,38 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if description is set 1`] = `
+exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
   "description": "Some description",
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: After click 1`] = `
+exports[`accessibility should expose correct accessibility tree if open/closed: After click 1`] = `
 {
   "expanded": true,
+  "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: Initially 1`] = `
+exports[`accessibility should expose correct accessibility tree if open/closed: Initially 1`] = `
 {
   "haspopup": "listbox",
   "name": "Option A, Some label",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if rendered with optgroups 1`] = `
+exports[`accessibility should expose correct accessibility tree if rendered with optgroups in open state 1`] = `
 {
   "children": [
     {
+      "expanded": true,
+      "focused": true,
       "haspopup": "listbox",
       "name": "Option A, Some label",
-      "role": "button",
+      "role": "combobox",
     },
     {
       "children": [
@@ -122,15 +125,15 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree in error state 1`] = `
+exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
   "haspopup": "listbox",
   "name": "Option A, Some label. Some error message",
-  "role": "button",
+  "role": "combobox",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option A 1`] = `
+exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Initially option A 1`] = `
 {
   "name": "Option A",
   "role": "option",
@@ -138,21 +141,21 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option B 1`] = `
+exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Initially option B 1`] = `
 {
   "name": "Option B",
   "role": "option",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option A after click 1`] = `
+exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Option A after click 1`] = `
 {
   "name": "Option A",
   "role": "option",
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option B after click 1`] = `
+exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Option B after click 1`] = `
 {
   "name": "Option B",
   "role": "option",
@@ -160,13 +163,35 @@ exports[`select-wrapper dropdown accessibility should expose correct accessibili
 }
 `;
 
-exports[`select-wrapper dropdown accessibility should expose correct initial accessibility tree and aria properties 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
+{
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree 2`] = `null`;
+
+exports[`accessibility should expose correct initial accessibility tree in open state 1`] = `
+{
+  "expanded": true,
+  "focused": true,
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree in open state 2`] = `
 {
   "children": [
     {
+      "expanded": true,
+      "focused": true,
       "haspopup": "listbox",
       "name": "Option A, Some label",
-      "role": "button",
+      "role": "combobox",
     },
     {
       "children": [

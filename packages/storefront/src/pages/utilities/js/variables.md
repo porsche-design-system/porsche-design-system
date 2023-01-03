@@ -187,8 +187,8 @@ font.size['16']
 **Result:**
 
 ```
-lineHeight: 1.5;
 fontSize: '1rem';
+lineHeight: calc(6px + 2.125ex);
 ```
 
 <script lang="ts">

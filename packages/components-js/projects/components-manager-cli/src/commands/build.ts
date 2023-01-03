@@ -25,7 +25,7 @@ export const build = async () => {
     version = null,
     copyFiles = [],
     additionalEntryFiles = [],
-    iife,
+    format,
   } = componentsManagerConfig;
   const { version: fallbackVersion } = getProjectPackageJson();
 
@@ -42,11 +42,11 @@ export const build = async () => {
   const webpackConfig = generateWebPackConfig(targetDirectory, {
     version: version || fallbackVersion,
     script: scriptUrl,
-    stylesUrl: stylesUrl ?? '',
-    inlineStyles: inlineStylesContent ?? '',
+    stylesUrl: stylesUrl || '',
+    inlineStyles: inlineStylesContent || '',
     additionalEntryFiles,
     tempEntryPointFilePath,
-    iife,
+    format,
   });
   await runWebpack(webpackConfig);
 

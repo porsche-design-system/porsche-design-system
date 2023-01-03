@@ -42,7 +42,7 @@ const generateWebManifestAndExtendIconManifest = (metaIconsManifest: MetaIconsMa
 const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
   const cdnURL = cdn === 'auto' ? CDN_BASE_URL : CDN_BASE_URL_CN;
   const icons = androidIconPaths.map((androidIconPath: string) => {
-    const [, size] = androidIconPath.match(/android-chrome-([0-9]+)x\1/) ?? [];
+    const [, size] = androidIconPath.match(/android-chrome-([0-9]+)x\1/) || [];
     if (isNaN(parseInt(size))) {
       throw new Error('Size of android icon could not be extracted');
     }

@@ -32,7 +32,6 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
   const { semiBold: fontWeightSemiBold } = fontWeight;
   return textSize === 'inherit'
     ? {
-        lineHeight: textSize,
         fontSize: textSize,
         fontWeight: fontWeightSemiBold,
       }
@@ -68,7 +67,6 @@ export const getComponentCss = (
         : {
             ...textSmall,
             ...buildResponsiveStyles(variant, getSizeJssStyle),
-            transition: 'font-size 1ms linear',
             overflowWrap: null,
             hyphens: null,
           }),

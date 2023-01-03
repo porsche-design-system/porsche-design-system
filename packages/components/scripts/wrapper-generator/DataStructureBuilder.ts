@@ -9,6 +9,7 @@ export type ExtendedProp = {
   canBeUndefined: boolean;
   isEvent: boolean;
   defaultValue: string;
+  isDefaultValueComplex: boolean;
 };
 
 export class DataStructureBuilder {
@@ -37,9 +38,9 @@ export class DataStructureBuilder {
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
         // extract potential generic and array
-        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
-        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
-        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) ?? [];
+        const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) || [];
+        const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) || [];
+        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) || [];
 
         if (genericType) {
           if (!whitelistedTypes.includes(genericRootType)) {
@@ -90,7 +91,7 @@ export class DataStructureBuilder {
         for (const nonPrimitiveType of nonPrimitiveTypes) {
           // Extract typeDefinition of every nonPrimitiveType found before
           const [, typeDef] =
-            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) ?? [];
+            new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) || [];
 
           if (typeDef && this.valueCanBeObject(typeDef, sharedTypes)) {
             result = true;
@@ -112,6 +113,8 @@ export class DataStructureBuilder {
     const isEvent = !!propKey.match(/^on[A-Z]/);
     const isCallback = !isEvent && !!propValueType.match(/=>/);
     const canBeObject = !isEvent && this.valueCanBeObject(propValueType, sharedTypes);
+    const defaultValueForProp = this.inputParser.getDefaultValueForProp(component, propKey);
+
     const extendedProp: ExtendedProp = {
       key: propKey,
       rawValueType: propValueType,
@@ -119,7 +122,8 @@ export class DataStructureBuilder {
       canBeObject: canBeObject && !isCallback,
       canBeUndefined: !!propValueType.match(/undefined/),
       isEvent: isEvent,
-      defaultValue: !isEvent ? this.inputParser.getDefaultValueForProp(component, propKey) : '',
+      defaultValue: !isEvent ? defaultValueForProp : '',
+      isDefaultValueComplex: defaultValueForProp ? this.valueCanBeObject(defaultValueForProp, sharedTypes) : false,
     };
     return extendedProp;
   }

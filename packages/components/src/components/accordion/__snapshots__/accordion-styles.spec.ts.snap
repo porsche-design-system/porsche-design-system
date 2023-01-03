@@ -20,14 +20,14 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
   padding: 1.25rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -55,8 +55,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -101,14 +101,14 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
   padding: 0.75rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -136,8 +136,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -180,14 +180,14 @@ button {
   overflow: hidden;
   text-align: left;
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
   padding: 0.75rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -215,8 +215,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -261,14 +261,14 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
   padding: 0.75rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -296,8 +296,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -339,7 +339,7 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -369,8 +369,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -410,7 +410,7 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -440,8 +440,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);
@@ -486,14 +486,14 @@ button {
   overflow: hidden;
   text-align: left;
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: calc(6px + 2.125ex);
   padding: 0.75rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -510,7 +510,7 @@ button:focus:not(:focus-visible) {
 @media(min-width:480px) {
   button {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     padding: 1.25rem 0;
   }
 }
@@ -518,7 +518,7 @@ button:focus:not(:focus-visible) {
 @media(min-width:760px) {
   button {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     padding: 0.75rem 0;
   }
 }
@@ -526,7 +526,7 @@ button:focus:not(:focus-visible) {
 @media(min-width:1000px) {
   button {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     padding: 1.25rem 0;
   }
 }
@@ -534,7 +534,7 @@ button:focus:not(:focus-visible) {
 @media(min-width:1300px) {
   button {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     padding: 0.75rem 0;
   }
 }
@@ -542,7 +542,7 @@ button:focus:not(:focus-visible) {
 @media(min-width:1760px) {
   button {
     font-size: 1.5rem;
-    line-height: 1.5;
+    line-height: calc(6px + 2.125ex);
     padding: 1.25rem 0;
   }
 }
@@ -561,8 +561,8 @@ button:focus:not(:focus-visible) {
   padding: 0;
 }
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   margin-left: 1.5rem;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,180deg);

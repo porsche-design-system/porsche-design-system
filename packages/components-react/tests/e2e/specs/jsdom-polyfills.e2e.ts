@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import * as path from 'path';
 import * as fs from 'fs';
 import { selectNode } from '../helpers';

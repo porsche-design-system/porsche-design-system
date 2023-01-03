@@ -69,7 +69,7 @@ export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } =
 
   return {
     addMessage: (message: ToastMessage): void => {
-      const toast = document.querySelector(tagName) as HTMLElement & { addMessage: (message: ToastMessage) => void };
+      const toast = document.body.querySelector(tagName) as HTMLElement & { addMessage: (message: ToastMessage) => void };
       customElements.whenDefined(tagName).then(() => toast.addMessage(message));
     },
   };

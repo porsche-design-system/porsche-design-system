@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   getAttribute,
@@ -12,7 +12,6 @@ import {
 } from '../helpers';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -22,7 +21,7 @@ const getNav = () => selectNode(page, 'p-pagination >>> nav');
 const getPaginationItems = async () => (await (await getNav()).$$('span')).slice(1, -1); // without prev and next
 
 const initPagination = (opts?: { activePage?: number }) => {
-  const { activePage = 1 } = opts ?? {};
+  const { activePage = 1 } = opts || {};
 
   return setContentWithDesignSystem(
     page,

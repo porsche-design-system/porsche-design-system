@@ -38,28 +38,25 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 600;
 }
 @media(min-width:480px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
 
 @media(min-width:760px) {
   p {
-    line-height: inherit;
     font-size: inherit;
     font-weight: 600;
   }
@@ -68,14 +65,12 @@ p {
 @media(min-width:1000px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
 
 @media(min-width:1300px) {
   p {
-    line-height: inherit;
     font-size: inherit;
     font-weight: 600;
   }
@@ -84,7 +79,6 @@ p {
 @media(min-width:1760px) {
   p {
     font-size: 1.25rem;
-    line-height: 1.5555555556;
     font-weight: 400;
   }
 }
@@ -256,14 +250,13 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 400;
 }
@@ -349,7 +342,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -357,7 +350,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -442,7 +434,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -450,7 +442,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -535,7 +526,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
@@ -543,7 +534,6 @@ p {
   max-width: 34.375rem;
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5555555556;
   font-weight: 600;
 }
 .root {
@@ -627,14 +617,13 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
 }
 p {
   color: #fff;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  line-height: inherit;
   font-size: inherit;
   font-weight: 400;
 }

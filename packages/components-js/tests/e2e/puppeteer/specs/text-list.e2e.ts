@@ -7,10 +7,9 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 

@@ -1,13 +1,7 @@
 /* Auto Generated File */
-import { PToast, useToastManager } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
+import { Toast } from '../components';
 
 export const ToastBasicPage = (): JSX.Element => {
-  const { addMessage } = useToastManager();
-  useEffect(() => {
-    addMessage({ text: 'Some message' });
-  }, [addMessage]);
-
   const style = `
     .playground {
       height: 300px;
@@ -22,7 +16,7 @@ export const ToastBasicPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render toast neutral on light background">
-        <PToast />
+        <Toast text="Some message" />
       </div>
     </>
   );

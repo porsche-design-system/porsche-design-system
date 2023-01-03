@@ -51,6 +51,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         marginBottom: pxToRemWithUnit(-4),
         color: contrastMediumColor,
         fontSize: pxToRemWithUnit(14),
+        // a custom line-height is needed to have 48px height in total when label + slotted text is used
         lineHeight: pxToRemWithUnit(20),
       },
     }),

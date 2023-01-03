@@ -35,27 +35,29 @@ exports[`getFilterInputAriaAttributes() should return correct aria attributes fo
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: true 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, hasFilter: false and isOpen: false 1`] = `
 {
+  "aria-hidden": "true",
   "aria-label": "Some label",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: false, hasFilter: true and isOpen: false 1`] = `
 {
-  "aria-activedescendant": "option-1",
+  "aria-hidden": "true",
   "aria-label": "Some label",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, hasFilter: false and isOpen: false 1`] = `
 {
+  "aria-hidden": "true",
   "aria-label": "Some label",
   "aria-required": "true",
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: true 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', isRequired: true, hasFilter: true and isOpen: true 1`] = `
 {
   "aria-label": "Some label",
 }
@@ -66,7 +68,7 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": null,
   "aria-hidden": null,
   "aria-label": "Empty value",
-  "aria-selected": null,
+  "aria-selected": "false",
 }
 `;
 
@@ -75,7 +77,7 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": null,
   "aria-hidden": null,
   "aria-label": null,
-  "aria-selected": null,
+  "aria-selected": "false",
 }
 `;
 
@@ -84,7 +86,7 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": null,
   "aria-hidden": null,
   "aria-label": null,
-  "aria-selected": "true",
+  "aria-selected": "false",
 }
 `;
 
@@ -102,7 +104,7 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": null,
   "aria-hidden": "true",
   "aria-label": null,
-  "aria-selected": null,
+  "aria-selected": "false",
 }
 `;
 
@@ -111,7 +113,7 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": null,
   "aria-hidden": "true",
   "aria-label": null,
-  "aria-selected": null,
+  "aria-selected": "false",
 }
 `;
 
@@ -120,11 +122,11 @@ exports[`getOptionAriaAttributes() should return correct aria attributes for opt
   "aria-disabled": "true",
   "aria-hidden": null,
   "aria-label": null,
-  "aria-selected": null,
+  "aria-selected": "false",
 }
 `;
 
-exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
+exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
 {
   "aria-controls": "dropdown-id",
   "aria-describedby": "description-id",
@@ -134,8 +136,9 @@ exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct ar
 }
 `;
 
-exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
+exports[`getSelectWrapperDropdownButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 {
+  "aria-activedescendant": "option-0",
   "aria-controls": "dropdown-id",
   "aria-describedby": "description-id",
   "aria-expanded": "true",

@@ -29,8 +29,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     ];
   }
 
-  public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
-    return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
+  public getComponentFileName(component: TagName): string {
+    return `${pascalCase(component.replace('p-', ''))}.tsx`;
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
@@ -154,6 +154,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
 
+    cleanedComponent = this.insertComponentAnnotation(cleanedComponent, component);
+
     // destructure spacing props
     const spacings = this.spacingProps.join(', ');
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
@@ -189,7 +191,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       } else {
         // other components receive their component name as default
         cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${this.getComponentFileName(component, true)}', $1`) // set default children value in props destructuring
+          .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
 
@@ -440,8 +442,39 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return [...componentPresetFiles, configFile];
   }
 
+  // Component declaration can be preceded by JSDoc comments
+  // to customize the behavior in UXPin Editor or Preview (E.g.: render in a React Portal)
+  // https://www.uxpin.com/docs/merge/adjusting-components/
+  private insertComponentAnnotation(cleanedComponent: string, component: TagName): string {
+    const comments = this.getAllComponentComments(component);
+    if (comments.length) {
+      const annotations = `/**
+${comments.join(`\n`)}
+*/
+`;
+      return annotations + cleanedComponent;
+    } else {
+      return cleanedComponent;
+    }
+  }
+
+  private getAllComponentComments(component: TagName): string[] {
+    const comments = this.shouldRenderInReactPortal(component) ? ['* @uxpinuseportal'] : [];
+    return comments;
+  }
+
+  private shouldRenderInReactPortal(component: TagName): boolean {
+    switch (component) {
+      case 'p-modal':
+      case 'p-toast':
+        return true;
+      default:
+        return false;
+    }
+  }
+
   private generateMainComponentPreset(component: TagName, props?: PresetsProps, children?: string): AdditionalFile {
-    const componentName = this.getComponentFileName(component as TagName, true);
+    const componentName = this.stripFileExtension(component);
 
     // extract other components and get rid of duplicates
     const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
@@ -511,7 +544,7 @@ export default <${formComponentName} ${stringifiedProps} />;
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
-          ? this.getComponentFileName(component, true) + '/'
+          ? this.stripFileExtension(component) + '/'
           : '';
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;
