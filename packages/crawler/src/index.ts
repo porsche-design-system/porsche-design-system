@@ -14,7 +14,7 @@ const startBrowser = async (): Promise<void> => {
   const browser = await puppeteer.launch(puppeteerConfig);
   console.log('Removing outdated reports..');
   // removing old reports
-  removeOutdatedReports();
+  removeOutdatedReports(customerWebsites);
   console.log('Crawling websites..');
   // crawling all websites
   await crawlWebsites(browser, customerWebsites).catch();
