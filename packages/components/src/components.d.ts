@@ -355,25 +355,25 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: GridDirection;
+        "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
          */
-        "gutter"?: GridGutter;
+        "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: GridWrap;
+        "wrap"?: BreakpointCustomizable<GridWrap>;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridItemOffset;
+        "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridItemSize;
+        "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeadline {
         /**
@@ -1955,25 +1955,25 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: GridDirection;
+        "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
          */
-        "gutter"?: GridGutter;
+        "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: GridWrap;
+        "wrap"?: BreakpointCustomizable<GridWrap>;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridItemOffset;
+        "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridItemSize;
+        "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeadline {
         /**
