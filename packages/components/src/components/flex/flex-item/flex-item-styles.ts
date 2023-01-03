@@ -1,21 +1,16 @@
 import type {
   FlexItemAlignSelf,
-  FlexItemAlignSelfType,
   FlexItemFlex,
-  FlexItemFlexType,
   FlexItemGrow,
-  FlexItemGrowType,
   FlexItemOffset,
-  FlexItemOffsetType,
   FlexItemShrink,
-  FlexItemShrinkType,
   FlexItemWidth,
-  FlexItemWidthType,
 } from './flex-item-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
+import type { BreakpointCustomizable } from '../../../types';
 
-const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & { none: number; auto: string } = {
+const flexItemWidths: { [key in Exclude<FlexItemWidth, 'auto'>]: number } & { none: number; auto: string } = {
   none: 0,
   'one-quarter': 25,
   'one-third': 33.333333,
@@ -27,34 +22,34 @@ const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & 
 };
 
 export const getComponentCss = (
-  width: FlexItemWidth,
-  offset: FlexItemOffset,
-  alignSelf: FlexItemAlignSelf,
-  grow: FlexItemGrow,
-  shrink: FlexItemShrink,
-  flex: FlexItemFlex
+  width: BreakpointCustomizable<FlexItemWidth>,
+  offset: BreakpointCustomizable<FlexItemOffset>,
+  alignSelf: BreakpointCustomizable<FlexItemAlignSelf>,
+  grow: BreakpointCustomizable<FlexItemGrow>,
+  shrink: BreakpointCustomizable<FlexItemShrink>,
+  flex: BreakpointCustomizable<FlexItemFlex>
 ): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
         ...mergeDeep(
-          buildResponsiveStyles(width, (widthResponsive: FlexItemWidthType) => ({
+          buildResponsiveStyles(width, (widthResponsive: FlexItemWidth) => ({
             width: `${flexItemWidths[widthResponsive]}%`,
           })),
-          buildResponsiveStyles(offset, (offsetResponsive: FlexItemOffsetType) => ({
+          buildResponsiveStyles(offset, (offsetResponsive: FlexItemOffset) => ({
             marginLeft: `${flexItemWidths[offsetResponsive]}%`,
           })),
-          buildResponsiveStyles(alignSelf, (alignSelfResponsive: FlexItemAlignSelfType) => ({
+          buildResponsiveStyles(alignSelf, (alignSelfResponsive: FlexItemAlignSelf) => ({
             alignSelf: alignSelfResponsive,
           })),
           flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-            ? buildResponsiveStyles(flex, (flexResponsive: FlexItemFlexType) => ({
+            ? buildResponsiveStyles(flex, (flexResponsive: FlexItemFlex) => ({
                 flex: flexResponsive === 'equal' ? '1 1 0' : flexResponsive,
               }))
             : mergeDeep(
-                buildResponsiveStyles(grow, (flexGrow: FlexItemGrowType) => ({ flexGrow })),
-                buildResponsiveStyles(shrink, (flexShrink: FlexItemShrinkType) => ({ flexShrink }))
+                buildResponsiveStyles(grow, (flexGrow: FlexItemGrow) => ({ flexGrow })),
+                buildResponsiveStyles(shrink, (flexShrink: FlexItemShrink) => ({ flexShrink }))
               )
         ),
       }),

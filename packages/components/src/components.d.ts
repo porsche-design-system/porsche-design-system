@@ -303,53 +303,53 @@ export namespace Components {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: FlexAlignContent;
+        "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: FlexAlignItems;
+        "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: FlexDirection;
+        "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: FlexInline;
+        "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: FlexJustifyContent;
+        "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: FlexWrap;
+        "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: FlexItemAlignSelf;
+        "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: FlexItemFlex;
+        "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: FlexItemGrow;
+        "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: FlexItemOffset;
+        "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: FlexItemShrink;
+        "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: FlexItemWidth;
+        "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     interface PGrid {
         /**
@@ -1903,53 +1903,53 @@ declare namespace LocalJSX {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: FlexAlignContent;
+        "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: FlexAlignItems;
+        "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: FlexDirection;
+        "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: FlexInline;
+        "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: FlexJustifyContent;
+        "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: FlexWrap;
+        "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: FlexItemAlignSelf;
+        "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: FlexItemFlex;
+        "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: FlexItemGrow;
+        "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: FlexItemOffset;
+        "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: FlexItemShrink;
+        "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: FlexItemWidth;
+        "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     interface PGrid {
         /**
