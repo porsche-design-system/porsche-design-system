@@ -53,6 +53,25 @@ export const evaluatePage = async (
         return null;
       };
 
+      const parseIfJSON = (jsonStr: string | number | symbol): object | string | number | symbol => {
+        if (typeof jsonStr === 'string' && jsonStr.includes('{')) {
+          try {
+            // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }"
+            return JSON.parse(
+              jsonStr
+                .replace(/'/g, '"') // convert single quotes to double quotes
+                .replace(/[\s"]?([a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
+            );
+          } catch {
+            // jsonStr is string, e.g. "block" or "inline"
+            return jsonStr;
+          }
+        } else {
+          // jsonStr is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
+          return jsonStr;
+        }
+      };
+
       const getAllConsumedProperties = <
         PComponentName extends keyof HTMLElementTagNameMap,
         PComponentElement extends HTMLElementTagNameMap[PComponentName],
@@ -64,9 +83,12 @@ export const evaluatePage = async (
       ) => {
         const pEl = el as PComponentElement;
 
-        const stringifyIfObject = (val: PComponentPropertyValue): PComponentPropertyValue | string => {
+        const stringifyIfObject = (val: PComponentPropertyValue): PComponentPropertyValue => {
+          const parsedVal = parseIfJSON(val);
           // check if it's an object and stringify
-          return typeof val === 'object' ? JSON.stringify(val) : val;
+          return typeof parsedVal === 'object'
+            ? (JSON.stringify(parsedVal) as PComponentPropertyValue)
+            : (parsedVal as PComponentPropertyValue);
         };
 
         return allPdsPropertiesForComponentName.reduce((result, propName) => {
