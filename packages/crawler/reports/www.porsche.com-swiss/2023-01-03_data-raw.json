@@ -17,7 +17,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'medium', m: 'large', l: 'x-large' }",
+                            "size": "{\"base\":\"medium\",\"m\":\"large\",\"l\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/",
@@ -33,7 +33,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{ base: 'small', m: 'medium', l: 'large' }",
+                            "size": "{\"base\":\"small\",\"m\":\"medium\",\"l\":\"large\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -60,7 +60,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale",
@@ -89,7 +89,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ",
@@ -118,7 +118,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open",
@@ -179,7 +179,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/718/",
@@ -207,7 +207,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -249,7 +249,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/911/",
@@ -277,7 +277,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -319,7 +319,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/",
@@ -347,7 +347,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -389,7 +389,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/panamera/panamera-models/",
@@ -417,7 +417,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -459,7 +459,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/macan/macan-models/",
@@ -487,7 +487,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -529,7 +529,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'large', xl: 'x-large'}",
+                            "size": "{\"base\":\"large\",\"xl\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/models/cayenne/cayenne-models/",
@@ -557,7 +557,7 @@
                     "p-text": {
                         "properties": {
                             "tag": "p",
-                            "size": "{base: 'small', xl: 'medium'}",
+                            "size": "{\"base\":\"small\",\"xl\":\"medium\"}",
                             "weight": "regular",
                             "align": "left",
                             "color": "default",
@@ -1157,7 +1157,7 @@
                     "p-flex": {
                         "properties": {
                             "inline": false,
-                            "wrap": "{base: 'wrap', xs: 'nowrap'}",
+                            "wrap": "{\"base\":\"wrap\",\"xs\":\"nowrap\"}",
                             "direction": "row",
                             "justifyContent": "flex-start",
                             "alignItems": "stretch",
@@ -1169,7 +1169,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{base: 'full', s: 'auto'}",
+                            "width": "{\"base\":\"full\",\"s\":\"auto\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -1182,7 +1182,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{base: 'full', s: 'auto'}",
+                            "width": "{\"base\":\"full\",\"s\":\"auto\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -1195,7 +1195,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{base: 'full', s: 'auto'}",
+                            "width": "{\"base\":\"full\",\"s\":\"auto\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -1210,9 +1210,9 @@
                         "properties": {
                             "inline": false,
                             "wrap": "nowrap",
-                            "direction": "{ base: 'row', xs: 'column' }",
+                            "direction": "{\"base\":\"row\",\"xs\":\"column\"}",
                             "justifyContent": "space-between",
-                            "alignItems": "{ base: 'center', xs: 'flex-start' }",
+                            "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
                         "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
@@ -1249,7 +1249,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/motorsportandevents/experience/",
@@ -1278,9 +1278,9 @@
                         "properties": {
                             "inline": false,
                             "wrap": "nowrap",
-                            "direction": "{ base: 'row', xs: 'column' }",
+                            "direction": "{\"base\":\"row\",\"xs\":\"column\"}",
                             "justifyContent": "space-between",
-                            "alignItems": "{ base: 'center', xs: 'flex-start' }",
+                            "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
                         "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
@@ -1317,7 +1317,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/motorsportandevents/porschedrive/",
@@ -1346,9 +1346,9 @@
                         "properties": {
                             "inline": false,
                             "wrap": "nowrap",
-                            "direction": "{ base: 'row', xs: 'column' }",
+                            "direction": "{\"base\":\"row\",\"xs\":\"column\"}",
                             "justifyContent": "space-between",
-                            "alignItems": "{ base: 'center', xs: 'flex-start' }",
+                            "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
                         "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
@@ -1385,7 +1385,7 @@
                         "properties": {
                             "alignLabel": "right",
                             "stretch": false,
-                            "size": "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }",
+                            "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
                             "href": "https://www.porsche.com/swiss/de/motorsportandevents/motorsport/",
@@ -1756,7 +1756,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
+                            "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
                             "offset": 0
                         },
                         "children": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">(the content was stripped)</pnav-newsletter>"
@@ -1765,8 +1765,8 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }",
-                            "offset": "{ base: 0, s: 1, m: 0 }"
+                            "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
+                            "offset": "{\"base\":0,\"s\":1,\"m\":0}"
                         },
                         "children": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">(the content was stripped)</pnav-contact>"
                     }
@@ -1774,7 +1774,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "{ base: 12, m: 4, l: 6 }",
+                            "size": "{\"base\":12,\"m\":4,\"l\":6}",
                             "offset": 0
                         },
                         "children": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">(the content was stripped)</pnav-social-media>"
@@ -1783,7 +1783,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "{ base: 12, l: 9 }",
+                            "size": "{\"base\":12,\"l\":9}",
                             "offset": 0
                         },
                         "children": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">(the content was stripped)</pnav-further-links>"
@@ -2206,7 +2206,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2219,7 +2219,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2232,7 +2232,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2245,7 +2245,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2258,7 +2258,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2271,7 +2271,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,
@@ -2284,7 +2284,7 @@
                 {
                     "p-flex-item": {
                         "properties": {
-                            "width": "{ base: 'full', s: 'half', m: 'one-third' }",
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
                             "offset": "none",
                             "alignSelf": "auto",
                             "grow": 0,

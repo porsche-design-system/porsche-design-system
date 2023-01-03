@@ -31,9 +31,9 @@
                     "size": {
                         "amount": 21,
                         "values": {
-                            "{ base: 'medium', m: 'large', l: 'x-large' }": 1,
-                            "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 6,
-                            "{ base: 'large', xl: 'x-large'}": 6,
+                            "{\"base\":\"medium\",\"m\":\"large\",\"l\":\"x-large\"}": 1,
+                            "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}": 6,
+                            "{\"base\":\"large\",\"xl\":\"x-large\"}": 6,
                             "inherit": 1,
                             "small": 7
                         }
@@ -128,8 +128,8 @@
                     "size": {
                         "amount": 39,
                         "values": {
-                            "{ base: 'small', m: 'medium', l: 'large' }": 1,
-                            "{base: 'small', xl: 'medium'}": 6,
+                            "{\"base\":\"small\",\"m\":\"medium\",\"l\":\"large\"}": 1,
+                            "{\"base\":\"small\",\"xl\":\"medium\"}": 6,
                             "small": 17,
                             "inherit": 15
                         }
@@ -509,7 +509,7 @@
                     "wrap": {
                         "amount": 13,
                         "values": {
-                            "{base: 'wrap', xs: 'nowrap'}": 1,
+                            "{\"base\":\"wrap\",\"xs\":\"nowrap\"}": 1,
                             "nowrap": 9,
                             "wrap": 3
                         }
@@ -518,7 +518,7 @@
                         "amount": 13,
                         "values": {
                             "row": 10,
-                            "{ base: 'row', xs: 'column' }": 3
+                            "{\"base\":\"row\",\"xs\":\"column\"}": 3
                         }
                     },
                     "justifyContent": {
@@ -533,7 +533,7 @@
                         "amount": 13,
                         "values": {
                             "stretch": 8,
-                            "{ base: 'center', xs: 'flex-start' }": 3,
+                            "{\"base\":\"center\",\"xs\":\"flex-start\"}": 3,
                             "center": 2
                         }
                     },
@@ -554,10 +554,10 @@
                     "width": {
                         "amount": 18,
                         "values": {
-                            "{base: 'full', s: 'auto'}": 3,
+                            "{\"base\":\"full\",\"s\":\"auto\"}": 3,
                             "auto": 6,
                             "full": 2,
-                            "{ base: 'full', s: 'half', m: 'one-third' }": 7
+                            "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}": 7
                         }
                     },
                     "offset": {
@@ -750,16 +750,16 @@
                         "amount": 7,
                         "values": {
                             "12": 3,
-                            "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2,
-                            "{ base: 12, m: 4, l: 6 }": 1,
-                            "{ base: 12, l: 9 }": 1
+                            "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}": 2,
+                            "{\"base\":12,\"m\":4,\"l\":6}": 1,
+                            "{\"base\":12,\"l\":9}": 1
                         }
                     },
                     "offset": {
                         "amount": 7,
                         "values": {
                             "0": 6,
-                            "{ base: 0, s: 1, m: 0 }": 1
+                            "{\"base\":0,\"s\":1,\"m\":0}": 1
                         }
                     }
                 },
@@ -897,9 +897,9 @@
                             "size": {
                                 "amount": 13,
                                 "values": {
-                                    "{ base: 'medium', m: 'large', l: 'x-large' }": 1,
-                                    "{ base: 'small', xs: 'x-small', s: 'small', l: 'medium' }": 6,
-                                    "{ base: 'large', xl: 'x-large'}": 6
+                                    "{\"base\":\"medium\",\"m\":\"large\",\"l\":\"x-large\"}": 1,
+                                    "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}": 6,
+                                    "{\"base\":\"large\",\"xl\":\"x-large\"}": 6
                                 }
                             },
                             "weight": {
@@ -978,8 +978,8 @@
                             "size": {
                                 "amount": 16,
                                 "values": {
-                                    "{ base: 'small', m: 'medium', l: 'large' }": 1,
-                                    "{base: 'small', xl: 'medium'}": 6,
+                                    "{\"base\":\"small\",\"m\":\"medium\",\"l\":\"large\"}": 1,
+                                    "{\"base\":\"small\",\"xl\":\"medium\"}": 6,
                                     "small": 9
                                 }
                             },
@@ -1330,7 +1330,7 @@
                             "wrap": {
                                 "amount": 4,
                                 "values": {
-                                    "{base: 'wrap', xs: 'nowrap'}": 1,
+                                    "{\"base\":\"wrap\",\"xs\":\"nowrap\"}": 1,
                                     "nowrap": 3
                                 }
                             },
@@ -1338,7 +1338,7 @@
                                 "amount": 4,
                                 "values": {
                                     "row": 1,
-                                    "{ base: 'row', xs: 'column' }": 3
+                                    "{\"base\":\"row\",\"xs\":\"column\"}": 3
                                 }
                             },
                             "justifyContent": {
@@ -1352,7 +1352,7 @@
                                 "amount": 4,
                                 "values": {
                                     "stretch": 1,
-                                    "{ base: 'center', xs: 'flex-start' }": 3
+                                    "{\"base\":\"center\",\"xs\":\"flex-start\"}": 3
                                 }
                             },
                             "alignContent": {
@@ -1372,7 +1372,7 @@
                             "width": {
                                 "amount": 9,
                                 "values": {
-                                    "{base: 'full', s: 'auto'}": 3,
+                                    "{\"base\":\"full\",\"s\":\"auto\"}": 3,
                                     "auto": 6
                                 }
                             },
@@ -1972,16 +1972,16 @@
                                 "amount": 7,
                                 "values": {
                                     "12": 3,
-                                    "{ base: 12, xs: 8, s: 5, m: 4, l: 3 }": 2,
-                                    "{ base: 12, m: 4, l: 6 }": 1,
-                                    "{ base: 12, l: 9 }": 1
+                                    "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}": 2,
+                                    "{\"base\":12,\"m\":4,\"l\":6}": 1,
+                                    "{\"base\":12,\"l\":9}": 1
                                 }
                             },
                             "offset": {
                                 "amount": 7,
                                 "values": {
                                     "0": 6,
-                                    "{ base: 0, s: 1, m: 0 }": 1
+                                    "{\"base\":0,\"s\":1,\"m\":0}": 1
                                 }
                             }
                         },
@@ -2287,7 +2287,7 @@
                                 "amount": 9,
                                 "values": {
                                     "full": 2,
-                                    "{ base: 'full', s: 'half', m: 'one-third' }": 7
+                                    "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}": 7
                                 }
                             },
                             "offset": {
