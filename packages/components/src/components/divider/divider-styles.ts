@@ -1,9 +1,13 @@
 import type { DividerColor, DividerOrientation } from './divider-utils';
-import type { Theme } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { getThemedColors } from '../../styles';
 
-export const getComponentCss = (color: DividerColor, orientation: DividerOrientation, theme: Theme): string => {
+export const getComponentCss = (
+  color: DividerColor,
+  orientation: BreakpointCustomizable<DividerOrientation>,
+  theme: Theme
+): string => {
   const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const colorMap: { [key in DividerColor]: string } = {
     'neutral-contrast-low': contrastLowColor,

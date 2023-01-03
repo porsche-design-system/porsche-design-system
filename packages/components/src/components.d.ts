@@ -271,7 +271,7 @@ export namespace Components {
         /**
           * Defines orientation.
          */
-        "orientation"?: DividerOrientation;
+        "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
          */
@@ -1871,7 +1871,7 @@ declare namespace LocalJSX {
         /**
           * Defines orientation.
          */
-        "orientation"?: DividerOrientation;
+        "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
          */
