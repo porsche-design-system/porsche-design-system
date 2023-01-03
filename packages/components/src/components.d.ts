@@ -146,7 +146,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
@@ -1742,7 +1742,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
