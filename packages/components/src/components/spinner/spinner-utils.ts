@@ -24,4 +24,4 @@ export const verifySpinnerSize = (spinnerSize: BreakpointCustomizable<SpinnerSiz
 };
 
 export const SPINNER_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type SpinnerAriaAttributes = typeof SPINNER_ARIA_ATTRIBUTES[number];
+export type SpinnerAriaAttribute = typeof SPINNER_ARIA_ATTRIBUTES[number];

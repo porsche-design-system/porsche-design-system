@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, patchAriaIntoSVG } from './icon-utils';
-import type { IconAriaAttributes } from './icon-utils';
+import type { IconAriaAttribute } from './icon-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof Icon> = {
   size: AllowedTypes.oneOf<IconSize>(ICON_SIZES),
   lazy: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
-  aria: AllowedTypes.aria<IconAriaAttributes>(ICON_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -57,7 +57,7 @@ export class Icon {
   @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<IconAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   private intersectionObserver?: IntersectionObserver;
   private key = 0; // use unique random key to trick stencil cache

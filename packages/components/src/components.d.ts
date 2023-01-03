@@ -19,19 +19,19 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttributes } from "./components/icon/icon-utils";
+import { IconAriaAttribute } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { LinkAriaAttributes } from "./components/link/link-utils";
+import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
-import { ModalAriaAttributes } from "./components/modal/modal-utils";
+import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
+import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
-import { SpinnerAriaAttributes, SpinnerSize } from "./components/spinner/spinner-utils";
+import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/switch/switch";
@@ -405,7 +405,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
          */
@@ -469,7 +469,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -519,7 +519,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -603,7 +603,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
@@ -653,7 +653,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttribute>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -675,7 +675,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -877,7 +877,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
          */
@@ -2005,7 +2005,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
          */
@@ -2077,7 +2077,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -2127,7 +2127,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -2211,7 +2211,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
@@ -2261,7 +2261,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttribute>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -2283,7 +2283,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -2497,7 +2497,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
          */

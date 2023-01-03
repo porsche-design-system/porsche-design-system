@@ -9,7 +9,7 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../types';
-import type { LinkAriaAttributes } from '../link/link-utils';
+import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -93,7 +93,7 @@ export class LinkPure {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
