@@ -1,6 +1,5 @@
 import type {
   AlignLabel,
-  AlignLabelType,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
@@ -31,7 +30,7 @@ import {
 import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
-  alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
@@ -55,7 +54,7 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: AlignLabel = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;

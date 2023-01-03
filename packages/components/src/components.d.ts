@@ -515,7 +515,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
@@ -911,7 +911,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */
@@ -2123,7 +2123,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
@@ -2535,7 +2535,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */

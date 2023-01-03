@@ -17,7 +17,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
+  alignLabel: BreakpointCustomizable<AlignLabel>,
   hasSubline: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
