@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../types';
-import type { SpinnerSize, SpinnerAriaAttributes, SpinnerSizeType } from './spinner-utils';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../types';
+import type { SpinnerSize, SpinnerAriaAttributes } from './spinner-utils';
 import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
 import {
   AllowedTypes,
@@ -12,7 +12,7 @@ import {
 import { getComponentCss } from './spinner-styles';
 
 const propTypes: PropTypes<typeof Spinner> = {
-  size: AllowedTypes.breakpoint<SpinnerSizeType>(SPINNER_SIZES),
+  size: AllowedTypes.breakpoint<SpinnerSize>(SPINNER_SIZES),
   theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
   aria: AllowedTypes.aria<SpinnerAriaAttributes>(SPINNER_ARIA_ATTRIBUTES),
 };
@@ -25,7 +25,7 @@ export class Spinner {
   @Element() public host!: HTMLElement;
 
   /** Size of the spinner. */
-  @Prop() public size?: SpinnerSize = 'small';
+  @Prop() public size?: BreakpointCustomizable<SpinnerSize> = 'small';
 
   /** Adapts the spinner color depending on the theme. */
   @Prop() public theme?: ThemeExtendedElectricDark = 'light';

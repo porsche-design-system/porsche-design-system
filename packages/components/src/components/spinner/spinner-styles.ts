@@ -1,21 +1,24 @@
 import type { JssStyle } from 'jss';
-import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
-import type { ThemeExtendedElectricDark } from '../../types';
+import type { SpinnerSize } from './spinner-utils';
+import type { BreakpointCustomizable, ThemeExtendedElectricDark } from '../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../utils';
-import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors, getScreenReaderOnlyJssStyle } from '../../styles';
+import { getBaseSlottedStyles, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);
 const sizeLarge = pxToRemWithUnit(104);
 
-const sizeMap: { [key in SpinnerSizeType]: Pick<JssStyle, 'height' | 'width'> } = {
+const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   small: { height: sizeSmall, width: sizeSmall },
   medium: { height: sizeMedium, width: sizeMedium },
   large: { height: sizeLarge, width: sizeLarge },
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricDark): string => {
+export const getComponentCss = (
+  size: BreakpointCustomizable<SpinnerSize>,
+  theme: ThemeExtendedElectricDark
+): string => {
   const { contrastHighColor, baseColor } = getThemedColors(theme);
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
 
@@ -64,7 +67,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
     },
     root: {
       display: 'block',
-      ...buildResponsiveStyles(size, (s: SpinnerSizeType) => sizeMap[s]),
+      ...buildResponsiveStyles(size, (s: SpinnerSize) => sizeMap[s]),
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
