@@ -10,6 +10,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
@@ -104,8 +105,7 @@ it("submits parent form on click if it's type submit", async () => {
   await button.click();
   await host.click();
 
-  // need to wait longer than timeout of improveButtonHandlingForCustomElement() util
-  await new Promise((resolve) => setTimeout(resolve, 5));
+  await waitForImproveButtonHandlingForCustomElement(page);
   expect((await getEventSummary(form, 'submit')).counter).toBe(2);
 });
 
@@ -282,8 +282,7 @@ it('should submit form via enter key when type is submit', async () => {
   const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
     await el.focus();
     await page.keyboard.press('Enter');
-    // need to wait longer than timeout of improveButtonHandlingForCustomElement() util
-    await new Promise((resolve) => setTimeout(resolve, 5));
+    await waitForImproveButtonHandlingForCustomElement(page);
   };
 
   const input = await selectNode(page, 'input');

@@ -1,9 +1,9 @@
-# Dependencies 29.11.2022
+# Dependencies 02.01.2023
 
 ## Playwright
 
-We have to stay on `1.27.0` for now since later verions supply WebKit 16.4 which causes flaky behavior in our VRT pages.
-See <https://github.com/microsoft/playwright/releases>.
+We have to stay on `1.27.0` for now since later versions supply WebKit 16.4 which causes flaky behavior in our VRT
+pages. See <https://github.com/microsoft/playwright/releases>.
 
 ### Affected dependencies:
 
@@ -38,7 +38,7 @@ with Vue **2** and **3**.
 
 ## Angular
 
-Angular Compiler decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
+Angular CLI decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
 installed, the Angular build will fail.
 
 As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building

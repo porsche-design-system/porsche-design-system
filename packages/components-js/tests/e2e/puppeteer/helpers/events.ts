@@ -1,4 +1,4 @@
-import type { ElementHandle } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 type SerializedTarget = {
   nodeName: string;
@@ -47,4 +47,8 @@ export const getEventSummary = (
       targets: el[targetsKey] || [],
     };
   }, eventName);
+};
+
+export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
+  await page.waitForFunction(() => !document.querySelector('form button'));
 };

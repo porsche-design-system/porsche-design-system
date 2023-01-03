@@ -11,6 +11,7 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
+  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
@@ -350,8 +351,7 @@ describe('input type="search"', () => {
       await addEventListener(form, 'submit');
 
       await searchButton.click();
-      // need to wait longer than timeout of improveButtonHandlingForCustomElement() util
-      await new Promise((resolve) => setTimeout(resolve, 5));
+      await waitForImproveButtonHandlingForCustomElement(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
   });
