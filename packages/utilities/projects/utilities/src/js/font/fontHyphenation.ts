@@ -1,6 +1,4 @@
-import { FontHyphenation } from './fontShared';
-
-export const fontHyphenation: FontHyphenation = {
+export const fontHyphenation = {
   overflowWrap: 'break-word',
   hyphens: 'auto',
-};
+} as const;

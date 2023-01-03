@@ -1,16 +1,20 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
+import * as border from '../src/js/border';
+import * as dropShadow from '../src/js/dropShadow';
 import * as font from '../src/js/font';
+import * as frostedGlass from '../src/js/frostedGlass';
+import * as gradient from '../src/js/gradient';
 import * as grid from '../src/js/grid/grid';
 import * as gridGap from '../src/js/grid/gridGap';
-import * as gridMinWidth from '../src/js/grid/gridWidth';
-import * as gridMaxWidth from '../src/js/grid/gridWidth';
+import * as gridWidth from '../src/js/grid/gridWidth';
 import * as gridSafeZone from '../src/js/grid/gridSafeZone';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
 import * as text from '../src/js/typography/text';
+import * as display from '../src/js/typography/display';
 import * as breakpoint from '../src/js/mediaQuery/breakpoint';
 import { paramCase, camelCase } from 'change-case';
 import { getCss } from '@porsche-design-system/shared';
@@ -79,13 +83,13 @@ const generateMixins = (mixins: Mixins): void => {
 
 cleanLib();
 generateVariables({
+  border,
   font,
   theme,
   spacing,
   breakpoint,
   gridGap,
-  gridMinWidth,
-  gridMaxWidth,
+  gridWidth,
   gridSafeZone,
 });
-generateMixins({ heading, text, grid });
+generateMixins({ heading, text, display, grid, dropShadow, frostedGlass, gradient });

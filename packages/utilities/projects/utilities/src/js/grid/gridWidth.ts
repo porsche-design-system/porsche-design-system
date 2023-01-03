@@ -1,2 +1,4 @@
-export const gridMinWidth = '320px';
-export const gridMaxWidth = '1920px';
+export const gridWidth = {
+  min: '320px',
+  max: '1920px',
+};

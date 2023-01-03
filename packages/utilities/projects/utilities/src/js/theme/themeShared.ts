@@ -1,11 +1,9 @@
 export type Theme = 'light' | 'dark';
 export type ThemeColorSet = {
-  brand: string;
-  base: string;
+  main: string;
   background: {
     base: string;
     surface: string;
-    shading: string;
   };
   contrast: {
     high: string;
@@ -19,8 +17,8 @@ export type ThemeColorSet = {
     warningSoft: string;
     error: string;
     errorSoft: string;
-    neutral: string;
-    neutralSoft: string;
+    info: string;
+    infoSoft: string;
   };
   state: {
     hover: string;

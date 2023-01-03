@@ -1,3 +1,4 @@
+// TODO: refactor to be in sync with JS
 @mixin pds-focus($color: currentColor, $offset: 2px) {
   outline: transparent solid 1px;
   outline-offset: $offset;

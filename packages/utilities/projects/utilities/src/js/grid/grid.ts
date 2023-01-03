@@ -1,10 +1,12 @@
 import { gridGap } from './gridGap';
-import { gridMaxWidth, gridMinWidth } from './gridWidth';
+import { gridWidth } from './gridWidth';
 import { gridSafeZone } from './gridSafeZone';
 import { mediaQueryMin } from '../mediaQuery';
 
 // TODO: add named columns (one-third, half, …) + reduce columns on mobile viewport
 // TODO: add gridFullWidth, gridExtended, gridBasic (because subgrid does not exist)
+const { min: minWidth, max: maxWidth } = gridWidth;
+
 export const grid = {
   '--pds-grid-span-one-half': 'span 3',
   '--pds-grid-span-one-third': 'span 2',
@@ -16,10 +18,10 @@ export const grid = {
   gridTemplateColumns: `[fluid-start] minmax(0, calc(${gridSafeZone} - ${gridGap}))
     [extended-start basic-start] repeat(6, minmax(0, 1fr)) [basic-end extended-end]
   minmax(0, calc(${gridSafeZone} - ${gridGap})) [fluid-end]`,
-  minWidth: gridMinWidth,
-  maxWidth: gridMaxWidth,
+  minWidth,
+  maxWidth,
   margin: 0,
-  padding: `0 calc((100% - ${gridMaxWidth}) / 2)`,
+  padding: `0 calc((100% - ${maxWidth}) / 2)`,
   boxSizing: 'content-box',
   [mediaQueryMin('s')]: {
     '--pds-grid-span-one-half': 'span 6',
