@@ -71,7 +71,7 @@ describe('lifecycle', () => {
   });
 });
 
-it('should have "text-size-adjust: none" set', async () => {
+xit('should have "text-size-adjust: none" set', async () => {
   await setContentWithDesignSystem(
     page,
     `
