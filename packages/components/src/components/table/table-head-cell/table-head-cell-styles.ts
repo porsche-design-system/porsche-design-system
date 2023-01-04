@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { fontWeight, spacing, textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacing, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
@@ -42,7 +42,7 @@ export const getComponentCss = (
               boxSizing: 'border-box',
               appearance: 'none',
               border: 'none',
-              ...textSmallFluid,
+              ...textFluidSmall,
               fontWeight: fontWeightSemiBold,
               color: primaryColor,
               textDecoration: 'none',

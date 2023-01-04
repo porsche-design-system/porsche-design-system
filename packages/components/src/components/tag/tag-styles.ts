@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { fontStyle, fontWeight, textXSmallFluid } from '@porsche-design-system/utilities-v2';
+import { fontStyle, fontWeight, textFluidXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -101,7 +101,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         borderRadius: pxToRemWithUnit(4),
         background: backgroundColor,
         color: primaryColor,
-        ...textXSmallFluid,
+        ...textFluidXSmall,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('color'),

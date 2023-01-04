@@ -1,6 +1,6 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { mediaQueryMin, textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { mediaQueryMin, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
@@ -97,7 +97,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         verticalAlign: 'top',
       },
       p: {
-        ...textSmallFluid,
+        ...textFluidSmall,
         margin: 0,
       },
     },
@@ -131,7 +131,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
-      ...textSmallFluid,
+      ...textFluidSmall,
       listStyleType: 'none',
       color: primaryColor,
       whiteSpace: 'inherit',

@@ -226,7 +226,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   :deep(div[role=tabpanel]) {
     outline: 1px solid transparent;
     outline-offset: 2px;
-    margin-top: $pds-spacing-small;
+    margin-top: $pds-spacing-static-small;
   }
 
   :deep(.example--light div[role=tabpanel]:focus) {

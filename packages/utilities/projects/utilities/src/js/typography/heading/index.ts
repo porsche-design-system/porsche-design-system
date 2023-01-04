@@ -1,27 +1,27 @@
-import { headingSmallFluid } from './headingSmallFluid';
-import { headingSmallStatic } from './headingSmallStatic';
-import { headingMediumFluid } from './headingMediumFluid';
-import { headingMediumStatic } from './headingMediumStatic';
-import { headingLargeFluid } from './headingLargeFluid';
-import { headingLargeStatic } from './headingLargeStatic';
-import { headingXLargeFluid } from './headingXLargeFluid';
-import { headingXLargeStatic } from './headingXLargeStatic';
-import { headingXXLargeFluid } from './headingXXLargeFluid';
-import { headingXXLargeStatic } from './headingXXLargeStatic';
-import { headingXXXLargeFluid } from './headingXXXLargeFluid';
-import { headingXXXLargeStatic } from './headingXXXLargeStatic';
+import { headingFluidSmall } from './headingFluidSmall';
+import { headingFluidMedium } from './headingFluidMedium';
+import { headingFluidLarge } from './headingFluidLarge';
+import { headingFluidXLarge } from './headingFluidXLarge';
+import { headingFluidXXLarge } from './headingFluidXXLarge';
+import { headingFluidXXXLarge } from './headingFluidXXXLarge';
+import { headingStaticSmall } from './headingStaticSmall';
+import { headingStaticMedium } from './headingStaticMedium';
+import { headingStaticLarge } from './headingStaticLarge';
+import { headingStaticXLarge } from './headingStaticXLarge';
+import { headingStaticXXLarge } from './headingStaticXXLarge';
+import { headingStaticXXXLarge } from './headingStaticXXXLarge';
 
 export {
-  headingSmallFluid,
-  headingSmallStatic,
-  headingMediumFluid,
-  headingMediumStatic,
-  headingLargeFluid,
-  headingLargeStatic,
-  headingXLargeFluid,
-  headingXLargeStatic,
-  headingXXLargeFluid,
-  headingXXLargeStatic,
-  headingXXXLargeFluid,
-  headingXXXLargeStatic,
+  headingFluidSmall,
+  headingFluidMedium,
+  headingFluidLarge,
+  headingFluidXLarge,
+  headingFluidXXLarge,
+  headingFluidXXXLarge,
+  headingStaticSmall,
+  headingStaticMedium,
+  headingStaticLarge,
+  headingStaticXLarge,
+  headingStaticXXLarge,
+  headingStaticXXXLarge,
 };

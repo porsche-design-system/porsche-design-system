@@ -1,6 +1,6 @@
 import { displayFontPartA, displayFontPartB } from './displayShared';
 import { fontSize } from '../../font';
 
-export const displayMediumFluid = {
+export const displayFluidMedium = {
   font: `${displayFontPartA}${fontSize.fluid.displayMedium}${displayFontPartB}`,
 };

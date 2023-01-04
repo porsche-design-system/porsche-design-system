@@ -9,7 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../styles';
-import { textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall } from '@porsche-design-system/utilities-v2';
 import {
   getIconJssStyle,
   getLabelJssStyle,
@@ -85,7 +85,7 @@ export const getComponentCss = (
         display: 'block',
         width: '100%',
         color: textColor,
-        ...textSmallFluid,
+        ...textFluidSmall,
         ...(hasHref && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
       },
     },

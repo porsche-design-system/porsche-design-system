@@ -91,15 +91,15 @@
   }
 
   .spacing-mt-8 {
-    margin-top: $pds-spacing-small;
+    margin-top: $pds-spacing-static-small;
   }
 
   .spacing-mr-8 {
-    margin-right: $pds-spacing-small;
+    margin-right: $pds-spacing-static-small;
   }
 
   .spacing-mt-16 {
-    margin-top: $pds-spacing-medium;
+    margin-top: $pds-spacing-static-medium;
   }
 
   .spacing-mt-24 {
@@ -107,15 +107,15 @@
   }
 
   .spacing-mt-32 {
-    margin-top: $pds-spacing-large;
+    margin-top: $pds-spacing-static-large;
   }
 
   .spacing-mr-32 {
-    margin-right: $pds-spacing-large;
+    margin-right: $pds-spacing-static-large;
   }
 
   .spacing-mt-48 {
-    margin-top: $pds-spacing-x-large;
+    margin-top: $pds-spacing-static-x-large;
   }
 
   .spacing-mt-56 {
@@ -123,24 +123,24 @@
   }
 
   .spacing-mt-80 {
-    margin-top: $pds-spacing-xx-large;
+    margin-top: $pds-spacing-static-xx-large;
   }
 
   // padding
   .spacing-pt-8 {
-    padding-top: $pds-spacing-small;
+    padding-top: $pds-spacing-static-small;
   }
 
   .spacing-pr-8 {
-    padding-right: $pds-spacing-small;
+    padding-right: $pds-spacing-static-small;
   }
 
   .spacing-pb-8 {
-    padding-bottom: $pds-spacing-small;
+    padding-bottom: $pds-spacing-static-small;
   }
 
   .spacing-pl-8 {
-    padding-left: $pds-spacing-small;
+    padding-left: $pds-spacing-static-small;
   }
 
   .divider-spacing-small {
@@ -155,7 +155,7 @@
 
   // form top spacing
   .form-top-spacing {
-    margin-top: $pds-spacing-x-large;
+    margin-top: $pds-spacing-static-x-large;
 
     @include pds-media-query-min('m') {
       margin-top: 4rem;
@@ -167,7 +167,7 @@
     padding-bottom: 4rem;
 
     @include pds-media-query-min('m') {
-      padding-bottom: $pds-spacing-xx-large;
+      padding-bottom: $pds-spacing-static-xx-large;
     }
   }
 
@@ -176,16 +176,16 @@
     margin-top: 2.5rem;
 
     @include pds-media-query-min('m') {
-      margin-top: $pds-spacing-x-large;
+      margin-top: $pds-spacing-static-x-large;
     }
   }
 
   // form row spacing
   .form-row-spacing {
-    margin-top: $pds-spacing-medium;
+    margin-top: $pds-spacing-static-medium;
     @include pds-media-query-min('xs') {
       &--xs {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
       &--zero-xs {
         margin-top: 0;
@@ -194,7 +194,7 @@
 
     @include pds-media-query-min('s') {
       &--s {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
       &--zero-s {
         margin-top: 0;
@@ -203,7 +203,7 @@
 
     @include pds-media-query-min('m') {
       &--m {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
       &--zero-m {
         margin-top: 0;
@@ -212,7 +212,7 @@
 
     @include pds-media-query-min('l') {
       &--l {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
       &--zero-l {
         margin-top: 0;
@@ -221,7 +221,7 @@
 
     @include pds-media-query-min('xl') {
       &--xl {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
       &--zero-xl {
         margin-top: 0;
@@ -231,13 +231,13 @@
 
   // form grid
   .form-grid-item-container {
-    margin-left: -$pds-spacing-small;
-    margin-right: -$pds-spacing-small;
+    margin-left: -$pds-spacing-static-small;
+    margin-right: -$pds-spacing-static-small;
   }
 
   .form-grid-item {
-    padding-left: $pds-spacing-small;
-    padding-right: $pds-spacing-small;
+    padding-left: $pds-spacing-static-small;
+    padding-right: $pds-spacing-static-small;
   }
 
   .form-fieldset {
@@ -268,7 +268,7 @@
     overflow: hidden;
 
     &--menu-active {
-      @include pds-media-query-min-max('xxs', 's') {
+      @include pds-media-query-min-max('base', 's') {
         .sidebar {
           opacity: 1;
           transform: translate3d(0, 0, 0);
@@ -292,14 +292,14 @@
     left: 0;
     bottom: 0;
     width: 17.5rem;
-    padding: 1.5rem $pds-spacing-large 2.5rem;
+    padding: 1.5rem $pds-spacing-static-large 2.5rem;
     border-right: 1px solid $pds-theme-light-contrast-low;
     background: $pds-theme-light-background-base;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    @include pds-media-query-min-max('xxs', 's') {
+    @include pds-media-query-min-max('base', 's') {
       opacity: 0;
       transform: translate3d(-8.75rem, 0, 0);
       transition: transform 0.3s, opacity 0.3s;
@@ -309,7 +309,7 @@
   .main {
     background: $pds-theme-light-background-base;
 
-    @include pds-media-query-min-max('xxs', 's') {
+    @include pds-media-query-min-max('base', 's') {
       &--animate {
         transform: translate3d(0, 0, 0);
         transition: transform 0.3s;
@@ -323,10 +323,10 @@
 
   .router-view {
     position: relative;
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
     background: $pds-theme-light-background-base;
 
-    @include pds-media-query-min-max('xxs', 's') {
+    @include pds-media-query-min-max('base', 's') {
       opacity: 1;
       transition: opacity 0.3s;
     }
@@ -356,7 +356,7 @@
   .menu {
     display: none;
 
-    @include pds-media-query-min-max('xxs', 's') {
+    @include pds-media-query-min-max('base', 's') {
       display: block;
       position: fixed;
       z-index: 2;

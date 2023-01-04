@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { gridSafeZone, headingMediumFluid, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, headingFluidMedium, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -117,7 +117,7 @@ export const getComponentCss = (
         [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
       }),
       h1: {
-        ...headingMediumFluid,
+        ...headingFluidMedium,
         margin: 0,
         color: getThemedColors('light').primaryColor,
       },

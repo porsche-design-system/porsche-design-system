@@ -498,9 +498,9 @@ export default class Code extends Vue {
 
   :deep(.example-flex) {
     & > * {
-      @include pds-text-small;
+      @include pds-text-fluid-small;
       padding: 0 6vw;
-      color: $pds-theme-light-base;
+      color: $pds-theme-light-primary;
       text-align: center;
 
       &:nth-child(1n) {
@@ -517,7 +517,7 @@ export default class Code extends Vue {
 
       &:nth-child(4n) {
         background-color: $color-blue-4;
-        color: $pds-theme-dark-base;
+        color: $pds-theme-dark-primary;
       }
 
       &[align-self] {

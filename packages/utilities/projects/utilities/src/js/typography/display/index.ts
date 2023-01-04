@@ -1,6 +1,6 @@
-import { displayMediumFluid } from './displayMediumFluid';
-import { displayMediumStatic } from './displayMediumStatic';
-import { displayLargeFluid } from './displayLargeFluid';
-import { displayLargeStatic } from './displayLargeStatic';
+import { displayFluidMedium } from './displayFluidMedium';
+import { displayFluidLarge } from './displayFluidLarge';
+import { displayStaticMedium } from './displayStaticMedium';
+import { displayStaticLarge } from './displayStaticLarge';
 
-export { displayMediumFluid, displayMediumStatic, displayLargeFluid, displayLargeStatic };
+export { displayFluidMedium, displayFluidLarge, displayStaticMedium, displayStaticLarge };

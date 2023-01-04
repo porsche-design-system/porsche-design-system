@@ -12,7 +12,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { mediaQueryMin, textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { mediaQueryMin, textFluidSmall } from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
@@ -86,7 +86,7 @@ export const getComponentCss = (
       },
       p: {
         color: getThemedTextColor('dark', 'primary'),
-        ...textSmallFluid,
+        ...textFluidSmall,
         maxWidth: pxToRemWithUnit(550),
         margin: 0,
         ...mergeDeep(

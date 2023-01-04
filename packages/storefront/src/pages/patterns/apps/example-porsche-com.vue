@@ -606,10 +606,10 @@
 
     &__content {
       grid-area: 1 / content-start / 1 / content-end;
-      margin-bottom: $pds-spacing-large;
+      margin-bottom: $pds-spacing-static-large;
       display: flex;
       flex-direction: column;
-      gap: $pds-spacing-medium;
+      gap: $pds-spacing-static-medium;
       align-items: flex-start;
     }
   }
@@ -660,8 +660,8 @@
     @include pds-grid;
     margin-top: calc(#{$pds-grid-gap} * 3);
     background: $pds-theme-light-background-surface;
-    padding-top: $pds-spacing-large;
-    padding-bottom: $pds-spacing-large;
+    padding-top: $pds-spacing-static-large;
+    padding-bottom: $pds-spacing-static-large;
 
     &__card {
       grid-column: content-start / content-end;
@@ -672,8 +672,8 @@
     position: relative;
     @include pds-grid;
     background: $pds-theme-light-background-surface;
-    padding-top: $pds-spacing-large;
-    padding-bottom: $pds-spacing-large;
+    padding-top: $pds-spacing-static-large;
+    padding-bottom: $pds-spacing-static-large;
 
     p-carousel {
       grid-column: grid-start / grid-end;
@@ -719,7 +719,7 @@
 
     picture {
       display: block;
-      padding: $pds-spacing-large;
+      padding: $pds-spacing-static-large;
     }
 
     img {
@@ -729,12 +729,12 @@
     }
 
     h3 {
-      @include pds-heading-small;
-      margin: 0 0 $pds-spacing-small;
+      @include pds-heading-fluid-small;
+      margin: 0 0 $pds-spacing-static-small;
     }
 
     p {
-      margin: 0 0 $pds-spacing-medium;
+      margin: 0 0 $pds-spacing-static-medium;
     }
 
     p-link {
@@ -745,8 +745,8 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      padding: $pds-spacing-large;
-      @include pds-text-small;
+      padding: $pds-spacing-static-large;
+      @include pds-text-fluid-small;
     }
   }
 

@@ -1,7 +1,7 @@
 import { textFontPartA, textFontPartB } from './textShared';
 import { fontHyphenation, fontSize } from '../../font';
 
-export const textMediumStatic = {
-  font: `${textFontPartA}${fontSize.static.textMedium}${textFontPartB}`,
+export const textFluidLarge = {
+  font: `${textFontPartA}${fontSize.fluid.textLarge}${textFontPartB}`,
   ...fontHyphenation,
 };

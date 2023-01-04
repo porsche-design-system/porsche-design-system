@@ -117,7 +117,7 @@
 
   .link {
     width: 100%;
-    margin: $pds-spacing-x-small 0;
+    margin: $pds-spacing-static-x-small 0;
     display: inline-block;
     text-decoration: none;
   }
@@ -135,10 +135,10 @@
   }
 
   .category {
-    padding-bottom: $pds-spacing-small;
+    padding-bottom: $pds-spacing-static-small;
   }
 
   :deep(.hits__item) {
-    padding: $pds-spacing-small $pds-spacing-large $pds-spacing-small;
+    padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
   }
 </style>

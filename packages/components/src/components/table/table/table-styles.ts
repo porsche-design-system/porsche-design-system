@@ -1,4 +1,4 @@
-import { textSmallFluid, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToRule,
@@ -35,7 +35,7 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      ...textSmallFluid,
+      ...textFluidSmall,
       textAlign: 'left',
       color: primaryColor,
       whiteSpace: 'nowrap',

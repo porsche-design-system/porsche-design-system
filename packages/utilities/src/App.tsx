@@ -1,31 +1,31 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import {
-  textXSmallFluid,
+  textFluidXSmall,
   textXSmallStatic,
-  textSmallFluid,
-  textSmallStatic,
-  textMediumFluid,
+  textFluidSmall,
+  textStaticSmall,
+  textFluidMedium,
   textMediumStatic,
-  textLargeFluid,
+  textFluidLarge,
   textLargeStatic,
-  textXLargeFluid,
+  textFluidXLarge,
   textXLargeStatic,
-  headingSmallFluid,
+  headingFluidSmall,
   headingSmallStatic,
-  headingMediumFluid,
+  headingFluidMedium,
   headingMediumStatic,
-  headingLargeFluid,
+  headingFluidLarge,
   headingLargeStatic,
-  headingXLargeFluid,
+  headingFluidXLarge,
   headingXLargeStatic,
-  headingXXLargeFluid,
+  headingFluidXXLarge,
   headingXXLargeStatic,
   headingXXXLargeFluid,
   headingXXXLargeStatic,
   displayMediumFluid,
   displayMediumStatic,
-  displayLargeFluid,
+  displayFluidLarge,
   displayLargeStatic,
   grid,
   gridGap,
@@ -209,28 +209,28 @@ const Typography = styled.div({
 });
 
 const Info = styled.div({
-  ...textXSmallFluid,
+  ...textFluidXSmall,
   fontSize: '.75rem',
   color: 'deeppink',
 });
 
-const TextXSmallFluid = styled.div(textXSmallFluid);
-const TextSmallFluid = styled.div(textSmallFluid);
-const TextMediumFluid = styled.div(textMediumFluid);
-const TextLargeFluid = styled.div(textLargeFluid);
-const TextXLargeFluid = styled.div(textXLargeFluid);
+const textFluidXSmall = styled.div(textFluidXSmall);
+const textFluidSmall = styled.div(textFluidSmall);
+const textFluidMedium = styled.div(textFluidMedium);
+const textFluidLarge = styled.div(textFluidLarge);
+const textFluidXLarge = styled.div(textFluidXLarge);
 
 const TextXSmallStatic = styled.div(textXSmallStatic);
-const TextSmallStatic = styled.div(textSmallStatic);
+const textStaticSmall = styled.div(textStaticSmall);
 const TextMediumStatic = styled.div(textMediumStatic);
 const TextLargeStatic = styled.div(textLargeStatic);
 const TextXLargeStatic = styled.div(textXLargeStatic);
 
-const HeadingSmallFluid = styled.div(headingSmallFluid);
-const HeadingMediumFluid = styled.div(headingMediumFluid);
-const HeadingLargeFluid = styled.div(headingLargeFluid);
-const HeadingXLargeFluid = styled.div(headingXLargeFluid);
-const HeadingXXLargeFluid = styled.div(headingXXLargeFluid);
+const headingFluidSmall = styled.div(headingFluidSmall);
+const headingFluidMedium = styled.div(headingFluidMedium);
+const headingFluidLarge = styled.div(headingFluidLarge);
+const headingFluidXLarge = styled.div(headingFluidXLarge);
+const headingFluidXXLarge = styled.div(headingFluidXXLarge);
 const HeadingXXXLargeFluid = styled.div(headingXXXLargeFluid);
 
 const HeadingSmallStatic = styled.div(headingSmallStatic);
@@ -241,7 +241,7 @@ const HeadingXXLargeStatic = styled.div(headingXXLargeStatic);
 const HeadingXXXLargeStatic = styled.div(headingXXXLargeStatic);
 
 const DisplayMediumFluid = styled.div(displayMediumFluid);
-const DisplayLargeFluid = styled.div(displayLargeFluid);
+const displayFluidLarge = styled.div(displayFluidLarge);
 
 const DisplayMediumStatic = styled.div(displayMediumStatic);
 const DisplayLargeStatic = styled.div(displayLargeStatic);
@@ -276,36 +276,36 @@ function App() {
       </Grid>
       <Grid>
         <Typography>
-          <TextXSmallFluid>
-            <Info>TextXSmallFluid</Info>
+          <textFluidXSmall>
+            <Info>textFluidXSmall</Info>
             {dummyText}
-          </TextXSmallFluid>
-          <TextSmallFluid>
-            <Info>TextSmallFluid</Info>
+          </textFluidXSmall>
+          <textFluidSmall>
+            <Info>textFluidSmall</Info>
             {dummyText}
-          </TextSmallFluid>
-          <TextMediumFluid>
-            <Info>TextMediumFluid</Info>
+          </textFluidSmall>
+          <textFluidMedium>
+            <Info>textFluidMedium</Info>
             {dummyText}
-          </TextMediumFluid>
-          <TextLargeFluid>
-            <Info>TextLargeFluid</Info>
+          </textFluidMedium>
+          <textFluidLarge>
+            <Info>textFluidLarge</Info>
             {dummyText}
-          </TextLargeFluid>
-          <TextXLargeFluid>
-            <Info>TextXLargeFluid</Info>
+          </textFluidLarge>
+          <textFluidXLarge>
+            <Info>textFluidXLarge</Info>
             {dummyText}
-          </TextXLargeFluid>
+          </textFluidXLarge>
         </Typography>
         <Typography>
           <TextXSmallStatic>
             <Info>TextXSmallStatic</Info>
             {dummyText}
           </TextXSmallStatic>
-          <TextSmallStatic>
-            <Info>TextSmallStatic</Info>
+          <textStaticSmall>
+            <Info>textStaticSmall</Info>
             {dummyText}
-          </TextSmallStatic>
+          </textStaticSmall>
           <TextMediumStatic>
             <Info>TextMediumStatic</Info>
             {dummyText}
@@ -322,26 +322,26 @@ function App() {
       </Grid>
       <Grid>
         <Typography>
-          <HeadingSmallFluid>
-            <Info>HeadingSmallFluid</Info>
+          <headingFluidSmall>
+            <Info>headingFluidSmall</Info>
             {dummyText}
-          </HeadingSmallFluid>
-          <HeadingMediumFluid>
-            <Info>HeadingMediumFluid</Info>
+          </headingFluidSmall>
+          <headingFluidMedium>
+            <Info>headingFluidMedium</Info>
             {dummyText}
-          </HeadingMediumFluid>
-          <HeadingLargeFluid>
-            <Info>HeadingLargeFluid</Info>
+          </headingFluidMedium>
+          <headingFluidLarge>
+            <Info>headingFluidLarge</Info>
             {dummyText}
-          </HeadingLargeFluid>
-          <HeadingXLargeFluid>
-            <Info>HeadingXLargeFluid</Info>
+          </headingFluidLarge>
+          <headingFluidXLarge>
+            <Info>headingFluidXLarge</Info>
             {dummyText}
-          </HeadingXLargeFluid>
-          <HeadingXXLargeFluid>
-            <Info>HeadingXXLargeFluid</Info>
+          </headingFluidXLarge>
+          <headingFluidXXLarge>
+            <Info>headingFluidXXLarge</Info>
             {dummyText}
-          </HeadingXXLargeFluid>
+          </headingFluidXXLarge>
           <HeadingXXXLargeFluid>
             <Info>HeadingXXXLargeFluid</Info>
             {dummyText}
@@ -380,10 +380,10 @@ function App() {
             <Info>DisplayMediumFluid</Info>
             {dummyText}
           </DisplayMediumFluid>
-          <DisplayLargeFluid>
-            <Info>DisplayLargeFluid</Info>
+          <displayFluidLarge>
+            <Info>displayFluidLarge</Info>
             {dummyText}
-          </DisplayLargeFluid>
+          </displayFluidLarge>
         </Typography>
         <Typography>
           <DisplayMediumStatic>

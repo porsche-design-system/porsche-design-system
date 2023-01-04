@@ -12,7 +12,7 @@ import {
   getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
-import { textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall } from '@porsche-design-system/utilities-v2';
 
 const { primaryColor: darkThemeBaseColor } = getThemedColors('dark');
 const { primaryColor: lightThemeBaseColor } = getThemedColors('light');
@@ -180,7 +180,7 @@ export const getLinkButtonStyles = (
         display: 'block',
         width: '100%',
         color: iconLabelColor,
-        ...textSmallFluid,
+        ...textFluidSmall,
         ...(!hasSlottedAnchor && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
       },
     },

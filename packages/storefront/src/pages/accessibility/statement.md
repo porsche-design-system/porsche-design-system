@@ -95,19 +95,19 @@ We continually assess and work to ensure that our Web presence is in conformance
 .p-accessibility-statement {
   p-text,
   p-text-list {
-    margin-top: $pds-spacing-medium;
+    margin-top: $pds-spacing-static-medium;
   }
 
   p-text + p-headline[variant="headline-3"],
   p-text-list + p-headline[variant="headline-3"] {
-    margin-top: $pds-spacing-x-large;
+    margin-top: $pds-spacing-static-x-large;
   }
 
   p-text + p-headline[variant="headline-4"],
   p-text-list + p-headline[variant="headline-4"],
   p-text + p-headline[variant="headline-5"],
   p-text-list + p-headline[variant="headline-5"] {
-    margin-top: $pds-spacing-large;
+    margin-top: $pds-spacing-static-large;
   }
 }
 </style>

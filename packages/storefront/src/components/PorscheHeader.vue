@@ -99,8 +99,8 @@
 
   .main-nav {
     @include pds-grid;
-    padding-top: $pds-spacing-medium;
-    padding-bottom: $pds-spacing-medium;
+    padding-top: $pds-spacing-static-medium;
+    padding-bottom: $pds-spacing-static-medium;
     border-bottom: 1px solid $pds-theme-light-contrast-low;
 
     &__nav {
@@ -115,11 +115,11 @@
 
       @include pds-media-query-min('l') {
         display: flex;
-        gap: $pds-spacing-small;
+        gap: $pds-spacing-static-small;
 
         button {
           @include pds-focus;
-          @include pds-text-small;
+          @include pds-text-fluid-small;
           font-size: 0.875rem;
           display: inline-flex;
           flex-direction: column;
@@ -141,7 +141,7 @@
 
       @include pds-media-query-min('xs') {
         display: flex;
-        gap: $pds-spacing-large;
+        gap: $pds-spacing-static-large;
       }
     }
   }

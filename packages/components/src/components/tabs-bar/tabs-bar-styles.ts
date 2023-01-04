@@ -9,7 +9,7 @@ import {
   addImportantToRule,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { fontSize, textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { fontSize, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 const tabsTransitionDuration = '.4s';
 
@@ -74,7 +74,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       }),
     },
     scroller: {
-      ...textSmallFluid,
+      ...textFluidSmall,
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize.fluid[s] })),
     },

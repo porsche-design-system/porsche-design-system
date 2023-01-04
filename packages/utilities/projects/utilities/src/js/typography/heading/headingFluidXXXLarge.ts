@@ -1,6 +1,6 @@
 import { headingFontPartA, headingFontPartB } from './headingShared';
 import { fontSize } from '../../font';
 
-export const headingXXXLargeFluid = {
+export const headingFluidXXXLarge = {
   font: `${headingFontPartA}${fontSize.fluid.headingXXXLarge}${headingFontPartB}`,
 };

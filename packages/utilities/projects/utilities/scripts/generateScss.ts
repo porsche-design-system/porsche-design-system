@@ -44,7 +44,10 @@ const cleanLib = (): void => {
 
 const writeFile = (filename: string, content: string): void => {
   const targetPath = path.normalize(`${targetDirectory}/_${paramCase(filename)}.scss`);
-  const contentFormatted = prettier.format(content, { parser: 'scss', printWidth: 120 });
+  const contentFormatted = prettier
+    .format(content, { parser: 'scss', printWidth: 120 })
+    .replace(/calc\s+\(/g, 'calc(') // fix issue with prettier
+    .replace(/\s*\/\s*/g, '/'); // fix issue with prettier
   fs.writeFileSync(targetPath, contentFormatted);
   console.log(`Auto generated SCSS file: ${targetPath}`);
 };
@@ -70,10 +73,11 @@ const generateMixins = (mixins: Mixins): void => {
   for (const [filename, map] of Object.entries(mixins)) {
     const content = Object.entries(map)
       .map(([k, v]) => {
-        return `@mixin ${paramCase(`pds-${k}`)} {${getCss({ _key_: v }).replace(
-          /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s*+]*)}/g, // search for styles only
+        const scss = getCss({ _key_: v }).replace(
+          /\._key_ {([A-Za-z0-9:\-/.'"[\]()%,;\s*+]*)}/g, // search for styles only
           '$1'
-        )}}`;
+        );
+        return `@mixin ${paramCase(`pds-${k}`)} {${scss}}`;
       })
       .join('\n\n');
 

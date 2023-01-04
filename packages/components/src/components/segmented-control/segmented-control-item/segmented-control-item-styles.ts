@@ -7,14 +7,14 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { textSmallFluid, textXSmallFluid } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall, textFluidXSmall } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const ITEM_PADDING = pxToRemWithUnit(16);
-export const { font: BUTTON_FONT } = textSmallFluid;
-export const { font: LABEL_FONT } = textXSmallFluid;
+export const { font: BUTTON_FONT } = textFluidSmall;
+export const { font: LABEL_FONT } = textFluidXSmall;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 
@@ -69,7 +69,7 @@ export const getComponentCss = (
         border: 0,
         background: backgroundColor,
         color: buttonColor,
-        ...textSmallFluid,
+        ...textFluidSmall,
         ...getFocusJssStyle({ color: primaryColor }),
         ...(isDisabled
           ? {
@@ -89,7 +89,7 @@ export const getComponentCss = (
       // label
       span: {
         display: 'block',
-        ...textXSmallFluid,
+        ...textFluidXSmall,
         color: labelColor,
       },
     },

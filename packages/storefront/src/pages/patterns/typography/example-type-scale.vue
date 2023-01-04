@@ -78,7 +78,7 @@
   p-headline,
   p-text {
     &::before {
-      @include pds-text-x-small;
+      @include pds-text-fluid-x-small;
       display: block;
       content: 'p-headline - variant: "' attr(variant) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
         attr(data-viewport-width) '';

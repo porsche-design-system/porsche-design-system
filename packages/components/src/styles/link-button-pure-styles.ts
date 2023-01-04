@@ -19,7 +19,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontLineHeight, fontSize, textSmallFluid } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSize, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -165,7 +165,7 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
-      ...textSmallFluid,
+      ...textFluidSmall,
       fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
@@ -193,7 +193,7 @@ export const getLinkButtonPureStyles = (
       subline: {
         display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
-        ...textSmallFluid,
+        ...textFluidSmall,
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : primaryColor,
         transition: getTransition('color'),
         ...(hasIcon && {
