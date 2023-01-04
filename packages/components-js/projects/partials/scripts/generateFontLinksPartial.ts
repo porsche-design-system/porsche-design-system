@@ -44,22 +44,19 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JS
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts = {
     latin: {
-      thin: '${FONTS_MANIFEST.porscheNextWLaThin.woff2}',
-      regular: '${FONTS_MANIFEST.porscheNextWLaRegular.woff2}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWLaSemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWLaBold.woff2}',
+      regular: '${FONTS_MANIFEST.porscheNextWLaRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextWLaSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextWLaBold}',
     },
     greek: {
-      thin: '${FONTS_MANIFEST.porscheNextWGrThin.woff2}',
-      regular: '${FONTS_MANIFEST.porscheNextWGrRegular.woff2}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWGrSemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWGrBold.woff2}',
+      regular: '${FONTS_MANIFEST.porscheNextWGrRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextWGrSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextWGrBold}',
     },
     cyril: {
-      thin: '${FONTS_MANIFEST.porscheNextWCyThin.woff2}',
-      regular: '${FONTS_MANIFEST.porscheNextWCyRegular.woff2}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWCySemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWCyBold.woff2}',
+      regular: '${FONTS_MANIFEST.porscheNextWCyRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextWCySemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextWCyBold}',
     },
   };
 
