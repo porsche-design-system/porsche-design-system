@@ -4,7 +4,7 @@ import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
 export const generateFontLinksPartial = (): string => {
   const fontSubsets = ['latin', 'greek', 'cyril'];
-  const fontWeights = ['thin', 'regular', 'semi-bold', 'bold'];
+  const fontWeights = ['regular', 'semi-bold', 'bold'];
 
   const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
 type FontWeight = ${fontWeights.map((x) => `'${x}'`).join(' | ')};
