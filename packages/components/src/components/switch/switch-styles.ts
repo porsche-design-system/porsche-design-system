@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import type { AlignLabel, AlignLabelType, BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
-import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../utils';
+import type { AlignLabel, AlignLabelType, BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -9,15 +9,15 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../styles';
-import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
+import { spacing, textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
-const { small: spacingSmall } = spacing;
+const { small: spacingSmall } = spacing.static;
 
 const getColors = (
   checked: boolean,
   isDisabledOrLoading: boolean,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): {
   backgroundColor: string;
   buttonBorderColor: string;
@@ -28,35 +28,22 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const {
-    backgroundColor,
-    baseColor,
-    contrastHighColor,
-    successColor,
-    successColorDarken,
-    hoverColorDarken,
-    disabledColor,
-    brandColor,
-  } = getThemedColors(theme);
+  const { backgroundColor, primaryColor, contrastHighColor, successColor, successColorDarken, disabledColor } =
+    getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const isLightElectricTheme = isThemeLightElectric(theme);
-  const checkedColor = isLightElectricTheme ? brandColor : successColor;
+  const checkedColor = successColor;
   const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
 
   return {
     backgroundColor,
     buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
-    buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
+    buttonBorderColorHover: checked ? successColorDarken : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked
-      ? isLightElectricTheme
-        ? hoverColorDarken
-        : successColorDarken
-      : 'transparent',
+    buttonBackgroundColorHover: checked ? successColorDarken : 'transparent',
     toggleBackgroundColor:
       (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
-    textColor: disabledOrLoadingColor || baseColor,
+    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : primaryColor,
+    textColor: disabledOrLoadingColor || primaryColor,
   };
 };
 
@@ -95,7 +82,7 @@ export const getComponentCss = (
   checked: boolean,
   loading: boolean,
   isDisabledOrLoading: boolean,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
   const {
     backgroundColor,
@@ -157,7 +144,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
-      ...textSmall,
+      ...textSmallFluid,
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,

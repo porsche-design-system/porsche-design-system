@@ -4,27 +4,25 @@ import { getThemedColors } from './colors';
 
 export const getThemedTextColor = (theme: Theme, textColor: TextColor): string => {
   const {
-    baseColor,
-    brandColor,
+    primaryColor,
     contrastHighColor,
     contrastMediumColor,
     contrastLowColor,
     successColor,
     errorColor,
     warningColor,
-    neutralColor,
+    infoColor,
   } = getThemedColors(theme);
 
   const colorMap: { [key in TextColor]: string } = {
-    brand: brandColor,
-    default: baseColor,
+    primary: primaryColor,
     'neutral-contrast-high': contrastHighColor,
     'neutral-contrast-medium': contrastMediumColor,
     'neutral-contrast-low': contrastLowColor,
     'notification-success': successColor,
     'notification-warning': warningColor,
     'notification-error': errorColor,
-    'notification-neutral': neutralColor,
+    'notification-info': infoColor,
     inherit: 'currentColor',
   };
   return colorMap[textColor];

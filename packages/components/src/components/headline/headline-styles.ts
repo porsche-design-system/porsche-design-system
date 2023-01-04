@@ -3,25 +3,25 @@ import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantTyp
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
 import {
-  headingLarge,
-  headingXLarge,
-  headingMedium,
-  headingSmall,
-  headingXSmall,
-  headingXXLarge,
+  headingLargeFluid,
+  headingXLargeFluid,
+  headingMediumFluid,
+  headingSmallFluid,
+  headingXXLargeFluid,
   fontWeight,
-  textSmall,
+  textSmallFluid,
+  displayLargeFluid,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
 const headingMap: Record<VariantType, JssStyle> = {
-  'large-title': headingXXLarge,
-  'headline-1': headingXLarge,
-  'headline-2': headingLarge,
-  'headline-3': headingMedium,
-  'headline-4': headingSmall,
-  'headline-5': headingXSmall,
+  'large-title': displayLargeFluid,
+  'headline-1': headingXXLargeFluid,
+  'headline-2': headingXLargeFluid,
+  'headline-3': headingLargeFluid,
+  'headline-4': headingMediumFluid,
+  'headline-5': headingSmallFluid,
 };
 
 const getVariantJssStyle = (variant: HeadlineVariant): JssStyle => {
@@ -43,7 +43,7 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
 export const getComponentCss = (
   variant: HeadlineVariant,
   align: TextAlign,
-  color: Extract<TextColor, 'default' | 'inherit'>,
+  color: Extract<TextColor, 'primary' | 'inherit'>,
   ellipsis: boolean,
   theme: Theme
 ): string => {
@@ -60,12 +60,12 @@ export const getComponentCss = (
       padding: 0,
       margin: 0,
       textAlign: align,
-      color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
+      color: color !== 'primary' ? 'inherit' : getThemedColors(theme).primaryColor,
       whiteSpace: 'inherit',
       ...(isVariantType(variant)
         ? getVariantJssStyle(variant)
         : {
-            ...textSmall,
+            ...textSmallFluid,
             ...buildResponsiveStyles(variant, getSizeJssStyle),
             overflowWrap: null,
             hyphens: null,

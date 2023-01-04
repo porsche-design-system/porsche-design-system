@@ -1,8 +1,8 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { gridSafeZone, mediaQueryMin, fontWeight, textMedium, textLarge } from '@porsche-design-system/utilities-v2';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../utils';
+import { gridSafeZone, headingMediumFluid, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -35,7 +35,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `max(1rem, 7vh) ${gridSafeZone.base}`,
+        margin: `max(1rem, 7vh) ${gridSafeZone}`,
       };
 };
 
@@ -78,7 +78,6 @@ export const getComponentCss = (
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
-  const { baseColor } = getThemedColors('light');
 
   return getCss({
     '@global': {
@@ -118,14 +117,9 @@ export const getComponentCss = (
         [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
       }),
       h1: {
-        ...textMedium,
-        fontWeight: fontWeight.semiBold,
+        ...headingMediumFluid,
         margin: 0,
-        color: baseColor,
-        [mediaQueryMin('m')]: {
-          ...textLarge,
-          fontWeight: fontWeight.semiBold,
-        },
+        color: getThemedColors('light').primaryColor,
       },
     },
     root: mergeDeep(
@@ -141,11 +135,10 @@ export const getComponentCss = (
           padding: pxToRemWithUnit(40),
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone.xl}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone}`,
         },
         [mediaQueryXxl]: {
           padding: pxToRemWithUnit(64),
-          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone.xl}`,
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any

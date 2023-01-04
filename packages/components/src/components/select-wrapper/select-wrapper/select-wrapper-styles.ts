@@ -12,7 +12,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { FormState } from '../../../utils/form/form-state';
 
-const { baseColor: themeLightBaseColor } = getThemedColors('light');
+const { primaryColor: themeLightBaseColor } = getThemedColors('light');
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
@@ -23,7 +23,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const isDarkTheme = isThemeDark(theme);
-  const { baseColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
 
   return getCss({
@@ -59,9 +59,9 @@ export const getComponentCss = (
         position: 'absolute',
         bottom: pxToRemWithUnit(12),
         right: pxToRemWithUnit(12),
-        color: baseColor,
+        color: primaryColor,
         pointerEvents: 'none', // let events through to select which is visually underneath
-        transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
+        transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
         transition: getTransition('transform'),
         '&--open': {
           transform: 'rotate3d(0,0,1,180deg)',

@@ -5,7 +5,7 @@ import type {
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  ThemeDark,
 } from '../../types';
 
 describe('getComponentCss()', () => {
@@ -37,7 +37,7 @@ describe('getComponentCss()', () => {
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: AlignLabel;
     hasSubline: boolean;
-    theme: ThemeExtendedElectricDark;
+    theme: ThemeDark;
   }>([
     {
       icon: 'arrow-head-right',

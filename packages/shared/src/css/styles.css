@@ -88,29 +88,3 @@ body > select {
 .playground.dark.focus-hover::before {
   content: ':focus-visible:hover (theme=dark)';
 }
-
-/*light-electric*/
-.playground.light-electric.hover::before {
-  content: ':hover (theme=light-electric)';
-}
-
-.playground.light-electric.focus::before {
-  content: ':focus-visible (theme=light-electric)';
-}
-
-.playground.light-electric.focus-hover::before {
-  content: ':focus-visible:hover (theme=light-electric)';
-}
-
-/*dark-electric*/
-.playground.dark-electric.hover::before {
-  content: ':hover (theme=dark-electric)';
-}
-
-.playground.dark-electric.focus::before {
-  content: ':focus-visible (theme=dark-electric)';
-}
-
-.playground.dark-electric.focus-hover::before {
-  content: ':focus-visible:hover (theme=dark-electric)';
-}

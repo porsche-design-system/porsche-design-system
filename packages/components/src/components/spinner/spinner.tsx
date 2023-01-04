@@ -1,19 +1,13 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../types';
-import type { SpinnerSize, SpinnerAriaAttributes, SpinnerSizeType } from './spinner-utils';
-import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  parseAndGetAriaAttributes,
-  THEMES_EXTENDED_ELECTRIC_DARK,
-  validateProps,
-} from '../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { SpinnerAriaAttributes, SpinnerSize, SpinnerSizeType } from './spinner-utils';
+import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES, verifySpinnerSize } from './spinner-utils';
+import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './spinner-styles';
 
 const propTypes: PropTypes<typeof Spinner> = {
   size: AllowedTypes.breakpoint<SpinnerSizeType>(SPINNER_SIZES),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<SpinnerAriaAttributes>(SPINNER_ARIA_ATTRIBUTES),
 };
 
@@ -28,7 +22,7 @@ export class Spinner {
   @Prop() public size?: SpinnerSize = 'small';
 
   /** Adapts the spinner color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttributes>;

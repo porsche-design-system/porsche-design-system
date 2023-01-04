@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof Text> = {
 export class Text {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending of the usage of the text component. */
+  /** Sets a custom HTML tag depending on the usage of the text component. */
   @Prop() public tag?: TextTag = 'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
@@ -47,7 +47,7 @@ export class Text {
   @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: TextColor = 'default';
+  @Prop() public color?: TextColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;

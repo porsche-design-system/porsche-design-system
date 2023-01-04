@@ -2,9 +2,8 @@ import type { Theme } from '@porsche-design-system/utilities-v2';
 import { isThemeDark } from '../utils';
 
 type ThemedColor =
-  | 'baseColor'
-  | 'baseColorDarken'
-  | 'brandColor'
+  | 'primaryColor'
+  | 'primaryColorDarken'
   | 'backgroundColor'
   | 'backgroundSurfaceColor'
   | 'contrastLowColor'
@@ -24,87 +23,67 @@ type ThemedColor =
   | 'successSoftColor'
   | 'warningColor'
   | 'warningSoftColor'
-  | 'neutralColor'
-  | 'neutralSoftColor';
+  | 'infoColor'
+  | 'infoSoftColor';
 
 export type ThemedColors = { [key in ThemedColor]: string };
 
 /* Auto Generated Start */
 const themeLight = {
-  baseColor: '#000',
-  baseColorDarken: '#000000',
-  brandColor: '#d5001c',
-  backgroundColor: '#fff',
-  backgroundSurfaceColor: '#f2f2f2',
-  contrastLowColor: '#e3e4e5',
-  contrastMediumColor: '#626669',
-  contrastHighColor: '#323639',
-  contrastHighColorDarken: '#151718',
-  hoverColor: '#d5001c',
-  hoverColorDarken: '#980014',
-  activeColor: '#d5001c',
-  focusColor: 'currentColor',
-  disabledColor: '#96989a',
-  errorColor: '#e00000',
-  errorColorDarken: '#a30000',
-  errorSoftColor: '#fae6e6',
-  successColor: '#018a16',
-  successColorDarken: '#014d0c',
-  successSoftColor: '#e5f3e7',
-  warningColor: '#ff9b00',
-  warningSoftColor: '#fff5e5',
-  neutralColor: '#0061bd',
-  neutralSoftColor: '#e5eff8'
+  primaryColor: '#010205',
+  primaryColorDarken: '#000000',
+  backgroundColor: '#FFF',
+  backgroundSurfaceColor: '#EEEFF2',
+  contrastLowColor: '#D8D8DB',
+  contrastMediumColor: '#949598',
+  contrastHighColor: '#535457',
+  contrastHighColorDarken: '#353638',
+  hoverColor: '#D8D8DB',
+  hoverColorDarken: '#b8b8be',
+  activeColor: '#D8D8DB',
+  focusColor: '#0A0AFF',
+  disabledColor: '#D8D8DB',
+  errorColor: '#E7323B',
+  errorColorDarken: '#c51720',
+  errorSoftColor: '#FCE8E9',
+  successColor: '#32B85B',
+  successColorDarken: '#258843',
+  successSoftColor: '#EBFAF0',
+  warningColor: '#FECC1B',
+  warningSoftColor: '#FFF9E6',
+  infoColor: '#1E5BEB',
+  infoSoftColor: '#E8EEFD'
 };
 
 const themeDark = {
-  baseColor: '#fff',
-  baseColorDarken: '#e0e0e0',
-  brandColor: '#d5001c',
-  backgroundColor: '#0e1418',
-  backgroundSurfaceColor: '#262b2e',
-  contrastLowColor: '#4a4e51',
-  contrastMediumColor: '#b0b1b2',
-  contrastHighColor: '#e3e4e5',
-  contrastHighColorDarken: '#c3c5c8',
-  hoverColor: '#ff0223',
-  hoverColorDarken: '#c4001a',
-  activeColor: '#ff0223',
-  focusColor: 'currentColor',
-  disabledColor: '#7c7f81',
-  errorColor: '#fc1717',
-  errorColorDarken: '#d30303',
-  errorSoftColor: '#fec5c5',
-  successColor: '#01ba1d',
-  successColorDarken: '#017d14',
-  successSoftColor: '#bfeec6',
-  warningColor: '#ff9b00',
-  warningSoftColor: '#ffe6bf',
-  neutralColor: '#2193ff',
-  neutralSoftColor: '#c7e4ff'
-};
-
-const themeLightElectric = {
-  ...themeLight,
-  brandColor: '#00b0f4',
-  hoverColor: '#00b0f4',
-  hoverColorDarken: '#0084b7',
-  activeColor: '#00b0f4'
-};
-
-const themeDarkElectric = {
-  ...themeDark,
-  brandColor: '#00b0f4',
-  hoverColor: '#00b0f4',
-  hoverColorDarken: '#0084b7',
-  activeColor: '#00b0f4'
+  primaryColor: '#FBFCFF',
+  primaryColorDarken: '#beceff',
+  backgroundColor: '#0E0E12',
+  backgroundSurfaceColor: '#212225',
+  contrastLowColor: '#404044',
+  contrastMediumColor: '#7E7F82',
+  contrastHighColor: '#535457',
+  contrastHighColorDarken: '#353638',
+  hoverColor: '#404044',
+  hoverColorDarken: '#222224',
+  activeColor: '#404044',
+  focusColor: '#0A0AFF',
+  disabledColor: '#404044',
+  errorColor: '#CB3333',
+  errorColorDarken: '#9a2727',
+  errorSoftColor: '#290A0A',
+  successColor: '#00C77E',
+  successColorDarken: '#008a57',
+  successSoftColor: '#003320',
+  warningColor: '#DDB84B',
+  warningSoftColor: '#2B2208',
+  infoColor: '#027FFC',
+  infoSoftColor: '#001A33'
 };
 
 const themes = {
   'light': themeLight,
-  'dark': themeDark,
-  'light-electric': themeLightElectric,
-  'dark-electric': themeDarkElectric
+  'dark': themeDark
 };
 /* Auto Generated End */
 

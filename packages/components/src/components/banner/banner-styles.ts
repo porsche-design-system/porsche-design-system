@@ -15,7 +15,7 @@ const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 export const ANIMATION_DURATION = 600;
 
 const mediaQueryS = mediaQueryMin('s');
-const mediaQueryXxs = mediaQueryMinMax('xxs', 's');
+const mediaQueryBase = mediaQueryMinMax('base', 's');
 
 export const getBoxShadow = (): JssStyle => ({
   boxShadow:
@@ -74,18 +74,18 @@ export const getComponentCss = (): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
-        [mediaQueryXxs]: {
+        [mediaQueryBase]: {
           bottom: `var(${bannerPositionBottomVar})`,
         },
         [mediaQueryS]: {
           top: `var(${bannerPositionTopVar})`,
         },
         '&(.hydrated),&(.ssr)': {
-          [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
+          [mediaQueryBase]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
           [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
         },
         '&(.banner--close)': {
-          [mediaQueryXxs]: getAnimationOut('mobileOut'),
+          [mediaQueryBase]: getAnimationOut('mobileOut'),
           [mediaQueryS]: getAnimationOut('desktopOut'),
         },
       },

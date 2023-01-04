@@ -22,7 +22,8 @@ export const getComponentCss = (
   const theme: Theme = 'light';
   const size = pxToRemWithUnit(24);
   const hasVisibleState = isVisibleFormState(state);
-  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } =
+    getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const iconColor = backgroundColor.replace(/#/g, '%23');
 
@@ -66,7 +67,7 @@ export const getComponentCss = (
         },
         ...hoverMediaQuery({
           '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
-            borderColor: formStateHoverColor || baseColor,
+            borderColor: formStateHoverColor || primaryColor,
           },
         }),
         '&(input:indeterminate:disabled), &(input:checked:disabled)': {

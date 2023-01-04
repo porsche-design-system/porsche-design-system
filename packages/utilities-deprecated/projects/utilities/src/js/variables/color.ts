@@ -1,6 +1,4 @@
 export type Theme = 'light' | 'dark';
-export type ThemeExtendedElectric = Theme | 'light-electric';
-export type ThemeExtendedElectricDark = ThemeExtendedElectric | 'dark-electric';
 
 export type ColorTheme = {
   brand: string;
@@ -52,9 +50,6 @@ export type ColorExternal = {
 
 export type Color = ColorTheme & {
   darkTheme: ColorTheme;
-  lightElectricTheme: ColorTheme;
-  darkElectricTheme: ColorTheme;
-  external: ColorExternal;
 };
 
 const lightTheme: ColorTheme = {
@@ -119,28 +114,6 @@ const darkTheme: ColorTheme = {
   },
 };
 
-const lightElectricTheme: ColorTheme = {
-  ...lightTheme,
-  brand: '#00b0f4',
-  state: {
-    hover: '#00b0f4',
-    active: '#00b0f4',
-    focus: lightTheme.state.focus,
-    disabled: lightTheme.state.disabled,
-  },
-};
-
-const darkElectricTheme: ColorTheme = {
-  ...darkTheme,
-  brand: '#00b0f4',
-  state: {
-    hover: '#00b0f4',
-    active: '#00b0f4',
-    focus: darkTheme.state.focus,
-    disabled: darkTheme.state.disabled,
-  },
-};
-
 export const color: Color = {
   /**
    * Theme light as default theme
@@ -150,31 +123,4 @@ export const color: Color = {
    * Theme dark as optional
    */
   darkTheme,
-  /**
-   * Theme light electric as optional
-   */
-  lightElectricTheme,
-  /**
-   * Theme dark electric as optional
-   */
-  darkElectricTheme,
-  /**
-   * External brand colors
-   */
-  external: {
-    facebook: '#1877f2',
-    google: '#4285f4',
-    instagram: '#e1306c',
-    kakaotalk: '#fae300',
-    linkedin: '#0077b5',
-    naver: '#03cf5d',
-    pinterest: '#e60023',
-    reddit: '#ff4500',
-    tiktok: '#fe2c55',
-    twitter: '#1da1f2',
-    wechat: '#1aad19',
-    whatsapp: '#25d366',
-    xing: '#006567',
-    youtube: '#ff0000',
-  },
 };

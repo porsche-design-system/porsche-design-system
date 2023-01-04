@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
+import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
+import type { AlignLabel, BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
@@ -7,7 +7,7 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof Switch> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   tabbable: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -57,7 +57,7 @@ export class Switch {
   @Prop() public tabbable?: boolean = true;
 
   /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;

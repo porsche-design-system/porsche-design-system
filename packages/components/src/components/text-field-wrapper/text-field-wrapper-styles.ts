@@ -17,7 +17,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallFluid } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -31,7 +31,7 @@ export const getComponentCss = (
   hasActionLoading: boolean
 ): string => {
   const theme: Theme = 'light';
-  const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
   const hasVisibleState = isVisibleFormState(state);
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
@@ -84,7 +84,7 @@ export const getComponentCss = (
           textDecoration: 'none',
           background: 'transparent',
           cursor: 'pointer',
-          color: baseColor,
+          color: primaryColor,
           transition: getTransition('color'),
           ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
           ...hoverMediaQuery({
@@ -127,7 +127,7 @@ export const getComponentCss = (
           padding: pxToRemWithUnit(12),
           zIndex: 1,
           boxSizing: 'border-box',
-          ...textSmall,
+          ...textSmallFluid,
           color: contrastMediumColor,
         },
       }

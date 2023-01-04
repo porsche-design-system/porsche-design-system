@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
-import type { ThemeExtendedElectricDark } from '../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../utils';
+import type { Theme } from '../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark } from '../../utils';
 import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors, getScreenReaderOnlyJssStyle } from '../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
@@ -15,8 +15,8 @@ const sizeMap: { [key in SpinnerSizeType]: Pick<JssStyle, 'height' | 'width'> } 
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricDark): string => {
-  const { contrastHighColor, baseColor } = getThemedColors(theme);
+export const getComponentCss = (size: SpinnerSize, theme: Theme): string => {
+  const { contrastHighColor, primaryColor } = getThemedColors(theme);
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
 
   return getCss({
@@ -32,7 +32,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isThemeDark(theme) || isThemeDarkElectric(theme) ? baseColor : contrastHighColor,
+        stroke: isThemeDark(theme) ? primaryColor : contrastHighColor,
         '&:first-child': {
           opacity: 0.4,
         },

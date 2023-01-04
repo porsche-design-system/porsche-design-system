@@ -8,13 +8,13 @@ import {
 } from '../../styles';
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
-  const { baseColor, hoverColor, contrastMediumColor } = themedColors;
+  const { primaryColor, hoverColor, contrastMediumColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
 
   return getCss({
@@ -32,11 +32,11 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         border: 0,
         cursor: 'pointer',
         background: backgroundColor,
-        color: baseColor,
+        color: primaryColor,
         textAlign: 'left',
-        ...textSmall,
+        ...textSmallFluid,
         outline: 0,
-        ...getTagFocusJssStyle(baseColor, hoverColor),
+        ...getTagFocusJssStyle(primaryColor, hoverColor),
         ...hoverMediaQuery({
           '&:hover > .icon': {
             color: hoverColor,

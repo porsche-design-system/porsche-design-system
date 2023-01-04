@@ -14,8 +14,8 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: gridSafeZone.base,
-        right: gridSafeZone.base,
+        left: gridSafeZone,
+        right: gridSafeZone,
         // Needs a not overwritable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(56)})`,

@@ -4,8 +4,8 @@ const typeScaleStatic = ['.875rem', '1rem', '1.25rem', '1.5rem', '2.25rem', '3re
 // "Text/Heading": min - base: 16px, screen: 320px, ratio: 1,2 / max - base: 16px, screen: 1760px, ratio: 1,309
 // "Display": min - base: 16px, screen: 320px, ratio: 1,2 / max - base: 16px, screen: 1760px, ratio: 1,5
 const typeScaleFluid = [
-  '.875rem',
-  '1rem',
+  typeScaleStatic[0],
+  typeScaleStatic[1],
   'clamp(1.2rem, .12vw + 1.18rem, 1.31rem)',
   'clamp(1.44rem, .3vw + 1.38rem, 1.71rem)',
   'clamp(1.73rem, .57vw + 1.61rem, 2.24rem)',

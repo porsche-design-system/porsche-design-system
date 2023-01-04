@@ -1,5 +1,5 @@
 import { getComponentCss } from './switch-styles';
-import type { AlignLabel, BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableAlignLabel: AlignLabel = {
@@ -34,7 +34,7 @@ describe('getComponentCss()', () => {
     checked: boolean;
     loading: boolean;
     isDisabledOrLoading: boolean;
-    theme: ThemeExtendedElectric;
+    theme: Theme;
   }>([
     {
       alignLabel: 'right',

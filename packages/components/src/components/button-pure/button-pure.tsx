@@ -10,7 +10,7 @@ import {
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
-  THEMES_EXTENDED_ELECTRIC_DARK,
+  THEMES,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -24,7 +24,7 @@ import type {
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  Theme,
 } from '../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
 };
 
@@ -93,7 +93,7 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;

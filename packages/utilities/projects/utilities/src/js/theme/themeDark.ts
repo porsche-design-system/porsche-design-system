@@ -1,7 +1,7 @@
 import type { ThemeColorSet } from './themeShared';
 
 export const themeDark: ThemeColorSet = {
-  main: '#FBFCFF',
+  primary: '#FBFCFF',
   background: {
     base: '#0E0E12',
     surface: '#212225',

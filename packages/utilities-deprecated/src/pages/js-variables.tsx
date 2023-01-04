@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
-import type { ThemeExtendedElectricDark } from '@porsche-design-system/utilities';
+import type { ThemeDark } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
@@ -30,7 +30,7 @@ export const JsVariables = (): JSX.Element => {
   const colorLightElectricArray = objectToFlatArray(lightElectricTheme);
   const colorDarkElectricArray = objectToFlatArray(darkElectricTheme);
 
-  const renderSquares = (colors: string[], theme: ThemeExtendedElectricDark = 'light') => (
+  const renderSquares = (colors: string[], theme: ThemeDark = 'light') => (
     <div>
       {colors.map((x, idx) => {
         const style =

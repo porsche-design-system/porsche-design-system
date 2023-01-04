@@ -9,7 +9,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './';
-import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallFluid, textXSmallFluid } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
@@ -26,7 +26,7 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -50,18 +50,18 @@ export const getBaseChildStyles = (
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
-      ...textSmall,
+      ...textSmallFluid,
       overflowWrap: null,
       hyphens: null,
       textIndent: 0,
-      color: baseColor,
+      color: primaryColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(),
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
       [`::slotted(${child}:not(:disabled):not([readonly]):hover)`]: {
-        borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+        borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : primaryColor),
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
@@ -96,7 +96,7 @@ export const getLabelStyles = (
   theme: Theme,
   counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>
 ): Styles => {
-  const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -105,7 +105,7 @@ export const getLabelStyles = (
     '&:hover': {
       [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
       (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
-        borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
+        borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : primaryColor),
       },
     },
   });
@@ -119,13 +119,13 @@ export const getLabelStyles = (
       '&__text': {
         display: 'block',
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
-        ...textSmall,
-        color: isDisabled ? disabledColor : baseColor,
+        ...textSmallFluid,
+        color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         '&+&--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
-          ...textXSmall,
+          ...textXSmallFluid,
         },
         ...(!isDisabled && {
           '&--description': {

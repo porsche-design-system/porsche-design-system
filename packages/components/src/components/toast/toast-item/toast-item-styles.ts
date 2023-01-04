@@ -8,11 +8,11 @@ import {
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles';
 import { getBoxShadow } from '../../banner/banner-styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
-  const textColor = getThemedColors('light').baseColor;
+  const textColor = getThemedColors('light').primaryColor;
   return getCss({
     '@global': {
       ':host': {
@@ -20,7 +20,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         ...getBoxShadow(),
       },
       p: {
-        ...textSmall,
+        ...textSmallFluid,
         margin: 0,
         color: textColor,
       },

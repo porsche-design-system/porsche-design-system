@@ -1,6 +1,6 @@
 export type Theme = 'light' | 'dark';
 export type ThemeColorSet = {
-  main: string;
+  primary: string;
   background: {
     base: string;
     surface: string;

@@ -9,14 +9,14 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { FormState } from '../../../utils/form/form-state';
 
-const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
+const { primaryColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');
 
 const dropdownPositionVar = '--p-dropdown-position';
@@ -65,12 +65,13 @@ export const getFilterStyles = (
   state: FormState,
   theme: Theme
 ): Styles<'@global'> => {
-  const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } =
+    getThemedColors(theme);
   const { formStateColor } = getThemedFormStateColors(theme, state);
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
-    color: disabled ? disabledColor : baseColor,
+    color: disabled ? disabledColor : primaryColor,
   };
 
   return {
@@ -89,10 +90,10 @@ export const getFilterStyles = (
         boxSizing: 'border-box',
         border: 'none',
         opacity: 0,
-        ...textSmall,
+        ...textSmallFluid,
         textIndent: 0,
         cursor: disabled ? 'not-allowed' : 'text',
-        color: baseColor,
+        color: primaryColor,
         background: backgroundColor,
         '&::placeholder': placeHolderJssStyle,
         '&::-webkit-input-placeholder': placeHolderJssStyle,
@@ -131,7 +132,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
   const isDirectionDown = direction === 'down';
   const isDarkTheme = isThemeDark(theme);
   const {
-    baseColor,
+    primaryColor,
     backgroundColor,
     contrastHighColor,
     contrastMediumColor,
@@ -160,9 +161,9 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         padding: 0,
         margin: 0,
         marginTop: pxToRemWithUnit(-1),
-        color: baseColor,
+        color: primaryColor,
         background: backgroundColor,
-        ...textSmall,
+        ...textSmallFluid,
         zIndex: 10,
         left: 0,
         right: 0,
@@ -270,7 +271,7 @@ export const getComponentCss = (
   filter: boolean,
   theme: Theme
 ): string => {
-  const { baseColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss(
@@ -290,7 +291,7 @@ export const getComponentCss = (
             ...(!disabled &&
               hoverMediaQuery({
                 '&(:hover)': {
-                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : primaryColor),
                 },
               })),
           },

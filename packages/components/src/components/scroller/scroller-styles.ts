@@ -1,6 +1,6 @@
 import { getCss } from '../../utils';
 import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../styles';
-import type { ThemeExtendedElectric } from '../../types';
+import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
 import { getFocus } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
@@ -10,9 +10,9 @@ export const getComponentCss = (
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, baseColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
@@ -48,10 +48,10 @@ export const getComponentCss = (
         display: 'none',
       },
     },
-    // Extra wrapper needed to compensate different offset parent calculation depending of browser.
+    // Extra wrapper needed to compensate different offset parent calculation depending on browser.
     // Needed for position of status bar.
     'scroll-wrapper': {
-      ...getFocus({ color: baseColor }),
+      ...getFocus(),
       position: 'relative',
       display: 'inline-flex',
       minWidth: '100%',

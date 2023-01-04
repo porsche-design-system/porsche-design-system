@@ -1,5 +1,5 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
@@ -9,19 +9,15 @@ import {
   addImportantToRule,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontSize, textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
   ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
-export const getComponentCss = (
-  size: BreakpointCustomizable<TabSize>,
-  weight: TabWeight,
-  theme: ThemeExtendedElectric
-): string => {
-  const { baseColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
+export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: TabWeight, theme: Theme): string => {
+  const { primaryColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -53,7 +49,7 @@ export const getComponentCss = (
           textAlign: 'left',
           border: 0,
           background: 'transparent',
-          color: baseColor,
+          color: primaryColor,
           cursor: 'pointer',
           transition: getTransition('color'),
         },
@@ -78,9 +74,9 @@ export const getComponentCss = (
       }),
     },
     scroller: {
-      ...textSmall,
+      ...textSmallFluid,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize[s].fontSize })),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize.fluid[s] })),
     },
     bar: {
       display: 'block',

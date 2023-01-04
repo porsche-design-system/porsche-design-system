@@ -1,7 +1,7 @@
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import type { StepperHorizontalSize } from './stepper-horizontal-utils';
 import type { BreakpointCustomizable } from '../../../types';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontSize, textSmallFluid } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSize>): string => {
   return getCss({
@@ -12,8 +12,8 @@ export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSi
     },
     scroller: {
       display: 'flex',
-      ...textSmall,
-      ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => fontSize[s]),
+      ...textSmallFluid,
+      ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => fontSize.fluid[s]),
     },
   });
 };

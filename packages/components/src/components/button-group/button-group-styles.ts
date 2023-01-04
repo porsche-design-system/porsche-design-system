@@ -5,7 +5,7 @@ import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule } from '../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
-const { medium: spacingMedium, small: spacingSmall } = spacing;
+const { medium: spacingMedium, small: spacingSmall } = spacing.static;
 
 const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const style: { [key in ButtonGroupDirectionType]: JssStyle } = {

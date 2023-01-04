@@ -7,7 +7,7 @@ import type {
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  Theme,
 } from '../types';
 import { buildResponsiveStyles, hasVisibleIcon, isSizeInherit, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
@@ -19,7 +19,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontLineHeight, fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSize, textSmallFluid } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -29,27 +29,26 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
       fontSize: 'inherit',
     };
   } else {
-    // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    type FontSizeLineHeight = typeof fontSize.small;
-    const { fontSize: size }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
-    const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
-      'x-small': fontSize.xSmall,
-      small: fontSize.small,
-      medium: { fontSize: '1.25rem', lineHeight: fontLineHeight },
-      large: { fontSize: '1.875rem', lineHeight: fontLineHeight },
-      'x-large': fontSize.large,
-    };
+    /* type FontSizeLineHeight = typeof fontSize.small;
+    const { fontSize: size }: FontSizeLineHeight = fontSize.fluid[paramCaseToCamelCase(textSize)];*/
+    /* const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+      'x-small': fontSize.fluid.textXSmall,
+      small: fontSize.fluid.textSmall,
+      medium: { fontSize: '1.25rem' },
+      large: { fontSize: '1.875rem' },
+      'x-large': fontSize.fluid.textLarge,
+    };*/
 
     return {
-      fontSize: size,
-      '& ~ .subline': {
+      fontSize: fontSize.fluid[paramCaseToCamelCase(textSize)],
+      /* '& ~ .subline': {
         // TODO: should be referenced
-        ...sublineSize[textSize],
+        // ...sublineSize[textSize],
         '&::before': {
           fontSize: size,
           marginLeft: fontLineHeight,
         },
-      },
+      },*/
     };
   }
 };
@@ -110,9 +109,9 @@ export const getLinkButtonPureStyles = (
   alignLabel: AlignLabel,
   hasSubline: boolean,
   hasSlottedAnchor: boolean,
-  theme: ThemeExtendedElectricDark
+  theme: Theme
 ): Styles => {
-  const { baseColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return {
@@ -143,7 +142,7 @@ export const getLinkButtonPureStyles = (
       textAlign: 'left',
       border: 'none',
       background: 'transparent',
-      color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
+      color: isDisabledOrLoading ? disabledColor : active ? activeColor : primaryColor,
       transition: getTransition('color'),
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
@@ -166,7 +165,7 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
-      ...textSmall,
+      ...textSmallFluid,
       fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
@@ -194,8 +193,8 @@ export const getLinkButtonPureStyles = (
       subline: {
         display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
-        ...textSmall,
-        color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
+        ...textSmallFluid,
+        color: isDisabledOrLoading ? disabledColor : active ? activeColor : primaryColor,
         transition: getTransition('color'),
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
