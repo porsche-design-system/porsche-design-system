@@ -128,9 +128,7 @@ describe('cdp-helper', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
-      expect(
-        getThemedBodyMarkup(getThemedElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      ).toMatchSnapshot();
+      expect(getThemedBodyMarkup(getThemedElementsMarkup, { themes: ['light', 'dark'] })).toMatchSnapshot();
     });
   });
 

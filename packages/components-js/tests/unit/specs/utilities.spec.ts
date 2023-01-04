@@ -4,7 +4,7 @@ it.each<keyof typeof jssUtilities>(['fontFamily', 'fontVariant'])('should be of 
   expect(typeof jssUtilities[util]).toBe('string');
 });
 
-it.each<keyof typeof jssUtilities>(['colorExternal', 'themeLight', 'themeDark', 'headingLarge', 'textSmall'])(
+it.each<keyof typeof jssUtilities>(['themeLight', 'themeDark', 'headingFluidLarge', 'textFluidSmall'])(
   'should be of type object: %s',
   (util) => {
     expect(typeof jssUtilities[util]).toBe('object');
