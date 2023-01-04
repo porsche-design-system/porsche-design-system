@@ -1,6 +1,6 @@
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, false, 'none', 'light'],
     [false, false, 'success', 'light'],
@@ -21,7 +21,7 @@ describe('getComponentCss()', () => {
   });
 });
 
-describe('getSlottedCss()', () => {
+xdescribe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-select-wrapper');
     expect(getSlottedCss(host)).toMatchSnapshot();

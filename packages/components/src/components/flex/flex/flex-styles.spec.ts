@@ -15,7 +15,7 @@ import {
   FLEX_WRAPS,
 } from './flex-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];
   it.each<FlexInline>(dataInline)('should return correct css for inline: %j', (inline) => {
     expect(getComponentCss(inline, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();

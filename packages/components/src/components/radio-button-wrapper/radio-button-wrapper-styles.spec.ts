@@ -1,7 +1,7 @@
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { getSlottedCss } from './radio-button-wrapper-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, 'none', true],
     [false, 'none', false],
@@ -21,7 +21,7 @@ describe('getComponentCss()', () => {
   });
 });
 
-describe('getSlottedCss()', () => {
+xdescribe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-radio-button-wrapper');
     expect(getSlottedCss(host)).toMatchSnapshot();

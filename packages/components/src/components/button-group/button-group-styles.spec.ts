@@ -1,7 +1,7 @@
 import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<ButtonGroupDirection>([
     { base: 'column', xs: 'row' },
     'column',

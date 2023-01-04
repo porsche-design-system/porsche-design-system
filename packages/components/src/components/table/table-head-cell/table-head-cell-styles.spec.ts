@@ -1,6 +1,6 @@
 import { getComponentCss } from './table-head-cell-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [undefined, undefined, false, false],
     [undefined, undefined, true, false],

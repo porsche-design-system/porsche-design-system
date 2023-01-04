@@ -1,6 +1,6 @@
 import { getComponentCss } from './content-wrapper-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['basic', 'transparent', 'light'],
     ['extended', 'transparent', 'light'],

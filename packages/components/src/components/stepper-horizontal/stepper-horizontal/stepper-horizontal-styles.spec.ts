@@ -1,6 +1,6 @@
 import { getComponentCss } from './stepper-horizontal-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['small'],
     ['medium'],

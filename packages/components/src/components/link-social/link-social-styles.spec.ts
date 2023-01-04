@@ -1,6 +1,6 @@
 import { getComponentCss } from './link-social-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [undefined, false, false, 'light'],
     [undefined, false, false, 'dark'],

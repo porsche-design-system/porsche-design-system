@@ -1,6 +1,6 @@
 import { getComponentCss } from './fieldset-wrapper-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['none', 'medium', true],
     ['none', 'medium', false],

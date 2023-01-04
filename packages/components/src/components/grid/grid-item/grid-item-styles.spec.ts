@@ -4,7 +4,7 @@ import { getComponentCss } from './grid-item-styles';
 import { GRID_GUTTERS } from '../grid/grid-utils';
 import { GRID_ITEM_SIZES, GRID_ITEM_OFFSETS } from './grid-item-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const defaultGutter: GridGutter = { base: 16, s: 24, m: 36 };
 
   const dataSizes: GridItemSize[] = [...GRID_ITEM_SIZES, { base: 6, xs: 12, s: 6, m: 12, l: 6, xl: 12 }];

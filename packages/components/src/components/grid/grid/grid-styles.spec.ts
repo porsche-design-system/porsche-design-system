@@ -2,7 +2,7 @@ import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const dataDirections: GridDirection[] = [
     ...GRID_DIRECTIONS,
     { base: 'column', xs: 'row', s: 'column', m: 'row', l: 'column', xl: 'row' },

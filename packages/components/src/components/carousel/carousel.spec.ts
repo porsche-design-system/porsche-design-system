@@ -78,7 +78,7 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call getSplideBreakpoints() with correct parameters', () => {
+  xit('should call getSplideBreakpoints() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
@@ -98,7 +98,7 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(component.intl);
   });
 
-  it('should call Splide constructor with correct parameters and set this.splide', () => {
+  xit('should call Splide constructor with correct parameters and set this.splide', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();

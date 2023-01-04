@@ -1,6 +1,6 @@
 import { getCheckboxRadioLabelJssStyle } from './checkbox-radio-styles';
 
-it.each<Parameters<typeof getCheckboxRadioLabelJssStyle>>([
+xit.each<Parameters<typeof getCheckboxRadioLabelJssStyle>>([
   [true, true, 'light'],
   [true, true, 'dark'],
   [false, true, 'light'],

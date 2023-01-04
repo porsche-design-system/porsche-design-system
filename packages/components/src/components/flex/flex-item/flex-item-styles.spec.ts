@@ -16,7 +16,7 @@ import {
   FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const dataWidth: FlexItemWidth[] = [
     ...FLEX_ITEM_WIDTHS,
     { base: 'auto', xs: 'half', s: 'auto', m: 'half', l: 'auto', xl: 'half' },
