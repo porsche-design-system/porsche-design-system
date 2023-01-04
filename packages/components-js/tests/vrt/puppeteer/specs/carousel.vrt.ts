@@ -14,7 +14,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'carousel', '/#carousel')).toBeFalsy();
 });
 

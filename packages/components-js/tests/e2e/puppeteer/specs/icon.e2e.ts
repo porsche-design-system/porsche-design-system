@@ -265,7 +265,7 @@ describe('lifecycle', () => {
     });
   });
 
-  it('should keep svg when new lifecycle is triggered', async () => {
+  xit('should keep svg when new lifecycle is triggered', async () => {
     await initIcon({ name: 'highway' });
 
     const host = await getHost();

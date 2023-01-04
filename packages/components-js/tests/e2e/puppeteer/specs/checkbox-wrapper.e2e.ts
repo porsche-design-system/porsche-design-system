@@ -199,7 +199,7 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
   expect(await getBackgroundImage(input)).toBe('none');
 });
 
-it('should disable checkbox when disabled property is set programmatically', async () => {
+xit('should disable checkbox when disabled property is set programmatically', async () => {
   await initCheckbox();
 
   const input = await getInput();

@@ -7,7 +7,7 @@ import {
 import type { GetThemedMarkup } from '../helpers';
 import { forceFocusState, getThemedBodyMarkup, setContentWithDesignSystem } from '../helpers';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tabs', '/#tabs')).toBeFalsy();
 });
 

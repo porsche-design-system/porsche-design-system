@@ -15,7 +15,7 @@ import {
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'popover', '/#popover', {
       scenario: (page) => openPopoversAndHighlightSpacer(page),

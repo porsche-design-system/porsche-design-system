@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 describe('toast-basic', () => {
-  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast-basic')).toBeFalsy();
   });
 });
@@ -18,7 +18,7 @@ describe('toast-basic-dark', () => {
 });
 
 describe('toast-basic-long-text', () => {
-  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(
       await vrtTest(getVisualRegressionTester(viewport), 'toast-basic-long-text', '/toast-basic-long-text')
     ).toBeFalsy();

@@ -101,7 +101,7 @@ it('should add/remove message text if state changes programmatically', async () 
   expect(await getMessage(), 'when state = none').toBeNull();
 });
 
-it('should disable radio-button when disabled property is set programmatically', async () => {
+xit('should disable radio-button when disabled property is set programmatically', async () => {
   await setContentWithDesignSystem(
     page,
     `

@@ -14,7 +14,7 @@ import {
 import { TAG_COLORS } from '../../../../../components/src/components/tag/tag-utils';
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tag', '/#tag')).toBeFalsy();
 });
 

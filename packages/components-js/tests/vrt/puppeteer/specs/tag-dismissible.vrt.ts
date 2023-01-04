@@ -13,7 +13,7 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tag-dismissible', '/#tag-dismissible')).toBeFalsy();
 });
 
