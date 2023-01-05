@@ -1,9 +1,8 @@
 import { validatePartialUsage } from './utils/validation/partials/validatePartialUsage';
 import { injectGlobalStyle } from './utils';
-import { version } from '../package.json';
 
 export default (): void => {
-  document.porscheDesignSystem[version].readyResolve();
+  document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].readyResolve();
   injectGlobalStyle();
   validatePartialUsage();
 };

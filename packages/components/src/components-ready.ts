@@ -26,10 +26,12 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
 const isDocumentReady = (): boolean => document.readyState === 'complete';
 
 const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => {
-  const readyPromises = collectAllComponentOnReadyPromises(el);
-  Promise.all(readyPromises)
-    .then((proms) => resolve(proms.length))
-    .catch(console.error);
+  document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].isReady().then(() => {
+    const readyPromises = collectAllComponentOnReadyPromises(el);
+    Promise.all(readyPromises)
+      .then((proms) => resolve(proms.length))
+      .catch(console.error);
+  });
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {

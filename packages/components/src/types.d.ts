@@ -30,6 +30,7 @@ export type { AlignLabel, AlignLabelType } from './utils/link-button/align-label
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
+  const ROLLUP_REPLACE_VERSION: string;
 }
 
 import type { AriaAttributes } from './aria-types';
