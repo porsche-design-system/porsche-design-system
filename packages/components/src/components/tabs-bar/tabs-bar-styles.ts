@@ -17,7 +17,7 @@ const transformSelector = (selector: string): string =>
   ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
 export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: TabWeight, theme: Theme): string => {
-  const { primaryColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -59,7 +59,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
           },
         }),
         [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
-          color: activeColor,
+          color: primaryColor,
         },
         // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
         [transformSelector('::slotted([role]:focus)')]: {
@@ -85,7 +85,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       height: weight === 'semibold' ? '.125em' : '.09375em',
       left: 0,
       bottom: `-${pxToRemWithUnit(4)}`,
-      background: activeColor,
+      background: primaryColor,
       '&--enable-transition': {
         willChange: 'width',
         transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,
