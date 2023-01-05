@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { themeLight, textSmall } from '@porsche-design-system/components-angular/utilities/js';
+import { themeLight, textFluidSmall } from '@porsche-design-system/components-angular/utilities/js';
 import { paramCase } from 'change-case';
 
 @Component({
@@ -19,8 +19,8 @@ export class UtilitiesComponent {
       height: '100px',
       width: '100px',
       color: '#fff',
-      background: themeLight.brand,
-      ...textSmall,
+      background: themeLight.primary,
+      ...textFluidSmall,
     })
       .map(([key, value]) => [paramCase(key), value].join(':'))
       .join(';');
