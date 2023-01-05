@@ -250,6 +250,8 @@
   "https://designsystem.porsche.com/latest/components/tabs-bar/examples",
   "https://designsystem.porsche.com/latest/help/browser-compatibility",
   "https://designsystem.porsche.com/latest/helpers/components-ready",
+  "https://designsystem.porsche.com/latest/partials/dsr-ponyfill",
+  "https://designsystem.porsche.com/latest/partials/initial-styles",
   "https://designsystem.porsche.com/latest/performance/cdn",
   "https://designsystem.porsche.com/latest/performance/loading-behaviour",
   "https://designsystem.porsche.com/latest/start-coding/angular",

@@ -1,14 +1,15 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
+import type { ButtonGroupDirection } from './button-group-utils';
 import { addImportantToEachRule } from '../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
 
 const { medium: spacingMedium, small: spacingSmall } = spacing;
 
-const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
-  const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
+const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirection): JssStyle => {
+  const style: Record<ButtonGroupDirection, JssStyle> = {
     column: {
       flexFlow: 'column nowrap',
       alignItems: 'stretch',
@@ -25,8 +26,8 @@ const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirecti
   return style[direction];
 };
 
-const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
-  const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
+const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirection): JssStyle => {
+  const style: Record<ButtonGroupDirection, JssStyle> = {
     column: {
       marginRight: 0,
       marginLeft: 0,
@@ -39,7 +40,7 @@ const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroup
   return style[direction];
 };
 
-export const getComponentCss = (direction: ButtonGroupDirection): string => {
+export const getComponentCss = (direction: BreakpointCustomizable<ButtonGroupDirection>): string => {
   return getCss({
     '@global': {
       ':host': {

@@ -256,6 +256,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
     }
 
+    // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
+    extendedProps
+      .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
+      .forEach((prop) => {
+        cleanedComponent = cleanedComponent.replace(new RegExp(`${prop.key} = ${prop.defaultValue}`), '$& as any');
+      });
+
     return cleanedComponent;
   }
 
