@@ -50,6 +50,7 @@ export type ColorExternal = {
 
 export type Color = ColorTheme & {
   darkTheme: ColorTheme;
+  external: ColorExternal;
 };
 
 const lightTheme: ColorTheme = {
@@ -123,4 +124,23 @@ export const color: Color = {
    * Theme dark as optional
    */
   darkTheme,
+  /**
+   * External brand colors
+   */
+  external: {
+    facebook: '#1877f2',
+    google: '#4285f4',
+    instagram: '#e1306c',
+    kakaotalk: '#fae300',
+    linkedin: '#0077b5',
+    naver: '#03cf5d',
+    pinterest: '#e60023',
+    reddit: '#ff4500',
+    tiktok: '#fe2c55',
+    twitter: '#1da1f2',
+    wechat: '#1aad19',
+    whatsapp: '#25d366',
+    xing: '#006567',
+    youtube: '#ff0000',
+  },
 };
