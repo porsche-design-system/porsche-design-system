@@ -17,7 +17,7 @@ const getChunkContent = (chunkFileName: string): string => {
   return fs.readFileSync(chunkFile, 'utf8');
 };
 
-xdescribe('chunk size', () => {
+describe('chunk size', () => {
   const baseDir = path.resolve(path.normalize('./'), 'tests/unit');
   const fixturesDir = path.resolve(baseDir, 'fixtures');
   const resultsDir = path.resolve(baseDir, 'results');
