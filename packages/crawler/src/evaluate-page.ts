@@ -130,6 +130,10 @@ export const evaluatePage = async (
           el.matches((prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join())
         );
 
+      if (!document.porscheDesignSystem) {
+        throw new Error('document.porscheDesignSystem is undefined');
+      }
+
       return Object.entries(document.porscheDesignSystem).reduce(
         (result, [version, { prefixes }]) => ({
           ...result,
