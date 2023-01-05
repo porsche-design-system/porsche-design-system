@@ -26,12 +26,6 @@ describe('with initialized design system', () => {
 
   it('should work for single component', async () => {
     await setContentWithDesignSystem(page, `<p-button>Button</p-button>`);
-    await page.evaluate(() => {
-      const el = document.createElement('script');
-      el.textContent = 'porscheDesignSystem.load()';
-      document.body.append(el);
-    });
-    await page.waitForFunction(() => document.querySelector('html.hydrated'));
     expect(await getReadyAmount()).toBe(1);
   });
 
