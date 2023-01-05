@@ -2,7 +2,7 @@ import { getComponentCss } from './switch-styles';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 
 xdescribe('getComponentCss()', () => {
-  const breakpointCustomizableAlignLabel: AlignLabel = {
+  const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
     base: 'left',
     xs: 'right',
     s: 'left',
@@ -28,7 +28,7 @@ xdescribe('getComponentCss()', () => {
   };
 
   it.each<{
-    alignLabel: AlignLabel;
+    alignLabel: BreakpointCustomizable<AlignLabel>;
     hideLabel: BreakpointCustomizable<boolean>;
     stretch: BreakpointCustomizable<boolean>;
     checked: boolean;

@@ -1,6 +1,5 @@
 import type {
   AlignLabel,
-  AlignLabelType,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
@@ -10,7 +9,7 @@ import type {
   TextWeight,
   Theme,
 } from '../../types';
-import type { LinkAriaAttributes } from '../link/link-utils';
+import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
@@ -31,7 +30,7 @@ import {
 import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
-  alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
@@ -44,7 +43,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -55,7 +54,7 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: AlignLabel = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -94,7 +93,7 @@ export class LinkPure {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {
     // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations

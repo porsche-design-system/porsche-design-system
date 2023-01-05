@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import type { AlignLabel, AlignLabelType, BreakpointCustomizable, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
@@ -47,8 +47,8 @@ const getColors = (
   };
 };
 
-const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
-  const styles: { [key in AlignLabelType]: JssStyle } = {
+const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabel): JssStyle => {
+  const styles: Record<AlignLabel, JssStyle> = {
     left: {
       order: 0,
       paddingLeft: 0,
@@ -76,7 +76,7 @@ const getStretchJssStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => 
 };
 
 export const getComponentCss = (
-  alignLabel: AlignLabel,
+  alignLabel: BreakpointCustomizable<AlignLabel>,
   hideLabel: BreakpointCustomizable<boolean>,
   stretch: BreakpointCustomizable<boolean>,
   checked: boolean,

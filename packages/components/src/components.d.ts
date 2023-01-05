@@ -19,19 +19,19 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttributes } from "./components/icon/icon-utils";
+import { IconAriaAttribute } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { LinkAriaAttributes } from "./components/link/link-utils";
+import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttributes, MarqueSize } from "./components/marque/marque-utils";
-import { ModalAriaAttributes } from "./components/modal/modal-utils";
+import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
+import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
-import { SpinnerAriaAttributes, SpinnerSize } from "./components/spinner/spinner-utils";
+import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/switch/switch";
@@ -136,7 +136,7 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: ButtonGroupDirection;
+        "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
     }
     interface PButtonPure {
         /**
@@ -146,7 +146,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
@@ -271,7 +271,7 @@ export namespace Components {
         /**
           * Defines orientation.
          */
-        "orientation"?: DividerOrientation;
+        "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
          */
@@ -303,77 +303,77 @@ export namespace Components {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: FlexAlignContent;
+        "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: FlexAlignItems;
+        "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: FlexDirection;
+        "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: FlexInline;
+        "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: FlexJustifyContent;
+        "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: FlexWrap;
+        "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: FlexItemAlignSelf;
+        "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: FlexItemFlex;
+        "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: FlexItemGrow;
+        "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: FlexItemOffset;
+        "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: FlexItemShrink;
+        "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: FlexItemWidth;
+        "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: GridDirection;
+        "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
          */
-        "gutter"?: GridGutter;
+        "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: GridWrap;
+        "wrap"?: BreakpointCustomizable<GridWrap>;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridItemOffset;
+        "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridItemSize;
+        "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeadline {
         /**
@@ -405,7 +405,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
          */
@@ -469,7 +469,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -515,11 +515,11 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -603,7 +603,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
@@ -653,7 +653,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttribute>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -675,7 +675,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -877,11 +877,11 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
          */
-        "size"?: SpinnerSize;
+        "size"?: BreakpointCustomizable<SpinnerSize>;
         /**
           * Adapts the spinner color depending on the theme.
          */
@@ -911,7 +911,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */
@@ -1732,7 +1732,7 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: ButtonGroupDirection;
+        "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
     }
     interface PButtonPure {
         /**
@@ -1742,7 +1742,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
@@ -1871,7 +1871,7 @@ declare namespace LocalJSX {
         /**
           * Defines orientation.
          */
-        "orientation"?: DividerOrientation;
+        "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
          */
@@ -1903,77 +1903,77 @@ declare namespace LocalJSX {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: FlexAlignContent;
+        "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: FlexAlignItems;
+        "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: FlexDirection;
+        "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: FlexInline;
+        "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: FlexJustifyContent;
+        "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: FlexWrap;
+        "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: FlexItemAlignSelf;
+        "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: FlexItemFlex;
+        "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: FlexItemGrow;
+        "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: FlexItemOffset;
+        "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: FlexItemShrink;
+        "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: FlexItemWidth;
+        "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: GridDirection;
+        "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
          */
-        "gutter"?: GridGutter;
+        "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
          */
-        "wrap"?: GridWrap;
+        "wrap"?: BreakpointCustomizable<GridWrap>;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridItemOffset;
+        "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridItemSize;
+        "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeadline {
         /**
@@ -2005,7 +2005,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
          */
@@ -2077,7 +2077,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -2123,11 +2123,11 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -2211,7 +2211,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
@@ -2261,7 +2261,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttribute>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -2283,7 +2283,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -2497,11 +2497,11 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
          */
-        "size"?: SpinnerSize;
+        "size"?: BreakpointCustomizable<SpinnerSize>;
         /**
           * Adapts the spinner color depending on the theme.
          */
@@ -2535,7 +2535,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: AlignLabel;
+        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */

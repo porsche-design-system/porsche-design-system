@@ -19,4 +19,4 @@ export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, form
     .join();
 
 export const MARQUE_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type MarqueAriaAttributes = typeof MARQUE_ARIA_ATTRIBUTES[number];
+export type MarqueAriaAttribute = typeof MARQUE_ARIA_ATTRIBUTES[number];

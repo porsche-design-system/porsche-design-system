@@ -87,7 +87,7 @@ export class ButtonPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: AlignLabel = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;

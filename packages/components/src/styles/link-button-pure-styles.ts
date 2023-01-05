@@ -2,7 +2,6 @@ import type { Styles, JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import type {
   AlignLabel,
-  AlignLabelType,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   TextSize,
@@ -69,7 +68,7 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
       };
 };
 
-const getLabelAlignmentJssStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getLabelAlignmentJssStyle: GetJssStyleFunction = (alignLabel: AlignLabel): JssStyle => {
   return alignLabel === 'left'
     ? {
         padding: `0 ${pxToRemWithUnit(4)} 0 0`,
@@ -106,7 +105,7 @@ export const getLinkButtonPureStyles = (
   size: BreakpointCustomizable<TextSize>,
   weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
+  alignLabel: BreakpointCustomizable<AlignLabel>,
   hasSubline: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme

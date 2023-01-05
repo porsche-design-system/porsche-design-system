@@ -1,8 +1,9 @@
 import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
+import type { BreakpointCustomizable } from '../../types';
 
 xdescribe('getComponentCss()', () => {
-  it.each<ButtonGroupDirection>([
+  it.each<BreakpointCustomizable<ButtonGroupDirection>>([
     { base: 'column', xs: 'row' },
     'column',
     'row',

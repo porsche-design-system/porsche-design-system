@@ -7,7 +7,7 @@ import type { IconName, SelectedAriaAttributes } from '../../types';
 import { paramCaseToCamelCase, parseAndGetAriaAttributes, pdsFetch } from '../../utils';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type IconAriaAttributes = typeof ICON_ARIA_ATTRIBUTES[number];
+export type IconAriaAttribute = typeof ICON_ARIA_ATTRIBUTES[number];
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
@@ -50,7 +50,7 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
 
 export const patchAriaIntoSVG = (
   content: string,
-  rawAriaAttributes: SelectedAriaAttributes<IconAriaAttributes>
+  rawAriaAttributes: SelectedAriaAttributes<IconAriaAttribute>
 ): string => {
   if (rawAriaAttributes) {
     const ariaAttributes = parseAndGetAriaAttributes(rawAriaAttributes);
