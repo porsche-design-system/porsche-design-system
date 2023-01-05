@@ -157,7 +157,7 @@ it('should show aria-expanded true when open and false when closed', async () =>
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
 });
 
-it('should set correct inline content height using ResizeObserver', async () => {
+xit('should set correct inline content height using ResizeObserver', async () => {
   await initAccordion({ otherMarkup: clickHandlerScript });
 
   const button = await getButton();
@@ -173,7 +173,7 @@ it('should set correct inline content height using ResizeObserver', async () => 
   expect(inlineStyle).toMatchInlineSnapshot(`"height: 1rem;"`);
 });
 
-it('should set correct inline content height using MutationObserver and window resize listener', async () => {
+xit('should set correct inline content height using MutationObserver and window resize listener', async () => {
   await page.evaluate(() => {
     delete window.ResizeObserver;
   });

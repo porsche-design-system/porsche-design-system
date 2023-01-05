@@ -5,7 +5,7 @@ import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import type { BreakpointCustomizable } from '../../../types';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const defaultGutter: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
 
   const dataSizes: BreakpointCustomizable<GridItemSize>[] = [

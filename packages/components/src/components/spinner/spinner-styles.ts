@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
-import type { BreakpointCustomizable, ThemeExtendedElectricDark } from '../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../utils';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark } from '../../utils';
 import { getBaseSlottedStyles, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
@@ -17,9 +17,9 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (
   size: BreakpointCustomizable<SpinnerSize>,
-  theme: ThemeExtendedElectricDark
+  theme: Theme
 ): string => {
-  const { contrastHighColor, baseColor } = getThemedColors(theme);
+  const { contrastHighColor, primaryColor } = getThemedColors(theme);
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
 
   return getCss({
@@ -35,7 +35,7 @@ export const getComponentCss = (
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isThemeDark(theme) || isThemeDarkElectric(theme) ? baseColor : contrastHighColor,
+        stroke: isThemeDark(theme) ? primaryColor : contrastHighColor,
         '&:first-child': {
           opacity: 0.4,
         },

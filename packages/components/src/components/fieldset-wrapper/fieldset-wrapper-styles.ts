@@ -2,12 +2,12 @@ import type { Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getCss, mergeDeep } from '../../utils';
 import { addImportantToRule, getThemedColors } from '../../styles';
-import { headingXSmall, headingSmall, spacing } from '@porsche-design-system/utilities-v2';
+import { textFluidXSmall, headingFluidSmall, spacing } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FormState } from '../../utils/form/form-state';
 
-const { medium: spacingMedium } = spacing;
+const { medium: spacingMedium } = spacing.static;
 
 export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabelSize, hasLabel: boolean): string => {
   const theme: Theme = 'light';
@@ -26,8 +26,8 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
         legend: {
           margin: `0 0 ${spacingMedium}`,
           padding: 0,
-          color: getThemedColors(theme).baseColor,
-          ...(labelSize === 'small' ? headingXSmall : headingSmall),
+          color: getThemedColors(theme).primaryColor,
+          ...(labelSize === 'small' ? textFluidXSmall : headingFluidSmall),
         },
       }),
     },

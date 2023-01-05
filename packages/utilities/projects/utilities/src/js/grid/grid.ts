@@ -1,23 +1,38 @@
-import { gridGap } from './grid-gap';
-import { gridMaxWidth, gridMinWidth } from './grid-width';
-import { gridSafeZone } from './grid-safe-zone';
+import { gridGap } from './gridGap';
+import { gridWidth } from './gridWidth';
+import { gridSafeZone } from './gridSafeZone';
 import { mediaQueryMin } from '../mediaQuery';
 
-const getGridTemplateColumns = (safeZone: string): string => {
-  const calc = `calc(${safeZone} - ${gridGap})`;
-  return `[grid-start] ${calc} [content-start] repeat(12, minmax(0, 1fr)) [content-end] ${calc} [grid-end]`;
-};
+// TODO: add named columns (one-third, half, …) + reduce columns on mobile viewport
+// TODO: add gridFullWidth, gridExtended, gridBasic (because subgrid does not exist)
+const { min: minWidth, max: maxWidth } = gridWidth;
 
 export const grid = {
+  '--pds-grid-span-one-half': 'span 3',
+  '--pds-grid-span-one-third': 'span 2',
+  '--pds-grid-span-two-thirds': 'span 4',
+  '--pds-grid-span-one-quarter': 'span 1',
+  '--pds-grid-span-three-quarters': 'span 5',
   display: 'grid',
-  gridGap: gridGap,
-  gridTemplateColumns: getGridTemplateColumns(gridSafeZone.base),
-  minWidth: gridMinWidth,
-  maxWidth: gridMaxWidth,
+  gridGap,
+  gridTemplateColumns: `[fluid-start] minmax(0, calc(${gridSafeZone} - ${gridGap}))
+    [extended-start basic-start] repeat(6, minmax(0, 1fr)) [basic-end extended-end]
+  minmax(0, calc(${gridSafeZone} - ${gridGap})) [fluid-end]`,
+  minWidth,
+  maxWidth,
   margin: 0,
-  padding: `0 calc((100% - ${gridMaxWidth}) / 2)`,
+  padding: `0 calc((100% - ${maxWidth}) / 2)`,
   boxSizing: 'content-box',
-  [mediaQueryMin('xl')]: {
-    gridTemplateColumns: getGridTemplateColumns(gridSafeZone.xl),
+  [mediaQueryMin('s')]: {
+    '--pds-grid-span-one-half': 'span 6',
+    '--pds-grid-span-one-third': 'span 4',
+    '--pds-grid-span-two-thirds': 'span 8',
+    '--pds-grid-span-one-quarter': 'span 3',
+    '--pds-grid-span-three-quarters': 'span 9',
+    gridTemplateColumns: `[fluid-start] minmax(0, calc(${gridSafeZone} - ${gridGap}))
+    [extended-start] minmax(0, 1fr)
+        [basic-start] repeat(12, minmax(0, 1fr)) [basic-end]
+    minmax(0, 1fr) [extended-end]
+  minmax(0, calc(${gridSafeZone} - ${gridGap})) [fluid-end]`,
   },
-};
+} as const;

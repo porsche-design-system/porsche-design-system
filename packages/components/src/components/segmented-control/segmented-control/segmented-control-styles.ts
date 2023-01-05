@@ -13,7 +13,7 @@ export const getComponentCss = (maxWidth: number): string => {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
         gridTemplateColumns: `repeat(auto-fit, ${maxWidth}px)`,
-        gridGap: '4px',
+        gap: '4px',
       }),
     },
   });

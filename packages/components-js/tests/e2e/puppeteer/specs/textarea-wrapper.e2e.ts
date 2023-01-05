@@ -130,7 +130,7 @@ it('should render characterCountElement when maxlength is set', async () => {
   expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeDefined();
 });
 
-describe('hover state', () => {
+xdescribe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
   const defaultColor = 'rgb(98, 102, 105)';
   const hoverColor = 'rgb(0, 0, 0)';

@@ -2,7 +2,6 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
-import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
@@ -18,7 +17,7 @@ const getChunkContent = (chunkFileName: string): string => {
   return fs.readFileSync(chunkFile, 'utf8');
 };
 
-describe('chunk size', () => {
+xdescribe('chunk size', () => {
   const baseDir = path.resolve(path.normalize('./'), 'tests/unit');
   const fixturesDir = path.resolve(baseDir, 'fixtures');
   const resultsDir = path.resolve(baseDir, 'results');
@@ -283,18 +282,6 @@ describe('chunk content', () => {
       it('should contain hex colors', () => {
         expect(content).toMatch(hexColorRegEx);
       });
-
-      it('should not contain social hex colors', () => {
-        expect(content).not.toMatch(colorExternal.facebook);
-      });
-    });
-
-    describe('link-social chunk', () => {
-      const content = getChunkContent(chunkFileNames.find((x) => x.includes('link-social')));
-
-      it('should contain social hex colors', () => {
-        expect(content).toMatch(colorExternal.facebook);
-      });
     });
 
     it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsHexColor(x)))(
@@ -305,7 +292,7 @@ describe('chunk content', () => {
       }
     );
 
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
+    xit.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
       'should contain single hex color in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);

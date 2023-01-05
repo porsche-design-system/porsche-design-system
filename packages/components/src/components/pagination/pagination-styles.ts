@@ -2,14 +2,14 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
   theme: Theme
 ): string => {
-  const { baseColor, brandColor, disabledColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -46,10 +46,10 @@ export const getComponentCss = (
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
         textDecoration: 'none',
-        ...textSmall,
+        ...textFluidSmall,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: baseColor,
+        color: primaryColor,
         ...getFocusJssStyle({ color: focusColor, offset: 1 }),
         ...hoverMediaQuery({
           '&:hover': {
@@ -69,7 +69,7 @@ export const getComponentCss = (
           cursor: 'default',
           ...hoverMediaQuery({
             '&:hover': {
-              color: baseColor,
+              color: primaryColor,
             },
           }),
           '&::after': {
@@ -80,7 +80,7 @@ export const getComponentCss = (
             left: pxToRemWithUnit(6),
             right: pxToRemWithUnit(6),
             height: pxToRemWithUnit(4),
-            background: brandColor,
+            background: primaryColor,
           },
         },
       },

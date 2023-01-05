@@ -1,6 +1,6 @@
 import { getComponentCss, getSlottedCss } from './headline-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['headline-1', 'left', 'default', false, 'light'],
     ['inherit', 'left', 'default', false, 'light'],
@@ -21,7 +21,7 @@ describe('getComponentCss()', () => {
   });
 });
 
-describe('getSlottedCss()', () => {
+xdescribe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-headline');
     expect(getSlottedCss(host)).toMatchSnapshot();

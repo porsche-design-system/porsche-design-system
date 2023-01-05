@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
+import { fontStyle, fontWeight, textFluidXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -20,7 +20,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
     'background-default': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.contrastHighColor,
-    'notification-neutral': themedColors.neutralSoftColor,
+    'notification-neutral': themedColors.infoSoftColor,
     'notification-success': themedColors.successSoftColor,
     'notification-error': themedColors.errorSoftColor,
     'notification-warning': themedColors.warningSoftColor,
@@ -33,7 +33,7 @@ export const getColors = (
   tagColor: TagColor,
   theme: Theme
 ): {
-  baseColor: string;
+  primaryColor: string;
   hoverColor: string;
   outlineColor: string;
   backgroundColor: string;
@@ -41,11 +41,11 @@ export const getColors = (
   const themedColors = getThemedColors(theme);
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
-  const { baseColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
-  const { focusColor, baseColor: themedBaseColor } = themedColors;
+  const { primaryColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
+  const { focusColor, primaryColor: themedBaseColor } = themedColors;
 
   return {
-    baseColor,
+    primaryColor,
     hoverColor,
     outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
@@ -84,7 +84,7 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { baseColor, hoverColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
+  const { primaryColor, hoverColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
@@ -100,8 +100,8 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         padding: `0 ${pxToRemWithUnit(6)}`,
         borderRadius: pxToRemWithUnit(4),
         background: backgroundColor,
-        color: baseColor,
-        ...textXSmall,
+        color: primaryColor,
+        ...textFluidXSmall,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('color'),

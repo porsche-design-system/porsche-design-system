@@ -176,12 +176,12 @@
       }
 
       h3 {
-        @include pds-heading-small;
-        margin: 0 0 $pds-spacing-small;
+        @include pds-heading-fluid-small;
+        margin: 0 0 $pds-spacing-static-small;
       }
 
       p {
-        margin: 0 0 $pds-spacing-medium;
+        margin: 0 0 $pds-spacing-static-medium;
       }
 
       p-link {
@@ -193,8 +193,8 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      padding: $pds-spacing-large;
-      @include pds-text-small;
+      padding: $pds-spacing-static-large;
+      @include pds-text-fluid-small;
     }
   }
 

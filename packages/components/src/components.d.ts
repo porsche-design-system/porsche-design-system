@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -69,7 +69,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
@@ -122,7 +122,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -187,7 +187,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -383,13 +383,13 @@ export namespace Components {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -429,7 +429,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -501,7 +501,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -559,7 +559,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -783,7 +783,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
@@ -885,7 +885,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -940,7 +940,7 @@ export namespace Components {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -992,7 +992,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -1014,7 +1014,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -1076,7 +1076,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**
@@ -1661,7 +1661,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
@@ -1718,7 +1718,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -1783,7 +1783,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -1983,13 +1983,13 @@ declare namespace LocalJSX {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -2029,7 +2029,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -2109,7 +2109,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -2167,7 +2167,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -2399,7 +2399,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
@@ -2505,7 +2505,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -2568,7 +2568,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -2628,7 +2628,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2654,7 +2654,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2716,7 +2716,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for spacing 1`] = `
+{
+  "fluid": {
+    "large": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
+    "medium": "clamp(2rem, 0.56vw + 1.89rem, 2.5rem)",
+    "small": ".75rem",
+    "xLarge": "clamp(4rem, 10vw + 2rem, 13rem)",
+    "xSmall": "clamp(.25rem, 0.28vw + 0.19rem, .5rem)",
+  },
+  "static": {
+    "large": "32px",
+    "medium": "16px",
+    "small": "8px",
+    "xLarge": "48px",
+    "xSmall": "4px",
+    "xxLarge": "80px",
+  },
+}
+`;

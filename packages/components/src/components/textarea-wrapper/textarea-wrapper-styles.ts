@@ -12,7 +12,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FormState } from '../../utils/form/form-state';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -60,7 +60,7 @@ export const getComponentCss = (
           bottom: pxToRemWithUnit(6),
           right: pxToRemWithUnit(12),
           zIndex: 1,
-          ...textSmall,
+          ...textFluidSmall,
           color: contrastMediumColor,
         },
       }

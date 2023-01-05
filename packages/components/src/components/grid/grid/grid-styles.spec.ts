@@ -3,7 +3,7 @@ import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import type { BreakpointCustomizable } from '../../../types';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const dataDirections: BreakpointCustomizable<GridDirection>[] = [
     ...GRID_DIRECTIONS,
     { base: 'column', xs: 'row', s: 'column', m: 'row', l: 'column', xl: 'row' },

@@ -6,24 +6,10 @@ import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_FONTS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 type Manifest = {
-  [name: string]: {
-    woff: string;
-    woff2: string;
-  };
+  [name: string]: string;
 };
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
-
-const checkIntegrity = async (manifest: Manifest): Promise<void> => {
-  for (const [name, format] of Object.entries(manifest)) {
-    if (!format.woff) {
-      throw new Error(`Font declaration .woff is missing in manifest for "${name}".`);
-    }
-    if (!format.woff2) {
-      throw new Error(`Font declaration .woff2 is missing in manifest for "${name}".`);
-    }
-  }
-};
 
 const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   try {
@@ -53,17 +39,12 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
 
     const nameKey = camelCase(name);
     const formatKey = camelCase(ext.substring(1));
-    manifest[nameKey] = {
-      ...manifest[nameKey],
-      [formatKey]: filename,
-    };
+    manifest[nameKey] = filename;
 
     fs.writeFileSync(targetPath, font, { encoding: 'binary' });
 
     console.log(`Font "${name}${ext}" copied.`);
   }
-
-  await checkIntegrity(manifest);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
@@ -78,7 +59,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FONTS}'`;
-  const files = (await globby('./src/**/*.@(woff|woff2)')).sort();
+  const files = (await globby('./src/**/*.@(woff2)')).sort();
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
     console.error(e);

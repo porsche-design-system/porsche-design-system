@@ -8,11 +8,12 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import {
-  gridMaxWidth,
+  gridWidth,
   gridSafeZone,
-  headingMedium,
-  textSmall,
+  headingFluidMedium,
+  textFluidSmall,
   mediaQueryMin,
+  gridGap,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
@@ -25,13 +26,13 @@ export const getComponentCss = (
   disablePagination: BreakpointCustomizable<boolean>,
   theme: Theme
 ): string => {
-  const { baseColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
-        maxWidth: gridMaxWidth,
+        maxWidth: gridWidth.max,
         marginLeft: 'auto',
         marginRight: 'auto',
         gap: pxToRemWithUnit(24),
@@ -41,15 +42,15 @@ export const getComponentCss = (
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingMedium,
+        ...headingFluidMedium,
         margin: 0,
-        color: baseColor,
+        color: primaryColor,
         maxWidth: pxToRemWithUnit(900),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
-        ...textSmall,
+        ...textFluidSmall,
         margin: 0,
-        color: baseColor,
+        color: primaryColor,
         maxWidth: pxToRemWithUnit(550),
         gridColumn: 1, // to force it into 2nd line
       }),
@@ -62,9 +63,10 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...(wrapContent &&
           addImportantToEachRule({
-            padding: `0 calc(${gridSafeZone.base} + 7%) 0 ${gridSafeZone.base}`,
+            // TODO: 0 calc(${gridSafeZone} + ${gridGap})
+            padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
             [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZone.xl} + 7%) 0 ${gridSafeZone.xl}`,
+              padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
             },
           })),
         '&--draggable': {
@@ -95,16 +97,12 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      gap: pxToRemWithUnit(16),
-      padding: wrapContent ? `0 ${gridSafeZone.base}` : null,
+      gap: gridGap,
+      padding: wrapContent ? `0 ${gridSafeZone}` : null,
       [mediaQueryS]: {
         gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
         position: 'relative',
         minHeight: pxToRemWithUnit(40), // actual height of prev/next buttons
-      },
-      [mediaQueryXl]: {
-        gap: pxToRemWithUnit(24),
-        padding: wrapContent ? `0 ${gridSafeZone.xl}` : null,
       },
     },
     nav: {
@@ -113,14 +111,9 @@ export const getComponentCss = (
         display: 'grid',
         gridAutoFlow: 'column',
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: wrapContent ? gridSafeZone.base : 0,
+        right: wrapContent ? gridSafeZone : 0,
         bottom: 0,
       },
-      ...(wrapContent && {
-        [mediaQueryXl]: {
-          right: gridSafeZone.xl,
-        },
-      }),
     },
     btn: {
       padding: pxToRemWithUnit(8),
@@ -139,7 +132,7 @@ export const getComponentCss = (
         background: disabledColor,
       },
       [bulletActiveClass]: {
-        background: baseColor,
+        background: primaryColor,
       },
     }),
   });

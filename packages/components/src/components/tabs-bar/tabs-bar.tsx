@@ -11,12 +11,12 @@ import {
   observeChildren,
   parseJSON,
   setAttribute,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
@@ -33,7 +33,7 @@ import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils';
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
   activeTabIndex: AllowedTypes.number,
 };
@@ -52,7 +52,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -86,7 +86,7 @@ export class TabsBar {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
 
-    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
+    // TODO: wouldn't a slot change listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);

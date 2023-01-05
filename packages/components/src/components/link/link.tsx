@@ -4,9 +4,10 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
+  LINK_BUTTON_VARIANTS,
 } from '../../utils';
 import type {
   BreakpointCustomizable,
@@ -15,19 +16,18 @@ import type {
   LinkVariant,
   PropTypes,
   SelectedAriaAttributes,
-  ThemeExtendedElectric,
+  Theme,
 } from '../../types';
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttribute } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { LINK_BUTTON_VARIANTS } from '../../utils/link-button/link-button-variant';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
@@ -55,7 +55,7 @@ export class Link {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

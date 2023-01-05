@@ -82,19 +82,19 @@
 
         // Typography
         h1 {
-          @include pds-heading-large;
-          margin-top: 4.5rem;
+          @include pds-heading-fluid-xx-large;
+          margin-top: $pds-spacing-fluid-large;
         }
 
         h2 {
-          @include pds-heading-medium;
-          margin-top: 4rem;
+          @include pds-heading-fluid-x-large;
+          margin-top: $pds-spacing-fluid-large;
 
           // for anchor links with table of contents
           &[id] {
             p-link-pure {
               visibility: hidden;
-              margin-left: $pds-spacing-small;
+              margin-left: $pds-spacing-static-small;
             }
 
             &:hover {
@@ -110,35 +110,35 @@
         }
 
         h3 {
-          @include pds-heading-small;
-          margin-top: $pds-spacing-x-large;
+          @include pds-heading-fluid-large;
+          margin-top: $pds-spacing-fluid-large;
         }
 
         h4 {
-          @include pds-heading-small;
-          margin-top: $pds-spacing-large;
+          @include pds-heading-fluid-medium;
+          margin-top: $pds-spacing-fluid-medium;
         }
 
         h5,
         h6 {
-          @include pds-heading-x-small;
-          margin-top: 1.5rem;
+          @include pds-heading-fluid-small;
+          margin-top: $pds-spacing-fluid-small;
         }
 
         p {
-          @include pds-text-small;
-          margin-top: 1.5rem;
+          @include pds-text-fluid-small;
+          margin-top: $pds-spacing-fluid-small;
         }
 
         p-inline-notification {
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-small;
         }
 
         // Horizontal Rules
         hr {
           margin: {
             top: 3.5rem;
-            bottom: $pds-spacing-medium;
+            bottom: $pds-spacing-static-medium;
           }
           border: 0;
           height: 1px;
@@ -171,9 +171,9 @@
         // Lists
         ul,
         ol {
-          @include pds-text-small;
+          @include pds-text-fluid-small;
           margin-top: 1.5rem;
-          padding-left: $pds-spacing-large;
+          padding-left: $pds-spacing-static-large;
 
           ul,
           ol {
@@ -192,7 +192,7 @@
         // Code
         code,
         pre {
-          @include pds-text-x-small;
+          @include pds-text-fluid-x-small;
           font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
 
@@ -201,16 +201,16 @@
         }
 
         :not(pre) > code {
-          padding: 0.125rem $pds-spacing-small;
-          background-color: mix($pds-theme-light-brand, $pds-theme-light-background-base, 10%);
+          padding: 0.125rem $pds-spacing-static-small;
+          background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
           border-radius: 3px;
-          color: $pds-theme-light-brand;
+          color: $pds-theme-light-primary;
         }
 
         pre {
-          margin-top: $pds-spacing-small;
+          margin-top: $pds-spacing-static-small;
           display: block;
-          padding: $pds-spacing-small 1.5rem;
+          padding: $pds-spacing-static-small 1.5rem;
           word-break: break-all;
           word-wrap: break-word;
           background-color: $pds-theme-light-background-surface;
@@ -229,24 +229,24 @@
           }
 
           thead {
-            @include pds-text-small;
+            @include pds-text-fluid-small;
           }
 
           tbody {
-            @include pds-text-small;
+            @include pds-text-fluid-small;
           }
 
           th {
             text-align: left;
-            padding-bottom: $pds-spacing-small;
+            padding-bottom: $pds-spacing-static-small;
             border-bottom: 1px solid $pds-theme-light-contrast-low;
           }
 
           td {
             text-align: left;
             padding: {
-              top: $pds-spacing-small;
-              bottom: $pds-spacing-small;
+              top: $pds-spacing-static-small;
+              bottom: $pds-spacing-static-small;
             }
             border-bottom: 1px solid $pds-theme-light-contrast-low;
             vertical-align: top;
@@ -262,7 +262,7 @@
         // Links
         a:not(.p-button):not(.p-link) {
           text-decoration: underline;
-          color: $pds-theme-light-base;
+          color: $pds-theme-light-primary;
           outline: transparent solid 1px;
           outline-offset: 1px;
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -284,7 +284,7 @@
 
         // Special
         .playground {
-          margin-top: $pds-spacing-medium;
+          margin-top: $pds-spacing-static-medium;
         }
       }
     }

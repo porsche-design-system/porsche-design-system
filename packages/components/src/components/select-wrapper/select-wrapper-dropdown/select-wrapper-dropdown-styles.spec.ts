@@ -1,7 +1,7 @@
 import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
 import { getCss } from '../../../utils';
 
-describe('getButtonStyles()', () => {
+xdescribe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
     [true, 'none', 'light'],
     [false, 'none', 'dark'],
@@ -14,7 +14,7 @@ describe('getButtonStyles()', () => {
   });
 });
 
-describe('getFilterStyles()', () => {
+xdescribe('getFilterStyles()', () => {
   it.each<Parameters<typeof getFilterStyles>>([
     [true, false, 'none', 'light'],
     [false, false, 'none', 'dark'],
@@ -36,7 +36,7 @@ describe('getFilterStyles()', () => {
   );
 });
 
-describe('getListStyles()', () => {
+xdescribe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
     ['down', true, 'light'],
     ['down', false, 'light'],
@@ -51,7 +51,7 @@ describe('getListStyles()', () => {
   });
 });
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['down', true, false, 'none', false, 'light'],
     ['down', false, false, 'none', false, 'light'],

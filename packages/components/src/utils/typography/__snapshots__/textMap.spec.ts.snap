@@ -3,39 +3,29 @@
 exports[`textMap should stay the same 1`] = `
 {
   "large": {
-    "WebkitTextSizeAdjust": "none",
-    "font": "normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "font": "normal normal 400 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "hyphens": "auto",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
   },
   "medium": {
-    "WebkitTextSizeAdjust": "none",
-    "font": "normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "font": "normal normal 400 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "hyphens": "auto",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
   },
   "small": {
-    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "hyphens": "auto",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
   },
   "x-large": {
-    "WebkitTextSizeAdjust": "none",
-    "font": "normal normal 400 3.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "font": "normal normal 400 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "hyphens": "auto",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
   },
   "x-small": {
-    "WebkitTextSizeAdjust": "none",
-    "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "font": "normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "hyphens": "auto",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
   },
 }
 `;

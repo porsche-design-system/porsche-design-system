@@ -8,11 +8,11 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { fontWeight, spacing, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacing, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
-const { contrastMediumColor, baseColor } = getThemedColors('light');
+const { contrastMediumColor, primaryColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
@@ -42,9 +42,9 @@ export const getComponentCss = (
               boxSizing: 'border-box',
               appearance: 'none',
               border: 'none',
-              ...textSmall,
+              ...textFluidSmall,
               fontWeight: fontWeightSemiBold,
-              color: baseColor,
+              color: primaryColor,
               textDecoration: 'none',
               textAlign: 'left',
               background: 'transparent',
@@ -70,7 +70,7 @@ export const getComponentCss = (
     },
     ...(sortable && {
       icon: {
-        marginLeft: spacing.xSmall,
+        marginLeft: spacing.static.xSmall,
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS

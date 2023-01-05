@@ -11,7 +11,7 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: Theme[] = ['light', 'dark', 'light-electric', 'dark-electric'];
+const allThemes: Theme[] = ['light', 'dark'];
 const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
 export type StateType = typeof ALL_STATES[number];

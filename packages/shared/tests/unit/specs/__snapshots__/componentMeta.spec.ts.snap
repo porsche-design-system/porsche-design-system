@@ -345,7 +345,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "align": "left",
-      "color": "default",
+      "color": "primary",
       "ellipsis": false,
       "tag": null,
       "theme": "light",
@@ -365,7 +365,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "aria": null,
-      "color": "default",
+      "color": "primary",
       "lazy": false,
       "name": "arrow-head-right",
       "size": "small",
@@ -1159,7 +1159,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "align": "left",
-      "color": "default",
+      "color": "primary",
       "ellipsis": false,
       "size": "small",
       "tag": "p",

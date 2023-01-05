@@ -4,7 +4,7 @@ import type {
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  Theme,
 } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
 import { getInsetJssStyle } from '../../styles';
@@ -20,7 +20,7 @@ export const getComponentCss = (
   alignLabel: BreakpointCustomizable<AlignLabel>,
   hasSubline: boolean,
   hasSlottedAnchor: boolean,
-  theme: ThemeExtendedElectricDark
+  theme: Theme
 ): string => {
   return getCss(
     mergeDeep(

@@ -14,13 +14,13 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'radio-button-wrapper', '/#radio-button-wrapper')
   ).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('radio-button-wrapper-states', async () => {

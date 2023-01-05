@@ -1,7 +1,7 @@
 import * as fromFont from './';
 
-it('should provide all font exports', () => {
-  expect(Object.keys(fromFont).length).toBe(8);
+it('should provide all exports', () => {
+  expect(Object.keys(fromFont).length).toBe(7);
 });
 
 it.each<keyof typeof fromFont>(Object.keys(fromFont) as (keyof typeof fromFont)[])(

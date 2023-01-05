@@ -6,7 +6,7 @@ import { addImportantToEachRule } from '../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 
-const { medium: spacingMedium, small: spacingSmall } = spacing;
+const { medium: spacingMedium, small: spacingSmall } = spacing.static;
 
 const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirection): JssStyle => {
   const style: Record<ButtonGroupDirection, JssStyle> = {

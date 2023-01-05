@@ -1,17 +1,17 @@
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
-import { fontWeight, fontSize, spacing, textSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { fontWeight, fontSize, spacing, textStaticSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
-  const { baseColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
   const border = `1px solid ${contrastLowColor}`;
 
   return getCss({
@@ -36,8 +36,8 @@ export const getComponentCss = (
         transition: getTransition('color'),
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
-        color: baseColor,
-        ...textSmall,
+        color: primaryColor,
+        ...textStaticSmall,
         fontWeight: fontWeight.semiBold,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
@@ -76,7 +76,7 @@ export const getComponentCss = (
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: compact ? spacing.small : '2.5rem',
+            paddingBottom: compact ? spacing.static.small : '2.5rem',
             visibility: 'visible',
             transition: getTransition('height') + `,visibility ${transitionDuration}`,
             animation: `$open ${transitionDuration} ease forwards`,

@@ -1,4 +1,4 @@
-import type { IconSize, TextColor, ThemeExtendedElectricDark } from '../../types';
+import type { IconSize, TextColor, Theme } from '../../types';
 import { getCss } from '../../utils';
 import { pxToRemWithUnit } from '../../styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
@@ -10,7 +10,7 @@ const sizeMap: { [key in IconSize]: string } = {
   inherit: 'inherit',
 };
 
-export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
+export const getComponentCss = (color: TextColor, size: IconSize, theme: Theme): string => {
   const dimension = sizeMap[size];
 
   return getCss({

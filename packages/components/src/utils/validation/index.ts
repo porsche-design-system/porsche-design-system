@@ -19,4 +19,4 @@ export { TEXT_ALIGNS } from '../../components/text/text-align';
 export { TEXT_COLORS } from '../../components/text/text-color';
 export { TEXT_SIZES } from '../../components/text/text-size';
 export { TEXT_WEIGHTS } from '../../components/text/text-weight';
-export { THEMES, THEMES_EXTENDED_ELECTRIC, THEMES_EXTENDED_ELECTRIC_DARK } from '../theme';
+export { THEMES } from '../theme';

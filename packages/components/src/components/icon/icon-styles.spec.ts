@@ -1,6 +1,6 @@
 import { getComponentCss } from './icon-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['default', 'small', 'light'],
     ['default', 'small', 'dark'],

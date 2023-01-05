@@ -27,13 +27,12 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
 
   const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
-      const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Thin|Regular|SemiBold|Bold)/.exec(name) || [];
-
+      const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Regular|SemiBold|Bold)/.exec(name) || [];
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
-        src: `url('${cdnUrlMap[cdn]}/${resource.woff2}') format('woff2'), url('${cdnUrlMap[cdn]}/${resource.woff}') format('woff')`,
+        src: `url('${cdnUrlMap[cdn]}/${resource}') format('woff2')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as keyof typeof unicodeRangeMap],
         fontDisplay: 'swap',
       };

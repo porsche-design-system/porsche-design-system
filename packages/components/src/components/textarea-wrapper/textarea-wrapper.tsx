@@ -15,12 +15,12 @@ import {
   setAriaAttributes,
   unobserveAttributes,
   validateProps,
+  FORM_STATES,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
-import { FORM_STATES } from '../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,

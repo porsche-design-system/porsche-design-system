@@ -1,4 +1,6 @@
+// TODO: add `brand`, `default`, `notification-neutral` as deprecated fallback
 export const TEXT_COLORS = [
+  'primary',
   'brand',
   'default',
   'neutral-contrast-high',
@@ -7,6 +9,7 @@ export const TEXT_COLORS = [
   'notification-success',
   'notification-warning',
   'notification-error',
+  'notification-info',
   'notification-neutral',
   'inherit',
 ] as const;

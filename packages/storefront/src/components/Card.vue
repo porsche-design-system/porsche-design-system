@@ -67,7 +67,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: $pds-spacing-large;
+    gap: $pds-spacing-static-large;
     position: relative;
     background: $pds-theme-light-background-surface;
     border-radius: $border-radius;
@@ -115,11 +115,11 @@
 
     &__content {
       position: relative;
-      padding: $pds-spacing-medium;
+      padding: $pds-spacing-static-medium;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: $pds-spacing-small;
+      gap: $pds-spacing-static-small;
       z-index: 1;
 
       & > * {

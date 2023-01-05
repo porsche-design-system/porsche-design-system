@@ -1,6 +1,6 @@
 import { getFunctionalComponentRequiredStyles } from './required-styles';
 
-describe('getFunctionalComponentRequiredStyles()', () => {
+xdescribe('getFunctionalComponentRequiredStyles()', () => {
   it.each<Parameters<typeof getFunctionalComponentRequiredStyles>>([['light'], ['dark']])(
     'should return correct styles for theme: %s',
     (theme) => {

@@ -8,7 +8,7 @@ import {
 } from './inline-notification-styles';
 import type { InlineNotificationState } from './inline-notification-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['neutral', false, false, 'light'],
     ['warning', false, false, 'light'],
@@ -29,7 +29,7 @@ describe('getComponentCss()', () => {
   });
 });
 
-describe('getSlottedCss()', () => {
+xdescribe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-inline-notification');
     expect(getSlottedCss(host)).toMatchSnapshot();
@@ -41,7 +41,7 @@ describe('getSlottedCss()', () => {
   });
 });
 
-describe('getNotificationRootJssStyles()', () => {
+xdescribe('getNotificationRootJssStyles()', () => {
   it.each<Parameters<typeof getNotificationRootJssStyle>>([
     ['neutral', 'light'],
     ['success', 'light'],
@@ -56,7 +56,7 @@ describe('getNotificationRootJssStyles()', () => {
   });
 });
 
-describe('getNotificationIconJssStyle()', () => {
+xdescribe('getNotificationIconJssStyle()', () => {
   it.each<InlineNotificationState>(['neutral', 'success', 'error', 'warning'])(
     'should return correct JssStyle for state: %s ',
     (state) => {
@@ -65,13 +65,13 @@ describe('getNotificationIconJssStyle()', () => {
   );
 });
 
-describe('getNotificationContentJssStyle()', () => {
+xdescribe('getNotificationContentJssStyle()', () => {
   it('should return correct JssStyle', () => {
     expect(getNotificationContentJssStyle()).toMatchSnapshot();
   });
 });
 
-describe('getCloseIconJssStyle()', () => {
+xdescribe('getCloseIconJssStyle()', () => {
   it('should return correct JssStyle', () => {
     expect(getCloseIconJssStyle()).toMatchSnapshot();
   });

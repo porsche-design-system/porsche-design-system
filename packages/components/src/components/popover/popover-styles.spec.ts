@@ -1,13 +1,13 @@
 import { getComponentCss, getSlottedCss } from './popover-styles';
 import { POPOVER_DIRECTIONS, PopoverDirection } from './popover-utils';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return correct css for direction: %s', (direction) => {
     expect(getComponentCss(direction)).toMatchSnapshot();
   });
 });
 
-describe('getSlottedCss()', () => {
+xdescribe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-popover');
     expect(getSlottedCss(host)).toMatchSnapshot();

@@ -54,7 +54,7 @@ export class Banner {
 
   public componentDidLoad(): void {
     if (!this.persistent) {
-      // messy.. optional chaining is needed in case child component is unmounted too early
+      // messy… optional chaining is needed in case child component is unmounted too early
       getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close')?.focus();
     }
   }

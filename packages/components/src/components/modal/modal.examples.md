@@ -233,10 +233,10 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   :deep(.footer) {  
-    padding: p-px-to-rem(32px) 0 0;
+    padding: 2rem 0 0;
   }
   :deep(.fullscreen-container) {
     flex: 1;

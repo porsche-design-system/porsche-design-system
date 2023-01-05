@@ -4,10 +4,10 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   HEADLINE_TAGS,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { HeadlineTag } from '../headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
@@ -25,7 +25,7 @@ import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
   tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
   open: AllowedTypes.boolean,
@@ -43,7 +43,7 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;

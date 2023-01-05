@@ -60,21 +60,11 @@ export const IconPage = (): JSX.Element => {
           source="./assets/icon-custom-kaixin.svg"
           aria-label="Icon for social media platform Kaixin"
          />
-        <PIcon
-          theme="light-electric"
-          source="./assets/icon-custom-kaixin.svg"
-          aria-label="Icon for social media platform Kaixin"
-         />
       </div>
 
       <div className="playground dark" title="should render with custom icon on dark theme">
         <PIcon
           theme="dark"
-          source="./assets/icon-custom-kaixin.svg"
-          aria-label="Icon for social media platform Kaixin"
-         />
-        <PIcon
-          theme="dark-electric"
           source="./assets/icon-custom-kaixin.svg"
           aria-label="Icon for social media platform Kaixin"
          />

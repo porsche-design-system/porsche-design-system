@@ -9,7 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../styles';
-import { colorExternal, textSmall } from '@porsche-design-system/utilities-v2';
+import { textFluidSmall } from '@porsche-design-system/utilities-v2';
 import {
   getIconJssStyle,
   getLabelJssStyle,
@@ -18,20 +18,20 @@ import {
 } from '../../styles/link-button-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
-const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
-const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
+const { contrastHighColor: themeLightContrastHighColor, primaryColor: themeLightBaseColor } = getThemedColors('light');
+const { primaryColor: themeDarkBaseColor } = getThemedColors('dark');
 
 const getColors = (
   icon: SocialIconName,
   theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
   const isDarkTheme = isThemeDark(theme);
-  const { contrastHighColorDarken, baseColorDarken } = getThemedColors(theme);
-  const externalBrandColor = colorExternal[icon?.split('-')[1]];
+  const { primaryColor, primaryColorDarken, contrastHighColorDarken } = getThemedColors(theme);
+  const externalBrandColor = primaryColor;
 
   return {
     baseColor: isDarkTheme ? themeDarkBaseColor : themeLightContrastHighColor,
-    baseColorHover: externalBrandColor || (isDarkTheme ? baseColorDarken : contrastHighColorDarken),
+    baseColorHover: externalBrandColor || (isDarkTheme ? primaryColorDarken : contrastHighColorDarken),
     textColor: isDarkTheme ? themeLightBaseColor : themeDarkBaseColor,
     textColorHover:
       icon === 'logo-kakaotalk' ? themeLightBaseColor : externalBrandColor ? themeDarkBaseColor : undefined,
@@ -85,7 +85,7 @@ export const getComponentCss = (
         display: 'block',
         width: '100%',
         color: textColor,
-        ...textSmall,
+        ...textFluidSmall,
         ...(hasHref && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
       },
     },

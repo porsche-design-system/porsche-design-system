@@ -77,14 +77,14 @@
 
   .main-footer {
     @include pds-grid;
-    margin-top: $pds-spacing-xx-large;
-    padding-top: $pds-spacing-x-large;
-    padding-bottom: $pds-spacing-x-large;
+    margin-top: $pds-spacing-static-xx-large;
+    padding-top: $pds-spacing-static-x-large;
+    padding-bottom: $pds-spacing-static-x-large;
     background: $pds-theme-dark-background-base;
 
     @include pds-media-query-min('s') {
-      padding-top: $pds-spacing-xx-large;
-      padding-bottom: $pds-spacing-xx-large;
+      padding-top: $pds-spacing-static-xx-large;
+      padding-bottom: $pds-spacing-static-xx-large;
     }
 
     &__content {
@@ -97,7 +97,7 @@
       &--country-language-chooser {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: $pds-spacing-medium;
+        gap: $pds-spacing-static-medium;
 
         @include pds-media-query-min('s') {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -122,7 +122,7 @@
       &--imprint {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: $pds-spacing-medium;
+        gap: $pds-spacing-static-medium;
       }
     }
   }

@@ -5,29 +5,22 @@ import {
   AllowedTypes,
   attachComponentCss,
   getShadowRootHTMLElement,
-  ICON_SIZES,
   hasWindow,
+  ICON_SIZES,
   TEXT_COLORS,
-  THEMES_EXTENDED_ELECTRIC_DARK,
+  THEMES,
   validateProps,
 } from '../../utils';
-import type {
-  IconName,
-  IconSize,
-  PropTypes,
-  SelectedAriaAttributes,
-  TextColor,
-  ThemeExtendedElectricDark,
-} from '../../types';
+import type { IconName, IconSize, PropTypes, SelectedAriaAttributes, TextColor, Theme } from '../../types';
 import { getComponentCss } from './icon-styles';
 
 const propTypes: PropTypes<typeof Icon> = {
-  name: AllowedTypes.string,
+  name: AllowedTypes.string, // TODO: should use object keys of ICON_MANIFEST as soon as keys are available with param-case syntax
   source: AllowedTypes.string,
   color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
   size: AllowedTypes.oneOf<IconSize>(ICON_SIZES),
   lazy: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
 };
 
@@ -45,7 +38,7 @@ export class Icon {
   @Prop() public source?: string;
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: TextColor = 'default';
+  @Prop() public color?: TextColor = 'primary';
 
   /** The size of the icon. */
   @Prop() public size?: IconSize = 'small';
@@ -54,7 +47,7 @@ export class Icon {
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;

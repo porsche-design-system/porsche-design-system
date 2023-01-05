@@ -18,7 +18,7 @@
   @import '~@porsche-design-system/components-js/utilities/scss';
 
   .disclaimer {
-    padding: $pds-spacing-small $pds-spacing-large;
+    padding: $pds-spacing-static-small $pds-spacing-static-large;
     background: $pds-theme-light-contrast-high;
   }
 </style>

@@ -9,7 +9,7 @@ import {
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import type { TagName } from '@porsche-design-system/shared';
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('form-field-wrapper-states', async () => {

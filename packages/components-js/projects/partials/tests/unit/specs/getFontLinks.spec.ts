@@ -57,9 +57,6 @@ describe('format: html', () => {
   });
 
   describe('subset latin', () => {
-    const thinRegex = new RegExp(
-      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-la-thin\\.min\\.[a-z0-9]{32}\\.woff2 as=font type=font/woff2 crossorigin>$`
-    );
     const regularRegex = new RegExp(
       `^<link rel=preload href=${baseHrefCom}/porsche-next-w-la-regular\\.min\\.[a-z0-9]{32}\\.woff2 as=font type=font/woff2 crossorigin>$`
     );
@@ -71,7 +68,6 @@ describe('format: html', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ weights: ['thin'] }, thinRegex],
       [{ weights: ['regular'] }, regularRegex],
       [{ weights: ['semi-bold'] }, semiBoldRegex],
       [{ weights: ['bold'] }, boldRegex],
@@ -82,9 +78,6 @@ describe('format: html', () => {
   });
 
   describe('subset greek', () => {
-    const thinRegex = new RegExp(
-      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-gr-thin\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
-    );
     const regularRegex = new RegExp(
       `^<link rel=preload href=${baseHrefCom}/porsche-next-w-gr-regular\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
     );
@@ -96,7 +89,6 @@ describe('format: html', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ subset: 'greek', weights: ['thin'] }, thinRegex],
       [{ subset: 'greek', weights: ['regular'] }, regularRegex],
       [{ subset: 'greek', weights: ['semi-bold'] }, semiBoldRegex],
       [{ subset: 'greek', weights: ['bold'] }, boldRegex],
@@ -107,9 +99,6 @@ describe('format: html', () => {
   });
 
   describe('subset cyril', () => {
-    const thinRegex = new RegExp(
-      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-cy-thin\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
-    );
     const regularRegex = new RegExp(
       `^<link rel=preload href=${baseHrefCom}/porsche-next-w-cy-regular\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
     );
@@ -121,7 +110,6 @@ describe('format: html', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ subset: 'cyril', weights: ['thin'] }, thinRegex],
       [{ subset: 'cyril', weights: ['regular'] }, regularRegex],
       [{ subset: 'cyril', weights: ['semi-bold'] }, semiBoldRegex],
       [{ subset: 'cyril', weights: ['bold'] }, boldRegex],
@@ -150,9 +138,6 @@ describe('format: jsx', () => {
   });
 
   describe('subset latin', () => {
-    const thinRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-thin\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
-    );
     const regularRegex = new RegExp(
       `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
     );
@@ -164,7 +149,6 @@ describe('format: jsx', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ format: 'jsx', weights: ['thin'] }, thinRegex],
       [{ format: 'jsx', weights: ['regular'] }, regularRegex],
       [{ format: 'jsx', weights: ['semi-bold'] }, semiBoldRegex],
       [{ format: 'jsx', weights: ['bold'] }, boldRegex],
@@ -175,9 +159,6 @@ describe('format: jsx', () => {
   });
 
   describe('subset greek', () => {
-    const thinRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-thin\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
-    );
     const regularRegex = new RegExp(
       `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
     );
@@ -189,7 +170,6 @@ describe('format: jsx', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ format: 'jsx', subset: 'greek', weights: ['thin'] }, thinRegex],
       [{ format: 'jsx', subset: 'greek', weights: ['regular'] }, regularRegex],
       [{ format: 'jsx', subset: 'greek', weights: ['semi-bold'] }, semiBoldRegex],
       [{ format: 'jsx', subset: 'greek', weights: ['bold'] }, boldRegex],
@@ -200,9 +180,6 @@ describe('format: jsx', () => {
   });
 
   describe('subset cyril', () => {
-    const thinRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-thin\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
-    );
     const regularRegex = new RegExp(
       `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
     );
@@ -214,7 +191,6 @@ describe('format: jsx', () => {
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
-      [{ format: 'jsx', subset: 'cyril', weights: ['thin'] }, thinRegex],
       [{ format: 'jsx', subset: 'cyril', weights: ['regular'] }, regularRegex],
       [{ format: 'jsx', subset: 'cyril', weights: ['semi-bold'] }, semiBoldRegex],
       [{ format: 'jsx', subset: 'cyril', weights: ['bold'] }, boldRegex],

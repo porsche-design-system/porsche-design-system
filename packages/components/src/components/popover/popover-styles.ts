@@ -1,11 +1,11 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
+import { mediaQueryMin, textFluidSmall } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 
-const { backgroundColor, baseColor } = getThemedColors('light');
+const { backgroundColor, primaryColor } = getThemedColors('light');
 
 const mediaQueryXS = mediaQueryMin('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
@@ -97,7 +97,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         verticalAlign: 'top',
       },
       p: {
-        ...textSmall,
+        ...textFluidSmall,
         margin: 0,
       },
     },
@@ -131,10 +131,9 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
-      ...textSmall,
+      ...textFluidSmall,
       listStyleType: 'none',
-      // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
-      color: baseColor,
+      color: primaryColor,
       whiteSpace: 'inherit',
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),

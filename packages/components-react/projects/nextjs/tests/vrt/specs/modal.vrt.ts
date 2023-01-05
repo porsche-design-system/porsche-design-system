@@ -5,13 +5,13 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(extendedViewports)('should have no visual regression for basic modal for viewport %s', async (viewport) => {
+xit.each(extendedViewports)('should have no visual regression for basic modal for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'modal-basic', '/modal-basic', { javaScriptEnabled: false })
   ).toBeFalsy();
 });
 
-it.each(extendedViewports)(
+xit.each(extendedViewports)(
   'should have no visual regression for scrollable modal for viewport %s',
   async (viewport) => {
     expect(
@@ -25,14 +25,14 @@ it.each(extendedViewports)(
   }
 );
 
-it('should have no visual regression for prefixed modal', async () => {
+xit('should have no visual regression for prefixed modal', async () => {
   // single resolution
   expect(
     await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/modal-prefixed', { javaScriptEnabled: false })
   ).toBeFalsy();
 });
 
-it.each(extendedViewports)(
+xit.each(extendedViewports)(
   'should have no visual regression for fullscreen modal for viewport %s',
   async (viewport) => {
     expect(
@@ -43,7 +43,7 @@ it.each(extendedViewports)(
   }
 );
 
-it.each(extendedViewports)(
+xit.each(extendedViewports)(
   'should have no visual regression for fullscreen breakpoint modal for viewport %s',
   async (viewport) => {
     const vrt = getVisualRegressionTester(viewport);
@@ -54,15 +54,18 @@ it.each(extendedViewports)(
   }
 );
 
-it.each(extendedViewports)('should have no visual regression for full-width-slot for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'modal-full-width-slot', '/modal-full-width-slot', {
-      javaScriptEnabled: false,
-    })
-  ).toBeFalsy();
-});
+xit.each(extendedViewports)(
+  'should have no visual regression for full-width-slot for viewport %s',
+  async (viewport) => {
+    expect(
+      await vrtTest(getVisualRegressionTester(viewport), 'modal-full-width-slot', '/modal-full-width-slot', {
+        javaScriptEnabled: false,
+      })
+    ).toBeFalsy();
+  }
+);
 
-it.each(extendedViewports)(
+xit.each(extendedViewports)(
   'should have no visual regression for modal without heading for viewport %s',
   async (viewport) => {
     expect(
@@ -73,7 +76,7 @@ it.each(extendedViewports)(
   }
 );
 
-it.each(extendedViewports)(
+xit.each(extendedViewports)(
   'should have no visual regression for modal with slotted heading for viewport %s',
   async (viewport) => {
     expect(

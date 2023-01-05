@@ -27,7 +27,7 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...getFocusJssStyle({ color: getThemedColors('light').baseColor, offset: 0, pseudo: '::before' }),
+        ...getFocusJssStyle({ color: getThemedColors('light').primaryColor, offset: 0, pseudo: '::before' }),
       },
       picture: {
         display: 'block',

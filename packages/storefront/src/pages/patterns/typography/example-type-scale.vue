@@ -57,28 +57,25 @@
 <style scoped lang="scss">
   @import '~@porsche-design-system/components-js/utilities/scss';
 
-  .main-app {
-    @include pds-grid;
-  }
-
   .type-scale {
-    grid-column: content-start / content-end;
-    display: grid;
-    grid-gap: $pds-grid-gap;
-
-    @include pds-media-query-min('l') {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include pds-grid;
+    > * {
+      grid-column: 2 / span 14;
     }
-
-    @include pds-media-query-min('xl') {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include pds-media-query-min('l') {
+      > :nth-child(odd) {
+        grid-column: 2 / span 7;
+      }
+      > :nth-child(even) {
+        grid-column: 9 / span 7;
+      }
     }
   }
 
   p-headline,
   p-text {
     &::before {
-      @include pds-text-x-small;
+      @include pds-text-fluid-x-small;
       display: block;
       content: 'p-headline - variant: "' attr(variant) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
         attr(data-viewport-width) '';

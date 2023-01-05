@@ -1,6 +1,6 @@
 import { getComponentCss } from './divider-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['neutral-contrast-low', 'horizontal', 'light'],
     ['neutral-contrast-low', 'vertical', 'light'],

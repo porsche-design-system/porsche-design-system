@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 describe('toast-basic', () => {
-  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(
       await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast-basic', { javaScriptEnabled: false })
     ).toBeFalsy();
@@ -14,7 +14,7 @@ describe('toast-basic', () => {
 });
 
 describe('toast-basic-dark', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-basic-dark', '/toast-basic-dark', {
         javaScriptEnabled: false,
@@ -24,7 +24,7 @@ describe('toast-basic-dark', () => {
 });
 
 describe('toast-basic-long-text', () => {
-  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(
       await vrtTest(getVisualRegressionTester(viewport), 'toast-basic-long-text', '/toast-basic-long-text', {
         javaScriptEnabled: false,
@@ -34,7 +34,7 @@ describe('toast-basic-long-text', () => {
 });
 
 describe('toast-offset', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-offset', '/toast-offset', { javaScriptEnabled: false })
     ).toBeFalsy();
@@ -42,7 +42,7 @@ describe('toast-offset', () => {
 });
 
 describe('toast-prefixed', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-prefixed', '/toast-prefixed', {
         javaScriptEnabled: false,

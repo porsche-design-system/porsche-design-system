@@ -2,7 +2,7 @@ import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark, themeLightElectric, themeDarkElectric } from '@porsche-design-system/utilities-v2';
+import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'change-case';
 
@@ -10,8 +10,7 @@ const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString(
 
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
-    base: baseColor,
-    brand: brandColor,
+    primary: primaryColor,
     background: { base: backgroundColor, surface: backgroundSurfaceColor },
     contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
@@ -22,20 +21,17 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
       successSoft: successSoftColor,
       warning: warningColor,
       warningSoft: warningSoftColor,
-      neutral: neutralColor,
-      neutralSoft: neutralSoftColor,
+      info: infoColor,
+      infoSoft: infoSoftColor,
     },
   } = {
     light: themeLight,
     dark: themeDark,
-    'light-electric': themeLightElectric,
-    'dark-electric': themeDarkElectric,
   }[theme];
 
   return {
-    baseColor,
-    baseColorDarken: darkenColor(baseColor),
-    brandColor,
+    primaryColor,
+    primaryColorDarken: darkenColor(primaryColor),
     backgroundColor,
     backgroundSurfaceColor,
     contrastLowColor,
@@ -55,16 +51,14 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     successSoftColor,
     warningColor,
     warningSoftColor,
-    neutralColor,
-    neutralSoftColor,
+    infoColor,
+    infoSoftColor,
   };
 };
 
 const themes: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
-  'light-electric': getStaticThemedColors('light-electric'),
-  'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
 const objectToConst = (obj: object, constName: string): string =>

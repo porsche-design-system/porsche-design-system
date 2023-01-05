@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for frostedGlassHigh 1`] = `
+{
+  "backdropFilter": "blur(16px)",
+  "backgroundColor": "rgba(14, 14, 18, 0.8)",
+}
+`;
+
+exports[`should contain correct values for frostedGlassMedium 1`] = `
+{
+  "backdropFilter": "blur(8px)",
+  "backgroundColor": "rgba(14, 14, 18, 0.8)",
+}
+`;

@@ -114,6 +114,8 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
+    const { small: base, medium: s, large: l } = spacing.static;
+
     this.splide = new Splide(this.container, {
       arrows: false,
       pagination: false,
@@ -126,9 +128,9 @@ export class Carousel {
       },
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
-        base: spacing.small,
-        s: spacing.medium,
-        l: spacing.large,
+        base,
+        s,
+        l,
       }),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl),

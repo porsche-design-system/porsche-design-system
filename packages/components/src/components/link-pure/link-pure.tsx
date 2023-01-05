@@ -7,7 +7,7 @@ import type {
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  Theme,
 } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
@@ -22,7 +22,7 @@ import {
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
-  THEMES_EXTENDED_ELECTRIC_DARK,
+  THEMES,
   throwIfInvalidLinkPureUsage,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
@@ -39,7 +39,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
@@ -81,7 +81,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

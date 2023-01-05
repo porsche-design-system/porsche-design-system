@@ -1,31 +1,31 @@
-import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
+  THEMES,
   validateProps,
-  AllowedTypes,
-  THEMES_EXTENDED_ELECTRIC,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
+import type {
+  GradientColorTheme,
+  ScrollerDirection,
+  ScrollIndicatorPosition,
+  ScrollToPosition,
+} from './scroller-utils';
 import {
   getScrollPositionAfterPrevNextClick,
   GRADIENT_COLOR_THEMES,
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
 } from './scroller-utils';
-import type {
-  ScrollerDirection,
-  GradientColorTheme,
-  ScrollToPosition,
-  ScrollIndicatorPosition,
-} from './scroller-utils';
-import type { PropTypes, ThemeExtendedElectric } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import { parseJSONAttribute } from '../../utils/json';
 
 const propTypes: PropTypes<typeof Scroller> = {
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   gradientColorScheme: AllowedTypes.oneOf<GradientColorTheme>(GRADIENT_COLOR_THEMES),
   scrollToPosition: AllowedTypes.shape<ScrollToPosition>({
     scrollPosition: AllowedTypes.number,
@@ -42,7 +42,7 @@ export class Scroller {
   @Element() public host!: HTMLElement;
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: GradientColorTheme = 'default';

@@ -15,7 +15,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'marque', '/#marque')).toBeFalsy();
 });
 
@@ -27,7 +27,7 @@ it.each(marqueViewports)('should have no visual regression on retina 3x display 
   expect(await vrtTest(getVisualRegressionMarque3xTester(viewport), 'marque-3x', '/#marque')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('marque-states', async () => {

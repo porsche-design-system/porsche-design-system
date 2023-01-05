@@ -223,11 +223,11 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   
   :deep(.example-grid p-grid-item) {
-    @include p-text-small;
-    color: $p-color-theme-light-default;
+    @include pds-text-fluid-small;
+    color: $pds-theme-light-primary;
     text-align: center;
     background: lightskyblue;
     background-clip: content-box;

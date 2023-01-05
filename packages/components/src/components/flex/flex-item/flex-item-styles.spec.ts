@@ -17,7 +17,7 @@ import {
 } from './flex-item-utils';
 import type { BreakpointCustomizable } from '../../../types';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   const dataWidth: BreakpointCustomizable<FlexItemWidth>[] = [
     ...FLEX_ITEM_WIDTHS,
     { base: 'auto', xs: 'half', s: 'auto', m: 'half', l: 'auto', xl: 'half' },

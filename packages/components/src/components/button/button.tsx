@@ -6,7 +6,7 @@ import type {
   IconName,
   PropTypes,
   SelectedAriaAttributes,
-  ThemeExtendedElectric,
+  Theme,
 } from '../../types';
 import {
   AllowedTypes,
@@ -17,7 +17,7 @@ import {
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof Button> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
@@ -71,7 +71,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;

@@ -41,7 +41,8 @@ export const getComponentCss = (
 ): string => {
   const size = pxToRemWithUnit(28);
   const hasVisibleState = isVisibleFormState(state);
-  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } =
+    getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
@@ -79,12 +80,12 @@ export const getComponentCss = (
         ),
         ...hoverMediaQuery({
           '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
-            getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
+            getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || primaryColor),
           '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
             getBackgroundImageStyles(
               hasVisibleState,
               formStateColor || contrastHighColor,
-              formStateHoverColor || baseColor
+              formStateHoverColor || primaryColor
             ),
         }),
         '&(input:disabled)': {

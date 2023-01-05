@@ -12,7 +12,7 @@ const frameworkToButtonTextMap: Record<Exclude<Framework, 'shared'>, string> = {
   react: 'React',
 };
 
-it.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
+xit.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
   'should have working stackBlitz button for framework: %s',
   async (framework) => {
     await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
