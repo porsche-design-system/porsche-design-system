@@ -108,7 +108,7 @@ describe('with initialized design system', () => {
   });
 });
 
-fdescribe('without initialized design system', () => {
+describe('without initialized design system', () => {
   const initPDS = (): Promise<void> => {
     return page.evaluate(() => {
       const el = document.createElement('script');
@@ -139,7 +139,6 @@ fdescribe('without initialized design system', () => {
   it('should work for single component', async () => {
     await setContentWithDesignSystemWithoutLoadCallAndWaitForComponentsReady(`<p-button>Button</p-button>`);
     await initPDS();
-    // await page.waitForFunction(() => document.querySelector('html.hydrated'));
 
     expect(await getReadyAmount()).toBe(1);
   });
@@ -148,7 +147,6 @@ fdescribe('without initialized design system', () => {
     await interceptAndDelayJsRequests();
     await setContentWithDesignSystemWithoutLoadCallAndWaitForComponentsReady(`<p-button>Button</p-button>`);
     await initPDS();
-    // await page.waitForFunction(() => document.querySelector('html.hydrated'));
 
     expect(await getReadyAmount()).toBe(1);
   });
