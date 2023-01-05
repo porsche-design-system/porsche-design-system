@@ -1,13 +1,6 @@
 import type { Styles, JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonPureIconName,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, TextWeight, Theme } from '../types';
 import { buildResponsiveStyles, hasVisibleIcon, isSizeInherit, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
   addImportantToRule,
@@ -18,7 +11,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontLineHeight, fontSize, textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSizeText, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -39,7 +32,7 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
     };*/
 
     return {
-      fontSize: fontSize.fluid[paramCaseToCamelCase(textSize)],
+      fontSize: fontSizeText[paramCaseToCamelCase(textSize)],
       /* '& ~ .subline': {
         // TODO: should be referenced
         // ...sublineSize[textSize],
@@ -164,7 +157,7 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
-      ...textFluidSmall,
+      ...textSmall,
       fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
@@ -192,7 +185,7 @@ export const getLinkButtonPureStyles = (
       subline: {
         display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
-        ...textFluidSmall,
+        ...textSmall,
         color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
         transition: getTransition('color'),
         ...(hasIcon && {

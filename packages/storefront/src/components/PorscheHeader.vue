@@ -119,7 +119,7 @@
 
         button {
           @include pds-focus;
-          @include pds-text-fluid-small;
+          @include pds-text-small;
           font-size: 0.875rem;
           display: inline-flex;
           flex-direction: column;

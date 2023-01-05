@@ -70,7 +70,7 @@ export default class Code extends Vue {
   }  
   
   :deep(.example-content) {
-    @include pds-text-fluid-small;
+    @include pds-text-small;
     color: $pds-theme-light-primary;
     text-align: center;
     background: lightskyblue;

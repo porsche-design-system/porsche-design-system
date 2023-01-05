@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, textMap } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../styles';
-import { textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
@@ -43,7 +43,7 @@ export const getComponentCss = (
       padding: 0,
       margin: 0,
       textAlign: align,
-      ...textFluidSmall,
+      ...textSmall,
       color: getThemedTextColor(theme, color),
       listStyleType: 'none',
       whiteSpace: 'inherit',

@@ -729,7 +729,7 @@
     }
 
     h3 {
-      @include pds-heading-fluid-small;
+      @include pds-heading-small;
       margin: 0 0 $pds-spacing-static-small;
     }
 
@@ -746,7 +746,7 @@
       flex-direction: column;
       height: 100%;
       padding: $pds-spacing-static-large;
-      @include pds-text-fluid-small;
+      @include pds-text-small;
     }
   }
 

@@ -8,7 +8,7 @@ import {
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles';
 import { getBoxShadow } from '../../banner/banner-styles';
-import { textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
@@ -20,7 +20,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         ...getBoxShadow(),
       },
       p: {
-        ...textFluidSmall,
+        ...textSmall,
         margin: 0,
         color: textColor,
       },

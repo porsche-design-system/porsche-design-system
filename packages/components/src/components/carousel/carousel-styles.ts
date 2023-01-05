@@ -10,8 +10,8 @@ import {
 import {
   gridWidth,
   gridSafeZone,
-  headingFluidMedium,
-  textFluidSmall,
+  headingMedium,
+  textSmall,
   mediaQueryMin,
   gridGap,
 } from '@porsche-design-system/utilities-v2';
@@ -42,13 +42,13 @@ export const getComponentCss = (
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingFluidMedium,
+        ...headingMedium,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(900),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
-        ...textFluidSmall,
+        ...textSmall,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(550),

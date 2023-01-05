@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
-import { fontWeight, fontSize, spacing, textStaticSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { fontWeight, fontSize, spacing, textSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
@@ -37,7 +37,7 @@ export const getComponentCss = (
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: primaryColor,
-        ...textStaticSmall,
+        ...textSmall,
         fontWeight: fontWeight.semiBold,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }

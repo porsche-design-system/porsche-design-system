@@ -9,7 +9,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './';
-import { textFluidSmall, textFluidXSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
@@ -50,7 +50,7 @@ export const getBaseChildStyles = (
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
-      ...textFluidSmall,
+      ...textSmall,
       overflowWrap: null,
       hyphens: null,
       textIndent: 0,
@@ -119,13 +119,13 @@ export const getLabelStyles = (
       '&__text': {
         display: 'block',
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
-        ...textFluidSmall,
+        ...textSmall,
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         '&+&--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
-          ...textFluidXSmall,
+          ...textXSmall,
         },
         ...(!isDisabled && {
           '&--description': {

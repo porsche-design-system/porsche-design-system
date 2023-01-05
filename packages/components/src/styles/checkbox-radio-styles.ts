@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../types';
 import type { JssStyle } from 'jss';
 import { buildResponsiveStyles } from '../utils';
 import { getFormCheckboxRadioHiddenJssStyle, getTransition, getThemedColors } from '.';
-import { textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getCheckboxRadioLabelJssStyle = (
   isDisabled: boolean,
@@ -14,7 +14,7 @@ export const getCheckboxRadioLabelJssStyle = (
     order: 1,
     display: 'inline-block',
     cursor: isDisabled ? 'default' : 'pointer',
-    ...textFluidSmall,
+    ...textSmall,
     color: isDisabled ? disabledColor : primaryColor,
     transition: getTransition('color'),
     ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),

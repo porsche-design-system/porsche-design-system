@@ -8,7 +8,7 @@ import {
 } from '../../styles';
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
@@ -34,7 +34,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         background: backgroundColor,
         color: primaryColor,
         textAlign: 'left',
-        ...textFluidSmall,
+        ...textSmall,
         outline: 0,
         ...getTagFocusJssStyle(primaryColor, hoverColor),
         ...hoverMediaQuery({

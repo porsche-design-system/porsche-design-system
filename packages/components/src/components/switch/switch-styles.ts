@@ -9,7 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../styles';
-import { spacing, textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 const { small: spacingSmall } = spacing.static;
@@ -144,7 +144,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
-      ...textFluidSmall,
+      ...textSmall,
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,

@@ -59,7 +59,7 @@ it('should have equal styles for scss and jss', () => {
     @include pds-focus($offset: 2px);
   };
   .heading {
-    @include pds-heading-fluid-medium;
+    @include pds-heading-medium;
   }
 `);
   expect(formatAndNeutralizeStyle(jssStyles)).toBe(formatAndNeutralizeStyle(cssStyles.css));
