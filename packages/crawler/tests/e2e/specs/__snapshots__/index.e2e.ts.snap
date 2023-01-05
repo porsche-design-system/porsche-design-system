@@ -3,6 +3,12 @@
 exports[`should generate raw data correctly for 2 prefixes 1`] = `
 [
   {
+    "p-text": {
+      "children": "TEST123",
+      "properties": {},
+    },
+  },
+  {
     "p-accordion": {
       "children": "
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
