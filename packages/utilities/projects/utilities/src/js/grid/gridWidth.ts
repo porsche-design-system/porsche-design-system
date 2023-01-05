@@ -1,4 +1,7 @@
+export const gridWidthMin = '320px';
+export const gridWidthMax = '1920px';
+
 export const gridWidth = {
-  min: '320px',
-  max: '1920px',
+  min: gridWidthMin,
+  max: gridWidthMax,
 };

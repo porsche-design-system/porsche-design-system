@@ -1,6 +1,9 @@
 import { frostedGlassBackgroundColor } from './frostedGlassShared';
 
+const backdropFilter = 'blur(8px)';
+
 export const frostedGlassMedium = {
   backgroundColor: frostedGlassBackgroundColor,
-  backdropFilter: 'blur(8px)',
+  WebkitBackdropFilter: backdropFilter,
+  backdropFilter,
 } as const;

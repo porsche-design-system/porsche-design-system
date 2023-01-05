@@ -1,3 +1,16 @@
-import { spacing } from './spacing';
-
-export { spacing };
+export {
+  spacing,
+  spacingStatic,
+  spacingFluid,
+  spacingStaticXSmall,
+  spacingStaticSmall,
+  spacingStaticMedium,
+  spacingStaticLarge,
+  spacingStaticXLarge,
+  spacingStaticXXLarge,
+  spacingFluidXSmall,
+  spacingFluidSmall,
+  spacingFluidMedium,
+  spacingFluidLarge,
+  spacingFluidXLarge,
+} from './spacing';

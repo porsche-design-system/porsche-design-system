@@ -1,4 +1,7 @@
+export const borderWidthBase = '2px';
+export const borderWidthThin = '1px';
+
 export const borderWidth = {
-  base: '2px',
-  thin: '1px',
+  base: borderWidthBase,
+  thin: borderWidthThin,
 };

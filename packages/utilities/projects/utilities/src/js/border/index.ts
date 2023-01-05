@@ -1,4 +1,3 @@
-import { borderRadius } from './borderRadius';
-import { borderWidth } from './borderWidth';
-
-export { borderRadius, borderWidth };
+export { border } from './border';
+export { borderRadius, borderRadiusSmall, borderRadiusMedium, borderRadiusLarge } from './borderRadius';
+export { borderWidth, borderWidthBase, borderWidthThin } from './borderWidth';

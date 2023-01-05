@@ -1,21 +1,34 @@
-export const spacing: {
-  static: { [key in 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge']: string };
-  fluid: { [key in 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge']: string };
-} = {
-  static: {
-    xSmall: '4px',
-    small: '8px',
-    medium: '16px',
-    large: '32px',
-    xLarge: '48px',
-    xxLarge: '80px',
-  },
-  // TODO: shall we really use rem instead of px here?
-  fluid: {
-    xSmall: 'clamp(.25rem, 0.28vw + 0.19rem, .5rem)',
-    small: '.75rem',
-    medium: 'clamp(2rem, 0.56vw + 1.89rem, 2.5rem)',
-    large: 'clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)',
-    xLarge: 'clamp(4rem, 10vw + 2rem, 13rem)',
-  },
+export const spacingStaticXSmall = '4px';
+export const spacingStaticSmall = '8px';
+export const spacingStaticMedium = '16px';
+export const spacingStaticLarge = '32px';
+export const spacingStaticXLarge = '48px';
+export const spacingStaticXXLarge = '80px';
+
+export const spacingFluidXSmall = 'clamp(.25rem, 0.28vw + 0.19rem, .5rem)';
+export const spacingFluidSmall = '.75rem';
+export const spacingFluidMedium = 'clamp(2rem, 0.56vw + 1.89rem, 2.5rem)';
+export const spacingFluidLarge = 'clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)';
+export const spacingFluidXLarge = 'clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)';
+
+export const spacingStatic = {
+  xSmall: spacingStaticXSmall,
+  small: spacingStaticSmall,
+  medium: spacingStaticMedium,
+  large: spacingStaticLarge,
+  xLarge: spacingStaticXLarge,
+  xxLarge: spacingStaticXXLarge,
+};
+
+export const spacingFluid = {
+  xSmall: spacingFluidXSmall,
+  small: spacingFluidSmall,
+  medium: spacingFluidMedium,
+  large: spacingFluidLarge,
+  xLarge: spacingFluidXLarge,
+};
+
+export const spacing = {
+  static: spacingStatic,
+  fluid: spacingFluid,
 };

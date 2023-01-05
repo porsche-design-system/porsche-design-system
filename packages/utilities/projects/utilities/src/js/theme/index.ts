@@ -1,5 +1,44 @@
-import type { Theme, ThemeColorSet } from './themeShared';
-import { themeLight } from './themeLight';
-import { themeDark } from './themeDark';
-
-export { Theme, ThemeColorSet, themeLight, themeDark };
+export type { Theme } from './themeShared';
+export { theme } from './theme';
+export {
+  themeLight,
+  themeLightPrimary,
+  themeLightBackgroundBase,
+  themeLightBackgroundSurface,
+  themeLightContrastLow,
+  themeLightContrastMedium,
+  themeLightContrastHigh,
+  themeLightNotificationSuccess,
+  themeLightNotificationSuccessSoft,
+  themeLightNotificationWarning,
+  themeLightNotificationWarningSoft,
+  themeLightNotificationError,
+  themeLightNotificationErrorSoft,
+  themeLightNotificationInfo,
+  themeLightNotificationInfoSoft,
+  themeLightStateHover,
+  themeLightStateActive,
+  themeLightStateFocus,
+  themeLightStateDisabled,
+} from './themeLight';
+export {
+  themeDark,
+  themeDarkPrimary,
+  themeDarkBackgroundBase,
+  themeDarkBackgroundSurface,
+  themeDarkContrastLow,
+  themeDarkContrastMedium,
+  themeDarkContrastHigh,
+  themeDarkNotificationSuccess,
+  themeDarkNotificationSuccessSoft,
+  themeDarkNotificationWarning,
+  themeDarkNotificationWarningSoft,
+  themeDarkNotificationError,
+  themeDarkNotificationErrorSoft,
+  themeDarkNotificationInfo,
+  themeDarkNotificationInfoSoft,
+  themeDarkStateHover,
+  themeDarkStateActive,
+  themeDarkStateFocus,
+  themeDarkStateDisabled,
+} from './themeDark';

@@ -1,3 +1,1 @@
-import { getFocus } from './focus';
-
-export { getFocus };
+export { getFocus } from './focus';
