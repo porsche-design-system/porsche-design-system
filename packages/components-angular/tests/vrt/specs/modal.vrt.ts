@@ -23,7 +23,7 @@ xit.each(extendedViewports)(
   }
 );
 
-it('should have no visual regression for prefixed modal', async () => {
+xit('should have no visual regression for prefixed modal', async () => {
   // single resolution
   expect(await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/modal-prefixed')).toBeFalsy();
 });

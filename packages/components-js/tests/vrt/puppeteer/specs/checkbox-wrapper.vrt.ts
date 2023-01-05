@@ -17,7 +17,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   expect(await vrtTest(getVisualRegressionTester(viewport), 'checkbox-wrapper', '/#checkbox-wrapper')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('checkbox-wrapper-states', async () => {

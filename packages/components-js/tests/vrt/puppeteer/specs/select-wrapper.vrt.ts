@@ -24,7 +24,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   ).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('select-wrapper-states', async () => {

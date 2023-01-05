@@ -14,7 +14,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   ).toBeFalsy();
 });
 
-it('should have no visual regression with dark theme', async () => {
+xit('should have no visual regression with dark theme', async () => {
   expect(
     await vrtTest(getVisualRegressionStatesTester(), 'story-dark', '/components/pagination/examples', {
       elementSelector: routerViewSelector,

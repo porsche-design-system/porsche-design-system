@@ -12,7 +12,7 @@ xdescribe('toast-basic', () => {
 });
 
 xdescribe('toast-prefixed', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(await vrtTest(getVisualRegressionStatesTester(), 'toast-prefixed', '/toast-prefixed')).toBeFalsy();
   });
 });

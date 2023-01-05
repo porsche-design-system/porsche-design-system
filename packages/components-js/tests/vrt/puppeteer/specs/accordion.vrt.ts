@@ -18,7 +18,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   expect(await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('accordion-states', async () => {

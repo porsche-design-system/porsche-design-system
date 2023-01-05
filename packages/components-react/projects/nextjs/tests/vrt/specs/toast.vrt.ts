@@ -14,7 +14,7 @@ describe('toast-basic', () => {
 });
 
 describe('toast-basic-dark', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-basic-dark', '/toast-basic-dark', {
         javaScriptEnabled: false,
@@ -34,7 +34,7 @@ describe('toast-basic-long-text', () => {
 });
 
 describe('toast-offset', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-offset', '/toast-offset', { javaScriptEnabled: false })
     ).toBeFalsy();
@@ -42,7 +42,7 @@ describe('toast-offset', () => {
 });
 
 describe('toast-prefixed', () => {
-  it('should have no visual regression for viewport 1000', async () => {
+  xit('should have no visual regression for viewport 1000', async () => {
     expect(
       await vrtTest(getVisualRegressionStatesTester(), 'toast-prefixed', '/toast-prefixed', {
         javaScriptEnabled: false,

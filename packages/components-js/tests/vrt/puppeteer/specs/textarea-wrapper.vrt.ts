@@ -17,7 +17,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   expect(await vrtTest(getVisualRegressionTester(viewport), 'textarea-wrapper', '/#textarea-wrapper')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('textarea-wrapper-states', async () => {

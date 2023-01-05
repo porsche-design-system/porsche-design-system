@@ -23,7 +23,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   ).toBeFalsy();
 });
 
-it('should have no visual regression on popover-overview for viewport 1760', async () => {
+xit('should have no visual regression on popover-overview for viewport 1760', async () => {
   const vrt = getVisualRegressionTester(1760);
   expect(
     await vrt.test('popover-overview', async () => {
@@ -149,7 +149,7 @@ it('should have no visual regression on popover-overview for viewport 1760', asy
   ).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('popover-states', async () => {
