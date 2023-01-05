@@ -17,7 +17,7 @@ const startBrowser = async (): Promise<void> => {
   removeOutdatedReports(customerWebsites);
   console.log('Crawling websites..');
   // crawling all websites
-  await crawlWebsites(browser, customerWebsites).catch();
+  await crawlWebsites(browser, customerWebsites);
   console.log('Success - please check reports');
   await browser.close();
 };
