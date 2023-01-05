@@ -109,6 +109,7 @@
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:components-vue": "yarn --cwd ./packages/components-vue test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
+    "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e:puppeteer",
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
     "test:vrt:puppeteer:components-js": "yarn --cwd ./packages/components-js test:vrt:puppeteer",
     "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",

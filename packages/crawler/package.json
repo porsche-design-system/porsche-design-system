@@ -6,10 +6,12 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "test:e2e:puppeteer": "jest --colors -c tests/e2e/config/jest.config.ts"
   },
   "dependencies": {
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/components-js": "0.0.0",
     "puppeteer": "~19.3.0",
     "ts-node": "^10.9.1",
     "typescript": "~4.9.3"
