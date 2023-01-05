@@ -1,17 +1,11 @@
 import type { JssStyle } from 'jss';
-import type {
-  GridDirection,
-  GridDirectionType,
-  GridGutter,
-  GridGutterType,
-  GridWrap,
-  GridWrapType,
-} from './grid-utils';
+import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import type { GetJssStyleFunction } from '../../../utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
+import type { BreakpointCustomizable } from '../../../types';
 
-const getGutterJssStyle: GetJssStyleFunction = (gutter: GridGutterType): JssStyle => {
+const getGutterJssStyle: GetJssStyleFunction = (gutter: GridGutter): JssStyle => {
   const gutterRem = `-${pxToRemWithUnit(gutter / 2)}`;
 
   return {
@@ -20,7 +14,11 @@ const getGutterJssStyle: GetJssStyleFunction = (gutter: GridGutterType): JssStyl
   };
 };
 
-export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter: GridGutter): string => {
+export const getComponentCss = (
+  direction: BreakpointCustomizable<GridDirection>,
+  wrap: BreakpointCustomizable<GridWrap>,
+  gutter: BreakpointCustomizable<GridGutter>
+): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -28,8 +26,8 @@ export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter
         flex: 'auto',
         width: 'auto',
         ...mergeDeep(
-          buildResponsiveStyles(direction, (flexDirection: GridDirectionType) => ({ flexDirection })),
-          buildResponsiveStyles(wrap, (flexWrap: GridWrapType) => ({ flexWrap })),
+          buildResponsiveStyles(direction, (flexDirection: GridDirection) => ({ flexDirection })),
+          buildResponsiveStyles(wrap, (flexWrap: GridWrap) => ({ flexWrap })),
           buildResponsiveStyles(gutter, getGutterJssStyle)
         ),
       }),

@@ -18,7 +18,7 @@ import type {
   ThemeExtendedElectric,
 } from '../../types';
 import { getComponentCss } from './link-styles';
-import type { LinkAriaAttributes } from './link-utils';
+import type { LinkAriaAttribute } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
 import { LINK_BUTTON_VARIANTS } from '../../utils/link-button/link-button-variant';
 
@@ -32,7 +32,7 @@ const propTypes: PropTypes<typeof Link> = {
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -70,7 +70,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);

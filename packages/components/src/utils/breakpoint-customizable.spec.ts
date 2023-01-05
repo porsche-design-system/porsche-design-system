@@ -1,4 +1,8 @@
-import { BreakpointValue, BreakpointValues, parseJSON } from './breakpoint-customizable';
+import type { BreakpointValue, BreakpointValues } from './breakpoint-customizable';
+import { parseJSON } from './breakpoint-customizable';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as globby from 'globby';
 
 describe('parseJSON()', () => {
   it.each<
@@ -23,4 +27,18 @@ describe('parseJSON()', () => {
   ])('should for %s return %s', (input, result) => {
     expect(parseJSON(input)).toStrictEqual(result);
   });
+});
+
+describe('BreakpointCustomizable types', () => {
+  const srcDirectory = path.resolve(__dirname, '..');
+  // utils files should be good enough
+  const filePaths = globby.sync(`${srcDirectory}/**/*-utils.ts`);
+
+  it.each(filePaths.map((filePath) => [filePath.replace(srcDirectory, ''), filePath]))(
+    'should not define BreakpointCustomizable alias type in %s',
+    (_, filePath) => {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      expect(fileContent).not.toContain('= BreakpointCustomizable');
+    }
+  );
 });

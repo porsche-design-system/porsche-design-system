@@ -1,15 +1,10 @@
-import type { BreakpointCustomizable } from '../../../types';
-
-export type FlexInlineType = boolean;
-export type FlexInline = BreakpointCustomizable<FlexInlineType>;
+export type FlexInline = boolean;
 
 export const FLEX_WRAPS = ['nowrap', 'wrap', 'wrap-reverse'] as const;
-export type FlexWrapType = typeof FLEX_WRAPS[number];
-export type FlexWrap = BreakpointCustomizable<FlexWrapType>;
+export type FlexWrap = typeof FLEX_WRAPS[number];
 
 export const FLEX_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
-export type FlexDirectionType = typeof FLEX_DIRECTIONS[number];
-export type FlexDirection = BreakpointCustomizable<FlexDirectionType>;
+export type FlexDirection = typeof FLEX_DIRECTIONS[number];
 
 export const FLEX_JUSTIFY_CONTENTS = [
   'flex-start',
@@ -19,12 +14,10 @@ export const FLEX_JUSTIFY_CONTENTS = [
   'space-around',
   'space-evenly',
 ] as const;
-export type FlexJustifyContentType = typeof FLEX_JUSTIFY_CONTENTS[number];
-export type FlexJustifyContent = BreakpointCustomizable<FlexJustifyContentType>;
+export type FlexJustifyContent = typeof FLEX_JUSTIFY_CONTENTS[number];
 
 export const FLEX_ALIGN_ITEMS = ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'] as const;
-export type FlexAlignItemsType = typeof FLEX_ALIGN_ITEMS[number];
-export type FlexAlignItems = BreakpointCustomizable<FlexAlignItemsType>;
+export type FlexAlignItems = typeof FLEX_ALIGN_ITEMS[number];
 
 export const FLEX_ALIGN_CONTENTS = [
   'stretch',
@@ -35,5 +28,4 @@ export const FLEX_ALIGN_CONTENTS = [
   'space-around',
   'space-evenly',
 ] as const;
-export type FlexAlignContentType = typeof FLEX_ALIGN_CONTENTS[number];
-export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
+export type FlexAlignContent = typeof FLEX_ALIGN_CONTENTS[number];

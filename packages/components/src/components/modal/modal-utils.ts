@@ -104,7 +104,7 @@ export const setFirstAndLastFocusableElementKeydownListener = (
 export const warnIfAriaAndHeadingPropsAreUndefined = (
   host: HTMLElement,
   heading: string,
-  aria: SelectedAriaAttributes<ModalAriaAttributes>
+  aria: SelectedAriaAttributes<ModalAriaAttribute>
 ): void => {
   // TODO: slotted heading doesn't count?
   if (!heading && !aria) {
@@ -115,4 +115,4 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
 };
 
 export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type ModalAriaAttributes = typeof MODAL_ARIA_ATTRIBUTES[number];
+export type ModalAriaAttribute = typeof MODAL_ARIA_ATTRIBUTES[number];
