@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for dropShadowHigh 1`] = `
+{
+  "filter": "drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16))",
+}
+`;
+
+exports[`should contain correct values for dropShadowLow 1`] = `
+{
+  "filter": "drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16))",
+}
+`;
+
+exports[`should contain correct values for dropShadowMedium 1`] = `
+{
+  "filter": "drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.16))",
+}
+`;

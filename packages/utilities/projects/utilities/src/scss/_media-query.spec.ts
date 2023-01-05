@@ -11,7 +11,7 @@ const getCss = (scenario: string): string => {
 };
 
 describe('pds-media-query-min()', () => {
-  it.each(['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'])('should return correct css for breakpoint: %s', (breakpoint) => {
+  it.each(['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'])('should return correct css for breakpoint: %s', (breakpoint) => {
     const result = getCss(`div {
       @include pds-media-query-min(${breakpoint}) {
         color: deeppink;
@@ -34,7 +34,7 @@ describe('pds-media-query-max()', () => {
 
 describe('pds-media-query-min-max()', () => {
   it.each([
-    ['xxs', 'xs'],
+    ['base', 'xs'],
     ['xs', 's'],
     ['s', 'm'],
     ['m', 'l'],

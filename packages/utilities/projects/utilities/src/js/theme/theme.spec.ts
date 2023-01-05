@@ -1,6 +1,6 @@
 import * as fromTheme from './';
 
-it('should provide all theme exports', () => {
+it('should provide all exports', () => {
   expect(Object.keys(fromTheme).length).toBe(2);
 });
 

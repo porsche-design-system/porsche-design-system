@@ -12,6 +12,8 @@ exports[`mediaQueryMax() should return correct css for breakpoint: xs 1`] = `"@m
 
 exports[`mediaQueryMax() should return correct css for breakpoint: xxl 1`] = `"@media(max-width:1919px)"`;
 
+exports[`mediaQueryMin() should return correct css for breakpoint: base 1`] = `"@media(min-width:0px)"`;
+
 exports[`mediaQueryMin() should return correct css for breakpoint: l 1`] = `"@media(min-width:1300px)"`;
 
 exports[`mediaQueryMin() should return correct css for breakpoint: m 1`] = `"@media(min-width:1000px)"`;
@@ -24,7 +26,7 @@ exports[`mediaQueryMin() should return correct css for breakpoint: xs 1`] = `"@m
 
 exports[`mediaQueryMin() should return correct css for breakpoint: xxl 1`] = `"@media(min-width:1920px)"`;
 
-exports[`mediaQueryMin() should return correct css for breakpoint: xxs 1`] = `"@media(min-width:0px)"`;
+exports[`mediaQueryMinMax() should return correct css for breakpoint range: base - xs 1`] = `"@media(min-width:0px) and (max-width:479px)"`;
 
 exports[`mediaQueryMinMax() should return correct css for breakpoint range: l - xl 1`] = `"@media(min-width:1300px) and (max-width:1759px)"`;
 
@@ -35,5 +37,3 @@ exports[`mediaQueryMinMax() should return correct css for breakpoint range: s - 
 exports[`mediaQueryMinMax() should return correct css for breakpoint range: xl - xxl 1`] = `"@media(min-width:1760px) and (max-width:1919px)"`;
 
 exports[`mediaQueryMinMax() should return correct css for breakpoint range: xs - s 1`] = `"@media(min-width:480px) and (max-width:759px)"`;
-
-exports[`mediaQueryMinMax() should return correct css for breakpoint range: xxs - xs 1`] = `"@media(min-width:0px) and (max-width:479px)"`;

@@ -2,6 +2,11 @@ import type { Breakpoint } from './breakpoint';
 import { mediaQueryMin } from './mediaQueryMin';
 import { mediaQueryMax } from './mediaQueryMax';
 import { mediaQueryMinMax } from './mediaQueryMinMax';
+import * as fromMediaQuery from './';
+
+it('should provide all exports', () => {
+  expect(Object.keys(fromMediaQuery).length).toBe(4);
+});
 
 describe('mediaQueryMin()', () => {
   it.each<Breakpoint>(['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'])(

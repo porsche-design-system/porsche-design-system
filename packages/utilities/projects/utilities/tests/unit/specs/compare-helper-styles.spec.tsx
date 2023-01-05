@@ -9,11 +9,11 @@ import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import { getFocus, headingMedium } from '../../../src/js';
+import { getFocus, headingFluidMedium } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
 const formatAndNeutralizeStyle = (style: string): string => {
-  const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'fnSkiW';
+  const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'ffjQpY';
 
   const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
   style = prettier.format(style, { parser: 'scss' });
@@ -26,7 +26,7 @@ const formatAndNeutralizeStyle = (style: string): string => {
 let jssStyles: string;
 
 beforeEach(() => {
-  const useStyles = createUseStyles({ focus: getFocus(), heading: headingMedium });
+  const useStyles = createUseStyles({ focus: getFocus(), heading: headingFluidMedium });
 
   const JssSample = (): JSX.Element => {
     useStyles();
@@ -38,7 +38,7 @@ beforeEach(() => {
 });
 
 it('should have equal styles for styled-components and jss', () => {
-  const SampleStyles = styled.div({ focus: getFocus(), heading: headingMedium });
+  const SampleStyles = styled.div({ focus: getFocus(), heading: headingFluidMedium });
 
   render(
     <StyleSheetManager disableVendorPrefixes>
@@ -56,7 +56,7 @@ it('should have equal styles for scss and jss', () => {
   const cssStyles = sass.compileString(`
   ${focusMixin} ${headingMixin}
   .focus {
-    @include pds-focus($color: currentColor, $offset: 2px);
+    @include pds-focus($offset: 2px);
   };
   .heading {
     @include pds-heading-fluid-medium;

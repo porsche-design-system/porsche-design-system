@@ -2,29 +2,43 @@
 
 exports[`should contain correct values for grid 1`] = `
 {
-  "@media(min-width:1760px)": {
-    "gridTemplateColumns": "[grid-start] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [grid-end]",
+  "--pds-grid-span-one-half": "span 3",
+  "--pds-grid-span-one-quarter": "span 1",
+  "--pds-grid-span-one-third": "span 2",
+  "--pds-grid-span-three-quarters": "span 5",
+  "--pds-grid-span-two-thirds": "span 4",
+  "@media(min-width:760px)": {
+    "--pds-grid-span-one-half": "span 6",
+    "--pds-grid-span-one-quarter": "span 3",
+    "--pds-grid-span-one-third": "span 4",
+    "--pds-grid-span-three-quarters": "span 9",
+    "--pds-grid-span-two-thirds": "span 8",
+    "gridTemplateColumns": "[fluid-start] minmax(0, calc(clamp(22px, 10.625vw - 12px, 192px) - clamp(16px, 3.6vw, 36px)))
+    [extended-start] minmax(0, 1fr)
+        [basic-start] repeat(12, minmax(0, 1fr)) [basic-end]
+    minmax(0, 1fr) [extended-end]
+  minmax(0, calc(clamp(22px, 10.625vw - 12px, 192px) - clamp(16px, 3.6vw, 36px))) [fluid-end]",
   },
   "boxSizing": "content-box",
   "display": "grid",
-  "gridGap": "max(1rem, min(3.6vw, 2.25rem))",
-  "gridTemplateColumns": "[grid-start] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [grid-end]",
+  "gridGap": "clamp(16px, 3.6vw, 36px)",
+  "gridTemplateColumns": "[fluid-start] minmax(0, calc(clamp(22px, 10.625vw - 12px, 192px) - clamp(16px, 3.6vw, 36px)))
+    [extended-start basic-start] repeat(6, minmax(0, 1fr)) [basic-end extended-end]
+  minmax(0, calc(clamp(22px, 10.625vw - 12px, 192px) - clamp(16px, 3.6vw, 36px))) [fluid-end]",
   "margin": 0,
-  "maxWidth": "120rem",
-  "minWidth": "20rem",
-  "padding": "0 calc((100% - 120rem) / 2)",
+  "maxWidth": "1920px",
+  "minWidth": "320px",
+  "padding": "0 calc((100% - 1920px) / 2)",
 }
 `;
 
-exports[`should contain correct values for gridGap 1`] = `"max(1rem, min(3.6vw, 2.25rem))"`;
+exports[`should contain correct values for gridGap 1`] = `"clamp(16px, 3.6vw, 36px)"`;
 
-exports[`should contain correct values for gridMaxWidth 1`] = `"120rem"`;
+exports[`should contain correct values for gridSafeZone 1`] = `"clamp(22px, 10.625vw - 12px, 192px)"`;
 
-exports[`should contain correct values for gridMinWidth 1`] = `"20rem"`;
-
-exports[`should contain correct values for gridSafeZone 1`] = `
+exports[`should contain correct values for gridWidth 1`] = `
 {
-  "base": "max(1rem, 7vw)",
-  "xl": "min(calc(43vw - 39.6rem), 12rem)",
+  "max": "1920px",
+  "min": "320px",
 }
 `;

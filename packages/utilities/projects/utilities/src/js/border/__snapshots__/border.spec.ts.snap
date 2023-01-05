@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for borderRadius 1`] = `
+{
+  "large": "12px",
+  "medium": "8px",
+  "small": "4px",
+}
+`;
+
+exports[`should contain correct values for borderWidth 1`] = `
+{
+  "base": "2px",
+  "thin": "1px",
+}
+`;
