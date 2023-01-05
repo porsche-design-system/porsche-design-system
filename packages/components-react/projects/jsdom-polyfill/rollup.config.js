@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
+import { version } from '../react-wrapper/package.json';
 
 export default {
   input: 'src/index.js',
@@ -13,6 +14,11 @@ export default {
   plugins: [
     commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
     resolve(),
+    // inject actual version so that componentsReady works
+    modify({
+      find: /'ROLLUP_REPLACE_VERSION'/,
+      replace: `'${version}'`,
+    }),
     modify({
       find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.[\s\S]*?`\);/,
       replace: '',

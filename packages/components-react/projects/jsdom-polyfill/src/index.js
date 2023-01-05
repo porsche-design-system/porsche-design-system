@@ -15,4 +15,14 @@ require('./lib/loader.cjs')
   .defineCustomElements()
   .then(() => {
     window.PDS_SKIP_FETCH = false;
+
+    // jsdom polyfill build does not load anything from CDN and also does not use our web components manager
+    // therefore, we have to setup the document.porscheDesignSystem ourselves here
+    // 'ROLLUP_REPLACE_VERSION' is replaced during build
+    document.porscheDesignSystem = {
+      ['ROLLUP_REPLACE_VERSION']: {
+        readyResolve: () => {},
+        isReady: () => Promise.resolve(),
+      },
+    };
   });
