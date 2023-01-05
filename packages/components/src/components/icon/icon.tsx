@@ -15,7 +15,7 @@ import type { IconName, IconSize, PropTypes, SelectedAriaAttributes, TextColor, 
 import { getComponentCss } from './icon-styles';
 
 const propTypes: PropTypes<typeof Icon> = {
-  name: AllowedTypes.string,
+  name: AllowedTypes.string, // TODO: should use object keys of ICON_MANIFEST as soon as keys are available with param-case syntax
   source: AllowedTypes.string,
   color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
   size: AllowedTypes.oneOf<IconSize>(ICON_SIZES),
