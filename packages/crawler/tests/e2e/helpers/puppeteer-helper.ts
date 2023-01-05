@@ -1,4 +1,5 @@
 import type { Page, WaitForOptions } from 'puppeteer';
+import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;
@@ -34,6 +35,7 @@ export const setContentWithDesignSystem = async (page: Page, opts?: Options): Pr
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
+        ${getLoaderScript({ prefix: 'test-prefix' })}
         <!-- The script below has been copied from https://designsystem.porsche.com/v2/ -->
         <script data-pds-loader-script="">
           var porscheDesignSystem;
@@ -164,6 +166,7 @@ export const setContentWithDesignSystem = async (page: Page, opts?: Options): Pr
         <p-modal heading="Some Heading" open="true">Some Content</p-modal>
 
         <my-prefix-p-text>TEST123</my-prefix-p-text>
+        <test-prefix-p-text>TEST123</test-prefix-p-text>
       </body>
     </html>
 
