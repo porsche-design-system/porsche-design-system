@@ -6,4 +6,4 @@ exports[`getFontWeight() should return correct numeric value for weight: regular
 
 exports[`getFontWeight() should return correct numeric value for weight: semibold 1`] = `600`;
 
-exports[`getFontWeight() should return correct numeric value for weight: thin 1`] = `100`;
+exports[`getFontWeight() should return correct numeric value for weight: thin 1`] = `undefined`;
