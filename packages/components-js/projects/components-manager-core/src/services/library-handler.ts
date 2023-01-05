@@ -63,9 +63,10 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
 
   if (libraryHandlerData === null) {
     let readyPromiseResolve: ReadyResolve = () => {};
+    const readyPromise = new Promise((resolve) => (readyPromiseResolve = resolve as ReadyResolve));
     const newLibraryHandlerData: LibraryHandlerData = {
       isLoaded: false,
-      isReady: () => new Promise((resolve) => (readyPromiseResolve = resolve as ReadyResolve)),
+      isReady: () => readyPromise,
       readyResolve: readyPromiseResolve,
       prefixes: [],
       registerCustomElements: null,
