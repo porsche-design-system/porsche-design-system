@@ -2,13 +2,13 @@ import { getComponentCss, getSlottedCss } from './text-styles';
 
 xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    // ['small', 'regular', 'left', 'default', false, 'light'],
-    // ['x-large', 'thin', 'right', 'brand', true, 'dark'],
-    // ['x-large', 'regular', 'center', 'brand', false, 'dark'],
+    ['small', 'regular', 'left', 'default', false, 'light'],
+    ['x-large', 'thin', 'right', 'brand', true, 'dark'],
+    ['x-large', 'regular', 'center', 'brand', false, 'dark'],
     ['large', 'semibold', 'left', 'notification-error', true, 'light'],
     ['medium', 'bold', 'right', 'neutral-contrast-high', true, 'dark'],
     ['x-small', 'semibold', 'left', 'inherit', false, 'light'],
-    // ['inherit', 'bold', 'center', 'default', false, 'light'],
+    ['inherit', 'bold', 'center', 'default', false, 'light'],
     [
       { base: 'small', xs: 'large', s: 'medium', m: 'inherit', l: 'x-small', xl: 'x-large' },
       'bold',

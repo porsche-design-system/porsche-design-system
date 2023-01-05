@@ -2,8 +2,8 @@ import { getComponentCss, getSlottedCss } from './headline-styles';
 
 xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['headline-1', 'left', 'primary', false, 'light'],
-    ['inherit', 'left', 'primary', false, 'light'],
+    ['headline-1', 'left', 'default', false, 'light'],
+    ['inherit', 'left', 'default', false, 'light'],
     ['large-title', 'center', 'inherit', true, 'dark'],
     ['headline-2', 'center', 'inherit', true, 'dark'],
     ['headline-3', 'center', 'inherit', true, 'dark'],
