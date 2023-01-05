@@ -5,7 +5,7 @@ import { paramCase } from 'change-case';
 @Component({
   selector: 'page-utilities',
   styles: [``],
-  template: `<div [style]="getStyle()">{{ themeLight.brand }}</div>`,
+  template: `<div [style]="getStyle()">{{ themeLight.primary }}</div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UtilitiesComponent {
