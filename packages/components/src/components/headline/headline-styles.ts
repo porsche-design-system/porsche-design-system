@@ -43,7 +43,7 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
 export const getComponentCss = (
   variant: HeadlineVariant,
   align: TextAlign,
-  color: Extract<TextColor, 'primary' | 'inherit'>,
+  color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
   ellipsis: boolean,
   theme: Theme
 ): string => {
@@ -60,7 +60,7 @@ export const getComponentCss = (
       padding: 0,
       margin: 0,
       textAlign: align,
-      color: color !== 'primary' ? 'inherit' : getThemedColors(theme).primaryColor,
+      color: color === 'inherit' ? 'inherit' : getThemedColors(theme).primaryColor,
       whiteSpace: 'inherit',
       ...(isVariantType(variant)
         ? getVariantJssStyle(variant)

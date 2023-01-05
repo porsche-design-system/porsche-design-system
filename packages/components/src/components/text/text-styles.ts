@@ -16,7 +16,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   // function is local to reuse `weight` parameter
-  // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
+  // TODO: font shorthand isn't really the best choice but we don't have any better alternative atm
   const getSizeJssStyle = (textSize: TextSize): JssStyle => {
     const fontWeightValue = getFontWeight(weight);
     return textSize === 'inherit'
