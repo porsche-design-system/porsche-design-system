@@ -96,7 +96,7 @@ export const getLabelStyles = (
   theme: Theme,
   counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>
 ): Styles => {
-  const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -129,7 +129,7 @@ export const getLabelStyles = (
         },
         ...(!isDisabled && {
           '&--description': {
-            color: contrastMediumColor,
+            color: contrastHighColor,
           },
         }),
         ...labelTextHoverJssStyle,
