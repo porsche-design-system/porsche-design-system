@@ -3,8 +3,11 @@ import { getComponentsManagerData } from './data-handler';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
+type ReadyResolve = () => void;
 export type LibraryHandlerData = {
   isLoaded: boolean;
+  isReady: () => Promise<unknown>;
+  readyResolve: ReadyResolve;
   prefixes: string[];
   registerCustomElements: RegisterCustomElementsCallback | null;
 };
@@ -59,8 +62,11 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
   const { [version]: libraryHandlerData = null } = cmData;
 
   if (libraryHandlerData === null) {
+    let readyPromiseResolve: ReadyResolve = () => {};
     const newLibraryHandlerData: LibraryHandlerData = {
       isLoaded: false,
+      isReady: () => new Promise((resolve) => (readyPromiseResolve = resolve as ReadyResolve)),
+      readyResolve: readyPromiseResolve,
       prefixes: [],
       registerCustomElements: null,
     };
