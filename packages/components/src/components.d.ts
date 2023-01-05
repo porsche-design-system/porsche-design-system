@@ -383,13 +383,13 @@ export namespace Components {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -1983,13 +1983,13 @@ declare namespace LocalJSX {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**

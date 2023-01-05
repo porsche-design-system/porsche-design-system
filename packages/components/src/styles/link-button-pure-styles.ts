@@ -142,7 +142,7 @@ export const getLinkButtonPureStyles = (
       textAlign: 'left',
       border: 'none',
       background: 'transparent',
-      color: isDisabledOrLoading ? disabledColor : active ? activeColor : primaryColor,
+      color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
       transition: getTransition('color'),
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
@@ -194,7 +194,7 @@ export const getLinkButtonPureStyles = (
         display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
         ...textFluidSmall,
-        color: isDisabledOrLoading ? disabledColor : active ? activeColor : primaryColor,
+        color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
         transition: getTransition('color'),
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
