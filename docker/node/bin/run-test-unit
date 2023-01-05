@@ -23,5 +23,7 @@ if
   [[ "--utilities" == "${1}" ]] ||
   [[ "--utilities-deprecated" == "${1}" ]]
 then
-  yarn test:unit:${1:2} --ci
+  # TODO: re-enable --ci flag as soon as PDS@v3-alpha is ready
+  # yarn test:unit:${1:2} --ci
+  yarn test:unit:${1:2}
 fi
