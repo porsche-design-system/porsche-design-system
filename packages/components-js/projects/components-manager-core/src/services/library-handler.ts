@@ -11,8 +11,6 @@ export type LibraryHandlerData = {
 
 /**
  * @property script - the url of the entrypoint
- * @property stylesUrl - an URL to a stylesheet file
- * @property inlineStyles - a string with styles that get inserted inline synchronously
  * @property version - the version of the library
  * @property prefix - the prefix used for the components
  */

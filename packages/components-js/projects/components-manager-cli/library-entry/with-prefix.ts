@@ -1,5 +1,5 @@
 import { loadComponentLibrary } from '@porsche-design-system/components-manager-core';
-import { EntryConfig } from '../shared-definitions/entry-config';
+import type { EntryConfig } from '../shared-definitions/entry-config';
 
 /**
  * CM_CONFIG will be provided via webpack
