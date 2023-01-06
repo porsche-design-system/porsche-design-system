@@ -1,42 +1,20 @@
 import type { Page, WaitForOptions } from 'puppeteer';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 
-type Options = WaitForOptions & {
-  enableLogging?: boolean;
-  injectIntoHead?: string;
-};
+export const getInternalLoaderScriptForPrefixes = (prefixes: string[]): string =>
+  prefixes.reduce((result, prefix) => result + getLoaderScript({ prefix: prefix }), '');
 
-export const enableBrowserLogging = (page: Page): void => {
-  page.on('console', (msg) => {
-    console.log(msg.type() + ':', msg.text());
-  });
-};
-
-export const setContentWithDesignSystem = async (page: Page, opts?: Options): Promise<void> => {
-  const options: Options = {
-    waitUntil: 'networkidle0',
-    injectIntoHead: '',
-    ...opts,
-  };
-
-  let lifeCycleLogger = '';
-  if (options.enableLogging) {
-    enableBrowserLogging(page);
-    lifeCycleLogger = `console.log(eventName + (eventName.includes('Did') ? ' ' : ''), tagName, new Date().toISOString());`;
-  }
-
-  await page.setContent(
-    `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Porsche Design System - Crawler E2E Test Demo</title>
-        <base href="http://localhost" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body>
-        ${getLoaderScript({ prefix: 'test-prefix' })}
-        <!-- The script below has been copied from https://designsystem.porsche.com/v2/ -->
+export const getExternalLoaderScriptForPrefixes = (prefixes: string[]): string => {
+  const prefixesLoaders = prefixes.reduce(
+    (result, prefix) =>
+      result +
+      `
+    porscheDesignSystem.load(\{ prefix: '${prefix}' \});
+  `,
+    ''
+  );
+  // the script below has been copied from https://designsystem.porsche.com/v2/
+  return `
         <script data-pds-loader-script="">
           var porscheDesignSystem;
           (() => {
@@ -95,9 +73,37 @@ export const setContentWithDesignSystem = async (page: Page, opts?: Options): Pr
             };
             porscheDesignSystem = t;
           })();
-          porscheDesignSystem.load();
-          porscheDesignSystem.load({ prefix: 'my-prefix' });
-        </script>
+          ${prefixesLoaders}
+        </script>`;
+};
+
+export const setContentWithDesignSystem = async (
+  page: Page,
+  firstPdsVersionPrefixes?: string[],
+  secondPdsVersionPrefixes?: string[]
+): Promise<void> => {
+  const options: WaitForOptions = {
+    waitUntil: 'networkidle0',
+  };
+
+  const firstLoaderScript = firstPdsVersionPrefixes ? getInternalLoaderScriptForPrefixes(firstPdsVersionPrefixes) : '';
+  const secondLoaderScript = secondPdsVersionPrefixes
+    ? getExternalLoaderScriptForPrefixes(secondPdsVersionPrefixes)
+    : '';
+
+  await page.setContent(
+    `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Porsche Design System - Crawler E2E Test Demo</title>
+        <base href="http://localhost" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body>
+        ${firstLoaderScript}
+        ${secondLoaderScript}
+
         <p-accordion heading="Some compact Accordion heading" compact="true">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
