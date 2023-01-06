@@ -65,3 +65,11 @@ it('should generate raw data correctly for 2 versions and 2 prefixes', async () 
     secondPdsVersionPrefixes: ['', 'my-prefix'],
   });
 });
+
+it('should retrieve object value from string correctly', async () => {
+  await testCrawlerWithHtmlAndPrefixes({
+    bodyHtml: `
+      <p-spinner size="{ base: 'small', l: 'medium' }" aria="{ 'aria-label': 'Loading page content' }" />
+    `,
+  });
+});
