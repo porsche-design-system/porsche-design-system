@@ -80,7 +80,82 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
       {
         "p-banner": {
           "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
-          "properties": {},
+          "properties": {
+            "persistent": false,
+            "state": "neutral",
+            "theme": "dark",
+            "width": "basic",
+          },
+        },
+      },
+      {
+        "p-content-wrapper": {
+          "children": "<p-inline-notification class="root hydrated">(the content was stripped)</p-inline-notification>",
+          "hostPdsComponent": "p-banner",
+          "properties": {
+            "backgroundColor": "transparent",
+            "theme": "light",
+            "width": "basic",
+          },
+        },
+      },
+      {
+        "p-inline-notification": {
+          "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
+          "hostPdsComponent": "p-banner",
+          "properties": {
+            "actionIcon": "arrow-head-right",
+            "actionLoading": false,
+            "description": "",
+            "heading": "",
+            "persistent": false,
+            "state": "neutral",
+            "theme": "dark",
+          },
+        },
+      },
+      {
+        "p-icon": {
+          "hostPdsComponent": "p-inline-notification",
+          "properties": {
+            "color": "inherit",
+            "lazy": false,
+            "name": "information",
+            "size": "small",
+            "theme": "light",
+          },
+        },
+      },
+      {
+        "p-button-pure": {
+          "children": "Close notification",
+          "hostPdsComponent": "p-inline-notification",
+          "properties": {
+            "active": false,
+            "alignLabel": "right",
+            "disabled": false,
+            "hideLabel": true,
+            "icon": "close",
+            "loading": false,
+            "size": "small",
+            "stretch": false,
+            "tabbable": true,
+            "theme": "light",
+            "type": "button",
+            "weight": "regular",
+          },
+        },
+      },
+      {
+        "p-icon": {
+          "hostPdsComponent": "p-button-pure",
+          "properties": {
+            "color": "inherit",
+            "lazy": false,
+            "name": "close",
+            "size": "inherit",
+            "theme": "light",
+          },
         },
       },
     ],
@@ -166,6 +241,30 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
             "name": "arrow-head-right",
             "size": "inherit",
             "theme": "dark",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve object value from string correctly 1`] = `
+{
+  "2.18.0-rc.1": {
+    "": [
+      {
+        "p-spinner": {
+          "children": "
+    
+      
+    
+
+    ",
+          "properties": {
+            "aria": "{"aria-label":"Loading page content"}",
+            "size": "{"base":"small","l":"medium"}",
+            "theme": "light",
           },
         },
       },
