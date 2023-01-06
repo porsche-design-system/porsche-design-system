@@ -1,12 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should generate raw data correctly for 2 prefixes 1`] = `
+exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = `
 {
   "2.18.0-rc.1": {
     "test-prefix": [
       {
         "p-text": {
-          "children": "TEST123",
+          "children": "First version first prefix",
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+    "test1-prefix": [
+      {
+        "p-text": {
+          "children": "First version second prefix",
           "properties": {
             "align": "left",
             "color": "default",
@@ -23,143 +39,59 @@ exports[`should generate raw data correctly for 2 prefixes 1`] = `
   "2.19.0": {
     "": [
       {
-        "p-accordion": {
-          "children": "
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        ",
+        "p-text": {
+          "children": "Second version first prefix",
           "properties": {
-            "compact": true,
-            "heading": "Some compact Accordion heading",
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
             "size": "small",
-            "tag": "h2",
+            "tag": "p",
             "theme": "light",
-          },
-        },
-      },
-      {
-        "p-banner": {
-          "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
-          "properties": {
-            "persistent": false,
-            "state": "neutral",
-            "theme": "dark",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-button": {
-          "children": "Some label",
-          "properties": {
-            "disabled": false,
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "loading": true,
-            "tabbable": true,
-            "theme": "light",
-            "type": "submit",
-            "variant": "primary",
-          },
-        },
-      },
-      {
-        "p-button-group": {
-          "children": "<p-button variant="primary" class="hydrated">Some label</p-button><p-button variant="secondary" class="hydrated">Some label</p-button><p-button variant="tertiary" class="hydrated">Some label</p-button>",
-          "properties": {
-            "direction": "{"base":"column","xs":"row"}",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "children": "Label default",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "disabled": false,
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "submit",
             "weight": "regular",
           },
         },
       },
+    ],
+    "my-prefix": [
       {
-        "p-carousel": {
-          "children": "<div slot="slide-0">Slide 1</div><div slot="slide-1">Slide 2</div><div slot="slide-2">Slide 3</div>",
+        "p-text": {
+          "children": "Second version second prefix",
           "properties": {
-            "disablePagination": false,
-            "heading": "Heading",
-            "intl": "{}",
-            "rewind": true,
-            "slidesPerPage": 1,
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
             "theme": "light",
+            "weight": "regular",
           },
         },
       },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve children and hostPdsComponent correctly 1`] = `
+{
+  "2.18.0-rc.1": {
+    "": [
       {
-        "p-checkbox-wrapper": {
-          "children": "<input type="checkbox" name="some-name" aria-label="Some label">",
-          "properties": {
-            "hideLabel": false,
-            "label": "Some label",
-            "message": "",
-            "state": "none",
-          },
+        "p-banner": {
+          "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
+          "properties": {},
         },
       },
-      {
-        "p-content-wrapper": {
-          "children": "<p>Some content</p>",
-          "properties": {
-            "backgroundColor": "transparent",
-            "theme": "light",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-text-field-wrapper": {
-          "children": "<input type="text" aria-label="Some Label. Some Description">",
-          "properties": {
-            "actionLoading": false,
-            "description": "Some Description",
-            "hideLabel": false,
-            "label": "Some Label",
-            "message": "",
-            "showCharacterCount": true,
-            "state": "none",
-            "unit": "",
-            "unitPosition": "prefix",
-          },
-        },
-      },
-      {
-        "p-divider": {
-          "properties": {
-            "color": "neutral-contrast-low",
-            "orientation": "horizontal",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-fieldset-wrapper": {
-          "properties": {
-            "label": "Some label",
-            "labelSize": "medium",
-            "message": "",
-            "required": false,
-            "state": "none",
-          },
-        },
-      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve children correctly 1`] = `
+{
+  "2.18.0-rc.1": {
+    "": [
       {
         "p-flex": {
           "children": "<p-flex-item class="hydrated">(the content was stripped)</p-flex-item><p-flex-item class="hydrated">(the content was stripped)</p-flex-item>",
@@ -170,380 +102,6 @@ exports[`should generate raw data correctly for 2 prefixes 1`] = `
             "inline": false,
             "justifyContent": "flex-start",
             "wrap": "nowrap",
-          },
-        },
-      },
-      {
-        "p-grid": {
-          "children": "<p-grid-item size="12" class="hydrated">(the content was stripped)</p-grid-item>",
-          "properties": {
-            "direction": "row",
-            "gutter": "{"base":16,"s":24,"m":36}",
-            "wrap": "wrap",
-          },
-        },
-      },
-      {
-        "p-headline": {
-          "children": "The quick brown fox jumps over the lazy dog",
-          "properties": {
-            "align": "left",
-            "color": "default",
-            "ellipsis": false,
-            "theme": "light",
-            "variant": "large-title",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "properties": {
-            "color": "default",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "small",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-inline-notification": {
-          "properties": {
-            "actionIcon": "arrow-head-right",
-            "actionLoading": false,
-            "description": "Some description",
-            "heading": "Some neutral heading",
-            "persistent": false,
-            "state": "neutral",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-link": {
-          "children": "Some label",
-          "properties": {
-            "hideLabel": false,
-            "href": "https://www.porsche.com",
-            "icon": "arrow-head-right",
-            "target": "_self",
-            "theme": "light",
-            "variant": "primary",
-          },
-        },
-      },
-      {
-        "p-link-pure": {
-          "children": "Label default",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "hideLabel": false,
-            "href": "https://www.porsche.com",
-            "icon": "arrow-head-right",
-            "size": "small",
-            "stretch": false,
-            "target": "_self",
-            "theme": "light",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-link-social": {
-          "children": "Some label",
-          "properties": {
-            "hideLabel": false,
-            "href": "https://www.facebook.com",
-            "icon": "logo-facebook",
-            "target": "_self",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-link-tile": {
-          "children": "<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" width="50" height="50" alt="Some alt text">",
-          "properties": {
-            "align": "bottom",
-            "aspectRatio": "4:3",
-            "compact": false,
-            "description": "Default",
-            "gradient": true,
-            "href": "#",
-            "label": "Some Label",
-            "size": "default",
-            "target": "_self",
-            "weight": "semibold",
-          },
-        },
-      },
-      {
-        "p-marque": {
-          "properties": {
-            "size": "responsive",
-            "target": "_self",
-            "trademark": false,
-          },
-        },
-      },
-      {
-        "p-modal": {
-          "children": "Some Content",
-          "properties": {
-            "disableBackdropClick": false,
-            "disableCloseButton": false,
-            "fullscreen": false,
-            "heading": "Some Heading",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-accordion",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-down",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-content-wrapper": {
-          "children": "<p-inline-notification class="root hydrated">(the content was stripped)</p-inline-notification>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "backgroundColor": "transparent",
-            "theme": "light",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-inline-notification": {
-          "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "actionIcon": "arrow-head-right",
-            "actionLoading": false,
-            "description": "",
-            "heading": "",
-            "persistent": false,
-            "state": "neutral",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "information",
-            "size": "small",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "children": "Close notification",
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "disabled": false,
-            "hideLabel": true,
-            "icon": "close",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "button",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "close",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-spinner": {
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "aria": "{"aria-label":"Loading state"}",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-button": {
-          "children": "Some label",
-          "properties": {
-            "disabled": false,
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "loading": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "submit",
-            "variant": "primary",
-          },
-        },
-      },
-      {
-        "p-button": {
-          "children": "Some label",
-          "properties": {
-            "disabled": false,
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "loading": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "submit",
-            "variant": "secondary",
-          },
-        },
-      },
-      {
-        "p-button": {
-          "children": "Some label",
-          "properties": {
-            "disabled": false,
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "loading": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "submit",
-            "variant": "tertiary",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "hostPdsComponent": "p-carousel",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "aria": "{"aria-label":"Go to last slide"}",
-            "disabled": false,
-            "hideLabel": true,
-            "icon": "arrow-left",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "button",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "hostPdsComponent": "p-carousel",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "aria": "{"aria-label":"Next slide"}",
-            "disabled": false,
-            "hideLabel": true,
-            "icon": "arrow-right",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "button",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-left",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-right",
-            "size": "inherit",
-            "theme": "light",
           },
         },
       },
@@ -573,255 +131,41 @@ exports[`should generate raw data correctly for 2 prefixes 1`] = `
           },
         },
       },
-      {
-        "p-grid-item": {
-          "children": "<p>12</p>",
-          "properties": {
-            "offset": 0,
-            "size": "12",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "information",
-            "size": "small",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "children": "Close notification",
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "disabled": false,
-            "hideLabel": true,
-            "icon": "close",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "button",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "close",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-link",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-link-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-link-social",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "logo-facebook",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-link": {
-          "children": "<a class="anchor" href="#" target="_self" aria-describedby="description">Some Label</a>",
-          "hostPdsComponent": "p-link-tile",
-          "properties": {
-            "hideLabel": false,
-            "icon": "arrow-head-right",
-            "target": "_self",
-            "theme": "dark",
-            "variant": "tertiary",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-link",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "children": "Close modal",
-          "hostPdsComponent": "p-modal",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
-            "disabled": false,
-            "hideLabel": true,
-            "icon": "close",
-            "loading": false,
-            "size": "small",
-            "stretch": false,
-            "tabbable": true,
-            "theme": "light",
-            "type": "button",
-            "weight": "regular",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-button-pure",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "close",
-            "size": "inherit",
-            "theme": "light",
-          },
-        },
-      },
-    ],
-    "my-prefix": [
-      {
-        "p-text": {
-          "children": "TEST123",
-          "properties": {
-            "align": "left",
-            "color": "default",
-            "ellipsis": false,
-            "size": "small",
-            "tag": "p",
-            "theme": "light",
-            "weight": "regular",
-          },
-        },
-      },
     ],
   },
 }
 `;
 
-exports[`should retrieve children correctly 1`] = `
+exports[`should retrieve hostPdsComponent correctly 1`] = `
 {
   "2.18.0-rc.1": {
-    "test-prefix": [
+    "": [
       {
-        "p-banner": {
-          "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
+        "p-button": {
+          "children": "
+            Test button
+        ",
           "properties": {
-            "persistent": false,
-            "state": "neutral",
-            "theme": "dark",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-content-wrapper": {
-          "children": "<test-prefix-p-inline-notification class="root hydrated">(the content was stripped)</test-prefix-p-inline-notification>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "backgroundColor": "transparent",
-            "theme": "light",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-inline-notification": {
-          "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "actionIcon": "arrow-head-right",
-            "actionLoading": false,
-            "description": "",
-            "heading": "",
-            "persistent": false,
-            "state": "neutral",
-            "theme": "dark",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "information",
-            "size": "small",
-            "theme": "light",
-          },
-        },
-      },
-      {
-        "p-button-pure": {
-          "children": "Close notification",
-          "hostPdsComponent": "p-inline-notification",
-          "properties": {
-            "active": false,
-            "alignLabel": "right",
             "disabled": false,
-            "hideLabel": true,
-            "icon": "close",
+            "hideLabel": false,
+            "icon": "arrow-head-right",
             "loading": false,
-            "size": "small",
-            "stretch": false,
             "tabbable": true,
             "theme": "light",
-            "type": "button",
-            "weight": "regular",
+            "type": "submit",
+            "variant": "primary",
           },
         },
       },
       {
         "p-icon": {
-          "hostPdsComponent": "p-button-pure",
+          "hostPdsComponent": "p-button",
           "properties": {
             "color": "inherit",
             "lazy": false,
-            "name": "close",
+            "name": "arrow-head-right",
             "size": "inherit",
-            "theme": "light",
+            "theme": "dark",
           },
         },
       },
