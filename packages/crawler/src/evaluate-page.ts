@@ -60,7 +60,7 @@ export const evaluatePage = async (
             return JSON.parse(
               jsonStr
                 .replace(/'/g, '"') // convert single quotes to double quotes
-                .replace(/[\s"]?([a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
+                .replace(/[\s"]?([a-z\-]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
             );
           } catch {
             // jsonStr is string, e.g. "block" or "inline"
