@@ -7,7 +7,8 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "test:e2e:puppeteer": "jest --colors -c tests/e2e/config/jest.config.ts"
+    "test:e2e:puppeteer": "jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:e2e": "concurrently -k -s 'first' -n 'cdn,puppeteer' 'serve-cdn' 'yarn test:e2e:puppeteer'"
   },
   "dependencies": {
     "@porsche-design-system/shared": "0.0.0",
