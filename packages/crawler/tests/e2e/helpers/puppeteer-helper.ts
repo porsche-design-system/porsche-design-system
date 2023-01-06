@@ -89,10 +89,15 @@ export const setContentWithDesignSystem = async (page: Page, pdsTestingContext: 
   const firstPdsVersionPrefixes = pdsTestingContext.firstPdsVersionPrefixes;
   const secondPdsVersionPrefixes = pdsTestingContext.secondPdsVersionPrefixes;
 
-  const firstLoaderScript = firstPdsVersionPrefixes ? getInternalLoaderScriptForPrefixes(firstPdsVersionPrefixes) : '';
+  let firstLoaderScript = firstPdsVersionPrefixes ? getInternalLoaderScriptForPrefixes(firstPdsVersionPrefixes) : '';
   const secondLoaderScript = secondPdsVersionPrefixes
     ? getExternalLoaderScriptForPrefixes(secondPdsVersionPrefixes)
     : '';
+
+  // by default load internal version script with an empty prerfix
+  if (!firstLoaderScript && !secondLoaderScript) {
+    firstLoaderScript = getInternalLoaderScriptForPrefixes(['']);
+  }
 
   await page.setContent(
     `
