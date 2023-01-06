@@ -731,3 +731,18 @@ exports[`should generate raw data correctly for 2 prefixes 1`] = `
   },
 }
 `;
+
+exports[`should retrieve children correctly 1`] = `
+{
+  "2.18.0-rc.1": {
+    "test-prefix": [
+      {
+        "p-banner": {
+          "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
+          "properties": {},
+        },
+      },
+    ],
+  },
+}
+`;
