@@ -1,12 +1,12 @@
-export type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+import { breakpointBase } from './breakpointBase';
+import { breakpointXS } from './breakpointXS';
+import { breakpointS } from './breakpointS';
+import { breakpointM } from './breakpointM';
+import { breakpointL } from './breakpointL';
+import { breakpointXL } from './breakpointXL';
+import { breakpointXXL } from './breakpointXXL';
 
-export const breakpointBase = '0px';
-export const breakpointXS = '480px';
-export const breakpointS = '760px';
-export const breakpointM = '1000px';
-export const breakpointL = '1300px';
-export const breakpointXL = '1760px';
-export const breakpointXXL = '1920px';
+export type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 export const breakpoint: { [key in Breakpoint]: string } = {
   base: breakpointBase,

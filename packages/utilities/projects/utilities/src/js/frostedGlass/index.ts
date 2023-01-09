@@ -1,2 +1,2 @@
-export { frostedGlassHigh } from './frostedGlassHigh';
-export { frostedGlassMedium } from './frostedGlassMedium';
+export { frostedGlassHighStyle } from './frostedGlassHighStyle';
+export { frostedGlassMediumStyle } from './frostedGlassMediumStyle';

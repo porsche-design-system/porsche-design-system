@@ -1,14 +1,12 @@
 export type { Breakpoint } from './breakpoint';
-export {
-  breakpoint,
-  breakpointBase,
-  breakpointXS,
-  breakpointS,
-  breakpointM,
-  breakpointL,
-  breakpointXL,
-  breakpointXXL,
-} from './breakpoint';
-export { mediaQueryMax } from './mediaQueryMax';
-export { mediaQueryMin } from './mediaQueryMin';
-export { mediaQueryMinMax } from './mediaQueryMinMax';
+export { breakpoint } from './breakpoint';
+export { breakpointBase } from './breakpointBase';
+export { breakpointXS } from './breakpointXS';
+export { breakpointS } from './breakpointS';
+export { breakpointM } from './breakpointM';
+export { breakpointL } from './breakpointL';
+export { breakpointXL } from './breakpointXL';
+export { breakpointXXL } from './breakpointXXL';
+export { getMediaQueryMin } from './getMediaQueryMin';
+export { getMediaQueryMax } from './getMediaQueryMax';
+export { getMediaQueryMinMax } from './getMediaQueryMinMax';

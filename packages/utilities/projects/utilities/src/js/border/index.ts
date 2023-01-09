@@ -1,3 +1,8 @@
 export { border } from './border';
-export { borderRadius, borderRadiusSmall, borderRadiusMedium, borderRadiusLarge } from './borderRadius';
-export { borderWidth, borderWidthBase, borderWidthThin } from './borderWidth';
+export { borderRadius } from './borderRadius';
+export { borderRadiusSmall } from './borderRadiusSmall';
+export { borderRadiusMedium } from './borderRadiusMedium';
+export { borderRadiusLarge } from './borderRadiusLarge';
+export { borderWidth } from './borderWidth';
+export { borderWidthBase } from './borderWidthBase';
+export { borderWidthThin } from './borderWidthThin';

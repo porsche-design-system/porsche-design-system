@@ -1,25 +1,23 @@
 export { fontFamily } from './fontFamily';
-export { fontHyphenation } from './fontHyphenation';
+export { fontHyphenationStyle } from './fontHyphenationStyle';
 export { fontLineHeight } from './fontLineHeight';
-export {
-  fontSize,
-  fontSizeText,
-  fontSizeTextXSmall,
-  fontSizeTextSmall,
-  fontSizeTextMedium,
-  fontSizeTextLarge,
-  fontSizeTextXLarge,
-  fontSizeHeading,
-  fontSizeHeadingSmall,
-  fontSizeHeadingMedium,
-  fontSizeHeadingLarge,
-  fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge,
-  fontSizeHeadingXXXLarge,
-  fontSizeDisplay,
-  fontSizeDisplayMedium,
-  fontSizeDisplayLarge,
-} from './fontSize';
+export { fontSize } from './fontSize';
+export { fontSizeText } from './fontSizeText';
+export { fontSizeTextXSmall } from './fontSizeTextXSmall';
+export { fontSizeTextSmall } from './fontSizeTextSmall';
+export { fontSizeTextMedium } from './fontSizeTextMedium';
+export { fontSizeTextLarge } from './fontSizeTextLarge';
+export { fontSizeTextXLarge } from './fontSizeTextXLarge';
+export { fontSizeHeading } from './fontSizeHeading';
+export { fontSizeHeadingSmall } from './fontSizeHeadingSmall';
+export { fontSizeHeadingMedium } from './fontSizeHeadingMedium';
+export { fontSizeHeadingLarge } from './fontSizeHeadingLarge';
+export { fontSizeHeadingXLarge } from './fontSizeHeadingXLarge';
+export { fontSizeHeadingXXLarge } from './fontSizeHeadingXXLarge';
+export { fontSizeHeadingXXXLarge } from './fontSizeHeadingXXXLarge';
+export { fontSizeDisplay } from './fontSizeDisplay';
+export { fontSizeDisplayMedium } from './fontSizeDisplayMedium';
+export { fontSizeDisplayLarge } from './fontSizeDisplayLarge';
 export { fontWeight, fontWeightRegular, fontWeightSemiBold, fontWeightBold } from './fontWeight';
 export { fontStyle, fontStyleNormal, fontStyleItalic } from './fontStyle';
 export { fontVariant } from './fontVariant';

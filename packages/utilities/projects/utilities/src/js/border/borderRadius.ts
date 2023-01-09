@@ -1,6 +1,6 @@
-export const borderRadiusSmall = '4px';
-export const borderRadiusMedium = '8px';
-export const borderRadiusLarge = '16px';
+import { borderRadiusSmall } from './borderRadiusSmall';
+import { borderRadiusMedium } from './borderRadiusMedium';
+import { borderRadiusLarge } from './borderRadiusLarge';
 
 export const borderRadius = {
   small: borderRadiusSmall,

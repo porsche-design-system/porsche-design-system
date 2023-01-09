@@ -1,4 +1,4 @@
-export { gradientBottom } from './gradientBottom';
-export { gradientLeft } from './gradientLeft';
-export { gradientRight } from './gradientRight';
-export { gradientTop } from './gradientTop';
+export { gradientBottomStyle } from './gradientBottomStyle';
+export { gradientLeftStyle } from './gradientLeftStyle';
+export { gradientRightStyle } from './gradientRightStyle';
+export { gradientTopStyle } from './gradientTopStyle';

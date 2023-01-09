@@ -1,6 +1,6 @@
-export { headingSmall } from './headingSmall';
-export { headingMedium } from './headingMedium';
-export { headingLarge } from './headingLarge';
-export { headingXLarge } from './headingXLarge';
-export { headingXXLarge } from './headingXXLarge';
-export { headingXXXLarge } from './headingXXXLarge';
+export { headingSmallStyle } from './headingSmallStyle';
+export { headingMediumStyle } from './headingMediumStyle';
+export { headingLargeStyle } from './headingLargeStyle';
+export { headingXLargeStyle } from './headingXLargeStyle';
+export { headingXXLargeStyle } from './headingXXLargeStyle';
+export { headingXXXLargeStyle } from './headingXXXLargeStyle';

@@ -1,23 +1,22 @@
 import type { ThemeColorSet } from './themeShared';
-
-export const themeLightPrimary = '#010205';
-export const themeLightBackgroundBase = '#FFF';
-export const themeLightBackgroundSurface = '#EEEFF2';
-export const themeLightContrastLow = '#D8D8DB';
-export const themeLightContrastMedium = '#949598';
-export const themeLightContrastHigh = '#535457';
-export const themeLightNotificationSuccess = '#32B85B';
-export const themeLightNotificationSuccessSoft = '#EBFAF0';
-export const themeLightNotificationWarning = '#FECC1B';
-export const themeLightNotificationWarningSoft = '#FFF9E6';
-export const themeLightNotificationError = '#E7323B';
-export const themeLightNotificationErrorSoft = '#FCE8E9';
-export const themeLightNotificationInfo = '#1E5BEB';
-export const themeLightNotificationInfoSoft = '#E8EEFD';
-export const themeLightStateHover = '#D8D8DB';
-export const themeLightStateActive = '#D8D8DB';
-export const themeLightStateFocus = '#0A0AFF';
-export const themeLightStateDisabled = '#D8D8DB';
+import { themeLightPrimary } from './themeLightPrimary';
+import { themeLightBackgroundBase } from './themeLightBackgroundBase';
+import { themeLightBackgroundSurface } from './themeLightBackgroundSurface';
+import { themeLightContrastLow } from './themeLightContrastLow';
+import { themeLightContrastMedium } from './themeLightContrastMedium';
+import { themeLightContrastHigh } from './themeLightContrastHigh';
+import { themeLightNotificationSuccess } from './themeLightNotificationSuccess';
+import { themeLightNotificationSuccessSoft } from './themeLightNotificationSuccessSoft';
+import { themeLightNotificationWarning } from './themeLightNotificationWarning';
+import { themeLightNotificationWarningSoft } from './themeLightNotificationWarningSoft';
+import { themeLightNotificationError } from './themeLightNotificationError';
+import { themeLightNotificationErrorSoft } from './themeLightNotificationErrorSoft';
+import { themeLightNotificationInfo } from './themeLightNotificationInfo';
+import { themeLightNotificationInfoSoft } from './themeLightNotificationInfoSoft';
+import { themeLightStateHover } from './themeLightStateHover';
+import { themeLightStateActive } from './themeLightStateActive';
+import { themeLightStateFocus } from './themeLightStateFocus';
+import { themeLightStateDisabled } from './themeLightStateDisabled';
 
 export const themeLight: ThemeColorSet = {
   primary: themeLightPrimary,

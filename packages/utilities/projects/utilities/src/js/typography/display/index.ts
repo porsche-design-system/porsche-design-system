@@ -1,2 +1,2 @@
-export { displayMedium } from './displayMedium';
-export { displayLarge } from './displayLarge';
+export { displayMediumStyle } from './displayMediumStyle';
+export { displayLargeStyle } from './displayLargeStyle';
