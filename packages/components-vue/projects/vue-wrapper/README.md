@@ -54,7 +54,7 @@ vue setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` fi
 
 ### Plugin 
 
-You can also use the `PorscheDesignSystemPlugin` to register the components globally.
+You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
 
 ```vue
 // main.ts
