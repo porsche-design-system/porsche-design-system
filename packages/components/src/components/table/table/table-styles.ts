@@ -1,4 +1,4 @@
-import { textSmall, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle, spacing, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToRule,
@@ -20,7 +20,7 @@ export const getComponentCss = (): string => {
     },
     caption: {
       marginBottom: spacingSmall,
-      [mediaQueryMin('m')]: {
+      [getMediaQueryMin('m')]: {
         marginBottom: spacingMedium,
       },
     },
@@ -35,7 +35,7 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      ...textSmall,
+      ...textSmallStyle,
       textAlign: 'left',
       color: primaryColor,
       whiteSpace: 'nowrap',

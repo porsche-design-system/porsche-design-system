@@ -10,16 +10,16 @@ import {
 import {
   gridWidth,
   gridSafeZone,
-  headingMedium,
-  textSmall,
-  mediaQueryMin,
+  headingMediumStyle,
+  textSmallStyle,
+  getMediaQueryMin,
   gridGap,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
 
-const mediaQueryS = mediaQueryMin('s');
-const mediaQueryXl = mediaQueryMin('xl');
+const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryXl = getMediaQueryMin('xl');
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -42,13 +42,13 @@ export const getComponentCss = (
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingMedium,
+        ...headingMediumStyle,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(900),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
-        ...textSmall,
+        ...textSmallStyle,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(550),

@@ -8,7 +8,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { fontLineHeight, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
@@ -91,7 +91,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         padding: `0 0 0 calc(${fontLineHeight} + ${pxToRemWithUnit(4)})`, // icon height + 4px
         background: 0,
         border: 0,
-        ...textSmall,
+        ...textSmallStyle,
         fontSize: 'inherit',
         whiteSpace: 'nowrap',
         ...getFocusJssStyle(),

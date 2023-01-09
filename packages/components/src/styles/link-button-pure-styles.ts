@@ -11,7 +11,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from './';
-import { fontLineHeight, fontSizeText, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from './hover-media-query';
 import { getFontWeight } from './font-weight-styles';
 
@@ -24,11 +24,11 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
     /* type FontSizeLineHeight = typeof fontSize.small;
     const { fontSize: size }: FontSizeLineHeight = fontSize.fluid[paramCaseToCamelCase(textSize)];*/
     /* const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: string } = {
-      'x-small': fontSize.fluid.textXSmall,
-      small: fontSize.fluid.textSmall,
+      'x-small': fontSize.fluid.textXSmallStyle,
+      small: fontSize.fluid.textSmallStyle,
       medium: { fontSize: '1.25rem' },
       large: { fontSize: '1.875rem' },
-      'x-large': fontSize.fluid.textLarge,
+      'x-large': fontSize.fluid.textLargeStyle,
     };*/
 
     return {
@@ -157,7 +157,7 @@ export const getLinkButtonPureStyles = (
           }),
         },
       }),
-      ...textSmall,
+      ...textSmallStyle,
       fontWeight: getFontWeight(weight),
       ...mergeDeep(
         !hasSubline &&
@@ -185,7 +185,7 @@ export const getLinkButtonPureStyles = (
       subline: {
         display: 'flex',
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
-        ...textSmall,
+        ...textSmallStyle,
         color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
         transition: getTransition('color'),
         ...(hasIcon && {

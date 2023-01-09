@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 const cssVariableOrderedSuffix = '--pds-text-list-item-ordered-suffix';
 const cssVariableUnorderedWidth = '--pds-text-list-item-unordered-width';
@@ -42,7 +42,7 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
               counterIncrement: 'section',
               textAlign: 'right',
               backgroundColor: 'transparent',
-              ...textSmall,
+              ...textSmallStyle,
             }
           : {
               ...beforeJssStyles,

@@ -17,7 +17,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -127,7 +127,7 @@ export const getComponentCss = (
           padding: pxToRemWithUnit(12),
           zIndex: 1,
           boxSizing: 'border-box',
-          ...textSmall,
+          ...textSmallStyle,
           color: contrastMediumColor,
         },
       }

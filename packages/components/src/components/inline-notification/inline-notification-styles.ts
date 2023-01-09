@@ -1,11 +1,11 @@
 import type { JssStyle } from 'jss';
-import { headingSmall, mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
+import { headingSmallStyle, getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../styles';
 
-const mediaQueryS = mediaQueryMin('s');
+const mediaQueryS = getMediaQueryMin('s');
 
 export const getComponentCss = (
   state: InlineNotificationState,
@@ -17,8 +17,8 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
-      h5: headingSmall,
-      p: textSmall,
+      h5: headingSmallStyle,
+      p: textSmallStyle,
       'h5,p': {
         margin: 0,
         color: textColor,

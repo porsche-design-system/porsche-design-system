@@ -9,7 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
@@ -90,7 +90,7 @@ export const getFilterStyles = (
         boxSizing: 'border-box',
         border: 'none',
         opacity: 0,
-        ...textSmall,
+        ...textSmallStyle,
         textIndent: 0,
         cursor: disabled ? 'not-allowed' : 'text',
         color: primaryColor,
@@ -163,7 +163,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         marginTop: pxToRemWithUnit(-1),
         color: primaryColor,
         background: backgroundColor,
-        ...textSmall,
+        ...textSmallStyle,
         zIndex: 10,
         left: 0,
         right: 0,

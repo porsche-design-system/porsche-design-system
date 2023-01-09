@@ -1,13 +1,13 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 
 const { backgroundColor, primaryColor } = getThemedColors('light');
 
-const mediaQueryXS = mediaQueryMin('xs');
+const mediaQueryXS = getMediaQueryMin('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
 
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
@@ -97,7 +97,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         verticalAlign: 'top',
       },
       p: {
-        ...textSmall,
+        ...textSmallStyle,
         margin: 0,
       },
     },
@@ -131,7 +131,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
-      ...textSmall,
+      ...textSmallStyle,
       listStyleType: 'none',
       color: primaryColor,
       whiteSpace: 'inherit',

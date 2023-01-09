@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
@@ -46,7 +46,7 @@ export const getComponentCss = (
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
         textDecoration: 'none',
-        ...textSmall,
+        ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
