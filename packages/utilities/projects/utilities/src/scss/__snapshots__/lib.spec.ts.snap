@@ -269,7 +269,7 @@ $pds-spacing-fluid-x-small: clamp(0.25rem, 0.28vw + 0.19rem, 0.5rem);
 $pds-spacing-fluid-small: 0.75rem;
 $pds-spacing-fluid-medium: clamp(2rem, 0.56vw + 1.89rem, 2.5rem);
 $pds-spacing-fluid-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
-$pds-spacing-fluid-x-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
+$pds-spacing-fluid-x-large: clamp(4rem, 10vw + 2rem, 13rem);
 "
 `;
 
@@ -333,9 +333,9 @@ $pds-theme-light-state-disabled: #d8d8db;
 $pds-theme-dark-primary: #fbfcff;
 $pds-theme-dark-background-base: #0e0e12;
 $pds-theme-dark-background-surface: #212225;
-$pds-theme-dark-contrast-low: #535457;
+$pds-theme-dark-contrast-low: #404044;
 $pds-theme-dark-contrast-medium: #7e7f82;
-$pds-theme-dark-contrast-high: #404044;
+$pds-theme-dark-contrast-high: #afb0b3;
 $pds-theme-dark-notification-success: #00c77e;
 $pds-theme-dark-notification-success-soft: #003320;
 $pds-theme-dark-notification-warning: #ddb84b;
