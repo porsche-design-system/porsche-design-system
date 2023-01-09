@@ -30,7 +30,7 @@ it('should retrieve children and hostPdsComponent correctly', async () => {
   });
 });
 
-it('should retrieve children correctly', async () => {
+it('should retrieve children correctly and put stripped content', async () => {
   await testCrawlerWithHtmlAndPrefixes({
     bodyHtml: `
       <p-flex>
