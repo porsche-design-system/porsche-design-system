@@ -1,1 +1,1 @@
-export { getFocus } from './focus';
+export { getFocusStyle } from './getFocusStyle';

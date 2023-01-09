@@ -9,7 +9,7 @@ import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import { getFocus, headingFluidMedium } from '../../../src/js';
+import { getFocusStyle, headingFluidMedium } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
 const formatAndNeutralizeStyle = (style: string): string => {
@@ -26,7 +26,7 @@ const formatAndNeutralizeStyle = (style: string): string => {
 let jssStyles: string;
 
 beforeEach(() => {
-  const useStyles = createUseStyles({ focus: getFocus(), heading: headingFluidMedium });
+  const useStyles = createUseStyles({ focus: getFocusStyle(), heading: headingFluidMedium });
 
   const JssSample = (): JSX.Element => {
     useStyles();
@@ -38,7 +38,7 @@ beforeEach(() => {
 });
 
 it('should have equal styles for styled-components and jss', () => {
-  const SampleStyles = styled.div({ focus: getFocus(), heading: headingFluidMedium });
+  const SampleStyles = styled.div({ focus: getFocusStyle(), heading: headingFluidMedium });
 
   render(
     <StyleSheetManager disableVendorPrefixes>

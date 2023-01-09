@@ -1,4 +1,4 @@
-import { getFocus } from './focus';
+import { getFocusStyle } from './getFocusStyle';
 import * as fromFocus from './';
 
 it('should provide all exports', () => {
@@ -6,10 +6,10 @@ it('should provide all exports', () => {
 });
 
 describe('getFocus()', () => {
-  it.each<Parameters<typeof getFocus>>([[], [{ offset: '5rem' }]])(
+  it.each<Parameters<typeof getFocusStyle>>([[], [{ offset: '5rem' }]])(
     'should return correct css for opts: %s',
     (...args) => {
-      expect(getFocus(...args)).toMatchSnapshot();
+      expect(getFocusStyle(...args)).toMatchSnapshot();
     }
   );
 });

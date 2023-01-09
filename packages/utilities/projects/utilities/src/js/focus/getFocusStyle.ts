@@ -5,17 +5,7 @@ type GetFocusOptions = {
   offset?: string;
 };
 
-type GetFocus = {
-  '&:focus': {
-    outline: string;
-    outlineOffset: string;
-    '&:not(:focus-visible)': {
-      outlineColor: 'transparent';
-    };
-  };
-};
-
-export const getFocus = (opts?: GetFocusOptions): GetFocus => {
+export const getFocusStyle = (opts?: GetFocusOptions) => {
   return {
     '&:focus': {
       outline: `${themeLight.state.focus} solid ${borderWidth.base}`,
@@ -25,5 +15,5 @@ export const getFocus = (opts?: GetFocusOptions): GetFocus => {
         outlineColor: 'transparent',
       },
     },
-  };
+  } as const;
 };
