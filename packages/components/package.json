@@ -7,7 +7,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "patchStencilCore": "ts-node --project tsconfig.node.json scripts/patchStencilCore.ts",
-    "prestart": "prestart": "yarn patchStencilCore && yarn prestart:prepareAriaTypes",
+    "prestart": "yarn patchStencilCore && yarn prestart:prepareAriaTypes",
     "prestart:prepareAriaTypes": "ts-node --project tsconfig.node.json scripts/prepareAriaTypes.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'PDS_IS_STAGING=1 stencil build --watch --serve --dev'",
     "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateThemesObject && yarn prebuild:generateConstructorMap",
