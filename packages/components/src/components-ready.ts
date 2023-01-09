@@ -1,23 +1,26 @@
-import { HostElement } from '@stencil/core/internal';
+import type { HostElement } from '@stencil/core/internal';
 
 type PromiseResolve = (amount: number) => void;
 
 export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
   let promiseResolve: PromiseResolve;
-  const promise = new Promise((resolve: PromiseResolve) => (promiseResolve = resolve));
+  const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
 
-  if (!isDocumentReady()) {
+  const waitForDesignSystemAndComponents = () =>
+    isDesignSystemReady().then(() => allComponentsLoaded(el, promiseResolve));
+
+  if (isDocumentReady()) {
+    waitForDesignSystemAndComponents();
+  } else {
     // if document isn't ready yet, we register readystatechange event listener
     const eventName = 'readystatechange';
     const eventHandler = (): void => {
       if (isDocumentReady()) {
         document.removeEventListener(eventName, eventHandler);
-        allComponentsLoaded(el, promiseResolve);
+        waitForDesignSystemAndComponents();
       }
     };
     document.addEventListener(eventName, eventHandler);
-  } else {
-    allComponentsLoaded(el, promiseResolve);
   }
 
   return promise;
@@ -25,13 +28,38 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
 
 const isDocumentReady = (): boolean => document.readyState === 'complete';
 
+const isDesignSystemReady = (): Promise<void> => {
+  if (document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION]?.isReady) {
+    return document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].isReady();
+  } else {
+    // we are to early and the design system isn't initialized, yet
+    // so we create a proxy to detect when the relevant version is set on document.porscheDesignSystem
+    // and then wait for its isReady() promise to resolve
+    // this can happen in tests
+    let promiseResolve: () => void;
+    const promise: Promise<void> = new Promise((resolve) => (promiseResolve = resolve));
+
+    const proxyHandler = {
+      set(_, prop, value: { isReady: () => Promise<void> }) {
+        if (prop === ROLLUP_REPLACE_VERSION) {
+          value.isReady().then(promiseResolve);
+        }
+        // @ts-ignore
+        return Reflect.set(...arguments);
+      },
+    };
+
+    document.porscheDesignSystem = new Proxy(document.porscheDesignSystem || {}, proxyHandler);
+
+    return promise;
+  }
+};
+
 const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => {
-  document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].isReady().then(() => {
-    const readyPromises = collectAllComponentOnReadyPromises(el);
-    Promise.all(readyPromises)
-      .then((proms) => resolve(proms.length))
-      .catch(console.error);
-  });
+  const readyPromises = collectAllComponentOnReadyPromises(el);
+  Promise.all(readyPromises)
+    .then((proms) => resolve(proms.length))
+    .catch(console.error);
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
