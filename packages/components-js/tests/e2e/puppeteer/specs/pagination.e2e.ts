@@ -12,7 +12,6 @@ import {
 } from '../helpers';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -42,7 +41,6 @@ it('should have no errors if disconnected before fully loaded', async () => {
   });
 
   await new Promise((resolve) => setTimeout(resolve, 10));
-
   expect(getConsoleErrorsAmount()).toBe(0);
 
   await page.evaluate(() => console.error('test error'));

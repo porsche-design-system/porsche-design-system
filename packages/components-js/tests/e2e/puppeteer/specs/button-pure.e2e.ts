@@ -4,24 +4,19 @@ import {
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
+  getEventSummary,
   getLifecycleStatus,
   hasFocus,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
+  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
-  expectToSkipFocusOnComponent,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-button-pure');
@@ -35,12 +30,13 @@ const initButtonPure = (opts?: { isLoading?: boolean; isDisabled?: boolean; with
   return setContentWithDesignSystem(
     page,
     `
-      <p-button-pure ${loading} ${disabled}>
-        Some label
-        ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
-      </p-button-pure>`
+    <p-button-pure ${loading} ${disabled}>
+      Some label
+      ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
+    </p-button-pure>`
   );
 };
+
 const clickableTests: ClickableTests = [
   {
     state: 'disabled',
@@ -58,8 +54,7 @@ for (const { state, setContent } of clickableTests) {
     const host = await getHost();
     const button = await getButton();
 
-    let calls = 0;
-    await addEventListener(host, 'click', () => calls++);
+    await addEventListener(host, 'click');
 
     await host.click();
     await button.click();
@@ -73,9 +68,7 @@ for (const { state, setContent } of clickableTests) {
     await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
     await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
 
-    await waitForStencilLifecycle(page);
-
-    expect(calls).toBe(0);
+    expect((await getEventSummary(host, 'click')).counter).toBe(0);
   });
 }
 
@@ -85,41 +78,35 @@ it('should dispatch correct click events', async () => {
   const wrapper = await selectNode(page, 'div');
   const host = await getHost();
   const button = await getButton();
-
-  const events = [];
-  await addEventListener(wrapper, 'click', (ev) => events.push(ev));
+  await addEventListener(wrapper, 'click');
 
   await button.click();
   await host.click();
+  const { counter, targets } = await getEventSummary(wrapper, 'click');
 
-  await waitForStencilLifecycle(page);
-  expect(events.length).toBe(2);
-  for (const event of events) {
-    expect(event.target.id).toBe('hostElement');
+  expect(counter).toBe(2);
+  for (const target of targets) {
+    expect(target.id).toBe('hostElement');
   }
 });
 
 it("submits parent form on click if it's type submit", async () => {
   await setContentWithDesignSystem(
     page,
-    `<form onsubmit="return false;"><p-button-pure type="submit">Some label</p-button-pure></form>`
+    `<form onsubmit="return false;">
+      <p-button-pure type="submit">Some label</p-button-pure>
+    </form>`
   );
   const button = await getButton();
   const host = await getHost();
   const form = await selectNode(page, 'form');
+  await addEventListener(form, 'submit');
 
-  let calls = 0;
-  await addEventListener(form, 'submit', () => calls++);
+  await button.click();
+  await host.click();
 
-  for (const triggerElement of [host, button]) {
-    await triggerElement.click();
-    await waitForEventSerialization();
-  }
-  await waitForEventSerialization(); // 🙈
-  await waitForEventSerialization(); // 🙈
-  await waitForEventSerialization(); // 🙈
-
-  expect(calls).toBe(2);
+  await waitForImproveButtonHandlingForCustomElement(page);
+  expect((await getEventSummary(form, 'submit')).counter).toBe(2);
 });
 
 it('should not submit the form if default is prevented', async () => {
@@ -140,12 +127,10 @@ it('should not submit the form if default is prevented', async () => {
 
   const button = await getButton();
   const form = await selectNode(page, 'form');
-
-  let calls = 0;
-  await addEventListener(form, 'submit', () => calls++);
+  await addEventListener(form, 'submit');
 
   await button.click();
-  expect(calls).toBe(0);
+  expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 });
 
 it('should not submit the form if button is disabled', async () => {
@@ -161,13 +146,12 @@ it('should not submit the form if button is disabled', async () => {
   const button = await getButton();
   const outerButton = await getHost();
   const form = await selectNode(page, 'form');
-
-  let calls = 0;
-  await addEventListener(form, 'submit', () => calls++);
+  await addEventListener(form, 'submit');
 
   await button.click();
   await outerButton.click();
-  expect(calls).toBe(0);
+
+  expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 });
 
 it('should trigger focus & blur events at the correct time', async () => {
@@ -185,77 +169,66 @@ it('should trigger focus & blur events at the correct time', async () => {
   const before = await selectNode(page, '#before');
   const after = await selectNode(page, '#after');
 
-  let beforeFocusCalls = 0;
-  await addEventListener(before, 'focus', () => beforeFocusCalls++);
-  let buttonFocusCalls = 0;
-  await addEventListener(button, 'focus', () => buttonFocusCalls++);
-  let buttonFocusInCalls = 0;
-  await addEventListener(button, 'focusin', () => buttonFocusInCalls++);
-  let buttonBlurCalls = 0;
-  await addEventListener(button, 'blur', () => buttonBlurCalls++);
-  let buttonFocusOutCalls = 0;
-  await addEventListener(button, 'focusout', () => buttonFocusOutCalls++);
-  let afterFocusCalls = 0;
-  await addEventListener(after, 'focus', () => afterFocusCalls++);
+  await addEventListener(before, 'focus');
+  await addEventListener(button, 'focus');
+  await addEventListener(button, 'focusin');
+  await addEventListener(button, 'blur');
+  await addEventListener(button, 'focusout');
+  await addEventListener(after, 'focus');
 
-  expect(beforeFocusCalls, 'beforeFocusCalls initially').toBe(0);
-  expect(buttonFocusCalls, 'buttonFocusCalls initially').toBe(0);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls initially').toBe(0);
-  expect(buttonBlurCalls, 'buttonBlurCalls initially').toBe(0);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls initially').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls initially').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
-  expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab').toBe(0);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab').toBe(0);
-  expect(buttonBlurCalls, 'buttonBlurCalls after 1st tab').toBe(0);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 1st tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
-  expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab').toBe(1);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab').toBe(1);
-  expect(buttonBlurCalls, 'buttonBlurCalls after 2nd tab').toBe(0);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 2nd tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-button-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
-  expect(buttonFocusCalls, 'buttonFocusCalls after 3rd tab').toBe(1);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls after 3rd tab').toBe(1);
-  expect(buttonBlurCalls, 'buttonBlurCalls after 3rd tab').toBe(1);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 3rd tab').toBe(1);
-  expect(afterFocusCalls, 'afterFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
 
   // tab back
   await page.keyboard.down('ShiftLeft');
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
-  expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab back').toBe(2);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab back').toBe(2);
-  expect(buttonBlurCalls, 'buttonBlurCalls after 1st tab back').toBe(1);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 1st tab back').toBe(1);
-  expect(afterFocusCalls, 'afterFocusCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-button-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
-  expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab back').toBe(2);
-  expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab back').toBe(2);
-  expect(buttonBlurCalls, 'buttonBlurCalls after 2nd tab back').toBe(2);
-  expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
-  expect(afterFocusCalls, 'afterFocusCalls after 2nd tab back').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(button, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(button, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(button, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(button, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
   await page.keyboard.up('ShiftLeft');
@@ -302,37 +275,38 @@ it('should submit form via enter key when type is submit', async () => {
     </script>`
   );
 
-  let submitCalls = 0;
-  await addEventListener(await selectNode(page, 'form'), 'submit', () => submitCalls++);
+  const host = await getHost();
+  const form = await selectNode(page, 'form');
+  await addEventListener(form, 'submit');
 
   const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
     await el.focus();
     await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
+    await waitForImproveButtonHandlingForCustomElement(page);
   };
 
   const input = await selectNode(page, 'input');
   await focusElAndPressEnter(input);
-  expect(submitCalls).toBe(1);
+  expect((await getEventSummary(form, 'submit')).counter).toBe(1);
 
-  const host = await getHost();
   await focusElAndPressEnter(host);
-  expect(submitCalls).toBe(1); // type isn't submit, yet
+  expect((await getEventSummary(form, 'submit')).counter).toBe(1); // type isn't submit, yet
 
   await setProperty(host, 'type', 'button');
   await focusElAndPressEnter(host);
-  expect(submitCalls).toBe(1); // type isn't submit, yet
+  expect((await getEventSummary(form, 'submit')).counter).toBe(1); // type isn't submit, yet
 
   await setProperty(host, 'type', 'reset');
   await focusElAndPressEnter(host);
-  expect(submitCalls).toBe(1); // type isn't submit, yet
+  expect((await getEventSummary(form, 'submit')).counter).toBe(1); // type isn't submit, yet
 
   await setProperty(host, 'type', 'submit');
+  await waitForStencilLifecycle(page);
   await focusElAndPressEnter(host);
-  expect(submitCalls).toBe(2);
+  expect((await getEventSummary(form, 'submit')).counter).toBe(2);
 
   await focusElAndPressEnter(host);
-  expect(submitCalls).toBe(3);
+  expect((await getEventSummary(form, 'submit')).counter).toBe(3);
 });
 
 it('should add aria-busy when loading and remove if finished', async () => {

@@ -1,28 +1,23 @@
 import {
   addEventListener,
   getCssClasses,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
-  initAddEventListener,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { BannerState } from '@porsche-design-system/components/dist/types/bundle';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
 const CSS_FADE_IN_DURATION = 600;
 const CSS_FADE_OUT_DURATION = 600;
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initBanner = (state?: BannerState): Promise<void> => {
@@ -31,10 +26,10 @@ const initBanner = (state?: BannerState): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
-      <p-banner ${attributes}>
-        <span slot="title">Some notification title</span>
-        <span slot="description">Some notification description.</span>
-      </p-banner>`
+    <p-banner ${attributes}>
+      <span slot="title">Some notification title</span>
+      <span slot="description">Some notification description.</span>
+    </p-banner>`
   );
 };
 
@@ -67,12 +62,10 @@ describe('close', () => {
 
   it('should remove banner from DOM by click on close button', async () => {
     await initBanner();
-
-    const closeButton = await getCloseButton();
-
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
+    const closeButton = await getCloseButton();
     await closeButton.click();
-    await waitForEventSerialization();
+
     // we have to wait for the animation to end before the dom is cleared
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
@@ -80,10 +73,9 @@ describe('close', () => {
 
   it('should remove banner from DOM by trigger ESC key', async () => {
     await initBanner();
-
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await page.keyboard.press('Escape');
-    await waitForEventSerialization();
+
     // we have to wait for the animation to end before the dom is cleared
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
     expect(await getHost()).toBeNull();
@@ -91,35 +83,28 @@ describe('close', () => {
 
   it('should emit custom event by click on close button', async () => {
     await initBanner();
-
     const host = await getHost();
     const closeButton = await getCloseButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    await addEventListener(host, 'dismiss');
 
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization();
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
   it('should remove and re-attach event', async () => {
     await initBanner();
-
     const host = await getHost();
     const closeButton = await getCloseButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
     await closeButton.click();
-    await waitForEventSerialization();
-    await waitForEventSerialization(); // 🙈
 
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
   it('should not influence other banner styles', async () => {
@@ -149,7 +134,6 @@ describe('close', () => {
     expect(banner1Styles).toEqual(banner2Styles);
 
     await closeButtonBanner2.click();
-    await waitForEventSerialization();
 
     const classListBanner1AfterClick = await getCssClasses(banner1);
     const banner1StylesAfterClick = await getComputedElementHandleStyles(banner1);

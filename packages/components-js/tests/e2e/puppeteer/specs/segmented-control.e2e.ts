@@ -1,26 +1,21 @@
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  getEventSummary,
   getLifecycleStatus,
   getOffsetWidth,
   getProperty,
   hasFocus,
-  initAddEventListener,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-segmented-control');
@@ -146,21 +141,16 @@ describe('events', () => {
     const host = await getHost();
     const [button1, button2] = await getAllItemButtons();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
+    await addEventListener(host, 'segmentedControlChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await button2.click();
-    await waitForEventSerialization();
-
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
 
     await button1.click();
-    await waitForEventSerialization();
-
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(2);
   });
 
   it('should not trigger event if item is disabled', async () => {
@@ -169,16 +159,13 @@ describe('events', () => {
     const secondItemHost = await getSecondItemHost();
     const [, button2] = await getAllItemButtons();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
+    await addEventListener(host, 'segmentedControlChange');
 
     await setProperty(secondItemHost, 'disabled', true);
     await waitForStencilLifecycle(page);
 
     await button2.click();
-    await waitForEventSerialization();
-
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
   });
 
   it('should not trigger event if item is selected', async () => {
@@ -187,15 +174,12 @@ describe('events', () => {
     const firstItemHost = await getFirstItemHost();
     const button = await getFirstItemButton();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
+    await addEventListener(host, 'segmentedControlChange');
 
     expect(await getProperty(firstItemHost, 'selected')).toBe(true);
 
     await button.click();
-    await waitForEventSerialization();
-
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
   });
 });
 

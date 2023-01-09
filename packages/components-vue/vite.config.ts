@@ -4,9 +4,12 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import * as path from 'path';
 
+const rootDir = '../..';
 const projectDir = 'projects/vue-wrapper';
 const outputDir = 'dist/vue-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
+
+const destinationDir = path.resolve(outputDir);
 
 // Config to build vue-wrapper components library
 export default defineConfig({
@@ -14,7 +17,13 @@ export default defineConfig({
     vue(),
     vueJsx(),
     viteStaticCopy({
-      targets: [{ src: path.resolve(projectDir, 'package.json'), dest: path.resolve(outputDir) }],
+      targets: [
+        `${rootDir}/LICENSE`,
+        `${rootDir}/OSS_NOTICE`,
+        `${projectDir}/README.md`,
+        `${projectDir}/package.json`,
+        '../components/CHANGELOG.md',
+      ].map((filePath) => ({ src: path.resolve(filePath), dest: destinationDir })),
     }),
   ],
   build: {
@@ -27,7 +36,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue', '@porsche-design-system/components-js'],
       output: {
-        dir: path.resolve(outputDir),
+        dir: destinationDir,
         preserveModules: true,
         globals: {
           vue: 'Vue',

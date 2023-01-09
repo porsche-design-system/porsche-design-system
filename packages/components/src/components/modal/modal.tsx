@@ -10,7 +10,7 @@ import {
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
-import type { ModalAriaAttributes } from './modal-utils';
+import type { ModalAriaAttribute } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
 import { getComponentCss, getSlottedCss } from './modal-styles';
 
@@ -20,7 +20,7 @@ const propTypes: PropTypes<typeof Modal> = {
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   fullscreen: AllowedTypes.breakpoint('boolean'),
-  aria: AllowedTypes.aria<ModalAriaAttributes>(MODAL_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -46,7 +46,7 @@ export class Modal {
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;

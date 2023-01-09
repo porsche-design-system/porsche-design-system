@@ -2,13 +2,12 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
+  getEventSummary,
   getLifecycleStatus,
-  initAddEventListener,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
@@ -16,11 +15,7 @@ import type { InlineNotificationState } from '@porsche-design-system/components/
 import { INLINE_NOTIFICATION_STATES } from '@porsche-design-system/components/src/components/inline-notification/inline-notification-utils';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initInlineNotification = (opts?: {
@@ -70,15 +65,10 @@ describe('close button', () => {
 
     const host = await getHost();
     const closeButton = await getCloseButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    await addEventListener(host, 'dismiss');
 
     await closeButton.click();
-    await waitForEventSerialization();
-    await waitForEventSerialization(); // 🙈
-    await waitForEventSerialization(); // 🙈
-
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
   it('should remove and re-attach event', async () => {
@@ -86,18 +76,13 @@ describe('close button', () => {
 
     const host = await getHost();
     const closeButton = await getCloseButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await closeButton.click();
-    await waitForEventSerialization();
-    await waitForEventSerialization(); // 🙈
-    await waitForEventSerialization(); // 🙈
-
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 });
 
@@ -107,12 +92,10 @@ describe('action button', () => {
 
     const host = await getHost();
     const actionButton = await getActionButton();
-    let calls = 0;
-    await addEventListener(host, 'action', () => calls++);
+    await addEventListener(host, 'action');
 
     await actionButton.click();
-    await waitForEventSerialization();
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'action')).counter).toBe(1);
   });
 });
 

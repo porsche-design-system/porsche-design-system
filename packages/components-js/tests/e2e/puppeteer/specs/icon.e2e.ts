@@ -7,14 +7,12 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { IconName } from '@porsche-design-system/components/dist/types/bundle';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -180,7 +178,7 @@ describe('loading behavior', () => {
         expect(await getContent(await getIcon())).toContain('highway');
 
         await setProperty(host, 'name', 'light');
-        await waitForEventSerialization();
+        await waitForStencilLifecycle(page);
         expect(await getContent(await getIcon())).toEqual('');
 
         await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);

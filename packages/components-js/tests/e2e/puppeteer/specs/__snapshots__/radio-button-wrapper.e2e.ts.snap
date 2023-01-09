@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`radio-button-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = error 1`] = `
+exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = error 1`] = `
 {
   "checked": false,
   "invalid": "true",
@@ -9,7 +9,7 @@ exports[`radio-button-wrapper accessibility should add/remove accessibility tree
 }
 `;
 
-exports[`radio-button-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = none 1`] = `
+exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = none 1`] = `
 {
   "checked": false,
   "name": "Some label",
@@ -17,7 +17,7 @@ exports[`radio-button-wrapper accessibility should add/remove accessibility tree
 }
 `;
 
-exports[`radio-button-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = success 1`] = `
+exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = success 1`] = `
 {
   "checked": false,
   "name": "Some label. Some success message.",
@@ -25,7 +25,7 @@ exports[`radio-button-wrapper accessibility should add/remove accessibility tree
 }
 `;
 
-exports[`radio-button-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = error 1`] = `
+exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = error 1`] = `
 {
   "children": [
     {
@@ -59,7 +59,7 @@ exports[`radio-button-wrapper accessibility should add/remove accessibility tree
 }
 `;
 
-exports[`radio-button-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = success 1`] = `
+exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = success 1`] = `
 {
   "children": [
     {
@@ -90,7 +90,7 @@ exports[`radio-button-wrapper accessibility should add/remove accessibility tree
 }
 `;
 
-exports[`radio-button-wrapper accessibility should expose correct accessibility tree properties in error state: Of Input 1`] = `
+exports[`accessibility should expose correct accessibility tree properties in error state: Of Input 1`] = `
 {
   "checked": false,
   "invalid": "true",
@@ -99,7 +99,7 @@ exports[`radio-button-wrapper accessibility should expose correct accessibility 
 }
 `;
 
-exports[`radio-button-wrapper accessibility should expose correct accessibility tree properties in error state: Of Message 1`] = `
+exports[`accessibility should expose correct accessibility tree properties in error state: Of Message 1`] = `
 {
   "children": [
     {
@@ -133,7 +133,7 @@ exports[`radio-button-wrapper accessibility should expose correct accessibility 
 }
 `;
 
-exports[`radio-button-wrapper accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
   "checked": false,
   "name": "Some label",

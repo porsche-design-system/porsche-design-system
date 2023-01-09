@@ -1,5 +1,5 @@
 import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttributes, MarqueSize } from './marque-utils';
+import type { MarqueAriaAttribute, MarqueSize } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_SIZES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
@@ -11,7 +11,7 @@ const propTypes: PropTypes<typeof Marque> = {
   size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
-  aria: AllowedTypes.aria<MarqueAriaAttributes>(MARQUE_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<MarqueAriaAttribute>(MARQUE_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -34,7 +34,7 @@ export class Marque {
   @Prop() public target?: LinkTarget = '_self';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttribute>;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
