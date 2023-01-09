@@ -3,7 +3,7 @@
 exports[`should contain correct content for auto generated file ./src/scss/lib/_border.scss 1`] = `
 "$pds-border-radius-small: 4px;
 $pds-border-radius-medium: 8px;
-$pds-border-radius-large: 12px;
+$pds-border-radius-large: 16px;
 $pds-border-width-base: 2px;
 $pds-border-width-thin: 1px;
 "
@@ -21,24 +21,14 @@ $pds-breakpoint-xxl: 1920px;
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_display.scss 1`] = `
-"@mixin pds-display-fluid-medium {
+"@mixin pds-display-medium {
   font: italic normal 600 clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-display-fluid-large {
+@mixin pds-display-large {
   font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
-}
-
-@mixin pds-display-static-medium {
-  font: italic normal 600 4rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-display-static-large {
-  font: italic normal 600 5rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
 }
 "
 `;
@@ -60,35 +50,22 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_font.scss 1`] = `
 "$pds-font-family: "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-$pds-font-hyphenation-overflow-wrap: break-word;
-$pds-font-hyphenation-hyphens: auto;
+$pds-font-hyphenation-style-overflow-wrap: break-word;
+$pds-font-hyphenation-style-hyphens: auto;
 $pds-font-line-height: calc(6px + 2.125ex);
-$pds-font-size-static-text-x-small: 0.875rem;
-$pds-font-size-static-text-small: 1rem;
-$pds-font-size-static-text-medium: 1.25rem;
-$pds-font-size-static-text-large: 1.5rem;
-$pds-font-size-static-text-x-large: 2.25rem;
-$pds-font-size-static-heading-small: 1rem;
-$pds-font-size-static-heading-medium: 1.25rem;
-$pds-font-size-static-heading-large: 1.5rem;
-$pds-font-size-static-heading-x-large: 2.25rem;
-$pds-font-size-static-heading-xx-large: 3rem;
-$pds-font-size-static-heading-xxx-large: 4rem;
-$pds-font-size-static-display-medium: 4rem;
-$pds-font-size-static-display-large: 5rem;
-$pds-font-size-fluid-text-x-small: 0.875rem;
-$pds-font-size-fluid-text-small: 1rem;
-$pds-font-size-fluid-text-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
-$pds-font-size-fluid-text-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
-$pds-font-size-fluid-text-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
-$pds-font-size-fluid-heading-small: 1rem;
-$pds-font-size-fluid-heading-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
-$pds-font-size-fluid-heading-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
-$pds-font-size-fluid-heading-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
-$pds-font-size-fluid-heading-xx-large: clamp(2.07rem, 0.96vw + 1.88rem, 2.94rem);
-$pds-font-size-fluid-heading-xxx-large: clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem);
-$pds-font-size-fluid-display-medium: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
-$pds-font-size-fluid-display-large: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+$pds-font-size-text-x-small: 0.875rem;
+$pds-font-size-text-small: 1rem;
+$pds-font-size-text-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
+$pds-font-size-text-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
+$pds-font-size-text-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
+$pds-font-size-heading-small: 1rem;
+$pds-font-size-heading-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
+$pds-font-size-heading-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
+$pds-font-size-heading-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
+$pds-font-size-heading-xx-large: clamp(2.07rem, 0.96vw + 1.88rem, 2.94rem);
+$pds-font-size-heading-xxx-large: clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem);
+$pds-font-size-display-medium: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+$pds-font-size-display-large: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
 $pds-font-weight-regular: 400;
 $pds-font-weight-semi-bold: 600;
 $pds-font-weight-bold: 700;
@@ -102,19 +79,41 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 "@mixin pds-frosted-glass-high {
   backdrop-filter: blur(16px);
   background-color: rgba(14, 14, 18, 0.8);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 @mixin pds-frosted-glass-medium {
   backdrop-filter: blur(8px);
   background-color: rgba(14, 14, 18, 0.8);
+  -webkit-backdrop-filter: blur(8px);
 }
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_gradient.scss 1`] = `
-"@mixin pds-gradient-top {
+"@mixin pds-gradient-bottom {
   background-color: linear-gradient(
-    to top,
+    to bottom,
+    rgba(31, 31, 31, 0.9) 0%,
+    rgba(31, 31, 31, 0.9) 20%,
+    rgba(31, 31, 31, 0.852589) 26.67%,
+    rgba(32, 32, 32, 0.768225) 33.33%,
+    rgba(33, 33, 33, 0.668116) 40%,
+    rgba(34, 34, 34, 0.557309) 46.67%,
+    rgba(35, 35, 35, 0.442691) 53.33%,
+    rgba(36, 36, 36, 0.331884) 60%,
+    rgba(37, 37, 37, 0.231775) 66.67%,
+    rgba(38, 38, 38, 0.147411) 73.33%,
+    rgba(39, 39, 39, 0.0816599) 80%,
+    rgba(39, 39, 39, 0.03551) 86.67%,
+    rgba(39, 39, 39, 0.0086472) 93.33%,
+    rgba(39, 39, 39, 0) 100%
+  );
+}
+
+@mixin pds-gradient-left {
+  background-color: linear-gradient(
+    to left,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,
     rgba(31, 31, 31, 0.852589) 26.67%,
@@ -152,29 +151,9 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   );
 }
 
-@mixin pds-gradient-bottom {
+@mixin pds-gradient-top {
   background-color: linear-gradient(
-    to bottom,
-    rgba(31, 31, 31, 0.9) 0%,
-    rgba(31, 31, 31, 0.9) 20%,
-    rgba(31, 31, 31, 0.852589) 26.67%,
-    rgba(32, 32, 32, 0.768225) 33.33%,
-    rgba(33, 33, 33, 0.668116) 40%,
-    rgba(34, 34, 34, 0.557309) 46.67%,
-    rgba(35, 35, 35, 0.442691) 53.33%,
-    rgba(36, 36, 36, 0.331884) 60%,
-    rgba(37, 37, 37, 0.231775) 66.67%,
-    rgba(38, 38, 38, 0.147411) 73.33%,
-    rgba(39, 39, 39, 0.0816599) 80%,
-    rgba(39, 39, 39, 0.03551) 86.67%,
-    rgba(39, 39, 39, 0.0086472) 93.33%,
-    rgba(39, 39, 39, 0) 100%
-  );
-}
-
-@mixin pds-gradient-left {
-  background-color: linear-gradient(
-    to left,
+    to top,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,
     rgba(31, 31, 31, 0.852589) 26.67%,
@@ -247,64 +226,34 @@ $pds-grid-width-max: 1920px;
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
-"@mixin pds-heading-fluid-small {
+"@mixin pds-heading-small {
   font: normal normal 600 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
 }
 
-@mixin pds-heading-fluid-medium {
+@mixin pds-heading-medium {
   font: normal normal 600 clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-fluid-large {
+@mixin pds-heading-large {
   font: normal normal 600 clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-fluid-x-large {
+@mixin pds-heading-x-large {
   font: normal normal 600 clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-fluid-xx-large {
+@mixin pds-heading-xx-large {
   font: normal normal 600 clamp(2.07rem, 0.96vw + 1.88rem, 2.94rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-fluid-xxx-large {
+@mixin pds-heading-xxx-large {
   font: normal normal 600 clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
-}
-
-@mixin pds-heading-static-small {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-static-medium {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-static-large {
-  font: normal normal 600 1.5rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-static-x-large {
-  font: normal normal 600 2.25rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-static-xx-large {
-  font: normal normal 600 3rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-static-xxx-large {
-  font: normal normal 600 4rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
 }
 "
 `;
@@ -320,77 +269,42 @@ $pds-spacing-fluid-x-small: clamp(0.25rem, 0.28vw + 0.19rem, 0.5rem);
 $pds-spacing-fluid-small: 0.75rem;
 $pds-spacing-fluid-medium: clamp(2rem, 0.56vw + 1.89rem, 2.5rem);
 $pds-spacing-fluid-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
-$pds-spacing-fluid-x-large: clamp(4rem, 10vw + 2rem, 13rem);
+$pds-spacing-fluid-x-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_text.scss 1`] = `
-"@mixin pds-text-fluid-x-small {
+"@mixin pds-text-x-small {
   font: normal normal 400 0.875rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
 }
 
-@mixin pds-text-fluid-small {
+@mixin pds-text-small {
   font: normal normal 400 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
 }
 
-@mixin pds-text-fluid-medium {
+@mixin pds-text-medium {
   font: normal normal 400 clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
 }
 
-@mixin pds-text-fluid-large {
+@mixin pds-text-large {
   font: normal normal 400 clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
 }
 
-@mixin pds-text-fluid-x-large {
+@mixin pds-text-x-large {
   font: normal normal 400 clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-
-@mixin pds-text-static-x-small {
-  font: normal normal 400 0.875rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-
-@mixin pds-text-static-small {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-
-@mixin pds-text-static-medium {
-  font: normal normal 400 1.25rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-
-@mixin pds-text-static-large {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-
-@mixin pds-text-static-x-large {
-  font: normal normal 400 2.25rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
 }
@@ -419,9 +333,9 @@ $pds-theme-light-state-disabled: #d8d8db;
 $pds-theme-dark-primary: #fbfcff;
 $pds-theme-dark-background-base: #0e0e12;
 $pds-theme-dark-background-surface: #212225;
-$pds-theme-dark-contrast-high: #535457;
+$pds-theme-dark-contrast-low: #535457;
 $pds-theme-dark-contrast-medium: #7e7f82;
-$pds-theme-dark-contrast-low: #404044;
+$pds-theme-dark-contrast-high: #404044;
 $pds-theme-dark-notification-success: #00c77e;
 $pds-theme-dark-notification-success-soft: #003320;
 $pds-theme-dark-notification-warning: #ddb84b;

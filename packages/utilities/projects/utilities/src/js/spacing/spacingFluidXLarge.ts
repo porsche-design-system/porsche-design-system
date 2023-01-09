@@ -1,1 +1,1 @@
-export const spacingFluidXLarge = 'clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)';
+export const spacingFluidXLarge = 'clamp(4rem, 10vw + 2rem, 13rem)';

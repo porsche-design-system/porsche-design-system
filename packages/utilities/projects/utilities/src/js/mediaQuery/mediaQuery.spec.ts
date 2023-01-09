@@ -5,7 +5,7 @@ import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 import * as fromMediaQuery from './';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromMediaQuery).length).toBe(4);
+  expect(Object.keys(fromMediaQuery).length).toBe(11);
 });
 
 describe('mediaQueryMin()', () => {

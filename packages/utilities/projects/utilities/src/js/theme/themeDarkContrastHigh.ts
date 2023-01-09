@@ -1,1 +1,1 @@
-export const themeDarkContrastHigh = '#404044';
+export const themeDarkContrastHigh = '#AFB0B3';
