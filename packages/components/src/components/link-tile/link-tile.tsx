@@ -10,7 +10,7 @@ import {
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
 import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
-import type { LinkAriaAttributes } from '../link/link-utils';
+import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import {
@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -81,7 +81,7 @@ export class LinkTile {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
