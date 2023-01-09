@@ -1,10 +1,10 @@
 import normalize from 'normalize-jss';
-import { create, Styles } from 'jss';
+import { create, JssStyle, Styles } from 'jss';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { color, font, fontFamily } from '@porsche-design-system/utilities';
+import { color, font } from '@porsche-design-system/utilities';
 
 export const generateNormalizeStylesPartial = (): string => {
   const types = `type GetNormalizeStylesOptions = {
@@ -14,6 +14,103 @@ export const generateNormalizeStylesPartial = (): string => {
 type GetNormalizeStylesOptionsFormatHtml = GetNormalizeStylesOptions & { format: 'html' };
 type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 'jsx' }`;
   `;`;
+
+  const formElementsStyles: JssStyle = {
+    textSizeAdjust: 'none',
+    WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+    fontFamily: font.family,
+    fontSize: font.size.small.fontSize,
+    lineHeight: font.size.small.lineHeight,
+    fontWeight: font.weight.regular,
+    fontStyle: 'normal',
+    fontVariant: 'normal',
+    overflowWrap: 'break-word',
+    hyphens: 'auto',
+  };
+
+  const anchorStyles: JssStyle = {
+    color: 'inherit',
+    textDecoration: 'underline',
+  };
+
+  const strongStyles: JssStyle = {
+    fontWeight: font.weight.bold,
+  };
+
+  const emphasisStyles: JssStyle = {
+    fontStyle: 'normal',
+  };
+
+  const hoverTransitionStyles: JssStyle = {
+    transition: 'color var(--p-transition-duration, .24s) ease',
+  };
+
+  const hoverTransitionStylesThemeDark: JssStyle = {
+    transition: 'color var(--p-transition-duration, .24s) ease',
+  };
+
+  const hoverColorStyles: JssStyle = {
+    color: color.state.hover,
+  };
+
+  const hoverColorStylesThemeDark: JssStyle = {
+    color: color.darkTheme.state.hover,
+  };
+
+  const defaultFocusStyles: JssStyle = {
+    outline: '1px solid transparent',
+    outlineOffset: '1px',
+  };
+
+  const mozFocusInnerStyles: JssStyle = {
+    border: 0,
+  };
+
+  const elFocusStyles: JssStyle = {
+    outlineColor: 'currentColor',
+  };
+
+  const elFocusNotVisibleStyles: JssStyle = {
+    outlineColor: 'transparent',
+  };
+
+  const normalizeCss = normalize[Object.keys(normalize)[0]];
+
+  const addCustomStylesToNormalizeCss = (
+    selector: string | string[],
+    styles: JssStyle,
+    nestedSelector?: string | string[]
+  ) => {
+    if (!normalizeCss[selector]) {
+      normalizeCss[selector] = {};
+    }
+    if (nestedSelector && !normalizeCss[selector][nestedSelector]) {
+      normalizeCss[selector][nestedSelector] = {};
+    }
+    for (const [key, value] of Object.entries(styles)) {
+      nestedSelector
+        ? (normalizeCss[selector][nestedSelector][`${key}`] = value)
+        : (normalizeCss[selector][`${key}`] = value);
+    }
+  };
+
+  const addHoverStyles = (): void => {
+    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStyles, 'a');
+    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStylesThemeDark, 'a');
+    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStyles, 'a:hover');
+    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStylesThemeDark, 'a:hover');
+  };
+
+  const addFocusStyles = (): void => {
+    const focusableElements = ['a', 'button', 'input', 'select', 'textarea'];
+    addCustomStylesToNormalizeCss(['a, button, input, select, textarea'], defaultFocusStyles);
+
+    for (const el of focusableElements) {
+      addCustomStylesToNormalizeCss(`${el}::-moz-focus-inner`, mozFocusInnerStyles);
+      addCustomStylesToNormalizeCss(`${el}:focus`, elFocusStyles);
+      addCustomStylesToNormalizeCss(`${el}:focus:not(:focus-visible)`, elFocusNotVisibleStyles);
+    }
+  };
 
   const minifyCss = (css: string): string =>
     css.replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
@@ -34,52 +131,12 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
       })
       .toString();
 
-  const normalizeCss = normalize[Object.keys(normalize)[0]];
-
-  normalizeCss['html']['textSizeAdjust'] = 'none';
-  normalizeCss['html']['WebkitTextSizeAdjust'] = 'none'; // stop iOS safari from adjusting font size when screen rotation is changing
-  normalizeCss['html']['fontFamily'] = fontFamily;
-  // TODO: line-height, some default text styles should be provided and margin + padding is reset
-
-  normalizeCss['a']['color'] = 'inherit';
-  normalizeCss['a']['textDecoration'] = 'underline';
-
-  normalizeCss['@media(hover:hover)'] = {};
-  normalizeCss['@media(hover:hover)']['a'] = {};
-  normalizeCss['@media(hover:hover)']['a']['transition'] = 'color var(--p-transition-duration, .24s) ease';
-  normalizeCss['@media(hover:hover)']['a:hover'] = {};
-  normalizeCss['@media(hover:hover)']['a:hover']['color'] = color.state.hover;
-
-  normalizeCss['@media(hover:hover)']['[data-theme="dark"] a'] = {};
-  normalizeCss['@media(hover:hover)']['[data-theme="dark"] a']['transition'] =
-    'color var(--p-transition-duration, .24s) ease';
-  normalizeCss['@media(hover:hover)']['[data-theme="dark"] a:hover'] = {};
-  normalizeCss['@media(hover:hover)']['[data-theme="dark"] a:hover']['color'] = color.darkTheme.state.hover;
-
-  normalizeCss['b, strong']['fontWeight'] = font.weight.bold;
-
-  normalizeCss['em, i'] = {};
-  normalizeCss['em, i']['fontStyle'] = 'normal';
-
-  const addFocusStyles = (): void => {
-    const focusableElements = ['a', 'button', 'input', 'select', 'textarea'];
-    const focusableElementsString = focusableElements.join(',');
-    normalizeCss[focusableElementsString] = {};
-    normalizeCss[focusableElementsString]['outline'] = '1px solid transparent';
-    normalizeCss[focusableElementsString]['outlineOffset'] = '1px';
-
-    // TODO: use focus() from utilities?
-    for (const el of focusableElements) {
-      normalizeCss[`${el}::-moz-focus-inner`] = {};
-      normalizeCss[`${el}::-moz-focus-inner`]['border'] = 0;
-      normalizeCss[`${el}:focus`] = {};
-      normalizeCss[`${el}:focus`]['outlineColor'] = 'currentColor';
-      normalizeCss[`${el}:focus:not(:focus-visible)`] = {};
-      normalizeCss[`${el}:focus:not(:focus-visible)`]['outlineColor'] = 'transparent';
-    }
-  };
-
   const getNormalizeStyles = (): string => {
+    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementsStyles);
+    addCustomStylesToNormalizeCss('a', anchorStyles);
+    addCustomStylesToNormalizeCss(['b, strong'], strongStyles);
+    addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
+    addHoverStyles();
     addFocusStyles();
     return minifyCss(
       getCss({
