@@ -9,7 +9,7 @@ const cleanupComponentsReady = () => {
   const srcFile = path.normalize(srcFilePath);
   const srcContent = fs.readFileSync(srcFile, 'utf8');
 
-  const content = srcContent.replace('ROLLUP_REPLACE_VERSION', `"${version}"`);
+  const content = srcContent.replace(/ROLLUP_REPLACE_VERSION/g, `"${version}"`);
 
   fs.writeFileSync(srcFile, content);
 
