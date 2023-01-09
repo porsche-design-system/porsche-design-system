@@ -7,7 +7,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { getInsetJssStyle } from '../../styles';
+import { getInsetJssStyle, addImportantToEachRule } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -40,14 +40,14 @@ export const getComponentCss = (
       {
         '@global': {
           '::slotted': {
-            '&(a)': {
+            '&(a)': addImportantToEachRule({
               display: 'block',
               position: 'static',
               textDecoration: 'none',
               font: 'inherit',
               color: 'inherit',
               outline: 0,
-            },
+            }),
             // The clickable area for Safari < ~15 (<= release date: 2021-10-28) is reduced to the slotted anchor itself,
             // since Safari prior to this major release does not support pseudo-elements in the slotted context
             // (https://bugs.webkit.org/show_bug.cgi?id=178237)
