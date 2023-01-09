@@ -1,7 +1,11 @@
 {
-  "name": "remix-c924",
+  "name": "@porsche-design-system/remix",
+  "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "sideEffects": false,
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "build": "run-s build:*",
     "build:css": "npm run generate:css -- --minify",
@@ -29,7 +33,7 @@
     "/public/build"
   ],
   "dependencies": {
-    "@porsche-design-system/components-react": "^2.19.0-rc.0",
+    "@porsche-design-system/components-react": "2.19.0",
     "@prisma/client": "^4.5.0",
     "@remix-run/node": "^1.9.0",
     "@remix-run/react": "^1.9.0",
