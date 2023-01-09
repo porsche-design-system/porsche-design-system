@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import {
-  gridWidth,
+  gridWidthMax,
   gridSafeZone,
   headingMediumStyle,
   textSmallStyle,
@@ -32,7 +32,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
-        maxWidth: gridWidth.max,
+        maxWidth: gridWidthMax,
         marginLeft: 'auto',
         marginRight: 'auto',
         gap: pxToRemWithUnit(24),

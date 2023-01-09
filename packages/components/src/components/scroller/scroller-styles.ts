@@ -2,7 +2,7 @@ import { getCss } from '../../utils';
 import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { getFocus } from '@porsche-design-system/utilities-v2';
+import { getFocusStyle } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
 export const getComponentCss = (
@@ -51,7 +51,7 @@ export const getComponentCss = (
     // Extra wrapper needed to compensate different offset parent calculation depending on browser.
     // Needed for position of status bar.
     'scroll-wrapper': {
-      ...getFocus(),
+      ...getFocusStyle(),
       position: 'relative',
       display: 'inline-flex',
       minWidth: '100%',

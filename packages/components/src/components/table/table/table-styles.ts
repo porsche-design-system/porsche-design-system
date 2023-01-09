@@ -1,4 +1,10 @@
-import { textSmallStyle, spacing, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
+import {
+  textSmallStyle,
+  spacingStaticSmall,
+  spacingStaticMedium,
+  spacingStaticLarge,
+  getMediaQueryMin,
+} from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToRule,
@@ -9,7 +15,6 @@ import {
 } from '../../../styles';
 
 const { primaryColor } = getThemedColors('light');
-const { small: spacingSmall, medium: spacingMedium, large: spacingLarge } = spacing.static;
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -19,9 +24,9 @@ export const getComponentCss = (): string => {
       },
     },
     caption: {
-      marginBottom: spacingSmall,
+      marginBottom: spacingStaticSmall,
       [getMediaQueryMin('m')]: {
-        marginBottom: spacingMedium,
+        marginBottom: spacingStaticMedium,
       },
     },
     root: {
@@ -53,7 +58,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacingLarge,
+      paddingLeft: spacingStaticLarge,
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',
