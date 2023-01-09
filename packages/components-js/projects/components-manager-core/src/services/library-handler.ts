@@ -30,7 +30,7 @@ export function loadComponentLibrary({ script, version, prefix }: LoadComponentL
   const { isLoaded, prefixes, registerCustomElements } = data;
   if (!isLoaded) {
     addScript(script);
-    data.isLoaded = true;
+    data.isLoaded = true; // TODO: that's not true, the script was injected but really loaded was nothing
   }
 
   if (!prefixes.includes(prefix)) {
@@ -63,7 +63,7 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
 
   if (libraryHandlerData === null) {
     let readyPromiseResolve: ReadyResolve = () => {};
-    const readyPromise = new Promise((resolve) => (readyPromiseResolve = resolve as ReadyResolve));
+    const readyPromise: Promise<void> = new Promise((resolve: ReadyResolve) => (readyPromiseResolve = resolve));
     const newLibraryHandlerData: LibraryHandlerData = {
       isLoaded: false,
       isReady: () => readyPromise,
