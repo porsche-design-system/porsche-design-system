@@ -245,6 +245,25 @@ const TabsBarPage: NextPage = (): JSX.Element => {
           <a href="#">Tab 10</a>
         </PTabsBar>
       </div>
+
+      <div
+        className="playground light"
+        style={{ padding: '0 50px' }}
+        title="should render tabs-bar with parent padding on light background"
+      >
+        <PTabsBar activeTabIndex={0}>
+          <a href="#">Parent padding 1</a>
+          <a href="#">Parent padding 2</a>
+          <a href="#">Parent padding 3</a>
+          <a href="#">Parent padding 4</a>
+          <a href="#">Parent padding 5</a>
+          <a href="#">Parent padding 6</a>
+          <a href="#">Parent padding 7</a>
+          <a href="#">Parent padding 8</a>
+          <a href="#">Parent padding 9</a>
+          <a href="#">Parent padding 10</a>
+        </PTabsBar>
+      </div>
     </>
   );
 };

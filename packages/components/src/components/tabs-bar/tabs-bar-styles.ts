@@ -1,7 +1,13 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../styles';
+import {
+  addImportantToEachRule,
+  getTransition,
+  getThemedColors,
+  pxToRemWithUnit,
+  addImportantToRule,
+} from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -21,9 +27,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({
-          position: 'relative',
-        }),
+        position: addImportantToRule('relative'),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'

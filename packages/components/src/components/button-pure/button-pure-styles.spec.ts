@@ -18,7 +18,7 @@ describe('getComponentCss()', () => {
     l: 'x-large',
     xl: 'inherit',
   };
-  const breakpointCustomizableAlignLabel: AlignLabel = {
+  const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
     base: 'left',
     xs: 'right',
     s: 'left',
@@ -35,7 +35,7 @@ describe('getComponentCss()', () => {
     size: BreakpointCustomizable<TextSize>;
     weight: TextWeight;
     hideLabel: BreakpointCustomizable<boolean>;
-    alignLabel: AlignLabel;
+    alignLabel: BreakpointCustomizable<AlignLabel>;
     hasSubline: boolean;
     theme: ThemeExtendedElectricDark;
   }>([

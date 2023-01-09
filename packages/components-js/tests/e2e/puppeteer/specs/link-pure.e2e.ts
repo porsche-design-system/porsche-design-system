@@ -2,29 +2,23 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
+  getEventSummary,
   getLifecycleStatus,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 
 let page: Page;
-
-beforeEach(async () => {
-  page = await browser.newPage();
-  await initAddEventListener(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-link-pure');
 const getLink = () => selectNode(page, 'p-link-pure >>> a');
 const getIcon = () => selectNode(page, 'p-link-pure >>> p-icon >>> svg');
 const getSpan = () => selectNode(page, 'p-link-pure >>> span');
-const getSlottedLink = () => selectNode(page, 'p-link-pure a');
 
 const initLinkPure = (opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false, withSubline = false } = opts || {};
@@ -32,12 +26,12 @@ const initLinkPure = (opts?: { useSlottedAnchor?: boolean; withSubline?: boolean
   return setContentWithDesignSystem(
     page,
     `
-      <p-link-pure onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''}>
-        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
-        Some label
-        ${useSlottedAnchor ? '</a>' : ''}
-        ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
-      </p-link-pure>`
+    <p-link-pure onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''}>
+      ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
+      Some label
+      ${useSlottedAnchor ? '</a>' : ''}
+      ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
+    </p-link-pure>`
   );
 };
 
@@ -51,16 +45,15 @@ it('should dispatch correct click events', async () => {
   const host = await getHost();
   const link = await getLink();
 
-  const events = [];
-  await addEventListener(wrapper, 'click', (ev) => events.push(ev));
+  await addEventListener(wrapper, 'click');
 
   await link.click();
   await host.click();
-  await waitForStencilLifecycle(page);
+  const { counter, targets } = await getEventSummary(wrapper, 'click');
 
-  expect(events.length).toBe(2);
-  for (const event of events) {
-    expect(event.target.id).toBe('hostElement');
+  expect(counter).toBe(2);
+  for (const target of targets) {
+    expect(target.id).toBe('hostElement');
   }
 });
 
@@ -78,77 +71,66 @@ it('should trigger focus & blur events at the correct time', async () => {
   const before = await selectNode(page, '#before');
   const after = await selectNode(page, '#after');
 
-  let beforeFocusCalls = 0;
-  await addEventListener(before, 'focus', () => beforeFocusCalls++);
-  let linkFocusCalls = 0;
-  await addEventListener(link, 'focus', () => linkFocusCalls++);
-  let linkFocusInCalls = 0;
-  await addEventListener(link, 'focusin', () => linkFocusInCalls++);
-  let linkBlurCalls = 0;
-  await addEventListener(link, 'blur', () => linkBlurCalls++);
-  let linkFocusOutCalls = 0;
-  await addEventListener(link, 'focusout', () => linkFocusOutCalls++);
-  let afterFocusCalls = 0;
-  await addEventListener(after, 'focus', () => afterFocusCalls++);
+  await addEventListener(before, 'focus');
+  await addEventListener(link, 'focus');
+  await addEventListener(link, 'focusin');
+  await addEventListener(link, 'blur');
+  await addEventListener(link, 'focusout');
+  await addEventListener(after, 'focus');
 
-  expect(beforeFocusCalls, 'beforeFocusCalls initially').toBe(0);
-  expect(linkFocusCalls, 'linkFocusCalls initially').toBe(0);
-  expect(linkFocusInCalls, 'linkFocusInCalls initially').toBe(0);
-  expect(linkBlurCalls, 'linkBlurCalls initially').toBe(0);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls initially').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls initially').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls initially').toBe(0);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls initially').toBe(0);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls initially').toBe(0);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls initially').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
-  expect(linkFocusCalls, 'linkFocusCalls after 1st tab').toBe(0);
-  expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab').toBe(0);
-  expect(linkBlurCalls, 'linkBlurCalls after 1st tab').toBe(0);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls after 1st tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
-  expect(linkFocusCalls, 'linkFocusCalls after 2nd tab').toBe(1);
-  expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab').toBe(1);
-  expect(linkBlurCalls, 'linkBlurCalls after 2nd tab').toBe(0);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls after 2nd tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-link-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
-  expect(linkFocusCalls, 'linkFocusCalls after 3rd tab').toBe(1);
-  expect(linkFocusInCalls, 'linkFocusInCalls after 3rd tab').toBe(1);
-  expect(linkBlurCalls, 'linkBlurCalls after 3rd tab').toBe(1);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls after 3rd tab').toBe(1);
-  expect(afterFocusCalls, 'afterFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId  after 3rd tab').toBe('after');
 
   // tab back
   await page.keyboard.down('ShiftLeft');
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
-  expect(linkFocusCalls, 'linkFocusCalls after 1st tab back').toBe(2);
-  expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab back').toBe(2);
-  expect(linkBlurCalls, 'linkBlurCalls after 1st tab back').toBe(1);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls after 1st tab back').toBe(1);
-  expect(afterFocusCalls, 'afterFocusCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-link-pure');
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization();
-  expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
-  expect(linkFocusCalls, 'linkFocusCalls after 2nd tab back').toBe(2);
-  expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab back').toBe(2);
-  expect(linkBlurCalls, 'linkBlurCalls after 2nd tab back').toBe(2);
-  expect(linkFocusOutCalls, 'linkFocusOutCalls after 2nd tab back').toBe(2);
-  expect(afterFocusCalls, 'afterFocusCalls after 2nd tab back').toBe(1);
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(link, 'focus')).counter, 'linkFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(link, 'focusin')).counter, 'linkFocusInCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(link, 'blur')).counter, 'linkBlurCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(link, 'focusout')).counter, 'linkFocusOutCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
   expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
   await page.keyboard.up('ShiftLeft');

@@ -2,11 +2,22 @@ import { render } from '@testing-library/react';
 import type { ToastMessage } from '../../../src/public-api';
 import { PButton, useToastManager } from '../../../src/public-api';
 import * as hooks from '../../../src/hooks';
-import { skipCheckForPorscheDesignSystemProviderDuringTests, useBrowserLayoutEffect } from '../../../src/hooks';
-import { useLayoutEffect } from 'react';
+import {
+  skipCheckForPorscheDesignSystemProviderDuringTests,
+  useBrowserLayoutEffect,
+  usePrefix,
+} from '../../../src/hooks';
+import { useContext, useLayoutEffect } from 'react';
+import * as React from 'react';
+import { PorscheDesignSystemContext } from '../../../src/provider';
 
-// TODO: Add missing tests
-xdescribe('usePrefix()', () => {});
+// This mocks useContext() for the whole test-suit
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    useContext: jest.fn(),
+  };
+});
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {
@@ -30,6 +41,56 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
     expect(error2).not.toBeDefined();
 
     spy.mockRestore();
+  });
+});
+describe('usePrefix()', () => {
+  const originalEnv = process.env;
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('should return passed parameter if process.env.NODE_ENV is set to "test" and skipCheck is true', () => {
+    process.env = { ...originalEnv, NODE_ENV: 'test' };
+    skipCheckForPorscheDesignSystemProviderDuringTests();
+    const tagName = 'p-text';
+
+    expect(usePrefix(tagName)).toBe(tagName);
+  });
+
+  it('should return passed parameter if process.env.NODE_ENV is set to "test" and skipCheck is false', () => {
+    process.env = { ...originalEnv, NODE_ENV: 'test' };
+    const tagName = 'p-text';
+
+    expect(usePrefix(tagName)).toBe(tagName);
+  });
+
+  describe('process.env.NODE_ENV !== "test"', () => {
+    beforeEach(() => {
+      process.env = { ...originalEnv, NODE_ENV: 'development' };
+    });
+
+    it('should call useContext() with correct parameter', () => {
+      jest.spyOn(React, 'useContext').mockReturnValue({ prefix: '' });
+      usePrefix('p-text');
+
+      expect(React.useContext).toBeCalledWith(PorscheDesignSystemContext);
+    });
+
+    it('should return prefixed tagName', () => {
+      const prefix = 'my-prefix';
+      jest.spyOn(React, 'useContext').mockReturnValue({ prefix });
+      const tagName = 'p-text';
+
+      expect(usePrefix(tagName)).toBe(prefix + '-' + tagName);
+    });
+
+    it('should throw error if useContext() returns undefined ', () => {
+      jest.spyOn(global.console, 'error').mockImplementation(() => {});
+      jest.spyOn(React, 'useContext').mockReturnValue(undefined);
+
+      expect(() => usePrefix('p-text')).toThrow();
+    });
   });
 });
 

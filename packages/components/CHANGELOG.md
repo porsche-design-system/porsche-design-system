@@ -9,6 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.19.0] - 2022-12-22
+
+### [2.19.0-rc.2] - 2022-12-22
+
+### [2.19.0-rc.1] - 2022-12-22
+
+#### Fixed
+
+- `Stepper Horizontal` calculation of scroll position when used within any parent that has a margin or padding
+
+### [2.19.0-rc.0] - 2022-12-21
+
+#### Added
+
+- Vue: typed components are available via the `@porsche-design-system/components-vue` package
+
 #### Fixed
 
 - `Modal` focus cycle when pressing Shift Tab right after it was opened
@@ -22,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Validation to ensure crucial partials are used.  
   **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
-  **https://designsystem.porsche.com/v2/partials/initial-styles**
+  [getInitialStyles() documentation](https://designsystem.porsche.com/latest/partials/initial-styles)
 
 #### Changed
 
@@ -53,11 +69,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
-  `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
+  `@porsche-design-system/components-react/ssr`. To use it simply change your imports.
+
+**Important:** make sure to apply the new `getDSRPonyfill()` partial right before your closing `</body>` tag. More
+information can be found here:
+[getDSRPonyfill() documentation](https://designsystem.porsche.com/latest/partials/dsr-ponyfill)
 
 ```diff
 - import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
 + import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react/ssr';
++ import { getDSRPonyfill } from '@porsche-design-system/components-react/partials';
 ```
 
 #### Changed

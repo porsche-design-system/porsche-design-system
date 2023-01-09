@@ -33,7 +33,7 @@ export const EventsPage = (): JSX.Element => {
   const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
-  const [carouselChangeEventCounter, setCarouselSortingChangeEventCounter] = useState(0);
+  const [carouselChangeEventCounter, setCarouselChangeEventCounter] = useState(0);
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionChange = useCallback(
@@ -69,7 +69,7 @@ export const EventsPage = (): JSX.Element => {
     []
   );
   const onCarouselChange = useCallback(
-    (e: CustomEvent<CarouselChangeEvent>) => setCarouselSortingChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<CarouselChangeEvent>) => setCarouselChangeEventCounter((prev) => prev + 1),
     []
   );
 

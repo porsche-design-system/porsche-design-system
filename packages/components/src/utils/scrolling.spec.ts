@@ -54,7 +54,7 @@ describe('getScrollActivePosition()', () => {
   it('should call getScrollerElements() with correct parameter', () => {
     const spy = jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
 
-    getScrollActivePosition([], 'next', 0, scrollerElement);
+    getScrollActivePosition([document.createElement('div')], 'next', 0, scrollerElement);
     expect(spy).toBeCalledWith(scrollerElement);
   });
 

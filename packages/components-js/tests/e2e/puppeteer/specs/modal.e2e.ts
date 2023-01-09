@@ -7,19 +7,17 @@ import {
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
-  initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForComponentsReady,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'puppeteer';
-import type { SelectedAriaAttributes } from '@porsche-design-system/components/src/types';
-import type { ModalAriaAttributes } from '@porsche-design-system/components/src/components/content/modal/modal-utils';
+import type { ElementHandle, Page } from 'puppeteer';
+import type { ModalAriaAttributes, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 import type { TagName } from '@porsche-design-system/shared';
 
 let page: Page;
@@ -155,13 +153,12 @@ it('should have correct transform when closed and opened', async () => {
 });
 
 describe('can be closed', () => {
-  let calls = 0;
+  let host: ElementHandle;
 
   beforeEach(async () => {
-    calls = 0;
     await initBasicModal();
-    await initAddEventListener(page);
-    await addEventListener(await getHost(), 'close', () => calls++);
+    host = await getHost();
+    await addEventListener(host, 'close');
   });
 
   it('should be closable via x button', async () => {
@@ -174,14 +171,14 @@ describe('can be closed', () => {
     await closeBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
   });
 
   it('should be closable via esc key', async () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(1);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
   });
 
   it('should not be closable via esc key when disableCloseButton is set', async () => {
@@ -190,68 +187,61 @@ describe('can be closed', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect(calls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(0);
   });
 
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(1);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(1);
 
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(1);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(1);
   });
 
   it('should not be closed if mousedown inside modal', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
   it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
     await page.mouse.move(960, 400);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls, 'after mouse down').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.move(5, 5);
     await page.mouse.up();
 
-    expect(calls, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
   it('should not be closable via backdrop when disableBackdropClick is set', async () => {
     const host = await getHost();
     await setProperty(host, 'disableBackdropClick', true);
-    await waitForEventSerialization();
 
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(0);
   });
 
   it('should not bubble close event', async () => {
     const body = await selectNode(page, 'body');
-    let bodyCalls = 0;
-    await addEventListener(body, 'close', () => bodyCalls++);
+    await addEventListener(body, 'close');
     await page.mouse.move(5, 5);
     await page.mouse.down();
-    await waitForEventSerialization();
 
-    expect(calls).toBe(1);
-    expect(bodyCalls).toBe(0);
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
+    expect((await getEventSummary(body, 'close')).counter).toBe(0);
   });
 });
 

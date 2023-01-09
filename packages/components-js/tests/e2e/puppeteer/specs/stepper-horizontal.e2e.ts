@@ -6,24 +6,22 @@ import {
   FOCUS_PADDING,
   getAttribute,
   getConsoleErrorsAmount,
+  getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
   getPageThrownErrorsAmount,
   getScrollLeft,
-  initAddEventListener,
   initConsoleObserver,
   initPageErrorObserver,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 
 let page: Page;
-
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -266,26 +264,21 @@ describe('scrolling', () => {
 });
 
 describe('events', () => {
-  beforeEach(async () => await initAddEventListener(page));
-
   it('should trigger event on step click', async () => {
     await initStepperHorizontal({ currentStep: 2 });
     const host = await getHost();
     const [item1, item2] = await getStepItems();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'stepChange', () => eventCounter++);
+    await addEventListener(host, 'stepChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElementHandle(host);
 
     await item1.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
 
     await item2.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(2);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(2);
   });
 
   it('should not trigger event when clicked in between steps', async () => {
@@ -293,16 +286,13 @@ describe('events', () => {
     const host = await getHost();
     const [item1] = await getStepItems();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'stepChange', () => eventCounter++);
+    await addEventListener(host, 'stepChange');
 
     await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
 
   it('should not trigger event if click on current', async () => {
@@ -310,16 +300,13 @@ describe('events', () => {
     const host = await getHost();
     const [item1, , item3] = await getStepItems();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'stepChange', () => eventCounter++);
+    await addEventListener(host, 'stepChange');
 
     await item3.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
 
   it('should not trigger event if item is disabled', async () => {
@@ -330,16 +317,13 @@ describe('events', () => {
     await setProperty(item2, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    let eventCounter = 0;
-    await addEventListener(host, 'stepChange', () => eventCounter++);
+    await addEventListener(host, 'stepChange');
 
     await item2.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
 
   it('should not trigger event if item without state', async () => {
@@ -347,16 +331,13 @@ describe('events', () => {
     const host = await getHost();
     const [item1, , item3] = await getStepItems();
 
-    let eventCounter = 0;
-    await addEventListener(host, 'stepChange', () => eventCounter++);
+    await addEventListener(host, 'stepChange');
 
     await item3.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(0);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
-    await waitForEventSerialization();
-    expect(eventCounter).toBe(1);
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
 });
 
