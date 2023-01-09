@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
+{
+  "2.18.0-rc.1": {
+    "": [
+      {
+        "p-text": {
+          "children": "Second prefix",
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+    "my-prefix": [
+      {
+        "p-text": {
+          "children": "First prefix",
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
 exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = `
 {
   "2.18.0-rc.1": {

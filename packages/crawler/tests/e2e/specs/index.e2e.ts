@@ -53,6 +53,16 @@ it('should retrieve hostPdsComponent correctly', async () => {
     `,
   });
 });
+
+it('should generate raw data correctly for 1 version and 2 prefixes', async () => {
+  await testCrawlerWithHtmlAndPrefixes({
+    bodyHtml: `
+        <p-text>Second prefix</p-text>
+        <my-prefix-p-text>First prefix</my-prefix-p-text>
+  `,
+    firstPdsVersionPrefixes: ['my-prefix', ''],
+  });
+});
 it('should generate raw data correctly for 2 versions and 2 prefixes', async () => {
   await testCrawlerWithHtmlAndPrefixes({
     bodyHtml: `
