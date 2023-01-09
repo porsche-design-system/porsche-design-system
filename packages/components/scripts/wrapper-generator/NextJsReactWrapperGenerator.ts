@@ -41,7 +41,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     tweakedComponent = tweakedComponent.replace(
       /const props = \{/,
       `// @ts-ignore
-    if (!process.browser) {
+    if (!typeof window && !process.browser) {
       className = className ? \`\${className} ssr\` : 'ssr';
     }
 
@@ -62,7 +62,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
-      ...(!process.browser
+      ...(!typeof window && !process.browser
         ? {
             ${hostAttributes}children: (
               <${this.getSsrComponentName(component)}
