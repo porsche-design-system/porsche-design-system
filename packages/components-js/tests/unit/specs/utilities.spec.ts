@@ -4,13 +4,13 @@ it.each<keyof typeof jssUtilities>(['fontFamily', 'fontVariant'])('should be of 
   expect(typeof jssUtilities[util]).toBe('string');
 });
 
-it.each<keyof typeof jssUtilities>(['themeLight', 'themeDark', 'headingFluidLarge', 'textFluidSmall'])(
+it.each<keyof typeof jssUtilities>(['themeLight', 'themeDark', 'headingLargeStyle', 'textSmallStyle'])(
   'should be of type object: %s',
   (util) => {
     expect(typeof jssUtilities[util]).toBe('object');
   }
 );
 
-it.each<keyof typeof jssUtilities>(['getFocus', 'mediaQueryMin'])('should be of type function: %s', (util) => {
+it.each<keyof typeof jssUtilities>(['getFocusStyle', 'getMediaQueryMin'])('should be of type function: %s', (util) => {
   expect(typeof jssUtilities[util]).toBe('function');
 });
