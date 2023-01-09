@@ -3092,12 +3092,12 @@ exports[`should render dsr component for PLinkPure 1`] = `
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
