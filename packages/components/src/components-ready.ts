@@ -6,8 +6,9 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
 
-  const waitForDesignSystemAndComponents = () =>
+  const waitForDesignSystemAndComponents = (): void => {
     isDesignSystemReady().then(() => allComponentsLoaded(el, promiseResolve));
+  };
 
   if (isDocumentReady()) {
     waitForDesignSystemAndComponents();
@@ -40,12 +41,14 @@ const isDesignSystemReady = (): Promise<void> => {
     const promise: Promise<void> = new Promise((resolve) => (promiseResolve = resolve));
 
     const proxyHandler = {
+      // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
       set(_, prop, value: { isReady: () => Promise<void> }) {
         if (prop === ROLLUP_REPLACE_VERSION) {
           value.isReady().then(promiseResolve);
         }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        return Reflect.set(...arguments);
+        return Reflect.set(...arguments); // eslint-disable-line prefer-rest-params
       },
     };
 
