@@ -7,12 +7,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: block;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -287,12 +287,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -402,12 +402,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -496,12 +496,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -639,12 +639,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -824,12 +824,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -939,12 +939,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -1033,12 +1033,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -1147,12 +1147,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: block;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -1261,12 +1261,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: block;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -1376,12 +1376,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
@@ -1465,12 +1465,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
   content: "";
