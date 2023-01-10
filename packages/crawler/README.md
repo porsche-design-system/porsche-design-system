@@ -12,7 +12,7 @@ Porsche Design System Crawler is designed to crawl over all relevant portfolio f
 ## Start Crawler
 
 ```
-yarn start:crawler
+yarn start
 ```
 
 Reports will be located in `reports` folder.
