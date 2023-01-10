@@ -1,5 +1,4 @@
-import type { LinksFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,13 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
-import tailwindStylesheetUrl from "./styles/tailwind.css";
-import { getUser } from "./session.server";
-
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
-};
+import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react/ssr";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -22,24 +15,24 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export async function loader({ request }: LoaderArgs) {
-  return json({
-    user: await getUser(request),
-  });
-}
-
 export default function App() {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
         <Meta />
-        <Links />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `:root{--p-transition-duration:0s;--p-animation-duration__spinner:0s;--p-animation-duration__banner:0s;--p-override-popover-animation-duration:0s;--p-override-toast-skip-timeout:true;--p-override-toast-animation-duration:0s}html,body{margin:0;padding:0}body{color:deeppink;font-family:serif;font-style:italic;font-weight:bold;font-size:small;line-height:normal;font-variant:small-caps}body > select{position:relative;z-index:999999}.playground{padding:1rem}.playground.light,.playground.light-electric{background:#fff}.playground.light.surface{background:#f2f2f2}.playground.dark,.playground.dark-electric{background:#0e1418}.playground.dark.surface{background:#262b2e}.playground.hover::before,.playground.focus::before,.playground.focus-hover::before{display:block;background:deeppink;font-size:16px;line-height:normal;color:white;font-weight:bold;padding:0.5rem;margin-bottom:0.5rem}/*light*/.playground.light.hover::before{content:':hover (theme=light)'}.playground.light.focus::before{content:':focus-visible (theme=light)'}.playground.light.focus-hover::before{content:':focus-visible:hover (theme=light)'}/*dark*/.playground.dark.hover::before{content:':hover (theme=dark)'}.playground.dark.focus::before{content:':focus-visible (theme=dark)'}.playground.dark.focus-hover::before{content:':focus-visible:hover (theme=dark)'}/*light-electric*/.playground.light-electric.hover::before{content:':hover (theme=light-electric)'}.playground.light-electric.focus::before{content:':focus-visible (theme=light-electric)'}.playground.light-electric.focus-hover::before{content:':focus-visible:hover (theme=light-electric)'}/*dark-electric*/.playground.dark-electric.hover::before{content:':hover (theme=dark-electric)'}.playground.dark-electric.focus::before{content:':focus-visible (theme=dark-electric)'}.playground.dark-electric.focus-hover::before{content:':focus-visible:hover (theme=dark-electric)'}`,
+          }}
+        />
       </head>
-      <body className="h-full">
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+      <body>
+        <PorscheDesignSystemProvider>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </PorscheDesignSystemProvider>
       </body>
     </html>
   );
