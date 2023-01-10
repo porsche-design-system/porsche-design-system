@@ -1,4 +1,4 @@
-export const gradient =
+export const _gradient =
   'rgba(31,31,31,0.9) 0%,' +
   'rgba(31,31,31,0.9) 20%,' +
   'rgba(31,31,31,0.852589) 26.67%,' +

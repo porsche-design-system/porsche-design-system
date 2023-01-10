@@ -2,7 +2,13 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
-import { fontWeight, fontSize, spacing, textStaticSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import {
+  fontWeight,
+  fontSizeText,
+  spacingStaticSmall,
+  textSmallStyle,
+  fontLineHeight,
+} from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
@@ -37,12 +43,14 @@ export const getComponentCss = (
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: primaryColor,
-        ...textStaticSmall,
+        ...textSmallStyle,
         fontWeight: fontWeight.semiBold,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
           : buildResponsiveStyles(size, (s: AccordionSize) => ({
-              ...fontSize[s],
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              ...fontSizeText[s],
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
         ...getFocusJssStyle({ color: focusColor }),
@@ -76,7 +84,7 @@ export const getComponentCss = (
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: compact ? spacing.static.small : '2.5rem',
+            paddingBottom: compact ? spacingStaticSmall : '2.5rem',
             visibility: 'visible',
             transition: getTransition('height') + `,visibility ${transitionDuration}`,
             animation: `$open ${transitionDuration} ease forwards`,

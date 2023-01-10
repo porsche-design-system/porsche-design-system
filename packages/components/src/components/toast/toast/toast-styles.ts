@@ -1,4 +1,4 @@
-import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
@@ -22,7 +22,7 @@ export const getComponentCss = (): string => {
         bottom: `var(${toastPositionBottomVarInternal})`,
         maxWidth: '42rem',
         zIndex: TOAST_Z_INDEX,
-        [mediaQueryMin('s')]: {
+        [getMediaQueryMin('s')]: {
           left: pxToRemWithUnit(64),
           right: 'auto',
           [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(64)})`,

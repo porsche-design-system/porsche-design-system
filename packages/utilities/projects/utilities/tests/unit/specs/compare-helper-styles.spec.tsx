@@ -9,7 +9,7 @@ import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import { getFocus, headingFluidMedium } from '../../../src/js';
+import { getFocusStyle, headingMediumStyle, frostedGlassHighStyle } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
 const formatAndNeutralizeStyle = (style: string): string => {
@@ -26,7 +26,11 @@ const formatAndNeutralizeStyle = (style: string): string => {
 let jssStyles: string;
 
 beforeEach(() => {
-  const useStyles = createUseStyles({ focus: getFocus(), heading: headingFluidMedium });
+  const useStyles = createUseStyles({
+    focus: getFocusStyle(),
+    heading: headingMediumStyle,
+    // material: frostedGlassHighStyle,
+  });
 
   const JssSample = (): JSX.Element => {
     useStyles();
@@ -37,8 +41,13 @@ beforeEach(() => {
   jssStyles = document.querySelector('style[data-jss]')!.innerHTML;
 });
 
+// TODO: re-enable frostedGlass test to ensure forced vendor prefixing
 it('should have equal styles for styled-components and jss', () => {
-  const SampleStyles = styled.div({ focus: getFocus(), heading: headingFluidMedium });
+  const SampleStyles = styled.div({
+    focus: getFocusStyle(),
+    heading: headingMediumStyle,
+    // material: frostedGlassHighStyle,
+  });
 
   render(
     <StyleSheetManager disableVendorPrefixes>
@@ -52,15 +61,19 @@ it('should have equal styles for styled-components and jss', () => {
 it('should have equal styles for scss and jss', () => {
   const focusMixin = fs.readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8');
   const headingMixin = fs.readFileSync(path.resolve('./src/scss/lib/_heading.scss'), 'utf8');
+  const frostedGlassMixin = fs.readFileSync(path.resolve('./src/scss/lib/_frosted-glass.scss'), 'utf8');
 
   const cssStyles = sass.compileString(`
-  ${focusMixin} ${headingMixin}
+  ${focusMixin} ${headingMixin} ${frostedGlassMixin}
   .focus {
     @include pds-focus($offset: 2px);
   };
   .heading {
-    @include pds-heading-fluid-medium;
+    @include pds-heading-medium;
   }
 `);
+  /* .material {
+    @include pds-frosted-glass-high;
+  } */
   expect(formatAndNeutralizeStyle(jssStyles)).toBe(formatAndNeutralizeStyle(cssStyles.css));
 });

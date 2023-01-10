@@ -3,17 +3,16 @@ import type { Theme } from '../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getCss } from '../../utils';
 import { getThemedColors } from '../../styles';
-import { gridWidth, gridSafeZone } from '@porsche-design-system/utilities-v2';
+import { gridWidthMax, gridSafeZone } from '@porsche-design-system/utilities-v2';
 
-const { max: maxWidth } = gridWidth;
 const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
-    maxWidth,
+    maxWidth: gridWidthMax,
     boxSizing: 'border-box',
     padding: `0 ${gridSafeZone}`,
   },
   extended: {
-    maxWidth,
+    maxWidth: gridWidthMax,
   },
 };
 

@@ -1,6 +1,6 @@
-import { grid } from './grid';
-import { gridGap } from './gridGap';
-import { gridWidth } from './gridWidth';
-import { gridSafeZone } from './gridSafeZone';
-
-export { grid, gridGap, gridWidth, gridSafeZone };
+export { gridStyle } from './gridStyle';
+export { gridGap } from './gridGap';
+export { gridWidth } from './gridWidth';
+export { gridWidthMin } from './gridWidthMin';
+export { gridWidthMax } from './gridWidthMax';
+export { gridSafeZone } from './gridSafeZone';

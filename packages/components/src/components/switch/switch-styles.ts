@@ -9,10 +9,8 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../styles';
-import { spacing, textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-
-const { small: spacingSmall } = spacing.static;
 
 const getColors = (
   checked: boolean,
@@ -52,11 +50,11 @@ const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabel): Jss
     left: {
       order: 0,
       paddingLeft: 0,
-      paddingRight: spacingSmall,
+      paddingRight: spacingStaticSmall,
     },
     right: {
       order: 1,
-      paddingLeft: spacingSmall,
+      paddingLeft: spacingStaticSmall,
       paddingRight: 0,
     },
   };
@@ -144,7 +142,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
-      ...textFluidSmall,
+      ...textSmallStyle,
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,

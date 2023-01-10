@@ -82,12 +82,12 @@
 
         // Typography
         h1 {
-          @include pds-heading-fluid-xx-large;
+          @include pds-heading-xx-large;
           margin-top: $pds-spacing-fluid-large;
         }
 
         h2 {
-          @include pds-heading-fluid-x-large;
+          @include pds-heading-x-large;
           margin-top: $pds-spacing-fluid-large;
 
           // for anchor links with table of contents
@@ -110,23 +110,23 @@
         }
 
         h3 {
-          @include pds-heading-fluid-large;
+          @include pds-heading-large;
           margin-top: $pds-spacing-fluid-large;
         }
 
         h4 {
-          @include pds-heading-fluid-medium;
+          @include pds-heading-medium;
           margin-top: $pds-spacing-fluid-medium;
         }
 
         h5,
         h6 {
-          @include pds-heading-fluid-small;
+          @include pds-heading-small;
           margin-top: $pds-spacing-fluid-small;
         }
 
         p {
-          @include pds-text-fluid-small;
+          @include pds-text-small;
           margin-top: $pds-spacing-fluid-small;
         }
 
@@ -171,7 +171,7 @@
         // Lists
         ul,
         ol {
-          @include pds-text-fluid-small;
+          @include pds-text-small;
           margin-top: 1.5rem;
           padding-left: $pds-spacing-static-large;
 
@@ -192,7 +192,7 @@
         // Code
         code,
         pre {
-          @include pds-text-fluid-x-small;
+          @include pds-text-x-small;
           font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
 
@@ -229,11 +229,11 @@
           }
 
           thead {
-            @include pds-text-fluid-small;
+            @include pds-text-small;
           }
 
           tbody {
-            @include pds-text-fluid-small;
+            @include pds-text-small;
           }
 
           th {

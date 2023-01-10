@@ -8,18 +8,18 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import {
-  gridWidth,
+  gridWidthMax,
   gridSafeZone,
-  headingFluidMedium,
-  textFluidSmall,
-  mediaQueryMin,
+  headingMediumStyle,
+  textSmallStyle,
+  getMediaQueryMin,
   gridGap,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
 
-const mediaQueryS = mediaQueryMin('s');
-const mediaQueryXl = mediaQueryMin('xl');
+const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryXl = getMediaQueryMin('xl');
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -32,7 +32,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
-        maxWidth: gridWidth.max,
+        maxWidth: gridWidthMax,
         marginLeft: 'auto',
         marginRight: 'auto',
         gap: pxToRemWithUnit(24),
@@ -42,13 +42,13 @@ export const getComponentCss = (
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingFluidMedium,
+        ...headingMediumStyle,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(900),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
-        ...textFluidSmall,
+        ...textSmallStyle,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(550),

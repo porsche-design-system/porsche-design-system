@@ -3,14 +3,15 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  getTransition,
-  getThemedColors,
-  pxToRemWithUnit,
   addImportantToRule,
+  getThemedColors,
+  getTransition,
+  pxToRemWithUnit,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { fontSize, textFluidSmall } from '@porsche-design-system/utilities-v2';
+import { fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
@@ -74,9 +75,9 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       }),
     },
     scroller: {
-      ...textFluidSmall,
+      ...textSmallStyle,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize.fluid[s] })),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSizeText[s] })),
     },
     bar: {
       display: 'block',

@@ -1,30 +1,48 @@
 import type { ThemeColorSet } from './themeShared';
+import { themeDarkPrimary } from './themeDarkPrimary';
+import { themeDarkBackgroundBase } from './themeDarkBackgroundBase';
+import { themeDarkBackgroundSurface } from './themeDarkBackgroundSurface';
+import { themeDarkContrastLow } from './themeDarkContrastLow';
+import { themeDarkContrastMedium } from './themeDarkContrastMedium';
+import { themeDarkContrastHigh } from './themeDarkContrastHigh';
+import { themeDarkNotificationSuccess } from './themeDarkNotificationSuccess';
+import { themeDarkNotificationSuccessSoft } from './themeDarkNotificationSuccessSoft';
+import { themeDarkNotificationWarning } from './themeDarkNotificationWarning';
+import { themeDarkNotificationWarningSoft } from './themeDarkNotificationWarningSoft';
+import { themeDarkNotificationError } from './themeDarkNotificationError';
+import { themeDarkNotificationErrorSoft } from './themeDarkNotificationErrorSoft';
+import { themeDarkNotificationInfo } from './themeDarkNotificationInfo';
+import { themeDarkNotificationInfoSoft } from './themeDarkNotificationInfoSoft';
+import { themeDarkStateHover } from './themeDarkStateHover';
+import { themeDarkStateActive } from './themeDarkStateActive';
+import { themeDarkStateFocus } from './themeDarkStateFocus';
+import { themeDarkStateDisabled } from './themeDarkStateDisabled';
 
 export const themeDark: ThemeColorSet = {
-  primary: '#FBFCFF',
+  primary: themeDarkPrimary,
   background: {
-    base: '#0E0E12',
-    surface: '#212225',
+    base: themeDarkBackgroundBase,
+    surface: themeDarkBackgroundSurface,
   },
   contrast: {
-    high: '#535457',
-    medium: '#7E7F82',
-    low: '#404044',
+    low: themeDarkContrastLow,
+    medium: themeDarkContrastMedium,
+    high: themeDarkContrastHigh,
   },
   notification: {
-    success: '#00C77E',
-    successSoft: '#003320',
-    warning: '#DDB84B',
-    warningSoft: '#2B2208',
-    error: '#CB3333',
-    errorSoft: '#290A0A',
-    info: '#027FFC',
-    infoSoft: '#001A33',
+    success: themeDarkNotificationSuccess,
+    successSoft: themeDarkNotificationSuccessSoft,
+    warning: themeDarkNotificationWarning,
+    warningSoft: themeDarkNotificationWarningSoft,
+    error: themeDarkNotificationError,
+    errorSoft: themeDarkNotificationErrorSoft,
+    info: themeDarkNotificationInfo,
+    infoSoft: themeDarkNotificationInfoSoft,
   },
   state: {
-    hover: '#404044',
-    active: '#404044',
-    focus: '#0A0AFF',
-    disabled: '#404044',
+    hover: themeDarkStateHover,
+    active: themeDarkStateActive,
+    focus: themeDarkStateFocus,
+    disabled: themeDarkStateDisabled,
   },
 };

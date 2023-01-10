@@ -1,4 +1,7 @@
+import { gridWidthMin } from './gridWidthMin';
+import { gridWidthMax } from './gridWidthMax';
+
 export const gridWidth = {
-  min: '320px',
-  max: '1920px',
+  min: gridWidthMin,
+  max: gridWidthMax,
 };

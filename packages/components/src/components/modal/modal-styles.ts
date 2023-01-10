@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { gridSafeZone, headingFluidMedium, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, headingMediumStyle, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -14,9 +14,9 @@ import {
 import { MODAL_Z_INDEX } from '../../constants';
 import { getFocusVisibleFallback } from '../../styles/focus-visible-fallback';
 
-const mediaQueryM = mediaQueryMin('m');
-const mediaQueryXl = mediaQueryMin('xl');
-const mediaQueryXxl = mediaQueryMin('xxl');
+const mediaQueryM = getMediaQueryMin('m');
+const mediaQueryXl = getMediaQueryMin('xl');
+const mediaQueryXxl = getMediaQueryMin('xxl');
 const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
 const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 
@@ -117,7 +117,7 @@ export const getComponentCss = (
         [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
       }),
       h1: {
-        ...headingFluidMedium,
+        ...headingMediumStyle,
         margin: 0,
         color: getThemedColors('light').primaryColor,
       },

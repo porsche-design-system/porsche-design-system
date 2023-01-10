@@ -498,7 +498,7 @@ export default class Code extends Vue {
 
   :deep(.example-flex) {
     & > * {
-      @include pds-text-fluid-small;
+      @include pds-text-small;
       padding: 0 6vw;
       color: $pds-theme-light-primary;
       text-align: center;

@@ -1,5 +1,9 @@
+import { borderRadiusSmall } from './borderRadiusSmall';
+import { borderRadiusMedium } from './borderRadiusMedium';
+import { borderRadiusLarge } from './borderRadiusLarge';
+
 export const borderRadius = {
-  small: '4px',
-  medium: '8px',
-  large: '12px',
+  small: borderRadiusSmall,
+  medium: borderRadiusMedium,
+  large: borderRadiusLarge,
 };

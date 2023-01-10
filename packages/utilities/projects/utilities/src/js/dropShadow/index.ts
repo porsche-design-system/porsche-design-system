@@ -1,5 +1,3 @@
-import { dropShadowLow } from './dropShadowLow';
-import { dropShadowMedium } from './dropShadowMedium';
-import { dropShadowHigh } from './dropShadowHigh';
-
-export { dropShadowLow, dropShadowMedium, dropShadowHigh };
+export { dropShadowLowStyle } from './dropShadowLowStyle';
+export { dropShadowMediumStyle } from './dropShadowMediumStyle';
+export { dropShadowHighStyle } from './dropShadowHighStyle';

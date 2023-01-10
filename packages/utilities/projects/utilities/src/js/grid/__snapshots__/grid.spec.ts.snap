@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should contain correct values for grid 1`] = `
+exports[`should contain correct values for gridGap 1`] = `"clamp(16px, 3.6vw, 36px)"`;
+
+exports[`should contain correct values for gridSafeZone 1`] = `"clamp(22px, 10.625vw - 12px, 192px)"`;
+
+exports[`should contain correct values for gridStyle 1`] = `
 {
   "--pds-grid-span-one-half": "span 3",
   "--pds-grid-span-one-quarter": "span 1",
@@ -32,13 +36,13 @@ exports[`should contain correct values for grid 1`] = `
 }
 `;
 
-exports[`should contain correct values for gridGap 1`] = `"clamp(16px, 3.6vw, 36px)"`;
-
-exports[`should contain correct values for gridSafeZone 1`] = `"clamp(22px, 10.625vw - 12px, 192px)"`;
-
 exports[`should contain correct values for gridWidth 1`] = `
 {
   "max": "1920px",
   "min": "320px",
 }
 `;
+
+exports[`should contain correct values for gridWidthMax 1`] = `"1920px"`;
+
+exports[`should contain correct values for gridWidthMin 1`] = `"320px"`;

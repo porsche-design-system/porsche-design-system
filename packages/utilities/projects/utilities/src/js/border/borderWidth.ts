@@ -1,4 +1,7 @@
+import { borderWidthBase } from './borderWidthBase';
+import { borderWidthThin } from './borderWidthThin';
+
 export const borderWidth = {
-  base: '2px',
-  thin: '1px',
+  base: borderWidthBase,
+  thin: borderWidthThin,
 };

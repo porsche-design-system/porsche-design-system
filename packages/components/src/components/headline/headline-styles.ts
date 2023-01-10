@@ -3,25 +3,25 @@ import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantTyp
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
 import {
-  headingFluidLarge,
-  headingFluidXLarge,
-  headingFluidMedium,
-  headingFluidSmall,
-  headingFluidXXLarge,
+  headingLargeStyle,
+  headingXLargeStyle,
+  headingMediumStyle,
+  headingSmallStyle,
+  headingXXLargeStyle,
   fontWeight,
-  textFluidSmall,
-  displayFluidLarge,
+  textSmallStyle,
+  displayLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
 const headingMap: Record<VariantType, JssStyle> = {
-  'large-title': displayFluidLarge,
-  'headline-1': headingFluidXXLarge,
-  'headline-2': headingFluidXLarge,
-  'headline-3': headingFluidLarge,
-  'headline-4': headingFluidMedium,
-  'headline-5': headingFluidSmall,
+  'large-title': displayLargeStyle,
+  'headline-1': headingXXLargeStyle,
+  'headline-2': headingXLargeStyle,
+  'headline-3': headingLargeStyle,
+  'headline-4': headingMediumStyle,
+  'headline-5': headingSmallStyle,
 };
 
 const getVariantJssStyle = (variant: HeadlineVariant): JssStyle => {
@@ -65,7 +65,7 @@ export const getComponentCss = (
       ...(isVariantType(variant)
         ? getVariantJssStyle(variant)
         : {
-            ...textFluidSmall,
+            ...textSmallStyle,
             ...buildResponsiveStyles(variant, getSizeJssStyle),
             overflowWrap: null,
             hyphens: null,

@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontStyle, fontVariant, fontWeight } from '../../font';
+import { fontFamily, fontLineHeight, fontStyleNormal, fontVariant, fontWeightSemiBold } from '../../font';
 
-export const headingFontPartA = `${fontStyle.normal} ${fontVariant} ${fontWeight.semiBold} `;
-export const headingFontPartB = `/${fontLineHeight} ${fontFamily}`;
+export const _headingFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightSemiBold} `;
+export const _headingFontPartB = `/${fontLineHeight} ${fontFamily}`;

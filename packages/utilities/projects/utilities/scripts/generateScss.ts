@@ -6,7 +6,7 @@ import * as dropShadow from '../src/js/dropShadow';
 import * as font from '../src/js/font';
 import * as frostedGlass from '../src/js/frostedGlass';
 import * as gradient from '../src/js/gradient';
-import * as grid from '../src/js/grid/grid';
+import * as grid from '../src/js/grid/gridStyle';
 import * as gridGap from '../src/js/grid/gridGap';
 import * as gridWidth from '../src/js/grid/gridWidth';
 import * as gridSafeZone from '../src/js/grid/gridSafeZone';
@@ -77,7 +77,7 @@ const generateMixins = (mixins: Mixins): void => {
           /\._key_ {([A-Za-z0-9:\-/.'"[\]()%,;\s*+]*)}/g, // search for styles only
           '$1'
         );
-        return `@mixin ${paramCase(`pds-${k}`)} {${scss}}`;
+        return `@mixin ${paramCase(`pds-${k.replace(/Style$/, '')}`)} {${scss}}`;
       })
       .join('\n\n');
 
