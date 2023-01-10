@@ -33,7 +33,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
     textDecoration: 'underline',
   };
 
-  const strongStyles: JssStyle = {
+  const boldStyles: JssStyle = {
     fontWeight: font.weight.bold,
   };
 
@@ -133,9 +133,9 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
 
   const getNormalizeStyles = (): string => {
     normalizeCss['html']['textSizeAdjust'] = 'none';
-    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementsStyles);
+    // addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementsStyles);
     addCustomStylesToNormalizeCss('a', anchorStyles);
-    addCustomStylesToNormalizeCss(['b, strong'], strongStyles);
+    addCustomStylesToNormalizeCss(['b, strong'], boldStyles);
     addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
     addHoverStyles();
     addFocusStyles();
