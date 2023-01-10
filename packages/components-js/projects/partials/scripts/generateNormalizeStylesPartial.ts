@@ -135,7 +135,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
 
   const getNormalizeStyles = (): string => {
     addCustomStylesToNormalizeCss('html', htmlStyles);
-    // addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
+    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
     addCustomStylesToNormalizeCss('a', anchorStyles);
     addCustomStylesToNormalizeCss(['b, strong'], boldStyles);
     addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
