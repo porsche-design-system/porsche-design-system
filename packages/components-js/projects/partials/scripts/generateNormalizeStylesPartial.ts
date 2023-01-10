@@ -132,6 +132,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
       .toString();
 
   const getNormalizeStyles = (): string => {
+    normalizeCss['html']['textSizeAdjust'] = 'none';
     addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementsStyles);
     addCustomStylesToNormalizeCss('a', anchorStyles);
     addCustomStylesToNormalizeCss(['b, strong'], strongStyles);
