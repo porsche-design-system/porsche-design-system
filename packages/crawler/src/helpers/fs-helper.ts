@@ -8,7 +8,7 @@ const getWebsiteNameByWebsiteUrl = (websiteUrl: string): string => {
   websiteName += topLevelDir && topLevelDir.length ? '-' + topLevelDir[0].replace(/\//g, '').replace(/_/g, '-') : '';
   return websiteName;
 };
-export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregatedData: string) => {
+export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregatedData: string): void => {
   const websiteName = getWebsiteNameByWebsiteUrl(websiteUrl);
   const websiteFolderName = `./${config.reportFolderName}/${websiteName}`;
   if (!fs.existsSync(websiteFolderName)) {
@@ -26,7 +26,7 @@ export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregat
   );
 };
 
-export const writeGeneralReport = (aggregatedData: string) => {
+export const writeGeneralReport = (aggregatedData: string): void => {
   fs.writeFileSync(
     `./${config.reportFolderName}/${new Date().toJSON().slice(0, 10)}${config.dateSplitter}data-aggregated.json`,
     aggregatedData
