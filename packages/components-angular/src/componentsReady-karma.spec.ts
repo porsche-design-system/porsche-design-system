@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
   selector: 'empty',
-  template: ` <div></div> `,
+  template: `<div></div>`,
 })
 class EmptyComponent {}
 
@@ -24,9 +23,11 @@ class SampleComponent {
   }
 }
 
+const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/, '');
+
 beforeEach(waitForAsync(() => {
   TestBed.configureTestingModule({
-    imports: [RouterTestingModule, PorscheDesignSystemModule],
+    imports: [PorscheDesignSystemModule],
     declarations: [EmptyComponent, SampleComponent],
   }).compileComponents();
 }));
@@ -40,10 +41,12 @@ it('should return 0 when nothing is rendered', async () => {
 
 it('should return 1 after component is rendered initially', async () => {
   const fixture = TestBed.createComponent(SampleComponent);
-  expect(fixture.nativeElement.innerHTML).toEqual('<p-button>Button 1</p-button><!--container-->');
+  expect(replaceHtmlComments(fixture.nativeElement.innerHTML)).toEqual('<p-button>Button 1</p-button>');
   await componentsReady();
 
-  expect(fixture.nativeElement.innerHTML).toEqual('<p-button class="hydrated">Button 1</p-button><!--container-->');
+  expect(replaceHtmlComments(fixture.nativeElement.innerHTML)).toEqual(
+    '<p-button class="hydrated">Button 1</p-button>'
+  );
   expect(await componentsReady()).toBe(1);
 });
 
