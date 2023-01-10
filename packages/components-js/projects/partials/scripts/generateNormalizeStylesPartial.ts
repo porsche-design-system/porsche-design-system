@@ -25,13 +25,13 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
     textSizeAdjust: 'none',
     WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
     fontFamily: font.family,
-    // fontSize: font.size.small.fontSize,
-    // lineHeight: font.size.small.lineHeight,
-    fontWeight: font.weight.regular,
-    fontStyle: 'normal',
-    fontVariant: 'normal',
-    overflowWrap: 'break-word',
-    hyphens: 'auto',
+    fontSize: font.size.small.fontSize,
+    lineHeight: font.size.small.lineHeight,
+    // fontWeight: font.weight.regular,
+    // fontStyle: 'normal',
+    // fontVariant: 'normal',
+    // overflowWrap: 'break-word',
+    // hyphens: 'auto',
   };
 
   const anchorStyles: JssStyle = {
