@@ -1,5 +1,5 @@
 import * as puppeteer from 'puppeteer';
-import { TagName } from 'shared/src';
+import { TagName } from '@porsche-design-system/shared';
 import { ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesWithPropertyNames } from './types';
 
 declare global {

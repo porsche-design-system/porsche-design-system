@@ -1,4 +1,4 @@
-import { TagName } from 'shared/src';
+import { TagName } from '@porsche-design-system/shared';
 import { Viewport } from 'puppeteer';
 
 /* Generics */
