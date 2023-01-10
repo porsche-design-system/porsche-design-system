@@ -27,11 +27,11 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
     fontFamily: font.family,
     fontSize: font.size.small.fontSize,
     lineHeight: font.size.small.lineHeight,
-    // fontWeight: font.weight.regular,
-    // fontStyle: 'normal',
-    // fontVariant: 'normal',
-    // overflowWrap: 'break-word',
-    // hyphens: 'auto',
+    fontWeight: font.weight.regular,
+    fontStyle: 'normal',
+    fontVariant: 'normal',
+    overflowWrap: 'break-word',
+    hyphens: 'auto',
   };
 
   const anchorStyles: JssStyle = {
@@ -135,7 +135,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
 
   const getNormalizeStyles = (): string => {
     addCustomStylesToNormalizeCss('html', htmlStyles);
-    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
+    // addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
     addCustomStylesToNormalizeCss('a', anchorStyles);
     addCustomStylesToNormalizeCss(['b, strong'], boldStyles);
     addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
