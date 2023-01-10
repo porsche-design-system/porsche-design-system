@@ -21,63 +21,7 @@ export const getExternalLoaderScriptForPrefixes = (prefixes: string[]): string =
   // the script below has been copied from https://designsystem.porsche.com/v2/
   return `
         <script data-pds-loader-script="">
-          var porscheDesignSystem;
-          (() => {
-            'use strict';
-            var e = {
-                d: (t, s) => {
-                  for (var o in s) e.o(s, o) && !e.o(t, o) && Object.defineProperty(t, o, { enumerable: !0, get: s[o] });
-                },
-                o: (e, t) => Object.prototype.hasOwnProperty.call(e, t),
-                r: (e) => {
-                  'undefined' != typeof Symbol &&
-                    Symbol.toStringTag &&
-                    Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-                    Object.defineProperty(e, '__esModule', { value: !0 });
-                },
-              },
-              t = {};
-            function s(e) {
-              if ('noModule' in HTMLScriptElement.prototype) {
-                const t = ('script', document.createElement('script'));
-                (t.src = e), t.setAttribute('crossorigin', ''), document.body.appendChild(t);
-              }
-            }
-            e.r(t), e.d(t, { load: () => n });
-            const o = 'porscheDesignSystem';
-            const n = (e = { prefix: '' }) => {
-              !(function ({ script: e, version: t, prefix: n }) {
-                const r =
-                    (function (e) {
-                      const t = (document[o] || (document[o] = {}), document[o]),
-                        { [e]: s = null } = t;
-                      if (null === s) {
-                        const s = { isLoaded: !1, prefixes: [], registerCustomElements: null };
-                        t[e] = s;
-                      }
-                      return t[e];
-                    })(t) || {},
-                  { isLoaded: i, prefixes: c, registerCustomElements: d } = r;
-                i || (s(e), (r.isLoaded = !0)), c.includes(n) || (c.push(n), d && d(n));
-              })(
-                Object.assign(
-                  Object.assign(
-                    {},
-                    {
-                      version: '2.19.0',
-                      script:
-                        (typeof window !== 'undefined' && window.PORSCHE_DESIGN_SYSTEM_CDN === 'cn'
-                          ? 'https://cdn.ui.porsche.cn'
-                          : 'https://cdn.ui.porsche.com') +
-                        '/porsche-design-system/components/porsche-design-system.v2.19.0.f258677faa650f3f1c6b.js',
-                    }
-                  ),
-                  e
-                )
-              );
-            };
-            porscheDesignSystem = t;
-          })();
+          var porscheDesignSystem;(()=>{"use strict";var e={d:(t,s)=>{for(var o in s)e.o(s,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:s[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};function s(e){if("noModule"in HTMLScriptElement.prototype){const t=("script",document.createElement("script"));t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}}e.r(t),e.d(t,{load:()=>n});const o="porscheDesignSystem";const n=(e={prefix:""})=>{!function({script:e,version:t,prefix:n}){const r=function(e){const t=(document[o]||(document[o]={}),document[o]),{[e]:s=null}=t;if(null===s){const s={isLoaded:!1,prefixes:[],registerCustomElements:null};t[e]=s}return t[e]}(t)||{},{isLoaded:i,prefixes:c,registerCustomElements:d}=r;i||(s(e),r.isLoaded=!0),c.includes(n)||(c.push(n),d&&d(n))}(Object.assign(Object.assign({},{version:"2.19.0",script:(typeof window!=='undefined'&&window.PORSCHE_DESIGN_SYSTEM_CDN==='cn'?'https://cdn.ui.porsche.cn':'https://cdn.ui.porsche.com')+"/porsche-design-system/components/porsche-design-system.v2.19.0.f258677faa650f3f1c6b.js"}),e))};porscheDesignSystem=t})();
           ${prefixesLoaders}
         </script>`;
 };
