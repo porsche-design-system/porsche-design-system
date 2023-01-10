@@ -18,14 +18,15 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
   const htmlStyles: JssStyle = {
     textSizeAdjust: 'none',
     WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+    fontFamily: font.family,
   };
 
   const formElementStyles: JssStyle = {
-    // textSizeAdjust: 'none',
-    // WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+    textSizeAdjust: 'none',
+    WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
     fontFamily: font.family,
-    fontSize: font.size.small.fontSize,
-    lineHeight: font.size.small.lineHeight,
+    // fontSize: font.size.small.fontSize,
+    // lineHeight: font.size.small.lineHeight,
     fontWeight: font.weight.regular,
     fontStyle: 'normal',
     fontVariant: 'normal',
