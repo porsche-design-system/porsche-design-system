@@ -15,9 +15,14 @@ type GetNormalizeStylesOptionsFormatHtml = GetNormalizeStylesOptions & { format:
 type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 'jsx' }`;
   `;`;
 
-  const formElementsStyles: JssStyle = {
+  const htmlStyles: JssStyle = {
     textSizeAdjust: 'none',
     WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+  };
+
+  const formElementStyles: JssStyle = {
+    // textSizeAdjust: 'none',
+    // WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
     fontFamily: font.family,
     fontSize: font.size.small.fontSize,
     lineHeight: font.size.small.lineHeight,
@@ -42,10 +47,6 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
   };
 
   const hoverTransitionStyles: JssStyle = {
-    transition: 'color var(--p-transition-duration, .24s) ease',
-  };
-
-  const hoverTransitionStylesThemeDark: JssStyle = {
     transition: 'color var(--p-transition-duration, .24s) ease',
   };
 
@@ -96,7 +97,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
 
   const addHoverStyles = (): void => {
     addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStyles, 'a');
-    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStylesThemeDark, 'a');
+    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStyles, 'a');
     addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStyles, 'a:hover');
     addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStylesThemeDark, 'a:hover');
   };
@@ -132,8 +133,8 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
       .toString();
 
   const getNormalizeStyles = (): string => {
-    normalizeCss['html']['textSizeAdjust'] = 'none';
-    // addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementsStyles);
+    addCustomStylesToNormalizeCss('html', htmlStyles);
+    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
     addCustomStylesToNormalizeCss('a', anchorStyles);
     addCustomStylesToNormalizeCss(['b, strong'], boldStyles);
     addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
