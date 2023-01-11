@@ -1,5 +1,5 @@
-export const fontStyleNormal = 'normal';
-export const fontStyleItalic = 'italic';
+import { fontStyleNormal } from './fontStyleNormal';
+import { fontStyleItalic } from './fontStyleItalic';
 
 export const fontStyle = {
   normal: fontStyleNormal,

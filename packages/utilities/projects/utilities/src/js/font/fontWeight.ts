@@ -1,6 +1,6 @@
-export const fontWeightRegular = 400;
-export const fontWeightSemiBold = 600;
-export const fontWeightBold = 700;
+import { fontWeightRegular } from './fontWeightRegular';
+import { fontWeightSemiBold } from './fontWeightSemiBold';
+import { fontWeightBold } from './fontWeightBold';
 
 export const fontWeight = {
   regular: fontWeightRegular,
