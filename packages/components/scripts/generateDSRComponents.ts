@@ -151,7 +151,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
     const namedSlottedChildren = children.filter((child) => child.props?.slot);
     const defaultChildren = children.filter((child) => !child.props?.slot);\n`
-          )
+          ) // children are filtered due to cases where conditionally rendered children are undefined.
           .replace(/this\.(?:input|select|textarea)/g, 'defaultChildren[0]?.props'); // fallback for undefined input, select and textarea reference
 
         // adjust named slot conditions
