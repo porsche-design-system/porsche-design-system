@@ -17,7 +17,7 @@ export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
           ...result,
           [tagName]: componentMeta.props ? Object.keys(componentMeta.props) : [],
         }
-      : { ...result };
+      : result;
   }, {} as TagNamesWithPropertyNames);
 
 export const getConsumedPrefixesForVersions = (
