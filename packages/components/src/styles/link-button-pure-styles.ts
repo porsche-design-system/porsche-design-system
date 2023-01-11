@@ -66,9 +66,14 @@ export const getLinkButtonPureStyles = (
       outline: 0,
       ...textSmallStyle,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (sizeValue: TextSize) => ({
-        fontSize: getFontSizeText[sizeValue],
-      })),
+      ...mergeDeep(
+        buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+          justifyContent: stretchValue ? 'space-between' : 'flex-start',
+        })),
+        buildResponsiveStyles(size, (sizeValue: TextSize) => ({
+          fontSize: getFontSizeText(sizeValue),
+        }))
+      ),
       '&::before': {
         content: '""',
         position: 'fixed',
