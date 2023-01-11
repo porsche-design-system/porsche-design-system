@@ -1,4 +1,3 @@
-// TODO: activate once testing utils are moved to components-js
 import {
   componentsReady,
   PAccordion,

@@ -22,10 +22,9 @@ it('should return 0 when nothing is rendered', async () => {
 it('should return 1 after component is rendered initially', async () => {
   const { container } = render(<Sample />);
   expect(container.innerHTML).toEqual('<p-button>Button 1</p-button>');
-  await componentsReady();
 
-  expect(container.innerHTML).toEqual('<p-button class="hydrated">Button 1</p-button>');
   expect(await componentsReady()).toBe(1);
+  expect(container.innerHTML).toEqual('<p-button class="hydrated">Button 1</p-button>');
 });
 
 it('should return 2 after button is clicked', async () => {
