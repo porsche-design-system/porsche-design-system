@@ -143,11 +143,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /public render\(\): JSX\.Element {/,
             `$&
-    const children = Array.isArray(this.props.children)
+    const children = (Array.isArray(this.props.children)
       ? this.props.children
       : this.props.children
       ? [this.props.children]
-      : [];
+      : []).filter( x => x !== undefined && x !== null);
+
     const namedSlottedChildren = children.filter((child) => child.props?.slot);
     const defaultChildren = children.filter((child) => !child.props?.slot);\n`
           )
