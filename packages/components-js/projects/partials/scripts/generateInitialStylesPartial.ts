@@ -129,7 +129,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${normalize ? styles.concat(normalizeStyles) : styles}</style>\`
-    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles.concat(normalizeStyles) }} />;
 
   return withoutTags
     ? styles
