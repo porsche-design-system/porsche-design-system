@@ -1,22 +1,21 @@
-import { skipPorscheDesignSystemCDNRequestsDuringTests } from '@porsche-design-system/components-react';
 import { componentsReady } from '@porsche-design-system/components-js';
 
-beforeEach(() => {
-  // TODO: provide util from components-js
-  skipPorscheDesignSystemCDNRequestsDuringTests();
+const prevValue = (window as any).PDS_SKIP_FETCH;
+beforeAll(() => {
+  (window as any).PDS_SKIP_FETCH = true;
 });
 
-afterEach(() => {
-  (window as any).PDS_SKIP_FETCH = false;
+afterAll(() => {
+  (window as any).PDS_SKIP_FETCH = prevValue;
 });
 
-it('should not fetch font-face definitions', () => {
+it('should not fetch font-face css', () => {
   const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
 
   expect(link).toBeNull();
 });
 
-it('should not fetch marque', async () => {
+it('should not fetch marque asset', async () => {
   document.body.innerHTML = '<p-marque></p-marque>';
   await componentsReady();
 
@@ -25,7 +24,7 @@ it('should not fetch marque', async () => {
   expect(picture).toBeNull();
 });
 
-it('should not fetch icon', async () => {
+it('should not fetch icon asset', async () => {
   const spy = jest.spyOn(global, 'fetch');
 
   document.body.innerHTML = '<p-icon></p-icon>';
