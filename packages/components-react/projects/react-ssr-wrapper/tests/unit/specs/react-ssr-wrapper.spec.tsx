@@ -153,7 +153,7 @@ describe('manual test cases', () => {
   });
 
   it('should render PContentWrapper correctly with conditional child component when condition is undefined', () => {
-    const Component: React.FC<{ hasAdditionalChild?: boolean | undefined }> = ({ hasAdditionalChild }) => (
+    const Component = ({ hasAdditionalChild }: { hasAdditionalChild?: boolean | undefined }) => (
       <fromComponents.PContentWrapper>
         <p>Ensure conditional children do not cause Errors when condition is undefined</p>
         {hasAdditionalChild && <p>Some Text</p>}
