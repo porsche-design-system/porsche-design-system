@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFocus() should return correct css for opts: %s 1`] = `
+exports[`getFocusStyle() should return correct css for opts: %s 1`] = `
 {
   "&:focus": {
     "&:not(:focus-visible)": {
@@ -12,7 +12,7 @@ exports[`getFocus() should return correct css for opts: %s 1`] = `
 }
 `;
 
-exports[`getFocus() should return correct css for opts: { offset: '5rem' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { offset: '5rem' } 1`] = `
 {
   "&:focus": {
     "&:not(:focus-visible)": {
@@ -20,6 +20,18 @@ exports[`getFocus() should return correct css for opts: { offset: '5rem' } 1`] =
     },
     "outline": "#0A0AFF solid 2px",
     "outlineOffset": "5rem",
+  },
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
+{
+  "&:focus": {
+    "&:not(:focus-visible)": {
+      "outlineColor": "transparent",
+    },
+    "outline": "#0A0AFF solid 2px",
+    "outlineOffset": "2px",
   },
 }
 `;
