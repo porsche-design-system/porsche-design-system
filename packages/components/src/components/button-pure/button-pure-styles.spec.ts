@@ -36,7 +36,6 @@ xdescribe('getComponentCss()', () => {
     weight: TextWeight;
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: BreakpointCustomizable<AlignLabel>;
-    hasSubline: boolean;
     theme: Theme;
   }>([
     {
@@ -48,7 +47,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -60,7 +58,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'bold',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -72,7 +69,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'thin',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: true,
       theme: 'light',
     },
     {
@@ -84,7 +80,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -96,7 +91,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'semibold',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'dark',
     },
     {
@@ -108,7 +102,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'bold',
       hideLabel: false,
       alignLabel: 'left',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -120,7 +113,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'thin',
       hideLabel: false,
       alignLabel: 'left',
-      hasSubline: false,
       theme: 'dark',
     },
     {
@@ -132,7 +124,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: true,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -144,7 +135,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'semibold',
       hideLabel: true,
       alignLabel: 'right',
-      hasSubline: true,
       theme: 'light',
     },
     {
@@ -156,7 +146,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'bold',
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -168,7 +157,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'thin',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -180,7 +168,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -192,7 +179,6 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: false,
       alignLabel: 'right',
-      hasSubline: false,
       theme: 'light',
     },
     {
@@ -204,25 +190,13 @@ xdescribe('getComponentCss()', () => {
       weight: 'regular',
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: breakpointCustomizableAlignLabel,
-      hasSubline: false,
       theme: 'light',
     },
   ])(
     'should return correct css for %j',
-    ({ icon, active, isDisabledOrLoading, stretch, size, weight, hideLabel, alignLabel, hasSubline, theme }) => {
+    ({ icon, active, isDisabledOrLoading, stretch, size, weight, hideLabel, alignLabel, theme }) => {
       expect(
-        getComponentCss(
-          icon,
-          active,
-          isDisabledOrLoading,
-          stretch,
-          size,
-          weight,
-          hideLabel,
-          alignLabel,
-          hasSubline,
-          theme
-        )
+        getComponentCss(icon, active, isDisabledOrLoading, stretch, size, weight, hideLabel, alignLabel, theme)
       ).toMatchSnapshot();
     }
   );

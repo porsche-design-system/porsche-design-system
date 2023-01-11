@@ -53,7 +53,6 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "loading": "boolean",
   "size": "breakpoint",
   "stretch": "breakpoint",
-  "tabbable": "boolean",
   "theme": "oneOf",
   "type": "oneOf",
   "weight": "oneOf",

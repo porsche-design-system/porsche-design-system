@@ -18,15 +18,14 @@ describe('warnIfIsLoadingAndIconIsNone()', () => {
 
 describe('getButtonPureAriaAttributes()', () => {
   it.each<Parameters<typeof getButtonPureAriaAttributes>>([
-    [false, false, false, {}],
-    [true, false, false, {}],
-    [false, true, false, {}],
-    [true, true, false, {}],
-    [false, false, true, {}],
+    [false, false, {}],
+    [true, false, {}],
+    [false, true, {}],
+    [true, true, {}],
+    [false, false, {}],
     [
       true,
       true,
-      false,
       {
         'aria-label': 'Some more detailed label',
         'aria-expanded': true,
@@ -34,10 +33,7 @@ describe('getButtonPureAriaAttributes()', () => {
         'aria-pressed': true,
       },
     ],
-  ])(
-    'should return correct aria attributes for isDisabled: %s, isLoading: %s, hasSubline: %s and aria: %s',
-    (...args) => {
-      expect(getButtonPureAriaAttributes(...args)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct aria attributes for isDisabled: %s, isLoading: %s and aria: %s', (...args) => {
+    expect(getButtonPureAriaAttributes(...args)).toMatchSnapshot();
+  });
 });
