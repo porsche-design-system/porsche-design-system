@@ -16,6 +16,7 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
+  '@porsche-design-system/components-js/testing',
   '@porsche-design-system/components-js/utilities/js',
   'react',
   'react/jsx-runtime',
@@ -77,6 +78,15 @@ export default [
     plugins: [typescript(typescriptOpts)],
   },
   {
+    input: `${projectDir}/src/testing.ts`,
+    external,
+    output: {
+      file: `${outputDir}/testing/index.js`,
+      format: 'cjs',
+    },
+    plugins: [typescript(typescriptOpts)],
+  },
+  {
     input: `${projectDir}/src/partials.ts`,
     external,
     output: [
@@ -117,14 +127,5 @@ export default [
         ],
       }),
     ],
-  },
-  {
-    input: `${projectDir}/src/testing.ts`,
-    external: ['@testing-library/dom'],
-    output: {
-      file: `${outputDir}/testing/index.js`,
-      format: 'cjs',
-    },
-    plugins: [typescript(typescriptOpts)],
   },
 ];

@@ -1,6 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
-import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
 
 const getMarkup = (): string => {
   return `<p-button>Button 1</p-button>`;

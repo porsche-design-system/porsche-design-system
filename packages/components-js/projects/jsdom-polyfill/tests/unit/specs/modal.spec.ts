@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '../../../../../../components-react/dist/react-wrapper/testing';
+import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 
 const getMarkup = (): string => {

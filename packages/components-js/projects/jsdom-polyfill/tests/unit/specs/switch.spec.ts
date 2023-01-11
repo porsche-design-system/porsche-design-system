@@ -1,6 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
-import { getByRoleShadowed } from '../../../../../../components-react/dist/react-wrapper/testing';
 
 const getMarkup = (): string => {
   return `<p-switch></p-switch>`;
