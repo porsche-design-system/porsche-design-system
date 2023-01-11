@@ -11,19 +11,18 @@ import type {
 } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasSlottedSubline,
   hasVisibleIcon,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
-  throwIfInvalidLinkPureUsage,
+  throwIfInvalidLinkUsage,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -66,7 +65,7 @@ export class LinkPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -96,8 +95,7 @@ export class LinkPure {
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {
-    // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
-    throwIfInvalidLinkPureUsage(this.host, this.href);
+    throwIfInvalidLinkUsage(this.host, this.href);
   }
 
   public render(): JSX.Element {
@@ -113,49 +111,39 @@ export class LinkPure {
       this.weight,
       this.hideLabel,
       this.alignLabel,
-      hasSlottedSubline(this.host),
       !this.href,
       this.theme
     );
 
-    const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <TagType
-          class="root"
-          {...(TagType === 'a' && {
-            href: this.href,
-            target: this.target,
-            download: this.download,
-            rel: this.rel,
-            ...(hasSubline && { 'aria-describedby': 'subline' }),
-            ...parseAndGetAriaAttributes(this.aria),
-          })}
-        >
-          {hasVisibleIcon(this.icon) && (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              color="inherit"
-              theme={this.theme}
-              size="inherit"
-              name={this.icon}
-              source={this.iconSource}
-              aria-hidden="true"
-            />
-          )}
-          <span class="label">
-            <slot />
-          </span>
-        </TagType>
-        {hasSubline && (
-          <div id="subline" class="subline">
-            <slot name="subline" />
-          </div>
+      <TagType
+        class="root"
+        {...(TagType === 'a' && {
+          href: this.href,
+          target: this.target,
+          download: this.download,
+          rel: this.rel,
+          ...parseAndGetAriaAttributes(this.aria),
+        })}
+      >
+        {hasVisibleIcon(this.icon) && (
+          <PrefixedTagNames.pIcon
+            class="icon"
+            color="inherit"
+            theme={this.theme}
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            aria-hidden="true"
+          />
         )}
-      </Host>
+        <span class="label">
+          <slot />
+        </span>
+      </TagType>
     );
   }
 }

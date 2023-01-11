@@ -180,11 +180,6 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
         "theme"?: Theme;
@@ -1775,11 +1770,6 @@ declare namespace LocalJSX {
           * Stretches the area between icon and label to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
         /**
           * Adapts the button color depending on the theme.
          */

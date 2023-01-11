@@ -19,12 +19,10 @@ export const warnIfIsLoadingAndIconIsNone = (
 export const getButtonPureAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
-  hasSubline: boolean,
   aria: SelectedAriaAttributes<ButtonAriaAttributes>
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria),
     ...getButtonBaseAriaAttributes(isDisabled, isLoading),
-    'aria-describedby': hasSubline ? 'subline' : null,
   };
 };

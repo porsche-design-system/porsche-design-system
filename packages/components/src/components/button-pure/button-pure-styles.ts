@@ -18,7 +18,6 @@ export const getComponentCss = (
   weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
-  hasSubline: boolean,
   theme: Theme
 ): string => {
   return getCss(
@@ -32,15 +31,15 @@ export const getComponentCss = (
         weight,
         hideLabel,
         alignLabel,
-        hasSubline,
         false,
         theme
       ),
       {
-        '@global': {
-          '::slotted(p)': {
-            margin: 0,
-          },
+        root: {
+          appearance: 'none',
+          textAlign: 'left',
+          border: 'none',
+          cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         },
       }
     )

@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
-  hasSlottedSubline,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -26,12 +25,11 @@ import type {
   TextWeight,
   Theme,
 } from '../../types';
-import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
-  tabbable: AllowedTypes.boolean,
   type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -54,11 +52,6 @@ const propTypes: PropTypes<typeof ButtonPure> = {
 export class ButtonPure {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
-
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'submit';
 
@@ -75,7 +68,7 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -133,12 +126,10 @@ export class ButtonPure {
       this.weight,
       this.hideLabel,
       this.alignLabel,
-      hasSlottedSubline(this.host),
       this.theme
     );
 
     const hasIcon = hasVisibleIcon(this.icon);
-    const hasSubline = hasSlottedSubline(this.host);
 
     const iconProps = {
       class: 'icon',
@@ -149,35 +140,23 @@ export class ButtonPure {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <button
-          {...getButtonPureAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
-          class="root"
-          type={this.type}
-          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
-        >
-          {hasIcon &&
-            (this.loading ? (
-              <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
-            ) : (
-              <PrefixedTagNames.pIcon
-                {...iconProps}
-                color="inherit"
-                name={this.icon}
-                source={this.iconSource}
-                aria-hidden="true"
-              />
-            ))}
-          <span class="label">
-            <slot />
-          </span>
-        </button>
-        {hasSubline && (
-          <div id="subline" class="subline">
-            <slot name="subline" />
-          </div>
-        )}
-      </Host>
+      <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+        {hasIcon &&
+          (this.loading ? (
+            <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
+          ) : (
+            <PrefixedTagNames.pIcon
+              {...iconProps}
+              color="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              aria-hidden="true"
+            />
+          ))}
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 }

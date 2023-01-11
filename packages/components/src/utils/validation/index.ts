@@ -4,7 +4,6 @@ export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
 export * from './throwIfInvalidLinkUsage';
-export * from './throwIfInvalidLinkPureUsage';
 export * from './throwIfParentIsNotOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';

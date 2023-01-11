@@ -1,90 +1,32 @@
-import type { Styles, JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, TextWeight, Theme } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, isSizeInherit, mergeDeep, paramCaseToCamelCase } from '../utils';
+import { addImportantToRule, getThemedColors, getTransition } from './';
 import {
-  addImportantToRule,
-  getFocusJssStyle,
-  getInsetJssStyle,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-  getScreenReaderOnlyJssStyle,
-} from './';
-import { fontLineHeight, fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from './hover-media-query';
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  frostedGlassMediumStyle,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getFontWeight } from './font-weight-styles';
+import { getFontSizeText } from './font-size-text-styles';
+import { hoverMediaQuery } from './hover-media-query';
 
-const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
-  if (isSizeInherit(textSize)) {
-    return {
-      fontSize: 'inherit',
-    };
-  } else {
-    /* type FontSizeLineHeight = typeof fontSize.small;
-    const { fontSize: size }: FontSizeLineHeight = fontSize.fluid[paramCaseToCamelCase(textSize)];*/
-    /* const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: string } = {
-      'x-small': fontSize.fluid.textXSmallStyle,
-      small: fontSize.fluid.textSmallStyle,
-      medium: { fontSize: '1.25rem' },
-      large: { fontSize: '1.875rem' },
-      'x-large': fontSize.fluid.textLargeStyle,
-    };*/
-
-    return {
-      fontSize: fontSizeText[paramCaseToCamelCase(textSize)],
-      /* '& ~ .subline': {
-        // TODO: should be referenced
-        // ...sublineSize[textSize],
-        '&::before': {
-          fontSize: size,
-          marginLeft: fontLineHeight,
-        },
-      },*/
-    };
-  }
-};
-
+// Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel
-    ? getScreenReaderOnlyJssStyle()
-    : {
-        position: 'static',
-        width: 'auto',
-        height: 'auto',
-        border: 'medium none color',
-        margin: 0,
-        whiteSpace: 'inherit',
-        overflow: 'visible',
-        clip: 'auto',
-        clipPath: 'none',
-      };
-};
-
-const getLabelAlignmentJssStyle: GetJssStyleFunction = (alignLabel: AlignLabel): JssStyle => {
-  return alignLabel === 'left'
-    ? {
-        padding: `0 ${pxToRemWithUnit(4)} 0 0`,
-        order: -1,
-      }
-    : {
-        padding: `0 0 0 ${pxToRemWithUnit(4)}`,
-        order: 0,
-      };
-};
-
-/* Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden. */
-const getSlottedAnchorVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInsetJssStyle(),
+        inset: 0,
         whiteSpace: 'nowrap',
         textIndent: '-999999px',
       }
     : {
-        position: 'static',
-        ...getInsetJssStyle('auto'),
+        position: 'relative',
+        inset: 'auto',
         whiteSpace: 'inherit',
         textIndent: 0,
       };
@@ -99,103 +41,77 @@ export const getLinkButtonPureStyles = (
   weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
-  hasSubline: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return {
     '@global': {
       ':host': {
-        position: 'relative',
-        outline: addImportantToRule(0),
-        ...buildResponsiveStyles(hasSubline ? false : stretch, (responsiveStretch: boolean) => ({
+        transform: addImportantToRule('translate3d(0,0,0)'), // creates new stacking context
+        ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
           display: responsiveStretch ? 'block' : 'inline-block',
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
       },
     },
-    // TODO: reduce to only necessary styles (e.g. why boxSizing?)
-    // TODO: overhead in link styles when slotted anchor is used
-    // TODO: overhead due that link does not need same "reset" styles as button
     root: {
       display: 'flex',
       alignItems: 'flex-start',
+      gap: spacingStaticXSmall,
       width: '100%',
-      margin: 0,
-      padding: 0,
-      boxSizing: 'border-box',
-      outline: 'transparent none',
-      appearance: 'none',
-      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-      textDecoration: 'none',
-      textAlign: 'left',
-      border: 'none',
-      background: 'transparent',
-      color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
-      transition: getTransition('color'),
-      ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
-      ...(!isDisabledOrLoading && {
-        ...hoverMediaQuery({
-          '&:hover': {
-            color: hoverColor,
-            ...(hasSubline && {
-              '& + $subline': {
-                color: hoverColor,
-              },
-            }),
-          },
-        }),
-        '&:active': {
-          color: activeColor,
-          ...(hasSubline && {
-            '& + $subline': {
-              color: activeColor,
-            },
-          }),
-        },
-      }),
+      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      outline: 0,
       ...textSmallStyle,
       fontWeight: getFontWeight(weight),
-      ...mergeDeep(
-        !hasSubline &&
-          buildResponsiveStyles(stretch, (stretched: boolean) => ({
-            justifyContent: stretched ? 'space-between' : 'flex-start',
-          })),
-        buildResponsiveStyles(size, getSizeJssStyle)
-      ),
+      ...buildResponsiveStyles(size, (sizeValue: TextSize) => ({
+        fontSize: getFontSizeText[sizeValue],
+      })),
+      '&::before': {
+        content: '""',
+        position: 'fixed',
+        inset: `-${spacingStaticXSmall}`,
+        borderRadius: borderRadiusSmall,
+        transition: getTransition('background-color'),
+        ...(active && {
+          ...frostedGlassMediumStyle,
+          backgroundColor: hoverColor,
+        }),
+      },
+      ...(!isDisabledOrLoading &&
+        hoverMediaQuery({
+          '&:hover::before': {
+            ...frostedGlassMediumStyle,
+            backgroundColor: hoverColor,
+          },
+        })),
+      ...(!hasSlottedAnchor && {
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+        },
+        '&:not(:focus-visible)::before': {
+          border: 0,
+        },
+      }),
+    },
+    label: {
+      position: 'relative', // needed for hover state when icon="none" is set
     },
     ...(hasIcon && {
       icon: {
+        position: 'relative',
         flexShrink: '0',
         width: fontLineHeight,
         height: fontLineHeight,
       },
       label: mergeDeep(
-        buildResponsiveStyles(
-          hideLabel,
-          !hasSlottedAnchor ? getVisibilityJssStyle : getSlottedAnchorVisibilityJssStyle
-        ),
-        hasSubline ? { paddingLeft: pxToRemWithUnit(4) } : buildResponsiveStyles(alignLabel, getLabelAlignmentJssStyle)
+        buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+          order: alignLabelValue === 'left' ? -1 : 0,
+        }))
       ),
-    }),
-    ...(hasSubline && {
-      subline: {
-        display: 'flex',
-        marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityJssStyle
-        ...textSmallStyle,
-        color: isDisabledOrLoading ? disabledColor : active ? primaryColor : primaryColor,
-        transition: getTransition('color'),
-        ...(hasIcon && {
-          ...buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
-          paddingLeft: pxToRemWithUnit(4),
-          '&::before': {
-            content: '""',
-          },
-        }),
-      },
     }),
   };
 };
