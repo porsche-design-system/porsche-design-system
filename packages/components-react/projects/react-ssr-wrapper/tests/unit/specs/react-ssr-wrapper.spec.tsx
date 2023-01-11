@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
-import { DSRContentWrapper } from '../../../src/lib/dsr-components/content-wrapper';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
