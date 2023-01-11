@@ -31,9 +31,9 @@ exports[`should have no regression for dependency tree 1`] = `
   ],
   "dropShadow/dropShadowShared.js": [],
   "focus/getFocusStyle.js": [
-    "border/borderWidth.js",
-    "theme/themeDark.js",
-    "theme/themeLight.js",
+    "border/borderWidthBase.js",
+    "theme/themeDarkStateFocus.js",
+    "theme/themeLightStateFocus.js",
   ],
   "font/fontFamily.js": [],
   "font/fontHyphenationStyle.js": [],
