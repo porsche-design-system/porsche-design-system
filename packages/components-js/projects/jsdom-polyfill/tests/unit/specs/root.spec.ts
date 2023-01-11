@@ -32,7 +32,6 @@ it('should have one unit test per component', () => {
     ])
     .filter(([tagName]) => TAG_NAMES.includes(tagName))
     .map(([tagName, filePath]) => {
-      console.log(tagName);
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       expect(fileContent).toContain(`<${tagName}`);
@@ -40,7 +39,7 @@ it('should have one unit test per component', () => {
     });
 
   const componentsWithMissingTests = TAG_NAMES.filter(
-    (x) => !(whitelistedComponents.includes(x) || componentsWithTests.includes(x))
+    (tagName) => !(whitelistedComponents.includes(tagName) || componentsWithTests.includes(tagName))
   );
 
   if (componentsWithMissingTests.length) {
