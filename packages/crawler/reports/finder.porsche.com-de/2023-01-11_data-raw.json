@@ -15,7 +15,9 @@
                             "trademark": true,
                             "size": "responsive",
                             "target": "_self"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -27,7 +29,9 @@
                             "size": "small",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -38,7 +42,9 @@
                             "size": "small",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -49,7 +55,9 @@
                             "size": "small",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -61,7 +69,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "<a href=\"/de/de-DE/search\">Finden Sie Ihren Porsche</a>"
+                        "children": "<a href=\"/de/de-DE/search\">Finden Sie Ihren Porsche</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -73,30 +82,7 @@
                             "lazy": false,
                             "theme": "dark"
                         },
-                        "hostPdsComponent": "p-link"
-                    }
-                },
-                {
-                    "p-link": {
-                        "properties": {
-                            "variant": "secondary",
-                            "icon": "arrow-head-right",
-                            "theme": "light",
-                            "target": "_self",
-                            "hideLabel": false
-                        },
-                        "children": "<a href=\"/de/de-DE/search\">Alle Modellreihen durchsuchen</a>"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "arrow-head-right",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "dark"
-                        },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -109,7 +95,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "<a href=\"/de/de-DE/search\">Alle Angebote durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search\">Alle Modellreihen durchsuchen</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -121,6 +108,33 @@
                             "lazy": false,
                             "theme": "dark"
                         },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a href=\"/de/de-DE/search\">Alle Angebote durchsuchen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -133,7 +147,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "<a href=\"/de/de-DE/search?condition=new\">Porsche Neuwagen durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=new\">Porsche Neuwagen durchsuchen</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -145,6 +160,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -157,7 +173,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "<a href=\"/de/de-DE/search?condition=porsche_approved\">Porsche Approved Fahrzeuge durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=porsche_approved\">Porsche Approved Fahrzeuge durchsuchen</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -169,6 +186,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -181,7 +199,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "<a href=\"/de/de-DE/search?condition=used\">Porsche Gebrauchtwagen durchsuchen</a>"
+                        "children": "<a href=\"/de/de-DE/search?condition=used\">Porsche Gebrauchtwagen durchsuchen</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -193,6 +212,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -210,7 +230,8 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "children": "Porsche Leasing"
+                        "children": "Porsche Leasing",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -222,6 +243,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -239,7 +261,8 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "children": "Porsche Finance"
+                        "children": "Porsche Finance",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -251,6 +274,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -268,7 +292,8 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "children": "Porsche Drive Abo"
+                        "children": "Porsche Drive Abo",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -280,6 +305,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 }

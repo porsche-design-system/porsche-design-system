@@ -26,7 +26,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Soul, electrified."
+                        "children": "Soul, electrified.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -40,7 +41,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Der Taycan GTS Sport Turismo."
+                        "children": "Der Taycan GTS Sport Turismo.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -52,6 +54,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -69,7 +72,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Der Macan T."
+                        "children": "Der Macan T.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -81,6 +85,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -98,7 +103,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Die 911 GTS Modelle."
+                        "children": "Die 911 GTS Modelle.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -110,6 +116,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -127,7 +134,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Finden Sie Ihr Traumfahrzeug – Neu oder gebraucht."
+                        "children": "Finden Sie Ihr Traumfahrzeug – Neu oder gebraucht.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -139,6 +147,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -149,7 +158,8 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Modelle</p-headline>"
+                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Modelle</p-headline>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -161,7 +171,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Modelle"
+                        "children": "Modelle",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -171,7 +182,8 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<div class=\"car-range-grid\">(the content was stripped)</div>"
+                        "children": "<div class=\"car-range-grid\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -188,7 +200,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "718"
+                        "children": "718",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -200,6 +213,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -214,7 +228,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>Zweisitzer mit hoher Fahrdynamik dank Mittelmotor.</span>"
+                        "children": "<span>Zweisitzer mit hoher Fahrdynamik dank Mittelmotor.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -229,7 +244,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "718 konfigurieren"
+                        "children": "718 konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -241,6 +257,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -258,7 +275,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "911"
+                        "children": "911",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -270,6 +288,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -284,7 +303,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>Sportwagenikone mit Heckmotor und höchster Performance.</span>"
+                        "children": "<span>Sportwagenikone mit Heckmotor und höchster Performance.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -299,7 +319,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "911 konfigurieren"
+                        "children": "911 konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -311,6 +332,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -328,7 +350,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Taycan"
+                        "children": "Taycan",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -340,6 +363,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -354,7 +378,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>Vollelektrische Sportlimousine mit Kofferraum in Front und Heck.</span>"
+                        "children": "<span>Vollelektrische Sportlimousine mit Kofferraum in Front und Heck.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -369,7 +394,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "Taycan konfigurieren"
+                        "children": "Taycan konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -381,6 +407,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -398,7 +425,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Panamera"
+                        "children": "Panamera",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -410,6 +438,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -424,7 +453,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>Sportliche Luxuslimousine mit Platz für 4.</span>"
+                        "children": "<span>Sportliche Luxuslimousine mit Platz für 4.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -439,7 +469,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "Panamera konfigurieren"
+                        "children": "Panamera konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -451,6 +482,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -468,7 +500,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Macan"
+                        "children": "Macan",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -480,6 +513,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -494,7 +528,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>Kompakter SUV mit hoher Vielseitigkeit.</span>"
+                        "children": "<span>Kompakter SUV mit hoher Vielseitigkeit.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -509,7 +544,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "Macan konfigurieren"
+                        "children": "Macan konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -521,6 +557,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -538,7 +575,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Cayenne"
+                        "children": "Cayenne",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -550,6 +588,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -564,7 +603,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span>SUV mit bis zu 5 Sitzen und dennoch in erster Linie ein Sportwagen.</span>"
+                        "children": "<span>SUV mit bis zu 5 Sitzen und dennoch in erster Linie ein Sportwagen.</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -579,7 +619,8 @@
                             "hideLabel": false,
                             "theme": "dark"
                         },
-                        "children": "Cayenne konfigurieren"
+                        "children": "Cayenne konfigurieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -591,6 +632,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -603,7 +645,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Swiss Benefits"
+                        "children": "Swiss Benefits",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -617,7 +660,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<nobr>Porsche</nobr><nobr>Porsche</nobr>"
+                        "children": "Exklusiv in der Schweiz - exklusiv für Sie. Freuen Sie sich beim Kauf eines Neuwagens in einem Schweizer Porsche Zentrum auf besondere Vorteile. Für detaillierte Informationen steht Ihnen Ihr Porsche Zentrum gerne zur Verfügung.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -631,7 +675,8 @@
                             "rel": "noreferrer",
                             "hideLabel": false
                         },
-                        "children": "Zu den Vorteilen"
+                        "children": "Zu den Vorteilen",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -643,6 +688,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -655,7 +701,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "<nobr>Porsche</nobr>"
+                        "children": "Finden Sie Ihren Porsche Neu- oder Gebrauchtwagen.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -669,7 +716,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "<nobr>Porsche</nobr>"
+                        "children": "So finden Sie ganz einfach Ihren Traum Porsche. Geben Sie Ihren Standort ein und stöbern Sie in den besten Fahrzeugangeboten in Ihrer Nähe.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -685,7 +733,8 @@
                             "showCharacterCount": true,
                             "actionLoading": false
                         },
-                        "children": "<input data-test=\"inputField\" type=\"search\" name=\"some-name\" role=\"combobox\" autocomplete=\"off\" aria-autocomplete=\"list\" aria-haspopup=\"listbox\" disabled=\"true\" aria-controls=\"autocompleteDropdown\" placeholder=\"PLZ oder Ort\" aria-label=\"Geben Sie einen Ort für Ihre Suche an\" aria-expanded=\"false\">"
+                        "children": "<input data-test=\"inputField\" type=\"search\" name=\"some-name\" role=\"combobox\" autocomplete=\"off\" aria-autocomplete=\"list\" aria-haspopup=\"listbox\" disabled=\"true\" aria-controls=\"autocompleteDropdown\" placeholder=\"PLZ oder Ort\" aria-label=\"Geben Sie einen Ort für Ihre Suche an\" aria-expanded=\"false\">",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -697,6 +746,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-text-field-wrapper"
                     }
                 },
@@ -709,6 +759,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-text-field-wrapper"
                     }
                 },
@@ -719,7 +770,8 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<p-headline class=\"extended-teaser__headline hydrated\" theme=\"light\" variant=\"headline-2\">Online Shop Highlights</p-headline>"
+                        "children": "<p-headline class=\"extended-teaser__headline hydrated\" theme=\"light\" variant=\"headline-2\">Online Shop Highlights</p-headline>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -731,394 +783,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Online Shop Highlights"
-                    }
-                },
-                {
-                    "p-content-wrapper": {
-                        "properties": {
-                            "width": "basic",
-                            "backgroundColor": "transparent",
-                            "theme": "light"
-                        }
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Schlüsselanhänger Wappen"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Porsche</nobr>"
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Schlüsselanhänger"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Porsche</nobr>"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Hochwertiger Thermo-Isolierbecher aus doppelwandigem Edelstahl."
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Thermobecher"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Edition</nobr>"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "2.1-Virtual-Surround-System mit Original-Abgasanlage des 911 GT3 als Subwoofer-Erweiterung."
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Soundbar"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "50Y Sunglasses P´8478"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Porsche</nobr><nobr>Design</nobr>"
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Sonnenbrille"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Roadster Hardcase 4W Trolley S"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Design</nobr><nobr>Design</nobr>"
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Trolley"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Trainingsjacke – RS 2.7"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "Sportlich-moderne Trainingsjacke für Herren mit Stehkragen und RS 2.7 Druck."
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Trainingsjacke"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
-                    }
-                },
-                {
-                    "p-headline": {
-                        "properties": {
-                            "variant": "headline-4",
-                            "tag": "h3",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "50Y Cardholder 4"
-                    }
-                },
-                {
-                    "p-text": {
-                        "properties": {
-                            "tag": "p",
-                            "size": "small",
-                            "weight": "regular",
-                            "align": "left",
-                            "color": "default",
-                            "ellipsis": false,
-                            "theme": "light"
-                        },
-                        "children": "<nobr>Porsche</nobr><nobr>Design</nobr><nobr>Edition</nobr>"
-                    }
-                },
-                {
-                    "p-button": {
-                        "properties": {
-                            "tabbable": false,
-                            "type": "submit",
-                            "disabled": false,
-                            "loading": false,
-                            "variant": "secondary",
-                            "icon": "",
-                            "hideLabel": false,
-                            "theme": "light"
-                        },
-                        "children": "Cardholder"
-                    }
-                },
-                {
-                    "p-icon": {
-                        "properties": {
-                            "name": "",
-                            "color": "inherit",
-                            "size": "inherit",
-                            "lazy": false,
-                            "theme": "light"
-                        },
-                        "hostPdsComponent": "p-button"
+                        "children": "Online Shop Highlights",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1128,7 +794,414 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<p-flex class=\"teaser-container mobile-side-by-side hydrated\" wrap=\"{base: 'wrap', xs: 'nowrap'}\">(the content was stripped)</p-flex>"
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Schlüsselanhänger Wappen",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Schlüsselanhänger aus Echtleder in Form des Porsche Wappens.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Schlüsselanhänger",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Porsche Thermobecher",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Hochwertiger Thermo-Isolierbecher aus doppelwandigem Edelstahl.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Thermobecher",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "911 Soundbar – Limited Edition",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "2.1-Virtual-Surround-System mit Original-Abgasanlage des 911 GT3 als Subwoofer-Erweiterung.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Soundbar",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "50Y Sunglasses P´8478",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Porsche Design Pilotenbrille für Damen und Herren mit polarisierten Base-2-Curve-Gläsern und Wechselgläsern. ",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Sonnenbrille",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Roadster Hardcase 4W Trolley S",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Kleiner Designer-Trolley aus leichtem Kunststoff mit 4 Rädern im exklusiven Design.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Trolley",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Trainingsjacke – RS 2.7",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Sportlich-moderne Trainingsjacke für Herren mit Stehkragen und RS 2.7 Druck.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Trainingsjacke",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-4",
+                            "tag": "h3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "50Y Cardholder 4",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Exklusives Visitenkartenetui für Herren aus Leder. 50Y Porsche Design Limited Edition.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": false,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Cardholder",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
                     }
                 },
                 {
@@ -1138,7 +1211,19 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Entdecken</p-headline>"
+                        "children": "<p-flex class=\"teaser-container mobile-side-by-side hydrated\" wrap=\"{base: 'wrap', xs: 'nowrap'}\">(the content was stripped)</p-flex>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<p-headline class=\"responsive-margin-bottom__headline hydrated\" theme=\"light\" variant=\"headline-2\">Entdecken</p-headline>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1150,7 +1235,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Entdecken"
+                        "children": "Entdecken",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1163,7 +1249,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item><p-flex-item width=\"{base: 'full', s: 'auto'}\" class=\"teaser-mobile-side-by-side hydrated\" target=\"\" style=\"cursor: pointer;\">(the content was stripped)</p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1176,7 +1263,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1189,7 +1277,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1202,7 +1291,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>"
+                        "children": "<p-flex class=\"tile-flex hydrated\" direction=\"{ base: 'row', xs: 'column' }\" align-items=\"{ base: 'center', xs: 'flex-start' }\" justify-content=\"space-between\">(the content was stripped)</p-flex>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1215,7 +1305,8 @@
                             "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
-                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1228,7 +1319,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1241,7 +1333,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1258,7 +1351,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "<span>Experience - Fahrtrainings &amp; Reisen</span>"
+                        "children": "<span>Experience - Fahrtrainings &amp; Reisen</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1270,6 +1364,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -1283,7 +1378,8 @@
                             "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
-                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1296,7 +1392,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1309,7 +1406,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1326,7 +1424,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "<span>Drive - Abonnieren oder mieten</span>"
+                        "children": "<span>Drive - Abonnieren oder mieten</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1338,6 +1437,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -1351,7 +1451,8 @@
                             "alignItems": "{\"base\":\"center\",\"xs\":\"flex-start\"}",
                             "alignContent": "stretch"
                         },
-                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>"
+                        "children": "<p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item><p-flex-item flex=\"equal\" class=\"tile-flex-item hydrated\">(the content was stripped)</p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1364,7 +1465,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>"
+                        "children": "<picture class=\"card-img media-image\">(the content was stripped)</picture>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1377,7 +1479,8 @@
                             "shrink": 1,
                             "flex": "equal"
                         },
-                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>"
+                        "children": "<div class=\"text-wrapper\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1394,7 +1497,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "<span>Motorsport - Events &amp; Strecken</span>"
+                        "children": "<span>Motorsport - Events &amp; Strecken</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1406,6 +1510,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 }
@@ -1423,7 +1528,8 @@
                             "hideLabel": false,
                             "theme": "light"
                         },
-                        "children": "Skip to main content"
+                        "children": "Skip to main content",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1435,6 +1541,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-button"
                     }
                 },
@@ -1448,7 +1555,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s\">(the content was stripped)</phn-menu-desktop-level-1>"
+                        "children": "<phn-crest class=\"navi2only-crest sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s\">(the content was stripped)</phn-menu-desktop-level-1>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1459,7 +1567,9 @@
                             "href": "https://www.porsche.com/swiss/de",
                             "target": "_self",
                             "aria": "{\"aria-label\":\"Porsche.com Homepage\"}"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1472,7 +1582,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-718\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-911\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Taycan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Panamera\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Macan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Cayenne\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>"
+                        "children": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-718\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-911\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Taycan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Panamera\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Macan\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" id=\"car-series-mega-menu-Cayenne\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1485,7 +1596,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button>"
+                        "children": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s\" role=\"none\">(the content was stripped)</phn-menu-button>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1499,7 +1611,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "718"
+                        "children": "718",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1513,7 +1626,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "911"
+                        "children": "911",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1527,7 +1641,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Taycan"
+                        "children": "Taycan",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1541,7 +1656,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Panamera"
+                        "children": "Panamera",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1555,7 +1671,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Macan"
+                        "children": "Macan",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1569,7 +1686,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Cayenne"
+                        "children": "Cayenne",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1582,7 +1700,8 @@
                             "alignItems": "center",
                             "alignContent": "stretch"
                         },
-                        "children": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>"
+                        "children": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1595,7 +1714,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>"
+                        "children": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1606,7 +1726,9 @@
                             "size": "inherit",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1620,7 +1742,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Shop"
+                        "children": "Shop",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1637,7 +1760,8 @@
                             "theme": "light",
                             "target": "_self"
                         },
-                        "children": "<span class=\"sc-phn-dealer-search\">Händler</span>"
+                        "children": "<span class=\"sc-phn-dealer-search\">Händler</span>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1649,6 +1773,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-pure"
                     }
                 },
@@ -1668,7 +1793,8 @@
                             "stretch": false,
                             "theme": "light"
                         },
-                        "children": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s\">(the content was stripped)</phn-myporsche-button-content>"
+                        "children": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s\">(the content was stripped)</phn-myporsche-button-content>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1681,7 +1807,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>"
+                        "children": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1692,7 +1819,9 @@
                             "size": "inherit",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1706,7 +1835,8 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "My Porsche"
+                        "children": "My Porsche",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1717,7 +1847,9 @@
                             "size": "small",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 }
             ]
@@ -1731,7 +1863,8 @@
                             "backgroundColor": "transparent",
                             "theme": "light"
                         },
-                        "children": "<pnav-footer-p-grid class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid>"
+                        "children": "<pnav-footer-p-grid class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1741,7 +1874,8 @@
                             "wrap": "wrap",
                             "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
                         },
-                        "children": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>"
+                        "children": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1750,7 +1884,8 @@
                             "size": 12,
                             "offset": 0
                         },
-                        "children": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">(the content was stripped)</pnav-current-region>"
+                        "children": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">(the content was stripped)</pnav-current-region>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1759,7 +1894,8 @@
                             "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
                             "offset": 0
                         },
-                        "children": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">(the content was stripped)</pnav-newsletter>"
+                        "children": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s\">(the content was stripped)</pnav-newsletter>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1768,7 +1904,8 @@
                             "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
                             "offset": "{\"base\":0,\"s\":1,\"m\":0}"
                         },
-                        "children": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">(the content was stripped)</pnav-contact>"
+                        "children": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s\">(the content was stripped)</pnav-contact>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1777,7 +1914,8 @@
                             "size": "{\"base\":12,\"m\":4,\"l\":6}",
                             "offset": 0
                         },
-                        "children": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">(the content was stripped)</pnav-social-media>"
+                        "children": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s\">(the content was stripped)</pnav-social-media>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1786,7 +1924,8 @@
                             "size": "{\"base\":12,\"l\":9}",
                             "offset": 0
                         },
-                        "children": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">(the content was stripped)</pnav-further-links>"
+                        "children": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s\">(the content was stripped)</pnav-further-links>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1795,7 +1934,8 @@
                             "size": 12,
                             "offset": 0
                         },
-                        "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
+                        "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1804,7 +1944,8 @@
                             "size": 12,
                             "offset": 0
                         },
-                        "children": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">(the content was stripped)</pnav-fine-print>"
+                        "children": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">(the content was stripped)</pnav-fine-print>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1817,7 +1958,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Aktuelle Region / Sprache"
+                        "children": "Aktuelle Region / Sprache",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1830,7 +1972,8 @@
                             "alignItems": "center",
                             "alignContent": "stretch"
                         },
-                        "children": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">(the content was stripped)</pnav-footer-p-text>"
+                        "children": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">(the content was stripped)</pnav-footer-p-text>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1842,7 +1985,9 @@
                             "size": "inherit",
                             "lazy": false,
                             "theme": "light"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1856,7 +2001,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>"
+                        "children": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1869,7 +2015,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Newsletter"
+                        "children": "Newsletter",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1883,7 +2030,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Aktuelle Nachrichten direkt in Ihrem Posteingang"
+                        "children": "Aktuelle Nachrichten direkt in Ihrem Posteingang",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1896,7 +2044,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "Abonnieren"
+                        "children": "Abonnieren",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1908,6 +2057,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -1921,7 +2071,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Kontakt"
+                        "children": "Kontakt",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1935,7 +2086,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Haben Sie Fragen?"
+                        "children": "Haben Sie Fragen?",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1948,7 +2100,8 @@
                             "target": "_self",
                             "hideLabel": false
                         },
-                        "children": "Kontakt Formular"
+                        "children": "Kontakt Formular",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1960,6 +2113,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link"
                     }
                 },
@@ -1973,7 +2127,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Social Media"
+                        "children": "Social Media",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1987,7 +2142,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Treten Sie mit uns über die sozialen Medien in Kontakt."
+                        "children": "Treten Sie mit uns über die sozialen Medien in Kontakt.",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -1998,7 +2154,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2009,7 +2166,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2020,7 +2178,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2031,7 +2190,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2042,7 +2202,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2053,7 +2214,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2064,7 +2226,8 @@
                             "target": "_self",
                             "hideLabel": true
                         },
-                        "children": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
+                        "children": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2076,6 +2239,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2088,6 +2252,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2100,6 +2265,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2112,6 +2278,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2124,6 +2291,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2136,6 +2304,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2148,6 +2317,7 @@
                             "lazy": false,
                             "theme": "light"
                         },
+                        "children": null,
                         "hostPdsComponent": "p-link-social"
                     }
                 },
@@ -2161,7 +2331,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
+                        "children": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2174,7 +2345,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex>"
+                        "children": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2187,7 +2359,8 @@
                             "alignItems": "stretch",
                             "alignContent": "stretch"
                         },
-                        "children": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>"
+                        "children": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2200,7 +2373,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>"
+                        "children": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2213,7 +2387,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2226,7 +2401,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2239,7 +2415,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2252,7 +2429,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2265,7 +2443,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2278,7 +2457,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2291,7 +2471,8 @@
                             "shrink": 1,
                             "flex": "initial"
                         },
-                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>"
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2304,7 +2485,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Unternehmen"
+                        "children": "Unternehmen",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2321,7 +2503,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Auf einen Blick"
+                        "children": "Auf einen Blick",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2353,7 +2536,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Nachhaltigkeit"
+                        "children": "Nachhaltigkeit",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2385,7 +2569,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Karriere"
+                        "children": "Karriere",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2417,7 +2602,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Partner Forum"
+                        "children": "Partner Forum",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2449,7 +2635,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Gesellschaften & Dienstleistungen"
+                        "children": "Gesellschaften & Dienstleistungen",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2481,7 +2668,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Presse"
+                        "children": "Presse",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2513,7 +2701,8 @@
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Kontakt"
+                        "children": "Kontakt",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2537,7 +2726,9 @@
                             "color": "neutral-contrast-low",
                             "orientation": "horizontal",
                             "theme": "dark"
-                        }
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2551,7 +2742,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2565,7 +2757,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2579,7 +2772,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 129 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km "
+                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 129 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km ",
+                        "hostPdsComponent": null
                     }
                 },
                 {
@@ -2593,7 +2787,8 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>"
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>",
+                        "hostPdsComponent": null
                     }
                 }
             ]
