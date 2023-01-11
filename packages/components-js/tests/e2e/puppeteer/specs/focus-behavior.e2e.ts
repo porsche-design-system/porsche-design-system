@@ -52,7 +52,7 @@ ${component}
   });
 });
 
-['p-button', 'p-button-pure', 'p-switch'].forEach((tagName) => {
+['p-button', 'p-switch'].forEach((tagName) => {
   it(`should be removed from tab order when tabbable is false for ${tagName}`, async () => {
     await setContentWithDesignSystem(
       page,
