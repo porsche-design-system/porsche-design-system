@@ -9,6 +9,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Link Pure`, `Button Pure` matches new design language
+
+#### Removed
+
+- `subline` slot for `Link Pure` and `Button Pure`
+- Deprecated `tabbable` prop for `Button Pure`
+
+```diff
+- <p-button tabbable="false">Some label</p-button>
++ <p-button tabindex="-1">Some label</p-button>
+```
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
