@@ -4,9 +4,10 @@ import fs from 'fs';
 const getWebsiteNameByWebsiteUrl = (websiteUrl: string): string => {
   const parsedUrl = new URL(websiteUrl);
   let websiteName = parsedUrl.hostname;
-  const topLevelDir = parsedUrl.pathname.match(/^\/([^/]+)\//g);
-  websiteName += topLevelDir && topLevelDir.length ? '-' + topLevelDir[0].replace(/\//g, '').replace(/_/g, '-') : '';
-  return websiteName;
+  websiteName += parsedUrl.pathname ? parsedUrl.pathname.replace(/\//g, '-').replace(/_/g, '-') : '';
+  websiteName += parsedUrl.search ? parsedUrl.search.replace(/[?=]/g, '') : '';
+  // maximum filename length
+  return websiteName.substring(0, 255);
 };
 export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregatedData: string): void => {
   const websiteName = getWebsiteNameByWebsiteUrl(websiteUrl);
@@ -34,14 +35,16 @@ export const writeGeneralReport = (aggregatedData: string): void => {
 };
 
 const removeOutdatedReportsInFolder = (folderName: string): void => {
-  fs.readdirSync(folderName)
-    .filter(
-      (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
-    )
-    .forEach((fileName: string) => {
-      console.log(`Removing file ${folderName}/${fileName}`);
-      fs.unlinkSync(`${folderName}/${fileName}`);
-    });
+  if (fs.existsSync(folderName)) {
+    fs.readdirSync(folderName)
+      .filter(
+        (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
+      )
+      .forEach((fileName: string) => {
+        console.log(`Removing file ${folderName}/${fileName}`);
+        fs.unlinkSync(`${folderName}/${fileName}`);
+      });
+  }
 };
 
 export const removeOutdatedReports = (customerWebsites: string[]): void => {
