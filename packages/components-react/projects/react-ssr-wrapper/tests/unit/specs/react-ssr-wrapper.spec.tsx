@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
+import { DSRContentWrapper } from '../../../src/lib/dsr-components/content-wrapper';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
@@ -150,5 +151,22 @@ describe('manual test cases', () => {
     }
 
     expect(hasTestCaseForEveryTagNameWithInternalProp).toBeTruthy();
+  });
+
+  it('should render PContentWrapper correctly with conditional child component', () => {
+    const Component: React.FC<{ hasChild?: boolean | undefined }> = ({ hasChild }) => (
+      <fromComponents.PContentWrapper>
+        <p>Ensure conditional children do not cause Errors while SSG</p>
+        {hasChild && <p>Some Text</p>}
+      </fromComponents.PContentWrapper>
+    );
+
+    const { container } = render(
+      <PorscheDesignSystemProvider>
+        <Component />
+      </PorscheDesignSystemProvider>
+    );
+
+    expect(container.firstElementChild).toBeDefined();
   });
 });
