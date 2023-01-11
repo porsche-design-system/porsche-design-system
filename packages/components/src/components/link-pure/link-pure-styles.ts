@@ -7,9 +7,9 @@ import type {
   Theme,
 } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import { borderRadiusSmall, borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   icon: LinkButtonPureIconName,
@@ -54,7 +54,7 @@ export const getComponentCss = (
               '&(a)::before': {
                 content: '""',
                 position: 'fixed',
-                inset: `-${spacingStaticXSmall}`,
+                ...getInsetJssStyle(-4),
                 borderRadius: borderRadiusSmall,
               },
               '&(a:focus)::before': {

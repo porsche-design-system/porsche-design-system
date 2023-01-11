@@ -2,7 +2,7 @@ import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, TextWeight, Theme } from '../types';
-import { addImportantToRule, getThemedColors, getTransition } from './';
+import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -20,13 +20,13 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
   return hideLabel
     ? {
         position: 'absolute',
-        inset: 0,
+        ...getInsetJssStyle(0),
         whiteSpace: 'nowrap',
         textIndent: '-999999px',
       }
     : {
         position: 'relative',
-        inset: 'auto',
+        ...getInsetJssStyle('auto'),
         whiteSpace: 'inherit',
         textIndent: 0,
       };
@@ -72,7 +72,7 @@ export const getLinkButtonPureStyles = (
       '&::before': {
         content: '""',
         position: 'fixed',
-        inset: `-${spacingStaticXSmall}`,
+        ...getInsetJssStyle(-4),
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
