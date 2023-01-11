@@ -76,7 +76,3 @@ export const getComponentCss = (
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
 };
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
-};
