@@ -1,6 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import { TagName } from '@porsche-design-system/shared';
-import { ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesWithPropertyNames } from './types';
+import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData, TagNamesWithPropertyNames } from './types';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -49,14 +49,15 @@ export const evaluatePage = async (
         const rootNode = (el.getRootNode() as ShadowRoot).host;
         if (rootNode) {
           return getPdsComponentNameByPrefix(rootNode, prefix);
+        } else {
+          return null;
         }
-        return null;
       };
 
       const parseIfJSON = (jsonStr: string | number | symbol): object | string | number | symbol => {
-        if (typeof jsonStr === 'string' && jsonStr.includes('{')) {
+        if (typeof jsonStr === 'string') {
           try {
-            // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }"
+            // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "123"
             return JSON.parse(
               jsonStr
                 .replace(/'/g, '"') // convert single quotes to double quotes
@@ -80,7 +81,8 @@ export const evaluatePage = async (
       >(
         el: Element,
         allPdsPropertiesForComponentName: string[]
-      ) => {
+      ): Properties => {
+        // we consider this element as PDS Component, therefore we need this alias here
         const pEl = el as PComponentElement;
 
         const stringifyIfObject = (val: PComponentPropertyValue): PComponentPropertyValue => {
