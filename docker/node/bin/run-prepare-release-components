@@ -51,6 +51,11 @@ for pkg in ${packages[@]}; do
   popd
 done
 
+# update "components-js" in crawler project
+pushd "./packages/crawler"
+  sed -i -E -e 's$("@porsche-design-system/components-js": )(".*")$\1"'${1}'"$' package.json
+popd
+
 # update "components-js" in base projects
 packages=( "components-js" "storefront" )
 for pkg in ${packages[@]}; do
