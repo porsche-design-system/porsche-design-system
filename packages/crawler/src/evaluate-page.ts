@@ -35,14 +35,14 @@ export const evaluatePage = async (
       };
 
       const getHighestLevelChildrenOrTextContent = (el: Element): string | null =>
-        Array.from(el.children).reduce((result, slotEl) => {
-          if (slotEl.children.length) {
-            const copy = slotEl.cloneNode(true) as Element;
+        Array.from(el.children).reduce((result, child) => {
+          if (child.children.length) {
+            const copy = child.cloneNode(true) as Element;
             // we save only the highest dom level in the reports, in order not to make them too big
             copy.innerHTML = '(the content was stripped)';
             return result + copy.outerHTML;
           }
-          return result + slotEl.outerHTML;
+          return result + child.outerHTML;
         }, '' as string) || el.textContent;
 
       const getHostPdsComponent = (el: Element, prefix: string): TagName | null => {
