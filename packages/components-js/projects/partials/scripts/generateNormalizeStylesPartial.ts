@@ -6,6 +6,7 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { color, font } from '@porsche-design-system/utilities';
 
+// TODO: integrate into initializeStyles?
 export const generateNormalizeStylesPartial = (): string => {
   const types = `type GetNormalizeStylesOptions = {
   cdn?: Cdn;
