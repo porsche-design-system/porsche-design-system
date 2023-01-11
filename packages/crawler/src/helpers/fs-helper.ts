@@ -38,7 +38,7 @@ const removeOutdatedReportsInFolder = (folderName: string): void => {
     .filter(
       (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
     )
-    .map((fileName: string) => {
+    .forEach((fileName: string) => {
       console.log(`Removing file ${folderName}/${fileName}`);
       fs.unlinkSync(`${folderName}/${fileName}`);
     });
