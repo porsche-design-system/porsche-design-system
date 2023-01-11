@@ -14,6 +14,7 @@ const typescriptOpts = {
 
 const external = [
   '@porsche-design-system/components-js',
+  '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/utilities/js',
   'react',
@@ -65,6 +66,15 @@ export default [
       preserveModules: true,
     },
     plugins: [resolve(), typescript(typescriptOpts)],
+  },
+  {
+    input: `${projectDir}/src/jsdom-polyfill.ts`,
+    external,
+    output: {
+      file: `${outputDir}/jsdom-polyfill/index.js`,
+      format: 'cjs',
+    },
+    plugins: [typescript(typescriptOpts)],
   },
   {
     input: `${projectDir}/src/partials.ts`,

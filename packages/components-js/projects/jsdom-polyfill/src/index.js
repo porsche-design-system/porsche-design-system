@@ -26,3 +26,5 @@ require('./lib/loader.cjs')
       },
     };
   });
+
+// TODO: ensure this isn't used in real browser?

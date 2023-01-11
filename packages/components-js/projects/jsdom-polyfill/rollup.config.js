@@ -2,12 +2,12 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
-import { version } from '../react-wrapper/package.json';
+import { version } from '../components-wrapper/package.json';
 
 export default {
   input: 'src/index.js',
   output: {
-    file: '../../dist/react-wrapper/jsdom-polyfill/index.js',
+    file: '../../dist/components-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
     exports: 'auto', // fixes rollup warning
   },
