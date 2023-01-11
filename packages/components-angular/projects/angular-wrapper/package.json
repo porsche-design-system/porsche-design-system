@@ -25,6 +25,7 @@
     "@angular/core": ">=13.0.0 <16.0.0"
   },
   "exports": {
+    "./jsdom-polyfill": "./jsdom-polyfill/index.js",
     "./partials": {
       "types": "./partials/partials.d.ts",
       "import": "./partials/esm/partials.js",

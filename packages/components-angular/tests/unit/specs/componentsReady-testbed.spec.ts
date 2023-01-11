@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { componentsReady } from '../../../projects/angular-wrapper/src/public-api';
 import { By } from '@angular/platform-browser';
-import '@porsche-design-system/components-react/jsdom-polyfill';
 import { CommonModule } from '@angular/common';
+import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 @Component({
   selector: 'empty',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { componentsReady } from '../../../projects/angular-wrapper/src/public-api';
 import { render, fireEvent } from '@testing-library/angular';
-import '@porsche-design-system/components-react/jsdom-polyfill';
+import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 @Component({
   selector: 'empty',
