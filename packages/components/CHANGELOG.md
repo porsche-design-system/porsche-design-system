@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- Colors of `Spinner` to new V3 Design in theme light and dark
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
