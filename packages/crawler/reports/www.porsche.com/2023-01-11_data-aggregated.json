@@ -176,7 +176,7 @@
                     "size": {
                         "amount": 1,
                         "values": {
-                            "responsive": 1
+                            "medium": 1
                         }
                     },
                     "href": {
@@ -686,7 +686,7 @@
                             "size": {
                                 "amount": 1,
                                 "values": {
-                                    "responsive": 1
+                                    "medium": 1
                                 }
                             },
                             "href": {

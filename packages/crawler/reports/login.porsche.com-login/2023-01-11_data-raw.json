@@ -530,7 +530,7 @@
                             "width": "auto",
                             "offset": "none",
                             "alignSelf": "auto",
-                            "grow": "1",
+                            "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
                         },
@@ -556,7 +556,7 @@
                             "width": "auto",
                             "offset": "none",
                             "alignSelf": "auto",
-                            "grow": "1",
+                            "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
                         },
@@ -866,7 +866,7 @@
                             "width": "auto",
                             "offset": "none",
                             "alignSelf": "auto",
-                            "grow": "1",
+                            "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
                         },
@@ -892,7 +892,7 @@
                             "width": "auto",
                             "offset": "none",
                             "alignSelf": "auto",
-                            "grow": "1",
+                            "grow": 1,
                             "shrink": 1,
                             "flex": "initial"
                         },
@@ -995,7 +995,7 @@
                             "weight": "regular",
                             "icon": "information",
                             "active": false,
-                            "hideLabel": "true",
+                            "hideLabel": true,
                             "alignLabel": "right",
                             "stretch": false,
                             "theme": "light",

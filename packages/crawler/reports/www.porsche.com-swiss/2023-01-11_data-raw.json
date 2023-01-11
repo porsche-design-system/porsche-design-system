@@ -1747,7 +1747,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "12",
+                            "size": 12,
                             "offset": 0
                         },
                         "children": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s\">(the content was stripped)</pnav-current-region>"
@@ -1792,7 +1792,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "12",
+                            "size": 12,
                             "offset": 0
                         },
                         "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
@@ -1801,7 +1801,7 @@
                 {
                     "p-grid-item": {
                         "properties": {
-                            "size": "12",
+                            "size": 12,
                             "offset": 0
                         },
                         "children": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s\">(the content was stripped)</pnav-fine-print>"
@@ -1823,7 +1823,7 @@
                 {
                     "p-flex": {
                         "properties": {
-                            "inline": "true",
+                            "inline": true,
                             "wrap": "nowrap",
                             "direction": "row",
                             "justifyContent": "flex-start",
@@ -1996,7 +1996,7 @@
                             "icon": "logo-facebook",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2007,7 +2007,7 @@
                             "icon": "logo-instagram",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2018,7 +2018,7 @@
                             "icon": "logo-pinterest",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2029,7 +2029,7 @@
                             "icon": "logo-youtube",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2040,7 +2040,7 @@
                             "icon": "logo-twitter",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2051,7 +2051,7 @@
                             "icon": "logo-xing",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }
@@ -2062,7 +2062,7 @@
                             "icon": "logo-linkedin",
                             "theme": "dark",
                             "target": "_self",
-                            "hideLabel": "true"
+                            "hideLabel": true
                         },
                         "children": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>"
                     }

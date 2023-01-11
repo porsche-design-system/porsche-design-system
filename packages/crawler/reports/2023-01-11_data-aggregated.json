@@ -221,7 +221,8 @@
                     "size": {
                         "amount": 6,
                         "values": {
-                            "responsive": 6
+                            "medium": 1,
+                            "responsive": 5
                         }
                     },
                     "href": {
