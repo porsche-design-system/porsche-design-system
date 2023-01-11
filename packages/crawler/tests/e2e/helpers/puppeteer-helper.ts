@@ -10,14 +10,14 @@ export const getInternalLoaderScriptForPrefixes = (prefixes: string[]): string =
   prefixes.reduce((result, prefix) => result + getLoaderScript({ prefix: prefix }), '');
 
 export const getExternalLoaderScriptForPrefixes = (prefixes: string[]): string => {
-  const prefixesLoaders = prefixes.reduce(
-    (result, prefix) =>
-      result +
-      `
+  const prefixesLoaders = prefixes
+    .map(
+      (prefix) =>
+        `
     porscheDesignSystem.load(\{ prefix: '${prefix}' \});
-  `,
-    ''
-  );
+  `
+    )
+    .join('');
   // the script below has been copied from https://designsystem.porsche.com/v2/
   return `
         <script data-pds-loader-script="">
@@ -30,8 +30,7 @@ export const setContentWithDesignSystem = async (page: Page, pdsTestingContext: 
   const options: WaitForOptions = {
     waitUntil: 'networkidle0',
   };
-  const firstPdsVersionPrefixes = pdsTestingContext.firstPdsVersionPrefixes;
-  const secondPdsVersionPrefixes = pdsTestingContext.secondPdsVersionPrefixes;
+  const { firstPdsVersionPrefixes, secondPdsVersionPrefixes } = pdsTestingContext;
 
   let firstLoaderScript = firstPdsVersionPrefixes ? getInternalLoaderScriptForPrefixes(firstPdsVersionPrefixes) : '';
   const secondLoaderScript = secondPdsVersionPrefixes
