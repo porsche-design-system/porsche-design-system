@@ -593,7 +593,7 @@ function getStringifiedProps(props: PresetsProps): string {
     .join(' ');
 }
 
-function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]): string {
+function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[] | object | null): string {
   if (typeof attribute === 'string') {
     return `"` + attribute + `"`;
   } else {
