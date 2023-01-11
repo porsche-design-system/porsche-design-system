@@ -153,10 +153,10 @@ describe('manual test cases', () => {
   });
 
   it('should render PContentWrapper correctly with conditional child component', () => {
-    const Component: React.FC<{ hasChild?: boolean | undefined }> = ({ hasChild }) => (
+    const Component: React.FC<{ hasChild?: boolean | undefined }> = ({ hasAdditionalChild }) => (
       <fromComponents.PContentWrapper>
         <p>Ensure conditional children do not cause Errors while SSG</p>
-        {hasChild && <p>Some Text</p>}
+        {hasAdditionalChild && <p>Some Text</p>}
       </fromComponents.PContentWrapper>
     );
 
