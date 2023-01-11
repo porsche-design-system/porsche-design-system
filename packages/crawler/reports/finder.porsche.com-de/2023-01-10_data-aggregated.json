@@ -1,7 +1,8 @@
 {
     "url": "https://finder.porsche.com/de/de-DE",
     "consumedPdsVersionsWithPrefixes": {
-        "2.18.0": [
+        "2.19.0": [
+            "fnssr",
             "fn"
         ]
     },
@@ -259,8 +260,8 @@
         ]
     },
     "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
-        "2.18.0": {
-            "fn": {
+        "2.19.0": {
+            "fnssr": {
                 "tagNames": {
                     "p-marque": {
                         "amount": 1,
@@ -481,6 +482,63 @@
                     "p-inline-notification",
                     "p-link-social",
                     "p-link-tile",
+                    "p-modal",
+                    "p-pagination",
+                    "p-popover",
+                    "p-radio-button-wrapper",
+                    "p-scroller",
+                    "p-segmented-control",
+                    "p-segmented-control-item",
+                    "p-select-wrapper",
+                    "p-spinner",
+                    "p-stepper-horizontal",
+                    "p-stepper-horizontal-item",
+                    "p-switch",
+                    "p-table",
+                    "p-table-body",
+                    "p-table-cell",
+                    "p-table-head",
+                    "p-table-head-cell",
+                    "p-table-head-row",
+                    "p-table-row",
+                    "p-tabs",
+                    "p-tabs-bar",
+                    "p-tabs-item",
+                    "p-tag",
+                    "p-tag-dismissible",
+                    "p-text",
+                    "p-text-field-wrapper",
+                    "p-text-list",
+                    "p-text-list-item",
+                    "p-textarea-wrapper",
+                    "p-toast"
+                ]
+            },
+            "fn": {
+                "tagNames": {},
+                "unusedTagNames": [
+                    "p-accordion",
+                    "p-banner",
+                    "p-button",
+                    "p-button-group",
+                    "p-button-pure",
+                    "p-carousel",
+                    "p-checkbox-wrapper",
+                    "p-content-wrapper",
+                    "p-divider",
+                    "p-fieldset-wrapper",
+                    "p-flex",
+                    "p-flex-item",
+                    "p-grid",
+                    "p-grid-item",
+                    "p-headline",
+                    "p-icon",
+                    "p-inline-notification",
+                    "p-link",
+                    "p-link-pure",
+                    "p-link-social",
+                    "p-link-tile",
+                    "p-marque",
                     "p-modal",
                     "p-pagination",
                     "p-popover",

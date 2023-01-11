@@ -20,7 +20,7 @@
                             "size": "{\"base\":\"medium\",\"m\":\"large\",\"l\":\"x-large\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/",
+                            "href": "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts-sport-turismo/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
@@ -40,7 +40,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Der Taycan Turbo Cross Turismo."
+                        "children": "Der Taycan GTS Sport Turismo."
                     }
                 },
                 {
@@ -63,13 +63,13 @@
                             "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale",
+                            "href": "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Exklusive Highlights mit Stil und Eleganz."
+                        "children": "Der Macan T."
                     }
                 },
                 {
@@ -92,13 +92,13 @@
                             "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ",
+                            "href": "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Der neue 911 Carrera T."
+                        "children": "Die 911 GTS Modelle."
                     }
                 },
                 {
@@ -121,13 +121,13 @@
                             "size": "{\"base\":\"small\",\"xs\":\"x-small\",\"s\":\"small\",\"l\":\"medium\"}",
                             "weight": "semibold",
                             "icon": "arrow-head-right",
-                            "href": "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open",
+                            "href": "https://finder.porsche.com/",
                             "active": false,
                             "hideLabel": false,
                             "theme": "dark",
                             "target": "_self"
                         },
-                        "children": "Die neuen 718 Style Edition Modelle."
+                        "children": "Finden Sie Ihr Traumfahrzeug – Neu oder gebraucht."
                     }
                 },
                 {
@@ -617,7 +617,7 @@
                             "ellipsis": false,
                             "theme": "dark"
                         },
-                        "children": "Exklusiv in der Schweiz - exklusiv für Sie. Freuen Sie sich beim Kauf eines Neuwagens in einem Schweizer Porsche Zentrum auf besondere Vorteile. Für detaillierte Informationen steht Ihnen Ihr Porsche Zentrum gerne zur Verfügung."
+                        "children": "<nobr>Porsche</nobr><nobr>Porsche</nobr>"
                     }
                 },
                 {
@@ -655,7 +655,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Finden Sie Ihren Porsche Neu- oder Gebrauchtwagen."
+                        "children": "<nobr>Porsche</nobr>"
                     }
                 },
                 {
@@ -669,7 +669,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "So finden Sie ganz einfach Ihren Traum Porsche. Geben Sie Ihren Standort ein und stöbern Sie in den besten Fahrzeugangeboten in Ihrer Nähe."
+                        "children": "<nobr>Porsche</nobr>"
                     }
                 },
                 {
@@ -767,7 +767,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Schlüsselanhänger aus Echtleder in Form des Porsche Wappens."
+                        "children": "<nobr>Porsche</nobr>"
                     }
                 },
                 {
@@ -807,7 +807,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Porsche Thermobecher"
+                        "children": "<nobr>Porsche</nobr>"
                     }
                 },
                 {
@@ -861,7 +861,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "911 Soundbar – Limited Edition"
+                        "children": "<nobr>Edition</nobr>"
                     }
                 },
                 {
@@ -929,7 +929,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Porsche Design Pilotenbrille für Damen und Herren mit polarisierten Base-2-Curve-Gläsern und Wechselgläsern. "
+                        "children": "<nobr>Porsche</nobr><nobr>Design</nobr>"
                     }
                 },
                 {
@@ -983,7 +983,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Kleiner Designer-Trolley aus leichtem Kunststoff mit 4 Rädern im exklusiven Design."
+                        "children": "<nobr>Design</nobr><nobr>Design</nobr>"
                     }
                 },
                 {
@@ -1091,7 +1091,7 @@
                             "ellipsis": false,
                             "theme": "light"
                         },
-                        "children": "Exklusives Visitenkartenetui für Herren aus Leder. 50Y Porsche Design Limited Edition."
+                        "children": "<nobr>Porsche</nobr><nobr>Design</nobr><nobr>Edition</nobr>"
                     }
                 },
                 {
@@ -1741,7 +1741,7 @@
                             "wrap": "wrap",
                             "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
                         },
-                        "children": "<pnav-footer-p-grid-item size=\"12\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"{ base: 12, xs: 8, s: 5, m: 4, l: 3 }\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"{ base: 12, xs: 8, s: 5, m: 4, l: 3 }\" offset=\"{ base: 0, s: 1, m: 0 }\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"{ base: 12, m: 4, l: 6 }\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"{ base: 12, l: 9 }\" class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"12\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item size=\"12\" class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>"
+                        "children": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>"
                     }
                 },
                 {
@@ -1795,7 +1795,7 @@
                             "size": "12",
                             "offset": 0
                         },
-                        "children": "<pnav-footer-p-divider theme=\"dark\" class=\"divider hydrated\"></pnav-footer-p-divider>"
+                        "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>"
                     }
                 },
                 {

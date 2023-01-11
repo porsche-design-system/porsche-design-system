@@ -738,7 +738,7 @@
                         "properties": {
                             "tabbable": true,
                             "type": "submit",
-                            "disabled": false,
+                            "disabled": true,
                             "loading": false,
                             "size": "small",
                             "weight": "regular",
@@ -804,6 +804,15 @@
                             "lazy": false,
                             "theme": "light"
                         }
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "background-surface"
+                        },
+                        "children": "nicht vorrätig"
                     }
                 },
                 {
@@ -1331,6 +1340,22 @@
                             "target": "_self"
                         },
                         "children": "<a target=\"_self\" href=\"https://shop.porsche.com/licenses\">Open Source Software Notice</a>"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "<a target=\"_self\" href=\"/de/de-DE/opt-out\">Data Tracking Opt-out</a>"
                     }
                 },
                 {

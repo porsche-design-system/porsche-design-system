@@ -1,13 +1,14 @@
 {
     "url": "https://finder.porsche.com/de/de-DE",
     "consumedPdsVersionsWithPrefixes": {
-        "2.18.0": [
+        "2.19.0": [
+            "fnssr",
             "fn"
         ]
     },
     "consumedTagNamesForVersionsAndPrefixes": {
-        "2.18.0": {
-            "fn": [
+        "2.19.0": {
+            "fnssr": [
                 {
                     "p-marque": {
                         "properties": {
@@ -282,7 +283,8 @@
                         "hostPdsComponent": "p-link-pure"
                     }
                 }
-            ]
+            ],
+            "fn": []
         }
     }
 }

@@ -8,66 +8,66 @@
     "aggregatedConsumedTagNames": {
         "tagNames": {
             "p-link-pure": {
-                "amount": 38,
+                "amount": 39,
                 "hostPdsComponent": null,
-                "children": 38,
+                "children": 39,
                 "properties": {
                     "alignLabel": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "right": 37,
+                            "right": 38,
                             "left": 1
                         }
                     },
                     "stretch": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "false": 38
+                            "false": 39
                         }
                     },
                     "size": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "small": 38
+                            "small": 39
                         }
                     },
                     "weight": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "regular": 38
+                            "regular": 39
                         }
                     },
                     "icon": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "none": 36,
+                            "none": 37,
                             "information": 1,
                             "arrow-head-down": 1
                         }
                     },
                     "active": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "false": 38
+                            "false": 39
                         }
                     },
                     "hideLabel": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "false": 38
+                            "false": 39
                         }
                     },
                     "theme": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
                             "light": 19,
-                            "dark": 19
+                            "dark": 20
                         }
                     },
                     "target": {
-                        "amount": 38,
+                        "amount": 39,
                         "values": {
-                            "_self": 38
+                            "_self": 39
                         }
                     },
                     "aria": {
@@ -284,7 +284,8 @@
                     "disabled": {
                         "amount": 5,
                         "values": {
-                            "false": 5
+                            "false": 4,
+                            "true": 1
                         }
                     },
                     "loading": {
@@ -353,6 +354,29 @@
                     }
                 },
                 "unusedProperties": [
+                    "iconSource"
+                ]
+            },
+            "p-tag": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": 1,
+                "properties": {
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    },
+                    "color": {
+                        "amount": 1,
+                        "values": {
+                            "background-surface": 1
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "icon",
                     "iconSource"
                 ]
             },
@@ -540,7 +564,6 @@
             "p-tabs",
             "p-tabs-bar",
             "p-tabs-item",
-            "p-tag",
             "p-tag-dismissible",
             "p-text",
             "p-text-field-wrapper",
@@ -555,66 +578,66 @@
             "sl": {
                 "tagNames": {
                     "p-link-pure": {
-                        "amount": 38,
+                        "amount": 39,
                         "hostPdsComponent": null,
-                        "children": 38,
+                        "children": 39,
                         "properties": {
                             "alignLabel": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "right": 37,
+                                    "right": 38,
                                     "left": 1
                                 }
                             },
                             "stretch": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "false": 38
+                                    "false": 39
                                 }
                             },
                             "size": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "small": 38
+                                    "small": 39
                                 }
                             },
                             "weight": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "regular": 38
+                                    "regular": 39
                                 }
                             },
                             "icon": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "none": 36,
+                                    "none": 37,
                                     "information": 1,
                                     "arrow-head-down": 1
                                 }
                             },
                             "active": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "false": 38
+                                    "false": 39
                                 }
                             },
                             "hideLabel": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "false": 38
+                                    "false": 39
                                 }
                             },
                             "theme": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
                                     "light": 19,
-                                    "dark": 19
+                                    "dark": 20
                                 }
                             },
                             "target": {
-                                "amount": 38,
+                                "amount": 39,
                                 "values": {
-                                    "_self": 38
+                                    "_self": 39
                                 }
                             },
                             "aria": {
@@ -831,7 +854,8 @@
                             "disabled": {
                                 "amount": 5,
                                 "values": {
-                                    "false": 5
+                                    "false": 4,
+                                    "true": 1
                                 }
                             },
                             "loading": {
@@ -900,6 +924,29 @@
                             }
                         },
                         "unusedProperties": [
+                            "iconSource"
+                        ]
+                    },
+                    "p-tag": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            },
+                            "color": {
+                                "amount": 1,
+                                "values": {
+                                    "background-surface": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "icon",
                             "iconSource"
                         ]
                     },
@@ -1087,7 +1134,6 @@
                     "p-tabs",
                     "p-tabs-bar",
                     "p-tabs-item",
-                    "p-tag",
                     "p-tag-dismissible",
                     "p-text",
                     "p-text-field-wrapper",

@@ -56,10 +56,10 @@
                     "href": {
                         "amount": 21,
                         "values": {
-                            "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/": 1,
-                            "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale": 1,
-                            "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
-                            "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open": 1,
+                            "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts-sport-turismo/": 1,
+                            "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
+                            "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/": 1,
+                            "https://finder.porsche.com/": 1,
                             "https://www.porsche.com/swiss/de/models/718/": 1,
                             "https://www.porsche.com/swiss/de/models/911/": 1,
                             "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
@@ -917,10 +917,10 @@
                             "href": {
                                 "amount": 13,
                                 "values": {
-                                    "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-turbo-cross-turismo/": 1,
-                                    "https://shop.porsche.com/ch/de-CH/c/porsche-design-sale": 1,
-                                    "https://www.porsche.com/swiss/de/models/911/911-models/911-carrera-t ": 1,
-                                    "https://www.porsche.com/swiss/de/models/718/718-models/718-cayman-style-edition/#style_edition~open": 1,
+                                    "https://www.porsche.com/swiss/de/models/taycan/taycan-models/taycan-gts-sport-turismo/": 1,
+                                    "https://www.porsche.com/swiss/de/models/macan/macan-models/macan-t/": 1,
+                                    "https://www.porsche.com/swiss/de/models/911/911-models/carrera-gts/": 1,
+                                    "https://finder.porsche.com/": 1,
                                     "https://www.porsche.com/swiss/de/models/718/": 1,
                                     "https://www.porsche.com/swiss/de/models/911/": 1,
                                     "https://www.porsche.com/swiss/de/models/taycan/taycan-models/": 1,
