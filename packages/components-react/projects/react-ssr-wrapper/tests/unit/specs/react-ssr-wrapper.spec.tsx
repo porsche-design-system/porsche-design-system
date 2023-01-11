@@ -152,10 +152,10 @@ describe('manual test cases', () => {
     expect(hasTestCaseForEveryTagNameWithInternalProp).toBeTruthy();
   });
 
-  it('should render PContentWrapper correctly with conditional child component', () => {
-    const Component: React.FC<{ hasChild?: boolean | undefined }> = ({ hasAdditionalChild }) => (
+  it('should render PContentWrapper correctly with conditional child component when condition is undefined', () => {
+    const Component: React.FC<{ hasAdditionalChild?: boolean | undefined }> = ({ hasAdditionalChild }) => (
       <fromComponents.PContentWrapper>
-        <p>Ensure conditional children do not cause Errors while SSG</p>
+        <p>Ensure conditional children do not cause Errors when condition is undefined</p>
         {hasAdditionalChild && <p>Some Text</p>}
       </fromComponents.PContentWrapper>
     );
