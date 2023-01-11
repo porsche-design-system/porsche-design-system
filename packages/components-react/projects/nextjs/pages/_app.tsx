@@ -23,6 +23,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
             setSelected(value);
             router.push(value);
           }}
+          style={{ font: 'revert', overflowWrap: 'revert', hyphens: 'revert' }}
         >
           <option disabled value="">
             Select a page

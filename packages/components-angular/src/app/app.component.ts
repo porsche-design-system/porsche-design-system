@@ -5,7 +5,7 @@ import { routes } from './app-routing.module';
 @Component({
   selector: 'app-root',
   template: `
-    <select (change)="changeRoute($event.target.value)">
+    <select (change)="changeRoute($event.target.value)" style="font: revert; overflow-wrap: revert; hyphens: revert">
       <option disabled selected>Select a page</option>
       <ng-container *ngFor="let route of routes">
         <option [value]="route.path" [disabled]="route.isDisabled">{{ route.name }}</option>
