@@ -5,7 +5,7 @@ import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
 
-type PresetsProps = { [key: string]: number | string | boolean | string[] };
+type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
 type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
