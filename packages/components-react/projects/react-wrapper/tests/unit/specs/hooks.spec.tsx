@@ -43,6 +43,7 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
     spy.mockRestore();
   });
 });
+
 describe('usePrefix()', () => {
   const originalEnv = process.env;
 
