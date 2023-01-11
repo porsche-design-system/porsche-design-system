@@ -8,7 +8,7 @@ import type {
   Theme,
 } from '../../types';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
   const breakpointCustomizableSize: BreakpointCustomizable<TextSize> = {
     base: 'x-small',

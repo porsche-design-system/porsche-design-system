@@ -64,6 +64,7 @@ export const getLinkButtonPureStyles = (
       width: '100%',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       outline: 0,
+      textDecoration: 'none',
       ...textSmallStyle,
       fontWeight: getFontWeight(weight),
       ...mergeDeep(

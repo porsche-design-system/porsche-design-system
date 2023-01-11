@@ -44,7 +44,7 @@ export const getComponentCss = (
             '::slotted': {
               '&(a)': {
                 outline: 0,
-                textDecoration: 'underline',
+                textDecoration: 'none',
                 font: 'inherit',
                 color: 'inherit',
               },

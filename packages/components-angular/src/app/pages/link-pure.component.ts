@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [
     `
       p-link-pure:not(:last-child) {
-        margin-right: 0.5rem;
+        margin-right: 16px;
       }
       .stretched-links p-link-pure {
         margin-right: 0;
@@ -39,20 +39,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       >
         Label responsive
       </p-link-pure>
-      <p-link-pure
-        [href]="'https://www.porsche.com'"
-        [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-      >
-        Label responsive
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
     </div>
 
     <div class="playground light" title="should render with different weight">
-      <p-link-pure [href]="'https://www.porsche.com'" [weight]="'thin'">Label weight thin</p-link-pure>
-      <p-link-pure [weight]="'thin'"><a [href]="'https://www.porsche.com'">Label slotted weight thin</a></p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [weight]="'regular'">Label weight regular</p-link-pure>
       <p-link-pure [weight]="'regular'"><a [href]="'https://www.porsche.com'">Label slotted weight regular</a></p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [weight]="'semi-bold'">Label weight semi-bold</p-link-pure>
+      <p-link-pure [weight]="'semi-bold'"><a [href]="'https://www.porsche.com'">Label slotted weight semi-bold</a></p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [weight]="'bold'">Label weight bold</p-link-pure>
       <p-link-pure [weight]="'bold'"><a [href]="'https://www.porsche.com'">Label slotted weight bold</a></p-link-pure>
     </div>
@@ -60,19 +53,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render with active state">
       <p-link-pure [href]="'https://www.porsche.com'" [active]="true">Label active</p-link-pure>
       <p-link-pure [active]="true"><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [active]="true">
-        Label active
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
     </div>
 
     <div class="playground dark" title="should render with active state on dark background">
       <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [theme]="'dark'">Label active</p-link-pure>
       <p-link-pure [active]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [theme]="'dark'">
-        Label active
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
     </div>
 
     <div class="playground light" title="should render with specific icon">
@@ -111,46 +96,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-pure>
     </div>
 
-    <div class="playground light" title="should render with subline">
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'">
-        Label size small
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'medium'">
-        Label size medium
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'large'">
-        Label size large
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-large'">
-        Label size x-large
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-      <p-link-pure [size]="'large'">
-        <a [href]="'https://www.porsche.com'">Label slotted size large</a>
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-    </div>
-
     <div class="playground light" title="should render with no icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Label icon none</p-link-pure>
       <p-link-pure [icon]="'none'"><a [href]="'https://www.porsche.com'">Label slotted icon none</a></p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'">
-        Label icon none
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
     </div>
 
-    <div class="playground light" title="should render icon if hide-label and icon none is set">
+    <div class="playground light" title="should render label if hide-label is set to true and icon none is set">
       <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'none'">Label hide-label icon none</p-link-pure>
       <p-link-pure [hideLabel]="true" [icon]="'none'">
         <a [href]="'https://www.porsche.com'">Label slotted with hideLabel and no icon</a>
-      </p-link-pure>
-      <p-link-pure [hideLabel]="true" [size]="'small'" [icon]="'none'">
-        <a [href]="'https://www.porsche.com'">Label hide-label icon none</a>
-        <p slot="subline">Some subline</p>
       </p-link-pure>
     </div>
 
@@ -211,17 +165,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
       >
         <a [href]="'https://www.porsche.com'">Label slotted multiple breakpoint-customizable</a>
-      </p-link-pure>
-    </div>
-
-    <div class="playground light" title="should not align label left or stretch if it has a subline">
-      <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">
-        Label align left
-        <p slot="subline">Some subline</p>
-      </p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">
-        Label stretch
-        <p slot="subline">Some subline</p>
       </p-link-pure>
     </div>
 
