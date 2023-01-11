@@ -34,7 +34,7 @@ export const evaluatePage = async (
         return children.concat(children.map(getAllChildElements).flat());
       };
 
-      const getChildren = (el: Element): string | null =>
+      const getHighestLevelChildrenOrTextContent = (el: Element): string | null =>
         Array.from(el.children).reduce((result, slotEl) => {
           if (slotEl.children.length) {
             const copy = slotEl.cloneNode(true) as Element;
@@ -108,7 +108,7 @@ export const evaluatePage = async (
             throw new Error('Could not find component name');
           }
 
-          const slotInfo = getChildren(el);
+          const slotInfo = getHighestLevelChildrenOrTextContent(el);
           const hostPdsComponent = getHostPdsComponent(el, prefix);
 
           return {
