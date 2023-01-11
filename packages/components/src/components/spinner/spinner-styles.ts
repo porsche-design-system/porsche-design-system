@@ -10,9 +10,9 @@ import {
   themeDarkContrastMedium,
 } from '@porsche-design-system/utilities-v2';
 
-const sizeSmall = pxToRemWithUnit(18);
-const sizeMedium = pxToRemWithUnit(27);
-const sizeLarge = pxToRemWithUnit(36);
+const sizeSmall = pxToRemWithUnit(48);
+const sizeMedium = pxToRemWithUnit(72);
+const sizeLarge = pxToRemWithUnit(104);
 
 const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   small: { height: sizeSmall, width: sizeSmall },
