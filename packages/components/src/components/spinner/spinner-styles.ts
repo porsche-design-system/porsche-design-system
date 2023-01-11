@@ -23,6 +23,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
+  const isDarkTheme = isThemeDark(theme);
 
   return getCss({
     '@global': {
@@ -38,12 +39,12 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       circle: {
         '&:first-child': {
-          stroke: isThemeDark(theme) ? themeDarkContrastMedium : themeLightContrastMedium,
+          stroke: isDarkTheme ? themeDarkContrastMedium : themeLightContrastMedium,
         },
         '&:last-child': {
           transformOrigin: '0 0',
           animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
-          stroke: isThemeDark(theme) ? themeDarkPrimary : themeLightPrimary,
+          stroke: isDarkTheme ? themeDarkPrimary : themeLightPrimary,
           strokeDasharray: '40, 200',
           strokeDashoffset: 0,
           strokeLinecap: 'round',
