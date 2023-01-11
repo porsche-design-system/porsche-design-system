@@ -1,4 +1,3 @@
-import normalize from 'normalize-jss';
 import { create, JssStyle, Styles } from 'jss';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
@@ -16,103 +15,68 @@ type GetNormalizeStylesOptionsFormatHtml = GetNormalizeStylesOptions & { format:
 type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 'jsx' }`;
   `;`;
 
-  const htmlStyles: JssStyle = {
-    textSizeAdjust: 'none',
-    WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-    fontFamily: font.family,
-  };
+  const normalizeStyles: Styles = {
+    '@global': {
+      html: {
+        textSizeAdjust: 'none',
+        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+        fontFamily: font.family,
+      },
 
-  const formElementStyles: JssStyle = {
-    textSizeAdjust: 'none',
-    WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-    fontFamily: font.family,
-    fontSize: font.size.small.fontSize,
-    lineHeight: font.size.small.lineHeight,
-    fontWeight: font.weight.regular,
-    fontStyle: 'normal',
-    fontVariant: 'normal',
-    overflowWrap: 'break-word',
-    hyphens: 'auto',
-  };
+      'button, input, optgroup, select, textarea': {
+        textSizeAdjust: 'none',
+        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+        fontFamily: font.family,
+        fontSize: font.size.small.fontSize,
+        lineHeight: font.size.small.lineHeight,
+        fontWeight: font.weight.regular,
+        fontStyle: 'normal',
+        fontVariant: 'normal',
+        overflowWrap: 'break-word',
+        hyphens: 'auto',
+      },
 
-  const anchorStyles: JssStyle = {
-    color: 'inherit',
-    textDecoration: 'underline',
-  };
+      a: {
+        color: 'inherit',
+        textDecoration: 'underline',
+        '@media(hover:hover)': {
+          transition: 'color var(--p-transition-duration, .24s) ease',
+          '&:hover': {
+            color: color.state.hover,
+          },
+        },
+      },
 
-  const boldStyles: JssStyle = {
-    fontWeight: font.weight.bold,
-  };
+      '[data-theme="dark"] a:hover': {
+        '@media(hover:hover)': {
+          '&:hover': {
+            color: color.darkTheme.state.hover,
+          },
+        },
+      },
 
-  const emphasisStyles: JssStyle = {
-    fontStyle: 'normal',
-  };
+      'b, strong': {
+        fontWeight: font.weight.bold,
+      },
 
-  const hoverTransitionStyles: JssStyle = {
-    transition: 'color var(--p-transition-duration, .24s) ease',
-  };
+      'em, i': {
+        fontStyle: 'normal',
+      },
 
-  const hoverColorStyles: JssStyle = {
-    color: color.state.hover,
-  };
-
-  const hoverColorStylesThemeDark: JssStyle = {
-    color: color.darkTheme.state.hover,
-  };
-
-  const defaultFocusStyles: JssStyle = {
-    outline: '1px solid transparent',
-    outlineOffset: '1px',
-  };
-
-  const mozFocusInnerStyles: JssStyle = {
-    border: 0,
-  };
-
-  const elFocusStyles: JssStyle = {
-    outlineColor: 'currentColor',
-  };
-
-  const elFocusNotVisibleStyles: JssStyle = {
-    outlineColor: 'transparent',
-  };
-
-  const normalizeCss = normalize[Object.keys(normalize)[0]];
-
-  const addCustomStylesToNormalizeCss = (
-    selector: string | string[],
-    styles: JssStyle,
-    nestedSelector?: string | string[]
-  ) => {
-    if (!normalizeCss[selector]) {
-      normalizeCss[selector] = {};
-    }
-    if (nestedSelector && !normalizeCss[selector][nestedSelector]) {
-      normalizeCss[selector][nestedSelector] = {};
-    }
-    for (const [key, value] of Object.entries(styles)) {
-      nestedSelector
-        ? (normalizeCss[selector][nestedSelector][`${key}`] = value)
-        : (normalizeCss[selector][`${key}`] = value);
-    }
-  };
-
-  const addHoverStyles = (): void => {
-    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStyles, 'a');
-    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverTransitionStyles, 'a');
-    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStyles, 'a:hover');
-    addCustomStylesToNormalizeCss('@media(hover:hover)', hoverColorStylesThemeDark, 'a:hover');
-  };
-
-  const addFocusStyles = (): void => {
-    const focusableElements = ['a', 'button', 'input', 'select', 'textarea'];
-    addCustomStylesToNormalizeCss(['a, button, input, select, textarea'], defaultFocusStyles);
-
-    for (const el of focusableElements) {
-      addCustomStylesToNormalizeCss(`${el}::-moz-focus-inner`, mozFocusInnerStyles);
-      addCustomStylesToNormalizeCss(`${el}:focus`, elFocusStyles);
-      addCustomStylesToNormalizeCss(`${el}:focus:not(:focus-visible)`, elFocusNotVisibleStyles);
-    }
+      'a, button, input, select, textarea': {
+        outline: '1px solid transparent',
+        outlineOffset: '1px',
+        '&::-moz-focus-inner': {
+          border: 0,
+        },
+        '&:focus': {
+          outlineColor: 'currentColor',
+        },
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
+        },
+      },
+    },
   };
 
   const minifyCss = (css: string): string =>
@@ -135,18 +99,7 @@ type GetNormalizeStylesOptionsFormatJsx = GetNormalizeStylesOptions & { format: 
       .toString();
 
   const getNormalizeStyles = (): string => {
-    addCustomStylesToNormalizeCss('html', htmlStyles);
-    addCustomStylesToNormalizeCss(['button, input, optgroup, select, textarea'], formElementStyles);
-    addCustomStylesToNormalizeCss('a', anchorStyles);
-    addCustomStylesToNormalizeCss(['b, strong'], boldStyles);
-    addCustomStylesToNormalizeCss(['em, i'], emphasisStyles);
-    addHoverStyles();
-    addFocusStyles();
-    return minifyCss(
-      getCss({
-        '@global': { ...normalizeCss },
-      })
-    );
+    return minifyCss(getCss(normalizeStyles));
   };
 
   const normalizeStylesFunction = `export function getNormalizeStyles(opts?: GetNormalizeStylesOptionsFormatHtml): string;
