@@ -1,26 +1,13 @@
-import * as puppeteer from 'puppeteer';
-import { puppeteerConfig } from '../../../constants';
-import { PdsTestingContext, setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem } from '../helpers';
 import { evaluatePage } from '../../../src/evaluate-page';
-import { getPdsTagNamesWithPropertyNames } from '../../../src/helpers/convert-data-helper';
+import { Page } from 'puppeteer';
 
-export const testCrawlerWithHtmlAndPrefixes = async (pdsTestingContext: PdsTestingContext): Promise<void> => {
-  const browser = await puppeteer.launch(puppeteerConfig);
-  const page = await browser.newPage();
-  await page.setUserAgent(
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
-  );
-  await setContentWithDesignSystem(page, pdsTestingContext);
-  console.log('Evaluating page..');
-  const crawlerData = await evaluatePage(page, getPdsTagNamesWithPropertyNames());
-  await browser.close();
-
-  // check that raw data matches snapshot
-  expect(crawlerData).toMatchSnapshot();
-};
+let page: Page;
+beforeEach(async () => (page = await browser.newPage()));
+afterEach(async () => await page.close());
 
 it('should retrieve children and hostPdsComponent correctly', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
         <p-banner theme="dark">
           <span slot="title">Some notification title</span>
@@ -30,10 +17,14 @@ it('should retrieve children and hostPdsComponent correctly', async () => {
         </p-banner>
     `,
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });
 
 it('should retrieve children correctly and put stripped content', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
       <p-flex>
         <p-flex-item>
@@ -45,28 +36,42 @@ it('should retrieve children correctly and put stripped content', async () => {
       </p-flex>
     `,
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });
+
 it('should retrieve hostPdsComponent correctly', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
         <p-button variant="primary">
             Test button
         </p-button>
     `,
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });
 
 it('should generate raw data correctly for 1 version and 2 prefixes', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
         <p-text>Second prefix</p-text>
         <my-prefix-p-text>First prefix</my-prefix-p-text>
   `,
     firstPdsVersionPrefixes: ['my-prefix', ''],
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });
+
 it('should generate raw data correctly for 2 versions and 2 prefixes', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
         <test-prefix-p-text>First version first prefix</test-prefix-p-text>
         <test1-prefix-p-text>First version second prefix</test1-prefix-p-text>
@@ -76,12 +81,20 @@ it('should generate raw data correctly for 2 versions and 2 prefixes', async () 
     firstPdsVersionPrefixes: ['test-prefix', 'test1-prefix'],
     secondPdsVersionPrefixes: ['', 'my-prefix'],
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });
 
 it('should retrieve object value from string correctly', async () => {
-  await testCrawlerWithHtmlAndPrefixes({
+  await setContentWithDesignSystem(page, {
     bodyHtml: `
       <p-spinner size="{ base: 'small', l: 'medium' }" aria="{ 'aria-label': 'Loading page content' }" />
     `,
   });
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page);
+  // check that raw data matches snapshot
+  expect(crawlerData).toMatchSnapshot();
 });

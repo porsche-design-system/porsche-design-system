@@ -1,6 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import { TagName } from '@porsche-design-system/shared';
 import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData, TagNamesWithPropertyNames } from './types';
+import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -10,10 +11,9 @@ declare global {
   }
 }
 
-export const evaluatePage = async (
-  page: puppeteer.Page,
-  pdsTagNamesWithPropertyNames: TagNamesWithPropertyNames
-): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
+const pdsTagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
+
+export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
   const pdsCrawlerRawData = await page.evaluate(
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);

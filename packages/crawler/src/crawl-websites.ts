@@ -5,7 +5,6 @@ import {
   getAggregatedConsumedTagNames,
   getAggregatedConsumedTagNamesForVersionsAndPrefixes,
   getConsumedPrefixesForVersions,
-  getPdsTagNamesWithPropertyNames,
   getRawDataWithoutVersionsAndPrefixes,
 } from './helpers/convert-data-helper';
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
@@ -24,7 +23,7 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
 
   console.log('Crawling page ' + websiteUrl);
   // getting raw data
-  const pdsCrawlerRawData = await evaluatePage(page, getPdsTagNamesWithPropertyNames());
+  const pdsCrawlerRawData = await evaluatePage(page);
 
   // raw data in another format - without versions and prefixes
   const pdsCrawlerRawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(pdsCrawlerRawData);
