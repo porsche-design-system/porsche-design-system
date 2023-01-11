@@ -11,13 +11,11 @@ import { useContext, useLayoutEffect } from 'react';
 import * as React from 'react';
 import { PorscheDesignSystemContext } from '../../../src/provider';
 
-// This mocks useContext() for the whole test-suit
-jest.mock('react', () => {
-  return {
-    ...jest.requireActual('react'),
-    useContext: jest.fn(),
-  };
-});
+// mock useContext() for the whole test-suite
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useContext: jest.fn(),
+}));
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {

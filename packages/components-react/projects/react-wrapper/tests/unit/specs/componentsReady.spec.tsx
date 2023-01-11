@@ -3,6 +3,7 @@ import { componentsReady, PButton } from '@porsche-design-system/components-reac
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import '@porsche-design-system/components-react/jsdom-polyfill';
 
 const Sample = (): JSX.Element => {
   const [active, setActive] = useState(false);

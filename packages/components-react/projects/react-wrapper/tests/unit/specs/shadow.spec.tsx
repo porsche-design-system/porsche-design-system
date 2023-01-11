@@ -14,6 +14,7 @@ import {
   getByTextShadowed,
 } from '@porsche-design-system/components-react/testing';
 import { render, fireEvent } from '@testing-library/react';
+import '@porsche-design-system/components-react/jsdom-polyfill';
 
 describe('getByRoleShadowed()', () => {
   it('should work for native button', async () => {

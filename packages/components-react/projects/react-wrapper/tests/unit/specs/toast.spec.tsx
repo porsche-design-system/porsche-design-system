@@ -2,6 +2,7 @@ import { componentsReady, PToast, useToastManager } from '@porsche-design-system
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import '@porsche-design-system/components-react/jsdom-polyfill';
 
 const Sample = (): JSX.Element => {
   const { addMessage } = useToastManager();
