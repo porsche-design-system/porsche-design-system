@@ -5,8 +5,8 @@ it('should provide all exports', () => {
   expect(Object.keys(fromFocus).length).toBe(1);
 });
 
-describe('getFocus()', () => {
-  it.each<Parameters<typeof getFocusStyle>>([[], [{ offset: '5rem' }]])(
+describe('getFocusStyle()', () => {
+  it.each<Parameters<typeof getFocusStyle>>([[], [{ offset: '5rem' }], [{ theme: 'dark' }]])(
     'should return correct css for opts: %s',
     (...args) => {
       expect(getFocusStyle(...args)).toMatchSnapshot();
