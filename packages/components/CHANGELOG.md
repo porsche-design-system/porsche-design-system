@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Content Wrapper` bug in `@porsche-design-system/components-react/ssr` where an Error was thrown when children are
+  rendered conditionally
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
