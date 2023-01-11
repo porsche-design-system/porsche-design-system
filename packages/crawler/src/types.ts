@@ -35,8 +35,8 @@ export type TagNameData = Record<
   TagName,
   {
     properties: Properties;
-    children?: string;
-    hostPdsComponent?: TagName;
+    children: string | null;
+    hostPdsComponent: TagName | null;
   }
 >;
 

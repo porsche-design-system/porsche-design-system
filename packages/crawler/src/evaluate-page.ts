@@ -115,11 +115,9 @@ export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNam
 
           return {
             [componentName]: {
-              ...{
-                properties: getAllConsumedProperties(el, pdsTagNamesWithPropertyNames[componentName]),
-              },
-              ...(slotInfo ? { children: slotInfo } : {}),
-              ...(hostPdsComponent ? { hostPdsComponent: hostPdsComponent } : {}),
+              properties: getAllConsumedProperties(el, pdsTagNamesWithPropertyNames[componentName]),
+              children: slotInfo ? slotInfo : null,
+              hostPdsComponent: hostPdsComponent ? hostPdsComponent : null,
             },
           } as TagNameData;
         });
