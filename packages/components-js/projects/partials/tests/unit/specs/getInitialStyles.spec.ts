@@ -51,3 +51,9 @@ describe('withoutTags: true', () => {
     expect(result).toMatch(regex);
   });
 });
+
+describe('normalize: true', () => {
+  it('should return core styles and normalize styles', () => {
+    expect(getInitialStyles({ normalize: true })).toMatchSnapshot();
+  });
+});
