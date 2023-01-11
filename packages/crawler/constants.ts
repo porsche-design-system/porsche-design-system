@@ -1,4 +1,3 @@
-import { PuppeteerLaunchOptions } from 'puppeteer';
 import { CrawlerConfig } from './src/types';
 export const crawlerConfig: CrawlerConfig = {
   reportFolderName: 'reports',
@@ -9,11 +8,4 @@ export const crawlerConfig: CrawlerConfig = {
     width: 1920, // our xxl size
     height: 800, // some height
   },
-};
-
-export const puppeteerConfig: PuppeteerLaunchOptions = {
-  headless: true,
-  ignoreHTTPSErrors: true,
-  args: [`--window-size=${crawlerConfig.viewport.width},${crawlerConfig.viewport.height}`],
-  defaultViewport: crawlerConfig.viewport,
 };
