@@ -23,7 +23,7 @@ class SampleComponent {
   }
 }
 
-const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/, '');
+const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
 
 it('should return 0 when nothing is rendered', async () => {
   await render(EmptyComponent);

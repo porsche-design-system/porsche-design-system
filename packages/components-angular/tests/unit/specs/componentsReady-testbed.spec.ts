@@ -25,7 +25,7 @@ class SampleComponent {
   }
 }
 
-const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/, '');
+const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
 
 beforeEach(waitForAsync(() => {
   TestBed.configureTestingModule({
