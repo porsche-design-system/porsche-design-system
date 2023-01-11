@@ -32,7 +32,7 @@ export const unobserveBreakpointChange = (node: HTMLElement): void => {
   if (breakpointChangeCallbackMap.size === 0) {
     mediaQueryLists.forEach((mediaQueryList) => {
       // matchmedia-polyfill only implements removeListener
-      mediaQueryList?.removeEventListener('change', handleBreakpointChange);
+      mediaQueryList.removeEventListener?.('change', handleBreakpointChange);
     });
   }
 };
