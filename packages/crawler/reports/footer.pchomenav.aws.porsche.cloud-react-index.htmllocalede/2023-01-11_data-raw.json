@@ -1,0 +1,955 @@
+{
+    "url": "https://footer.pchomenav.aws.porsche.cloud/react/index.html?locale=de",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.16.2": [
+            "pnav-footer"
+        ],
+        "2.2.1": [
+            ""
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.16.2": {
+            "pnav-footer": [
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<pnav-footer-p-grid class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid": {
+                        "properties": {
+                            "direction": "row",
+                            "wrap": "wrap",
+                            "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
+                        },
+                        "children": "<pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"further-links hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item><pnav-footer-p-grid-item class=\"hydrated\">(the content was stripped)</pnav-footer-p-grid-item>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": 12,
+                            "offset": 0
+                        },
+                        "children": "<pnav-current-region class=\"sc-pnav-current-region-h sc-pnav-current-region-s hydrated\">(the content was stripped)</pnav-current-region>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
+                            "offset": 0
+                        },
+                        "children": "<pnav-newsletter class=\"sc-pnav-newsletter-h sc-pnav-newsletter-s hydrated\">(the content was stripped)</pnav-newsletter>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": "{\"base\":12,\"xs\":8,\"s\":5,\"m\":4,\"l\":3}",
+                            "offset": "{\"base\":0,\"s\":1,\"m\":0}"
+                        },
+                        "children": "<pnav-contact class=\"sc-pnav-contact-h sc-pnav-contact-s hydrated\">(the content was stripped)</pnav-contact>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": "{\"base\":12,\"m\":4,\"l\":6}",
+                            "offset": 0
+                        },
+                        "children": "<pnav-social-media class=\"sc-pnav-social-media-h sc-pnav-social-media-s hydrated\">(the content was stripped)</pnav-social-media>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": "{\"base\":12,\"l\":9}",
+                            "offset": 0
+                        },
+                        "children": "<pnav-further-links class=\"sc-pnav-further-links-h sc-pnav-further-links-s hydrated\">(the content was stripped)</pnav-further-links>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": 12,
+                            "offset": 0
+                        },
+                        "children": "<pnav-footer-p-divider class=\"divider hydrated\"></pnav-footer-p-divider>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": 12,
+                            "offset": 0
+                        },
+                        "children": "<pnav-fine-print class=\"sc-pnav-fine-print-h sc-pnav-fine-print-s hydrated\">(the content was stripped)</pnav-fine-print>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "medium",
+                            "tag": "h2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Aktuelle Region / Sprache",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": true,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "center",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<pnav-footer-p-icon class=\"country-flag sc-pnav-current-region hydrated\" aria-hidden=\"true\"></pnav-footer-p-icon><pnav-footer-p-text class=\"sc-pnav-current-region hydrated\" data-theme=\"dark\">(the content was stripped)</pnav-footer-p-text>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "source": "/assets/flags/CH.svg",
+                            "color": "default",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "<span class=\"country-language-text sc-pnav-current-region\">Schweiz / Deutsch</span><a class=\"pnav-test-change-current-region sc-pnav-current-region\" href=\"https://porsche.com/countries\">Ändern</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "medium",
+                            "tag": "h2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Newsletter",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Aktuelle Nachrichten direkt in Ihrem Posteingang",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/dialogue/newsletter/",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "Abonnieren",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "medium",
+                            "tag": "h2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Kontakt",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Haben Sie Fragen?",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "Kontakt Formular",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "medium",
+                            "tag": "h2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Social Media",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Treten Sie mit uns über die sozialen Medien in Kontakt.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-facebook",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.facebook.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-instagram",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.instagram.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-pinterest",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.pinterest.com/porsche/\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-youtube",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.youtube.com/user/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-twitter",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://twitter.com/Porsche\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-xing",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.xing.com/pages/dr-ing-h-c-f-porscheag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-social": {
+                        "properties": {
+                            "icon": "logo-linkedin",
+                            "theme": "dark",
+                            "target": "_self",
+                            "hideLabel": true
+                        },
+                        "children": "<a href=\"https://www.linkedin.com/company/porsche-ag\" target=\"_blank\" rel=\"nofollow noopener\" class=\"sc-pnav-social-media\">(the content was stripped)</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-facebook",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-instagram",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-pinterest",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-youtube",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-twitter",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-xing",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "logo-linkedin",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-social"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "wrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<pnav-footer-p-flex-item class=\"further-link sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "full",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-flex class=\"sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "wrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<pnav-footer-p-flex-item class=\"headline sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item><pnav-footer-p-flex-item class=\"further-link-item sc-pnav-further-links hydrated\">(the content was stripped)</pnav-footer-p-flex-item>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "full",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-headline class=\"sc-pnav-further-links hydrated\" data-theme=\"dark\">Unternehmen</pnav-footer-p-headline>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Auf einen Blick</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Nachhaltigkeit</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Karriere</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Partner Forum</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Gesellschaften &amp; Dienstleistungen</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Presse</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex-item": {
+                        "properties": {
+                            "width": "{\"base\":\"full\",\"s\":\"half\",\"m\":\"one-third\"}",
+                            "offset": "none",
+                            "alignSelf": "auto",
+                            "grow": 0,
+                            "shrink": 1,
+                            "flex": "initial"
+                        },
+                        "children": "<pnav-footer-p-link-pure class=\"sc-pnav-further-links hydrated\">Kontakt</pnav-footer-p-link-pure>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "medium",
+                            "tag": "h2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Unternehmen",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/aboutporsche/overview/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Auf einen Blick",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/aboutporsche/responsibility/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Nachhaltigkeit",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/aboutporsche/jobs/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Karriere",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/motorsportandevents/porschepartnerforum/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Partner Forum",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/aboutporsche/service/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Gesellschaften & Dienstleistungen",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://preview.ppn.porsche.com/swiss/de/aboutporsche/pressreleases/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Presse",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "small",
+                            "weight": "regular",
+                            "icon": "none",
+                            "href": "https://contact.porsche.com/swiss/de/accessoriesandservices/keyaccount/contact/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "dark",
+                            "target": "_self"
+                        },
+                        "children": "Kontakt",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "span",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-divider": {
+                        "properties": {
+                            "color": "neutral-contrast-low",
+                            "orientation": "horizontal",
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/legal-notice/\">Impressum und Rechtliche Hinweise.</a><a href=\"https://www.porsche.com/swiss/de/privacy/\">Hinweise zum Datenschutz.</a><a href=\"https://www.porsche.com/swiss/de/cookie-policy/\">Cookie Policy.</a><a href=\"https://www.porsche.com/swiss/de/aboutporsche/overview/compliance/whistleblower-system/\">Hinweisgebersystem.</a><a href=\"https://www.porsche.com/licenses\" target=\"_blank\">Open Source Software Notice.</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/additionalinformation/wltp/\">www.porsche.com/wltp.</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "Der Durchschnittswert der CO₂-Emissionen aller in der Schweiz verkauften Neuwagen beträgt 129 g/km. CO₂-Zielwert nach Prüfzyklus WLTP: 118g/km ",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "dark"
+                        },
+                        "children": "<a href=\"https://www.porsche.com/swiss/de/accessoriesandservices/porscheservice/vehicleinformation/bev/\">hier.</a>",
+                        "hostPdsComponent": null
+                    }
+                }
+            ]
+        },
+        "2.2.1": {
+            "": []
+        }
+    }
+}

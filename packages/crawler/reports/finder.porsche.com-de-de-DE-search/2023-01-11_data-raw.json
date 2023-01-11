@@ -1,0 +1,1319 @@
+{
+    "url": "https://finder.porsche.com/de/de-DE/search",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.19.0": [
+            "fnssr",
+            "fn"
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.19.0": {
+            "fnssr": [
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": true,
+                            "size": "responsive",
+                            "target": "_self"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "source": "/assets/icons/search-agent.svg",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "user",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "adjust",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "minus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": false
+                        },
+                        "children": "<input type=\"checkbox\" aria-labelledby=\"new-id\" value=\"\"><span class=\"sc-bcXHqe OOmdZ HighlightedLabel__StyledText-sc-4gssub-0 EGdRt\" slot=\"label\" id=\"new-id\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": false
+                        },
+                        "children": "<input type=\"checkbox\" aria-labelledby=\"used-id\" value=\"\"><span class=\"sc-bcXHqe OOmdZ HighlightedLabel__StyledText-sc-4gssub-0 EGdRt\" slot=\"label\" id=\"used-id\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": false
+                        },
+                        "children": "<input type=\"checkbox\" aria-labelledby=\"porsche_approved-id\" value=\"\"><span class=\"sc-bcXHqe OOmdZ HighlightedLabel__StyledText-sc-4gssub-0 EGdRt\" slot=\"label\" id=\"porsche_approved-id\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": false
+                        },
+                        "children": "<input type=\"checkbox\" aria-labelledby=\"classic-id\" value=\"\"><span class=\"sc-bcXHqe OOmdZ HighlightedLabel__StyledText-sc-4gssub-0 EGdRt\" slot=\"label\" id=\"classic-id\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "minus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-select-wrapper": {
+                        "properties": {
+                            "label": "Modelle",
+                            "description": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true,
+                            "filter": false,
+                            "theme": "light",
+                            "dropdownDirection": "auto",
+                            "native": false
+                        },
+                        "children": "<select aria-label=\"Modelle\" data-testid=\"filter-modelseries-select\" tabindex=\"-1\" aria-hidden=\"true\">(the content was stripped)</select>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-down",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-select-wrapper"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "sort",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-select-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "description": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true,
+                            "filter": false,
+                            "theme": "light",
+                            "dropdownDirection": "auto",
+                            "native": false
+                        },
+                        "children": "<select aria-label=\"Sortieren nach:*\" data-testid=\"sorting-select-desktop\" tabindex=\"-1\" aria-hidden=\"true\">(the content was stripped)</select>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-down",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-select-wrapper"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-toast": {
+                        "properties": {
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Panamera Turbo S anzeigen.\" href=\"/de/de-DE/details/porsche-panamera-turbo-s-neu-KW747X\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Taycan GTS anzeigen.\" href=\"/de/de-DE/details/porsche-taycan-gts-neu-P6REWR\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Taycan Turbo Cross Turismo anzeigen.\" href=\"/de/de-DE/details/porsche-taycan-turbo-cross-turismo-neu-26O4R2\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche 911 Carrera 4S Cabriolet anzeigen.\" href=\"/de/de-DE/details/porsche-911-carrera-4s-cabriolet-gebraucht-W7LENZ\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Panamera GTS Sport Turismo anzeigen.\" href=\"/de/de-DE/details/porsche-panamera-gts-sport-turismo-neu-LX3X96\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Taycan 4S Cross Turismo anzeigen.\" href=\"/de/de-DE/details/porsche-taycan-4s-cross-turismo-neu-KW33PP\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Taycan 4S Sport Turismo anzeigen.\" href=\"/de/de-DE/details/porsche-taycan-4s-sport-turismo-gebraucht-7V9V64\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Macan anzeigen.\" href=\"/de/de-DE/details/porsche-macan-neu-6Q4X9W\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Macan GTS anzeigen.\" href=\"/de/de-DE/details/porsche-macan-gts-gebraucht-M9LG58\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Macan GTS anzeigen.\" href=\"/de/de-DE/details/porsche-macan-gts-gebraucht-RELKGZ\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Macan S anzeigen.\" href=\"/de/de-DE/details/porsche-macan-s-gebraucht-P6X2EE\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche Panamera 4 Platinum Edition anzeigen.\" href=\"/de/de-DE/details/porsche-panamera-4-platinum-edition-neu-6QRKVP\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche 911 Turbo S anzeigen.\" href=\"/de/de-DE/details/porsche-911-turbo-s-gebraucht-VDMRQE\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche 911 Turbo Cabriolet anzeigen.\" href=\"/de/de-DE/details/porsche-911-turbo-cabriolet-gebraucht-26X66Z\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link": {
+                        "properties": {
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "theme": "light",
+                            "target": "_self",
+                            "hideLabel": false
+                        },
+                        "children": "<a aria-label=\"Details zum Porsche 911 GT3 anzeigen.\" href=\"/de/de-DE/details/porsche-911-gt3-gebraucht-DV4POK\">Details anzeigen</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-right",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                }
+            ],
+            "fn": [
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<b>Monatliche Rate berechnen</b><span class=\"sc-iveFHk hxFxFr\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "center",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<div data-testid=\"mrw-LEASING-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div><div data-testid=\"mrw-THREEWAY_LOAN-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div><div data-testid=\"mrw-LOAN-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Leasing</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Finance S</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Finance</a>",
+                        "hostPdsComponent": null
+                    }
+                }
+            ]
+        }
+    }
+}

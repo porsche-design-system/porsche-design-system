@@ -1,0 +1,1316 @@
+{
+    "url": "https://signup.porsche.com/gb/en_GB/register",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "aggregatedConsumedTagNames": {
+        "tagNames": {
+            "p-content-wrapper": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": 2,
+                "properties": {
+                    "width": {
+                        "amount": 2,
+                        "values": {
+                            "basic": 2
+                        }
+                    },
+                    "backgroundColor": {
+                        "amount": 2,
+                        "values": {
+                            "transparent": 2
+                        }
+                    },
+                    "theme": {
+                        "amount": 2,
+                        "values": {
+                            "light": 2
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-marque": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": null,
+                "properties": {
+                    "trademark": {
+                        "amount": 2,
+                        "values": {
+                            "true": 2
+                        }
+                    },
+                    "size": {
+                        "amount": 2,
+                        "values": {
+                            "responsive": 2
+                        }
+                    },
+                    "target": {
+                        "amount": 2,
+                        "values": {
+                            "_self": 2
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "href",
+                    "aria"
+                ]
+            },
+            "p-stepper-horizontal": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": 1,
+                "properties": {
+                    "size": {
+                        "amount": 1,
+                        "values": {
+                            "small": 1
+                        }
+                    },
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-stepper-horizontal-item": {
+                "amount": 3,
+                "hostPdsComponent": null,
+                "children": 3,
+                "properties": {
+                    "state": {
+                        "amount": 1,
+                        "values": {
+                            "current": 1
+                        }
+                    },
+                    "disabled": {
+                        "amount": 3,
+                        "values": {
+                            "false": 1,
+                            "true": 2
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-scroller": {
+                "amount": 1,
+                "hostPdsComponent": 1,
+                "children": 1,
+                "properties": {
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    },
+                    "gradientColorScheme": {
+                        "amount": 1,
+                        "values": {
+                            "default": 1
+                        }
+                    },
+                    "scrollToPosition": {
+                        "amount": 1,
+                        "values": {
+                            "{\"scrollPosition\":167,\"isSmooth\":false}": 1
+                        }
+                    },
+                    "scrollIndicatorPosition": {
+                        "amount": 1,
+                        "values": {
+                            "center": 1
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-button-pure": {
+                "amount": 2,
+                "hostPdsComponent": 2,
+                "children": 2,
+                "properties": {
+                    "tabbable": {
+                        "amount": 2,
+                        "values": {
+                            "true": 2
+                        }
+                    },
+                    "type": {
+                        "amount": 2,
+                        "values": {
+                            "button": 2
+                        }
+                    },
+                    "disabled": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "loading": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "size": {
+                        "amount": 2,
+                        "values": {
+                            "inherit": 2
+                        }
+                    },
+                    "weight": {
+                        "amount": 2,
+                        "values": {
+                            "regular": 2
+                        }
+                    },
+                    "icon": {
+                        "amount": 2,
+                        "values": {
+                            "arrow-head-left": 1,
+                            "arrow-head-right": 1
+                        }
+                    },
+                    "active": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 2,
+                        "values": {
+                            "true": 2
+                        }
+                    },
+                    "alignLabel": {
+                        "amount": 2,
+                        "values": {
+                            "right": 2
+                        }
+                    },
+                    "stretch": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "theme": {
+                        "amount": 2,
+                        "values": {
+                            "light": 2
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "iconSource",
+                    "aria"
+                ]
+            },
+            "p-icon": {
+                "amount": 7,
+                "hostPdsComponent": 5,
+                "children": null,
+                "properties": {
+                    "name": {
+                        "amount": 7,
+                        "values": {
+                            "arrow-head-left": 1,
+                            "arrow-head-right": 2,
+                            "arrow-head-down": 2,
+                            "check": 2
+                        }
+                    },
+                    "color": {
+                        "amount": 7,
+                        "values": {
+                            "inherit": 7
+                        }
+                    },
+                    "size": {
+                        "amount": 7,
+                        "values": {
+                            "inherit": 3,
+                            "small": 4
+                        }
+                    },
+                    "lazy": {
+                        "amount": 7,
+                        "values": {
+                            "false": 7
+                        }
+                    },
+                    "theme": {
+                        "amount": 7,
+                        "values": {
+                            "light": 7
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "source",
+                    "aria"
+                ]
+            },
+            "p-headline": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": 1,
+                "properties": {
+                    "variant": {
+                        "amount": 1,
+                        "values": {
+                            "headline-2": 1
+                        }
+                    },
+                    "tag": {
+                        "amount": 1,
+                        "values": {
+                            "h1": 1
+                        }
+                    },
+                    "align": {
+                        "amount": 1,
+                        "values": {
+                            "left": 1
+                        }
+                    },
+                    "color": {
+                        "amount": 1,
+                        "values": {
+                            "default": 1
+                        }
+                    },
+                    "ellipsis": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-text": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": 2,
+                "properties": {
+                    "tag": {
+                        "amount": 2,
+                        "values": {
+                            "p": 2
+                        }
+                    },
+                    "size": {
+                        "amount": 2,
+                        "values": {
+                            "{\"base\":\"small\",\"s\":\"medium\"}": 1,
+                            "small": 1
+                        }
+                    },
+                    "weight": {
+                        "amount": 2,
+                        "values": {
+                            "regular": 2
+                        }
+                    },
+                    "align": {
+                        "amount": 2,
+                        "values": {
+                            "left": 2
+                        }
+                    },
+                    "color": {
+                        "amount": 2,
+                        "values": {
+                            "default": 2
+                        }
+                    },
+                    "ellipsis": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "theme": {
+                        "amount": 2,
+                        "values": {
+                            "light": 2
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-button": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": 1,
+                "properties": {
+                    "tabbable": {
+                        "amount": 1,
+                        "values": {
+                            "true": 1
+                        }
+                    },
+                    "type": {
+                        "amount": 1,
+                        "values": {
+                            "submit": 1
+                        }
+                    },
+                    "disabled": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "loading": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "variant": {
+                        "amount": 1,
+                        "values": {
+                            "primary": 1
+                        }
+                    },
+                    "icon": {
+                        "amount": 1,
+                        "values": {
+                            "arrow-head-right": 1
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "iconSource",
+                    "aria"
+                ]
+            },
+            "p-select-wrapper": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": 2,
+                "properties": {
+                    "label": {
+                        "amount": 2,
+                        "values": {
+                            "Salutation": 1,
+                            "Title": 1
+                        }
+                    },
+                    "description": {
+                        "amount": 2,
+                        "values": {
+                            "": 2
+                        }
+                    },
+                    "state": {
+                        "amount": 2,
+                        "values": {
+                            "none": 2
+                        }
+                    },
+                    "message": {
+                        "amount": 2,
+                        "values": {
+                            "Please select a salutation.": 1,
+                            "This input is required": 1
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "filter": {
+                        "amount": 2,
+                        "values": {
+                            "false": 1,
+                            "true": 1
+                        }
+                    },
+                    "theme": {
+                        "amount": 2,
+                        "values": {
+                            "light": 2
+                        }
+                    },
+                    "dropdownDirection": {
+                        "amount": 2,
+                        "values": {
+                            "auto": 2
+                        }
+                    },
+                    "native": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-text-field-wrapper": {
+                "amount": 4,
+                "hostPdsComponent": null,
+                "children": 4,
+                "properties": {
+                    "label": {
+                        "amount": 4,
+                        "values": {
+                            "First name": 1,
+                            "Middle name": 1,
+                            "Last name": 1,
+                            "E-mail address": 1
+                        }
+                    },
+                    "unit": {
+                        "amount": 4,
+                        "values": {
+                            "": 4
+                        }
+                    },
+                    "unitPosition": {
+                        "amount": 4,
+                        "values": {
+                            "prefix": 4
+                        }
+                    },
+                    "description": {
+                        "amount": 4,
+                        "values": {
+                            "": 4
+                        }
+                    },
+                    "state": {
+                        "amount": 4,
+                        "values": {
+                            "none": 4
+                        }
+                    },
+                    "message": {
+                        "amount": 4,
+                        "values": {
+                            "Please enter your first name.": 1,
+                            "": 1,
+                            "Please enter your last name.": 1,
+                            "Please enter your e-mail address.": 1
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 4,
+                        "values": {
+                            "false": 4
+                        }
+                    },
+                    "showCharacterCount": {
+                        "amount": 4,
+                        "values": {
+                            "false": 4
+                        }
+                    },
+                    "actionLoading": {
+                        "amount": 4,
+                        "values": {
+                            "false": 4
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "actionIcon"
+                ]
+            },
+            "p-checkbox-wrapper": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": 2,
+                "properties": {
+                    "label": {
+                        "amount": 2,
+                        "values": {
+                            "": 2
+                        }
+                    },
+                    "state": {
+                        "amount": 2,
+                        "values": {
+                            "none": 2
+                        }
+                    },
+                    "message": {
+                        "amount": 2,
+                        "values": {
+                            "This is a mandatory field.": 2
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    }
+                },
+                "unusedProperties": []
+            }
+        },
+        "unusedTagNames": [
+            "p-accordion",
+            "p-banner",
+            "p-button-group",
+            "p-carousel",
+            "p-divider",
+            "p-fieldset-wrapper",
+            "p-flex",
+            "p-flex-item",
+            "p-grid",
+            "p-grid-item",
+            "p-inline-notification",
+            "p-link",
+            "p-link-pure",
+            "p-link-social",
+            "p-link-tile",
+            "p-modal",
+            "p-pagination",
+            "p-popover",
+            "p-radio-button-wrapper",
+            "p-segmented-control",
+            "p-segmented-control-item",
+            "p-spinner",
+            "p-switch",
+            "p-table",
+            "p-table-body",
+            "p-table-cell",
+            "p-table-head",
+            "p-table-head-cell",
+            "p-table-head-row",
+            "p-table-row",
+            "p-tabs",
+            "p-tabs-bar",
+            "p-tabs-item",
+            "p-tag",
+            "p-tag-dismissible",
+            "p-text-list",
+            "p-text-list-item",
+            "p-textarea-wrapper",
+            "p-toast"
+        ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.17.0": {
+            "": {
+                "tagNames": {
+                    "p-content-wrapper": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": 2,
+                        "properties": {
+                            "width": {
+                                "amount": 2,
+                                "values": {
+                                    "basic": 2
+                                }
+                            },
+                            "backgroundColor": {
+                                "amount": 2,
+                                "values": {
+                                    "transparent": 2
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-marque": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": null,
+                        "properties": {
+                            "trademark": {
+                                "amount": 2,
+                                "values": {
+                                    "true": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 2,
+                                "values": {
+                                    "responsive": 2
+                                }
+                            },
+                            "target": {
+                                "amount": 2,
+                                "values": {
+                                    "_self": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "href",
+                            "aria"
+                        ]
+                    },
+                    "p-stepper-horizontal": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "size": {
+                                "amount": 1,
+                                "values": {
+                                    "small": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-stepper-horizontal-item": {
+                        "amount": 3,
+                        "hostPdsComponent": null,
+                        "children": 3,
+                        "properties": {
+                            "state": {
+                                "amount": 1,
+                                "values": {
+                                    "current": 1
+                                }
+                            },
+                            "disabled": {
+                                "amount": 3,
+                                "values": {
+                                    "false": 1,
+                                    "true": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-scroller": {
+                        "amount": 1,
+                        "hostPdsComponent": 1,
+                        "children": 1,
+                        "properties": {
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            },
+                            "gradientColorScheme": {
+                                "amount": 1,
+                                "values": {
+                                    "default": 1
+                                }
+                            },
+                            "scrollToPosition": {
+                                "amount": 1,
+                                "values": {
+                                    "{\"scrollPosition\":167,\"isSmooth\":false}": 1
+                                }
+                            },
+                            "scrollIndicatorPosition": {
+                                "amount": 1,
+                                "values": {
+                                    "center": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-button-pure": {
+                        "amount": 2,
+                        "hostPdsComponent": 2,
+                        "children": 2,
+                        "properties": {
+                            "tabbable": {
+                                "amount": 2,
+                                "values": {
+                                    "true": 2
+                                }
+                            },
+                            "type": {
+                                "amount": 2,
+                                "values": {
+                                    "button": 2
+                                }
+                            },
+                            "disabled": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "loading": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 2,
+                                "values": {
+                                    "inherit": 2
+                                }
+                            },
+                            "weight": {
+                                "amount": 2,
+                                "values": {
+                                    "regular": 2
+                                }
+                            },
+                            "icon": {
+                                "amount": 2,
+                                "values": {
+                                    "arrow-head-left": 1,
+                                    "arrow-head-right": 1
+                                }
+                            },
+                            "active": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "true": 2
+                                }
+                            },
+                            "alignLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "right": 2
+                                }
+                            },
+                            "stretch": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "aria"
+                        ]
+                    },
+                    "p-icon": {
+                        "amount": 7,
+                        "hostPdsComponent": 5,
+                        "children": null,
+                        "properties": {
+                            "name": {
+                                "amount": 7,
+                                "values": {
+                                    "arrow-head-left": 1,
+                                    "arrow-head-right": 2,
+                                    "arrow-head-down": 2,
+                                    "check": 2
+                                }
+                            },
+                            "color": {
+                                "amount": 7,
+                                "values": {
+                                    "inherit": 7
+                                }
+                            },
+                            "size": {
+                                "amount": 7,
+                                "values": {
+                                    "inherit": 3,
+                                    "small": 4
+                                }
+                            },
+                            "lazy": {
+                                "amount": 7,
+                                "values": {
+                                    "false": 7
+                                }
+                            },
+                            "theme": {
+                                "amount": 7,
+                                "values": {
+                                    "light": 7
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "source",
+                            "aria"
+                        ]
+                    },
+                    "p-headline": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "variant": {
+                                "amount": 1,
+                                "values": {
+                                    "headline-2": 1
+                                }
+                            },
+                            "tag": {
+                                "amount": 1,
+                                "values": {
+                                    "h1": 1
+                                }
+                            },
+                            "align": {
+                                "amount": 1,
+                                "values": {
+                                    "left": 1
+                                }
+                            },
+                            "color": {
+                                "amount": 1,
+                                "values": {
+                                    "default": 1
+                                }
+                            },
+                            "ellipsis": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-text": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": 2,
+                        "properties": {
+                            "tag": {
+                                "amount": 2,
+                                "values": {
+                                    "p": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 2,
+                                "values": {
+                                    "{\"base\":\"small\",\"s\":\"medium\"}": 1,
+                                    "small": 1
+                                }
+                            },
+                            "weight": {
+                                "amount": 2,
+                                "values": {
+                                    "regular": 2
+                                }
+                            },
+                            "align": {
+                                "amount": 2,
+                                "values": {
+                                    "left": 2
+                                }
+                            },
+                            "color": {
+                                "amount": 2,
+                                "values": {
+                                    "default": 2
+                                }
+                            },
+                            "ellipsis": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-button": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "tabbable": {
+                                "amount": 1,
+                                "values": {
+                                    "true": 1
+                                }
+                            },
+                            "type": {
+                                "amount": 1,
+                                "values": {
+                                    "submit": 1
+                                }
+                            },
+                            "disabled": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "loading": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "variant": {
+                                "amount": 1,
+                                "values": {
+                                    "primary": 1
+                                }
+                            },
+                            "icon": {
+                                "amount": 1,
+                                "values": {
+                                    "arrow-head-right": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "aria"
+                        ]
+                    },
+                    "p-select-wrapper": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": 2,
+                        "properties": {
+                            "label": {
+                                "amount": 2,
+                                "values": {
+                                    "Salutation": 1,
+                                    "Title": 1
+                                }
+                            },
+                            "description": {
+                                "amount": 2,
+                                "values": {
+                                    "": 2
+                                }
+                            },
+                            "state": {
+                                "amount": 2,
+                                "values": {
+                                    "none": 2
+                                }
+                            },
+                            "message": {
+                                "amount": 2,
+                                "values": {
+                                    "Please select a salutation.": 1,
+                                    "This input is required": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "filter": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 1,
+                                    "true": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            },
+                            "dropdownDirection": {
+                                "amount": 2,
+                                "values": {
+                                    "auto": 2
+                                }
+                            },
+                            "native": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-text-field-wrapper": {
+                        "amount": 4,
+                        "hostPdsComponent": null,
+                        "children": 4,
+                        "properties": {
+                            "label": {
+                                "amount": 4,
+                                "values": {
+                                    "First name": 1,
+                                    "Middle name": 1,
+                                    "Last name": 1,
+                                    "E-mail address": 1
+                                }
+                            },
+                            "unit": {
+                                "amount": 4,
+                                "values": {
+                                    "": 4
+                                }
+                            },
+                            "unitPosition": {
+                                "amount": 4,
+                                "values": {
+                                    "prefix": 4
+                                }
+                            },
+                            "description": {
+                                "amount": 4,
+                                "values": {
+                                    "": 4
+                                }
+                            },
+                            "state": {
+                                "amount": 4,
+                                "values": {
+                                    "none": 4
+                                }
+                            },
+                            "message": {
+                                "amount": 4,
+                                "values": {
+                                    "Please enter your first name.": 1,
+                                    "": 1,
+                                    "Please enter your last name.": 1,
+                                    "Please enter your e-mail address.": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 4,
+                                "values": {
+                                    "false": 4
+                                }
+                            },
+                            "showCharacterCount": {
+                                "amount": 4,
+                                "values": {
+                                    "false": 4
+                                }
+                            },
+                            "actionLoading": {
+                                "amount": 4,
+                                "values": {
+                                    "false": 4
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "actionIcon"
+                        ]
+                    },
+                    "p-checkbox-wrapper": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": 2,
+                        "properties": {
+                            "label": {
+                                "amount": 2,
+                                "values": {
+                                    "": 2
+                                }
+                            },
+                            "state": {
+                                "amount": 2,
+                                "values": {
+                                    "none": 2
+                                }
+                            },
+                            "message": {
+                                "amount": 2,
+                                "values": {
+                                    "This is a mandatory field.": 2
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    }
+                },
+                "unusedTagNames": [
+                    "p-accordion",
+                    "p-banner",
+                    "p-button-group",
+                    "p-carousel",
+                    "p-divider",
+                    "p-fieldset-wrapper",
+                    "p-flex",
+                    "p-flex-item",
+                    "p-grid",
+                    "p-grid-item",
+                    "p-inline-notification",
+                    "p-link",
+                    "p-link-pure",
+                    "p-link-social",
+                    "p-link-tile",
+                    "p-modal",
+                    "p-pagination",
+                    "p-popover",
+                    "p-radio-button-wrapper",
+                    "p-segmented-control",
+                    "p-segmented-control-item",
+                    "p-spinner",
+                    "p-switch",
+                    "p-table",
+                    "p-table-body",
+                    "p-table-cell",
+                    "p-table-head",
+                    "p-table-head-cell",
+                    "p-table-head-row",
+                    "p-table-row",
+                    "p-tabs",
+                    "p-tabs-bar",
+                    "p-tabs-item",
+                    "p-tag",
+                    "p-tag-dismissible",
+                    "p-text-list",
+                    "p-text-list-item",
+                    "p-textarea-wrapper",
+                    "p-toast"
+                ]
+            },
+            "phn": {
+                "tagNames": {},
+                "unusedTagNames": [
+                    "p-accordion",
+                    "p-banner",
+                    "p-button",
+                    "p-button-group",
+                    "p-button-pure",
+                    "p-carousel",
+                    "p-checkbox-wrapper",
+                    "p-content-wrapper",
+                    "p-divider",
+                    "p-fieldset-wrapper",
+                    "p-flex",
+                    "p-flex-item",
+                    "p-grid",
+                    "p-grid-item",
+                    "p-headline",
+                    "p-icon",
+                    "p-inline-notification",
+                    "p-link",
+                    "p-link-pure",
+                    "p-link-social",
+                    "p-link-tile",
+                    "p-marque",
+                    "p-modal",
+                    "p-pagination",
+                    "p-popover",
+                    "p-radio-button-wrapper",
+                    "p-scroller",
+                    "p-segmented-control",
+                    "p-segmented-control-item",
+                    "p-select-wrapper",
+                    "p-spinner",
+                    "p-stepper-horizontal",
+                    "p-stepper-horizontal-item",
+                    "p-switch",
+                    "p-table",
+                    "p-table-body",
+                    "p-table-cell",
+                    "p-table-head",
+                    "p-table-head-cell",
+                    "p-table-head-row",
+                    "p-table-row",
+                    "p-tabs",
+                    "p-tabs-bar",
+                    "p-tabs-item",
+                    "p-tag",
+                    "p-tag-dismissible",
+                    "p-text",
+                    "p-text-field-wrapper",
+                    "p-text-list",
+                    "p-text-list-item",
+                    "p-textarea-wrapper",
+                    "p-toast"
+                ]
+            }
+        }
+    }
+}

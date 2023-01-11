@@ -1,0 +1,1371 @@
+{
+    "url": "https://connect-store.porsche.com/de/de/p/bundle_connect_v1?model=911_2022",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.16.2": [
+            "",
+            "phn"
+        ]
+    },
+    "aggregatedConsumedTagNames": {
+        "tagNames": {
+            "p-grid": {
+                "amount": 12,
+                "hostPdsComponent": null,
+                "children": 12,
+                "properties": {
+                    "direction": {
+                        "amount": 12,
+                        "values": {
+                            "row": 11,
+                            "{\"base\":\"column-reverse\",\"m\":\"row\"}": 1
+                        }
+                    },
+                    "wrap": {
+                        "amount": 12,
+                        "values": {
+                            "wrap": 12
+                        }
+                    },
+                    "gutter": {
+                        "amount": 12,
+                        "values": {
+                            "16": 3,
+                            "{\"base\":16,\"s\":24,\"m\":36}": 9
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-content-wrapper": {
+                "amount": 5,
+                "hostPdsComponent": null,
+                "children": 4,
+                "properties": {
+                    "width": {
+                        "amount": 5,
+                        "values": {
+                            "basic": 5
+                        }
+                    },
+                    "backgroundColor": {
+                        "amount": 5,
+                        "values": {
+                            "transparent": 5
+                        }
+                    },
+                    "theme": {
+                        "amount": 5,
+                        "values": {
+                            "light": 5
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-icon": {
+                "amount": 9,
+                "hostPdsComponent": 5,
+                "children": null,
+                "properties": {
+                    "name": {
+                        "amount": 9,
+                        "values": {
+                            "shopping-cart": 1,
+                            "arrow-head-right": 4,
+                            "shoppingBag": 1,
+                            "pin": 1,
+                            "user": 1,
+                            "menuDotsVertical": 1
+                        }
+                    },
+                    "color": {
+                        "amount": 9,
+                        "values": {
+                            "inherit": 6,
+                            "default": 3
+                        }
+                    },
+                    "size": {
+                        "amount": 9,
+                        "values": {
+                            "small": 2,
+                            "inherit": 7
+                        }
+                    },
+                    "lazy": {
+                        "amount": 9,
+                        "values": {
+                            "false": 9
+                        }
+                    },
+                    "theme": {
+                        "amount": 9,
+                        "values": {
+                            "light": 9
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "source",
+                    "aria"
+                ]
+            },
+            "p-link-pure": {
+                "amount": 3,
+                "hostPdsComponent": null,
+                "children": 3,
+                "properties": {
+                    "alignLabel": {
+                        "amount": 3,
+                        "values": {
+                            "right": 3
+                        }
+                    },
+                    "stretch": {
+                        "amount": 3,
+                        "values": {
+                            "false": 3
+                        }
+                    },
+                    "size": {
+                        "amount": 3,
+                        "values": {
+                            "{\"base\":\"x-small\",\"s\":\"small\"}": 1,
+                            "small": 1,
+                            "inherit": 1
+                        }
+                    },
+                    "weight": {
+                        "amount": 3,
+                        "values": {
+                            "regular": 3
+                        }
+                    },
+                    "icon": {
+                        "amount": 3,
+                        "values": {
+                            "arrow-head-right": 2,
+                            "pin": 1
+                        }
+                    },
+                    "active": {
+                        "amount": 3,
+                        "values": {
+                            "false": 3
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 3,
+                        "values": {
+                            "false": 3
+                        }
+                    },
+                    "theme": {
+                        "amount": 3,
+                        "values": {
+                            "light": 3
+                        }
+                    },
+                    "target": {
+                        "amount": 3,
+                        "values": {
+                            "_self": 3
+                        }
+                    },
+                    "href": {
+                        "amount": 1,
+                        "values": {
+                            "https://www.porsche.com/germany/dealersearch/": 1
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "iconSource",
+                    "download",
+                    "rel",
+                    "aria"
+                ]
+            },
+            "p-text": {
+                "amount": 12,
+                "hostPdsComponent": 4,
+                "children": 12,
+                "properties": {
+                    "tag": {
+                        "amount": 12,
+                        "values": {
+                            "span": 4,
+                            "p": 6,
+                            "div": 2
+                        }
+                    },
+                    "size": {
+                        "amount": 12,
+                        "values": {
+                            "inherit": 12
+                        }
+                    },
+                    "weight": {
+                        "amount": 12,
+                        "values": {
+                            "regular": 12
+                        }
+                    },
+                    "align": {
+                        "amount": 12,
+                        "values": {
+                            "left": 6,
+                            "center": 6
+                        }
+                    },
+                    "color": {
+                        "amount": 12,
+                        "values": {
+                            "inherit": 12
+                        }
+                    },
+                    "ellipsis": {
+                        "amount": 12,
+                        "values": {
+                            "false": 12
+                        }
+                    },
+                    "theme": {
+                        "amount": 12,
+                        "values": {
+                            "light": 12
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-grid-item": {
+                "amount": 24,
+                "hostPdsComponent": null,
+                "children": 23,
+                "properties": {
+                    "size": {
+                        "amount": 24,
+                        "values": {
+                            "1": 1,
+                            "12": 2,
+                            "{\"base\":12,\"m\":6}": 2,
+                            "{\"base\":12,\"l\":7}": 1,
+                            "{\"base\":12,\"s\":10,\"l\":4}": 1,
+                            "{\"base\":6,\"l\":8}": 1,
+                            "{\"base\":6,\"l\":4}": 1,
+                            "{\"base\":12,\"l\":6}": 2,
+                            "{\"base\":12,\"s\":10,\"l\":6}": 1,
+                            "{\"base\":12,\"s\":10,\"l\":5}": 1,
+                            "{\"base\":10,\"s\":8}": 4,
+                            "{\"base\":12,\"l\":4}": 2,
+                            "{\"base\":12,\"l\":8}": 2,
+                            "{\"base\":10,\"s\":3}": 3
+                        }
+                    },
+                    "offset": {
+                        "amount": 24,
+                        "values": {
+                            "0": 19,
+                            "{\"base\":0}": 2,
+                            "{\"base\":0,\"l\":1}": 2,
+                            "{\"base\":0,\"s\":3}": 1
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-button": {
+                "amount": 2,
+                "hostPdsComponent": null,
+                "children": 2,
+                "properties": {
+                    "tabbable": {
+                        "amount": 2,
+                        "values": {
+                            "true": 2
+                        }
+                    },
+                    "type": {
+                        "amount": 2,
+                        "values": {
+                            "button": 1,
+                            "submit": 1
+                        }
+                    },
+                    "disabled": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "loading": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "variant": {
+                        "amount": 2,
+                        "values": {
+                            "primary": 2
+                        }
+                    },
+                    "icon": {
+                        "amount": 2,
+                        "values": {
+                            "arrow-head-right": 2
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 2,
+                        "values": {
+                            "false": 2
+                        }
+                    },
+                    "theme": {
+                        "amount": 2,
+                        "values": {
+                            "light": 2
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "iconSource",
+                    "aria"
+                ]
+            },
+            "p-flex": {
+                "amount": 6,
+                "hostPdsComponent": null,
+                "children": 6,
+                "properties": {
+                    "inline": {
+                        "amount": 6,
+                        "values": {
+                            "false": 6
+                        }
+                    },
+                    "wrap": {
+                        "amount": 6,
+                        "values": {
+                            "nowrap": 5,
+                            "wrap": 1
+                        }
+                    },
+                    "direction": {
+                        "amount": 6,
+                        "values": {
+                            "row": 6
+                        }
+                    },
+                    "justifyContent": {
+                        "amount": 6,
+                        "values": {
+                            "space-between": 1,
+                            "flex-start": 4,
+                            "flex-end": 1
+                        }
+                    },
+                    "alignItems": {
+                        "amount": 6,
+                        "values": {
+                            "stretch": 5,
+                            "center": 1
+                        }
+                    },
+                    "alignContent": {
+                        "amount": 6,
+                        "values": {
+                            "stretch": 6
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-marque": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": null,
+                "properties": {
+                    "trademark": {
+                        "amount": 1,
+                        "values": {
+                            "true": 1
+                        }
+                    },
+                    "size": {
+                        "amount": 1,
+                        "values": {
+                            "responsive": 1
+                        }
+                    },
+                    "href": {
+                        "amount": 1,
+                        "values": {
+                            "https://www.porsche.com/germany": 1
+                        }
+                    },
+                    "target": {
+                        "amount": 1,
+                        "values": {
+                            "_self": 1
+                        }
+                    },
+                    "aria": {
+                        "amount": 1,
+                        "values": {
+                            "{\"aria-label\":\"Porsche.com Homepage\"}": 1
+                        }
+                    }
+                },
+                "unusedProperties": []
+            },
+            "p-button-pure": {
+                "amount": 1,
+                "hostPdsComponent": null,
+                "children": 1,
+                "properties": {
+                    "tabbable": {
+                        "amount": 1,
+                        "values": {
+                            "true": 1
+                        }
+                    },
+                    "type": {
+                        "amount": 1,
+                        "values": {
+                            "submit": 1
+                        }
+                    },
+                    "disabled": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "loading": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "size": {
+                        "amount": 1,
+                        "values": {
+                            "inherit": 1
+                        }
+                    },
+                    "weight": {
+                        "amount": 1,
+                        "values": {
+                            "regular": 1
+                        }
+                    },
+                    "icon": {
+                        "amount": 1,
+                        "values": {
+                            "none": 1
+                        }
+                    },
+                    "active": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "hideLabel": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "alignLabel": {
+                        "amount": 1,
+                        "values": {
+                            "right": 1
+                        }
+                    },
+                    "stretch": {
+                        "amount": 1,
+                        "values": {
+                            "false": 1
+                        }
+                    },
+                    "theme": {
+                        "amount": 1,
+                        "values": {
+                            "light": 1
+                        }
+                    }
+                },
+                "unusedProperties": [
+                    "iconSource",
+                    "aria"
+                ]
+            }
+        },
+        "unusedTagNames": [
+            "p-accordion",
+            "p-banner",
+            "p-button-group",
+            "p-carousel",
+            "p-checkbox-wrapper",
+            "p-divider",
+            "p-fieldset-wrapper",
+            "p-flex-item",
+            "p-headline",
+            "p-inline-notification",
+            "p-link",
+            "p-link-social",
+            "p-link-tile",
+            "p-modal",
+            "p-pagination",
+            "p-popover",
+            "p-radio-button-wrapper",
+            "p-scroller",
+            "p-segmented-control",
+            "p-segmented-control-item",
+            "p-select-wrapper",
+            "p-spinner",
+            "p-stepper-horizontal",
+            "p-stepper-horizontal-item",
+            "p-switch",
+            "p-table",
+            "p-table-body",
+            "p-table-cell",
+            "p-table-head",
+            "p-table-head-cell",
+            "p-table-head-row",
+            "p-table-row",
+            "p-tabs",
+            "p-tabs-bar",
+            "p-tabs-item",
+            "p-tag",
+            "p-tag-dismissible",
+            "p-text-field-wrapper",
+            "p-text-list",
+            "p-text-list-item",
+            "p-textarea-wrapper",
+            "p-toast"
+        ]
+    },
+    "aggregatedConsumedTagNamesForVersionsAndPrefixes": {
+        "2.16.2": {
+            "": {
+                "tagNames": {
+                    "p-grid": {
+                        "amount": 12,
+                        "hostPdsComponent": null,
+                        "children": 12,
+                        "properties": {
+                            "direction": {
+                                "amount": 12,
+                                "values": {
+                                    "row": 11,
+                                    "{\"base\":\"column-reverse\",\"m\":\"row\"}": 1
+                                }
+                            },
+                            "wrap": {
+                                "amount": 12,
+                                "values": {
+                                    "wrap": 12
+                                }
+                            },
+                            "gutter": {
+                                "amount": 12,
+                                "values": {
+                                    "16": 3,
+                                    "{\"base\":16,\"s\":24,\"m\":36}": 9
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-content-wrapper": {
+                        "amount": 5,
+                        "hostPdsComponent": null,
+                        "children": 4,
+                        "properties": {
+                            "width": {
+                                "amount": 5,
+                                "values": {
+                                    "basic": 5
+                                }
+                            },
+                            "backgroundColor": {
+                                "amount": 5,
+                                "values": {
+                                    "transparent": 5
+                                }
+                            },
+                            "theme": {
+                                "amount": 5,
+                                "values": {
+                                    "light": 5
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-icon": {
+                        "amount": 4,
+                        "hostPdsComponent": 3,
+                        "children": null,
+                        "properties": {
+                            "name": {
+                                "amount": 4,
+                                "values": {
+                                    "shopping-cart": 1,
+                                    "arrow-head-right": 3
+                                }
+                            },
+                            "color": {
+                                "amount": 4,
+                                "values": {
+                                    "inherit": 4
+                                }
+                            },
+                            "size": {
+                                "amount": 4,
+                                "values": {
+                                    "small": 1,
+                                    "inherit": 3
+                                }
+                            },
+                            "lazy": {
+                                "amount": 4,
+                                "values": {
+                                    "false": 4
+                                }
+                            },
+                            "theme": {
+                                "amount": 4,
+                                "values": {
+                                    "light": 4
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "source",
+                            "aria"
+                        ]
+                    },
+                    "p-link-pure": {
+                        "amount": 2,
+                        "hostPdsComponent": null,
+                        "children": 2,
+                        "properties": {
+                            "alignLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "right": 2
+                                }
+                            },
+                            "stretch": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 2,
+                                "values": {
+                                    "{\"base\":\"x-small\",\"s\":\"small\"}": 1,
+                                    "small": 1
+                                }
+                            },
+                            "weight": {
+                                "amount": 2,
+                                "values": {
+                                    "regular": 2
+                                }
+                            },
+                            "icon": {
+                                "amount": 2,
+                                "values": {
+                                    "arrow-head-right": 2
+                                }
+                            },
+                            "active": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            },
+                            "target": {
+                                "amount": 2,
+                                "values": {
+                                    "_self": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "href",
+                            "download",
+                            "rel",
+                            "aria"
+                        ]
+                    },
+                    "p-text": {
+                        "amount": 2,
+                        "hostPdsComponent": 2,
+                        "children": 2,
+                        "properties": {
+                            "tag": {
+                                "amount": 2,
+                                "values": {
+                                    "span": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 2,
+                                "values": {
+                                    "inherit": 2
+                                }
+                            },
+                            "weight": {
+                                "amount": 2,
+                                "values": {
+                                    "regular": 2
+                                }
+                            },
+                            "align": {
+                                "amount": 2,
+                                "values": {
+                                    "left": 2
+                                }
+                            },
+                            "color": {
+                                "amount": 2,
+                                "values": {
+                                    "inherit": 2
+                                }
+                            },
+                            "ellipsis": {
+                                "amount": 2,
+                                "values": {
+                                    "false": 2
+                                }
+                            },
+                            "theme": {
+                                "amount": 2,
+                                "values": {
+                                    "light": 2
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-grid-item": {
+                        "amount": 24,
+                        "hostPdsComponent": null,
+                        "children": 23,
+                        "properties": {
+                            "size": {
+                                "amount": 24,
+                                "values": {
+                                    "1": 1,
+                                    "12": 2,
+                                    "{\"base\":12,\"m\":6}": 2,
+                                    "{\"base\":12,\"l\":7}": 1,
+                                    "{\"base\":12,\"s\":10,\"l\":4}": 1,
+                                    "{\"base\":6,\"l\":8}": 1,
+                                    "{\"base\":6,\"l\":4}": 1,
+                                    "{\"base\":12,\"l\":6}": 2,
+                                    "{\"base\":12,\"s\":10,\"l\":6}": 1,
+                                    "{\"base\":12,\"s\":10,\"l\":5}": 1,
+                                    "{\"base\":10,\"s\":8}": 4,
+                                    "{\"base\":12,\"l\":4}": 2,
+                                    "{\"base\":12,\"l\":8}": 2,
+                                    "{\"base\":10,\"s\":3}": 3
+                                }
+                            },
+                            "offset": {
+                                "amount": 24,
+                                "values": {
+                                    "0": 19,
+                                    "{\"base\":0}": 2,
+                                    "{\"base\":0,\"l\":1}": 2,
+                                    "{\"base\":0,\"s\":3}": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-button": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "tabbable": {
+                                "amount": 1,
+                                "values": {
+                                    "true": 1
+                                }
+                            },
+                            "type": {
+                                "amount": 1,
+                                "values": {
+                                    "button": 1
+                                }
+                            },
+                            "disabled": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "loading": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "variant": {
+                                "amount": 1,
+                                "values": {
+                                    "primary": 1
+                                }
+                            },
+                            "icon": {
+                                "amount": 1,
+                                "values": {
+                                    "arrow-head-right": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "aria"
+                        ]
+                    }
+                },
+                "unusedTagNames": [
+                    "p-accordion",
+                    "p-banner",
+                    "p-button-group",
+                    "p-button-pure",
+                    "p-carousel",
+                    "p-checkbox-wrapper",
+                    "p-divider",
+                    "p-fieldset-wrapper",
+                    "p-flex",
+                    "p-flex-item",
+                    "p-headline",
+                    "p-inline-notification",
+                    "p-link",
+                    "p-link-social",
+                    "p-link-tile",
+                    "p-marque",
+                    "p-modal",
+                    "p-pagination",
+                    "p-popover",
+                    "p-radio-button-wrapper",
+                    "p-scroller",
+                    "p-segmented-control",
+                    "p-segmented-control-item",
+                    "p-select-wrapper",
+                    "p-spinner",
+                    "p-stepper-horizontal",
+                    "p-stepper-horizontal-item",
+                    "p-switch",
+                    "p-table",
+                    "p-table-body",
+                    "p-table-cell",
+                    "p-table-head",
+                    "p-table-head-cell",
+                    "p-table-head-row",
+                    "p-table-row",
+                    "p-tabs",
+                    "p-tabs-bar",
+                    "p-tabs-item",
+                    "p-tag",
+                    "p-tag-dismissible",
+                    "p-text-field-wrapper",
+                    "p-text-list",
+                    "p-text-list-item",
+                    "p-textarea-wrapper",
+                    "p-toast"
+                ]
+            },
+            "phn": {
+                "tagNames": {
+                    "p-button": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "tabbable": {
+                                "amount": 1,
+                                "values": {
+                                    "true": 1
+                                }
+                            },
+                            "type": {
+                                "amount": 1,
+                                "values": {
+                                    "submit": 1
+                                }
+                            },
+                            "disabled": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "loading": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "variant": {
+                                "amount": 1,
+                                "values": {
+                                    "primary": 1
+                                }
+                            },
+                            "icon": {
+                                "amount": 1,
+                                "values": {
+                                    "arrow-head-right": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "aria"
+                        ]
+                    },
+                    "p-icon": {
+                        "amount": 5,
+                        "hostPdsComponent": 2,
+                        "children": null,
+                        "properties": {
+                            "name": {
+                                "amount": 5,
+                                "values": {
+                                    "arrow-head-right": 1,
+                                    "shoppingBag": 1,
+                                    "pin": 1,
+                                    "user": 1,
+                                    "menuDotsVertical": 1
+                                }
+                            },
+                            "color": {
+                                "amount": 5,
+                                "values": {
+                                    "inherit": 2,
+                                    "default": 3
+                                }
+                            },
+                            "size": {
+                                "amount": 5,
+                                "values": {
+                                    "inherit": 4,
+                                    "small": 1
+                                }
+                            },
+                            "lazy": {
+                                "amount": 5,
+                                "values": {
+                                    "false": 5
+                                }
+                            },
+                            "theme": {
+                                "amount": 5,
+                                "values": {
+                                    "light": 5
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "source",
+                            "aria"
+                        ]
+                    },
+                    "p-flex": {
+                        "amount": 6,
+                        "hostPdsComponent": null,
+                        "children": 6,
+                        "properties": {
+                            "inline": {
+                                "amount": 6,
+                                "values": {
+                                    "false": 6
+                                }
+                            },
+                            "wrap": {
+                                "amount": 6,
+                                "values": {
+                                    "nowrap": 5,
+                                    "wrap": 1
+                                }
+                            },
+                            "direction": {
+                                "amount": 6,
+                                "values": {
+                                    "row": 6
+                                }
+                            },
+                            "justifyContent": {
+                                "amount": 6,
+                                "values": {
+                                    "space-between": 1,
+                                    "flex-start": 4,
+                                    "flex-end": 1
+                                }
+                            },
+                            "alignItems": {
+                                "amount": 6,
+                                "values": {
+                                    "stretch": 5,
+                                    "center": 1
+                                }
+                            },
+                            "alignContent": {
+                                "amount": 6,
+                                "values": {
+                                    "stretch": 6
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-marque": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": null,
+                        "properties": {
+                            "trademark": {
+                                "amount": 1,
+                                "values": {
+                                    "true": 1
+                                }
+                            },
+                            "size": {
+                                "amount": 1,
+                                "values": {
+                                    "responsive": 1
+                                }
+                            },
+                            "href": {
+                                "amount": 1,
+                                "values": {
+                                    "https://www.porsche.com/germany": 1
+                                }
+                            },
+                            "target": {
+                                "amount": 1,
+                                "values": {
+                                    "_self": 1
+                                }
+                            },
+                            "aria": {
+                                "amount": 1,
+                                "values": {
+                                    "{\"aria-label\":\"Porsche.com Homepage\"}": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-text": {
+                        "amount": 10,
+                        "hostPdsComponent": 2,
+                        "children": 10,
+                        "properties": {
+                            "tag": {
+                                "amount": 10,
+                                "values": {
+                                    "p": 6,
+                                    "div": 2,
+                                    "span": 2
+                                }
+                            },
+                            "size": {
+                                "amount": 10,
+                                "values": {
+                                    "inherit": 10
+                                }
+                            },
+                            "weight": {
+                                "amount": 10,
+                                "values": {
+                                    "regular": 10
+                                }
+                            },
+                            "align": {
+                                "amount": 10,
+                                "values": {
+                                    "center": 6,
+                                    "left": 4
+                                }
+                            },
+                            "color": {
+                                "amount": 10,
+                                "values": {
+                                    "inherit": 10
+                                }
+                            },
+                            "ellipsis": {
+                                "amount": 10,
+                                "values": {
+                                    "false": 10
+                                }
+                            },
+                            "theme": {
+                                "amount": 10,
+                                "values": {
+                                    "light": 10
+                                }
+                            }
+                        },
+                        "unusedProperties": []
+                    },
+                    "p-link-pure": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "alignLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "right": 1
+                                }
+                            },
+                            "stretch": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "size": {
+                                "amount": 1,
+                                "values": {
+                                    "inherit": 1
+                                }
+                            },
+                            "weight": {
+                                "amount": 1,
+                                "values": {
+                                    "regular": 1
+                                }
+                            },
+                            "icon": {
+                                "amount": 1,
+                                "values": {
+                                    "pin": 1
+                                }
+                            },
+                            "href": {
+                                "amount": 1,
+                                "values": {
+                                    "https://www.porsche.com/germany/dealersearch/": 1
+                                }
+                            },
+                            "active": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            },
+                            "target": {
+                                "amount": 1,
+                                "values": {
+                                    "_self": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "download",
+                            "rel",
+                            "aria"
+                        ]
+                    },
+                    "p-button-pure": {
+                        "amount": 1,
+                        "hostPdsComponent": null,
+                        "children": 1,
+                        "properties": {
+                            "tabbable": {
+                                "amount": 1,
+                                "values": {
+                                    "true": 1
+                                }
+                            },
+                            "type": {
+                                "amount": 1,
+                                "values": {
+                                    "submit": 1
+                                }
+                            },
+                            "disabled": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "loading": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "size": {
+                                "amount": 1,
+                                "values": {
+                                    "inherit": 1
+                                }
+                            },
+                            "weight": {
+                                "amount": 1,
+                                "values": {
+                                    "regular": 1
+                                }
+                            },
+                            "icon": {
+                                "amount": 1,
+                                "values": {
+                                    "none": 1
+                                }
+                            },
+                            "active": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "hideLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "alignLabel": {
+                                "amount": 1,
+                                "values": {
+                                    "right": 1
+                                }
+                            },
+                            "stretch": {
+                                "amount": 1,
+                                "values": {
+                                    "false": 1
+                                }
+                            },
+                            "theme": {
+                                "amount": 1,
+                                "values": {
+                                    "light": 1
+                                }
+                            }
+                        },
+                        "unusedProperties": [
+                            "iconSource",
+                            "aria"
+                        ]
+                    }
+                },
+                "unusedTagNames": [
+                    "p-accordion",
+                    "p-banner",
+                    "p-button-group",
+                    "p-carousel",
+                    "p-checkbox-wrapper",
+                    "p-content-wrapper",
+                    "p-divider",
+                    "p-fieldset-wrapper",
+                    "p-flex-item",
+                    "p-grid",
+                    "p-grid-item",
+                    "p-headline",
+                    "p-inline-notification",
+                    "p-link",
+                    "p-link-social",
+                    "p-link-tile",
+                    "p-modal",
+                    "p-pagination",
+                    "p-popover",
+                    "p-radio-button-wrapper",
+                    "p-scroller",
+                    "p-segmented-control",
+                    "p-segmented-control-item",
+                    "p-select-wrapper",
+                    "p-spinner",
+                    "p-stepper-horizontal",
+                    "p-stepper-horizontal-item",
+                    "p-switch",
+                    "p-table",
+                    "p-table-body",
+                    "p-table-cell",
+                    "p-table-head",
+                    "p-table-head-cell",
+                    "p-table-head-row",
+                    "p-table-row",
+                    "p-tabs",
+                    "p-tabs-bar",
+                    "p-tabs-item",
+                    "p-tag",
+                    "p-tag-dismissible",
+                    "p-text-field-wrapper",
+                    "p-text-list",
+                    "p-text-list-item",
+                    "p-textarea-wrapper",
+                    "p-toast"
+                ]
+            }
+        }
+    }
+}

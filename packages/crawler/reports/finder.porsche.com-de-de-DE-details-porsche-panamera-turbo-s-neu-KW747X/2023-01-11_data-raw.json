@@ -1,0 +1,1164 @@
+{
+    "url": "https://finder.porsche.com/de/de-DE/details/porsche-panamera-turbo-s-neu-KW747X",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.19.0": [
+            "fnssr",
+            "fn"
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.19.0": {
+            "fnssr": [
+                {
+                    "p-toast": {
+                        "properties": {
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": true,
+                            "size": "responsive",
+                            "target": "_self"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "source": "/assets/icons/search-agent.svg",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "user",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-left",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "image",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Galerie öffnen",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "image",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "Video",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-tag": {
+                        "properties": {
+                            "theme": "light",
+                            "color": "neutral-contrast-high"
+                        },
+                        "children": "31 Bilder",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "bookmark",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Händler kontaktieren",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "secondary",
+                            "icon": "arrow-head-right",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Zur Online-Bestellung",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "dark"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": false,
+                            "size": "responsive",
+                            "target": "_self"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "minus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "tertiary",
+                            "icon": "configurate",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Im Porsche Car Configurator öffnen",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "configurate",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "plus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "minus",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-radio-button-wrapper": {
+                        "properties": {
+                            "label": "Sehr unzufrieden",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true
+                        },
+                        "children": "<input tabindex=\"-1\" aria-hidden=\"true\" type=\"radio\" name=\"feedback-1-very-dissatisfied\" aria-label=\"Sehr unzufrieden\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-radio-button-wrapper": {
+                        "properties": {
+                            "label": "Unzufrieden",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true
+                        },
+                        "children": "<input tabindex=\"-1\" aria-hidden=\"true\" type=\"radio\" name=\"feedback-2-somewhat-dissatisfied\" aria-label=\"Unzufrieden\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-radio-button-wrapper": {
+                        "properties": {
+                            "label": "Weder zufrieden noch unzufrieden",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true
+                        },
+                        "children": "<input tabindex=\"-1\" aria-hidden=\"true\" type=\"radio\" name=\"feedback-3-neutral\" aria-label=\"Weder zufrieden noch unzufrieden\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-radio-button-wrapper": {
+                        "properties": {
+                            "label": "Zufrieden",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true
+                        },
+                        "children": "<input tabindex=\"-1\" aria-hidden=\"true\" type=\"radio\" name=\"feedback-4-somewhat-satisfied\" aria-label=\"Zufrieden\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-radio-button-wrapper": {
+                        "properties": {
+                            "label": "Sehr zufrieden",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": true
+                        },
+                        "children": "<input tabindex=\"-1\" aria-hidden=\"true\" type=\"radio\" name=\"feedback-5-very-satisfied\" aria-label=\"Sehr zufrieden\">",
+                        "hostPdsComponent": null
+                    }
+                }
+            ],
+            "fn": [
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<b>Monatliche Rate berechnen</b><span class=\"sc-hhOBVt fhgqtb\">(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "center",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<div data-testid=\"mrw-LEASING-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div><div data-testid=\"mrw-THREEWAY_LOAN-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div><div data-testid=\"mrw-LOAN-link\" class=\"sc-kZLDfD jLBQSb\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "information",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Leasing</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Finance S</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"#\">Finance</a>",
+                        "hostPdsComponent": null
+                    }
+                }
+            ]
+        }
+    }
+}

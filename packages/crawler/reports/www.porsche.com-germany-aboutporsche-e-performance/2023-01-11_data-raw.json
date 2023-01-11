@@ -1,0 +1,657 @@
+{
+    "url": "https://www.porsche.com/germany/aboutporsche/e-performance",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.17.0": {
+            "": [
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<p-text class=\"hydrated\" style=\"margin: 1rem 0px 0px; max-width: 50rem;\"> Wie kann der Alltag mit dem vollelektrischen Taycan aussehen? Machen Sie sich anhand dieser beispielhaften Routen einen Eindruck davon.* </p-text>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<p-headline class=\"text-content__headline hydrated\" theme=\"light\" variant=\"headline-2\">Unterwegs mit dem Taycan.</p-headline>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Unterwegs mit dem Taycan.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": " Wie kann der Alltag mit dem vollelektrischen Taycan aussehen? Machen Sie sich anhand dieser beispielhaften Routen einen Eindruck davon.* ",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": true,
+                            "loading": false,
+                            "variant": "tertiary",
+                            "icon": "arrow-head-left",
+                            "hideLabel": true,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "tertiary",
+                            "icon": "arrow-head-right",
+                            "hideLabel": true,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-left",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-3",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Pendeln: Augsburg – München",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Der Taycan ist ideal zum Pendeln geeignet. So können Sie beispielsweise die Strecke Augsburg – München und zurück ohne Ladepause zurücklegen. Es reicht aus den Taycan abends in der Garage ans Ladekabel oder die Wallbox anzuschließen. Um Abstecher zur Tankstelle brauchen Sie sich nicht mehr zu kümmern.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-3",
+                            "align": "left",
+                            "color": "neutral-contrast-low",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Wochenende: Berlin – Rostock",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "neutral-contrast-low",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Einfach so samstags früh von Berlin nach Rostock zum Kitesurfen fahren? Nur ein Beispiel, wie Sie den Taycan 4S Cross Turismo – serienmäßig mit der Performance Batterie Plus ausgestattet – in ihren aktiven Lifestyle integrieren können. Während Sie auf dem Meer sind, lädt der Taycan an einer öffentlichen Ladestation. Für die Rückfahrt am Abend ist gesorgt.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-3",
+                            "align": "left",
+                            "color": "neutral-contrast-low",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Urlaub: Frankfurt – Dresden",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "neutral-contrast-low",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Auch größere Strecken stellen kein Problem für die vollelektrischen Porsche Modelle dar. Mit dem Taycan Turbo S – serienmäßig mit der Performance Batterie Plus ausgestattet – benötigen Sie auf der Fahrt von Frankfurt am Main nach Dresden nur 2 Ladepausen von je ungefähr 15 Minuten. Danach sind sowohl die Insassen als auch der Taycan bereit für die Weiterfahrt.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "*Die Routenbeispiele basieren lediglich auf Schätzwerten, da nicht sämtliche Faktoren berücksichtigt werden, die möglichen Einfluss auf die Reichweite des Fahrzeugs haben (z.B. Fahrstil, Alter und Zustand der Batterie, Nebenverbraucher, usw.).",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "full",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<p-content-wrapper width=\"basic\" data-test=\"regionWrapper\" class=\"hydrated\">(the content was stripped)</p-content-wrapper><p-content-wrapper width=\"full\" class=\"map hydrated\">(the content was stripped)</p-content-wrapper>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<p-grid class=\"hydrated\">(the content was stripped)</p-grid>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "full",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<div class=\"map-component\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid": {
+                        "properties": {
+                            "direction": "row",
+                            "wrap": "wrap",
+                            "gutter": "{\"base\":16,\"s\":24,\"m\":36}"
+                        },
+                        "children": "<p-grid-item size=\"{ base: 12, m: 11, l:8, xl: 6 }\" class=\"hydrated\">(the content was stripped)</p-grid-item>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-grid-item": {
+                        "properties": {
+                            "size": "{\"base\":12,\"m\":11,\"l\":8,\"xl\":6}",
+                            "offset": 0
+                        },
+                        "children": "<p-headline class=\"map-wrapper-title hydrated\" variant=\"headline-2\" data-test=\"regionHeadlineText\">Reichweite im Alltag.</p-headline><p-text size=\"small\" class=\"map-wrapper-description hydrated\"> Je nach Messverfahren gibt es unterschiedliche Angaben zur Reichweite eines Elektrofahrzeugs. Für Sie als Käufer fällt es da schwer einzuschätzen, wie weit Sie wirklich fahren können. Auf dieser Karte sehen Sie den ungefähren Radius, den Sie von drei deutschen Städten aus befahren können, ohne Ladepausen einzulegen. Beispielhaft für Düsseldorf, Hamburg und München. Die Berechnung basiert auf der Reichweite des Taycan mit der serienmäßigen Performance Batterie.* </p-text>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-2",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Reichweite im Alltag.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": " Je nach Messverfahren gibt es unterschiedliche Angaben zur Reichweite eines Elektrofahrzeugs. Für Sie als Käufer fällt es da schwer einzuschätzen, wie weit Sie wirklich fahren können. Auf dieser Karte sehen Sie den ungefähren Radius, den Sie von drei deutschen Städten aus befahren können, ohne Ladepausen einzulegen. Beispielhaft für Düsseldorf, Hamburg und München. Die Berechnung basiert auf der Reichweite des Taycan mit der serienmäßigen Performance Batterie.* ",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "*Die angezeigten Reichweiten basieren lediglich auf Schätzwerten, da nicht sämtliche Faktoren berücksichtigt werden, die möglichen Einfluss auf die Reichweite des Fahrzeugs haben (z.B. Fahrstil, Alter und Zustand der Batterie, Nebenverbraucher, usw.). Daher kann die tatsächlich erzielte Reichweite oberhalb und auch unterhalb des ermittelten Werts liegen. ",
+                        "hostPdsComponent": null
+                    }
+                }
+            ],
+            "phn": [
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "primary",
+                            "icon": "arrow-head-right",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": "Skip to main content",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "space-between",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<phn-crest class=\"sc-phn-level-0 sc-phn-crest-h sc-phn-crest-s hydrated\" style=\"\">(the content was stripped)</phn-crest><phn-menu-desktop-level-1 class=\"sc-phn-level-0 sc-phn-menu-desktop-level-1-h sc-phn-menu-desktop-level-1-s hydrated\">(the content was stripped)</phn-menu-desktop-level-1>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": true,
+                            "size": "medium",
+                            "href": "https://www.porsche.com/germany",
+                            "target": "_self",
+                            "aria": "{\"aria-label\":\"Porsche.com Homepage\"}"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-menu-button class=\"car-series-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\">(the content was stripped)</phn-menu-button><phn-p-flex justify-content=\"flex-end\" class=\"expandable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-end",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<div class=\"spacer expandable-item sc-phn-menu-desktop-level-1\"></div><phn-menu-button class=\"shops-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">(the content was stripped)</phn-menu-button><phn-p-flex align-items=\"center\" class=\"wrappable sc-phn-menu-desktop-level-1 hydrated\">(the content was stripped)</phn-p-flex><div class=\"expandable-item sc-phn-menu-desktop-level-1 menu-separator\">(the content was stripped)</div><phn-menu-button class=\"more-menu-item sc-phn-menu-desktop-level-1 sc-phn-menu-button-h sc-phn-menu-button-s hydrated\" role=\"none\">(the content was stripped)</phn-menu-button>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "718",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "911",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Taycan",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Panamera",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Macan",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "center",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Cayenne",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "wrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "center",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<phn-dealer-search class=\"expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1 sc-phn-dealer-search-h sc-phn-dealer-search-s hydrated\">(the content was stripped)</phn-dealer-search><div class=\"myporsche-container expandable-item metafunctionalities-item sc-phn-menu-desktop-level-1\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<phn-p-icon class=\"shops-menu-item-icon sc-phn-menu-desktop-level-1 hydrated\"></phn-p-icon><phn-p-text class=\"shops-menu-item-text sc-phn-menu-desktop-level-1 hydrated\">Shop</phn-p-text>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "shoppingBag",
+                            "color": "default",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "div",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Shop",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-link-pure": {
+                        "properties": {
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "size": "inherit",
+                            "weight": "regular",
+                            "icon": "pin",
+                            "href": "https://www.porsche.com/germany/dealersearch/",
+                            "active": false,
+                            "hideLabel": false,
+                            "theme": "light",
+                            "target": "_self"
+                        },
+                        "children": "<span class=\"sc-phn-dealer-search\">Händler</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "pin",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-link-pure"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "size": "inherit",
+                            "weight": "regular",
+                            "icon": "none",
+                            "active": false,
+                            "hideLabel": false,
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "theme": "light"
+                        },
+                        "children": "<phn-myporsche-button-content class=\"sc-phn-myporsche-desktop-link sc-phn-myporsche-button-content-h sc-phn-myporsche-button-content-s hydrated\">(the content was stripped)</phn-myporsche-button-content>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-flex": {
+                        "properties": {
+                            "inline": false,
+                            "wrap": "nowrap",
+                            "direction": "row",
+                            "justifyContent": "flex-start",
+                            "alignItems": "stretch",
+                            "alignContent": "stretch"
+                        },
+                        "children": "<div class=\"icon-container sc-phn-myporsche-button-content\">(the content was stripped)</div><div class=\"sc-phn-myporsche-button-content\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "user",
+                            "color": "default",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "div",
+                            "size": "inherit",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "inherit",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "My Porsche",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "menuDotsVertical",
+                            "color": "default",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                }
+            ]
+        }
+    }
+}

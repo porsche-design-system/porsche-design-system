@@ -1,0 +1,427 @@
+{
+    "url": "https://signup.porsche.com/gb/en_GB/register",
+    "consumedPdsVersionsWithPrefixes": {
+        "2.17.0": [
+            "",
+            "phn"
+        ]
+    },
+    "consumedTagNamesForVersionsAndPrefixes": {
+        "2.17.0": {
+            "": [
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<router-outlet _ngcontent-fsa-c94=\"\" class=\"ng-star-inserted\"></router-outlet><myprofile-signup-ui-signup-prospect-and-org _nghost-fsa-c121=\"\" class=\"ng-star-inserted\">(the content was stripped)</myprofile-signup-ui-signup-prospect-and-org>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": true,
+                            "size": "responsive",
+                            "target": "_self"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-marque": {
+                        "properties": {
+                            "trademark": true,
+                            "size": "responsive",
+                            "target": "_self"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-stepper-horizontal": {
+                        "properties": {
+                            "size": "small",
+                            "theme": "light"
+                        },
+                        "children": "<p-stepper-horizontal-item _ngcontent-fsa-c121=\"\" role=\"listitem\" class=\"hydrated\">Enter personal details</p-stepper-horizontal-item><p-stepper-horizontal-item _ngcontent-fsa-c121=\"\" class=\"ng-star-inserted hydrated\" role=\"listitem\">Confirm e-mail</p-stepper-horizontal-item><p-stepper-horizontal-item _ngcontent-fsa-c121=\"\" role=\"listitem\" class=\"hydrated\">Set password</p-stepper-horizontal-item>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-stepper-horizontal-item": {
+                        "properties": {
+                            "state": "current",
+                            "disabled": false
+                        },
+                        "children": "Enter personal details",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-stepper-horizontal-item": {
+                        "properties": {
+                            "disabled": true
+                        },
+                        "children": "Confirm e-mail",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-stepper-horizontal-item": {
+                        "properties": {
+                            "disabled": true
+                        },
+                        "children": "Set password",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-scroller": {
+                        "properties": {
+                            "theme": "light",
+                            "gradientColorScheme": "default",
+                            "scrollToPosition": "{\"scrollPosition\":167,\"isSmooth\":false}",
+                            "scrollIndicatorPosition": "center"
+                        },
+                        "children": "<slot></slot>",
+                        "hostPdsComponent": "p-stepper-horizontal"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "button",
+                            "disabled": false,
+                            "loading": false,
+                            "size": "inherit",
+                            "weight": "regular",
+                            "icon": "arrow-head-left",
+                            "active": false,
+                            "hideLabel": true,
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "theme": "light"
+                        },
+                        "children": "prev",
+                        "hostPdsComponent": "p-scroller"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-left",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button-pure"
+                    }
+                },
+                {
+                    "p-button-pure": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "button",
+                            "disabled": false,
+                            "loading": false,
+                            "size": "inherit",
+                            "weight": "regular",
+                            "icon": "arrow-head-right",
+                            "active": false,
+                            "hideLabel": true,
+                            "alignLabel": "right",
+                            "stretch": false,
+                            "theme": "light"
+                        },
+                        "children": "next",
+                        "hostPdsComponent": "p-scroller"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button-pure"
+                    }
+                },
+                {
+                    "p-headline": {
+                        "properties": {
+                            "variant": "headline-2",
+                            "tag": "h1",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "Create your Porsche ID.",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "{\"base\":\"small\",\"s\":\"medium\"}",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<span>(the content was stripped)</span>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-button": {
+                        "properties": {
+                            "tabbable": true,
+                            "type": "submit",
+                            "disabled": false,
+                            "loading": false,
+                            "variant": "primary",
+                            "icon": "arrow-head-right",
+                            "hideLabel": false,
+                            "theme": "light"
+                        },
+                        "children": " Create Porsche ID account ",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text": {
+                        "properties": {
+                            "tag": "p",
+                            "size": "small",
+                            "weight": "regular",
+                            "align": "left",
+                            "color": "default",
+                            "ellipsis": false,
+                            "theme": "light"
+                        },
+                        "children": "<a href=\"https://policies.google.com/privacy\" class=\"underline hover:no-underline\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Privacy Policy</a><a href=\"https://policies.google.com/terms\" class=\"underline hover:no-underline\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Terms of Use</a>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-select-wrapper": {
+                        "properties": {
+                            "label": "Salutation",
+                            "description": "",
+                            "state": "none",
+                            "message": "Please select a salutation.",
+                            "hideLabel": false,
+                            "filter": false,
+                            "theme": "light",
+                            "dropdownDirection": "auto",
+                            "native": false
+                        },
+                        "children": "<select name=\"salutation\" tabindex=\"-1\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\" aria-hidden=\"true\">(the content was stripped)</select>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-down",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-select-wrapper"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-select-wrapper": {
+                        "properties": {
+                            "label": "Title",
+                            "description": "",
+                            "state": "none",
+                            "message": "This input is required",
+                            "hideLabel": false,
+                            "filter": true,
+                            "theme": "light",
+                            "dropdownDirection": "auto",
+                            "native": false
+                        },
+                        "children": "<select name=\"academicTitle\" tabindex=\"-1\" class=\"ng-untouched ng-pristine ng-valid\" aria-hidden=\"true\">(the content was stripped)</select>",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-down",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-select-wrapper"
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "check",
+                            "color": "inherit",
+                            "size": "small",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text-field-wrapper": {
+                        "properties": {
+                            "label": "First name",
+                            "unit": "",
+                            "unitPosition": "prefix",
+                            "description": "",
+                            "state": "none",
+                            "message": "Please enter your first name.",
+                            "hideLabel": false,
+                            "showCharacterCount": false,
+                            "actionLoading": false
+                        },
+                        "children": "<input id=\"firstName\" name=\"firstName\" tabindex=\"0\" type=\"text\" autocomplete=\"on\" spellcheck=\"false\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\" maxlength=\"40\" aria-label=\"First name. Please enter your first name.\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text-field-wrapper": {
+                        "properties": {
+                            "label": "Middle name",
+                            "unit": "",
+                            "unitPosition": "prefix",
+                            "description": "",
+                            "state": "none",
+                            "message": "",
+                            "hideLabel": false,
+                            "showCharacterCount": false,
+                            "actionLoading": false
+                        },
+                        "children": "<input id=\"middleName\" name=\"middleName\" tabindex=\"0\" type=\"text\" autocomplete=\"on\" spellcheck=\"false\" class=\"ng-untouched ng-pristine ng-valid\" maxlength=\"40\" aria-label=\"Middle name\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text-field-wrapper": {
+                        "properties": {
+                            "label": "Last name",
+                            "unit": "",
+                            "unitPosition": "prefix",
+                            "description": "",
+                            "state": "none",
+                            "message": "Please enter your last name.",
+                            "hideLabel": false,
+                            "showCharacterCount": false,
+                            "actionLoading": false
+                        },
+                        "children": "<input id=\"lastName\" name=\"lastName\" tabindex=\"0\" type=\"text\" autocomplete=\"on\" spellcheck=\"false\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\" maxlength=\"40\" aria-label=\"Last name. Please enter your last name.\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-text-field-wrapper": {
+                        "properties": {
+                            "label": "E-mail address",
+                            "unit": "",
+                            "unitPosition": "prefix",
+                            "description": "",
+                            "state": "none",
+                            "message": "Please enter your e-mail address.",
+                            "hideLabel": false,
+                            "showCharacterCount": false,
+                            "actionLoading": false
+                        },
+                        "children": "<input id=\"email\" name=\"email\" tabindex=\"0\" type=\"email\" autocomplete=\"on\" spellcheck=\"false\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\" aria-label=\"E-mail address. Please enter your e-mail address.\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "This is a mandatory field.",
+                            "hideLabel": false
+                        },
+                        "children": "<span slot=\"label\">(the content was stripped)</span><input type=\"checkbox\" id=\"tac\" name=\"tac\" tabindex=\"0\" value=\"false\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-checkbox-wrapper": {
+                        "properties": {
+                            "label": "",
+                            "state": "none",
+                            "message": "This is a mandatory field.",
+                            "hideLabel": false
+                        },
+                        "children": "<span slot=\"label\">(the content was stripped)</span><input type=\"checkbox\" id=\"dpg\" name=\"dpg\" tabindex=\"0\" value=\"false\" class=\"ng-untouched ng-pristine ng-invalid\" required=\"\">",
+                        "hostPdsComponent": null
+                    }
+                },
+                {
+                    "p-icon": {
+                        "properties": {
+                            "name": "arrow-head-right",
+                            "color": "inherit",
+                            "size": "inherit",
+                            "lazy": false,
+                            "theme": "light"
+                        },
+                        "children": null,
+                        "hostPdsComponent": "p-button"
+                    }
+                },
+                {
+                    "p-content-wrapper": {
+                        "properties": {
+                            "width": "basic",
+                            "backgroundColor": "transparent",
+                            "theme": "light"
+                        },
+                        "children": "<div _ngcontent-fsa-c84=\"\" class=\"mobileIndicator\"></div><div _ngcontent-fsa-c84=\"\" class=\"row ng-tns-c84-0 ng-star-inserted\">(the content was stripped)</div>",
+                        "hostPdsComponent": null
+                    }
+                }
+            ],
+            "phn": []
+        }
+    }
+}
