@@ -10,6 +10,7 @@ import {
 } from './helpers/convert-data-helper';
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
 import { TagNameData } from './types';
+import { stringifyObject } from './utils';
 
 export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: string): Promise<TagNameData[]> => {
   const page = await browser.newPage();
@@ -39,25 +40,17 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
 
   writeWebsiteReport(
     websiteUrl,
-    JSON.stringify(
-      {
-        url: websiteUrl,
-        consumedPdsVersionsWithPrefixes,
-        consumedTagNamesForVersionsAndPrefixes: pdsCrawlerRawData,
-      },
-      null,
-      config.jsonSpace
-    ),
-    JSON.stringify(
-      {
-        url: websiteUrl,
-        consumedPdsVersionsWithPrefixes,
-        aggregatedConsumedTagNames,
-        aggregatedConsumedTagNamesForVersionsAndPrefixes,
-      },
-      null,
-      config.jsonSpace
-    )
+    stringifyObject({
+      url: websiteUrl,
+      consumedPdsVersionsWithPrefixes,
+      consumedTagNamesForVersionsAndPrefixes: pdsCrawlerRawData,
+    }),
+    stringifyObject({
+      url: websiteUrl,
+      consumedPdsVersionsWithPrefixes,
+      aggregatedConsumedTagNames,
+      aggregatedConsumedTagNamesForVersionsAndPrefixes,
+    })
   );
 
   await page.close();
@@ -79,13 +72,9 @@ export const crawlWebsites = async (browser: puppeteer.Browser, customerWebsites
   const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
 
   writeGeneralReport(
-    JSON.stringify(
-      {
-        crawledWebsites: customerWebsites,
-        aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
-      },
-      null,
-      config.jsonSpace
-    )
+    stringifyObject({
+      crawledWebsites: customerWebsites,
+      aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
+    })
   );
 };
