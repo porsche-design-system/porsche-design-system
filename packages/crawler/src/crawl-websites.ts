@@ -9,14 +9,8 @@ import {
   getRawDataWithoutVersionsAndPrefixes,
 } from './helpers/convert-data-helper';
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
-import { ConsumedTagNamesForVersionsAndPrefixes, TagNameData, TagNamesWithPropertyNames } from './types';
-import { Page } from 'puppeteer';
+import { TagNameData } from './types';
 
-export const crawlPage = async (page: Page, websiteUrl: string): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
-  console.log('Crawling page ' + websiteUrl);
-  // getting raw data
-  return await evaluatePage(page, getPdsTagNamesWithPropertyNames());
-};
 export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: string): Promise<TagNameData[]> => {
   const page = await browser.newPage();
   // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
@@ -27,7 +21,9 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
     waitUntil: 'networkidle0',
   });
 
-  const pdsCrawlerRawData = await crawlPage(page, websiteUrl);
+  console.log('Crawling page ' + websiteUrl);
+  // getting raw data
+  const pdsCrawlerRawData = await evaluatePage(page, getPdsTagNamesWithPropertyNames());
 
   // raw data in another format - without versions and prefixes
   const pdsCrawlerRawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(pdsCrawlerRawData);

@@ -1,7 +1,8 @@
-import { crawlPage } from '../../../src/crawl-websites';
 import * as puppeteer from 'puppeteer';
 import { puppeteerConfig } from '../../../constants';
 import { PdsTestingContext, setContentWithDesignSystem } from '../helpers';
+import { evaluatePage } from '../../../src/evaluate-page';
+import { getPdsTagNamesWithPropertyNames } from '../../../src/helpers/convert-data-helper';
 
 export const testCrawlerWithHtmlAndPrefixes = async (pdsTestingContext: PdsTestingContext): Promise<void> => {
   const browser = await puppeteer.launch(puppeteerConfig);
@@ -10,7 +11,8 @@ export const testCrawlerWithHtmlAndPrefixes = async (pdsTestingContext: PdsTesti
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
   );
   await setContentWithDesignSystem(page, pdsTestingContext);
-  const crawlerData = await crawlPage(page, 'http://localhost');
+  console.log('Evaluating page..');
+  const crawlerData = await evaluatePage(page, getPdsTagNamesWithPropertyNames());
   await browser.close();
 
   // check that raw data matches snapshot
