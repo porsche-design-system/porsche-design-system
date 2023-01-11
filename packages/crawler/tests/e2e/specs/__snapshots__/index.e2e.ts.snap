@@ -7,6 +7,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
       {
         "p-text": {
           "children": "Second prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -23,6 +24,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
       {
         "p-text": {
           "children": "First prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -46,6 +48,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       {
         "p-text": {
           "children": "First version first prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -62,6 +65,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       {
         "p-text": {
           "children": "First version second prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -80,6 +84,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       {
         "p-text": {
           "children": "Second version first prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -96,6 +101,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       {
         "p-text": {
           "children": "Second version second prefix",
+          "hostPdsComponent": null,
           "properties": {
             "align": "left",
             "color": "default",
@@ -119,6 +125,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
       {
         "p-banner": {
           "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
+          "hostPdsComponent": null,
           "properties": {
             "persistent": false,
             "state": "neutral",
@@ -155,6 +162,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
       },
       {
         "p-icon": {
+          "children": null,
           "hostPdsComponent": "p-inline-notification",
           "properties": {
             "color": "inherit",
@@ -187,6 +195,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
       },
       {
         "p-icon": {
+          "children": null,
           "hostPdsComponent": "p-button-pure",
           "properties": {
             "color": "inherit",
@@ -209,6 +218,7 @@ exports[`should retrieve children correctly and put stripped content 1`] = `
       {
         "p-flex": {
           "children": "<p-flex-item class="hydrated">(the content was stripped)</p-flex-item><p-flex-item class="hydrated">(the content was stripped)</p-flex-item>",
+          "hostPdsComponent": null,
           "properties": {
             "alignContent": "stretch",
             "alignItems": "stretch",
@@ -222,6 +232,7 @@ exports[`should retrieve children correctly and put stripped content 1`] = `
       {
         "p-flex-item": {
           "children": "<p>1</p>",
+          "hostPdsComponent": null,
           "properties": {
             "alignSelf": "auto",
             "flex": "initial",
@@ -235,6 +246,7 @@ exports[`should retrieve children correctly and put stripped content 1`] = `
       {
         "p-flex-item": {
           "children": "<p>2</p>",
+          "hostPdsComponent": null,
           "properties": {
             "alignSelf": "auto",
             "flex": "initial",
@@ -259,6 +271,7 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
           "children": "
             Test button
         ",
+          "hostPdsComponent": null,
           "properties": {
             "disabled": false,
             "hideLabel": false,
@@ -273,6 +286,7 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
       },
       {
         "p-icon": {
+          "children": null,
           "hostPdsComponent": "p-button",
           "properties": {
             "color": "inherit",
@@ -300,6 +314,7 @@ exports[`should retrieve object value from string correctly 1`] = `
     
 
     ",
+          "hostPdsComponent": null,
           "properties": {
             "aria": "{"aria-label":"Loading page content"}",
             "size": "{"base":"small","l":"medium"}",
