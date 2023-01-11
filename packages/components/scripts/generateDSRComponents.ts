@@ -23,9 +23,8 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
-      const tagName = paramCase(`P${componentName}`) as TagName;
-      const componentMeta = getComponentMeta(tagName);
-      const hasChildren = fileContent.includes('<slot');
+      const tagName = paramCase(`P${componentName}`) as TagName; // Could be common component
+      const { isDelegatingFocus, hasSlot } = getComponentMeta(tagName) || {};
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
@@ -95,13 +94,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
 
-        const children = hasChildren
+        const children = hasSlot
           ? `
         {this.children}`
           : '';
 
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
-          const delegatesFocusProp = componentMeta.isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
+          const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
     const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
@@ -139,7 +138,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/<(?:PSelectWrapperDropdown|PToastItem)[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
-      if (hasChildren && !newFileContent.includes('FunctionalComponent')) {
+      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent
           .replace(
             /public render\(\): JSX\.Element {/,
