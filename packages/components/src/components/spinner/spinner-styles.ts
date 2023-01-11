@@ -4,9 +4,9 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark } from '../../utils';
 import { getBaseSlottedStyles, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 
-const sizeSmall = pxToRemWithUnit(48);
-const sizeMedium = pxToRemWithUnit(72);
-const sizeLarge = pxToRemWithUnit(104);
+const sizeSmall = pxToRemWithUnit(18);
+const sizeMedium = pxToRemWithUnit(27);
+const sizeLarge = pxToRemWithUnit(36);
 
 const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   small: { height: sizeSmall, width: sizeSmall },
