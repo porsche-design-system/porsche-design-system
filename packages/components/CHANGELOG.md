@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `jsdom-polyfill` is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill` and can be
+  used to have working web components in jsdom based tests (e.g. jest)
+
 #### Fixed
 
 - `componentsReady()` waits for Porsche Design System being initialized before checking components which can happen in
