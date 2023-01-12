@@ -31,6 +31,11 @@
       "import": "./partials/esm/partials.js",
       "require": "./partials/partials.js"
     },
+    "./testing": {
+      "types": "./testing/testing.d.ts",
+      "import": "./testing/testing.js",
+      "require": "./testing/testing.js"
+    },
     "./utilities/js": {
       "types": "./utilities/js/js.d.ts",
       "import": "./utilities/js/esm/js.js",
