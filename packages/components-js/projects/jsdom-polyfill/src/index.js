@@ -7,6 +7,10 @@ require('scroll-behavior-polyfill');
 require('whatwg-fetch');
 global.ResizeObserver = require('@juggle/resize-observer').ResizeObserver;
 
+if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('jsdom')) {
+  throw new Error('This package should only be used in node and jsdom environments');
+}
+
 // skip initial stylesheet fetch
 window.PDS_SKIP_FETCH = true;
 
@@ -26,5 +30,3 @@ require('./lib/loader.cjs')
       },
     };
   });
-
-// TODO: ensure this isn't used in real browser?
