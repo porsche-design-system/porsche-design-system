@@ -1,7 +1,14 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { create, Styles } from 'jss';
-import { color, font } from '@porsche-design-system/utilities';
+import {
+  themeDark,
+  fontSize,
+  fontWeight,
+  fontFamily,
+  fontLineHeight,
+  themeLight,
+} from '@porsche-design-system/utilities-v2';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
@@ -25,16 +32,16 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       html: {
         textSizeAdjust: 'none',
         WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-        fontFamily: font.family,
+        fontFamily: fontFamily,
       },
 
       'button, input, optgroup, select, textarea': {
         textSizeAdjust: 'none',
         WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-        fontFamily: font.family,
-        fontSize: font.size.small.fontSize,
-        lineHeight: font.size.small.lineHeight,
-        fontWeight: font.weight.regular,
+        fontFamily: fontFamily,
+        fontSize: fontSize.small,
+        lineHeight: fontSize.small,
+        fontWeight: fontLineHeight,
         fontStyle: 'normal',
         fontVariant: 'normal',
         overflowWrap: 'break-word',
@@ -47,7 +54,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         '@media(hover:hover)': {
           transition: 'color var(--p-transition-duration, .24s) ease',
           '&:hover': {
-            color: color.state.hover,
+            color: themeLight.state.hover,
           },
         },
       },
@@ -55,13 +62,13 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       '[data-theme="dark"] a:hover': {
         '@media(hover:hover)': {
           '&:hover': {
-            color: color.darkTheme.state.hover,
+            color: themeDark.state.hover,
           },
         },
       },
 
       'b, strong': {
-        fontWeight: font.weight.bold,
+        fontWeight: fontWeight.bold,
       },
 
       'em, i': {
