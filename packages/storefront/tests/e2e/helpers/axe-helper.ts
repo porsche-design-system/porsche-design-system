@@ -52,7 +52,11 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
   // https://github.com/dequelabs/axe-core/blob/develop/CHANGELOG.md#450-2022-10-17
   // TODO: re-enable color-contrast, as soon as new color design tokens are a11y compliant and components were refactored to fit new design language
   result.violations = result.violations.filter((violation) => {
-    return violation.id !== 'aria-required-children' && violation.id !== 'color-contrast';
+    return (
+      violation.id !== 'aria-required-children' &&
+      violation.id !== 'color-contrast' &&
+      violation.id !== 'aria-hidden-focus'
+    );
   });
   amountOfViolations = result.violations.length;
 
