@@ -9,7 +9,6 @@ export const App = (): JSX.Element => {
   return (
     <>
       <select
-        style={{ font: 'revert', overflowWrap: 'revert', hyphens: 'revert' }}
         value={selected}
         onChange={(e) => {
           const { value } = e.target;

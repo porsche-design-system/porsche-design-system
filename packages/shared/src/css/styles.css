@@ -26,6 +26,9 @@ body {
 body > select {
   position: relative;
   z-index: 999999;
+  font: revert;
+  overflow-wrap: revert;
+  hyphens: revert;
 }
 
 .playground {

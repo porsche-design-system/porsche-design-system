@@ -16,7 +16,7 @@
 
 <template>
   <PorscheDesignSystemProvider>
-    <select :value="selected" @change="onChange($event)" style="font: revert; overflow-wrap: revert; hyphens: revert">
+    <select :value="selected" @change="onChange($event)">
       <option disabled value="">Select a page</option>
       <option v-for="(item, index) in options" v-bind:key="index" :value="item.path">
         {{ item.name }}
