@@ -123,6 +123,7 @@ export class ButtonPure {
       getComponentCss,
       this.icon,
       this.active,
+      this.loading,
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
@@ -143,10 +144,10 @@ export class ButtonPure {
 
     return (
       <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
-        {hasIcon &&
-          (this.loading ? (
-            <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
-          ) : (
+        {this.loading ? (
+          <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
+        ) : (
+          hasIcon && (
             <PrefixedTagNames.pIcon
               {...iconProps}
               color="inherit"
@@ -154,7 +155,8 @@ export class ButtonPure {
               source={this.iconSource}
               aria-hidden="true"
             />
-          ))}
+          )
+        )}
         <span class="label">
           <slot />
         </span>
