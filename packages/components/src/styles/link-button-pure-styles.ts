@@ -71,6 +71,9 @@ export const getLinkButtonPureStyles = (
           fontSize: getFontSizeText(sizeValue),
         }))
       ),
+      '&:focus': {
+        outline: 0,
+      },
       '&::before': {
         content: '""',
         position: 'fixed',

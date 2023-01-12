@@ -52,6 +52,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: .875rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -204,6 +207,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -326,6 +332,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -387,6 +396,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   align-items: flex-start;
   font-size: 1rem;
   text-decoration: none;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
@@ -471,6 +483,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -526,6 +541,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   align-items: flex-start;
   font-size: 1rem;
   text-decoration: underline;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
@@ -589,6 +607,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -650,6 +671,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   align-items: flex-start;
   font-size: 1rem;
   text-decoration: none;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
@@ -734,6 +758,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -788,6 +815,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   align-items: center;
   font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
   text-decoration: none;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
@@ -852,6 +882,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   align-items: center;
   font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
   text-decoration: none;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
@@ -918,6 +951,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   font-size: inherit;
   text-decoration: none;
 }
+.root:focus {
+  outline: 0;
+}
 .root::before {
   content: "";
   position: fixed;
@@ -966,6 +1002,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   align-items: flex-start;
   font-size: 1rem;
   text-decoration: none;
+}
+.root:focus {
+  outline: 0;
 }
 .root::before {
   content: "";
