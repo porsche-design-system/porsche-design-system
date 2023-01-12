@@ -12,6 +12,11 @@ const getWebsiteNameByWebsiteUrl = (websiteUrl: string): string => {
 export const writeWebsiteReport = (websiteUrl: string, rawData: string, aggregatedData: string): void => {
   const websiteName = getWebsiteNameByWebsiteUrl(websiteUrl);
   const websiteFolderName = `./${config.reportFolderName}/${websiteName}`;
+
+  // check if 'reports' folder exists
+  if (!fs.existsSync(`./${config.reportFolderName}/`)) {
+    fs.mkdirSync(`./${config.reportFolderName}/`);
+  }
   if (!fs.existsSync(websiteFolderName)) {
     fs.mkdirSync(websiteFolderName);
   }
