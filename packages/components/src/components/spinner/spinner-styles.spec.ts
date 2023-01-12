@@ -1,6 +1,6 @@
 import { getComponentCss } from './spinner-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['small', 'light'],
     ['medium', 'light'],

@@ -11,15 +11,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #fff;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #7E7F82;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #FBFCFF;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -74,15 +72,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #323639;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #949598;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #010205;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -137,15 +133,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #fff;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #7E7F82;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #FBFCFF;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -200,15 +194,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #323639;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #949598;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #010205;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -263,15 +255,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #fff;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #7E7F82;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #FBFCFF;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -326,15 +316,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #323639;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #949598;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #010205;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -389,15 +377,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #fff;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #7E7F82;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #FBFCFF;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -452,15 +438,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #323639;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #949598;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #010205;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -515,15 +499,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #fff;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #7E7F82;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #FBFCFF;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
@@ -613,15 +595,13 @@ svg {
   fill: none;
   transform: translate3d(0,0,0);
 }
-circle {
-  stroke: #323639;
-}
 circle:first-child {
-  opacity: 0.4;
+  stroke: #949598;
 }
 circle:last-child {
   transform-origin: 0 0;
   animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  stroke: #010205;
   stroke-dasharray: 40, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
