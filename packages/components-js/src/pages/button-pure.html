@@ -35,7 +35,18 @@
   </p-button-pure>
 </div>
 
-<div class="playground light" title="should render button with different weight">
+<div class="playground light" title="should render button without icon">
+  <p-button-pure icon="none">Label default</p-button-pure>
+  <p-button-pure icon="none" disabled="true">Label disabled</p-button-pure>
+  <p-button-pure icon="none" loading="true">Label loading</p-button-pure>
+</div>
+<div class="playground dark" title="should render button with label on dark theme">
+  <p-button-pure icon="none" theme="dark">Label default</p-button-pure>
+  <p-button-pure icon="none" disabled="true" theme="dark">Label disabled</p-button-pure>
+  <p-button-pure icon="none" loading="true" theme="dark">Label loading</p-button-pure>
+</div>
+
+<div class="playground light" title="should not render button with different weight">
   <p-button-pure weight="regular">Label weight regular</p-button-pure>
   <p-button-pure weight="semi-bold">Label weight semi-bold</p-button-pure>
   <p-button-pure weight="bold">Label weight bold</p-button-pure>

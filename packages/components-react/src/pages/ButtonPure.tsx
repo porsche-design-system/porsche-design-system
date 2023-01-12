@@ -43,7 +43,18 @@ export const ButtonPurePage = (): JSX.Element => {
         </PButtonPure>
       </div>
 
-      <div className="playground light" title="should render button with different weight">
+      <div className="playground light" title="should render button without icon">
+        <PButtonPure icon="none">Label default</PButtonPure>
+        <PButtonPure icon="none" disabled={true}>Label disabled</PButtonPure>
+        <PButtonPure icon="none" loading={true}>Label loading</PButtonPure>
+      </div>
+      <div className="playground dark" title="should render button with label on dark theme">
+        <PButtonPure icon="none" theme="dark">Label default</PButtonPure>
+        <PButtonPure icon="none" disabled={true} theme="dark">Label disabled</PButtonPure>
+        <PButtonPure icon="none" loading={true} theme="dark">Label loading</PButtonPure>
+      </div>
+
+      <div className="playground light" title="should not render button with different weight">
         <PButtonPure weight="regular">Label weight regular</PButtonPure>
         <PButtonPure weight="semi-bold">Label weight semi-bold</PButtonPure>
         <PButtonPure weight="bold">Label weight bold</PButtonPure>
