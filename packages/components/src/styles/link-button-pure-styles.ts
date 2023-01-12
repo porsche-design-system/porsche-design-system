@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, TextWeight, Theme } from '../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../types';
 import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
@@ -11,7 +11,6 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getFontWeight } from './font-weight-styles';
 import { getFontSizeText } from './font-size-text-styles';
 import { hoverMediaQuery } from './hover-media-query';
 
@@ -38,7 +37,6 @@ export const getLinkButtonPureStyles = (
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   hasSlottedAnchor: boolean,
@@ -59,17 +57,15 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       display: 'flex',
-      alignItems: 'flex-start',
       gap: spacingStaticXSmall,
       width: '100%',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       outline: 0,
-      textDecoration: 'none',
       ...textSmallStyle,
-      fontWeight: getFontWeight(weight),
       ...mergeDeep(
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
+          alignItems: stretchValue ? 'center' : 'flex-start',
         })),
         buildResponsiveStyles(size, (sizeValue: TextSize) => ({
           fontSize: getFontSizeText(sizeValue),

@@ -1,11 +1,4 @@
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonPureIconName,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
@@ -16,9 +9,9 @@ export const getComponentCss = (
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
+  underline: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme
 ): string => {
@@ -26,25 +19,14 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonPureStyles(
-        icon,
-        active,
-        false,
-        stretch,
-        size,
-        weight,
-        hideLabel,
-        alignLabel,
-        hasSlottedAnchor,
-        theme
-      ),
+      getLinkButtonPureStyles(icon, active, false, stretch, size, hideLabel, alignLabel, hasSlottedAnchor, theme),
       {
         ...(hasSlottedAnchor && {
           '@global': addImportantToEachRule({
             '::slotted': {
               '&(a)': {
                 outline: 0,
-                textDecoration: 'none',
+                textDecoration: underline ? 'underline' : 'none',
                 font: 'inherit',
                 color: 'inherit',
               },
@@ -66,6 +48,9 @@ export const getComponentCss = (
             },
           }),
         }),
+        root: {
+          textDecoration: underline ? 'underline' : 'none',
+        },
       }
     )
   );

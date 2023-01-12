@@ -64,7 +64,10 @@ export class ButtonPure {
   /** Size of the button. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
-  /** The weight of the text (only has effect with visible label). */
+  /**
+   * The weight of the text (only has effect with visible label).
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
@@ -123,7 +126,6 @@ export class ButtonPure {
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
-      this.weight,
       this.hideLabel,
       this.alignLabel,
       this.theme

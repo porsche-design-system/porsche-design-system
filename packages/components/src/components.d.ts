@@ -189,6 +189,7 @@ export namespace Components {
         "type"?: ButtonType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -556,7 +557,12 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
+        /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -1780,6 +1786,7 @@ declare namespace LocalJSX {
         "type"?: ButtonType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -2159,7 +2166,12 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
+        /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
