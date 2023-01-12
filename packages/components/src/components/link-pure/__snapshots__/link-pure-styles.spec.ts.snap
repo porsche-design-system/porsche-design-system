@@ -1,37 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"weight":"semibold","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
 }
 @media(min-width:480px) {
   :host {
@@ -68,406 +41,33 @@ slot[name=subline]::slotted(*) {
 
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #010205;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 600;
   justify-content: space-between;
-  font-size: 0.75rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  align-items: center;
+  font-size: .875rem;
+  text-decoration: none;
 }
 .root::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  outline-color: currentColor;
+  border: 2px solid #0A0AFF;
 }
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 0.75rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 0.75rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.icon {
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  position: absolute;
-  height: 1px;
-  width: 1px;
+.root:not(:focus-visible)::before {
   border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0 0.25rem 0 0;
-  order: -1;
-}
-@media(min-width:480px) {
-  .root {
-    justify-content: flex-start;
-    font-size: 1rem;
-  }
-  .root ~ .subline {
-    font-size: 1rem;
-    line-height: calc(6px + 2.125ex);
-  }
-  .root ~ .subline::before {
-    font-size: 1rem;
-    margin-left: calc(6px + 2.125ex);
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
-    white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    padding: 0 0 0 0.25rem;
-    order: 0;
-  }
-}
-
-@media(min-width:760px) {
-  .root {
-    justify-content: space-between;
-    font-size: 1.5rem;
-  }
-  .root ~ .subline {
-    font-size: 1.25rem;
-    line-height: calc(6px + 2.125ex);
-  }
-  .root ~ .subline::before {
-    font-size: 1.5rem;
-    margin-left: calc(6px + 2.125ex);
-  }
-  .label {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 0 0.25rem 0 0;
-    order: -1;
-  }
-}
-
-@media(min-width:1000px) {
-  .root {
-    justify-content: flex-start;
-    font-size: 2.25rem;
-  }
-  .root ~ .subline {
-    font-size: 1.875rem;
-    line-height: calc(6px + 2.125ex);
-  }
-  .root ~ .subline::before {
-    font-size: 2.25rem;
-    margin-left: calc(6px + 2.125ex);
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
-    white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    padding: 0 0 0 0.25rem;
-    order: 0;
-  }
-}
-
-@media(min-width:1300px) {
-  .root {
-    justify-content: space-between;
-    font-size: 3.25rem;
-  }
-  .root ~ .subline {
-    font-size: 2.25rem;
-    line-height: calc(6px + 2.125ex);
-  }
-  .root ~ .subline::before {
-    font-size: 3.25rem;
-    margin-left: calc(6px + 2.125ex);
-  }
-  .label {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 0 0.25rem 0 0;
-    order: -1;
-  }
-}
-
-@media(min-width:1760px) {
-  .root {
-    justify-content: flex-start;
-    font-size: inherit;
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
-    white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    padding: 0 0 0 0.25rem;
-    order: 0;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: inline-block;
-  vertical-align: top;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #fff;
-  transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 400;
-  justify-content: flex-start;
-  font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #ff0223;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.icon {
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0 0 0.25rem;
-  order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #ff0223;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"regular","hideLabel":true,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: inline-block;
-  vertical-align: top;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: transparent none;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 400;
-  justify-content: flex-start;
-  font-size: 1rem;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.icon {
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   position: absolute;
@@ -477,1078 +77,933 @@ slot[name=subline]::slotted(*) {
   bottom: 0;
   white-space: nowrap;
   text-indent: -999999px;
-  padding: 0 0 0 0.25rem;
-  order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"regular","hideLabel":true,"alignLabel":"right","hasSubline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: inline-block;
-  vertical-align: top;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 400;
-  font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.root:active + .subline {
-  color: #d5001c;
+  order: -1;
 }
 .icon {
+  position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-.label {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding-left: 0.25rem;
-}
-.subline {
-  display: flex;
-  margin-top: 4px !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding-left: 0.25rem;
-}
-.subline::before {
-  content: "";
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+@media(min-width:480px) {
+  .root {
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1rem;
   }
-  .root:hover + .subline {
-    color: #d5001c;
+  .label {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    white-space: inherit;
+    text-indent: 0;
+    order: 0;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1.2rem, .12vw + 1.18rem, 1.31rem);
+  }
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    white-space: nowrap;
+    text-indent: -999999px;
+    order: -1;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: clamp(1.44rem, .3vw + 1.38rem, 1.71rem);
+  }
+  .label {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    white-space: inherit;
+    text-indent: 0;
+    order: 0;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+  }
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    white-space: nowrap;
+    text-indent: -999999px;
+    order: -1;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: inherit;
+  }
+  .label {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    white-space: inherit;
+    text-indent: 0;
+    order: 0;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"semibold","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
 }
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #010205;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 600;
   justify-content: flex-start;
+  align-items: flex-start;
   font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  text-decoration: none;
 }
 .root::before {
   content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
 }
 .icon {
+  position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0 0 0 0.25rem;
-  order: 0;
 }
 @media(min-width:480px) {
   .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
     white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
+    text-indent: 0;
   }
 }
 
 @media(min-width:760px) {
   .label {
     position: absolute;
-    height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
 @media(min-width:1000px) {
   .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
     white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
+    text-indent: 0;
   }
 }
 
 @media(min-width:1300px) {
   .label {
     position: absolute;
-    height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
 @media(min-width:1760px) {
   .label {
-    position: static;
-    width: auto;
-    height: auto;
-    border: medium none color;
-    margin: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
     white-space: inherit;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
+    text-indent: 0;
   }
 }
 
 @media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"thin","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
 }
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #FBFCFF;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 100;
   justify-content: flex-start;
+  align-items: flex-start;
   font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  text-decoration: none;
 }
 .root::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  outline-color: currentColor;
+  border: 2px solid #0A0AFF;
 }
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.icon {
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+.root:not(:focus-visible)::before {
+  border: 0;
 }
 .label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0 0 0.25rem;
-  order: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"thin","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
-":host {
   position: relative;
-  outline: 0 !important;
-  display: inline-block;
-  vertical-align: top;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: transparent none;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 100;
-  justify-content: flex-start;
-  font-size: 1rem;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
-}
-.icon {
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  position: static;
   top: auto;
   left: auto;
   right: auto;
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
-  padding: 0 0 0 0.25rem;
   order: 0;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 @media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+  .root:hover::before {
+    background-color: rgba(144, 144, 153, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","weight":"thin","hideLabel":true,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: inline-block;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
   position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  outline: 0 !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: fixed !important;
+  top: -2px !important;
+  right: -4px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  border-radius: 4px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  border: 2px solid #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
+  border: 0 !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #010205;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 100;
   justify-content: flex-start;
+  align-items: flex-start;
   font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  text-decoration: none;
 }
 .root::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  order: 0;
 }
 .icon {
+  position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: inline-block;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+.root::before {
+  content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: inline-block;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
 .label {
   position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   white-space: nowrap;
-  padding: 0 0 0 0.25rem;
+  text-indent: -999999px;
   order: 0;
 }
-@media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","weight":"bold","hideLabel":false,"alignLabel":"left","hasSubline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
-":host {
-  position: relative;
-  outline: 0 !important;
-  display: block;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #ff0223;
-  transition: color var(--p-transition-duration, .24s) ease;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 700;
-  justify-content: space-between;
-  font-size: 3.25rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #ff0223;
-}
-.root ~ .subline {
-  font-size: 2.25rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 3.25rem;
-  margin-left: calc(6px + 2.125ex);
-}
 .icon {
+  position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0.25rem 0 0;
-  order: -1;
-}
 @media(hover:hover) {
-  .root:hover {
-    color: #ff0223;
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","weight":"semibold","hideLabel":false,"alignLabel":"left","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 2`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  display: block;
-}
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
+  display: inline-block;
+  vertical-align: top;
 }
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #010205;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #d5001c;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 600;
-  justify-content: space-between;
-  font-size: 3.25rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
 }
 .root::before {
   content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-.root:focus::before {
-  outline-color: currentColor;
-}
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
-}
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 2.25rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 3.25rem;
-  margin-left: calc(6px + 2.125ex);
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
 }
 .icon {
+  position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  border: medium none color;
-  margin: 0;
-  white-space: inherit;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  padding: 0 0.25rem 0 0;
-  order: -1;
-}
 @media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"inherit","weight":"regular","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  outline: 0 !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
 }
 ::slotted(a)::before {
+  content: "" !important;
+  position: fixed !important;
+  top: -2px !important;
+  right: -4px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  border-radius: 4px !important;
+}
+::slotted(a:focus)::before {
+  border: 2px solid #0A0AFF !important;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  border: 0 !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
   content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.label {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
 }
-::slotted(a:focus)::before {
-  outline-color: currentColor;
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
 }
-slot[name=subline]::slotted(*) {
-  margin: 0;
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: block;
 }
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #FBFCFF;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 400;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+  background-color: rgba(144, 144, 153, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  order: -1;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(144, 144, 153, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: block;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+  background-color: rgba(83, 83, 83, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.root:focus::before {
+  border: 2px solid #0A0AFF;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  order: -1;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@media(hover:hover) {
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: inline-block;
+  vertical-align: top;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   justify-content: flex-start;
+  align-items: flex-start;
   font-size: inherit;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  text-decoration: none;
 }
 .root::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  outline-color: currentColor;
+  border: 2px solid #0A0AFF;
 }
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+.root:not(:focus-visible)::before {
+  border: 0;
 }
-.root:active {
-  color: #d5001c;
+.label {
+  position: relative;
 }
 @media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"small","weight":"bold","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
-  position: relative;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
 }
-::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
-}
-::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
-}
-::slotted(a:focus)::before {
-  outline-color: currentColor;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
-}
-slot[name=subline]::slotted(*) {
-  margin: 0;
-}
 .root {
   display: flex;
-  align-items: flex-start;
+  gap: 4px;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color: #010205;
   outline: 0;
-  appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: left;
-  border: none;
-  background: transparent;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 700;
   justify-content: flex-start;
+  align-items: flex-start;
   font-size: 1rem;
-}
-.root::-moz-focus-inner {
-  border: 0;
+  text-decoration: none;
 }
 .root::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  position: fixed;
+  top: -2px;
+  right: -4px;
+  bottom: -2px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  outline-color: currentColor;
+  border: 2px solid #0A0AFF;
 }
-.root:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+.root:not(:focus-visible)::before {
+  border: 0;
 }
-.root:active {
-  color: #d5001c;
-}
-.root ~ .subline {
-  font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-}
-.root ~ .subline::before {
-  font-size: 1rem;
-  margin-left: calc(6px + 2.125ex);
+.label {
+  position: relative;
 }
 @media(hover:hover) {
-  .root:hover {
-    color: #d5001c;
+  .root:hover::before {
+    background-color: rgba(83, 83, 83, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 "

@@ -4,7 +4,7 @@ import { PLinkPure } from '@porsche-design-system/components-react';
 export const LinkPurePage = (): JSX.Element => {
   const style = `
     p-link-pure:not(:last-child) {
-      margin-right: 0.5rem;
+      margin-right: 16px;
     }
     .stretched-links p-link-pure {
       margin-right: 0;
@@ -18,10 +18,14 @@ export const LinkPurePage = (): JSX.Element => {
       <div className="playground light" title="should render with label">
         <PLinkPure href="https://www.porsche.com">Label default</PLinkPure>
         <PLinkPure><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com">Label default</PLinkPure>
+        <PLinkPure underline={true}><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
       <div className="playground dark" title="should render with label on dark background">
         <PLinkPure href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
         <PLinkPure theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
+        <PLinkPure underline={true} theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
 
       <div className="playground light" title="should render without label">
@@ -40,20 +44,13 @@ export const LinkPurePage = (): JSX.Element => {
         >
           Label responsive
         </PLinkPure>
-        <PLinkPure
-          href="https://www.porsche.com"
-          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
-        >
-          Label responsive
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with different weight">
-        <PLinkPure href="https://www.porsche.com" weight="thin">Label weight thin</PLinkPure>
-        <PLinkPure weight="thin"><a href="https://www.porsche.com">Label slotted weight thin</a></PLinkPure>
+      <div className="playground light" title="should not render with different weight">
         <PLinkPure href="https://www.porsche.com" weight="regular">Label weight regular</PLinkPure>
         <PLinkPure weight="regular"><a href="https://www.porsche.com">Label slotted weight regular</a></PLinkPure>
+        <PLinkPure href="https://www.porsche.com" weight="semi-bold">Label weight semi-bold</PLinkPure>
+        <PLinkPure weight="semi-bold"><a href="https://www.porsche.com">Label slotted weight semi-bold</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" weight="bold">Label weight bold</PLinkPure>
         <PLinkPure weight="bold"><a href="https://www.porsche.com">Label slotted weight bold</a></PLinkPure>
       </div>
@@ -61,19 +58,11 @@ export const LinkPurePage = (): JSX.Element => {
       <div className="playground light" title="should render with active state">
         <PLinkPure href="https://www.porsche.com" active={true}>Label active</PLinkPure>
         <PLinkPure active={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
-        <PLinkPure href="https://www.porsche.com" active={true}>
-          Label active
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
         <PLinkPure href="https://www.porsche.com" active={true} theme="dark">Label active</PLinkPure>
         <PLinkPure active={true} theme="dark"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
-        <PLinkPure href="https://www.porsche.com" active={true} theme="dark">
-          Label active
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
       </div>
 
       <div className="playground light" title="should render with specific icon">
@@ -97,6 +86,12 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure style={{ width: '240px' }}>
           <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com" style={{ width: '240px' }}>
+          Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
+        </PLinkPure>
+        <PLinkPure underline={true} style={{ width: '240px' }}>
+          <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
+        </PLinkPure>
       </div>
 
       <div className="playground light" title="should render with custom clickable area">
@@ -112,46 +107,15 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with subline">
-        <PLinkPure href="https://www.porsche.com" size="small">
-          Label size small
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" size="medium">
-          Label size medium
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" size="large">
-          Label size large
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" size="x-large">
-          Label size x-large
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-        <PLinkPure size="large">
-          <a href="https://www.porsche.com">Label slotted size large</a>
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-      </div>
-
       <div className="playground light" title="should render with no icon">
         <PLinkPure href="https://www.porsche.com" icon="none">Label icon none</PLinkPure>
         <PLinkPure icon="none"><a href="https://www.porsche.com">Label slotted icon none</a></PLinkPure>
-        <PLinkPure href="https://www.porsche.com" size="small" icon="none">
-          Label icon none
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render icon if hide-label and icon none is set">
+      <div className="playground light" title="should render label if hide-label is set to true and icon none is set">
         <PLinkPure href="https://www.porsche.com" hideLabel={true} icon="none">Label hide-label icon none</PLinkPure>
         <PLinkPure hideLabel={true} icon="none">
           <a href="https://www.porsche.com">Label slotted with hideLabel and no icon</a>
-        </PLinkPure>
-        <PLinkPure hideLabel={true} size="small" icon="none">
-          <a href="https://www.porsche.com">Label hide-label icon none</a>
-          <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
 
@@ -212,17 +176,6 @@ export const LinkPurePage = (): JSX.Element => {
           alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
         >
           <a href="https://www.porsche.com">Label slotted multiple breakpoint-customizable</a>
-        </PLinkPure>
-      </div>
-
-      <div className="playground light" title="should not align label left or stretch if it has a subline">
-        <PLinkPure href="https://www.porsche.com" alignLabel="left">
-          Label align left
-          <p slot="subline">Some subline</p>
-        </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" stretch={true}>
-          Label stretch
-          <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
 

@@ -1,24 +1,17 @@
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonPureIconName,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
-import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import { borderRadiusSmall, borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   icon: LinkButtonPureIconName,
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
+  underline: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme
 ): string => {
@@ -26,25 +19,14 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonPureStyles(
-        icon,
-        active,
-        false,
-        stretch,
-        size,
-        weight,
-        hideLabel,
-        alignLabel,
-        hasSlottedAnchor,
-        theme
-      ),
+      getLinkButtonPureStyles(icon, active, false, stretch, size, hideLabel, alignLabel, hasSlottedAnchor, theme),
       {
         ...(hasSlottedAnchor && {
           '@global': addImportantToEachRule({
             '::slotted': {
               '&(a)': {
                 outline: 0,
-                textDecoration: 'underline',
+                textDecoration: underline ? 'underline' : 'none',
                 font: 'inherit',
                 color: 'inherit',
               },
@@ -54,7 +36,10 @@ export const getComponentCss = (
               '&(a)::before': {
                 content: '""',
                 position: 'fixed',
-                inset: `-${spacingStaticXSmall}`,
+                top: offsetVertical,
+                right: offsetHorizontal,
+                bottom: offsetVertical,
+                left: offsetHorizontal,
                 borderRadius: borderRadiusSmall,
               },
               '&(a:focus)::before': {
@@ -66,6 +51,9 @@ export const getComponentCss = (
             },
           }),
         }),
+        root: {
+          textDecoration: underline ? 'underline' : 'none',
+        },
       }
     )
   );

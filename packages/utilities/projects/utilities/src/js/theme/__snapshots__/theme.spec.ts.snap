@@ -24,10 +24,10 @@ exports[`should contain correct values for theme 1`] = `
     },
     "primary": "#FBFCFF",
     "state": {
-      "active": "#404044",
-      "disabled": "#404044",
+      "active": "#7E7F82",
+      "disabled": "#7E7F82",
       "focus": "#0A0AFF",
-      "hover": "#404044",
+      "hover": "rgba(144, 144, 153, 0.25)",
     },
   },
   "light": {
@@ -52,10 +52,10 @@ exports[`should contain correct values for theme 1`] = `
     },
     "primary": "#010205",
     "state": {
-      "active": "#D8D8DB",
-      "disabled": "#D8D8DB",
+      "active": "#949598",
+      "disabled": "#949598",
       "focus": "#0A0AFF",
-      "hover": "#D8D8DB",
+      "hover": "rgba(83, 83, 83, 0.25)",
     },
   },
 }
@@ -84,10 +84,10 @@ exports[`should contain correct values for themeDark 1`] = `
   },
   "primary": "#FBFCFF",
   "state": {
-    "active": "#404044",
-    "disabled": "#404044",
+    "active": "#7E7F82",
+    "disabled": "#7E7F82",
     "focus": "#0A0AFF",
-    "hover": "#404044",
+    "hover": "rgba(144, 144, 153, 0.25)",
   },
 }
 `;
@@ -120,13 +120,13 @@ exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] 
 
 exports[`should contain correct values for themeDarkPrimary 1`] = `"#FBFCFF"`;
 
-exports[`should contain correct values for themeDarkStateActive 1`] = `"#404044"`;
+exports[`should contain correct values for themeDarkStateActive 1`] = `"#7E7F82"`;
 
-exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#404044"`;
+exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#7E7F82"`;
 
 exports[`should contain correct values for themeDarkStateFocus 1`] = `"#0A0AFF"`;
 
-exports[`should contain correct values for themeDarkStateHover 1`] = `"#404044"`;
+exports[`should contain correct values for themeDarkStateHover 1`] = `"rgba(144, 144, 153, 0.25)"`;
 
 exports[`should contain correct values for themeLight 1`] = `
 {
@@ -151,10 +151,10 @@ exports[`should contain correct values for themeLight 1`] = `
   },
   "primary": "#010205",
   "state": {
-    "active": "#D8D8DB",
-    "disabled": "#D8D8DB",
+    "active": "#949598",
+    "disabled": "#949598",
     "focus": "#0A0AFF",
-    "hover": "#D8D8DB",
+    "hover": "rgba(83, 83, 83, 0.25)",
   },
 }
 `;
@@ -187,10 +187,10 @@ exports[`should contain correct values for themeLightNotificationWarningSoft 1`]
 
 exports[`should contain correct values for themeLightPrimary 1`] = `"#010205"`;
 
-exports[`should contain correct values for themeLightStateActive 1`] = `"#D8D8DB"`;
+exports[`should contain correct values for themeLightStateActive 1`] = `"#949598"`;
 
-exports[`should contain correct values for themeLightStateDisabled 1`] = `"#D8D8DB"`;
+exports[`should contain correct values for themeLightStateDisabled 1`] = `"#949598"`;
 
 exports[`should contain correct values for themeLightStateFocus 1`] = `"#0A0AFF"`;
 
-exports[`should contain correct values for themeLightStateHover 1`] = `"#D8D8DB"`;
+exports[`should contain correct values for themeLightStateHover 1`] = `"rgba(83, 83, 83, 0.25)"`;

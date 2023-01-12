@@ -265,12 +265,12 @@ describe('chunk content', () => {
   });
 
   describe('hex colors', () => {
-    const hexColorRegEx = /#[a-f\d]{3,6}/;
+    const hexColorRegEx = /#[a-f\d]{3,6}/i;
     const componentsWithHexColors: ComponentChunkName[] = [
-      'link-social',
       'select-wrapper',
       'text-field-wrapper',
       'textarea-wrapper',
+      'scroller',
     ];
 
     const containsHexColor = (chunkFileName: string): boolean =>

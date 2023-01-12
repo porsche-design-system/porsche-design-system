@@ -35,6 +35,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
+  underline: AllowedTypes.boolean,
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -61,7 +62,10 @@ export class LinkPure {
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
-  /** The weight of the text (only has effect with visible label). */
+  /**
+   * The weight of the text (only has effect with visible label).
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
@@ -69,6 +73,9 @@ export class LinkPure {
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
+
+  /** Shows an underline under the label. */
+  @Prop() public underline?: boolean = false;
 
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
@@ -108,9 +115,9 @@ export class LinkPure {
       this.active,
       this.stretch,
       this.size,
-      this.weight,
       this.hideLabel,
       this.alignLabel,
+      this.underline,
       !this.href,
       this.theme
     );
