@@ -19,7 +19,7 @@
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
     "replace": "yarn replace:initialStyles && yarn replace:fontLatin",
-    "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getInitialStyles({normalize: true}))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
+    "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getInitialStyles({applyWithNormalizeStyles: true}))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
     "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:vue-wrapper",

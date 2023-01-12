@@ -3,7 +3,7 @@ import * as partials from '@porsche-design-system/components-angular/partials';
 
 export default (targetOptions: TargetOptions, indexHtml: string): string => {
   const partialContent = [
-    partials.getInitialStyles({ normalize: true }),
+    partials.getInitialStyles({ applyWithNormalizeStyles: true }),
     partials.getFontLinks({ weights: ['thin', 'regular', 'semi-bold', 'bold'] }),
     partials.getBrowserSupportFallbackScript(),
     partials.getCookiesFallbackScript(),
