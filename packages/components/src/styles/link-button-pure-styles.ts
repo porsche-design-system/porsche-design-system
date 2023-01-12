@@ -2,7 +2,7 @@ import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../types';
-import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition } from './';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -48,7 +48,10 @@ export const getLinkButtonPureStyles = (
   return {
     '@global': {
       ':host': {
-        transform: addImportantToRule('translate3d(0,0,0)'), // creates new stacking context
+        ...addImportantToEachRule({
+          transform: 'translate3d(0,0,0)', // creates new stacking context
+          outline: 0, // custom element is able to delegate the focus
+        }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
           display: responsiveStretch ? 'block' : 'inline-block',
           ...(!responsiveStretch && { verticalAlign: 'top' }),
@@ -75,7 +78,6 @@ export const getLinkButtonPureStyles = (
         content: '""',
         position: 'fixed',
         ...getInsetJssStyle(-4),
-        outline: 0,
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
