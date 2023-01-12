@@ -16,7 +16,7 @@ In case you want the user to execute an action, you should select the [Button](c
 
 ### With label
 
-<Playground :markup="withLabel" :config="config"></Playground>
+<Playground :markup="withLabel" :config="configInline"></Playground>
 
 ### Without label
 
@@ -51,11 +51,10 @@ component.
 
 By choosing `icon="none"` the component is shown without icon.
 
-The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is
-clickable. If it is required in flowing text, a native link within the `p-text` component can be used.  
-See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
+The variant without icon and no underline is only recommended in the context of menus, where it is clearly evident that
+the component is clickable. If it is used in flowing text, it's recommended to use it in combination with underline.
 
-**Caution:** You can't combine this with the prop `hideLabel`
+**Caution:** You can't combine this with the prop `hideLabel`.
 
 <Playground :markup="withoutIcon" :config="configInline"></Playground>
 
@@ -63,11 +62,6 @@ See [text documentation](components/typography/text#text-with-a-link-button-and-
 
 There are predefined text sizes for the component which should cover most use cases. If a specific text size is needed,
 the size can be set to `inherit` to specify the text size from outside.
-
-**Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the
-given (font-size) pixel value, e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
-width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"**
-width/height.
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select style variant">
@@ -89,15 +83,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-## Weight
+## Weight (deprecated)
 
-There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The weight prop is deprecated and will be removed with next major release.
+  In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
+</p-inline-notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight" aria-label="Select weight">
     <option disabled>Select weight</option>
     <option>thin</option>
     <option>regular</option>
+    <option>semibold</option>
     <option>bold</option>
   </select>
 </Playground>
@@ -211,29 +209,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** from the tab order.
 
-<Playground :markup="taborder" :config="config"></Playground>
-
----
-
-## Link Pure with Subline
-
-If you need additional information on your link, we provide a `<p slot="subline" />`. The size of the _subline_ changes
-according to the size of the _label_. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so
-far.
-
-**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be
-_outside_ of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the correct
-accessibility tree.
-
-<Playground :markup="subline" :config="configInline">
-  <select v-model="sublineSize" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-  </select>
-</Playground>
+<Playground :markup="taborder" :config="configInline"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -245,13 +221,13 @@ export default class Code extends Vue {
   configInline = { ...this.config, spacing: 'inline' };
   
   size = 'medium';
-  sublineSize = 'small';
   weight = 'thin';
   alignLabel = 'left';
   stretch = 'stretch="true" align-label="left"';
   
   withLabel =
-`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+<p-link-pure href="https://www.porsche.com" underline="true">Some label</p-link-pure>`;
 
   withoutLabel =
 `<p-link-pure href="https://www.porsche.com" hide-label="true">Some label</p-link-pure>`;
@@ -264,10 +240,7 @@ export default class Code extends Vue {
 
   withoutIcon =
 `<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure icon="none" size="small" weight="semibold" href="https://www.porsche.com">
-  Some label
-  <p slot="subline">Some Subline</p>
-</p-link-pure>`;
+<p-link-pure icon="none" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   get sizeMarkup() {
     const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
@@ -329,17 +302,6 @@ export default class Code extends Vue {
 <p-link-pure href="https://www.porsche.com" tabindex="-1">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
 
-
-  get subline() {
-    return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
-  Some label
-  <p slot="subline">Some Subline</p>
-</p-link-pure>
-<p-link-pure size="${this.sublineSize}" weight="semibold">
-  <a href="https://www.porsche.com" aria-describedby="subline">Some label</a>
-  <p slot="subline" id="subline">Some Subline</p>
-</p-link-pure>`;
-  }
 }
 </script>
 
