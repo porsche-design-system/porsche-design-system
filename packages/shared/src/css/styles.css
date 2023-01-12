@@ -26,15 +26,9 @@ body {
 body > select {
   position: relative;
   z-index: 999999;
-  /* font shorthand declaration does not work for reverting select styles*/
-  fontfamily: revert;
-  fontsize: revert;
-  lineheight: revert;
-  fontweight: revert;
-  fontstyle: revert;
-  fontvariant: revert;
-  overflow-wrap: revert;
-  hyphens: revert;
+  font: revert !important;
+  overflow-wrap: revert !important;
+  hyphens: revert !important;
 }
 
 .playground {
