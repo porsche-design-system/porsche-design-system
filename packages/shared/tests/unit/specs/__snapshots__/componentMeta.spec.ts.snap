@@ -460,6 +460,7 @@ exports[`should match snapshot 1`] = `
       "stretch": false,
       "target": "_self",
       "theme": "light",
+      "underline": false,
       "weight": "regular",
     },
     "requiredProps": [
