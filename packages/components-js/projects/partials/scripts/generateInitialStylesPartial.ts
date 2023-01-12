@@ -1,6 +1,6 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { create, Styles } from 'jss';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
+import { Styles } from 'jss';
 import {
   themeDark,
   fontSize,
@@ -9,10 +9,6 @@ import {
   fontLineHeight,
   themeLight,
 } from '@porsche-design-system/utilities-v2';
-import jssPluginGlobal from 'jss-plugin-global';
-import jssPluginNested from 'jss-plugin-nested';
-import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -92,25 +88,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     },
   };
 
-  const minifyCss = (css: string): string =>
-    css.replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
-
-  const jss = create({
-    plugins: [
-      jssPluginGlobal(),
-      jssPluginNested(),
-      jssPluginCamelCase(),
-      jssPluginSortMediaQueries({ combineMediaQueries: true }),
-    ],
-  });
-
-  const getCss = (jssStyles: Styles): string =>
-    jss
-      .createStyleSheet(jssStyles, {
-        generateId: (rule) => rule.key,
-      })
-      .toString();
-
   const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptionsFormatHtml): string;
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
@@ -133,7 +110,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const prefixedTagNamesStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
-  const normalizeStyles = \`${minifyCss(getCss(normalizeStyles))}\`;
+  const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
 
   const styles = applyWithNormalizeStyles ? styles.concat(normalizeStyles) : prefixedTagNamesStyles;
 
