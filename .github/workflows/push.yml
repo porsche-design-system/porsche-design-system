@@ -609,6 +609,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
