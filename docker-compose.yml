@@ -38,11 +38,11 @@ services:
       - assets-node-modules:/opt/porsche-design-system-app/packages/assets/node_modules
       - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
+      - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/jsdom-polyfill/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
       - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
-      - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/jsdom-polyfill/node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
       - components-vue-node-modules:/opt/porsche-design-system-app/packages/components-vue/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
@@ -69,11 +69,11 @@ services:
       - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
       - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
+      - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-js-jsdom-polyfill-node_modules
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
       - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
-      - components-react-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-react-jsdom-polyfill-node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
       - components-vue-node-modules:/opt/porsche-design-system-volumes/components-vue-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
@@ -100,11 +100,11 @@ volumes:
   assets-node-modules:
   components-node-modules:
   components-js-node-modules:
+  components-js-jsdom-polyfill-node-modules:
   components-angular-node-modules:
   components-react-node-modules:
   components-react-react-ssr-wrapper-node-modules:
   components-react-uxpin-wrapper-node-modules:
-  components-react-jsdom-polyfill-node-modules:
   components-react-nextjs-node-modules:
   components-vue-node-modules:
   email-node-modules:
