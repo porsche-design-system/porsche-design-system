@@ -19,10 +19,14 @@ const LinkPurePage: NextPage = (): JSX.Element => {
       <div className="playground light" title="should render with label">
         <PLinkPure href="https://www.porsche.com">Label default</PLinkPure>
         <PLinkPure><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com">Label default</PLinkPure>
+        <PLinkPure underline={true}><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
       <div className="playground dark" title="should render with label on dark background">
         <PLinkPure href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
         <PLinkPure theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
+        <PLinkPure underline={true} theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
 
       <div className="playground light" title="should render without label">
@@ -43,7 +47,7 @@ const LinkPurePage: NextPage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with different weight">
+      <div className="playground light" title="should not render with different weight">
         <PLinkPure href="https://www.porsche.com" weight="regular">Label weight regular</PLinkPure>
         <PLinkPure weight="regular"><a href="https://www.porsche.com">Label slotted weight regular</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" weight="semi-bold">Label weight semi-bold</PLinkPure>
@@ -81,6 +85,12 @@ const LinkPurePage: NextPage = (): JSX.Element => {
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkPure>
         <PLinkPure style={{ width: '240px' }}>
+          <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
+        </PLinkPure>
+        <PLinkPure underline={true} href="https://www.porsche.com" style={{ width: '240px' }}>
+          Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
+        </PLinkPure>
+        <PLinkPure underline={true} style={{ width: '240px' }}>
           <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLinkPure>
       </div>

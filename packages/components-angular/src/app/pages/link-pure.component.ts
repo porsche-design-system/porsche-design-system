@@ -17,10 +17,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render with label">
       <p-link-pure [href]="'https://www.porsche.com'">Label default</p-link-pure>
       <p-link-pure><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
+      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'">Label default</p-link-pure>
+      <p-link-pure [underline]="true"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
     </div>
     <div class="playground dark" title="should render with label on dark background">
       <p-link-pure [href]="'https://www.porsche.com'" [theme]="'dark'">Label default</p-link-pure>
       <p-link-pure [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
+      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'" [theme]="'dark'">Label default</p-link-pure>
+      <p-link-pure [underline]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
     </div>
 
     <div class="playground light" title="should render without label">
@@ -41,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-pure>
     </div>
 
-    <div class="playground light" title="should render with different weight">
+    <div class="playground light" title="should not render with different weight">
       <p-link-pure [href]="'https://www.porsche.com'" [weight]="'regular'">Label weight regular</p-link-pure>
       <p-link-pure [weight]="'regular'"><a [href]="'https://www.porsche.com'">Label slotted weight regular</a></p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [weight]="'semi-bold'">Label weight semi-bold</p-link-pure>
@@ -79,6 +83,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
       </p-link-pure>
       <p-link-pure style="width: 240px">
+        <a [href]="'https://www.porsche.com'">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
+      </p-link-pure>
+      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'" style="width: 240px">
+        Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
+      </p-link-pure>
+      <p-link-pure [underline]="true" style="width: 240px">
         <a [href]="'https://www.porsche.com'">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link-pure>
     </div>
