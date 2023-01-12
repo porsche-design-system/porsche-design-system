@@ -71,13 +71,11 @@ export const getLinkButtonPureStyles = (
           fontSize: getFontSizeText(sizeValue),
         }))
       ),
-      '&:focus': {
-        outline: 0,
-      },
       '&::before': {
         content: '""',
         position: 'fixed',
         ...getInsetJssStyle(-4),
+        outline: 0,
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
