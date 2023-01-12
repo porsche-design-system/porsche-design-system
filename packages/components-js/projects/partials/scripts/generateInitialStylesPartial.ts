@@ -76,9 +76,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'a, button, input, select, textarea': {
         outline: '1px solid transparent',
         outlineOffset: '1px',
-        '&::-moz-focus-inner': {
-          border: 0,
-        },
         '&:focus': {
           outlineColor: 'currentColor',
         },
