@@ -31,6 +31,9 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
       };
 };
 
+export const offsetVertical = '-2px';
+export const offsetHorizontal = '-4px';
+
 export const getLinkButtonPureStyles = (
   icon: LinkButtonPureIconName,
   active: boolean,
@@ -77,7 +80,10 @@ export const getLinkButtonPureStyles = (
       '&::before': {
         content: '""',
         position: 'fixed',
-        ...getInsetJssStyle(-4),
+        top: offsetVertical,
+        right: offsetHorizontal,
+        bottom: offsetVertical,
+        left: offsetHorizontal,
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {

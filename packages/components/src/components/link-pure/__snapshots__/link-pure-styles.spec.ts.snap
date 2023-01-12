@@ -56,10 +56,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -209,10 +209,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -332,10 +332,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -395,10 +395,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -450,10 +450,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  top: -4px !important;
-  left: -4px !important;
+  top: -2px !important;
   right: -4px !important;
-  bottom: -4px !important;
+  bottom: -2px !important;
+  left: -4px !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus)::before {
@@ -479,10 +479,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -536,10 +536,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -599,10 +599,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -662,10 +662,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -717,10 +717,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  top: -4px !important;
-  left: -4px !important;
+  top: -2px !important;
   right: -4px !important;
-  bottom: -4px !important;
+  bottom: -2px !important;
+  left: -4px !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus)::before {
@@ -746,10 +746,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -802,10 +802,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   background-color: rgba(144, 144, 153, 0.25);
@@ -867,10 +867,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   background-color: rgba(83, 83, 83, 0.25);
@@ -933,10 +933,10 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -983,10 +983,10 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root::before {
   content: "";
   position: fixed;
-  top: -4px;
-  left: -4px;
+  top: -2px;
   right: -4px;
-  bottom: -4px;
+  bottom: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }

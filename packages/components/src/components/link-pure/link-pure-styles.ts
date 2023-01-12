@@ -1,7 +1,7 @@
 import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
-import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -36,7 +36,10 @@ export const getComponentCss = (
               '&(a)::before': {
                 content: '""',
                 position: 'fixed',
-                ...getInsetJssStyle(-4),
+                top: offsetVertical,
+                right: offsetHorizontal,
+                bottom: offsetVertical,
+                left: offsetHorizontal,
                 borderRadius: borderRadiusSmall,
               },
               '&(a:focus)::before': {
