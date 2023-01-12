@@ -1,9 +1,10 @@
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { componentsReady } from '@porsche-design-system/components-js';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { WHITELISTED_TAG_NAMES } from '../helper';
+import { tagNameMarkup, WHITELISTED_TAG_NAMES } from '../helper';
 
 it('should have one unit test per component', () => {
   const whitelistedComponents: TagName[] = [...INTERNAL_TAG_NAMES, ...WHITELISTED_TAG_NAMES] as TagName[];
@@ -35,4 +36,20 @@ it('should have one unit test per component', () => {
   }
 
   expect(componentsWithMissingTests.length).toEqual(0);
+});
+
+it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (tagName, markup) => {
+  const spy = jest.spyOn(global, 'fetch');
+
+  document.body.innerHTML = markup;
+  expect(await componentsReady()).toBeGreaterThan(0);
+
+  // wait for potential requests
+  await new Promise((resolve) => setTimeout(resolve, 5));
+
+  if (spy.mock.calls.length > 0) {
+    console.log(spy.mock.calls.flat());
+  }
+
+  expect(spy).not.toBeCalled();
 });
