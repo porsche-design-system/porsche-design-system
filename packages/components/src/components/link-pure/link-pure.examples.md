@@ -1,12 +1,9 @@
 # Link Pure
 
-The `p-link-pure` component is essential for performing changes in **page routes**.  
-A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **
-usability** whenever possible.  
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen
-readers.  
-When overriding the `position` style of the `p-link-pure` component, make sure to not use `position: static`, which
-would make the click area expand to the entire viewport.  
+The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
+without a label, but it's recommended to keep the **label visible** for better ** usability** whenever possible. When
+used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
+
 In case you want the user to execute an action, you should select the [Button](components/button) or
 [Button Pure](components/button-pure) component instead.
 
@@ -20,7 +17,16 @@ In case you want the user to execute an action, you should select the [Button](c
 
 ### Without label
 
-<Playground :markup="withoutLabel" :config="config"></Playground>
+<Playground :markup="withoutLabel" :config="configInline"></Playground>
+
+### Without Icon
+
+The variant without icon and no underline is only recommended in the context of menus, where it is clearly evident that
+the component is clickable. If it is used in flowing text, it's recommended to use it in combination with underline.
+
+**Caution:** You can't combine this with the prop `hideLabel`.
+
+<Playground :markup="withoutIcon" :config="configInline"></Playground>
 
 ### Responsive
 
@@ -44,19 +50,6 @@ component.
 - In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
   themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
   information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
-
----
-
-### Without Icon
-
-By choosing `icon="none"` the component is shown without icon.
-
-The variant without icon and no underline is only recommended in the context of menus, where it is clearly evident that
-the component is clickable. If it is used in flowing text, it's recommended to use it in combination with underline.
-
-**Caution:** You can't combine this with the prop `hideLabel`.
-
-<Playground :markup="withoutIcon" :config="configInline"></Playground>
 
 ## Size
 
@@ -96,6 +89,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
     <option>thin</option>
     <option>regular</option>
     <option>semibold</option>
+    <option>semi-bold</option>
     <option>bold</option>
   </select>
 </Playground>
@@ -227,10 +221,11 @@ export default class Code extends Vue {
   
   withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure href="https://www.porsche.com" underline="true">Some label</p-link-pure>`;
+<p-link-pure underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   withoutLabel =
-`<p-link-pure href="https://www.porsche.com" hide-label="true">Some label</p-link-pure>`;
+`<p-link-pure hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>
+<p-link-pure hide-label="true" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   responsive =
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
@@ -243,7 +238,7 @@ export default class Code extends Vue {
 <p-link-pure icon="none" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   get sizeMarkup() {
-    const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    const style =this.size === 'inherit' ? ' style="font-size: 3rem;"' : '';
     return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
   }
     
@@ -251,7 +246,7 @@ export default class Code extends Vue {
 `<p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
 
   get weightMarkup() {
-    return `<p-link-pure href="https://www.porsche.com" size="medium" weight="${this.weight}">Some label</p-link-pure>`;
+    return `<p-link-pure href="https://www.porsche.com" weight="${this.weight}">Some label</p-link-pure>`;
   }
 
   routing =
