@@ -15,20 +15,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -295,20 +295,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -410,20 +410,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -504,20 +504,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -647,20 +647,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -832,20 +832,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -947,20 +947,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -1041,20 +1041,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -1155,20 +1155,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -1269,20 +1269,20 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -1384,20 +1384,20 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
@@ -1473,20 +1473,20 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a:focus)::before {
-  outline-color: currentColor;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;
