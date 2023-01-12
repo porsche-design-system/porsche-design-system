@@ -1,14 +1,8 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
-import { getScreenReaderOnlyJssStyle, pxToRemWithUnit } from '../../styles';
-import {
-  themeLightContrastMedium,
-  themeLightPrimary,
-  themeDarkPrimary,
-  themeDarkContrastMedium,
-} from '@porsche-design-system/utilities-v2';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);
@@ -23,7 +17,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
-  const isDarkTheme = isThemeDark(theme);
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -39,12 +33,12 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       circle: {
         '&:first-child': {
-          stroke: isDarkTheme ? themeDarkContrastMedium : themeLightContrastMedium,
+          stroke: contrastMediumColor,
         },
         '&:last-child': {
           transformOrigin: '0 0',
           animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
-          stroke: isDarkTheme ? themeDarkPrimary : themeLightPrimary,
+          stroke: primaryColor,
           strokeDasharray: '40, 200',
           strokeDashoffset: 0,
           strokeLinecap: 'round',
