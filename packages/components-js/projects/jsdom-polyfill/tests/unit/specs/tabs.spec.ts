@@ -40,3 +40,13 @@ it('should have working events', async () => {
   await userEvent.click(button2);
   expect(debugEl.innerHTML).toBe('Current Tab: <span>1</span>; Event Counter: <span>2</span>;');
 });
+
+// seems to only happen when one of the previous tests is executed
+it('should not console.error because of Object.getOwnPropertyDescriptor', async () => {
+  const spy = jest.spyOn(global.console, 'error');
+
+  document.body.innerHTML = getMarkup('p-tabs');
+  await componentsReady();
+
+  expect(spy).not.toBeCalled();
+});
