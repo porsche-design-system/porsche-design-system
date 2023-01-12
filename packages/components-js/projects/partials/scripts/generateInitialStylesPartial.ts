@@ -32,13 +32,14 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         fontFamily: fontFamily,
       },
 
-      'button, input, optgroup, select, textarea': {
+      '*:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)': {
         textSizeAdjust: 'none',
         WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+        // font shorthand declaration does not work for styling a, button, input, optgroup, select, textarea
         fontFamily: fontFamily,
         fontSize: fontSize.small,
-        lineHeight: fontSize.small,
-        fontWeight: fontLineHeight,
+        lineHeight: fontLineHeight,
+        fontWeight: fontWeight,
         fontStyle: 'normal',
         fontVariant: 'normal',
         overflowWrap: 'break-word',
@@ -112,11 +113,11 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
 
-  const styles = applyWithNormalizeStyles ? styles.concat(normalizeStyles) : prefixedTagNamesStyles;
+  const styles = applyWithNormalizeStyles ? prefixedTagNamesStyles.concat(normalizeStyles) : prefixedTagNamesStyles;
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-    : <style {...styleProps} dangerouslySetInnerHTML={{ styles }} />;
+    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 
   return withoutTags
     ? styles
