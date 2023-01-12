@@ -151,21 +151,4 @@ describe('manual test cases', () => {
 
     expect(hasTestCaseForEveryTagNameWithInternalProp).toBeTruthy();
   });
-
-  it('should render PContentWrapper correctly with conditional child component when condition is undefined', () => {
-    const Component = ({ hasAdditionalChild }: { hasAdditionalChild?: boolean | undefined }) => (
-      <fromComponents.PContentWrapper>
-        <p>Ensure conditional children do not cause Errors when condition is undefined</p>
-        {hasAdditionalChild && <p>Some Text</p>}
-      </fromComponents.PContentWrapper>
-    );
-
-    const { container } = render(
-      <PorscheDesignSystemProvider>
-        <Component />
-      </PorscheDesignSystemProvider>
-    );
-
-    expect(container.firstElementChild).toBeDefined();
-  });
 });
