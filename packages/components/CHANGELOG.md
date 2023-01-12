@@ -11,8 +11,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `jsdom-polyfill` is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill` and can be
-  used to have working web components in jsdom based tests (e.g. jest)
+- `jsdom-polyfill` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill`
+  and can be used to have working web components in jsdom based tests (e.g. jest)
+- `testing` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/testing` to provide
+  `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use `@testing-library/dom`
+  queries internally to support Shadow DOM
 
 #### Fixed
 
@@ -421,7 +424,7 @@ information can be found here:
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use
   `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed
