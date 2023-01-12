@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Colors of `Spinner` to new V3 Design in theme light and dark
+- `Spinner` meets new V3 design language
 
 ### [2.19.0] - 2022-12-22
 
