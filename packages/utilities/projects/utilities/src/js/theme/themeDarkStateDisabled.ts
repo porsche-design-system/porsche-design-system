@@ -1,1 +1,1 @@
-export const themeDarkStateDisabled = '#404044';
+export const themeDarkStateDisabled = '#7E7F82';
