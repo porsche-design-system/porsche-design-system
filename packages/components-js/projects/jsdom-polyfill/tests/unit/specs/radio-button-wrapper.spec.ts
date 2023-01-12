@@ -1,13 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-radio-button-wrapper label="Some label">
-  <input type="radio" />
-</p-radio-button-wrapper>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-radio-button-wrapper');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;

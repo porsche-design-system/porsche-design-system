@@ -1,18 +1,9 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
-
-const getMarkup = (): string => {
-  return `<p-tabs activeTabIndex="0">
-  <p-tabs-item label="Some label">Content 1</p-tabs-item>
-  <p-tabs-item label="Some label">Content 2</p-tabs-item>
-  <p-tabs-item label="Some label">Content 3</p-tabs-item>
-</p-tabs>
-<button id="button1" type="button">Button 1</button>
-<button id="button2" type="button">Button 2</button>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-tabs');
   expect(await componentsReady()).toBe(4);
 
   const els = Array.from(document.body.querySelectorAll('*')).filter((x) => x.tagName !== 'BUTTON');
@@ -25,7 +16,7 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup() + `<div id="debug">Current Tab: <span>0</span>; Event Counter: <span>0</span>;</div>`;
+    getMarkup('p-tabs') + `<div id="debug">Current Tab: <span>0</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

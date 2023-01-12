@@ -1,16 +1,9 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
-
-const getMarkup = (): string => {
-  return `<p-stepper-horizontal>
-  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
-</p-stepper-horizontal>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-stepper-horizontal');
   expect(await componentsReady()).toBe(4);
 
   const el = document.body.firstElementChild;
@@ -20,7 +13,8 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup() + `<div id="debug">Current Value: <span>2</span>; Event Counter: <span>0</span>;</div>`;
+    getMarkup('p-stepper-horizontal') +
+    `<div id="debug">Current Value: <span>2</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

@@ -1,14 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-flex>
-  <p-flex-item></p-flex-item>
-  <p-flex-item></p-flex-item>
-</p-flex>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-flex');
   expect(await componentsReady()).toBe(3);
 
   const els = document.body.querySelectorAll('*');

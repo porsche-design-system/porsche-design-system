@@ -1,11 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-spinner></p-spinner>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-spinner');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;

@@ -1,15 +1,10 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
-
-const getMarkup = (): string => {
-  return `<p-inline-notification heading="Some banner title" action-label="Retry">
-  Some banner description.
-</p-inline-notification>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-inline-notification');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
@@ -19,7 +14,8 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup() + `<div id="debug">Action Event Counter: <span>0</span>; Close Event Counter: <span>0</span>;</div>`;
+    getMarkup('p-inline-notification') +
+    `<div id="debug">Action Event Counter: <span>0</span>; Close Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

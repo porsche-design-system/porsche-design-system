@@ -1,11 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-headline>Some text</p-headline>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-headline');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;

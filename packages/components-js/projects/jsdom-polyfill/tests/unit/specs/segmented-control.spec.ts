@@ -1,15 +1,9 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
-
-const getMarkup = (): string => {
-  return `<p-segmented-control value="1">
-  <p-segmented-control-item value="1">Item 1</p-segmented-control-item>
-  <p-segmented-control-item value="2">Item 2</p-segmented-control-item>
-</p-segmented-control>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-segmented-control');
   expect(await componentsReady()).toBe(3);
 
   const els = document.body.querySelectorAll('*');
@@ -22,7 +16,8 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup() + `<div id="debug">Current Value: <span>1</span>; Event Counter: <span>0</span>;</div>`;
+    getMarkup('p-segmented-control') +
+    `<div id="debug">Current Value: <span>1</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

@@ -1,11 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-icon></p-icon>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-icon');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;

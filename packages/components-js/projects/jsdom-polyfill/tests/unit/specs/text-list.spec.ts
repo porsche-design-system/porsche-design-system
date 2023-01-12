@@ -1,13 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-text-list>
-  <p-text-list-item>Some text</p-text-list-item>
-</p-text-list>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-text-list');
   expect(await componentsReady()).toBe(2);
 
   const els = document.body.querySelectorAll('*');

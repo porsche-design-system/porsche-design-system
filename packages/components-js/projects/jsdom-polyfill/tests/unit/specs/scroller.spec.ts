@@ -1,16 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-scroller>
-  <button>Some Button</button>
-  <button>Some Button</button>
-  <button>Some Button</button>
-  <button>Some Button</button>
-</p-scroller>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-scroller');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;

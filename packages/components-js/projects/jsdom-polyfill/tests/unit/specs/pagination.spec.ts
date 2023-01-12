@@ -1,12 +1,9 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
-
-const getMarkup = (): string => {
-  return `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-pagination');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
@@ -16,7 +13,7 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup() + `<div id="debug">Current Page: <span>1</span>; Event Counter: <span>0</span>;</div>`;
+    getMarkup('p-pagination') + `<div id="debug">Current Page: <span>1</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

@@ -1,13 +1,8 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-
-const getMarkup = (): string => {
-  return `<p-textarea-wrapper label="Some label">
-  <textarea />
-</p-textarea-wrapper>`;
-};
+import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup();
+  document.body.innerHTML = getMarkup('p-textarea-wrapper');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
