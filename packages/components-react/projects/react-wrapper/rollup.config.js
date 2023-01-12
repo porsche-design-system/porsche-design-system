@@ -78,6 +78,7 @@ export default [
     plugins: [typescript(typescriptOpts)],
   },
   {
+    // typings are produced by main build
     input: `${projectDir}/src/testing.ts`,
     external,
     output: {
@@ -87,6 +88,7 @@ export default [
     plugins: [typescript(typescriptOpts)],
   },
   {
+    // typings are produced by main build
     input: `${projectDir}/src/partials.ts`,
     external,
     output: [

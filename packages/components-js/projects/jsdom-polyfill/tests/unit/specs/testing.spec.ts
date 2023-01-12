@@ -14,14 +14,14 @@ describe('getByRoleShadowed()', () => {
     expect(getByRoleShadowed('button')).toBeInTheDocument();
   });
 
-  it('should work for PButton', async () => {
+  it('should work for p-button', async () => {
     document.body.innerHTML = `<p-button>Button</p-button>`;
     await componentsReady();
 
     expect(getByRoleShadowed('button')).toBeInTheDocument();
   });
 
-  it('should work for nested button within PTextFieldWrapper', async () => {
+  it('should work for nested button within p-text-field-wrapper', async () => {
     document.body.innerHTML = `<p-text-field-wrapper>
   <input type="password" />
 </p-text-field-wrapper>`;
@@ -48,7 +48,7 @@ describe('getByLabelTextShadowed()', () => {
     expect(el.type).toBe('text');
   });
 
-  it('should work for PTextFieldWrapper', async () => {
+  it('should work for p-text-field-wrapper', async () => {
     document.body.innerHTML = `<p-text-field-wrapper label="Message">
   <input type="text" />
 </p-text-field-wrapper>`;
@@ -69,7 +69,7 @@ describe('getByTextShadowed()', () => {
     expect(el.tagName).toBe('H1');
   });
 
-  it('should work for PAccordion', async () => {
+  it('should work for p-accordion', async () => {
     document.body.innerHTML = `<p-accordion heading="Headline">Content</p-accordion>`;
     await componentsReady();
 
@@ -81,7 +81,7 @@ describe('getByTextShadowed()', () => {
 
 describe('getByRole()', () => {
   it('should be supported for most form wrappers', async () => {
-    (document.body.innerHTML = `
+    document.body.innerHTML = `
 <p-checkbox-wrapper label="Checkbox">
   <input type="checkbox" />
 </p-checkbox-wrapper>
@@ -93,8 +93,8 @@ describe('getByRole()', () => {
 </p-text-field-wrapper>
 <p-textarea-wrapper label="Textarea">
   <textarea />
-</p-textarea-wrapper>`),
-      await componentsReady();
+</p-textarea-wrapper>`;
+    await componentsReady();
 
     expect(getByRole(document.body, 'checkbox', { name: 'Checkbox' })).toBeInTheDocument();
     expect(getByRole(document.body, 'radio', { name: 'Radio Button' })).toBeInTheDocument();
@@ -102,15 +102,14 @@ describe('getByRole()', () => {
     expect(getByRole(document.body, 'textbox', { name: 'Textarea' })).toBeInTheDocument();
   });
 
-  it('should be supported for PButton with role button', async () => {
+  it('should be supported for p-button with role button', async () => {
     document.body.innerHTML = `<p-button role="button">Button</p-button>`;
-
     await componentsReady();
 
     expect(getByRole(document.body, 'button', { name: 'Button' })).toBeInTheDocument();
   });
 
-  it('should be supported for PSelectWrapper', async () => {
+  it('should be supported for p-select-wrapper', async () => {
     const callback = jest.fn();
 
     document.body.innerHTML = `<p-select-wrapper>

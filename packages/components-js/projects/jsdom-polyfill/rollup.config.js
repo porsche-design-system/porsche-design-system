@@ -4,6 +4,7 @@ import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 import typescript from '@rollup/plugin-typescript';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = '../../dist/components-wrapper';
 
@@ -54,9 +55,18 @@ export default [
     input: 'src/testing.ts',
     external: ['@testing-library/dom'],
     output: {
-      file: `${outputDir}/testing/index.js`,
+      file: `${outputDir}/testing/testing.js`,
       format: 'cjs',
     },
-    plugins: [typescript({ tsconfig: './tsconfig.json' })],
+    plugins: [
+      typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' }),
+      generatePackageJson({
+        baseContents: {
+          main: 'testing.js',
+          types: 'testing.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
 ];
