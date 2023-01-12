@@ -21,7 +21,8 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
-  normalize?: boolean;
+  // TODO: Standard normalize.css styles won't bei applied by using this option
+  applyWithNormalizeStyles?: boolean;
 };
 type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
 type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'jsx' };
@@ -114,11 +115,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { prefix, withoutTags, format, normalize }: GetInitialStylesOptions = {
+  const { prefix, withoutTags, format, applyWithNormalizeStyles }: GetInitialStylesOptions = {
     prefix: '',
     withoutTags: false,
     format: 'html',
-    normalize: false,
+    applyWithNormalizeStyles: false,
     ...opts,
   };
 
@@ -130,13 +131,15 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const styleProps = { [\`data-pds-initial-styles\$\{prefix ? '-' + prefix : ''\}\`]: '' };
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
-  const styles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
+  const prefixedTagNamesStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
   const normalizeStyles = \`${minifyCss(getCss(normalizeStyles))}\`;
 
+  const styles = applyWithNormalizeStyles ? styles.concat(normalizeStyles) : prefixedTagNamesStyles;
+
   const markup = format === 'html'
-    ? \`<style \$\{styleAttributes\}>\${normalize ? styles.concat(normalizeStyles) : styles}</style>\`
-    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: normalize ? styles.concat(normalizeStyles) : styles }} />;
+    ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
+    : <style {...styleProps} dangerouslySetInnerHTML={{ styles }} />;
 
   return withoutTags
     ? styles
