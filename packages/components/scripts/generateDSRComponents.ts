@@ -89,6 +89,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}'); // comment out isRequiredAndParentNotRequired for now
 
+      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
+        newFileContent = newFileContent.replace(
+          /import { stripFocusAndHoverStyles } from '\.\.\/\.\.\/stripFocusAndHoverStyles';/,
+          `$&
+import { splitChildren } from '../../splitChildren';`
+        );
+      }
+
       if (!newFileContent.includes('FunctionalComponent')) {
         // inject DSR template
         const getComponentCssParams =
@@ -143,35 +151,28 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /public render\(\): JSX\.Element {/,
             `$&
-    const children = (Array.isArray(this.props.children)
-      ? this.props.children
-      : this.props.children
-      ? [this.props.children]
-      : []).filter( x => x !== undefined && x !== null);
-
-    const namedSlottedChildren = children.filter((child) => child.props?.slot);
-    const defaultChildren = children.filter((child) => !child.props?.slot);\n`
-          ) // children are filtered due to cases where conditionally rendered children are undefined.
-          .replace(/this\.(?:input|select|textarea)/g, 'defaultChildren[0]?.props'); // fallback for undefined input, select and textarea reference
+    const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
+          )
+          .replace(/this\.(?:input|select|textarea)/g, 'otherChildren[0]?.props'); // fallback for undefined input, select and textarea reference
 
         // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
             /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
-            `($1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
+            `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
             /hasMessage\(this\.props\.host, (this\.props\.message), (this\.props\.state)\)/,
-            `($1 || namedSlottedChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
+            `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
           )
-          .replace(/namedSlottedChildren\.filter\(\({ props: { slot } }\) => slot === '(?:subline|caption)'\)/, '{$&}')
+          .replace(/namedSlotChildren\.filter\(\({ props: { slot } }\) => slot === '(?:subline|caption)'\)/, '{$&}')
           .replace(
             /hasSlottedSubline\(this\.props\.host\)/g,
-            `namedSlottedChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
             /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading)'\)/g,
-            `namedSlottedChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent
@@ -194,9 +195,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/ = getHeadlineTagName/, ': any$&') // headline
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
-          "namedSlottedChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
+          "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
         ) // carousel, select-wrapper
-        .replace(/= defaultChildren\[0\]\?\.props/, '$& || {}') // text-field-wrapper
+        .replace(/= otherChildren\[0\]\?\.props/, '$& || {}') // text-field-wrapper
         .replace(/(required)={isRequiredAndParentNotRequired\(this\.props,.*/, '$1={false}') // select-wrapper
         .replace(/(host={)this\.props(})/g, '$1null$2') // StateMessage usage
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
@@ -208,18 +209,18 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       // component based tweaks
       if (tagName === 'p-carousel') {
-        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `defaultChildren$1`);
+        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `otherChildren$1`);
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
-          .replace(/this\.tabsItemElements(\.map)/, `defaultChildren$1`)
+          .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
           .replace(/(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g, '$1{tab.props.label}$2')
           .replace(
-            /const defaultChildren =.*/,
+            /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && defaultChildren.includes(child)
+      typeof child === 'object' && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme, hidden: this.props.activeTabIndex !== i ? true : null } }
         : child
     );`
@@ -252,10 +253,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // pass down gutter prop to p-grid-item children
         newFileContent = newFileContent
           .replace(
-            /const defaultChildren =.*/,
+            /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && defaultChildren.includes(child)
+      typeof child === 'object' && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
         : child
     );`
@@ -265,10 +266,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // pass down listType and orderType prop to p-text-list-item children
         newFileContent = newFileContent
           .replace(
-            /const defaultChildren =.*/,
+            /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && defaultChildren.includes(child)
+      typeof child === 'object' && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, listType: this.props.listType, orderType: this.props.orderType } }
         : child
     );`
@@ -278,10 +279,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // pass down value, backgroundColor and theme prop to p-segmented-control-item children
         newFileContent = newFileContent
           .replace(
-            /const defaultChildren =.*/,
+            /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && defaultChildren.includes(child)
+      typeof child === 'object' && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, selected: child.props?.value === this.props.value, backgroundColor: this.props.backgroundColor, theme: this.props.theme } }
         : child
     );`
@@ -291,10 +292,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // pass down theme prop to p-stepper-horizontal-item children
         newFileContent = newFileContent
           .replace(
-            /const defaultChildren =.*/,
+            /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && defaultChildren.includes(child)
+      typeof child === 'object' && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme } }
         : child
     );`
@@ -318,7 +319,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
                 )
                 .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
                 .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
-                .replace(/this\.input/, 'defaultChildren[0]?.props') // use input child
+                .replace(/this\.input/, 'otherChildren[0]?.props') // use input child
                 .replace(/this\./, '$&props.') // all others must be actual props
                 .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
           )
