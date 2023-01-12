@@ -1,8 +1,8 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark } from '../../utils';
-import { getBaseSlottedStyles, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);
@@ -15,12 +15,9 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-export const getComponentCss = (
-  size: BreakpointCustomizable<SpinnerSize>,
-  theme: Theme
-): string => {
-  const { contrastHighColor, primaryColor } = getThemedColors(theme);
+export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -35,13 +32,13 @@ export const getComponentCss = (
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isThemeDark(theme) ? primaryColor : contrastHighColor,
         '&:first-child': {
-          opacity: 0.4,
+          stroke: contrastMediumColor,
         },
         '&:last-child': {
           transformOrigin: '0 0',
           animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
+          stroke: primaryColor,
           strokeDasharray: '40, 200',
           strokeDashoffset: 0,
           strokeLinecap: 'round',
@@ -75,8 +72,4 @@ export const getComponentCss = (
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
