@@ -209,6 +209,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "stretch": "breakpoint",
   "target": "string",
   "theme": "oneOf",
+  "underline": "boolean",
   "weight": "oneOf",
 }
 `;
