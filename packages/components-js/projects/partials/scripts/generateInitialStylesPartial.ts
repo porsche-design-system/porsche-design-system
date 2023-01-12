@@ -17,7 +17,7 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
-  // TODO: Standard normalize.css styles won't bei applied by using this option
+  // Standard normalize.css styles won't bei applied by using this option
   applyWithNormalizeStyles?: boolean;
 };
 type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
@@ -26,12 +26,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const normalizeStyles: Styles = {
     '@global': {
-      html: {
-        textSizeAdjust: 'none',
-        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-        fontFamily: fontFamily,
-      },
-
       '*:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)': {
         textSizeAdjust: 'none',
         WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
