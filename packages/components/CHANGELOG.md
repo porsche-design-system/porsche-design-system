@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `Spinner`, `Link Pure`, `Button Pure` matches new design language
-- Prop `weight` for `Link Pure` is deprecated now, only regular font weight will be applied
+- Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
 - <p-link-pure href="#" weight="thin">Some label</p-link-pure>
@@ -20,24 +20,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-link-pure href="#" weight="semibold">Some label</p-link-pure>
 - <p-link-pure href="#" weight="bold">Some label</p-link-pure>
 + <p-link-pure href="#">Some label</p-link-pure>
+
+- <p-button-pure weight="thin">Some label</p-button-pure>
+- <p-button-pure weight="regular">Some label</p-button-pure>
+- <p-button-pure weight="semibold">Some label</p-button-pure>
+- <p-button-pure weight="bold">Some label</p-button-pure>
++ <p-button-pure>Some label</p-button-pure>
 ```
 
 #### Removed
 
-- `subline` slot for `Link Pure`
+- `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff
 <p-link-pure href="#">
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-link-pure>
+
+<p-button-pure>
+  Some label
+-   <p slot="subline">Some Subline</p>
+</p-button-pure>
 ```
 
-- Deprecated prop `tabbable` for `Link Pure`
+- Deprecated prop `tabbable` for `Link Pure` and `Button Pure`
 
 ```diff
 - <p-link-pure href="#" tabbable="false">Some label</p-link-pure>
 + <p-link-pure href="#" tabindex="-1">Some label</p-link-pure>
+
+- <p-button-pure tabbable="false">Some label</p-button-pure>
++ <p-button-pure tabindex="-1">Some label</p-button-pure>
 ```
 
 ### [2.19.0] - 2022-12-22
