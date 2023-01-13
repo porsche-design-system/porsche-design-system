@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
 export const splitChildren = (
-  children: ReactElement
+  children: ReactElement | ReactElement[]
 ): {
   children: ReactElement[];
   namedSlotChildren: ReactElement[];
