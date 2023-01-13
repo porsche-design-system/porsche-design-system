@@ -20,7 +20,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
     'background-default': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.contrastHighColor,
-    'notification-neutral': themedColors.infoSoftColor,
+    'notification-information': themedColors.infoSoftColor,
     'notification-success': themedColors.successSoftColor,
     'notification-error': themedColors.errorSoftColor,
     'notification-warning': themedColors.warningSoftColor,

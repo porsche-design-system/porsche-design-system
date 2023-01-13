@@ -5,7 +5,7 @@ import { isThemeDark } from '../../utils/theme/isThemeDark'; // deep import need
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'neutral-contrast-high',
-  'notification-neutral',
+  'notification-information',
   'notification-warning',
   'notification-success',
   'notification-error',
