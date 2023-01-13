@@ -40,9 +40,9 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         hyphens: 'auto',
       },
 
-      'h1, h2, h3, h4, h5, h6': {
-        overflowWrap: 'revert',
-        hyphens: 'revert',
+      'h1, h2, h3, h4, h5, h6, p-headline': {
+        overflowWrap: 'revert !important',
+        hyphens: 'revert !important',
       },
 
       a: {
