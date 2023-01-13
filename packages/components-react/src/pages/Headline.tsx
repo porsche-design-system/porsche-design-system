@@ -72,7 +72,7 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline variant={{ base: 'large', l: 'x-large' }}>Lorem ipsum dolor sit amet et.</PHeadline>
       </div>
 
-      <div className="playground" title="should not automatically break words/strings by default">
+      <div className="playground" title="should not automatically break words/strings by default" style={{ overflowWrap: 'normal' }}>
         <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
