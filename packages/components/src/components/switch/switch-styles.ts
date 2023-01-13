@@ -138,7 +138,7 @@ export const getComponentCss = (
       color: textColor,
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          order: alignLabelValue === 'left' ? -1 : 0,
+          order: alignLabelValue === 'left' ? 0 : 1,
         })),
         buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
       ),
