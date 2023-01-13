@@ -2,6 +2,10 @@
 
 ## V3 Status
 
+### Common
+
+- Apply `:host([hidden])` style to all components
+
 ### Utilities
 
 | Utilities            | V3 Status                                                                                                                                                                                                            |
