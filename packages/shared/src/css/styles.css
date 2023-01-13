@@ -23,7 +23,10 @@ body {
   font-variant: small-caps;
 }
 
-body > select {
+body > select,
+#__next > select,
+#root > select,
+app-root {
   position: relative;
   z-index: 999999;
   font: revert !important;
@@ -31,15 +34,9 @@ body > select {
   hyphens: revert !important;
 }
 
-#__next {
-  font: revert !important;
-  overflow-wrap: revert !important;
-  hyphens: revert !important;
-}
-
-#__next > select {
-  position: relative;
-  z-index: 999999;
+#__next,
+#root,
+app-root {
   font: revert !important;
   overflow-wrap: revert !important;
   hyphens: revert !important;
