@@ -31,6 +31,10 @@ body > select {
   hyphens: revert !important;
 }
 
+#__next {
+  font-family: revert;
+}
+
 #__next > select {
   position: relative;
   z-index: 999999;
