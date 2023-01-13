@@ -56,13 +56,9 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
-  }
-
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.isDisabledOrLoading) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -71,7 +67,7 @@ export class Switch {
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
-      () => this.isDisabledOrLoading
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
   }
 
@@ -86,7 +82,7 @@ export class Switch {
       this.checked,
       this.disabled,
       this.loading,
-      this.isDisabledOrLoading,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.theme
     );
 
@@ -103,6 +99,7 @@ export class Switch {
           role="switch"
           onClick={this.onSwitchClick}
         >
+          {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
             {this.loading && (
               <PrefixedTagNames.pSpinner
