@@ -33,6 +33,7 @@ body > select {
 
 #__next {
   font-family: revert;
+  line-height: revert;
 }
 
 #__next > select {
