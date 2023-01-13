@@ -8,7 +8,7 @@ import {
   getInsetJssStyle,
   addImportantToRule,
 } from '../../styles';
-import { borderWidthBase, textSmallStyle, borderRadiusLarge } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 const getColors = (
@@ -68,21 +68,19 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
-        ...addImportantToEachRule({
-          outline: 0, // custom element is able to delegate the focus
-        }),
+      ':host': addImportantToEachRule({
+        outline: 0, // custom element is able to delegate the focus
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
           ...(!stretchValue && { verticalAlign: 'top' }),
         })),
-      },
+      }),
       ':host([hidden])': {
         display: addImportantToRule('none'),
       },
       button: {
         position: 'relative',
-        width: '56px',
+        width: '48px',
         height: '28px',
         flexShrink: 0,
         display: 'block',
@@ -91,7 +89,7 @@ export const getComponentCss = (
         appearance: 'none',
         boxSizing: 'border-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: borderRadiusLarge,
+        borderRadius: '14px',
         backgroundColor: buttonBackgroundColor,
         outline: 0,
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
@@ -111,7 +109,7 @@ export const getComponentCss = (
           position: 'absolute',
           ...getInsetJssStyle(checked ? -6 : -2),
           border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: `calc(${borderRadiusLarge} + ${checked ? '4px' : '0px'})`,
+          borderRadius: checked ? '18px' : '14px',
         },
         '&:not(:focus-visible)::before': {
           borderColor: 'transparent',
@@ -121,10 +119,8 @@ export const getComponentCss = (
     root: {
       display: 'flex',
       alignItems: 'flex-start',
-      gap: '12px',
+      gap: spacingStaticSmall,
       width: '100%',
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
       cursor: isDisabledOrLoading ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
         justifyContent: stretchValue ? 'space-between' : 'flex-start',
@@ -132,7 +128,7 @@ export const getComponentCss = (
     },
     text: {
       ...textSmallStyle,
-      paddingTop: '2px',
+      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
@@ -152,7 +148,7 @@ export const getComponentCss = (
       display: 'block',
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
-      transform: `translate3d(${checked ? '28px' : '0'}, 0, 0)`,
+      transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
       transition: `${getTransition('background-color')},${getTransition('transform')}`,
     },
     ...(loading && {
