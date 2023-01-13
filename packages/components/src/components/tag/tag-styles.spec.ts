@@ -14,14 +14,14 @@ xdescribe('getThemedBackgroundColor()', () => {
     ['notification-success', 'light'],
     ['notification-warning', 'light'],
     ['notification-error', 'light'],
-    ['notification-neutral', 'light'],
+    ['notification-information', 'light'],
     ['background-surface', 'light'],
     ['background-default', 'dark'],
     ['neutral-contrast-high', 'dark'],
     ['notification-success', 'dark'],
     ['notification-warning', 'dark'],
     ['notification-error', 'dark'],
-    ['notification-neutral', 'dark'],
+    ['notification-information', 'dark'],
     ['background-surface', 'dark'],
   ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {
     const themedColors = getThemedColors(theme);
@@ -72,7 +72,7 @@ xdescribe('getComponentCss()', () => {
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
-    ['notification-neutral', true, 'light'],
+    ['notification-information', true, 'light'],
     ['background-surface', true, 'light'],
     ['background-default', true, 'dark'],
     ['background-default', false, 'dark'],
@@ -80,7 +80,7 @@ xdescribe('getComponentCss()', () => {
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],
     ['notification-error', true, 'dark'],
-    ['notification-neutral', true, 'dark'],
+    ['notification-information', true, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
