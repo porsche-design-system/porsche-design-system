@@ -22,7 +22,6 @@ const propTypes: PropTypes<typeof Switch> = {
   checked: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  tabbable: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -50,11 +49,6 @@ export class Switch {
 
   /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
-
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
 
   /** Adapts the switch color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -90,6 +84,7 @@ export class Switch {
       this.hideLabel,
       this.stretch,
       this.checked,
+      this.disabled,
       this.loading,
       this.isDisabledOrLoading,
       this.theme
@@ -106,7 +101,6 @@ export class Switch {
           {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
-          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
           onClick={this.onSwitchClick}
         >
           <span class="toggle">
@@ -114,7 +108,7 @@ export class Switch {
               <PrefixedTagNames.pSpinner
                 class="spinner"
                 size="inherit"
-                theme={this.checked ? 'light' : 'dark'}
+                theme={this.theme}
                 aria={{ 'aria-label': 'Loading state' }}
               />
             )}
