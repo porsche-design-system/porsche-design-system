@@ -36,7 +36,6 @@ app-root > select {
 
 #__next,
 #root,
-.root,
 app-root {
   font: revert !important;
   overflow-wrap: revert !important;
