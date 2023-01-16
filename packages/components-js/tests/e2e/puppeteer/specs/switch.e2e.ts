@@ -31,7 +31,6 @@ const clickHandlerScript = `
 
 type InitOptions = {
   isDisabled?: boolean;
-  isTabbable?: boolean;
   isLoading?: boolean;
   otherMarkup?: string;
 };
