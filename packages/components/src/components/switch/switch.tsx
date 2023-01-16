@@ -89,16 +89,14 @@ export class Switch {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <label class="root">
-        <span id="label" class="text">
-          <slot />
-        </span>
-        <button
-          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          type="button"
-          role="switch"
-          onClick={this.onSwitchClick}
-        >
+      <button
+        {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+        class="root"
+        type="button"
+        role="switch"
+        onClick={this.onSwitchClick}
+      >
+        <span class="switch">
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
             {this.loading && (
@@ -110,8 +108,11 @@ export class Switch {
               />
             )}
           </span>
-        </button>
-      </label>
+        </span>
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 

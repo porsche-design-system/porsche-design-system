@@ -78,66 +78,54 @@ export const getComponentCss = (
       ':host([hidden])': {
         display: addImportantToRule('none'),
       },
-      button: {
-        position: 'relative',
-        width: '48px',
-        height: '28px',
-        flexShrink: 0,
-        display: 'block',
-        margin: 0,
-        padding: 0,
-        appearance: 'none',
-        boxSizing: 'border-box',
-        border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: '14px',
-        backgroundColor: buttonBackgroundColor,
-        outline: 0,
-        cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-        transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
-        ...(!isDisabledOrLoading &&
-          hoverMediaQuery({
-            '&:hover': {
-              borderColor: buttonBorderColorHover,
-              backgroundColor: buttonBackgroundColorHover,
-              '& .toggle': {
-                backgroundColor: toggleBackgroundColorHover,
-              },
-            },
-          })),
-        '&:focus::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(checked ? -6 : -2),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: checked ? '18px' : '14px',
-        },
-        '&:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
-      },
     },
     root: {
       display: 'flex',
       alignItems: 'flex-start',
       gap: spacingStaticSmall,
       width: '100%',
+      padding: 0,
+      outline: 0,
+      border: 0,
+      textAlign: 'left',
+      background: 'transparent',
+      appearance: 'none',
       cursor: isDisabledOrLoading ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
         justifyContent: stretchValue ? 'space-between' : 'flex-start',
       })),
-    },
-    text: {
-      ...textSmallStyle,
-      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      color: textColor,
-      ...mergeDeep(
-        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          order: alignLabelValue === 'left' ? 0 : 1,
+      ...(!isDisabledOrLoading &&
+        hoverMediaQuery({
+          '&:hover .switch': {
+            borderColor: buttonBorderColorHover,
+            backgroundColor: buttonBackgroundColorHover,
+            '& .toggle': {
+              backgroundColor: toggleBackgroundColorHover,
+            },
+          },
         })),
-        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
-      ),
+      '&:focus .switch::before': {
+        content: '""',
+        position: 'absolute',
+        ...getInsetJssStyle(checked ? -6 : -2),
+        border: `${borderWidthBase} solid ${focusColor}`,
+        borderRadius: checked ? '18px' : '14px',
+      },
+      '&:not(:focus-visible) .switch::before': {
+        borderColor: 'transparent',
+      },
+    },
+    switch: {
+      position: 'relative',
+      width: '48px',
+      height: '28px',
+      flexShrink: 0,
+      boxSizing: 'border-box',
+      border: `${borderWidthBase} solid ${buttonBorderColor}`,
+      borderRadius: '14px',
+      backgroundColor: buttonBackgroundColor,
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
     },
     toggle: {
       position: 'absolute',
@@ -160,5 +148,18 @@ export const getComponentCss = (
         height: '28px',
       },
     }),
+    label: {
+      ...textSmallStyle,
+      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+      minWidth: 0, // prevents flex child to overflow max available parent size
+      minHeight: 0, // prevents flex child to overflow max available parent size
+      color: textColor,
+      ...mergeDeep(
+        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+          order: alignLabelValue === 'left' ? -1 : 0,
+        })),
+        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
+      ),
+    },
   });
 };
