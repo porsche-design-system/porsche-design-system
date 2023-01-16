@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
-import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import { getByRoleShadowed } from '@porsche-design-system/components-angular/testing';
 import { render, fireEvent } from '@testing-library/angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
