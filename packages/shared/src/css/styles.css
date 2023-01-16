@@ -36,7 +36,8 @@ app-root > select {
 
 #__next,
 #root,
-app-root {
+.root,
+.root > div app-root {
   font: revert !important;
   overflow-wrap: revert !important;
   hyphens: revert !important;
