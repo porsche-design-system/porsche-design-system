@@ -91,9 +91,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(
-          /import { stripFocusAndHoverStyles } from '\.\.\/\.\.\/stripFocusAndHoverStyles';/,
-          `$&
-import { splitChildren } from '../../splitChildren';`
+          /^/,
+          `import { splitChildren } from '../../splitChildren';
+`
         );
       }
 
