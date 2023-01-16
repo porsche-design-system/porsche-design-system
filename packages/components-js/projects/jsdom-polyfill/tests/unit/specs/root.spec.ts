@@ -23,7 +23,9 @@ it('should have one unit test per component', () => {
   const componentsWithTests = componentsTagNamesWithTests.map(([tagName, filePath]) => {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    expect(fileContent).toContain(`<${tagName}`);
+    expect(fileContent).toContain(`getMarkup('${tagName}')`);
+    // other getMarkup() calls aren't allowed
+    expect(fileContent).not.toMatch(new RegExp(`getMarkup\\('(?!${tagName})`));
     return tagName;
   });
 
