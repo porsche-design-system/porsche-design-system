@@ -891,7 +891,6 @@ exports[`should match snapshot 1`] = `
       "hideLabel": false,
       "loading": false,
       "stretch": false,
-      "tabbable": true,
       "theme": "light",
     },
     "styling": "jss",
