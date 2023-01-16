@@ -12,9 +12,9 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log"
   },
   "dependencies": {
-    "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/components-js": "2.19.0",
-    "@porsche-design-system/assets": "5.0.2"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
