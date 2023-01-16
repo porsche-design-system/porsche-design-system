@@ -4,6 +4,8 @@ Since the components are loaded lazily, it might be hard to tell when they are r
 programmatically. To solve that we provide the `componentsReady` function which returns a promise that resolves as soon
 as all currently used components are loaded and ready to use.
 
+The resolved value is a number with the amount of ready components.
+
 If the DOM changes later on you can call it again to know when the new components are loaded.
 
 The `componentsReady` function is provided as part of the following components packages:
@@ -49,3 +51,45 @@ const initSomeSidebar = async () => {
   showSpinner = false;
 };
 ```
+
+## Testing
+
+In this section you can find basic examples for the default test setups of each framework.
+
+- Vanilla JS: `jest`, `jsdom` with `@testing-library`
+- Angular: `jasmine`, `karma` with `TestBed`
+- React: `jest`, `jsdom` with `@testing-library/react`
+
+Other Angular setups can be found further down.
+
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+  All test environments that don't use a real browser typically run in <strong>jsdom</strong> which requires our <strong>@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill</strong> subpackage in order to have real working Porsche Design System components.<br>
+  Without it, you are just rendering "dead" component markup without any functionality.
+</p-inline-notification>
+
+<Playground :frameworkMarkup="codeSampleDefault"></Playground>
+
+### Angular Jest with TestBed
+
+Setup: `jest`, `jsdom` with `TestBed`
+
+<Playground :frameworkMarkup="codeSampleAngularTestBed"></Playground>
+
+### Angular Jest with Testing Library
+
+Setup: `jest`, `jsdom` with `@testing-library/angular`
+
+<Playground :frameworkMarkup="codeSampleAngularTestingLibrary"></Playground>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { getComponentsReadyCodeSamples } from '@porsche-design-system/shared';
+
+@Component
+export default class Code extends Vue {
+  codeSampleDefault = getComponentsReadyCodeSamples('default');
+  codeSampleAngularTestBed = getComponentsReadyCodeSamples('testbed');
+  codeSampleAngularTestingLibrary = getComponentsReadyCodeSamples('testing-library');
+}
+</script>
