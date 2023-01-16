@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { fontStyle, fontWeight, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, fontStyle, fontWeight, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -61,13 +61,13 @@ export const slottedTextJssStyle: JssStyle = {
   },
 };
 
-export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string): JssStyle => {
+export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
   return {
     '&::before': {
       content: '""',
       position: 'absolute',
       ...getInsetJssStyle(-3),
-      border: '1px solid transparent',
+      border: `${borderWidthBase} solid transparent`,
       borderRadius: pxToRemWithUnit(6),
       transition: getTransition('border-color'),
     },
@@ -77,9 +77,6 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
-    '&:hover:focus::before': hoverMediaQuery({
-      borderColor: focusHoverColor,
-    }),
   };
 };
 
@@ -124,7 +121,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         },
 
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
-        ...Object.entries(getTagFocusJssStyle(outlineColor, hoverColor)).reduce((result, [key, value]) => {
+        ...Object.entries(getTagFocusJssStyle(outlineColor)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
           return result;
         }, {} as JssStyle),
