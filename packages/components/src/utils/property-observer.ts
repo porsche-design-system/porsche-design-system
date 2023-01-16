@@ -3,7 +3,6 @@
 export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
   const proto = Object.getPrototypeOf(node);
   const properties = props.reduce((result, prop) => {
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     const descriptor = Object.getOwnPropertyDescriptor(proto, prop);
     if (
       node.hasOwnProperty(prop) ||
@@ -13,6 +12,7 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
     ) {
       return result;
     } else {
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       const { get, set } = descriptor;
       return {
         ...result,
