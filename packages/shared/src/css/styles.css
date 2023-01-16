@@ -36,6 +36,13 @@ app-root > select {
   outline-offset: revert !important;
 }
 
+body > select,
+#__next > select,
+#root > select {
+  outline: revert !important;
+  outline-offset: revert !important;
+}
+
 #__next,
 #root,
 app-root {
