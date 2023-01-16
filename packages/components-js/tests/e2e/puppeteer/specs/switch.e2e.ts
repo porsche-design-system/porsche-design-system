@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
-const getLabel = () => selectNode(page, 'p-switch >>> .text');
+const getLabel = () => selectNode(page, 'p-switch >>> .label');
 
 const clickHandlerScript = `
 <script>
