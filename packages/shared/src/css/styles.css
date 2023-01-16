@@ -13,6 +13,20 @@ body {
   padding: 0;
 }
 
+#app,
+#__next,
+#root,
+app-root {
+  font-family: revert;
+  font-size: revert;
+  line-height: revert;
+  font-weight: revert;
+  font-style: revert;
+  font-variant: revert;
+  overflow-wrap: revert;
+  hyphens: revert;
+}
+
 body {
   color: deeppink;
   font-family: serif;
@@ -34,14 +48,6 @@ app-root > select {
   hyphens: revert !important;
   outline: revert !important;
   outline-offset: revert !important;
-}
-
-#__next,
-#root,
-app-root {
-  font: revert !important;
-  overflow-wrap: revert !important;
-  hyphens: revert !important;
 }
 
 .playground {
