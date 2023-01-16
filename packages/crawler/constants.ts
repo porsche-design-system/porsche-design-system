@@ -1,4 +1,4 @@
-import { CrawlerConfig } from './src/types';
+import type { CrawlerConfig } from './src/types';
 export const crawlerConfig: CrawlerConfig = {
   reportFolderName: 'reports',
   dateSplitter: '_',
