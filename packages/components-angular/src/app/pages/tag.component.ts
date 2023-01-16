@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [color]="'background-default'">Color background-default</p-tag>
       <p-tag [color]="'background-surface'">Color background-surface</p-tag>
       <p-tag [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
-      <p-tag [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [color]="'notification-information'">Color notification-information</p-tag>
       <p-tag [color]="'notification-success'">Color notification-success</p-tag>
       <p-tag [color]="'notification-error'">Color notification-error</p-tag>
       <p-tag [color]="'notification-warning'">Color notification-warning</p-tag>
@@ -35,7 +35,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [color]="'background-default'">Color background-default</p-tag>
       <p-tag [color]="'background-surface'">Color background-surface</p-tag>
       <p-tag [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
-      <p-tag [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [color]="'notification-information'">Color notification-information</p-tag>
       <p-tag [color]="'notification-success'">Color notification-success</p-tag>
       <p-tag [color]="'notification-error'">Color notification-error</p-tag>
       <p-tag [color]="'notification-warning'">Color notification-warning</p-tag>
@@ -46,7 +46,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag>
       <p-tag [theme]="'dark'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-information'">Color notification-information</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-success'">Color notification-success</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-error'">Color notification-error</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-warning'">Color notification-warning</p-tag>
@@ -57,7 +57,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag>
       <p-tag [theme]="'dark'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-information'">Color notification-information</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-success'">Color notification-success</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-error'">Color notification-error</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-warning'">Color notification-warning</p-tag>
