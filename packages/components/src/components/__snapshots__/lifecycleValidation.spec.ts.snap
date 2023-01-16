@@ -367,7 +367,6 @@ exports[`should call validateProps() with correct parameters via render for p-sw
   "hideLabel": "breakpoint",
   "loading": "boolean",
   "stretch": "breakpoint",
-  "tabbable": "boolean",
   "theme": "oneOf",
 }
 `;

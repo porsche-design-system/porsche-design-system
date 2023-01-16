@@ -1,7 +1,7 @@
 import { getComponentCss } from './switch-styles';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
     base: 'left',
     xs: 'right',
@@ -32,6 +32,7 @@ xdescribe('getComponentCss()', () => {
     hideLabel: BreakpointCustomizable<boolean>;
     stretch: BreakpointCustomizable<boolean>;
     checked: boolean;
+    disabled: boolean;
     loading: boolean;
     isDisabledOrLoading: boolean;
     theme: Theme;
@@ -41,6 +42,17 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: false,
       checked: false,
+      disabled: false,
+      loading: false,
+      isDisabledOrLoading: false,
+      theme: 'light',
+    },
+    {
+      alignLabel: 'right',
+      hideLabel: false,
+      stretch: false,
+      checked: false,
+      disabled: true,
       loading: false,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -50,6 +62,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: true,
       stretch: false,
       checked: false,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -59,6 +72,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: breakpointCustomizableHideLabel,
       stretch: breakpointCustomizableStretch,
       checked: false,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -68,6 +82,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -77,6 +92,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: true,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -86,6 +102,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
+      disabled: false,
       loading: true,
       isDisabledOrLoading: false,
       theme: 'light',
@@ -95,6 +112,7 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: true,
       theme: 'light',
@@ -104,15 +122,16 @@ xdescribe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
+      disabled: false,
       loading: false,
       isDisabledOrLoading: true,
       theme: 'dark',
     },
   ])(
     'should return correct css for %j',
-    ({ alignLabel, hideLabel, stretch, checked, loading, isDisabledOrLoading, theme }) => {
+    ({ alignLabel, hideLabel, stretch, checked, disabled, loading, isDisabledOrLoading, theme }) => {
       expect(
-        getComponentCss(alignLabel, hideLabel, stretch, checked, loading, isDisabledOrLoading, theme)
+        getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, isDisabledOrLoading, theme)
       ).toMatchSnapshot();
     }
   );
