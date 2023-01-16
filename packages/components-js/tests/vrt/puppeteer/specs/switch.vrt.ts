@@ -23,7 +23,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('switch-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-switch ~ p-switch { margin-top: 8px; }</style>`;
+      const head = `<style>
+        p-switch:not(:last-child) { margin-right: 16px; }
+      </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-switch theme="${theme}">Some label</p-switch>
