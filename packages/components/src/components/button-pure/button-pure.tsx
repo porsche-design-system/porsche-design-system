@@ -18,7 +18,7 @@ import type {
   BreakpointCustomizable,
   ButtonAriaAttributes,
   ButtonType,
-  LinkButtonPureIconName,
+  LinkButtonIconName,
   PropTypes,
   SelectedAriaAttributes,
   TextSize,
@@ -71,7 +71,7 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-right';
+  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

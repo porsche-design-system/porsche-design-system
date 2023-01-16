@@ -1,7 +1,7 @@
 import type {
   AlignLabel,
   BreakpointCustomizable,
-  LinkButtonPureIconName,
+  LinkButtonIconName,
   LinkTarget,
   PropTypes,
   SelectedAriaAttributes,
@@ -69,7 +69,7 @@ export class LinkPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-right';
+  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

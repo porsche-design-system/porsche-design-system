@@ -1,11 +1,11 @@
 import type { ButtonAriaAttributes } from '../../utils';
-import type { AriaAttributes, LinkButtonPureIconName, SelectedAriaAttributes } from '../../types';
+import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAriaAttributes } from '../../utils';
 
 export const warnIfIsLoadingAndIconIsNone = (
   host: HTMLElement,
   loading: boolean,
-  iconName: LinkButtonPureIconName
+  iconName: LinkButtonIconName
 ): void => {
   if (loading && !hasVisibleIcon(iconName)) {
     console.warn(

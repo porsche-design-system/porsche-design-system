@@ -1,5 +1,5 @@
 import { getComponentCss } from './button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
@@ -21,7 +21,7 @@ describe('getComponentCss()', () => {
   };
 
   it.each<{
-    icon: LinkButtonPureIconName;
+    icon: LinkButtonIconName;
     active: boolean;
     isLoading: boolean;
     isDisabledOrLoading: boolean;

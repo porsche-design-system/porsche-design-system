@@ -15,7 +15,7 @@ export type { HeadlineVariant, VariantType } from './components/headline/headlin
 export type { IconName } from '@porsche-design-system/icons';
 export type { IconSize } from './components/icon/icon-size';
 
-export type LinkButtonPureIconName = IconName | 'none';
+export type LinkButtonIconName = IconName | 'none';
 
 import type { LinkButtonVariant } from './utils/link-button/link-button-variant';
 export type { LinkButtonVariant } from './utils/link-button/link-button-variant';

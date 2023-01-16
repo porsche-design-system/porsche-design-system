@@ -1,10 +1,10 @@
-import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import { fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
-  icon: LinkButtonPureIconName,
+  icon: LinkButtonIconName,
   active: boolean,
   isLoading: boolean,
   isDisabledOrLoading: boolean,
