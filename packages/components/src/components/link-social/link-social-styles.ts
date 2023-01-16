@@ -1,22 +1,22 @@
 import type { SocialIconName } from './link-social-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
+import { buildResponsiveStyles, getCss, GetJssStyleFunction, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
   getFocusJssStyle,
   getTransition,
   pxToRemWithUnit,
-  getThemedColors,
+  getThemedColors, getInsetJssStyle,
 } from '../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import {
-  getIconJssStyle,
+  // getIconJssStyle,
   getLabelJssStyle,
   getRootJssStyle,
-  getSlottedLinkJssStyle,
 } from '../../styles/link-button-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { JssStyle } from "jss";
 
 const { contrastHighColor: themeLightContrastHighColor, primaryColor: themeLightBaseColor } = getThemedColors('light');
 const { primaryColor: themeDarkBaseColor } = getThemedColors('dark');
@@ -36,6 +36,26 @@ const getColors = (
     textColorHover:
       icon === 'logo-kakaotalk' ? themeLightBaseColor : externalBrandColor ? themeDarkBaseColor : undefined,
   };
+};
+
+const getSlottedLinkJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? {
+        position: 'absolute',
+        ...getInsetJssStyle(),
+        padding: 0,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textIndent: '99999px',
+      }
+    : {
+        position: 'static',
+        ...getInsetJssStyle('auto'),
+        padding: '10px 26px',
+        overflow: 'visible',
+        whiteSpace: 'normal',
+        textIndent: 0,
+      };
 };
 
 export const getComponentCss = (
@@ -127,7 +147,7 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconJssStyle),
+      // ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
   });
 };

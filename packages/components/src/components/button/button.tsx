@@ -34,6 +34,7 @@ const propTypes: PropTypes<typeof Button> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  showIcon: AllowedTypes.boolean,
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
 };
 
@@ -70,6 +71,9 @@ export class Button {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Show or hide icon. */
+  @Prop() public showIcon?: boolean = false;
+
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -97,7 +101,7 @@ export class Button {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.icon, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {

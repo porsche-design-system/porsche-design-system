@@ -1,6 +1,6 @@
 import { getComponentCss } from './link-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['primary', false, true, 'light'],
     ['primary', false, true, 'dark'],

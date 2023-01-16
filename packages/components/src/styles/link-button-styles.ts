@@ -1,234 +1,188 @@
 import type { Styles, JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
-import type { BreakpointCustomizable, LinkButtonVariant, Theme } from '../types';
-import { buildResponsiveStyles, isThemeDark } from '../utils';
+import type { BreakpointCustomizable, LinkButtonVariant, Theme, LinkButtonIconName } from '../types';
+import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
 import {
-  addImportantToEachRule,
   addImportantToRule,
-  getFocusJssStyle,
-  getInsetJssStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  textSmallStyle,
+  borderRadiusSmall,
+  frostedGlassMediumStyle,
+  spacingStaticSmall, borderRadiusMedium, borderWidthBase
+} from '@porsche-design-system/utilities-v2';
 
-const { primaryColor: darkThemeBaseColor } = getThemedColors('dark');
-const { primaryColor: lightThemeBaseColor } = getThemedColors('light');
+const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
+const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
+
+type Colors = {
+  textColor: string;
+  borderColor: string;
+  borderColorHover: string;
+  backgroundColor: string;
+  backgroundColorHover: string;
+};
 
 const getVariantColors = (
   variant: LinkButtonVariant,
-  theme: Theme
-): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
-  const { primaryColor, contrastHighColor, hoverColorDarken, contrastHighColorDarken, primaryColorDarken } =
+  isDisabledOrLoading: boolean,
+  theme: Theme,
+): Colors => {
+  const { primaryColor, contrastHighColor, contrastMediumColor, disabledColor } =
     getThemedColors(theme);
 
   const colors: {
-    [t in Theme]: {
-      [v in LinkButtonVariant]: { primaryColor: string; primaryColorHover: string; baseColor: string };
-    };
+      [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
   } = {
-    light: {
-      primary: {
-        primaryColor,
-        primaryColorHover: hoverColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      secondary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      tertiary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor: primaryColor,
-      },
+    primary: {
+      textColor: isDisabledOrLoading ? contrastHighColor : theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
+      borderColor: primaryColor,
+      borderColorHover: contrastHighColor,
+      backgroundColor: primaryColor,
+      backgroundColorHover: contrastHighColor,
     },
-    dark: {
-      primary: {
-        primaryColor,
-        primaryColorHover: hoverColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      secondary: {
-        primaryColor: darkThemeBaseColor,
-        primaryColorHover: primaryColorDarken,
-        baseColor: lightThemeBaseColor,
-      },
-      tertiary: {
-        primaryColor: darkThemeBaseColor,
-        primaryColorHover: darkThemeBaseColor,
-        baseColor: primaryColor,
-      },
+    secondary: {
+      textColor: isDisabledOrLoading ? disabledColor : primaryColor,
+      borderColor: primaryColor,
+      borderColorHover: contrastMediumColor,
+      backgroundColor: 'transparent',
+      backgroundColorHover: null, // frosted glass is used
     },
   };
 
-  return colors[theme][variant];
+  return colors[variant === 'tertiary' ? 'secondary' : variant];
 };
 
-const linkButtonPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
+
+// TODO: logik für padding-left? Unterschiedliche padding-left je nach Icon?
+// 1: ohne icon, mit label: 26px (28px - 2px border)
+// 2: mit icon, mit label: 18px (20px - 2px border)
+// 3: mit icon, ohne label: 10px (12px - 2px border)
 
 export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
-    padding: hideLabel ? 0 : linkButtonPadding,
+    padding:  hideLabel ? '10px' : '10px 26px',
+    gap: hideLabel ? 0 : spacingStaticSmall,
   };
 };
 
-export const getIconJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+export const getSlottedIconJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        left: '50%',
-        top: '50%',
-        transform: 'translate3d(-50%, -50%, 0)',
-      }
+      left: '50%',
+      top: '50%',
+      transform: 'translate3d(-50%, -50%, 0)',
+    }
     : {
-        left: pxToRemWithUnit(11),
-        top: pxToRemWithUnit(11),
-        transform: 'translate3d(0,0,0)',
-      };
+      left: '19px',
+      top: '11px',
+      transform: 'translate3d(0,0,0)',
+    };
 };
 
 export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        width: '1px',
-        height: '1px',
-        margin: '0 0 0 -1px',
-        overflow: 'hidden',
-        textIndent: '-1px',
+        width: 0,
+        textIndent: '-999999px',
       }
     : {
-        width: '100%',
-        height: 'auto',
-        margin: 0,
-        overflow: 'visible',
-        textIndent: 0,
-      };
-};
-
-export const getSlottedLinkJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel
-    ? {
-        position: 'absolute',
-        ...getInsetJssStyle(),
-        padding: 0,
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-        textIndent: '99999px',
-      }
-    : {
-        position: 'static',
-        ...getInsetJssStyle('auto'),
-        padding: linkButtonPadding,
-        overflow: 'visible',
-        whiteSpace: 'normal',
+        width: 'auto',
         textIndent: 0,
       };
 };
 
 export const getLinkButtonStyles = (
+  icon: LinkButtonIconName,
   variant: LinkButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
-  const { disabledColor } = getThemedColors(theme);
-  const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255,255,255,0.55)') : baseColor;
+  const isSecondary = variant === 'secondary';
+  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(variant, isDisabledOrLoading, theme);
+  const { focusColor } = getThemedColors(theme);
+  const hasIcon = hasVisibleIcon(icon);
 
   return {
     '@global': {
       ':host': {
-        display: 'inline-flex',
-        verticalAlign: 'top',
+        display: 'inline-block',
+        transform: 'translate3d(0,0,0)', // creates new stacking context
         outline: addImportantToRule(0),
       },
-      ...(hasSlottedAnchor && {
-        '::slotted': addImportantToEachRule({
-          '&(a)': {
-            display: 'block',
-            textDecoration: 'none',
-            color: 'inherit',
-            lineHeight: 'inherit',
-            outline: 'transparent solid 1px',
-            outlineOffset: '3px',
-            ...buildResponsiveStyles(hideLabel, getSlottedLinkJssStyle),
-          },
-          // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
-          '&(a::-moz-focus-inner)': {
-            border: 0,
-          },
-          '&(a:focus)': {
-            outlineColor: primaryColor,
-          },
-          ...hoverMediaQuery({
-            '&(a:hover:focus)': {
-              outlineColor: primaryColorHover,
-            },
-          }),
-          '&(a:focus:not(:focus-visible))': {
-            outlineColor: 'transparent',
-          },
-        }),
-      }),
       span: {
         display: 'block',
         width: '100%',
-        color: iconLabelColor,
+        color: textColor,
         ...textSmallStyle,
-        ...(!hasSlottedAnchor && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
-      },
+        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+      }
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
     // TODO: overhead in link styles when slotted anchor is used
     // TODO: overhead due that link does not need same "reset" styles as button
     root: {
       display: 'flex',
+      alignItems: 'flex-start',
       width: '100%',
-      minWidth: pxToRemWithUnit(48),
-      minHeight: pxToRemWithUnit(48),
-      position: 'relative',
-      margin: 0,
-      padding: 0,
+      minWidth: '48px',
+      minHeight: '48px',
       boxSizing: 'border-box',
-      outline: 'transparent none',
+      outline: 0,
       appearance: 'none',
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       textDecoration: 'none',
       textAlign: 'left',
-      border: '1px solid currentColor',
-      backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      border: `2px solid ${borderColor}`,
+      borderRadius: borderRadiusSmall,
+      backgroundColor,
+      color: textColor,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
+      ...buildResponsiveStyles(hideLabel, getRootJssStyle),
       ...(!hasSlottedAnchor && {
-        ...buildResponsiveStyles(hideLabel, getRootJssStyle),
-        ...getFocusJssStyle(),
+        '&:focus::before': {
+          content: '""',
+          position: 'fixed',
+          top: '-4px',
+          right: '-4px',
+          bottom: '-4px',
+          left: '-4px',
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusMedium,
+        },
+        '&:not(:focus-visible)::before': {
+          border: 0,
+        },
       }),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
-          '&:hover, &:active': {
-            color: primaryColorHover,
-            ...(isTertiary && {
-              backgroundColor: 'currentColor',
+          '&:hover': {
+            backgroundColor: backgroundColorHover,
+            borderColor: borderColorHover,
+            ...((isSecondary || isTertiary) && {
+              ...frostedGlassMediumStyle,
               '& > span, & > $icon': {
-                color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
+                color: textColor,
               },
             }),
           },
         })),
     },
     icon: {
-      position: 'absolute',
       width: pxToRemWithUnit(24),
       height: pxToRemWithUnit(24),
-      color: iconLabelColor,
+      color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconJssStyle),
+      ...(hasIcon && {
+        // TODO: TBD --> custom stylings if icon is set with label
+      }),
     },
   };
 };
