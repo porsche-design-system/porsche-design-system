@@ -32,8 +32,6 @@ app-root > select {
   font: revert !important;
   overflow-wrap: revert !important;
   hyphens: revert !important;
-  outline: revert !important;
-  outline-offset: revert !important;
 }
 
 body > select,
