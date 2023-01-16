@@ -97,7 +97,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         alignItems: 'center',
         position: 'relative',
         height: pxToRemWithUnit(24),
-        padding: `0 ${pxToRemWithUnit(6)}`,
+        padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(9)}`,
         borderRadius: pxToRemWithUnit(4),
         background: backgroundColor,
         color: primaryColor,
