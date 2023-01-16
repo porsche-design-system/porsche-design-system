@@ -5,7 +5,7 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
   const properties = props.reduce((result, prop) => {
     const descriptor = Object.getOwnPropertyDescriptor(proto, prop);
     if (
-      node.hasOwnProperty(prop) ||
+      // node.hasOwnProperty(prop) || // this condition breaks p-text-field-wrapper type="search" clear button functionality in react
       typeof descriptor === 'undefined' ||
       typeof descriptor.get !== 'function' ||
       typeof descriptor.set !== 'function'
