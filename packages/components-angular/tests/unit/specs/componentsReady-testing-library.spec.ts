@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { componentsReady } from '../../../projects/angular-wrapper/src/public-api';
+import { componentsReady } from '@porsche-design-system/components-angular';
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
 import { render, fireEvent } from '@testing-library/angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
@@ -40,10 +41,10 @@ it('should return 1 after component is rendered initially', async () => {
 });
 
 it('should return 2 after button is clicked', async () => {
-  const { container } = await render(SampleComponent);
+  await render(SampleComponent);
   await componentsReady();
 
-  const button = container.querySelector('p-button').shadowRoot.querySelector('button');
+  const button = getByRoleShadowed('button');
   fireEvent.click(button);
 
   expect(await componentsReady()).toBe(2);
