@@ -355,11 +355,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-angular
-      - name: 'Unit Test'
+      - name: 'Unit Test (Jest)'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
-          args: --components-angular
+          args: --components-angular:jest
+      - name: 'Unit Test (Karma)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-angular:karma
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:

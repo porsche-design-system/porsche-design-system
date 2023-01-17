@@ -11,6 +11,8 @@ if
   [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
+  [[ "--components-angular:jest" == "${1}" ]] ||
+  [[ "--components-angular:karma" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
   [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
