@@ -33,35 +33,43 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
         position: 'relative',
         fill: 'none',
         transform: 'translate3d(0,0,0)',
+        animation: `$rotate ${animationDuration} linear infinite`,
       },
       circle: {
         '&:first-child': {
           stroke: contrastMediumColor,
+          strokeDasharray: 57, // C = 2πR
+          animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
           transformOrigin: '0 0',
-          animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
+          animation: `$dash ${animationDuration} ease-in-out infinite`,
           stroke: primaryColor,
-          strokeDasharray: '40, 200',
-          strokeDashoffset: 0,
+          strokeDasharray: 57, // C = 2πR
           strokeLinecap: 'round',
         },
       },
       '@keyframes rotate': {
+        '0%': {
+          transform: 'rotateZ(0deg)',
+        },
         '100%': {
-          transform: 'rotate(360deg)',
+          transform: 'rotateZ(360deg)',
         },
       },
       '@keyframes dash': {
         '0%': {
-          strokeDasharray: '3, 1000',
+          strokeDashoffset: 57,
+          transform: 'rotateZ(0)',
         },
-        '50%': {
-          strokeDasharray: '42, 1000',
+        '50%, 75%': {
+          strokeDashoffset: 20,
+          transform: 'rotateZ(80deg)',
         },
+
         '100%': {
-          strokeDasharray: '30, 1000',
-          strokeDashoffset: '-52',
+          strokeDashoffset: 57,
+          transform: 'rotateZ(360deg)',
         },
       },
     },
