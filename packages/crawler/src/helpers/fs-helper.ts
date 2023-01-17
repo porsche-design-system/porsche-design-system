@@ -38,26 +38,3 @@ export const writeGeneralReport = (aggregatedData: string): void => {
     aggregatedData
   );
 };
-
-const removeOutdatedReportsInFolder = (folderName: string): void => {
-  if (fs.existsSync(folderName)) {
-    fs.readdirSync(folderName)
-      .filter(
-        (fileName: string) => Date.parse(fileName.split(config.dateSplitter)[0]) < Date.now() - config.reportsMaxAge
-      )
-      .forEach((fileName: string) => {
-        console.log(`Removing file ${folderName}/${fileName}`);
-        fs.unlinkSync(`${folderName}/${fileName}`);
-      });
-  }
-};
-
-export const removeOutdatedReports = (customerWebsites: string[]): void => {
-  for (const websiteUrl of customerWebsites) {
-    const websiteName = getWebsiteNameByWebsiteUrl(websiteUrl);
-    // remove outdated reports for every website
-    removeOutdatedReportsInFolder(`${config.reportFolderName}/${websiteName}`);
-  }
-  // remove outdated aggregated reports
-  removeOutdatedReportsInFolder(config.reportFolderName);
-};

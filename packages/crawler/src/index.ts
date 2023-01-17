@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as puppeteerConfig from '@porsche-design-system/shared/testing/jest-puppeteer.config';
 import { crawlWebsites } from './crawl-websites';
-import { removeOutdatedReports } from './helpers/fs-helper';
 import { crawlerConfig } from '../constants';
 
 const startBrowser = async (): Promise<void> => {
@@ -48,9 +47,6 @@ const startBrowser = async (): Promise<void> => {
       },
     },
   });
-  console.log('Removing outdated reports..');
-  // removing old reports
-  removeOutdatedReports(customerWebsites);
   console.log('Crawling websites..');
   // crawling all websites
   await crawlWebsites(browser, customerWebsites);
