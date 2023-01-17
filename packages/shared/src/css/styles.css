@@ -16,15 +16,6 @@ body {
   hyphens: revert;
 }
 
-#app,
-#__next,
-#root,
-app-root {
-  font: revert;
-  overflow-wrap: revert;
-  hyphens: revert;
-}
-
 body {
   color: deeppink;
   font-family: serif;
@@ -35,17 +26,20 @@ body {
   font-variant: small-caps;
 }
 
-body > select,
-#__next > select,
-#root > select,
-app-root > select {
+body > div {
+  font: revert;
+  overflow-wrap: revert;
+  hyphens: revert;
+}
+
+select {
   position: relative;
   z-index: 999999;
-  font: revert !important;
-  overflow-wrap: revert !important;
-  hyphens: revert !important;
-  outline: revert !important;
-  outline-offset: revert !important;
+  font: revert;
+  overflow-wrap: revert;
+  hyphens: revert;
+  outline: revert;
+  outline-offset: revert;
 }
 
 .playground {

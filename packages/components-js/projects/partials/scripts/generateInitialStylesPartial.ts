@@ -26,7 +26,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const normalizeStyles: Styles = {
     '@global': {
-      '*': {
+      '*:not(html,h1,h2,h3,h4,h5,h6)': {
         textSizeAdjust: 'none',
         WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
         // font shorthand declaration does not work for styling a, button, input, optgroup, select, textarea
@@ -38,11 +38,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         fontVariant: 'normal',
         overflowWrap: 'break-word',
         hyphens: 'auto',
-      },
-
-      'h1, h2, h3, h4, h5, h6, p-headline': {
-        overflowWrap: 'revert !important',
-        hyphens: 'revert !important',
       },
 
       a: {
