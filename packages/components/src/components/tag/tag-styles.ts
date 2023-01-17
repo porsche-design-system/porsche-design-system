@@ -4,16 +4,20 @@ import {
   getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
-  getTransition,
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { borderWidthBase, fontStyle, fontWeight, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  fontStyle,
+  fontWeight,
+  textXSmallStyle,
+  borderRadiusSmall,
+} from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
-import { fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagColor]: string } = {
@@ -69,7 +73,6 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
       ...getInsetJssStyle(-3),
       border: `${borderWidthBase} solid transparent`,
       borderRadius: pxToRemWithUnit(6),
-      transition: getTransition('border-color'),
     },
     '&:focus::before': {
       borderColor: focusColor,
@@ -81,7 +84,7 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { primaryColor, hoverColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
+  const { primaryColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
@@ -94,13 +97,12 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         alignItems: 'center',
         position: 'relative',
         padding: '5px 9px',
-        borderRadius: pxToRemWithUnit(4),
+        borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
         ...textXSmallStyle,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
-          transition: getTransition('color'),
           '&:hover': {
             cursor: 'pointer',
           },
