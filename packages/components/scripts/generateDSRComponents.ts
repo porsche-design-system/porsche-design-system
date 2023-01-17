@@ -23,8 +23,8 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
-      const tagName = paramCase(`P${componentName}`) as TagName; // Could be common component
-      const { isDelegatingFocus, hasSlot } = getComponentMeta(tagName) || {};
+      const tagName = paramCase(`P${componentName}`) as TagName;
+      const { isDelegatingFocus, hasSlot } = getComponentMeta(tagName) || {}; // Could be common component
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
