@@ -11,6 +11,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font: revert !important;
+  overflow-wrap: revert !important;
+  hyphens: revert !important;
+  outline: revert !important;
+  outline-offset: revert !important;
 }
 
 #app,

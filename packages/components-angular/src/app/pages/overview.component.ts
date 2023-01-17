@@ -274,7 +274,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-scroller>
         </div>
 
-        <div style="font-size: 1.25rem" class="playground light" title="should render default link-tile">
+        <div class="playground light" title="should render default link-tile">
           <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -526,7 +526,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-scroller>
         </div>
 
-        <div style="font-size: 1.25rem" class="playground light" title="should render default link-tile with custom prefix">
+        <div class="playground light" title="should render default link-tile with custom prefix">
           <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
