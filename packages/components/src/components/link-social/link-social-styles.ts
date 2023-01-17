@@ -11,12 +11,11 @@ import {
 } from '../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import {
-  // getIconJssStyle,
   getLabelJssStyle,
   getRootJssStyle,
 } from '../../styles/link-button-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { JssStyle } from "jss";
+import { JssStyle } from 'jss';
 
 const { contrastHighColor: themeLightContrastHighColor, primaryColor: themeLightBaseColor } = getThemedColors('light');
 const { primaryColor: themeDarkBaseColor } = getThemedColors('dark');
