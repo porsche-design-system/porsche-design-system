@@ -153,7 +153,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `$&
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
-          .replace(/this\.(?:input|select|textarea)/g, 'otherChildren[0]?.props'); // fallback for undefined input, select and textarea reference
+          .replace(
+            /this\.(?:input|select|textarea)/g,
+            "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
+          ); // fallback for undefined input, select and textarea reference
 
         // adjust named slot conditions
         newFileContent = newFileContent
@@ -182,6 +185,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
+      if (fileContent.includes('isClearable')) {
+        console.log(fileContent);
+      }
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
@@ -197,7 +203,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
           "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
         ) // carousel, select-wrapper
-        .replace(/= otherChildren\[0\]\?\.props/, '$& || {}') // text-field-wrapper
+        .replace(
+          /= typeof otherChildren\[0\] === 'object' && 'props' in otherChildren\[0\] && otherChildren\[0]\?\.props/,
+          '$& || {}'
+        ) // text-field-wrapper
         .replace(/(required)={isRequiredAndParentNotRequired\(this\.props,.*/, '$1={false}') // select-wrapper
         .replace(/(host={)this\.props(})/g, '$1null$2') // StateMessage usage
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
@@ -215,12 +224,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
-          .replace(/(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g, '$1{tab.props.label}$2')
+          .replace(
+            /(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g,
+            "$1{typeof tab === 'object' && 'props' in tab && tab.props.label}$2"
+          )
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && otherChildren.includes(child)
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme, hidden: this.props.activeTabIndex !== i ? true : null } }
         : child
     );`
@@ -256,7 +268,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && otherChildren.includes(child)
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
         : child
     );`
@@ -269,7 +281,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && otherChildren.includes(child)
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, listType: this.props.listType, orderType: this.props.orderType } }
         : child
     );`
@@ -282,7 +294,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && otherChildren.includes(child)
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, selected: child.props?.value === this.props.value, backgroundColor: this.props.backgroundColor, theme: this.props.theme } }
         : child
     );`
@@ -295,7 +307,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && otherChildren.includes(child)
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme } }
         : child
     );`
@@ -309,19 +321,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         const constants = rawPrivateMembers
           .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map(
-            (member, i, arr) =>
-              member
-                .replace(
-                  // use local constants
-                  new RegExp('this.(' + arr.map((m) => /^const ([A-Za-z]+)/.exec(m)![1]).join('|') + ')'),
-                  '$1'
-                )
-                .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
-                .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
-                .replace(/this\.input/, 'otherChildren[0]?.props') // use input child
-                .replace(/this\./, '$&props.') // all others must be actual props
-                .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
+          .map((member, i, arr) =>
+            member
+              .replace(
+                // use local constants
+                new RegExp('this.(' + arr.map((m) => /^const ([A-Za-z]+)/.exec(m)![1]).join('|') + ')'),
+                '$1'
+              )
+              .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
+              .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
+              .replace(/this\.input/, 'otherChildren[0]?.props') // use input child
+              .replace(/this\./, '$&props.') // all others must be actual props
+              .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
+              .replace(
+                /!!otherChildren\[0\]\?\.props\.value/,
+                "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && $&" // fix typing of otherChildren
+              )
           )
           .join('\n    ');
 
