@@ -934,11 +934,6 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the switch color depending on the theme.
          */
         "theme"?: Theme;
@@ -2562,11 +2557,6 @@ declare namespace LocalJSX {
           * Stretches the contents to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
         /**
           * Adapts the switch color depending on the theme.
          */

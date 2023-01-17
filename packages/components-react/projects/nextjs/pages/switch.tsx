@@ -4,8 +4,11 @@ import { PSwitch } from '@porsche-design-system/components-react/ssr';
 
 const SwitchPage: NextPage = (): JSX.Element => {
   const style = `
-    p-switch ~ p-switch {
-      margin-top: 0.5rem;
+    p-switch:not(:last-child) {
+      margin-right: 16px;
+    }
+    .stretched-switch p-switch {
+      margin-right: 0;
     }
   `;
 
@@ -63,7 +66,7 @@ const SwitchPage: NextPage = (): JSX.Element => {
         <PSwitch hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</PSwitch>
       </div>
 
-      <div className="playground light" title="should render with stretched label">
+      <div className="playground light stretched-switch" title="should render with stretched label">
         <PSwitch stretch={true}>Some label</PSwitch>
         <PSwitch stretch={true} alignLabel="left">Some label</PSwitch>
       </div>

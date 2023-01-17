@@ -13,17 +13,19 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'switch', '/#switch')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('switch-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-switch ~ p-switch { margin-top: 0.5rem; }</style>`;
+      const head = `<style>
+        p-switch:not(:last-child) { margin-right: 16px; }
+      </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-switch theme="${theme}">Some label</p-switch>
@@ -31,11 +33,9 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         <p-switch theme="${theme}" loading="true">Loading</p-switch>
         <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
-        { injectIntoHead: head }
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover > p-switch >>> button');
       await forceFocusState(page, '.focus > p-switch'); // native outline should not be visible
