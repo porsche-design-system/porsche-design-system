@@ -19,7 +19,12 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const normalizeStyles: Styles = {
     '@global': {
-      '*:not(html,h1,h2,h3,h4,h5,h6)': textSmall,
+      '*:not(html,body,h1,h2,h3,h4,h5,h6)': textSmall,
+
+      'h1, h2, h3, h4, h5, h6': {
+        overflowWrap: 'revert !important',
+        hyphens: 'revert !important',
+      },
 
       a: {
         color: 'inherit',
