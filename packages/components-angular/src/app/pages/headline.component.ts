@@ -72,7 +72,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-headline [variant]="{ base: 'large', l: 'x-large' }">Lorem ipsum dolor sit amet et.</p-headline>
     </div>
 
-    <div class="playground" title="should not automatically break words/strings by default" style="overflow-wrap: normal">
+    <div class="playground" title="should not automatically break words/strings by default">
       <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-headline>

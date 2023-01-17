@@ -11,7 +11,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font: revert;
 }
 
 body {
@@ -22,10 +21,6 @@ body {
   font-size: small;
   line-height: normal;
   font-variant: small-caps;
-}
-
-body > div {
-  font: revert;
 }
 
 select {

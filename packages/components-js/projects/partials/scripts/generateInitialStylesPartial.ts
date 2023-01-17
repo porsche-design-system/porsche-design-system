@@ -11,7 +11,7 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
-  // Standard normalize.css styles won't bei applied by using this option
+  // Standard normalize.css styles won't be applied by using this option
   applyWithNormalizeStyles?: boolean;
 };
 type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
