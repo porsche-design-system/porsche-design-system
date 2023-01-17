@@ -13,9 +13,11 @@ type Colors = {
 };
 const getDisabledColors = (
   variant: LinkButtonVariant,
+  loading: boolean,
+  disabled: boolean,
   theme: Theme,
 ): Colors => {
-  const { contrastHighColor, disabledColor } =
+  const { contrastMediumColor, contrastHighColor, disabledColor } =
     getThemedColors(theme);
 
   const colors: {
@@ -23,13 +25,13 @@ const getDisabledColors = (
   } = {
     primary: {
       textColor: contrastHighColor,
-      borderColor: disabledColor,
-      backgroundColor: disabledColor,
+      borderColor:  loading ? contrastHighColor : disabled && disabledColor,
+      backgroundColor: loading ? contrastHighColor : disabled && disabledColor,
     },
     secondary: {
       textColor: disabledColor,
-      borderColor: disabledColor,
-      backgroundColor: 'transparent',
+      borderColor: loading ? contrastMediumColor : disabled && disabledColor,
+      backgroundColor: loading ? 'pink' : disabled && 'transparent',
     },
   };
 
@@ -47,7 +49,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
 
-  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, theme);
+  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, disabled, theme);
 
   return getCss(
     mergeDeep(
@@ -55,11 +57,11 @@ export const getComponentCss = (
       {
         root: {
           cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-          ...(disabled && {
+          ...(isDisabledOrLoading && {
             backgroundColor,
             borderColor,
             color: textColor,
-          })
+          }),
         },
         spinner: {
           width: fontLineHeight,

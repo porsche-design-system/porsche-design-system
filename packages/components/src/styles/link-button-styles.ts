@@ -63,7 +63,7 @@ const getVariantColors = (
 
 export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
-    padding:  hideLabel ? '10px' : '10px 26px',
+    padding:  hideLabel ? '13px' : '13px 26px',
     gap: hideLabel ? 0 : spacingStaticSmall,
   };
 };
@@ -125,8 +125,8 @@ export const getLinkButtonStyles = (
     root: {
       display: 'flex',
       alignItems: 'flex-start',
-      minWidth: '48px',
-      minHeight: '48px',
+      minWidth: '54px',
+      minHeight: '54px',
       boxSizing: 'border-box',
       outline: 0,
       appearance: 'none',
