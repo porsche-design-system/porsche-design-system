@@ -6,6 +6,7 @@
 
 - Use `px` instead of `rem` apart from `font-size`
 - Use `hostHiddenStyles` in all components
+- No `:active` style shall be set
 
 ### Utilities
 
