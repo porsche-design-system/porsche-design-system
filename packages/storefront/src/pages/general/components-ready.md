@@ -67,19 +67,19 @@ Other Angular setups can be found further down.
   Without it, you are just rendering "dead" component markup without any functionality.
 </p-inline-notification>
 
-<Playground :frameworkMarkup="codeSampleDefault"></Playground>
+<Playground :frameworkMarkup="codeSampleDefault" :showCodeEditor="false"></Playground>
 
 ### Angular Jest with TestBed
 
 Setup: `jest`, `jsdom` with `TestBed`
 
-<Playground :frameworkMarkup="codeSampleAngularTestBed"></Playground>
+<Playground :frameworkMarkup="codeSampleAngularTestBed" :showCodeEditor="false"></Playground>
 
 ### Angular Jest with Testing Library
 
 Setup: `jest`, `jsdom` with `@testing-library/angular`
 
-<Playground :frameworkMarkup="codeSampleAngularTestingLibrary"></Playground>
+<Playground :frameworkMarkup="codeSampleAngularTestingLibrary" :showCodeEditor="false"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
