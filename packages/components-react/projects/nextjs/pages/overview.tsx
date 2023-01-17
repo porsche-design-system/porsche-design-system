@@ -277,7 +277,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </PScroller>
           </div>
 
-          <div className="playground light" title="should render default link-tile">
+          <div style={{ fontSize: '1.25rem' }} className="playground light" title="should render default link-tile">
             <PLinkTile href="#" label="Some Label" description="Default">
               <Image
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -530,7 +530,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
               </PScroller>
             </div>
 
-            <div className="playground light" title="should render default link-tile with custom prefix">
+            <div style={{ fontSize: '1.25rem' }} className="playground light" title="should render default link-tile with custom prefix">
               <PLinkTile href="#" label="Some Label" description="Default">
                 <Image
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
