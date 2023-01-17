@@ -26,17 +26,11 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
-    "@juggle/resize-observer": "^3.4.0",
     "@porsche-design-system/components-react": "2.19.0",
-    "construct-style-sheets-polyfill": "^3.1.0",
-    "intersection-observer": "^0.12.2",
-    "matchmedia-polyfill": "^0.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-imask": "^6.4.3",
     "react-router-dom": "^6.6.1",
-    "scroll-behavior-polyfill": "^2.0.13",
-    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
