@@ -115,10 +115,6 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Show or hide icon.
-         */
-        "showIcon"?: boolean;
-        /**
           * To remove the element from tab order.
           * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
@@ -1715,10 +1711,6 @@ declare namespace LocalJSX {
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
-        /**
-          * Show or hide icon.
-         */
-        "showIcon"?: boolean;
         /**
           * To remove the element from tab order.
           * @deprecated since v2.8.0, use `tabindex="-1"` instead
