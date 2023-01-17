@@ -34,7 +34,6 @@ describe('getComponentCss()', () => {
     checked: boolean;
     disabled: boolean;
     loading: boolean;
-    isDisabledOrLoading: boolean;
     theme: Theme;
   }>([
     {
@@ -44,7 +43,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: false,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -54,7 +52,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: true,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -64,7 +61,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: false,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -74,7 +70,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: false,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -84,7 +79,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: false,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -94,7 +88,6 @@ describe('getComponentCss()', () => {
       checked: true,
       disabled: false,
       loading: false,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -104,7 +97,6 @@ describe('getComponentCss()', () => {
       checked: false,
       disabled: false,
       loading: true,
-      isDisabledOrLoading: false,
       theme: 'light',
     },
     {
@@ -112,9 +104,8 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
-      disabled: false,
-      loading: false,
-      isDisabledOrLoading: true,
+      disabled: true,
+      loading: true,
       theme: 'light',
     },
     {
@@ -122,17 +113,11 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       stretch: true,
       checked: false,
-      disabled: false,
-      loading: false,
-      isDisabledOrLoading: true,
+      disabled: true,
+      loading: true,
       theme: 'dark',
     },
-  ])(
-    'should return correct css for %j',
-    ({ alignLabel, hideLabel, stretch, checked, disabled, loading, isDisabledOrLoading, theme }) => {
-      expect(
-        getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, isDisabledOrLoading, theme)
-      ).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for %j', ({ alignLabel, hideLabel, stretch, checked, disabled, loading, theme }) => {
+    expect(getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, theme)).toMatchSnapshot();
+  });
 });

@@ -1,5 +1,5 @@
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -15,7 +15,6 @@ const getColors = (
   checked: boolean,
   disabled: boolean,
   loading: boolean,
-  isDisabledOrLoading: boolean,
   theme: Theme
 ): {
   buttonBorderColor: string;
@@ -29,7 +28,7 @@ const getColors = (
   const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const checkedColor = successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
+  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
     buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
@@ -52,7 +51,6 @@ export const getComponentCss = (
   checked: boolean,
   disabled: boolean,
   loading: boolean,
-  isDisabledOrLoading: boolean,
   theme: Theme
 ): string => {
   const {
@@ -63,7 +61,7 @@ export const getComponentCss = (
     toggleBackgroundColor,
     toggleBackgroundColorHover,
     textColor,
-  } = getColors(checked, disabled, loading, isDisabledOrLoading, theme);
+  } = getColors(checked, disabled, loading, theme);
   const { focusColor } = getThemedColors(theme);
 
   return getCss({
@@ -88,11 +86,11 @@ export const getComponentCss = (
       textAlign: 'left',
       background: 'transparent',
       appearance: 'none',
-      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
+      cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
         justifyContent: stretchValue ? 'space-between' : 'flex-start',
       })),
-      ...(!isDisabledOrLoading &&
+      ...(!isDisabledOrLoading(disabled, loading) &&
         hoverMediaQuery({
           '&:hover .switch': {
             borderColor: buttonBorderColorHover,
@@ -122,7 +120,7 @@ export const getComponentCss = (
       border: `${borderWidthBase} solid ${buttonBorderColor}`,
       borderRadius: '14px',
       backgroundColor: buttonBackgroundColor,
-      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
       transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
     },
     toggle: {

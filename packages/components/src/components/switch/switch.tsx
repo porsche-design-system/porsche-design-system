@@ -82,7 +82,6 @@ export class Switch {
       this.checked,
       this.disabled,
       this.loading,
-      isDisabledOrLoading(this.disabled, this.loading),
       this.theme
     );
 

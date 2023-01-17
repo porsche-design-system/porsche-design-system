@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: inline-block !important;
@@ -91,7 +91,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: inline-block !important;
@@ -181,7 +181,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: inline-block !important;
@@ -201,7 +201,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   text-align: left;
   background: transparent;
   appearance: none;
-  cursor: pointer;
+  cursor: auto;
   justify-content: flex-start;
 }
 .root:focus .switch::before {
@@ -226,7 +226,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border: 2px solid #949598;
   border-radius: 14px;
   background-color: transparent;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
@@ -248,7 +248,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: #949598;
   order: 0;
   position: static;
   width: auto;
@@ -258,20 +258,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   clip: auto;
   clip-path: none;
   white-space: normal;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: block !important;
@@ -360,7 +350,93 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":true,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"theme":"light"} 1`] = `
+":host {
+  outline: 0 !important;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: left;
+  background: transparent;
+  appearance: none;
+  cursor: auto;
+  justify-content: space-between;
+}
+.root:focus .switch::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #0A0AFF;
+  border-radius: 14px;
+}
+.root:not(:focus-visible) .switch::before {
+  border-color: transparent;
+}
+.switch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 2px solid #949598;
+  border-radius: 14px;
+  background-color: transparent;
+  cursor: not-allowed;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.toggle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  background-color: transparent;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 28px;
+  height: 28px;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  padding-top: 2px;
+  min-width: 0;
+  min-height: 0;
+  color: #949598;
+  order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"dark"} 1`] = `
 ":host {
   outline: 0 !important;
   display: block !important;
@@ -415,9 +491,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #FBFCFF;
+  background-color: transparent;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 28px;
+  height: 28px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -439,7 +522,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }"
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: block !important;
@@ -494,9 +577,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #010205;
+  background-color: transparent;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 28px;
+  height: 28px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -518,103 +608,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }"
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
-":host {
-  outline: 0 !important;
-  display: block !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  outline: 0;
-  border: 0;
-  text-align: left;
-  background: transparent;
-  appearance: none;
-  cursor: pointer;
-  justify-content: space-between;
-}
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 14px;
-}
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
-}
-.switch {
-  position: relative;
-  width: 48px;
-  height: 28px;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  border: 2px solid #949598;
-  border-radius: 14px;
-  background-color: transparent;
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: transparent;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
-}
-.spinner {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 28px;
-  height: 28px;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  padding-top: 2px;
-  min-width: 0;
-  min-height: 0;
-  color: #010205;
-  order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: block !important;
@@ -703,7 +697,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
   display: inline-block !important;
