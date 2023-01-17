@@ -17,12 +17,7 @@ body {
 #__next,
 #root,
 app-root {
-  font-family: revert;
-  font-size: revert;
-  line-height: revert;
-  font-weight: revert;
-  font-style: revert;
-  font-variant: revert;
+  font: revert;
   overflow-wrap: revert;
   hyphens: revert;
 }
