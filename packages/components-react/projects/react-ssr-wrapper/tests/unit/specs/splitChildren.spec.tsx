@@ -16,18 +16,9 @@ const jsxFragment = (
 );
 
 describe('splitChildren()', () => {
-  it.each<
+  it.each<[Parameters<typeof splitChildren>, ReturnType<typeof splitChildren>]>([
     [
-      ReactNode | undefined,
-      {
-        children: Exclude<ReactNode, null | undefined>[];
-        namedSlotChildren: ReactElement[];
-        otherChildren: Exclude<ReactNode, null | undefined>[];
-      }
-    ]
-  >([
-    [
-      [jsxDivWithSlot, jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0, null, undefined],
+      [[jsxDivWithSlot, jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0, null, undefined]],
       {
         children: [jsxDivWithSlot, jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0],
         namedSlotChildren: [jsxDivWithSlot],
@@ -35,19 +26,21 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      <>
-        {jsxDivWithSlot}
-        {jsxInput}
-        {reactPortal}
-        {'Some text'}
-        {''}
-        {true}
-        {false}
-        {1}
-        {0}
-        {null}
-        {undefined}
-      </>,
+      [
+        <>
+          {jsxDivWithSlot}
+          {jsxInput}
+          {reactPortal}
+          {'Some text'}
+          {''}
+          {true}
+          {false}
+          {1}
+          {0}
+          {null}
+          {undefined}
+        </>,
+      ],
       {
         children: [jsxDivWithSlot, jsxInput, reactPortal, 'Some text', '', true, false, 1, 0],
         namedSlotChildren: [jsxDivWithSlot],
@@ -55,7 +48,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      jsxDivWithSlot,
+      [jsxDivWithSlot],
       {
         children: [jsxDivWithSlot],
         namedSlotChildren: [jsxDivWithSlot],
@@ -63,7 +56,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      jsxInput,
+      [jsxInput],
       {
         children: [jsxInput],
         namedSlotChildren: [],
@@ -71,7 +64,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      reactPortal,
+      [reactPortal],
       {
         children: [reactPortal],
         namedSlotChildren: [],
@@ -79,7 +72,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      jsxFragment,
+      [jsxFragment],
       {
         children: [jsxFragment.props.children],
         namedSlotChildren: [],
@@ -87,7 +80,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      'Some text',
+      ['Some text'],
       {
         children: ['Some text'],
         namedSlotChildren: [],
@@ -95,7 +88,7 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      true,
+      [true],
       {
         children: [true],
         namedSlotChildren: [],
@@ -103,14 +96,14 @@ describe('splitChildren()', () => {
       },
     ],
     [
-      1,
+      [1],
       {
         children: [1],
         namedSlotChildren: [],
         otherChildren: [1],
       },
     ],
-  ])('should for case %# return correct children, namedSlotChildren and otherChildren', (el, result) => {
-    expect(splitChildren(el)).toEqual(result);
+  ])('should for case %# return correct children, namedSlotChildren and otherChildren', (args, result) => {
+    expect(splitChildren(...args)).toEqual(result);
   });
 });
