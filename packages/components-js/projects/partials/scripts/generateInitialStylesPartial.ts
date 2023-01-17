@@ -1,14 +1,7 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
 import { Styles } from 'jss';
-import {
-  themeDark,
-  fontSize,
-  fontWeight,
-  fontFamily,
-  fontLineHeight,
-  themeLight,
-} from '@porsche-design-system/utilities-v2';
+import { themeDark, fontWeight, themeLight, textSmall } from '@porsche-design-system/utilities-v2';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -26,19 +19,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const normalizeStyles: Styles = {
     '@global': {
-      '*:not(html,h1,h2,h3,h4,h5,h6)': {
-        textSizeAdjust: 'none',
-        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-        // font shorthand declaration does not work for styling a, button, input, optgroup, select, textarea
-        fontFamily: fontFamily,
-        fontSize: fontSize.small,
-        lineHeight: fontLineHeight,
-        fontWeight: fontWeight,
-        fontStyle: 'normal',
-        fontVariant: 'normal',
-        overflowWrap: 'break-word',
-        hyphens: 'auto',
-      },
+      '*:not(html,h1,h2,h3,h4,h5,h6)': textSmall,
 
       a: {
         color: 'inherit',
