@@ -22,6 +22,7 @@ describe('getComponentCss()', () => {
 
   it.each<{
     icon: LinkButtonIconName;
+    iconSource: string,
     active: boolean;
     isLoading: boolean;
     isDisabledOrLoading: boolean;
@@ -33,6 +34,7 @@ describe('getComponentCss()', () => {
   }>([
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -44,6 +46,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: true,
@@ -55,6 +58,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       isLoading: true,
       isDisabledOrLoading: true,
@@ -66,6 +70,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: true,
@@ -77,6 +82,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: true,
       isLoading: false,
       isDisabledOrLoading: true,
@@ -88,6 +94,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -99,6 +106,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: true,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -110,6 +118,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: true,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -121,6 +130,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -132,6 +142,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -143,6 +154,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -154,6 +166,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -165,6 +178,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -176,6 +190,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -187,6 +202,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       isLoading: false,
       isDisabledOrLoading: false,
@@ -198,9 +214,9 @@ describe('getComponentCss()', () => {
     },
   ])(
     'should return correct css for %j',
-    ({ icon, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme }) => {
+    ({ icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme }) => {
       expect(
-        getComponentCss(icon, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme)
+        getComponentCss(icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme)
       ).toMatchSnapshot();
     }
   );

@@ -97,7 +97,7 @@ export class Button {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.icon, this.iconSource, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {

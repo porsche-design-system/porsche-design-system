@@ -116,12 +116,13 @@ export class ButtonPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,
+      this.iconSource,
       this.active,
       this.loading,
       this.isDisabledOrLoading,
@@ -132,7 +133,7 @@ export class ButtonPure {
       this.theme
     );
 
-    const hasIcon = hasVisibleIcon(this.icon);
+    const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
 
     const iconProps = {
       class: 'icon',

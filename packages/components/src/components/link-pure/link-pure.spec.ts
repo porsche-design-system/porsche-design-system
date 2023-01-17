@@ -25,6 +25,6 @@ describe('render', () => {
     component.href = '#';
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.icon);
+    expect(spy).toBeCalledWith(component.host, component.icon, component.iconSource);
   });
 });

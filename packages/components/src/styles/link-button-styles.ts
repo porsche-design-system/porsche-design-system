@@ -5,7 +5,6 @@ import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
 import {
   addImportantToRule,
   getTransition,
-  pxToRemWithUnit,
   getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
@@ -13,7 +12,7 @@ import {
   textSmallStyle,
   borderRadiusSmall,
   frostedGlassMediumStyle,
-  spacingStaticSmall, borderRadiusMedium, borderWidthBase
+  spacingStaticSmall, borderRadiusMedium, borderWidthBase, fontLineHeight
 } from '@porsche-design-system/utilities-v2';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
@@ -98,6 +97,7 @@ export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssSt
 
 export const getLinkButtonStyles = (
   icon: LinkButtonIconName,
+  iconSource: string,
   variant: LinkButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
@@ -108,18 +108,17 @@ export const getLinkButtonStyles = (
   const isSecondary = variant === 'secondary';
   const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(variant, isDisabledOrLoading, theme);
   const { focusColor } = getThemedColors(theme);
-  const hasIcon = hasVisibleIcon(icon);
+  const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
     '@global': {
       ':host': {
         display: 'inline-block',
+        verticalAlign: 'top',
         transform: 'translate3d(0,0,0)', // creates new stacking context
         outline: addImportantToRule(0),
       },
       span: {
-        display: 'block',
-        width: '100%',
         color: textColor,
         ...textSmallStyle,
         ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
@@ -131,7 +130,6 @@ export const getLinkButtonStyles = (
     root: {
       display: 'flex',
       alignItems: 'flex-start',
-      width: '100%',
       minWidth: '48px',
       minHeight: '48px',
       boxSizing: 'border-box',
@@ -144,6 +142,7 @@ export const getLinkButtonStyles = (
       borderRadius: borderRadiusSmall,
       backgroundColor,
       color: textColor,
+      ...textSmallStyle,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
       ...buildResponsiveStyles(hideLabel, getRootJssStyle),
       ...(!hasSlottedAnchor && {
@@ -176,8 +175,8 @@ export const getLinkButtonStyles = (
         })),
     },
     icon: {
-      width: pxToRemWithUnit(24),
-      height: pxToRemWithUnit(24),
+      width: fontLineHeight,
+      height: fontLineHeight,
       color: textColor,
       pointerEvents: 'none',
       ...(hasIcon && {

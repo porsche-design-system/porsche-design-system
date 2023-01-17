@@ -6,6 +6,7 @@ import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/util
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
+  iconSource: string,
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
@@ -15,7 +16,7 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonStyles(icon, variant, hideLabel, false, hasSlottedAnchor, theme),
+      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
       {
         ...(hasSlottedAnchor && {
           '@global': addImportantToEachRule({

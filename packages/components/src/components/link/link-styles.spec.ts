@@ -2,15 +2,15 @@ import { getComponentCss } from './link-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['primary', false, true, 'light'],
-    ['primary', false, true, 'dark'],
-    ['secondary', false, true, 'light'],
-    ['secondary', false, true, 'dark'],
-    ['tertiary', false, true, 'light'],
-    ['tertiary', false, true, 'dark'],
-    ['primary', false, false, 'light'],
-    ['primary', { base: true, xs: false, s: true, m: false, l: true, xl: false }, false, 'dark'],
-  ])('should return correct css for variant: %s, hideLabel: %s, hasSlottedAnchor: %s and theme: %s', (...args) => {
+    ['arrow-right', '', 'primary', false, true, 'light'],
+    ['arrow-right', '', 'primary', false, true, 'dark'],
+    ['arrow-right', '', 'secondary', false, true, 'light'],
+    ['arrow-right', '', 'secondary', false, true, 'dark'],
+    ['arrow-right', '', 'tertiary', false, true, 'light'],
+    ['arrow-right', '', 'tertiary', false, true, 'dark'],
+    ['arrow-right', '', 'primary', false, false, 'light'],
+    ['arrow-right', '', 'primary', { base: true, xs: false, s: true, m: false, l: true, xl: false }, false, 'dark'],
+  ])('should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, hasSlottedAnchor: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

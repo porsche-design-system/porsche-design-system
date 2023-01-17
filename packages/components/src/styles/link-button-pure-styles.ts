@@ -36,6 +36,7 @@ export const offsetHorizontal = '-4px';
 
 export const getLinkButtonPureStyles = (
   icon: LinkButtonIconName,
+  iconSource: string,
   active: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
@@ -46,7 +47,7 @@ export const getLinkButtonPureStyles = (
   theme: Theme
 ): Styles => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
-  const hasIcon = hasVisibleIcon(icon);
+  const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
     '@global': {

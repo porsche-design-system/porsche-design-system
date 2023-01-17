@@ -5,9 +5,10 @@ import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAri
 export const warnIfIsLoadingAndIconIsNone = (
   host: HTMLElement,
   loading: boolean,
-  iconName: LinkButtonIconName
+  iconName: LinkButtonIconName,
+  iconSource: string
 ): void => {
-  if (loading && !hasVisibleIcon(iconName)) {
+  if (loading && !hasVisibleIcon(iconName, iconSource)) {
     console.warn(
       `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
         host
