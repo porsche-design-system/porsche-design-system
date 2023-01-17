@@ -2,6 +2,7 @@ import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
 import { Styles } from 'jss';
 import { themeDark, fontWeight, themeLight, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontBehavior, fontFamily, fontHyphenation, fontLineHeight } from '@porsche-design-system/utilities-v2/src/js';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -19,11 +20,19 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const normalizeStyles: Styles = {
     '@global': {
-      '*:not(html,body,h1,h2,h3,h4,h5,h6)': textSmall,
+      '*': {
+        fontFamily: fontFamily,
+        lineHeight: fontLineHeight,
+        ...fontBehavior,
+      },
+
+      p: {
+        fontWeight: fontWeight.regular,
+        ...fontHyphenation,
+      },
 
       'h1, h2, h3, h4, h5, h6': {
-        overflowWrap: 'revert !important',
-        hyphens: 'revert !important',
+        fontWeight: fontWeight.regular,
       },
 
       a: {

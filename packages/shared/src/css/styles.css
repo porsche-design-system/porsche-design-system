@@ -11,6 +11,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font: revert;
 }
 
 body {
@@ -25,16 +26,12 @@ body {
 
 body > div {
   font: revert;
-  overflow-wrap: revert;
-  hyphens: revert;
 }
 
 select {
   position: relative;
   z-index: 999999;
   font: revert;
-  overflow-wrap: revert;
-  hyphens: revert;
   outline: revert;
   outline-offset: revert;
 }
