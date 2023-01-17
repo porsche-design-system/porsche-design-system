@@ -27,6 +27,10 @@ class SampleComponent {
 
 const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
 
+beforeAll(() => {
+  (window as any).PDS_SKIP_FETCH = true;
+});
+
 beforeEach(waitForAsync(() => {
   TestBed.configureTestingModule({
     imports: [CommonModule],
