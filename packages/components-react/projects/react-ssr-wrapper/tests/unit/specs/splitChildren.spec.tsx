@@ -35,6 +35,26 @@ describe('splitChildren()', () => {
       },
     ],
     [
+      <>
+        {jsxDivWithSlot}
+        {jsxInput}
+        {reactPortal}
+        {'Some text'}
+        {''}
+        {true}
+        {false}
+        {1}
+        {0}
+        {null}
+        {undefined}
+      </>,
+      {
+        children: [jsxDivWithSlot, jsxInput, reactPortal, 'Some text', '', true, false, 1, 0],
+        namedSlotChildren: [jsxDivWithSlot],
+        otherChildren: [jsxInput, reactPortal, 'Some text', '', true, false, 1, 0],
+      },
+    ],
+    [
       jsxDivWithSlot,
       {
         children: [jsxDivWithSlot],
@@ -61,9 +81,9 @@ describe('splitChildren()', () => {
     [
       jsxFragment,
       {
-        children: [jsxFragment],
+        children: [jsxFragment.props.children],
         namedSlotChildren: [],
-        otherChildren: [jsxFragment],
+        otherChildren: [jsxFragment.props.children],
       },
     ],
     [
