@@ -6,10 +6,10 @@ import {
   getTransition,
   getThemedColors,
   getInsetJssStyle,
-  addImportantToRule,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const getColors = (
   checked: boolean,
@@ -75,9 +75,7 @@ export const getComponentCss = (
           ...(!stretchValue && { verticalAlign: 'top' }),
         })),
       }),
-      ':host([hidden])': {
-        display: addImportantToRule('none'),
-      },
+      ...hostHiddenStyles,
     },
     root: {
       display: 'flex',
