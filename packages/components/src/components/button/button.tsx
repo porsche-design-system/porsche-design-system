@@ -3,7 +3,7 @@ import type {
   ButtonAriaAttributes,
   ButtonType,
   ButtonVariant,
-  IconName,
+  LinkButtonIconName,
   PropTypes,
   SelectedAriaAttributes,
   Theme,
@@ -13,7 +13,7 @@ import {
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  getPrefixedTagNames,
+  getPrefixedTagNames, hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
@@ -59,10 +59,10 @@ export class Button {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: ButtonVariant = 'secondary';
+  @Prop() public variant?: ButtonVariant = 'primary';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed. */
+  @Prop() public icon?: LinkButtonIconName = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -97,11 +97,15 @@ export class Button {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.iconSource, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.icon, this.iconSource, this.variant, this.hideLabel, this.disabled, this.isDisabledOrLoading, this.loading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {
       class: 'icon',
+      size: 'inherit',
+    };
+    const spinnerProps = {
+      class: 'spinner',
       size: 'inherit',
     };
 
@@ -112,13 +116,14 @@ export class Button {
         type={this.type}
         tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
       >
-        {this.loading ? (
+        {this.loading && (
           <PrefixedTagNames.pSpinner
-            {...iconProps}
-            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
-            aria={{ 'aria-label': 'Loading state' }}
+            {...spinnerProps}
+            theme={this.variant === ('secondary' || 'tertiary') ? this.theme : 'dark'}
+            aria={{ 'aria-label': 'Loading state:' }}
           />
-        ) : (
+        )}
+        {(hasVisibleIcon(this.icon, this.iconSource) || this.hideLabel) && (
           <PrefixedTagNames.pIcon
             {...iconProps}
             name={this.icon}
@@ -134,7 +139,7 @@ export class Button {
             aria-hidden="true"
           />
         )}
-        <span>
+        <span class="label">
           <slot />
         </span>
       </button>

@@ -103,9 +103,9 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -1695,9 +1695,9 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */

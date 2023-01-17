@@ -28,24 +28,23 @@ type Colors = {
 
 const getVariantColors = (
   variant: LinkButtonVariant,
-  isDisabledOrLoading: boolean,
   theme: Theme,
 ): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, disabledColor } =
+  const { primaryColor, contrastHighColor, contrastMediumColor } =
     getThemedColors(theme);
 
   const colors: {
       [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
   } = {
     primary: {
-      textColor: isDisabledOrLoading ? contrastHighColor : theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
+      textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
       borderColor: primaryColor,
       borderColorHover: contrastHighColor,
       backgroundColor: primaryColor,
       backgroundColorHover: contrastHighColor,
     },
     secondary: {
-      textColor: isDisabledOrLoading ? disabledColor : primaryColor,
+      textColor: primaryColor,
       borderColor: primaryColor,
       borderColorHover: contrastMediumColor,
       backgroundColor: 'transparent',
@@ -87,10 +86,12 @@ export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssSt
   return hideLabel
     ? {
         width: 0,
+        height: '1px',
         textIndent: '-999999px',
       }
     : {
         width: 'auto',
+        height: 'auto',
         textIndent: 0,
       };
 };
@@ -106,9 +107,9 @@ export const getLinkButtonStyles = (
 ): Styles => {
   const isTertiary = variant === 'tertiary';
   const isSecondary = variant === 'secondary';
-  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(variant, isDisabledOrLoading, theme);
+  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(variant, theme);
   const { focusColor } = getThemedColors(theme);
-  const hasIcon = hasVisibleIcon(icon, iconSource);
+  const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
   return {
     '@global': {
@@ -117,15 +118,9 @@ export const getLinkButtonStyles = (
         verticalAlign: 'top',
         transform: 'translate3d(0,0,0)', // creates new stacking context
         outline: addImportantToRule(0),
-      },
-      span: {
-        color: textColor,
-        ...textSmallStyle,
-        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
       }
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
-    // TODO: overhead in link styles when slotted anchor is used
     // TODO: overhead due that link does not need same "reset" styles as button
     root: {
       display: 'flex',
@@ -135,7 +130,6 @@ export const getLinkButtonStyles = (
       boxSizing: 'border-box',
       outline: 0,
       appearance: 'none',
-      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       textDecoration: 'none',
       textAlign: 'left',
       border: `2px solid ${borderColor}`,
@@ -174,14 +168,15 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    icon: {
-      width: fontLineHeight,
-      height: fontLineHeight,
-      color: textColor,
-      pointerEvents: 'none',
-      ...(hasIcon && {
-        // TODO: TBD --> custom stylings if icon is set with label
-      }),
+    label: {
+      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
+    ...(hasIcon && {
+      icon: {
+        width: fontLineHeight,
+        height: fontLineHeight,
+        pointerEvents: 'none',
+      }
+    }),
   };
 };

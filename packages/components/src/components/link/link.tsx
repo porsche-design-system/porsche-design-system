@@ -112,7 +112,7 @@ export class Link {
             aria-hidden="true"
           />
         }
-        <span>
+        <span class="label">
           <slot />
         </span>
       </TagType>
