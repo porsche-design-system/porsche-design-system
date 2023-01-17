@@ -27,6 +27,10 @@ body > div {
   font: revert;
 }
 
+body > app-root {
+  font: revert;
+}
+
 select {
   position: relative;
   z-index: 999999;
