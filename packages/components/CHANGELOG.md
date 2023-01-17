@@ -48,7 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 </p-button-pure>
 ```
 
-- Deprecated prop `tabbable` for `Link Pure` and `Button Pure`
+- Deprecated prop `tabbable` for `Link Pure`, `Button Pure` and `Switch`
 
 ```diff
 - <p-link-pure href="#" tabbable="false">Some label</p-link-pure>
@@ -56,6 +56,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-button-pure tabbable="false">Some label</p-button-pure>
 + <p-button-pure tabindex="-1">Some label</p-button-pure>
+
+- <p-switch tabbable="false">Some label</p-switch>
++ <p-switch tabindex="-1">Some label</p-switch>
 ```
 
 ### [2.19.0] - 2022-12-22
