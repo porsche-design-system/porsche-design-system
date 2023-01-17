@@ -185,9 +185,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
-      if (fileContent.includes('isClearable')) {
-        console.log(fileContent);
-      }
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
