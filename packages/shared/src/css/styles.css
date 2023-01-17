@@ -23,6 +23,10 @@ body {
   font-variant: small-caps;
 }
 
+body > div {
+  font: revert;
+}
+
 select {
   position: relative;
   z-index: 999999;
