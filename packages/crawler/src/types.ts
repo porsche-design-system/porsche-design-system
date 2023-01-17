@@ -14,7 +14,6 @@ type VersionsAndPrefixesMap<T> = {
 export type CrawlerConfig = {
   reportFolderName: string;
   dateSplitter: string;
-  reportsMaxAge: number;
   jsonSpace: number;
   viewport: Viewport;
 };
