@@ -5,6 +5,7 @@ exports[`should contain correct values for theme 1`] = `
   "dark": {
     "background": {
       "base": "#0E0E12",
+      "shading": "rgba(1, 2, 5, 0.67)",
       "surface": "#212225",
     },
     "contrast": {
@@ -27,12 +28,13 @@ exports[`should contain correct values for theme 1`] = `
       "active": "#7E7F82",
       "disabled": "#7E7F82",
       "focus": "#0A0AFF",
-      "hover": "rgba(144, 144, 153, 0.25)",
+      "hover": "rgba(126, 127, 130, 0.20)",
     },
   },
   "light": {
     "background": {
       "base": "#FFF",
+      "shading": "rgba(1, 2, 5, 0.67)",
       "surface": "#EEEFF2",
     },
     "contrast": {
@@ -55,7 +57,7 @@ exports[`should contain correct values for theme 1`] = `
       "active": "#949598",
       "disabled": "#949598",
       "focus": "#0A0AFF",
-      "hover": "rgba(83, 83, 83, 0.25)",
+      "hover": "rgba(148, 149, 152, 0.18)",
     },
   },
 }
@@ -65,6 +67,7 @@ exports[`should contain correct values for themeDark 1`] = `
 {
   "background": {
     "base": "#0E0E12",
+    "shading": "rgba(1, 2, 5, 0.67)",
     "surface": "#212225",
   },
   "contrast": {
@@ -87,7 +90,7 @@ exports[`should contain correct values for themeDark 1`] = `
     "active": "#7E7F82",
     "disabled": "#7E7F82",
     "focus": "#0A0AFF",
-    "hover": "rgba(144, 144, 153, 0.25)",
+    "hover": "rgba(126, 127, 130, 0.20)",
   },
 }
 `;
@@ -126,12 +129,13 @@ exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#7E7F8
 
 exports[`should contain correct values for themeDarkStateFocus 1`] = `"#0A0AFF"`;
 
-exports[`should contain correct values for themeDarkStateHover 1`] = `"rgba(144, 144, 153, 0.25)"`;
+exports[`should contain correct values for themeDarkStateHover 1`] = `"rgba(126, 127, 130, 0.20)"`;
 
 exports[`should contain correct values for themeLight 1`] = `
 {
   "background": {
     "base": "#FFF",
+    "shading": "rgba(1, 2, 5, 0.67)",
     "surface": "#EEEFF2",
   },
   "contrast": {
@@ -154,7 +158,7 @@ exports[`should contain correct values for themeLight 1`] = `
     "active": "#949598",
     "disabled": "#949598",
     "focus": "#0A0AFF",
-    "hover": "rgba(83, 83, 83, 0.25)",
+    "hover": "rgba(148, 149, 152, 0.18)",
   },
 }
 `;
@@ -193,4 +197,4 @@ exports[`should contain correct values for themeLightStateDisabled 1`] = `"#9495
 
 exports[`should contain correct values for themeLightStateFocus 1`] = `"#0A0AFF"`;
 
-exports[`should contain correct values for themeLightStateHover 1`] = `"rgba(83, 83, 83, 0.25)"`;
+exports[`should contain correct values for themeLightStateHover 1`] = `"rgba(148, 149, 152, 0.18)"`;

@@ -98,13 +98,7 @@ exports[`should have no regression for dependency tree 1`] = `
   "font/fontWeightBold.js": [],
   "font/fontWeightRegular.js": [],
   "font/fontWeightSemiBold.js": [],
-  "frostedGlass/frostedGlassHighStyle.js": [
-    "frostedGlass/frostedGlassShared.js",
-  ],
-  "frostedGlass/frostedGlassMediumStyle.js": [
-    "frostedGlass/frostedGlassShared.js",
-  ],
-  "frostedGlass/frostedGlassShared.js": [],
+  "frostedGlass/frostedGlassStyle.js": [],
   "gradient/gradientBottomStyle.js": [
     "gradient/gradientShared.js",
   ],
@@ -173,8 +167,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontWeightBold.js",
     "font/fontWeightRegular.js",
     "font/fontWeightSemiBold.js",
-    "frostedGlass/frostedGlassHighStyle.js",
-    "frostedGlass/frostedGlassMediumStyle.js",
+    "frostedGlass/frostedGlassStyle.js",
     "gradient/gradientBottomStyle.js",
     "gradient/gradientLeftStyle.js",
     "gradient/gradientRightStyle.js",
@@ -324,6 +317,7 @@ exports[`should have no regression for dependency tree 1`] = `
   ],
   "theme/themeDark.js": [
     "theme/themeDarkBackgroundBase.js",
+    "theme/themeDarkBackgroundShading.js",
     "theme/themeDarkBackgroundSurface.js",
     "theme/themeDarkContrastHigh.js",
     "theme/themeDarkContrastLow.js",
@@ -343,6 +337,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "theme/themeDarkStateHover.js",
   ],
   "theme/themeDarkBackgroundBase.js": [],
+  "theme/themeDarkBackgroundShading.js": [],
   "theme/themeDarkBackgroundSurface.js": [],
   "theme/themeDarkContrastHigh.js": [],
   "theme/themeDarkContrastLow.js": [],
@@ -362,6 +357,7 @@ exports[`should have no regression for dependency tree 1`] = `
   "theme/themeDarkStateHover.js": [],
   "theme/themeLight.js": [
     "theme/themeLightBackgroundBase.js",
+    "theme/themeLightBackgroundShading.js",
     "theme/themeLightBackgroundSurface.js",
     "theme/themeLightContrastHigh.js",
     "theme/themeLightContrastLow.js",
@@ -381,6 +377,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "theme/themeLightStateHover.js",
   ],
   "theme/themeLightBackgroundBase.js": [],
+  "theme/themeLightBackgroundShading.js": [],
   "theme/themeLightBackgroundSurface.js": [],
   "theme/themeLightContrastHigh.js": [],
   "theme/themeLightContrastLow.js": [],
