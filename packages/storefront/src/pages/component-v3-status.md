@@ -2,6 +2,11 @@
 
 ## V3 Status
 
+### Common
+
+- use `px` instead of `rem` apart from `font-size`
+- use `hostHiddenStyles` in all components
+
 ### Utilities
 
 | Utilities            | V3 Status                                                                                                                                                                                           |
