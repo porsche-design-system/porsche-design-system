@@ -13,7 +13,7 @@ import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagColor]: string } = {
@@ -93,8 +93,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
-        height: pxToRemWithUnit(22),
-        padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(9)}`,
+        padding: '5px 9px',
         borderRadius: pxToRemWithUnit(4),
         background: backgroundColor,
         color: primaryColor,
@@ -102,11 +101,9 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('color'),
-          ...hoverMediaQuery({
-            '&:hover': {
-              color: hoverColor,
-            },
-          }),
+          '&:hover': {
+            cursor: 'pointer',
+          },
         }),
       },
       '::slotted': addImportantToEachRule({
