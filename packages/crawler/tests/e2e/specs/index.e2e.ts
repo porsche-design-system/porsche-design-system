@@ -17,7 +17,6 @@ it('should retrieve children and hostPdsComponent correctly', async () => {
         </p-banner>
     `,
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
@@ -36,7 +35,6 @@ it('should retrieve children correctly and put stripped content', async () => {
       </p-flex>
     `,
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
@@ -50,7 +48,6 @@ it('should retrieve hostPdsComponent correctly', async () => {
         </p-button>
     `,
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
@@ -64,7 +61,6 @@ it('should generate raw data correctly for 1 version and 2 prefixes', async () =
   `,
     firstPdsVersionPrefixes: ['my-prefix', ''],
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
@@ -81,7 +77,6 @@ it('should generate raw data correctly for 2 versions and 2 prefixes', async () 
     firstPdsVersionPrefixes: ['test-prefix', 'test1-prefix'],
     secondPdsVersionPrefixes: ['', 'my-prefix'],
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
@@ -93,7 +88,6 @@ it('should retrieve object value from string correctly', async () => {
       <p-spinner size="{ base: 'small', l: 'medium' }" aria="{ 'aria-label': 'Loading page content' }" />
     `,
   });
-  console.log('Evaluating page..');
   const crawlerData = await evaluatePage(page);
   // check that raw data matches snapshot
   expect(crawlerData).toMatchSnapshot();
