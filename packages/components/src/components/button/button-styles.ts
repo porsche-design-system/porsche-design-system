@@ -28,7 +28,7 @@ const getDisabledColors = (
     },
     secondary: {
       textColor: disabledColor,
-      borderColor: contrastHighColor,
+      borderColor: disabledColor,
       backgroundColor: 'transparent',
     },
   };
