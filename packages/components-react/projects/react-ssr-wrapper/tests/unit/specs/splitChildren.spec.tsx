@@ -3,13 +3,13 @@ import { splitChildren } from '../../../src/splitChildren';
 import { createPortal } from 'react-dom';
 import { ReactElement } from 'react';
 
-const jsxElWithSlot = (
+const jsxDivWithSlot = (
   <div slot="heading">
     <h1>Some Heading</h1>
   </div>
 );
-const jsxEl = <input type="checkbox" name="some-name" />;
-const reactPortalEl = createPortal(jsxEl, document.body);
+const jsxInput = <input type="checkbox" name="some-name" />;
+const reactPortal = createPortal(jsxInput, document.body);
 const jsxFragment = (
   <>
     <button>Some text</button>
@@ -28,35 +28,35 @@ describe('splitChildren()', () => {
     ]
   >([
     [
-      [jsxElWithSlot, jsxEl, reactPortalEl, jsxFragment, 'Some text', '', true, false, 1, 0, null, undefined],
+      [jsxDivWithSlot, jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0, null, undefined],
       {
-        children: [jsxElWithSlot, jsxEl, reactPortalEl, jsxFragment, 'Some text', '', true, false, 1, 0],
-        namedSlotChildren: [jsxElWithSlot],
-        otherChildren: [jsxEl, reactPortalEl, jsxFragment, 'Some text', '', true, false, 1, 0],
+        children: [jsxDivWithSlot, jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0],
+        namedSlotChildren: [jsxDivWithSlot],
+        otherChildren: [jsxInput, reactPortal, jsxFragment, 'Some text', '', true, false, 1, 0],
       },
     ],
     [
-      jsxElWithSlot,
+      jsxDivWithSlot,
       {
-        children: [jsxElWithSlot],
-        namedSlotChildren: [jsxElWithSlot],
+        children: [jsxDivWithSlot],
+        namedSlotChildren: [jsxDivWithSlot],
         otherChildren: [],
       },
     ],
     [
-      jsxEl,
+      jsxInput,
       {
-        children: [jsxEl],
+        children: [jsxInput],
         namedSlotChildren: [],
-        otherChildren: [jsxEl],
+        otherChildren: [jsxInput],
       },
     ],
     [
-      reactPortalEl,
+      reactPortal,
       {
-        children: [reactPortalEl],
+        children: [reactPortal],
         namedSlotChildren: [],
-        otherChildren: [reactPortalEl],
+        otherChildren: [reactPortal],
       },
     ],
     [
