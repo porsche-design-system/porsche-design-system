@@ -13,6 +13,7 @@ import {
   fontWeight,
   textXSmallStyle,
   borderRadiusSmall,
+  borderRadiusMedium,
 } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
@@ -72,7 +73,7 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
       position: 'absolute',
       ...getInsetJssStyle(-3),
       border: `${borderWidthBase} solid transparent`,
-      borderRadius: pxToRemWithUnit(6),
+      borderRadius: borderRadiusMedium,
     },
     '&:focus::before': {
       borderColor: focusColor,
