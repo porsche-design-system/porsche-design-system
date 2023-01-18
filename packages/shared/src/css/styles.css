@@ -39,11 +39,11 @@ select {
   position: relative;
   z-index: 999999;
   font: revert;
-  outline: revert;
+  outline: none;
   outline-offset: 0;
 }
 
-select:focus .playground {
+.playground {
   padding: 1rem;
 }
 
