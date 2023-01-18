@@ -14,7 +14,7 @@ import type { Theme } from '../../utils/theme';
 
 export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLabel: boolean): string => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor, hoverColor, contrastMediumColor, focusColor } = themedColors;
+  const { primaryColor, hoverColor, contrastHighColor, focusColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
 
   return getCss({
@@ -52,7 +52,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: contrastMediumColor,
+        color: contrastHighColor,
         fontSize: '14px',
         // a custom line-height is needed to have 48px height in total when label + slotted text is used
         lineHeight: '14px',
