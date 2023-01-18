@@ -1,8 +1,8 @@
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  GetMarkup,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -25,39 +25,39 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `<style>p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }</style>`;
 
-      const getElementsMarkup: GetMarkup = () => `
-        <p-checkbox-wrapper label="When input gets hovered or focused">
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-checkbox-wrapper theme="${theme}" label="When input gets hovered or focused">
           <input type="checkbox" name="some-name" />
         </p-checkbox-wrapper>
         <div class="force-label">
-          <p-checkbox-wrapper label="When label gets hovered or focused">
+          <p-checkbox-wrapper theme="${theme}" label="When label gets hovered or focused">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
         </div>
-        <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+        <p-checkbox-wrapper theme="${theme}" label="Some label" state="error" message="Some error validation message.">
           <input type="checkbox" name="some-name" />
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+        <p-checkbox-wrapper theme="${theme}" theme="${theme}" label="Some label" state="success" message="Some success validation message.">
           <input type="checkbox" name="some-name" />
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label">
+        <p-checkbox-wrapper theme="${theme}" label="Some label">
           <input type="checkbox" name="some-name" checked/>
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+        <p-checkbox-wrapper theme="${theme}" label="Some label" state="error" message="Some error validation message.">
           <input type="checkbox" name="some-name" checked/>
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+        <p-checkbox-wrapper theme="${theme}" label="Some label" state="success" message="Some success validation message.">
           <input type="checkbox" name="some-name" checked />
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper>
+        <p-checkbox-wrapper theme="${theme}">
           <span slot="label">Some label with a <a href="#">link</a>.</span>
           <input type="checkbox" name="some-name" />
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label" state="error">
+        <p-checkbox-wrapper theme="${theme}" label="Some label" state="error">
           <input type="checkbox" name="some-name" />
           <span slot="message">Some error message with a <a href="#">link</a>.</span>
         </p-checkbox-wrapper>
-        <p-checkbox-wrapper label="Some label" state="success">
+        <p-checkbox-wrapper theme="${theme}" label="Some label" state="success">
           <input type="checkbox" name="some-name" />
           <span slot="message">Some success message with a <a href="#">link</a>.</span>
         </p-checkbox-wrapper>`;
