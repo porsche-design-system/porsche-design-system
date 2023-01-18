@@ -4,12 +4,12 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import type { GetMarkup } from '../helpers';
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
+  getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 
@@ -27,12 +27,12 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         p-tag-dismissible:not(:last-child) { margin-right: 0.5rem; }
       </style>`;
 
-      const getElementsMarkup: GetMarkup = () => `
-        <p-tag-dismissible>Some Text</p-tag-dismissible>
-        <p-tag-dismissible label="Some Label" color="background-default">Some Text</p-tag-dismissible>
-        <p-tag-dismissible label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-tag-dismissible theme="${theme}">Some Text</p-tag-dismissible>
+        <p-tag-dismissible theme="${theme}" label="Some Label" color="background-default">Some Text</p-tag-dismissible>
+        <p-tag-dismissible theme="${theme}" label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 
