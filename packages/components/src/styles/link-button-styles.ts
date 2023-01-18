@@ -11,7 +11,7 @@ import { hoverMediaQuery } from './hover-media-query';
 import {
   textSmallStyle,
   borderRadiusSmall,
-  frostedGlassMediumStyle,
+  frostedGlassStyle,
   spacingStaticSmall, borderRadiusMedium, borderWidthBase, fontLineHeight
 } from '@porsche-design-system/utilities-v2';
 
@@ -30,7 +30,7 @@ const getVariantColors = (
   variant: LinkButtonVariant,
   theme: Theme,
 ): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor } =
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } =
     getThemedColors(theme);
 
   const colors: {
@@ -48,7 +48,7 @@ const getVariantColors = (
       borderColor: primaryColor,
       borderColorHover: contrastMediumColor,
       backgroundColor: 'transparent',
-      backgroundColorHover: null, // frosted glass is used
+      backgroundColorHover: hoverColor,
     },
   };
 
@@ -59,7 +59,7 @@ const getVariantColors = (
 // TODO: logik für padding-left? Unterschiedliche padding-left je nach Icon?
 // 1: ohne icon, mit label: 26px (28px - 2px border)
 // 2: mit icon, mit label: 18px (20px - 2px border)
-// 3: mit icon, ohne label: 10px (12px - 2px border)
+// 3: mit icon, ohne label: 15px (13px - 2px border)
 
 export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
@@ -120,8 +120,6 @@ export const getLinkButtonStyles = (
         outline: addImportantToRule(0),
       }
     },
-    // TODO: reduce to only necessary styles (e.g. why boxSizing?)
-    // TODO: overhead due that link does not need same "reset" styles as button
     root: {
       display: 'flex',
       alignItems: 'flex-start',
@@ -160,10 +158,15 @@ export const getLinkButtonStyles = (
             backgroundColor: backgroundColorHover,
             borderColor: borderColorHover,
             ...((isSecondary || isTertiary) && {
-              ...frostedGlassMediumStyle,
-              '& > span, & > $icon': {
+              ...frostedGlassStyle,
+              '& > $label': {
                 color: textColor,
               },
+              ...(hasIcon && {
+                '& > $icon': {
+                  color: textColor,
+                },
+              }),
             }),
           },
         })),

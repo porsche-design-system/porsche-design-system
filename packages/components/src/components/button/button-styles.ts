@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, ButtonVariant, Theme, LinkButtonIconName, 
 import { getCss, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import {
-  fontLineHeight
+  fontLineHeight, frostedGlassStyle
 } from '@porsche-design-system/utilities-v2';
 import { getTransition, getThemedColors } from '../../styles';
 
@@ -17,7 +17,7 @@ const getDisabledColors = (
   disabled: boolean,
   theme: Theme,
 ): Colors => {
-  const { contrastMediumColor, contrastHighColor, disabledColor } =
+  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor } =
     getThemedColors(theme);
 
   const colors: {
@@ -31,7 +31,7 @@ const getDisabledColors = (
     secondary: {
       textColor: disabledColor,
       borderColor: loading ? contrastMediumColor : disabled && disabledColor,
-      backgroundColor: loading ? 'pink' : disabled && 'transparent',
+      backgroundColor: loading ? hoverColor : disabled && 'transparent',
     },
   };
 
@@ -50,6 +50,8 @@ export const getComponentCss = (
 ): string => {
 
   const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, disabled, theme);
+  const isTertiary = variant === 'tertiary';
+  const isSecondary = variant === 'secondary';
 
   return getCss(
     mergeDeep(
@@ -61,17 +63,22 @@ export const getComponentCss = (
             backgroundColor,
             borderColor,
             color: textColor,
+            ...((isSecondary || isTertiary) && {
+              ...frostedGlassStyle,
+            }),
           }),
         },
-        spinner: {
-          width: fontLineHeight,
-          height: fontLineHeight,
-          pointerEvents: 'none',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        },
+        ...(loading && {
+          spinner: {
+            width: fontLineHeight,
+            height: fontLineHeight,
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          },
+        }),
         label: {
           transition: getTransition('opacity'),
           ...(loading && {
