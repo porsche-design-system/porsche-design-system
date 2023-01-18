@@ -1,5 +1,4 @@
 import type { HostElement } from '@stencil/core/internal';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 
 type PromiseResolve = (amount: number) => void;
 
@@ -67,11 +66,22 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
-  const selector = document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].prefixes
-    .map((p) => (p ? TAG_NAMES.map((t) => `${p}-${t}`) : TAG_NAMES))
-    .join(',');
+  let readyPromises: Promise<HostElement>[] = [];
 
-  return Array.from<HostElement>(el.querySelectorAll(selector))
-    .filter((item) => typeof item.componentOnReady === 'function')
-    .map((item) => item.componentOnReady());
+  // Node.ELEMENT_NODE: An Element node like <p> or <div>
+  if (el?.nodeType === 1) {
+    (Array.from(el.children) as HostElement[]).forEach((childEl) => {
+      if (isDesignSystemElement(childEl)) {
+        readyPromises.push(childEl.componentOnReady());
+      }
+      readyPromises = readyPromises.concat(collectAllComponentOnReadyPromises(childEl));
+    });
+  }
+
+  return readyPromises;
+};
+
+const regex = /^(.*-)?P-(.*)$/;
+const isDesignSystemElement = (el: HostElement): boolean => {
+  return regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
 };
