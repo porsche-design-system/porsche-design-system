@@ -26,7 +26,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
   const colorMap: { [key in TagColor]: string } = {
     'background-default': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
-    'neutral-contrast-high': themedColors.contrastHighColor,
+    'neutral-contrast-high': themedColors.primaryColor,
     'notification-information': themedColors.infoSoftColor,
     'notification-success': themedColors.successSoftColor,
     'notification-error': themedColors.errorSoftColor,
@@ -43,7 +43,7 @@ export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: 
     'background-surface': isDark
       ? themedColors.backgroundSurfaceColorLighten
       : themedColors.backgroundSurfaceColorDarken,
-    'neutral-contrast-high': isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColorDarken,
+    'neutral-contrast-high': isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor,
     'notification-information': isDark ? themedColors.infoSoftColorLighten : themedColors.infoSoftColorDarken,
     'notification-success': isDark ? themedColors.successSoftColorLighten : themedColors.successSoftColorDarken,
     'notification-error': isDark ? themedColors.errorSoftColorLighten : themedColors.errorSoftColorDarken,
