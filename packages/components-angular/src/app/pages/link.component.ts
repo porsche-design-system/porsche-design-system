@@ -148,6 +148,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <a [href]="'https://www.porsche.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link>
     </div>
+
+    <div class="playground light" title="should render with centered text/icon if set to 100% width">
+      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
+      <p-link [variant]="'primary'" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'primary'" [icon]="'arrow-right'" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
+      <p-link [variant]="'primary'" [icon]="'arrow-right'" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

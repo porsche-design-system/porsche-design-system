@@ -42,7 +42,6 @@
     <!-- /END -->
 
 
-
     <p-headline>BUTTON</p-headline>
     <div class="playground light" title="should render button primary with label only">
       <p-button variant="primary">Some label</p-button>
@@ -196,6 +195,14 @@
       <p-button style="width: 240px" icon="arrow-right" loading="true">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
 
+    <div class="playground light" title="should render button with centered text/icon if set to 100% width">
+      <p-button variant="primary" style="width: 100%">Some label</p-button>
+      <p-button variant="primary" icon="arrow-right" style="width: 100%">Some label</p-button>
+      <p-button variant="primary" hide-label="true" style="width: 100%">Some label</p-button>
+      <p-button variant="primary" loading="true" style="width: 100%">Some label</p-button>
+      <p-button variant="primary" disabled="true" style="width: 100%">Some label</p-button>
+    </div>
+
 
 
 
@@ -340,6 +347,15 @@
       <p-link style="width: 240px">
         <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link>
+    </div>
+
+    <div class="playground light" title="should render with centered text/icon if set to 100% width">
+      <p-link variant="primary" href="https://www.porsche.com" style="width: 100%;">Some label</p-link>
+      <p-link variant="primary" style="width: 100%;"><a href="https://www.porsche.com">Some label</a></p-link>
+      <p-link variant="primary" icon="arrow-right" href="https://www.porsche.com" style="width: 100%;">Some label</p-link>
+      <p-link variant="primary" icon="arrow-right" style="width: 100%;"><a href="https://www.porsche.com">Some label</a></p-link>
+      <p-link variant="primary" hide-label="true" href="https://www.porsche.com" style="width: 100%;">Some label</p-link>
+      <p-link variant="primary" hide-label="true" style="width: 100%;"><a href="https://www.porsche.com">Some label</a></p-link>
     </div>
 
   </body>

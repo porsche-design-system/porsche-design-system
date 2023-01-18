@@ -150,6 +150,15 @@ const LinkPage: NextPage = (): JSX.Element => {
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLink>
       </div>
+
+      <div className="playground light" title="should render with centered text/icon if set to 100% width">
+        <PLink variant="primary" href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
+        <PLink variant="primary" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="primary" icon="arrow-right" href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
+        <PLink variant="primary" icon="arrow-right" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="primary" hideLabel={true} href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
+        <PLink variant="primary" hideLabel={true} style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
+      </div>
     </>
   );
 };

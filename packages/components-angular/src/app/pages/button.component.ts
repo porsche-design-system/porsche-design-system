@@ -162,6 +162,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button style="width: 240px" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
       <p-button style="width: 240px" [icon]="'arrow-right'" [loading]="true">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
+
+    <div class="playground light" title="should render button with centered text/icon if set to 100% width">
+      <p-button [variant]="'primary'" style="width: 100%">Some label</p-button>
+      <p-button [variant]="'primary'" [icon]="'arrow-right'" style="width: 100%">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" style="width: 100%">Some label</p-button>
+      <p-button [variant]="'primary'" [loading]="true" style="width: 100%">Some label</p-button>
+      <p-button [variant]="'primary'" [disabled]="true" style="width: 100%">Some label</p-button>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

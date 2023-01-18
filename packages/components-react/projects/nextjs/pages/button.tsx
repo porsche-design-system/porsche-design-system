@@ -164,6 +164,14 @@ const ButtonPage: NextPage = (): JSX.Element => {
         <PButton style={{ width: '240px' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
         <PButton style={{ width: '240px' }} icon="arrow-right" loading={true}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
       </div>
+
+      <div className="playground light" title="should render button with centered text/icon if set to 100% width">
+        <PButton variant="primary" style={{ width: '100%' }}>Some label</PButton>
+        <PButton variant="primary" icon="arrow-right" style={{ width: '100%' }}>Some label</PButton>
+        <PButton variant="primary" hideLabel={true} style={{ width: '100%' }}>Some label</PButton>
+        <PButton variant="primary" loading={true} style={{ width: '100%' }}>Some label</PButton>
+        <PButton variant="primary" disabled={true} style={{ width: '100%' }}>Some label</PButton>
+      </div>
     </>
   );
 };
