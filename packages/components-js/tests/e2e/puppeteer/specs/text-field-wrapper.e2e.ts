@@ -402,7 +402,7 @@ describe('focus state', () => {
   });
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
   const defaultColor = 'rgb(98, 102, 105)';
   const hoverColor = 'rgb(0, 0, 0)';

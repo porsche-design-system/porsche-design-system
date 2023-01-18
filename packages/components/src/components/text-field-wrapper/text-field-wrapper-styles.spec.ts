@@ -1,6 +1,6 @@
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, false, 'none', false, 'prefix', 'text', false, false, false],
     [false, false, 'none', true, 'prefix', 'text', false, false, false],
@@ -51,7 +51,7 @@ xdescribe('getComponentCss()', () => {
   );
 });
 
-xdescribe('getSlottedCss()', () => {
+describe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-text-field-wrapper');
     expect(getSlottedCss(host)).toMatchSnapshot();
