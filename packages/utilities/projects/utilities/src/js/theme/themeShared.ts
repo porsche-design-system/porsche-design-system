@@ -4,6 +4,7 @@ export type ThemeColorSet = {
   background: {
     base: string;
     surface: string;
+    shading: string;
   };
   contrast: {
     high: string;
