@@ -9,7 +9,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: neutral 1`] = `
+exports[`getContentAriaAttributes() should return correct aria attributes for state: info 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -38,7 +38,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 
 exports[`getInlineNotificationIconName() should return correct icon for state: error 1`] = `"exclamation"`;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: neutral 1`] = `"information"`;
+exports[`getInlineNotificationIconName() should return correct icon for state: info 1`] = `"information"`;
 
 exports[`getInlineNotificationIconName() should return correct icon for state: success 1`] = `"success"`;
 

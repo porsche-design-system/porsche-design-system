@@ -6,7 +6,6 @@ import {
   getNotificationRootJssStyle,
   getSlottedCss,
 } from './inline-notification-styles';
-import type { InlineNotificationState } from './inline-notification-utils';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -57,12 +56,18 @@ describe('getNotificationRootJssStyles()', () => {
 });
 
 describe('getNotificationIconJssStyle()', () => {
-  it.each<InlineNotificationState>(['info', 'success', 'error', 'warning'])(
-    'should return correct JssStyle for state: %s ',
-    (state) => {
-      expect(getNotificationIconJssStyle(state)).toMatchSnapshot();
-    }
-  );
+  it.each<Parameters<typeof getNotificationIconJssStyle>>([
+    ['light', 'info'],
+    ['light', 'success'],
+    ['light', 'error'],
+    ['light', 'warning'],
+    ['dark', 'info'],
+    ['dark', 'success'],
+    ['dark', 'error'],
+    ['dark', 'warning'],
+  ])('should return correct JssStyle for state: %s ', (...args) => {
+    expect(getNotificationIconJssStyle(...args)).toMatchSnapshot();
+  });
 });
 
 describe('getNotificationContentJssStyle()', () => {

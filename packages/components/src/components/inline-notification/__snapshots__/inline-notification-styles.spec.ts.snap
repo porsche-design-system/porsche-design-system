@@ -15,24 +15,20 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #fec5c5 !important;
-  border-left: 0.25rem solid #fc1717 !important;
+  background: #290A0A !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -51,7 +47,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #e00000;
+    filter: invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%);
   }
 }
 "
@@ -66,24 +62,20 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #fae6e6 !important;
-  border-left: 0.25rem solid #e00000 !important;
+  background: #FCE8E9 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -102,13 +94,13 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #e00000;
+    filter: invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -117,24 +109,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #c7e4ff !important;
-  border-left: 0.25rem solid #2193ff !important;
+  background: #001A33 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -153,13 +141,13 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -168,24 +156,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #e5eff8 !important;
-  border-left: 0.25rem solid #0061bd !important;
+  background: #E8EEFD !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -204,13 +188,13 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -219,24 +203,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #c7e4ff !important;
-  border-left: 0.25rem solid #2193ff !important;
+  background: #001A33 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -258,13 +238,13 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -273,24 +253,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #e5eff8 !important;
-  border-left: 0.25rem solid #0061bd !important;
+  background: #E8EEFD !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -312,13 +288,13 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -327,24 +303,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #c7e4ff !important;
-  border-left: 0.25rem solid #2193ff !important;
+  background: #001A33 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -367,7 +339,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -378,7 +350,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -387,24 +359,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #e5eff8 !important;
-  border-left: 0.25rem solid #0061bd !important;
+  background: #E8EEFD !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -427,7 +395,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -438,7 +406,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -447,24 +415,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #c7e4ff !important;
-  border-left: 0.25rem solid #2193ff !important;
+  background: #001A33 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -490,7 +454,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -501,7 +465,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
   grid-template-columns: 1fr auto !important;
@@ -510,24 +474,20 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #e5eff8 !important;
-  border-left: 0.25rem solid #0061bd !important;
+  background: #E8EEFD !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -553,7 +513,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #0061bd;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -573,24 +533,20 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #bfeec6 !important;
-  border-left: 0.25rem solid #01ba1d !important;
+  background: #003320 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -609,7 +565,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #018a16;
+    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
   }
 }
 "
@@ -624,24 +580,20 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #e5f3e7 !important;
-  border-left: 0.25rem solid #018a16 !important;
+  background: #EBFAF0 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -660,7 +612,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #018a16;
+    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
   }
 }
 "
@@ -675,24 +627,20 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #ffe6bf !important;
-  border-left: 0.25rem solid #ff9b00 !important;
+  background: #2B2208 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -711,7 +659,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #ff9b00;
+    filter: invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%);
   }
 }
 "
@@ -726,24 +674,20 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   align-items: start !important;
   justify-items: start !important;
   padding: 1rem !important;
-  background: #fff5e5 !important;
-  border-left: 0.25rem solid #ff9b00 !important;
+  background: #FFF9E6 !important;
+  border-radius: 4px !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+h5,p {
   margin: 0;
-  color: #000;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -762,7 +706,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: #ff9b00;
+    filter: invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%);
   }
 }
 "
@@ -776,41 +720,81 @@ exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  1`] = `
 {
   "@media(min-width:760px)": {
-    "color": "#e00000",
     "display": "inline-flex",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
   },
   "display": "none",
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: neutral  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  2`] = `
 {
   "@media(min-width:760px)": {
-    "color": "#0061bd",
     "display": "inline-flex",
+    "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
   },
   "display": "none",
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  3`] = `
 {
   "@media(min-width:760px)": {
-    "color": "#018a16",
     "display": "inline-flex",
+    "filter": "invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%)",
   },
   "display": "none",
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  4`] = `
 {
   "@media(min-width:760px)": {
-    "color": "#ff9b00",
     "display": "inline-flex",
+    "filter": "invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  1`] = `
+{
+  "@media(min-width:760px)": {
+    "display": "inline-flex",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  2`] = `
+{
+  "@media(min-width:760px)": {
+    "display": "inline-flex",
+    "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  3`] = `
+{
+  "@media(min-width:760px)": {
+    "display": "inline-flex",
+    "filter": "invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  4`] = `
+{
+  "@media(min-width:760px)": {
+    "display": "inline-flex",
+    "filter": "invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%)",
   },
   "display": "none",
 }
@@ -822,8 +806,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#fec5c5",
-  "borderLeft": "0.25rem solid #fc1717",
+  "background": "#290A0A",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -839,8 +823,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#fae6e6",
-  "borderLeft": "0.25rem solid #e00000",
+  "background": "#FCE8E9",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -850,14 +834,14 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#c7e4ff",
-  "borderLeft": "0.25rem solid #2193ff",
+  "background": "#001A33",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -867,14 +851,14 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#e5eff8",
-  "borderLeft": "0.25rem solid #0061bd",
+  "background": "#E8EEFD",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -890,8 +874,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#bfeec6",
-  "borderLeft": "0.25rem solid #01ba1d",
+  "background": "#003320",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -907,8 +891,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#e5f3e7",
-  "borderLeft": "0.25rem solid #018a16",
+  "background": "#EBFAF0",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -924,8 +908,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#ffe6bf",
-  "borderLeft": "0.25rem solid #ff9b00",
+  "background": "#2B2208",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -941,8 +925,8 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
     "gridTemplateColumns": "2rem 1fr auto auto",
   },
   "alignItems": "start",
-  "background": "#fff5e5",
-  "borderLeft": "0.25rem solid #ff9b00",
+  "background": "#FFF9E6",
+  "borderRadius": "4px",
   "display": "grid",
   "gridRowGap": "1rem",
   "gridTemplateColumns": "1fr auto",
@@ -979,7 +963,7 @@ p-inline-notification a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   p-inline-notification a:hover {
-    color: #d5001c !important;
+    color: rgba(83, 83, 83, 0.25) !important;
   }
 }
 "
@@ -1012,7 +996,7 @@ prefixed-p-inline-notification a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-inline-notification a:hover {
-    color: #d5001c !important;
+    color: rgba(83, 83, 83, 0.25) !important;
   }
 }
 "
