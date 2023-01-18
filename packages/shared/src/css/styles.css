@@ -43,6 +43,10 @@ select {
   outline-offset: 0;
 }
 
+select:focus {
+  outline-color: transparent;
+}
+
 .playground {
   padding: 1rem;
 }
