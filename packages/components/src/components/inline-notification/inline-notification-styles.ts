@@ -9,6 +9,7 @@ import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../styles';
+import { getThemedIconFilters } from '../../styles/icon-filters';
 
 const mediaQueryS = getMediaQueryMin('s');
 
@@ -29,7 +30,7 @@ export const getComponentCss = (
         color: textColor,
       },
     },
-    icon: getNotificationIconJssStyle(state),
+    icon: getNotificationIconJssStyle(theme, state),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
@@ -69,11 +70,11 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
   };
 };
 
-export const getNotificationIconJssStyle = (state: InlineNotificationState): JssStyle => ({
+export const getNotificationIconJssStyle = (theme: Theme, state: InlineNotificationState): JssStyle => ({
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
-    color: getThemedColors('light')[`${state}Color`],
+    filter: getThemedIconFilters(theme)[state],
   },
 });
 
