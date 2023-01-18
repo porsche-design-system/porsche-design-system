@@ -1,5 +1,5 @@
 import { addScript } from './add-script';
-import { getComponentsManagerData } from './data-handler';
+import { CM_KEY, getComponentsManagerData } from './data-handler';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
@@ -29,9 +29,13 @@ export function loadComponentLibrary({ script, version, prefix }: LoadComponentL
   const data = getLibraryHandlerData(version) || {};
   const { isInjected, prefixes, registerCustomElements } = data;
 
-  if (Object.entries(getComponentsManagerData()).some(([v, data]) => v !== version && data.prefixes.includes(prefix))) {
+  const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
+    ([v, data]) => v !== version && data.prefixes.includes(prefix)
+  );
+  if (collidingVersion) {
     throw new Error(
-      `Prefix '${prefix}' is already registered by a different version of the Porsche Design System. Please use a different one.`
+      `Prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
+Take a look at document.${CM_KEY} for more details.`
     );
   }
 

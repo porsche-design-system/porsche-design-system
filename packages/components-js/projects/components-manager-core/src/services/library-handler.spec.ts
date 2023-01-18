@@ -197,9 +197,10 @@ it('should throw if prefix is already used by different version', () => {
     }
   `);
 
-  expect(() => loadComponentLibrary({ ...defaultOptions, version: '1.1.0' })).toThrowErrorMatchingInlineSnapshot(
-    `"Prefix '' is already registered by a different version of the Porsche Design System. Please use a different one."`
-  );
+  expect(() => loadComponentLibrary({ ...defaultOptions, version: '1.1.0' })).toThrowErrorMatchingInlineSnapshot(`
+    "Prefix '' is already registered with version '1.0.0' of the Porsche Design System. Please use a different one.
+    Take a look at document.porscheDesignSystem for more details."
+  `);
   expect(getComponentsManagerData()).toMatchInlineSnapshot(`
     {
       "1.0.0": {
