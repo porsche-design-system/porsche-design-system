@@ -1,5 +1,5 @@
 import { getCss, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import { getLinkButtonStyles, getFocusOffset } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkVariant, Theme, LinkButtonIconName } from '../../types';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
@@ -31,11 +31,11 @@ export const getComponentCss = (
               '&(a)::before': {
                 content: '""',
                 position: 'fixed',
-                top: '-4px',
-                right: '-4px',
-                bottom: '-4px',
-                left: '-4px',
                 borderRadius: borderRadiusMedium,
+                ...getFocusOffset(false),
+              },
+              '&(a:hover)::before': { // needed due to new stacking context because of `backdrop-filter` css property
+                ...getFocusOffset(true),
               },
               // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
               '&(a::-moz-focus-inner)': {

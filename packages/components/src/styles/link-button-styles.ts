@@ -62,20 +62,6 @@ export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssSty
   };
 };
 
-export const getSlottedIconJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel
-    ? {
-      left: '50%',
-      top: '50%',
-      transform: 'translate3d(-50%, -50%, 0)',
-    }
-    : {
-      left: '19px',
-      top: '11px',
-      transform: 'translate3d(0,0,0)',
-    };
-};
-
 export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
@@ -88,6 +74,23 @@ export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssSt
         height: 'auto',
         textIndent: 0,
       };
+};
+
+export const getFocusOffset = (backdrop: boolean): JssStyle => {
+  return backdrop
+  ? {
+      top: '-6px',
+      right: '-6px',
+      bottom: '-6px',
+      left: '-6px',
+    }
+  :
+    {
+      top: '-4px',
+      right: '-4px',
+      bottom: '-4px',
+      left: '-4px',
+    };
 };
 
 export const getLinkButtonStyles = (
@@ -135,12 +138,9 @@ export const getLinkButtonStyles = (
         '&:focus::before': {
           content: '""',
           position: 'fixed',
-          top: '-4px',
-          right: '-4px',
-          bottom: '-4px',
-          left: '-4px',
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
+          ...getFocusOffset(false),
         },
         '&:not(:focus-visible)::before': {
           border: 0,
@@ -153,6 +153,9 @@ export const getLinkButtonStyles = (
             borderColor: borderColorHover,
             ...((isSecondary || isTertiary) && {
               ...frostedGlassStyle,
+              '&:focus::before': { // needed due to new stacking context because of `backdrop-filter` css property
+                ...getFocusOffset(true),
+              },
               '& > $label': {
                 color: textColor,
               },

@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, ButtonVariant, Theme, LinkButtonIconName, LinkButtonVariant } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import { getLinkButtonStyles, getFocusOffset } from '../../styles/link-button-styles';
 import {
   fontLineHeight, frostedGlassStyle
 } from '@porsche-design-system/utilities-v2';
@@ -66,6 +66,9 @@ export const getComponentCss = (
           }),
           ...((loading && (isSecondary || isTertiary)) && {
             ...frostedGlassStyle,
+            '&:focus::before': {
+              ...getFocusOffset(true),
+            },
           }),
         },
         ...(loading && {
