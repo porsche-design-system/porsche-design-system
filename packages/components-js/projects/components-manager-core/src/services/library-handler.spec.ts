@@ -156,11 +156,11 @@ it('should call the "RegisterCustomElementsCallback" once for the library and ve
   expect(registerComponentsSpy1).toBeCalledWith('some-prefix');
   expect(registerComponentsSpy2).not.toBeCalled();
 
-  loadComponentLibrary({ ...defaultOptions, version: '2.0.0' });
+  loadComponentLibrary({ ...defaultOptions, version: '2.0.0', prefix: 'another-prefix' });
   expect(registerComponentsSpy1).toBeCalledTimes(2);
   expect(registerComponentsSpy1).toBeCalledWith('some-prefix');
   expect(registerComponentsSpy2).toBeCalledTimes(1);
-  expect(registerComponentsSpy2).toBeCalledWith('');
+  expect(registerComponentsSpy2).toBeCalledWith('another-prefix');
 });
 
 it('should call the "RegisterCustomElementsCallback" also if it was not yet registered as soon as it\'s registered for library prefixes that have been loaded before', async () => {
@@ -181,7 +181,7 @@ it('should call the "RegisterCustomElementsCallback" also if it was not yet regi
   expect(registerComponentsSpy1).toBeCalledWith('other-prefix');
 });
 
-fit('should throw if prefix is already used by different version', () => {
+it('should throw if prefix is already used by different version', () => {
   loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
   expect(getComponentsManagerData()).toMatchInlineSnapshot(`
     {
