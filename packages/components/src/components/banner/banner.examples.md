@@ -80,7 +80,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 export default class Code extends Vue {
   config = { themeable: true };
   
-  state = 'neutral';
+  state = 'info';
   width = 'basic';
   
   get basic() {

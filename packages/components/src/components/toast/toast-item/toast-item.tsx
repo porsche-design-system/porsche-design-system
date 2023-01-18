@@ -30,7 +30,7 @@ export class ToastItem {
   @Prop() public text?: string = '';
 
   /** State of the toast-item. */
-  @Prop() public state?: ToastState = 'neutral';
+  @Prop() public state?: ToastState = 'info';
 
   /** Adapts the toast-item color depending on the theme. */
   @Prop() public theme?: Theme = 'light';

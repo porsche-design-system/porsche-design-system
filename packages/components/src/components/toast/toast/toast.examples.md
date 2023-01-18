@@ -21,7 +21,7 @@ Both expose the `addMessage()` method, which needs to be called with a parameter
 ```ts
 type ToastMessage = {
   text: string;
-  state?: 'neutral' | 'success';
+  state?: 'info' | 'success';
 };
 ```
 
@@ -78,7 +78,7 @@ import type { Theme } from '@/models';
 export default class Code extends Vue {
   config = { themeable: true };
 
-  toastState = 'neutral';
+  toastState = 'info';
   toastText = 'Some message';
   toastCounter = 1;
   positionBottom = 64;

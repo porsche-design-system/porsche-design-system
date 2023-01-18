@@ -84,7 +84,7 @@ import { getInlineNotificationCodeSamples } from '@porsche-design-system/shared'
 export default class Code extends Vue {
   config = { themeable: true };
   
-  state = 'neutral';
+  state = 'info';
   width = 'basic';
 
   defaultHeading = 'Some heading';

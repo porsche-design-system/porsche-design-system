@@ -42,7 +42,7 @@ export class InlineNotification {
   @Prop() public description?: string = '';
 
   /** State of the inline-notification. */
-  @Prop() public state?: InlineNotificationState = 'neutral';
+  @Prop() public state?: InlineNotificationState = 'info';
 
   /** Defines if the inline-notification can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;

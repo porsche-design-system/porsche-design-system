@@ -29,7 +29,7 @@ export class Banner {
   @Element() public host!: HTMLElement;
 
   /** State of the banner. */
-  @Prop() public state?: BannerState = 'neutral';
+  @Prop() public state?: BannerState = 'info';
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
