@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
@@ -12,9 +13,11 @@ import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { TagColor } from '../tag/tag-utils';
 import { TAG_COLORS } from '../tag/tag-utils';
+import { Theme } from '../../types';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   label: AllowedTypes.string,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
@@ -29,6 +32,9 @@ export class TagDismissible {
   /** Background color variations */
   @Prop() public color?: TagDismissibleColor = 'background-surface';
 
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
+
   /** The label text. */
   @Prop() public label?: string;
 
@@ -37,7 +43,7 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
+    attachComponentCss(this.host, getComponentCss, this.color, this.theme, !!this.label);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
