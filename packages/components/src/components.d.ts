@@ -115,11 +115,6 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
         "theme"?: Theme;
@@ -1706,11 +1701,6 @@ declare namespace LocalJSX {
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
-        /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
         /**
           * Adapts the button color depending on the theme.
          */

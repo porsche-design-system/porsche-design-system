@@ -27,7 +27,6 @@ import { getComponentCss } from './button-styles';
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
-  tabbable: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
@@ -43,11 +42,6 @@ const propTypes: PropTypes<typeof Button> = {
 })
 export class Button {
   @Element() public host!: HTMLElement;
-
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'submit';
@@ -114,7 +108,6 @@ export class Button {
         {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
         class="root"
         type={this.type}
-        tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
       >
         {this.loading && (
           <PrefixedTagNames.pSpinner
