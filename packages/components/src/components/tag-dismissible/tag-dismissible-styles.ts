@@ -55,7 +55,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
         color: contrastHighColor,
         fontSize: '14px',
         // a custom line-height is needed to have 48px height in total when label + slotted text is used
-        lineHeight: '14px',
+        lineHeight: '20px',
       },
     }),
     icon: {
