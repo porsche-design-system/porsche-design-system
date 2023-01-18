@@ -55,12 +55,6 @@ const getVariantColors = (
   return colors[variant === 'tertiary' ? 'secondary' : variant];
 };
 
-
-// TODO: logik für padding-left? Unterschiedliche padding-left je nach Icon?
-// 1: ohne icon, mit label: 26px (28px - 2px border)
-// 2: mit icon, mit label: 18px (20px - 2px border)
-// 3: mit icon, ohne label: 15px (13px - 2px border)
-
 export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
     padding:  hideLabel ? '13px' : '13px 26px',
@@ -179,6 +173,11 @@ export const getLinkButtonStyles = (
         width: fontLineHeight,
         height: fontLineHeight,
         pointerEvents: 'none',
+        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => {
+          return {
+            marginLeft: hideLabelValue ? 0 : '-8px',
+          };
+        })
       }
     }),
   };

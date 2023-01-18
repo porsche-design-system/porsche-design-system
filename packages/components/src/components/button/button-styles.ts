@@ -63,9 +63,9 @@ export const getComponentCss = (
             backgroundColor,
             borderColor,
             color: textColor,
-            ...((isSecondary || isTertiary) && {
-              ...frostedGlassStyle,
-            }),
+          }),
+          ...((loading && (isSecondary || isTertiary)) && {
+            ...frostedGlassStyle,
           }),
         },
         ...(loading && {
