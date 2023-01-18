@@ -1,5 +1,10 @@
 import type { JssStyle } from 'jss';
-import { headingSmallStyle, getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  headingSmallStyle,
+  getMediaQueryMin,
+  textSmallStyle,
+  borderRadiusSmall,
+} from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../utils';
@@ -13,7 +18,7 @@ export const getComponentCss = (
   hasClose: boolean,
   theme: Theme
 ): string => {
-  const textColor = getThemedColors('light').primaryColor;
+  const textColor = getThemedColors(theme).primaryColor;
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
@@ -56,7 +61,7 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
     justifyItems: 'start',
     padding: pxToRemWithUnit(16),
     background: themedColors[`${state}SoftColor`],
-    borderLeft: `${pxToRemWithUnit(4)} solid ${themedColors[`${state}Color`]}`,
+    borderRadius: borderRadiusSmall,
     [mediaQueryS]: {
       // 4 columns are for icon, content, action button and close button
       gridTemplateColumns: '2rem 1fr auto auto',

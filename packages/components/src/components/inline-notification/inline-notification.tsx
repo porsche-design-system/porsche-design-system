@@ -93,6 +93,7 @@ export class InlineNotification {
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure
             class="action"
+            theme={this.theme}
             icon={this.actionIcon}
             loading={this.actionLoading}
             onClick={this.action.emit}
@@ -105,6 +106,7 @@ export class InlineNotification {
             class="close"
             type="button"
             icon="close"
+            theme={this.theme}
             hideLabel={true}
             aria-controls={bannerId}
             onClick={this.dismiss.emit}
