@@ -8,13 +8,14 @@ if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-js:components-manager-core" == "${1}" ]] ||
   [[ "--components-js:components-wrapper" == "${1}" ]] ||
+  [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
+  [[ "--components-angular:jest" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
   [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
   [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
-  [[ "--components-react:jsdom-polyfill" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
   [[ "--fallbacks" == "${1}" ]] ||
@@ -26,4 +27,6 @@ then
   # TODO: re-enable --ci flag as soon as PDS@v3-alpha is ready
   # yarn test:unit:${1:2} --ci
   yarn test:unit:${1:2}
+elif [[ "--components-angular:karma" == "${1}" ]]; then
+  CI=true yarn test:unit:${1:2}-ci
 fi
