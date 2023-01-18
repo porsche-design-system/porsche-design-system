@@ -9,6 +9,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.19.1-rc.1] - 2023-01-18
+
+#### Added
+
+- `jsdom-polyfill` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill`
+  and can be used to have working web components in jsdom based tests (e.g. jest)
+- `testing` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/testing` to provide
+  `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use `@testing-library/dom`
+  queries internally to support Shadow DOM
+- Validation if `prefix` is already reserved by a different version upon initialization of the Porsche Design System
+
+#### Fixed
+
+- `componentsReady()` waits for Porsche Design System being initialized before checking components which can happen in
+  certain test scenarios without partials
+
+### [2.19.1-rc.0] - 2023-01-18
+
+#### Fixed
+
+- Bug in `@porsche-design-system/components-react/ssr` where in some cases during SSG an error was thrown when
+  components render their children conditionally
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
@@ -411,7 +434,7 @@ information can be found here:
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use
   `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed

@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
 
+// TODO: tests are in wrong package
 describe('webmanifest', () => {
   const manifestPath = META_ICONS_MANIFEST.webManifest.auto;
   const manifestPathCN = META_ICONS_MANIFEST.webManifest.cn;
