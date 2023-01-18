@@ -1,6 +1,6 @@
 import { getBaseChildStyles, getLabelStyles } from './form-styles';
 
-xdescribe('getBaseChildStyles()', () => {
+describe('getBaseChildStyles()', () => {
   it.each<Parameters<typeof getBaseChildStyles>>([
     ['input', 'none', 'light', undefined],
     ['input', 'success', 'light', undefined],

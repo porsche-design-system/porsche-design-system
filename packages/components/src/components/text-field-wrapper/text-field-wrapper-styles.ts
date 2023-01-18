@@ -51,15 +51,15 @@ export const getComponentCss = (
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
-            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+            padding: pxToRemWithUnit(16),
           }),
           ...(isType(inputType, 'number')
             ? {
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 48),
-                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
+                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 50),
+                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(50) }),
               }),
         }),
         // Reset webkit autofill styles

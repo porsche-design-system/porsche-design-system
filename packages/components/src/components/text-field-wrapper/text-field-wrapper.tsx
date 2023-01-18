@@ -88,6 +88,8 @@ export class TextFieldWrapper {
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
 
+  // TODO: theme prop
+
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 

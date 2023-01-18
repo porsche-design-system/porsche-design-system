@@ -9,14 +9,14 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './';
-import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
-export const INPUT_HEIGHT = 48;
+export const INPUT_HEIGHT = 54;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -26,36 +26,31 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, primaryColorDarken, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } =
+    getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
-
-  // TODO: Add readonly color to utilities package
-  const readonly = '#ebebeb'; // 🤷
 
   return {
     [`::slotted(${child})`]: {
       display: 'block',
       position: 'relative',
-      ...getInsetJssStyle(),
+      // ...getInsetJssStyle(),
       width: '100%',
       ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
-      margin: 0,
-      outline: '1px solid transparent',
-      outlineOffset: '2px',
+      // margin: 0,
+      outline: 'none',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
-      borderRadius: 0,
-      backgroundColor,
-      opacity: 1,
-      ...textSmallStyle,
-      overflowWrap: null,
-      hyphens: null,
+      border: `2px solid ${hasVisibleState ? formStateColor : contrastMediumColor}`, // TODO: verify color
+      borderRadius: borderRadiusSmall,
+      background: backgroundColor,
+      // opacity: 1,
+      font: textSmallStyle.font,
       textIndent: 0,
-      color: primaryColor,
-      transition: ['color', 'border-color', 'background-color'].map(getTransition).join(),
+      color: primaryColor, // TODO: verify color
+      transition: getTransition('border-color'),
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
@@ -65,7 +60,7 @@ export const getBaseChildStyles = (
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
-      outlineColor: formStateColor || contrastMediumColor,
+      borderColor: formStateColor || primaryColorDarken,
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
@@ -75,14 +70,11 @@ export const getBaseChildStyles = (
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
-        borderColor: readonly,
-        backgroundColor: readonly,
+        borderColor: disabledColor,
+        background: disabledColor,
       },
       [`::slotted(${child}[readonly]:focus)`]: {
-        outlineColor: 'transparent',
-      },
-      [`::slotted(${child}[readonly]:not(:disabled))`]: {
-        color: contrastMediumColor,
+        background: disabledColor,
       },
     }),
   };
