@@ -16,6 +16,10 @@ const Sample = (): JSX.Element => {
   );
 };
 
+beforeAll(() => {
+  (window as any).PDS_SKIP_FETCH = true;
+});
+
 it('should return 0 when nothing is rendered', async () => {
   expect(await componentsReady()).toBe(0);
 });
