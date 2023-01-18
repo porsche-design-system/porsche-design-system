@@ -23,6 +23,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `componentsReady()` waits for Porsche Design System being initialized before checking components which can happen in
   certain test scenarios without partials
 
+### [2.19.1-rc.0] - 2023-01-18
+
+#### Fixed
+
+- Bug in `@porsche-design-system/components-react/ssr` where in some cases during SSG an error was thrown when
+  components render their children conditionally
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
