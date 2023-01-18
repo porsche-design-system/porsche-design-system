@@ -71,7 +71,7 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
     '&::before': {
       content: '""',
       position: 'absolute',
-      ...getInsetJssStyle(-3),
+      ...getInsetJssStyle(-4),
       border: `${borderWidthBase} solid transparent`,
       borderRadius: borderRadiusMedium,
     },
