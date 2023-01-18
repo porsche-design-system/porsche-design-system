@@ -1,17 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should contain correct values for frostedGlassHighStyle 1`] = `
+exports[`should contain correct values for frostedGlassStyle 1`] = `
 {
-  "WebkitBackdropFilter": "blur(16px)",
-  "backdropFilter": "blur(16px)",
-  "backgroundColor": "rgba(14, 14, 18, 0.8)",
-}
-`;
-
-exports[`should contain correct values for frostedGlassMediumStyle 1`] = `
-{
-  "WebkitBackdropFilter": "blur(8px)",
-  "backdropFilter": "blur(8px)",
-  "backgroundColor": "rgba(14, 14, 18, 0.8)",
+  "WebkitBackdropFilter": "blur(32px)",
+  "backdropFilter": "blur(32px)",
 }
 `;
