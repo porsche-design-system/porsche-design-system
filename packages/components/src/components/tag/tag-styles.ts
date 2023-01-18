@@ -1,9 +1,10 @@
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
+  getTransition,
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
@@ -19,6 +20,7 @@ import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagColor]: string } = {
@@ -34,26 +36,43 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
   return colorMap[tagColor];
 };
 
+export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: ThemedColors, theme: Theme): string => {
+  const isDark = isThemeDark(theme);
+  const colorMap: { [key in TagColor]: string } = {
+    'background-default': isDark ? themedColors.backgroundColorLighten : themedColors.backgroundColorDarken,
+    'background-surface': isDark
+      ? themedColors.backgroundSurfaceColorLighten
+      : themedColors.backgroundSurfaceColorDarken,
+    'neutral-contrast-high': isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColorDarken,
+    'notification-information': isDark ? themedColors.infoSoftColorLighten : themedColors.infoSoftColorDarken,
+    'notification-success': isDark ? themedColors.successSoftColorLighten : themedColors.successSoftColorDarken,
+    'notification-error': isDark ? themedColors.errorSoftColorLighten : themedColors.errorSoftColorDarken,
+    'notification-warning': isDark ? themedColors.warningSoftColorLighten : themedColors.warningSoftColorDarken,
+  };
+
+  return colorMap[tagColor];
+};
+
 export const getColors = (
   tagColor: TagColor,
   theme: Theme
 ): {
   primaryColor: string;
-  hoverColor: string;
   outlineColor: string;
   backgroundColor: string;
+  backgroundHoverColor: string;
 } => {
   const themedColors = getThemedColors(theme);
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
-  const { primaryColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
+  const { primaryColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
   const { focusColor, primaryColor: themedBaseColor } = themedColors;
 
   return {
     primaryColor,
-    hoverColor,
     outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
+    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
 };
 
@@ -85,7 +104,7 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
+  const { primaryColor, backgroundColor, backgroundHoverColor, outlineColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
@@ -103,11 +122,14 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         color: primaryColor,
         ...textXSmallStyle,
         whiteSpace: 'nowrap',
-        ...(isFocusable && {
-          '&:hover': {
-            cursor: 'pointer',
-          },
-        }),
+        transition: `${getTransition('background-color')}`,
+        ...(isFocusable &&
+          hoverMediaQuery({
+            '&:hover': {
+              cursor: 'pointer',
+              background: backgroundHoverColor,
+            },
+          })),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {
