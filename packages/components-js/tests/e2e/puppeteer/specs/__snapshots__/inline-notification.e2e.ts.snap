@@ -31,7 +31,7 @@ exports[`accessibility should expose correct accessibility tree properties for s
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties for state: neutral 1`] = `
+exports[`accessibility should expose correct accessibility tree properties for state: info 1`] = `
 {
   "children": [
     {
