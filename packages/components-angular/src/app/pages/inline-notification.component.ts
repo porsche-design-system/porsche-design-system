@@ -4,11 +4,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-inline-notification',
   template: `
-    <div class="playground light" title="should show inline-notification neutral on light background">
+    <
+    <div class="playground light" title="should show inline-notification info on light background">
       <p-inline-notification [heading]="'Some neutral heading'" [description]="'Some description'"></p-inline-notification>
     </div>
 
-    <div class="playground dark" title="should show inline-notification neutral on dark background">
+    <div class="playground dark" title="should show inline-notification info on dark background">
       <p-inline-notification
         [heading]="'Some neutral heading'"
         [description]="'Some description'"
@@ -81,7 +82,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-inline-notification>
     </div>
 
-    <div class="playground light" title="should show inline-notification with action button">
+    <div class="playground light" title="should show inline-notification with action button on light background">
       <p-inline-notification
         [heading]="'Some heading with action button'"
         [description]="'Some description'"
@@ -89,7 +90,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-inline-notification>
     </div>
 
-    <div class="playground light" title="should show inline-notification with loading action button">
+    <div class="playground light" title="should show inline-notification with action button on dark background">
+      <p-inline-notification
+        [heading]="'Some heading with action button'"
+        [description]="'Some description'"
+        [actionLabel]="'Some action label'"
+        [theme]="'dark'"
+      ></p-inline-notification>
+    </div>
+
+    <div class="playground light" title="should show inline-notification with loading action button on light background">
       <p-inline-notification
         [heading]="'Some heading with action button'"
         [description]="'Some description'"
@@ -98,7 +108,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-inline-notification>
     </div>
 
-    <div class="playground light" title="should show inline-notification in persistent mode">
+    <div class="playground light" title="should show inline-notification with loading action button on dark background">
+      <p-inline-notification
+        [heading]="'Some heading with action button'"
+        [description]="'Some description'"
+        [actionLabel]="'Some loading action label'"
+        [actionLoading]="true"
+        [theme]="'dark'"
+      ></p-inline-notification>
+    </div>
+
+    <div class="playground light" title="should show inline-notification in persistent mode on light background">
       <p-inline-notification
         [heading]="'Some persistent heading'"
         [description]="'Some description'"
@@ -106,13 +126,39 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-inline-notification>
     </div>
 
-    <div class="playground light" title="should show inline-notification in persistent mode with action button">
+    <div class="playground light" title="should show inline-notification in persistent mode on dark background">
+      <p-inline-notification
+        [heading]="'Some persistent heading'"
+        [description]="'Some description'"
+        [persistent]="true"
+        [theme]="'dark'"
+      ></p-inline-notification>
+    </div>
+
+    <div
+      class="playground light"
+      title="should show inline-notification in persistent mode with action button on light background"
+    >
       <p-inline-notification
         [heading]="'Some persistent heading with action button'"
         [description]="'Some description'"
         [persistent]="true"
         [actionLabel]="'Some action label with custom icon'"
         [actionIcon]="'refresh'"
+      ></p-inline-notification>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should show inline-notification in persistent mode with action button on dark background"
+    >
+      <p-inline-notification
+        [heading]="'Some persistent heading with action button'"
+        [description]="'Some description'"
+        [persistent]="true"
+        [actionLabel]="'Some action label with custom icon'"
+        [actionIcon]="'refresh'"
+        [theme]="'dark'"
       ></p-inline-notification>
     </div>
 
