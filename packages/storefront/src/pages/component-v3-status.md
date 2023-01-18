@@ -39,7 +39,7 @@
 | ⛔ **Tag**                  |                                                                                                                                                                                   |
 | ⛔ **Tag Dismissible**      |                                                                                                                                                                                   |
 | ✅ **Switch**               |                                                                                                                                                                                   |
-| ⛔ **Checkbox Wrapper**     | - hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the issue but to hover is applied to the whole host element. |
+| ✅ **Checkbox Wrapper**     | - hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the issue but to hover is applied to the whole host element. |
 | ⛔ **Radio Button Wrapper** |                                                                                                                                                                                   |
 | ⛔ **Text Field Wrapper**   |                                                                                                                                                                                   |
 | ⛔ **Textarea Wrapper**     |                                                                                                                                                                                   |
