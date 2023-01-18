@@ -16,6 +16,12 @@ export const hasInvertedThemeColor = (tagColor: TagColor, theme: Theme): boolean
   const isDark = isThemeDark(theme);
   return (
     (!isDark && tagColor === 'neutral-contrast-high') ||
-    (isDark && tagColor !== 'background-surface' && tagColor !== 'background-default')
+    (isDark &&
+      tagColor !== 'background-surface' &&
+      tagColor !== 'background-default' &&
+      tagColor !== 'notification-information' &&
+      tagColor !== 'notification-warning' &&
+      tagColor !== 'notification-success' &&
+      tagColor !== 'notification-error')
   );
 };
