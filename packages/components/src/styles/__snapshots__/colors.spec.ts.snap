@@ -2,7 +2,7 @@
 
 exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 {
-  "activeColor": "#7E7F82",
+  "activeColor": "rgba(126, 127, 130, 0.20)",
   "backgroundColor": "#0E0E12",
   "backgroundSurfaceColor": "#212225",
   "contrastHighColor": "#AFB0B3",
@@ -30,7 +30,7 @@ exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 
 exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 {
-  "activeColor": "#949598",
+  "activeColor": "rgba(148, 149, 152, 0.20)",
   "backgroundColor": "#FFF",
   "backgroundSurfaceColor": "#EEEFF2",
   "contrastHighColor": "#535457",
@@ -42,7 +42,7 @@ exports[`getThemedColors() should return correct colors for theme: light 1`] = `
   "errorColorDarken": "#c51720",
   "errorSoftColor": "#FCE8E9",
   "focusColor": "#0A0AFF",
-  "hoverColor": "rgba(148, 149, 152, 0.18)",
+  "hoverColor": "rgba(148, 149, 152, 0.20)",
   "hoverColorDarken": "#75767a",
   "infoColor": "#1E5BEB",
   "infoSoftColor": "#E8EEFD",

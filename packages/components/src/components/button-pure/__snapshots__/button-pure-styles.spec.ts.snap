@@ -184,7 +184,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -312,7 +312,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -448,7 +448,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -516,7 +516,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -584,7 +584,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -816,7 +816,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, 0.18);
+  background-color: rgba(148, 149, 152, 0.20);
 }
 .root:focus::before {
   border: 2px solid #0A0AFF;
@@ -844,7 +844,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -887,7 +887,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, 0.18);
+  background-color: rgba(148, 149, 152, 0.20);
 }
 .root:focus::before {
   border: 2px solid #0A0AFF;
@@ -962,7 +962,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -1017,7 +1017,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
@@ -1102,7 +1102,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.18);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 "
