@@ -29,7 +29,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
       },
       button: {
         position: 'relative',
-        minHeight: '48px',
+        minHeight: '54px',
         padding: '4px 46px 4px 16px',
         borderRadius: borderRadiusSmall,
         border: 0,
@@ -55,7 +55,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
         color: contrastHighColor,
         fontSize: '14px',
         // a custom line-height is needed to have 48px height in total when label + slotted text is used
-        lineHeight: '20px',
+        lineHeight: '22px',
       },
     }),
     icon: {
