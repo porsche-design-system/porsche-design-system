@@ -93,6 +93,7 @@
     "test:unit:components-angular": "yarn --cwd ./packages/components-angular test:unit",
     "test:unit:components-angular:jest": "yarn --cwd ./packages/components-angular test:unit:jest",
     "test:unit:components-angular:karma": "yarn --cwd ./packages/components-angular test:unit:karma",
+    "test:unit:components-angular:karma-ci": "yarn --cwd ./packages/components-angular test:unit:karma-ci",
     "test:unit:components-react": "yarn --cwd ./packages/components-react test:unit",
     "test:unit:components-react:react-wrapper": "yarn --cwd ./packages/components-react test:unit:react-wrapper",
     "test:unit:components-react:react-ssr-wrapper": "yarn --cwd ./packages/components-react test:unit:react-ssr-wrapper",

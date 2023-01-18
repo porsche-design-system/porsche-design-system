@@ -12,7 +12,6 @@ if
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-angular:jest" == "${1}" ]] ||
-  [[ "--components-angular:karma" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
   [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
@@ -26,4 +25,6 @@ if
   [[ "--utilities-deprecated" == "${1}" ]]
 then
   yarn test:unit:${1:2} --ci
+elif [[ "--components-angular:karma" == "${1}" ]]; then
+  CI=true yarn test:unit:${1:2}-ci
 fi
