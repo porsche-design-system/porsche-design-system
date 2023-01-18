@@ -9,7 +9,7 @@ on:
 name: 'Porsche Design System'
 env:
   PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-vue
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-2
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -102,6 +102,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components-js:components-wrapper
+      - name: 'Unit Test jsdom-polyfill'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:jsdom-polyfill
       - name: 'Unit Test Partials'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -345,16 +350,21 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-unit
-          args: --components-angular
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-angular
+      - name: 'Unit Test (Jest)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-angular:jest
+      - name: 'Unit Test (Karma)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-angular:karma
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -426,11 +436,6 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components-react:uxpin-wrapper
-      - name: 'Unit Test jsdom-polyfill'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-unit
-          args: --components-react:jsdom-polyfill
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
