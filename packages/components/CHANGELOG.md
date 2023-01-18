@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `testing` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/testing` to provide
   `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use `@testing-library/dom`
   queries internally to support Shadow DOM
+- Validation if `prefix` is already reserved by a different version upon initialization of the Porsche Design System
 
 #### Fixed
 
