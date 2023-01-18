@@ -5,8 +5,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-switch',
   styles: [
     `
-      p-switch ~ p-switch {
-        margin-top: 0.5rem;
+      p-switch:not(:last-child) {
+        margin-right: 16px;
+      }
+      .stretched-switch p-switch {
+        margin-right: 0;
       }
     `,
   ],
@@ -61,7 +64,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-switch [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-switch>
     </div>
 
-    <div class="playground light" title="should render with stretched label">
+    <div class="playground light stretched-switch" title="should render with stretched label">
       <p-switch [stretch]="true">Some label</p-switch>
       <p-switch [stretch]="true" [alignLabel]="'left'">Some label</p-switch>
     </div>
