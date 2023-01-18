@@ -25,7 +25,7 @@ exports[`should contain correct values for theme 1`] = `
     },
     "primary": "#FBFCFF",
     "state": {
-      "active": "#7E7F82",
+      "active": "rgba(126, 127, 130, 0.20)",
       "disabled": "#7E7F82",
       "focus": "#0A0AFF",
       "hover": "rgba(126, 127, 130, 0.20)",
@@ -54,10 +54,10 @@ exports[`should contain correct values for theme 1`] = `
     },
     "primary": "#010205",
     "state": {
-      "active": "#949598",
+      "active": "rgba(148, 149, 152, 0.20)",
       "disabled": "#949598",
       "focus": "#0A0AFF",
-      "hover": "rgba(148, 149, 152, 0.18)",
+      "hover": "rgba(148, 149, 152, 0.20)",
     },
   },
 }
@@ -87,7 +87,7 @@ exports[`should contain correct values for themeDark 1`] = `
   },
   "primary": "#FBFCFF",
   "state": {
-    "active": "#7E7F82",
+    "active": "rgba(126, 127, 130, 0.20)",
     "disabled": "#7E7F82",
     "focus": "#0A0AFF",
     "hover": "rgba(126, 127, 130, 0.20)",
@@ -123,7 +123,7 @@ exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] 
 
 exports[`should contain correct values for themeDarkPrimary 1`] = `"#FBFCFF"`;
 
-exports[`should contain correct values for themeDarkStateActive 1`] = `"#7E7F82"`;
+exports[`should contain correct values for themeDarkStateActive 1`] = `"rgba(126, 127, 130, 0.20)"`;
 
 exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#7E7F82"`;
 
@@ -155,10 +155,10 @@ exports[`should contain correct values for themeLight 1`] = `
   },
   "primary": "#010205",
   "state": {
-    "active": "#949598",
+    "active": "rgba(148, 149, 152, 0.20)",
     "disabled": "#949598",
     "focus": "#0A0AFF",
-    "hover": "rgba(148, 149, 152, 0.18)",
+    "hover": "rgba(148, 149, 152, 0.20)",
   },
 }
 `;
@@ -191,10 +191,10 @@ exports[`should contain correct values for themeLightNotificationWarningSoft 1`]
 
 exports[`should contain correct values for themeLightPrimary 1`] = `"#010205"`;
 
-exports[`should contain correct values for themeLightStateActive 1`] = `"#949598"`;
+exports[`should contain correct values for themeLightStateActive 1`] = `"rgba(148, 149, 152, 0.20)"`;
 
 exports[`should contain correct values for themeLightStateDisabled 1`] = `"#949598"`;
 
 exports[`should contain correct values for themeLightStateFocus 1`] = `"#0A0AFF"`;
 
-exports[`should contain correct values for themeLightStateHover 1`] = `"rgba(148, 149, 152, 0.18)"`;
+exports[`should contain correct values for themeLightStateHover 1`] = `"rgba(148, 149, 152, 0.20)"`;
