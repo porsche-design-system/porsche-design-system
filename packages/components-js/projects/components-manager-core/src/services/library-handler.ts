@@ -5,7 +5,7 @@ export type RegisterCustomElementsCallback = (prefix: string) => void;
 
 type ReadyResolve = () => void;
 export type LibraryHandlerData = {
-  isLoaded: boolean;
+  isInjected: boolean;
   isReady: () => Promise<unknown>;
   readyResolve: ReadyResolve;
   prefixes: string[];
@@ -27,10 +27,17 @@ export type LoadComponentLibraryOptions = {
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version) || {};
-  const { isLoaded, prefixes, registerCustomElements } = data;
-  if (!isLoaded) {
+  const { isInjected, prefixes, registerCustomElements } = data;
+
+  if (Object.entries(getComponentsManagerData()).some(([v, data]) => v !== version && data.prefixes.includes(prefix))) {
+    throw new Error(
+      `Prefix '${prefix}' is already registered by a different version of the Porsche Design System. Please use a different one.`
+    );
+  }
+
+  if (!isInjected) {
     addScript(script);
-    data.isLoaded = true; // TODO: that's not true, the script was injected but really loaded was nothing
+    data.isInjected = true;
   }
 
   if (!prefixes.includes(prefix)) {
@@ -65,7 +72,7 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
     let readyPromiseResolve: ReadyResolve = () => {};
     const readyPromise: Promise<void> = new Promise((resolve: ReadyResolve) => (readyPromiseResolve = resolve));
     const newLibraryHandlerData: LibraryHandlerData = {
-      isLoaded: false,
+      isInjected: false,
       isReady: () => readyPromise,
       readyResolve: readyPromiseResolve,
       prefixes: [],
