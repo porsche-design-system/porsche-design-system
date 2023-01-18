@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-inline-notification',
   template: `
-    <
     <div class="playground light" title="should show inline-notification info on light background">
       <p-inline-notification [heading]="'Some neutral heading'" [description]="'Some description'"></p-inline-notification>
     </div>

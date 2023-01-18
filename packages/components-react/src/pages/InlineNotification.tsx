@@ -4,7 +4,6 @@ import { PInlineNotification } from '@porsche-design-system/components-react';
 export const InlineNotificationPage = (): JSX.Element => {
   return (
     <>
-      <
       <div className="playground light" title="should show inline-notification info on light background">
         <PInlineNotification heading="Some neutral heading" description="Some description" />
       </div>
