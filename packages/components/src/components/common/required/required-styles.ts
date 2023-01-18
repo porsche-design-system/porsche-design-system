@@ -6,7 +6,7 @@ export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'requ
   return {
     required: {
       userSelect: 'none',
-      color: getThemedColors(theme).errorColor,
+      color: getThemedColors(theme).primaryColor,
     },
   };
 };
