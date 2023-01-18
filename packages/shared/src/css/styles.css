@@ -39,14 +39,11 @@ select {
   position: relative;
   z-index: 999999;
   font: revert;
-  line-height: revert;
-  text-size-adjust: revert;
-  -webkit-text-size-adjust: revert;
   outline: revert;
-  outline-offset: revert;
+  outline-offset: 0;
 }
 
-.playground {
+select:focus .playground {
   padding: 1rem;
 }
 
