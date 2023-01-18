@@ -2,8 +2,8 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
   GetMarkup,
+  getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import {
@@ -62,7 +62,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <span slot="message">Some success message with a <a href="#">link</a>.</span>
         </p-checkbox-wrapper>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover > p-checkbox-wrapper input[type="checkbox"]');
       await forceHoverState(page, '.hover > .force-label > p-checkbox-wrapper >>> span');
