@@ -7,7 +7,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
-  frostedGlassMediumStyle,
+  frostedGlassStyle,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -88,14 +88,14 @@ export const getLinkButtonPureStyles = (
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
-          ...frostedGlassMediumStyle,
+          ...frostedGlassStyle,
           backgroundColor: hoverColor,
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
-            ...frostedGlassMediumStyle,
+            ...frostedGlassStyle,
             backgroundColor: hoverColor,
           },
         })),
