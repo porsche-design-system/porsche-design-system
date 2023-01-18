@@ -4,7 +4,7 @@ import { pascalCase } from 'change-case';
 import type { TagName } from '../src/lib/tagNames';
 
 type CodeSample = {
-  component: TagName;
+  component: TagName | 'componentsReady';
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
@@ -16,6 +16,18 @@ const componentsReactPath = '../components-react/src/examples';
 
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
+    {
+      component: 'componentsReady',
+      samples: [
+        [
+          componentsJsPath + '/../../projects/jsdom-polyfill/tests/unit/specs/componentsReady.spec.ts',
+          componentsAngularPath + '/../../componentsReady-karma.spec.ts',
+          componentsReactPath + '/../../projects/react-wrapper/tests/unit/specs/componentsReady.spec.tsx',
+        ],
+        [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testbed.spec.ts'],
+        [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testing-library.spec.ts'],
+      ],
+    },
     {
       component: 'p-accordion',
       samples: [
@@ -120,6 +132,21 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-tabs-bar',
+      samples: [
+        [
+          componentsJsPath + '/tabs-bar-example-basic.html',
+          componentsAngularPath + '/tabs-bar-example-basic.component.ts',
+          componentsReactPath + '/TabsBarExampleBasic.tsx',
+        ],
+        [
+          componentsJsPath + '/tabs-bar-example-accessibility.html',
+          componentsAngularPath + '/tabs-bar-example-accessibility.component.ts',
+          componentsReactPath + '/TabsBarExampleAccessibility.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-text-field-wrapper',
       samples: [
         [
@@ -144,21 +171,6 @@ const generateCodeSamples = (): void => {
         ],
       ],
     },
-    {
-      component: 'p-tabs-bar',
-      samples: [
-        [
-          componentsJsPath + '/tabs-bar-example-basic.html',
-          componentsAngularPath + '/tabs-bar-example-basic.component.ts',
-          componentsReactPath + '/TabsBarExampleBasic.tsx',
-        ],
-        [
-          componentsJsPath + '/tabs-bar-example-accessibility.html',
-          componentsAngularPath + '/tabs-bar-example-accessibility.component.ts',
-          componentsReactPath + '/TabsBarExampleAccessibility.tsx',
-        ],
-      ],
-    },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');
@@ -169,17 +181,22 @@ const generateCodeSamples = (): void => {
   ].join('\n');
 
   const functions = codeSamples
-    .map((sample) => {
-      console.log(`Generating samples for ${sample.component}`);
+    .map((codeSample) => {
+      console.log(`Generating samples for ${codeSample.component}`);
 
       const sampleNamesAndContents: { sampleName: string; samples: { [key in Framework]?: string }[] }[] =
-        sample.samples.map((sample, idx) => {
+        codeSample.samples.map((sampleFileNames, idx) => {
           // generate sampleName from first file of array
-          const firstFileName = path.basename(sample[0]);
-          const [, sampleName] = firstFileName.match(/-(example-[a-z-\d]+)/) || [];
+          const firstFileName = path.basename(sampleFileNames[0]);
+
+          // componentsReady is a bit special
+          const [, sampleName = 'default'] =
+            firstFileName.match(
+              codeSample.component === 'componentsReady' ? /componentsReady-([a-z-]+)/ : /-(example-[a-z-\d]+)/
+            ) || [];
           console.log(`– Sample #${idx + 1}: ${sampleName}`);
 
-          const sampleContents: { [key in Framework]?: string }[] = sample.map((fileName) => {
+          const sampleContents: { [key in Framework]?: string }[] = sampleFileNames.map((fileName) => {
             const filePath = path.resolve(fileName);
             const filePathFromPackagesFolder = filePath.replace(packagesFolder, '');
             const [, extractedFramework = 'shared'] = filePathFromPackagesFolder.match(/\/components-([a-z]+)\//) || [];
@@ -199,7 +216,7 @@ const generateCodeSamples = (): void => {
           return { sampleName, samples: sampleContents };
         });
 
-      const componentName = pascalCase(sample.component.replace('p-', ''));
+      const componentName = pascalCase(codeSample.component.replace('p-', ''));
       const functionName = `get${componentName}CodeSamples`;
       const sampleParams = sampleNamesAndContents.map(({ sampleName }) => sampleName);
 
