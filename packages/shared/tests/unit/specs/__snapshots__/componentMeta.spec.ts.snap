@@ -54,7 +54,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "persistent": false,
-      "state": "neutral",
+      "state": "info",
       "theme": "light",
       "width": "basic",
     },
@@ -398,7 +398,7 @@ exports[`should match snapshot 1`] = `
       "description": null,
       "heading": null,
       "persistent": false,
-      "state": "neutral",
+      "state": "info",
       "theme": "light",
     },
     "styling": "jss",
@@ -1309,7 +1309,7 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
-      "state": "neutral",
+      "state": "info",
       "text": null,
       "theme": "light",
     },
