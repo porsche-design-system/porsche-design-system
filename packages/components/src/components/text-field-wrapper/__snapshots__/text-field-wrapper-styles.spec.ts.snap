@@ -1,61 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -78,43 +66,30 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -138,7 +113,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0.25rem;
+    padding: 0 0 4px;
   }
 }
 
@@ -153,7 +128,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     clip: rect(1px,1px,1px,1px);
     clip-path: inset(50%);
     white-space: nowrap;
-    padding: 0 0 0.25rem;
+    padding: 0 0 4px;
   }
 }
 
@@ -167,7 +142,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0.25rem;
+    padding: 0 0 4px;
   }
 }
 
@@ -182,7 +157,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     clip: rect(1px,1px,1px,1px);
     clip-path: inset(50%);
     white-space: nowrap;
-    padding: 0 0 0.25rem;
+    padding: 0 0 4px;
   }
 }
 
@@ -196,68 +171,56 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0.25rem;
+    padding: 0 0 4px;
   }
 }
 
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -267,8 +230,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -277,7 +240,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -5px;
 }
@@ -291,18 +254,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -324,44 +287,31 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -377,68 +327,56 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 
@@ -460,44 +398,31 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -513,67 +438,55 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 
@@ -595,58 +508,42 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #949598;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -662,70 +559,58 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #CB3333 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #FBFCFF !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #CB3333 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #7E7F82 !important;
+  border-color: #7E7F82 !important;
+  -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #7E7F82 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #9a2727 !important;
   }
 }
 
@@ -747,58 +632,42 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #FBFCFF;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #AFB0B3;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   right: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #7E7F82;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #CB3333;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -814,65 +683,177 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #9a2727 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #9a2727 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
+  background: #949598 !important;
 }
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #c51720 !important;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
+}
+.unit {
+  position: absolute;
+  height: 54px;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #949598;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #E7323B;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 4px;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #c51720 !important;
+  }
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #c51720 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 54px !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
+}
+::slotted(input:focus) {
+  border-color: #000000 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+::slotted(input[readonly]) {
+  border-color: #949598 !important;
+  background: #949598 !important;
+}
+::slotted(input[readonly]:focus) {
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -882,8 +863,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -892,7 +873,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -906,18 +887,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -939,43 +920,30 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -991,63 +959,51 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
-  padding-right: 3rem !important;
-  padding-left: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
+  padding-left: 54px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1057,8 +1013,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -1067,7 +1023,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -1081,18 +1037,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -1114,49 +1070,36 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .icon {
   position: absolute;
   left: 0;
   bottom: 0;
-  color: #626669;
+  color: #949598;
   padding: 0.75rem;
   pointer-events: none;
 }
@@ -1174,62 +1117,50 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1239,8 +1170,8 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -1249,7 +1180,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -1263,10 +1194,10 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 button+button[type=submit] {
@@ -1274,10 +1205,10 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -1299,43 +1230,30 @@ button+button[type=submit] {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1351,62 +1269,50 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1416,8 +1322,8 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -1426,7 +1332,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -1440,10 +1346,10 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 button+button[type=submit] {
@@ -1451,10 +1357,10 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -1476,49 +1382,36 @@ button+button[type=submit] {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .icon {
   position: absolute;
   left: 0;
   bottom: 0;
-  color: #626669;
+  color: #949598;
   padding: 0.75rem;
   pointer-events: none;
 }
@@ -1536,62 +1429,50 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1601,8 +1482,8 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -1611,7 +1492,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -1625,14 +1506,14 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 button+button[type=button] {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 button+button[type=submit] {
@@ -1640,10 +1521,10 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -1665,49 +1546,36 @@ button+button[type=submit] {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .icon {
   position: absolute;
   left: 0;
   bottom: 0;
-  color: #626669;
+  color: #949598;
   padding: 0.75rem;
   pointer-events: none;
 }
@@ -1725,68 +1593,56 @@ button+button[type=submit] {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -1808,43 +1664,30 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1860,68 +1703,56 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
   -moz-appearance: textfield !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -1943,57 +1774,41 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #949598;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2009,70 +1824,58 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -2094,57 +1897,41 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #949598;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2160,70 +1947,58 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #FBFCFF !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #beceff !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #7E7F82 !important;
+  border-color: #7E7F82 !important;
+  -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #7E7F82 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #AFB0B3 !important;
   }
 }
 
@@ -2245,57 +2020,41 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #FBFCFF;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #AFB0B3;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   right: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #7E7F82;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2311,65 +2070,176 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #FBFCFF !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #FBFCFF !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
+  background: #949598 !important;
 }
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #010205 !important;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
+}
+.unit {
+  position: absolute;
+  height: 54px;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #949598;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 4px;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+    border-color: #010205 !important;
+  }
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 54px !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
+}
+::slotted(input:focus) {
+  border-color: #32B85B !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+::slotted(input[readonly]) {
+  border-color: #949598 !important;
+  background: #949598 !important;
+}
+::slotted(input[readonly]:focus) {
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2379,8 +2249,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -2389,7 +2259,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -5px;
 }
@@ -2403,18 +2273,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -2436,44 +2306,31 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2489,68 +2346,56 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 
@@ -2572,44 +2417,31 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2625,67 +2457,55 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 
@@ -2707,58 +2527,42 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #010205;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #949598;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2774,70 +2578,58 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #00C77E !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #FBFCFF !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #00C77E !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #7E7F82 !important;
+  border-color: #7E7F82 !important;
+  -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #7E7F82 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #7E7F82 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #008a57 !important;
   }
 }
 
@@ -2859,58 +2651,42 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #FBFCFF;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.label__text--description {
-  color: #626669;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #AFB0B3;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   right: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #626669;
+  color: #7E7F82;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #00C77E;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2926,65 +2702,177 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #008a57 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #008a57 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
+  background: #949598 !important;
 }
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #258843 !important;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
+  color: #535457;
+}
+.unit {
+  position: absolute;
+  height: 54px;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 15px 16px 15px 10px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #949598;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #32B85B;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 4px;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #258843 !important;
+  }
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #258843 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 54px !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
+}
+::slotted(input:focus) {
+  border-color: #E7323B !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+::slotted(input[readonly]) {
+  border-color: #949598 !important;
+  background: #949598 !important;
+}
+::slotted(input[readonly]:focus) {
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2994,8 +2882,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -3004,7 +2892,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -5px;
 }
@@ -3018,18 +2906,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -3051,41 +2939,30 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3101,68 +2978,56 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 
@@ -3184,41 +3049,30 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3234,67 +3088,55 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 
@@ -3316,56 +3158,42 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3381,70 +3209,58 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 
@@ -3466,56 +3282,42 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3531,65 +3333,53 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3599,8 +3389,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -3609,7 +3399,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -3623,18 +3413,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -3656,40 +3446,29 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3705,68 +3484,56 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -3788,40 +3555,29 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3837,67 +3593,55 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -3919,55 +3663,41 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3983,70 +3713,58 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #626669 !important;
+  border-color: #000000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 
@@ -4068,55 +3786,41 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4132,65 +3836,53 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
+    border-color: #010205 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4200,8 +3892,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -4210,7 +3902,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -5px;
 }
@@ -4224,18 +3916,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -4257,41 +3949,30 @@ button:disabled {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4307,68 +3988,56 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 
@@ -4390,41 +4059,30 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4440,67 +4098,55 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 
@@ -4522,56 +4168,42 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4587,70 +4219,58 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  outline-color: #018a16 !important;
+  border-color: #32B85B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 
@@ -4672,56 +4292,42 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .unit {
   position: absolute;
+  height: 54px;
   bottom: 0;
   left: 0;
-  padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
+  padding: 15px 10px 15px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4737,65 +4343,53 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
   .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #014d0c !important;
+    border-color: #258843 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
 }
 ::slotted(input) {
   display: block !important;
   position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
   width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  height: 54px !important;
+  outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
-  padding-right: 3rem !important;
+  color: #010205 !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 14px 16px !important;
+  padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  outline-color: #e00000 !important;
+  border-color: #E7323B !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
+  border-color: #949598 !important;
+  background: #949598 !important;
 }
 ::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
+  background: #949598 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4805,8 +4399,8 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 54px;
+  height: 54px;
   padding: 0.75rem;
   box-sizing: border-box;
   outline: 1px solid transparent;
@@ -4815,7 +4409,7 @@ button {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -5px;
 }
@@ -4829,18 +4423,18 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:active {
-  color: #d5001c;
+  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
-  color: #96989a;
+  color: #949598;
   cursor: not-allowed;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
   button:not(:disabled):hover {
-    color: #d5001c;
+    color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -4863,41 +4457,30 @@ button:disabled {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0.25rem;
+  padding: 0 0 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #949598;
 }
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: .875rem;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4913,7 +4496,7 @@ button:disabled {
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #a30000 !important;
+    border-color: #c51720 !important;
   }
 }
 "
@@ -4956,7 +4539,7 @@ p-text-field-wrapper a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   p-text-field-wrapper a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
@@ -4999,7 +4582,7 @@ prefixed-p-text-field-wrapper a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-text-field-wrapper a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "

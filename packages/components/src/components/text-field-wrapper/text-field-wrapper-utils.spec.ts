@@ -14,7 +14,6 @@ import {
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
 import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
-import type { FormState } from '../../utils/form/form-state';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -154,20 +153,20 @@ describe('hasLocateAction()', () => {
 });
 
 describe('getInputPadding()', () => {
-  it.each<[TextFieldWrapperUnitPosition, FormState, string]>([
-    ['prefix', 'none', '0.6875rem 0.6875rem 0.6875rem 3.75rem'],
-    ['prefix', 'success', '0.625rem 0.625rem 0.625rem 3.75rem'],
-    ['suffix', 'none', '0.6875rem 3.75rem 0.6875rem 0.6875rem'],
-    ['suffix', 'success', '0.625rem 3.75rem 0.625rem 0.625rem'],
-  ])('should for unitPosition: %s and state: %s return %s', (unitPosition, state, expected) => {
-    expect(getInputPadding(60, unitPosition, state)).toBe(expected);
+  it.each<[TextFieldWrapperUnitPosition, string]>([
+    ['prefix', '14px 16px 14px 58px'],
+    ['prefix', '14px 16px 14px 58px'],
+    ['suffix', '14px 58px 14px 16px'],
+    ['suffix', '14px 58px 14px 16px'],
+  ])('should for unitPosition: %s return %s', (unitPosition, expected) => {
+    expect(getInputPadding(60, unitPosition)).toBe(expected);
   });
 });
 
 describe('setInputStyles()', () => {
   it('should do nothing if unitOrCounterElement is undefined', () => {
     const input = getInputElement();
-    setInputStyles(input, undefined, 'prefix', 'none');
+    setInputStyles(input, undefined, 'prefix');
 
     expect(input.style.cssText).toBe('');
   });
@@ -176,9 +175,9 @@ describe('setInputStyles()', () => {
     const input = getInputElement();
     const unitElement = getCounterElement();
     Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'prefix', 'none');
+    setInputStyles(input, unitElement, 'prefix');
 
-    expect(input.style.cssText).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 3.75rem !important;');
+    expect(input.style.cssText).toBe('padding: 14px 16px 14px 58px !important;');
   });
 });
 
