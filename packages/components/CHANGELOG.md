@@ -15,9 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Default value of prop `variant` of `Button` and `Link` has changed from "secondary" to "primary"
-- Default value of prop `icon` of `Button` and `Link` has changed from "arrow-head-right" to "none"
-- `Spinner`, `Link Pure`, `Button Pure` matches new design language
+- Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
+- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**
+- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button` matches new design language
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
@@ -50,14 +50,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 </p-button-pure>
 ```
 
-- Deprecated prop `tabbable` for `Link Pure`, `Button Pure` and `Switch`
+- Deprecated prop `tabbable` for `Button Pure`, `Button` and `Switch`
 
 ```diff
-- <p-link-pure href="#" tabbable="false">Some label</p-link-pure>
-+ <p-link-pure href="#" tabindex="-1">Some label</p-link-pure>
-
 - <p-button-pure tabbable="false">Some label</p-button-pure>
 + <p-button-pure tabindex="-1">Some label</p-button-pure>
+
+- <p-button tabbable="false">Some label</p-button>
++ <p-button tabindex="-1">Some label</p-button>
 
 - <p-switch tabbable="false">Some label</p-switch>
 + <p-switch tabindex="-1">Some label</p-switch>
