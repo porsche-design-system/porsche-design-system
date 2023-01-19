@@ -126,6 +126,7 @@ export const getLinkButtonStyles = (
       minHeight: '54px',
       boxSizing: 'border-box',
       outline: 0,
+      textAlign: 'left',
       appearance: 'none',
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,
