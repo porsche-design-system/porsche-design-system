@@ -79,7 +79,7 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { top } = host.getBoundingClientRect();
 
   const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
-  const spaceBottom = window.innerHeight - top - parseInt(INPUT_HEIGHT);
+  const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 

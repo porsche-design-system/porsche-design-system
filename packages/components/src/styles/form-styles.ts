@@ -12,7 +12,8 @@ import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
-export const INPUT_HEIGHT = '54px';
+export const INPUT_HEIGHT = 54;
+export const INPUT_HEIGHT_PX = `${INPUT_HEIGHT}px`;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -32,7 +33,7 @@ export const getBaseChildStyles = (
       display: 'block',
       position: 'relative',
       width: '100%',
-      ...(child !== 'textarea' && { height: INPUT_HEIGHT }),
+      ...(child !== 'textarea' && { height: INPUT_HEIGHT_PX }),
       outline: 'none',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',

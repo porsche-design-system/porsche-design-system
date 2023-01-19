@@ -10,7 +10,7 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from '../../styles';
-import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT } from '../../styles/form-styles';
+import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT_PX } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -59,7 +59,7 @@ export const getComponentCss = (
               }
             : isSearchOrPassword && {
                 paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 50),
-                ...(isSearch && !isWithinForm && { paddingLeft: INPUT_HEIGHT }),
+                ...(isSearch && !isWithinForm && { paddingLeft: INPUT_HEIGHT_PX }),
               }),
         }),
         // Reset webkit autofill styles
@@ -74,8 +74,8 @@ export const getComponentCss = (
           bottom: 0,
           right: 0,
           margin: 0,
-          width: INPUT_HEIGHT,
-          height: INPUT_HEIGHT,
+          width: INPUT_HEIGHT_PX,
+          height: INPUT_HEIGHT_PX,
           padding: pxToRemWithUnit(12), // affects spinner size
           boxSizing: 'border-box',
           outline: 'transparent none',
@@ -122,7 +122,7 @@ export const getComponentCss = (
       hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
-          height: INPUT_HEIGHT,
+          height: INPUT_HEIGHT_PX,
           bottom: 0,
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
