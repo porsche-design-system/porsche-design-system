@@ -30,6 +30,10 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         <p-link theme="${theme}" variant="primary">
           <a href="#">Slotted Primary</a>
         </p-link>
+        <p-link theme="${theme}" variant="primary" href="#" icon="arrow-right">Primary with icon</p-link>
+        <p-link theme="${theme}" variant="primary" icon="arrow-right">
+          <a href="#">Slotted Primary with icon</a>
+        </p-link>
         <p-link theme="${theme}" variant="primary" hide-label="true" href="#">Primary</p-link>
         <p-link theme="${theme}" variant="primary" hide-label="true">
           <a href="#">Slotted Primary</a>
@@ -38,6 +42,10 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         <p-link theme="${theme}" variant="secondary">
           <a href="#">Slotted Secondary</a>
         </p-link>
+        <p-link theme="${theme}" variant="secondary" href="#" icon="arrow-right">Secondary with icon</p-link>
+        <p-link theme="${theme}" variant="secondary" icon="arrow-right">
+          <a href="#">Slotted Secondary with icon</a>
+        </p-link>
         <p-link theme="${theme}" variant="secondary" hide-label="true" href="#">Secondary</p-link>
         <p-link theme="${theme}" variant="secondary" hide-label="true">
           <a href="#">Slotted Secondary</a>
@@ -45,6 +53,10 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
         <p-link theme="${theme}" variant="tertiary">
           <a href="#">Slotted Tertiary</a>
+        </p-link>
+        <p-link theme="${theme}" variant="tertiary" href="#" icon="arrow-right">Tertiary with icon</p-link>
+        <p-link theme="${theme}" variant="tertiary" icon="arrow-right">
+          <a href="#">Slotted Tertiary with icon</a>
         </p-link>
         <p-link theme="${theme}" variant="tertiary" hide-label="true" href="#">Tertiary</p-link>
         <p-link theme="${theme}" variant="tertiary" hide-label="true">

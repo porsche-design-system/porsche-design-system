@@ -29,6 +29,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-button theme="${theme}" variant="primary">Primary</p-button>
         <p-button theme="${theme}" variant="secondary">Secondary</p-button>
         <p-button theme="${theme}" variant="tertiary">Tertiary</p-button>
+        <p-button theme="${theme}" variant="primary" icon="arrow-right">Primary with icon</p-button>
+        <p-button theme="${theme}" variant="secondary" icon="arrow-right">Secondary with icon</p-button>
+        <p-button theme="${theme}" variant="tertiary" icon="arrow-right">Tertiary with icon</p-button>
         <p-button theme="${theme}" variant="primary" loading>Loading Primary</p-button>
         <p-button theme="${theme}" variant="secondary" loading>Loading Secondary</p-button>
         <p-button theme="${theme}" variant="tertiary" loading>Loading Tertiary</p-button>`;
