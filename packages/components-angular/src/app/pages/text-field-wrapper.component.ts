@@ -6,7 +6,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [
     `
       @media only screen and (min-width: 760px) {
-        #app {
+        #app,
+        :host {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
         }

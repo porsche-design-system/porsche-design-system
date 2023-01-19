@@ -4,7 +4,8 @@ import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 export const TextFieldWrapperPage = (): JSX.Element => {
   const style = `
     @media only screen and (min-width: 760px) {
-      #app {
+      #app,
+      :host {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
