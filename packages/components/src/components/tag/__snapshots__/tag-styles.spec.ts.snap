@@ -2,37 +2,37 @@
 
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: false 1`] = `
 {
-  "backgroundColor": "#262b2e",
-  "baseColor": "#fff",
-  "hoverColor": "#ff0223",
-  "outlineColor": "currentColor",
+  "backgroundColor": "#212225",
+  "backgroundHoverColor": "#3e4045",
+  "outlineColor": "#0A0AFF",
+  "primaryColor": "#FBFCFF",
 }
 `;
 
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: true 1`] = `
 {
-  "backgroundColor": "#262b2e",
-  "baseColor": "#000",
-  "hoverColor": "#d5001c",
-  "outlineColor": "#fff",
+  "backgroundColor": "#212225",
+  "backgroundHoverColor": "#3e4045",
+  "outlineColor": "#FBFCFF",
+  "primaryColor": "#010205",
 }
 `;
 
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: false 1`] = `
 {
-  "backgroundColor": "#f2f2f2",
-  "baseColor": "#000",
-  "hoverColor": "#d5001c",
-  "outlineColor": "currentColor",
+  "backgroundColor": "#EEEFF2",
+  "backgroundHoverColor": "#cbced7",
+  "outlineColor": "#0A0AFF",
+  "primaryColor": "#010205",
 }
 `;
 
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: true 1`] = `
 {
-  "backgroundColor": "#f2f2f2",
-  "baseColor": "#fff",
-  "hoverColor": "#ff0223",
-  "outlineColor": "#000",
+  "backgroundColor": "#EEEFF2",
+  "backgroundHoverColor": "#cbced7",
+  "outlineColor": "#010205",
+  "primaryColor": "#FBFCFF",
 }
 `;
 
@@ -45,17 +45,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #0e1418;
-  color: #fff;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #0E0E12;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -69,16 +67,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -97,14 +94,8 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
-@media(hover:hover) {
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #ff0223 !important;
-  }
-}
-
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
 }"
@@ -119,17 +110,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #fff;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #FFF;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -143,16 +132,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -171,14 +159,8 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
-@media(hover:hover) {
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
-  }
-}
-
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
 }"
@@ -193,18 +175,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #0e1418;
-  color: #fff;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #0E0E12;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -218,16 +197,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -246,14 +224,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #ff0223;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #ff0223 !important;
+    cursor: pointer;
+    background: #292934;
   }
 }
 
@@ -271,18 +247,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #fff;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #FFF;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -296,16 +269,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -324,14 +296,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #e0e0e0;
   }
 }
 
@@ -349,18 +319,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #262b2e;
-  color: #fff;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #212225;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -374,16 +341,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -402,14 +368,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #ff0223;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #ff0223 !important;
+    cursor: pointer;
+    background: #3e4045;
   }
 }
 
@@ -427,18 +391,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #f2f2f2;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #EEEFF2;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -452,16 +413,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -480,14 +440,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #cbced7;
   }
 }
 
@@ -505,18 +463,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #e3e4e5;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #FBFCFF;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -530,16 +485,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #FBFCFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -558,14 +512,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #cecfd1;
   }
 }
 
@@ -583,18 +535,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #323639;
-  color: #fff;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #010205;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -608,16 +557,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #010205 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -636,14 +584,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #ff0223;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #ff0223 !important;
+    cursor: pointer;
+    background: #535457;
   }
 }
 
@@ -661,18 +607,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #fec5c5;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #290A0A;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -686,16 +629,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -714,14 +656,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #331f1f;
   }
 }
 
@@ -739,18 +679,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #fae6e6;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #FCE8E9;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -764,16 +701,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -792,14 +728,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #eed7d9;
   }
 }
 
@@ -808,7 +742,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-information, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -817,18 +751,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #c7e4ff;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #001A33;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -842,16 +773,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -870,14 +800,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #0f2943;
   }
 }
 
@@ -886,7 +814,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-information, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -895,18 +823,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #e5eff8;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #E8EEFD;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -920,16 +845,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -948,14 +872,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #d6def0;
   }
 }
 
@@ -973,18 +895,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #bfeec6;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #003320;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -998,16 +917,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1026,14 +944,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #0f432f;
   }
 }
 
@@ -1051,18 +967,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #e5f3e7;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #EBFAF0;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -1076,16 +989,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1104,14 +1016,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #ddeae1;
   }
 }
 
@@ -1129,18 +1039,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #ffe6bf;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #2B2208;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -1154,16 +1061,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1182,14 +1088,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #362f1c;
   }
 }
 
@@ -1207,18 +1111,15 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 1.5rem;
-  padding: 0 0.375rem;
-  border-radius: 0.25rem;
-  background: #fff5e5;
-  color: #000;
-  font: normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #FFF9E6;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -1232,16 +1133,15 @@ span {
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -3px !important;
-  left: -3px !important;
-  right: -3px !important;
-  bottom: -3px !important;
-  border: 1px solid transparent !important;
-  border-radius: 0.375rem !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: currentColor !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1260,14 +1160,12 @@ span {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
-  font-style: normal !important;
+  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
-    color: #d5001c;
-  }
-  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
-    border-color: #d5001c !important;
+    cursor: pointer;
+    background: #f5ecd2;
   }
 }
 
@@ -1276,30 +1174,30 @@ span {
 }"
 `;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: dark 1`] = `"#0e1418"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: dark 1`] = `"#0E0E12"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: light 1`] = `"#fff"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: light 1`] = `"#FFF"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: dark 1`] = `"#262b2e"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: dark 1`] = `"#212225"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: light 1`] = `"#f2f2f2"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: light 1`] = `"#EEEFF2"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: dark 1`] = `"#e3e4e5"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: dark 1`] = `"#FBFCFF"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: light 1`] = `"#323639"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: light 1`] = `"#010205"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: dark 1`] = `"#fec5c5"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: dark 1`] = `"#290A0A"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: light 1`] = `"#fae6e6"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: light 1`] = `"#FCE8E9"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-neutral, theme: dark 1`] = `"#c7e4ff"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-information, theme: dark 1`] = `"#001A33"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-neutral, theme: light 1`] = `"#e5eff8"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-information, theme: light 1`] = `"#E8EEFD"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: dark 1`] = `"#bfeec6"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: dark 1`] = `"#003320"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: light 1`] = `"#e5f3e7"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: light 1`] = `"#EBFAF0"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: dark 1`] = `"#ffe6bf"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: dark 1`] = `"#2B2208"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: light 1`] = `"#fff5e5"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: light 1`] = `"#FFF9E6"`;

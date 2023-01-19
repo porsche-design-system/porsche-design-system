@@ -7,7 +7,7 @@ import { getThemedColors } from '../../styles/colors';
 import type { Theme } from '../../types';
 import type { TagColor } from './tag-utils';
 
-xdescribe('getThemedBackgroundColor()', () => {
+describe('getThemedBackgroundColor()', () => {
   it.each<[TagColor, Theme]>([
     ['background-default', 'light'],
     ['neutral-contrast-high', 'light'],
@@ -29,7 +29,7 @@ xdescribe('getThemedBackgroundColor()', () => {
   });
 });
 
-xdescribe('getColors()', () => {
+describe('getColors()', () => {
   it('should call hasInvertedThemeColor(), getThemedColors() and getThemedBackgroundColor() with correct parameters', () => {
     const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
     const hasInvertedThemeColorSpy = jest.spyOn(tagUtils, 'hasInvertedThemeColor');
@@ -64,7 +64,7 @@ xdescribe('getColors()', () => {
   });
 });
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['background-default', true, 'light'],
     ['background-default', false, 'light'],
