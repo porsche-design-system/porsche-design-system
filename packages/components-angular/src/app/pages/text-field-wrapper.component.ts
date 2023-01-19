@@ -540,38 +540,38 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render input type text with unit">
-      <p-text-field-wrapper [label]="'Label with unit input type text'" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with unit and input type text'" [unit]="'km/h'">
         <input [type]="'text'" [value]="'three hundred'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground dark" title="should render input type text with unit on theme dark">
-      <p-text-field-wrapper [label]="'Label with unit input type text'" [unit]="'km/h'" [theme]="'dark'">
+      <p-text-field-wrapper [label]="'Label with unit and input type text'" [unit]="'km/h'" [theme]="'dark'">
         <input [type]="'text'" [value]="'three hundred'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render input type number with unit">
-      <p-text-field-wrapper [label]="'Label with unit input type number'" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with unit and input type number'" [unit]="'km/h'">
         <input [type]="'number'" [value]="300" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground dark" title="should render input type number with unit on theme dark">
-      <p-text-field-wrapper [label]="'Label with unit input type number'" [unit]="'km/h'" [theme]="'dark'">
+      <p-text-field-wrapper [label]="'Label with unit and input type number'" [unit]="'km/h'" [theme]="'dark'">
         <input [type]="'number'" [value]="300" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render input type text with unit position suffix">
-      <p-text-field-wrapper [label]="'Label with unit input type text position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
+      <p-text-field-wrapper [label]="'Label with unit, input type text and position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
         <input [type]="'text'" [value]="'four hundred'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground dark" title="should render input type text with unit position suffix on theme dark">
       <p-text-field-wrapper
-        [label]="'Label with unit input type text position suffix'"
+        [label]="'Label with unit, input type text and position suffix'"
         [unit]="'kWh'"
         [unitPosition]="'suffix'"
         [theme]="'dark'"
@@ -581,14 +581,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render input type number with unit position suffix">
-      <p-text-field-wrapper [label]="'Label with unit input type number position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
+      <p-text-field-wrapper
+        [label]="'Label with unit input, type number and position suffix'"
+        [unit]="'kWh'"
+        [unitPosition]="'suffix'"
+      >
         <input [type]="'number'" [value]="400" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground dark" title="should render input type number with unit position suffix on theme dark">
       <p-text-field-wrapper
-        [label]="'Label with unit input type number position suffix'"
+        [label]="'Label with unit input, type number and position suffix'"
         [unit]="'kWh'"
         [unitPosition]="'suffix'"
         [theme]="'dark'"
@@ -637,7 +641,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render unit when counter with unit position suffix and show-character-count is false"
     >
       <p-text-field-wrapper
-        [label]="'Label with unit with position suffix and hidden counter'"
+        [label]="'Label with unit, position suffix and hidden counter'"
         [unit]="'km/h'"
         [unitPosition]="'suffix'"
         [showCharacterCount]="false"
@@ -651,7 +655,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render unit when counter with unit position suffix and show-character-count is false on theme dark"
     >
       <p-text-field-wrapper
-        [label]="'Label with unit with position suffix and hidden counter'"
+        [label]="'Label with unit, position suffix and hidden counter'"
         [unit]="'km/h'"
         [unitPosition]="'suffix'"
         [showCharacterCount]="false"

@@ -541,38 +541,38 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render input type text with unit">
-        <PTextFieldWrapper label="Label with unit input type text" unit="km/h">
+        <PTextFieldWrapper label="Label with unit and input type text" unit="km/h">
           <input type="text" defaultValue="three hundred" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground dark" title="should render input type text with unit on theme dark">
-        <PTextFieldWrapper label="Label with unit input type text" unit="km/h" theme="dark">
+        <PTextFieldWrapper label="Label with unit and input type text" unit="km/h" theme="dark">
           <input type="text" defaultValue="three hundred" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render input type number with unit">
-        <PTextFieldWrapper label="Label with unit input type number" unit="km/h">
+        <PTextFieldWrapper label="Label with unit and input type number" unit="km/h">
           <input type="number" defaultValue={300} />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground dark" title="should render input type number with unit on theme dark">
-        <PTextFieldWrapper label="Label with unit input type number" unit="km/h" theme="dark">
+        <PTextFieldWrapper label="Label with unit and input type number" unit="km/h" theme="dark">
           <input type="number" defaultValue={300} />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render input type text with unit position suffix">
-        <PTextFieldWrapper label="Label with unit input type text position suffix" unit="kWh" unitPosition="suffix">
+        <PTextFieldWrapper label="Label with unit, input type text and position suffix" unit="kWh" unitPosition="suffix">
           <input type="text" defaultValue="four hundred" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground dark" title="should render input type text with unit position suffix on theme dark">
         <PTextFieldWrapper
-          label="Label with unit input type text position suffix"
+          label="Label with unit, input type text and position suffix"
           unit="kWh"
           unitPosition="suffix"
           theme="dark"
@@ -582,14 +582,18 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render input type number with unit position suffix">
-        <PTextFieldWrapper label="Label with unit input type number position suffix" unit="kWh" unitPosition="suffix">
+        <PTextFieldWrapper
+          label="Label with unit input, type number and position suffix"
+          unit="kWh"
+          unitPosition="suffix"
+        >
           <input type="number" defaultValue={400} />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground dark" title="should render input type number with unit position suffix on theme dark">
         <PTextFieldWrapper
-          label="Label with unit input type number position suffix"
+          label="Label with unit input, type number and position suffix"
           unit="kWh"
           unitPosition="suffix"
           theme="dark"
@@ -638,7 +642,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         title="should render unit when counter with unit position suffix and show-character-count is false"
       >
         <PTextFieldWrapper
-          label="Label with unit with position suffix and hidden counter"
+          label="Label with unit, position suffix and hidden counter"
           unit="km/h"
           unitPosition="suffix"
           showCharacterCount={false}
@@ -652,7 +656,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         title="should render unit when counter with unit position suffix and show-character-count is false on theme dark"
       >
         <PTextFieldWrapper
-          label="Label with unit with position suffix and hidden counter"
+          label="Label with unit, position suffix and hidden counter"
           unit="km/h"
           unitPosition="suffix"
           showCharacterCount={false}
