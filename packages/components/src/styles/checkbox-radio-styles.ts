@@ -12,7 +12,6 @@ export const getCheckboxRadioLabelJssStyle = (
   const { primaryColor, disabledColor } = getThemedColors(theme);
   return {
     order: 1,
-    display: 'inline-block',
     cursor: isDisabled ? 'default' : 'pointer',
     ...textSmallStyle,
     color: isDisabled ? disabledColor : primaryColor,

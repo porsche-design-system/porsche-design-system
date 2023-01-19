@@ -78,6 +78,7 @@ exports[`should call validateProps() with correct parameters via render for p-ch
   "label": "string",
   "message": "string",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 

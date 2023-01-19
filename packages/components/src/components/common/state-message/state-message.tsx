@@ -13,12 +13,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ id, state
   const PrefixedTagNames = getPrefixedTagNames(host);
   return (
     <span id={id} class="message" role={getRole(state)}>
-      <PrefixedTagNames.pIcon
-        class="message__icon"
-        name={state === 'error' ? 'exclamation' : 'check'}
-        color="inherit"
-        aria-hidden="true"
-      />
+      <PrefixedTagNames.pIcon name={state === 'error' ? 'exclamation' : 'check'} color="inherit" aria-hidden="true" />
       {message || <slot name="message" />}
     </span>
   );
