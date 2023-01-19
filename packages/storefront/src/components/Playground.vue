@@ -80,7 +80,7 @@
     withoutDemo: false,
   };
 
-  const themableComponentsSelector = Object.entries(componentMeta)
+  const themeableComponentsSelector = Object.entries(componentMeta)
     .filter(([, meta]) => meta.isThemeable)
     .map(([tagName]) => tagName)
     .join();
@@ -139,7 +139,8 @@
     }
 
     public get activeFrameworkMarkup(): string {
-      return this.frameworkMarkup[this.activeFramework]!;
+      // in case there aren't all frameworks available we use the first one as fallback
+      return this.frameworkMarkup[this.activeFramework] || Object.values(this.frameworkMarkup)[0];
     }
 
     public get isSlotSet(): boolean {
@@ -172,7 +173,7 @@
 
     private syncThemeIntoDemoComponents(): void {
       (this.$refs.demo as HTMLElement)
-        ?.querySelectorAll(themableComponentsSelector)
+        ?.querySelectorAll(themeableComponentsSelector)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .forEach((el) => ((el as any).theme = this.theme));
     }

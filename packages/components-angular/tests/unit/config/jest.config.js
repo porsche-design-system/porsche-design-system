@@ -1,5 +1,12 @@
+globalThis.ngJest = {
+  ...globalThis.ngJest,
+  skipNgcc: true,
+};
+
 module.exports = {
   preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/tests/unit/config/jest.setup.ts'],
+  globalSetup: 'jest-preset-angular/global-setup',
   rootDir: '../../../',
   verbose: true,
   testMatch: ['**/tests/unit/specs/**/*.spec.ts'],

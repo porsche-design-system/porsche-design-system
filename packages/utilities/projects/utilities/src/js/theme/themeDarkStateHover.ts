@@ -1,1 +1,1 @@
-export const themeDarkStateHover = 'rgba(144, 144, 153, 0.25)';
+export const themeDarkStateHover = 'rgba(126, 127, 130, 0.20)';
