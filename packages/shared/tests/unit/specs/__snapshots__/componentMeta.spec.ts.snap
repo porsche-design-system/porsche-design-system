@@ -1173,7 +1173,7 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "label",
       "description",
@@ -1197,6 +1197,7 @@ exports[`should match snapshot 1`] = `
       "message": null,
       "showCharacterCount": true,
       "state": "none",
+      "theme": "light",
       "unit": null,
       "unitPosition": "prefix",
     },
