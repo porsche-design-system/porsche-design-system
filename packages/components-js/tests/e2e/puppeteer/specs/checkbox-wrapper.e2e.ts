@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-checkbox-wrapper');
 const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .label');
+const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .text');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {

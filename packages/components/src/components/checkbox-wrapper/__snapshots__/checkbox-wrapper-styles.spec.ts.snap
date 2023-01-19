@@ -2,73 +2,52 @@
 
 exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -1px -1px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #323639 !important;
-  background-color: #323639 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #626669 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -79,27 +58,23 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.message__icon {
-  margin-right: 0.25rem;
-}
 @media(min-width:480px) {
-  .label {
+  .text {
     position: static;
     width: auto;
     height: auto;
@@ -108,12 +83,12 @@ label {
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0 0.5rem;
+    padding: 2px 0 0 8px;
   }
 }
 
 @media(min-width:760px) {
-  .label {
+  .text {
     position: absolute;
     height: 1px;
     width: auto;
@@ -123,12 +98,12 @@ label {
     clip: rect(1px,1px,1px,1px);
     clip-path: inset(50%);
     white-space: nowrap;
-    padding: 0 0 0 0.5rem;
+    padding: 2px 0 0 8px;
   }
 }
 
 @media(min-width:1000px) {
-  .label {
+  .text {
     position: static;
     width: auto;
     height: auto;
@@ -137,12 +112,12 @@ label {
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0 0.5rem;
+    padding: 2px 0 0 8px;
   }
 }
 
 @media(min-width:1300px) {
-  .label {
+  .text {
     position: absolute;
     height: 1px;
     width: auto;
@@ -152,12 +127,12 @@ label {
     clip: rect(1px,1px,1px,1px);
     clip-path: inset(50%);
     white-space: nowrap;
-    padding: 0 0 0 0.5rem;
+    padding: 2px 0 0 8px;
   }
 }
 
 @media(min-width:1760px) {
-  .label {
+  .text {
     position: static;
     width: auto;
     height: auto;
@@ -166,7 +141,7 @@ label {
     clip: auto;
     clip-path: none;
     white-space: normal;
-    padding: 0 0 0 0.5rem;
+    padding: 2px 0 0 8px;
   }
 }
 "
@@ -174,73 +149,75 @@ label {
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #E7323B !important;
+  background-color: #E7323B !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #e00000 !important;
-  background-color: #e00000 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #e00000 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #c51720 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #c51720 !important;
+    background-color: #c51720 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -250,97 +227,170 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #CB3333 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #CB3333 !important;
+  background-color: #CB3333 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #9a2727 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #9a2727 !important;
+    background-color: #9a2727 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CB3333;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #e00000 !important;
-  background-color: #e00000 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #e00000 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -350,97 +400,170 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CB3333;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -1px -1px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #010205 !important;
+  background-color: #010205 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #323639 !important;
-  background-color: #323639 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #626669 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -450,96 +573,168 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #FBFCFF !important;
+  background-color: #FBFCFF !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #FBFCFF !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #AFB0B3 !important;
+    background-color: #AFB0B3 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -1px -1px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #323639 !important;
-  background-color: #323639 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #626669 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -549,96 +744,168 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #32B85B !important;
+  background-color: #32B85B !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #018a16 !important;
-  background-color: #018a16 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #258843 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #258843 !important;
+    background-color: #258843 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -648,97 +915,170 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #00C77E !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #00C77E !important;
+  background-color: #00C77E !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #008a57 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #008a57 !important;
+    background-color: #008a57 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #00C77E;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #018a16 !important;
-  background-color: #018a16 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
   width: auto;
@@ -748,97 +1088,170 @@ label {
   clip: auto;
   clip-path: none;
   white-space: normal;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #00C77E;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #E7323B !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #E7323B !important;
+  background-color: #E7323B !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #e00000 !important;
-  background-color: #e00000 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #e00000 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #c51720 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #c51720 !important;
+    background-color: #c51720 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -849,97 +1262,171 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #CB3333 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #CB3333 !important;
+  background-color: #CB3333 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #9a2727 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #9a2727 !important;
+    background-color: #9a2727 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CB3333;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #e00000 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #e00000 !important;
-  background-color: #e00000 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #e00000 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -950,97 +1437,171 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CB3333;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -1px -1px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #010205 !important;
+  background-color: #010205 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #323639 !important;
-  background-color: #323639 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #626669 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -1051,96 +1612,169 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #FBFCFF !important;
+  background-color: #FBFCFF !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #FBFCFF !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #AFB0B3 !important;
+    background-color: #AFB0B3 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -1px -1px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 1px solid #626669 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #323639 !important;
-  background-color: #323639 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #626669 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -1151,96 +1785,169 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  border: 2px solid #32B85B !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: pointer !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  border-color: #32B85B !important;
+  background-color: #32B85B !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #018a16 !important;
-  background-color: #018a16 !important;
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
 }
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
-  cursor: not-allowed !important;
-}
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
-}
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #258843 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #258843 !important;
+    background-color: #258843 !important;
   }
 }
 
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -1251,97 +1958,171 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: false 2`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #00C77E !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  border-color: #00C77E !important;
+  background-color: #00C77E !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
+  border-radius: 8px !important;
+}
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #008a57 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #008a57 !important;
+    background-color: #008a57 !important;
+  }
+}
+
+.text {
+  order: 1;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+  color: #FBFCFF;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #00C77E;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
-  position: static !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 1.5rem !important;
-  background-position: -2px -2px !important;
-  background-color: #fff !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  opacity: 1 !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  cursor: pointer !important;
-}
-::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
-}
-::slotted(input:checked), ::slotted(input:indeterminate) {
-  border-color: #018a16 !important;
-  background-color: #018a16 !important;
-}
-::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
-  background-color: #96989a !important;
-}
-::slotted(input:disabled) {
-  border-color: #96989a !important;
+  border: 2px solid #949598 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
   cursor: not-allowed !important;
 }
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
-.label {
+.text {
   order: 1;
-  display: inline-block;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #96989a;
+  color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
@@ -1352,90 +2133,96 @@ label {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
-  padding: 0 0 0 0.5rem;
+  padding: 2px 0 0 8px;
 }
 .required {
   user-select: none;
-  color: #e00000;
+  color: #010205;
 }
 .message {
   display: flex;
-  margin-top: 0.25rem;
+  gap: 4px;
+  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
+  color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-checkbox-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: true 2`] = `
+":host {
+  display: block !important;
 }
-p-checkbox-wrapper b, p-checkbox-wrapper strong {
-  font-weight: 700 !important;
+:host([hidden]) {
+  display: none !important;
 }
-p-checkbox-wrapper em, p-checkbox-wrapper i {
-  font-style: normal !important;
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  border-radius: 4px !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
 }
-p-checkbox-wrapper a::-moz-focus-inner {
-  border: 0 !important;
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-p-checkbox-wrapper a:focus {
-  outline-color: currentColor !important;
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-p-checkbox-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
 }
-@media(hover:hover) {
-  p-checkbox-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-checkbox-wrapper a:hover {
-    color: #d5001c !important;
-  }
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
 }
-"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-checkbox-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+.required {
+  user-select: none;
+  color: #FBFCFF;
 }
-prefixed-p-checkbox-wrapper b, prefixed-p-checkbox-wrapper strong {
-  font-weight: 700 !important;
-}
-prefixed-p-checkbox-wrapper em, prefixed-p-checkbox-wrapper i {
-  font-style: normal !important;
-}
-prefixed-p-checkbox-wrapper a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-checkbox-wrapper a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-checkbox-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-checkbox-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-checkbox-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #00C77E;
+  transition: color var(--p-transition-duration, .24s) ease;
+}"
 `;

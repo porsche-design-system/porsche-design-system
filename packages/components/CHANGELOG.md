@@ -12,10 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `underline` prop for `Link Pure`
+- `Checkbox Wrapper` supports `theme` prop
 
 #### Changed
 
-- `Spinner`, `Link Pure`, `Button Pure` matches new design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper` matches new design language
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
@@ -34,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Removed
 
+- Custom slotted CSS for `Checkbox Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
 - `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff
