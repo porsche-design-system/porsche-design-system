@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
+import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
   textSmallStyle,
@@ -12,9 +12,7 @@ import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
-const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
-
-export const INPUT_HEIGHT = 54;
+export const INPUT_HEIGHT = '54px';
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -24,7 +22,7 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, primaryColorDarken, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } =
+  const { primaryColor, primaryColorDarken, contrastHighColor, contrastMediumColor, disabledColor } =
     getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
@@ -33,18 +31,15 @@ export const getBaseChildStyles = (
     [`::slotted(${child})`]: {
       display: 'block',
       position: 'relative',
-      // ...getInsetJssStyle(),
       width: '100%',
-      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
-      // margin: 0,
+      ...(child !== 'textarea' && { height: INPUT_HEIGHT }),
       outline: 'none',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
       border: `2px solid ${hasVisibleState ? formStateColor : contrastMediumColor}`, // TODO: verify color
       borderRadius: borderRadiusSmall,
-      background: backgroundColor,
-      // opacity: 1,
+      background: 'transparent',
       font: textSmallStyle.font,
       textIndent: 0,
       color: primaryColor, // TODO: verify color
@@ -62,9 +57,9 @@ export const getBaseChildStyles = (
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: lightThemeDisabledColor, // 🤷 no theming here
-      borderColor: lightThemeDisabledColor, // 🤷 no theming here
-      WebkitTextFillColor: lightThemeDisabledColor, // 🤷 no theming here; fix placeholder color bug in Safari
+      color: disabledColor,
+      borderColor: disabledColor,
+      WebkitTextFillColor: disabledColor,
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {

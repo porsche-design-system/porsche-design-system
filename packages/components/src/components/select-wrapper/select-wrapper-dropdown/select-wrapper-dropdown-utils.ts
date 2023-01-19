@@ -53,7 +53,7 @@ export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
   hasFilter: boolean,
-  isOpen: boolean,
+  isOpen: boolean
 ): AriaAttributes => {
   return {
     'aria-label': label,
@@ -62,8 +62,8 @@ export const getListAriaAttributes = (
         'aria-required': 'true',
       }),
     ...(!isOpen && {
-      'aria-hidden': 'true'
-    })
+      'aria-hidden': 'true',
+    }),
   };
 };
 
@@ -79,7 +79,7 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { top } = host.getBoundingClientRect();
 
   const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
-  const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
+  const spaceBottom = window.innerHeight - top - parseInt(INPUT_HEIGHT);
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 

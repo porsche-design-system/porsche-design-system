@@ -1,7 +1,6 @@
-import type { FormState } from '../../utils/form/form-state';
-import { pxToRemWithUnit } from '../../styles';
 import { getClosestHTMLElement, hasCounter } from '../../utils';
 import type { IconName } from '../../types';
+import { spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
@@ -15,29 +14,20 @@ export const isType = (inputType: string, typeToValidate: string): boolean => in
 export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const getInputPadding = (
-  unitElementWidth: number,
-  unitPosition: TextFieldWrapperUnitPosition,
-  state: FormState
-): string => {
-  const padding = pxToRemWithUnit(state !== 'none' ? 10 : 11);
+export const getInputPadding = (unitElementWidth: number, unitPosition: TextFieldWrapperUnitPosition): string => {
+  const topBottomPadding = '14px';
   return unitPosition === 'prefix'
-    ? `${padding} ${padding} ${padding} ${pxToRemWithUnit(unitElementWidth)}`
-    : `${padding} ${pxToRemWithUnit(unitElementWidth)} ${padding} ${padding}`;
+    ? `${topBottomPadding} ${spacingStaticMedium} ${topBottomPadding} ${unitElementWidth - 2}px` // -2px to compensate border
+    : `${topBottomPadding} ${unitElementWidth - 2}px ${topBottomPadding} ${spacingStaticMedium}`; // -2px to compensate border
 };
 
 export const setInputStyles = (
   input: HTMLInputElement,
   unitOrCounterElement: HTMLElement,
-  unitPosition: TextFieldWrapperUnitPosition,
-  state: FormState
+  unitPosition: TextFieldWrapperUnitPosition
 ): void => {
   if (unitOrCounterElement) {
-    input.style.setProperty(
-      'padding',
-      getInputPadding(unitOrCounterElement.offsetWidth, unitPosition, state),
-      'important'
-    );
+    input.style.setProperty('padding', getInputPadding(unitOrCounterElement.offsetWidth, unitPosition), 'important');
   }
 };
 

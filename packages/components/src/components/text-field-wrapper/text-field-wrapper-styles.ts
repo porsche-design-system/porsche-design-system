@@ -10,14 +10,14 @@ import {
   getThemedColors,
   getScreenReaderOnlyJssStyle,
 } from '../../styles';
-import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
+import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { spacingStaticMedium, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -51,7 +51,7 @@ export const getComponentCss = (
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
-            padding: pxToRemWithUnit(16),
+            padding: `14px ${spacingStaticMedium}`,
           }),
           ...(isType(inputType, 'number')
             ? {
@@ -59,7 +59,7 @@ export const getComponentCss = (
               }
             : isSearchOrPassword && {
                 paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 50),
-                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(50) }),
+                ...(isSearch && !isWithinForm && { paddingLeft: INPUT_HEIGHT }),
               }),
         }),
         // Reset webkit autofill styles
@@ -74,8 +74,8 @@ export const getComponentCss = (
           bottom: 0,
           right: 0,
           margin: 0,
-          width: pxToRemWithUnit(48),
-          height: pxToRemWithUnit(48),
+          width: INPUT_HEIGHT,
+          height: INPUT_HEIGHT,
           padding: pxToRemWithUnit(12), // affects spinner size
           boxSizing: 'border-box',
           outline: 'transparent none',
@@ -122,12 +122,13 @@ export const getComponentCss = (
       hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
+          height: INPUT_HEIGHT,
           bottom: 0,
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
-          padding: pxToRemWithUnit(12),
           zIndex: 1,
           boxSizing: 'border-box',
-          ...textSmallStyle,
+          padding: `15px ${spacingStaticMedium}`,
+          font: textSmallStyle.font,
           color: contrastMediumColor,
         },
       }

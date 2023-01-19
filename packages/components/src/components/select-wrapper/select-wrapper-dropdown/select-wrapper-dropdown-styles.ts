@@ -30,7 +30,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
       button: {
         position: 'absolute',
         top: 0,
-        height: pxToRemWithUnit(INPUT_HEIGHT),
+        height: pxToRemWithUnit(parseInt(INPUT_HEIGHT)),
         width: '100%',
         padding: 0,
         background: 'transparent',
@@ -82,8 +82,8 @@ export const getFilterStyles = (
         zIndex: 1,
         bottom: pxToRemWithUnit(2), // input is inset to not overlap with 1px or 2px border of state
         left: pxToRemWithUnit(2),
-        width: `calc(100% - ${pxToRemWithUnit(INPUT_HEIGHT - 4)})`,
-        height: pxToRemWithUnit(INPUT_HEIGHT - 4),
+        width: `calc(100% - ${pxToRemWithUnit(parseInt(INPUT_HEIGHT) - 4)})`,
+        height: pxToRemWithUnit(parseInt(INPUT_HEIGHT) - 4),
         padding: pxToRemWithUnit(10),
         outline: 'none',
         appearance: 'none',
@@ -193,7 +193,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               },
             }
           : {
-              bottom: pxToRemWithUnit(INPUT_HEIGHT - 1),
+              bottom: pxToRemWithUnit(parseInt(INPUT_HEIGHT) - 1),
               borderBottom: 'none',
               boxShadow: '0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)',
               '&::after': {
@@ -283,8 +283,8 @@ export const getComponentCss = (
             [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
             display: 'block',
             position: `var(${dropdownPositionVar})`, // for vrt tests
-            marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
-            paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
+            marginTop: pxToRemWithUnit(-parseInt(INPUT_HEIGHT)),
+            paddingTop: pxToRemWithUnit(parseInt(INPUT_HEIGHT)),
             left: 0,
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
