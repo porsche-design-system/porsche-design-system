@@ -48,7 +48,7 @@ const initToastWithToastItem = async (message: Partial<ToastMessage> = {}, opts?
 const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
   const msg: ToastMessage = {
     text: 'Some message',
-    state: 'neutral',
+    state: 'info',
     ...message,
   };
 
