@@ -103,9 +103,9 @@ export const getComponentCss = (
       '&:focus .switch::before': {
         content: '""',
         position: 'absolute',
-        ...getInsetJssStyle(checked ? -6 : -2),
+        ...getInsetJssStyle(-6),
         border: `${borderWidthBase} solid ${focusColor}`,
-        borderRadius: checked ? '18px' : '14px',
+        borderRadius: '18px',
       },
       '&:not(:focus-visible) .switch::before': {
         borderColor: 'transparent',
