@@ -13,7 +13,6 @@ export const getCheckboxRadioLabelJssStyle = (
   return {
     order: 1,
     cursor: isDisabled ? 'default' : 'pointer',
-    paddingTop: '2px', // currently, line-height of textSmall doesn't match height of checkbox and radio button
     ...textSmallStyle,
     color: isDisabled ? disabledColor : primaryColor,
     transition: getTransition('color'),

@@ -8,7 +8,13 @@ import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { FormState } from '../../utils/form/form-state';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { borderRadiusMedium, borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusMedium,
+  borderRadiusSmall,
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+} from '@porsche-design-system/utilities-v2';
 
 const getInlineSVG = (path: string): string => {
   return `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${path}</svg>')`;
@@ -39,16 +45,18 @@ export const getComponentCss = (
       '::slotted': addImportantToEachRule({
         '&(input)': {
           position: 'relative',
-          width: '28px',
-          height: '28px',
+          width: fontLineHeight,
+          height: fontLineHeight,
           flexShrink: 0,
           display: 'block',
           margin: 0,
           padding: 0,
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
-          boxSizing: 'border-box',
-          backgroundSize: '24px',
+          boxSizing: 'content-box',
+          fontFamily, // needed for correct width and height definition
+          fontSize: '1rem', // needed for correct width and height definition
+          backgroundSize: fontLineHeight,
           backgroundColor: 'transparent',
           transition: ['border-color', 'background-color'].map(getTransition).join(),
           border: `2px solid ${uncheckedColor}`,
@@ -79,12 +87,8 @@ export const getComponentCss = (
           '&(input:focus)::before': {
             content: '""',
             position: 'absolute',
-            ...getInsetJssStyle(-2),
-            border: `${borderWidthBase} solid ${focusColor}`,
-            borderRadius: borderRadiusSmall,
-          },
-          '&(input:checked:focus)::before': {
             ...getInsetJssStyle(-6),
+            border: `${borderWidthBase} solid ${focusColor}`,
             borderRadius: borderRadiusMedium,
           },
           '&(input:focus:not(:focus-visible))::before': {
