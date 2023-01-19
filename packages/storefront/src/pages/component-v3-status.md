@@ -35,7 +35,7 @@
 | ⛔ **Button / Link**        |                                                                                                 |
 | ⛔ **Link Social**          |                                                                                                 |
 | ⛔ **Tag**                  |                                                                                                 |
-| ⛔ **Tag Dismissible**      |                                                                                                 |
+| ✅ **Tag Dismissible**      |                                                                                                 |
 | ✅ **Switch**               |                                                                                                 |
 | ⛔ **Checkbox Wrapper**     |                                                                                                 |
 | ⛔ **Radio Button Wrapper** |                                                                                                 |
