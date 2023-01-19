@@ -1,14 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import {
-  addImportantToRule,
-  getFormTextHiddenJssStyle,
-  getInsetJssStyle,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from './';
+import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
 import { borderRadiusSmall, textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
