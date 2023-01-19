@@ -9,16 +9,18 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -42,7 +44,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -155,16 +156,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
@@ -183,18 +186,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -218,7 +214,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -259,16 +254,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
@@ -287,18 +284,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -322,7 +312,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -363,16 +352,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -396,7 +387,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -437,16 +427,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -470,7 +462,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -511,16 +502,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -539,18 +532,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -574,7 +560,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -614,16 +599,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -642,18 +629,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -677,7 +657,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -717,16 +696,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -750,7 +731,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -790,16 +770,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -823,7 +805,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -863,16 +844,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
@@ -891,18 +874,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -926,7 +902,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -967,16 +942,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
@@ -995,18 +972,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1030,7 +1000,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1071,16 +1040,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -1104,7 +1075,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1145,16 +1115,18 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -1178,7 +1150,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1219,16 +1190,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
@@ -1247,18 +1220,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1282,7 +1248,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1324,16 +1289,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
@@ -1352,18 +1319,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1387,7 +1347,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1429,16 +1388,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -1462,7 +1423,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1504,16 +1464,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -1537,7 +1499,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1579,16 +1540,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -1607,18 +1570,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1642,7 +1598,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1683,16 +1638,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -1711,18 +1668,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1746,7 +1696,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1787,16 +1736,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -1820,7 +1771,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1861,16 +1811,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -1894,7 +1846,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1935,16 +1886,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
@@ -1963,18 +1916,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1998,7 +1944,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2040,16 +1985,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
@@ -2068,18 +2015,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:focus)::before {
   content: "" !important;
   position: absolute !important;
-  top: -2px !important;
-  left: -2px !important;
-  right: -2px !important;
-  bottom: -2px !important;
-  border: 2px solid #0A0AFF !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked:focus)::before {
   top: -6px !important;
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
+  border: 2px solid #0A0AFF !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -2103,7 +2043,6 @@ label {
 .text {
   order: 1;
   cursor: pointer;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2145,16 +2084,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
@@ -2178,7 +2119,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2220,16 +2160,18 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input) {
   position: relative !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
-  background-size: 24px !important;
+  box-sizing: content-box !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
@@ -2253,7 +2195,6 @@ label {
 .text {
   order: 1;
   cursor: default;
-  padding-top: 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
