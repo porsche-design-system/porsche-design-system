@@ -90,7 +90,7 @@ export const getComponentCss = (
       },
     },
     label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };
