@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('button-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-button:not(:last-child) { margin-right: 0.5rem; }</style>`;
+      const head = `<style>p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-button theme="${theme}" variant="primary">Primary</p-button>

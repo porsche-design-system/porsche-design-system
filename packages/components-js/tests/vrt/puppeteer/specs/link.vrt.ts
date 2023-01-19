@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('link-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-link:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }</style>`;
+      const head = `<style>p-link:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>
