@@ -141,7 +141,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
@@ -188,7 +188,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
@@ -238,7 +238,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
@@ -288,7 +288,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
 "
@@ -339,7 +339,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -395,7 +395,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -454,7 +454,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -513,7 +513,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
     grid-column-start: 3;
@@ -565,7 +565,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
   }
 }
 "
@@ -612,7 +612,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
   }
 }
 "
@@ -724,7 +724,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 {
   "@media(min-width:760px)": {
     "display": "inline-flex",
-    "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
   },
   "display": "none",
 }
@@ -734,7 +734,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 {
   "@media(min-width:760px)": {
     "display": "inline-flex",
-    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
+    "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
   },
   "display": "none",
 }
@@ -764,7 +764,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 {
   "@media(min-width:760px)": {
     "display": "inline-flex",
-    "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
   },
   "display": "none",
 }
@@ -774,7 +774,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 {
   "@media(min-width:760px)": {
     "display": "inline-flex",
-    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
+    "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
   },
   "display": "none",
 }
