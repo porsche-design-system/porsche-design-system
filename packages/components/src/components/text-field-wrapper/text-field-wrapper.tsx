@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  AllowedTypes,
   addInputEventListenerForCounter,
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   FORM_STATES,
@@ -15,10 +15,11 @@ import {
   observeAttributes,
   observeProperties,
   setAriaAttributes,
+  THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -36,7 +37,6 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../common/required/required';
-import type { IconName } from '../../types';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -49,6 +49,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   showCharacterCount: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
   actionLoading: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -88,7 +89,8 @@ export class TextFieldWrapper {
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
 
-  // TODO: theme prop
+  /** Adapts the color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
@@ -185,7 +187,8 @@ export class TextFieldWrapper {
       this.isPassword ? 'password' : type,
       this.isWithinForm,
       this.hasAction,
-      this.hasAction && this.actionLoading
+      this.hasAction && this.actionLoading,
+      this.theme
     );
 
     const disabledOrReadOnly = disabled || readOnly;

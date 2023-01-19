@@ -28,9 +28,9 @@ export const getComponentCss = (
   inputType: string,
   isWithinForm: boolean,
   hasAction: boolean,
-  hasActionLoading: boolean
+  hasActionLoading: boolean,
+  theme: Theme
 ): string => {
-  const theme: Theme = 'light';
   const { primaryColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
   const hasVisibleState = isVisibleFormState(state);
   const isSearch = isType(inputType, 'search');

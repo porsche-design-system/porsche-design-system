@@ -2,7 +2,12 @@ import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
 import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
-import { borderRadiusSmall, textSmallStyle, fontSizeTextXSmall } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  textSmallStyle,
+  fontSizeTextXSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
@@ -108,7 +113,7 @@ export const getLabelStyles = (
         color: isDisabled ? disabledColor : primaryColor, // TODO: check color
         // transition: getTransition('color'),
         '&:last-of-type': {
-          marginBottom: '4px',
+          marginBottom: spacingStaticXSmall,
         },
         '&+&': {
           fontSize: fontSizeTextXSmall,

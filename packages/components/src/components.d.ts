@@ -1118,6 +1118,10 @@ export namespace Components {
          */
         "state"?: FormState;
         /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
           * The unit text.
          */
         "unit"?: string;
@@ -2757,6 +2761,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
         /**
           * The unit text.
          */
