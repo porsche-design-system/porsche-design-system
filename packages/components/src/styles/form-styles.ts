@@ -2,7 +2,7 @@ import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
 import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
-import { borderRadiusSmall, textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, textSmallStyle, fontSizeTextXSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
@@ -105,18 +105,17 @@ export const getLabelStyles = (
         display: 'block',
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         ...textSmallStyle,
-        color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'),
-        '&+&--description': {
-          marginTop: pxToRemWithUnit(-4),
-          paddingBottom: pxToRemWithUnit(8),
-          ...textXSmallStyle,
+        color: isDisabled ? disabledColor : primaryColor, // TODO: check color
+        // transition: getTransition('color'),
+        '&:last-of-type': {
+          marginBottom: '4px',
         },
-        ...(!isDisabled && {
-          '&--description': {
-            color: contrastHighColor,
-          },
-        }),
+        '&+&': {
+          fontSize: fontSizeTextXSmall,
+          ...(!isDisabled && {
+            color: contrastHighColor, // TODO: check color
+          }),
+        },
         ...labelTextHoverJssStyle,
       },
     },

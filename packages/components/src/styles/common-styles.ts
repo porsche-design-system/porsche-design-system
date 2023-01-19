@@ -140,7 +140,6 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({

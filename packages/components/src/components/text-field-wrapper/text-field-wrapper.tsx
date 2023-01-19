@@ -212,7 +212,7 @@ export class TextFieldWrapper {
               </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text label__text--description" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.description || <slot name="description" />}
               </span>
             )}
