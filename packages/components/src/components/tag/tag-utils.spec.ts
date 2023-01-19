@@ -13,10 +13,10 @@ describe('hasInvertedThemeColor()', () => {
     ['background-surface', 'dark', false],
     ['background-default', 'dark', false],
     ['neutral-contrast-high', 'dark', true],
-    ['notification-success', 'dark', true],
-    ['notification-warning', 'dark', true],
-    ['notification-error', 'dark', true],
-    ['notification-information', 'dark', true],
+    ['notification-success', 'dark', false],
+    ['notification-warning', 'dark', false],
+    ['notification-error', 'dark', false],
+    ['notification-information', 'dark', false],
   ])('should for color: %s and theme: %s return %s', (color, theme, expected) => {
     expect(hasInvertedThemeColor(color, theme)).toBe(expected);
   });
