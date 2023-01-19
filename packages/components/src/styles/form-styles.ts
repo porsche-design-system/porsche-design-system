@@ -107,10 +107,8 @@ export const getLabelStyles = (
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor, // TODO: check color
         // transition: getTransition('color'),
-        '&:last-of-type': {
-          marginBottom: spacingStaticXSmall,
-        },
         '&+&': {
+          marginTop: `-${spacingStaticXSmall}`,
           fontSize: fontSizeTextXSmall,
           ...(!isDisabled && {
             color: contrastHighColor, // TODO: check color
