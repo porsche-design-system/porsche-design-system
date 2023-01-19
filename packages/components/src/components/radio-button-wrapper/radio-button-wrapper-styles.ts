@@ -14,6 +14,7 @@ import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { FormState } from '../../utils/form/form-state';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const theme: Theme = 'light';
 
@@ -47,9 +48,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
+        ...hostHiddenStyles,
         display: 'block',
-      },
+      }),
       '::slotted': addImportantToEachRule({
         '&(input)': {
           position: 'static',

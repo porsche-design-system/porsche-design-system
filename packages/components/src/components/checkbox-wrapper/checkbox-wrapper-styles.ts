@@ -39,9 +39,9 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        ...hostHiddenStyles,
         display: 'block',
       }),
-      ...hostHiddenStyles,
       '::slotted': addImportantToEachRule({
         '&(input)': {
           position: 'relative',

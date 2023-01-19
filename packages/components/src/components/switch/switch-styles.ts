@@ -67,13 +67,13 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        ...hostHiddenStyles,
         outline: 0, // custom element is able to delegate the focus
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
           ...(!stretchValue && { verticalAlign: 'top' }),
         })),
       }),
-      ...hostHiddenStyles,
     },
     root: {
       display: 'flex',
