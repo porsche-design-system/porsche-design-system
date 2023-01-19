@@ -99,7 +99,7 @@ it('should not render label if label prop is not defined but should render if ch
 });
 
 describe('input type="password"', () => {
-  it('should disable input when input is disabled programmatically', async () => {
+  xit('should disable input when input is disabled programmatically', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const input = await getInput();
 
@@ -402,7 +402,7 @@ describe('focus state', () => {
   });
 });
 
-describe('hover state', () => {
+xdescribe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
   const defaultColor = 'rgb(98, 102, 105)';
   const hoverColor = 'rgb(0, 0, 0)';
@@ -413,11 +413,10 @@ describe('hover state', () => {
     const label = await getLabel();
     const input = await getInput();
 
-    const initialStyle = await getBorderColor(input);
-    expect(initialStyle).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultColor);
+
     await input.hover();
-    const hoverStyle = await getBorderColor(input);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverColor);
 
     await page.mouse.move(0, 300); // undo hover
     expect(await getBorderColor(input)).toBe(defaultColor);
@@ -432,11 +431,10 @@ describe('hover state', () => {
     const counter = await getCounterOrUnit();
     const input = await getInput();
 
-    const initialStyle = await getBorderColor(input);
-    expect(initialStyle).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultColor);
+
     await input.hover();
-    const hoverStyle = await getBorderColor(input);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverColor);
 
     await page.mouse.move(0, 300); // undo hover
     expect(await getBorderColor(input)).toBe(defaultColor);

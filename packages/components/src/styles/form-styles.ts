@@ -124,6 +124,7 @@ export const getLabelStyles = (
           color: disabledColor,
           cursor: 'not-allowed',
         }),
+        // TODO: might not be needed with pointer-events: none
         ...labelTextHoverJssStyle,
       },
     }),
