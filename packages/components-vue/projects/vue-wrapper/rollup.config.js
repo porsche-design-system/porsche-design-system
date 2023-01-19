@@ -11,7 +11,9 @@ const typescriptOpts = {
 
 const external = [
   '@porsche-design-system/components-js',
+  '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
+  '@porsche-design-system/components-js/testing',
   '@porsche-design-system/components-js/utilities/js',
 ];
 
@@ -59,4 +61,34 @@ const buildConfig = (packagePath) => {
   };
 };
 
-export default ['partials', 'utilities/js'].map(buildConfig);
+export default [
+  ...['partials', 'utilities/js'].map(buildConfig),
+  {
+    input: `${projectDir}/src/jsdom-polyfill.ts`,
+    external,
+    output: {
+      file: `${outputDir}/jsdom-polyfill/index.js`,
+      format: 'cjs',
+    },
+    plugins: [typescript(typescriptOpts)],
+  },
+  {
+    // typings are generated via separate tsc command
+    input: `${projectDir}/src/testing.ts`,
+    external,
+    output: {
+      file: `${outputDir}/testing/testing.js`,
+      format: 'cjs',
+    },
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'testing.js',
+          types: 'testing.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+];

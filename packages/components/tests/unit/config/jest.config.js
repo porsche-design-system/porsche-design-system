@@ -3,7 +3,7 @@ module.exports = {
   rootDir: '../../../',
   testEnvironment: 'jsdom',
   verbose: true,
-  setupFiles: ['<rootDir>/tests/unit/config/setup.ts'],
+  setupFiles: ['<rootDir>/tests/unit/config/jest.setup.ts'],
   testMatch: ['**/src/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   moduleNameMapper: {
