@@ -1,7 +1,7 @@
 import * as fromFrostedGlass from './';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromFrostedGlass).length).toBe(2);
+  expect(Object.keys(fromFrostedGlass).length).toBe(1);
 });
 
 it.each<keyof typeof fromFrostedGlass>(Object.keys(fromFrostedGlass) as (keyof typeof fromFrostedGlass)[])(

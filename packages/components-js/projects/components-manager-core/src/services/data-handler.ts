@@ -1,4 +1,4 @@
-import { ComponentsManagerData } from './web-components-manager';
+import type { ComponentsManagerData } from './components-manager';
 
 export const CM_KEY = 'porscheDesignSystem';
 
@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export function getComponentsManagerData() {
+export function getComponentsManagerData(): ComponentsManagerData {
   if (!document[CM_KEY]) {
     document[CM_KEY] = {};
   }
