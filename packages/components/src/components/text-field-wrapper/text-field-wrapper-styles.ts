@@ -127,7 +127,10 @@ export const getComponentCss = (
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
           boxSizing: 'border-box',
-          padding: `15px ${spacingStaticMedium}`,
+          padding:
+            unitPosition === 'suffix'
+              ? `15px ${spacingStaticMedium} 15px 10px`
+              : `15px 10px 15px ${spacingStaticMedium}`,
           font: textSmallStyle.font,
           color: contrastMediumColor,
         },
