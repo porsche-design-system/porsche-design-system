@@ -5,38 +5,47 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -66,38 +75,47 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -127,44 +145,53 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 104px;
+    width: 104px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -188,44 +215,53 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 104px;
+    width: 104px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -249,44 +285,53 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 72px;
+    width: 72px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -310,44 +355,53 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 72px;
+    width: 72px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -371,44 +425,53 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 3rem;
-    width: 3rem;
+    height: 48px;
+    width: 48px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -432,44 +495,53 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 3rem;
-    width: 3rem;
+    height: 48px;
+    width: 48px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -493,44 +565,53 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 72px;
+    width: 72px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -549,36 +630,36 @@ circle:last-child {
   }
 @media(min-width:480px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 
 @media(min-width:760px) {
     .root {
-      height: 4.5rem;
-      width: 4.5rem;
+      height: 72px;
+      width: 72px;
     }
 }
 
 @media(min-width:1000px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 
 @media(min-width:1300px) {
     .root {
-      height: 4.5rem;
-      width: 4.5rem;
+      height: 72px;
+      width: 72px;
     }
 }
 
 @media(min-width:1760px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 "
@@ -589,44 +670,53 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: inline-flex;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 svg {
   display: block;
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
+  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
-    stroke-dasharray: 3, 1000;
+    stroke-dashoffset: 57;
+    transform: rotateZ(0);
   }
-  50% {
-    stroke-dasharray: 42, 1000;
+  50%, 75% {
+    stroke-dashoffset: 20;
+    transform: rotateZ(80deg);
   }
   100% {
-    stroke-dasharray: 30, 1000;
-    stroke-dashoffset: -52;
+    stroke-dashoffset: 57;
+    transform: rotateZ(360deg);
   }
 }
   .root {
     display: block;
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 72px;
+    width: 72px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -645,36 +735,36 @@ circle:last-child {
   }
 @media(min-width:480px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 
 @media(min-width:760px) {
     .root {
-      height: 4.5rem;
-      width: 4.5rem;
+      height: 72px;
+      width: 72px;
     }
 }
 
 @media(min-width:1000px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 
 @media(min-width:1300px) {
     .root {
-      height: 4.5rem;
-      width: 4.5rem;
+      height: 72px;
+      width: 72px;
     }
 }
 
 @media(min-width:1760px) {
     .root {
-      height: 3rem;
-      width: 3rem;
+      height: 48px;
+      width: 48px;
     }
 }
 "
