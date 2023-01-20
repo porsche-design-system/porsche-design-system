@@ -7,8 +7,8 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../styles';
+import { getCss } from '../../utils';
+import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../styles';
 import { getThemedIconFilters } from '../../styles/icon-filters';
 
 const mediaQueryS = getMediaQueryMin('s');
@@ -45,10 +45,6 @@ export const getComponentCss = (
     }),
     ...(hasClose && { close: getCloseIconJssStyle() }),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
 
 export const getNotificationRootJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {

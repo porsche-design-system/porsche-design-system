@@ -1,15 +1,7 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  attachSlottedCss,
-  getPrefixedTagNames,
-  hasHeading,
-  THEMES,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasHeading, THEMES, validateProps } from '../../utils';
 import type { IconName, PropTypes, Theme } from '../../types';
-import { getComponentCss, getSlottedCss } from './inline-notification-styles';
+import { getComponentCss } from './inline-notification-styles';
 import {
   INLINE_NOTIFICATION_STATES,
   getContentAriaAttributes,
@@ -64,10 +56,6 @@ export class InlineNotification {
 
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
