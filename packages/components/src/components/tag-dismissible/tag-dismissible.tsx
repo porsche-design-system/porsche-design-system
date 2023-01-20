@@ -48,14 +48,10 @@ export class TagDismissible {
     return (
       <button type="button" {...parseAndGetAriaAttributes(this.aria)}>
         <span class="sr-only">Remove:</span>
-        {this.label ? (
-          <div>
-            <span class="label">{this.label}</span>
-            <slot />
-          </div>
-        ) : (
+        <div>
+          {this.label && <span class="label">{this.label}</span>}
           <slot />
-        )}
+        </div>
         <PrefixedTagNames.pIcon class="icon" name="close" color="inherit" aria-hidden="true" />
       </button>
     );
