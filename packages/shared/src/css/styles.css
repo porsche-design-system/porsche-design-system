@@ -35,16 +35,13 @@ body > app-root {
   -webkit-text-size-adjust: revert;
 }
 
+select:focus,
 select {
   position: relative;
   z-index: 999999;
   font: revert;
   outline: none;
   outline-offset: 0;
-}
-
-select:focus {
-  outline-color: transparent;
 }
 
 .playground {
