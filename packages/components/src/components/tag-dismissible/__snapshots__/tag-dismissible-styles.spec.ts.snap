@@ -1,18 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for color: background-default and hasLabel: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-default, hasLabel: false and theme: dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   min-height: 54px;
-  padding: 4px 54px 4px 12px;
+  padding: 4px 0 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -40,11 +44,143 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: rgba(126, 127, 130, 0.20);
+  }
 }
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
+
+.icon {
+  padding: 4px;
+  margin-right: 10px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+  border-radius: 4px;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default, hasLabel: false and theme: light 1`] = `
+":host {
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 4px 0 4px 12px;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  background: #FFF;
+  color: #010205;
+  text-align: left;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  outline: 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+}
+
+.icon {
+  padding: 4px;
+  margin-right: 10px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+  border-radius: 4px;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default, hasLabel: true and theme: dark 1`] = `
+":host {
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 4px 0 4px 12px;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  background: #0E0E12;
+  color: #FBFCFF;
+  text-align: left;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  outline: 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover > .icon {
@@ -56,19 +192,11 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #AFB0B3;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: .875rem;
 }
 .icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
+  padding: 4px;
+  margin-right: 10px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
@@ -85,97 +213,23 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-default and hasLabel: dark 2`] = `
+exports[`getComponentCss() should return correct css for color: background-default, hasLabel: true and theme: light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
+  display: flex;
   position: relative;
-  min-height: 54px;
-  padding: 4px 54px 4px 12px;
-  border-radius: 4px;
-  border: 0;
-  cursor: pointer;
-  background: #0E0E12;
-  color: #FBFCFF;
-  text-align: left;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  outline: 0;
-}
-button::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
-  }
-}
-
-.icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease;
-  border-radius: 4px;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-default and hasLabel: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-button {
-  position: relative;
+  gap: 12px;
   min-height: 54px;
-  padding: 4px 54px 4px 12px;
+  padding: 4px 0 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -202,12 +256,6 @@ button:focus::before {
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   button:hover > .icon {
@@ -219,19 +267,11 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #535457;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: .875rem;
 }
 .icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
+  padding: 4px;
+  margin-right: 10px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
@@ -248,97 +288,23 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-default and hasLabel: light 2`] = `
+exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
+  display: flex;
   position: relative;
-  min-height: 54px;
-  padding: 4px 54px 4px 12px;
-  border-radius: 4px;
-  border: 0;
-  cursor: pointer;
-  background: #FFF;
-  color: #010205;
-  text-align: left;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  outline: 0;
-}
-button::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
-  }
-}
-
-.icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease;
-  border-radius: 4px;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-surface and hasLabel: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-button {
-  position: relative;
+  gap: 12px;
   min-height: 54px;
-  padding: 4px 54px 4px 12px;
+  padding: 4px 0 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -366,12 +332,6 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   button:hover > .icon {
     background-color: rgba(126, 127, 130, 0.20);
@@ -382,19 +342,11 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #AFB0B3;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: .875rem;
 }
 .icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
+  padding: 4px;
+  margin-right: 10px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
@@ -411,19 +363,23 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface and hasLabel: light 1`] = `
+exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  outline: 0 !important !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   min-height: 54px;
-  padding: 4px 54px 4px 12px;
+  padding: 4px 0 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -451,12 +407,6 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   button:hover > .icon {
     background-color: rgba(148, 149, 152, 0.20);
@@ -467,19 +417,11 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #535457;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: .875rem;
 }
 .icon {
-  position: absolute;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  top: 50%;
-  right: 10px;
-  transform: translate3d(0, -50%, 0);
+  padding: 4px;
+  margin-right: 10px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
