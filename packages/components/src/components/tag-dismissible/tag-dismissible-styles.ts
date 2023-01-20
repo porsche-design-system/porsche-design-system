@@ -59,7 +59,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
       },
     }),
     icon: {
-      padding: '8px',
+      padding: '4px',
       marginRight: '10px',
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
