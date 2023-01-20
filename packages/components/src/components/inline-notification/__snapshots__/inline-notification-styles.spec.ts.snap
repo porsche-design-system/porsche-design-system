@@ -963,7 +963,7 @@ p-inline-notification a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   p-inline-notification a:hover {
-    color: rgba(83, 83, 83, 0.25) !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
@@ -996,7 +996,7 @@ prefixed-p-inline-notification a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-inline-notification a:hover {
-    color: rgba(83, 83, 83, 0.25) !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
