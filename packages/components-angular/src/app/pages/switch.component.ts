@@ -73,10 +73,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-switch style="width: 240px">
+      <p-switch style="width: 15rem">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-switch>
-      <p-switch style="width: 240px" [alignLabel]="'left'">
+      <p-switch style="width: 15rem" [alignLabel]="'left'">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-switch>
     </div>

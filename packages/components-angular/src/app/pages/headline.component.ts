@@ -73,10 +73,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should not automatically break words/strings by default">
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 15rem; background: deeppink">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-headline>
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 15rem; background: deepskyblue">
         <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
       </p-headline>
     </div>
@@ -86,10 +86,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should be possible to overwrite hyphenation/break words behavior"
       style="hyphens: auto; overflow-wrap: break-word"
     >
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deeppink">
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 15rem; background: deeppink">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-headline>
-      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 240px; background: deepskyblue">
+      <p-headline [variant]="{base: 'inherit', m: 'large'}" style="width: 15rem; background: deepskyblue">
         <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
       </p-headline>
     </div>

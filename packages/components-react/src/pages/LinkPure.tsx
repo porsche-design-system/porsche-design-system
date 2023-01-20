@@ -80,16 +80,16 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PLinkPure href="https://www.porsche.com" style={{ width: '240px' }}>
+        <PLinkPure href="https://www.porsche.com" style={{ width: '15rem' }}>
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkPure>
-        <PLinkPure style={{ width: '240px' }}>
+        <PLinkPure style={{ width: '15rem' }}>
           <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLinkPure>
-        <PLinkPure underline={true} href="https://www.porsche.com" style={{ width: '240px' }}>
+        <PLinkPure underline={true} href="https://www.porsche.com" style={{ width: '15rem' }}>
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkPure>
-        <PLinkPure underline={true} style={{ width: '240px' }}>
+        <PLinkPure underline={true} style={{ width: '15rem' }}>
           <a href="https://www.porsche.com">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLinkPure>
       </div>

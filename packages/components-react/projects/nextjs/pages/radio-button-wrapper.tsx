@@ -232,17 +232,17 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
+        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '15rem' }}>
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
-        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
+        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '15rem' }}>
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper
           label="Lorem ipsum dolor sit amet, consetetur sadipscing"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: '240px' }}
+          style={{ width: '15rem' }}
         >
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
