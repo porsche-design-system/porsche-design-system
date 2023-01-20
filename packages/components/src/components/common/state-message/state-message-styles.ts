@@ -9,13 +9,11 @@ export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: Fo
   return {
     message: {
       display: 'flex',
+      gap: spacingStaticXSmall,
       marginTop: spacingStaticXSmall,
       ...textSmallStyle,
       color: getThemedFormStateColors(theme, state).formStateColor,
       transition: getTransition('color'),
-      '&__icon': {
-        marginRight: spacingStaticXSmall,
-      },
     },
   };
 };
