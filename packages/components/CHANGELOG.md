@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper` matches new design language
-- `Spinner` animation
+- `Spinner` animation and `stroke` width
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
