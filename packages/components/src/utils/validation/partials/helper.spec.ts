@@ -14,7 +14,13 @@ import * as detectDuplicatesUtils from '../../is-already-in-array';
 
 declare global {
   interface Document {
-    porscheDesignSystem: { [key: string]: { prefixes: string[] } };
+    porscheDesignSystem: {
+      [key: string]: {
+        prefixes: string[];
+        isReady: () => Promise<void>;
+        readyResolve: () => void;
+      };
+    };
   }
 }
 
@@ -272,10 +278,14 @@ describe('getUsedTagNamesWithoutPreloadForVersions()', () => {
 
 describe('getPorscheDesignSystemPrefixesForVersions()', () => {
   it('should return prefix[] for PDS versions registered on document', () => {
+    const sharedProps = {
+      readyResolve: () => {},
+      isReady: Promise.resolve,
+    };
     document.porscheDesignSystem = {
-      '1.2.3': { prefixes: [''] },
-      '1.2.4': { prefixes: ['prefix', 'another-prefix'] },
-      '1.2.5': { prefixes: ['prefix', 'another-prefix'] },
+      '1.2.3': { ...sharedProps, prefixes: [''] },
+      '1.2.4': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
+      '1.2.5': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
     };
 
     expect(getPorscheDesignSystemPrefixesForVersions()).toEqual({

@@ -11,7 +11,13 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
     // Extend Document interface so we don't have to cast it on any
-    porscheDesignSystem: { [key: string]: { prefixes: string[] } };
+    porscheDesignSystem: {
+      [key: string]: {
+        prefixes: string[];
+        isReady: () => Promise<void>;
+        readyResolve: () => void;
+      };
+    };
   }
 }
 

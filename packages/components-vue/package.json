@@ -11,11 +11,12 @@
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build",
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly",
-    "build:partialsAndUtilities": "yarn build:partialsAndUtilities:lib && yarn build:partialsAndUtilities:typings",
+    "build:partialsAndUtilities": "yarn build:partialsAndUtilities:lib && yarn build:partialsAndUtilities:typings:testing && yarn build:partialsAndUtilities:typings",
     "build:partialsAndUtilities:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:partialsAndUtilities:typings": "yarn build:partialsAndUtilities:typings:partials && yarn build:partialsAndUtilities:typings:utilities",
-    "build:partialsAndUtilities:typings:partials": "tsc projects/vue-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node,react",
-    "build:partialsAndUtilities:typings:utilities": "tsc projects/vue-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/utilities/js --types node,react",
+    "build:partialsAndUtilities:typings:partials": "tsc projects/vue-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node",
+    "build:partialsAndUtilities:typings:testing": "tsc projects/vue-wrapper/src/testing.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
+    "build:partialsAndUtilities:typings:utilities": "tsc projects/vue-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/utilities/js --types node",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
     "replace": "yarn replace:initialStyles && yarn replace:fontLatin",
@@ -31,7 +32,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "2.19.0",
+    "@porsche-design-system/components-vue": "2.19.1-rc.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

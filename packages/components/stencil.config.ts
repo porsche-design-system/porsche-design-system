@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
+import { version } from './package.json';
 
 /**
  * TODO: Remove this workaround
@@ -65,6 +66,7 @@ export const config: Config = {
     after: [
       replace({
         ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
+        ROLLUP_REPLACE_VERSION: `"${version}"`,
       }),
     ],
   },
