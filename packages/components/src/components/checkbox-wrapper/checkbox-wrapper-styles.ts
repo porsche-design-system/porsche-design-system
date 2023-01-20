@@ -102,7 +102,7 @@ export const getComponentCss = (
         alignItems: 'flex-start',
       },
     },
-    label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
+    text: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

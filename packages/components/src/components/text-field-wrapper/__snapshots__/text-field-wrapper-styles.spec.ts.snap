@@ -4,6 +4,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -82,14 +85,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -186,6 +187,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -303,15 +307,13 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -336,6 +338,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -414,15 +419,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -447,6 +450,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -535,15 +541,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -571,6 +575,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -659,15 +666,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CB3333;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -695,6 +700,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -783,15 +791,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -819,6 +825,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -936,14 +945,12 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -968,6 +975,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -1086,14 +1096,12 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .icon {
   position: absolute;
@@ -1127,6 +1135,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -1246,14 +1257,12 @@ button+button[type=submit] {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1279,6 +1288,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -1398,14 +1410,12 @@ button+button[type=submit] {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .icon {
   position: absolute;
@@ -1438,6 +1448,9 @@ button+button[type=submit] {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -1562,14 +1575,12 @@ button+button[type=submit] {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .icon {
   position: absolute;
@@ -1602,6 +1613,9 @@ button+button[type=submit] {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -1680,14 +1694,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1712,6 +1724,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -1801,14 +1816,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1836,6 +1849,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -1924,14 +1940,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -1959,6 +1973,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2047,14 +2064,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2082,6 +2097,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2170,14 +2188,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2205,6 +2221,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2322,15 +2341,13 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2355,6 +2372,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2433,15 +2453,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2466,6 +2484,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2554,15 +2575,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2590,6 +2609,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2678,15 +2700,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #00C77E;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2714,6 +2734,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2802,15 +2825,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2838,6 +2859,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -2954,15 +2978,13 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -2987,6 +3009,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3064,15 +3089,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3097,6 +3120,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3185,15 +3211,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3222,6 +3246,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -3309,15 +3336,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3345,6 +3370,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3461,14 +3489,12 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3493,6 +3519,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3570,14 +3599,12 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3602,6 +3629,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3690,14 +3720,12 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3726,6 +3754,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -3813,14 +3844,12 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3848,6 +3877,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -3964,15 +3996,13 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -3997,6 +4027,9 @@ button:disabled {
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -4074,15 +4107,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4107,6 +4138,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -4195,15 +4229,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4232,6 +4264,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 ::slotted(input) {
   display: block !important;
   position: relative !important;
@@ -4319,15 +4354,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;
@@ -4355,6 +4388,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(input) {
   display: block !important;
@@ -4472,15 +4508,13 @@ button:disabled {
 }
 .message {
   display: flex;
+  gap: 4px;
   margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 4px;
 }
 .sr-only {
   position: absolute;

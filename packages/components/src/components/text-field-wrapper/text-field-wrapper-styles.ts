@@ -18,6 +18,7 @@ import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
 import { spacingStaticMedium, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -47,6 +48,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
       },
+      ...hostHiddenStyles,
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
