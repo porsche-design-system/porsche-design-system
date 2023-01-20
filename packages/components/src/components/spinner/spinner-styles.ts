@@ -77,7 +77,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
-      strokeWidth: 1,
+      strokeWidth: 1.5,
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
