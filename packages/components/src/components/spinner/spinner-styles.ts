@@ -2,7 +2,8 @@ import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
@@ -25,9 +26,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
         display: 'inline-flex',
         verticalAlign: 'top',
       },
-      ':host([hidden])': {
-        display: addImportantToRule('none'),
-      },
+      ...hostHiddenStyles,
       svg: {
         display: 'block',
         position: 'relative',
@@ -38,7 +37,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       circle: {
         '&:first-child': {
           stroke: contrastMediumColor,
-          strokeDasharray: 57, // C = 2πR
           animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
