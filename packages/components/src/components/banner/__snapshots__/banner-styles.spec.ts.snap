@@ -158,7 +158,7 @@ p-banner a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   p-banner a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
@@ -191,7 +191,7 @@ prefixed-p-banner a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-banner a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "

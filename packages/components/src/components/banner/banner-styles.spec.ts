@@ -8,13 +8,13 @@ import {
   KeyframesDirection,
 } from './banner-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it('should return correct css', () => {
     expect(getComponentCss()).toMatchSnapshot();
   });
 });
 
-xdescribe('getSlottedCss()', () => {
+describe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-banner');
     expect(getSlottedCss(host)).toMatchSnapshot();
