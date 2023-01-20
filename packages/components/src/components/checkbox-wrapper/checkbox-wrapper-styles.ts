@@ -47,6 +47,8 @@ export const getComponentCss = (
           position: 'relative',
           width: fontLineHeight,
           height: fontLineHeight,
+          fontFamily, // needed for correct width and height definition
+          fontSize: '1rem', // needed for correct width and height definition
           flexShrink: 0,
           display: 'block',
           margin: 0,
@@ -54,8 +56,6 @@ export const getComponentCss = (
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'content-box',
-          fontFamily, // needed for correct width and height definition
-          fontSize: '1rem', // needed for correct width and height definition
           backgroundSize: fontLineHeight,
           backgroundColor: 'transparent',
           transition: ['border-color', 'background-color'].map(getTransition).join(),

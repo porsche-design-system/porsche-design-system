@@ -1,28 +1,21 @@
-import type { Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-} from '../../styles';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
 import { getCheckboxRadioLabelJssStyle } from '../../styles/checkbox-radio-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
+import { getCss } from '../../utils';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { FormState } from '../../utils/form/form-state';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import { borderWidthBase, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
 
-const theme: Theme = 'light';
-
-const getBackgroundImageStyles = (
+/* const getBackgroundImageStyles = (
   hasVisibleState: boolean,
   innerCircleColor: string,
   outerCircleColor: string
 ): Styles<'backgroundImage'> => {
+  const theme: Theme = 'light';
   const maskColor = getThemedColors(theme).backgroundColor.replace(/#/g, '%23');
 
   return {
@@ -33,18 +26,21 @@ const getBackgroundImageStyles = (
         : `'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="${maskColor}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/></g></svg>'`
     }), radial-gradient(circle, ${innerCircleColor} ${pxToRemWithUnit(9)}, ${outerCircleColor} ${pxToRemWithUnit(9)})`,
   };
-};
+};*/
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  isDisabled: boolean
+  isDisabled: boolean,
+  theme: Theme
 ): string => {
-  const size = pxToRemWithUnit(28);
-  const hasVisibleState = isVisibleFormState(state);
-  const { primaryColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } =
-    getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+
+  const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
+  const uncheckedHoverColor = formStateHoverColor || primaryColor;
+  const checkedColor = isDisabled ? disabledColor : formStateColor || primaryColor;
+  const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   return getCss({
     '@global': {
@@ -54,65 +50,60 @@ export const getComponentCss = (
       }),
       '::slotted': addImportantToEachRule({
         '&(input)': {
-          position: 'static',
-          width: size,
-          height: size,
+          position: 'relative',
+          width: fontLineHeight,
+          height: fontLineHeight,
+          fontFamily, // needed for correct width and height definition
+          fontSize: '1rem', // needed for correct width and height definition
           flexShrink: 0,
           display: 'block',
-          margin: pxToRemWithUnit(-2),
+          margin: 0,
           padding: 0,
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
-          boxSizing: 'border-box',
-          backgroundSize: size,
-          backgroundPosition: 'center',
+          boxSizing: 'content-box',
+          backgroundSize: fontLineHeight,
           backgroundColor: 'transparent',
-          transition: getTransition('background-image'),
-          opacity: 1,
-          border: `2px solid ${backgroundColor}`,
+          transition: ['border-color', 'background-color'].map(getTransition).join(),
+          border: `2px solid ${uncheckedColor}`,
           borderRadius: '50%',
-          outline: 'none',
-          cursor: 'pointer',
-          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateColor || contrastMediumColor),
+          outline: 0,
+          cursor: isDisabled ? 'not-allowed' : 'pointer',
         },
-        '&(input:checked)': getBackgroundImageStyles(
-          hasVisibleState,
-          formStateColor || contrastHighColor,
-          formStateColor || contrastHighColor
-        ),
-        ...hoverMediaQuery({
-          '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
-            getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || primaryColor),
-          '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
-            getBackgroundImageStyles(
-              hasVisibleState,
-              formStateColor || contrastHighColor,
-              formStateHoverColor || primaryColor
-            ),
+        '&(input:checked)': {
+          borderColor: checkedColor,
+          backgroundColor: checkedColor,
+        },
+        ...(!isDisabled && {
+          ...hoverMediaQuery({
+            '&(input:hover), .text:hover ~ &(input)': {
+              borderColor: uncheckedHoverColor,
+            },
+            '&(input:checked:hover), .text:hover ~ &(input:checked)': {
+              borderColor: checkedHoverColor,
+              backgroundColor: checkedHoverColor,
+            },
+          }),
+          '&(input:focus)::before': {
+            content: '""',
+            position: 'absolute',
+            ...getInsetJssStyle(-6),
+            border: `${borderWidthBase} solid ${focusColor}`,
+            borderRadius: '50%',
+          },
+          '&(input:focus:not(:focus-visible))::before': {
+            borderColor: 'transparent',
+          },
         }),
-        '&(input:disabled)': {
-          cursor: 'not-allowed',
-          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),
-        },
-        '&(input:checked:disabled)': getBackgroundImageStyles(hasVisibleState, disabledColor, disabledColor),
-        '&(input:focus)': {
-          boxShadow: `0 0 0 1px ${formStateColor || contrastMediumColor}`,
-        },
-        '&(input:focus:not(:focus-visible))': {
-          boxShadow: 'none',
-        },
       }),
       label: {
         position: 'relative',
         display: 'flex',
+        alignItems: 'flex-start',
       },
     },
-    label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
+    text: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
