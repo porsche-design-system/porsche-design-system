@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../styles';
+import { getCss } from '../../utils';
+import { addImportantToRule, pxToRemWithUnit } from '../../styles';
 import { BANNER_Z_INDEX } from '../../constants';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
@@ -96,8 +96,4 @@ export const getComponentCss = (): string => {
     },
     root: getBoxShadow(),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

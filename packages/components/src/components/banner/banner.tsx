@@ -3,14 +3,13 @@ import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   THEMES,
   validateProps,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './banner-styles';
+import { getComponentCss } from './banner-styles';
 import type { BannerState, BannerWidth } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 
@@ -46,7 +45,6 @@ export class Banner {
   private inlineNotificationElement: HTMLPInlineNotificationElement;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
