@@ -9,7 +9,7 @@ import {
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
+import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-shared-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {

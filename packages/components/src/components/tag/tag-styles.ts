@@ -1,57 +1,19 @@
-import { getCss, isThemeDark } from '../../utils';
+import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import {
-  borderWidthBase,
-  fontStyle,
-  fontWeight,
-  textXSmallStyle,
-  borderRadiusSmall,
-  borderRadiusMedium,
-} from '@porsche-design-system/utilities-v2';
+import { textXSmallStyle, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
-import { hasInvertedThemeColor } from './tag-utils';
+import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-
-export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
-  const colorMap: { [key in TagColor]: string } = {
-    'background-default': themedColors.backgroundColor,
-    'background-surface': themedColors.backgroundSurfaceColor,
-    'neutral-contrast-high': themedColors.primaryColor,
-    'notification-information': themedColors.infoSoftColor,
-    'notification-success': themedColors.successSoftColor,
-    'notification-error': themedColors.errorSoftColor,
-    'notification-warning': themedColors.warningSoftColor,
-  };
-
-  return colorMap[tagColor];
-};
-
-export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: ThemedColors, theme: Theme): string => {
-  const isDark = isThemeDark(theme);
-  const colorMap: { [key in TagColor]: string } = {
-    'background-default': isDark ? themedColors.backgroundColorLighten : themedColors.backgroundColorDarken,
-    'background-surface': isDark
-      ? themedColors.backgroundSurfaceColorLighten
-      : themedColors.backgroundSurfaceColorDarken,
-    'neutral-contrast-high': isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor,
-    'notification-information': isDark ? themedColors.infoSoftColorLighten : themedColors.infoSoftColorDarken,
-    'notification-success': isDark ? themedColors.successSoftColorLighten : themedColors.successSoftColorDarken,
-    'notification-error': isDark ? themedColors.errorSoftColorLighten : themedColors.errorSoftColorDarken,
-    'notification-warning': isDark ? themedColors.warningSoftColorLighten : themedColors.warningSoftColorDarken,
-  };
-
-  return colorMap[tagColor];
-};
+import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from './tag-shared-utils';
 
 export const getColors = (
   tagColor: TagColor,
@@ -73,33 +35,6 @@ export const getColors = (
     focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
-  };
-};
-
-export const slottedTextJssStyle: JssStyle = {
-  '&(strong),&(b)': {
-    fontWeight: fontWeight.bold,
-  },
-  '&(em),&(i)': {
-    fontStyle,
-  },
-};
-
-export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
-  return {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      ...getInsetJssStyle(-4),
-      border: `${borderWidthBase} solid transparent`,
-      borderRadius: borderRadiusMedium,
-    },
-    '&:focus::before': {
-      borderColor: themedColors.focusColor,
-    },
-    '&:focus:not(:focus-visible)::before': {
-      borderColor: 'transparent',
-    },
   };
 };
 
