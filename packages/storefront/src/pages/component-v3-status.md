@@ -31,7 +31,7 @@
 | Components                  | V3 Status                                                                                                                                                                         |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ⛔ **Icon**                 |                                                                                                                                                                                   |
-| ✅ **Spinner**              | - Animation is not smooth in Safari                                                                                                                                               |
+| ✅ **Spinner**              |                                                                                                                                                                                   |
 | ✅ **Link Pure**            | - fix jittering/spotting of `active` state on iOS<br />- use prop `current` instead of `active`                                                                                   |
 | ✅ **Button Pure**          | - fix jittering/spotting of `active` state on iOS                                                                                                                                 |
 | ⛔ **Button / Link**        |                                                                                                                                                                                   |
