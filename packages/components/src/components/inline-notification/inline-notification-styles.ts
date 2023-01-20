@@ -74,6 +74,7 @@ export const getNotificationIconJssStyle = (theme: Theme, state: InlineNotificat
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
+    color: 'black', // color needs to be set to ensure filter is applied correctly
     filter: getThemedIconFilters(theme)[state],
   },
 });
