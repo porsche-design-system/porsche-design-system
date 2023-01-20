@@ -11,6 +11,7 @@ import { borderRadiusSmall, textSmallStyle } from '@porsche-design-system/utilit
 import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { Theme } from '../../utils/theme';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLabel: boolean): string => {
   const themedColors = getThemedColors(theme);
@@ -24,9 +25,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
         verticalAlign: 'top',
         outline: addImportantToRule(0),
       },
-      ':host([hidden])': {
-        display: addImportantToRule('none'),
-      },
+      ...hostHiddenStyles,
       button: {
         position: 'relative',
         minHeight: '54px',
