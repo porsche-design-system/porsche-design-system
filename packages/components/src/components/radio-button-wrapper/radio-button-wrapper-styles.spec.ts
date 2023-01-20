@@ -1,34 +1,33 @@
 import { getComponentCss } from './radio-button-wrapper-styles';
-import { getSlottedCss } from './radio-button-wrapper-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, 'none', true],
-    [false, 'none', false],
-    [true, 'none', true],
-    [true, 'none', false],
-    [false, 'success', true],
-    [false, 'success', false],
-    [true, 'success', true],
-    [true, 'success', false],
-    [false, 'error', true],
-    [false, 'error', false],
-    [true, 'error', true],
-    [true, 'error', false],
-    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true],
-  ])('should return correct css for hideLabel: %o, state: %s and isDisabled: %s', (...args) => {
+    [false, 'none', true, 'light'],
+    [false, 'none', false, 'light'],
+    [true, 'none', true, 'light'],
+    [true, 'none', false, 'light'],
+    [false, 'success', true, 'light'],
+    [false, 'success', false, 'light'],
+    [true, 'success', true, 'light'],
+    [true, 'success', false, 'light'],
+    [false, 'error', true, 'light'],
+    [false, 'error', false, 'light'],
+    [true, 'error', true, 'light'],
+    [true, 'error', false, 'light'],
+    [false, 'none', true, 'dark'],
+    [false, 'none', false, 'dark'],
+    [true, 'none', true, 'dark'],
+    [true, 'none', false, 'dark'],
+    [false, 'success', true, 'dark'],
+    [false, 'success', false, 'dark'],
+    [true, 'success', true, 'dark'],
+    [true, 'success', false, 'dark'],
+    [false, 'error', true, 'dark'],
+    [false, 'error', false, 'dark'],
+    [true, 'error', true, 'dark'],
+    [true, 'error', false, 'dark'],
+    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'light'],
+  ])('should return correct css for hideLabel: %o, state: %s, isDisabled: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
-  });
-});
-
-xdescribe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-radio-button-wrapper');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-radio-button-wrapper');
-    expect(getSlottedCss(host)).toMatchSnapshot();
   });
 });
