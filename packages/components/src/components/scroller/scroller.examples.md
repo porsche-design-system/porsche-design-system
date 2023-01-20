@@ -94,7 +94,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -103,16 +103,16 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
@@ -147,7 +147,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -156,7 +156,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -165,7 +165,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
