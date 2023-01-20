@@ -42,7 +42,7 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, this.theme, !!this.label);
+    attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (

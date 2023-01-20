@@ -13,7 +13,7 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { Theme } from '../../utils/theme';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLabel: boolean): string => {
+export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const { primaryColor, hoverColor, contrastHighColor, focusColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
