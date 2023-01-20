@@ -55,14 +55,14 @@ export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: 
 
 export const getColors = (
   tagColor: TagColor,
-  theme: Theme
+  theme: Theme,
+  themedColors: ThemedColors
 ): {
   primaryColor: string;
-  outlineColor: string;
+  focusColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
-  const themedColors = getThemedColors(theme);
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
   const { primaryColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
@@ -70,7 +70,7 @@ export const getColors = (
 
   return {
     primaryColor,
-    outlineColor: focusColor,
+    focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
@@ -85,7 +85,7 @@ export const slottedTextJssStyle: JssStyle = {
   },
 };
 
-export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
+export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
   return {
     '&::before': {
       content: '""',
@@ -95,7 +95,7 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
       borderRadius: borderRadiusMedium,
     },
     '&:focus::before': {
-      borderColor: focusColor,
+      borderColor: themedColors.focusColor,
     },
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
@@ -104,7 +104,8 @@ export const getTagFocusJssStyle = (focusColor: string): JssStyle => {
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundColor, backgroundHoverColor, outlineColor } = getColors(tagColor, theme);
+  const themedColors = getThemedColors(theme);
+  const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(tagColor, theme, themedColors);
 
   return getCss({
     '@global': {
@@ -143,7 +144,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         },
 
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
-        ...Object.entries(getTagFocusJssStyle(outlineColor)).reduce((result, [key, value]) => {
+        ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
           return result;
         }, {} as JssStyle),
