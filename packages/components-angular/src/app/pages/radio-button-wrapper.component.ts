@@ -22,10 +22,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with label">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-1'" />
+        <input [type]="'radio'" [name]="'some-name-dark-1'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-1'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-1'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -40,10 +40,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render without label">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [hideLabel]="true">
-        <input [type]="'radio'" [name]="'some-name-2'" />
+        <input [type]="'radio'" [name]="'some-name-dark-2'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [hideLabel]="true">
-        <input [type]="'radio'" [name]="'some-name-2'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-2'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -68,14 +68,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [label]="'Some label'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input [type]="'radio'" [name]="'some-name-3'" />
+        <input [type]="'radio'" [name]="'some-name-dark-3'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper
         [theme]="'dark'"
         [label]="'Some label'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input [type]="'radio'" [name]="'some-name-3'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-3'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -99,19 +99,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render in required state">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-3a'" required />
+        <input [type]="'radio'" [name]="'some-name-dark-3a'" required />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'This is a very insanely super long label across multiple lines'">
-        <input [type]="'radio'" [name]="'some-name-3a'" required />
+        <input [type]="'radio'" [name]="'some-name-dark-3a'" required />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-3a'" required disabled />
+        <input [type]="'radio'" [name]="'some-name-dark-3a'" required disabled />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-3a'" required checked />
+        <input [type]="'radio'" [name]="'some-name-dark-3a'" required checked />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-3b'" required checked disabled />
+        <input [type]="'radio'" [name]="'some-name-dark-3b'" required checked disabled />
       </p-radio-button-wrapper>
     </div>
 
@@ -126,10 +126,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render in disabled state">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-4'" disabled />
+        <input [type]="'radio'" [name]="'some-name-dark-4'" disabled />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-4'" checked disabled />
+        <input [type]="'radio'" [name]="'some-name-dark-4'" checked disabled />
       </p-radio-button-wrapper>
     </div>
 
@@ -144,10 +144,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with success state and success message">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'success'">
-        <input [type]="'radio'" [name]="'some-name-5'" />
+        <input [type]="'radio'" [name]="'some-name-dark-5'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'success'" [message]="'Some success validation message.'">
-        <input [type]="'radio'" [name]="'some-name-5'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-5'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -162,10 +162,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with success state but without success message and not checked">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'success'">
-        <input [type]="'radio'" [name]="'some-name-6'" />
+        <input [type]="'radio'" [name]="'some-name-dark-6'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'success'">
-        <input [type]="'radio'" [name]="'some-name-6'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-6'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -180,10 +180,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with error state and error message">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'error'">
-        <input [type]="'radio'" [name]="'some-name-7'" />
+        <input [type]="'radio'" [name]="'some-name-dark-7'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'error'" [message]="'Some error validation message.'">
-        <input [type]="'radio'" [name]="'some-name-7'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-7'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -198,10 +198,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with error state but without error message and not checked">
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'error'">
-        <input [type]="'radio'" [name]="'some-name-8'" />
+        <input [type]="'radio'" [name]="'some-name-dark-8'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [label]="'Some label'" [state]="'error'">
-        <input [type]="'radio'" [name]="'some-name-8'" checked />
+        <input [type]="'radio'" [name]="'some-name-dark-8'" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -220,11 +220,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground dark" title="should render with slotted content with error state and message">
       <p-radio-button-wrapper [theme]="'dark'" [state]="'error'">
         <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <input [type]="'radio'" [name]="'some-name-9'" />
+        <input [type]="'radio'" [name]="'some-name-dark-9'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [state]="'error'">
         <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <input [type]="'radio'" [name]="'some-name-9'" />
+        <input [type]="'radio'" [name]="'some-name-dark-9'" />
         <span slot="message">Some error message with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
       </p-radio-button-wrapper>
     </div>

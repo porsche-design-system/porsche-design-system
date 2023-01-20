@@ -23,10 +23,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with label">
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-1" />
+          <input type="radio" name="some-name-dark-1" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-1" defaultChecked />
+          <input type="radio" name="some-name-dark-1" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -41,10 +41,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render without label">
         <PRadioButtonWrapper theme="dark" label="Some label" hideLabel={true}>
-          <input type="radio" name="some-name-2" />
+          <input type="radio" name="some-name-dark-2" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label" hideLabel={true}>
-          <input type="radio" name="some-name-2" defaultChecked />
+          <input type="radio" name="some-name-dark-2" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -69,14 +69,14 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           label="Some label"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <input type="radio" name="some-name-3" />
+          <input type="radio" name="some-name-dark-3" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper
           theme="dark"
           label="Some label"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <input type="radio" name="some-name-3" defaultChecked />
+          <input type="radio" name="some-name-dark-3" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -100,19 +100,19 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render in required state">
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-3a" required />
+          <input type="radio" name="some-name-dark-3a" required />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="This is a very insanely super long label across multiple lines">
-          <input type="radio" name="some-name-3a" required />
+          <input type="radio" name="some-name-dark-3a" required />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-3a" required disabled />
+          <input type="radio" name="some-name-dark-3a" required disabled />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-3a" required defaultChecked />
+          <input type="radio" name="some-name-dark-3a" required defaultChecked />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-3b" required defaultChecked disabled />
+          <input type="radio" name="some-name-dark-3b" required defaultChecked disabled />
         </PRadioButtonWrapper>
       </div>
 
@@ -127,10 +127,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render in disabled state">
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-4" disabled />
+          <input type="radio" name="some-name-dark-4" disabled />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label">
-          <input type="radio" name="some-name-4" defaultChecked disabled />
+          <input type="radio" name="some-name-dark-4" defaultChecked disabled />
         </PRadioButtonWrapper>
       </div>
 
@@ -145,10 +145,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with success state and success message">
         <PRadioButtonWrapper theme="dark" label="Some label" state="success">
-          <input type="radio" name="some-name-5" />
+          <input type="radio" name="some-name-dark-5" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label" state="success" message="Some success validation message.">
-          <input type="radio" name="some-name-5" defaultChecked />
+          <input type="radio" name="some-name-dark-5" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -163,10 +163,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with success state but without success message and not checked">
         <PRadioButtonWrapper theme="dark" label="Some label" state="success">
-          <input type="radio" name="some-name-6" />
+          <input type="radio" name="some-name-dark-6" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label" state="success">
-          <input type="radio" name="some-name-6" defaultChecked />
+          <input type="radio" name="some-name-dark-6" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -181,10 +181,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with error state and error message">
         <PRadioButtonWrapper theme="dark" label="Some label" state="error">
-          <input type="radio" name="some-name-7" />
+          <input type="radio" name="some-name-dark-7" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label" state="error" message="Some error validation message.">
-          <input type="radio" name="some-name-7" defaultChecked />
+          <input type="radio" name="some-name-dark-7" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -199,10 +199,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with error state but without error message and not checked">
         <PRadioButtonWrapper theme="dark" label="Some label" state="error">
-          <input type="radio" name="some-name-8" />
+          <input type="radio" name="some-name-dark-8" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" label="Some label" state="error">
-          <input type="radio" name="some-name-8" defaultChecked />
+          <input type="radio" name="some-name-dark-8" defaultChecked />
         </PRadioButtonWrapper>
       </div>
 
@@ -221,11 +221,11 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
       <div className="playground dark" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper theme="dark" state="error">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <input type="radio" name="some-name-9" />
+          <input type="radio" name="some-name-dark-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="error">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <input type="radio" name="some-name-9" />
+          <input type="radio" name="some-name-dark-9" />
           <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PRadioButtonWrapper>
       </div>
