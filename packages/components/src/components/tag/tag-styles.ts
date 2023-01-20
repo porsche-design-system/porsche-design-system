@@ -66,11 +66,11 @@ export const getColors = (
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
   const { primaryColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
-  const { focusColor, primaryColor: themedBaseColor } = themedColors;
+  const { focusColor } = themedColors;
 
   return {
     primaryColor,
-    outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
+    outlineColor: focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
