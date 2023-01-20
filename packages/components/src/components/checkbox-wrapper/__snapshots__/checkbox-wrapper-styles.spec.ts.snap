@@ -24,9 +24,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -171,17 +171,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #CB3333 !important;
   background-color: #CB3333 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -195,6 +192,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -269,17 +269,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #E7323B !important;
   background-color: #E7323B !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -293,6 +290,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -367,9 +367,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -442,9 +442,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -517,17 +517,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #FBFCFF !important;
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -541,6 +538,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -614,17 +614,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #010205 !important;
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -638,6 +635,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -711,9 +711,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -785,9 +785,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -859,17 +859,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #00C77E !important;
   background-color: #00C77E !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -883,6 +880,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -957,17 +957,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #32B85B !important;
   background-color: #32B85B !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -981,6 +978,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -1055,9 +1055,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1130,9 +1130,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1205,17 +1205,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #CB3333 !important;
   background-color: #CB3333 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1229,6 +1226,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -1304,17 +1304,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #E7323B !important;
   background-color: #E7323B !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1328,6 +1325,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -1403,9 +1403,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1479,9 +1479,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1555,17 +1555,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #FBFCFF !important;
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1579,6 +1576,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -1653,17 +1653,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #010205 !important;
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1677,6 +1674,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -1751,9 +1751,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1826,9 +1826,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1901,17 +1901,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #00C77E !important;
   background-color: #00C77E !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1925,6 +1922,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -2000,17 +2000,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: pointer !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #32B85B !important;
   background-color: #32B85B !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
-}
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -2024,6 +2021,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 label {
   position: relative;
@@ -2099,9 +2099,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -2175,9 +2175,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
-  border-radius: 4px !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
