@@ -30,7 +30,7 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
       button: {
         position: 'relative',
         minHeight: '54px',
-        padding: '4px 46px 4px 16px',
+        padding: '4px 54px 4px 12px',
         borderRadius: borderRadiusSmall,
         border: 0,
         cursor: 'pointer',
@@ -60,8 +60,13 @@ export const getComponentCss = (color: TagDismissibleColor, theme: Theme, hasLab
     }),
     icon: {
       position: 'absolute',
+      flexWrap: 'wrap',
+      alignContent: 'center',
+      justifyContent: 'center',
+      width: '32px',
+      height: '32px',
       top: '50%',
-      right: '12px',
+      right: '10px',
       transform: 'translate3d(0, -50%, 0)',
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
