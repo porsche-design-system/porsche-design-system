@@ -12,7 +12,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -48,7 +48,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(144, 144, 153, 0.25);
+    background-color: rgba(126, 127, 130, 0.20);
   }
 }
 
@@ -61,8 +61,13 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
@@ -92,7 +97,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -128,14 +133,19 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(144, 144, 153, 0.25);
+    background-color: rgba(126, 127, 130, 0.20);
   }
 }
 
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
@@ -165,7 +175,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -201,7 +211,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(83, 83, 83, 0.25);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -214,8 +224,13 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
@@ -245,7 +260,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -281,14 +296,19 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(83, 83, 83, 0.25);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
@@ -318,7 +338,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -354,7 +374,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(144, 144, 153, 0.25);
+    background-color: rgba(126, 127, 130, 0.20);
   }
 }
 
@@ -367,8 +387,13 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
@@ -398,7 +423,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 button {
   position: relative;
   min-height: 54px;
-  padding: 4px 46px 4px 16px;
+  padding: 4px 54px 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -434,7 +459,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(83, 83, 83, 0.25);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -447,8 +472,13 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   position: absolute;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   top: 50%;
-  right: 12px;
+  right: 10px;
   transform: translate3d(0, -50%, 0);
   transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
