@@ -4,7 +4,6 @@ import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
-  getSlottedCss,
 } from './inline-notification-styles';
 
 describe('getComponentCss()', () => {
@@ -25,18 +24,6 @@ describe('getComponentCss()', () => {
     ['info', true, true, 'dark'],
   ])('should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
-  });
-});
-
-describe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-inline-notification');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-inline-notification');
-    expect(getSlottedCss(host)).toMatchSnapshot();
   });
 });
 
