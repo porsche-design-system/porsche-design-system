@@ -1,6 +1,7 @@
 :root {
   --p-transition-duration: 0s;
   --p-animation-duration__spinner: 0s;
+  --p-stroke-dasharray__spinner: 40;
   --p-animation-duration__banner: 0s;
   --p-override-popover-animation-duration: 0s;
   --p-override-toast-skip-timeout: true;
