@@ -47,6 +47,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%);
   }
 }
@@ -94,6 +95,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%);
   }
 }
@@ -141,6 +143,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
@@ -188,6 +191,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
@@ -238,6 +242,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
@@ -288,6 +293,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
 }
@@ -339,6 +345,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
@@ -395,6 +402,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
@@ -454,6 +462,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
@@ -513,6 +522,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
   }
   .action {
@@ -565,6 +575,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
   }
 }
@@ -612,6 +623,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
   }
 }
@@ -659,6 +671,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%);
   }
 }
@@ -706,6 +719,7 @@ h5,p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    color: black;
     filter: invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%);
   }
 }
@@ -723,6 +737,7 @@ exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  1`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
   },
@@ -733,6 +748,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  2`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
   },
@@ -743,6 +759,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  3`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%)",
   },
@@ -753,6 +770,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  4`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%)",
   },
@@ -763,6 +781,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  1`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
   },
@@ -773,6 +792,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  2`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
   },
@@ -783,6 +803,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  3`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%)",
   },
@@ -793,6 +814,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  4`] = `
 {
   "@media(min-width:760px)": {
+    "color": "black",
     "display": "inline-flex",
     "filter": "invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%)",
   },
