@@ -52,7 +52,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
   }
 
   p-inline-notification a:hover {
-    color: rgba(83, 83, 83, 0.25) !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 </style>
 <p-content-wrapper class="hydrated">

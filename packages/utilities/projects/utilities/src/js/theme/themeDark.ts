@@ -2,6 +2,7 @@ import type { ThemeColorSet } from './themeShared';
 import { themeDarkPrimary } from './themeDarkPrimary';
 import { themeDarkBackgroundBase } from './themeDarkBackgroundBase';
 import { themeDarkBackgroundSurface } from './themeDarkBackgroundSurface';
+import { themeDarkBackgroundShading } from './themeDarkBackgroundShading';
 import { themeDarkContrastLow } from './themeDarkContrastLow';
 import { themeDarkContrastMedium } from './themeDarkContrastMedium';
 import { themeDarkContrastHigh } from './themeDarkContrastHigh';
@@ -23,6 +24,7 @@ export const themeDark: ThemeColorSet = {
   background: {
     base: themeDarkBackgroundBase,
     surface: themeDarkBackgroundSurface,
+    shading: themeDarkBackgroundShading,
   },
   contrast: {
     low: themeDarkContrastLow,

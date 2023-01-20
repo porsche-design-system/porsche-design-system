@@ -1,1 +1,1 @@
-export const themeDarkStateActive = '#7E7F82';
+export const themeDarkStateActive = 'rgba(126, 127, 130, 0.20)';
