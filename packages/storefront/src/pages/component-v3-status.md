@@ -34,7 +34,7 @@
 | ✅ **Button Pure**          | - fix jittering/spotting of `active` state on iOS                                               |
 | ⛔ **Button / Link**        |                                                                                                 |
 | ⛔ **Link Social**          |                                                                                                 |
-| ⛔ **Tag**                  |                                                                                                 |
+| ✅ **Tag**                  |                                                                                                 |
 | ⛔ **Tag Dismissible**      |                                                                                                 |
 | ✅ **Switch**               |                                                                                                 |
 | ⛔ **Checkbox Wrapper**     |                                                                                                 |
