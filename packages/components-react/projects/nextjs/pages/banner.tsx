@@ -16,7 +16,7 @@ const BannerPage: NextPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div title="should show banner neutral position fixed">
+      <div title="should show banner info position fixed">
         <PBanner>
           <span slot="title">Some notification position fixed (1)</span>
           <span slot="description">
@@ -26,7 +26,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="content-wrapper">
-        <div className="playground light" title="should show banner neutral on light background">
+        <div className="playground light" title="should show banner info on light background">
           <PBanner>
             <span slot="title">Some notification title</span>
             <span slot="description">
@@ -35,7 +35,7 @@ const BannerPage: NextPage = (): JSX.Element => {
           </PBanner>
         </div>
 
-        <div className="playground dark" title="should show banner neutral on dark background">
+        <div className="playground dark" title="should show banner info on dark background">
           <PBanner theme="dark">
             <span slot="title">Some notification title</span>
             <span slot="description">
