@@ -10,10 +10,9 @@ import {
 import { getComponentCss } from './tag-dismissible-styles';
 import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
-import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { TagColor } from '../tag/tag-utils';
 import { TAG_COLORS } from '../tag/tag-utils';
-import { Theme } from '../../types';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
