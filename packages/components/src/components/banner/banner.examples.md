@@ -18,7 +18,7 @@ Custom styling" section.
 <Playground :markup="basic" :config="config">
   <select v-model="state" aria-label="Select state">
     <option disabled>Select state</option>
-    <option value="neutral">Neutral</option>
+    <option value="info">Info</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
   </select>
