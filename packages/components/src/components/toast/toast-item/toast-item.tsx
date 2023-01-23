@@ -61,6 +61,7 @@ export class ToastItem {
           {this.text}
         </p>
         <PrefixedTagNames.pButtonPure
+          theme={this.theme}
           class="close"
           type="button"
           icon="close"
