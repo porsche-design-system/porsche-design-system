@@ -30,8 +30,8 @@ const initToast = (opts?: InitToastOptions): Promise<void> => {
   };
 
   const style = `<style>p-toast {
-  --p-override-toast-timeout: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
-  --p-override-toast-skip-timeout: false;
+  --_pds-toast-override-timeout: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
+  --_pds-toast-skip-timeout: false;
   ${withAnimation ? `--pds-animation-duration: ${ANIMATION_DURATION / 1000}s` : ''}
 }</style>`;
 
