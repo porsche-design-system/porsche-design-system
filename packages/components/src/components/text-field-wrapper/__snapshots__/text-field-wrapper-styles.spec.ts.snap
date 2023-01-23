@@ -12,7 +12,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -27,6 +28,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -36,9 +41,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -196,7 +198,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -212,6 +215,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -221,9 +228,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -344,7 +348,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -359,6 +364,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -368,9 +377,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -456,7 +462,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -470,6 +477,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -479,9 +490,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -579,7 +587,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -593,6 +602,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #CB3333 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -602,9 +615,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #404044 !important;
-  background: #404044 !important;
-}
-::slotted(input[readonly]:focus) {
   background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -702,7 +712,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -716,6 +727,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -725,9 +740,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -825,7 +837,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -841,6 +854,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -850,9 +867,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -972,7 +986,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -989,6 +1004,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -998,9 +1017,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1131,7 +1147,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1147,6 +1164,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1156,9 +1177,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1281,7 +1299,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1297,6 +1316,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1306,9 +1329,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1442,7 +1462,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1458,6 +1479,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1467,9 +1492,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1607,7 +1629,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1622,6 +1645,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1631,9 +1658,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1718,7 +1742,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1733,6 +1758,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1742,9 +1771,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1841,7 +1867,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1855,6 +1882,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1864,9 +1895,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -1963,7 +1991,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -1977,6 +2006,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #beceff !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -1986,9 +2019,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #404044 !important;
-  background: #404044 !important;
-}
-::slotted(input[readonly]:focus) {
   background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2085,7 +2115,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2099,6 +2130,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2108,9 +2143,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2207,7 +2239,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2223,6 +2256,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2232,9 +2269,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2355,7 +2389,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2370,6 +2405,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2379,9 +2418,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2467,7 +2503,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2481,6 +2518,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2490,9 +2531,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2590,7 +2628,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2604,6 +2643,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #00C77E !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2613,9 +2656,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #404044 !important;
-  background: #404044 !important;
-}
-::slotted(input[readonly]:focus) {
   background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2713,7 +2753,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2727,6 +2768,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2736,9 +2781,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2836,7 +2878,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2852,6 +2895,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -2861,9 +2908,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -2983,7 +3027,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -2998,6 +3043,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3007,9 +3056,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3094,7 +3140,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3108,6 +3155,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3117,9 +3168,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3217,7 +3265,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3231,6 +3280,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3240,9 +3293,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3340,7 +3390,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3356,6 +3407,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3365,9 +3420,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3486,7 +3538,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3501,6 +3554,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3510,9 +3567,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3596,7 +3650,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3610,6 +3665,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3619,9 +3678,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3718,7 +3774,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3732,6 +3789,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3741,9 +3802,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3840,7 +3898,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -3856,6 +3915,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3865,9 +3928,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -3987,7 +4047,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -4002,6 +4063,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -4011,9 +4076,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -4098,7 +4160,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -4112,6 +4175,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -4121,9 +4188,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -4221,7 +4285,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -4235,6 +4300,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #32B85B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -4244,9 +4313,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
@@ -4344,7 +4410,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: none !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -4360,6 +4427,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:focus) {
   border-color: #E7323B !important;
+  outline-color: #0A0AFF !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -4369,9 +4440,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-::slotted(input[readonly]:focus) {
   background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {

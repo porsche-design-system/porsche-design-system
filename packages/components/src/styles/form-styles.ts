@@ -22,8 +22,15 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, primaryColorDarken, contrastLowColor, contrastHighColor, contrastMediumColor, disabledColor } =
-    getThemedColors(theme);
+  const {
+    primaryColor,
+    primaryColorDarken,
+    contrastLowColor,
+    contrastHighColor,
+    contrastMediumColor,
+    disabledColor,
+    focusColor,
+  } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -33,16 +40,17 @@ export const getBaseChildStyles = (
       position: 'relative',
       width: '100%',
       ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
-      outline: 'none',
+      outline: '1px solid transparent',
+      outlineOffset: '2px',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: `2px solid ${hasVisibleState ? formStateColor : contrastMediumColor}`, // TODO: verify color
+      border: `2px solid ${hasVisibleState ? formStateColor : contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
       font: textSmallStyle.font,
       textIndent: 0,
-      color: primaryColor, // TODO: verify color
+      color: primaryColor,
       transition: getTransition('border-color'),
       ...additionalDefaultJssStyle,
     },
@@ -54,6 +62,10 @@ export const getBaseChildStyles = (
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
       borderColor: formStateColor || primaryColorDarken,
+      outlineColor: focusColor,
+    },
+    [`::slotted(${child}:focus:not(:focus-visible))`]: {
+      outlineColor: 'transparent',
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
@@ -64,9 +76,6 @@ export const getBaseChildStyles = (
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
         borderColor: contrastLowColor,
-        background: contrastLowColor,
-      },
-      [`::slotted(${child}[readonly]:focus)`]: {
         background: contrastLowColor,
       },
     }),
