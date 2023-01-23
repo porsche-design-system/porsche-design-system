@@ -1,6 +1,6 @@
 import { getComponentCss } from './toast-item-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['success', 'light'],
     ['info', 'light'],
