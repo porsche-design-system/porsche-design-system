@@ -180,9 +180,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -190,13 +189,14 @@ describe('lifecycle', () => {
     await initLink();
     const host = await getHost();
 
-    await setProperty(host, 'variant', 'tertiary');
+    await setProperty(host, 'icon', 'arrow-right');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-link'], 'componentDidUpdate: p-link').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 });
 
@@ -204,10 +204,8 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initLink();
     const link = await getLink();
-    const icon = await getIcon();
 
     await expectA11yToMatchSnapshot(page, link);
-    await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree if accessibility properties are set', async () => {
