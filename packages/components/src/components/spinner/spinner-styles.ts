@@ -17,8 +17,9 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 };
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
+  const strokeDasharray = '57'; // C = 2πR
   const animationDuration = 'var(--pds-animation-duration, 2s)';
-  const strokeDasharray = 'var(--_pds-spinner-stroke-dasharray, 57)'; // override needed for VRT to visualize both circles
+  const strokeDasharrayVar = `var(--_pds-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
 
   return getCss({
@@ -44,7 +45,10 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           transformOrigin: '0 0',
           animation: `$dash ${animationDuration} ease-in-out infinite`,
           stroke: primaryColor,
-          strokeDasharray, // C = 2πR
+          strokeDasharray:
+            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+              ? strokeDasharray
+              : strokeDasharrayVar,
           strokeLinecap: 'round',
         },
       },
