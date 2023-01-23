@@ -16,7 +16,7 @@ import { hoverMediaQuery } from './hover-media-query';
 import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
 
-export const getCheckboxRadioLabelJssStyle = (
+export const getCheckboxRadioJssStyle = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
@@ -93,7 +93,7 @@ export const getCheckboxRadioLabelJssStyle = (
       cursor: isDisabled ? 'default' : 'pointer',
       ...textSmallStyle,
       color: isDisabled ? disabledColor : primaryColor,
-      transition: getTransition('color'),
+      transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
     },
     ...getFunctionalComponentRequiredStyles(theme),
