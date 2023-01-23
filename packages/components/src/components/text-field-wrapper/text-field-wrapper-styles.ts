@@ -3,14 +3,13 @@ import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addImportantToEachRule,
-  getBaseSlottedStyles,
   getFocusJssStyle,
   getTransition,
-  pxToRemWithUnit,
   getThemedColors,
   getScreenReaderOnlyJssStyle,
+  pxToRemWithUnit,
 } from '../../styles';
-import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT_PX } from '../../styles/form-styles';
+import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -32,11 +31,13 @@ export const getComponentCss = (
   hasActionLoading: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, disabledColor, hoverColor } = getThemedColors(theme);
   const hasVisibleState = isVisibleFormState(state);
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isSearchOrPassword = isSearch || isPassword;
+  const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT);
+  const innerInputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
 
   const disabledJssStyle: JssStyle = {
     color: disabledColor,
@@ -60,8 +61,8 @@ export const getComponentCss = (
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 50),
-                ...(isSearch && !isWithinForm && { paddingLeft: INPUT_HEIGHT_PX }),
+                paddingRight: isSearch && isWithinForm ? pxToRemWithUnit(88) : innerInputHeightRem,
+                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(50) }),
               }),
         }),
         // Reset webkit autofill styles
@@ -76,9 +77,9 @@ export const getComponentCss = (
           bottom: 0,
           right: 0,
           margin: 0,
-          width: INPUT_HEIGHT_PX,
-          height: INPUT_HEIGHT_PX,
-          padding: pxToRemWithUnit(12), // affects spinner size
+          width: innerInputHeightRem,
+          height: inputHeightRem,
+          padding: '15px 13px',
           boxSizing: 'border-box',
           outline: 'transparent none',
           appearance: 'none',
@@ -88,16 +89,6 @@ export const getComponentCss = (
           cursor: 'pointer',
           color: primaryColor,
           transition: getTransition('color'),
-          ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-          ...hoverMediaQuery({
-            '&:not(:disabled):hover': {
-              color: hoverColor,
-            },
-          }),
-          '&:active': {
-            color: activeColor,
-          },
-          '&:disabled': disabledJssStyle,
           ...(isSearch &&
             isWithinForm && {
               right: pxToRemWithUnit(40), // clear button
@@ -108,6 +99,13 @@ export const getComponentCss = (
                 right: 0, // submit button
               },
             }),
+          ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
+          ...hoverMediaQuery({
+            '&:not(:disabled):hover': {
+              color: hoverColor,
+            },
+          }),
+          '&:disabled': disabledJssStyle,
         },
       }),
     },
@@ -124,15 +122,15 @@ export const getComponentCss = (
       hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
-          height: INPUT_HEIGHT_PX,
-          bottom: 0,
+          height: innerInputHeightRem,
+          bottom: '2px',
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
           boxSizing: 'border-box',
           padding:
             unitPosition === 'suffix'
-              ? `15px ${spacingStaticMedium} 15px 10px`
-              : `15px 10px 15px ${spacingStaticMedium}`,
+              ? `13px ${spacingStaticMedium} 13px 10px`
+              : `13px 10px 13px ${spacingStaticMedium}`,
           font: textSmallStyle.font,
           color: contrastMediumColor,
         },
@@ -145,10 +143,13 @@ export const getComponentCss = (
         icon: {
           // search icon on left side
           position: 'absolute',
-          left: 0,
-          bottom: 0,
+          left: '2px',
+          bottom: '2px',
+          height: innerInputHeightRem,
+          width: innerInputHeightRem,
           color: contrastMediumColor,
-          padding: pxToRemWithUnit(12),
+          boxSizing: 'border-box',
+          padding: '13px',
           pointerEvents: 'none',
         },
       }),
@@ -162,7 +163,6 @@ export const getComponentCss = (
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
         {

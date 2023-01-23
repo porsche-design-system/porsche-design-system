@@ -11,7 +11,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -35,11 +35,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -195,7 +195,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -220,11 +220,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -234,9 +234,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -256,9 +256,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -346,7 +343,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -370,11 +367,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -458,7 +455,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -481,11 +478,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -527,14 +524,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -565,9 +563,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #c51720 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #c51720 !important;
-  }
 }
 "
 `;
@@ -583,7 +578,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -606,11 +601,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #7E7F82 !important;
-  background: #7E7F82 !important;
+  border-color: #404044 !important;
+  background: #404044 !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #7E7F82 !important;
+  background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -652,14 +647,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -690,9 +686,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #9a2727 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #9a2727 !important;
-  }
 }
 "
 `;
@@ -708,7 +701,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -731,11 +724,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -777,14 +770,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -815,9 +809,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #c51720 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #c51720 !important;
-  }
 }
 "
 `;
@@ -833,7 +824,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -858,11 +849,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -872,9 +863,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -894,9 +885,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -983,7 +971,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -997,7 +985,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   padding: 14px 16px !important;
   padding-right: 3.125rem !important;
-  padding-left: 54px !important;
+  padding-left: 3.125rem !important;
 }
 ::slotted(input:focus) {
   border-color: #000000 !important;
@@ -1009,11 +997,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1023,9 +1011,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -1045,9 +1033,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -1105,10 +1090,13 @@ button:disabled {
 }
 .icon {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 2px;
+  bottom: 2px;
+  height: 3.125rem;
+  width: 3.125rem;
   color: #949598;
-  padding: 0.75rem;
+  box-sizing: border-box;
+  padding: 13px;
   pointer-events: none;
 }
 .sr-only {
@@ -1142,7 +1130,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1167,11 +1155,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1181,9 +1169,9 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -1195,6 +1183,9 @@ button {
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
+button+button[type=submit] {
+  right: 0;
+}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -1204,15 +1195,9 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:active {
-  color: rgba(148, 149, 152, 0.20);
-}
 button:disabled {
   color: #949598;
   cursor: not-allowed;
-}
-button+button[type=submit] {
-  right: 0;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
@@ -1295,7 +1280,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1320,11 +1305,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1334,9 +1319,9 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -1348,6 +1333,9 @@ button {
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
+button+button[type=submit] {
+  right: 0;
+}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -1357,15 +1345,9 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:active {
-  color: rgba(148, 149, 152, 0.20);
-}
 button:disabled {
   color: #949598;
   cursor: not-allowed;
-}
-button+button[type=submit] {
-  right: 0;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
@@ -1419,10 +1401,13 @@ button+button[type=submit] {
 }
 .icon {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 2px;
+  bottom: 2px;
+  height: 3.125rem;
+  width: 3.125rem;
   color: #949598;
-  padding: 0.75rem;
+  box-sizing: border-box;
+  padding: 13px;
   pointer-events: none;
 }
 .sr-only {
@@ -1456,7 +1441,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1481,11 +1466,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1495,9 +1480,9 @@ button {
   bottom: 0;
   right: 2.5rem;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -1509,6 +1494,13 @@ button {
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
+button+button[type=button] {
+  color: #949598;
+  cursor: not-allowed;
+}
+button+button[type=submit] {
+  right: 0;
+}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -1518,19 +1510,9 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:active {
-  color: rgba(148, 149, 152, 0.20);
-}
 button:disabled {
   color: #949598;
   cursor: not-allowed;
-}
-button+button[type=button] {
-  color: #949598;
-  cursor: not-allowed;
-}
-button+button[type=submit] {
-  right: 0;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
@@ -1584,10 +1566,13 @@ button+button[type=submit] {
 }
 .icon {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 2px;
+  bottom: 2px;
+  height: 3.125rem;
+  width: 3.125rem;
   color: #949598;
-  padding: 0.75rem;
+  box-sizing: border-box;
+  padding: 13px;
   pointer-events: none;
 }
 .sr-only {
@@ -1621,7 +1606,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1645,11 +1630,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1732,7 +1717,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1756,11 +1741,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1802,14 +1787,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -1839,9 +1825,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #010205 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
 }
 "
 `;
@@ -1857,7 +1840,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1880,11 +1863,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -1926,14 +1909,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -1963,9 +1947,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #010205 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
 }
 "
 `;
@@ -1981,7 +1962,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2004,11 +1985,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #7E7F82 !important;
-  background: #7E7F82 !important;
+  border-color: #404044 !important;
+  background: #404044 !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #7E7F82 !important;
+  background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2050,14 +2031,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -2087,9 +2069,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #FBFCFF !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #FBFCFF !important;
-  }
 }
 "
 `;
@@ -2105,7 +2084,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2128,11 +2107,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2174,14 +2153,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -2211,9 +2191,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #010205 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
 }
 "
 `;
@@ -2229,7 +2206,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2254,11 +2231,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2268,9 +2245,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -2290,9 +2267,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -2380,7 +2354,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2404,11 +2378,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2492,7 +2466,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2515,11 +2489,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2561,14 +2535,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -2599,9 +2574,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #258843 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #258843 !important;
-  }
 }
 "
 `;
@@ -2617,7 +2589,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2640,11 +2612,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #7E7F82 !important;
-  background: #7E7F82 !important;
+  border-color: #404044 !important;
+  background: #404044 !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #7E7F82 !important;
+  background: #404044 !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2686,14 +2658,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -2724,9 +2697,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #008a57 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #008a57 !important;
-  }
 }
 "
 `;
@@ -2742,7 +2712,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2765,11 +2735,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2811,14 +2781,15 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 16px 15px 10px;
+  padding: 13px 16px 13px 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
 }
 .required {
   user-select: none;
@@ -2849,9 +2820,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #258843 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #258843 !important;
-  }
 }
 "
 `;
@@ -2867,7 +2835,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2892,11 +2860,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -2906,9 +2874,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -2928,9 +2896,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -3017,7 +2982,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3041,11 +3006,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3128,7 +3093,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3151,11 +3116,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3196,14 +3161,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -3233,9 +3199,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #c51720 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #c51720 !important;
   }
 }
@@ -3253,7 +3216,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3276,11 +3239,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3321,14 +3284,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -3360,9 +3324,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #c51720 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #c51720 !important;
-  }
 }
 "
 `;
@@ -3378,7 +3339,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3403,11 +3364,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3417,9 +3378,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -3439,9 +3400,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -3527,7 +3485,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3551,11 +3509,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3637,7 +3595,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3660,11 +3618,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3705,14 +3663,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -3741,9 +3700,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -3761,7 +3717,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3784,11 +3740,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3829,14 +3785,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -3867,9 +3824,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #010205 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
 }
 "
 `;
@@ -3885,7 +3839,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3910,11 +3864,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -3924,9 +3878,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -3946,9 +3900,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -4035,7 +3986,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4059,11 +4010,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4146,7 +4097,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4169,11 +4120,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4214,14 +4165,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -4251,9 +4203,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #258843 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #258843 !important;
   }
 }
@@ -4271,7 +4220,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4294,11 +4243,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4339,14 +4288,15 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .unit {
   position: absolute;
-  height: 54px;
-  bottom: 0;
+  height: 3.125rem;
+  bottom: 2px;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
-  padding: 15px 10px 15px 16px;
+  padding: 13px 10px 13px 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
+  pointer-events: none;
   cursor: not-allowed;
 }
 .required {
@@ -4378,9 +4328,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #258843 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #258843 !important;
-  }
 }
 "
 `;
@@ -4396,7 +4343,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block !important;
   position: relative !important;
   width: 100% !important;
-  height: 54px !important;
+  height: 3.375rem !important;
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4421,11 +4368,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input[readonly]) {
-  border-color: #949598 !important;
-  background: #949598 !important;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input[readonly]:focus) {
-  background: #949598 !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -4435,9 +4382,9 @@ button {
   bottom: 0;
   right: 0;
   margin: 0;
-  width: 54px;
-  height: 54px;
-  padding: 0.75rem;
+  width: 3.125rem;
+  height: 3.375rem;
+  padding: 15px 13px;
   box-sizing: border-box;
   outline: 1px solid transparent;
   appearance: none;
@@ -4457,9 +4404,6 @@ button:focus {
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-button:active {
-  color: rgba(148, 149, 152, 0.20);
 }
 button:disabled {
   color: #949598;
@@ -4537,19 +4481,7 @@ button:disabled {
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
-"p-text-field-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-text-field-wrapper b, p-text-field-wrapper strong {
-  font-weight: 700 !important;
-}
-p-text-field-wrapper em, p-text-field-wrapper i {
-  font-style: normal !important;
-}
-p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper input::-webkit-inner-spin-button, p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
+"p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper input::-webkit-inner-spin-button, p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none !important;
   appearance: none !important;
 }
@@ -4558,41 +4490,11 @@ p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button {
 }
 p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
-}
-p-text-field-wrapper a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-text-field-wrapper a:focus {
-  outline-color: currentColor !important;
-}
-p-text-field-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-text-field-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-text-field-wrapper a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text-field-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-text-field-wrapper b, prefixed-p-text-field-wrapper strong {
-  font-weight: 700 !important;
-}
-prefixed-p-text-field-wrapper em, prefixed-p-text-field-wrapper i {
-  font-style: normal !important;
-}
-prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-field-wrapper input::-webkit-inner-spin-button, prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
+"prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-field-wrapper input::-webkit-inner-spin-button, prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none !important;
   appearance: none !important;
 }
@@ -4601,23 +4503,5 @@ prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button
 }
 prefixed-p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, prefixed-p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
-}
-prefixed-p-text-field-wrapper a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-text-field-wrapper a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-text-field-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-text-field-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-text-field-wrapper a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
-  }
-}
-"
+}"
 `;

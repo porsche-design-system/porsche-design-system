@@ -12,7 +12,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -29,11 +29,11 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "borderColor": "#E7323B",
   },
   "::slotted(input[readonly])": {
-    "background": "#949598",
-    "borderColor": "#949598",
+    "background": "#D8D8DB",
+    "borderColor": "#D8D8DB",
   },
   "::slotted(input[readonly]:focus)": {
-    "background": "#949598",
+    "background": "#D8D8DB",
   },
   "@media(hover:hover)": {
     "::slotted(input:not(:disabled):not([readonly]):hover)": {
@@ -55,7 +55,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -72,11 +72,11 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "borderColor": "#000000",
   },
   "::slotted(input[readonly])": {
-    "background": "#949598",
-    "borderColor": "#949598",
+    "background": "#D8D8DB",
+    "borderColor": "#D8D8DB",
   },
   "::slotted(input[readonly]:focus)": {
-    "background": "#949598",
+    "background": "#D8D8DB",
   },
   "@media(hover:hover)": {
     "::slotted(input:not(:disabled):not([readonly]):hover)": {
@@ -98,7 +98,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -115,11 +115,11 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "borderColor": "#32B85B",
   },
   "::slotted(input[readonly])": {
-    "background": "#949598",
-    "borderColor": "#949598",
+    "background": "#D8D8DB",
+    "borderColor": "#D8D8DB",
   },
   "::slotted(input[readonly]:focus)": {
-    "background": "#949598",
+    "background": "#D8D8DB",
   },
   "@media(hover:hover)": {
     "::slotted(input:not(:disabled):not([readonly]):hover)": {
@@ -141,7 +141,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -177,7 +177,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -213,7 +213,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "54px",
+    "height": "3.375rem",
     "outline": "none",
     "position": "relative",
     "textIndent": 0,
@@ -266,11 +266,11 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "borderColor": "#CB3333",
   },
   "::slotted(textarea[readonly])": {
-    "background": "#7E7F82",
-    "borderColor": "#7E7F82",
+    "background": "#404044",
+    "borderColor": "#404044",
   },
   "::slotted(textarea[readonly]:focus)": {
-    "background": "#7E7F82",
+    "background": "#404044",
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
@@ -308,11 +308,11 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "borderColor": "#CB3333",
   },
   "::slotted(textarea[readonly])": {
-    "background": "#7E7F82",
-    "borderColor": "#7E7F82",
+    "background": "#404044",
+    "borderColor": "#404044",
   },
   "::slotted(textarea[readonly]:focus)": {
-    "background": "#7E7F82",
+    "background": "#404044",
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
@@ -350,11 +350,11 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "borderColor": "#beceff",
   },
   "::slotted(textarea[readonly])": {
-    "background": "#7E7F82",
-    "borderColor": "#7E7F82",
+    "background": "#404044",
+    "borderColor": "#404044",
   },
   "::slotted(textarea[readonly]:focus)": {
-    "background": "#7E7F82",
+    "background": "#404044",
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
@@ -392,11 +392,11 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "borderColor": "#00C77E",
   },
   "::slotted(textarea[readonly])": {
-    "background": "#7E7F82",
-    "borderColor": "#7E7F82",
+    "background": "#404044",
+    "borderColor": "#404044",
   },
   "::slotted(textarea[readonly]:focus)": {
-    "background": "#7E7F82",
+    "background": "#404044",
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not([readonly]):hover)": {

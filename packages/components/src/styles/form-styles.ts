@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
+import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
 import {
   borderRadiusSmall,
   textSmallStyle,
@@ -13,7 +13,6 @@ import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
 export const INPUT_HEIGHT = 54;
-export const INPUT_HEIGHT_PX = `${INPUT_HEIGHT}px`;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -23,7 +22,7 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, primaryColorDarken, contrastHighColor, contrastMediumColor, disabledColor } =
+  const { primaryColor, primaryColorDarken, contrastLowColor, contrastHighColor, contrastMediumColor, disabledColor } =
     getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
@@ -33,7 +32,7 @@ export const getBaseChildStyles = (
       display: 'block',
       position: 'relative',
       width: '100%',
-      ...(child !== 'textarea' && { height: INPUT_HEIGHT_PX }),
+      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
       outline: 'none',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
@@ -64,11 +63,11 @@ export const getBaseChildStyles = (
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
-        borderColor: disabledColor,
-        background: disabledColor,
+        borderColor: contrastLowColor,
+        background: contrastLowColor,
       },
       [`::slotted(${child}[readonly]:focus)`]: {
-        background: disabledColor,
+        background: contrastLowColor,
       },
     }),
   };
@@ -86,16 +85,6 @@ export const getLabelStyles = (
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
-  // jss prefers flat and simple selectors, therefore we reuse properties
-  const labelTextHoverJssStyle: JssStyle = hoverMediaQuery({
-    '&:hover': {
-      [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-      (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
-        borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : primaryColor),
-      },
-    },
-  });
-
   const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
 
   return {
@@ -106,27 +95,33 @@ export const getLabelStyles = (
         display: 'block',
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         ...textSmallStyle,
-        color: isDisabled ? disabledColor : primaryColor, // TODO: check color
+        color: isDisabled ? disabledColor : primaryColor,
         // transition: getTransition('color'),
         '&+&': {
           marginTop: `-${spacingStaticXSmall}`,
           fontSize: fontSizeTextXSmall,
           ...(!isDisabled && {
-            color: contrastHighColor, // TODO: check color
+            color: contrastHighColor,
           }),
         },
-        ...labelTextHoverJssStyle,
+        ...hoverMediaQuery({
+          '&:hover': {
+            [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
+            (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
+              borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : primaryColor),
+            },
+          },
+        }),
       },
     },
     ...(counterOrUnitOrIconStyles && {
       [counterOrUnitOrIconStylesKey]: {
         ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
+        pointerEvents: 'none',
         ...(isDisabled && {
           color: disabledColor,
           cursor: 'not-allowed',
         }),
-        // TODO: might not be needed with pointer-events: none
-        ...labelTextHoverJssStyle,
       },
     }),
   };
