@@ -100,7 +100,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render button with multiline label">
-      <p-button style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+      <p-button style="width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

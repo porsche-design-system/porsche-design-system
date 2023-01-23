@@ -163,7 +163,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should show inline-notification with multiline heading and description">
       <p-inline-notification
-        style="width: 240px"
+        style="width: 15rem"
         [heading]="'Some heading with a very long text across multiple lines'"
         [description]="'Some description with a very long text across multiple lines'"
         [actionLabel]="'Some action label with custom icon'"

@@ -98,8 +98,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-link style="width: 240px" [href]="'https://www.porsche.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
-      <p-link style="width: 240px">
+      <p-link style="width: 15rem" [href]="'https://www.porsche.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+      <p-link style="width: 15rem">
         <a [href]="'https://www.porsche.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link>
     </div>
