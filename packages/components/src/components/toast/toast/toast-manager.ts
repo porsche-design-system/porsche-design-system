@@ -43,7 +43,7 @@ export class ToastManagerClass {
       throw new Error('Empty text provided to addMessage.');
     }
 
-    const msg: ToastMessage = { state: 'info', ...message }; // neutral is our default state
+    const msg: ToastMessage = { state: 'info', ...message }; // info is our default state
 
     const { length } = this.messages;
     this.messages.push(msg);
