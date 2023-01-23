@@ -1,10 +1,4 @@
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getScreenReaderOnlyJssStyle,
-  getThemedColors,
-  getTransition,
-} from '../../styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, getTransition } from '../../styles';
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
@@ -23,7 +17,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
       ':host': addImportantToEachRule({
         display: 'inline-block',
         verticalAlign: 'top',
-        outline: addImportantToRule(0),
+        outline: 0,
       }),
       ...hostHiddenStyles,
       button: {
