@@ -2,10 +2,12 @@
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasSlottedAnchor: false and theme: dark 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -21,6 +23,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -35,10 +38,10 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   position: fixed;
   border: 2px solid #0A0AFF;
   border-radius: 8px;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -51,21 +54,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: 0;
 }
 @media(min-width:480px) {
   .root {
-    padding: 13px 26px;
+    padding: 13px 26px 13px 18px;
     gap: 8px;
   }
   .label {
     width: auto;
     height: auto;
     text-indent: 0;
-  }
-  .icon {
-    margin-left: -8px;
   }
 }
 
@@ -79,23 +77,17 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     height: 1px;
     text-indent: -999999px;
   }
-  .icon {
-    margin-left: 0;
-  }
 }
 
 @media(min-width:1000px) {
   .root {
-    padding: 13px 26px;
+    padding: 13px 26px 13px 18px;
     gap: 8px;
   }
   .label {
     width: auto;
     height: auto;
     text-indent: 0;
-  }
-  .icon {
-    margin-left: -8px;
   }
 }
 
@@ -109,23 +101,17 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     height: 1px;
     text-indent: -999999px;
   }
-  .icon {
-    margin-left: 0;
-  }
 }
 
 @media(min-width:1760px) {
   .root {
-    padding: 13px 26px;
+    padding: 13px 26px 13px 18px;
     gap: 8px;
   }
   .label {
     width: auto;
     height: auto;
     text-indent: 0;
-  }
-  .icon {
-    margin-left: -8px;
   }
 }
 
@@ -140,10 +126,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: false and theme: light 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -159,13 +147,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .root:focus::before {
@@ -173,10 +162,10 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   position: fixed;
   border: 2px solid #0A0AFF;
   border-radius: 8px;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -189,8 +178,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -203,32 +190,27 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -253,13 +235,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -270,8 +253,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -284,32 +265,27 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -334,13 +310,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -351,8 +328,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -365,32 +340,27 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -415,13 +385,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -432,8 +403,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -441,18 +410,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     border-color: #7E7F82;
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-  }
-  .root:hover:focus::before {
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
-  }
-  .root:hover > .label {
-    color: #FBFCFF;
-  }
-  .root:hover > .icon {
-    color: #FBFCFF;
   }
 }
 "
@@ -460,32 +417,27 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -510,13 +462,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -527,8 +480,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -537,50 +488,33 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
-  .root:hover:focus::before {
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
-  }
-  .root:hover > .label {
-    color: #010205;
-  }
-  .root:hover > .icon {
-    color: #010205;
-  }
 }
 "
 `;
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -605,13 +539,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -622,8 +557,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -632,50 +565,33 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
-  .root:hover:focus::before {
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
-  }
-  .root:hover > .label {
-    color: #FBFCFF;
-  }
-  .root:hover > .icon {
-    color: #FBFCFF;
-  }
 }
 "
 `;
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -700,13 +616,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
+  padding: 13px 26px 13px 18px;
   gap: 8px;
 }
 .label {
@@ -717,8 +634,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -727,50 +642,33 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
-  .root:hover:focus::before {
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
-  }
-  .root:hover > .label {
-    color: #010205;
-  }
-  .root:hover > .icon {
-    color: #010205;
-  }
 }
 "
 `;
 
 exports[`getComponentCss() should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
+  display: inline-block !important;
+  vertical-align: top !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a) {
   outline: 0 !important;
-  display: block !important;
   text-decoration: none !important;
+  font: inherit !important;
   color: inherit !important;
-  line-height: inherit !important;
 }
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
   border-radius: 8px !important;
-  top: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:hover)::before {
   top: -6px !important;
+  left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  left: -6px !important;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -795,6 +693,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
+  transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
