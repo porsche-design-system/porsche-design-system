@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -73,7 +73,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -142,7 +142,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -217,7 +217,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -292,7 +292,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -367,7 +367,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-block !important;
   vertical-align: top !important;
-  outline: 0 !important !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
