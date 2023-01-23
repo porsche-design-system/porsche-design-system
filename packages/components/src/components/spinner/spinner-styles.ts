@@ -44,7 +44,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           transformOrigin: '0 0',
           animation: `$dash ${animationDuration} ease-in-out infinite`,
           stroke: primaryColor,
-          strokeDasharray: strokeDasharray, // C = 2πR
+          strokeDasharray, // C = 2πR
           strokeLinecap: 'round',
         },
       },
