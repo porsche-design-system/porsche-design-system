@@ -220,7 +220,7 @@ export class TextFieldWrapper {
               </span>
             )}
             {(this.hasUnit || this.isCounterVisible) && (
-              <span class="unit" {...labelProps} ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
+              <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
                 {this.unit}
               </span>
             )}
