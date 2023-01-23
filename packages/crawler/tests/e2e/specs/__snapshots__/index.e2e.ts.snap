@@ -10,7 +10,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -27,7 +27,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -87,7 +87,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -104,7 +104,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -186,7 +186,6 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
             "loading": false,
             "size": "small",
             "stretch": false,
-            "tabbable": true,
             "theme": "light",
             "type": "button",
             "weight": "regular",
