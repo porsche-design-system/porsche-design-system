@@ -17,9 +17,8 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-link');
-const getRoot = () => selectNode(page, 'p-link >>> .root');
 const getLink = () => selectNode(page, 'p-link >>> a');
-const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
+const getSlottedLink = () => selectNode(page, 'p-link a');
 
 const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -165,12 +164,10 @@ describe('slotted anchor', () => {
 
     const host = await getHost();
     const hostWidthInPx = await getElementStyle(host, 'width');
-    const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
-    const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
+    const anchorWidth = parseInt(await getElementStyle(await getSlottedLink(), 'width', {pseudo: '::before'}));
+    const anchorOffset = parseInt(await getElementStyle(await getSlottedLink(), 'left', {pseudo: '::before'})) + parseInt(await getElementStyle(await getSlottedLink(), 'right', {pseudo: '::before'}));
 
-    const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
-
-    expect(`${anchorWidth + rootBorderWidth}px`).toBe(hostWidthInPx);
+    expect(`${anchorWidth + anchorOffset}px`).toBe(hostWidthInPx);
   });
 });
 
