@@ -1173,31 +1173,3 @@ span {
   margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: dark 1`] = `"#0E0E12"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-default, theme: light 1`] = `"#FFF"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: dark 1`] = `"#212225"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: light 1`] = `"#EEEFF2"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: dark 1`] = `"#FBFCFF"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: neutral-contrast-high, theme: light 1`] = `"#010205"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: dark 1`] = `"#290A0A"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error, theme: light 1`] = `"#FCE8E9"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-information, theme: dark 1`] = `"#001A33"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-information, theme: light 1`] = `"#E8EEFD"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: dark 1`] = `"#003320"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: light 1`] = `"#EBFAF0"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: dark 1`] = `"#2B2208"`;
-
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning, theme: light 1`] = `"#FFF9E6"`;
