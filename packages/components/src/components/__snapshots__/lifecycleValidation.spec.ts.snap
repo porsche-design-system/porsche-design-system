@@ -294,6 +294,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "label": "string",
   "message": "string",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
