@@ -28,12 +28,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link [variant]="'primary'" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground light" title="should render primary without label">
-      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link>
-      <p-link [variant]="'primary'" [hideLabel]="true"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render primary without label on dark theme">
-      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
-      <p-link [variant]="'primary'" [hideLabel]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
 
     <div class="playground light" title="should render primary as default with label only">
@@ -53,12 +53,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground light" title="should render primary as default without label">
-      <p-link [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link>
-      <p-link [hideLabel]="true"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-link>
+      <p-link [hideLabel]="true" [icon]="'arrow-right'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render primary as default without label on dark theme">
-      <p-link [theme]="'dark'" [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link>
-      <p-link [hideLabel]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [theme]="'dark'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-link>
+      <p-link [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
 
     <div class="playground light" title="should render secondary with label only">
@@ -78,12 +78,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link [variant]="'secondary'" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground light" title="should render secondary without label">
-      <p-link [variant]="'secondary'" [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link>
-      <p-link [variant]="'secondary'" [hideLabel]="true"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'secondary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-link>
+      <p-link [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render secondary without label on dark theme">
-      <p-link [variant]="'secondary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
-      <p-link [variant]="'secondary'" [hideLabel]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'secondary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-link>
+      <p-link [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
 
     <div class="playground light" title="should render secondary if tertiary prop is set (deprecated) with label only">
@@ -103,16 +103,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link [variant]="'tertiary'" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground light" title="should render secondary if tertiary prop is set (deprecated) without label">
-      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link>
-      <p-link [variant]="'tertiary'" [hideLabel]="true"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-link>
+      <p-link [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render secondary if tertiary prop is set (deprecated) without label on dark theme">
-      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
-      <p-link [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-link>
+      <p-link [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
 
     <div class="playground light" title="should render primary with responsive label">
-      <p-link [variant]="'primary'" [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" [href]="'https://www.porsche.com'">
+      <p-link [variant]="'primary'" [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" [icon]="'arrow-right'" [href]="'https://www.porsche.com'">
         Some label
       </p-link>
     </div>
@@ -154,8 +154,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link [variant]="'primary'" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
       <p-link [variant]="'primary'" [icon]="'arrow-right'" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
       <p-link [variant]="'primary'" [icon]="'arrow-right'" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
-      <p-link [variant]="'primary'" [hideLabel]="true" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
-      <p-link [variant]="'primary'" [hideLabel]="true" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [href]="'https://www.porsche.com'" style="width: 100%;">Some label</p-link>
+      <p-link [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" style="width: 100%;"><a [href]="'https://www.porsche.com'">Some label</a></p-link>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -32,14 +32,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [variant]="'primary'" [theme]="'dark'" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground light" title="should render button primary without label">
-      <p-button [variant]="'primary'" [hideLabel]="true">Some label</p-button>
-      <p-button [variant]="'primary'" [hideLabel]="true" [loading]="true">Some label</p-button>
-      <p-button [variant]="'primary'" [hideLabel]="true" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground dark" title="should render button primary without label on dark theme">
-      <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'">Some label</p-button>
-      <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'" [loading]="true">Some label</p-button>
-      <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [disabled]="true">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button primary as default with label only">
@@ -63,14 +63,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [theme]="'dark'" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground light" title="should render button primary as default without label">
-      <p-button [hideLabel]="true">Some label</p-button>
-      <p-button [hideLabel]="true" [loading]="true">Some label</p-button>
-      <p-button [hideLabel]="true" [disabled]="true">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'" [loading]="true">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground dark" title="should render button primary as default without label on dark theme">
-      <p-button [hideLabel]="true" [theme]="'dark'">Some label</p-button>
-      <p-button [hideLabel]="true" [theme]="'dark'" [loading]="true">Some label</p-button>
-      <p-button [hideLabel]="true" [theme]="'dark'" [disabled]="true">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [loading]="true">Some label</p-button>
+      <p-button [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [disabled]="true">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button secondary with label only">
@@ -94,14 +94,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [variant]="'secondary'" [theme]="'dark'" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground light" title="should render button secondary without label">
-      <p-button [variant]="'secondary'" [hideLabel]="true">Some label</p-button>
-      <p-button [variant]="'secondary'" [hideLabel]="true" [loading]="true">Some label</p-button>
-      <p-button [variant]="'secondary'" [hideLabel]="true" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground dark" title="should render button secondary without label on dark theme">
-      <p-button [variant]="'secondary'" [hideLabel]="true" [theme]="'dark'">Some label</p-button>
-      <p-button [variant]="'secondary'" [hideLabel]="true" [theme]="'dark'" [loading]="true">Some label</p-button>
-      <p-button [variant]="'secondary'" [hideLabel]="true" [theme]="'dark'" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'secondary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [disabled]="true">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button secondary if tertiary prop is set (deprecated) with label">
@@ -125,18 +125,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [variant]="'tertiary'" [theme]="'dark'" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground light" title="should render button secondary if tertiary prop is set (deprecated) without label">
-      <p-button [variant]="'tertiary'" [hideLabel]="true">Some label</p-button>
-      <p-button [variant]="'tertiary'" [hideLabel]="true" [loading]="true">Some label</p-button>
-      <p-button [variant]="'tertiary'" [hideLabel]="true" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [disabled]="true">Some label</p-button>
     </div>
     <div class="playground dark" title="should render button secondary if tertiary prop is set (deprecated) without label on dark theme">
-      <p-button [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'">Some label</p-button>
-      <p-button [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'" [loading]="true">Some label</p-button>
-      <p-button [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'" [disabled]="true">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [loading]="true">Some label</p-button>
+      <p-button [variant]="'tertiary'" [hideLabel]="true" [icon]="'arrow-right'" [theme]="'dark'" [disabled]="true">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button primary with responsive label">
-      <p-button [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-button>
+      <p-button [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" [icon]="'arrow-right'">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button with specific icon">
@@ -166,7 +166,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render button with centered text/icon if set to 100% width">
       <p-button [variant]="'primary'" style="width: 100%">Some label</p-button>
       <p-button [variant]="'primary'" [icon]="'arrow-right'" style="width: 100%">Some label</p-button>
-      <p-button [variant]="'primary'" [hideLabel]="true" style="width: 100%">Some label</p-button>
+      <p-button [variant]="'primary'" [hideLabel]="true" [icon]="'arrow-right'" style="width: 100%">Some label</p-button>
       <p-button [variant]="'primary'" [loading]="true" style="width: 100%">Some label</p-button>
       <p-button [variant]="'primary'" [disabled]="true" style="width: 100%">Some label</p-button>
     </div>

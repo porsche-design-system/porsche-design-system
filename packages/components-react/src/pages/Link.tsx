@@ -29,12 +29,12 @@ export const LinkPage = (): JSX.Element => {
         <PLink variant="primary" icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground light" title="should render primary without label">
-        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true}>Some label</PLink>
-        <PLink variant="primary" hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right">Some label</PLink>
+        <PLink variant="primary" hideLabel={true} icon="arrow-right"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground dark" title="should render primary without label on dark theme">
-        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLink>
-        <PLink variant="primary" hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right" theme="dark">Some label</PLink>
+        <PLink variant="primary" hideLabel={true} icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
 
       <div className="playground light" title="should render primary as default with label only">
@@ -54,12 +54,12 @@ export const LinkPage = (): JSX.Element => {
         <PLink icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground light" title="should render primary as default without label">
-        <PLink href="https://www.porsche.com" hideLabel={true}>Some label</PLink>
-        <PLink hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink href="https://www.porsche.com" hideLabel={true} icon="arrow-right">Some label</PLink>
+        <PLink hideLabel={true} icon="arrow-right"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground dark" title="should render primary as default without label on dark theme">
-        <PLink theme="dark" href="https://www.porsche.com" hideLabel={true}>Some label</PLink>
-        <PLink hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink theme="dark" href="https://www.porsche.com" hideLabel={true} icon="arrow-right">Some label</PLink>
+        <PLink hideLabel={true} icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
 
       <div className="playground light" title="should render secondary with label only">
@@ -79,12 +79,12 @@ export const LinkPage = (): JSX.Element => {
         <PLink variant="secondary" icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground light" title="should render secondary without label">
-        <PLink variant="secondary" href="https://www.porsche.com" hideLabel={true}>Some label</PLink>
-        <PLink variant="secondary" hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="secondary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right">Some label</PLink>
+        <PLink variant="secondary" hideLabel={true} icon="arrow-right"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground dark" title="should render secondary without label on dark theme">
-        <PLink variant="secondary" href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLink>
-        <PLink variant="secondary" hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="secondary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right" theme="dark">Some label</PLink>
+        <PLink variant="secondary" hideLabel={true} icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
 
       <div className="playground light" title="should render secondary if tertiary prop is set (deprecated) with label only">
@@ -104,16 +104,16 @@ export const LinkPage = (): JSX.Element => {
         <PLink variant="tertiary" icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground light" title="should render secondary if tertiary prop is set (deprecated) without label">
-        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true}>Some label</PLink>
-        <PLink variant="tertiary" hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right">Some label</PLink>
+        <PLink variant="tertiary" hideLabel={true} icon="arrow-right"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
       <div className="playground dark" title="should render secondary if tertiary prop is set (deprecated) without label on dark theme">
-        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLink>
-        <PLink variant="tertiary" hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true} icon="arrow-right" theme="dark">Some label</PLink>
+        <PLink variant="tertiary" hideLabel={true} icon="arrow-right" theme="dark"><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
 
       <div className="playground light" title="should render primary with responsive label">
-        <PLink variant="primary" hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }} href="https://www.porsche.com">
+        <PLink variant="primary" hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }} icon="arrow-right" href="https://www.porsche.com">
           Some label
         </PLink>
       </div>
@@ -155,8 +155,8 @@ export const LinkPage = (): JSX.Element => {
         <PLink variant="primary" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
         <PLink variant="primary" icon="arrow-right" href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
         <PLink variant="primary" icon="arrow-right" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
-        <PLink variant="primary" hideLabel={true} href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
-        <PLink variant="primary" hideLabel={true} style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink variant="primary" hideLabel={true} icon="arrow-right" href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
+        <PLink variant="primary" hideLabel={true} icon="arrow-right" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
       </div>
     </>
   );
