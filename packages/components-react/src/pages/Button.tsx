@@ -159,9 +159,9 @@ export const ButtonPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <PButton style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
-        <PButton style={{ width: '240px' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
-        <PButton style={{ width: '240px' }} icon="arrow-right" loading={true}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+        <PButton style={{ width: '15rem' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+        <PButton style={{ width: '15rem' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+        <PButton style={{ width: '15rem' }} icon="arrow-right" loading={true}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
       </div>
 
       <div className="playground light" title="should render button with centered text/icon if set to 100% width">

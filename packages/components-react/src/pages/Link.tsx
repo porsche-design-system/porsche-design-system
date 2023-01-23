@@ -137,15 +137,15 @@ export const LinkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label with icon">
-        <PLink style={{ width: '240px' }} icon="arrow-right" href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
-        <PLink style={{ width: '240px' }} icon="arrow-right">
+        <PLink style={{ width: '15rem' }} icon="arrow-right" href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+        <PLink style={{ width: '15rem' }} icon="arrow-right">
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLink>
       </div>
 
       <div className="playground light" title="should render with multiline label without icon">
-        <PLink style={{ width: '240px' }} href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
-        <PLink style={{ width: '240px' }}>
+        <PLink style={{ width: '15rem' }} href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+        <PLink style={{ width: '15rem' }}>
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLink>
       </div>

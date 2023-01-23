@@ -158,9 +158,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render button with multiline label">
-      <p-button style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
-      <p-button style="width: 240px" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
-      <p-button style="width: 240px" [icon]="'arrow-right'" [loading]="true">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+      <p-button style="width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+      <p-button style="width: 15rem" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+      <p-button style="width: 15rem" [icon]="'arrow-right'" [loading]="true">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
 
     <div class="playground light" title="should render button with centered text/icon if set to 100% width">
