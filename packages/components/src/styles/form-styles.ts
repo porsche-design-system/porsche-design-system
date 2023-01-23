@@ -22,15 +22,8 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const {
-    primaryColor,
-    primaryColorDarken,
-    contrastLowColor,
-    contrastHighColor,
-    contrastMediumColor,
-    disabledColor,
-    focusColor,
-  } = getThemedColors(theme);
+  const { primaryColor, contrastLowColor, contrastHighColor, contrastMediumColor, disabledColor, focusColor } =
+    getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -61,7 +54,7 @@ export const getBaseChildStyles = (
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
-      borderColor: formStateColor || primaryColorDarken,
+      borderColor: formStateColor || primaryColor,
       outlineColor: focusColor,
     },
     [`::slotted(${child}:focus:not(:focus-visible))`]: {

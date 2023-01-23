@@ -27,7 +27,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -536,8 +536,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -661,8 +663,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
   pointer-events: none;
@@ -786,8 +790,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -853,7 +859,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1003,7 +1009,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-left: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1113,6 +1119,7 @@ button:disabled {
   color: #949598;
   box-sizing: border-box;
   padding: 13px;
+  align-items: center;
   pointer-events: none;
 }
 .sr-only {
@@ -1163,7 +1170,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1315,7 +1322,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1428,6 +1435,7 @@ button:disabled {
   color: #949598;
   box-sizing: border-box;
   padding: 13px;
+  align-items: center;
   pointer-events: none;
 }
 .sr-only {
@@ -1478,7 +1486,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1595,6 +1603,7 @@ button:disabled {
   color: #949598;
   box-sizing: border-box;
   padding: 13px;
+  align-items: center;
   pointer-events: none;
 }
 .sr-only {
@@ -1644,7 +1653,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1757,7 +1766,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -moz-appearance: textfield !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1817,8 +1826,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -1881,7 +1892,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -1941,8 +1952,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -2005,7 +2018,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  border-color: #beceff !important;
+  border-color: #FBFCFF !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -2065,8 +2078,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
   pointer-events: none;
@@ -2129,7 +2144,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -2189,8 +2204,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -2577,8 +2594,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -2702,8 +2721,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
   pointer-events: none;
@@ -2827,8 +2848,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 2px;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 16px 13px 10px;
+  padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -3213,8 +3236,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -3338,8 +3363,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -3406,7 +3433,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-right: 3.125rem !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -3553,7 +3580,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 14px 16px !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -3664,7 +3691,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -3723,8 +3750,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -3788,7 +3817,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(input:focus) {
-  border-color: #000000 !important;
+  border-color: #010205 !important;
   outline-color: #0A0AFF !important;
 }
 ::slotted(input:focus:not(:focus-visible)) {
@@ -3847,8 +3876,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -4233,8 +4264,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;
@@ -4358,8 +4391,10 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 2px;
   left: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 13px 10px 13px 16px;
+  padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
   pointer-events: none;

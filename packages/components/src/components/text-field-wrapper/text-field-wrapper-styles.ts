@@ -127,11 +127,10 @@ export const getComponentCss = (
           bottom: '2px',
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
+          display: 'flex',
+          alignItems: 'center',
           boxSizing: 'border-box',
-          padding:
-            unitPosition === 'suffix'
-              ? `13px ${spacingStaticMedium} 13px 10px`
-              : `13px 10px 13px ${spacingStaticMedium}`,
+          padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`,
           font: textSmallStyle.font,
           color: contrastMediumColor,
         },
@@ -151,6 +150,7 @@ export const getComponentCss = (
           color: contrastMediumColor,
           boxSizing: 'border-box',
           padding: '13px',
+          alignItems: 'center',
           pointerEvents: 'none',
         },
       }),
