@@ -23,7 +23,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -55,7 +55,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -93,7 +93,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -125,7 +125,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -163,7 +163,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -195,7 +195,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -233,7 +233,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -265,7 +265,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -303,7 +303,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -335,7 +335,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -373,7 +373,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -405,7 +405,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -443,7 +443,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -475,7 +475,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -513,7 +513,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -545,7 +545,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -583,7 +583,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -615,7 +615,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
@@ -688,7 +688,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-stroke-dasharray__spinner, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -720,7 +720,7 @@ circle:last-child {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    stroke-width: 1;
+    stroke-width: 1.5;
   }
   .sr-only {
     position: absolute;
