@@ -1,8 +1,9 @@
 import * as colorsUtils from '../../styles/colors';
 import * as tagUtils from './tag-utils';
 import * as isThemeDarkUtils from '../../utils/theme/isThemeDark';
-import * as tagStyles from './tag-styles';
-import { getColors, getComponentCss, getThemedBackgroundColor } from './tag-styles';
+import * as tagSharedUtils from './tag-shared-utils';
+import { getColors, getComponentCss } from './tag-styles';
+import { getThemedBackgroundColor } from './tag-shared-utils';
 import { getThemedColors } from '../../styles/colors';
 import type { Theme } from '../../types';
 import type { TagColor } from './tag-utils';
@@ -31,13 +32,12 @@ describe('getThemedBackgroundColor()', () => {
 
 describe('getColors()', () => {
   it('should call hasInvertedThemeColor(), getThemedColors() and getThemedBackgroundColor() with correct parameters', () => {
-    const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
+    const themedColors = getThemedColors('light');
     const hasInvertedThemeColorSpy = jest.spyOn(tagUtils, 'hasInvertedThemeColor');
-    const getThemedBackgroundColorSpy = jest.spyOn(tagStyles, 'getThemedBackgroundColor');
+    const getThemedBackgroundColorSpy = jest.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
 
-    getColors('background-surface', 'light');
+    getColors('background-surface', 'light', themedColors);
 
-    expect(getThemedColorsSpy).toBeCalledWith('light');
     expect(hasInvertedThemeColorSpy).toBeCalledWith('background-surface', 'light');
     expect(getThemedBackgroundColorSpy).toBeCalledWith('background-surface', getThemedColors('light'));
   });
@@ -45,9 +45,10 @@ describe('getColors()', () => {
   it('should call hasInvertedThemeColor(), isThemeDark() and getThemedColors() with correct parameters', () => {
     const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
     const isThemeDarkSpy = jest.spyOn(isThemeDarkUtils, 'isThemeDark');
+    const themedColors = getThemedColors('light');
 
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(true);
-    getColors('background-surface', 'light');
+    getColors('background-surface', 'light', themedColors);
 
     expect(getThemedColorsSpy).toBeCalledWith('dark');
     expect(isThemeDarkSpy).toBeCalledWith('light');
@@ -60,7 +61,8 @@ describe('getColors()', () => {
     ['dark', false],
   ])('should return correct css for theme: %s and hasInvertedTheme: %s', (theme, hasInvertedTheme) => {
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(hasInvertedTheme);
-    expect(getColors('background-surface', theme)).toMatchSnapshot();
+    const themedColors = getThemedColors(theme);
+    expect(getColors('background-surface', theme, themedColors)).toMatchSnapshot();
   });
 });
 

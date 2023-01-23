@@ -4,7 +4,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3e4045",
-  "outlineColor": "#0A0AFF",
+  "focusColor": "#0A0AFF",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -13,7 +13,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3e4045",
-  "outlineColor": "#FBFCFF",
+  "focusColor": "#0A0AFF",
   "primaryColor": "#010205",
 }
 `;
@@ -22,7 +22,7 @@ exports[`getColors() should return correct css for theme: light and hasInvertedT
 {
   "backgroundColor": "#EEEFF2",
   "backgroundHoverColor": "#cbced7",
-  "outlineColor": "#0A0AFF",
+  "focusColor": "#0A0AFF",
   "primaryColor": "#010205",
 }
 `;
@@ -31,7 +31,7 @@ exports[`getColors() should return correct css for theme: light and hasInvertedT
 {
   "backgroundColor": "#EEEFF2",
   "backgroundHoverColor": "#cbced7",
-  "outlineColor": "#010205",
+  "focusColor": "#0A0AFF",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -493,7 +493,7 @@ span {
   border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #FBFCFF !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -565,7 +565,7 @@ span {
   border-radius: 8px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #010205 !important;
+  border-color: #0A0AFF !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
