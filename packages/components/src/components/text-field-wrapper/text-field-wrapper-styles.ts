@@ -35,6 +35,7 @@ export const getComponentCss = (
   const hasVisibleState = isVisibleFormState(state);
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
+  const isNumber = isType(inputType, 'number');
   const isSearchOrPassword = isSearch || isPassword;
   const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT);
   const innerInputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
@@ -56,7 +57,7 @@ export const getComponentCss = (
             // padding is set via inline style if unit is present
             padding: `14px ${spacingStaticMedium}`,
           }),
-          ...(isType(inputType, 'number')
+          ...(isNumber
             ? {
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }

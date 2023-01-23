@@ -120,7 +120,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           </p-text-field-wrapper>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 
