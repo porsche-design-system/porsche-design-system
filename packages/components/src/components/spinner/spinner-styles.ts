@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const sizeSmall = '48px';
@@ -23,11 +23,11 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'inline-flex',
         verticalAlign: 'top',
-      },
-      ...hostHiddenStyles,
+        ...hostHiddenStyles,
+      }),
       svg: {
         display: 'block',
         position: 'relative',

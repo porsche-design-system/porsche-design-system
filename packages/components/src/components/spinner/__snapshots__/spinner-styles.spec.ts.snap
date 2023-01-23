@@ -2,8 +2,8 @@
 
 exports[`getComponentCss() should return correct css for size: "inherit" and theme dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -72,8 +72,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "inherit" and theme light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -142,8 +142,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "large" and theme dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -212,8 +212,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "large" and theme light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -282,8 +282,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "medium" and theme dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -352,8 +352,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "medium" and theme light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -422,8 +422,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "small" and theme dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -492,8 +492,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: "small" and theme light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -562,8 +562,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} and theme dark 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -667,8 +667,8 @@ circle:last-child {
 
 exports[`getComponentCss() should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} and theme light 1`] = `
 ":host {
-  display: inline-flex;
-  vertical-align: top;
+  display: inline-flex !important;
+  vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
