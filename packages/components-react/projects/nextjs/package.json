@@ -12,7 +12,7 @@
     "build-app": "yarn prestartAndBuild && next build",
     "lint": "next lint",
     "test": "yarn test:vrt",
-    "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts text-field-wrapper",
+    "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.next"
