@@ -133,11 +133,17 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
     {
       "children": [
         {
-          "name": "Some Tag",
-          "role": "StaticText",
+          "children": [
+            {
+              "name": "Some Tag",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "generic",
     },
     {
       "children": [
