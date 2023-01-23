@@ -5,9 +5,9 @@ import { ANIMATION_DURATION } from '../../banner/banner-styles';
 const TOAST_DEFAULT_TIMEOUT = 6000;
 
 // css variable names for overriding behaviour in tests
-const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-override-toast-skip-timeout';
-const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-override-toast-timeout';
-export const TOAST_ANIMATION_DURATION_VAR = '--p-override-toast-animation-duration';
+const TOAST_CSS_SKIP_TIMEOUT_VAR = '--_pds-toast-skip-timeout';
+const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--_pds-toast-override-timeout';
+export const TOAST_ANIMATION_DURATION_VAR = '--pds-animation-duration';
 
 export type ToastMessage = {
   text: string;
@@ -77,7 +77,7 @@ export class ToastManagerClass {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
-        // skip setting timeout if --p-override-toast-skip-timeout css variable is set in dev build
+        // skip setting timeout if --pds_toast-skip-timeout css variable is set in dev build
         if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
           this.timeout = setTimeout(
             this.dismissToastItem,

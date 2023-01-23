@@ -1,11 +1,8 @@
 :root {
-  --p-transition-duration: 0s;
-  --p-animation-duration__spinner: 0s;
-  --p-stroke-dasharray__spinner: 40;
-  --p-animation-duration__banner: 0s;
-  --p-override-popover-animation-duration: 0s;
-  --p-override-toast-skip-timeout: true;
-  --p-override-toast-animation-duration: 0s;
+  --pds-transition-duration: 0s;
+  --pds-animation-duration: 0s;
+  --_pds-spinner-stroke-dasharray: 40;
+  --_pds-toast-skip-timeout: true;
 }
 
 html,

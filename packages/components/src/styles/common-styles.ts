@@ -5,7 +5,7 @@ import { getThemedColors } from './';
 import { hoverMediaQuery } from './hover-media-query';
 import type { Theme } from '../types';
 
-export const transitionDuration = 'var(--p-transition-duration, .24s)';
+export const transitionDuration = 'var(--pds-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
 
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
