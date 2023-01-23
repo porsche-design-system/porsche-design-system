@@ -135,7 +135,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type password readonly">
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
-        <PTextFieldWrapper label="Type password long text" style={{ width: '240px' }}>
+        <PTextFieldWrapper label="Type password long text" style={{ width: '15rem' }}>
           <input
             type="password"
             defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
@@ -252,7 +252,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: '240px' }}
+          style={{ width: '15rem' }}
         >
           <input type="text" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </PTextFieldWrapper>

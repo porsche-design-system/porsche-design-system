@@ -12,13 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `underline` prop for `Link Pure`
-- `Checkbox Wrapper` supports `theme` prop
+- `Checkbox Wrapper` and `Radio Button Wrapper` supports `theme` prop
 
 #### Changed
 
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**
-- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper` matches new design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper` matches new design language
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff

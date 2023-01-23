@@ -87,10 +87,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground"
       title="should automatically break words/strings into new line being too long to fit inside their container"
     >
-      <p-text style="width: 240px; background: deeppink">
+      <p-text style="width: 15rem; background: deeppink">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-text>
-      <p-text style="width: 240px; background: deepskyblue">
+      <p-text style="width: 15rem; background: deepskyblue">
         <p style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </p>
