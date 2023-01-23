@@ -24,11 +24,11 @@ const generateComponentMeta = (): void => {
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
   nestedComponents?: TagName[]; // array of other pds components
   props?: {
-    [propName: string]: boolean | number | string; // value is the prop's default value
+    [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
   requiredProps?: string[]; // array of props that are mandatory
   internalProps?: {
-    [propName: string]: boolean | number | string // value is the prop's default value
+    [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
   hostAttributes?: {
     [attrName: string]: string;
