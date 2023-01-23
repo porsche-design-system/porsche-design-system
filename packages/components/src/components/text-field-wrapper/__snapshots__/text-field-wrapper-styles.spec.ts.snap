@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -186,7 +186,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -334,7 +334,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -446,7 +446,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -569,7 +569,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -692,7 +692,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -815,7 +815,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -962,7 +962,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1121,7 +1121,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1271,7 +1271,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1432,7 +1432,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1597,7 +1597,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1708,7 +1708,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1831,7 +1831,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1953,7 +1953,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2075,7 +2075,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2197,7 +2197,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2345,7 +2345,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2457,7 +2457,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2580,7 +2580,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2703,7 +2703,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2826,7 +2826,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2973,7 +2973,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3084,7 +3084,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3207,7 +3207,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3330,7 +3330,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3476,7 +3476,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3586,7 +3586,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3708,7 +3708,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3830,7 +3830,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3977,7 +3977,7 @@ button:disabled {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4088,7 +4088,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4211,7 +4211,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 2`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4334,7 +4334,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;

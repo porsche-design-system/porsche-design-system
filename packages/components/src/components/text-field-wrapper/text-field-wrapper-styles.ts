@@ -46,10 +46,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-      },
-      ...hostHiddenStyles,
+        ...hostHiddenStyles,
+      }),
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
