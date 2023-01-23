@@ -1,7 +1,5 @@
-import { addImportantToRule } from './common-styles';
-
 export const hostHiddenStyles = {
-  ':host([hidden])': {
-    display: addImportantToRule('none'),
+  '&([hidden])': {
+    display: 'none',
   },
 } as const;

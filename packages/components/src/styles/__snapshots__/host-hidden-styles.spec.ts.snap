@@ -2,8 +2,8 @@
 
 exports[`hostHiddenStyles should return correct jss styles 1`] = `
 {
-  ":host([hidden])": {
-    "display": "none !important",
+  "&([hidden])": {
+    "display": "none",
   },
 }
 `;

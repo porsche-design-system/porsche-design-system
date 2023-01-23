@@ -79,16 +79,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-link-pure [href]="'https://www.porsche.com'" style="width: 240px">
+      <p-link-pure [href]="'https://www.porsche.com'" style="width: 15rem">
         Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
       </p-link-pure>
-      <p-link-pure style="width: 240px">
+      <p-link-pure style="width: 15rem">
         <a [href]="'https://www.porsche.com'">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link-pure>
-      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'" style="width: 240px">
+      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'" style="width: 15rem">
         Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
       </p-link-pure>
-      <p-link-pure [underline]="true" style="width: 240px">
+      <p-link-pure [underline]="true" style="width: 15rem">
         <a [href]="'https://www.porsche.com'">Label slotted multiline lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link-pure>
     </div>
