@@ -1,24 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss } from '../../utils';
-import { addImportantToEachRule, getTransition, getThemedColors, getInsetJssStyle } from '../../styles';
-import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getCheckboxRadioLabelJssStyle } from '../../styles/checkbox-radio-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import {
-  borderRadiusMedium,
-  borderRadiusSmall,
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-} from '@porsche-design-system/utilities-v2';
-
-const getInlineSVG = (path: string): string => {
-  return `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${path}</svg>')`;
-};
+import { getCss, mergeDeep } from '../../utils';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { borderRadiusMedium, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -26,84 +12,33 @@ export const getComponentCss = (
   isDisabled: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
-  const indeterminateIconColor = primaryColor.replace(/#/g, '%23');
-  const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = isDisabled ? disabledColor : formStateColor || primaryColor;
-  const checkedHoverColor = formStateHoverColor || contrastHighColor;
+  const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
-  return getCss({
-    '@global': {
-      ':host': addImportantToEachRule({
-        display: 'block',
-      }),
-      ...hostHiddenStyles,
-      '::slotted': addImportantToEachRule({
-        '&(input)': {
-          position: 'relative',
-          width: fontLineHeight,
-          height: fontLineHeight,
-          flexShrink: 0,
-          display: 'block',
-          margin: 0,
-          padding: 0,
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          boxSizing: 'content-box',
-          fontFamily, // needed for correct width and height definition
-          fontSize: '1rem', // needed for correct width and height definition
-          backgroundSize: fontLineHeight,
-          backgroundColor: 'transparent',
-          transition: ['border-color', 'background-color'].map(getTransition).join(),
-          border: `2px solid ${uncheckedColor}`,
-          borderRadius: borderRadiusSmall,
-          outline: 0,
-          cursor: isDisabled ? 'not-allowed' : 'pointer',
-        },
-        '&(input:checked)': {
-          borderColor: checkedColor,
-          backgroundColor: checkedColor,
-          backgroundImage: getInlineSVG(
-            `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
-          ),
-        },
-        '&(input:indeterminate)': {
-          backgroundImage: getInlineSVG(`<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`),
-        },
-        ...(!isDisabled && {
-          ...hoverMediaQuery({
-            '&(input:hover), .text:hover ~ &(input)': {
-              borderColor: uncheckedHoverColor,
-            },
-            '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-              borderColor: checkedHoverColor,
-              backgroundColor: checkedHoverColor,
+  return getCss(
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, theme), {
+      '@global': {
+        '::slotted': addImportantToEachRule({
+          '&(input)': {
+            borderRadius: borderRadiusSmall,
+          },
+          '&(input:checked)': {
+            backgroundImage: getInlineSVGBackgroundImage(
+              `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+            ),
+          },
+          '&(input:indeterminate)': {
+            backgroundImage: getInlineSVGBackgroundImage(
+              `<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`
+            ),
+          },
+          ...(!isDisabled && {
+            '&(input:focus)::before': {
+              borderRadius: borderRadiusMedium,
             },
           }),
-          '&(input:focus)::before': {
-            content: '""',
-            position: 'absolute',
-            ...getInsetJssStyle(-6),
-            border: `${borderWidthBase} solid ${focusColor}`,
-            borderRadius: borderRadiusMedium,
-          },
-          '&(input:focus:not(:focus-visible))::before': {
-            borderColor: 'transparent',
-          },
         }),
-      }),
-      label: {
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'flex-start',
       },
-    },
-    text: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
-  });
+    })
+  );
 };

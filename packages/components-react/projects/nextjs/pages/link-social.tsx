@@ -60,10 +60,10 @@ const LinkSocialPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PLinkSocial style={{ width: '240px' }} icon="logo-facebook" href="https://www.facebook.com">
+        <PLinkSocial style={{ width: '15rem' }} icon="logo-facebook" href="https://www.facebook.com">
           Lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkSocial>
-        <PLinkSocial style={{ width: '240px' }} icon="logo-facebook">
+        <PLinkSocial style={{ width: '15rem' }} icon="logo-facebook">
           <a href="https://www.facebook.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLinkSocial>
       </div>

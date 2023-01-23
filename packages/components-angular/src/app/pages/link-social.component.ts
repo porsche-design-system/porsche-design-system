@@ -58,10 +58,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-link-social style="width: 240px" [icon]="'logo-facebook'" [href]="'https://www.facebook.com'">
+      <p-link-social style="width: 15rem" [icon]="'logo-facebook'" [href]="'https://www.facebook.com'">
         Lorem ipsum dolor sit amet, consetetur sadipscing
       </p-link-social>
-      <p-link-social style="width: 240px" [icon]="'logo-facebook'">
+      <p-link-social style="width: 15rem" [icon]="'logo-facebook'">
         <a [href]="'https://www.facebook.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
       </p-link-social>
     </div>

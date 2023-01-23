@@ -199,28 +199,23 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
   expect(await getBackgroundImage(input)).toBe('none');
 });
 
-xit('should disable checkbox when disabled property is set programmatically', async () => {
+it('should disable checkbox when disabled property is set programmatically', async () => {
   await initCheckbox();
 
   const input = await getInput();
-  const label = await getLabelText();
-  const getLabelStyle = () => getElementStyle(label, 'color');
   const getCursor = () => getElementStyle(input, 'cursor');
 
   expect(await getCursor()).toBe('pointer');
-  expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
   await setProperty(input, 'disabled', true);
   await waitForInputTransition(page);
 
   expect(await getCursor()).toBe('not-allowed');
-  expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
   await setProperty(input, 'disabled', false);
   await waitForInputTransition(page);
 
   expect(await getCursor()).toBe('pointer');
-  expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 });
 
 describe('indeterminate state', () => {

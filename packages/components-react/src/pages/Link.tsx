@@ -99,8 +99,8 @@ export const LinkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PLink style={{ width: '240px' }} href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
-        <PLink style={{ width: '240px' }}>
+        <PLink style={{ width: '15rem' }} href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+        <PLink style={{ width: '15rem' }}>
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLink>
       </div>
