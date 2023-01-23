@@ -26,7 +26,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     text-decoration: underline !important;
     outline: 1px solid transparent !important;
     outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
+    transition: color var(--pds-transition-duration, .24s) ease !important;
   }
 
   p-inline-notification b,
