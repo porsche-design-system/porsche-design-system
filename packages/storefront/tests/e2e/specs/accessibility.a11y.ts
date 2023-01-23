@@ -19,7 +19,8 @@ const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 
 it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
-  expect(rootStyles).toContain('--p-transition-duration: 0s');
+  expect(rootStyles).toContain('--pds-transition-duration: 0s');
+  expect(rootStyles).toContain('--pds-animation-duration: 0s');
 });
 
 const cycleFrameworkTabs = async (theme: string): Promise<void> => {
