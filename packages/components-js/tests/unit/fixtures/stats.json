@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 6747,
-    "gzipSize": 2904
+    "size": 6666,
+    "gzipSize": 2898
   },
   {
     "chunkShortName": "content-wrapper",
@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 66493,
-    "gzipSize": 22725
+    "gzipSize": 22726
   },
   {
     "chunkShortName": "marque",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 7835,
-    "gzipSize": 3296
+    "size": 7818,
+    "gzipSize": 3284
   },
   {
     "chunkShortName": "scroller",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "spinner",
-    "size": 2431,
-    "gzipSize": 1216
+    "size": 2695,
+    "gzipSize": 1280
   },
   {
     "chunkShortName": "stepper-horizontal",
