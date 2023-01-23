@@ -22,7 +22,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -48,7 +48,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -71,7 +71,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }
 @media(min-width:480px) {
   .text {
@@ -169,7 +169,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -218,7 +218,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -241,7 +241,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CB3333;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -267,7 +267,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -316,7 +316,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -339,7 +339,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -365,7 +365,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -391,7 +391,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -414,7 +414,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CB3333;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -440,7 +440,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -466,7 +466,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -489,7 +489,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -515,7 +515,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -564,7 +564,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -586,7 +586,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -612,7 +612,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -661,7 +661,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -683,7 +683,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -709,7 +709,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -735,7 +735,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -757,7 +757,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -783,7 +783,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -809,7 +809,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -831,7 +831,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -857,7 +857,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -906,7 +906,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -929,7 +929,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #00C77E;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -955,7 +955,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1004,7 +1004,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -1027,7 +1027,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1053,7 +1053,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1079,7 +1079,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -1102,7 +1102,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #00C77E;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1128,7 +1128,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1154,7 +1154,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: static;
   width: auto;
   height: auto;
@@ -1177,7 +1177,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1203,7 +1203,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #CB3333 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1252,7 +1252,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1276,7 +1276,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CB3333;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1302,7 +1302,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #E7323B !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1351,7 +1351,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1375,7 +1375,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1401,7 +1401,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1427,7 +1427,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1451,7 +1451,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CB3333;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1477,7 +1477,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1503,7 +1503,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1527,7 +1527,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #E7323B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1553,7 +1553,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1602,7 +1602,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1625,7 +1625,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1651,7 +1651,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1700,7 +1700,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1723,7 +1723,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1749,7 +1749,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1775,7 +1775,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1798,7 +1798,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1824,7 +1824,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1850,7 +1850,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1873,7 +1873,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1899,7 +1899,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #00C77E !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1948,7 +1948,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -1972,7 +1972,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #00C77E;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -1998,7 +1998,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #32B85B !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -2047,7 +2047,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -2071,7 +2071,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -2097,7 +2097,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -2123,7 +2123,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -2147,7 +2147,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #00C77E;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
 
@@ -2173,7 +2173,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--pds-transition-duration, .24s) ease,background-color var(--pds-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -2199,7 +2199,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
   position: absolute;
   height: 1px;
   width: auto;
@@ -2223,6 +2223,6 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #32B85B;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--pds-transition-duration, .24s) ease;
 }"
 `;
