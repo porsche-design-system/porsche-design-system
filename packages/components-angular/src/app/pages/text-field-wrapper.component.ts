@@ -135,7 +135,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type password readonly'">
         <input [type]="'password'" [value]="'some password'" readonly />
       </p-text-field-wrapper>
-      <p-text-field-wrapper [label]="'Type password long text'" style="width: 240px">
+      <p-text-field-wrapper [label]="'Type password long text'" style="width: 15rem">
         <input
           [type]="'password'"
           [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
@@ -252,7 +252,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'Multiline message at vero eos et accusam et justo duo dolores et ea rebum.'"
-        style="width: 240px"
+        style="width: 15rem"
       >
         <input [type]="'text'" [value]="'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,'" />
       </p-text-field-wrapper>

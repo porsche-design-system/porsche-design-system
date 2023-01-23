@@ -75,10 +75,10 @@ const SwitchPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PSwitch style={{ width: '240px' }}>
+        <PSwitch style={{ width: '15rem' }}>
           This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
         </PSwitch>
-        <PSwitch style={{ width: '240px' }} alignLabel="left">
+        <PSwitch style={{ width: '15rem' }} alignLabel="left">
           This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
         </PSwitch>
       </div>

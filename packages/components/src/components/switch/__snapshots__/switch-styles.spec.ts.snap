@@ -26,12 +26,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -117,12 +117,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -207,12 +207,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -286,12 +286,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -375,12 +375,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -461,12 +461,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -547,12 +547,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;
@@ -755,12 +755,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 .root:focus .switch::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
   border: 2px solid #0A0AFF;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
   border-color: transparent;

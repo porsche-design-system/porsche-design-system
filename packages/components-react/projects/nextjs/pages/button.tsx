@@ -102,7 +102,7 @@ const ButtonPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <PButton style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+        <PButton style={{ width: '15rem' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
       </div>
     </>
   );

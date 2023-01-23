@@ -12,7 +12,7 @@
 
 ### Utilities
 
-| Utilities            | V3 Status                                                                                                                                                                                                            |
+| Utilities            | V3 Status <br/>                                                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✅ **Font**          | - Sync token namings in Figma with PDS- StackBlitz code examples<br>- Technical docs<br>- UI/UX docs<br>- Migration path<br>- Update of deprecated utilities package                                                 |
 | 🚧 **Grid**          | - Provide additional gridStyles for easier usage- Sync token namings in Figma with PDS- StackBlitz code examples<br>- Technical docs<br>- UI/UX docs<br>- Migration path<br>- Update of deprecated utilities package |
@@ -28,43 +28,43 @@
 
 ### Components
 
-| Components                  | V3 Status                                                                                                                                                                         |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⛔ **Icon**                 |                                                                                                                                                                                   |
-| ✅ **Spinner**              | - Animation is not smooth in Safari                                                                                                                                               |
-| ✅ **Link Pure**            | - fix jittering/spotting of `active` state on iOS<br />- use prop `current` instead of `active`                                                                                   |
-| ✅ **Button Pure**          | - fix jittering/spotting of `active` state on iOS                                                                                                                                 |
-| ⛔ **Button / Link**        |                                                                                                                                                                                   |
-| ⛔ **Link Social**          |                                                                                                                                                                                   |
-| ⛔ **Tag**                  |                                                                                                                                                                                   |
-| ✅ **Tag Dismissible**      |                                                                                                                                                                                   |
-| ✅ **Switch**               |                                                                                                                                                                                   |
-| ✅ **Checkbox Wrapper**     | - hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the issue but to hover is applied to the whole host element. |
-| ⛔ **Radio Button Wrapper** |                                                                                                                                                                                   |
-| ⛔ **Text Field Wrapper**   |                                                                                                                                                                                   |
-| ⛔ **Textarea Wrapper**     |                                                                                                                                                                                   |
-| ⛔ **Select Wrapper**       |                                                                                                                                                                                   |
-| ⛔ **Segmented Control**    |                                                                                                                                                                                   |
-| ⛔ **Inline Notification**  |                                                                                                                                                                                   |
-| ⛔ **Banner**               |                                                                                                                                                                                   |
-| ⛔ **Toast**                |                                                                                                                                                                                   |
-| ⛔ **Modal**                |                                                                                                                                                                                   |
-| ⛔ **Popover**              |                                                                                                                                                                                   |
-| ⛔ **Marque**               |                                                                                                                                                                                   |
-| ⛔ **Scroller**             |                                                                                                                                                                                   |
-| ⛔ **Accordion**            |                                                                                                                                                                                   |
-| ⛔ **Stepper Horizontal**   |                                                                                                                                                                                   |
-| ⛔ **Tabs** / **Tabs Bar**  |                                                                                                                                                                                   |
-| ⛔ **Pagination**           |                                                                                                                                                                                   |
-| ⛔ **Table**                |                                                                                                                                                                                   |
-| ⛔ **Carousel**             |                                                                                                                                                                                   |
-| ⛔ **Link Tile**            |                                                                                                                                                                                   |
-| ⛔ **Fieldset Wrapper**     |                                                                                                                                                                                   |
-| ⛔ **Button Group**         |                                                                                                                                                                                   |
-| ⛔ **Headline**             |                                                                                                                                                                                   |
-| ⛔ **Text**                 |                                                                                                                                                                                   |
-| ⛔ **Text List**            |                                                                                                                                                                                   |
-| ⛔ **Content Wrapper**      |                                                                                                                                                                                   |
-| ⛔ **Grid**                 |                                                                                                                                                                                   |
-| ⛔ **Divider**              |                                                                                                                                                                                   |
-| ⛔ **Flex**                 |                                                                                                                                                                                   |
+| Components                  | V3 Status                                                                                                                                                                     |
+| --------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ⛔ **Icon**                 |                                                                                                                                                                               |
+| ✅ **Spinner**              | - Animation is not smooth in Safari                                                                                                                                           |
+| ✅ **Link Pure**            | - Fix jittering/spotting of `active` state on iOS<br />- use prop `current` instead of `active`                                                                               |
+| ✅ **Button Pure**          | - Fix jittering/spotting of `active` state on iOS                                                                                                                             |
+| ⛔ **Button / Link**        |                                                                                                                                                                               |
+| ⛔ **Link Social**          |                                                                                                                                                                               |
+| ⛔ **Tag**                  |                                                                                                                                                                               |
+| ✅ **Tag Dismissible**      |                                                                                                                                                                               |
+| ✅ **Switch**               |                                                                                                                                                                               |
+| ✅ **Checkbox Wrapper**     | - Hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the issue but to hover is applied to the whole host element. |
+| ✅ **Radio Button Wrapper** | - Same hover issue, like with checkbox. Seems to be related to transition somehow<br />- focus is getting lost in some circumstances (#2206)                                  |
+| ⛔ **Text Field Wrapper**   |                                                                                                                                                                               |
+| ⛔ **Textarea Wrapper**     |                                                                                                                                                                               |
+| ⛔ **Select Wrapper**       |                                                                                                                                                                               |
+| ⛔ **Segmented Control**    |                                                                                                                                                                               |
+| ⛔ **Inline Notification**  |                                                                                                                                                                               |
+| ⛔ **Banner**               |                                                                                                                                                                               |
+| ⛔ **Toast**                |                                                                                                                                                                               |
+| ⛔ **Modal**                |                                                                                                                                                                               |
+| ⛔ **Popover**              |                                                                                                                                                                               |
+| ⛔ **Marque**               |                                                                                                                                                                               |
+| ⛔ **Scroller**             |                                                                                                                                                                               |
+| ⛔ **Accordion**            |                                                                                                                                                                               |
+| ⛔ **Stepper Horizontal**   |                                                                                                                                                                               |
+| ⛔ **Tabs** / **Tabs Bar**  |                                                                                                                                                                               |
+| ⛔ **Pagination**           |                                                                                                                                                                               |
+| ⛔ **Table**                |                                                                                                                                                                               |
+| ⛔ **Carousel**             |                                                                                                                                                                               |
+| ⛔ **Link Tile**            |                                                                                                                                                                               |
+| ⛔ **Fieldset Wrapper**     |                                                                                                                                                                               |
+| ⛔ **Button Group**         |                                                                                                                                                                               |
+| ⛔ **Headline**             |                                                                                                                                                                               |
+| ⛔ **Text**                 |                                                                                                                                                                               |
+| ⛔ **Text List**            |                                                                                                                                                                               |
+| ⛔ **Content Wrapper**      |                                                                                                                                                                               |
+| ⛔ **Grid**                 |                                                                                                                                                                               |
+| ⛔ **Divider**              |                                                                                                                                                                               |
+| ⛔ **Flex**                 |                                                                                                                                                                               |

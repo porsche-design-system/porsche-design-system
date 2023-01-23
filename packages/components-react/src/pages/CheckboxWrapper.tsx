@@ -217,14 +217,14 @@ export const CheckboxWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PCheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
+        <PCheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '15rem' }}>
           <input type="checkbox" name="some-name" />
         </PCheckboxWrapper>
         <PCheckboxWrapper
           state="error"
           label="Lorem ipsum dolor sit amet, consetetur sadipscing"
           message="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          style={{ width: '240px' }}
+          style={{ width: '15rem' }}
         >
           <input type="checkbox" name="some-name" />
         </PCheckboxWrapper>
