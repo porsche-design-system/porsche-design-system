@@ -18,8 +18,8 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
         display: 'inline-block',
         verticalAlign: 'top',
         outline: 0,
+        ...hostHiddenStyles,
       }),
-      ...hostHiddenStyles,
       button: {
         display: 'flex',
         position: 'relative',
