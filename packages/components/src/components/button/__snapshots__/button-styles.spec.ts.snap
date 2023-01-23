@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disabled: true, isDisabledOrLoading: false, loading: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disabled: true, loading: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -21,15 +21,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
-  background-color: #FBFCFF;
-  color: #010205;
+  background-color: #7E7F82;
+  color: #AFB0B3;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
   padding: 13px;
   gap: 0;
-  cursor: pointer;
+  cursor: not-allowed;
+  border-color: #7E7F82;
 }
 .root:focus::before {
   content: "";
@@ -131,17 +132,10 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     margin-left: -8px;
   }
 }
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: #AFB0B3;
-    border-color: #AFB0B3;
-  }
-}
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -207,7 +201,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -273,7 +267,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: light 2`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -303,6 +297,73 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+}
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  margin-left: -8px;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #535457;
+    border-color: #535457;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+  transform: translate3d(0,0,0);
+  outline: 0 !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 54px;
+  min-height: 54px;
+  box-sizing: border-box;
+  outline: 0;
+  text-align: left;
+  appearance: none;
+  text-decoration: none;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  background-color: #535457;
+  color: #535457;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  padding: 13px 26px;
+  gap: 8px;
+  cursor: not-allowed;
+  border-color: #535457;
 }
 .root:focus::before {
   content: "";
@@ -340,17 +401,10 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: #535457;
-    border-color: #535457;
-  }
-}
-"
+}"
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, isDisabledOrLoading: true, loading: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -371,7 +425,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
-  background-color: false;
+  background-color: #949598;
   color: #535457;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -380,7 +434,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: not-allowed;
-  border-color: false;
+  border-color: #949598;
 }
 .root:focus::before {
   content: "";
@@ -410,73 +464,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }"
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true, isDisabledOrLoading: false, loading: false and theme: light 1`] = `
-":host {
-  display: inline-block;
-  vertical-align: top;
-  transform: translate3d(0,0,0);
-  outline: 0 !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: 54px;
-  min-height: 54px;
-  box-sizing: border-box;
-  outline: 0;
-  text-align: left;
-  appearance: none;
-  text-decoration: none;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  background-color: #010205;
-  color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  padding: 13px 26px;
-  gap: 8px;
-  cursor: pointer;
-}
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #0A0AFF;
-  border-radius: 8px;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.label {
-  width: auto;
-  height: auto;
-  text-indent: 0;
-  transition: opacity var(--p-transition-duration, .24s) ease;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  pointer-events: none;
-  margin-left: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: #535457;
-    border-color: #535457;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -556,7 +544,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -636,7 +624,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -716,7 +704,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, isDisabledOrLoading: false, loading: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -796,7 +784,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, disabled: true, isDisabledOrLoading: false, loading: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: true and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -817,15 +805,16 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   text-decoration: none;
   border: 2px solid #010205;
   border-radius: 4px;
-  background-color: #010205;
-  color: #FBFCFF;
+  background-color: #535457;
+  color: #535457;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
   padding: 13px 26px;
   gap: 8px;
-  cursor: pointer;
+  cursor: not-allowed;
+  border-color: #535457;
 }
 .root:focus::before {
   content: "";
@@ -859,12 +848,5 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 .icon {
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 0;
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: #535457;
-    border-color: #535457;
-  }
-}
-"
+}"
 `;
