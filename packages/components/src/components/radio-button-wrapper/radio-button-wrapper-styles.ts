@@ -21,7 +21,7 @@ export const getComponentCss = (
             borderRadius: '50%',
           },
           '&(input:checked)': {
-            backgroundImage: getInlineSVGBackgroundImage(`<circle fill="${checkedIconColor}" cx="12" cy="12" r="7"/>`),
+            backgroundImage: getInlineSVGBackgroundImage(`<circle fill="${checkedIconColor}" cx="12" cy="12" r="6"/>`),
           },
           ...(!isDisabled && {
             '&(input:focus)::before': {
