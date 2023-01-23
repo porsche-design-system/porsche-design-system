@@ -3,4 +3,4 @@ export * from './lib/components';
 export * from './lib/types';
 export { useToastManager } from './utils';
 export { default as PorscheDesignSystemProvider } from './PorscheDesignSystemProvider.vue';
-export { createPDS, usePDS } from './plugin';
+export { createPorscheDesignSystem, usePorscheDesignSystemPlugin } from './plugin';

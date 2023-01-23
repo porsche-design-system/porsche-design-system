@@ -4,53 +4,42 @@ import { App, ref, inject } from 'vue';
 import { load, componentsReady } from '@porsche-design-system/components-js';
 import { prefixInjectionKey } from './utils';
 
-import * as utilities from '@porsche-design-system/utilities';
-
-export interface PDSOptions {
+export type PorscheDesignSystemPluginOptions = {
   prefix?: string;
   extends?: Record<string, unknown>;
 }
 
-export interface PDSPlugin {
+export interface PorscheDesignSystemPlugin {
   [key: string]: any;
-  install: (app: App, options?: PDSOptions) => void;
+  install: (app: App, options?: PorscheDesignSystemPluginOptions) => void;
 }
 
-export const pdsSymbol = Symbol();
+export const porscheDesignSystemSymbol = Symbol();
 
-export function usePDS() {
-  const pds = inject(pdsSymbol);
-  if (!pds) throw new Error('No PDS provided!!!');
+export function usePorscheDesignSystemPlugin() {
+  const porscheDesignSystem = inject(porscheDesignSystemSymbol);
+  if (!porscheDesignSystem) throw new Error('No PorscheDesignSystem provided!!!');
 
-  return pds;
+  return porscheDesignSystem;
 }
 
-export function createPDS(options = { prefix: '' }) {
-  const isPDSLoaded = ref(false);
+export function createPorscheDesignSystem(options = { prefix: '' }) {
+  const isPorscheDesignSystemLoaded = ref(false);
 
-  async function initializeComponentAfterPds() {
-    try {
-      await componentsReady();
-      isPDSLoaded.value = true;
-      console.info('[DwaaS] PDS components ready!');
-    } catch (error) {
-      console.error('[DwaaS] - There was an error loading PDS components');
-    }
-  }
-
-  const $pds: PDSPlugin = {
+  const $porscheDesignSystem: PorscheDesignSystemPlugin = {
     options,
-    isPDSLoaded,
-    utilities,
+    isPorscheDesignSystemLoaded,
     componentsReady,
-    install(app) {
+    async install(app) {
       load();
 
-      initializeComponentAfterPds();
+      await componentsReady();
+
+      isPorscheDesignSystemLoaded.value = true;
       app.provide(prefixInjectionKey, options.prefix);
-      app.provide(pdsSymbol, $pds);
+      app.provide(porscheDesignSystemSymbol, $porscheDesignSystem);
     },
   };
 
-  return $pds;
+  return $porscheDesignSystem;
 }
