@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, ButtonVariant, Theme, LinkButtonIconName, LinkButtonVariant } from '../../types';
-import { getCss, mergeDeep } from '../../utils';
+import {getCss, isDisabledOrLoading, mergeDeep} from '../../utils';
 import { getLinkButtonStyles, getFocusOffset } from '../../styles/link-button-styles';
 import {
   fontLineHeight, frostedGlassStyle
@@ -44,22 +44,22 @@ export const getComponentCss = (
   variant: ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   disabled: boolean,
-  isDisabledOrLoading: boolean,
   loading: boolean,
   theme: Theme
 ): string => {
 
+  const disabledOrLoading = isDisabledOrLoading(disabled, loading);
   const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, disabled, theme);
   const isTertiary = variant === 'tertiary';
   const isSecondary = variant === 'secondary';
 
   return getCss(
     mergeDeep(
-      getLinkButtonStyles(icon, iconSource, variant, hideLabel, isDisabledOrLoading,false, theme),
+      getLinkButtonStyles(icon, iconSource, variant, hideLabel, disabledOrLoading,false, theme),
       {
         root: {
-          cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-          ...(isDisabledOrLoading && {
+          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(disabledOrLoading && {
             backgroundColor,
             borderColor,
             color: textColor,

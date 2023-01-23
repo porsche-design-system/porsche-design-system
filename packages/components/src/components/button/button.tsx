@@ -13,7 +13,8 @@ import {
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  getPrefixedTagNames, hasVisibleIcon,
+  getPrefixedTagNames,
+  hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
@@ -70,13 +71,9 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
-  }
-
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.isDisabledOrLoading) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -85,40 +82,40 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabledOrLoading
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.iconSource, this.variant, this.hideLabel, this.disabled, this.isDisabledOrLoading, this.loading, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      this.variant,
+      this.hideLabel,
+      this.disabled,
+      this.loading,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const iconProps = {
-      class: 'icon',
-      size: 'inherit',
-    };
-    const spinnerProps = {
-      class: 'spinner',
-      size: 'inherit',
-    };
 
     return (
-      <button
-        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
-        class="root"
-        type={this.type}
-      >
+      <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
         {this.loading && (
           <PrefixedTagNames.pSpinner
-            {...spinnerProps}
-            theme={this.variant === ('secondary' || 'tertiary') ? this.theme : 'dark'}
+            class="spinner"
+            size="inherit"
+            theme={['secondary' || 'tertiary'].includes(this.variant) ? this.theme : 'dark'}
             aria={{ 'aria-label': 'Loading state:' }}
           />
         )}
         {(hasVisibleIcon(this.icon, this.iconSource) || this.hideLabel) && (
           <PrefixedTagNames.pIcon
-            {...iconProps}
+            class="icon"
+            size="inherit"
             name={this.icon}
             source={this.iconSource}
             color="inherit"
