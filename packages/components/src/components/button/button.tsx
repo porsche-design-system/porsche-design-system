@@ -112,7 +112,7 @@ export class Button {
             aria={{ 'aria-label': 'Loading state:' }}
           />
         )}
-        {(hasVisibleIcon(this.icon, this.iconSource) || this.hideLabel) && (
+        {hasVisibleIcon(this.icon, this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"

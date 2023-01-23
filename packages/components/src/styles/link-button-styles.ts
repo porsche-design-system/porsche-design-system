@@ -1,19 +1,18 @@
-import type { Styles, JssStyle } from 'jss';
-import type { GetJssStyleFunction } from '../utils';
-import type { BreakpointCustomizable, LinkButtonVariant, Theme, LinkButtonIconName } from '../types';
+import type { Styles } from 'jss';
 import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
-import {
-  addImportantToRule,
-  getTransition,
-  getThemedColors,
-} from './';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from './';
 import { hoverMediaQuery } from './hover-media-query';
 import {
-  textSmallStyle,
+  borderRadiusMedium,
   borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
   frostedGlassStyle,
-  spacingStaticSmall, borderRadiusMedium, borderWidthBase, fontLineHeight
+  spacingStaticSmall,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import { hostHiddenStyles } from './host-hidden-styles';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
@@ -26,15 +25,11 @@ type Colors = {
   backgroundColorHover: string;
 };
 
-const getVariantColors = (
-  variant: LinkButtonVariant,
-  theme: Theme,
-): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } =
-    getThemedColors(theme);
+const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
 
   const colors: {
-      [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
+    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
   } = {
     primary: {
       textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
@@ -55,44 +50,6 @@ const getVariantColors = (
   return colors[variant === 'tertiary' ? 'secondary' : variant];
 };
 
-export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
-  return {
-    padding:  hideLabel ? '13px' : '13px 26px',
-    gap: hideLabel ? 0 : spacingStaticSmall,
-  };
-};
-
-export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel
-    ? {
-        width: 0,
-        height: '1px',
-        textIndent: '-999999px',
-      }
-    : {
-        width: 'auto',
-        height: 'auto',
-        textIndent: 0,
-      };
-};
-
-export const getFocusOffset = (backdrop: boolean): JssStyle => {
-  return backdrop
-  ? {
-      top: '-6px',
-      right: '-6px',
-      bottom: '-6px',
-      left: '-6px',
-    }
-  :
-    {
-      top: '-4px',
-      right: '-4px',
-      bottom: '-4px',
-      left: '-4px',
-    };
-};
-
 export const getLinkButtonStyles = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -102,28 +59,30 @@ export const getLinkButtonStyles = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const isTertiary = variant === 'tertiary';
-  const isSecondary = variant === 'secondary';
-  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(variant, theme);
+  const isPrimary = variant === 'primary';
+  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
+    variant,
+    theme
+  );
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
   return {
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
+        ...hostHiddenStyles,
         display: 'inline-block',
         verticalAlign: 'top',
-        transform: 'translate3d(0,0,0)', // creates new stacking context
-        outline: addImportantToRule(0),
-      }
+        outline: 0, // custom element is able to delegate the focus
+      }),
     },
     root: {
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%',
-      minWidth: '54px',
-      minHeight: '54px',
+      minWidth: '54px', // ensure space is already reserved until icon component is loaded (ssr)
+      minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
       outline: 0,
       textAlign: 'left',
@@ -131,18 +90,22 @@ export const getLinkButtonStyles = (
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,
       borderRadius: borderRadiusSmall,
+      transform: 'translate3d(0,0,0)', // creates new stacking context
       backgroundColor,
       color: textColor,
       ...textSmallStyle,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
-      ...buildResponsiveStyles(hideLabel, getRootJssStyle),
+      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+        padding: hideLabelValue ? '13px' : hasIcon ? '13px 26px 13px 18px' : '13px 26px',
+        gap: hideLabelValue ? 0 : spacingStaticSmall,
+      })),
       ...(!hasSlottedAnchor && {
         '&:focus::before': {
           content: '""',
           position: 'fixed',
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
-          ...getFocusOffset(false),
+          ...getInsetJssStyle(-6),
         },
         '&:not(:focus-visible)::before': {
           border: 0,
@@ -153,37 +116,30 @@ export const getLinkButtonStyles = (
           '&:hover': {
             backgroundColor: backgroundColorHover,
             borderColor: borderColorHover,
-            ...((isSecondary || isTertiary) && {
-              ...frostedGlassStyle,
-              '&:focus::before': { // needed due to new stacking context because of `backdrop-filter` css property
-                ...getFocusOffset(true),
-              },
-              '& > $label': {
-                color: textColor,
-              },
-              ...(hasIcon && {
-                '& > $icon': {
-                  color: textColor,
-                },
-              }),
-            }),
+            ...(!isPrimary && frostedGlassStyle),
           },
         })),
     },
     label: {
-      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) =>
+        hideLabelValue
+          ? {
+              width: 0,
+              height: '1px',
+              textIndent: '-999999px',
+            }
+          : {
+              width: 'auto',
+              height: 'auto',
+              textIndent: 0,
+            }
+      ),
     },
     ...(hasIcon && {
       icon: {
         width: fontLineHeight,
         height: fontLineHeight,
-        pointerEvents: 'none',
-        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => {
-          return {
-            marginLeft: hideLabelValue ? 0 : '-8px',
-          };
-        })
-      }
+      },
     }),
   };
 };

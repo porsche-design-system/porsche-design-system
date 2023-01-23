@@ -79,7 +79,16 @@ export class Link {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.iconSource, this.variant, this.hideLabel, !this.href, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      this.variant,
+      this.hideLabel,
+      !this.href,
+      this.theme
+    );
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -95,11 +104,11 @@ export class Link {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        {(hasVisibleIcon(this.icon, this.iconSource) || this.hideLabel) &&
+        {hasVisibleIcon(this.icon, this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
-            name={hasVisibleIcon(this.icon, '') ? this.icon : 'arrow-right'}
+            name={this.icon}
             source={this.iconSource}
             color="inherit"
             theme={
@@ -111,7 +120,7 @@ export class Link {
             } // relevant for ssr support
             aria-hidden="true"
           />
-        }
+        )}
         <span class="label">
           <slot />
         </span>

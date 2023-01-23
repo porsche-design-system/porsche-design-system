@@ -7,15 +7,33 @@ import {
   getFocusJssStyle,
   getTransition,
   pxToRemWithUnit,
-  getThemedColors, getInsetJssStyle,
+  getThemedColors,
+  getInsetJssStyle,
 } from '../../styles';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
-import {
-  getLabelJssStyle,
-  getRootJssStyle,
-} from '../../styles/link-button-styles';
+import { spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { JssStyle } from 'jss';
+
+const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return {
+    padding: hideLabel ? '13px' : '13px 26px',
+    gap: hideLabel ? 0 : spacingStaticSmall,
+  };
+};
+
+const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? {
+        width: 0,
+        height: '1px',
+        textIndent: '-999999px',
+      }
+    : {
+        width: 'auto',
+        height: 'auto',
+        textIndent: 0,
+      };
+};
 
 const { contrastHighColor: themeLightContrastHighColor, primaryColor: themeLightBaseColor } = getThemedColors('light');
 const { primaryColor: themeDarkBaseColor } = getThemedColors('dark');

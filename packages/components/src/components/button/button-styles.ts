@@ -1,10 +1,8 @@
-import type { BreakpointCustomizable, ButtonVariant, Theme, LinkButtonIconName, LinkButtonVariant } from '../../types';
-import {getCss, isDisabledOrLoading, mergeDeep} from '../../utils';
-import { getLinkButtonStyles, getFocusOffset } from '../../styles/link-button-styles';
-import {
-  fontLineHeight, frostedGlassStyle
-} from '@porsche-design-system/utilities-v2';
-import { getTransition, getThemedColors } from '../../styles';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilities-v2';
+import { getThemedColors, getTransition } from '../../styles';
 
 type Colors = {
   textColor: string;
@@ -14,7 +12,6 @@ type Colors = {
 const getDisabledColors = (
   variant: LinkButtonVariant,
   loading: boolean,
-  disabled: boolean,
   theme: Theme,
 ): Colors => {
   const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor } =
@@ -25,13 +22,13 @@ const getDisabledColors = (
   } = {
     primary: {
       textColor: contrastHighColor,
-      borderColor:  loading ? contrastHighColor : disabled && disabledColor,
-      backgroundColor: loading ? contrastHighColor : disabled && disabledColor,
+      borderColor:  loading ? contrastHighColor : disabledColor,
+      backgroundColor: loading ? contrastHighColor : disabledColor,
     },
     secondary: {
       textColor: disabledColor,
-      borderColor: loading ? contrastMediumColor : disabled && disabledColor,
-      backgroundColor: loading ? hoverColor : disabled && 'transparent',
+      borderColor: loading ? contrastMediumColor : disabledColor,
+      backgroundColor: loading ? hoverColor : 'transparent',
     },
   };
 
@@ -49,9 +46,8 @@ export const getComponentCss = (
 ): string => {
 
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
-  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, disabled, theme);
-  const isTertiary = variant === 'tertiary';
-  const isSecondary = variant === 'secondary';
+  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, theme);
+  const isPrimary = variant === 'primary';
 
   return getCss(
     mergeDeep(
@@ -64,12 +60,7 @@ export const getComponentCss = (
             borderColor,
             color: textColor,
           }),
-          ...((loading && (isSecondary || isTertiary)) && {
-            ...frostedGlassStyle,
-            '&:focus::before': {
-              ...getFocusOffset(true),
-            },
-          }),
+          ...((loading && !isPrimary) && frostedGlassStyle),
         },
         ...(loading && {
           spinner: {
@@ -85,13 +76,13 @@ export const getComponentCss = (
         label: {
           transition: getTransition('opacity'),
           ...(loading && {
-            opacity: 0,
+            opacity: 0, // use opacity for smooth transition between states
           }),
         },
         icon: {
           transition: getTransition('opacity'),
           ...(loading && {
-            opacity: 0,
+            opacity: 0, // use opacity for smooth transition between states
           }),
         }
       }
