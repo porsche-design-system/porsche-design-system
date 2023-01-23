@@ -18,7 +18,7 @@ p {
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
-  color: #010205;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -112,7 +112,7 @@ p {
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
-  color: #010205;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
