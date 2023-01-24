@@ -32,15 +32,18 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-button theme="${theme}" variant="primary" icon="arrow-right">Primary with icon</p-button>
         <p-button theme="${theme}" variant="secondary" icon="arrow-right">Secondary with icon</p-button>
         <p-button theme="${theme}" variant="tertiary" icon="arrow-right">Tertiary with icon</p-button>
+        <p-button theme="${theme}" variant="secondary" icon="arrow-right">Secondary with icon</p-button>
+        <p-button theme="${theme}" variant="tertiary" icon="arrow-right">Tertiary with icon</p-button>
+        <p-button theme="${theme}" variant="primary" hide-label="true" icon="arrow-right">Primary with icon only</p-button>
+        <p-button theme="${theme}" variant="secondary" hide-label="true" icon="arrow-right">Secondary with icon only</p-button>
+        <p-button theme="${theme}" variant="tertiary" hide-label="true" icon="arrow-right">Tertiary with icon only</p-button>
         <p-button theme="${theme}" variant="primary" loading>Loading Primary</p-button>
         <p-button theme="${theme}" variant="secondary" loading>Loading Secondary</p-button>
         <p-button theme="${theme}" variant="tertiary" loading>Loading Tertiary</p-button>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }),
-        { injectIntoHead: head }
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover > p-button >>> button');
       await forceFocusState(page, '.focus > p-button'); // native outline should not be visible
