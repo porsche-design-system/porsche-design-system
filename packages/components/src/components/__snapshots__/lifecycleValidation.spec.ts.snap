@@ -433,6 +433,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "aria": "aria",
   "color": "oneOf",
   "label": "string",
+  "theme": "oneOf",
 }
 `;
 

@@ -1,6 +1,6 @@
 import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-const components = ['checkbox-wrapper', 'radio-button-wrapper', 'text-field-wrapper'];
+const components = ['checkbox-wrapper', 'radio-button-wrapper', 'tag-dismissible', 'text-field-wrapper'];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
   expect(
