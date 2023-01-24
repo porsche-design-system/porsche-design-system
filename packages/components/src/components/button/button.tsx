@@ -20,11 +20,11 @@ import {
   LINK_BUTTON_VARIANTS,
   THEMES,
   validateProps,
+  getLinkButtonThemeForIcon,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
-import { getLinkButtonThemeForIcon } from '../../utils/link-button/getLinkButtonThemeForIcon';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),

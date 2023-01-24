@@ -24,3 +24,4 @@ export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-
 export { getDataThemeDarkAttribute, isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';
+export * from './link-button/getLinkButtonThemeForIcon';

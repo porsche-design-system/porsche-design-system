@@ -9,6 +9,7 @@ import {
   validateProps,
   LINK_BUTTON_VARIANTS,
   hasVisibleIcon,
+  getLinkButtonThemeForIcon,
 } from '../../utils';
 import type {
   BreakpointCustomizable,
@@ -22,7 +23,6 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttribute } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { getLinkButtonThemeForIcon } from '../../utils/link-button/getLinkButtonThemeForIcon';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
