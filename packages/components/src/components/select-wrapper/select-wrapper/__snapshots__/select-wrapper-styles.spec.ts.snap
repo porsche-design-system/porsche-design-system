@@ -25,7 +25,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.6875rem 2.9375rem 0.6875rem 0.6875rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -42,7 +42,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -82,8 +81,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -209,7 +208,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -226,7 +225,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -265,8 +263,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -321,7 +319,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -338,7 +336,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -377,8 +374,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -433,7 +430,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.6875rem 2.9375rem 0.6875rem 0.6875rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -450,7 +447,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -489,8 +485,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -544,7 +540,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.6875rem 2.9375rem 0.6875rem 0.6875rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -561,7 +557,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -600,8 +595,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -655,7 +650,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -672,7 +667,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -711,8 +705,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -767,7 +761,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -784,7 +778,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -823,8 +816,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -879,7 +872,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -896,7 +889,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -936,8 +928,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -992,7 +984,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1009,7 +1001,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1049,8 +1040,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -1105,7 +1096,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.6875rem 2.9375rem 0.6875rem 0.6875rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1122,7 +1113,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1162,8 +1152,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -1217,7 +1207,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.6875rem 2.9375rem 0.6875rem 0.6875rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1234,7 +1224,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1274,8 +1263,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -1329,7 +1318,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1346,7 +1335,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
-  background: #FFF !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1386,8 +1374,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #010205;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -1442,7 +1430,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1459,7 +1447,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1499,8 +1486,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #FBFCFF;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
@@ -1555,7 +1542,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
   cursor: pointer !important;
-  padding: 0.625rem 2.9375rem 0.625rem 0.625rem !important;
+  padding: 13px 2.9375rem 13px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1572,7 +1559,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7E7F82 !important;
   border-color: #7E7F82 !important;
   -webkit-text-fill-color: #7E7F82 !important;
-  background: #010205 !important;
 }
 @media(hover:hover) {
   ::slotted(select:not(:disabled):not([readonly]):hover) {
@@ -1611,8 +1597,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .icon {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.8125rem;
+  right: 0.875rem;
   color: #7E7F82;
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);

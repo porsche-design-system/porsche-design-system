@@ -1,13 +1,12 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../utils';
+import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { FormState } from '../../../utils/form/form-state';
 import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
-
-const { primaryColor: themeLightBaseColor } = getThemedColors('light');
+import { spacingStaticMedium } from '../../../../../utilities/projects/utilities';
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
@@ -17,9 +16,7 @@ export const getComponentCss = (
   state: FormState,
   theme: Theme
 ): string => {
-  const isDarkTheme = isThemeDark(theme);
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
+  const { primaryColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -28,22 +25,15 @@ export const getComponentCss = (
         ...hostHiddenStyles,
       }),
       ...addImportantToEachRule(
-        mergeDeep(
-          getBaseChildStyles('select', state, theme, {
-            position: 'static',
-            cursor: 'pointer',
-            padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
-            '&@-moz-document url-prefix()': {
-              // fix for 3px text-indention in FF
-              paddingLeft: pxToRemWithUnit(8),
-            },
-          }),
-          {
-            '::slotted(select:disabled)': {
-              background: isDarkTheme ? themeLightBaseColor : backgroundColor, // 🤷
-            },
-          }
-        )
+        getBaseChildStyles('select', state, theme, {
+          position: 'static',
+          cursor: 'pointer',
+          padding: `13px ${pxToRemWithUnit(47)} 13px ${spacingStaticMedium}`,
+          '&@-moz-document url-prefix()': {
+            // fix for 3px text-indention in FF
+            paddingLeft: pxToRemWithUnit(8),
+          },
+        })
       ),
     },
     root: {
@@ -53,8 +43,8 @@ export const getComponentCss = (
     ...getLabelStyles('select', isDisabled, hideLabel, state, theme, {
       icon: {
         position: 'absolute',
-        bottom: pxToRemWithUnit(12),
-        right: pxToRemWithUnit(12),
+        bottom: pxToRemWithUnit(13),
+        right: pxToRemWithUnit(14),
         color: primaryColor,
         pointerEvents: 'none', // let events through to select which is visually underneath
         transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari

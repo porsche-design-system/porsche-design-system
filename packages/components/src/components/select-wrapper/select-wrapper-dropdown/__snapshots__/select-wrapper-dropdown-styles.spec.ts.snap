@@ -1,177 +1,132 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'error' and theme: 'dark' 1`] = `
+exports[`getButtonStyles() should return correct css for isOpen: false and theme: dark 1`] = `
 "button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
   border: 2px solid currentColor;
-  outline: 1px solid transparent;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #fc1717;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
 }
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
+}
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'none' and theme: 'dark' 1`] = `
+exports[`getButtonStyles() should return correct css for isOpen: false and theme: light 1`] = `
 "button {
   position: absolute;
   top: 0;
-  height: 3rem;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  cursor: pointer;
-  color: currentColor;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-button:focus {
-  outline-color: #b0b1b2;
-}
-button:disabled {
-  cursor: not-allowed;
-}
-@media(hover:hover) {
-  button:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
-`;
-
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'success' and theme: 'dark' 1`] = `
-"button {
-  position: absolute;
-  top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
   border: 2px solid currentColor;
-  outline: 1px solid transparent;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #01ba1d;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
 }
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
+}
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #535457;
   }
 }
 "
 `;
 
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'error' and theme: 'light' 1`] = `
+exports[`getButtonStyles() should return correct css for isOpen: true and theme: dark 1`] = `
 "button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
   border: 2px solid currentColor;
-  outline: 1px solid transparent;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #e00000;
 }
 button:focus {
-  outline-color: #e00000;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
 }
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
+}
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'none' and theme: 'light' 1`] = `
+exports[`getButtonStyles() should return correct css for isOpen: true and theme: light 1`] = `
 "button {
   position: absolute;
   top: 0;
-  height: 3rem;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  cursor: pointer;
-  color: currentColor;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #626669;
-}
-button:focus {
-  outline-color: #626669;
-}
-button:disabled {
-  cursor: not-allowed;
-}
-@media(hover:hover) {
-  button:not(:disabled):hover ~ ul {
-    border-color: #323639;
-  }
-}
-"
-`;
-
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'success' and theme: 'light' 1`] = `
-"button {
-  position: absolute;
-  top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
   border: 2px solid currentColor;
-  outline: 1px solid transparent;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #018a16;
 }
 button:focus {
-  outline-color: #018a16;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
 }
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
+}
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 "
@@ -182,31 +137,35 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -214,11 +173,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -228,7 +185,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -248,18 +205,18 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -271,7 +228,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -288,8 +245,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -297,7 +254,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -319,8 +276,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -331,47 +288,46 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -382,15 +338,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
-  border: 1px solid currentColor;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -398,11 +355,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -412,7 +367,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -432,18 +387,18 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -455,7 +410,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -472,8 +427,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -481,7 +436,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -503,8 +458,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -515,31 +470,35 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -547,11 +506,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -561,7 +518,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -581,15 +538,15 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -601,7 +558,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -618,8 +575,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -627,7 +584,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -649,8 +606,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -661,47 +618,46 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -712,15 +668,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
-  border: 1px solid currentColor;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -728,11 +685,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -742,7 +697,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -762,15 +717,15 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -782,7 +737,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -799,8 +754,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -808,7 +763,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -830,8 +785,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -842,32 +797,35 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #626669;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -875,11 +833,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -889,7 +845,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -905,18 +861,18 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -928,7 +884,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -945,8 +901,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -954,7 +910,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -976,8 +932,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -988,47 +944,46 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -1039,16 +994,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
-  border: 1px solid currentColor;
-  outline-color: #626669;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -1056,11 +1011,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1070,7 +1023,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1086,18 +1039,18 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1109,7 +1062,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1126,8 +1079,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1135,7 +1088,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1157,8 +1110,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1169,32 +1122,35 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #626669;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -1202,11 +1158,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1216,7 +1170,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1232,15 +1186,15 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1252,7 +1206,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1269,8 +1223,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1278,7 +1232,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1300,8 +1254,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1312,47 +1266,46 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -1363,16 +1316,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
-  border: 1px solid currentColor;
-  outline-color: #626669;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -1380,11 +1333,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1394,7 +1345,7 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1410,15 +1361,15 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1430,7 +1381,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1447,8 +1398,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1456,7 +1407,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1478,8 +1429,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1490,31 +1441,35 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -1522,11 +1477,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1536,13 +1489,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -1557,18 +1510,18 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1580,7 +1533,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1597,8 +1550,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1606,7 +1559,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1628,8 +1581,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1640,47 +1593,46 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -1691,15 +1643,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
-  border: 1px solid currentColor;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -1707,11 +1660,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1721,13 +1672,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -1742,18 +1693,18 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1765,7 +1716,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1782,8 +1733,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1791,7 +1742,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1813,8 +1764,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1825,31 +1776,35 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -1857,11 +1812,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -1871,13 +1824,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -1892,15 +1845,15 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -1912,7 +1865,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -1929,8 +1882,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -1938,7 +1891,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -1960,8 +1913,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -1972,47 +1925,46 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -2023,15 +1975,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
-  border: 1px solid currentColor;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -2039,11 +1992,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -2053,13 +2004,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -2074,15 +2025,15 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -2094,7 +2045,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -2111,8 +2062,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -2120,7 +2071,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -2142,8 +2093,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -2154,32 +2105,35 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #626669;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -2187,11 +2141,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -2201,13 +2153,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -2217,18 +2169,18 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -2240,7 +2192,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -2257,8 +2209,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -2266,7 +2218,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -2288,8 +2240,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -2300,47 +2252,46 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #626669;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -2351,16 +2302,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
-  border: 1px solid currentColor;
-  outline-color: #626669;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -2368,11 +2319,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -2382,13 +2331,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -2398,18 +2347,18 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
-    color: #000;
+    color: #010205;
   }
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -2421,7 +2370,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -2438,8 +2387,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -2447,7 +2396,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -2469,8 +2418,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -2481,32 +2430,35 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 button {
   position: absolute;
   top: 0;
-  height: 3rem;
+  height: 3.375rem;
   width: 100%;
   padding: 0;
   background: transparent;
-  border: 1px solid currentColor;
-  outline: 1px solid transparent;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   cursor: pointer;
   color: currentColor;
   transition: color var(--p-transition-duration, .24s) ease;
-  outline-color: #626669;
 }
 button:focus {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 button:disabled {
   cursor: not-allowed;
+}
+button:focus:not(:focus-visible)) {
+  outline-color: transparent;
 }
 ul {
   display: block;
@@ -2514,11 +2466,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -2528,13 +2478,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -2544,15 +2494,15 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -2564,7 +2514,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -2581,8 +2531,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -2590,7 +2540,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -2612,8 +2562,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -2624,47 +2574,46 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-dropdown-position: absolute;
   display: block;
   position: var(--p-dropdown-position);
-  margin-top: -3rem;
-  padding-top: 3rem;
+  margin-top: -3.375rem;
+  padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #96989a;
+  color: #949598;
 }
 input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -2675,16 +2624,16 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
-  border: 1px solid currentColor;
-  outline-color: #626669;
+  border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #626669;
+  outline-color: #0A0AFF;
 }
 ul {
   display: block;
@@ -2692,11 +2641,9 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -2706,13 +2653,13 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -2722,15 +2669,15 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -2742,7 +2689,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -2759,8 +2706,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -2768,7 +2715,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -2790,49 +2737,48 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'error' and theme: 'dark' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 input::placeholder {
   opacity: 1;
-  color: #fff;
+  color: #FBFCFF;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #fff;
+  color: #FBFCFF;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #fff;
+  color: #FBFCFF;
 }
 input:focus {
   opacity: 1;
@@ -2843,60 +2789,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
   border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #fc1717;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'none' and theme: 'dark' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #fff;
-  background: #0e1418;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #fff;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #fff;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #fff;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -2907,124 +2853,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: pointer;
-  border: 1px solid currentColor;
-}
-input:focus+span {
-  outline-color: #b0b1b2;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'success' and theme: 'dark' 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: text;
-  color: #fff;
-  background: #0e1418;
-}
-input::placeholder {
-  opacity: 1;
-  color: #fff;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #fff;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #fff;
-}
-input:focus {
-  opacity: 1;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
   border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #01ba1d;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #535457;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'error' and theme: 'dark' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 input::placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 input:focus {
   opacity: 0;
@@ -3035,60 +2917,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #fc1717;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'none' and theme: 'dark' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #fff;
-  background: #0e1418;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #7c7f81;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -3099,124 +2981,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: not-allowed;
-  border: 1px solid currentColor;
-}
-input:focus+span {
-  outline-color: #b0b1b2;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'success' and theme: 'dark' 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: not-allowed;
-  color: #fff;
-  background: #0e1418;
-}
-input::placeholder {
-  opacity: 1;
-  color: #7c7f81;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #7c7f81;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #7c7f81;
-}
-input:focus {
-  opacity: 0;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid currentColor;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #01ba1d;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #e3e4e5;
+    border-color: #535457;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'error' and theme: 'light' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #FBFCFF;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #FBFCFF;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #FBFCFF;
 }
 input:focus {
   opacity: 1;
@@ -3227,61 +3045,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
   border: 2px solid currentColor;
-  outline-color: #e00000;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #e00000;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'none' and theme: 'light' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: text;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #000;
+  color: #010205;
 }
 input:focus {
   opacity: 1;
@@ -3292,126 +3109,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: pointer;
-  border: 1px solid currentColor;
-  outline-color: #626669;
-}
-input:focus+span {
-  outline-color: #626669;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #323639;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'success' and theme: 'light' 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: text;
-  color: #000;
-  background: #fff;
-}
-input::placeholder {
-  opacity: 1;
-  color: #000;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #000;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #000;
-}
-input:focus {
-  opacity: 1;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: pointer;
   border: 2px solid currentColor;
-  outline-color: #018a16;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #018a16;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'error' and theme: 'light' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #7E7F82;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #7E7F82;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #7E7F82;
 }
 input:focus {
   opacity: 0;
@@ -3422,61 +3173,60 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid currentColor;
-  outline-color: #e00000;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #e00000;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #AFB0B3;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'none' and theme: 'light' 1`] = `
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
   z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 3.125rem);
+  height: 3.125rem;
+  padding: 13px 16px;
   outline: none;
   appearance: none;
   box-sizing: border-box;
   border: none;
+  border-radius: 4px;
   opacity: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
   cursor: not-allowed;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
 }
 input::placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-webkit-input-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input::-moz-placeholder {
   opacity: 1;
-  color: #96989a;
+  color: #949598;
 }
 input:focus {
   opacity: 0;
@@ -3487,85 +3237,20 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: not-allowed;
-  border: 1px solid currentColor;
-  outline-color: #626669;
-}
-input:focus+span {
-  outline-color: #626669;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #323639;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'success' and theme: 'light' 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 0.125rem;
-  left: 0.125rem;
-  width: calc(100% - 2.75rem);
-  height: 2.75rem;
-  padding: 0.625rem;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: not-allowed;
-  color: #000;
-  background: #fff;
-}
-input::placeholder {
-  opacity: 1;
-  color: #96989a;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #96989a;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #96989a;
-}
-input:focus {
-  opacity: 0;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   transition: color var(--p-transition-duration, .24s) ease;
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid currentColor;
-  outline-color: #018a16;
+  border-radius: 4px;
 }
 input:focus+span {
-  outline-color: #018a16;
+  outline-color: #0A0AFF;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 "
@@ -3578,11 +3263,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -3592,7 +3275,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #b0b1b2;
+  border: 1px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3612,12 +3295,12 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #4a4e51;
+  background: #404044;
   top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 
@@ -3629,7 +3312,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -3646,8 +3329,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #ff0223;
-  background: #000;
+  color: rgba(126, 127, 130, 0.20);
+  background: #010205;
 }
 .option--selected {
   cursor: default;
@@ -3655,7 +3338,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 .option--hidden {
   display: none;
@@ -3677,8 +3360,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #ff0223;
-    background: #000;
+    color: rgba(126, 127, 130, 0.20);
+    background: #010205;
   }
 }
 "
@@ -3691,11 +3374,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -3705,7 +3386,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3725,12 +3406,12 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -3742,7 +3423,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -3759,8 +3440,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -3768,7 +3449,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -3790,8 +3471,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -3804,11 +3485,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -3818,7 +3497,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #b0b1b2;
+  border: 1px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3834,12 +3513,12 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #4a4e51;
+  background: #404044;
   top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 
@@ -3851,7 +3530,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -3868,8 +3547,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #ff0223;
-  background: #000;
+  color: rgba(126, 127, 130, 0.20);
+  background: #010205;
 }
 .option--selected {
   cursor: default;
@@ -3877,7 +3556,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 .option--hidden {
   display: none;
@@ -3899,8 +3578,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #ff0223;
-    background: #000;
+    color: rgba(126, 127, 130, 0.20);
+    background: #010205;
   }
 }
 "
@@ -3913,11 +3592,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -3927,7 +3604,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3943,12 +3620,12 @@ ul::before {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -3960,7 +3637,7 @@ ul::before {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -3977,8 +3654,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -3986,7 +3663,7 @@ ul::before {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -4008,8 +3685,8 @@ ul::before {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -4022,11 +3699,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -4036,13 +3711,13 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #b0b1b2;
+  border: 1px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -4057,12 +3732,12 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #4a4e51;
+  background: #404044;
   bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 
@@ -4074,7 +3749,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -4091,8 +3766,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #ff0223;
-  background: #000;
+  color: rgba(126, 127, 130, 0.20);
+  background: #010205;
 }
 .option--selected {
   cursor: default;
@@ -4100,7 +3775,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 .option--hidden {
   display: none;
@@ -4122,8 +3797,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #ff0223;
-    background: #000;
+    color: rgba(126, 127, 130, 0.20);
+    background: #010205;
   }
 }
 "
@@ -4136,11 +3811,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -4150,13 +3823,13 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
   top: calc(100%-3px);
@@ -4171,12 +3844,12 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -4188,7 +3861,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -4205,8 +3878,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -4214,7 +3887,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -4236,8 +3909,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "
@@ -4250,11 +3923,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #fff;
-  background: #0e1418;
+  color: #FBFCFF;
+  background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -4264,13 +3935,13 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #b0b1b2;
+  border: 1px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -4280,12 +3951,12 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #4a4e51;
+  background: #404044;
   bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #e3e4e5;
+    border-color: #AFB0B3;
   }
 }
 
@@ -4297,7 +3968,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -4314,8 +3985,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #ff0223;
-  background: #000;
+  color: rgba(126, 127, 130, 0.20);
+  background: #010205;
 }
 .option--selected {
   cursor: default;
@@ -4323,7 +3994,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7c7f81;
+  color: #7E7F82;
 }
 .option--hidden {
   display: none;
@@ -4345,8 +4016,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #ff0223;
-    background: #000;
+    color: rgba(126, 127, 130, 0.20);
+    background: #010205;
   }
 }
 "
@@ -4359,11 +4030,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   padding: 0;
   margin: 0;
   margin-top: -0.0625rem;
-  color: #000;
-  background: #fff;
+  color: #010205;
+  background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   z-index: 10;
@@ -4373,13 +4042,13 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #626669;
+  border: 1px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 2.9375rem;
+  bottom: 3.3125rem;
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
@@ -4389,12 +4058,12 @@ ul::after {
   position: sticky;
   width: 100%;
   height: 1px;
-  background: #e3e4e5;
+  background: #D8D8DB;
   bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #323639;
+    border-color: #535457;
   }
 }
 
@@ -4406,7 +4075,7 @@ ul::after {
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
-  transition: color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
   cursor: not-allowed;
@@ -4423,8 +4092,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: #d5001c;
-  background: #f2f2f2;
+  color: rgba(148, 149, 152, 0.20);
+  background: #EEEFF2;
 }
 .option--selected {
   cursor: default;
@@ -4432,7 +4101,7 @@ ul::after {
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #96989a;
+  color: #949598;
 }
 .option--hidden {
   display: none;
@@ -4454,8 +4123,8 @@ ul::after {
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: #d5001c;
-    background: #f2f2f2;
+    color: rgba(148, 149, 152, 0.20);
+    background: #EEEFF2;
   }
 }
 "

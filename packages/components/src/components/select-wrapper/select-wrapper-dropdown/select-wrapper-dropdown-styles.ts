@@ -9,7 +9,12 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { fontWeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  fontWeight,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
@@ -21,9 +26,8 @@ const { primaryColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBac
 
 const dropdownPositionVar = '--p-dropdown-position';
 
-export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
-  const { contrastHighColor, contrastMediumColor } = getThemedColors(theme);
-  const { formStateColor } = getThemedFormStateColors(theme, state);
+export const getButtonStyles = (_isOpen: boolean, theme: Theme): Styles => {
+  const { contrastHighColor, focusColor } = getThemedColors(theme);
 
   return {
     '@global': {
@@ -34,17 +38,21 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         width: '100%',
         padding: 0,
         background: 'transparent',
-        border: `${formStateColor ? 2 : 1}px solid currentColor`,
-        outline: '1px solid transparent',
+        border: '2px solid currentColor',
+        borderRadius: borderRadiusSmall,
+        outline: '2px solid transparent',
         outlineOffset: '2px',
         cursor: 'pointer',
         color: 'currentColor',
         transition: getTransition('color'),
-        ...(isOpen && {
-          outlineColor: formStateColor || contrastMediumColor,
-        }),
+        // ...(isOpen && {
+        //   outlineColor: focusColor,
+        // }),
         '&:focus': {
-          outlineColor: formStateColor || contrastMediumColor,
+          outlineColor: focusColor,
+          '&:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
         },
         ...hoverMediaQuery({
           '&:not(:disabled):hover ~ ul': {
@@ -59,20 +67,15 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
   };
 };
 
-export const getFilterStyles = (
-  isOpen: boolean,
-  disabled: boolean,
-  state: FormState,
-  theme: Theme
-): Styles<'@global'> => {
-  const { primaryColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } =
-    getThemedColors(theme);
-  const { formStateColor } = getThemedFormStateColors(theme, state);
+export const getFilterStyles = (_isOpen: boolean, disabled: boolean, theme: Theme): Styles<'@global'> => {
+  const { primaryColor, backgroundColor, contrastHighColor, focusColor, disabledColor } = getThemedColors(theme);
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
     color: disabled ? disabledColor : primaryColor,
   };
+
+  const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
 
   return {
     '@global': {
@@ -80,15 +83,16 @@ export const getFilterStyles = (
         display: 'block',
         position: 'absolute',
         zIndex: 1,
-        bottom: pxToRemWithUnit(2), // input is inset to not overlap with 1px or 2px border of state
-        left: pxToRemWithUnit(2),
-        width: `calc(100% - ${pxToRemWithUnit(INPUT_HEIGHT - 4)})`,
-        height: pxToRemWithUnit(INPUT_HEIGHT - 4),
-        padding: pxToRemWithUnit(10),
+        bottom: '2px', // input is inset to not overlap with 1px or 2px border of state
+        left: '2px',
+        width: `calc(100% - ${inputHeightRem})`,
+        height: inputHeightRem,
+        padding: `13px ${spacingStaticMedium}`,
         outline: 'none',
         appearance: 'none',
         boxSizing: 'border-box',
         border: 'none',
+        borderRadius: borderRadiusSmall,
         opacity: 0,
         ...textSmallStyle,
         textIndent: 0,
@@ -101,7 +105,7 @@ export const getFilterStyles = (
         '&:focus': {
           opacity: disabled ? 0 : 1, // to display value while typing
           '&+span': {
-            outlineColor: formStateColor || contrastMediumColor,
+            outlineColor: focusColor,
           },
         },
         ...hoverMediaQuery({
@@ -113,15 +117,16 @@ export const getFilterStyles = (
           // for focus outline and click event on arrow
           position: 'absolute',
           ...getInsetJssStyle(),
-          outline: '1px solid transparent',
+          outline: '2px solid transparent',
           outlineOffset: '2px',
           transition: getTransition('color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
-          border: `${formStateColor ? 2 : 1}px solid currentColor`,
-          ...(isOpen && {
-            outlineColor: formStateColor || contrastMediumColor,
-          }),
+          border: '2px solid currentColor',
+          borderRadius: borderRadiusSmall,
+          // ...(isOpen && {
+          //   outlineColor: focusColor,
+          // }),
         },
       },
     },
@@ -218,7 +223,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       textAlign: 'left',
       wordBreak: 'break-word',
       boxSizing: 'border-box',
-      transition: getTransition('color') + ',' + getTransition('background-color'),
+      transition: ['background-color', 'color'].map(getTransition).join(),
       '&[role="status"]': {
         cursor: 'not-allowed',
       },
@@ -297,7 +302,7 @@ export const getComponentCss = (
           },
         },
       },
-      filter ? getFilterStyles(isOpen, disabled, state, theme) : getButtonStyles(isOpen, state, theme),
+      filter ? getFilterStyles(isOpen, disabled, theme) : getButtonStyles(isOpen, theme),
       getListStyles(direction, isOpen, theme)
     )
   );

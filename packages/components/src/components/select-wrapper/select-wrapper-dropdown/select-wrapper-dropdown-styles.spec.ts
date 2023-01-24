@@ -1,42 +1,33 @@
 import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
 import { getCss } from '../../../utils';
 
-xdescribe('getButtonStyles()', () => {
+describe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
-    [true, 'none', 'light'],
-    [false, 'none', 'dark'],
-    [true, 'success', 'light'],
-    [false, 'success', 'dark'],
-    [true, 'error', 'light'],
-    [false, 'error', 'dark'],
-  ])('should return correct css for isOpen: %o, state: %o and theme: %o', (isOpen, state, theme) => {
-    expect(getCss(getButtonStyles(isOpen, state, theme))).toMatchSnapshot();
+    [true, 'light'],
+    [true, 'dark'],
+    [false, 'light'],
+    [false, 'dark'],
+  ])('should return correct css for isOpen: %s and theme: %s', (isOpen, theme) => {
+    expect(getCss(getButtonStyles(isOpen, theme))).toMatchSnapshot();
   });
 });
 
-xdescribe('getFilterStyles()', () => {
+describe('getFilterStyles()', () => {
   it.each<Parameters<typeof getFilterStyles>>([
-    [true, false, 'none', 'light'],
-    [false, false, 'none', 'dark'],
-    [true, false, 'success', 'light'],
-    [false, false, 'success', 'dark'],
-    [true, false, 'error', 'light'],
-    [false, false, 'error', 'dark'],
-    [true, true, 'none', 'light'],
-    [false, true, 'none', 'dark'],
-    [true, true, 'success', 'light'],
-    [false, true, 'success', 'dark'],
-    [true, true, 'error', 'light'],
-    [false, true, 'error', 'dark'],
-  ])(
-    'should return correct css for isOpen: %o, disabled: %o, state: %o and theme: %o',
-    (isOpen, disabled, state, theme) => {
-      expect(getCss(getFilterStyles(isOpen, disabled, state, theme))).toMatchSnapshot();
-    }
-  );
+    [true, true, 'light'],
+    [true, true, 'dark'],
+    [true, false, 'light'],
+    [true, false, 'dark'],
+    [false, true, 'light'],
+    [false, true, 'dark'],
+    [false, false, 'light'],
+    [false, false, 'dark'],
+  ])('should return correct css for isOpen: %s, disabled: %s and theme: %s', (isOpen, disabled, theme) => {
+    expect(getCss(getFilterStyles(isOpen, disabled, theme))).toMatchSnapshot();
+  });
 });
 
-xdescribe('getListStyles()', () => {
+describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
     ['down', true, 'light'],
     ['down', false, 'light'],
@@ -51,7 +42,7 @@ xdescribe('getListStyles()', () => {
   });
 });
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['down', true, false, 'none', false, 'light'],
     ['down', false, false, 'none', false, 'light'],
