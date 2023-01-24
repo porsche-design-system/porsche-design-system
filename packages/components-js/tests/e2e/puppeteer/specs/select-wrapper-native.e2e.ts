@@ -145,7 +145,7 @@ describe('focus state', () => {
   });
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   it('should change border-color of select when label text is hovered', async () => {
     await initSelect();
     await page.mouse.move(0, 300); // avoid potential hover initially
