@@ -22,6 +22,7 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttribute } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
+import { getLinkButtonThemeForIcon } from '../../utils/link-button/getLinkButtonThemeForIcon';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
@@ -111,13 +112,7 @@ export class Link {
             name={this.icon}
             source={this.iconSource}
             color="inherit"
-            theme={
-              this.variant === 'tertiary'
-                ? this.theme
-                : this.variant === 'secondary' && this.theme === 'dark'
-                ? 'light'
-                : 'dark'
-            } // relevant for ssr support
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)} // relevant for ssr support
             aria-hidden="true"
           />
         )}

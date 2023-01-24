@@ -24,6 +24,7 @@ import {
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
+import { getLinkButtonThemeForIcon } from '../../utils/link-button/getLinkButtonThemeForIcon';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -108,7 +109,7 @@ export class Button {
           <PrefixedTagNames.pSpinner
             class="spinner"
             size="inherit"
-            theme={['secondary' || 'tertiary'].includes(this.variant) ? this.theme : 'dark'}
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
             aria={{ 'aria-label': 'Loading state:' }}
           />
         )}
@@ -118,14 +119,7 @@ export class Button {
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
-            theme={
-              this.variant === 'tertiary'
-                ? this.theme
-                : this.variant === 'secondary' && this.theme === 'dark'
-                ? 'light'
-                : 'dark'
-            } // relevant for ssr support
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)} // relevant for ssr support
             aria-hidden="true"
           />
         )}
