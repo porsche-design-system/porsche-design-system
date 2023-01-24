@@ -3,6 +3,7 @@ import { getVisualRegressionStatesTester } from 'shared/src/testing/vrt';
 
 const components = [
   'checkbox-wrapper',
+  'inline-notification',
   'radio-button-wrapper',
   'toast-basic',
   'toast-basic-dark',
