@@ -81,7 +81,7 @@ export const getComponentCss = (
         '&::before': {
           content: '""',
           position: 'absolute',
-          ...getInsetJssStyle(-3),
+          ...getInsetJssStyle(-5),
           border: `${borderWidthBase} solid transparent`,
           borderRadius: '7px',
         },
