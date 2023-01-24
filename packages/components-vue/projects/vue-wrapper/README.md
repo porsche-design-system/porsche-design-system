@@ -58,7 +58,7 @@ You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
 
 ```vue
 // main.ts
-import { createPDS } from '@porsche-design-system/components-vue';
+import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
 import { createApp } from 'vue';
 
 const app = createApp(App);
