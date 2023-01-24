@@ -30,7 +30,7 @@ export const getComponentCss = (
         color: textColor,
       },
     },
-    icon: getNotificationIconJssStyle(theme, state),
+    icon: getNotificationIconJssStyle(state, theme),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
