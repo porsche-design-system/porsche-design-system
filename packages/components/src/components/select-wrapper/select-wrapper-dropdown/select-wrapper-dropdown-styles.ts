@@ -215,7 +215,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     },
     optgroup: {
       display: 'block',
-      padding: `3px 14px`,
+      padding: '3px 14px',
       fontWeight: fontWeightSemiBold,
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
