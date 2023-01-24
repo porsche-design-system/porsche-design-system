@@ -74,7 +74,7 @@ The `usePDS` composable provides access to the `PorscheDesignSystemProvider` con
 
 ```vue
 
-const { isPDSLoaded, utilities } = usePDS();
+const { isPorscheDesignSystemLoaded, utilities } = usePorscheDesignSystemPlugin();
 
 ```
 
