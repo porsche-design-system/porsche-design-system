@@ -454,8 +454,10 @@ exports[`should have no basic DOM regression for p-tag-dismissible 1`] = `
 "<button type="button">
   <span class="sr-only">
     Remove:</span>
-  <slot>
-  </slot>
+  <span>
+    <slot>
+    </slot>
+  </span>
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
 </button>"

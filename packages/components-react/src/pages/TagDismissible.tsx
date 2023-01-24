@@ -26,16 +26,38 @@ export const TagDismissiblePage = (): JSX.Element => {
         <PTagDismissible color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
+      <div className="playground dark" title="should show different background colors on dark background">
+        <PTagDismissible>Default</PTagDismissible>
+        <PTagDismissible theme="dark" color="background-default">Color background-default</PTagDismissible>
+        <PTagDismissible theme="dark" color="background-surface">Color background-surface</PTagDismissible>
+      </div>
+
       <div className="playground light surface" title="should show different background colors on light surface background">
         <PTagDismissible>Default</PTagDismissible>
         <PTagDismissible color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
+      <div className="playground dark surface" title="should show different background colors on dark surface background">
+        <PTagDismissible theme="dark">Default</PTagDismissible>
+        <PTagDismissible theme="dark" color="background-default">Color background-default</PTagDismissible>
+        <PTagDismissible theme="dark" color="background-surface">Color background-surface</PTagDismissible>
+      </div>
+
       <div className="playground light" title="should show different background colors and label on light background">
         <PTagDismissible label="Some label">Default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-surface">Color background-surface</PTagDismissible>
+      </div>
+
+      <div className="playground dark" title="should show different background colors and label on dark background">
+        <PTagDismissible theme="dark" label="Some label">Default</PTagDismissible>
+        <PTagDismissible theme="dark" label="Some label" color="background-default"
+          >Color background-default</PTagDismissible
+        >
+        <PTagDismissible theme="dark" label="Some label" color="background-surface"
+          >Color background-surface</PTagDismissible
+        >
       </div>
 
       <div
@@ -45,6 +67,19 @@ export const TagDismissiblePage = (): JSX.Element => {
         <PTagDismissible label="Some label">Default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-surface">Color background-surface</PTagDismissible>
+      </div>
+
+      <div
+        className="playground dark surface"
+        title="should show different background colors and label on dark surface background"
+      >
+        <PTagDismissible theme="dark" label="Some label">Default</PTagDismissible>
+        <PTagDismissible theme="dark" label="Some label" color="background-default"
+          >Color background-default</PTagDismissible
+        >
+        <PTagDismissible theme="dark" label="Some label" color="background-surface"
+          >Color background-surface</PTagDismissible
+        >
       </div>
 
       <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
