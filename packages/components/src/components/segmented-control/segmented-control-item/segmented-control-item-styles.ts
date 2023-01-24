@@ -1,13 +1,18 @@
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getFocusJssStyle,
+  getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  textSmallStyle,
+  textXSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
@@ -51,7 +56,7 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastLowColor } = getThemedColors(theme);
+  const { contrastLowColor, focusColor } = getThemedColors(theme);
   const { backgroundColor, buttonColor, labelColor } = getColors(isDisabled, isSelected, bgColor, theme);
 
   return getCss({
@@ -67,10 +72,25 @@ export const getComponentCss = (
         padding: `${pxToRemWithUnit(12)} ${ITEM_PADDING}`,
         margin: 0,
         border: 0,
+        outline: 0,
         background: backgroundColor,
         color: buttonColor,
         ...textSmallStyle,
-        ...getFocusJssStyle({ color: primaryColor }),
+        position: 'relative',
+        borderRadius: borderRadiusSmall,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-3),
+          border: `${borderWidthBase} solid transparent`,
+          borderRadius: '7px',
+        },
+        '&:focus::before': {
+          borderColor: focusColor,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
