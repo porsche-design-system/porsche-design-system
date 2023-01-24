@@ -12,12 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `underline` prop for `Link Pure`
-- `Checkbox Wrapper` and `Radio Button Wrapper` supports `theme` prop
+- `theme` prop for `Checkbox Wrapper`, `Radio Button Wrapper`, `Text Field Wrapper` and `Tag Dismissible`
 
 #### Changed
 
-- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Text Field Wrapper` matches new
-  design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Tag Dismissible`
+  and `Text Field Wrapper` match new design language
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
@@ -36,7 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Removed
 
-- Custom slotted CSS for `Checkbox Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
+- Custom slotted CSS for `Checkbox Wrapper`, `Select Wrapper` and `Text Field Wrapper` (use normalize styles, provided
+  by `getInitialStyles()` partial instead)
 - `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff

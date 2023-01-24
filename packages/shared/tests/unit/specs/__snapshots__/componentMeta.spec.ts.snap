@@ -1131,7 +1131,7 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -1139,6 +1139,7 @@ exports[`should match snapshot 1`] = `
       "aria": null,
       "color": "background-surface",
       "label": null,
+      "theme": "light",
     },
     "styling": "jss",
   },
