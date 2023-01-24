@@ -27,12 +27,19 @@ export const getColors = (
   isSelected: boolean,
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
-): { backgroundColor: string; buttonColor: string; labelColor: string; borderColor: string } => {
+): {
+  backgroundColor: string;
+  buttonColor: string;
+  labelColor: string;
+  borderColor: string;
+  hoverBorderColor: string;
+} => {
   const themedColors = getThemedColors(theme);
 
   const { primaryColor, contrastMediumColor } = themedColors;
   const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
   const borderColor = isSelected ? themedColors.primaryColor : 'transparent';
+  const hoverBorderColor = isSelected ? themedColors.primaryColor : themedColors.contrastMediumColor;
 
   return isDisabled
     ? {
@@ -40,12 +47,14 @@ export const getColors = (
         buttonColor: themedColors.disabledColor,
         labelColor: themedColors.disabledColor,
         borderColor,
+        hoverBorderColor,
       }
     : {
         backgroundColor,
         buttonColor: primaryColor,
         labelColor: contrastMediumColor,
         borderColor,
+        hoverBorderColor,
       };
 };
 
@@ -56,7 +65,12 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { contrastLowColor, focusColor } = getThemedColors(theme);
-  const { backgroundColor, buttonColor, labelColor, borderColor } = getColors(isDisabled, isSelected, bgColor, theme);
+  const { backgroundColor, buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(
+    isDisabled,
+    isSelected,
+    bgColor,
+    theme
+  );
 
   return getCss({
     '@global': {
@@ -71,6 +85,7 @@ export const getComponentCss = (
         padding: `${pxToRemWithUnit(12)} ${ITEM_PADDING}`,
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
+        transition: getTransition('border-color'),
         outline: 0,
         background: backgroundColor,
         color: buttonColor,
@@ -97,13 +112,13 @@ export const getComponentCss = (
             }
           : {
               cursor: 'pointer',
-              ...(!isSelected &&
-                hoverMediaQuery({
-                  transition: getTransition('background-color'),
-                  '&:hover': {
-                    background: contrastLowColor,
-                  },
-                })),
+              ...hoverMediaQuery({
+                transition: getTransition('background-color'),
+                '&:hover': {
+                  background: contrastLowColor,
+                  borderColor: hoverBorderColor,
+                },
+              }),
             }),
       },
       // label
