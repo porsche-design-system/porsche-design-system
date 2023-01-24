@@ -16,7 +16,7 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
-export const ITEM_PADDING = pxToRemWithUnit(17);
+export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = pxToRemWithUnit(24);
