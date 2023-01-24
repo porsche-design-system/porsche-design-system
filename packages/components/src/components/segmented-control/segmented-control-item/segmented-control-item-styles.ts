@@ -38,7 +38,7 @@ export const getColors = (
 
   const { primaryColor, contrastMediumColor } = themedColors;
   const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
-  const borderColor = isSelected ? themedColors.primaryColor : 'transparent';
+  const borderColor = isSelected ? themedColors.primaryColor : isDisabled ? themedColors.disabledColor : 'transparent';
   const hoverBorderColor = isSelected ? themedColors.primaryColor : themedColors.contrastMediumColor;
 
   return isDisabled
