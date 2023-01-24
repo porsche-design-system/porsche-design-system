@@ -1,9 +1,10 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../styles';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const { backgroundColor, primaryColor } = getThemedColors('light');
 
@@ -91,8 +92,10 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
+          // should popover scale up if font size is extended?
           width: '1.5rem', // width of icon (to improve ssr support)
           height: '1.5rem', // height of icon (to improve ssr support)
+          ...hostHiddenStyles,
         }),
         verticalAlign: 'top',
       },
@@ -108,7 +111,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
+      filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
@@ -124,19 +127,20 @@ export const getComponentCss = (direction: PopoverDirection): string => {
     },
     popover: {
       position: 'absolute',
-      maxWidth: '90vw',
+      maxWidth: '90vw', // Should this stay the same?
       width: 'max-content',
       boxSizing: 'border-box',
       background: backgroundColor,
-      padding: '.5rem 1rem',
+      padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmallStyle,
       listStyleType: 'none',
       color: primaryColor,
       whiteSpace: 'inherit',
+      borderRadius: borderRadiusSmall,
       [mediaQueryXS]: {
-        maxWidth: pxToRemWithUnit(432),
+        maxWidth: '432px',
       },
       [mediaQueryForcedColors]: {
         outline: `1px solid ${canvasText}`,
