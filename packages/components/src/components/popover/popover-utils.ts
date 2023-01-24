@@ -1,6 +1,7 @@
 import { Popover } from './popover';
 import { attachComponentCss } from '../../utils';
 import { getComponentCss } from './popover-styles';
+import type { Theme } from '../../utils/theme';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
@@ -11,13 +12,14 @@ export const updatePopoverStyles = (
   host: HTMLElement,
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
-  direction: PopoverDirection
+  direction: PopoverDirection,
+  theme: Theme
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction);
+    attachComponentCss(host, getComponentCss, direction, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
   popover.style.margin = getPopoverMargin(spacer, popover, direction);

@@ -1,12 +1,21 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { borderRadiusSmall, getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
+import {
+  borderRadiusLarge,
+  borderRadiusSmall,
+  borderWidthBase,
+  frostedGlassStyle,
+  getMediaQueryMin,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getCss } from '../../utils';
+import { addImportantToEachRule, getTextHiddenJssStyle, getThemedColors, getTransition } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
+import type { Theme } from '../../utils/theme';
 
-const { backgroundColor, primaryColor } = getThemedColors('light');
+const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
 
 const mediaQueryXS = getMediaQueryMin('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
@@ -46,7 +55,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: join(backgroundColor, transparentColor, transparentColor),
+    borderColor: join(backgroundColorThemeLight, transparentColor, transparentColor),
     [mediaQueryForcedColors]: {
       borderColor: join(canvasText, canvas, canvas),
     },
@@ -56,7 +65,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     right: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: join(transparentColor, backgroundColor, transparentColor, transparentColor),
+    borderColor: join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
     [mediaQueryForcedColors]: {
       borderColor: join(canvas, canvasText, canvas, canvas),
     },
@@ -66,7 +75,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, backgroundColor),
+    borderColor: join(transparentColor, transparentColor, backgroundColorThemeLight),
     [mediaQueryForcedColors]: {
       borderColor: join(canvas, canvas, canvasText),
     },
@@ -76,15 +85,16 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColor),
+    borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
     [mediaQueryForcedColors]: {
       borderColor: join(canvas, canvas, canvas, canvasText),
     },
   },
 };
 
-export const getComponentCss = (direction: PopoverDirection): string => {
-  const spacerBox = '-1rem';
+export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
+  const spacerBox = '-16px';
+  const { hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -103,7 +113,29 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         ...textSmallStyle,
         margin: 0,
       },
+      button: {
+        display: 'block',
+        appearance: 'none',
+        background: 'transparent',
+        border: 0,
+        padding: 0,
+        borderRadius: borderRadiusLarge,
+        transition: getTransition('background-color'),
+        ...hoverMediaQuery({
+          '&:hover': {
+            ...frostedGlassStyle,
+            backgroundColor: hoverColor,
+          },
+        }),
+        '&:focus': {
+          outline: `${focusColor} ${borderWidthBase} solid`,
+        },
+        '&:not(:focus-visible)': {
+          outlineColor: 'transparent',
+        },
+      },
     },
+    label: getTextHiddenJssStyle(true),
     spacer: {
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,
@@ -130,13 +162,13 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       maxWidth: '90vw', // Should this stay the same?
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColor,
+      background: backgroundColorThemeLight,
       padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmallStyle,
       listStyleType: 'none',
-      color: primaryColor,
+      color: primaryColorThemeLight,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
       [mediaQueryXS]: {
@@ -155,8 +187,4 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

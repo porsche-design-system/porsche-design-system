@@ -8,19 +8,21 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  THEMES,
   validateProps,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './popover-styles';
+import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<'aria-label'>(['aria-label']),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -40,6 +42,9 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
+  /** Adapts the button color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
+
   @State() private open = false;
 
   private spacer: HTMLDivElement;
@@ -47,14 +52,13 @@ export class Popover {
   private button: HTMLButtonElement;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     addDocumentEventListener(this);
   }
 
   public componentDidRender(): void {
     if (this.open) {
       // calculate / update position only possible after render
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction);
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme);
     }
   }
 
@@ -64,26 +68,21 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onKeydown={this.onKeydown}>
-        <PrefixedTagNames.pButtonPure
+        <button
           type="button"
-          icon="information"
-          hideLabel={true}
           onClick={() => (this.open = !this.open)}
-          // pass string to avoid another update on p-button on each render because of new object reference
-          aria={JSON.stringify({
-            'aria-expanded': this.open,
-            ...parseAndGetAriaAttributes(this.aria),
-          })}
+          {...parseAndGetAriaAttributes(this.aria)}
           ref={(el) => (this.button = el)}
         >
-          More information
-        </PrefixedTagNames.pButtonPure>
+          <PrefixedTagNames.pIcon name="information" theme={this.theme}></PrefixedTagNames.pIcon>
+          <span class="label">More Information</span>
+        </button>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
             <div class="popover" ref={(el) => (this.popover = el)}>
