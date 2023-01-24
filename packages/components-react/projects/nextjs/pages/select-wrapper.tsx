@@ -394,7 +394,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: '240px' }}
+          style={{ width: '15rem' }}
         >
           <select name="some-name">
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
@@ -413,7 +413,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           theme="dark"
-          style={{ width: '240px' }}
+          style={{ width: '15rem' }}
         >
           <select name="some-name">
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>

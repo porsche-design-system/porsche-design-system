@@ -27,7 +27,7 @@ describe('getComponentCss()', () => {
     [true, 'error', true, 'dark'],
     [true, 'error', false, 'dark'],
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'light'],
-  ])('should return correct css for hideLabel: %o, state: %s and isDisabled: %s', (...args) => {
+  ])('should return correct css for hideLabel: %o, state: %s, isDisabled: %s and theme %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
