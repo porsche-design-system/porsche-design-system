@@ -71,7 +71,7 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
   const { top } = host.getBoundingClientRect();
 
-  const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
+  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 26; // 26 = 2 x 12px padding + 2px border
   const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
