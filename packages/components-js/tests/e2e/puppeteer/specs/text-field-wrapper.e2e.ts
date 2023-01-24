@@ -111,7 +111,7 @@ describe('input type="password"', () => {
     await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
-    expect(await getElementStyle(input, 'borderColor'), 'disabled border').toBe(initialBorderColor);
+    expect(await getElementStyle(input, 'borderColor'), 'disabled border').not.toBe(initialBorderColor);
 
     await setProperty(input, 'disabled', false);
     await waitForStencilLifecycle(page);
