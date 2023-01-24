@@ -141,11 +141,11 @@ describe('hover state', () => {
 
     const filterInputOverlay = await getFilterInputOverlay();
     const initialStyle = await getElementStyle(filterInputOverlay, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+    expect(initialStyle).toBe('rgb(148, 149, 152)');
 
     await filterInputOverlay.hover();
     const hoverColor = await getElementStyle(filterInputOverlay, 'borderColor');
-    expect(hoverColor).toBe('rgb(0, 0, 0)');
+    expect(hoverColor).toBe('rgb(1, 2, 5)');
   });
 });
 
