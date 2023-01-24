@@ -7,7 +7,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       #app,
       :host {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 50%);
       }
     }
   `;
