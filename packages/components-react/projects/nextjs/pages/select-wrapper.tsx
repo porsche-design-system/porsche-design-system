@@ -3,11 +3,42 @@ import type { NextPage } from 'next';
 import { PSelectWrapper } from '@porsche-design-system/components-react/ssr';
 
 const SelectWrapperPage: NextPage = (): JSX.Element => {
+  const style = `
+    @media only screen and (min-width: 760px) {
+      #app,
+      :host {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+  `;
+
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
+      <div className="playground light" title="should render native dropdown with label">
+        <PSelectWrapper label="Native" native={true}>
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+      </div>
+      <div className="playground dark" title="should render native dropdown with label on dark theme">
+        <PSelectWrapper label="Native" native={true} theme="dark">
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+      </div>
+
       <div className="playground light" title="should render with label">
         <PSelectWrapper label="Some label">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -16,7 +47,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with label on dark theme">
         <PSelectWrapper label="Some label" theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -26,7 +57,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with label and description">
         <PSelectWrapper label="Some label" description="Some description">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -35,7 +66,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with label and description on dark theme">
         <PSelectWrapper label="Some label" description="Some description" theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -45,7 +76,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render without label and without description">
         <PSelectWrapper label="Some label" description="Some description" hideLabel={true}>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -54,7 +85,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render without label and without description on dark theme">
         <PSelectWrapper label="Some label" description="Some description" hideLabel={true} theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -68,7 +99,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           description="Some description"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -82,7 +113,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           theme="dark"
         >
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -92,7 +123,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with filter">
         <PSelectWrapper label="Some label with filter" filter={true}>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -101,7 +132,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with filter on dark theme">
         <PSelectWrapper label="Some label with filter" filter={true} theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -111,7 +142,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in disabled state with filter">
         <PSelectWrapper label="Some label disabled with filter" filter={true}>
-          <select name="some-name" disabled>
+          <select disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -120,7 +151,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render in disabled state with filter on dark theme">
         <PSelectWrapper label="Some label disabled with filter" filter={true} theme="dark">
-          <select name="some-name" disabled>
+          <select disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -130,14 +161,14 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in required state">
         <PSelectWrapper label="Some label">
-          <select name="some-name" required>
+          <select required>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
         <PSelectWrapper label="This is a very insanely super long label across multiple lines">
-          <select name="some-name" required>
+          <select required>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -147,14 +178,14 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render in required state on dark theme">
         <PSelectWrapper label="Some label" theme="dark">
-          <select name="some-name" required>
+          <select required>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
         <PSelectWrapper label="This is a very insanely super long label across multiple lines" theme="dark">
-          <select name="some-name" required>
+          <select required>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -164,7 +195,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in disabled state">
         <PSelectWrapper label="Some label disabled" description="Some description">
-          <select name="some-name" disabled>
+          <select disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -173,7 +204,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render in disabled state on dark theme">
         <PSelectWrapper label="Some label disabled" description="Some description" theme="dark">
-          <select name="some-name" disabled>
+          <select disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -183,7 +214,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with error state and error message">
         <PSelectWrapper label="Some label" state="error" message="Some error message.">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -192,7 +223,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with error state and error message on dark theme">
         <PSelectWrapper label="Some label" state="error" message="Some error message." theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -202,7 +233,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with error state and error message with filter">
         <PSelectWrapper label="Some label with filter" filter={true} state="error" message="Some error message.">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -217,7 +248,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           message="Some error message."
           theme="dark"
         >
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -227,7 +258,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with error state and no error message">
         <PSelectWrapper label="Some label" state="error">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -236,7 +267,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with error state and no error message on dark theme">
         <PSelectWrapper label="Some label" state="error" theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -246,7 +277,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with success state and success message">
         <PSelectWrapper label="Some label" state="success" message="Some success message.">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -255,7 +286,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with success state and success message on dark theme">
         <PSelectWrapper label="Some label" state="success" message="Some success message." theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -265,7 +296,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with success state and success message with filter">
         <PSelectWrapper label="Some label with filter" filter={true} state="success" message="Some success message.">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -280,7 +311,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           message="Some success message."
           theme="dark"
         >
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -290,7 +321,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with success state and no success message">
         <PSelectWrapper label="Some label" state="success">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -299,7 +330,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with success state and no success message on dark theme">
         <PSelectWrapper label="Some label" state="success" theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -309,7 +340,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with default state and no message">
         <PSelectWrapper label="Some label" state="none" message="Some message which should not be rendered.">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -318,7 +349,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
       </div>
       <div className="playground dark" title="should render with default state and no message on dark theme">
         <PSelectWrapper label="Some label" state="none" message="Some message which should not be rendered." theme="dark">
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -330,7 +361,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
         <PSelectWrapper state="error">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -345,7 +376,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
         <PSelectWrapper state="error" theme="dark">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -361,7 +392,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
         <PSelectWrapper state="success">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -376,7 +407,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
         <PSelectWrapper state="success" theme="dark">
           <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <select name="some-name">
+          <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -396,7 +427,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           style={{ width: '15rem' }}
         >
-          <select name="some-name">
+          <select>
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
             <option value="b">sed diam nonumy eirmod tempor invidunt ut labore</option>
             <option value="c">et dolore magna aliquyam erat, sed diam voluptua</option>
@@ -415,7 +446,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
           theme="dark"
           style={{ width: '15rem' }}
         >
-          <select name="some-name">
+          <select>
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
             <option value="b">sed diam nonumy eirmod tempor invidunt ut labore</option>
             <option value="c">et dolore magna aliquyam erat, sed diam voluptua</option>
@@ -429,7 +460,7 @@ const SelectWrapperPage: NextPage = (): JSX.Element => {
         style={{ paddingBottom: 'calc(1rem + 340px)' }}
       >
         <PSelectWrapper label="Some label" id="last-select-on-page">
-          <select id="open-options" name="some-name">
+          <select id="open-options">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
