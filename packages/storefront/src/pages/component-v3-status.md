@@ -37,7 +37,7 @@
 | ⛔ **Button / Link**        |                                                                                                                                                                               |
 | ⛔ **Link Social**          |                                                                                                                                                                               |
 | ⛔ **Tag**                  |                                                                                                                                                                               |
-| ⛔ **Tag Dismissible**      |                                                                                                                                                                               |
+| ✅ **Tag Dismissible**      |                                                                                                                                                                               |
 | ✅ **Switch**               |                                                                                                                                                                               |
 | ✅ **Checkbox Wrapper**     | - Hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the issue but to hover is applied to the whole host element. |
 | ✅ **Radio Button Wrapper** | - Same hover issue, like with checkbox. Seems to be related to transition somehow<br />- focus is getting lost in some circumstances (#2206)                                  |
