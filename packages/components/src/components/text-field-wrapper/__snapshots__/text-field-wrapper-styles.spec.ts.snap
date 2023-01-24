@@ -2039,7 +2039,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not([readonly]):hover) {
-    border-color: #AFB0B3 !important;
+    border-color: #FBFCFF !important;
   }
 }
 
