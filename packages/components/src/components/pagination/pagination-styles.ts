@@ -76,7 +76,11 @@ export const getComponentCss = (
           pointerEvents: 'none',
           color: disabledColor,
         },
-        '&[aria-ellipsis]': {
+        '&[aria-label="Previous page"], &[aria-label="Next page"]': {
+          border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : contrastMediumColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&[aria-label="ellipsis"]': {
           textDecoration: 'none',
         },
         '&[aria-current]': {
