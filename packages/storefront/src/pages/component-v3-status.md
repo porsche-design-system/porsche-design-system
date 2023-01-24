@@ -44,7 +44,7 @@
 | ⛔ **Text Field Wrapper**   |                                                                                                                                                                                   |
 | ⛔ **Textarea Wrapper**     |                                                                                                                                                                                   |
 | ⛔ **Select Wrapper**       |                                                                                                                                                                                   |
-| ⛔ **Segmented Control**    |                                                                                                                                                                                   |
+| ✅ **Segmented Control**    |                                                                                                                                                                                   |
 | ⛔ **Inline Notification**  |                                                                                                                                                                                   |
 | ⛔ **Banner**               |                                                                                                                                                                                   |
 | ⛔ **Toast**                |                                                                                                                                                                                   |
