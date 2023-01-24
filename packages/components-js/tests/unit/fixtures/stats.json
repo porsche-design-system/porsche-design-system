@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 6813,
-    "gzipSize": 2913
+    "size": 6874,
+    "gzipSize": 2926
   },
   {
     "chunkShortName": "carousel",
@@ -32,7 +32,7 @@
   {
     "chunkShortName": "checkbox-wrapper",
     "size": 6798,
-    "gzipSize": 2905
+    "gzipSize": 2906
   },
   {
     "chunkShortName": "content-wrapper",
@@ -81,8 +81,8 @@
   },
   {
     "chunkShortName": "link-pure",
-    "size": 6634,
-    "gzipSize": 2812
+    "size": 6695,
+    "gzipSize": 2830
   },
   {
     "chunkShortName": "link-social",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66503,
-    "gzipSize": 22715
+    "size": 66513,
+    "gzipSize": 22720
   },
   {
     "chunkShortName": "marque",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6692,
-    "gzipSize": 2801
+    "size": 6920,
+    "gzipSize": 2809
   },
   {
     "chunkShortName": "radio-button-wrapper",
