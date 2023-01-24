@@ -211,7 +211,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
   },
   "@media(hover:hover)": {
     "::slotted(select:not(:disabled):not([readonly]):hover)": {
-      "borderColor": "#AFB0B3",
+      "borderColor": "#FBFCFF",
     },
   },
 }
@@ -385,7 +385,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-      "borderColor": "#AFB0B3",
+      "borderColor": "#FBFCFF",
     },
   },
 }

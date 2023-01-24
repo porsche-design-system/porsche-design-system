@@ -1,6 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
-import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
+import { buildResponsiveStyles, isVisibleFormState } from '../utils';
 import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
 import {
   borderRadiusSmall,
@@ -22,8 +22,7 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, contrastLowColor, contrastHighColor, contrastMediumColor, disabledColor, focusColor } =
-    getThemedColors(theme);
+  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
@@ -50,7 +49,7 @@ export const getBaseChildStyles = (
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
       [`::slotted(${child}:not(:disabled):not([readonly]):hover)`]: {
-        borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : primaryColor),
+        borderColor: formStateHoverColor || primaryColor,
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {

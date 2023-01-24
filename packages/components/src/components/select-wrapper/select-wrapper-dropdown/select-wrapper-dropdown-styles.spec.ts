@@ -2,28 +2,22 @@ import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from
 import { getCss } from '../../../utils';
 
 describe('getButtonStyles()', () => {
-  it.each<Parameters<typeof getButtonStyles>>([
-    [true, 'light'],
-    [true, 'dark'],
-    [false, 'light'],
-    [false, 'dark'],
-  ])('should return correct css for isOpen: %s and theme: %s', (isOpen, theme) => {
-    expect(getCss(getButtonStyles(isOpen, theme))).toMatchSnapshot();
-  });
+  it.each<Parameters<typeof getButtonStyles>>([['light'], ['dark']])(
+    'should return correct css for theme: %s',
+    (theme) => {
+      expect(getCss(getButtonStyles(theme))).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getFilterStyles()', () => {
   it.each<Parameters<typeof getFilterStyles>>([
-    [true, true, 'light'],
-    [true, true, 'dark'],
-    [true, false, 'light'],
-    [true, false, 'dark'],
-    [false, true, 'light'],
-    [false, true, 'dark'],
-    [false, false, 'light'],
-    [false, false, 'dark'],
-  ])('should return correct css for isOpen: %s, disabled: %s and theme: %s', (isOpen, disabled, theme) => {
-    expect(getCss(getFilterStyles(isOpen, disabled, theme))).toMatchSnapshot();
+    [true, 'light'],
+    [true, 'dark'],
+    [false, 'light'],
+    [false, 'dark'],
+  ])('should return correct css for disabled: %s and theme: %s', (disabled, theme) => {
+    expect(getCss(getFilterStyles(disabled, theme))).toMatchSnapshot();
   });
 });
 

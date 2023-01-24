@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonStyles() should return correct css for isOpen: false and theme: dark 1`] = `
+exports[`getButtonStyles() should return correct css for theme: dark 1`] = `
 "button {
   position: absolute;
   top: 0;
@@ -27,13 +27,13 @@ button:focus:not(:focus-visible)) {
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #AFB0B3;
+    border-color: #FBFCFF;
   }
 }
 "
 `;
 
-exports[`getButtonStyles() should return correct css for isOpen: false and theme: light 1`] = `
+exports[`getButtonStyles() should return correct css for theme: light 1`] = `
 "button {
   position: absolute;
   top: 0;
@@ -60,73 +60,7 @@ button:focus:not(:focus-visible)) {
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
-  }
-}
-"
-`;
-
-exports[`getButtonStyles() should return correct css for isOpen: true and theme: dark 1`] = `
-"button {
-  position: absolute;
-  top: 0;
-  height: 3.375rem;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  cursor: pointer;
-  color: currentColor;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-button:focus {
-  outline-color: #0A0AFF;
-}
-button:disabled {
-  cursor: not-allowed;
-}
-button:focus:not(:focus-visible)) {
-  outline-color: transparent;
-}
-@media(hover:hover) {
-  button:not(:disabled):hover ~ ul {
-    border-color: #AFB0B3;
-  }
-}
-"
-`;
-
-exports[`getButtonStyles() should return correct css for isOpen: true and theme: light 1`] = `
-"button {
-  position: absolute;
-  top: 0;
-  height: 3.375rem;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  cursor: pointer;
-  color: currentColor;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-button:focus {
-  outline-color: #0A0AFF;
-}
-button:disabled {
-  cursor: not-allowed;
-}
-button:focus:not(:focus-visible)) {
-  outline-color: transparent;
-}
-@media(hover:hover) {
-  button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 "
@@ -168,12 +102,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -181,53 +115,46 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -245,7 +172,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -259,24 +186,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -350,12 +276,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -363,32 +289,21 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
@@ -398,18 +313,22 @@ ul::before {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -427,7 +346,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -441,24 +360,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -501,12 +419,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -514,50 +432,43 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -575,7 +486,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -589,24 +500,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -680,12 +590,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -693,50 +603,43 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -754,7 +657,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -768,24 +671,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -828,12 +730,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -841,49 +743,42 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -901,7 +796,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -915,24 +810,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1006,12 +900,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1019,28 +913,17 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
@@ -1050,18 +933,22 @@ ul::before {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1079,7 +966,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1093,24 +980,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1153,12 +1039,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1166,46 +1052,39 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1223,7 +1102,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1237,24 +1116,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1328,12 +1206,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1341,46 +1219,39 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1398,7 +1269,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1412,24 +1283,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1472,12 +1342,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1485,54 +1355,46 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1550,7 +1412,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1564,24 +1426,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1655,12 +1516,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1668,33 +1529,21 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
@@ -1704,18 +1553,22 @@ ul::after {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1733,7 +1586,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1747,24 +1600,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1807,12 +1659,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1820,51 +1672,43 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -1882,7 +1726,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -1896,24 +1740,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -1987,12 +1830,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2000,51 +1843,43 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -2062,7 +1897,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -2076,24 +1911,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -2136,12 +1970,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2149,49 +1983,42 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
   }
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -2209,7 +2036,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -2223,24 +2050,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -2314,12 +2140,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2327,28 +2153,17 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   :host(:hover) {
@@ -2358,18 +2173,22 @@ ul::after {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -2387,7 +2206,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -2401,24 +2220,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -2461,12 +2279,12 @@ button:focus:not(:focus-visible)) {
   outline-color: transparent;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2474,46 +2292,39 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   button:not(:disabled):hover ~ ul {
-    border-color: #535457;
+    border-color: #010205;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -2531,7 +2342,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -2545,24 +2356,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -2636,12 +2446,12 @@ input:focus+span {
   outline-color: #0A0AFF;
 }
 ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2649,46 +2459,39 @@ ul {
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   input:not(:disabled):hover ~ ul {
     border-color: #535457;
   }
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -2706,7 +2509,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -2720,31 +2523,30 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false and theme: dark 1`] = `
+exports[`getFilterStyles() should return correct css for disabled: false and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
@@ -2808,263 +2610,7 @@ input:focus+span {
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false and theme: light 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 2px;
-  left: 2px;
-  width: calc(100% - 3.125rem);
-  height: 3.125rem;
-  padding: 13px 16px;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: text;
-  color: #010205;
-  background: #FFF;
-}
-input::placeholder {
-  opacity: 1;
-  color: #010205;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #010205;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #010205;
-}
-input:focus {
-  opacity: 1;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: pointer;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-}
-input:focus+span {
-  outline-color: #0A0AFF;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #535457;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true and theme: dark 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 2px;
-  left: 2px;
-  width: calc(100% - 3.125rem);
-  height: 3.125rem;
-  padding: 13px 16px;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: not-allowed;
-  color: #FBFCFF;
-  background: #0E0E12;
-}
-input::placeholder {
-  opacity: 1;
-  color: #7E7F82;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #7E7F82;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #7E7F82;
-}
-input:focus {
-  opacity: 0;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: not-allowed;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-}
-input:focus+span {
-  outline-color: #0A0AFF;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #AFB0B3;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true and theme: light 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 2px;
-  left: 2px;
-  width: calc(100% - 3.125rem);
-  height: 3.125rem;
-  padding: 13px 16px;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: not-allowed;
-  color: #010205;
-  background: #FFF;
-}
-input::placeholder {
-  opacity: 1;
-  color: #949598;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #949598;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #949598;
-}
-input:focus {
-  opacity: 0;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: not-allowed;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-}
-input:focus+span {
-  outline-color: #0A0AFF;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #535457;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false and theme: dark 1`] = `
-"input {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  bottom: 2px;
-  left: 2px;
-  width: calc(100% - 3.125rem);
-  height: 3.125rem;
-  padding: 13px 16px;
-  outline: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-indent: 0;
-  cursor: text;
-  color: #FBFCFF;
-  background: #0E0E12;
-}
-input::placeholder {
-  opacity: 1;
-  color: #FBFCFF;
-}
-input::-webkit-input-placeholder {
-  opacity: 1;
-  color: #FBFCFF;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  color: #FBFCFF;
-}
-input:focus {
-  opacity: 1;
-}
-input+span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition: color var(--p-transition-duration, .24s) ease;
-  pointer-events: all;
-  cursor: pointer;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-}
-input:focus+span {
-  outline-color: #0A0AFF;
-}
-@media(hover:hover) {
-  input:not(:disabled):hover ~ ul {
-    border-color: #AFB0B3;
-  }
-}
-"
-`;
-
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false and theme: light 1`] = `
+exports[`getFilterStyles() should return correct css for disabled: false and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
@@ -3128,7 +2674,7 @@ input:focus+span {
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true and theme: dark 1`] = `
+exports[`getFilterStyles() should return correct css for disabled: true and theme: dark 1`] = `
 "input {
   display: block;
   position: absolute;
@@ -3192,7 +2738,7 @@ input:focus+span {
 "
 `;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true and theme: light 1`] = `
+exports[`getFilterStyles() should return correct css for disabled: true and theme: light 1`] = `
 "input {
   display: block;
   position: absolute;
@@ -3258,12 +2804,12 @@ input:focus+span {
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: dark 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #FBFCFF;
   background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3271,47 +2817,40 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #7E7F82;
+  border: 2px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #404044;
-  top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #AFB0B3;
+    border-color: #FBFCFF;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #AFB0B3;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3329,8 +2868,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(126, 127, 130, 0.20);
-  background: #010205;
+  color: #FBFCFF;
+  background: #212225;
 }
 .option--selected {
   cursor: default;
@@ -3343,25 +2882,24 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(126, 127, 130, 0.20);
-    background: #010205;
+    color: #FBFCFF;
+    background: #212225;
   }
 }
 "
@@ -3369,12 +2907,12 @@ ul::before {
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: light 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3382,47 +2920,40 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-3px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3440,7 +2971,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -3454,24 +2985,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -3480,12 +3010,12 @@ ul::before {
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: dark 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #FBFCFF;
   background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3493,43 +3023,36 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #7E7F82;
+  border: 2px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #404044;
-  top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #AFB0B3;
+    border-color: #FBFCFF;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #AFB0B3;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3547,8 +3070,8 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(126, 127, 130, 0.20);
-  background: #010205;
+  color: #FBFCFF;
+  background: #212225;
 }
 .option--selected {
   cursor: default;
@@ -3561,25 +3084,24 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(126, 127, 130, 0.20);
-    background: #010205;
+    color: #FBFCFF;
+    background: #212225;
   }
 }
 "
@@ -3587,12 +3109,12 @@ ul::before {
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: light 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3600,43 +3122,36 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   z-index: 10;
   left: 0;
   right: 0;
+  top: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  top: calc(100%-1px);
-  border-top: none;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
-}
-ul::before {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  top: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3654,7 +3169,7 @@ ul::before {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -3668,24 +3183,23 @@ ul::before {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -3694,12 +3208,12 @@ ul::before {
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: dark 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #FBFCFF;
   background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3707,48 +3221,40 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #7E7F82;
+  border: 2px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #404044;
-  bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #AFB0B3;
+    border-color: #FBFCFF;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #AFB0B3;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3766,8 +3272,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(126, 127, 130, 0.20);
-  background: #010205;
+  color: #FBFCFF;
+  background: #212225;
 }
 .option--selected {
   cursor: default;
@@ -3780,25 +3286,24 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(126, 127, 130, 0.20);
-    background: #010205;
+    color: #FBFCFF;
+    background: #212225;
   }
 }
 "
@@ -3806,12 +3311,12 @@ ul::after {
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: light 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3819,48 +3324,40 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
+  opacity: 0;
+  overflow: hidden;
+  height: 1px;
+  pointer-events: none;
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-  top: calc(100%-3px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3878,7 +3375,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -3892,24 +3389,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }
@@ -3918,12 +3414,12 @@ ul::after {
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: dark 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #FBFCFF;
   background: #0E0E12;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3931,43 +3427,36 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #7E7F82;
+  border: 2px solid #7E7F82;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #404044;
-  bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #AFB0B3;
+    border-color: #FBFCFF;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #AFB0B3;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -3985,8 +3474,8 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(126, 127, 130, 0.20);
-  background: #010205;
+  color: #FBFCFF;
+  background: #212225;
 }
 .option--selected {
   cursor: default;
@@ -3999,25 +3488,24 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(126, 127, 130, 0.20);
-    background: #010205;
+    color: #FBFCFF;
+    background: #212225;
   }
 }
 "
@@ -4025,12 +3513,12 @@ ul::after {
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: light 1`] = `
 "ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: var(--p-dropdown-position);
-  padding: 0;
+  padding: 12px;
   margin: 0;
-  margin-top: -0.0625rem;
-  color: #010205;
   background: #FFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -4038,43 +3526,36 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   z-index: 10;
   left: 0;
   right: 0;
+  bottom: calc(100% - 2px);
   max-height: 19.25rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 1px solid #949598;
+  border: 2px solid #949598;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
   transform: translate3d(0,0,0);
   outline: none;
-  bottom: 3.3125rem;
-  border-bottom: none;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
-}
-ul::after {
-  content: "";
-  display: block;
-  position: sticky;
-  width: 100%;
-  height: 1px;
-  background: #D8D8DB;
-  bottom: 0;
 }
 @media(hover:hover) {
   ul:hover {
-    border-color: #535457;
+    border-color: #010205;
   }
 }
 
 .option {
   display: flex;
-  padding: 0.25rem 0.6875rem;
-  min-height: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: 2.5rem;
+  color: #535457;
   cursor: pointer;
   text-align: left;
   word-break: break-word;
   box-sizing: border-box;
+  border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .option[role="status"] {
@@ -4092,7 +3573,7 @@ ul::after {
   white-space: nowrap;
 }
 .option--highlighted, .option--selected {
-  color: rgba(148, 149, 152, 0.20);
+  color: #010205;
   background: #EEEFF2;
 }
 .option--selected {
@@ -4106,24 +3587,23 @@ ul::after {
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-left: 0.25rem;
-}
 .optgroup {
   display: block;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.5rem;
-  font-weight: 700;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
 }
 .optgroup~.option {
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 .sr-text {
   display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role="status"]):hover {
-    color: rgba(148, 149, 152, 0.20);
+    color: #010205;
     background: #EEEFF2;
   }
 }

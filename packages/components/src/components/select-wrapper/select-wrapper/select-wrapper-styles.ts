@@ -8,7 +8,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
 import { spacingStaticMedium } from '../../../../../utilities/projects/utilities';
 
-export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
+export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
 
 export const getComponentCss = (
   isDisabled: boolean,
