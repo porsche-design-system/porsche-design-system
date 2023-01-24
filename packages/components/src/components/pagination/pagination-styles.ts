@@ -2,14 +2,19 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
 import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
-import { borderRadiusSmall, borderWidthBase, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
   theme: Theme
 ): string => {
-  const { contrastMediumColor, contrastHighColor, primaryColor, disabledColor, hoverColor, activeColor, focusColor } =
+  const { contrastMediumColor, contrastHighColor, primaryColor, disabledColor, hoverColor, focusColor } =
     getThemedColors(theme);
 
   return getCss({
@@ -52,9 +57,12 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: contrastHighColor,
         outline: 0,
+        borderRadius: borderRadiusSmall,
         ...hoverMediaQuery({
           '&:hover': {
-            color: hoverColor,
+            ...frostedGlassStyle,
+            color: primaryColor,
+            backgroundColor: hoverColor,
           },
         }),
         '&:focus': {
@@ -71,33 +79,30 @@ export const getComponentCss = (
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
         },
-        '&:active': {
-          outline: 'none',
-          color: activeColor,
-        },
         '&[aria-disabled]': {
           cursor: 'default',
           pointerEvents: 'none',
           color: disabledColor,
         },
         '&[aria-label="Previous page"], &[aria-label="Next page"]': {
+          color: primaryColor,
           border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : contrastMediumColor}`,
-          borderRadius: borderRadiusSmall,
+          ...hoverMediaQuery({
+            '&:hover': {
+              borderColor: `${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
+              backgroundColor: 'transparent',
+            },
+          }),
         },
         '&[aria-label="ellipsis"]': {
           textDecoration: 'none',
         },
         '&[aria-current]': {
           cursor: 'default',
+          pointerEvents: 'none',
           textDecoration: 'none',
           color: primaryColor,
           border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
-          borderRadius: borderRadiusSmall,
-          ...hoverMediaQuery({
-            '&:hover': {
-              color: primaryColor,
-            },
-          }),
         },
       },
     },
