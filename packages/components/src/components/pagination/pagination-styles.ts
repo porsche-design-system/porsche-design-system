@@ -9,7 +9,7 @@ export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
   theme: Theme
 ): string => {
-  const { contrastMediumColor, primaryColor, disabledColor, hoverColor, activeColor, focusColor } =
+  const { contrastMediumColor, contrastHighColor, primaryColor, disabledColor, hoverColor, activeColor, focusColor } =
     getThemedColors(theme);
 
   return getCss({
@@ -50,16 +50,20 @@ export const getComponentCss = (
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: primaryColor,
+        color: contrastHighColor,
         outline: 0,
         ...hoverMediaQuery({
           '&:hover': {
             color: hoverColor,
           },
         }),
+        '&:focus': {
+          color: primaryColor,
+        },
         '&:focus::before': {
           content: '""',
           position: 'absolute',
+          color: primaryColor,
           ...getInsetJssStyle(-2),
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusSmall,
@@ -86,6 +90,7 @@ export const getComponentCss = (
         '&[aria-current]': {
           cursor: 'default',
           textDecoration: 'none',
+          color: primaryColor,
           border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
           borderRadius: borderRadiusSmall,
           ...hoverMediaQuery({
