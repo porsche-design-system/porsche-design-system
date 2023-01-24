@@ -2,7 +2,6 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getInsetJssStyle,
-  getInvertedThemedColors,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -28,25 +27,25 @@ export const getColors = (
   isSelected: boolean,
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
-): { backgroundColor: string; buttonColor: string; labelColor: string } => {
+): { backgroundColor: string; buttonColor: string; labelColor: string; borderColor: string } => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
 
-  const backgroundColor =
-    themedColors[
-      isSelected ? 'contrastHighColor' : bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'
-    ];
+  const { primaryColor, contrastMediumColor } = themedColors;
+  const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
+  const borderColor = isSelected ? themedColors.primaryColor : 'transparent';
 
   return isDisabled
     ? {
         backgroundColor,
         buttonColor: themedColors.disabledColor,
         labelColor: themedColors.disabledColor,
+        borderColor,
       }
     : {
         backgroundColor,
         buttonColor: primaryColor,
         labelColor: contrastMediumColor,
+        borderColor,
       };
 };
 
@@ -57,7 +56,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { contrastLowColor, focusColor } = getThemedColors(theme);
-  const { backgroundColor, buttonColor, labelColor } = getColors(isDisabled, isSelected, bgColor, theme);
+  const { backgroundColor, buttonColor, labelColor, borderColor } = getColors(isDisabled, isSelected, bgColor, theme);
 
   return getCss({
     '@global': {
@@ -71,11 +70,12 @@ export const getComponentCss = (
         width: '100%',
         padding: `${pxToRemWithUnit(12)} ${ITEM_PADDING}`,
         margin: 0,
-        border: 0,
+        border: `${borderWidthBase} solid ${borderColor}`,
         outline: 0,
         background: backgroundColor,
         color: buttonColor,
         ...textSmallStyle,
+        overflowWrap: 'normal',
         position: 'relative',
         borderRadius: borderRadiusSmall,
         '&::before': {
@@ -110,6 +110,7 @@ export const getComponentCss = (
       span: {
         display: 'block',
         ...textXSmallStyle,
+        overflowWrap: 'normal',
         color: labelColor,
       },
     },
