@@ -24,7 +24,6 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
-        justifyContent: 'center',
         gap: '12px',
         minHeight: '54px',
         padding: '4px 0 4px 12px',
