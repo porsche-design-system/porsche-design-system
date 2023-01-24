@@ -33,7 +33,7 @@ export const getBaseChildStyles = (
       position: 'relative',
       width: '100%',
       ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
-      outline: '1px solid transparent',
+      outline: '2px solid transparent',
       outlineOffset: '2px',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',

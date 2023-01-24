@@ -12,7 +12,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -198,7 +198,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -348,7 +348,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -462,7 +462,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -589,7 +589,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -716,7 +716,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -843,7 +843,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -992,7 +992,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1154,7 +1154,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1306,7 +1306,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1470,7 +1470,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1638,7 +1638,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1751,7 +1751,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1878,7 +1878,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2004,7 +2004,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2130,7 +2130,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2256,7 +2256,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2406,7 +2406,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2520,7 +2520,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2647,7 +2647,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2774,7 +2774,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -2901,7 +2901,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3050,7 +3050,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3163,7 +3163,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3290,7 +3290,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3417,7 +3417,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3565,7 +3565,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3677,7 +3677,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3803,7 +3803,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -3929,7 +3929,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4078,7 +4078,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4191,7 +4191,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4318,7 +4318,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -4445,7 +4445,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: relative !important;
   width: 100% !important;
   height: 3.375rem !important;
-  outline: 1px solid transparent !important;
+  outline: 2px solid transparent !important;
   outline-offset: 2px !important;
   -webkit-appearance: none !important;
   appearance: none !important;
