@@ -34,15 +34,8 @@ export const getFilterInputAriaAttributes = (
   activeDescendantId: number
 ): AriaAttributes => {
   return {
-    'aria-labelledby': labelId,
-    'aria-describedby': descriptionId || null,
-    'aria-haspopup': 'listbox',
-    'aria-expanded': isOpen ? 'true' : 'false',
+    ...getSelectWrapperDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId),
     'aria-autocomplete': 'list',
-    'aria-controls': dropdownId,
-    ...(isOpen && {
-      'aria-activedescendant': `option-${activeDescendantId}`,
-    }),
     ...(isRequired && {
       'aria-required': 'true',
     }),
