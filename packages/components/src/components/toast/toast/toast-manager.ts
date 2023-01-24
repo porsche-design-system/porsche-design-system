@@ -59,7 +59,7 @@ export class ToastManagerClass {
     this.onDismissCallback();
     setTimeout(
       () => forceUpdate(this.toastEl),
-      // respect --p-override-toast-animation-duration css variable to override timeout during e2e and vrt tests
+      // respect --_pds-toast-override-timeout css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? ANIMATION_DURATION
         : parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_ANIMATION_DURATION_VAR), 10) ||
@@ -77,11 +77,11 @@ export class ToastManagerClass {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
-        // skip setting timeout if --pds_toast-skip-timeout css variable is set in dev build
+        // skip setting timeout if --_pds-toast-skip-timeout css variable is set in dev build
         if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
           this.timeout = setTimeout(
             this.dismissToastItem,
-            // override timeout if --p-override-toast-timeout css variable is set
+            // override timeout if --_pds-toast-override-timeout css variable is set
             parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_TIMEOUT_OVERRIDE_VAR), 10) ||
               TOAST_DEFAULT_TIMEOUT
           );
