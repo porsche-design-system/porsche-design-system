@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
-import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
+import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
 import { borderRadiusSmall, borderWidthBase, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 
@@ -51,12 +51,22 @@ export const getComponentCss = (
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
-        ...getFocusJssStyle({ color: focusColor, offset: 1 }),
+        outline: 0,
         ...hoverMediaQuery({
           '&:hover': {
             color: hoverColor,
           },
         }),
+        '&:focus::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-2),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
         '&:active': {
           outline: 'none',
           color: activeColor,
