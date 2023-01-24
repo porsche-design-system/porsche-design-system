@@ -66,7 +66,7 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
   };
 };
 
-export const getNotificationIconJssStyle = (theme: Theme, state: InlineNotificationState): JssStyle => ({
+export const getNotificationIconJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => ({
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',

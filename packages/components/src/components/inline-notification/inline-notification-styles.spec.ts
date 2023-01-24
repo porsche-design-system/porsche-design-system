@@ -44,15 +44,15 @@ describe('getNotificationRootJssStyles()', () => {
 
 describe('getNotificationIconJssStyle()', () => {
   it.each<Parameters<typeof getNotificationIconJssStyle>>([
-    ['light', 'info'],
-    ['light', 'success'],
-    ['light', 'error'],
-    ['light', 'warning'],
-    ['dark', 'info'],
-    ['dark', 'success'],
-    ['dark', 'error'],
-    ['dark', 'warning'],
-  ])('should return correct JssStyle for state: %s ', (...args) => {
+    ['info', 'light'],
+    ['success', 'light'],
+    ['error', 'light'],
+    ['warning', 'light'],
+    ['info', 'dark'],
+    ['success', 'dark'],
+    ['error', 'dark'],
+    ['warning', 'dark'],
+  ])('should return correct JssStyle for theme: %s and state: %s', (...args) => {
     expect(getNotificationIconJssStyle(...args)).toMatchSnapshot();
   });
 });
