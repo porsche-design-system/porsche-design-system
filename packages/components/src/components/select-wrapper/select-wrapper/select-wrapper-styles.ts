@@ -1,16 +1,11 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { buildSlottedStyles, getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../../styles';
+import { getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../utils';
+import { addImportantToEachRule, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
+import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
 
 const { primaryColor: themeLightBaseColor } = getThemedColors('light');
 
@@ -28,9 +23,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-      },
+        ...hostHiddenStyles,
+      }),
       ...addImportantToEachRule(
         mergeDeep(
           getBaseChildStyles('select', state, theme, {
@@ -71,8 +67,4 @@ export const getComponentCss = (
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: true })));
 };
