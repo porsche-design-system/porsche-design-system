@@ -67,10 +67,12 @@ export const getComponentCss = (
               }),
         }),
         // Reset webkit autofill styles
-        '::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus)':
-          {
-            WebkitBackgroundClip: 'padding-box',
-          },
+        '::slotted': {
+          '&(input:-internal-autofill-selected),&(input:-internal-autofill-previewed),&(input:-webkit-autofill),&(input:-webkit-autofill:focus)':
+            {
+              WebkitBackgroundClip: 'padding-box',
+            },
+        },
       }),
       ...(isSearchOrPassword && {
         button: {
