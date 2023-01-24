@@ -16,7 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper` matches new design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` matches new design
+  language
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
