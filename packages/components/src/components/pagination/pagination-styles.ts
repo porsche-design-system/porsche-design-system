@@ -45,7 +45,7 @@ export const getComponentCss = (
         width: pxToRemWithUnit(40),
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
-        textDecoration: 'none',
+        textDecoration: 'underline',
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
@@ -65,8 +65,12 @@ export const getComponentCss = (
           pointerEvents: 'none',
           color: disabledColor,
         },
+        '&[aria-ellipsis]': {
+          textDecoration: 'none',
+        },
         '&[aria-current]': {
           cursor: 'default',
+          textDecoration: 'none',
           ...hoverMediaQuery({
             '&:hover': {
               color: primaryColor,

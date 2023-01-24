@@ -125,7 +125,7 @@ export class Pagination {
               case itemTypes.ELLIPSIS:
                 return (
                   <li key="ellipsis">
-                    <span class="ellipsis" />
+                    <span class="ellipsis" aria-ellipsis={'ellipsis'} />
                   </li>
                 );
 
