@@ -114,7 +114,7 @@ describe('updatePopoverStyles()', () => {
     updatePopoverStyles(host, spacer, popover, 'top', 'light');
 
     expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
-    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom');
+    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', 'light');
   });
 
   it('should call getPopoverMargin()', () => {

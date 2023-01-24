@@ -285,6 +285,7 @@ exports[`should call validateProps() with correct parameters via render for p-po
   "aria": "aria",
   "description": "string",
   "direction": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
@@ -425,14 +426,6 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "icon": "string",
   "iconSource": "string",
   "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-tag-dismissible: propTypes with ValidatorFunctions 1`] = `
-{
-  "aria": "aria",
-  "color": "oneOf",
-  "label": "string",
 }
 `;
 
