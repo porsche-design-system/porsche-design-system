@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 6777,
-    "gzipSize": 2898
+    "size": 6832,
+    "gzipSize": 2911
   },
   {
     "chunkShortName": "content-wrapper",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66515,
-    "gzipSize": 22721
+    "size": 66525,
+    "gzipSize": 22724
   },
   {
     "chunkShortName": "marque",
@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 21070,
-    "gzipSize": 6992
+    "size": 20936,
+    "gzipSize": 6986
   },
   {
     "chunkShortName": "spinner",
@@ -171,13 +171,13 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 3913,
-    "gzipSize": 1719
+    "size": 3945,
+    "gzipSize": 1745
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 5195,
-    "gzipSize": 2129
+    "size": 5447,
+    "gzipSize": 2221
   },
   {
     "chunkShortName": "text",
