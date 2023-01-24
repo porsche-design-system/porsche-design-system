@@ -16,7 +16,7 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
-export const ITEM_PADDING = pxToRemWithUnit(16);
+export const ITEM_PADDING = pxToRemWithUnit(17);
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = pxToRemWithUnit(24);
@@ -82,7 +82,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: `${pxToRemWithUnit(12)} ${ITEM_PADDING}`,
+        padding: `13px ${ITEM_PADDING}`,
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
         transition: getTransition('border-color'),
