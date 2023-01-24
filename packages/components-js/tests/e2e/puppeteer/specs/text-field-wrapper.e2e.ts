@@ -99,7 +99,7 @@ it('should not render label if label prop is not defined but should render if ch
 });
 
 describe('input type="password"', () => {
-  xit('should disable input when input is disabled programmatically', async () => {
+  it('should disable input when input is disabled programmatically', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const input = await getInput();
 
@@ -111,7 +111,7 @@ describe('input type="password"', () => {
     await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
-    expect(await getElementStyle(input, 'borderColor'), 'disabled border').not.toBe(initialBorderColor);
+    expect(await getElementStyle(input, 'borderColor'), 'disabled border').toBe(initialBorderColor);
 
     await setProperty(input, 'disabled', false);
     await waitForStencilLifecycle(page);
@@ -402,10 +402,10 @@ describe('focus state', () => {
   });
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
-  const defaultColor = 'rgb(98, 102, 105)';
-  const hoverColor = 'rgb(0, 0, 0)';
+  const defaultBorderColor = 'rgb(148, 149, 152)';
+  const hoverBorderColor = 'rgb(1, 2, 5)';
 
   it('should show hover state on input when label is hovered', async () => {
     await initTextField({ hasLabel: true });
@@ -413,16 +413,16 @@ xdescribe('hover state', () => {
     const label = await getLabel();
     const input = await getInput();
 
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await input.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await label.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 
   it('should show hover state on input when unit/counter is hovered', async () => {
@@ -431,16 +431,16 @@ xdescribe('hover state', () => {
     const counter = await getCounterOrUnit();
     const input = await getInput();
 
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await input.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await counter.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 });
 
