@@ -52,7 +52,7 @@ for pkg in ${packages[@]}; do
 done
 
 # update "components-js" in base projects
-packages=( "components-js" "storefront" )
+packages=( "components-js" "storefront" "crawler" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/components-js": )(".*")$\1"'${1}'"$' package.json
