@@ -99,12 +99,12 @@ export default class Code extends Vue {
   buttons(value: string) {
     const attr = value ? ` variant="${value}"` : '';
     return `<p-link${attr} href="https://www.porsche.com">Some label</p-link>
-<p-link${attr} href="https://www.porsche.com" hide-label="true">Some label</p-link>`;
+<p-link${attr} href="https://www.porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>`;
     }
 
   responsive =
-`<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }">Some label</p-link>
-<p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }">Some label</p-link>`;
+`<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-link>
+<p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>`;
 
   accessibility = 
 `<p-link href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;

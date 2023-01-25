@@ -91,35 +91,35 @@ export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
   
   primary = 
-`<p-button variant="primary">Some label</p-button>
-<p-button variant="primary" loading>Some label</p-button>
-<p-button variant="primary" disabled>Some label</p-button>
+`<p-button>Some label</p-button>
+<p-button loading>Some label</p-button>
+<p-button disabled>Some label</p-button>
 <br>
-<p-button variant="primary" hide-label="true">Some label</p-button>
-<p-button variant="primary" hide-label="true" loading>Some label</p-button>
-<p-button variant="primary" hide-label="true" disabled>Some label</p-button>`;
+<p-button hide-label="true" icon="arrow-right">Some label</p-button>
+<p-button hide-label="true" icon="arrow-right" loading>Some label</p-button>
+<p-button hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
   
   secondary = 
-`<p-button>Some label</p-button>
-<p-button loading="true">Some label</p-button>
-<p-button disabled="true">Some label</p-button>
+`<p-button variant="secondary">Some label</p-button>
+<p-button variant="secondary" loading="true">Some label</p-button>
+<p-button variant="secondary" disabled="true">Some label</p-button>
 <br>
-<p-button hide-label="true">Some label</p-button>
-<p-button hide-label="true" loading>Some label</p-button>
-<p-button hide-label="true" disabled>Some label</p-button>`;
+<p-button variant="secondary" hide-label="true" icon="arrow-right">Some label</p-button>
+<p-button variant="secondary" hide-label="true" icon="arrow-right" loading>Some label</p-button>
+<p-button variant="secondary" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
 
   tertiary = 
 `<p-button variant="tertiary">Some label</p-button>
 <p-button variant="tertiary" loading="true">Some label</p-button>
 <p-button variant="tertiary" disabled="true">Some label</p-button>
 <br>
-<p-button variant="tertiary" hide-label="true">Some label</p-button>
-<p-button variant="tertiary" hide-label="true" loading>Some label</p-button>
-<p-button variant="tertiary" hide-label="true" disabled>Some label</p-button>`;
+<p-button variant="tertiary" hide-label="true" icon="arrow-right">Some label</p-button>
+<p-button variant="tertiary" hide-label="true" icon="arrow-right" loading>Some label</p-button>
+<p-button variant="tertiary" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
 
   responsive =
-`<p-button variant="primary" hide-label="{ base: true, s: false }">Some label</p-button>
-<p-button variant="secondary" hide-label="{ base: true, m: false }">Some label</p-button>`;
+`<p-button variant="primary" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-button>
+<p-button variant="secondary" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>`;
 
   accessibility = 
 `<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
@@ -139,7 +139,7 @@ export default class Code extends Vue {
     
   taborder =
 `<p-button>Some label</p-button>
-<p-button tabindex="-1" hide-label="true">Some label</p-button>
+<p-button tabindex="-1" hide-label="true" icon="arrow-right">Some label</p-button>
 <p-button>Some label</p-button>`;
 }
 </script>
