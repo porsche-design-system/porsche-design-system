@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
 import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
@@ -35,7 +35,8 @@ export const offsetVertical = '-2px';
 export const offsetHorizontal = '-4px';
 
 export const getLinkButtonPureStyles = (
-  icon: LinkButtonPureIconName,
+  icon: LinkButtonIconName,
+  iconSource: string,
   active: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
@@ -46,7 +47,7 @@ export const getLinkButtonPureStyles = (
   theme: Theme
 ): Styles => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
-  const hasIcon = hasVisibleIcon(icon);
+  const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
     '@global': {
