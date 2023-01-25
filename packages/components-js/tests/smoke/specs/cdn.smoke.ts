@@ -75,7 +75,7 @@ describe('cdn', () => {
     const assetPaths = {
       components: 'components/porsche-design-system.v',
       styles: 'styles/font-face.min.',
-      icons: 'icons/arrow-head-right.min.',
+      icons: 'icons/arrow-right.min.',
       fonts: 'fonts/porsche-next-w-la-regular.min.',
       marque: 'marque/porsche-marque-trademark.medium.min.',
     };
