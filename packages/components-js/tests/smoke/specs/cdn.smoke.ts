@@ -84,7 +84,7 @@ describe('cdn', () => {
 <p-content-wrapper>
   <p-marque></p-marque>
   <p-headline variant="headline-1">Some Headline</p-headline>
-  <p-button>Some label</p-button>
+  <p-button icon="arrow-right">Some label</p-button>
 </p-content-wrapper>`;
 
     it('should request from .com cdn for { cdn: "auto" } when outside of china', async () => {
