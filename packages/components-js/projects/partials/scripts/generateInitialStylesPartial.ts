@@ -53,7 +53,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         },
       },
 
-      '[data-theme="dark"] a:hover': {
+      'a[data-theme="dark"]': {
         '@media(hover:hover)': {
           '&:hover': {
             color: themeDark.state.hover,
