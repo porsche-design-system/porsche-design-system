@@ -1,5 +1,5 @@
 // plugin
-import { App, ref, inject } from 'vue';
+import { App, ref, inject, InjectionKey } from 'vue';
 
 import { load, componentsReady } from '@porsche-design-system/components-js';
 import { prefixInjectionKey } from './utils';
@@ -7,14 +7,14 @@ import { prefixInjectionKey } from './utils';
 export type PorscheDesignSystemPluginOptions = {
   prefix?: string;
   extends?: Record<string, unknown>;
-}
+};
 
 export interface PorscheDesignSystemPlugin {
   [key: string]: any;
   install: (app: App, options?: PorscheDesignSystemPluginOptions) => void;
 }
 
-export const porscheDesignSystemSymbol = Symbol();
+export const porscheDesignSystemSymbol: InjectionKey<PorscheDesignSystemPlugin> = Symbol();
 
 export function usePorscheDesignSystemPlugin() {
   const porscheDesignSystem = inject(porscheDesignSystemSymbol);
@@ -30,12 +30,14 @@ export function createPorscheDesignSystem(options = { prefix: '' }) {
     options,
     isPorscheDesignSystemLoaded,
     componentsReady,
-    async install(app) {
-      load();
+    async install(app: App) {
+      load({ prefix: options.prefix });
 
       await componentsReady();
 
-      isPorscheDesignSystemLoaded.value = true;
+      if (!isPorscheDesignSystemLoaded.value) {
+        isPorscheDesignSystemLoaded.value = true;
+      }
       app.provide(prefixInjectionKey, options.prefix);
       app.provide(porscheDesignSystemSymbol, $porscheDesignSystem);
     },
