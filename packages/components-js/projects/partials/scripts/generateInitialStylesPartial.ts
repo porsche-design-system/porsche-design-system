@@ -1,8 +1,15 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
 import { Styles } from 'jss';
-import { themeDark, fontWeight, themeLight, textSmall } from '@porsche-design-system/utilities-v2';
-import { fontBehavior, fontFamily, fontHyphenation, fontLineHeight } from '@porsche-design-system/utilities-v2/src/js';
+import {
+  themeDark,
+  fontWeight,
+  themeLight,
+  fontBehavior,
+  fontFamily,
+  fontHyphenation,
+  fontLineHeight,
+} from '@porsche-design-system/utilities-v2';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
