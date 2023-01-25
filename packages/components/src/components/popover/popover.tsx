@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof Popover> = {
 
 @Component({
   tag: 'p-popover',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Popover {
   @Element() public host!: HTMLElement;
@@ -81,7 +81,7 @@ export class Popover {
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon name="information" theme={this.theme}></PrefixedTagNames.pIcon>
-          <span class="label">More Information</span>
+          <span class="label">More information</span>
         </button>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
