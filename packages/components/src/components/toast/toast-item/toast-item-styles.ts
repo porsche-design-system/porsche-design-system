@@ -12,7 +12,7 @@ import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
-  const textColor = getThemedColors('light').primaryColor;
+  const textColor = getThemedColors(theme).primaryColor;
   return getCss({
     '@global': {
       ':host': {
@@ -25,7 +25,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         color: textColor,
       },
     },
-    icon: getNotificationIconJssStyle(theme, state),
+    icon: getNotificationIconJssStyle(state, theme),
     content: getNotificationContentJssStyle(),
     close: getCloseIconJssStyle(),
   });

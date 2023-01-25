@@ -734,29 +734,7 @@ exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  1`] = `
-{
-  "@media(min-width:760px)": {
-    "color": "black",
-    "display": "inline-flex",
-    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
-  },
-  "display": "none",
-}
-`;
-
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  2`] = `
-{
-  "@media(min-width:760px)": {
-    "color": "black",
-    "display": "inline-flex",
-    "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
-  },
-  "display": "none",
-}
-`;
-
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  3`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: error and state: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -767,40 +745,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: dark  4`] = `
-{
-  "@media(min-width:760px)": {
-    "color": "black",
-    "display": "inline-flex",
-    "filter": "invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%)",
-  },
-  "display": "none",
-}
-`;
-
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  1`] = `
-{
-  "@media(min-width:760px)": {
-    "color": "black",
-    "display": "inline-flex",
-    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
-  },
-  "display": "none",
-}
-`;
-
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  2`] = `
-{
-  "@media(min-width:760px)": {
-    "color": "black",
-    "display": "inline-flex",
-    "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
-  },
-  "display": "none",
-}
-`;
-
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  3`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: error and state: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -811,7 +756,62 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for state:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for state: light  4`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: info and state: dark 1`] = `
+{
+  "@media(min-width:760px)": {
+    "color": "black",
+    "display": "inline-flex",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: info and state: light 1`] = `
+{
+  "@media(min-width:760px)": {
+    "color": "black",
+    "display": "inline-flex",
+    "filter": "invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: success and state: dark 1`] = `
+{
+  "@media(min-width:760px)": {
+    "color": "black",
+    "display": "inline-flex",
+    "filter": "invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: success and state: light 1`] = `
+{
+  "@media(min-width:760px)": {
+    "color": "black",
+    "display": "inline-flex",
+    "filter": "invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: warning and state: dark 1`] = `
+{
+  "@media(min-width:760px)": {
+    "color": "black",
+    "display": "inline-flex",
+    "filter": "invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%)",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: warning and state: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
