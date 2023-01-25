@@ -13,10 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `underline` prop for `Link Pure`
 - `Checkbox Wrapper` and `Radio Button Wrapper` supports `theme` prop
-- Rename prop `state`'s value `neutral` to `info` for `Inline Notification`, `Banner`, `Toast`
 
 #### Changed
-
 
 - `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Inline Notification`, `Banner`,
   `Toast` matches new design language
@@ -34,6 +32,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-button-pure weight="semibold">Some label</p-button-pure>
 - <p-button-pure weight="bold">Some label</p-button-pure>
 + <p-button-pure>Some label</p-button-pure>
+```
+
+- Rename prop `state`'s value `neutral` to `info` for `Inline Notification`, `Banner`, `Toast`
+
+```diff
+- <p-inline-notification heading="Some heading" description="Some description" state="neutral"></p-inline-notification>
++ <p-inline-notification heading="Some heading" description="Some description" state="info"></p-inline-notification>
+
+- <p-inline-notification state="neutral"></p-inline-notification>
++ <p-inline-notification state="info"></p-inline-notification>
 ```
 
 #### Removed
