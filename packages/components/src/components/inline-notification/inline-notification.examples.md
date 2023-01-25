@@ -25,6 +25,7 @@ Coloring can be controlled via the `state` property.
     <option value="success">Success</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
+    <option value="neutral">DEPRECATED Neutral</option>
   </select>
 </Playground>
 

@@ -12,6 +12,7 @@ import {
 import { getComponentCss } from './banner-styles';
 import type { BannerState, BannerWidth } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
+import { inlineNotificationStateMap } from '../inline-notification/inline-notification-utils';
 
 const propTypes: PropTypes<typeof Banner> = {
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
@@ -74,7 +75,7 @@ export class Banner {
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           class="root"
-          state={this.state}
+          state={inlineNotificationStateMap(this.state)}
           persistent={this.persistent}
           theme={this.theme}
           onDismiss={this.removeBanner}

@@ -32,6 +32,7 @@ type ToastMessage = {
       <option disabled>Select state</option>
       <option value="info">Info</option>
       <option value="success">Success</option>
+      <option value="neutral">DEPRECATED Neutral</option>
     </select>
   </label>
   <br><br>

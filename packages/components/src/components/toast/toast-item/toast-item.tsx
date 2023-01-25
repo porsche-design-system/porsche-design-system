@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import type { ToastState } from '../toast/toast-utils';
-import { TOAST_STATES } from '../toast/toast-utils';
+import { TOAST_STATES, toastStateMap } from '../toast/toast-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -43,8 +43,9 @@ export class ToastItem {
   }
 
   public render(): JSX.Element {
+    const mappedState = toastStateMap(this.state);
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, mappedState, this.theme);
 
     const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -53,7 +54,7 @@ export class ToastItem {
       <Host>
         <PrefixedTagNames.pIcon
           class="icon"
-          name={getInlineNotificationIconName(this.state)}
+          name={getInlineNotificationIconName(mappedState)}
           color="inherit"
           aria-hidden="true"
         />

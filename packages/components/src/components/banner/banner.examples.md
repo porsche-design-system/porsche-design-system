@@ -21,6 +21,7 @@ Custom styling" section.
     <option value="info">Info</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
+    <option value="neutral">DEPRECATED Neutral</option>
   </select>
 </Playground>
 

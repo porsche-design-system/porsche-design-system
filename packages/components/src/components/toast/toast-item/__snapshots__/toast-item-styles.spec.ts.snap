@@ -94,6 +94,98 @@ p {
 "
 `;
 
+exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
+":host {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  align-items: start;
+  justify-items: start;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
+@media(min-width:760px) {
+  :host {
+    grid-template-columns: 2rem 1fr auto auto;
+  }
+}
+
+.icon {
+  display: none;
+}
+.content {
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
+}
+.close {
+  margin-left: 1rem;
+}
+@media(min-width:760px) {
+  .icon {
+    display: inline-flex;
+    color: black;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
+":host {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  align-items: start;
+  justify-items: start;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
+@media(min-width:760px) {
+  :host {
+    grid-template-columns: 2rem 1fr auto auto;
+  }
+}
+
+.icon {
+  display: none;
+}
+.content {
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
+}
+.close {
+  margin-left: 1rem;
+}
+@media(min-width:760px) {
+  .icon {
+    display: inline-flex;
+    color: black;
+    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  }
+}
+"
+`;
+
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;

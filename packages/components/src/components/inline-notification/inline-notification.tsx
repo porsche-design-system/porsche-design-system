@@ -6,6 +6,7 @@ import {
   INLINE_NOTIFICATION_STATES,
   getContentAriaAttributes,
   getInlineNotificationIconName,
+  inlineNotificationStateMap,
 } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
@@ -58,8 +59,9 @@ export class InlineNotification {
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
   public render(): JSX.Element {
+    const mappedState = inlineNotificationStateMap(this.state);
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
+    attachComponentCss(this.host, getComponentCss, mappedState, !!this.actionLabel, !this.persistent, this.theme);
 
     const bannerId = 'banner';
     const labelId = 'label';
@@ -70,11 +72,11 @@ export class InlineNotification {
       <Host>
         <PrefixedTagNames.pIcon
           class="icon"
-          name={getInlineNotificationIconName(this.state)}
+          name={getInlineNotificationIconName(mappedState)}
           color="inherit"
           aria-hidden="true"
         />
-        <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
+        <div id={bannerId} class="content" {...getContentAriaAttributes(mappedState, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
           <p id={descriptionId}>{this.description || <slot />}</p>
         </div>

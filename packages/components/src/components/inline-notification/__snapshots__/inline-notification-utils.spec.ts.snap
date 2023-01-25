@@ -18,6 +18,15 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
+exports[`getContentAriaAttributes() should return correct aria attributes for state: neutral 1`] = `
+{
+  "aria-describedby": "descriptionId",
+  "aria-labelledby": "labelId",
+  "aria-live": "polite",
+  "role": "status",
+}
+`;
+
 exports[`getContentAriaAttributes() should return correct aria attributes for state: success 1`] = `
 {
   "aria-describedby": "descriptionId",
@@ -39,6 +48,8 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 exports[`getInlineNotificationIconName() should return correct icon for state: error 1`] = `"error-filled"`;
 
 exports[`getInlineNotificationIconName() should return correct icon for state: info 1`] = `"information-filled"`;
+
+exports[`getInlineNotificationIconName() should return correct icon for state: neutral 1`] = `"information-filled"`;
 
 exports[`getInlineNotificationIconName() should return correct icon for state: success 1`] = `"success-filled"`;
 
