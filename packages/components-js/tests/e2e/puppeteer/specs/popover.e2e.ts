@@ -1,7 +1,10 @@
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
+  getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
+  getEventSummary,
   getLifecycleStatus,
   selectNode,
   setContentWithDesignSystem,
@@ -17,8 +20,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-popover');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
-const getButton = () => selectNode(page, 'p-popover >>> p-button-pure');
-const getRealButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
+const getButton = () => selectNode(page, 'p-popover >>> button');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
 
 const togglePopover = async (): Promise<void> => {
@@ -49,7 +51,112 @@ ${buttonMarkup}`
   );
 };
 
-xdescribe('mouse behavior', () => {
+it('should trigger focus & blur events at the correct time', async () => {
+  await setContentWithDesignSystem(
+    page,
+    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-popover id="my-popover">Some Popover Content</p-popover>
+      <a href="#" id="after">after</a>
+    </div>`
+  );
+
+  const popover = await getHost();
+  const before = await selectNode(page, '#before');
+  const after = await selectNode(page, '#after');
+
+  await addEventListener(before, 'focus');
+  await addEventListener(popover, 'focus');
+  await addEventListener(popover, 'focusin');
+  await addEventListener(popover, 'blur');
+  await addEventListener(popover, 'focusout');
+  await addEventListener(after, 'focus');
+
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
+  expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
+
+  await page.keyboard.press('Tab');
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
+  expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
+
+  await page.keyboard.press('Tab');
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
+  expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-popover');
+
+  await page.keyboard.press('Tab');
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
+  expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
+
+  // tab back
+  await page.keyboard.down('ShiftLeft');
+  await page.keyboard.press('Tab');
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
+  expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-popover');
+
+  await page.keyboard.press('Tab');
+  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
+  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
+  expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
+
+  await page.keyboard.up('ShiftLeft');
+});
+
+it('should provide functionality to focus & blur the custom element', async () => {
+  await setContentWithDesignSystem(
+    page,
+    `
+    <div id="wrapper">
+      <a href="#" id="before">before</a>
+      <p-popover>Some Popover Content</p-popover>
+    </div>`
+  );
+
+  const popoverHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-popover'));
+
+  const popover = await getHost();
+  const before = await selectNode(page, '#before');
+  await before.focus();
+  expect(await popoverHasFocus()).toBe(false);
+  await popover.focus();
+  expect(await popoverHasFocus()).toBe(true);
+  await page.evaluate(() => {
+    const buttonElement = document.querySelector('p-popover') as HTMLElement;
+    buttonElement.blur();
+  });
+  expect(await popoverHasFocus()).toBe(false);
+});
+
+describe('mouse behavior', () => {
   it('should open popover on click', async () => {
     await initPopover();
 
@@ -89,7 +196,7 @@ xdescribe('mouse behavior', () => {
     );
 
     const firstButton = await getButton();
-    const secondButton = await selectNode(page, 'p-popover.second >>> p-button-pure');
+    const secondButton = await selectNode(page, 'p-popover.second >>> button');
 
     // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
     await secondButton.click();
@@ -114,9 +221,9 @@ xdescribe('mouse behavior', () => {
   });
 });
 
-xdescribe('keyboard behavior', () => {
+describe('keyboard behavior', () => {
   describe('escape', () => {
-    const focusedElement = 'P-BUTTON-PURE';
+    const focusedElement = 'BUTTON';
 
     it('should close popover when button is focused', async () => {
       await initPopover();
@@ -211,11 +318,31 @@ xdescribe('keyboard behavior', () => {
   });
 });
 
-xdescribe('accessibility', () => {
+describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initPopover();
 
-    await expectA11yToMatchSnapshot(page, await getRealButton());
+    await expectA11yToMatchSnapshot(page, await getButton());
+  });
+
+  it('should expose correct accessibility tree if accessibility properties are set', async () => {
+    await initPopover();
+    const host = await getHost();
+    const button = await getButton();
+    await setProperty(host, 'aria', {
+      'aria-label': 'Some more detailed label',
+      'aria-haspopup': true,
+    });
+    await waitForStencilLifecycle(page);
+
+    await expectA11yToMatchSnapshot(page, button, { message: 'Initial' });
+
+    await setProperty(host, 'aria', {
+      'aria-pressed': true,
+    });
+    await waitForStencilLifecycle(page);
+
+    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
   });
 
   it('should expose correct accessibility tree when aria property is changed', async () => {
@@ -227,27 +354,26 @@ xdescribe('accessibility', () => {
     });
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, await getRealButton());
+    await expectA11yToMatchSnapshot(page, await getButton());
   });
 
   it('should expose correct accessibility tree when popover is opened', async () => {
     await initPopover();
     await togglePopover();
 
-    await expectA11yToMatchSnapshot(page, await getRealButton());
+    await expectA11yToMatchSnapshot(page, await getButton());
   });
 });
 
-xdescribe('lifecycle', () => {
+describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initPopover();
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
