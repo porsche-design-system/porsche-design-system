@@ -280,7 +280,7 @@ exports[`should have no basic DOM regression for p-popover 1`] = `
   <p-icon class="hydrated">
   </p-icon>
   <span class="label">
-    More Information</span>
+    More information</span>
 </button>"
 `;
 
