@@ -16,9 +16,9 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from './tag-shared-utils';
 
 export const getColors = (
+  themedColors: ThemedColors,
   tagColor: TagColor,
-  theme: Theme,
-  themedColors: ThemedColors
+  theme: Theme
 ): {
   primaryColor: string;
   focusColor: string;
@@ -40,7 +40,7 @@ export const getColors = (
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(tagColor, theme, themedColors);
+  const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
 
   return getCss({
     '@global': {

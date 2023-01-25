@@ -12,12 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `underline` prop for `Link Pure`
-- `Checkbox Wrapper` and `Radio Button Wrapper` supports `theme` prop
+- `Checkbox Wrapper`, `Radio Button Wrapper` and `Tag Dismissible` supports `theme` prop
 
 #### Changed
 
-- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag` matches new design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible`, `Tag` matches new design language
 - Color `notification-neutral` is renamed to `notification-information` for `Tag`
+
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
 
 ```diff
