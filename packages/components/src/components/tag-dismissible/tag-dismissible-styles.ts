@@ -1,34 +1,33 @@
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getScreenReaderOnlyJssStyle,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, getTransition } from '../../styles';
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
+import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import type { Theme } from '../../utils/theme';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
-  const themedColors = getThemedColors('light');
-  const { primaryColor, hoverColor, contrastMediumColor } = themedColors;
+export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
+  const themedColors = getThemedColors(theme);
+  const { primaryColor, hoverColor, contrastHighColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
 
   return getCss({
     '@global': {
-      ':host': {
-        display: 'inline-flex',
+      ':host': addImportantToEachRule({
+        display: 'inline-block',
         verticalAlign: 'top',
-        outline: addImportantToRule(0),
-      },
+        outline: 0,
+        ...hostHiddenStyles,
+      }),
       button: {
+        display: 'flex',
         position: 'relative',
-        minHeight: pxToRemWithUnit(48),
-        padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(46)} ${pxToRemWithUnit(4)} ${pxToRemWithUnit(16)}`,
-        borderRadius: pxToRemWithUnit(4),
+        alignItems: 'center',
+        gap: '12px',
+        minHeight: '54px',
+        padding: '4px 0 4px 12px',
+        borderRadius: borderRadiusSmall,
         border: 0,
         cursor: 'pointer',
         background: backgroundColor,
@@ -36,31 +35,27 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         textAlign: 'left',
         ...textSmallStyle,
         outline: 0,
-        ...getTagFocusJssStyle(primaryColor, hoverColor),
+        ...getTagFocusJssStyle(themedColors),
         ...hoverMediaQuery({
           '&:hover > .icon': {
-            color: hoverColor,
+            backgroundColor: hoverColor,
           },
         }),
       },
-      '::slotted': addImportantToEachRule(slottedTextJssStyle),
     },
     ...(hasLabel && {
       label: {
         display: 'block',
-        marginBottom: pxToRemWithUnit(-4),
-        color: contrastMediumColor,
-        fontSize: pxToRemWithUnit(14),
-        // a custom line-height is needed to have 48px height in total when label + slotted text is used
-        lineHeight: pxToRemWithUnit(20),
+        marginBottom: '-4px',
+        color: contrastHighColor,
+        fontSize: fontSizeTextXSmall,
       },
     }),
     icon: {
-      position: 'absolute',
-      top: '50%',
-      right: pxToRemWithUnit(12),
-      transform: 'translate3d(0, -50%, 0)',
-      transition: getTransition('color'),
+      padding: '4px',
+      marginRight: '10px',
+      transition: getTransition('background-color'),
+      borderRadius: borderRadiusSmall,
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
