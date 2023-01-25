@@ -734,7 +734,7 @@ exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: error and state: dark 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -745,7 +745,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: error and state: light 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -756,7 +756,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: info and state: dark 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: info and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -767,7 +767,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: info and state: light 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: info and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -778,7 +778,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: success and state: dark 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -789,7 +789,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: success and state: light 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -800,7 +800,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: warning and state: dark 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning and theme: dark 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",
@@ -811,7 +811,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle for theme:
 }
 `;
 
-exports[`getNotificationIconJssStyle() should return correct JssStyle for theme: warning and state: light 1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning and theme: light 1`] = `
 {
   "@media(min-width:760px)": {
     "color": "black",

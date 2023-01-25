@@ -52,7 +52,7 @@ describe('getNotificationIconJssStyle()', () => {
     ['success', 'dark'],
     ['error', 'dark'],
     ['warning', 'dark'],
-  ])('should return correct JssStyle for theme: %s and state: %s', (...args) => {
+  ])('should return correct JssStyle for state: %s and theme: %s', (...args) => {
     expect(getNotificationIconJssStyle(...args)).toMatchSnapshot();
   });
 });
