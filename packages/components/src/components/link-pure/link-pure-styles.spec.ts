@@ -1,5 +1,5 @@
 import { getComponentCss } from './link-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonPureIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
@@ -21,7 +21,8 @@ describe('getComponentCss()', () => {
   };
 
   it.each<{
-    icon: LinkButtonPureIconName;
+    icon: LinkButtonIconName;
+    iconSource: string;
     active: boolean;
     stretch: BreakpointCustomizable<boolean>;
     size: BreakpointCustomizable<TextSize>;
@@ -33,6 +34,7 @@ describe('getComponentCss()', () => {
   }>([
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -44,6 +46,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -55,6 +58,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -66,6 +70,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: true,
       stretch: true,
       size: 'x-large',
@@ -77,6 +82,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: true,
       stretch: true,
       size: 'x-large',
@@ -88,6 +94,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -99,6 +106,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -110,6 +118,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -121,6 +130,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -132,6 +142,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'inherit',
@@ -143,6 +154,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -154,6 +166,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: false,
       size: 'small',
@@ -165,6 +178,7 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
+      iconSource: '',
       active: false,
       stretch: breakpointCustomizableBoolean,
       size: breakpointCustomizableSize,
@@ -176,9 +190,9 @@ describe('getComponentCss()', () => {
     },
   ])(
     'should return correct css for %j',
-    ({ icon, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme }) => {
+    ({ icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme }) => {
       expect(
-        getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme)
+        getComponentCss(icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme)
       ).toMatchSnapshot();
     }
   );
