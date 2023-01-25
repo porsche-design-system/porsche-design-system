@@ -3,7 +3,7 @@ import type {
   ButtonAriaAttributes,
   ButtonType,
   ButtonVariant,
-  IconName,
+  LinkButtonIconName,
   PropTypes,
   SelectedAriaAttributes,
   Theme,
@@ -14,11 +14,13 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
+  hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
   validateProps,
+  getLinkButtonThemeForIcon,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
@@ -27,7 +29,6 @@ import { getComponentCss } from './button-styles';
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
-  tabbable: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
@@ -44,11 +45,6 @@ const propTypes: PropTypes<typeof Button> = {
 export class Button {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
-
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'submit';
 
@@ -59,10 +55,10 @@ export class Button {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: ButtonVariant = 'secondary';
+  @Prop() public variant?: ButtonVariant = 'primary';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed. */
+  @Prop() public icon?: LinkButtonIconName = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -76,13 +72,9 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
-  }
-
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.isDisabledOrLoading) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -91,50 +83,47 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabledOrLoading
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      this.variant,
+      this.hideLabel,
+      this.disabled,
+      this.loading,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const iconProps = {
-      class: 'icon',
-      size: 'inherit',
-    };
 
     return (
-      <button
-        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
-        class="root"
-        type={this.type}
-        tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
-      >
-        {this.loading ? (
+      <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+        {this.loading && (
           <PrefixedTagNames.pSpinner
-            {...iconProps}
-            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
-            aria={{ 'aria-label': 'Loading state' }}
+            class="spinner"
+            size="inherit"
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            aria={{ 'aria-label': 'Loading state:' }}
           />
-        ) : (
+        )}
+        {hasVisibleIcon(this.icon, this.iconSource) && (
           <PrefixedTagNames.pIcon
-            {...iconProps}
+            class="icon"
+            size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
-            theme={
-              this.variant === 'tertiary'
-                ? this.theme
-                : this.variant === 'secondary' && this.theme === 'dark'
-                ? 'light'
-                : 'dark'
-            } // relevant for ssr support
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)} // relevant for ssr support
             aria-hidden="true"
           />
         )}
-        <span>
+        <span class="label">
           <slot />
         </span>
       </button>

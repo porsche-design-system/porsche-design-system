@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 6624,
-    "gzipSize": 2662
+    "size": 6926,
+    "gzipSize": 2825
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 6813,
-    "gzipSize": 2913
+    "size": 6988,
+    "gzipSize": 2965
   },
   {
     "chunkShortName": "carousel",
@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 6798,
-    "gzipSize": 2905
+    "size": 6853,
+    "gzipSize": 2921
   },
   {
     "chunkShortName": "content-wrapper",
@@ -76,18 +76,18 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6245,
-    "gzipSize": 2570
+    "size": 6312,
+    "gzipSize": 2676
   },
   {
     "chunkShortName": "link-pure",
-    "size": 6634,
-    "gzipSize": 2812
+    "size": 6789,
+    "gzipSize": 2860
   },
   {
     "chunkShortName": "link-social",
-    "size": 6991,
-    "gzipSize": 2436
+    "size": 4502,
+    "gzipSize": 2008
   },
   {
     "chunkShortName": "link-tile",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66503,
-    "gzipSize": 22715
+    "size": 66490,
+    "gzipSize": 22710
   },
   {
     "chunkShortName": "marque",

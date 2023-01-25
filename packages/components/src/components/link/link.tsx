@@ -8,10 +8,12 @@ import {
   throwIfInvalidLinkUsage,
   validateProps,
   LINK_BUTTON_VARIANTS,
+  hasVisibleIcon,
+  getLinkButtonThemeForIcon,
 } from '../../utils';
 import type {
   BreakpointCustomizable,
-  IconName,
+  LinkButtonIconName,
   LinkTarget,
   LinkVariant,
   PropTypes,
@@ -43,10 +45,10 @@ export class Link {
   @Element() public host!: HTMLElement;
 
   /** The style variant of the link. */
-  @Prop() public variant?: LinkVariant = 'secondary';
+  @Prop() public variant?: LinkVariant = 'primary';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed. */
+  @Prop() public icon?: LinkButtonIconName = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -78,7 +80,16 @@ export class Link {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      this.variant,
+      this.hideLabel,
+      !this.href,
+      this.theme
+    );
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -94,22 +105,18 @@ export class Link {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <PrefixedTagNames.pIcon
-          class="icon"
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          theme={
-            this.variant === 'tertiary'
-              ? this.theme
-              : this.variant === 'secondary' && this.theme === 'dark'
-              ? 'light'
-              : 'dark'
-          } // relevant for ssr support
-          aria-hidden="true"
-        />
-        <span>
+        {hasVisibleIcon(this.icon, this.iconSource) && (
+          <PrefixedTagNames.pIcon
+            class="icon"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            color="inherit"
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)} // relevant for ssr support
+            aria-hidden="true"
+          />
+        )}
+        <span class="label">
           <slot />
         </span>
       </TagType>

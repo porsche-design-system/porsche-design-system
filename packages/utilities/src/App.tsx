@@ -1,36 +1,22 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import {
-  textFluidXSmall,
-  textXSmallStatic,
-  textFluidSmall,
-  textStaticSmall,
-  textFluidMedium,
-  textMediumStatic,
-  textFluidLarge,
-  textLargeStatic,
-  textFluidXLarge,
-  textXLargeStatic,
-  headingFluidSmall,
-  headingSmallStatic,
-  headingFluidMedium,
-  headingMediumStatic,
-  headingFluidLarge,
-  headingLargeStatic,
-  headingFluidXLarge,
-  headingXLargeStatic,
-  headingFluidXXLarge,
-  headingXXLargeStatic,
-  headingXXXLargeFluid,
-  headingXXXLargeStatic,
-  displayMediumFluid,
-  displayMediumStatic,
-  displayFluidLarge,
-  displayLargeStatic,
-  grid,
+  gridStyle,
   gridGap,
-  mediaQueryMin,
-  mediaQueryMax,
+  getMediaQueryMax,
+  getMediaQueryMin,
+  displayLargeStyle,
+  displayMediumStyle,
+  headingLargeStyle,
+  headingMediumStyle,
+  headingSmallStyle,
+  headingXLargeStyle,
+  headingXXLargeStyle,
+  headingXXXLargeStyle,
+  textLargeStyle,
+  textMediumStyle,
+  textXLargeStyle,
+  textXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
 const dummyText = 'The quick brown fox jumps over the lazy dog';
@@ -49,7 +35,7 @@ const gridSpanOneQuarter = 'var(--pds-grid-span-one-quarter)';
 const gridSpanThreeQuarters = 'var(--pds-grid-span-three-quarters)';
 
 const Grid = styled.div({
-  ...grid,
+  ...gridStyle,
   position: 'relative',
   margin: `${gridGap} 0`,
   '&:first-child': {
@@ -61,7 +47,7 @@ const Grid = styled.div({
 
 const GridColumnMobile = styled.div({
   display: 'none',
-  [mediaQueryMax('s')]: {
+  [getMediaQueryMax('s')]: {
     display: 'block',
     transform: 'translate3d(0, 0 , 0)',
     '::before': {
@@ -77,7 +63,7 @@ const GridColumnMobile = styled.div({
 
 const GridColumnDesktop = styled.div({
   display: 'none',
-  [mediaQueryMin('s')]: {
+  [getMediaQueryMin('s')]: {
     display: 'block',
     transform: 'translate3d(0, 0 , 0)',
     '::before': {
@@ -200,7 +186,7 @@ const Typography = styled.div({
   display: 'grid',
   gridGap: '16px',
   gridColumn: `${gridColumnBasicStart} / ${gridColumnBasicEnd}`,
-  [mediaQueryMin('s')]: {
+  [getMediaQueryMin('s')]: {
     gridColumn: gridSpanOneHalf,
     '&:nth-child(odd)': {
       gridColumn: `${gridColumnBasicStart} / ${gridSpanOneHalf}`,
@@ -209,42 +195,29 @@ const Typography = styled.div({
 });
 
 const Info = styled.div({
-  ...textFluidXSmall,
+  ...textXSmallStyle,
   fontSize: '.75rem',
   color: 'deeppink',
 });
 
-const textFluidXSmall = styled.div(textFluidXSmall);
-const textFluidSmall = styled.div(textFluidSmall);
-const textFluidMedium = styled.div(textFluidMedium);
-const textFluidLarge = styled.div(textFluidLarge);
-const textFluidXLarge = styled.div(textFluidXLarge);
+const TextXSmallStatic = styled.div(textXSmallStyle);
+const TextMediumStatic = styled.div(textMediumStyle);
+const TextLargeStatic = styled.div(textLargeStyle);
+const TextXLargeStatic = styled.div(textXLargeStyle);
 
-const TextXSmallStatic = styled.div(textXSmallStatic);
-const textStaticSmall = styled.div(textStaticSmall);
-const TextMediumStatic = styled.div(textMediumStatic);
-const TextLargeStatic = styled.div(textLargeStatic);
-const TextXLargeStatic = styled.div(textXLargeStatic);
+const HeadingXXXLargeFluid = styled.div(headingXXXLargeStyle);
 
-const headingFluidSmall = styled.div(headingFluidSmall);
-const headingFluidMedium = styled.div(headingFluidMedium);
-const headingFluidLarge = styled.div(headingFluidLarge);
-const headingFluidXLarge = styled.div(headingFluidXLarge);
-const headingFluidXXLarge = styled.div(headingFluidXXLarge);
-const HeadingXXXLargeFluid = styled.div(headingXXXLargeFluid);
+const HeadingSmallStatic = styled.div(headingSmallStyle);
+const HeadingMediumStatic = styled.div(headingMediumStyle);
+const HeadingLargeStatic = styled.div(headingLargeStyle);
+const HeadingXLargeStatic = styled.div(headingXLargeStyle);
+const HeadingXXLargeStatic = styled.div(headingXXLargeStyle);
+const HeadingXXXLargeStatic = styled.div(headingXXXLargeStyle);
 
-const HeadingSmallStatic = styled.div(headingSmallStatic);
-const HeadingMediumStatic = styled.div(headingMediumStatic);
-const HeadingLargeStatic = styled.div(headingLargeStatic);
-const HeadingXLargeStatic = styled.div(headingXLargeStatic);
-const HeadingXXLargeStatic = styled.div(headingXXLargeStatic);
-const HeadingXXXLargeStatic = styled.div(headingXXXLargeStatic);
+const DisplayMediumFluid = styled.div(displayMediumStyle);
 
-const DisplayMediumFluid = styled.div(displayMediumFluid);
-const displayFluidLarge = styled.div(displayFluidLarge);
-
-const DisplayMediumStatic = styled.div(displayMediumStatic);
-const DisplayLargeStatic = styled.div(displayLargeStatic);
+const DisplayMediumStatic = styled.div(displayMediumStyle);
+const DisplayLargeStatic = styled.div(displayLargeStyle);
 
 function App() {
   return (
@@ -275,37 +248,12 @@ function App() {
         </SubGrid>
       </Grid>
       <Grid>
-        <Typography>
-          <textFluidXSmall>
-            <Info>textFluidXSmall</Info>
-            {dummyText}
-          </textFluidXSmall>
-          <textFluidSmall>
-            <Info>textFluidSmall</Info>
-            {dummyText}
-          </textFluidSmall>
-          <textFluidMedium>
-            <Info>textFluidMedium</Info>
-            {dummyText}
-          </textFluidMedium>
-          <textFluidLarge>
-            <Info>textFluidLarge</Info>
-            {dummyText}
-          </textFluidLarge>
-          <textFluidXLarge>
-            <Info>textFluidXLarge</Info>
-            {dummyText}
-          </textFluidXLarge>
-        </Typography>
+        <Typography></Typography>
         <Typography>
           <TextXSmallStatic>
             <Info>TextXSmallStatic</Info>
             {dummyText}
           </TextXSmallStatic>
-          <textStaticSmall>
-            <Info>textStaticSmall</Info>
-            {dummyText}
-          </textStaticSmall>
           <TextMediumStatic>
             <Info>TextMediumStatic</Info>
             {dummyText}
@@ -322,26 +270,6 @@ function App() {
       </Grid>
       <Grid>
         <Typography>
-          <headingFluidSmall>
-            <Info>headingFluidSmall</Info>
-            {dummyText}
-          </headingFluidSmall>
-          <headingFluidMedium>
-            <Info>headingFluidMedium</Info>
-            {dummyText}
-          </headingFluidMedium>
-          <headingFluidLarge>
-            <Info>headingFluidLarge</Info>
-            {dummyText}
-          </headingFluidLarge>
-          <headingFluidXLarge>
-            <Info>headingFluidXLarge</Info>
-            {dummyText}
-          </headingFluidXLarge>
-          <headingFluidXXLarge>
-            <Info>headingFluidXXLarge</Info>
-            {dummyText}
-          </headingFluidXXLarge>
           <HeadingXXXLargeFluid>
             <Info>HeadingXXXLargeFluid</Info>
             {dummyText}
@@ -380,10 +308,6 @@ function App() {
             <Info>DisplayMediumFluid</Info>
             {dummyText}
           </DisplayMediumFluid>
-          <displayFluidLarge>
-            <Info>displayFluidLarge</Info>
-            {dummyText}
-          </displayFluidLarge>
         </Typography>
         <Typography>
           <DisplayMediumStatic>

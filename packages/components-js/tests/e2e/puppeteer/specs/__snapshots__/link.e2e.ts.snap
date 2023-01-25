@@ -20,14 +20,3 @@ exports[`accessibility should expose correct initial accessibility tree properti
   "role": "link",
 }
 `;
-
-exports[`accessibility should expose correct initial accessibility tree properties 2`] = `
-{
-  "children": [
-    {
-      "role": "none",
-    },
-  ],
-  "role": "none",
-}
-`;
