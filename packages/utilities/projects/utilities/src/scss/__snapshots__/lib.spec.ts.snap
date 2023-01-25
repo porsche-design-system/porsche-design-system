@@ -192,11 +192,11 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
       [basic-start] repeat(12, minmax(0, 1fr)) [basic-end]
       minmax(0, 1fr) [extended-end]
       minmax(0, calc(clamp(22px, 10.625vw - 12px, 192px) - clamp(16px, 3.6vw, 36px))) [fluid-end];
-    --pds-internal-grid-span-one-half: span 6;
-    --pds-internal-grid-span-one-third: span 4;
-    --pds-internal-grid-span-two-thirds: span 8;
-    --pds-internal-grid-span-one-quarter: span 3;
-    --pds-internal-grid-span-three-quarters: span 9;
+    --p-internal-grid-span-one-half: span 6;
+    --p-internal-grid-span-one-third: span 4;
+    --p-internal-grid-span-two-thirds: span 8;
+    --p-internal-grid-span-one-quarter: span 3;
+    --p-internal-grid-span-three-quarters: span 9;
   }
 }
 "
