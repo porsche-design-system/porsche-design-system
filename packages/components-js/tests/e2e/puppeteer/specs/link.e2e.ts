@@ -164,10 +164,10 @@ describe('slotted anchor', () => {
 
     const host = await getHost();
     const hostWidthInPx = await getElementStyle(host, 'width');
-    const anchorWidth = parseInt(await getElementStyle(await getSlottedLink(), 'width', {pseudo: '::before'}));
-    const anchorOffset = parseInt(await getElementStyle(await getSlottedLink(), 'left', {pseudo: '::before'})) + parseInt(await getElementStyle(await getSlottedLink(), 'right', {pseudo: '::before'}));
+    const slottedAnchorWidthInPx = await getElementStyle(await getSlottedLink(), 'width', { pseudo: '::before' });
 
-    expect(`${anchorWidth + anchorOffset}px`).toBe(hostWidthInPx);
+    expect(hostWidthInPx).toBe('500px');
+    expect(slottedAnchorWidthInPx).toBe('508px');
   });
 });
 
