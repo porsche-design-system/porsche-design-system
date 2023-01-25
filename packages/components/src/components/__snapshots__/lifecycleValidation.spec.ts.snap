@@ -429,6 +429,15 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-tag-dismissible: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "color": "oneOf",
+  "label": "string",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-text: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",

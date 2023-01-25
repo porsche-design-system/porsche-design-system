@@ -1065,6 +1065,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -2713,6 +2717,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**

@@ -37,7 +37,7 @@ import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'inline' };
+  config = { themeable: true, spacing: 'inline' };
   backgroundColor = 'default';
 
   get colorMarkup(){
