@@ -612,7 +612,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "hasSlottedCss": false,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
