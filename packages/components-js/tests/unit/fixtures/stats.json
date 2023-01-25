@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 66525,
-    "gzipSize": 22724
+    "gzipSize": 22722
   },
   {
     "chunkShortName": "marque",
@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 20936,
-    "gzipSize": 6986
+    "size": 21163,
+    "gzipSize": 7040
   },
   {
     "chunkShortName": "spinner",
