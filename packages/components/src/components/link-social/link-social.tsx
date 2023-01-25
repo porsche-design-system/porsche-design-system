@@ -63,7 +63,7 @@ export class LinkSocial {
       <PrefixedTagNames.pLink
         href={this.href}
         icon={this.icon}
-        source={this.iconSource}
+        iconSource={this.iconSource}
         theme={this.theme}
         target={this.target}
         rel={this.rel}
