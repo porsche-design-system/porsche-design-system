@@ -325,26 +325,6 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, await getButton());
   });
 
-  it('should expose correct accessibility tree if accessibility properties are set', async () => {
-    await initPopover();
-    const host = await getHost();
-    const button = await getButton();
-    await setProperty(host, 'aria', {
-      'aria-label': 'Some more detailed label',
-      'aria-haspopup': true,
-    });
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, button, { message: 'Initial' });
-
-    await setProperty(host, 'aria', {
-      'aria-pressed': true,
-    });
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
-  });
-
   it('should expose correct accessibility tree when aria property is changed', async () => {
     await initPopover();
     const host = await getHost();
