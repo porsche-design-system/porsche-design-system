@@ -423,7 +423,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
-        style="width: 15rem"
+        style="max-width: 15rem"
       >
         <select>
           <option [value]="'a'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
@@ -442,7 +442,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [state]="'error'"
         [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
         [theme]="'dark'"
-        style="width: 15rem"
+        style="max-width: 15rem"
       >
         <select>
           <option [value]="'a'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
