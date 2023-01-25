@@ -5,7 +5,7 @@ import { TOAST_Z_INDEX } from '../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 
 const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const toastPositionBottomVarInternal = `--p-internal-toast-position-bottom`;
+const toastPositionBottomVarInternal = '--p-internal-toast-position-bottom';
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {

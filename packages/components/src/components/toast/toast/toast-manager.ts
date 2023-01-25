@@ -75,7 +75,7 @@ export class ToastManagerClass {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
-        // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
+        // skip setting timeout if --p-temporary-toast-skip-timeout css variable is set in dev build
         if (getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_SKIP_TIMEOUT)?.trim() !== 'true') {
           this.timeout = setTimeout(
             this.dismissToastItem,
