@@ -13,15 +13,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -83,15 +83,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -153,15 +153,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -223,15 +223,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -293,15 +293,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -363,15 +363,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -433,15 +433,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -503,15 +503,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -573,15 +573,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #7E7F82;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -678,15 +678,15 @@ svg {
   position: relative;
   fill: none;
   transform: translate3d(0,0,0);
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #949598;
-  animation: rotate var(--pds-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
   transform-origin: 0 0;
-  animation: dash var(--pds-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;

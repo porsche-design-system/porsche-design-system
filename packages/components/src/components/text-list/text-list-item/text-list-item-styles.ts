@@ -4,10 +4,10 @@ import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
-const cssVariableOrderedSuffix = '--pds-text-list-item-ordered-suffix';
-const cssVariableUnorderedWidth = '--pds-text-list-item-unordered-width';
-const cssVariableUnorderedHeight = '--pds-text-list-item-unordered-height';
-const cssVariableUnorderedTop = '--pds-text-list-item-unordered-top';
+const cssVariableOrderedSuffix = '--p-internal-text-list-item-ordered-suffix';
+const cssVariableUnorderedWidth = '--p-internal-text-list-item-unordered-width';
+const cssVariableUnorderedHeight = '--p-internal-text-list-item-unordered-height';
+const cssVariableUnorderedTop = '--p-internal-text-list-item-unordered-top';
 
 export const getComponentCss = (listType: ListType, orderType: OrderType): string => {
   const isOrdered = listType === 'ordered';

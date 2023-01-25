@@ -18,8 +18,8 @@ import {
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([
-    ['color', 'color var(--pds-transition-duration, .24s) ease'],
-    ['box-shadow', 'box-shadow var(--pds-transition-duration, .24s) ease'],
+    ['color', 'color var(--p-transition-duration, .24s) ease'],
+    ['box-shadow', 'box-shadow var(--p-transition-duration, .24s) ease'],
   ])('should for %o return %o', (cssProperty, expected) => {
     expect(getTransition(cssProperty)).toBe(expected);
   });

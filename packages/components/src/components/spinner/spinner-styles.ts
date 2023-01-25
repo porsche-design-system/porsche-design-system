@@ -18,8 +18,8 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = 'var(--pds-animation-duration, 2s)';
-  const strokeDasharrayVar = `var(--_pds-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
+  const animationDuration = 'var(--p-animation-duration, 2s)';
+  const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
 
   return getCss({

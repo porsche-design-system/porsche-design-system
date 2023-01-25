@@ -250,10 +250,10 @@ describe('chunk content', () => {
     );
   });
 
-  describe('--_pds-', () => {
-    it.each(chunkFileNames)('should not contain "--_pds-" css variables in %s', (chunkFileName) => {
+  describe('--p-temporary', () => {
+    it.each(chunkFileNames)('should not contain "--p-temporary" css variables in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('--_pds-');
+      expect(content).not.toContain('--p-temporary-');
     });
   });
 

@@ -5,9 +5,8 @@ import { ANIMATION_DURATION } from '../../banner/banner-styles';
 const TOAST_DEFAULT_TIMEOUT = 6000;
 
 // css variable names for overriding behaviour in tests
-const TOAST_CSS_SKIP_TIMEOUT_VAR = '--_pds-toast-skip-timeout';
-const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--_pds-toast-override-timeout';
-export const TOAST_ANIMATION_DURATION_VAR = '--pds-animation-duration';
+const TEMPORARY_TOAST_SKIP_TIMEOUT = '--p-temporary-toast-skip-timeout';
+const TEMPORARY_TOAST_OVERRIDE_TIMEOUT = '--p-temporary-toast-override-timeout';
 
 export type ToastMessage = {
   text: string;
@@ -59,11 +58,10 @@ export class ToastManagerClass {
     this.onDismissCallback();
     setTimeout(
       () => forceUpdate(this.toastEl),
-      // respect --_pds-toast-override-timeout css variable to override timeout during e2e and vrt tests
+      // respect --p-temporary-toast-override-timeout css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? ANIMATION_DURATION
-        : parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_ANIMATION_DURATION_VAR), 10) ||
-            ANIMATION_DURATION
+        : parseInt(getComputedStyle(this.toastEl).getPropertyValue('--p-animation-duration'), 10) || ANIMATION_DURATION
     );
   };
 
@@ -77,12 +75,12 @@ export class ToastManagerClass {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
-        // skip setting timeout if --_pds-toast-skip-timeout css variable is set in dev build
-        if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
+        // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
+        if (getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_SKIP_TIMEOUT)?.trim() !== 'true') {
           this.timeout = setTimeout(
             this.dismissToastItem,
-            // override timeout if --_pds-toast-override-timeout css variable is set
-            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_TIMEOUT_OVERRIDE_VAR), 10) ||
+            // override timeout if --p-temporary-toast-override-timeout css variable is set
+            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_OVERRIDE_TIMEOUT), 10) ||
               TOAST_DEFAULT_TIMEOUT
           );
         }

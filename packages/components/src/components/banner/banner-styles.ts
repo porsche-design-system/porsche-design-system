@@ -7,8 +7,8 @@ import { BANNER_Z_INDEX } from '../../constants';
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';
 const bannerPositionBottomVar = '--p-banner-position-bottom';
-const bannerZIndexVar = '--p-banner-z-index';
-const bannerAnimationDurationVar = '--pds-animation-duration';
+const bannerZIndexVar = '--p-internal-banner-z-index';
+const bannerAnimationDurationVar = '--p-animation-duration';
 
 const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';

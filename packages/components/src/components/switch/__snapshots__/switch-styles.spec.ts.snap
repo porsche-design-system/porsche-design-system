@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -58,7 +58,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -137,7 +137,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -149,7 +149,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -227,7 +227,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -239,7 +239,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: #949598;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -306,7 +306,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -318,7 +318,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -395,7 +395,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -407,7 +407,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .spinner {
   position: absolute;
@@ -481,7 +481,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -493,7 +493,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .spinner {
   position: absolute;
@@ -567,7 +567,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -579,7 +579,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .spinner {
   position: absolute;
@@ -653,7 +653,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: #32B85B;
   cursor: pointer;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -665,7 +665,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: #FFF;
   transform: translate3d(20px, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -775,7 +775,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--pds-transition-duration, .24s) ease,border-color var(--pds-transition-duration, .24s) ease,color var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .toggle {
   position: absolute;
@@ -787,7 +787,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--pds-transition-duration, .24s) ease,transform var(--pds-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
