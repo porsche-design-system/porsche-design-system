@@ -574,7 +574,7 @@ export default <${formComponentName} ${stringifiedProps} />;
       },
       {
         name: 'Dummy',
-        include: ['src/dummy/*.tsx'],
+        include: ['src/dummy/**/*.tsx'],
       },
     ],
     wrapper: 'src/UXPinWrapper.tsx',

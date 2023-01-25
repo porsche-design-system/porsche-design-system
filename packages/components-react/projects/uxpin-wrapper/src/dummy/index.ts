@@ -8,3 +8,4 @@ export * from './DummySelect';
 export * from './DummySpan';
 export * from './DummyTextarea';
 export * from './DummyTextField';
+export * from './Video/DummyVideo';
