@@ -12,7 +12,9 @@ import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
-  theme: Theme
+  theme: Theme,
+  allyLabelPrev: string,
+  allyLabelNext: string
 ): string => {
   const { contrastMediumColor, contrastHighColor, primaryColor, disabledColor, hoverColor, focusColor } =
     getThemedColors(theme);
@@ -84,18 +86,16 @@ export const getComponentCss = (
           pointerEvents: 'none',
           color: disabledColor,
         },
-        '&[aria-label="Previous page"], &[aria-label="Next page"]': {
+
+        [`&[aria-label="${allyLabelPrev}"], &[aria-label="${allyLabelNext}"]`]: {
           color: primaryColor,
-          border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : contrastMediumColor}`,
+          border: `${borderWidthBase} solid ${contrastMediumColor}`,
           ...hoverMediaQuery({
             '&:hover': {
               borderColor: `${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
               backgroundColor: 'transparent',
             },
           }),
-        },
-        '&[aria-label="ellipsis"]': {
-          textDecoration: 'none',
         },
         '&[aria-current]': {
           cursor: 'default',
@@ -109,6 +109,7 @@ export const getComponentCss = (
     ellipsis: {
       cursor: 'default',
       pointerEvents: 'none',
+      textDecoration: 'none',
       '&::after': {
         content: '"…"',
       },

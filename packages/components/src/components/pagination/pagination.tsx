@@ -84,7 +84,14 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.maxNumberOfPageLinks,
+      this.theme,
+      this.allyLabelPrev,
+      this.allyLabelNext
+    );
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
 
@@ -125,7 +132,7 @@ export class Pagination {
               case itemTypes.ELLIPSIS:
                 return (
                   <li key="ellipsis">
-                    <span class="ellipsis" aria-label={'ellipsis'} />
+                    <span class="ellipsis" />
                   </li>
                 );
 

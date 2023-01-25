@@ -67,9 +67,6 @@ span[aria-label="Previous page"], span[aria-label="Next page"] {
   color: #FBFCFF;
   border: 2px solid #7E7F82;
 }
-span[aria-label="ellipsis"] {
-  text-decoration: none;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
@@ -123,6 +120,7 @@ span[aria-current] {
 .ellipsis {
   cursor: default;
   pointer-events: none;
+  text-decoration: none;
 }
 .ellipsis::after {
   content: "…";
@@ -196,9 +194,6 @@ span[aria-label="Previous page"], span[aria-label="Next page"] {
   color: #FBFCFF;
   border: 2px solid #7E7F82;
 }
-span[aria-label="ellipsis"] {
-  text-decoration: none;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
@@ -222,6 +217,7 @@ span[aria-current] {
 .ellipsis {
   cursor: default;
   pointer-events: none;
+  text-decoration: none;
 }
 .ellipsis::after {
   content: "…";
@@ -295,9 +291,6 @@ span[aria-label="Previous page"], span[aria-label="Next page"] {
   color: #010205;
   border: 2px solid #949598;
 }
-span[aria-label="ellipsis"] {
-  text-decoration: none;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
@@ -321,6 +314,7 @@ span[aria-current] {
 .ellipsis {
   cursor: default;
   pointer-events: none;
+  text-decoration: none;
 }
 .ellipsis::after {
   content: "…";
@@ -394,9 +388,6 @@ span[aria-label="Previous page"], span[aria-label="Next page"] {
   color: #FBFCFF;
   border: 2px solid #7E7F82;
 }
-span[aria-label="ellipsis"] {
-  text-decoration: none;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
@@ -420,6 +411,7 @@ span[aria-current] {
 .ellipsis {
   cursor: default;
   pointer-events: none;
+  text-decoration: none;
 }
 .ellipsis::after {
   content: "…";
@@ -493,9 +485,6 @@ span[aria-label="Previous page"], span[aria-label="Next page"] {
   color: #010205;
   border: 2px solid #949598;
 }
-span[aria-label="ellipsis"] {
-  text-decoration: none;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
@@ -519,6 +508,7 @@ span[aria-current] {
 .ellipsis {
   cursor: default;
   pointer-events: none;
+  text-decoration: none;
 }
 .ellipsis::after {
   content: "…";
