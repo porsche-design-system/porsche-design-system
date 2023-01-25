@@ -164,7 +164,6 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      // ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
   });
 };
