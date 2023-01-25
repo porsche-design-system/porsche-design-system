@@ -9,7 +9,13 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getTextHiddenJssStyle, getThemedColors, getTransition } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getTextHiddenJssStyle,
+  getThemedColors,
+  getTransition,
+} from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
@@ -115,10 +121,12 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       },
       button: {
         display: 'block',
+        position: 'relative',
         appearance: 'none',
         background: 'transparent',
         border: 0,
         padding: 0,
+        outline: 0,
         cursor: 'pointer',
         borderRadius: borderRadiusLarge,
         transition: getTransition('background-color'),
@@ -128,11 +136,18 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
             backgroundColor: hoverColor,
           },
         }),
-        '&:focus': {
-          outline: `${focusColor} ${borderWidthBase} solid`,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-2),
+          border: `${borderWidthBase} solid transparent`,
+          borderRadius: borderRadiusLarge,
         },
-        '&:not(:focus-visible)': {
-          outlineColor: 'transparent',
+        '&:focus::before': {
+          borderColor: focusColor,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
         },
       },
     },
