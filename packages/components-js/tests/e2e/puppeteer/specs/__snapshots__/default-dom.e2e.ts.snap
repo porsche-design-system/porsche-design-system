@@ -202,14 +202,10 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
-"<a class="root" href="value" target="_self">
-  <p-icon class="icon hydrated" aria-hidden="true">
-  </p-icon>
-  <span>
-    <slot>
-    </slot>
-  </span>
-</a>"
+"<p-link class="hydrated">
+  <slot>
+  </slot>
+</p-link>"
 `;
 
 exports[`should have no basic DOM regression for p-link-tile 1`] = `
