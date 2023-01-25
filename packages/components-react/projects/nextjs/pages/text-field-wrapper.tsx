@@ -270,7 +270,7 @@ const TextFieldWrapperPage: NextPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type password readonly">
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
-        <PTextFieldWrapper label="Type password long text" style={{ width: '15rem' }}>
+        <PTextFieldWrapper label="Type password long text" style={{ maxWidth: '15rem' }}>
           <input
             type="password"
             defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
@@ -288,7 +288,7 @@ const TextFieldWrapperPage: NextPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type password readonly" theme="dark">
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
-        <PTextFieldWrapper label="Type password long text" style={{ width: '240px' }} theme="dark">
+        <PTextFieldWrapper label="Type password long text" style={{ maxWidth: '15rem' }} theme="dark">
           <input
             type="password"
             defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"

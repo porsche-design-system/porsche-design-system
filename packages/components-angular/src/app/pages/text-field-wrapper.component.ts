@@ -268,7 +268,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type password readonly'">
         <input [type]="'password'" [value]="'some password'" readonly />
       </p-text-field-wrapper>
-      <p-text-field-wrapper [label]="'Type password long text'" style="width: 15rem">
+      <p-text-field-wrapper [label]="'Type password long text'" style="max-width: 15rem">
         <input
           [type]="'password'"
           [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
@@ -286,7 +286,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type password readonly'" [theme]="'dark'">
         <input [type]="'password'" [value]="'some password'" readonly />
       </p-text-field-wrapper>
-      <p-text-field-wrapper [label]="'Type password long text'" style="width: 240px" [theme]="'dark'">
+      <p-text-field-wrapper [label]="'Type password long text'" style="max-width: 15rem" [theme]="'dark'">
         <input
           [type]="'password'"
           [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
