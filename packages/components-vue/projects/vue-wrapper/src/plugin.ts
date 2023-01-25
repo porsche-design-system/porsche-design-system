@@ -31,11 +31,11 @@ export function createPorscheDesignSystem(options = { prefix: '' }) {
     isPorscheDesignSystemLoaded,
     componentsReady,
     async install(app: App) {
-      load({ prefix: options.prefix });
-
-      await componentsReady();
-
+      
       if (!isPorscheDesignSystemLoaded.value) {
+        load({ prefix: options.prefix });
+  
+        await componentsReady();
         isPorscheDesignSystemLoaded.value = true;
       }
       app.provide(prefixInjectionKey, options.prefix);
