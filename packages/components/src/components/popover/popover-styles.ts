@@ -43,7 +43,7 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   },
 };
 
-const borderWidth = '.75rem';
+const borderWidth = '12px';
 const transparentColor = 'transparent';
 const canvas = 'canvas';
 const canvasText = 'canvastext';
@@ -102,7 +102,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
-          // should popover scale up if font size is extended?
+          // Needs to stay in rem for up-scaling
           width: '1.5rem', // width of icon (to improve ssr support)
           height: '1.5rem', // height of icon (to improve ssr support)
           ...hostHiddenStyles,
@@ -119,6 +119,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         background: 'transparent',
         border: 0,
         padding: 0,
+        cursor: 'pointer',
         borderRadius: borderRadiusLarge,
         transition: getTransition('background-color'),
         ...hoverMediaQuery({
@@ -159,7 +160,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
     },
     popover: {
       position: 'absolute',
-      maxWidth: '90vw', // Should this stay the same?
+      maxWidth: '90vw',
       width: 'max-content',
       boxSizing: 'border-box',
       background: backgroundColorThemeLight,
