@@ -52,8 +52,8 @@ describe('withoutTags: true', () => {
   });
 });
 
-describe('applyWithNormalizeStyles: true', () => {
+describe('applyNormalizeStyles: true', () => {
   it('should return core styles and normalize styles', () => {
-    expect(getInitialStyles({ applyWithNormalizeStyles: true })).toMatchSnapshot();
+    expect(getInitialStyles({ applyNormalizeStyles: true })).toMatchSnapshot();
   });
 });
