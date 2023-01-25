@@ -157,7 +157,8 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
           height: '1px',
           pointerEvents: 'none',
         }),
-        maxHeight: pxToRemWithUnit(308),
+        boxSizing: 'border-box',
+        maxHeight: pxToRemWithUnit(8.5 * (OPTION_HEIGHT + 8) + 12 + 2), // 8 = gap, 12 = padding, 2 = border
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
