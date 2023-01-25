@@ -55,33 +55,22 @@ export class LinkSocial {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(this.host, getComponentCss);
 
-    const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagType
-        class="root"
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: this.target,
-          rel: this.rel,
-        })}
+      <PrefixedTagNames.pLink
+        href={this.href}
+        icon={this.icon}
+        source={this.iconSource}
+        theme={this.theme}
+        target={this.target}
+        rel={this.rel}
+        hideLabel={this.hideLabel}
       >
-        <PrefixedTagNames.pIcon
-          class="icon"
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
-          aria-hidden="true"
-        />
-        <span>
-          <slot />
-        </span>
-      </TagType>
+        <slot />
+      </PrefixedTagNames.pLink>
     );
   }
 }
