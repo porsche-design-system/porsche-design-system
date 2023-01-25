@@ -163,6 +163,10 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
         border: `2px solid ${contrastMediumColor}`,
+        ...(isDirectionDown
+          ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
+          : ['borderTopLeftRadius', 'borderTopRightRadius']
+        ).reduce((result, curr) => ({ ...result, [curr]: borderRadiusSmall }), {}),
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),

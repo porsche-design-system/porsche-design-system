@@ -126,6 +126,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -301,6 +303,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -445,6 +449,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -617,6 +623,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -754,6 +762,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -925,6 +935,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1065,6 +1077,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1233,6 +1247,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1374,6 +1390,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1549,6 +1567,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1693,6 +1713,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -1865,6 +1887,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2002,6 +2026,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2173,6 +2199,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2313,6 +2341,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2481,6 +2511,8 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2844,6 +2876,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #7E7F82;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -2948,6 +2982,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3048,6 +3084,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #7E7F82;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3148,6 +3186,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3252,6 +3292,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #7E7F82;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3356,6 +3398,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3456,6 +3500,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #7E7F82;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -3556,6 +3602,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #949598;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
