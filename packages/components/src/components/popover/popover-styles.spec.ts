@@ -1,6 +1,6 @@
 import { getComponentCss } from './popover-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['top', 'light'],
     ['right', 'light'],
