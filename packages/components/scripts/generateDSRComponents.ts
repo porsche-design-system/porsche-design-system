@@ -249,10 +249,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `$1 dangerouslySetInnerHTML={{ __html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || '' }} />`
           ); // let svg icons render on server
       } else if (tagName === 'p-popover') {
-        // only keep :host styles
+        // only keep :host , button & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3')`
         );
       } else if (tagName === 'p-toast') {
         // only keep :host styles
