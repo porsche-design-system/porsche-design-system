@@ -456,7 +456,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div
         className="playground light"
         title="should render in focus state and be open"
-        style={{ paddingBottom: 'calc(1rem + 340px)' }}
+        style={{ paddingBottom: 'calc(1rem + 422px)' }}
       >
         <PSelectWrapper label="Some label" id="last-select-on-page">
           <select id="open-options">
