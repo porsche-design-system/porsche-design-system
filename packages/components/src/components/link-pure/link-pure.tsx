@@ -1,7 +1,7 @@
 import type {
   AlignLabel,
   BreakpointCustomizable,
-  LinkButtonPureIconName,
+  LinkButtonIconName,
   LinkTarget,
   PropTypes,
   SelectedAriaAttributes,
@@ -69,7 +69,7 @@ export class LinkPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-right';
+  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -107,11 +107,12 @@ export class LinkPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,
+      this.iconSource,
       this.active,
       this.stretch,
       this.size,
@@ -124,6 +125,7 @@ export class LinkPure {
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
 
     return (
       <TagType
@@ -136,7 +138,7 @@ export class LinkPure {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        {hasVisibleIcon(this.icon) && (
+        {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
             color="inherit"
