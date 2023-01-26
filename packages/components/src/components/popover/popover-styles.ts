@@ -107,8 +107,6 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
-          width: fontLineHeight, // width of icon (to improve ssr support)
-          height: fontLineHeight, // height of icon (to improve ssr support)
           ...hostHiddenStyles,
         }),
         verticalAlign: 'top',
@@ -126,6 +124,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         padding: 0,
         outline: 0,
         cursor: 'pointer',
+        ...textSmallStyle,
+        width: fontLineHeight, // width needed to improve ssr support
+        height: fontLineHeight, // height needed to improve ssr support
         borderRadius: borderRadiusLarge,
         transition: getTransition('background-color'),
         ...hoverMediaQuery({
