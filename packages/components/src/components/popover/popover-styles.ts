@@ -4,8 +4,8 @@ import {
   borderRadiusLarge,
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   frostedGlassStyle,
-  getMediaQueryMin,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
@@ -19,11 +19,10 @@ import {
 import { POPOVER_Z_INDEX } from '../../constants';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import type { Theme } from '../../utils/theme';
+import type { Theme } from '../../types';
 
 const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
 
-const mediaQueryXS = getMediaQueryMin('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
 
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
@@ -108,9 +107,8 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
-          // Needs to stay in rem for up-scaling
-          width: '1.5rem', // width of icon (to improve ssr support)
-          height: '1.5rem', // height of icon (to improve ssr support)
+          width: fontLineHeight, // width of icon (to improve ssr support)
+          height: fontLineHeight, // height of icon (to improve ssr support)
           ...hostHiddenStyles,
         }),
         verticalAlign: 'top',
@@ -175,7 +173,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
     },
     popover: {
       position: 'absolute',
-      maxWidth: '90vw',
+      maxWidth: 'min(90vw, 27rem)',
       width: 'max-content',
       boxSizing: 'border-box',
       background: backgroundColorThemeLight,
@@ -187,9 +185,6 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       color: primaryColorThemeLight,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
-      [mediaQueryXS]: {
-        maxWidth: '432px',
-      },
       [mediaQueryForcedColors]: {
         outline: `1px solid ${canvasText}`,
       },
