@@ -55,7 +55,7 @@ export const getComponentCss = (
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
-            padding: `14px ${spacingStaticMedium}`,
+            padding: `13px ${spacingStaticMedium}`,
           }),
           ...(isNumber
             ? {

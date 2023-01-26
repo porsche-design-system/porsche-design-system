@@ -7,6 +7,7 @@ import {
   textSmallStyle,
   fontSizeTextXSmall,
   spacingStaticXSmall,
+  borderWidthBase,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
@@ -22,22 +23,19 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const hasVisibleState = isVisibleFormState(state);
 
   return {
     [`::slotted(${child})`]: {
       display: 'block',
-      position: 'relative',
       width: '100%',
-      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
-      outline: '2px solid transparent',
-      outlineOffset: '2px',
+      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }), // TODO: is height needed at all? TODO: is rem correct? shouldn't it be something like calc(line-height * 3)?
+      outline: 0,
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: `2px solid ${hasVisibleState ? formStateColor : contrastMediumColor}`,
+      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
       font: textSmallStyle.font,
@@ -48,16 +46,12 @@ export const getBaseChildStyles = (
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
-      [`::slotted(${child}:not(:disabled):not([readonly]):hover)`]: {
+      [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`]: {
         borderColor: formStateHoverColor || primaryColor,
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
-      borderColor: formStateColor || primaryColor,
-      outlineColor: focusColor,
-    },
-    [`::slotted(${child}:focus:not(:focus-visible))`]: {
-      outlineColor: 'transparent',
+      borderColor: primaryColor,
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
@@ -90,14 +84,16 @@ export const getLabelStyles = (
 
   return {
     label: {
-      display: 'block',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: spacingStaticXSmall,
       position: 'relative', // for unit and counter
       '&__text': {
         display: 'block',
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
-        // transition: getTransition('color'),
+        transition: getTransition('color'), // for smooth transitions between disabled states
         '&+&': {
           marginTop: `-${spacingStaticXSmall}`,
           fontSize: fontSizeTextXSmall,
@@ -107,8 +103,8 @@ export const getLabelStyles = (
         },
         ...hoverMediaQuery({
           '&:hover': {
-            [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-            (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
+            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))` +
+            (hasVisibleState ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
               borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : primaryColor),
             },
           },
