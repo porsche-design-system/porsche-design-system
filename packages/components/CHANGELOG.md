@@ -34,32 +34,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-button-pure>Some label</p-button-pure>
 ```
 
-- Rename prop `state`'s value `neutral` to `info` for `Inline Notification`, `Banner`, `Toast`
-
-```diff
-- <p-inline-notification heading="Some heading" description="Some description" state="neutral"></p-inline-notification>
-+ <p-inline-notification heading="Some heading" description="Some description" state="info"></p-inline-notification>
-
-- <p-inline-notification state="neutral"></p-inline-notification>
-+ <p-inline-notification state="info"></p-inline-notification>
-```
-
-```diff
-- <p-banner state="neutral">
--  <span slot="title">Some banner title</span>
--  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-- </p-banner>
-+ <p-banner state="info">
-+  <span slot="title">Some banner title</span>
-+  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-+ </p-banner>
-```
-
-```diff
-- <p-toast state="neutral"></p-toast>
-+ <p-toast state="info"></p-toast>
-```
-
 #### Removed
 
 - Custom slotted CSS for `Checkbox Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
@@ -88,6 +62,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-switch tabbable="false">Some label</p-switch>
 + <p-switch tabindex="-1">Some label</p-switch>
+```
+
+- Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
+
+```diff
+- <p-inline-notification heading="Some heading" description="Some description" state="neutral"></p-inline-notification>
++ <p-inline-notification heading="Some heading" description="Some description" state="info"></p-inline-notification>
+
+- <p-inline-notification state="neutral"></p-inline-notification>
++ <p-inline-notification state="info"></p-inline-notification>
+```
+
+```diff
+- <p-banner state="neutral">
+-  <span slot="title">Some banner title</span>
+-  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
+- </p-banner>
++ <p-banner state="info">
++  <span slot="title">Some banner title</span>
++  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
++ </p-banner>
+```
+
+```diff
+- <p-toast state="neutral"></p-toast>
++ <p-toast state="info"></p-toast>
 ```
 
 ### [2.19.1-rc.1] - 2023-01-18
