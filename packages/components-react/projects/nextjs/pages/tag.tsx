@@ -26,6 +26,7 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag color="background-default">Color background-default</PTag>
         <PTag color="background-surface">Color background-surface</PTag>
         <PTag color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag color="notification-neutral">Color notification-neutral</PTag>
         <PTag color="notification-information">Color notification-information</PTag>
         <PTag color="notification-success">Color notification-success</PTag>
         <PTag color="notification-error">Color notification-error</PTag>
@@ -37,6 +38,7 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag color="background-default">Color background-default</PTag>
         <PTag color="background-surface">Color background-surface</PTag>
         <PTag color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag color="notification-neutral">Color notification-neutral</PTag>
         <PTag color="notification-information">Color notification-information</PTag>
         <PTag color="notification-success">Color notification-success</PTag>
         <PTag color="notification-error">Color notification-error</PTag>
@@ -48,6 +50,7 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag theme="dark" color="background-default">Color background-default</PTag>
         <PTag theme="dark" color="background-surface">Color background-surface</PTag>
         <PTag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag theme="dark" color="notification-neutral">Color notification-neutral</PTag>
         <PTag theme="dark" color="notification-information">Color notification-information</PTag>
         <PTag theme="dark" color="notification-success">Color notification-success</PTag>
         <PTag theme="dark" color="notification-error">Color notification-error</PTag>
@@ -59,6 +62,7 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag theme="dark" color="background-default">Color background-default</PTag>
         <PTag theme="dark" color="background-surface">Color background-surface</PTag>
         <PTag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag theme="dark" color="notification-neutral">Color notification-neutral</PTag>
         <PTag theme="dark" color="notification-information">Color notification-information</PTag>
         <PTag theme="dark" color="notification-success">Color notification-success</PTag>
         <PTag theme="dark" color="notification-error">Color notification-error</PTag>
