@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 6926,
-    "gzipSize": 2825
+    "size": 6881,
+    "gzipSize": 2812
   },
   {
     "chunkShortName": "button-group",
@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6312,
-    "gzipSize": 2676
+    "size": 6305,
+    "gzipSize": 2684
   },
   {
     "chunkShortName": "link-pure",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "link-social",
-    "size": 4502,
-    "gzipSize": 2008
+    "size": 1947,
+    "gzipSize": 987
   },
   {
     "chunkShortName": "link-tile",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66490,
-    "gzipSize": 22710
+    "size": 66500,
+    "gzipSize": 22701
   },
   {
     "chunkShortName": "marque",
@@ -171,13 +171,13 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 3932,
-    "gzipSize": 1733
+    "size": 3940,
+    "gzipSize": 1744
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 5493,
-    "gzipSize": 2256
+    "size": 5441,
+    "gzipSize": 2216
   },
   {
     "chunkShortName": "text",
