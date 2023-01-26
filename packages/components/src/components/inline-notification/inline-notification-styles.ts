@@ -71,8 +71,7 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
 
 export const getNotificationIconJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => ({
   display: 'none',
-  fontFamily: fontFamily,
-  fontSize: fontSizeTextSmall,
+  font: `${fontSizeTextSmall} ${fontFamily}`,
   width: fontLineHeight,
   height: fontLineHeight,
   [mediaQueryS]: {
