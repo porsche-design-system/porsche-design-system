@@ -67,6 +67,9 @@ button:focus:not(:focus-visible)::before {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.icon {
+  display: inline-block;
+}
 .spacer {
   position: absolute;
   z-index: 9999;
@@ -193,6 +196,9 @@ button:focus:not(:focus-visible)::before {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+.icon {
+  display: inline-block;
 }
 .spacer {
   position: absolute;
@@ -321,6 +327,9 @@ button:focus:not(:focus-visible)::before {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.icon {
+  display: inline-block;
+}
 .spacer {
   position: absolute;
   z-index: 9999;
@@ -447,6 +456,9 @@ button:focus:not(:focus-visible)::before {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+.icon {
+  display: inline-block;
 }
 .spacer {
   position: absolute;
@@ -575,6 +587,9 @@ button:focus:not(:focus-visible)::before {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.icon {
+  display: inline-block;
+}
 .spacer {
   position: absolute;
   z-index: 9999;
@@ -701,6 +716,9 @@ button:focus:not(:focus-visible)::before {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+.icon {
+  display: inline-block;
 }
 .spacer {
   position: absolute;
@@ -829,6 +847,9 @@ button:focus:not(:focus-visible)::before {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.icon {
+  display: inline-block;
+}
 .spacer {
   position: absolute;
   z-index: 9999;
@@ -955,6 +976,9 @@ button:focus:not(:focus-visible)::before {
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+.icon {
+  display: inline-block;
 }
 .spacer {
   position: absolute;

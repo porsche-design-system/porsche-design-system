@@ -151,6 +151,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       },
     },
     label: getTextHiddenJssStyle(true),
+    icon: {
+      display: 'inline-block', // TODO: should be changed in icon!
+    },
     spacer: {
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,

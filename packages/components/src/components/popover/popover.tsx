@@ -76,11 +76,18 @@ export class Popover {
         <button
           type="button"
           onClick={() => (this.open = !this.open)}
-          aria-expanded={this.open ? 'true' : 'false'}
-          {...parseAndGetAriaAttributes(this.aria)}
+          {...parseAndGetAriaAttributes({
+            ...parseAndGetAriaAttributes(this.aria),
+            'aria-expanded': this.open,
+          })}
           ref={(el) => (this.button = el)}
         >
-          <PrefixedTagNames.pIcon name="information" theme={this.theme}></PrefixedTagNames.pIcon>
+          <PrefixedTagNames.pIcon
+            class="icon"
+            name="information"
+            size="inherit"
+            theme={this.theme}
+          ></PrefixedTagNames.pIcon>
           <span class="label">More information</span>
         </button>
         {this.open && (
