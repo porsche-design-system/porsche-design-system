@@ -4,8 +4,8 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -19,19 +19,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -76,7 +88,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -101,12 +113,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvastext;
@@ -122,8 +128,8 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -137,19 +143,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -194,7 +212,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -219,12 +237,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvastext;
@@ -240,8 +252,8 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -255,19 +267,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -312,7 +336,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -337,12 +361,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvas canvastext;
@@ -358,8 +376,8 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -373,19 +391,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -430,7 +460,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -455,12 +485,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvas canvastext;
@@ -476,8 +500,8 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -491,19 +515,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -548,7 +584,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -573,12 +609,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvastext canvas canvas;
@@ -594,8 +624,8 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -609,19 +639,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -666,7 +708,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -691,12 +733,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvastext canvas canvas;
@@ -712,8 +748,8 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -727,19 +763,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -784,7 +832,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -809,12 +857,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvastext canvas canvas;
@@ -830,8 +872,8 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -845,19 +887,31 @@ p {
 }
 button {
   display: block;
+  position: relative;
   appearance: none;
   background: transparent;
   border: 0;
   padding: 0;
+  outline: 0;
   cursor: pointer;
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
-button:focus {
-  outline: #0A0AFF 2px solid;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 16px;
 }
-button:not(:focus-visible) {
-  outline-color: transparent;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
   button:hover {
@@ -902,7 +956,7 @@ button:not(:focus-visible) {
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
   background: #FFF;
@@ -927,12 +981,6 @@ button:not(:focus-visible) {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 432px;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvastext canvas canvas;
