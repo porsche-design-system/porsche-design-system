@@ -53,7 +53,6 @@ span {
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -89,12 +88,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -118,7 +111,6 @@ span {
   overflow-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -154,12 +146,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -219,12 +205,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -292,12 +272,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -363,12 +337,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -436,12 +404,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -507,12 +469,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -580,12 +536,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -651,12 +601,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -724,12 +668,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -795,12 +733,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -868,11 +800,137 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
+@media(hover:hover) {
+  span:hover {
+    cursor: pointer;
+    background: #d6def0;
+  }
 }
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
+
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #001A33;
+  color: #FBFCFF;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+  color: inherit !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  border-color: #0A0AFF !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+@media(hover:hover) {
+  span:hover {
+    cursor: pointer;
+    background: #0f2943;
+  }
+}
+
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #E8EEFD;
+  color: #010205;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+  color: inherit !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  border-color: #0A0AFF !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
 }
 @media(hover:hover) {
   span:hover {
@@ -940,12 +998,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -1011,12 +1063,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {
@@ -1084,12 +1130,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
-}
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
@@ -1155,12 +1195,6 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: [object Object];
 }
 @media(hover:hover) {
   span:hover {

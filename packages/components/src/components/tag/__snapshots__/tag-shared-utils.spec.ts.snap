@@ -20,6 +20,10 @@ exports[`getThemedBackgroundColor() should return correct backgroundColor for co
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-information, theme: light 1`] = `"#E8EEFD"`;
 
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-neutral, theme: dark 1`] = `"#001A33"`;
+
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-neutral, theme: light 1`] = `"#E8EEFD"`;
+
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: dark 1`] = `"#003320"`;
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success, theme: light 1`] = `"#EBFAF0"`;
