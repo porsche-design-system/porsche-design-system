@@ -51,26 +51,49 @@ export class LinkSocial {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
+    console.warn(
+      'Component "Link Social" is deprecated and will be removed with next major release. Use "link" component with corresponding social icon instead.'
+    );
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      'primary',
+      this.hideLabel,
+      !this.href,
+      this.theme
+    );
 
+    const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pLink
-        href={this.href}
-        icon={this.icon}
-        iconSource={this.iconSource}
-        theme={this.theme}
-        target={this.target}
-        rel={this.rel}
-        hideLabel={this.hideLabel}
+      <TagType
+        class="root"
+        {...(TagType === 'a' && {
+          href: this.href,
+          target: this.target,
+          rel: this.rel,
+        })}
       >
-        <slot />
-      </PrefixedTagNames.pLink>
+        <PrefixedTagNames.pIcon
+          class="icon"
+          size="inherit"
+          name={this.icon}
+          source={this.iconSource}
+          color="inherit"
+          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
+          aria-hidden="true"
+        />
+        <span class="label">
+          <slot />
+        </span>
+      </TagType>
     );
   }
 }
