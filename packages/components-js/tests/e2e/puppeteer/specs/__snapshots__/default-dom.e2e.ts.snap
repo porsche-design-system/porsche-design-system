@@ -272,7 +272,7 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-popover 1`] = `
-"<button type="button">
+"<button type="button" aria-expanded="false">
   <p-icon class="hydrated">
   </p-icon>
   <span class="label">
