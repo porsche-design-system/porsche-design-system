@@ -106,7 +106,7 @@ export default class Code extends Vue {
     <p-tag color="notification-information">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-information">
+    <p-tag color="notification-warning">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="neutral-contrast-high">
