@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-information`
+
+```diff
+- <p-tag color="notification-neutral">Color label</p-tag>
++ <p-tag color="notification-information">Color label</p-tag>
+```
+
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied:
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefor
   the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
