@@ -9,6 +9,7 @@ exports[`accessibility should expose correct accessibility tree when aria proper
 
 exports[`accessibility should expose correct accessibility tree when popover is opened 1`] = `
 {
+  "expanded": true,
   "focused": true,
   "name": "More information",
   "role": "button",
