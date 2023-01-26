@@ -27,7 +27,6 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>
-        <p-link-social theme="${theme}" href="https://www.porsche.com/" hide-label="true">Fallback</p-link-social>
         <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
         <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook" hide-label="true">Facebook</p-link-social>
         <p-link-social theme="${theme}" href="https://www.google.com/" icon="logo-google">Google</p-link-social>
@@ -61,14 +60,14 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > p-link-social >>> a');
-      await forceHoverState(page, '.hover > p-link-social >>> span');
+      await forceHoverState(page, '.hover > p-link-social >>> p-link >>> a');
+      await forceHoverState(page, '.hover > p-link-social >>> p-link >>> span');
       await forceFocusState(page, '.focus > p-link-social'); // native outline should not be visible
-      await forceFocusState(page, '.focus > p-link-social >>> a');
-      await forceFocusState(page, '.focus > p-link-social a');
-      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> a');
-      await forceHoverState(page, '.focus-hover > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusHoverState(page, '.focus-hover > p-link-social a');
+      await forceFocusState(page, '.focus > p-link-social >>> p-link >>> a');
+      await forceFocusState(page, '.focus > p-link-social >>> p-link a');
+      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> p-link >>> a');
+      await forceHoverState(page, '.focus-hover > p-link-social >>> p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> p-link a');
 
       // TODO: scenario like style="width: 200px" on parent missing?
     })
