@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Prop `underline` for `Link Pure`
-- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper` and `Tag Dismissible`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible` and `Text Field Wrapper`
 
 #### Changed
 
