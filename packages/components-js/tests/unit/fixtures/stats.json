@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 3285,
-    "gzipSize": 1496
+    "size": 3738,
+    "gzipSize": 1658
   },
   {
     "chunkShortName": "button",
@@ -71,8 +71,8 @@
   },
   {
     "chunkShortName": "inline-notification",
-    "size": 4689,
-    "gzipSize": 1910
+    "size": 5022,
+    "gzipSize": 1947
   },
   {
     "chunkShortName": "link",
@@ -201,7 +201,7 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 8055,
-    "gzipSize": 3240
+    "size": 8457,
+    "gzipSize": 3281
   }
 ]
