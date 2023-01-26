@@ -4,8 +4,6 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -26,6 +24,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -128,8 +131,6 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -150,6 +151,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -252,8 +258,6 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -274,6 +278,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -376,8 +385,6 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -398,6 +405,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -500,8 +512,6 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -522,6 +532,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -624,8 +639,6 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -646,6 +659,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -748,8 +766,6 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -770,6 +786,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -872,8 +893,6 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -894,6 +913,11 @@ button {
   padding: 0;
   outline: 0;
   cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
   border-radius: 16px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
