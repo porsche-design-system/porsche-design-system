@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -103,9 +103,9 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -114,11 +114,6 @@ export namespace Components {
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
-        /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
         /**
           * Adapts the button color depending on the theme.
          */
@@ -162,7 +157,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -483,9 +478,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -535,7 +530,7 @@ export namespace Components {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -1061,6 +1056,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -1703,9 +1702,9 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -1714,11 +1713,6 @@ declare namespace LocalJSX {
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
-        /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
         /**
           * Adapts the button color depending on the theme.
          */
@@ -1762,7 +1756,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -2095,9 +2089,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -2147,7 +2141,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -2705,6 +2699,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
