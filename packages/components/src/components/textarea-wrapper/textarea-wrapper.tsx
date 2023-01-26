@@ -1,5 +1,5 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
@@ -16,6 +16,7 @@ import {
   unobserveAttributes,
   validateProps,
   FORM_STATES,
+  THEMES,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -29,6 +30,7 @@ const propTypes: PropTypes<typeof TextareaWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -55,6 +57,9 @@ export class TextareaWrapper {
 
   /** Show or hide max character count. */
   @Prop() public showCharacterCount?: boolean = true;
+
+  /** Adapts the color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
@@ -106,7 +111,8 @@ export class TextareaWrapper {
       this.hideLabel,
       this.state,
       this.isCounterVisible,
-      this.hasCounter
+      this.hasCounter,
+      this.theme
     );
 
     const labelProps = {

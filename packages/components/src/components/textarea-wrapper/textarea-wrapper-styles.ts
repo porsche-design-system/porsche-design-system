@@ -19,9 +19,9 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isCounterVisible: boolean,
-  hasCounter: boolean
+  hasCounter: boolean,
+  theme: Theme
 ): string => {
-  const theme: Theme = 'light';
   const hasVisibleState = isVisibleFormState(state);
   const { contrastMediumColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(hasVisibleState ? 10 : 11);

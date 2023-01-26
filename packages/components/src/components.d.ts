@@ -1178,6 +1178,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -2829,6 +2833,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         /**

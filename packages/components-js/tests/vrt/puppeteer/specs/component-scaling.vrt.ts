@@ -6,6 +6,7 @@ const components = [
   'link',
   'button',
   'tag-dismissible',
+  'textarea-wrapper',
   'text-field-wrapper',
 ];
 
