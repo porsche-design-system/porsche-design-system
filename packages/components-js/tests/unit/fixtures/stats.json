@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 6624,
-    "gzipSize": 2662
+    "size": 6881,
+    "gzipSize": 2812
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 6813,
-    "gzipSize": 2913
+    "size": 6988,
+    "gzipSize": 2965
   },
   {
     "chunkShortName": "carousel",
@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 6768,
-    "gzipSize": 2896
+    "size": 6823,
+    "gzipSize": 2908
   },
   {
     "chunkShortName": "content-wrapper",
@@ -76,18 +76,18 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6245,
-    "gzipSize": 2570
+    "size": 6305,
+    "gzipSize": 2684
   },
   {
     "chunkShortName": "link-pure",
-    "size": 6634,
-    "gzipSize": 2812
+    "size": 6789,
+    "gzipSize": 2860
   },
   {
     "chunkShortName": "link-social",
-    "size": 6991,
-    "gzipSize": 2436
+    "size": 4502,
+    "gzipSize": 2008
   },
   {
     "chunkShortName": "link-tile",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66513,
-    "gzipSize": 22712
+    "size": 66510,
+    "gzipSize": 22697
   },
   {
     "chunkShortName": "marque",
@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 22375,
-    "gzipSize": 7443
+    "size": 22408,
+    "gzipSize": 7439
   },
   {
     "chunkShortName": "spinner",
@@ -171,13 +171,13 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 3932,
-    "gzipSize": 1733
+    "size": 3940,
+    "gzipSize": 1744
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 5493,
-    "gzipSize": 2256
+    "size": 5441,
+    "gzipSize": 2216
   },
   {
     "chunkShortName": "text",
@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14384,
-    "gzipSize": 5232
+    "size": 14427,
+    "gzipSize": 5265
   },
   {
     "chunkShortName": "text-list",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 8283,
-    "gzipSize": 3272
+    "size": 8316,
+    "gzipSize": 3282
   },
   {
     "chunkShortName": "toast",
