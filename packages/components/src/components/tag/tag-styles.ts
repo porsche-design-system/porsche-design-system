@@ -8,7 +8,13 @@ import {
   pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { fontStyle, fontWeight, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  fontStyle,
+  fontWeight,
+  textXSmallStyle,
+  borderRadiusMedium,
+  borderWidthBase,
+} from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -30,6 +36,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
 };
 
 export const getColors = (
+  themedColors: ThemedColors,
   tagColor: TagColor,
   theme: Theme
 ): {
@@ -38,7 +45,6 @@ export const getColors = (
   outlineColor: string;
   backgroundColor: string;
 } => {
-  const themedColors = getThemedColors(theme);
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
   const { primaryColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
@@ -61,15 +67,15 @@ export const slottedTextJssStyle: JssStyle = {
   },
 };
 
-export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string): JssStyle => {
+export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
+  const { focusColor } = themedColors;
   return {
     '&::before': {
       content: '""',
       position: 'absolute',
-      ...getInsetJssStyle(-3),
-      border: '1px solid transparent',
-      borderRadius: pxToRemWithUnit(6),
-      transition: getTransition('border-color'),
+      ...getInsetJssStyle(-4),
+      border: `${borderWidthBase} solid transparent`,
+      borderRadius: borderRadiusMedium,
     },
     '&:focus::before': {
       borderColor: focusColor,
@@ -77,14 +83,12 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
-    '&:hover:focus::before': hoverMediaQuery({
-      borderColor: focusHoverColor,
-    }),
   };
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { primaryColor, hoverColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
+  const themedColors = getThemedColors(theme);
+  const { primaryColor, hoverColor, backgroundColor } = getColors(themedColors, tagColor, theme);
 
   return getCss({
     '@global': {
@@ -124,7 +128,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         },
 
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
-        ...Object.entries(getTagFocusJssStyle(outlineColor, hoverColor)).reduce((result, [key, value]) => {
+        ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
           return result;
         }, {} as JssStyle),

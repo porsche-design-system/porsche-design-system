@@ -28,9 +28,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 
 exports[`should have no basic DOM regression for p-button 1`] = `
 "<button class="root" type="submit">
-  <p-icon class="icon hydrated" aria-hidden="true">
-  </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -150,9 +148,7 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 
 exports[`should have no basic DOM regression for p-link 1`] = `
 "<a class="root" href="value" target="_self">
-  <p-icon class="icon hydrated" aria-hidden="true">
-  </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -419,8 +415,10 @@ exports[`should have no basic DOM regression for p-tag-dismissible 1`] = `
 "<button type="button">
   <span class="sr-only">
     Remove:</span>
-  <slot>
-  </slot>
+  <span>
+    <slot>
+    </slot>
+  </span>
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
 </button>"
