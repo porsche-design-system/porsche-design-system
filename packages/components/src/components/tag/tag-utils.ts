@@ -31,17 +31,16 @@ export const hasInvertedThemeColor = (tagColor: TagColor, theme: Theme): boolean
 
 export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: ThemedColors, theme: Theme): string => {
   const isDark = isThemeDark(theme);
+  const keySuffix = isDark ? 'ColorLighten' : 'ColorDarken';
   const colorMap: { [key in TagColor]: string } = {
-    'background-default': isDark ? themedColors.backgroundColorLighten : themedColors.backgroundColorDarken,
-    'background-surface': isDark
-      ? themedColors.backgroundSurfaceColorLighten
-      : themedColors.backgroundSurfaceColorDarken,
+    'background-default': themedColors[`background${keySuffix}`],
+    'background-surface': themedColors[`backgroundSurface${keySuffix}`],
     'neutral-contrast-high': isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor,
-    'notification-neutral': isDark ? themedColors.infoSoftColorLighten : themedColors.infoSoftColorDarken, // 'notification-neutral' is deprecated (replaced with 'notification-information')
-    'notification-information': isDark ? themedColors.infoSoftColorLighten : themedColors.infoSoftColorDarken,
-    'notification-success': isDark ? themedColors.successSoftColorLighten : themedColors.successSoftColorDarken,
-    'notification-error': isDark ? themedColors.errorSoftColorLighten : themedColors.errorSoftColorDarken,
-    'notification-warning': isDark ? themedColors.warningSoftColorLighten : themedColors.warningSoftColorDarken,
+    'notification-neutral': themedColors[`infoSoft${keySuffix}`],
+    'notification-information': themedColors[`infoSoft${keySuffix}`],
+    'notification-success': themedColors[`successSoft${keySuffix}`],
+    'notification-error': themedColors[`errorSoft${keySuffix}`],
+    'notification-warning': themedColors[`warningSoft${keySuffix}`],
   };
 
   return colorMap[tagColor];
