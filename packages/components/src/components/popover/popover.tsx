@@ -15,8 +15,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
-import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import type { Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
@@ -42,7 +41,7 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
-  /** Adapts the button color depending on the theme. */
+  /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   @State() private open = false;
@@ -77,7 +76,7 @@ export class Popover {
         <button
           type="button"
           onClick={() => (this.open = !this.open)}
-          aria-expanded={this.open}
+          aria-expanded={this.open ? 'true' : 'false'}
           {...parseAndGetAriaAttributes(this.aria)}
           ref={(el) => (this.button = el)}
         >

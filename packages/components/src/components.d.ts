@@ -749,7 +749,7 @@ export namespace Components {
          */
         "direction"?: PopoverDirection;
         /**
-          * Adapts the button color depending on the theme.
+          * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2372,7 +2372,7 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
-          * Adapts the button color depending on the theme.
+          * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
     }
