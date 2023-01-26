@@ -28,7 +28,6 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "icon": "string",
   "iconSource": "string",
   "loading": "boolean",
-  "tabbable": "boolean",
   "theme": "oneOf",
   "type": "oneOf",
   "variant": "oneOf",
