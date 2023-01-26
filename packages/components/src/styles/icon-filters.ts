@@ -1,6 +1,6 @@
 import type { Theme } from '../types';
 
-type ThemedIconFilter = 'info' | 'success' | 'warning' | 'error' | 'neutral'; //state neutral as default state is deprecated in v3 (newstate:'info')
+type ThemedIconFilter = 'info' | 'success' | 'warning' | 'error' | 'neutral'; // state neutral as default state is deprecated in v3 (newstate:'info')
 
 export type ThemedIconFilters = { [key in ThemedIconFilter]: string };
 
