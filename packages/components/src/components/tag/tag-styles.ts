@@ -13,7 +13,7 @@ import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-util
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from './tag-shared-utils';
+import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
 
 export const getColors = (
   themedColors: ThemedColors,
@@ -94,7 +94,6 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         '&(br)': {
           display: 'none',
         },
-        ...slottedTextJssStyle,
       }),
     },
     icon: {

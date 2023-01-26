@@ -1,7 +1,7 @@
 import { getInsetJssStyle, ThemedColors } from '../../styles';
 import { JssStyle } from 'jss';
 import { TagColor } from './tag-utils';
-import { borderRadiusMedium, borderWidthBase, fontStyle, fontWeight } from '@porsche-design-system/utilities-v2';
+import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
   return {
@@ -33,13 +33,4 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
   };
 
   return colorMap[tagColor];
-};
-
-export const slottedTextJssStyle: JssStyle = {
-  '&(strong),&(b)': {
-    fontWeight: fontWeight.bold,
-  },
-  '&(em),&(i)': {
-    fontStyle,
-  },
 };
