@@ -30,9 +30,8 @@ const initLinkSocial = (opts?: { useSlottedAnchor?: boolean }): Promise<void> =>
 };
 
 const getHost = () => selectNode(page, 'p-link-social');
-const getLink = () => selectNode(page, 'p-link-social >>> p-link >>> a');
-const getLinkComponent = () => selectNode(page, 'p-link-social >>> p-link');
-const getIcon = () => selectNode(page, 'p-link-social >>> p-link >>> p-icon >>> svg');
+const getLink = () => selectNode(page, 'p-link-social >>> a');
+const getIcon = () => selectNode(page, 'p-link-social >>> p-icon >>> svg');
 
 it('should dispatch correct click events', async () => {
   await setContentWithDesignSystem(
@@ -167,10 +166,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link-social'], 'componentDidLoad: p-link-social').toBe(1);
-    expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -183,10 +181,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-link-social'], 'componentDidUpdate: p-link-social').toBe(1);
-    expect(status.componentDidUpdate['p-link'], 'componentDidUpdate: p-link').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 
