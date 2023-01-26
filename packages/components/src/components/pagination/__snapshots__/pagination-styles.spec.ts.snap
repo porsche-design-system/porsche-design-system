@@ -14,6 +14,7 @@ nav {
 }
 ul {
   display: flex;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -37,12 +38,9 @@ span {
   hyphens: auto;
   white-space: nowrap;
   cursor: pointer;
-  color: #AFB0B3;
+  color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
-}
-span:focus {
-  color: #FBFCFF;
 }
 span:focus::before {
   content: "";
@@ -63,16 +61,18 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"], span[aria-label="Next page"] {
-  color: #FBFCFF;
-  border: 2px solid #7E7F82;
+span[aria-label="Previous page"] {
+  margin-right: 8px;
+}
+span[aria-label="Next page"] {
+  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   text-decoration: none;
   color: #FBFCFF;
-  border: 2px solid #7E7F82;
+  border: 2px solid #FBFCFF;
 }
 @media(min-width:480px) {
   nav {
@@ -108,12 +108,7 @@ span[aria-current] {
   span:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    color: #FBFCFF;
     background-color: rgba(126, 127, 130, 0.20);
-  }
-  span[aria-label="Previous page"]:hover, span[aria-label="Next page"]:hover {
-    border-color: #7E7F82;
-    background-color: transparent;
   }
 }
 
@@ -141,6 +136,7 @@ nav {
 }
 ul {
   display: flex;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -164,12 +160,9 @@ span {
   hyphens: auto;
   white-space: nowrap;
   cursor: pointer;
-  color: #AFB0B3;
+  color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
-}
-span:focus {
-  color: #FBFCFF;
 }
 span:focus::before {
   content: "";
@@ -190,27 +183,24 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"], span[aria-label="Next page"] {
-  color: #FBFCFF;
-  border: 2px solid #7E7F82;
+span[aria-label="Previous page"] {
+  margin-right: 8px;
+}
+span[aria-label="Next page"] {
+  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   text-decoration: none;
   color: #FBFCFF;
-  border: 2px solid #7E7F82;
+  border: 2px solid #FBFCFF;
 }
 @media(hover:hover) {
   span:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    color: #FBFCFF;
     background-color: rgba(126, 127, 130, 0.20);
-  }
-  span[aria-label="Previous page"]:hover, span[aria-label="Next page"]:hover {
-    border-color: #7E7F82;
-    background-color: transparent;
   }
 }
 
@@ -238,6 +228,7 @@ nav {
 }
 ul {
   display: flex;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -261,12 +252,9 @@ span {
   hyphens: auto;
   white-space: nowrap;
   cursor: pointer;
-  color: #535457;
+  color: #010205;
   outline: 0;
   border-radius: 4px;
-}
-span:focus {
-  color: #010205;
 }
 span:focus::before {
   content: "";
@@ -287,9 +275,11 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-label="Previous page"], span[aria-label="Next page"] {
-  color: #010205;
-  border: 2px solid #949598;
+span[aria-label="Previous page"] {
+  margin-right: 8px;
+}
+span[aria-label="Next page"] {
+  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -302,12 +292,7 @@ span[aria-current] {
   span:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    color: #010205;
     background-color: rgba(148, 149, 152, 0.20);
-  }
-  span[aria-label="Previous page"]:hover, span[aria-label="Next page"]:hover {
-    border-color: #010205;
-    background-color: transparent;
   }
 }
 
@@ -335,6 +320,7 @@ nav {
 }
 ul {
   display: flex;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -358,12 +344,9 @@ span {
   hyphens: auto;
   white-space: nowrap;
   cursor: pointer;
-  color: #AFB0B3;
+  color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
-}
-span:focus {
-  color: #FBFCFF;
 }
 span:focus::before {
   content: "";
@@ -384,27 +367,24 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"], span[aria-label="Next page"] {
-  color: #FBFCFF;
-  border: 2px solid #7E7F82;
+span[aria-label="Previous page"] {
+  margin-right: 8px;
+}
+span[aria-label="Next page"] {
+  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   text-decoration: none;
   color: #FBFCFF;
-  border: 2px solid #7E7F82;
+  border: 2px solid #FBFCFF;
 }
 @media(hover:hover) {
   span:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    color: #FBFCFF;
     background-color: rgba(126, 127, 130, 0.20);
-  }
-  span[aria-label="Previous page"]:hover, span[aria-label="Next page"]:hover {
-    border-color: #7E7F82;
-    background-color: transparent;
   }
 }
 
@@ -432,6 +412,7 @@ nav {
 }
 ul {
   display: flex;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -455,12 +436,9 @@ span {
   hyphens: auto;
   white-space: nowrap;
   cursor: pointer;
-  color: #535457;
+  color: #010205;
   outline: 0;
   border-radius: 4px;
-}
-span:focus {
-  color: #010205;
 }
 span:focus::before {
   content: "";
@@ -481,9 +459,11 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-label="Previous page"], span[aria-label="Next page"] {
-  color: #010205;
-  border: 2px solid #949598;
+span[aria-label="Previous page"] {
+  margin-right: 8px;
+}
+span[aria-label="Next page"] {
+  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -496,12 +476,7 @@ span[aria-current] {
   span:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    color: #010205;
     background-color: rgba(148, 149, 152, 0.20);
-  }
-  span[aria-label="Previous page"]:hover, span[aria-label="Next page"]:hover {
-    border-color: #010205;
-    background-color: transparent;
   }
 }
 

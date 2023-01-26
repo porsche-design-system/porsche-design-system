@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
-import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
 import {
   borderRadiusSmall,
@@ -16,8 +16,7 @@ export const getComponentCss = (
   allyLabelPrev: string,
   allyLabelNext: string
 ): string => {
-  const { contrastMediumColor, contrastHighColor, primaryColor, disabledColor, hoverColor, focusColor } =
-    getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -36,6 +35,7 @@ export const getComponentCss = (
       },
       ul: {
         display: 'flex',
+        gap: '8px',
         margin: 0,
         padding: 0,
       },
@@ -57,19 +57,15 @@ export const getComponentCss = (
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: contrastHighColor,
+        color: primaryColor,
         outline: 0,
         borderRadius: borderRadiusSmall,
         ...hoverMediaQuery({
           '&:hover': {
             ...frostedGlassStyle,
-            color: primaryColor,
             backgroundColor: hoverColor,
           },
         }),
-        '&:focus': {
-          color: primaryColor,
-        },
         '&:focus::before': {
           content: '""',
           position: 'absolute',
@@ -86,23 +82,18 @@ export const getComponentCss = (
           pointerEvents: 'none',
           color: disabledColor,
         },
-
-        [`&[aria-label="${allyLabelPrev}"], &[aria-label="${allyLabelNext}"]`]: {
-          color: primaryColor,
-          border: `${borderWidthBase} solid ${contrastMediumColor}`,
-          ...hoverMediaQuery({
-            '&:hover': {
-              borderColor: `${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
-              backgroundColor: 'transparent',
-            },
-          }),
+        [`&[aria-label="${allyLabelPrev}"]`]: {
+          marginRight: '8px',
+        },
+        [`&[aria-label="${allyLabelNext}"]`]: {
+          marginLeft: '8px',
         },
         '&[aria-current]': {
           cursor: 'default',
           pointerEvents: 'none',
           textDecoration: 'none',
           color: primaryColor,
-          border: `${borderWidthBase} solid ${isThemeDark(theme) ? contrastMediumColor : primaryColor}`,
+          border: `${borderWidthBase} solid ${primaryColor}`,
         },
       },
     },
