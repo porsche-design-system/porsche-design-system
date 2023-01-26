@@ -9,8 +9,25 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
         <PInlineNotification heading="Some neutral heading" description="Some description" />
       </div>
 
+      <div className="playground light" title="should show inline-notification info with state neutral on light background">
+        <PInlineNotification
+          state="neutral"
+          heading="Some neutral heading"
+          description="Some description"
+         />
+      </div>
+
       <div className="playground dark" title="should show inline-notification info on dark background">
         <PInlineNotification
+          heading="Some neutral heading"
+          description="Some description"
+          theme="dark"
+         />
+      </div>
+
+      <div className="playground dark" title="should show inline-notification info with state neutral on dark background">
+        <PInlineNotification
+          state="neutral"
           heading="Some neutral heading"
           description="Some description"
           theme="dark"
@@ -90,7 +107,7 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with action button on dark background">
+      <div className="playground dark" title="should show inline-notification with action button on dark background">
         <PInlineNotification
           heading="Some heading with action button"
           description="Some description"
@@ -108,7 +125,7 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with loading action button on dark background">
+      <div className="playground dark" title="should show inline-notification with loading action button on dark background">
         <PInlineNotification
           heading="Some heading with action button"
           description="Some description"
@@ -126,7 +143,7 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification in persistent mode on dark background">
+      <div className="playground dark" title="should show inline-notification in persistent mode on dark background">
         <PInlineNotification
           heading="Some persistent heading"
           description="Some description"
@@ -162,7 +179,10 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with multiline heading and description">
+      <div
+        className="playground light"
+        title="should show inline-notification with multiline heading and description on light background"
+      >
         <PInlineNotification
           style={{ width: '15rem' }}
           heading="Some heading with a very long text across multiple lines"
