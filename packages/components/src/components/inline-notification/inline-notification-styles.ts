@@ -4,6 +4,9 @@ import {
   getMediaQueryMin,
   textSmallStyle,
   borderRadiusSmall,
+  fontLineHeight,
+  fontFamily,
+  fontSizeTextSmall,
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
@@ -68,6 +71,10 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
 
 export const getNotificationIconJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => ({
   display: 'none',
+  fontFamily: fontFamily,
+  fontSize: fontSizeTextSmall,
+  width: fontLineHeight,
+  height: fontLineHeight,
   [mediaQueryS]: {
     display: 'inline-flex',
     color: 'black', // color needs to be set to ensure filter is applied correctly
