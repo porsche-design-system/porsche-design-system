@@ -6,11 +6,11 @@ import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'change-case';
 
-const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString();
-const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString();
+const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString().toUpperCase();
+const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();
 
-const lightenColor = (color: string) => tinycolor2(color).lighten(12).toHexString();
-const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).desaturate(37).toHexString();
+const lightenColor = (color: string) => tinycolor2(color).lighten(12).toHexString().toUpperCase();
+const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).desaturate(37).toHexString().toUpperCase();
 
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
