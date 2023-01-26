@@ -58,14 +58,15 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         color: primaryColor,
         ...textXSmallStyle,
         whiteSpace: 'nowrap',
-        transition: `${getTransition('background-color')}`,
-        ...(isFocusable &&
-          hoverMediaQuery({
+        ...(isFocusable && {
+          transition: getTransition('background-color'),
+          ...hoverMediaQuery({
             '&:hover': {
               cursor: 'pointer',
               background: backgroundHoverColor,
             },
-          })),
+          }),
+        }),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {
