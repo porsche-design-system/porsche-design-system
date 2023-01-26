@@ -274,25 +274,11 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
           "properties": {
             "disabled": false,
             "hideLabel": false,
-            "icon": "arrow-head-right",
+            "icon": "none",
             "loading": false,
-            "tabbable": true,
             "theme": "light",
             "type": "submit",
             "variant": "primary",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "children": null,
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
           },
         },
       },

@@ -1,7 +1,7 @@
 # Link
 
 The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated
-pursuit of business or sales goals, different types of Links (**Primary**, **Secondary**, **Tertiary**) are available
+pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available
 for usage. A Link can be used with or without a label, but it's recommended to keep the **label visible** for better
 **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
 descriptive label text for screen readers. In case you want the user to execute an action, you should select the
@@ -13,15 +13,22 @@ descriptive label text for screen readers. In case you want the user to execute 
 
 Choose between predefined styling variants.
 
-### Primary
+### Primary (default)
 
-<Playground :markup="buttons('primary')" :config="config"></Playground>
-
-### Secondary (default)
+Link with label only (default) and with icon only (default: "arrow-right").
 
 <Playground :markup="buttons()" :config="config"></Playground>
 
-### Tertiary
+### Secondary
+
+<Playground :markup="buttons('secondary')" :config="config"></Playground>
+
+### Tertiary (deprecated)
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The variant `tertiary` is deprecated and will be removed with next major release.
+  In case, e.g. <b>variant="tertiary"</b> is used it will automatically be mapped to variant <b>"secondary"</b>.
+</p-inline-notification>
 
 <Playground :markup="buttons('tertiary')" :config="config"></Playground>
 
@@ -61,7 +68,7 @@ component.
 
 ## Link with specific icon
 
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+If an icon needs to be implemented, just set another predefined icon. Per default, all
 icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
 link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
@@ -92,13 +99,12 @@ export default class Code extends Vue {
   buttons(value: string) {
     const attr = value ? ` variant="${value}"` : '';
     return `<p-link${attr} href="https://www.porsche.com">Some label</p-link>
-<p-link${attr} href="https://www.porsche.com" hide-label="true">Some label</p-link>`;
+<p-link${attr} href="https://www.porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>`;
     }
 
   responsive =
-`<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }">Some label</p-link>
-<p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }">Some label</p-link>
-<p-link variant="tertiary" href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link>`;
+`<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-link>
+<p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>`;
 
   accessibility = 
 `<p-link href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;

@@ -34,7 +34,7 @@
 | ✅ **Spinner**              | - Animation is not smooth in Safari                                                                                                                                               |
 | ✅ **Link Pure**            | - Fix jittering/spotting of `active` state on iOS<br />- use prop `current` instead of `active`                                                                                   |
 | ✅ **Button Pure**          | - Fix jittering/spotting of `active` state on iOS                                                                                                                                 |
-| ⛔ **Button / Link**        |                                                                                                                                                                                   |
+| ✅ **Button / Link**        | - Coloring of icon when button is disabled is not correct yet, because icon component isn't refactored providing correct coloring created by css filters                          |
 | ⛔ **Link Social**          |                                                                                                                                                                                   |
 | ⛔ **Tag**                  |                                                                                                                                                                                   |
 | ✅ **Tag Dismissible**      |                                                                                                                                                                                   |

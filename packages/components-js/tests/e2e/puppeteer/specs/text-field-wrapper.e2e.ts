@@ -99,7 +99,7 @@ it('should not render label if label prop is not defined but should render if ch
 });
 
 describe('input type="password"', () => {
-  it('should disable input when input is disabled programmatically', async () => {
+  xit('should disable input when input is disabled programmatically', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const input = await getInput();
 

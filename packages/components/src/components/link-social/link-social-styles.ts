@@ -1,6 +1,6 @@
 import type { SocialIconName } from './link-social-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isThemeDark } from '../../utils';
+import { buildResponsiveStyles, getCss, GetJssStyleFunction, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -8,15 +8,32 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getInsetJssStyle,
 } from '../../styles';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
-import {
-  getIconJssStyle,
-  getLabelJssStyle,
-  getRootJssStyle,
-  getSlottedLinkJssStyle,
-} from '../../styles/link-button-styles';
+import { spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { JssStyle } from 'jss';
+
+const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return {
+    padding: hideLabel ? '13px' : '13px 26px',
+    gap: hideLabel ? 0 : spacingStaticSmall,
+  };
+};
+
+const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? {
+        width: 0,
+        height: '1px',
+        textIndent: '-999999px',
+      }
+    : {
+        width: 'auto',
+        height: 'auto',
+        textIndent: 0,
+      };
+};
 
 const { contrastHighColor: themeLightContrastHighColor, primaryColor: themeLightBaseColor } = getThemedColors('light');
 const { primaryColor: themeDarkBaseColor } = getThemedColors('dark');
@@ -36,6 +53,26 @@ const getColors = (
     textColorHover:
       icon === 'logo-kakaotalk' ? themeLightBaseColor : externalBrandColor ? themeDarkBaseColor : undefined,
   };
+};
+
+const getSlottedLinkJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? {
+        position: 'absolute',
+        ...getInsetJssStyle(),
+        padding: 0,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textIndent: '99999px',
+      }
+    : {
+        position: 'static',
+        ...getInsetJssStyle('auto'),
+        padding: '10px 26px',
+        overflow: 'visible',
+        whiteSpace: 'normal',
+        textIndent: 0,
+      };
 };
 
 export const getComponentCss = (
@@ -127,7 +164,6 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
   });
 };
