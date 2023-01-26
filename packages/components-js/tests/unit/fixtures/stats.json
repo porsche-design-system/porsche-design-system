@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 8427,
-    "gzipSize": 3320
+    "size": 7775,
+    "gzipSize": 3040
   },
   {
     "chunkShortName": "toast",
