@@ -10,6 +10,7 @@ describe('getThemedBackgroundColor()', () => {
     ['notification-success', 'light'],
     ['notification-warning', 'light'],
     ['notification-error', 'light'],
+    ['notification-neutral', 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', 'light'],
     ['background-surface', 'light'],
     ['background-default', 'dark'],
@@ -17,6 +18,7 @@ describe('getThemedBackgroundColor()', () => {
     ['notification-success', 'dark'],
     ['notification-warning', 'dark'],
     ['notification-error', 'dark'],
+    ['notification-neutral', 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', 'dark'],
     ['background-surface', 'dark'],
   ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {

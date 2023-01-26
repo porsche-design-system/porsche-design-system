@@ -38,7 +38,7 @@ describe('getColors()', () => {
   ])('should return correct css for theme: %s and hasInvertedTheme: %s', (theme, hasInvertedTheme) => {
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(hasInvertedTheme);
 
-	const themedColors = getThemedColors(theme);
+    const themedColors = getThemedColors(theme);
     expect(getColors(themedColors, 'background-surface', theme)).toMatchSnapshot();
   });
 });
@@ -51,6 +51,7 @@ describe('getComponentCss()', () => {
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
+    ['notification-neutral', true, 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', true, 'light'],
     ['background-surface', true, 'light'],
     ['background-default', true, 'dark'],
@@ -59,6 +60,7 @@ describe('getComponentCss()', () => {
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],
     ['notification-error', true, 'dark'],
+    ['notification-neutral', true, 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', true, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {

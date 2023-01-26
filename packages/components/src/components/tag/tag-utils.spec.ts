@@ -9,6 +9,7 @@ const colorsWithThemeCombinations: [TagColor, Theme, boolean][] = [
   ['notification-success', 'light', false],
   ['notification-warning', 'light', false],
   ['notification-error', 'light', false],
+  ['notification-neutral', 'light', false], // 'notification-neutral' is deprecated (replaced with 'notification-information')
   ['notification-information', 'light', false],
   ['background-surface', 'dark', false],
   ['background-default', 'dark', false],
@@ -16,6 +17,7 @@ const colorsWithThemeCombinations: [TagColor, Theme, boolean][] = [
   ['notification-success', 'dark', false],
   ['notification-warning', 'dark', false],
   ['notification-error', 'dark', false],
+  ['notification-neutral', 'dark', false], // 'notification-neutral' is deprecated (replaced with 'notification-information')
   ['notification-information', 'dark', false],
 ];
 

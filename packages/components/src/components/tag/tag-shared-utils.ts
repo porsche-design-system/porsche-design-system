@@ -26,6 +26,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
     'background-default': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.primaryColor,
+    'notification-neutral': themedColors.infoSoftColor, // 'notification-neutral' is deprecated (replaced with 'notification-information')
     'notification-information': themedColors.infoSoftColor,
     'notification-success': themedColors.successSoftColor,
     'notification-error': themedColors.errorSoftColor,
