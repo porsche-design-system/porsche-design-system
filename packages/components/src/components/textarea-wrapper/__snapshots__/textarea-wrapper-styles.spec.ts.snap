@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isCounterVisible: true, hasCounter: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -20,9 +23,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem 0.6875rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #FBFCFF !important;
@@ -75,12 +78,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #7E7F82;
   pointer-events: none;
 }
@@ -188,9 +189,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -208,9 +212,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem 0.6875rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -263,12 +267,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -376,9 +378,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -396,9 +401,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #E7323B !important;
@@ -469,9 +474,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -489,9 +497,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem 0.625rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #E7323B !important;
@@ -543,12 +551,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -585,9 +591,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -605,9 +614,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -677,9 +686,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, isCounterVisible: false, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -697,113 +709,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
-}
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
-  outline-color: #0A0AFF !important;
-}
-::slotted(textarea:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
-}
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-@media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not([readonly]):hover) {
-    border-color: #010205 !important;
-  }
-}
-
-.label {
-  display: block;
-  position: relative;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
-  padding: 0 0 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: .875rem;
-  color: #535457;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0;
-}
-@media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, isCounterVisible: true, hasCounter: false, theme: light 1`] = `
-":host {
-  display: block;
-}
-::slotted(textarea) {
-  display: block !important;
-  position: relative !important;
-  width: 100% !important;
-  outline: 2px solid transparent !important;
-  outline-offset: 2px !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #949598 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem 0.6875rem 2.25rem !important;
-  resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -855,115 +763,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #949598;
-  pointer-events: none;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
-    border-color: #010205 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
-":host {
-  display: block;
-}
-::slotted(textarea) {
-  display: block !important;
-  position: relative !important;
-  width: 100% !important;
-  outline: 2px solid transparent !important;
-  outline-offset: 2px !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #949598 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem 0.6875rem 2.25rem !important;
-  resize: vertical !important;
-  min-height: 12rem;
-}
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
-  outline-color: #0A0AFF !important;
-}
-::slotted(textarea:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
-}
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
-}
-@media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not([readonly]):hover) {
-    border-color: #010205 !important;
-  }
-}
-
-.label {
-  display: block;
-  position: relative;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
-  padding: 0 0 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: .875rem;
-  color: #535457;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -999,9 +802,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1019,9 +825,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #32B85B !important;
@@ -1092,9 +898,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1112,9 +921,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem 0.625rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #32B85B !important;
@@ -1166,12 +975,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -1208,9 +1015,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1228,9 +1038,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #E7323B !important;
@@ -1302,9 +1112,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1322,9 +1135,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem 0.625rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #E7323B !important;
@@ -1377,12 +1190,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -1419,9 +1230,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1439,9 +1253,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1512,9 +1326,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1532,9 +1349,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.6875rem 0.6875rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1587,12 +1404,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -1628,9 +1443,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1648,9 +1466,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #32B85B !important;
@@ -1722,9 +1540,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, isCounterVisible: true, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1742,9 +1563,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem 0.625rem 2.25rem !important;
+  padding: 16px 16px 36px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #32B85B !important;
@@ -1797,12 +1618,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .counter {
   position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
+  bottom: 6px;
+  right: 12px;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   color: #949598;
   pointer-events: none;
 }
@@ -1839,9 +1658,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, isCounterVisible: false, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(textarea) {
   display: block !important;
@@ -1859,9 +1681,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 0.625rem !important;
+  padding: 16px !important;
   resize: vertical !important;
-  min-height: 12rem;
+  min-height: 192px;
 }
 ::slotted(textarea:focus) {
   border-color: #E7323B !important;
@@ -1927,72 +1749,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not([readonly]):hover) {
     border-color: #c51720 !important;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-textarea-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-textarea-wrapper b, p-textarea-wrapper strong {
-  font-weight: 700 !important;
-}
-p-textarea-wrapper em, p-textarea-wrapper i {
-  font-style: normal !important;
-}
-p-textarea-wrapper a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-textarea-wrapper a:focus {
-  outline-color: currentColor !important;
-}
-p-textarea-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-textarea-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-textarea-wrapper a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-textarea-wrapper a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-textarea-wrapper b, prefixed-p-textarea-wrapper strong {
-  font-weight: 700 !important;
-}
-prefixed-p-textarea-wrapper em, prefixed-p-textarea-wrapper i {
-  font-style: normal !important;
-}
-prefixed-p-textarea-wrapper a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-textarea-wrapper a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-textarea-wrapper a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-textarea-wrapper a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-textarea-wrapper a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
