@@ -37,6 +37,8 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     primaryColor,
     primaryColorDarken: darkenColor(primaryColor),
     backgroundColor,
+    // TODO: since such colors are being used only in Tag, it makes sense to move such colors into tag utils,
+    //  in order to decrease the chances to use the wrong colors
     backgroundColorDarken: darkenColor(backgroundColor),
     backgroundColorLighten: lightenColor(backgroundColor),
     backgroundSurfaceColor,
