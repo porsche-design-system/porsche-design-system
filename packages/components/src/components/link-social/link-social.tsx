@@ -2,7 +2,9 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
+  hasVisibleIcon,
   THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
@@ -81,15 +83,17 @@ export class LinkSocial {
           rel: this.rel,
         })}
       >
-        <PrefixedTagNames.pIcon
-          class="icon"
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
-          aria-hidden="true"
-        />
+        {hasVisibleIcon(this.icon, this.iconSource) && (
+          <PrefixedTagNames.pIcon
+            class="icon"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            color="inherit"
+            theme={getLinkButtonThemeForIcon('primary', this.theme)} // relevant for ssr support
+            aria-hidden="true"
+          />
+        )}
         <span class="label">
           <slot />
         </span>
