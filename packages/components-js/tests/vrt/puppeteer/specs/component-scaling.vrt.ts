@@ -1,7 +1,9 @@
 import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 const components = [
+  'button',
   'checkbox-wrapper',
+  'link',
   'radio-button-wrapper',
   'select-wrapper',
   'tag-dismissible',

@@ -1,16 +1,17 @@
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 
 describe('warnIfIsLoadingAndIconIsNone()', () => {
-  it('should print warning if property icon = none and loading = true', () => {
+  it('should print warning if property icon = none, iconSource = "" and loading = true', () => {
     const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const host = document.createElement('p-button-pure');
 
-    warnIfIsLoadingAndIconIsNone(host, true, 'highway');
-    warnIfIsLoadingAndIconIsNone(host, false, 'none');
+    warnIfIsLoadingAndIconIsNone(host, true, 'highway', '');
+    warnIfIsLoadingAndIconIsNone(host, true, 'none', 'custom.svg');
+    warnIfIsLoadingAndIconIsNone(host, false, 'none', '');
 
     expect(spy).not.toBeCalled();
 
-    warnIfIsLoadingAndIconIsNone(host, true, 'none');
+    warnIfIsLoadingAndIconIsNone(host, true, 'none', '');
 
     expect(spy).toBeCalledTimes(1);
   });
