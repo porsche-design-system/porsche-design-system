@@ -8,8 +8,10 @@ import {
   spacingStaticSmall,
   textSmallStyle,
   fontLineHeight,
+  borderRadiusSmall,
 } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -29,6 +31,7 @@ export const getComponentCss = (
             borderTop: border,
           },
         }),
+        ...hostHiddenStyles,
       },
       button: {
         display: 'flex',
@@ -39,12 +42,13 @@ export const getComponentCss = (
         border: 0,
         background: 'transparent',
         cursor: 'pointer',
-        transition: getTransition('color'),
+        transition: getTransition('background-color'),
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: primaryColor,
         ...textSmallStyle,
         fontWeight: fontWeight.semiBold,
+        borderRadius: borderRadiusSmall,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
           : buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -56,7 +60,7 @@ export const getComponentCss = (
         ...getFocusJssStyle({ color: focusColor }),
         ...hoverMediaQuery({
           '&:hover': {
-            color: hoverColor,
+            backgroundColor: hoverColor,
           },
         }),
       },
@@ -75,7 +79,7 @@ export const getComponentCss = (
       height: fontLineHeight,
       marginLeft: '1.5rem',
       transformOrigin: '50% 50%',
-      transform: open ? 'rotate3d(0,0,1,180deg)' : 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
+      transform: open ? 'rotate3d(0,0,1,0.0001deg)' : 'rotate3d(0,0,1,90deg)', // needs to be a little bit more than 0 for correct direction in safari
       transition: getTransition('transform'),
     },
     collapsible: {

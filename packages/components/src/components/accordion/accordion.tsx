@@ -130,7 +130,7 @@ export class Accordion {
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
-              name="arrow-head-down"
+              name={this.open ? 'minus' : 'plus'}
               theme={this.theme}
               size="inherit"
               aria-hidden="true"
