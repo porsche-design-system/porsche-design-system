@@ -29,7 +29,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -40,7 +40,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -69,6 +69,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -159,7 +160,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -170,7 +171,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -199,6 +200,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -289,7 +291,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -300,7 +302,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -329,6 +331,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -419,7 +422,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -430,7 +433,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -459,6 +462,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -549,7 +553,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -560,7 +564,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -589,6 +593,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -679,7 +684,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -690,7 +695,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -719,6 +724,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -809,7 +815,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -820,7 +826,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -849,6 +855,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;
@@ -939,7 +946,7 @@ button {
   hyphens: auto;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  border-radius: 16px;
+  border-radius: 50%;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
@@ -950,7 +957,7 @@ button::before {
   right: -2px;
   bottom: -2px;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 button:focus::before {
   border-color: #0A0AFF;
@@ -979,6 +986,7 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   display: inline-block;
+  transform: translate3d(0,0,0);
 }
 .spacer {
   position: absolute;

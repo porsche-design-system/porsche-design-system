@@ -1,7 +1,6 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
 import {
-  borderRadiusLarge,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
@@ -127,7 +126,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...textSmallStyle,
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
-        borderRadius: borderRadiusLarge,
+        borderRadius: '50%',
         transition: getTransition('background-color'),
         ...hoverMediaQuery({
           '&:hover': {
@@ -140,7 +139,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
           position: 'absolute',
           ...getInsetJssStyle(-2),
           border: `${borderWidthBase} solid transparent`,
-          borderRadius: borderRadiusLarge,
+          borderRadius: '50%',
         },
         '&:focus::before': {
           borderColor: focusColor,
@@ -153,6 +152,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
     label: getTextHiddenJssStyle(true),
     icon: {
       display: 'inline-block', // TODO: should be changed in icon!
+      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {
       position: 'absolute',
