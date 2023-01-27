@@ -171,13 +171,13 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 4684,
-    "gzipSize": 1857
+    "size": 4475,
+    "gzipSize": 1801
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 4883,
-    "gzipSize": 1947
+    "size": 4681,
+    "gzipSize": 1894
   },
   {
     "chunkShortName": "text",
