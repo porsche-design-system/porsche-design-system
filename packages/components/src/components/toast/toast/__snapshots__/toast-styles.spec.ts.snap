@@ -5,15 +5,15 @@ exports[`getComponentCss() should return correct css 1`] = `
   position: fixed !important;
   left: clamp(22px, 10.625vw - 12px, 192px) !important;
   right: clamp(22px, 10.625vw - 12px, 192px) !important;
-  --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 3.5rem) !important;
-  bottom: var(--p-toast-position-bottom-internal) !important;
+  --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 3.5rem) !important;
+  bottom: var(--p-internal-toast-position-bottom) !important;
   max-width: 42rem !important;
   z-index: 999999 !important;
 }
 @keyframes in {
   from {
     opacity: 0;
-    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
+    transform: translate3d(0,calc(var(--p-internal-toast-position-bottom) + 100%),0);
   }
   to {
     opacity: 1;
@@ -27,15 +27,15 @@ exports[`getComponentCss() should return correct css 1`] = `
   }
   to {
     opacity: 0;
-    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
+    transform: translate3d(0,calc(var(--p-internal-toast-position-bottom) + 100%),0);
   }
 }
 @media(min-width:760px) {
     :host {
       left: 4rem !important;
       right: auto !important;
-      --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 4rem) !important;
-      bottom: var(--p-toast-position-bottom-internal) !important;
+      --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 4rem) !important;
+      bottom: var(--p-internal-toast-position-bottom) !important;
     }
 }
 
