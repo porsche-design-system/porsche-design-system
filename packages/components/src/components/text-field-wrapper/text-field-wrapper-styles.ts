@@ -1,23 +1,25 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import {
-  addImportantToEachRule,
-  getFocusJssStyle,
-  getTransition,
-  getThemedColors,
-  getScreenReaderOnlyJssStyle,
-  pxToRemWithUnit,
-} from '../../styles';
+import { isType } from './text-field-wrapper-utils';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
 import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import type { JssStyle } from 'jss';
-import { spacingStaticMedium, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const buttonPadding = '4px';
+const buttonSize = `calc(${fontLineHeight} + ${buttonPadding} * 2)`;
+const buttonMargin = '5px';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -62,7 +64,8 @@ export const getComponentCss = (
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: isSearch && isWithinForm ? pxToRemWithUnit(88) : innerInputHeightRem,
+                paddingRight:
+                  isSearch && isWithinForm ? pxToRemWithUnit(88) : `calc(${buttonSize} + ${buttonMargin} * 2)`,
                 ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(50) }),
               }),
         }),
@@ -74,44 +77,18 @@ export const getComponentCss = (
             },
         },
       }),
-      ...(isSearchOrPassword && {
-        button: {
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          margin: 0,
-          width: innerInputHeightRem,
-          height: inputHeightRem,
-          padding: '15px 13px',
-          boxSizing: 'border-box',
-          outline: 'transparent none',
-          appearance: 'none',
-          border: 'none',
-          textDecoration: 'none',
-          background: 'transparent',
-          cursor: 'pointer',
-          color: primaryColor,
-          transition: getTransition('color'),
-          ...(isSearch &&
-            isWithinForm && {
-              right: pxToRemWithUnit(40), // clear button
-              ...(hasActionLoading && {
-                '&+button[type=button]': disabledJssStyle, // action button
-              }),
-              '&+button[type=submit]': {
-                right: 0, // submit button
-              },
-            }),
-          ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-          ...hoverMediaQuery({
-            '&:not(:disabled):hover': {
-              color: hoverColor,
-            },
-          }),
-          '&:disabled': disabledJssStyle,
-        },
-      }),
     },
+    ...(isSearchOrPassword && {
+      button: {
+        position: 'absolute',
+        bottom: '11px',
+        right: `calc(${buttonMargin} + ${borderWidthBase})`,
+        padding: buttonPadding,
+        '&:not([tabindex="-1"]) ~ .button': {
+          right: `calc(${buttonSize} + ${buttonMargin} * 2)`,
+        },
+      },
+    }),
     root: {
       display: 'block',
       position: 'relative',
@@ -125,8 +102,7 @@ export const getComponentCss = (
       hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
-          height: innerInputHeightRem,
-          bottom: '2px',
+          bottom: '15px',
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
           display: 'flex',
@@ -145,14 +121,12 @@ export const getComponentCss = (
         icon: {
           // search icon on left side
           position: 'absolute',
-          left: '2px',
-          bottom: '2px',
-          height: innerInputHeightRem,
-          width: innerInputHeightRem,
+          left: '15px',
+          bottom: '15px',
+          height: fontLineHeight,
+          width: fontLineHeight,
+          fontFamily, // necessary for proper fontLineHeight calculation
           color: contrastMediumColor,
-          boxSizing: 'border-box',
-          padding: '13px',
-          alignItems: 'center',
           pointerEvents: 'none',
         },
       }),

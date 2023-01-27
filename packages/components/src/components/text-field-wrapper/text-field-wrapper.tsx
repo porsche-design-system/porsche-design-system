@@ -228,51 +228,61 @@ export class TextFieldWrapper {
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
           {this.isPassword ? (
-            <button
+            <PrefixedTagNames.pButtonPure
+              class="button"
               type="button"
-              onClick={this.togglePassword}
+              hideLabel={true}
+              icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
-              aria-pressed={this.showPassword ? 'true' : 'false'}
+              onClick={this.togglePassword}
+              aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
             >
-              <span class="sr-only">Toggle password visibility</span>
-              <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} {...iconProps} />
-            </button>
+              Toggle password visibility
+            </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
-              <button
+              // TODO: create an own component, which would fix SSR support too
+              this.isWithinForm ? (
+                <PrefixedTagNames.pButtonPure
+                  key="btn-submit"
+                  class="button"
+                  type="submit"
+                  icon="search"
+                  disabled={disabledOrReadOnly}
+                  onClick={this.onSubmit}
+                  hideLabel={true}
+                >
+                  Search
+                </PrefixedTagNames.pButtonPure>
+              ) : (
+                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
+              ),
+              <PrefixedTagNames.pButtonPure
                 key="btn-clear"
+                class="button"
                 type="button"
+                icon="close"
+                hideLabel={true}
                 tabIndex={-1}
                 hidden={!this.isClearable}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
-              >
-                <PrefixedTagNames.pIcon name="close" {...iconProps} />
-              </button>,
+                aria={{ 'aria-hidden': 'true' }}
+              />,
               this.hasAction && (
-                <button
+                <PrefixedTagNames.pButtonPure
                   key="btn-action"
+                  class="button"
                   type="button"
+                  icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
                   onClick={!this.actionLoading ? () => this.action.emit() : null}
+                  hideLabel={true}
+                  loading={this.actionLoading}
                 >
-                  <span class="sr-only">Locate me</span>
-                  {this.actionLoading ? (
-                    <PrefixedTagNames.pSpinner size="inherit" />
-                  ) : (
-                    // hardcoded locate icon
-                    <PrefixedTagNames.pIcon name="locate" {...iconProps} />
-                  )}
-                </button>
-              ),
-              this.isWithinForm ? (
-                <button key="btn-submit" type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
-                  <span class="sr-only">Search</span>
-                  <PrefixedTagNames.pIcon name="search" {...iconProps} />
-                </button>
-              ) : (
-                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
+                  Locate me
+                </PrefixedTagNames.pButtonPure>
               ),
             ]
           )}

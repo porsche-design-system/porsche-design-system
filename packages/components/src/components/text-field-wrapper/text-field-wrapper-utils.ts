@@ -15,7 +15,7 @@ export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElem
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
 export const getInputPadding = (unitElementWidth: number, unitPosition: TextFieldWrapperUnitPosition): string => {
-  const topBottomPadding = '14px';
+  const topBottomPadding = '13px';
   return unitPosition === 'prefix'
     ? `${topBottomPadding} ${spacingStaticMedium} ${topBottomPadding} ${unitElementWidth - 2}px` // -2px to compensate border
     : `${topBottomPadding} ${unitElementWidth - 2}px ${topBottomPadding} ${spacingStaticMedium}`; // -2px to compensate border

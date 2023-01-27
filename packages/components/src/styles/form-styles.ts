@@ -30,7 +30,8 @@ export const getBaseChildStyles = (
     [`::slotted(${child})`]: {
       display: 'block',
       width: '100%',
-      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }), // TODO: is height needed at all? TODO: is rem correct? shouldn't it be something like calc(line-height * 3)?
+      height: 'auto',
+      // ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }), // TODO: is height needed at all? TODO: is rem correct? shouldn't it be something like calc(line-height * 3)?
       outline: 0,
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
