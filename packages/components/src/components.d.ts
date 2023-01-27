@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -406,7 +406,8 @@ export namespace Components {
          */
         "color"?: TextColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -416,13 +417,13 @@ export namespace Components {
         /**
           * The size of the icon.
          */
-        "size"?: IconSize;
+        "size"?: TextSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
     }
@@ -2009,7 +2010,8 @@ declare namespace LocalJSX {
          */
         "color"?: TextColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -2019,13 +2021,13 @@ declare namespace LocalJSX {
         /**
           * The size of the icon.
          */
-        "size"?: IconSize;
+        "size"?: TextSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
     }
