@@ -363,7 +363,7 @@ exports[`should match snapshot 1`] = `
       "aria": null,
       "color": "primary",
       "lazy": false,
-      "name": "arrow-head-right",
+      "name": "arrow-right",
       "size": "small",
       "source": null,
       "theme": "light",
