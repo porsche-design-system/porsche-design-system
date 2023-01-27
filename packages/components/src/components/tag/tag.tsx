@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagColor } from './tag-utils';
-import { TAG_COLORS } from './tag-utils';
+import { TAG_COLORS, warnIfColorNotificationNeutralIsUsed } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -40,6 +40,7 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfColorNotificationNeutralIsUsed(this.host, this.color);
     attachComponentCss(
       this.host,
       getComponentCss,

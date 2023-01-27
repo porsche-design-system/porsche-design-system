@@ -2,6 +2,7 @@ import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils
 import type { Theme } from '../../types';
 import { isThemeDark } from '../../utils/theme/isThemeDark';
 import type { ThemedColors } from '../../styles'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
+import { getTagName } from '../../utils';
 
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
@@ -44,4 +45,14 @@ export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: 
   };
 
   return colorMap[tagColor];
+};
+
+export const warnIfColorNotificationNeutralIsUsed = (host: HTMLElement, color: TagColor): void => {
+  if (color === 'notification-neutral') {
+    console.warn(
+      `The "${color}" color is deprecated for ${getTagName(
+        host
+      )} and will be removed with next major release. Please use "notification-information" color instead.`
+    );
+  }
 };
