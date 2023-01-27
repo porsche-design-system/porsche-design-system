@@ -36,8 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
 
-- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible`
-  matches new design language
+- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
+  `Tag Dismissible` matches new design language
 - CSS global variables names
 
 ```diff
@@ -61,6 +61,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-button-pure weight="semibold">Some label</p-button-pure>
 - <p-button-pure weight="bold">Some label</p-button-pure>
 + <p-button-pure>Some label</p-button-pure>
+```
+
+- Prop `lazy` for `Icon` is deprecated now:
+-
+
+```diff
+- <p-icon laze="true"></p-icon>
+
++ <p-icon></p-icon>
 ```
 
 #### Removed
@@ -91,6 +100,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-switch tabbable="false">Some label</p-switch>
 + <p-switch tabindex="-1">Some label</p-switch>
+```
+
+#### Fixed
+
+- `Icon` supports param cased icon names only, typings are adapted accordingly:
+
+```diff
+- <p-icon name="arrowRight"></p-icon>
++ <p-icon name="arrow-right"></p-icon>
 ```
 
 ### [2.19.1-rc.1] - 2023-01-18
