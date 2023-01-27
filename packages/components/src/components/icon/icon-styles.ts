@@ -1,17 +1,27 @@
 import type { IconSize, TextColor, Theme } from '../../types';
 import { getCss } from '../../utils';
-import { pxToRemWithUnit } from '../../styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
+import {
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXLarge,
+  fontSizeTextXSmall,
+} from '@porsche-design-system/utilities-v2';
 
 const sizeMap: { [key in IconSize]: string } = {
-  small: pxToRemWithUnit(24),
-  medium: pxToRemWithUnit(36),
-  large: pxToRemWithUnit(48),
-  inherit: 'inherit',
+  'x-small': fontSizeTextXSmall,
+  small: fontSizeTextSmall,
+  medium: fontSizeTextMedium,
+  large: fontSizeTextLarge,
+  'x-large': fontSizeTextXLarge,
+  inherit: null,
 };
 
 export const getComponentCss = (color: TextColor, size: IconSize, theme: Theme): string => {
-  const dimension = sizeMap[size];
+  const isSizeInherit = size === 'inherit';
 
   return getCss({
     '@global': {
@@ -37,9 +47,17 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: Theme):
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
-      width: dimension,
-      height: dimension,
       color: getThemedTextColor(theme, color),
+      ...(isSizeInherit
+        ? {
+            width: size,
+            height: size,
+          }
+        : {
+            width: fontLineHeight,
+            height: fontLineHeight,
+            font: `${sizeMap[size]} ${fontFamily}`,
+          }),
     },
   });
 };
