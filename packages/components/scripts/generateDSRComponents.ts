@@ -237,17 +237,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
-      } else if (tagName === 'p-icon') {
-        newFileContent = newFileContent
-          .replace(/^/, "import { ICONS_MAP } from '@porsche-design-system/icons';\n") // add missing import
-          .replace(
-            /(import {.*)(} from '@porsche-design-system\/components\/dist\/utils';)/,
-            '$1, paramCaseToCamelCase, isUrl$2'
-          ) // add missing import
-          .replace(
-            /(<i key={this\.key\+\+} className="root") \/>/,
-            `$1 dangerouslySetInnerHTML={{ __html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || '' }} />`
-          ); // let svg icons render on server
       } else if (tagName === 'p-popover') {
         // only keep :host styles
         newFileContent = newFileContent.replace(
