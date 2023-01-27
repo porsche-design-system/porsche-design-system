@@ -82,12 +82,7 @@ export class Popover {
           })}
           ref={(el) => (this.button = el)}
         >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="information"
-            size="inherit"
-            theme={this.theme}
-          ></PrefixedTagNames.pIcon>
+          <PrefixedTagNames.pIcon class="icon" name="information" size="inherit" theme={this.theme} />
           <span class="label">More information</span>
         </button>
         {this.open && (

@@ -1,7 +1,7 @@
 import { Popover } from './popover';
 import { attachComponentCss } from '../../utils';
 import { getComponentCss } from './popover-styles';
-import type { Theme } from '../../utils/theme';
+import type { Theme } from '../../types';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
