@@ -10,7 +10,6 @@ import {
   fontHyphenation,
   fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, getTransition } from '@porsche-design-system/components/src/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -54,8 +53,8 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         },
       },
 
-      '[data-theme="dark"] a:hover': {
-        '@media(hover:hover)': {
+      '@media(hover:hover)': {
+        '[data-theme="dark"] a:hover': {
           color: themeDark.state.hover,
         },
       },
