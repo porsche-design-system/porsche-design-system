@@ -14,6 +14,9 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
         width: 48px;
         height: 48px;
       }
+      p-text {
+        display: inline-block !important;
+      }
     `,
   ],
   template: `

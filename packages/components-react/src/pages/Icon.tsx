@@ -11,6 +11,9 @@ export const IconPage = (): JSX.Element => {
       width: 48px;
       height: 48px;
     }
+    p-text {
+      display: inline-block !important;
+    }
   `;
 
   return (
