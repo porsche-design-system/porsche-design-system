@@ -85,6 +85,7 @@ export class InlineNotification {
             class="action"
             theme={this.theme}
             icon={this.actionIcon}
+            size="inherit"
             loading={this.actionLoading}
             onClick={this.action.emit}
           >
