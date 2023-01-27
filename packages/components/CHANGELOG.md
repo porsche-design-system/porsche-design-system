@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `normalize` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
+
 ### [2.19.1-rc.1] - 2023-01-18
 
 #### Added
@@ -434,7 +438,7 @@ information can be found here:
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
   `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed
