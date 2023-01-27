@@ -3,7 +3,7 @@
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: false 1`] = `
 {
   "backgroundColor": "#212225",
-  "backgroundHoverColor": "#3e4045",
+  "backgroundHoverColor": "#3E4045",
   "focusColor": "#0A0AFF",
   "primaryColor": "#FBFCFF",
 }
@@ -12,7 +12,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: true 1`] = `
 {
   "backgroundColor": "#212225",
-  "backgroundHoverColor": "#3e4045",
+  "backgroundHoverColor": "#3E4045",
   "focusColor": "#0A0AFF",
   "primaryColor": "#010205",
 }
@@ -21,7 +21,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: false 1`] = `
 {
   "backgroundColor": "#EEEFF2",
-  "backgroundHoverColor": "#cbced7",
+  "backgroundHoverColor": "#CBCED7",
   "focusColor": "#0A0AFF",
   "primaryColor": "#010205",
 }
@@ -30,7 +30,7 @@ exports[`getColors() should return correct css for theme: light and hasInvertedT
 exports[`getColors() should return correct css for theme: light and hasInvertedTheme: true 1`] = `
 {
   "backgroundColor": "#EEEFF2",
-  "backgroundHoverColor": "#cbced7",
+  "backgroundHoverColor": "#CBCED7",
   "focusColor": "#0A0AFF",
   "primaryColor": "#FBFCFF",
 }
@@ -275,7 +275,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #e0e0e0;
+    background: #E0E0E0;
   }
 }
 
@@ -341,7 +341,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #3e4045;
+    background: #3E4045;
   }
 }
 
@@ -407,7 +407,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #cbced7;
+    background: #CBCED7;
   }
 }
 
@@ -473,7 +473,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #cecfd1;
+    background: #CECFD1;
   }
 }
 
@@ -605,7 +605,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #331f1f;
+    background: #331F1F;
   }
 }
 
@@ -671,7 +671,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #eed7d9;
+    background: #EED7D9;
   }
 }
 
@@ -737,7 +737,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #0f2943;
+    background: #0F2943;
   }
 }
 
@@ -803,7 +803,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #d6def0;
+    background: #D6DEF0;
   }
 }
 
@@ -869,7 +869,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #0f2943;
+    background: #0F2943;
   }
 }
 
@@ -935,7 +935,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #d6def0;
+    background: #D6DEF0;
   }
 }
 
@@ -1001,7 +1001,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #0f432f;
+    background: #0F432F;
   }
 }
 
@@ -1067,7 +1067,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #ddeae1;
+    background: #DDEAE1;
   }
 }
 
@@ -1133,7 +1133,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #362f1c;
+    background: #362F1C;
   }
 }
 
@@ -1199,7 +1199,7 @@ span {
 @media(hover:hover) {
   span:hover {
     cursor: pointer;
-    background: #f5ecd2;
+    background: #F5ECD2;
   }
 }
 
