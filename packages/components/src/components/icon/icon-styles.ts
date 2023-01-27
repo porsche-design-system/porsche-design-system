@@ -20,10 +20,10 @@ const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
   'x-large': fontSizeTextXLarge,
 };
 
-const filterLightPrimary = '';
-const filterLightContrastLow = '';
-const filterLightContrastMedium = '';
-const filterLightContrastHigh = '';
+const filterLightPrimary = 'none';
+const filterLightContrastLow = 'none';
+const filterLightContrastMedium = 'none';
+const filterLightContrastHigh = 'none';
 const filterLightNotificationSuccess =
   'invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)';
 const filterLightNotificationWarning =
@@ -33,10 +33,10 @@ const filterLightNotificationError =
 const filterLightNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
 
-const filterDarkPrimary = '';
-const filterDarkContrastLow = '';
-const filterDarkContrastMedium = '';
-const filterDarkContrastHigh = '';
+const filterDarkPrimary = 'none';
+const filterDarkContrastLow = 'none';
+const filterDarkContrastMedium = 'none';
+const filterDarkContrastHigh = 'none';
 const filterDarkNotificationSuccess =
   'invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)';
 const filterDarkNotificationWarning =
