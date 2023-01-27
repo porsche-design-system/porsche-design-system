@@ -33,7 +33,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-button hide-label="{ base: true, m: false }">Some label</p-button>
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
+
 - `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible`, `Inline Notification`, `Banner`, `Toast` matches new design language
+- CSS global variables names
+```diff
+- --p-animation-duration__spinner
+- --p-animation-duration__banner
+
++ --p-animation-duration
+```
+
 - Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied:
 
 ```diff

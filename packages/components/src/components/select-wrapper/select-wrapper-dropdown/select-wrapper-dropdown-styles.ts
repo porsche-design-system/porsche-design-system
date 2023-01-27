@@ -19,7 +19,7 @@ import type { FormState } from '../../../utils/form/form-state';
 const { primaryColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');
 
-const dropdownPositionVar = '--p-dropdown-position';
+const dropdownPositionVar = '--p-internal-dropdown-position';
 
 export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { contrastHighColor, contrastMediumColor } = getThemedColors(theme);

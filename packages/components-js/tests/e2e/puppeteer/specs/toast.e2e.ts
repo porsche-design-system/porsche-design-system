@@ -30,9 +30,9 @@ const initToast = (opts?: InitToastOptions): Promise<void> => {
   };
 
   const style = `<style>p-toast {
-  --p-override-toast-timeout: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
-  --p-override-toast-skip-timeout: false;
-  ${withAnimation ? `--p-override-toast-animation-duration: ${ANIMATION_DURATION / 1000}s` : ''}
+  --p-temporary-toast-timeout: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
+  --p-temporary-toast-skip-timeout: false;
+  ${withAnimation ? `--p-animation-duration: ${ANIMATION_DURATION / 1000}s` : ''}
 }</style>`;
 
   return setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
