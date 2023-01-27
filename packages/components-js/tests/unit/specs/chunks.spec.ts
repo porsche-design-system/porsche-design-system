@@ -250,10 +250,10 @@ describe('chunk content', () => {
     );
   });
 
-  describe('--p-override', () => {
-    it.each(chunkFileNames)('should not contain "--p-override" css variables in %s', (chunkFileName) => {
+  describe('--p-temporary', () => {
+    it.each(chunkFileNames)('should not contain "--p-temporary" css variables in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('--p-override');
+      expect(content).not.toContain('--p-temporary-');
     });
   });
 

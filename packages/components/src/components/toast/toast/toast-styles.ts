@@ -3,10 +3,9 @@ import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
-import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
 
 const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const toastPositionBottomVarInternal = `${toastPositionBottomVarPublic}-internal`;
+const toastPositionBottomVarInternal = '--p-internal-toast-position-bottom';
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {
@@ -34,7 +33,7 @@ export const getComponentCss = (): string => {
     },
     hydrated: getAnimationIn(
       'in',
-      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && TOAST_ANIMATION_DURATION_VAR
+      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && '--p-animation-duration'
     ),
     [toastCloseClassName]: getAnimationOut('out'),
   });

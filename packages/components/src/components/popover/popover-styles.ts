@@ -167,7 +167,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
           ? '240ms $fadeIn ease forwards'
-          : 'var(--p-override-popover-animation-duration, 240ms) $fadeIn ease forwards',
+          : 'var(--p-animation-duration, 240ms) $fadeIn ease forwards',
       '&::before': {
         content: '""',
         position: 'absolute',
