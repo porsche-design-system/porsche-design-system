@@ -53,7 +53,7 @@ export const getComponentCss = (
         width: pxToRemWithUnit(40),
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
-        textDecoration: 'underline',
+        textDecoration: 'none',
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
@@ -91,7 +91,6 @@ export const getComponentCss = (
         '&[aria-current]': {
           cursor: 'default',
           pointerEvents: 'none',
-          textDecoration: 'none',
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
         },
@@ -100,7 +99,6 @@ export const getComponentCss = (
     ellipsis: {
       cursor: 'default',
       pointerEvents: 'none',
-      textDecoration: 'none',
       '&::after': {
         content: '"…"',
       },
