@@ -8,6 +8,12 @@
 
 ## Color
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <b>notification-neutral</b> color is deprecated and will be removed with next major release.
+  Please use <b>notification-information</b> color instead.
+  In case, e.g. <b>color="notification-neutral"</b> is used it will automatically be mapped to <b>color="notification-surface"</b>.
+</p-inline-notification>
+
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
   <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
