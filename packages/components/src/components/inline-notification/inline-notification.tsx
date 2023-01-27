@@ -74,6 +74,7 @@ export class InlineNotification {
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
           color="inherit"
+          size="inherit"
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(mappedState, labelId, descriptionId)}>
@@ -85,7 +86,6 @@ export class InlineNotification {
             class="action"
             theme={this.theme}
             icon={this.actionIcon}
-            size="inherit"
             loading={this.actionLoading}
             onClick={this.action.emit}
           >
