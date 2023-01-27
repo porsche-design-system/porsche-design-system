@@ -17,6 +17,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `getIconLinks()` partial accepts only param-cased icon names
+
+```diff
+- require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
+
++ require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
+```
+
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefor
