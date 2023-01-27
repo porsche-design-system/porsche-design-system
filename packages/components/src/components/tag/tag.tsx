@@ -62,7 +62,7 @@ export class Tag {
           />
         )}
         {/* to trick leading inline-block / inline-flex space character */}
-        <div>
+        <div class="label">
           <slot />
         </div>
       </span>

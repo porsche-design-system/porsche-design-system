@@ -52,7 +52,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
-        padding: '5px 9px',
+        padding: '4px 9px',
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
@@ -99,6 +99,9 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
     },
     icon: {
       margin: `0 ${pxToRemWithUnit(2)} 0 ${pxToRemWithUnit(-2)}`,
+    },
+    label: {
+      padding: '1px 0',
     },
   });
 };
