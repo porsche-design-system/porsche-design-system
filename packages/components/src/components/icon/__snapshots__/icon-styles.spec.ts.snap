@@ -200,7 +200,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: inherit;
   height: inherit;
 }"
@@ -218,7 +218,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.44rem, .3vw + 1.38rem, 1.71rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -237,7 +237,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.2rem, .12vw + 1.18rem, 1.31rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -256,7 +256,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -275,7 +275,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -294,7 +294,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.73rem, .57vw + 1.61rem, 2.24rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -313,7 +313,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: .875rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

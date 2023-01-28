@@ -20,10 +20,11 @@ const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
   'x-large': fontSizeTextXLarge,
 };
 
-const filterLightPrimary = 'none';
-const filterLightContrastLow = 'none';
-const filterLightContrastMedium = 'none';
-const filterLightContrastHigh = 'none';
+const filterLightPrimary = 'invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%)';
+const filterLightContrastLow = 'invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%)';
+const filterLightContrastMedium =
+  'invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%)';
+const filterLightContrastHigh = 'invert(40%) sepia(2%) saturate(686%) hue-rotate(187deg) brightness(80%) contrast(94%)';
 const filterLightNotificationSuccess =
   'invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)';
 const filterLightNotificationWarning =
@@ -33,10 +34,11 @@ const filterLightNotificationError =
 const filterLightNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
 
-const filterDarkPrimary = 'none';
-const filterDarkContrastLow = 'none';
-const filterDarkContrastMedium = 'none';
-const filterDarkContrastHigh = 'none';
+const filterDarkPrimary = 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)';
+const filterDarkContrastLow = 'invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%)';
+const filterDarkContrastMedium =
+  'invert(54%) sepia(4%) saturate(229%) hue-rotate(187deg) brightness(91%) contrast(84%)';
+const filterDarkContrastHigh = 'invert(68%) sepia(6%) saturate(108%) hue-rotate(187deg) brightness(104%) contrast(88%)';
 const filterDarkNotificationSuccess =
   'invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)';
 const filterDarkNotificationWarning =
