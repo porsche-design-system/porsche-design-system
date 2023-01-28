@@ -72,7 +72,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       >
       <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [hideLabel]="true" [theme]="'dark'">Label active</p-link-pure>
       <p-link-pure [active]="true" [hideLabel]="true" [theme]="'dark'"
-        ><a [href]="'https://www.porsche.com'" [theme]="'dark'">Label slotted active</a></p-link-pure
+        ><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure
       >
     </div>
 
