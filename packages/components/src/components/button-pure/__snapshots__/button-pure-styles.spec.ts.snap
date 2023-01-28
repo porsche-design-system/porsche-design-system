@@ -43,6 +43,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -55,7 +57,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -201,6 +202,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -213,7 +216,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -329,6 +331,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #FBFCFF;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -341,7 +345,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -397,6 +400,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -409,7 +414,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -465,6 +469,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -477,7 +483,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -533,6 +538,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -545,7 +552,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -601,6 +607,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -613,7 +621,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: not-allowed;
 }
 .root::before {
@@ -661,6 +668,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -673,7 +682,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: not-allowed;
 }
 .root::before {
@@ -720,6 +728,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #FBFCFF;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -732,7 +742,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -790,6 +799,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -802,7 +813,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -861,6 +871,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -873,7 +885,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: not-allowed;
 }
 .root::before {
@@ -924,6 +935,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -936,7 +949,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -979,6 +991,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -991,7 +1005,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -1034,6 +1047,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1046,7 +1061,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: pointer;
 }
 .root::before {
@@ -1119,6 +1133,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1131,7 +1147,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   background: transparent;
   text-align: left;
   border: 0;
-  padding: 0;
   cursor: not-allowed;
 }
 .root::before {
