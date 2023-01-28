@@ -7,6 +7,7 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
     p-button-pure:not(:last-child) {
       margin-right: 16px;
     }
+
     .stretched-buttons p-button-pure {
       margin-right: 0;
     }
@@ -65,6 +66,9 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
         <PButtonPure active={true}>Label active</PButtonPure>
         <PButtonPure active={true} disabled={true}>Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true}>Label active loading</PButtonPure>
+        <PButtonPure active={true} icon="none">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true}>Label active loading</PButtonPure>
         <PButtonPure active={true} hideLabel={true}>Label active</PButtonPure>
         <PButtonPure active={true} hideLabel={true} disabled={true}>Label active disabled</PButtonPure>
         <PButtonPure active={true} hideLabel={true} loading={true}>Label active loading</PButtonPure>
@@ -74,91 +78,93 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
         <PButtonPure active={true} theme="dark">Label active</PButtonPure>
         <PButtonPure active={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true} theme="dark">Label active loading</PButtonPure>
+        <PButtonPure active={true} icon="none" theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true} theme="dark">Label active loading</PButtonPure>
         <PButtonPure active={true} hideLabel={true} theme="dark">Label active</PButtonPure>
         <PButtonPure active={true} hideLabel={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} loading={true} theme="dark">Label active loading</PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render button with specific icon">
-          <PButtonPure icon="delete">Label with specific icon</PButtonPure>
-          <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
-        </div>
+      <div className="playground light" title="should render button with specific icon">
+        <PButtonPure icon="delete">Label with specific icon</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
+      </div>
 
-        <div className="playground dark" title="should render button with specific icon on dark background">
-          <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
-          <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark"
-            >Label with local icon-source</PButtonPure
-          >
-        </div>
+      <div className="playground dark" title="should render button with specific icon on dark background">
+        <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark"
+          >Label with local icon-source
+        </PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render button with multiline label">
-          <PButtonPure style={{ width: '15rem' }}
-            >Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure
-          >
-        </div>
+      <div className="playground light" title="should render button with multiline label">
+        <PButtonPure style={{ width: '15rem' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing </PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render button-pure with custom clickable area">
-          <PButtonPure style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
-          <PButtonPure hideLabel={true} style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
-        </div>
+      <div className="playground light" title="should render button-pure with custom clickable area">
+        <PButtonPure style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
+        <PButtonPure hideLabel={true} style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render with no icon">
-          <PButtonPure icon="none">Label icon none</PButtonPure>
-        </div>
+      <div className="playground light" title="should render with no icon">
+        <PButtonPure icon="none">Label icon none</PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render icon if hide-label and icon none is set">
-          <PButtonPure hideLabel={true} icon="none">Label hide-label icon none</PButtonPure>
-        </div>
+      <div className="playground light" title="should render icon if hide-label and icon none is set">
+        <PButtonPure hideLabel={true} icon="none">Label hide-label icon none</PButtonPure>
+      </div>
 
-        <div className="playground light" title="should align label to the left">
-          <PButtonPure alignLabel="left">Label align left</PButtonPure>
-        </div>
-        <div className="playground light" title="should align label to the left or right depending on viewport">
-          <PButtonPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
-            Label align responsive
-          </PButtonPure>
-        </div>
+      <div className="playground light" title="should align label to the left">
+        <PButtonPure alignLabel="left">Label align left</PButtonPure>
+      </div>
+      <div className="playground light" title="should align label to the left or right depending on viewport">
+        <PButtonPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
+          Label align responsive
+        </PButtonPure>
+      </div>
 
-        <div className="playground light stretched-buttons" title="should render with stretched label">
-          <PButtonPure stretch={true}>Label stretch</PButtonPure>
-          <PButtonPure stretch={true} alignLabel="left">Label stretch align left</PButtonPure>
-        </div>
-        <div className="playground light" title="should render with stretched label depending on viewport">
-          <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-            Label stretch responsive
-          </PButtonPure>
-        </div>
+      <div className="playground light stretched-buttons" title="should render with stretched label">
+        <PButtonPure stretch={true}>Label stretch</PButtonPure>
+        <PButtonPure stretch={true} alignLabel="left">Label stretch align left</PButtonPure>
+      </div>
+      <div className="playground light" title="should render with stretched label depending on viewport">
+        <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
+          Label stretch responsive
+        </PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render button with different size">
-          <PButtonPure size="x-small">Label size x-small</PButtonPure>
-          <br />
-          <PButtonPure size="small">Label size small</PButtonPure>
-          <br />
-          <PButtonPure size="medium">Label size medium</PButtonPure>
-          <br />
-          <PButtonPure size="large">Label size large</PButtonPure>
-          <br />
-          <PButtonPure size="x-large">Label size x-large</PButtonPure>
-          <br />
-          <PButtonPure size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PButtonPure>
-        </div>
+      <div className="playground light" title="should render button with different size">
+        <PButtonPure size="x-small">Label size x-small</PButtonPure>
+        <br />
+        <PButtonPure size="small">Label size small</PButtonPure>
+        <br />
+        <PButtonPure size="medium">Label size medium</PButtonPure>
+        <br />
+        <PButtonPure size="large">Label size large</PButtonPure>
+        <br />
+        <PButtonPure size="x-large">Label size x-large</PButtonPure>
+        <br />
+        <PButtonPure size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render button with responsive size">
-          <PButtonPure
-            size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-            style={{ fontSize: '48px' }}
-          >
-            Label size responsive
-          </PButtonPure>
-        </div>
+      <div className="playground light" title="should render button with responsive size">
+        <PButtonPure
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+        >
+          Label size responsive
+        </PButtonPure>
+      </div>
 
-        <div className="playground light" title="should render with no icon and size inherit">
-          <PButtonPure icon="none" size="inherit" style={{ fontSize: '48px' }}>Label icon none size inherit</PButtonPure>
-          <PButtonPure
-            icon="none"
-            size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-            style={{ fontSize: '48px' }}
-            >Label icon none size responsive</PButtonPure
-          >
-        </div>
+      <div className="playground light" title="should render with no icon and size inherit">
+        <PButtonPure icon="none" size="inherit" style={{ fontSize: '48px' }}>Label icon none size inherit</PButtonPure>
+        <PButtonPure
+          icon="none"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
+          style={{ fontSize: '48px' }}
+          >Label icon none size responsive
+        </PButtonPure>
       </div>
     </>
   );
