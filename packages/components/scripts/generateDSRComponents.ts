@@ -182,6 +182,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
+          .replace(/: Theme/g, ': any')
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
