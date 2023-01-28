@@ -2,8 +2,8 @@
 
 Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components
 of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized. The Porsche
-Design System is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche
-Design System CDN to be served and cached as fast as possible.
+Design System is using an **SVG icon system (integrated by `<img/>`)** to visually present an icon object. Each icon is
+hosted on the Porsche Design System CDN to be served and cached as fast as possible.
 
 <TableOfContents></TableOfContents>
 
@@ -12,6 +12,11 @@ Design System CDN to be served and cached as fast as possible.
 For more information and a complete overview of all available Porsche icons, head over to Porsche Icons
 ([Porsche Icons](https://icons.porsche.com)).  
 To reference an icon just use the `name` property with a predefined icon id.
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  With the previous major version v2 it was possible to accidentally define an icon name with camel case syntax. 
+This isn't possible anymore, typings have been adapted properly. Please use param case syntax instead.
+</p-inline-notification>
 
 <Playground :markup="name" :config="config"></Playground>
 
@@ -32,15 +37,17 @@ practices:
 
 ## Size
 
-There are default sizes for the icon component which should cover most use cases. If a specific size is needed, the size
-can be set to `inherit` in order to specify the size from outside.
+There are default sizes for the icon component being in sync with text component which should cover most use cases. If a
+specific size is needed, the size can be set to `inherit` in order to specify the size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select size">
     <option disabled>Select size</option>
+    <option>x-small</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>
+    <option>x-large</option>
     <option>inherit</option>
   </select>
 </Playground>
@@ -52,18 +59,33 @@ can be set to `inherit` in order to specify the size from outside.
 Predefined colors associated with its theme are available. Furthermore, inherit mode can be used to define a custom
 color.
 
+<p-inline-notification heading="Important note" state="success" persistent="true">
+  The inherit mode works slightly different in v3 compared to the previous major release. A CSS filter is required to
+apply custom coloring to take advantage of using an SVG embedded in an image tag for better loading performance.
+</p-inline-notification>
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  Following colors have been deprecated and will be removed with the next major release:
+"brand", "default", "neutral-contrast-high", "neutral-contrast-medium", "neutral-contrast-low" and "notification-neutral".
+</p-inline-notification>
+
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">
     <option disabled>Select color</option>
-    <option value="brand">Brand</option>
-    <option value="default">Default</option>
-    <option value="neutral-contrast-high">Neutral Contrast High</option>
-    <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
-    <option value="neutral-contrast-low">Neutral Contrast Low</option>
+    <option value="primary">Primary</option>
+    <option value="brand">Brand (deprecated)</option>
+    <option value="default">Default (deprecated)</option>
+    <option value="contrast-low">Contrast Low</option>
+    <option value="neutral-contrast-low">Neutral Contrast Low (deprecated)</option>
+    <option value="contrast-medium">Contrast Medium</option>
+    <option value="neutral-contrast-medium">Neutral Contrast Medium (deprecated)</option>
+    <option value="contrast-high">Contrast High</option>
+    <option value="neutral-contrast-high">Neutral Contrast High (deprecated)</option>
     <option value="notification-success">Notification Success</option>
     <option value="notification-warning">Notification Warning</option>
     <option value="notification-error">Notification Error</option>
-    <option value="notification-neutral">Notification Neutral</option>
+    <option value="notification-info">Notification Info</option>
+    <option value="notification-neutral">Notification Neutral (deprecated)</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
@@ -83,7 +105,9 @@ sure that the custom icon serves the specific needs like size and viewbox which 
 
 ## Lazy loaded icon
 
-Icons can be lazy loaded, which means that they are being loaded (fetched) when they get visible in the viewport.
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
+</p-inline-notification>
 
 <Playground :markup="lazy" :config="config"></Playground>
 
@@ -100,7 +124,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   size = 'large';
-  color = 'brand';
+  color = 'primary';
   
   get name() {
     return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
@@ -112,7 +136,7 @@ export default class Code extends Vue {
   }
   
   get colorMarkup() {
-    const style = this.color === 'inherit' ? ' style="color: deeppink"' : '';
+    const style = this.color === 'inherit' ? ' style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"' : '';
     return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
   }
   
