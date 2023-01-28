@@ -1,6 +1,5 @@
 /* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IconName } from '@porsche-design-system/components-angular';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 
 @Component({
@@ -121,5 +120,5 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
-  public icons = ICON_NAMES as IconName[];
+  public icons = ICON_NAMES;
 }
