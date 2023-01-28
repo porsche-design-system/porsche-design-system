@@ -23,8 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   `'brand' | 'default' | 'neutral-contrast-low' | 'neutral-contrast-medium' | 'neutral-contrast-high' | 'notification-neutral'`
   is deprecated now.
 - Value `inherit` for prop `color` of `Icon` works slightly different to the previous major version. A CSS filter is
-  needed to apply custom coloring, to have the advantage of using SVG embedded within an <img/> tag for better SSR
-  support and loading performance in general.
+  needed to apply custom coloring, to have the advantage of using SVG embedded within an `<img/>` for better SSR support
+  and loading performance in general.
 
 ```diff
 - <p-icon color="inherit" style="color: #fff"></p-icon>
