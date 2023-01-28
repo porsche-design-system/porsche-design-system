@@ -6,6 +6,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @media(min-width:480px) {
   :host {
     display: inline-block;
@@ -63,9 +66,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   content: "";
   position: fixed;
   top: -2px;
-  right: -4px;
+  right: -2px;
   bottom: -2px;
-  left: -4px;
+  left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -97,6 +100,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     align-items: flex-start;
     font-size: 1rem;
   }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
   .label {
     position: relative;
     top: auto;
@@ -114,6 +121,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     justify-content: space-between;
     align-items: center;
     font-size: clamp(1.2rem, .12vw + 1.18rem, 1.31rem);
+  }
+  .root::before {
+    right: -2px;
+    left: -2px;
   }
   .label {
     position: absolute;
@@ -133,6 +144,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     align-items: flex-start;
     font-size: clamp(1.44rem, .3vw + 1.38rem, 1.71rem);
   }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
   .label {
     position: relative;
     top: auto;
@@ -151,6 +166,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     align-items: center;
     font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
   }
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
   .label {
     position: absolute;
     top: 0;
@@ -168,6 +187,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     justify-content: flex-start;
     align-items: flex-start;
     font-size: inherit;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -198,6 +221,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -222,9 +248,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   content: "";
   position: fixed;
   top: -2px;
-  right: -4px;
+  right: -2px;
   bottom: -2px;
-  left: -4px;
+  left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -251,6 +277,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 @media(min-width:480px) {
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
   .label {
     position: relative;
     top: auto;
@@ -263,6 +293,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media(min-width:760px) {
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
   .label {
     position: absolute;
     top: 0;
@@ -275,6 +309,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media(min-width:1000px) {
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
   .label {
     position: relative;
     top: auto;
@@ -287,6 +325,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media(min-width:1300px) {
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
   .label {
     position: absolute;
     top: 0;
@@ -299,6 +341,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media(min-width:1760px) {
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
   .label {
     position: relative;
     top: auto;
@@ -326,6 +372,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -396,6 +445,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -465,6 +517,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -489,9 +544,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   content: "";
   position: fixed;
   top: -2px;
-  right: -4px;
+  right: -2px;
   bottom: -2px;
-  left: -4px;
+  left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -534,6 +589,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -558,9 +616,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   content: "";
   position: fixed;
   top: -2px;
-  right: -4px;
+  right: -2px;
   bottom: -2px;
-  left: -4px;
+  left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -602,6 +660,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -664,6 +725,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -723,6 +787,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -794,6 +861,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -867,6 +937,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -931,6 +1004,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -987,6 +1063,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .root {
   display: flex;
   gap: 4px;
@@ -1042,6 +1121,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
@@ -1128,6 +1210,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   display: flex;
