@@ -63,91 +63,100 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [active]="true">Label active</p-button-pure>
       <p-button-pure [active]="true" [disabled]="true">Label active disabled</p-button-pure>
       <p-button-pure [active]="true" [loading]="true">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true">Label active</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [disabled]="true">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [loading]="true">Label active loading</p-button-pure>
     </div>
 
     <div class="playground dark" title="should render with active state on dark background">
       <p-button-pure [active]="true" [theme]="'dark'">Label active</p-button-pure>
       <p-button-pure [active]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
       <p-button-pure [active]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
-    </div>
+      <p-button-pure [active]="true" [hideLabel]="true" [theme]="'dark'">Label active</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
 
-    <div class="playground light" title="should render button with specific icon">
-      <p-button-pure [icon]="'delete'">Label with specific icon</p-button-pure>
-      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
-    </div>
+      <div class="playground light" title="should render button with specific icon">
+        <p-button-pure [icon]="'delete'">Label with specific icon</p-button-pure>
+        <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
+      </div>
 
-    <div class="playground dark" title="should render button with specific icon on dark background">
-      <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
-      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'">Label with local icon-source</p-button-pure>
-    </div>
+      <div class="playground dark" title="should render button with specific icon on dark background">
+        <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
+        <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'"
+          >Label with local icon-source</p-button-pure
+        >
+      </div>
 
-    <div class="playground light" title="should render button with multiline label">
-      <p-button-pure style="width: 15rem">Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
-    </div>
+      <div class="playground light" title="should render button with multiline label">
+        <p-button-pure style="width: 15rem"
+          >Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure
+        >
+      </div>
 
-    <div class="playground light" title="should render button-pure with custom clickable area">
-      <p-button-pure style="padding: 1rem">Label with custom click-area</p-button-pure>
-      <p-button-pure [hideLabel]="true" style="padding: 1rem">Label with custom click-area</p-button-pure>
-    </div>
+      <div class="playground light" title="should render button-pure with custom clickable area">
+        <p-button-pure style="padding: 1rem">Label with custom click-area</p-button-pure>
+        <p-button-pure [hideLabel]="true" style="padding: 1rem">Label with custom click-area</p-button-pure>
+      </div>
 
-    <div class="playground light" title="should render with no icon">
-      <p-button-pure [icon]="'none'">Label icon none</p-button-pure>
-    </div>
+      <div class="playground light" title="should render with no icon">
+        <p-button-pure [icon]="'none'">Label icon none</p-button-pure>
+      </div>
 
-    <div class="playground light" title="should render icon if hide-label and icon none is set">
-      <p-button-pure [hideLabel]="true" [icon]="'none'">Label hide-label icon none</p-button-pure>
-    </div>
+      <div class="playground light" title="should render icon if hide-label and icon none is set">
+        <p-button-pure [hideLabel]="true" [icon]="'none'">Label hide-label icon none</p-button-pure>
+      </div>
 
-    <div class="playground light" title="should align label to the left">
-      <p-button-pure [alignLabel]="'left'">Label align left</p-button-pure>
-    </div>
-    <div class="playground light" title="should align label to the left or right depending on viewport">
-      <p-button-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-        Label align responsive
-      </p-button-pure>
-    </div>
+      <div class="playground light" title="should align label to the left">
+        <p-button-pure [alignLabel]="'left'">Label align left</p-button-pure>
+      </div>
+      <div class="playground light" title="should align label to the left or right depending on viewport">
+        <p-button-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
+          Label align responsive
+        </p-button-pure>
+      </div>
 
-    <div class="playground light stretched-buttons" title="should render with stretched label">
-      <p-button-pure [stretch]="true">Label stretch</p-button-pure>
-      <p-button-pure [stretch]="true" [alignLabel]="'left'">Label stretch align left</p-button-pure>
-    </div>
-    <div class="playground light" title="should render with stretched label depending on viewport">
-      <p-button-pure [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
-        Label stretch responsive
-      </p-button-pure>
-    </div>
+      <div class="playground light stretched-buttons" title="should render with stretched label">
+        <p-button-pure [stretch]="true">Label stretch</p-button-pure>
+        <p-button-pure [stretch]="true" [alignLabel]="'left'">Label stretch align left</p-button-pure>
+      </div>
+      <div class="playground light" title="should render with stretched label depending on viewport">
+        <p-button-pure [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
+          Label stretch responsive
+        </p-button-pure>
+      </div>
 
-    <div class="playground light" title="should render button with different size">
-      <p-button-pure [size]="'x-small'">Label size x-small</p-button-pure>
-      <br />
-      <p-button-pure [size]="'small'">Label size small</p-button-pure>
-      <br />
-      <p-button-pure [size]="'medium'">Label size medium</p-button-pure>
-      <br />
-      <p-button-pure [size]="'large'">Label size large</p-button-pure>
-      <br />
-      <p-button-pure [size]="'x-large'">Label size x-large</p-button-pure>
-      <br />
-      <p-button-pure [size]="'inherit'" style="font-size: 48px">Label size inherit</p-button-pure>
-    </div>
+      <div class="playground light" title="should render button with different size">
+        <p-button-pure [size]="'x-small'">Label size x-small</p-button-pure>
+        <br />
+        <p-button-pure [size]="'small'">Label size small</p-button-pure>
+        <br />
+        <p-button-pure [size]="'medium'">Label size medium</p-button-pure>
+        <br />
+        <p-button-pure [size]="'large'">Label size large</p-button-pure>
+        <br />
+        <p-button-pure [size]="'x-large'">Label size x-large</p-button-pure>
+        <br />
+        <p-button-pure [size]="'inherit'" style="font-size: 48px">Label size inherit</p-button-pure>
+      </div>
 
-    <div class="playground light" title="should render button with responsive size">
-      <p-button-pure
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-      >
-        Label size responsive
-      </p-button-pure>
-    </div>
+      <div class="playground light" title="should render button with responsive size">
+        <p-button-pure
+          [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+          style="font-size: 48px"
+        >
+          Label size responsive
+        </p-button-pure>
+      </div>
 
-    <div class="playground light" title="should render with no icon and size inherit">
-      <p-button-pure [icon]="'none'" [size]="'inherit'" style="font-size: 48px">Label icon none size inherit</p-button-pure>
-      <p-button-pure
-        [icon]="'none'"
-        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
-        style="font-size: 48px"
-        >Label icon none size responsive</p-button-pure
-      >
+      <div class="playground light" title="should render with no icon and size inherit">
+        <p-button-pure [icon]="'none'" [size]="'inherit'" style="font-size: 48px">Label icon none size inherit</p-button-pure>
+        <p-button-pure
+          [icon]="'none'"
+          [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+          style="font-size: 48px"
+          >Label icon none size responsive</p-button-pure
+        >
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
