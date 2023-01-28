@@ -86,12 +86,10 @@ export const getLinkButtonPureStyles = (
         content: '""',
         position: 'fixed',
         top: offsetVertical,
-        right: offsetHorizontal,
         bottom: offsetVertical,
-        left: offsetHorizontal,
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
-          left: hideLabelValue ? offsetVertical : offsetHorizontal,
+          left: hideLabelValue || hasIcon ? offsetVertical : offsetHorizontal,
         })),
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
