@@ -66,6 +66,8 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       gap: spacingStaticXSmall,
       width: '100%',
+      margin: 0,
+      padding: 0,
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       outline: 0,
       ...textSmallStyle,
