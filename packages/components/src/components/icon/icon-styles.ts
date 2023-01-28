@@ -20,6 +20,7 @@ const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
   'x-large': fontSizeTextXLarge,
 };
 
+// TODO: shall icon component support 'disabled' color too? For e.g. button-pure disabled state?
 const filterLightPrimary = 'invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%)';
 const filterLightContrastLow = 'invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%)';
 const filterLightContrastMedium =
