@@ -439,7 +439,7 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 
 exports[`should have no basic DOM regression for p-tag 1`] = `
 "<span>
-  <div>
+  <div class="label">
     <slot>
     </slot>
   </div>
