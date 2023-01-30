@@ -1,5 +1,5 @@
-import { getComponentCss, getHeadingHeadlineStyles } from './heading-styles';
-import * as HeadingHeadlineStyles from './heading-styles';
+import { getComponentCss, getHeadingHeadlineStyles } from '../heading/heading-styles';
+import * as HeadingHeadlineStyles from '../heading/heading-styles';
 
 describe('getComponentCss()', () => {
   it('should call getHeadingHeadlineStyles with correct parameters', () => {
@@ -10,13 +10,12 @@ describe('getComponentCss()', () => {
   });
 
   it.each<Parameters<typeof getComponentCss>>([
-    ['heading-1', 'left', 'default', false, 'light'],
-    ['inherit', 'left', 'default', false, 'light'],
-    ['large-title', 'center', 'inherit', true, 'dark'],
-    ['heading-2', 'center', 'inherit', true, 'dark'],
-    ['heading-3', 'center', 'inherit', true, 'dark'],
-    ['heading-4', 'center', 'inherit', true, 'dark'],
-    ['heading-5', 'center', 'inherit', true, 'dark'],
+    ['headline-1', 'left', 'default', false, 'light'],
+    ,
+    ['headline-2', 'center', 'inherit', true, 'dark'],
+    ['headline-3', 'center', 'inherit', true, 'dark'],
+    ['headline-4', 'center', 'inherit', true, 'dark'],
+    ['headline-5', 'center', 'inherit', true, 'dark'],
     [
       { base: 'small', xs: 'large', s: 'small', m: 'large', l: 'small', xl: 'large' },
       'right',

@@ -2,7 +2,7 @@
 
 <TableOfContents></TableOfContents>
 
-## Headline
+## DEPRECATED Headline
 
 **Headline component** to specify headline styling and hierarchy in documents.
 
@@ -98,7 +98,7 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADLINE_VARIANTS } from '../heading/heading-utils';
+import { HEADING_VARIANTS } from '../heading/heading-utils';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -110,7 +110,7 @@ export default class Code extends Vue {
   color = 'default';
   align = 'center';
 
-  variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+  variant = HEADING_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
   get customVariantMarkup() {
     const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
