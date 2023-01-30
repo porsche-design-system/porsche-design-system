@@ -43,12 +43,12 @@ export default class Code extends Vue {
   
   get statement() {
     return `
-<p-headline variant="headline-3"><h1>Accessibility Statement</h1></p-headline>
+<p-heading variant="headline-3"><h1>Accessibility Statement</h1></p-heading>
   <p-text>
     We are committed to ensuring digital accessibility for people with disabilities.<br>
     We are continually improving the user experience for everyone, and applying the relevant accessibility standards.
   </p-text>
-  <p-headline variant="headline-4"><h2>Measures to support accessibility [optional - choose from list]</h2></p-headline>
+  <p-heading variant="headline-4"><h2>Measures to support accessibility [optional - choose from list]</h2></p-heading>
   <p-text>
     We take the following measures to ensure accessibility of this Website:
   </p-text>
@@ -60,7 +60,7 @@ export default class Code extends Vue {
     <p-text-list-item>Include people with disabilities in our design personas.</p-text-list-item>
     <p-text-list-item>Include automatic and manual testing strategies.</p-text-list-item>
   </p-text-list>
-  <p-headline variant="headline-4"><h2>Conformance status</h2></p-headline>
+  <p-heading variant="headline-4"><h2>Conformance status</h2></p-heading>
   <p-text>
     The <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities.
   </p-text>
@@ -71,7 +71,7 @@ We continually assess and work to ensure that our Web presence is in conformance
   <p-text>
     Please be aware that our efforts are ongoing as our current website provider implements the relevant improvements to meet the Guidelines over time.
   </p-text>
-  <p-headline variant="headline-4"><h2>Feedback</h2></p-headline>
+  <p-heading variant="headline-4"><h2>Feedback</h2></p-heading>
   <p-text>
     If you experience any difficulty in accessing any part of this website, please feel free to contact us. Please be sure to specify the Web page and describe the issue in detail and we will make reasonable efforts to make that page accessible. We welcome feedback on how we can improve as well.
   </p-text>
@@ -98,14 +98,20 @@ We continually assess and work to ensure that our Web presence is in conformance
     margin-top: $pds-spacing-static-medium;
   }
 
+  p-text + p-heading[variant="heading-3"],
   p-text + p-headline[variant="headline-3"],
+  p-text-list + p-heading[variant="headline-3"],
   p-text-list + p-headline[variant="headline-3"] {
     margin-top: $pds-spacing-static-x-large;
   }
 
+  p-text + p-heading[variant="headinge-4"],
   p-text + p-headline[variant="headline-4"],
+  p-text-list + p-heading[variant="heading-4"],
   p-text-list + p-headline[variant="headline-4"],
+  p-text + p-heading[variant="heading-5"],
   p-text + p-headline[variant="headline-5"],
+  p-text-list + p-heading[variant="heading-5"],
   p-text-list + p-headline[variant="headline-5"] {
     margin-top: $pds-spacing-static-large;
   }

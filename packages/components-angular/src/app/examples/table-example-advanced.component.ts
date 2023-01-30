@@ -6,7 +6,7 @@ import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system
   selector: 'page-table-example-advanced',
   template: `
     <p-table (sortingChange)="onSortingChange($event)">
-      <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
+      <p-heading slot="caption" variant="headline-3">Some visual caption</p-heading>
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">

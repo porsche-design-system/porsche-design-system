@@ -18,7 +18,7 @@
     <article class="intro">
       <p-grid>
         <p-grid-item size="{base: 12, m: 4}">
-          <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
+          <p-heading variant="headline-3" tag="h1">Porsche Design System</p-heading>
           <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
             <router-link to="/about/introduction">Learn more about it</router-link>
@@ -57,7 +57,7 @@
     <article class="newsletter">
       <p-grid>
         <p-grid-item size="{base: 12, m: 3}">
-          <p-headline variant="headline-3" tag="h2">Learn more about UX Design at Porsche</p-headline>
+          <p-heading variant="headline-3" tag="h2">Learn more about UX Design at Porsche</p-heading>
         </p-grid-item>
         <p-grid-item size="{base: 12, m: 8}" offset="{base: 0, m: 1}">
           <p-text size="medium"

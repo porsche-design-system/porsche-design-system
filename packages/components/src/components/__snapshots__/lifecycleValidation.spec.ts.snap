@@ -144,6 +144,16 @@ exports[`should call validateProps() with correct parameters via render for p-gr
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-heading: propTypes with ValidatorFunctions 1`] = `
+{
+  "align": "oneOf",
+  "color": "oneOf",
+  "ellipsis": "boolean",
+  "tag": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-headline: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",
