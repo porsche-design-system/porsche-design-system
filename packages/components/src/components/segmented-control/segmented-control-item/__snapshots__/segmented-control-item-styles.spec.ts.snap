@@ -409,3 +409,11 @@ span {
   filter: invert(100%) contrast(17%);
 }"
 `;
+
+exports[`getIconFilter() should return correct icon filter for theme: dark and isDisabled: false 1`] = `"invert(100%)"`;
+
+exports[`getIconFilter() should return correct icon filter for theme: dark and isDisabled: true 1`] = `"contrast(17%)"`;
+
+exports[`getIconFilter() should return correct icon filter for theme: light and isDisabled: false 1`] = `"invert(100%)"`;
+
+exports[`getIconFilter() should return correct icon filter for theme: light and isDisabled: true 1`] = `"invert(100%) contrast(17%)"`;
