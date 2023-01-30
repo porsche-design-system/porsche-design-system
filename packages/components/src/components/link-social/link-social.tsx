@@ -87,7 +87,6 @@ export class LinkSocial {
           size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color="inherit"
           theme={getLinkButtonThemeForIcon('primary', this.theme)} // relevant for ssr support
           aria-hidden="true"
         />
