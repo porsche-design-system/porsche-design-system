@@ -14,11 +14,11 @@ import {
 } from '@porsche-design-system/shared/testing';
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('accordion-states', async () => {
@@ -42,10 +42,7 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
         </p-accordion>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }));
 
       await forceHoverState(page, '.hover > p-accordion >>> button');
       await forceHoverState(page, '.hover > p-accordion > p-link-pure >>> a');
