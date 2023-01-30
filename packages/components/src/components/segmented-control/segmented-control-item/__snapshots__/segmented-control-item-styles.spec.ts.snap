@@ -11,10 +11,10 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid transparent;
+  border: 2px solid #7E7F82;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #212225;
+  background-color: transparent;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -47,12 +47,9 @@ span {
   color: #7E7F82;
 }
 @media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
   button:hover {
-    background: #404044;
-    border-color: #7E7F82;
+    border-color: #FBFCFF;
+    cursor: pointer;
   }
 }
 
@@ -74,10 +71,10 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid transparent;
+  border: 2px solid #949598;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #EEEFF2;
+  background-color: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -110,12 +107,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
   button:hover {
-    background: #D8D8DB;
-    border-color: #949598;
+    border-color: #010205;
+    cursor: pointer;
   }
 }
 
@@ -137,10 +131,10 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid transparent;
+  border: 2px solid #7E7F82;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #0E0E12;
+  background-color: transparent;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -173,12 +167,9 @@ span {
   color: #7E7F82;
 }
 @media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
   button:hover {
-    background: #404044;
-    border-color: #7E7F82;
+    border-color: #FBFCFF;
+    cursor: pointer;
   }
 }
 
@@ -200,10 +191,10 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid transparent;
+  border: 2px solid #949598;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #FFF;
+  background-color: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -236,12 +227,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
   button:hover {
-    background: #D8D8DB;
-    border-color: #949598;
+    border-color: #010205;
+    cursor: pointer;
   }
 }
 
@@ -266,7 +254,7 @@ button {
   border: 2px solid #010205;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #EEEFF2;
+  background-color: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -299,12 +287,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
   button:hover {
-    background: #D8D8DB;
     border-color: #010205;
+    cursor: pointer;
   }
 }
 
@@ -329,7 +314,7 @@ button {
   border: 2px solid #949598;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #EEEFF2;
+  background-color: transparent;
   color: #949598;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
@@ -382,7 +367,7 @@ button {
   border: 2px solid #010205;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
-  background: #EEEFF2;
+  background-color: transparent;
   color: #949598;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
