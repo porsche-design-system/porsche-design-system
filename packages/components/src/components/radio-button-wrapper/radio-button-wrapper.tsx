@@ -97,7 +97,7 @@ export class RadioButtonWrapper {
           <slot />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );
