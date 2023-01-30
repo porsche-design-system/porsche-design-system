@@ -2,17 +2,22 @@ import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { gridSafeZone, headingMediumStyle, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
+import {
+  gridSafeZone,
+  headingMediumStyle,
+  getMediaQueryMin,
+  borderRadiusMedium,
+  frostedGlassStyle,
+  borderWidthBase,
+} from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
-  getFocusJssStyle,
   getInsetJssStyle,
   getThemedColors,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
-import { getFocusVisibleFallback } from '../../styles/focus-visible-fallback';
 
 const mediaQueryM = getMediaQueryMin('m');
 const mediaQueryXl = getMediaQueryMin('xl');
@@ -30,12 +35,14 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         maxWidth: 'none',
         minHeight: '100%',
         margin: 0,
+        borderRadius: 0,
       }
     : {
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
         margin: `max(1rem, 7vh) ${gridSafeZone}`,
+        borderRadius: borderRadiusMedium,
       };
 };
 
@@ -53,7 +60,11 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-const getSlottedJssStyle = (marginValue: number, hasHeader: boolean): JssStyle => {
+const getSlottedJssStyle = (
+  marginValue: number,
+  hasHeader: boolean,
+  fullscreen: BreakpointCustomizable<boolean>
+): JssStyle => {
   const marginRem = pxToRemWithUnit(-marginValue);
   return {
     [`&(.${stretchToFullModalWidthClassName})`]: {
@@ -63,10 +74,16 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean): JssStyle =
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
         marginTop: marginRem,
+        ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+          borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+        })),
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
       marginBottom: marginRem,
+      ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+        borderRadius: fullscreenValue ? 0 : ' 0 0 8px 8px',
+      })),
     },
   };
 };
@@ -78,6 +95,7 @@ export const getComponentCss = (
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
+  const { focusColor } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -106,15 +124,16 @@ export const getComponentCss = (
             content: '""',
             position: 'fixed',
             ...getInsetJssStyle(),
-            background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
+            background: `${darkThemeBackgroundColor}`, // e6 = 0.9 alpha
+            ...frostedGlassStyle,
           },
         }),
         overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule({
-        ...getSlottedJssStyle(32, hasHeader),
-        [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
-        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
+        ...getSlottedJssStyle(32, hasHeader, fullscreen),
+        [mediaQueryM]: getSlottedJssStyle(40, hasHeader, fullscreen),
+        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader, fullscreen),
       }),
       h1: {
         ...headingMediumStyle,
@@ -130,7 +149,21 @@ export const getComponentCss = (
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: pxToRemWithUnit(32),
         backgroundColor: lightThemeBackgroundColor,
-        ...getFocusVisibleFallback(getFocusJssStyle({ color: lightThemeBackgroundColor })),
+        '&:focus': {
+          outline: 0,
+        },
+        '&:focus::before': {
+          content: '""',
+          position: 'fixed',
+          border: `${borderWidthBase} solid ${focusColor}`,
+          ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            borderRadius: fullscreenValue ? 0 : borderRadiusMedium,
+          })),
+          ...getInsetJssStyle(0),
+        },
+        '&:not(:focus-visible)::before': {
+          border: 0,
+        },
         [mediaQueryM]: {
           padding: pxToRemWithUnit(40),
         },
@@ -158,11 +191,11 @@ export const getComponentCss = (
     }),
     close: {
       position: 'absolute',
-      top: 0,
-      right: 0,
-      padding: pxToRemWithUnit(8),
-      border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
-      background: lightThemeBackgroundColor,
+      top: '8px',
+      right: '8px',
+      // padding: pxToRemWithUnit(8),
+      // border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
+      // background: lightThemeBackgroundColor,
     },
   });
 };
