@@ -27,6 +27,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>
+        <p-link-social theme="${theme}" href="https://www.porsche.com/" hide-label="true">Fallback</p-link-social>
         <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
         <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook" hide-label="true">Facebook</p-link-social>
         <p-link-social theme="${theme}" href="https://www.google.com/" icon="logo-google">Google</p-link-social>
