@@ -76,6 +76,6 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     // let's wait a little for the promise exception
     await new Promise((resolve) => setTimeout(resolve, 5));
 
-    expect(spy).toBeCalledWith(`http://localhost:3001/icons/${ICONS_MANIFEST.arrowHeadRight}`, undefined);
+    expect(spy).toBeCalledWith(`http://localhost:3001/icons/${ICONS_MANIFEST['arrow-right']}`, undefined);
   });
 });
