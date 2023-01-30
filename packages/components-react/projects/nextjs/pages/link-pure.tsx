@@ -59,11 +59,23 @@ const LinkPurePage: NextPage = (): JSX.Element => {
       <div className="playground light" title="should render with active state">
         <PLinkPure href="https://www.porsche.com" active={true}>Label active</PLinkPure>
         <PLinkPure active={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
+        <PLinkPure href="https://www.porsche.com" active={true} icon="none">Label active</PLinkPure>
+        <PLinkPure active={true} icon="none"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
+        <PLinkPure href="https://www.porsche.com" active={true} hideLabel={true}>Label active</PLinkPure>
+        <PLinkPure active={true} hideLabel={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
         <PLinkPure href="https://www.porsche.com" active={true} theme="dark">Label active</PLinkPure>
         <PLinkPure active={true} theme="dark"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
+        <PLinkPure href="https://www.porsche.com" active={true} icon="none" theme="dark">Label active</PLinkPure>
+        <PLinkPure active={true} icon="none" theme="dark"
+          ><a href="https://www.porsche.com">Label slotted active</a></PLinkPure
+        >
+        <PLinkPure href="https://www.porsche.com" active={true} hideLabel={true} theme="dark">Label active</PLinkPure>
+        <PLinkPure active={true} hideLabel={true} theme="dark"
+          ><a href="https://www.porsche.com">Label slotted active</a></PLinkPure
+        >
       </div>
 
       <div className="playground light" title="should render with specific icon">

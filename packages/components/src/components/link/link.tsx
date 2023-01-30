@@ -109,10 +109,9 @@ export class Link {
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
-            name={this.icon}
+            name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            color="inherit"
-            theme={getLinkButtonThemeForIcon(this.variant, this.theme)} // relevant for ssr support
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
             aria-hidden="true"
           />
         )}
