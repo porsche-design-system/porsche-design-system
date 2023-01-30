@@ -38,13 +38,12 @@ export const getColors = (
 
   const { primaryColor, contrastMediumColor } = themedColors;
   const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
-  // const borderColor = isSelected ? themedColors.primaryColor : isDisabled ? themedColors.disabledColor : 'transparent';
   const borderColor = isSelected
     ? themedColors.primaryColor
     : isDisabled
     ? themedColors.disabledColor
-    : themedColors.contrastLowColor;
-  const hoverBorderColor = isSelected ? themedColors.primaryColor : themedColors.contrastMediumColor;
+    : themedColors.contrastMediumColor;
+  const hoverBorderColor = themedColors.primaryColor;
 
   return isDisabled
     ? {
@@ -69,9 +68,7 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  // const { contrastLowColor, focusColor } = getThemedColors(theme);
   const { focusColor } = getThemedColors(theme);
-  // const { backgroundColor, buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, bgColor, theme);
 
   return getCss({
@@ -89,7 +86,6 @@ export const getComponentCss = (
         border: `${borderWidthBase} solid ${borderColor}`,
         transition: getTransition('border-color'),
         outline: 0,
-        // background: backgroundColor,
         backgroundColor: 'transparent',
         color: buttonColor,
         ...textSmallStyle,
@@ -116,10 +112,8 @@ export const getComponentCss = (
           : {
               cursor: 'pointer',
               ...hoverMediaQuery({
-                // transition: getTransition('background-color'),
                 transition: getTransition('border-color'),
                 '&:hover': {
-                  // background: contrastLowColor,
                   borderColor: hoverBorderColor,
                   cursor: 'pointer',
                 },
