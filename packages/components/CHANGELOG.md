@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `underline` prop for `Link Pure`
 - `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible` supports `theme` prop
 - `Icon` supports `x-small` and `x-large` values of `size` prop
+- `Accordion` `size="medium"` in `compact` variant
 
 #### Changed
 
@@ -60,7 +61,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible` matches new design language
+  `Popover`, `Tag Dismissible`, `Accordion` matches new design language
 - CSS global variables names
 
 ```diff
