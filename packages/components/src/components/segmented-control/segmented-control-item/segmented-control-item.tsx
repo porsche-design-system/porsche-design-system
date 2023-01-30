@@ -70,12 +70,12 @@ export class SegmentedControlItem {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.icon,
-      this.iconSource,
       this.disabled,
       this.host.selected,
       this.host.backgroundColor || 'background-default', // default as fallback
-      this.host.theme || 'light' // default as fallback
+      this.host.theme || 'light', // default as fallback
+      this.icon,
+      this.iconSource
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
