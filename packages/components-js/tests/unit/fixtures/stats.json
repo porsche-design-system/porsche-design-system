@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 7113,
-    "gzipSize": 2862
+    "size": 7154,
+    "gzipSize": 2869
   },
   {
     "chunkShortName": "button-group",
@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6449,
-    "gzipSize": 2710
+    "size": 6565,
+    "gzipSize": 2737
   },
   {
     "chunkShortName": "link-pure",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "link-social",
-    "size": 4588,
-    "gzipSize": 2025
+    "size": 5837,
+    "gzipSize": 2509
   },
   {
     "chunkShortName": "link-tile",
@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 66485,
-    "gzipSize": 22719
+    "gzipSize": 22721
   },
   {
     "chunkShortName": "marque",
