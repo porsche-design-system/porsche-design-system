@@ -25,7 +25,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         color: textColor,
       },
     },
-    icon: getNotificationIconJssStyle(state, theme),
+    icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
     close: getCloseIconJssStyle(),
   });

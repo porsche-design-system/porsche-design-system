@@ -73,7 +73,7 @@ export class InlineNotification {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
-          color="inherit"
+          color={`notification-${this.state}`}
           size="inherit"
           aria-hidden="true"
         />

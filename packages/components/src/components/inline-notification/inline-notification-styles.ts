@@ -12,7 +12,6 @@ import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../styles';
-import { getThemedIconFilters } from '../../styles/icon-filters';
 
 const mediaQueryS = getMediaQueryMin('s');
 
@@ -33,7 +32,7 @@ export const getComponentCss = (
         color: textColor,
       },
     },
-    icon: getNotificationIconJssStyle(state, theme),
+    icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
@@ -69,15 +68,13 @@ export const getNotificationRootJssStyle = (state: InlineNotificationState, them
   };
 };
 
-export const getNotificationIconJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => ({
+export const getNotificationIconJssStyle = (): JssStyle => ({
   display: 'none',
-  font: `${fontSizeTextSmall} ${fontFamily}`,
-  width: fontLineHeight,
-  height: fontLineHeight,
   [mediaQueryS]: {
     display: 'inline-flex',
-    color: 'black', // color needs to be set to ensure filter is applied correctly
-    filter: getThemedIconFilters(theme)[state],
+    font: `${fontSizeTextSmall} ${fontFamily}`,
+    width: fontLineHeight,
+    height: fontLineHeight,
   },
 });
 
