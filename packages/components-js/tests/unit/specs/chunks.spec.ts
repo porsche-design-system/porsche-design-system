@@ -303,7 +303,8 @@ describe('chunk content', () => {
   });
 
   describe('getPrefixedTagNames', () => {
-    const getPrefixedTagNamesRegEx = /new Map.+?\.filter\(\(([a-z])=>["']p-text["']!==\1&&["']p-headline["']!==\1\)/;
+    const getPrefixedTagNamesRegEx =
+      /new Map.+?\.filter\(\(([a-z])=>["']p-text["']!==\1&&["']p-heading["']!==\1&&["']p-headline["']!==\1\)/;
 
     it('should be in core chunk', () => {
       const content = getChunkContent(chunkFileNames[0]);

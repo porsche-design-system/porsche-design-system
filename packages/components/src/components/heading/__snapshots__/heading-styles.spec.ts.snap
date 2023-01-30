@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for variant: "inherit", align: left, color: default, ellipsis: false and theme: light 1`] = `
+":host {
+  display: block;
+}
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+}
+.root {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: #000;
+  white-space: inherit;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  font-size: inherit;
+  font-weight: 600;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for variant: "large-title", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
+":host {
+  display: block;
+}
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+}
+.root {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: inherit;
+  white-space: nowrap;
+  font: normal normal 600 2rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media(min-width:760px) and (max-width:999px) {
+  .root {
+    font-size: 2.625rem;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  .root {
+    font-size: 3.25rem;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  .root {
+    font-size: 3.875rem;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    font-size: 4.5rem;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for variant: {"base":"small","xs":"large","s":"small","m":"large","l":"small","xl":"large"}, align: right, color: inherit, ellipsis: false and theme: dark 1`] = `
+":host {
+  display: block;
+}
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+}
+.root {
+  padding: 0;
+  margin: 0;
+  text-align: right;
+  color: inherit;
+  white-space: inherit;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
+@media(min-width:480px) {
+  .root {
+    font: normal normal 600 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    font: normal normal 600 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    font: normal normal 600 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  }
+}
+"
+`;

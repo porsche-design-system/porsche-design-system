@@ -24,6 +24,7 @@ import { DividerPage } from './Divider';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
 import { GridPage } from './Grid';
+import { HeadingPage } from './Heading';
 import { HeadlinePage } from './Headline';
 import { IconPage } from './Icon';
 import { InlineNotificationPage } from './InlineNotification';
@@ -127,6 +128,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Grid',
     path: '/grid',
     element: <GridPage />,
+  },
+  {
+    name: 'Heading',
+    path: '/heading',
+    element: <HeadingPage />,
   },
   {
     name: 'Headline',

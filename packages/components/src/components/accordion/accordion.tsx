@@ -3,12 +3,12 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  HEADLINE_TAGS,
+  HEADING_TAGS,
   THEMES,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { HeadlineTag } from '../headline/headline-utils';
+import type { HeadingTag } from '../heading/heading-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
-  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  tag: AllowedTypes.oneOf<HeadingTag>(HEADING_TAGS),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
 };
@@ -49,7 +49,7 @@ export class Accordion {
   @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: HeadlineTag = 'h2';
+  @Prop() public tag?: HeadingTag = 'h2';
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;

@@ -2,34 +2,34 @@
 
 <TableOfContents></TableOfContents>
 
-## Headline
+## Heading
 
-**Headline component** to specify headline styling and hierarchy in documents.
+**Heading component** to specify heading styling and hierarchy in documents.
 
 ## Variant
 
-Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. There are multiple
+Variants for predefined headings and automated responsive sizing to fit into all major breakpoints. There are multiple
 predefined styling variants available.
 
 <Playground :markup="variant" :config="config"></Playground>
 
 ### Default Tags
 
-Default rendered semantic tag hierarchy equals to headline variant.
+Default rendered semantic tag hierarchy equals to heading variant.
 
 **Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for
-**SEO** and **Accessibility**. Regarding of your **page structure** you need to set a **corresponding headline tag** via
-the `tag` property. This means, that a headline can look like an `h1` but doesn't need to be an `h1` in the document
-(see also section "**Custom tag hierarchy**").
+**SEO** and **Accessibility**. Regarding of your **page structure** you need to set a **corresponding heading tag** via
+the `tag` property. This means, that a heading can look like an `h1` but doesn't need to be an `h1` in the document (see
+also section "**Custom tag hierarchy**").
 
-| Headline Variant | Rendered HTML Tag |
-| ---------------- | ----------------- |
-| `large-title`    | `<h1>`            |
-| `headline-1`     | `<h1>`            |
-| `headline-2`     | `<h2>`            |
-| `headline-3`     | `<h3>`            |
-| `headline-4`     | `<h4>`            |
-| `headline-5`     | `<h5>`            |
+| Heading Variant | Rendered HTML Tag |
+| --------------- | ----------------- |
+| `large-title`   | `<h1>`            |
+| `heading-1`     | `<h1>`            |
+| `heading-2`     | `<h2>`            |
+| `heading-3`     | `<h3>`            |
+| `heading-4`     | `<h4>`            |
+| `heading-5`     | `<h5>`            |
 
 ## Custom Variant
 
@@ -53,8 +53,8 @@ to `h1` for every combination.
 
 ## Custom tag hierarchy
 
-If a custom tag hierarchy is needed, **individual headline tags** can be set from `h1` to `h6` either by referencing the
-corresponding `tag` property or setting the HTML headline tags directly as slots.
+If a custom tag hierarchy is needed, **individual heading tags** can be set from `h1` to `h6` either by referencing the
+corresponding `tag` property or setting the HTML heading tags directly as slots.
 
 <Playground :markup="customTagHierarchy" :config="config"></Playground>
 
@@ -98,7 +98,7 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADLINE_VARIANTS } from '../heading/heading-utils';
+import { HEADING_VARIANTS } from './heading-utils';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -110,33 +110,33 @@ export default class Code extends Vue {
   color = 'default';
   align = 'center';
 
-  variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+  variant = HEADING_VARIANTS.map((item) => `<p-heading variant="${item}">${sentence}</p-heading>`).join('\n');
 
   get customVariantMarkup() {
     const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
-    return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
+    return `<p-heading variant="${this.customVariant}"${style}>${sentence}</p-heading>`;
   }
 
   customTagHierarchy =
-`<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
-<p-headline variant="headline-3" tag="h1">${sentence}</p-headline>
-<p-headline variant="headline-1">
+`<p-heading variant="heading-1" tag="h3">${sentence}</p-heading>
+<p-heading variant="heading-3" tag="h1">${sentence}</p-heading>
+<p-heading variant="heading-1">
   <h3>${sentence}</h3>
-</p-headline>
-<p-headline variant="headline-3">
+</p-heading>
+<p-heading variant="heading-3">
   <h1>${sentence}</h1>
-</p-headline>`;
+</p-heading>`;
 
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
-    return `<p-headline variant="headline-3" color="${this.color}"${style}>${sentence}</p-headline>`
+    return `<p-heading variant="heading-3" color="${this.color}"${style}>${sentence}</p-heading>`
   }
 
   get alignment() {
-    return `<p-headline variant="headline-3" align="${this.align}">${sentence}</p-headline>`;
+    return `<p-heading variant="heading-3" align="${this.align}">${sentence}</p-heading>`;
   }
   
   ellipsisMode =
-`<p-headline variant="headline-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>`;
+`<p-heading variant="heading-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-heading>`;
 }
 </script>

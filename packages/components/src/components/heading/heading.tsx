@@ -8,11 +8,11 @@ import {
   validateProps,
 } from '../../utils';
 import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
-import type { HeadingTag, HeadingVariant } from '../heading/heading-utils';
-import { getHeadingTagName, HEADING_TAGS } from '../heading/heading-utils';
-import { getComponentCss } from '../heading/heading-styles';
+import type { HeadingTag, HeadingVariant } from './heading-utils';
+import { getHeadingTagName, HEADING_TAGS } from './heading-utils';
+import { getComponentCss } from './heading-styles';
 
-const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
+const propTypes: Omit<PropTypes<typeof Heading>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
   tag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
@@ -22,16 +22,16 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
 };
 
 @Component({
-  tag: 'p-headline',
+  tag: 'p-heading',
   shadow: true,
 })
-export class Headline {
+export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Predefined style of the headline. */
-  @Prop() public variant?: HeadingVariant = 'headline-1';
+  /** Predefined style of the heading. */
+  @Prop() public variant?: HeadingVariant = 'heading-1';
 
-  /** Sets a custom HTML tag depending on the usage of the headline component. */
+  /** Sets a custom HTML tag depending on the usage of the heading component. */
   @Prop() public tag?: HeadingTag;
 
   /** Text alignment of the component. */

@@ -13,7 +13,7 @@ import {
   displayLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { isVariantType } from '../heading/heading-utils';
+import { isVariantType } from './heading-utils';
 
 const headingMap: Record<VariantType, JssStyle> = {
   'large-title': displayLargeStyle,
