@@ -36,20 +36,16 @@ export const getColors = (
 } => {
   const themedColors = getThemedColors(theme);
 
-  const { primaryColor, contrastMediumColor } = themedColors;
+  const { primaryColor, contrastMediumColor, disabledColor } = themedColors;
   const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
-  const borderColor = isSelected
-    ? themedColors.primaryColor
-    : isDisabled
-    ? themedColors.disabledColor
-    : themedColors.contrastMediumColor;
+  const borderColor = isSelected ? primaryColor : isDisabled ? disabledColor : themedColors.contrastMediumColor;
   const hoverBorderColor = themedColors.primaryColor;
 
   return isDisabled
     ? {
         backgroundColor,
-        buttonColor: themedColors.disabledColor,
-        labelColor: themedColors.disabledColor,
+        buttonColor: disabledColor,
+        labelColor: disabledColor,
         borderColor,
         hoverBorderColor,
       }
