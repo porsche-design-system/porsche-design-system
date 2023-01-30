@@ -28,9 +28,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -43,8 +40,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
@@ -78,9 +76,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -93,8 +88,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
@@ -127,9 +123,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -142,8 +135,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
@@ -176,9 +170,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -191,8 +182,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
@@ -226,9 +218,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -241,8 +230,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
@@ -276,9 +266,6 @@ p {
 
 .icon {
   display: none;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .content {
   display: grid;
@@ -291,8 +278,9 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
-    color: black;
-    filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
   }
 }
 "
