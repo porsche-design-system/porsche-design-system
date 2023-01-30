@@ -14,6 +14,7 @@ exports[`should match snapshot 1`] = `
   "p-fieldset-wrapper",
   "p-flex",
   "p-grid",
+  "p-heading",
   "p-headline",
   "p-icon",
   "p-inline-notification",
