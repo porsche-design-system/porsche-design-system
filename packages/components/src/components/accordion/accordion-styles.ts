@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
+import { getTransition, pxToRemWithUnit, transitionDuration, getThemedColors, getInsetJssStyle } from '../../styles';
 import {
   fontWeight,
   fontSizeText,
@@ -9,6 +9,7 @@ import {
   textSmallStyle,
   fontLineHeight,
   borderRadiusSmall,
+  borderWidthBase,
 } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
@@ -35,6 +36,7 @@ export const getComponentCss = (
       },
       button: {
         display: 'flex',
+        position: 'relative',
         justifyContent: 'space-between',
         margin: `${pxToRemWithUnit(4)} 0`,
         width: '100%',
@@ -43,12 +45,11 @@ export const getComponentCss = (
         background: 'transparent',
         cursor: 'pointer',
         transition: getTransition('background-color'),
-        overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
+        //   overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: primaryColor,
         ...textSmallStyle,
         fontWeight: fontWeight.semiBold,
-        borderRadius: borderRadiusSmall,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
           : buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -57,12 +58,30 @@ export const getComponentCss = (
               ...fontSizeText[s],
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
-        ...getFocusJssStyle({ color: focusColor }),
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          borderRadius: borderRadiusSmall,
+          transition: getTransition('background-color'),
+          ...getInsetJssStyle(-5),
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          borderRadius: borderRadiusSmall,
+          ...getInsetJssStyle(-10),
+        },
         ...hoverMediaQuery({
-          '&:hover': {
+          '&:hover::before': {
             backgroundColor: hoverColor,
           },
         }),
+        '&:focus::after': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+        },
+        '&:not(:focus-visible)::after': {
+          border: 0,
+        },
       },
     },
     ...(!compact && {
