@@ -10,6 +10,7 @@ const components = [
   'button-pure',
   'tag-dismissible',
   'link-social',
+  'spinner',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {

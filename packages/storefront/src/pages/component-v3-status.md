@@ -31,7 +31,7 @@
 | Components                 | V3 Status                                                                                                                                                                         |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ⛔ **Icon**                 |                                                                                                                                                                                   |
-| ✅ **Spinner**              | - Animation is not smooth in Safari                                                                                                                                               |
+| ✅ **Spinner**              |                                                                                                                                                |
 | ✅ **Link Pure**            | - Fix jittering/spotting of `active` state on iOS<br />- use prop `current` instead of `active`                                                                                   |
 | ✅ **Button Pure**          | - Fix jittering/spotting of `active` state on iOS                                                                                                                                 |
 | ✅ **Button / Link**        | - Coloring of icon when button is disabled is not correct yet, because icon component isn't refactored providing correct coloring created by css filters                          |
