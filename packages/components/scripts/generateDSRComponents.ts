@@ -182,6 +182,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
+          .replace(/: Theme/g, ': any')
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
@@ -237,22 +238,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
-      } else if (tagName === 'p-icon') {
-        newFileContent = newFileContent
-          .replace(/^/, "import { ICONS_MAP } from '@porsche-design-system/icons';\n") // add missing import
-          .replace(
-            /(import {.*)(} from '@porsche-design-system\/components\/dist\/utils';)/,
-            '$1, paramCaseToCamelCase, isUrl$2'
-          ) // add missing import
-          .replace(
-            /(<i key={this\.key\+\+} className="root") \/>/,
-            `$1 dangerouslySetInnerHTML={{ __html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || '' }} />`
-          ); // let svg icons render on server
       } else if (tagName === 'p-popover') {
-        // only keep :host styles
+        // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-toast') {
         // only keep :host styles

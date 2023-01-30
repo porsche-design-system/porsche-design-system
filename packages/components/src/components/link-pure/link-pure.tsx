@@ -141,11 +141,10 @@ export class LinkPure {
         {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
-            color="inherit"
-            theme={this.theme}
             size="inherit"
             name={this.icon}
             source={this.iconSource}
+            theme={this.theme}
             aria-hidden="true"
           />
         )}
