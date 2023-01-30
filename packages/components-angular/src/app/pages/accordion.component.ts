@@ -128,30 +128,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render multiple compact accordions with one open on light background">
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [open]="true">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true" [open]="true">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render multiple compact accordions with one open on dark background">
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [theme]="'dark'">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true" [theme]="'dark'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [open]="true" [theme]="'dark'">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true" [open]="true" [theme]="'dark'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
-      <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [theme]="'dark'">
+      <p-accordion [heading]="'Some compact accordion heading'" [compact]="true" [theme]="'dark'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
@@ -184,7 +184,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render compact accordion with size medium">
-      <p-accordion [heading]="'Some heading size medium'" [compact]="true" [size]="'medium'">
+      <p-accordion [heading]="'Some compact accordion size medium'" [compact]="true" [size]="'medium'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
@@ -195,7 +195,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render compact accordion with breakpoint customizable size on light background"
     >
       <p-accordion
-        [heading]="'Some heading responsive size'"
+        [heading]="'Some compact accordion responsive size'"
         [compact]="true"
         [size]="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
       >

@@ -129,30 +129,30 @@ const AccordionPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render multiple compact accordions with one open on light background">
-        <PAccordion heading="Some compact Accordion heading" compact={true}>
+        <PAccordion heading="Some compact accordion heading" compact={true}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
-        <PAccordion heading="Some compact Accordion heading" compact={true} open={true}>
+        <PAccordion heading="Some compact accordion heading" compact={true} open={true}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
-        <PAccordion heading="Some compact Accordion heading" compact={true}>
+        <PAccordion heading="Some compact accordion heading" compact={true}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
       </div>
 
       <div className="playground dark" title="should render multiple compact accordions with one open on dark background">
-        <PAccordion heading="Some compact Accordion heading" compact={true} theme="dark">
+        <PAccordion heading="Some compact accordion heading" compact={true} theme="dark">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
-        <PAccordion heading="Some compact Accordion heading" compact={true} open={true} theme="dark">
+        <PAccordion heading="Some compact accordion heading" compact={true} open={true} theme="dark">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
-        <PAccordion heading="Some compact Accordion heading" compact={true} theme="dark">
+        <PAccordion heading="Some compact accordion heading" compact={true} theme="dark">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
@@ -185,7 +185,7 @@ const AccordionPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render compact accordion with size medium">
-        <PAccordion heading="Some heading size medium" compact={true} size="medium">
+        <PAccordion heading="Some compact accordion size medium" compact={true} size="medium">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
@@ -196,7 +196,7 @@ const AccordionPage: NextPage = (): JSX.Element => {
         title="should render compact accordion with breakpoint customizable size on light background"
       >
         <PAccordion
-          heading="Some heading responsive size"
+          heading="Some compact accordion responsive size"
           compact={true}
           size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         >
