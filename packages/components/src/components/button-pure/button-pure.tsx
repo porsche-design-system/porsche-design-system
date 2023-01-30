@@ -151,9 +151,10 @@ export class ButtonPure {
           hasIcon && (
             <PrefixedTagNames.pIcon
               {...iconProps}
-              color="inherit"
               name={this.icon}
               source={this.iconSource}
+              color={this.isDisabledOrLoading ? 'contrast-medium' : 'primary'}
+              theme={this.theme}
               aria-hidden="true"
             />
           )

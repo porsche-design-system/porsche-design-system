@@ -19,14 +19,24 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonPureStyles(icon, iconSource, active, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, false, theme),
+      getLinkButtonPureStyles(
+        icon,
+        iconSource,
+        active,
+        isDisabledOrLoading,
+        stretch,
+        size,
+        hideLabel,
+        alignLabel,
+        false,
+        theme
+      ),
       {
         root: {
           appearance: 'none',
           background: 'transparent',
           textAlign: 'left',
           border: 0,
-          padding: 0,
           cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         },
         ...(!hasIcon &&
