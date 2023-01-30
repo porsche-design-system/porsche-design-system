@@ -32,9 +32,52 @@ exports[`accessibility should expose correct initial accessibility tree properti
 {
   "children": [
     {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "Some label",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "Some label",
+                  "role": "link",
+                },
+              ],
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
       "role": "none",
     },
   ],
-  "role": "none",
+  "name": "",
+  "role": "RootWebArea",
 }
 `;

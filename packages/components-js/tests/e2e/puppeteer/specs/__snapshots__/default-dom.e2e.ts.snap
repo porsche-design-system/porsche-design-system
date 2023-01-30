@@ -166,14 +166,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `
-"<i class="root">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
-    <path d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z">
-    </path>
-  </svg>
-</i>"
-`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
@@ -279,8 +272,12 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-popover 1`] = `
-"<p-button-pure class="hydrated">
-  More information</p-button-pure>"
+"<button type="button" aria-expanded="false">
+  <p-icon class="icon hydrated">
+  </p-icon>
+  <span class="label">
+    More information</span>
+</button>"
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `

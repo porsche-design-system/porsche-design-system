@@ -12,7 +12,6 @@ export { AllowedTypes, validateProps } from './validateProps';
 export { ALIGN_LABELS } from '../link-button/align-label';
 export { BUTTON_TYPES } from '../link-button/button-type';
 export { HEADING_TAGS } from '../../components/heading/heading-utils';
-export { ICON_SIZES } from '../../components/icon/icon-size';
 export { LINK_BUTTON_VARIANTS } from '../link-button/link-button-variant';
 export { TEXT_ALIGNS } from '../../components/text/text-align';
 export { TEXT_COLORS } from '../../components/text/text-color';

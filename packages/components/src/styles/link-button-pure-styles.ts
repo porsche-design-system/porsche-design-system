@@ -13,6 +13,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFontSizeText } from './font-size-text-styles';
 import { hoverMediaQuery } from './hover-media-query';
+import { hostHiddenStyles } from './host-hidden-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
@@ -53,6 +54,7 @@ export const getLinkButtonPureStyles = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
+          ...hostHiddenStyles,
           transform: 'translate3d(0,0,0)', // creates new stacking context
           outline: 0, // custom element is able to delegate the focus
         }),
@@ -66,6 +68,8 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       gap: spacingStaticXSmall,
       width: '100%',
+      margin: 0,
+      padding: 0,
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       outline: 0,
       ...textSmallStyle,
@@ -82,9 +86,11 @@ export const getLinkButtonPureStyles = (
         content: '""',
         position: 'fixed',
         top: offsetVertical,
-        right: offsetHorizontal,
         bottom: offsetVertical,
-        left: offsetHorizontal,
+        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+          right: hideLabelValue ? offsetVertical : offsetHorizontal,
+          left: hideLabelValue || hasIcon ? offsetVertical : offsetHorizontal,
+        })),
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
