@@ -56,7 +56,14 @@ export const getComponentCss = (
           position: 'absolute',
           borderRadius: borderRadiusSmall,
           transition: getTransition('background-color'),
-          ...getInsetJssStyle(-4),
+          ...(compact
+            ? getInsetJssStyle(-4)
+            : {
+                top: '6px',
+                bottom: '6px',
+                left: '-4px',
+                right: '-4px',
+              }),
         },
         ...hoverMediaQuery({
           '&:hover::before': {
