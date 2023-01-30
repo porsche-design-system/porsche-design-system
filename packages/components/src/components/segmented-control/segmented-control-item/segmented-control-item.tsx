@@ -70,6 +70,8 @@ export class SegmentedControlItem {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.icon,
+      this.iconSource,
       this.disabled,
       this.host.selected,
       this.host.backgroundColor || 'background-default', // default as fallback
