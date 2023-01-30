@@ -28,6 +28,18 @@ describe('render', () => {
 
     expect(spy).toBeCalledWith(component.host, component.value, component.backgroundColor, component.theme);
   });
+
+  it('should call warnIfBackgroundColorIsUsed() with correct parameters', () => {
+    const spy = jest.spyOn(segmentedControlUtils, 'warnIfBackgroundColorIsUsed');
+    const component = new SegmentedControl();
+    component.host = document.createElement('p-segmented-control');
+    component.backgroundColor = 'background-surface';
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toBeCalledWith(component.host, 'background-surface');
+  });
 });
 
 describe('componentDidLoad', () => {
