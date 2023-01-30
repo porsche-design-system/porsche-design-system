@@ -41,12 +41,12 @@ describe('setCollapsibleElementHeight()', () => {
 });
 
 describe('getContentHeight()', () => {
-  it('should return height value with extra padding in rem', () => {
-    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
+  it('should return height value with extra padding in px', () => {
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('16px');
   });
 
-  it('should return height value without extra padding for compact = true in rem', () => {
-    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
+  it('should return height value without extra padding for compact = true in px', () => {
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('16px');
   });
 });
 

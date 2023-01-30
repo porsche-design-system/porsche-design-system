@@ -71,7 +71,7 @@ describe('accordion', () => {
         x: 0,
         y: 0,
       });
-      expect(component['contentHeight']).toBe('0rem');
+      expect(component['contentHeight']).toBe('0px');
     });
   });
 
