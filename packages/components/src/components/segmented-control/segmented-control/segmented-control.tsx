@@ -15,6 +15,7 @@ import {
   getItemMaxWidth,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   syncSegmentedControlItemsProps,
+  warnIfBackgroundColorIsUsed,
 } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
@@ -67,6 +68,7 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfBackgroundColorIsUsed(this.host, this.backgroundColor);
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
     syncSegmentedControlItemsProps(this.host, this.value, this.backgroundColor, this.theme);
 

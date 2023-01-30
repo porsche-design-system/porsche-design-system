@@ -10,7 +10,7 @@ import {
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { forceUpdate } from '@stencil/core';
-import { hasDocument } from '../../../utils';
+import { getTagName, hasDocument } from '../../../utils';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
@@ -79,4 +79,15 @@ export const syncSegmentedControlItemsProps = (
       forceUpdate(item);
     }
   );
+};
+
+export const warnIfBackgroundColorIsUsed = (
+  host: HTMLElement,
+  backgroundColor: SegmentedControlBackgroundColor
+): void => {
+  if (backgroundColor !== 'background-default') {
+    console.warn(
+      `The background-color prop is deprecated for ${getTagName(host)} and will be removed with next major release.`
+    );
+  }
 };
