@@ -435,6 +435,8 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Text: [() => import('@/../../components/src/components/text/text.code.md')],
       // @ts-ignore
+      Heading: [() => import('@/../../components/src/components/heading/heading.code.md')],
+      // @ts-ignore
       Headline: [() => import('@/../../components/src/components/headline/headline.code.md')],
       // @ts-ignore
       Usage: [() => import('@/pages/components/typography/typography.usage.md')],
