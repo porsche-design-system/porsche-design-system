@@ -5,17 +5,18 @@ import {
   openPopoversAndHighlightSpacer,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import type { GetMarkup } from '../helpers';
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   getBodyMarkup,
+  getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'popover', '/#popover', {
       scenario: (page) => openPopoversAndHighlightSpacer(page),
@@ -23,7 +24,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   ).toBeFalsy();
 });
 
-xit('should have no visual regression on popover-overview for viewport 1760', async () => {
+it('should have no visual regression on popover-overview for viewport 1760', async () => {
   const vrt = getVisualRegressionTester(1760);
   expect(
     await vrt.test('popover-overview', async () => {
@@ -149,23 +150,23 @@ xit('should have no visual regression on popover-overview for viewport 1760', as
   ).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('popover-states', async () => {
       const page = vrt.getPage();
 
-      const getElementsMarkup: GetMarkup = () => `
-        <p-popover>Some content with a <a>link</a></p-popover>`;
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-popover theme="${theme}">Some content with a <a>link</a></p-popover>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
       await openPopoversAndHighlightSpacer(page);
 
-      await forceHoverState(page, '.hover > p-popover >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover > p-popover >>> button');
       await forceHoverState(page, '.hover > p-popover > a');
-      await forceFocusState(page, '.focus > p-popover >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus > p-popover >>> button');
       await forceFocusState(page, '.focus > p-popover > a');
-      await forceFocusHoverState(page, '.focus-hover > p-popover >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover > p-popover >>> button');
       await forceFocusHoverState(page, '.focus-hover > p-popover > a');
     })
   ).toBeFalsy();

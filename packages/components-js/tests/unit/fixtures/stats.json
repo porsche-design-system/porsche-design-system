@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 6926,
-    "gzipSize": 2825
+    "size": 6932,
+    "gzipSize": 2822
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 6988,
-    "gzipSize": 2965
+    "size": 7037,
+    "gzipSize": 2972
   },
   {
     "chunkShortName": "carousel",
@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6312,
-    "gzipSize": 2676
+    "size": 6354,
+    "gzipSize": 2693
   },
   {
     "chunkShortName": "link-pure",
-    "size": 6789,
-    "gzipSize": 2860
+    "size": 6838,
+    "gzipSize": 2874
   },
   {
     "chunkShortName": "link-social",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66490,
-    "gzipSize": 22710
+    "size": 66511,
+    "gzipSize": 22709
   },
   {
     "chunkShortName": "marque",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6692,
-    "gzipSize": 2801
+    "size": 7291,
+    "gzipSize": 2904
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -171,13 +171,13 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 3932,
-    "gzipSize": 1733
+    "size": 3940,
+    "gzipSize": 1744
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 5493,
-    "gzipSize": 2256
+    "size": 5441,
+    "gzipSize": 2216
   },
   {
     "chunkShortName": "text",

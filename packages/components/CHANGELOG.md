@@ -12,13 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `underline` prop for `Link Pure`
-- `Checkbox Wrapper`, `Radio Button Wrapper` and `Tag Dismissible` supports `theme` prop
+- `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible` and `Popover` supports `theme` prop
 
 #### Changed
 
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
-- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. 
-  Therefor the `icon` property **must** be set if the `link` or `button` has the `hide-label` property: 
+- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefor
+  the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
 
 ```diff
 - <p-link href="#" hide-label="true">Some label</p-link>
@@ -33,7 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-button hide-label="{ base: true, m: false }">Some label</p-button>
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
-- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible` matches new design language
+- `Spinner`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible`, `Popover` matches new design language
 - CSS global variables names
 ```diff
 - --p-animation-duration__spinner
