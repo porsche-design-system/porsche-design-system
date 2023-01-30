@@ -98,7 +98,7 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <PButtonPure style={{ width: '15rem' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing </PButtonPure>
+        <PButtonPure style={{ width: '15rem' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button-pure with custom clickable area">

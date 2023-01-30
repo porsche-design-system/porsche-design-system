@@ -60,7 +60,7 @@ Predefined colors associated with its theme are available. Furthermore, inherit 
 color.
 
 <p-inline-notification heading="Important note" state="success" persistent="true">
-  The inherit mode works slightly different in v3 compared to the previous major release. A CSS filter is required to
+  The inherit mode works slightly different in v3 compared to the previous major release. A CSS filter (use some Online Calculator "hex to css filter") is required to
 apply custom coloring to take advantage of using an SVG embedded in an image tag for better loading performance.
 </p-inline-notification>
 

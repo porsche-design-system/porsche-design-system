@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import type { IconAriaAttribute } from './icon-utils';
-import { buildIconUrl, ICON_ARIA_ATTRIBUTES } from './icon-utils';
+import type { IconAriaAttribute, IconColor } from './icon-utils';
+import { buildIconUrl, ICON_ARIA_ATTRIBUTES, IconSize } from './icon-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,15 +10,15 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import type { IconName, PropTypes, SelectedAriaAttributes, TextColor, TextSize, Theme } from '../../types';
+import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getComponentCss } from './icon-styles';
-import { ICON_NAMES } from '@porsche-design-system/icons';
+import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 
 const propTypes: PropTypes<typeof Icon> = {
-  name: AllowedTypes.oneOf<IconName>(ICON_NAMES),
+  name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),
   source: AllowedTypes.string,
-  color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
-  size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
+  color: AllowedTypes.oneOf<IconColor>(TEXT_COLORS),
+  size: AllowedTypes.oneOf<IconSize>(TEXT_SIZES),
   lazy: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
@@ -38,10 +38,10 @@ export class Icon {
   @Prop() public source?: string;
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: TextColor = 'primary';
+  @Prop() public color?: IconColor = 'primary';
 
   /** The size of the icon. */
-  @Prop() public size?: TextSize = 'small';
+  @Prop() public size?: IconSize = 'small';
 
   /**
    * Has no effect anymore

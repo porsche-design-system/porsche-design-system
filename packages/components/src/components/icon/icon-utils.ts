@@ -1,8 +1,11 @@
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
-import type { IconName } from '../../types';
+import type { IconName, TextColor, TextSize } from '../../types';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type IconAriaAttribute = typeof ICON_ARIA_ATTRIBUTES[number];
+
+export type IconSize = TextSize;
+export type IconColor = TextColor;
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 

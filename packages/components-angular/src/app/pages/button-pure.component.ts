@@ -97,7 +97,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render button with multiline label">
-      <p-button-pure style="width: 15rem">Label multiline lorem ipsum dolor sit amet, consetetur sadipscing </p-button-pure>
+      <p-button-pure style="width: 15rem">Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
     </div>
 
     <div class="playground light" title="should render button-pure with custom clickable area">
