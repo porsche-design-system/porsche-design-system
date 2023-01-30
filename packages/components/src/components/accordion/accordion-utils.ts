@@ -1,6 +1,5 @@
 import type { BreakpointCustomizable } from '../../types';
 import { getTagName, hasWindow, observeChildren, unobserveChildren } from '../../utils';
-import { pxToRemWithUnit } from '../../styles';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZES[number];
@@ -16,7 +15,7 @@ export const setCollapsibleElementHeight = (
   }
 };
 
-export const getContentHeight = ({ height }: DOMRectReadOnly): string => pxToRemWithUnit(height);
+export const getContentHeight = ({ height }: DOMRectReadOnly): string => `${height}px`;
 
 export const warnIfCompactAndSizeIsSet = (
   host: HTMLElement,
