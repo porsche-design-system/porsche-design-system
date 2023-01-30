@@ -14,23 +14,23 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'headline', '/#headline')).toBeFalsy();
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'heading', '/#heading')).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
-    await vrt.test('headline-states', async () => {
+    await vrt.test('heading-states', async () => {
       const page = vrt.getPage();
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-headline variant="headline-3" theme="${theme}">Some Headline with <a href="#">link</a></p-headline>`;
+        <p-heading variant="heading-3" theme="${theme}">Some Heading with <a href="#">link</a></p-heading>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-headline a');
-      await forceFocusState(page, '.focus > p-headline a');
-      await forceFocusHoverState(page, '.focus-hover > p-headline a');
+      await forceHoverState(page, '.hover > p-heading a');
+      await forceFocusState(page, '.focus > p-heading a');
+      await forceFocusHoverState(page, '.focus-hover > p-heading a');
     })
   ).toBeFalsy();
 });
