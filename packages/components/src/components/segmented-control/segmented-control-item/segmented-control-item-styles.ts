@@ -111,8 +111,8 @@ export const getComponentCss = (
             }
           : {
               cursor: 'pointer',
+              transition: getTransition('border-color'),
               ...hoverMediaQuery({
-                transition: getTransition('border-color'),
                 '&:hover': {
                   borderColor: hoverBorderColor,
                   cursor: 'pointer',
