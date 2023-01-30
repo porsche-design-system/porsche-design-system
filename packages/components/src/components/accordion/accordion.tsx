@@ -124,7 +124,6 @@ export class Accordion {
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon
               class="icon"
-              color="inherit"
               name={this.open ? 'minus' : 'plus'}
               theme={this.theme}
               size="inherit"
