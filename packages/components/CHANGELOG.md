@@ -9,9 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.20.0-rc.0] - 2023-01-30
+
 #### Added
 
-- `normalize` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
+- `applyNormalizeStyles` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
 
 ### [2.19.1-rc.1] - 2023-01-18
 
