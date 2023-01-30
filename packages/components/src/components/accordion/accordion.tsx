@@ -19,7 +19,6 @@ import {
   setCollapsibleElementHeight,
   unobserveResize,
   useResizeObserverFallback,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
@@ -73,10 +72,6 @@ export class Accordion {
     if (useResizeObserverFallback) {
       resizeObserverFallback(this.host, this.setContentHeight, true);
     }
-  }
-
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
 
   public componentDidLoad(): void {

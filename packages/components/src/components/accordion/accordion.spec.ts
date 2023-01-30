@@ -10,17 +10,6 @@ describe('accordion', () => {
     useResizeObserverFallbackOverride(!isResizeObserverDefined());
   });
 
-  describe('componentWillLoad', () => {
-    it('should call throwIfCompactAndSizeIsSet() with correct parameters', () => {
-      const spy = jest.spyOn(accordionUtils, 'warnIfCompactAndSizeIsSet');
-      const component = new Accordion();
-      component.host = document.createElement('p-accordion');
-      component.componentWillLoad();
-
-      expect(spy).toBeCalledWith(component.host, undefined, 'small');
-    });
-  });
-
   describe('connectedCallback', () => {
     it('should not add resize event listener to window if ResizeObserver is available', () => {
       const component = new Accordion();

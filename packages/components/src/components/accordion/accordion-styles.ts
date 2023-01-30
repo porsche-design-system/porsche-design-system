@@ -27,11 +27,6 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...(!compact && {
-          '&(:first-of-type) .root': {
-            borderTop: border,
-          },
-        }),
         ...hostHiddenStyles,
       },
       button: {
@@ -50,14 +45,12 @@ export const getComponentCss = (
         color: primaryColor,
         ...textSmallStyle,
         fontWeight: fontWeight.semiBold,
-        ...(compact
-          ? { padding: '4px 0' }
-          : buildResponsiveStyles(size, (s: AccordionSize) => ({
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              ...fontSizeText[s],
-              padding: `${s === 'medium' ? '20px' : '12px'} 0`,
-            }))),
+        ...buildResponsiveStyles(size, (s: AccordionSize) => ({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          fontSize: fontSizeText[s],
+          padding: compact ? '4px 0' : `${s === 'medium' ? '20px' : '12px'} 0`,
+        })),
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -101,7 +94,7 @@ export const getComponentCss = (
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: compact ? spacingStaticSmall : '40px',
+            paddingBottom: compact ? spacingStaticSmall : '24px',
             visibility: 'visible',
             transition: getTransition('height') + `,visibility ${transitionDuration}`,
             animation: `$open ${transitionDuration} ease forwards`,

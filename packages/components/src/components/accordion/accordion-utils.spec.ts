@@ -9,7 +9,6 @@ import {
   unobserveResize,
   unobserveWindowResize,
   useResizeObserverFallbackOverride,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
@@ -48,27 +47,6 @@ describe('getContentHeight()', () => {
 
   it('should return height value without extra padding for compact = true in rem', () => {
     expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
-  });
-});
-
-describe('warnIfCompactAndSizeIsSet()', () => {
-  it('should print warning when compact and size is defined', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-    const host = document.createElement('p-accordion');
-
-    warnIfCompactAndSizeIsSet(host, true, 'small');
-    warnIfCompactAndSizeIsSet(host, false, 'medium');
-
-    expect(spy).not.toBeCalled();
-
-    warnIfCompactAndSizeIsSet(host, true, 'medium');
-    warnIfCompactAndSizeIsSet(
-      host,
-      true,
-      '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}'
-    );
-
-    expect(spy).toBeCalledTimes(2);
   });
 });
 
