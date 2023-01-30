@@ -34,7 +34,7 @@ export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
   /** Background color variations */
-  @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default';
+  @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default'; // 'background-color' prop is deprecated
 
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';

@@ -12,8 +12,8 @@ import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { forceUpdate } from '@stencil/core';
 import { getTagName, hasDocument } from '../../../utils';
 
-export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
-export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
+export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
+export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number]; // 'background-color' prop is deprecated
 
 export type SegmentedControlChangeEvent = { value: string | number };
 
