@@ -97,7 +97,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
-    updatePopoverStyles(host, spacer, popover, 'top');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -106,20 +106,20 @@ describe('updatePopoverStyles()', () => {
     const attachComponentCssSpy = jest.spyOn(utils, 'attachComponentCss');
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
-    updatePopoverStyles(host, spacer, popover, 'top');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light');
     expect(getAutoDirectionSpy).not.toBeCalled();
     expect(attachComponentCssSpy).not.toBeCalled();
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
-    updatePopoverStyles(host, spacer, popover, 'top');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light');
 
     expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
-    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom');
+    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', 'light');
   });
 
   it('should call getPopoverMargin()', () => {
     const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
-    updatePopoverStyles(host, spacer, popover, 'top');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -127,7 +127,7 @@ describe('updatePopoverStyles()', () => {
     jest.spyOn(popoverUtils, 'getPopoverMargin').mockImplementationOnce(() => '1px');
     expect(popover.style.margin).toBe('0px');
 
-    updatePopoverStyles(host, spacer, popover, 'top');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light');
     expect(popover.style.margin).toBe('1px');
   });
 });
