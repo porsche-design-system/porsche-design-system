@@ -36,7 +36,11 @@ An icon can be added via the `icon` or `iconSource` property.
 
 <Playground :markup="withIconsMarkup" :config="config"></Playground>
 
-## Background Color
+## Background Color (deprecated)
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The background-color prop is deprecated and will be removed with next major release.
+</p-inline-notification>
 
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
