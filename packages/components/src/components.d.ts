@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -19,7 +19,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttribute } from "./components/icon/icon-utils";
+import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
@@ -404,9 +404,10 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -422,7 +423,7 @@ export namespace Components {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
     }
@@ -748,6 +749,10 @@ export namespace Components {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
@@ -2007,9 +2012,10 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -2025,7 +2031,7 @@ declare namespace LocalJSX {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
     }
@@ -2367,6 +2373,10 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**

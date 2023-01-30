@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
 import globby from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { paramCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 type Manifest = {
@@ -26,19 +26,18 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Co
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = optimize(svgRawData, config).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
 
     if (svgRawName !== paramCase(svgRawName)) {
-      throw new Error(`Icon name "${svgRawName}" does not fit naming convention »kebab-case«.`);
+      throw new Error(`Icon name "${svgRawName}" does not fit naming convention »param-case«.`);
     }
     if (svgRawName in manifest) {
       throw new Error(`Icon name "${svgRawName}" is not unique.`);
     }
 
-    const nameKey = camelCase(svgRawName);
-    manifest[nameKey] = svgOptimizedFilename;
-    iconsMap[nameKey] = svgOptimizedData;
+    manifest[svgRawName] = svgOptimizedFilename;
+    iconsMap[svgRawName] = svgOptimizedData;
 
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
@@ -62,10 +61,6 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Co
     result[key] = manifest[key];
     return result;
   }, {} as Manifest);
-  const sortedIconsMap: IconsMap = sortedManifestKeys.reduce((result, key) => {
-    result[key] = iconsMap[key];
-    return result;
-  }, {} as IconsMap);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
@@ -73,10 +68,8 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Co
 
 export const CDN_BASE_URL = ${cdn};
 export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
-export const ICONS_MAP = ${JSON.stringify(sortedIconsMap)};
-export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)};
-export type IconName = ${sortedManifestKeys.map((x) => `'${paramCase(x)}'`).join(' | ')};
-export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join(' | ')};`
+export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)} as const;
+export type IconName = typeof ICON_NAMES[number];`
   );
 
   console.log('Created icons manifest.');

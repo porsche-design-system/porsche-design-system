@@ -197,7 +197,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": null,
           "hostPdsComponent": "p-button-pure",
           "properties": {
-            "color": "inherit",
+            "color": "primary",
             "lazy": false,
             "name": "close",
             "size": "inherit",

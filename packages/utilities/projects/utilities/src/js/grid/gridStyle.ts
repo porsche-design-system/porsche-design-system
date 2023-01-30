@@ -8,11 +8,11 @@ import { getMediaQueryMin } from '../mediaQuery';
 const { min: minWidth, max: maxWidth } = gridWidth;
 
 export const gridStyle = {
-  '--pds-grid-span-one-half': 'span 3',
-  '--pds-grid-span-one-third': 'span 2',
-  '--pds-grid-span-two-thirds': 'span 4',
-  '--pds-grid-span-one-quarter': 'span 1',
-  '--pds-grid-span-three-quarters': 'span 5',
+  '--p-internal-grid-span-one-half': 'span 3',
+  '--p-internal-grid-span-one-third': 'span 2',
+  '--p-internal-grid-span-two-thirds': 'span 4',
+  '--p-internal-grid-span-one-quarter': 'span 1',
+  '--p-internal-grid-span-three-quarters': 'span 5',
   display: 'grid',
   gridGap,
   gridTemplateColumns: `[fluid-start] minmax(0, calc(${gridSafeZone} - ${gridGap}))
@@ -24,11 +24,11 @@ export const gridStyle = {
   padding: `0 calc((100% - ${maxWidth}) / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
-    '--pds-grid-span-one-half': 'span 6',
-    '--pds-grid-span-one-third': 'span 4',
-    '--pds-grid-span-two-thirds': 'span 8',
-    '--pds-grid-span-one-quarter': 'span 3',
-    '--pds-grid-span-three-quarters': 'span 9',
+    '--p-internal-grid-span-one-half': 'span 6',
+    '--p-internal-grid-span-one-third': 'span 4',
+    '--p-internal-grid-span-two-thirds': 'span 8',
+    '--p-internal-grid-span-one-quarter': 'span 3',
+    '--p-internal-grid-span-three-quarters': 'span 9',
     gridTemplateColumns: `[fluid-start] minmax(0, calc(${gridSafeZone} - ${gridGap}))
     [extended-start] minmax(0, 1fr)
         [basic-start] repeat(12, minmax(0, 1fr)) [basic-end]
