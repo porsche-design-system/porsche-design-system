@@ -19,7 +19,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttribute } from "./components/icon/icon-utils";
+import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
@@ -404,7 +404,7 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
@@ -417,7 +417,7 @@ export namespace Components {
         /**
           * The size of the icon.
          */
-        "size"?: TextSize;
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -2012,7 +2012,7 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
@@ -2025,7 +2025,7 @@ declare namespace LocalJSX {
         /**
           * The size of the icon.
          */
-        "size"?: TextSize;
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
