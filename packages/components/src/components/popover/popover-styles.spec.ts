@@ -1,20 +1,16 @@
-import { getComponentCss, getSlottedCss } from './popover-styles';
-import { POPOVER_DIRECTIONS, PopoverDirection } from './popover-utils';
+import { getComponentCss } from './popover-styles';
 
-xdescribe('getComponentCss()', () => {
-  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return correct css for direction: %s', (direction) => {
-    expect(getComponentCss(direction)).toMatchSnapshot();
-  });
-});
-
-xdescribe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-popover');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-popover');
-    expect(getSlottedCss(host)).toMatchSnapshot();
+describe('getComponentCss()', () => {
+  it.each<Parameters<typeof getComponentCss>>([
+    ['top', 'light'],
+    ['right', 'light'],
+    ['bottom', 'light'],
+    ['left', 'light'],
+    ['top', 'dark'],
+    ['right', 'dark'],
+    ['bottom', 'dark'],
+    ['left', 'dark'],
+  ])('should return correct css for direction: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

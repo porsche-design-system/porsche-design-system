@@ -239,10 +239,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
       } else if (tagName === 'p-popover') {
-        // only keep :host styles
+        // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-toast') {
         // only keep :host styles
