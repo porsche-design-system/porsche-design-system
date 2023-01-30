@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -20,7 +20,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -38,7 +38,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-error, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -57,7 +57,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-error, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -76,7 +76,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-info, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -95,7 +95,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-info, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -114,7 +114,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-success, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -133,7 +133,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-success, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -152,7 +152,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-warning, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -171,7 +171,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: notification-warning, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -190,7 +190,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: inherit and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -208,7 +208,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: large and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -227,7 +227,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: medium and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -246,7 +246,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -265,7 +265,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -284,7 +284,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: x-large and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -303,7 +303,7 @@ img {
 
 exports[`getComponentCss() should return correct css for color: primary, size: x-small and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
 }
 :host([hidden]) {
