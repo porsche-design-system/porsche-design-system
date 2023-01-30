@@ -177,16 +177,19 @@
   </p-accordion>
 </div>
 
-<div class="playground light" title="should ignore size prop and render compact accordion">
-  <p-accordion heading="Some compact Accordion with ignored size prop" compact="true" size="medium">
+<div class="playground light" title="should render compact accordion with size medium">
+  <p-accordion heading="Some heading size medium" compact="true" size="medium">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-accordion>
 </div>
 
-<div class="playground light" title="should ignore size prop as breakpoint customizable and render compact accordion">
+<div
+  class="playground light"
+  title="should render compact accordion with breakpoint customizable size on light background"
+>
   <p-accordion
-    heading="Some compact Accordion with ignored size prop"
+    heading="Some heading responsive size"
     compact="true"
     size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
   >

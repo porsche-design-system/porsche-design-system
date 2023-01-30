@@ -184,16 +184,19 @@ const AccordionPage: NextPage = (): JSX.Element => {
         </PAccordion>
       </div>
 
-      <div className="playground light" title="should ignore size prop and render compact accordion">
-        <PAccordion heading="Some compact Accordion with ignored size prop" compact={true} size="medium">
+      <div className="playground light" title="should render compact accordion with size medium">
+        <PAccordion heading="Some heading size medium" compact={true} size="medium">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
       </div>
 
-      <div className="playground light" title="should ignore size prop as breakpoint customizable and render compact accordion">
+      <div
+        className="playground light"
+        title="should render compact accordion with breakpoint customizable size on light background"
+      >
         <PAccordion
-          heading="Some compact Accordion with ignored size prop"
+          heading="Some heading responsive size"
           compact={true}
           size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         >
