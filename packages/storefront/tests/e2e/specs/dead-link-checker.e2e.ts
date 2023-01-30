@@ -25,6 +25,12 @@ const getHeadline = async (): Promise<string> => {
   return page.$eval('.vmark > h1', (x) => x.innerHTML);
 };
 
+const getPatternHeading = async (): Promise<string> => {
+  await page.waitForSelector('html.hydrated');
+  await page.waitForSelector('p-heading[tag="h1"]', { visible: true });
+  return page.$eval('p-heading[tag="h1"]', (x) => x.innerHTML);
+};
+
 const getPatternHeadline = async (): Promise<string> => {
   await page.waitForSelector('html.hydrated');
   await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
@@ -49,6 +55,13 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     if (url.match(/^\/assets\/.*\.\w{3,4}$/)) {
       expect(response.status()).toBe(200);
     } else {
+      const heading =
+        url === '/'
+          ? 'first page'
+          : url.startsWith('/patterns/forms/')
+          ? await getPatternHeadline()
+          : await getHeadline();
+
       const headline =
         url === '/'
           ? 'first page'
@@ -56,6 +69,7 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
           ? await getPatternHeadline()
           : await getHeadline();
 
+      expect(heading).not.toBe('404 - Page not found');
       expect(headline).not.toBe('404 - Page not found');
 
       await validateMarkdownLinks();
