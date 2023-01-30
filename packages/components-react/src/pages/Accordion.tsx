@@ -183,7 +183,7 @@ export const AccordionPage = (): JSX.Element => {
         </PAccordion>
       </div>
 
-      <div className="playground light" title="should render compact accordion with size medium">
+      <div className="playground light" title="should render compact accordion with size medium on light background">
         <PAccordion heading="Some compact accordion size medium" compact={true} size="medium">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.

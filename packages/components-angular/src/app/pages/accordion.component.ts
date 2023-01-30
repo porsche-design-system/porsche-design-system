@@ -183,7 +183,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-accordion>
     </div>
 
-    <div class="playground light" title="should render compact accordion with size medium">
+    <div class="playground light" title="should render compact accordion with size medium on light background">
       <p-accordion [heading]="'Some compact accordion size medium'" [compact]="true" [size]="'medium'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
