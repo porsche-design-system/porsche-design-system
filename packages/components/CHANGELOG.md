@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `underline` for `Link Pure`
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
+- Component `Heading` which replaces the component `Headline` with next major release
 
 #### Changed
 
@@ -60,7 +61,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible` and `Text Field Wrapper` matches new design language
+  `Popover`, `Tag Dismissible`, `Headline` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -87,12 +88,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - Prop `lazy` for `Icon` is deprecated now:
--
 
 ```diff
 - <p-icon laze="true"></p-icon>
 
 + <p-icon></p-icon>
+```
+
+- Component `Headline` is deprecated now:
+
+```diff
+- <p-headline variant="headline-1">The quick brown fox jumps over the lazy dog</p-headline>
+
++ <p-heading variant="heading-1">The quick brown fox jumps over the lazy dog</p-heading>
 ```
 
 #### Removed
