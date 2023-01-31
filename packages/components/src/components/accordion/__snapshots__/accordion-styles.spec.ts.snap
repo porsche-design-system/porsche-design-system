@@ -2,10 +2,10 @@
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -16,6 +16,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -31,7 +32,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -44,6 +44,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -59,7 +62,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -83,10 +85,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -97,6 +99,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -112,7 +115,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -125,6 +127,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -140,7 +145,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -166,10 +170,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -180,6 +184,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -195,7 +200,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 2px;
   bottom: 2px;
   left: -4px;
@@ -208,6 +212,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
@@ -220,7 +227,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -244,10 +250,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -258,6 +264,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -273,7 +280,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 2px;
   bottom: 2px;
   left: -4px;
@@ -286,6 +292,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -298,7 +307,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -322,10 +330,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -336,6 +344,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -351,7 +360,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 2px;
   bottom: 2px;
   left: -4px;
@@ -364,6 +372,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -376,7 +387,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -402,10 +412,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -416,6 +426,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -431,7 +442,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -444,6 +454,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -459,7 +472,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -483,10 +495,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -497,6 +509,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -512,7 +525,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -525,6 +537,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
@@ -540,7 +555,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -566,10 +580,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -580,6 +594,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -595,7 +610,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -608,6 +622,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -623,7 +640,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -649,10 +665,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -663,6 +679,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -678,7 +695,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 2px;
   bottom: 2px;
   left: -4px;
@@ -691,6 +707,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -703,7 +722,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -727,10 +745,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -741,6 +759,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -756,7 +775,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 2px;
   bottom: 2px;
   left: -4px;
@@ -769,6 +787,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -781,7 +802,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
@@ -807,10 +827,10 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 button {
   display: flex;
@@ -821,6 +841,7 @@ button {
   text-decoration: none;
   border: 0;
   outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
   text-align: left;
@@ -836,7 +857,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   top: 6px;
   bottom: 6px;
   left: -4px;
@@ -884,6 +904,9 @@ button:not(:focus-visible)::before {
 }
 
 @media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
@@ -899,7 +922,6 @@ button:not(:focus-visible)::before {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 24px;
   transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
