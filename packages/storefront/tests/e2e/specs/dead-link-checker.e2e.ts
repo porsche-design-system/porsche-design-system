@@ -59,7 +59,7 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
         url === '/'
           ? 'first page'
           : url.startsWith('/patterns/forms/')
-          ? await getPatternHeadline()
+          ? await getPatternHeading()
           : await getHeadline();
 
       const headline =

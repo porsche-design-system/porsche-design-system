@@ -46,6 +46,11 @@ describe('page view', () => {
   });
 
   it('should route to passed tab of page when tabs are configured', async () => {
+    await page.goto(buildUrl('/components/typography/heading'));
+    expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/heading'));
+  });
+
+  it('should route to passed tab of page when tabs are configured', async () => {
     await page.goto(buildUrl('/components/typography/headline'));
     expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/headline'));
   });
