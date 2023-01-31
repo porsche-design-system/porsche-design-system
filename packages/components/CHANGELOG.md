@@ -11,9 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `underline` prop for `Link Pure`
-- `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible` supports `theme` prop
-- `Icon` supports `x-small` and `x-large` values of `size` prop
+- Prop `underline` for `Link Pure`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible`
+- Prop `size` for `Icon` supports `x-small` and `x-large`
 
 #### Changed
 
@@ -42,7 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
-- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefor
+- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
   the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
 
 ```diff
@@ -60,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible`, `Inline Notification`, `Banner`, `Toast` matches new design language
+  `Popover`, `Tag Dismissible`, `Inline Notification`, `Banner`, `Toast` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -97,7 +97,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Removed
 
-- Custom slotted CSS for `Checkbox Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
+- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper` and `Text Field Wrapper` (use normalize styles,
+  provided by `getInitialStyles()` partial instead)
 - `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff
