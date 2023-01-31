@@ -32,6 +32,7 @@ export const getBaseChildStyles = (
       display: 'block',
       width: '100%',
       height: 'auto',
+      margin: 0,
       outline: 0,
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
