@@ -60,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible` matches new design language
+  `Popover`, `Tag Dismissible`, `Modal` matches new design language
 - CSS global variables names
 
 ```diff
