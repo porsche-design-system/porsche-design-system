@@ -43,7 +43,7 @@ export const getBaseChildStyles = (
       font: textSmallStyle.font.replace('ex', 'ex + 10px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome
       textIndent: 0,
       color: primaryColor,
-      transition: getTransition('border-color'),
+      transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
@@ -95,7 +95,7 @@ export const getLabelStyles = (
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'), // for smooth transitions between disabled states
+        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
         '&+&': {
           marginTop: `-${spacingStaticXSmall}`,
           fontSize: fontSizeTextXSmall,
