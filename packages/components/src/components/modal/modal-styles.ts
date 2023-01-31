@@ -191,6 +191,13 @@ export const getComponentCss = (
       position: 'absolute',
       top: '8px',
       right: '8px',
+      border: `2px solid ${lightThemeBackgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
+      borderRadius: '4px',
+      backgroundColor: lightThemeBackgroundColor,
+      '&:hover': {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+      },
     },
   });
 };
