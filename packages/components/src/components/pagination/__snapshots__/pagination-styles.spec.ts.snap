@@ -26,6 +26,12 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-child {
+  margin-right: 8px;
+}
+li:last-child {
+  margin-left: 8px;
+}
 span {
   display: flex;
   justify-content: center;
@@ -69,12 +75,6 @@ span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
-}
-span:first-child {
-  margin-right: 8px;
-}
-span:last-child {
-  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -158,6 +158,12 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-child {
+  margin-right: 8px;
+}
+li:last-child {
+  margin-left: 8px;
+}
 span {
   display: flex;
   justify-content: center;
@@ -201,12 +207,6 @@ span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
-}
-span:first-child {
-  margin-right: 8px;
-}
-span:last-child {
-  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -260,6 +260,12 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-child {
+  margin-right: 8px;
+}
+li:last-child {
+  margin-left: 8px;
+}
 span {
   display: flex;
   justify-content: center;
@@ -303,12 +309,6 @@ span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #949598;
-}
-span:first-child {
-  margin-right: 8px;
-}
-span:last-child {
-  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -362,6 +362,12 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-child {
+  margin-right: 8px;
+}
+li:last-child {
+  margin-left: 8px;
+}
 span {
   display: flex;
   justify-content: center;
@@ -405,12 +411,6 @@ span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
-}
-span:first-child {
-  margin-right: 8px;
-}
-span:last-child {
-  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;
@@ -464,6 +464,12 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-child {
+  margin-right: 8px;
+}
+li:last-child {
+  margin-left: 8px;
+}
 span {
   display: flex;
   justify-content: center;
@@ -507,12 +513,6 @@ span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #949598;
-}
-span:first-child {
-  margin-right: 8px;
-}
-span:last-child {
-  margin-left: 8px;
 }
 span[aria-current] {
   cursor: default;

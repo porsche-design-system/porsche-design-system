@@ -43,6 +43,12 @@ export const getComponentCss = (
         listStyleType: 'none',
         margin: 0,
         padding: 0,
+        '&:first-child': {
+          marginRight: '8px',
+        },
+        '&:last-child': {
+          marginLeft: '8px',
+        },
       },
       span: {
         display: 'flex',
@@ -84,12 +90,6 @@ export const getComponentCss = (
           cursor: 'default',
           pointerEvents: 'none',
           color: disabledColor,
-        },
-        '&:first-child': {
-          marginRight: '8px',
-        },
-        '&:last-child': {
-          marginLeft: '8px',
         },
         '&[aria-current]': {
           cursor: 'default',
