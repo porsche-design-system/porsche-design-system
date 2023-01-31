@@ -15,7 +15,7 @@ export const isType = (inputType: string, typeToValidate: string): boolean => in
 export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const getInputPadding = (unitElementWidth: number): string => {
+export const getInputPaddingLeftOrRight = (unitElementWidth: number): string => {
   return `calc(${unitElementWidth}px - ${borderWidthBase})`;
 };
 
@@ -30,7 +30,7 @@ export const setInputStyles = (
 
     input.style.setProperty(
       unitPosition === 'prefix' ? cssVariableInputPaddingLeft : cssVariableInputPaddingRight,
-      getInputPadding(unitOrCounterElement.offsetWidth),
+      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth),
       'important'
     );
   }

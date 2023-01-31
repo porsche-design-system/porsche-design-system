@@ -22,10 +22,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -202,10 +203,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -325,10 +327,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -438,9 +441,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -563,9 +568,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -688,9 +695,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -813,10 +822,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -935,10 +945,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1065,10 +1076,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1187,10 +1199,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1309,10 +1322,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1431,10 +1445,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1543,9 +1558,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
   -moz-appearance: textfield !important;
 }
 ::slotted(input:focus) {
@@ -1668,9 +1685,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1792,9 +1811,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -1916,9 +1937,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2040,10 +2063,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2163,10 +2187,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2276,9 +2301,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2401,9 +2428,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -2526,9 +2555,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2651,10 +2682,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2773,10 +2805,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2885,9 +2918,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3010,9 +3045,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3135,10 +3172,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3256,10 +3294,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3367,9 +3406,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3491,9 +3532,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3615,10 +3658,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3737,10 +3781,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3849,9 +3894,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3974,9 +4021,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -4099,10 +4148,11 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
-  padding: 13px var(--p-internal-text-field-input-padding-right) 13px var(--p-internal-text-field-input-padding-left) !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
