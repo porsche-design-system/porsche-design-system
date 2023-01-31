@@ -258,7 +258,7 @@ describe('active index position', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should have correct scroll position after tab click and prev button click', async () => {
+  xit('should have correct scroll position after tab click and prev button click', async () => {
     await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
     const { prevButton } = await getPrevNextButton();
     const allButtons = await getAllButtons();

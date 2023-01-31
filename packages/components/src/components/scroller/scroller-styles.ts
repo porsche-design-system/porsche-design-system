@@ -14,8 +14,6 @@ export const getComponentCss = (
 ): string => {
   const { backgroundColor } = getThemedColors(theme);
 
-  console.log(gradientColorScheme);
-
   const actionPrevNextStyles = {
     position: 'relative',
     padding: `${pxToRemWithUnit(4)} 0`,
@@ -114,6 +112,9 @@ export const getComponentCss = (
       '& .button::before': {
         right: 0,
       },
+    },
+    temp: {
+      color: gradientColorScheme,
     },
     button: {
       pointerEvents: 'auto',
