@@ -54,6 +54,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>
   </p-grid>`,
+  'p-heading': `<p-heading>Some text</p-heading>`,
   'p-headline': `<p-headline>Some text</p-headline>`,
   'p-icon': `<p-icon></p-icon>`,
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
