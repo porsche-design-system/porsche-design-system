@@ -1183,8 +1183,8 @@ exports[`should match snapshot 1`] = `
       "message",
     ],
     "nestedComponents": [
+      "p-button-pure",
       "p-icon",
-      "p-spinner",
     ],
     "observedAttributes": [
       "disabled",
