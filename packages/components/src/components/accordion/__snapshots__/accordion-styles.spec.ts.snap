@@ -144,7 +144,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
@@ -199,10 +199,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: -4px;
+  top: 2px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  bottom: -4px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -278,10 +278,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: -4px;
+  top: 2px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  bottom: -4px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -357,10 +357,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: -4px;
+  top: 2px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  bottom: -4px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -383,7 +383,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
@@ -549,7 +549,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
@@ -633,7 +633,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
@@ -688,10 +688,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: -4px;
+  top: 2px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  bottom: -4px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -767,10 +767,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: -4px;
+  top: 2px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  bottom: -4px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -793,7 +793,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
@@ -912,7 +912,7 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   margin-left: 24px;
   transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
