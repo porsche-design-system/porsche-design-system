@@ -227,6 +227,7 @@ export class TextFieldWrapper {
               hideLabel={true}
               icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
+              theme={this.theme}
               onClick={this.togglePassword}
               aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
             >
@@ -242,6 +243,7 @@ export class TextFieldWrapper {
                   type="submit"
                   icon="search"
                   disabled={disabledOrReadOnly}
+                  theme={this.theme}
                   onClick={this.onSubmit}
                   hideLabel={true}
                 >
@@ -253,6 +255,7 @@ export class TextFieldWrapper {
                   class="icon"
                   name="search"
                   color="contrast-medium"
+                  theme={this.theme}
                   ariaHidden="true"
                 />
               ),
@@ -264,6 +267,7 @@ export class TextFieldWrapper {
                 hideLabel={true}
                 tabIndex={-1}
                 hidden={!this.isClearable}
+                theme={this.theme}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
                 aria={{ 'aria-hidden': 'true' }}
@@ -276,6 +280,7 @@ export class TextFieldWrapper {
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
+                  theme={this.theme}
                   onClick={!this.actionLoading ? () => this.action.emit() : null}
                   hideLabel={true}
                   loading={this.actionLoading}

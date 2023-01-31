@@ -155,6 +155,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
       },
       '& input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
+          // TODO: does it have any effect?
           marginRight: '2.4375rem',
         },
       },
