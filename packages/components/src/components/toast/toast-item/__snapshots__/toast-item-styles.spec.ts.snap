@@ -3,7 +3,7 @@
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -27,7 +27,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -40,6 +40,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
@@ -51,7 +52,7 @@ p {
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -75,7 +76,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -88,6 +89,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
@@ -99,7 +101,7 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -122,7 +124,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -135,6 +137,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
@@ -146,7 +149,7 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -169,7 +172,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -182,6 +185,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
@@ -193,7 +197,7 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -217,7 +221,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -230,6 +234,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
@@ -241,7 +246,7 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0 1fr auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   align-items: start;
@@ -265,7 +270,7 @@ p {
 }
 
 .icon {
-  display: none;
+  visibility: hidden;
 }
 .content {
   display: grid;
@@ -278,6 +283,7 @@ p {
 @media(min-width:760px) {
   .icon {
     display: inline-flex;
+    visibility: visible;
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);

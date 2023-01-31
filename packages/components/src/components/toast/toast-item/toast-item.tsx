@@ -55,7 +55,7 @@ export class ToastItem {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
-          color="inherit"
+          color={`notification-${this.state}`}
           aria-hidden="true"
         />
         <p id={toastId} class="content" role="status" aria-live="polite">

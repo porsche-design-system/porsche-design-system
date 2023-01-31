@@ -165,7 +165,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": null,
           "hostPdsComponent": "p-inline-notification",
           "properties": {
-            "color": "inherit",
+            "color": "notification-info",
             "lazy": false,
             "name": "information-filled",
             "size": "inherit",
