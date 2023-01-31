@@ -154,10 +154,10 @@ describe('hasLocateAction()', () => {
 
 describe('getInputPadding()', () => {
   it.each<[TextFieldWrapperUnitPosition, string]>([
-    ['prefix', '14px 16px 14px 58px'],
-    ['prefix', '14px 16px 14px 58px'],
-    ['suffix', '14px 58px 14px 16px'],
-    ['suffix', '14px 58px 14px 16px'],
+    ['prefix', '13px 16px 13px 58px'],
+    ['prefix', '13px 16px 13px 58px'],
+    ['suffix', '13px 58px 13px 16px'],
+    ['suffix', '13px 58px 13px 16px'],
   ])('should for unitPosition: %s return %s', (unitPosition, expected) => {
     expect(getInputPadding(60, unitPosition)).toBe(expected);
   });
@@ -177,7 +177,7 @@ describe('setInputStyles()', () => {
     Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
     setInputStyles(input, unitElement, 'prefix');
 
-    expect(input.style.cssText).toBe('padding: 14px 16px 14px 58px !important;');
+    expect(input.style.cssText).toBe('padding: 13px 16px 13px 58px !important;');
   });
 });
 

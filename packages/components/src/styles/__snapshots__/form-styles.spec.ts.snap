@@ -12,10 +12,9 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -27,18 +26,14 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "cursor": "not-allowed",
   },
   "::slotted(input:focus)": {
-    "borderColor": "#E7323B",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#010205",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#c51720",
     },
   },
@@ -57,10 +52,9 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -73,17 +67,13 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
   },
   "::slotted(input:focus)": {
     "borderColor": "#010205",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#010205",
     },
   },
@@ -102,10 +92,9 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -117,18 +106,14 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "cursor": "not-allowed",
   },
   "::slotted(input:focus)": {
-    "borderColor": "#32B85B",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#010205",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#258843",
     },
   },
@@ -147,10 +132,9 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -162,14 +146,10 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "cursor": "not-allowed",
   },
   "::slotted(select:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -188,10 +168,9 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -204,13 +183,9 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
   },
   "::slotted(select:focus)": {
     "borderColor": "#FBFCFF",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -229,10 +204,9 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -244,14 +218,10 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "cursor": "not-allowed",
   },
   "::slotted(select:focus)": {
-    "borderColor": "#00C77E",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#008a57",
     },
   },
@@ -271,9 +241,9 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -285,18 +255,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -315,9 +281,9 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -329,18 +295,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -359,9 +321,9 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -374,17 +336,13 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "::slotted(textarea:focus)": {
     "borderColor": "#FBFCFF",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -403,9 +361,9 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
     "transition": "border-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
@@ -417,18 +375,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#00C77E",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#008a57",
     },
   },
