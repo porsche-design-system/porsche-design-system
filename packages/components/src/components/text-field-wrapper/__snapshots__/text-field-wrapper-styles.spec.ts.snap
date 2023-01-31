@@ -21,8 +21,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -202,8 +201,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -326,8 +324,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -440,8 +437,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -567,8 +563,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #CB3333 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -694,8 +689,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -821,8 +815,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -944,8 +937,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1075,8 +1067,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1198,8 +1189,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1321,8 +1311,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1444,8 +1433,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1557,8 +1545,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1684,8 +1671,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1810,8 +1796,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #7E7F82 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -1936,8 +1921,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2062,8 +2046,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2186,8 +2169,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2300,8 +2282,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2427,8 +2408,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #00C77E !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2554,8 +2534,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2681,8 +2660,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2804,8 +2782,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -2917,8 +2894,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3044,8 +3020,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3171,8 +3146,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3293,8 +3267,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3405,8 +3378,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3531,8 +3503,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3657,8 +3628,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3780,8 +3750,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -3893,8 +3862,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -4020,8 +3988,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;
@@ -4147,8 +4114,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  line-height: calc(calc(6px + 2.125ex) + 10px) !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: border-color var(--p-transition-duration, .24s) ease !important;

@@ -4,11 +4,10 @@ import { buildResponsiveStyles, isVisibleFormState } from '../utils';
 import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
-  textSmallStyle,
+  borderWidthBase,
   fontSizeTextXSmall,
   spacingStaticXSmall,
-  borderWidthBase,
-  fontLineHeight,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
@@ -41,8 +40,7 @@ export const getBaseChildStyles = (
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
-      font: textSmallStyle.font,
-      lineHeight: `calc(${fontLineHeight} + 10px)`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome
+      font: textSmallStyle.font.replace('ex', 'ex + 10px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome
       textIndent: 0,
       color: primaryColor,
       transition: getTransition('border-color'),
