@@ -1,13 +1,12 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
+import { buildSlottedStyles, getCss } from '../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType } from './text-field-wrapper-utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
-import { getBaseChildStyles, getLabelStyles, INPUT_HEIGHT } from '../../styles/form-styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FormState } from '../../utils/form/form-state';
-import type { JssStyle } from 'jss';
 import {
   borderWidthBase,
   fontFamily,
@@ -17,9 +16,28 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const buttonPadding = '4px';
-const buttonSize = `calc(${fontLineHeight} + ${buttonPadding} * 2)`;
-const buttonMargin = '5px';
+const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
+const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';
+
+const buttonOrIconPadding = '4px';
+const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
+const buttonOrIconOffset = '9px';
+
+const baseButtonOrIconStyles = {
+  position: 'absolute',
+  bottom: '11px',
+  padding: buttonOrIconPadding,
+  font: `1rem ${fontFamily}`,
+};
+
+const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
+  return `calc(${buttonOrIconOffset} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
+};
+
+const getButtonOrIconOffsetHorizontal = (buttonOrIconAmount: number): string => {
+  const multiplier = buttonOrIconAmount > 1 ? ` + ${buttonOrIconSize} * ${buttonOrIconAmount - 1}` : '';
+  return `calc(${buttonOrIconOffset} + ${borderWidthBase}${multiplier})`;
+};
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -29,45 +47,38 @@ export const getComponentCss = (
   unitPosition: TextFieldWrapperUnitPosition,
   inputType: string,
   isWithinForm: boolean,
-  hasAction: boolean,
-  hasActionLoading: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const hasVisibleState = isVisibleFormState(state);
+  const { contrastMediumColor } = getThemedColors(theme);
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
   const isSearchOrPassword = isSearch || isPassword;
-  const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT);
-  const innerInputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
-
-  const disabledJssStyle: JssStyle = {
-    color: disabledColor,
-    cursor: 'not-allowed',
-  };
+  const isSearchWithoutForm = isSearch && !isWithinForm;
+  const isSearchWithForm = isSearch && isWithinForm;
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
+          [cssVariableInputPaddingRight]: isSearchOrPassword
+            ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
+            : spacingStaticMedium,
+          ...hostHiddenStyles,
+        }),
+      },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
           ...(!hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
-            padding: `13px ${spacingStaticMedium}`,
+            // TODO: unit case shall be set by css variable
+            padding: `13px var(${cssVariableInputPaddingRight}) 13px var(${cssVariableInputPaddingLeft})`,
           }),
-          ...(isNumber
-            ? {
-                MozAppearance: 'textfield', // hides up/down spin button for Firefox
-              }
-            : isSearchOrPassword && {
-                paddingRight:
-                  isSearch && isWithinForm ? pxToRemWithUnit(88) : `calc(${buttonSize} + ${buttonMargin} * 2)`,
-                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(50) }),
-              }),
+          ...(isNumber && {
+            MozAppearance: 'textfield', // hides up/down spin button for Firefox
+          }),
         }),
         // Reset webkit autofill styles
         '::slotted': {
@@ -80,13 +91,19 @@ export const getComponentCss = (
     },
     ...(isSearchOrPassword && {
       button: {
-        position: 'absolute',
-        bottom: '11px',
-        right: `calc(${buttonMargin} + ${borderWidthBase})`,
-        padding: buttonPadding,
-        '&:not([tabindex="-1"]) ~ .button': {
-          right: `calc(${buttonSize} + ${buttonMargin} * 2)`,
+        ...baseButtonOrIconStyles,
+        right: getButtonOrIconOffsetHorizontal(1),
+        // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
+        '&:not([hidden]) ~ .button': {
+          right: getButtonOrIconOffsetHorizontal(2),
         },
+      },
+    }),
+    ...(isSearchWithoutForm && {
+      icon: {
+        ...baseButtonOrIconStyles,
+        left: getButtonOrIconOffsetHorizontal(1),
+        pointerEvents: 'none',
       },
     }),
     root: {
@@ -116,20 +133,6 @@ export const getComponentCss = (
     ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    ...(isSearch &&
-      (hasAction || !isWithinForm) && {
-        icon: {
-          // search icon on left side
-          position: 'absolute',
-          left: '15px',
-          bottom: '15px',
-          height: fontLineHeight,
-          width: fontLineHeight,
-          fontFamily, // necessary for proper fontLineHeight calculation
-          color: contrastMediumColor,
-          pointerEvents: 'none',
-        },
-      }),
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
       padding: 0,
@@ -137,6 +140,7 @@ export const getComponentCss = (
   });
 };
 
+// TODO: should be transferred to normalize styles (getInitialStyles partial)
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {

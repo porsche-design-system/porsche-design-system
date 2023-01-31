@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isVisibleFormState } from '../utils';
-import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from './';
+import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
   textSmallStyle,
@@ -13,6 +13,7 @@ import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
+// TODO: should be removed if possible?
 export const INPUT_HEIGHT = 54;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
@@ -31,7 +32,6 @@ export const getBaseChildStyles = (
       display: 'block',
       width: '100%',
       height: 'auto',
-      // ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }), // TODO: is height needed at all? TODO: is rem correct? shouldn't it be something like calc(line-height * 3)?
       outline: 0,
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',

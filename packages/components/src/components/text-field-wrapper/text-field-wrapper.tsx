@@ -186,8 +186,6 @@ export class TextFieldWrapper {
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : type,
       this.isWithinForm,
-      this.hasAction,
-      this.hasAction && this.actionLoading,
       this.theme
     );
 
@@ -195,11 +193,6 @@ export class TextFieldWrapper {
 
     const labelProps = {
       onClick: this.onLabelClick,
-    };
-
-    const iconProps = {
-      color: 'inherit',
-      'aria-hidden': 'true',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -255,7 +248,13 @@ export class TextFieldWrapper {
                   Search
                 </PrefixedTagNames.pButtonPure>
               ) : (
-                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
+                <PrefixedTagNames.pIcon
+                  key="icon"
+                  class="icon"
+                  name="search"
+                  color="contrast-medium"
+                  ariaHidden="true"
+                />
               ),
               <PrefixedTagNames.pButtonPure
                 key="btn-clear"
