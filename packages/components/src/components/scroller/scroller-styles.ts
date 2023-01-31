@@ -1,8 +1,8 @@
 import { getCss } from '../../utils';
-import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../styles';
+import { addImportantToRule, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { borderRadiusSmall, getFocusStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, fontLineHeight, getFocusStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
 export const getComponentCss = (
@@ -12,9 +12,9 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
-  const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
+  const { backgroundColor } = getThemedColors(theme);
+
+  console.log(gradientColorScheme);
 
   const actionPrevNextStyles = {
     position: 'relative',
@@ -24,6 +24,22 @@ export const getComponentCss = (
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
     borderRadius: borderRadiusSmall,
   };
+
+  const gradient =
+    'rgba(31,31,31,0.9) 0%,' +
+    'rgba(31,31,31,0.9) 20%,' +
+    'rgba(31,31,31,0.852589) 26.67%,' +
+    'rgba(32,32,32,0.768225) 33.33%,' +
+    'rgba(33,33,33,0.668116) 40%,' +
+    'rgba(34,34,34,0.557309) 46.67%,' +
+    'rgba(35,35,35,0.442691) 53.33%,' +
+    'rgba(36,36,36,0.331884) 60%,' +
+    'rgba(37,37,37,0.231775) 66.67%,' +
+    'rgba(38,38,38,0.147411) 73.33%,' +
+    'rgba(39,39,39,0.0816599) 80%,' +
+    'rgba(39,39,39,0.03551) 86.67%,' +
+    'rgba(39,39,39,0.0086472) 93.33%,' +
+    'rgba(39,39,39,0)';
 
   return getCss({
     '@global': {
@@ -76,8 +92,11 @@ export const getComponentCss = (
       marginLeft: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
-      background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
+      background: `linear-gradient(to right, ${gradient} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
+      '& .button': {
+        marginLeft: '10px',
+      },
       '& .button::before': {
         left: 0,
       },
@@ -87,10 +106,10 @@ export const getComponentCss = (
       marginRight: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
-      background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
+      background: `linear-gradient(to left, ${gradient} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& .button': {
-        marginRight: '5px',
+        marginRight: '10px',
       },
       '& .button::before': {
         right: 0,
@@ -99,13 +118,18 @@ export const getComponentCss = (
     button: {
       pointerEvents: 'auto',
       position: 'static',
+      ...textSmallStyle,
+      backgroundColor,
+      borderRadius: 'inherit',
+      transition: getTransition('background-color'),
       // Pseudo-element to stretch the click-area to full height
       '&::before': {
         content: '""',
         position: 'absolute',
         top: 0,
         bottom: 0,
-        width: 'max(2rem, 80%)',
+        width: fontLineHeight,
+        height: fontLineHeight,
       },
     },
   });
