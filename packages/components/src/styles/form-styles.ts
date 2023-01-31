@@ -8,6 +8,7 @@ import {
   fontSizeTextXSmall,
   spacingStaticXSmall,
   borderWidthBase,
+  fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
@@ -41,6 +42,7 @@ export const getBaseChildStyles = (
       borderRadius: borderRadiusSmall,
       background: 'transparent',
       font: textSmallStyle.font,
+      lineHeight: `calc(${fontLineHeight} + 10px)`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome
       textIndent: 0,
       color: primaryColor,
       transition: getTransition('border-color'),

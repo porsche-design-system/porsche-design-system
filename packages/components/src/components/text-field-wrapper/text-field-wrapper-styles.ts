@@ -71,7 +71,7 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          padding: `13px var(${cssVariableInputPaddingRight}) 13px var(${cssVariableInputPaddingLeft})`,
+          padding: `8px var(${cssVariableInputPaddingRight}) 8px var(${cssVariableInputPaddingLeft})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
