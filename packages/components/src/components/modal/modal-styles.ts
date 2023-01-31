@@ -4,11 +4,11 @@ import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDe
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
 import {
   gridSafeZone,
-  headingMediumStyle,
   getMediaQueryMin,
   borderRadiusMedium,
   frostedGlassStyle,
   borderWidthBase,
+  headingLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
@@ -62,30 +62,20 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-const getSlottedJssStyle = (
-  marginValue: number,
-  hasHeader: boolean,
-  fullscreen: BreakpointCustomizable<boolean>
-): JssStyle => {
-  const marginRem = pxToRemWithUnit(-marginValue);
+const getSlottedJssStyle = (marginValue: number, hasHeader: boolean): JssStyle => {
+  const marginRem = `${-marginValue}px`;
   return {
     [`&(.${stretchToFullModalWidthClassName})`]: {
-      width: `calc(100% + ${pxToRemWithUnit(marginValue * 2)})`,
+      width: `calc(100% + ${marginValue * 2}px)`,
       margin: `0 ${marginRem}`,
     },
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
         marginTop: marginRem,
-        ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-          borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
-        })),
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
       marginBottom: marginRem,
-      ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-        borderRadius: fullscreenValue ? 0 : ' 0 0 8px 8px',
-      })),
     },
   };
 };
@@ -130,12 +120,20 @@ export const getComponentCss = (
         overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule({
-        ...getSlottedJssStyle(32, hasHeader, fullscreen),
-        [mediaQueryM]: getSlottedJssStyle(40, hasHeader, fullscreen),
-        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader, fullscreen),
+        ...getSlottedJssStyle(32, hasHeader),
+        [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
+        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
+        ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+            borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+          },
+          [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+            borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
+          },
+        })),
       }),
       h1: {
-        ...headingMediumStyle,
+        ...headingLargeStyle,
         margin: 0,
         color: getThemedColors('light').primaryColor,
       },
