@@ -16,8 +16,8 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
-const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';
+export const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
+export const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';
 
 const buttonOrIconPadding = '4px';
 const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
@@ -71,20 +71,15 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          ...(!hasUnitOrVisibleCounter && {
-            // padding is set via inline style if unit is present
-            // TODO: unit case shall be set by css variable
-            padding: `13px var(${cssVariableInputPaddingRight}) 13px var(${cssVariableInputPaddingLeft})`,
-          }),
+          padding: `13px var(${cssVariableInputPaddingRight}) 13px var(${cssVariableInputPaddingLeft})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
         }),
-        // Reset webkit autofill styles
         '::slotted': {
           '&(input:-internal-autofill-selected),&(input:-internal-autofill-previewed),&(input:-webkit-autofill),&(input:-webkit-autofill:focus)':
             {
-              WebkitBackgroundClip: 'padding-box',
+              WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
             },
         },
       }),

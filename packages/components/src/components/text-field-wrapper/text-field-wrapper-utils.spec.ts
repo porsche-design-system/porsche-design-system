@@ -153,13 +153,11 @@ describe('hasLocateAction()', () => {
 });
 
 describe('getInputPadding()', () => {
-  it.each<[TextFieldWrapperUnitPosition, string]>([
-    ['prefix', '13px 16px 13px 58px'],
-    ['prefix', '13px 16px 13px 58px'],
-    ['suffix', '13px 58px 13px 16px'],
-    ['suffix', '13px 58px 13px 16px'],
-  ])('should for unitPosition: %s return %s', (unitPosition, expected) => {
-    expect(getInputPadding(60, unitPosition)).toBe(expected);
+  it.each<[number, string]>([
+    [60, '58px'],
+    [40, '38px'],
+  ])('should for unitElementWidth: %s return %s', (unitElementWidth, expected) => {
+    expect(getInputPadding(unitElementWidth)).toBe(expected);
   });
 });
 
