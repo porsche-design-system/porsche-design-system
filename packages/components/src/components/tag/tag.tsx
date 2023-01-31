@@ -57,7 +57,7 @@ export class Tag {
             class="icon"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
+            color="primary"
             theme={this.theme}
             aria-hidden="true"
           />
