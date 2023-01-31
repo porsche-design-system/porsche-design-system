@@ -16,16 +16,19 @@ export const getThemedTextColor = (theme: Theme, textColor: TextColor): string =
 
   const colorMap: { [key in TextColor]: string } = {
     primary: primaryColor,
-    brand: primaryColor, // TODO: shall be deprecated with v3-alpha
-    default: primaryColor, // TODO: shall be deprecated with v3-alpha
-    'neutral-contrast-high': contrastHighColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-low': contrastLowColor,
+    brand: primaryColor, // deprecated
+    default: primaryColor, // deprecated
+    'contrast-low': contrastLowColor,
+    'neutral-contrast-low': contrastLowColor, // deprecated
+    'contrast-medium': contrastMediumColor,
+    'neutral-contrast-medium': contrastMediumColor, // deprecated
+    'contrast-high': contrastHighColor,
+    'neutral-contrast-high': contrastHighColor, // deprecated
     'notification-success': successColor,
     'notification-warning': warningColor,
     'notification-error': errorColor,
     'notification-info': infoColor,
-    'notification-neutral': infoColor, // TODO: shall be deprecated with v3-alpha
+    'notification-neutral': infoColor, // deprecated
     inherit: 'currentColor',
   };
   return colorMap[textColor];
