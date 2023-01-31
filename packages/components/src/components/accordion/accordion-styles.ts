@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getTransition, transitionDuration, getThemedColors } from '../../styles';
+import { getTransition, transitionDuration, getThemedColors, addImportantToEachRule } from '../../styles';
 import {
   fontWeight,
   fontSizeText,
@@ -25,10 +25,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
         ...hostHiddenStyles,
-      },
+      }),
       button: {
         display: 'flex',
         position: 'relative',
@@ -38,6 +38,7 @@ export const getComponentCss = (
         textDecoration: 'none',
         border: 0,
         outline: 0,
+        gap: '24px',
         background: 'transparent',
         cursor: 'pointer',
         textAlign: 'left',
@@ -54,7 +55,6 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           borderRadius: borderRadiusSmall,
-          transition: getTransition('background-color'),
           ...(compact
             ? {
                 top: '2px',
@@ -70,6 +70,7 @@ export const getComponentCss = (
               }),
         },
         ...hoverMediaQuery({
+          '&::before': { transition: getTransition('background-color') },
           '&:hover::before': {
             backgroundColor: hoverColor,
           },
@@ -94,7 +95,6 @@ export const getComponentCss = (
     icon: {
       width: fontLineHeight,
       height: fontLineHeight,
-      marginLeft: '24px',
       transformOrigin: '50% 50%',
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
