@@ -1,4 +1,4 @@
-import { getButtonAttributes } from './segmented-control-item-utils';
+import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
 
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getButtonAttributes>>([
@@ -9,4 +9,13 @@ describe('getButtonAttributes()', () => {
   ])('should return correct css for isSelected: %s and isDisabled: %s', (...args) => {
     expect(getButtonAttributes(...args)).toMatchSnapshot();
   });
+});
+
+describe('getIconColor()', () => {
+  it.each<Parameters<typeof getIconColor>>([[false], [true]])(
+    'should return correct icon color for isDisabled: %s',
+    (...args) => {
+      expect(getIconColor(...args)).toMatchSnapshot();
+    }
+  );
 });
