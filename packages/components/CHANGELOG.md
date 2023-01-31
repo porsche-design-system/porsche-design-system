@@ -42,11 +42,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
+
 - Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-information`
 
 ```diff
 - <p-tag color="notification-neutral">Color label</p-tag>
 + <p-tag color="notification-information">Color label</p-tag>
+```
+
+- Color `neutral-contrast-high` for `Tag` is deprecated now, replaced by `primary`
+
+```diff
+- <p-tag color="neutral-contrast-high">Color label</p-tag>
++ <p-tag color="primary">Color label</p-tag>
+```
+
+- Color `background-default` for `Tag` is deprecated now, replaced by `background-base`
+
+```diff
+- <p-tag color="background-default">Color label</p-tag>
++ <p-tag color="background-base">Color label</p-tag>
 ```
 
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefor
