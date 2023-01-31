@@ -40,7 +40,6 @@ export const getComponentCss = (
         outline: 0,
         background: 'transparent',
         cursor: 'pointer',
-        transition: getTransition('background-color'),
         textAlign: 'left',
         color: primaryColor,
         ...textSmallStyle,

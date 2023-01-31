@@ -18,7 +18,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -100,7 +99,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -184,7 +182,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -263,7 +260,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -342,7 +338,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -423,7 +418,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -505,7 +499,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -589,7 +582,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -673,7 +665,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -752,7 +743,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -833,7 +823,6 @@ button {
   outline: 0;
   background: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   text-align: left;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
