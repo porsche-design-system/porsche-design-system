@@ -2,7 +2,14 @@
 
 <TableOfContents></TableOfContents>
 
-## DEPRECATED Headline
+## Headline
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>headline</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Use <a href="./components/heading/"><code>link</code> component</a> instead.
+</p-inline-notification>
+
+---
 
 **Headline component** to specify headline styling and hierarchy in documents.
 

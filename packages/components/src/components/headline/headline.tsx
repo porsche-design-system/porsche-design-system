@@ -6,6 +6,7 @@ import {
   THEMES,
   TEXT_ALIGNS,
   validateProps,
+  throwIfComponentIsDeprecated,
 } from '../../utils';
 import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
 import type { HeadingTag, HeadingVariant } from '../heading/heading-utils';
@@ -45,6 +46,13 @@ export class Headline {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentWillLoad(): void {
+    throwIfComponentIsDeprecated(
+      this.host,
+      'This component is deprecated and will be removed with next major release. Use "heading" component instead.'
+    );
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
