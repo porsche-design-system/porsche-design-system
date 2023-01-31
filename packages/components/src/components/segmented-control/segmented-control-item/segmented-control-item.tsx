@@ -9,7 +9,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
-import { getButtonAttributes } from './segmented-control-item-utils';
+import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
 import type { IconName, PropTypes, ValidatorFunction } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
@@ -79,6 +79,7 @@ export class SegmentedControlItem {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const iconColor = getIconColor(this.disabled);
 
     return (
       <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
@@ -89,7 +90,7 @@ export class SegmentedControlItem {
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
+            color={iconColor}
             theme={this.host.theme || 'light'}
             aria-hidden="true"
           />

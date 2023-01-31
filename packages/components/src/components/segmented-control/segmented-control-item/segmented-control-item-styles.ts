@@ -59,11 +59,6 @@ export const getColors = (
       };
 };
 
-export const getIconFilter = (theme: Theme, isDisabled: boolean): string => {
-  const isDark = theme === 'dark';
-  return isDisabled ? (isDark ? 'contrast(17%)' : 'invert(100%) contrast(17%)') : 'invert(100%)';
-};
-
 export const getComponentCss = (
   isDisabled: boolean,
   isSelected: boolean,
@@ -75,7 +70,6 @@ export const getComponentCss = (
   const { focusColor } = getThemedColors(theme);
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, bgColor, theme);
   const hasIcon = icon || iconSource;
-  const iconHasFilter = isDisabled || theme === 'dark';
 
   return getCss({
     '@global': {
@@ -138,9 +132,6 @@ export const getComponentCss = (
       height: ICON_SIZE,
       width: ICON_SIZE,
       marginRight: ICON_MARGIN,
-      ...(iconHasFilter && {
-        filter: getIconFilter(theme, isDisabled),
-      }),
     },
   });
 };

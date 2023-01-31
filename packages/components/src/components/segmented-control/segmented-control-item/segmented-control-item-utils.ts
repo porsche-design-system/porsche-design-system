@@ -12,3 +12,7 @@ export const getButtonAttributes = (isSelected: boolean, isDisabled: boolean): A
   ...getButtonBaseAriaAttributes(isDisabled, false),
   ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
 });
+
+export const getIconColor = (isDisabled: boolean) => {
+  return !isDisabled ? 'primary' : 'contrast-medium';
+};
