@@ -146,7 +146,7 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-        padding: pxToRemWithUnit(32),
+        padding: '32px',
         backgroundColor: lightThemeBackgroundColor,
         outline: 0,
         '&:focus::before': {
@@ -163,26 +163,26 @@ export const getComponentCss = (
           border: 0,
         },
         [mediaQueryM]: {
-          padding: pxToRemWithUnit(40),
+          padding: '40px',
         },
         [mediaQueryXl]: {
           margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone}`,
         },
         [mediaQueryXxl]: {
-          padding: pxToRemWithUnit(64),
+          padding: '64px',
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
     ),
     ...(hasHeader && {
       header: {
-        padding: `0 0 ${pxToRemWithUnit(16)}`,
-        ...(!disableCloseButton && { margin: `0 ${pxToRemWithUnit(32)} 0 0` }),
+        padding: '0 0 16px',
+        ...(!disableCloseButton && { margin: '0 32px 0 0' }),
         [mediaQueryM]: {
-          padding: `0 0 ${pxToRemWithUnit(24)}`,
+          padding: '0 0 24px',
         },
         [mediaQueryXxl]: {
-          padding: `0 0 ${pxToRemWithUnit(32)}`,
+          padding: '0 0 32px',
           ...(!disableCloseButton && { margin: 0 }),
         },
       },
