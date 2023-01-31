@@ -568,18 +568,17 @@ describe('accessibility', () => {
   it('should expose correct accessibility tree when password visibility button is clicked', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const button = await getToggleOrClearButton();
-    const buttonHost = await getToggleOrClearButtonHost();
 
-    await expectA11yToMatchSnapshot(page, buttonHost, { message: 'Initially' });
-
-    await button.click();
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, buttonHost, { message: 'Pressed' });
+    await expectA11yToMatchSnapshot(page, button, { message: 'Initially' });
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, buttonHost, { message: 'Pressed again' });
+    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' });
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed again' });
   });
 });
