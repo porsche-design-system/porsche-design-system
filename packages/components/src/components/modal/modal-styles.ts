@@ -18,12 +18,14 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
+import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/src/js/theme/themeDarkBackgroundShading';
 
 const mediaQueryM = getMediaQueryMin('m');
 const mediaQueryXl = getMediaQueryMin('xl');
 const mediaQueryXxl = getMediaQueryMin('xxl');
-const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
+const { backgroundColor: lightThemeBackgroundColor, primaryColor: lightBorderColorFullscreen } =
+  getThemedColors('light');
+const { primaryColor: darkBorderColorFullscreen } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
@@ -95,7 +97,6 @@ export const getComponentCss = (
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
-  const { focusColor } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -110,12 +111,10 @@ export const getComponentCss = (
           flexWrap: 'wrap',
           ...(open
             ? {
-                transition: `opacity .6s ${transitionTimingFunction}`,
                 opacity: 1,
                 visibility: 'inherit',
               }
             : {
-                transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
                 opacity: 0,
                 visibility: 'hidden',
               }),
@@ -124,7 +123,7 @@ export const getComponentCss = (
             content: '""',
             position: 'fixed',
             ...getInsetJssStyle(),
-            background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
+            background: themeDarkBackgroundShading,
             ...frostedGlassStyle,
           },
         }),
@@ -155,9 +154,10 @@ export const getComponentCss = (
         '&:focus::before': {
           content: '""',
           position: 'fixed',
-          border: `${borderWidthBase} solid ${focusColor}`,
+          border: `${borderWidthBase} solid`,
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
+            borderColor: fullscreenValue ? darkBorderColorFullscreen : lightBorderColorFullscreen,
             ...(fullscreenValue ? getInsetJssStyle(0) : getInsetJssStyle(-4)),
           })),
         },
