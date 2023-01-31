@@ -96,7 +96,7 @@ export const getCheckboxRadioJssStyle = (
       transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
     },
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   };
 };

@@ -1,6 +1,6 @@
 import type {
   BreakpointCustomizable,
-  ButtonAriaAttributes,
+  ButtonAriaAttribute,
   ButtonType,
   ButtonVariant,
   LinkButtonIconName,
@@ -35,7 +35,7 @@ const propTypes: PropTypes<typeof Button> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -70,7 +70,7 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {

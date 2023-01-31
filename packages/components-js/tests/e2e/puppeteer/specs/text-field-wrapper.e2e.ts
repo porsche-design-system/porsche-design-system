@@ -27,13 +27,14 @@ const getHost = () => selectNode(page, 'p-text-field-wrapper');
 const getInput = () => selectNode(page, 'input');
 const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
 const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
-const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=button]');
+const getToggleOrClearButtonHost = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
+const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
 const getLocateActionButton = () =>
-  selectNode(page, 'p-text-field-wrapper >>> button[type=button] + button[type=button]');
-const getSubmitButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=submit]');
+  selectNode(page, 'p-text-field-wrapper >>> p-button-pure + p-button-pure >>> button');
+const getSubmitButtonHost = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
+const getSubmitButton = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
 const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
-const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
-const getIconName = (icon: ElementHandle) => getProperty(icon, 'name');
+const getIconName = (icon: ElementHandle) => getProperty(icon, 'icon');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -124,19 +125,19 @@ describe('input type="password"', () => {
   it('should toggle icon when password visibility button is clicked', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const button = await getToggleOrClearButton();
+    const buttonHost = await getToggleOrClearButtonHost();
 
-    const icon = await getIcon();
-    expect(await getIconName(icon)).toBe('view');
-
-    await button.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getIconName(icon)).toBe('view-off');
+    expect(await getIconName(buttonHost)).toBe('view');
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getIconName(icon)).toBe('view');
+    expect(await getIconName(buttonHost)).toBe('view-off');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getIconName(buttonHost)).toBe('view');
   });
 
   it('should toggle password visibility and focus input correctly', async () => {
@@ -223,7 +224,7 @@ describe('input type="search"', () => {
 
   describe('clear functionality', () => {
     const isClearButtonVisible = async (): Promise<boolean> => {
-      const clearButton = await getToggleOrClearButton();
+      const clearButton = await getToggleOrClearButtonHost();
       return !(await getProperty(clearButton, 'hidden'));
     };
 
@@ -285,62 +286,47 @@ describe('input type="search"', () => {
     });
   });
 
-  describe('without form', () => {
-    it('should not have submit button', async () => {
-      await initTextField({ type: 'search' });
-      const button = await getSubmitButton();
-
-      expect(button).toBe(null);
-    });
-  });
-
   describe('within form', () => {
     const isButtonDisabled = (handle: ElementHandle) => getProperty(handle, 'disabled');
 
     it('should disable submit button when input is set to disabled programmatically', async () => {
       await initTextField({ type: 'search', isWrappedInForm: true });
       const input = await getInput();
-      const button = await getSubmitButton();
+      const buttonHost = await getSubmitButtonHost();
 
-      expect(await isButtonDisabled(button)).toBe(false);
-      expect(await getElementStyle(button, 'cursor'), 'initial cursor').toBe('pointer');
+      expect(await isButtonDisabled(buttonHost)).toBe(false);
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
       await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
-      expect(await isButtonDisabled(button)).toBe(true);
-      expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
+      expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
       await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
-      expect(await isButtonDisabled(button)).toBe(false);
-      expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
+      expect(await isButtonDisabled(buttonHost)).toBe(false);
     });
 
     it('should disable submit button when input is set to readonly programmatically', async () => {
       await initTextField({ type: 'search', isWrappedInForm: true });
       const input = await getInput();
-      const button = await getSubmitButton();
+      const buttonHost = await getSubmitButtonHost();
 
-      expect(await isButtonDisabled(button)).toBe(false);
-      expect(await getElementStyle(button, 'cursor'), 'initial cursor').toBe('pointer');
+      expect(await isButtonDisabled(buttonHost)).toBe(false);
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
       await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
-      expect(await isButtonDisabled(button)).toBe(true);
-      expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
+      expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
       await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
-      expect(await isButtonDisabled(button)).toBe(false);
-      expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
+      expect(await isButtonDisabled(buttonHost)).toBe(false);
     });
 
     it('should submit parent form on search button click', async () => {
@@ -402,10 +388,10 @@ describe('focus state', () => {
   });
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
-  const defaultColor = 'rgb(98, 102, 105)';
-  const hoverColor = 'rgb(0, 0, 0)';
+  const defaultBorderColor = 'rgb(148, 149, 152)';
+  const hoverBorderColor = 'rgb(1, 2, 5)';
 
   it('should show hover state on input when label is hovered', async () => {
     await initTextField({ hasLabel: true });
@@ -413,17 +399,16 @@ xdescribe('hover state', () => {
     const label = await getLabel();
     const input = await getInput();
 
-    const initialStyle = await getBorderColor(input);
-    expect(initialStyle).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
+
     await input.hover();
-    const hoverStyle = await getBorderColor(input);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await label.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 
   it('should show hover state on input when unit/counter is hovered', async () => {
@@ -432,17 +417,16 @@ xdescribe('hover state', () => {
     const counter = await getCounterOrUnit();
     const input = await getInput();
 
-    const initialStyle = await getBorderColor(input);
-    expect(initialStyle).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
+
     await input.hover();
-    const hoverStyle = await getBorderColor(input);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(input)).toBe(defaultColor);
+    expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
     await counter.hover();
-    expect(await getBorderColor(input)).toBe(hoverColor);
+    expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 });
 
@@ -489,9 +473,10 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-text-field-wrapper'], 'componentDidLoad: p-text-field-wrapper').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
   });
 
   it('should work without unnecessary round trips after prop change', async () => {
