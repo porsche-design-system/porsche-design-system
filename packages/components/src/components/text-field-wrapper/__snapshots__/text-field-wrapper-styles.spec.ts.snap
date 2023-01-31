@@ -501,9 +501,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -627,9 +624,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
@@ -753,9 +747,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -1366,9 +1357,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -1491,9 +1479,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -1616,9 +1601,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
@@ -1741,9 +1723,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -2102,9 +2081,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -2228,9 +2204,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #7E7F82;
@@ -2354,9 +2327,6 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   bottom: 15px;
   right: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 16px 0 10px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -2713,9 +2683,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -3071,9 +3038,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
@@ -3430,9 +3394,6 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   bottom: 15px;
   left: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   padding: 0 10px 0 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #949598;
