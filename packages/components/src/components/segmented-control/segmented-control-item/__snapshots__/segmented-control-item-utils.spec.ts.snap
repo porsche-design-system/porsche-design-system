@@ -31,3 +31,7 @@ exports[`getButtonAttributes() should return correct css for isSelected: true an
   "aria-pressed": "true",
 }
 `;
+
+exports[`getIconColor() should return correct icon color for isDisabled: false 1`] = `"primary"`;
+
+exports[`getIconColor() should return correct icon color for isDisabled: true 1`] = `"contrast-medium"`;

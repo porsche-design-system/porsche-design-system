@@ -57,7 +57,6 @@ span {
   height: 1.5rem;
   width: 1.5rem;
   margin-right: 0.25rem;
-  filter: invert(100%);
 }"
 `;
 
@@ -178,7 +177,6 @@ span {
   height: 1.5rem;
   width: 1.5rem;
   margin-right: 0.25rem;
-  filter: invert(100%);
 }"
 `;
 
@@ -352,7 +350,6 @@ span {
   height: 1.5rem;
   width: 1.5rem;
   margin-right: 0.25rem;
-  filter: invert(100%) contrast(17%);
 }"
 `;
 
@@ -406,14 +403,5 @@ span {
   height: 1.5rem;
   width: 1.5rem;
   margin-right: 0.25rem;
-  filter: invert(100%) contrast(17%);
 }"
 `;
-
-exports[`getIconFilter() should return correct icon filter for theme: dark and isDisabled: false 1`] = `"invert(100%)"`;
-
-exports[`getIconFilter() should return correct icon filter for theme: dark and isDisabled: true 1`] = `"contrast(17%)"`;
-
-exports[`getIconFilter() should return correct icon filter for theme: light and isDisabled: false 1`] = `"invert(100%)"`;
-
-exports[`getIconFilter() should return correct icon filter for theme: light and isDisabled: true 1`] = `"invert(100%) contrast(17%)"`;
