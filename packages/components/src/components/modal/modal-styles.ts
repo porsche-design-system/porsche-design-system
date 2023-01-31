@@ -124,7 +124,7 @@ export const getComponentCss = (
             content: '""',
             position: 'fixed',
             ...getInsetJssStyle(),
-            background: `${darkThemeBackgroundColor}`, // e6 = 0.9 alpha
+            background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
             ...frostedGlassStyle,
           },
         }),
@@ -157,9 +157,9 @@ export const getComponentCss = (
           position: 'fixed',
           border: `${borderWidthBase} solid ${focusColor}`,
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            borderRadius: fullscreenValue ? 0 : borderRadiusMedium,
+            borderRadius: fullscreenValue ? 0 : '12px',
+            ...(fullscreenValue ? getInsetJssStyle(0) : getInsetJssStyle(-4)),
           })),
-          ...getInsetJssStyle(0),
         },
         '&:not(:focus-visible)::before': {
           border: 0,
@@ -193,9 +193,6 @@ export const getComponentCss = (
       position: 'absolute',
       top: '8px',
       right: '8px',
-      // padding: pxToRemWithUnit(8),
-      // border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
-      // background: lightThemeBackgroundColor,
     },
   });
 };
