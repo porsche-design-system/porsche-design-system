@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `underline` prop for `Link Pure`
 - `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible` supports `theme` prop
 - `Icon` supports `x-small` and `x-large` values of `size` prop
-- `Accordion` `size="medium"` in `compact` variant
+- `Accordion` supports `size="medium"` when `compact="true"` is set
 
 #### Changed
 
