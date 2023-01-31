@@ -39,7 +39,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </p-accordion>
         <br />
         <p-accordion theme="${theme}" heading="Some navigation like accordion" open="true" compact="true">
-          <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
+          <p-link-pure href="https://www.porsche.com" theme="${theme}" icon="none">Some link</p-link-pure>
           <br />
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
         </p-accordion>`;
