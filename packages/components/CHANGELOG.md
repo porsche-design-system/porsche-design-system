@@ -125,6 +125,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-switch tabindex="-1">Some label</p-switch>
 ```
 
+- `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
 #### Fixed
 
 - `Icon` supports param cased icon names only, typings are adapted accordingly:
