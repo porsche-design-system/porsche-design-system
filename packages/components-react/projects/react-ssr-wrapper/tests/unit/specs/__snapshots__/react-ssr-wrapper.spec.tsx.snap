@@ -3092,22 +3092,22 @@ exports[`should render dsr component for PLinkPure 1`] = `
   vertical-align: top;
 }
 ::slotted(a) {
-  display: block;
-  position: static;
-  text-decoration: none;
-  font: inherit;
-  color: inherit;
-  outline: 0;
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: 0 !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 slot[name=subline]::slotted(*) {
   margin: 0;

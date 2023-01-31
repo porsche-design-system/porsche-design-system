@@ -196,7 +196,7 @@ export default class Code extends Vue {
 
   withoutCloseButton =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" disable-close-button open="false">
+<p-modal heading="Some Heading" disable-close-button="true" open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 

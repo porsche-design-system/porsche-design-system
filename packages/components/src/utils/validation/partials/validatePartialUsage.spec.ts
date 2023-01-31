@@ -15,10 +15,14 @@ import * as helperUtils from './helper';
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
 
 beforeAll(() => {
+  const sharedProps = {
+    readyResolve: () => {},
+    isReady: Promise.resolve,
+  };
   document.porscheDesignSystem = {
-    '1.2.3': { prefixes: [''] },
-    '1.2.4': { prefixes: ['prefix'] },
-    '1.2.5': { prefixes: ['my-prefix'] },
+    '1.2.3': { ...sharedProps, prefixes: [''] },
+    '1.2.4': { ...sharedProps, prefixes: ['prefix'] },
+    '1.2.5': { ...sharedProps, prefixes: ['my-prefix'] },
   }; // initialize pds document
 });
 
