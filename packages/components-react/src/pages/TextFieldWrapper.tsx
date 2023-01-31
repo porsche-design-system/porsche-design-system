@@ -521,7 +521,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: '15rem' }}
+          style={{ maxWidth: '15rem' }}
         >
           <input type="text" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </PTextFieldWrapper>
@@ -533,7 +533,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: '240px' }}
+          style={{ maxWidth: '15rem' }}
           theme="dark"
         >
           <input type="text" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />

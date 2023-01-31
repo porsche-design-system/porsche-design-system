@@ -520,7 +520,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'Multiline message at vero eos et accusam et justo duo dolores et ea rebum.'"
-        style="width: 15rem"
+        style="max-width: 15rem"
       >
         <input [type]="'text'" [value]="'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,'" />
       </p-text-field-wrapper>
@@ -532,7 +532,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'Multiline message at vero eos et accusam et justo duo dolores et ea rebum.'"
-        style="width: 240px"
+        style="max-width: 15rem"
         [theme]="'dark'"
       >
         <input [type]="'text'" [value]="'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,'" />
