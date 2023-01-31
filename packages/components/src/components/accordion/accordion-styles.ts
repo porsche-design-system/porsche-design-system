@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getTransition, transitionDuration, getThemedColors, getInsetJssStyle } from '../../styles';
+import { getTransition, transitionDuration, getThemedColors } from '../../styles';
 import {
   fontWeight,
   fontSizeText,
@@ -57,7 +57,12 @@ export const getComponentCss = (
           borderRadius: borderRadiusSmall,
           transition: getTransition('background-color'),
           ...(compact
-            ? getInsetJssStyle(-4)
+            ? {
+                top: '2px',
+                bottom: '2px',
+                left: '-4px',
+                right: '-4px',
+              }
             : {
                 top: '6px',
                 bottom: '6px',
@@ -92,7 +97,7 @@ export const getComponentCss = (
       height: fontLineHeight,
       marginLeft: '24px',
       transformOrigin: '50% 50%',
-      transform: open ? 'rotate3d(0,0,1,0.0001deg)' : 'rotate3d(0,0,1,90deg)', // needs to be a little bit more than 0 for correct direction in safari
+      transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
     collapsible: {
