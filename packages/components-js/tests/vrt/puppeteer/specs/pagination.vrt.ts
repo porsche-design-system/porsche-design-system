@@ -23,6 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
   expect(
     await vrt.test('pagination-states', async () => {
       const page = vrt.getPage();
+      const head = `<style>p-pagination { margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
         <p-pagination total-items-count="500" items-per-page="25" active-page="1" theme="${theme}"></p-pagination>
@@ -31,7 +32,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        {
+          injectIntoHead: head,
+        }
       );
 
       await forceHoverState(page, '.hover > p-pagination >>> span');

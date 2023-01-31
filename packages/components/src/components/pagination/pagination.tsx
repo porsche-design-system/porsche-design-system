@@ -84,14 +84,7 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.maxNumberOfPageLinks,
-      this.theme,
-      this.allyLabelPrev,
-      this.allyLabelNext
-    );
+    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
 

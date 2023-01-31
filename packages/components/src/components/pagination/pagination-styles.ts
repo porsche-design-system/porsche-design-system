@@ -9,18 +9,18 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
-  theme: Theme,
-  allyLabelPrev: string,
-  allyLabelNext: string
+  theme: Theme
 ): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
       ':host': {
+        ...hostHiddenStyles,
         display: 'block',
         outline: addImportantToRule(0),
       },
@@ -74,6 +74,9 @@ export const getComponentCss = (
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusSmall,
         },
+        '&[aria-current]:focus::before': {
+          ...getInsetJssStyle(-4),
+        },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
         },
@@ -82,10 +85,10 @@ export const getComponentCss = (
           pointerEvents: 'none',
           color: disabledColor,
         },
-        [`&[aria-label="${allyLabelPrev}"]`]: {
+        '&:first-child': {
           marginRight: '8px',
         },
-        [`&[aria-label="${allyLabelNext}"]`]: {
+        '&:last-child': {
           marginLeft: '8px',
         },
         '&[aria-current]': {
@@ -101,6 +104,9 @@ export const getComponentCss = (
       pointerEvents: 'none',
       '&::after': {
         content: '"…"',
+      },
+      '&:focus::before': {
+        borderColor: 'transparent',
       },
     },
   });

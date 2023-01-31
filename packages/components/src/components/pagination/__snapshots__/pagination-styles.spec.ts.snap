@@ -5,6 +5,9 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: {
   display: block;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -53,6 +56,12 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 4px;
 }
+span[aria-current]:focus::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
@@ -61,10 +70,10 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"] {
+span:first-child {
   margin-right: 8px;
 }
-span[aria-label="Next page"] {
+span:last-child {
   margin-left: 8px;
 }
 span[aria-current] {
@@ -117,6 +126,9 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
+}
+.ellipsis:focus::before {
+  border-color: transparent;
 }"
 `;
 
@@ -125,6 +137,9 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
   display: block;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -173,6 +188,12 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 4px;
 }
+span[aria-current]:focus::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
@@ -181,10 +202,10 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"] {
+span:first-child {
   margin-right: 8px;
 }
-span[aria-label="Next page"] {
+span:last-child {
   margin-left: 8px;
 }
 span[aria-current] {
@@ -207,6 +228,9 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
+}
+.ellipsis:focus::before {
+  border-color: transparent;
 }"
 `;
 
@@ -215,6 +239,9 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
   display: block;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -263,6 +290,12 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 4px;
 }
+span[aria-current]:focus::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
@@ -271,10 +304,10 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-label="Previous page"] {
+span:first-child {
   margin-right: 8px;
 }
-span[aria-label="Next page"] {
+span:last-child {
   margin-left: 8px;
 }
 span[aria-current] {
@@ -297,6 +330,9 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
+}
+.ellipsis:focus::before {
+  border-color: transparent;
 }"
 `;
 
@@ -304,6 +340,9 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 ":host {
   display: block;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none;
 }
 nav {
   display: flex;
@@ -353,6 +392,12 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 4px;
 }
+span[aria-current]:focus::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
@@ -361,10 +406,10 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-label="Previous page"] {
+span:first-child {
   margin-right: 8px;
 }
-span[aria-label="Next page"] {
+span:last-child {
   margin-left: 8px;
 }
 span[aria-current] {
@@ -387,6 +432,9 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
+}
+.ellipsis:focus::before {
+  border-color: transparent;
 }"
 `;
 
@@ -394,6 +442,9 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 ":host {
   display: block;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none;
 }
 nav {
   display: flex;
@@ -443,6 +494,12 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 4px;
 }
+span[aria-current]:focus::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
@@ -451,10 +508,10 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-label="Previous page"] {
+span:first-child {
   margin-right: 8px;
 }
-span[aria-label="Next page"] {
+span:last-child {
   margin-left: 8px;
 }
 span[aria-current] {
@@ -477,5 +534,8 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
+}
+.ellipsis:focus::before {
+  border-color: transparent;
 }"
 `;
