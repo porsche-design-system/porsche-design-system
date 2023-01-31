@@ -5,16 +5,20 @@ import { getThemedBackgroundColor } from './tag-shared-utils';
 
 describe('getThemedBackgroundColor()', () => {
   it.each<[TagColor, Theme]>([
-    ['background-default', 'light'],
-    ['neutral-contrast-high', 'light'],
+    ['background-default', 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', 'light'],
+    ['neutral-contrast-high', 'light'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', 'light'],
     ['notification-success', 'light'],
     ['notification-warning', 'light'],
     ['notification-error', 'light'],
     ['notification-neutral', 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', 'light'],
     ['background-surface', 'light'],
-    ['background-default', 'dark'],
-    ['neutral-contrast-high', 'dark'],
+    ['background-default', 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', 'dark'],
+    ['neutral-contrast-high', 'dark'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', 'dark'],
     ['notification-success', 'dark'],
     ['notification-warning', 'dark'],
     ['notification-error', 'dark'],

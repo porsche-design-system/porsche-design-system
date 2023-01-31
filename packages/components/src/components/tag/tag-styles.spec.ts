@@ -45,18 +45,24 @@ describe('getColors()', () => {
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['background-default', true, 'light'],
-    ['background-default', false, 'light'],
-    ['neutral-contrast-high', true, 'light'],
+    ['background-default', true, 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-default', false, 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', true, 'light'],
+    ['background-base', false, 'light'],
+    ['neutral-contrast-high', true, 'light'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', true, 'light'],
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
     ['notification-neutral', true, 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
     ['notification-information', true, 'light'],
     ['background-surface', true, 'light'],
-    ['background-default', true, 'dark'],
-    ['background-default', false, 'dark'],
-    ['neutral-contrast-high', true, 'dark'],
+    ['background-default', true, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-default', false, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', true, 'dark'],
+    ['background-base', false, 'dark'],
+    ['neutral-contrast-high', true, 'dark'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', true, 'dark'],
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],
     ['notification-error', true, 'dark'],
