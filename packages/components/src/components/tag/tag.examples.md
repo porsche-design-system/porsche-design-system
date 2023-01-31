@@ -11,7 +11,16 @@
 <p-inline-notification heading="Important note" state="error" persistent="true">
   The <b>notification-neutral</b> color is deprecated and will be removed with next major release.
   Please use <b>notification-information</b> color instead.
-  In case, e.g. <b>color="notification-neutral"</b> is used it will automatically be mapped to <b>color="notification-surface"</b>.
+  In case, e.g. <b>color="notification-neutral"</b> is used it will automatically be mapped to <b>color="background-surface"</b>.
+
+The <b>background-default</b> color is deprecated and will be removed with next major release. Please use
+<b>background-base</b> color instead. In case, e.g. <b>color="background-default"</b> is used it will automatically be
+mapped to <b>color="background-surface"</b>.
+
+The <b>neutral-contrast-high</b> color is deprecated and will be removed with next major release. Please use
+<b>primary</b> color instead. In case, e.g. <b>color="neutral-contrast-high"</b> is used it will automatically be mapped
+to <b>color="background-surface"</b>.
+
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
