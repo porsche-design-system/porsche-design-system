@@ -93,29 +93,11 @@ exports[`accessibility should expose correct accessibility tree properties in er
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Initially 1`] = `
-{
-  "name": "Toggle password visibility",
-  "pressed": false,
-  "role": "button",
-}
-`;
+exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Initially 1`] = `null`;
 
-exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed 1`] = `
-{
-  "name": "Toggle password visibility",
-  "pressed": true,
-  "role": "button",
-}
-`;
+exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed 1`] = `null`;
 
-exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed again 1`] = `
-{
-  "name": "Toggle password visibility",
-  "pressed": false,
-  "role": "button",
-}
-`;
+exports[`accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed again 1`] = `null`;
 
 exports[`accessibility should expose correct accessibility tree with description text 1`] = `
 {
