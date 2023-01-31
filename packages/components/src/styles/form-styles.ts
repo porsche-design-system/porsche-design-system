@@ -104,6 +104,7 @@ export const getLabelStyles = (
           }),
         },
         ...hoverMediaQuery({
+          // TODO: we can use logical order for form state instead
           '&:hover': {
             [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))` +
             (hasVisibleState ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
