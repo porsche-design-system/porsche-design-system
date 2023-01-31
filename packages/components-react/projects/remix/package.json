@@ -10,7 +10,10 @@
     "build": "remix build",
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve build'",
-    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint ."
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./build"
   },
   "prettier": {},
   "eslintIgnore": [
