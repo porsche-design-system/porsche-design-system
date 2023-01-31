@@ -56,6 +56,7 @@ export class ToastItem {
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
           color={`notification-${this.state}`}
+          theme={this.theme}
           aria-hidden="true"
         />
         <p id={toastId} class="content" role="status" aria-live="polite">

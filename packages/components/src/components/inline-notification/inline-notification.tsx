@@ -74,6 +74,7 @@ export class InlineNotification {
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
           color={`notification-${this.state}`}
+          theme={this.theme}
           size="inherit"
           aria-hidden="true"
         />

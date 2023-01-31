@@ -169,7 +169,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
             "lazy": false,
             "name": "information-filled",
             "size": "inherit",
-            "theme": "light",
+            "theme": "dark",
           },
         },
       },
