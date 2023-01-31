@@ -23,9 +23,9 @@ import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/
 const mediaQueryM = getMediaQueryMin('m');
 const mediaQueryXl = getMediaQueryMin('xl');
 const mediaQueryXxl = getMediaQueryMin('xxl');
-const { backgroundColor: lightThemeBackgroundColor, primaryColor: lightBorderColorFullscreen } =
+const { backgroundColor: lightThemeBackgroundColor, primaryColor: darkBorderColorFullscreen } =
   getThemedColors('light');
-const { primaryColor: darkBorderColorFullscreen } = getThemedColors('dark');
+const { primaryColor: lightBorderColorFullscreen } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
@@ -148,9 +148,7 @@ export const getComponentCss = (
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: pxToRemWithUnit(32),
         backgroundColor: lightThemeBackgroundColor,
-        '&:focus': {
-          outline: 0,
-        },
+        outline: 0,
         '&:focus::before': {
           content: '""',
           position: 'fixed',
