@@ -196,7 +196,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /(getHeadingTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
         ) // headline, text, text-list, tag
-        .replace(/ = getHeadlineTagName/, ': any$&') // headline
+        .replace(/ = getHeadingTagName/, ': any$&') // headline
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
           "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
