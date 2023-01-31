@@ -63,7 +63,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
           const defaultPropValue = isDefaultValueComplex ? `() => (${defaultValue})` : defaultValue;
 
           const eslintAnnotation =
-            component === 'p-headline' && key === 'color'
+            (component === 'p-headline' || component === 'p-heading') && key === 'color'
               ? ' // eslint-disable-line vue/require-valid-default-prop'
               : '';
 
