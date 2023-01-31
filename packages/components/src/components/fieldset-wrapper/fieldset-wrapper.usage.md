@@ -16,6 +16,6 @@ We recommend for each fieldset the headline 4 (for the visible part _legend_) of
 more information in the [Form pattern guideline](patterns/forms).
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <p-heading variant="heading-3" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
     <img src="./assets/fieldset-examples.png" alt="Examples for fieldset" />
 </div>

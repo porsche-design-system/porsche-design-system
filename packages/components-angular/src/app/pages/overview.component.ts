@@ -46,6 +46,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="root" style="display: flex">
       <div style="flex: 1">
+        <div class="playground light" title="should render default heading">
+          <p-heading>Default Components</p-heading>
+        </div>
+
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
         </div>
@@ -295,6 +299,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div style="flex: 1">
+        <div class="playground light" title="should render default heading with custom prefix">
+          <my-prefix-p-heading p-heading>Prefixed Components</my-prefix-p-heading>
+        </div>
+
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
         </div>

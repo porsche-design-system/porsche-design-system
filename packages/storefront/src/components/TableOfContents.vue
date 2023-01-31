@@ -1,6 +1,6 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-headline variant="headline-4" tag="h2">Table of Contents</p-headline>
+    <p-heading variant="heading-4" tag="h2">Table of Contents</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <p-link-pure :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
@@ -93,7 +93,7 @@
     margin-top: 4rem;
   }
 
-  p-headline {
+  p-heading {
     margin-bottom: 1rem;
   }
 

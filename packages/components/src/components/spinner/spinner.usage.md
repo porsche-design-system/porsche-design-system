@@ -45,7 +45,7 @@ create an extra order. A loading animation should always be a user-friendly help
 - Text must always be placed beneath or on the right side of the loader.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <p-heading variant="heading-3" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
     <img src="./assets/spinner-blocking.png" alt=""/>
 </div>
 

@@ -1,9 +1,9 @@
 <template>
   <p-content-wrapper>
-    <p-headline variant="headline-1">Various patterns and examples</p-headline>
+    <p-heading variant="heading-1">Various patterns and examples</p-heading>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-headline variant="headline-2" tag="h1">Validation of grouped form elements</p-headline>
+        <p-heading variant="heading-2" tag="h1">Validation of grouped form elements</p-heading>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
           >How to implement validation messages to grouped form elements like checkbox- and radio groups.</p-text
         >
@@ -163,8 +163,8 @@
       check3: false,
     },
     radio: '',
-    day: ('' as unknown) as number,
-    month: ('' as unknown) as number,
+    day: '' as unknown as number,
+    month: '' as unknown as number,
     year: 1998,
   };
 

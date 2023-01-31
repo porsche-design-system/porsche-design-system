@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PContentWrapper, PHeadline, PModal, PText } from '@porsche-design-system/components-react';
+import { PContentWrapper, PHeading, PModal, PText } from '@porsche-design-system/components-react';
 
 export const ModalSlottedHeadingPage = (): JSX.Element => {
   const style = `
@@ -21,7 +21,7 @@ export const ModalSlottedHeadingPage = (): JSX.Element => {
         <PModal open={true} aria={{ 'aria-label': 'Slotted Headline' }}>
           <div slot="heading">
             <PText tag="div" role="doc-subtitle">Slotted Subtitle</PText>
-            <PHeadline tag="h2">Slotted Headline</PHeadline>
+            <PHeading tag="h2">Slotted Headline</PHeading>
           </div>
           Some Content
         </PModal>

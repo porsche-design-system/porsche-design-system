@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PContentWrapper, PHeadline, PModal, PText } from '@porsche-design-system/components-react/ssr';
+import { PContentWrapper, PHeading, PModal, PText } from '@porsche-design-system/components-react/ssr';
 
 const ModalSlottedHeadingPage: NextPage = (): JSX.Element => {
   const style = `
@@ -22,7 +22,7 @@ const ModalSlottedHeadingPage: NextPage = (): JSX.Element => {
         <PModal open={true} aria={{ 'aria-label': 'Slotted Headline' }}>
           <div slot="heading">
             <PText tag="div" role="doc-subtitle">Slotted Subtitle</PText>
-            <PHeadline tag="h2">Slotted Headline</PHeadline>
+            <PHeading tag="h2">Slotted Headline</PHeading>
           </div>
           Some Content
         </PModal>

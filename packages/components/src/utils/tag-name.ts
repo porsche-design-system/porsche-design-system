@@ -14,7 +14,7 @@ export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
 };
 
 // prevent internal usage of p-heading and p-text
-type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pText'>;
+type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pHeading' | 'pText'>;
 type PrefixedTagNames = Record<AllowedTagNameCamelCase, string>;
 const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter(
   (item) => item !== 'p-text' && item !== 'p-heading' && item !== 'p-headline'

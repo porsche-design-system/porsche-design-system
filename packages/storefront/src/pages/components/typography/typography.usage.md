@@ -181,7 +181,7 @@ hierarchy. For digital applications, we recommend only to use semibold, regular 
 - **Porsche Next Thin** for stand-alone text larger than 20px.
 
 <p-text size="x-large" weight="thin">Porsche Next Thin</p-text> <p-text size="x-large">Porsche Next Regular</p-text>
-<p-headline variant="headline-1">Porsche Next Semibold</p-headline> <p-text size="x-large" weight="bold">Porsche Next
+<p-heading variant="heading-1">Porsche Next Semibold</p-heading> <p-text size="x-large" weight="bold">Porsche Next
 Bold</p-text>
 
 ### Alignment

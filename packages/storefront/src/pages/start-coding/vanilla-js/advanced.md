@@ -20,7 +20,7 @@ parameter to the `load` method.
     <script type="text/javascript">
       porscheDesignSystem.load({ prefix: 'sample-prefix' });
     </script>
-    <sample-prefix-p-headline variant="headline-1">Some text</sample-prefix-p-headline>
+    <sample-prefix-p-heading variant="heading-1">Some text</sample-prefix-p-heading>
   </body>
 </html>
 ```

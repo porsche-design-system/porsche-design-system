@@ -56,7 +56,7 @@ div {
 ## Typography
 
 **Note:** For font-styling it's recommended to use the
-[`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
+[`<p-heading>`](components/typography/heading)/[`<p-text>`](components/typography/text) components.
 
 ### Text
 
@@ -90,12 +90,12 @@ p {
 }
 ```
 
-### Headline
+### Heading
 
 Given values are:  
-`title-large | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
+`title-large | heading-1 | heading-2 | heading-3 | heading-4 | heading-5`
 
-Possible headline mixin for usage with SCSS (where {v} is the value):
+Possible heading mixin for usage with SCSS (where {v} is the value):
 
 ```
 @include p-{v};
@@ -107,7 +107,7 @@ Possible headline mixin for usage with SCSS (where {v} is the value):
 @import '~@porsche-design-system/utilities/scss';
 
 h1 {
-  @include p-headline-1;
+  @include p-heading-1;
 }
 ```
 

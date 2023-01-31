@@ -1,7 +1,7 @@
 <template>
   <div class="main-footer">
     <div class="main-footer__content main-footer__content--country-language-chooser">
-      <p-headline theme="dark" variant="headline-4">Andere(s) Land/Region wählen:</p-headline>
+      <p-heading theme="dark" variant="heading-4">Andere(s) Land/Region wählen:</p-heading>
       <p-select-wrapper theme="dark" label="Land">
         <select name="country">
           <option value="" hidden="hidden"></option>

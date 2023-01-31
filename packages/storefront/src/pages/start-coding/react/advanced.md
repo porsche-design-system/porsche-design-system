@@ -29,7 +29,7 @@ ReactDOM.render(
 );
 ```
 
-In the following example the `PHeadline` component will render as `<sample-prefix-p-headline>`.
+In the following example the `PHeadline` component will render as `<sample-prefix-p-heading>`.
 
 ```tsx
 // App.tsx
