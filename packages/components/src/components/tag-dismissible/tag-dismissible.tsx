@@ -12,7 +12,7 @@ import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dis
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { TagColor } from '../tag/tag-utils';
-import { TAG_COLORS } from '../tag/tag-utils';
+import { TAG_COLORS, warnIfColorBackgroundDefaultIsUsed } from '../tag/tag-utils';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
@@ -42,6 +42,7 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfColorBackgroundDefaultIsUsed(this.host, this.color);
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
