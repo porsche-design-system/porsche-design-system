@@ -9,6 +9,7 @@ import {
   inlineNotificationStateMap,
 } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
+import { IconColor } from '../icon/icon-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
@@ -73,7 +74,7 @@ export class InlineNotification {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
-          color={`notification-${this.state}`}
+          color={`notification-${this.state}` as IconColor}
           theme={this.theme}
           size="inherit"
           aria-hidden="true"

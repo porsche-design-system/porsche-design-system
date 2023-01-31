@@ -12,6 +12,7 @@ import {
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './toast-item-styles';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
+import { IconColor } from '../../icon/icon-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -55,7 +56,7 @@ export class ToastItem {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(mappedState)}
-          color={`notification-${this.state}`}
+          color={`notification-${this.state}` as IconColor}
           theme={this.theme}
           aria-hidden="true"
         />
