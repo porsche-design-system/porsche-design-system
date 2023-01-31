@@ -1,12 +1,13 @@
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildSlottedStyles, getCss } from '../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type { FormState } from '../../utils/form/form-state';
+import { buildSlottedStyles, getCss } from '../../utils';
 import { isType } from './text-field-wrapper-utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../../utils/form/form-state';
 import {
   borderWidthBase,
   fontFamily,
@@ -23,7 +24,7 @@ const buttonOrIconPadding = '4px';
 const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
 const buttonOrIconOffset = '9px';
 
-const baseButtonOrIconStyles = {
+const baseButtonOrIconStyles: JssStyle = {
   position: 'absolute',
   bottom: '11px',
   padding: buttonOrIconPadding,
@@ -117,10 +118,7 @@ export const getComponentCss = (
           bottom: '15px',
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
           zIndex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          boxSizing: 'border-box',
-          padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`,
+          padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`, // padding needed for proper JS calc
           font: textSmallStyle.font,
           color: contrastMediumColor,
         },
