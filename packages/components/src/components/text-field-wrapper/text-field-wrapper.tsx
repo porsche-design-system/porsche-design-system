@@ -256,7 +256,7 @@ export class TextFieldWrapper {
                   name="search"
                   color="contrast-medium"
                   theme={this.theme}
-                  ariaHidden="true"
+                  aria-hidden="true"
                 />
               ),
               <PrefixedTagNames.pButtonPure
@@ -270,7 +270,7 @@ export class TextFieldWrapper {
                 theme={this.theme}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
-                aria={{ 'aria-hidden': 'true' }}
+                aria-hidden="true"
               />,
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
