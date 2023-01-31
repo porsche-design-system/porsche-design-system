@@ -6,15 +6,19 @@
     <p-checkbox-wrapper label="Has values">
       <input type="checkbox" v-model="hasValues" @change="hasValues = $event.target.checked" />
     </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Dark theme">
+      <input type="checkbox" v-model="isDarkTheme" @change="isDarkTheme = $event.target.checked" />
+    </p-checkbox-wrapper>
   </section>
 
-  <div class="overview" v-html="markup"></div>
+  <div :class="['overview', {'overview--dark': isDarkTheme}]" v-html="markup"></div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';  
 import Component from 'vue-class-component';
 import type { TagName } from '@porsche-design-system/shared';
+import type { Theme } from '@/models';
 
 type Variation = { 
   tagName: TagName;
@@ -34,7 +38,7 @@ const variations: Variation[] = [
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 
-const renderMarkupForVariation = ({ tagName, child, attributes }: Variation): string => {
+const renderMarkupForVariation = ({ tagName, child, attributes }: Variation, theme: Theme): string => {
   const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
   const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
   attributes = attributes ? ` ${attributes}` : '';
@@ -42,22 +46,22 @@ const renderMarkupForVariation = ({ tagName, child, attributes }: Variation): st
 
   return `
 <div>
-  <${tagName}${attributes} label="Default${labelSuffix}">
+  <${tagName}${attributes} label="Default${labelSuffix}" theme="${theme}">
     ${child}
   </${tagName}>
-  <${tagName}${attributes} label="Readonly${labelSuffix}">
+  <${tagName}${attributes} label="Readonly${labelSuffix}" theme="${theme}">
     ${childReadonly}
   </${tagName}>
-  <${tagName}${attributes} label="Disabled${labelSuffix}">
+  <${tagName}${attributes} label="Disabled${labelSuffix}" theme="${theme}">
     ${childDisabled}
   </${tagName}>
-  <${tagName}${attributes} label="Error${labelSuffix}" state="error" message="Error">
+  <${tagName}${attributes} label="Error${labelSuffix}" state="error" message="Error" theme="${theme}">
     ${child}
   </${tagName}>
-  <${tagName}${attributes} label="Success${labelSuffix}" state="success" message="Success">
+  <${tagName}${attributes} label="Success${labelSuffix}" state="success" message="Success" theme="${theme}">
     ${child}
   </${tagName}>
-  <${tagName}${attributes} label="Disabled${labelSuffix}" state="success" message="Success">
+  <${tagName}${attributes} label="Disabled${labelSuffix}" state="success" message="Success" theme="${theme}">
     ${childDisabled}
   </${tagName}>
 </div>`;
@@ -67,9 +71,10 @@ const renderMarkupForVariation = ({ tagName, child, attributes }: Variation): st
 export default class Code extends Vue {
   isWrappedInForm = false;
   hasValues = false;
+  isDarkTheme = false;
 
   get markup(): string {
-    let content = variations.map(renderMarkupForVariation).join('\n');
+    let content = variations.map(item => renderMarkupForVariation(item, this.isDarkTheme ? 'dark' : 'light')).join('\n');
     if (this.hasValues) {
       content = content
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')
@@ -88,7 +93,7 @@ export default class Code extends Vue {
     display: flex;
     gap: 1rem;
     background: $pds-theme-light-contrast-low;
-    margin: 0 0 2rem;
+    margin: 0 -4rem;
     padding: 1rem;
     max-width: none !important;
   }
@@ -98,6 +103,15 @@ export default class Code extends Vue {
     display: grid;
     grid-auto-flow: row;
     gap: 1rem;
+  }
+  
+  .overview {
+    margin: 0 -4rem;
+    padding: 2rem 4rem;
+  }
+  
+  .overview--dark {
+    background: $pds-theme-dark-background-base;
   }
 
   :deep(div > div),

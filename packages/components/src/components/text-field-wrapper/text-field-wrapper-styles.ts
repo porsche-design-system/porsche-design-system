@@ -1,23 +1,44 @@
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getFocusJssStyle,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-  getScreenReaderOnlyJssStyle,
-} from '../../styles';
+import type { FormState } from '../../utils/form/form-state';
+import { buildSlottedStyles, getCss } from '../../utils';
+import { isType } from './text-field-wrapper-utils';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { isType } from './text-field-wrapper-utils';
-import type { FormState } from '../../utils/form/form-state';
-import type { JssStyle } from 'jss';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+export const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
+export const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';
+
+const buttonOrIconPadding = '4px';
+const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
+const buttonOrIconOffset = '9px';
+
+const baseButtonOrIconStyles: JssStyle = {
+  position: 'absolute',
+  bottom: '11px',
+  padding: buttonOrIconPadding,
+  font: `1rem ${fontFamily}`,
+};
+
+const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
+  return `calc(${buttonOrIconOffset} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
+};
+
+const getButtonOrIconOffsetHorizontal = (buttonOrIconAmount: number): string => {
+  const multiplier = buttonOrIconAmount > 1 ? ` + ${buttonOrIconSize} * ${buttonOrIconAmount - 1}` : '';
+  return `calc(${buttonOrIconOffset} + ${borderWidthBase}${multiplier})`;
+};
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -27,88 +48,60 @@ export const getComponentCss = (
   unitPosition: TextFieldWrapperUnitPosition,
   inputType: string,
   isWithinForm: boolean,
-  hasAction: boolean,
-  hasActionLoading: boolean
+  theme: Theme
 ): string => {
-  const theme: Theme = 'light';
-  const { primaryColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const hasVisibleState = isVisibleFormState(state);
+  const { contrastMediumColor } = getThemedColors(theme);
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
+  const isNumber = isType(inputType, 'number');
   const isSearchOrPassword = isSearch || isPassword;
-
-  const disabledJssStyle: JssStyle = {
-    color: disabledColor,
-    cursor: 'not-allowed',
-  };
+  const isSearchWithoutForm = isSearch && !isWithinForm;
+  const isSearchWithForm = isSearch && isWithinForm;
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule({
+          [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
+          [cssVariableInputPaddingRight]: isSearchOrPassword
+            ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
+            : spacingStaticMedium,
+          ...hostHiddenStyles,
+        }),
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          ...(!hasUnitOrVisibleCounter && {
-            // padding is set via inline style if unit is present
-            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+          padding: `8px var(${cssVariableInputPaddingRight}) 8px var(${cssVariableInputPaddingLeft})`,
+          ...(isNumber && {
+            MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
-          ...(isType(inputType, 'number')
-            ? {
-                MozAppearance: 'textfield', // hides up/down spin button for Firefox
-              }
-            : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 48),
-                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
-              }),
         }),
-        // Reset webkit autofill styles
-        '::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus)':
-          {
-            WebkitBackgroundClip: 'padding-box',
-          },
-      }),
-      ...(isSearchOrPassword && {
-        button: {
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          margin: 0,
-          width: pxToRemWithUnit(48),
-          height: pxToRemWithUnit(48),
-          padding: pxToRemWithUnit(12), // affects spinner size
-          boxSizing: 'border-box',
-          outline: 'transparent none',
-          appearance: 'none',
-          border: 'none',
-          textDecoration: 'none',
-          background: 'transparent',
-          cursor: 'pointer',
-          color: primaryColor,
-          transition: getTransition('color'),
-          ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-          ...hoverMediaQuery({
-            '&:not(:disabled):hover': {
-              color: hoverColor,
+        '::slotted': {
+          '&(input:-internal-autofill-selected),&(input:-internal-autofill-previewed),&(input:-webkit-autofill),&(input:-webkit-autofill:focus)':
+            {
+              WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
             },
-          }),
-          '&:active': {
-            color: activeColor,
-          },
-          '&:disabled': disabledJssStyle,
-          ...(isSearch &&
-            isWithinForm && {
-              right: pxToRemWithUnit(40), // clear button
-              ...(hasActionLoading && {
-                '&+button[type=button]': disabledJssStyle, // action button
-              }),
-              '&+button[type=submit]': {
-                right: 0, // submit button
-              },
-            }),
         },
       }),
     },
+    ...(isSearchOrPassword && {
+      button: {
+        ...baseButtonOrIconStyles,
+        right: getButtonOrIconOffsetHorizontal(1),
+        // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
+        '&:not([hidden]) ~ .button': {
+          right: getButtonOrIconOffsetHorizontal(2),
+        },
+      },
+    }),
+    ...(isSearchWithoutForm && {
+      icon: {
+        ...baseButtonOrIconStyles,
+        left: getButtonOrIconOffsetHorizontal(1),
+        pointerEvents: 'none',
+      },
+    }),
     root: {
       display: 'block',
       position: 'relative',
@@ -122,30 +115,17 @@ export const getComponentCss = (
       hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
-          bottom: 0,
+          bottom: '15px',
           [unitPosition === 'suffix' ? 'right' : 'left']: 0,
-          padding: pxToRemWithUnit(12),
           zIndex: 1,
-          boxSizing: 'border-box',
-          ...textSmallStyle,
+          padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`, // padding needed for proper JS calc
+          font: textSmallStyle.font,
           color: contrastMediumColor,
         },
       }
     ),
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    ...(isSearch &&
-      (hasAction || !isWithinForm) && {
-        icon: {
-          // search icon on left side
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-          color: contrastMediumColor,
-          padding: pxToRemWithUnit(12),
-          pointerEvents: 'none',
-        },
-      }),
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
       padding: 0,
@@ -153,10 +133,10 @@ export const getComponentCss = (
   });
 };
 
+// TODO: should be transferred to normalize styles (getInitialStyles partial)
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
         {
@@ -168,6 +148,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
       },
       '& input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
+          // TODO: does it have any effect?
           marginRight: '2.4375rem',
         },
       },

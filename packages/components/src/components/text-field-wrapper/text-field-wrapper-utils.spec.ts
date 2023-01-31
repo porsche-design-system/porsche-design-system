@@ -1,20 +1,18 @@
+import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import {
-  getInputPadding,
-  setInputStyles,
-  throwIfUnitLengthExceeded,
-  TextFieldWrapperUnitPosition,
-  hasCounterAndIsTypeText,
-  hasUnitAndIsTypeTextOrNumber,
-  isWithinForm,
-  isType,
   addInputEventListenerForSearch,
   dispatchInputEvent,
+  getInputPaddingLeftOrRight,
+  hasCounterAndIsTypeText,
   hasLocateAction,
+  hasUnitAndIsTypeTextOrNumber,
+  isType,
+  isWithinForm,
+  setInputStyles,
+  throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
-import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
 import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
-import type { FormState } from '../../utils/form/form-state';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -153,32 +151,39 @@ describe('hasLocateAction()', () => {
   });
 });
 
-describe('getInputPadding()', () => {
-  it.each<[TextFieldWrapperUnitPosition, FormState, string]>([
-    ['prefix', 'none', '0.6875rem 0.6875rem 0.6875rem 3.75rem'],
-    ['prefix', 'success', '0.625rem 0.625rem 0.625rem 3.75rem'],
-    ['suffix', 'none', '0.6875rem 3.75rem 0.6875rem 0.6875rem'],
-    ['suffix', 'success', '0.625rem 3.75rem 0.625rem 0.625rem'],
-  ])('should for unitPosition: %s and state: %s return %s', (unitPosition, state, expected) => {
-    expect(getInputPadding(60, unitPosition, state)).toBe(expected);
+describe('getInputPaddingLeftOrRight()', () => {
+  it.each<[number, string]>([
+    [60, 'calc(60px - 2px)'],
+    [40, 'calc(40px - 2px)'],
+  ])('should for unitElementWidth: %s return %s', (unitElementWidth, expected) => {
+    expect(getInputPaddingLeftOrRight(unitElementWidth)).toBe(expected);
   });
 });
 
 describe('setInputStyles()', () => {
   it('should do nothing if unitOrCounterElement is undefined', () => {
     const input = getInputElement();
-    setInputStyles(input, undefined, 'prefix', 'none');
+    setInputStyles(input, undefined, 'prefix');
 
     expect(input.style.cssText).toBe('');
   });
 
-  it('should set inline padding on input', () => {
+  it('should set inline padding-left var on input', () => {
     const input = getInputElement();
     const unitElement = getCounterElement();
     Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'prefix', 'none');
+    setInputStyles(input, unitElement, 'prefix');
 
-    expect(input.style.cssText).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 3.75rem !important;');
+    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-left: calc(60px - 2px) !important;');
+  });
+
+  it('should set inline padding-right var on input', () => {
+    const input = getInputElement();
+    const unitElement = getCounterElement();
+    Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
+    setInputStyles(input, unitElement, 'suffix');
+
+    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-right: calc(60px - 2px) !important;');
   });
 });
 
