@@ -2,7 +2,7 @@ import { getCss } from '../../utils';
 import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { getFocusStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, getFocusStyle } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
 export const getComponentCss = (
@@ -22,6 +22,7 @@ export const getComponentCss = (
     pointerEvents: 'none',
     display: 'flex',
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
+    borderRadius: borderRadiusSmall,
   };
 
   return getCss({
@@ -33,7 +34,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '2em minmax(0, 1fr) 2em',
+      gridTemplateColumns: '48px minmax(0, 1fr) 48px',
       margin: `0 ${pxToRemWithUnit(-4)}`,
       height: 'inherit',
     },
@@ -88,6 +89,9 @@ export const getComponentCss = (
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
+      '& .button': {
+        marginRight: '5px',
+      },
       '& .button::before': {
         right: 0,
       },
