@@ -126,12 +126,11 @@ export const getComponentCss = (
     ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    ...(hasUnitOrVisibleCounter && {
-      'sr-only': {
-        ...getScreenReaderOnlyJssStyle(),
-        padding: 0,
-      },
-    }),
+    // TODO: could be made conditional if we had hasUnit
+    'sr-only': {
+      ...getScreenReaderOnlyJssStyle(),
+      padding: 0,
+    },
   });
 };
 

@@ -93,6 +93,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(min-width:480px) {
   .label__text {
     position: static;
@@ -271,6 +283,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
     border-color: #c51720 !important;
@@ -371,6 +395,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
@@ -851,6 +887,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -969,6 +1017,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1079,6 +1139,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1178,6 +1250,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -1779,6 +1863,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
     border-color: #258843 !important;
@@ -1879,6 +1975,18 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
@@ -2359,6 +2467,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
     border-color: #c51720 !important;
@@ -2458,6 +2578,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
@@ -2691,6 +2823,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -2789,6 +2933,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -3022,6 +3178,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
 }
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
     border-color: #258843 !important;
@@ -3121,6 +3289,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   hyphens: auto;
   color: #32B85B;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
@@ -3355,6 +3535,18 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   hyphens: auto;
   color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
