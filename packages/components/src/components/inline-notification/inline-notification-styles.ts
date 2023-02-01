@@ -25,7 +25,7 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme, hasAction, hasClose)),
+      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, hasAction, hasClose, theme)),
       h5: headingSmallStyle,
       p: textSmallStyle,
       'h5,p': {
@@ -59,9 +59,9 @@ const getBackgroundColor = (state: InlineNotificationState, theme: Theme): strin
 
 export const getNotificationRootJssStyle = (
   state: InlineNotificationState,
-  theme: Theme,
   hasAction: boolean,
-  hasClose: boolean
+  hasClose: boolean,
+  theme: Theme
 ): JssStyle => {
   return {
     display: 'grid',

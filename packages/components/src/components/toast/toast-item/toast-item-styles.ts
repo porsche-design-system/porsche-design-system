@@ -15,7 +15,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
-        ...getNotificationRootJssStyle(state, theme, false, false),
+        ...getNotificationRootJssStyle(state, false, false, theme),
         ...getBoxShadow(),
       },
       p: {

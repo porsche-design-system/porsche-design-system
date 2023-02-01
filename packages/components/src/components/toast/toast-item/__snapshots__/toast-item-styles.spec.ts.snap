@@ -3,12 +3,10 @@
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
   background: #001A33;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
@@ -22,28 +20,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -52,12 +46,10 @@ p {
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
   background: #E8EEFD;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
@@ -71,28 +63,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -101,12 +89,11 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
+  background: #001A33;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
@@ -119,28 +106,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -149,12 +132,11 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
+  background: #E8EEFD;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
@@ -167,28 +149,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -197,12 +175,10 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
   background: #003320;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
@@ -216,28 +192,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -246,12 +218,10 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: 0 1fr auto;
-  grid-template-rows: auto;
-  grid-row-gap: 1rem;
-  align-items: start;
-  justify-items: start;
-  padding: 1rem;
+  grid-template-columns: minmax(auto, 1fr);
+  gap: 16px;
+  place-items: start;
+  padding: 16px;
   background: #EBFAF0;
   border-radius: 4px;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
@@ -265,28 +235,24 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto;
+    grid-template-columns: auto minmax(auto, 1fr);
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "

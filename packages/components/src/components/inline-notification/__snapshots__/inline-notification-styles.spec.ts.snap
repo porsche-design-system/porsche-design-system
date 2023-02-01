@@ -1,20 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getCloseIconJssStyle() should return correct JssStyle 1`] = `
-{
-  "marginLeft": "1rem",
-}
-`;
-
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #290A0A !important;
   border-radius: 4px !important;
 }
@@ -32,25 +24,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -59,12 +50,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #FCE8E9 !important;
   border-radius: 4px !important;
 }
@@ -82,25 +71,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -109,12 +97,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
 }
@@ -132,25 +118,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -159,12 +144,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
@@ -182,25 +165,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -209,12 +191,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
 }
@@ -232,28 +212,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -262,12 +238,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
@@ -285,28 +259,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -315,12 +285,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
 }
@@ -338,34 +306,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -374,12 +335,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
@@ -397,34 +356,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -433,12 +385,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
 }
@@ -456,37 +406,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -495,12 +435,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
@@ -518,37 +456,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -557,13 +485,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -580,25 +506,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -607,13 +532,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -630,25 +553,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -657,13 +579,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -680,28 +600,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -710,13 +626,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -733,28 +647,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -763,13 +673,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -786,34 +694,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -822,13 +723,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -845,34 +744,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -881,13 +773,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -904,37 +794,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -943,13 +823,11 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
-  background: undefined !important;
+  grid-template-columns: minmax(auto, 1fr) auto !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 h5 {
@@ -966,37 +844,27 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
-.action {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-.close {
-  margin-left: 1rem;
-}
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
   .action {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin-left: 1rem;
+    grid-row-start: 2;
   }
 }
 "
@@ -1005,12 +873,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #003320 !important;
   border-radius: 4px !important;
 }
@@ -1028,25 +894,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -1055,12 +920,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #EBFAF0 !important;
   border-radius: 4px !important;
 }
@@ -1078,25 +941,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -1105,12 +967,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #2B2208 !important;
   border-radius: 4px !important;
 }
@@ -1128,25 +988,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -1155,12 +1014,10 @@ h5,p {
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  grid-template-columns: 0 1fr auto !important;
-  grid-template-rows: auto !important;
-  grid-row-gap: 1rem !important;
-  align-items: start !important;
-  justify-items: start !important;
-  padding: 1rem !important;
+  grid-template-columns: minmax(auto, 1fr) !important;
+  gap: 16px !important;
+  place-items: start !important;
+  padding: 16px !important;
   background: #FFF9E6 !important;
   border-radius: 4px !important;
 }
@@ -1178,25 +1035,24 @@ h5,p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: 2rem 1fr auto auto !important;
+    grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
-.icon {
-  visibility: hidden;
-}
 .content {
   display: grid;
-  grid-gap: 0.25rem;
+  gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
+  .content {
+    margin-left: -8px;
+  }
+}
+
+@media(max-width:759px) {
   .icon {
-    display: inline-flex;
-    visibility: visible;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    display: none;
   }
 }
 "
@@ -1204,191 +1060,214 @@ h5,p {
 
 exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 {
+  "@media(min-width:760px)": {
+    "marginLeft": "-8px",
+  },
   "display": "grid",
-  "gridGap": "0.25rem",
+  "gap": "4px",
   "maxWidth": "50rem",
 }
 `;
 
 exports[`getNotificationIconJssStyle() should return correct JssStyle 1`] = `
 {
-  "@media(min-width:760px)": {
-    "display": "inline-flex",
-    "font": "1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "calc(6px + 2.125ex)",
-    "visibility": "visible",
-    "width": "calc(6px + 2.125ex)",
+  "@media(max-width:759px)": {
+    "display": "none",
   },
-  "visibility": "hidden",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: false 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
-  "background": "#290A0A",
-  "borderRadius": "4px",
-  "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
-}
-`;
-
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
-{
-  "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
-  },
-  "alignItems": "start",
   "background": "#FCE8E9",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: false 2`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
-  "background": "#001A33",
+  "background": "#290A0A",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: false 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
   "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: false 2`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "alignItems": "start",
-  "background": undefined,
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr) auto",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: false 3`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
-  "background": undefined,
+  "background": "#001A33",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: true 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "alignItems": "start",
-  "background": "#003320",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: info and theme: true 2`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr) auto auto",
   },
-  "alignItems": "start",
+  "background": "#E8EEFD",
+  "borderRadius": "4px",
+  "display": "grid",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr) auto",
+  "padding": "16px",
+  "placeItems": "start",
+}
+`;
+
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: false 1`] = `
+{
+  "@media(min-width:760px)": {
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
+  },
+  "background": "#E8EEFD",
+  "borderRadius": "4px",
+  "display": "grid",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
+}
+`;
+
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: false 2`] = `
+{
+  "@media(min-width:760px)": {
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
+  },
+  "background": "#001A33",
+  "borderRadius": "4px",
+  "display": "grid",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
+}
+`;
+
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: false 1`] = `
+{
+  "@media(min-width:760px)": {
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
+  },
   "background": "#EBFAF0",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: false 2`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
-  "background": "#2B2208",
+  "background": "#003320",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
 
-exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: false 1`] = `
 {
   "@media(min-width:760px)": {
-    "gridTemplateColumns": "2rem 1fr auto auto",
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "alignItems": "start",
   "background": "#FFF9E6",
   "borderRadius": "4px",
   "display": "grid",
-  "gridRowGap": "1rem",
-  "gridTemplateColumns": "0 1fr auto",
-  "gridTemplateRows": "auto",
-  "justifyItems": "start",
-  "padding": "1rem",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
+}
+`;
+
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: false 2`] = `
+{
+  "@media(min-width:760px)": {
+    "gridTemplateColumns": "auto minmax(auto, 1fr)",
+  },
+  "background": "#2B2208",
+  "borderRadius": "4px",
+  "display": "grid",
+  "gap": "16px",
+  "gridTemplateColumns": "minmax(auto, 1fr)",
+  "padding": "16px",
+  "placeItems": "start",
 }
 `;
