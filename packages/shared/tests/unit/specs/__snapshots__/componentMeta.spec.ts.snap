@@ -49,7 +49,6 @@ exports[`should match snapshot 1`] = `
       "description",
     ],
     "nestedComponents": [
-      "p-content-wrapper",
       "p-inline-notification",
     ],
     "props": {
