@@ -1,14 +1,43 @@
-import { getCss } from '../../utils';
-import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
+import { getCss, isThemeDark } from '../../utils';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  dropShadowMediumStyle,
-  textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const gradientColorMap: { [K in Theme]: { [T in GradientColorTheme]: string } } = {
+  light: {
+    default: '255,255,255',
+    surface: '238,239,242',
+  },
+  dark: {
+    default: '14,14,18',
+    surface: '33,34,37',
+  },
+};
+
+const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): string => {
+  const gradientRGB = gradientColorMap[theme][gradientColorTheme];
+
+  return (
+    `rgba(${gradientRGB},1) 0%,` +
+    `rgba(${gradientRGB},0.9) 20%,` +
+    `rgba(${gradientRGB},0.852589) 26.67%,` +
+    `rgba(${gradientRGB},0.768225) 33.33%,` +
+    `rgba(${gradientRGB},0.668116) 40%,` +
+    `rgba(${gradientRGB},0.557309) 46.67%,` +
+    `rgba(${gradientRGB},0.442691) 53.33%,` +
+    `rgba(${gradientRGB},0.331884) 60%,` +
+    `rgba(${gradientRGB},0.231775) 66.67%,` +
+    `rgba(${gradientRGB},0.147411) 73.33%,` +
+    `rgba(${gradientRGB},0.0816599) 80%,` +
+    `rgba(${gradientRGB},0.03551) 86.67%,` +
+    `rgba(${gradientRGB},0.0086472) 93.33%,` +
+    `rgba(${gradientRGB},0)`
+  );
+};
 
 export const getComponentCss = (
   gradientColorTheme: GradientColorTheme,
@@ -27,46 +56,13 @@ export const getComponentCss = (
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
   };
 
-  const gradientColorMap: {
-    [key in Theme]: {
-      [key in GradientColorTheme]: string;
-    };
-  } = {
-    light: {
-      default: '255,255,255',
-      surface: '238,239,242',
-    },
-    dark: {
-      default: '14,14,18',
-      surface: '33,34,37',
-    },
-  };
-
-  const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme) => {
-    return (
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},1) 0%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.9) 20%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.852589) 26.67%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.768225) 33.33%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.668116) 40%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.557309) 46.67%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.442691) 53.33%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.331884) 60%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.231775) 66.67%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.147411) 73.33%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.0816599) 80%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.03551) 86.67%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.0086472) 93.33%,` +
-      `rgba(${gradientColorMap[theme][gradientColorTheme]},0)`
-    );
-  };
-
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-        height: addImportantToRule('inherit'),
-      },
+        height: 'inherit',
+        ...hostHiddenStyles,
+      }),
     },
     root: {
       display: 'grid',
@@ -75,7 +71,7 @@ export const getComponentCss = (
       height: 'inherit',
     },
     'scroll-area': {
-      minHeight: '24px',
+      minHeight: '28px',
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'scroll hidden',
@@ -99,6 +95,7 @@ export const getComponentCss = (
         ...getInsetJssStyle(-4),
         border: `${borderWidthBase} solid transparent`,
         borderRadius: borderRadiusSmall,
+        pointerEvents: 'none', // Needed to enable clicks inside of slot
       },
       '&:focus::before': {
         borderColor: focusColor,
@@ -129,6 +126,9 @@ export const getComponentCss = (
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& .button': {
         marginLeft: '6px',
+        ...hoverMediaQuery({
+          visibility: isPrevHidden ? 'hidden' : 'visible',
+        }),
       },
     },
     'action-next': {
@@ -140,18 +140,25 @@ export const getComponentCss = (
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& .button': {
         marginRight: '6px',
+        ...hoverMediaQuery({
+          visibility: isNextHidden ? 'hidden' : 'visible',
+        }),
       },
     },
     button: {
       pointerEvents: 'auto',
       position: 'static',
-      ...textSmallStyle,
       backgroundColor,
       borderRadius: borderRadiusSmall,
       border: `2px solid ${backgroundColor}`,
-      transition: getTransition('background-color'),
-      ...dropShadowMediumStyle,
+      visibility: 'hidden',
+      ...(!isThemeDark(theme) && {
+        // Needed to ensure visibility as dropShadowMediumStyle conflicts with frostedGlass filter
+        boxShadow:
+          '0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07)',
+      }),
       '&:hover': {
+        backgroundColor: 'transparent',
         borderColor: 'transparent',
       },
     },
