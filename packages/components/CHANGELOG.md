@@ -40,12 +40,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
 ```
 
-
-- Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-information`
+- Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-info`
 
 ```diff
 - <p-tag color="notification-neutral">Color label</p-tag>
-+ <p-tag color="notification-information">Color label</p-tag>
++ <p-tag color="notification-info">Color label</p-tag>
 ```
 
 - Color `neutral-contrast-high` for `Tag` is deprecated now, replaced by `primary`
