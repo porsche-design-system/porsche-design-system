@@ -6,8 +6,11 @@ import {
 
 const components = [
   'button',
+  'button-pure',
   'checkbox-wrapper',
   'link',
+  'link-pure',
+  'link-social',
   'popover',
   'radio-button-wrapper',
   'spinner',
