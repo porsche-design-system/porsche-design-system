@@ -12,7 +12,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -24,109 +23,70 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -144,7 +104,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -156,111 +115,72 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
-  margin: 0 2rem 0 0;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-  .header {
-    padding: 0 0 2rem;
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -278,7 +198,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -290,109 +209,72 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-  .header {
-    padding: 0 0 2rem;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -410,7 +292,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -422,108 +303,69 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
+  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
     margin: 0;
   }
 }
@@ -542,7 +384,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -554,110 +395,71 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
-  margin: 0 2rem 0 0;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: 0;
-  }
-  .header {
-    padding: 0 0 2rem;
     margin: 0;
   }
 }
@@ -676,7 +478,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -688,108 +489,69 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-top: -2rem !important;
+  margin-top: -32px !important;
+  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
     margin: 0;
   }
 }
@@ -808,7 +570,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
   opacity: 0 !important;
   visibility: hidden !important;
   overflow-y: auto;
@@ -820,109 +581,72 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
     margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: 0;
-  }
-  .header {
-    padding: 0 0 2rem;
   }
 }
 "
@@ -940,7 +664,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -952,59 +675,69 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
+  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
+@media(min-width:480px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
+    border-radius: 8px 8px 0 0 !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
+    border-radius: 0 0 8px 8px !important;
   }
 }
 
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
+@media(min-width:760px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
+    border-radius: 0 !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
+    border-radius: 0 !important;
+  }
+}
+
+@media(min-width:1000px) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
+    border-radius: 8px 8px 0 0 !important;
+  }
+  ::slotted(.stretch-to-full-modal-width:last-child) {
+    border-radius: 0 0 8px 8px !important;
+  }
+}
+
+@media(min-width:1300px) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
+    border-radius: 0 !important;
+  }
+  ::slotted(.stretch-to-full-modal-width:last-child) {
+    border-radius: 0 !important;
+  }
+}
+
+@media(min-width:1760px) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
+    border-radius: 8px 8px 0 0 !important;
+  }
+  ::slotted(.stretch-to-full-modal-width:last-child) {
+    border-radius: 0 0 8px 8px !important;
   }
 }
 
@@ -1013,38 +746,56 @@ h1 {
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
+}
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
 @media(min-width:480px) {
   .root {
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: max(1rem, 7vh) max(1rem, 7vw);
+    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+    border-radius: 8px;
+  }
+  .root:focus::before {
+    border-radius: 12px;
+    border-color: #FBFCFF;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
   }
 }
 
@@ -1054,16 +805,33 @@ h1 {
     max-width: none;
     min-height: 100%;
     margin: 0;
+    border-radius: 0;
+  }
+  .root:focus::before {
+    border-radius: 0;
+    border-color: #010205;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 
 @media(min-width:1000px) {
   .root {
-    padding: 2.5rem;
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: max(1rem, 7vh) max(1rem, 7vw);
+    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+    border-radius: 8px;
+  }
+  .root:focus::before {
+    border-radius: 12px;
+    border-color: #FBFCFF;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
   }
 }
 
@@ -1073,22 +841,33 @@ h1 {
     max-width: none;
     min-height: 100%;
     margin: 0;
+    border-radius: 0;
+  }
+  .root:focus::before {
+    border-radius: 0;
+    border-color: #010205;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 
 @media(min-width:1760px) {
   .root {
-    margin: max(1rem, 7vh) max(1rem, 7vw);
+    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
+    border-radius: 8px;
   }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
+  .root:focus::before {
+    border-radius: 12px;
+    border-color: #FBFCFF;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
   }
 }
 "
@@ -1106,7 +885,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1118,109 +896,70 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -1238,7 +977,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1250,111 +988,72 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
-  margin: 0 2rem 0 0;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-  .header {
-    padding: 0 0 2rem;
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -1372,7 +1071,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1384,109 +1082,72 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 0 8px 8px !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(1rem, 7vh) max(1rem, 7vw);
+  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
-  }
-  .header {
-    padding: 0 0 2rem;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
   }
 }
 "
@@ -1504,7 +1165,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1516,108 +1176,69 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
+  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
     margin: 0;
   }
 }
@@ -1636,7 +1257,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1648,110 +1268,71 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 2rem 32px 32px 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
-  margin: 0 2rem 0 0;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: 0;
-  }
-  .header {
-    padding: 0 0 2rem;
     margin: 0;
   }
 }
@@ -1770,7 +1351,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1782,108 +1362,69 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-top: -2rem !important;
+  margin-top: -32px !important;
+  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:first-child) {
-    margin-top: -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
-}
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
-    margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
     margin: 0;
   }
 }
@@ -1902,7 +1443,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   overflow-y: auto;
@@ -1914,109 +1454,72 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: #0e1418e6 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 4rem) !important;
-  margin: 0 -2rem !important;
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -2rem !important;
+  margin-bottom: -32px !important;
+  border-radius: 0 !important;
 }
-h1 {
-  font: normal normal 400 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  color: #000;
+  color: #010205;
 }
-@media(min-width:1000px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 5rem) !important;
-    margin: 0 -2.5rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -2.5rem !important;
-  }
-  h1 {
-    font: normal normal 400 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    font-weight: 600;
-  }
-}
-
-@media(min-width:1920px) {
-  ::slotted(.stretch-to-full-modal-width) {
-    width: calc(100% + 8rem) !important;
-    margin: 0 -4rem !important;
-  }
-  ::slotted(.stretch-to-full-modal-width:last-child) {
-    margin-bottom: -4rem !important;
-  }
-}
-
 .root {
   position: relative;
   box-sizing: border-box;
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
-  padding: 2rem;
-  background-color: #fff;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 32px;
+  background-color: #FFF;
+  outline: 0;
   min-width: 100%;
   max-width: none;
   min-height: 100%;
   margin: 0;
+  border-radius: 0;
 }
-.root::-moz-focus-inner {
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
   border: 0;
 }
-.root:focus {
-  outline-color: #fff;
-}
-.root:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 .header {
-  padding: 0 0 1rem;
+  padding: 0 0 8px;
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  border: 0.375rem solid #fff;
-  background: #fff;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background-color: #FFF;
 }
-@media(min-width:1000px) {
-  .root {
-    padding: 2.5rem;
-  }
-  .header {
-    padding: 0 0 1.5rem;
-  }
+.close:hover {
+  background-color: transparent;
+  border-color: transparent;
 }
-
 @media(min-width:1760px) {
   .root {
     margin: 0;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 4rem;
-    margin: 0;
-  }
-  .header {
-    padding: 0 0 2rem;
   }
 }
 "
@@ -2049,7 +1552,7 @@ p-modal a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   p-modal a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "
@@ -2082,7 +1585,7 @@ prefixed-p-modal a:focus:not(:focus-visible) {
     transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-modal a:hover {
-    color: #d5001c !important;
+    color: rgba(148, 149, 152, 0.20) !important;
   }
 }
 "

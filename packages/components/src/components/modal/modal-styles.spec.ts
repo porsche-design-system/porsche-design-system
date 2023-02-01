@@ -3,7 +3,7 @@ import type { BreakpointCustomizable } from '../../types';
 import * as focusVisibleFallbackUtils from '../../styles/focus-visible-fallback';
 import { getFocusJssStyle } from '../../styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it('should call getFocusVisibleFallback() with correct parameters', () => {
     const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
     getComponentCss(true, true, true, true);
@@ -63,7 +63,7 @@ describe('isFullscreenForXL()', () => {
   });
 });
 
-xdescribe('getSlottedCss()', () => {
+describe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-modal');
     expect(getSlottedCss(host)).toMatchSnapshot();
