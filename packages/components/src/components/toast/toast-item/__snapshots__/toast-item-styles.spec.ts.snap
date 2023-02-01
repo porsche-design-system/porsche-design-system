@@ -3,7 +3,7 @@
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -20,7 +20,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 
@@ -46,7 +46,7 @@ p {
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -63,7 +63,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 
@@ -89,7 +89,7 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -106,7 +106,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 
@@ -132,7 +132,7 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -149,7 +149,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 
@@ -175,7 +175,7 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -192,7 +192,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 
@@ -218,7 +218,7 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
   padding: 16px;
@@ -235,7 +235,7 @@ p {
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr);
+    grid-template-columns: auto minmax(auto, 1fr) auto;
   }
 }
 

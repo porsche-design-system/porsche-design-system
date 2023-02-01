@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   position: fixed !important;
   left: clamp(22px, 10.625vw - 12px, 192px) !important;
   right: clamp(22px, 10.625vw - 12px, 192px) !important;
-  --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 3.5rem) !important;
+  --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
   max-width: 42rem !important;
   z-index: 999999 !important;
@@ -32,9 +32,9 @@ exports[`getComponentCss() should return correct css 1`] = `
 }
 @media(min-width:760px) {
     :host {
-      left: 4rem !important;
+      left: 64px !important;
       right: auto !important;
-      --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 4rem) !important;
+      --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 64px) !important;
       bottom: var(--p-internal-toast-position-bottom) !important;
     }
 }
