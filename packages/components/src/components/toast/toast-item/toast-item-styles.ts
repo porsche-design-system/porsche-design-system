@@ -2,7 +2,6 @@ import type { Theme } from '../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { getCss } from '../../../utils';
 import {
-  getCloseIconJssStyle,
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
@@ -16,7 +15,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
-        ...getNotificationRootJssStyle(state, theme),
+        ...getNotificationRootJssStyle(state, theme, false, false),
         ...getBoxShadow(),
       },
       p: {
@@ -27,6 +26,5 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
-    close: getCloseIconJssStyle(),
   });
 };

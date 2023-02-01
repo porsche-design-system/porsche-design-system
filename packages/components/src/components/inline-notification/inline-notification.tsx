@@ -48,7 +48,7 @@ export class InlineNotification {
   @Prop() public actionLoading?: boolean = false;
 
   /** Action icon of the inline-notification. */
-  @Prop() public actionIcon?: IconName = 'arrow-head-right';
+  @Prop() public actionIcon?: IconName = 'arrow-right';
 
   /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -76,7 +76,6 @@ export class InlineNotification {
           name={getInlineNotificationIconName(mappedState)}
           color={`notification-${this.state}` as IconColor}
           theme={this.theme}
-          size="inherit"
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(mappedState, labelId, descriptionId)}>
@@ -96,7 +95,6 @@ export class InlineNotification {
         )}
         {!this.persistent && (
           <PrefixedTagNames.pButtonPure
-            class="close"
             type="button"
             icon="close"
             theme={this.theme}

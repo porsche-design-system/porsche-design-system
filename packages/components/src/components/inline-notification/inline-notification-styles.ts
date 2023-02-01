@@ -1,19 +1,21 @@
 import type { JssStyle } from 'jss';
-import {
-  headingSmallStyle,
-  getMediaQueryMin,
-  textSmallStyle,
-  borderRadiusSmall,
-  fontLineHeight,
-  fontFamily,
-  fontSizeTextSmall,
-} from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
+import {
+  borderRadiusSmall,
+  getMediaQueryMax,
+  getMediaQueryMin,
+  headingSmallStyle,
+  spacingStaticMedium,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
 
-const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryMinS = getMediaQueryMin('s');
+const mediaQueryMaxS = getMediaQueryMax('s');
 
 export const getComponentCss = (
   state: InlineNotificationState,
@@ -21,70 +23,62 @@ export const getComponentCss = (
   hasClose: boolean,
   theme: Theme
 ): string => {
-  const textColor = getThemedColors(theme).primaryColor;
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
+      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme, hasAction, hasClose)),
       h5: headingSmallStyle,
       p: textSmallStyle,
       'h5,p': {
         margin: 0,
-        color: textColor,
+        color: getThemedColors(theme).primaryColor,
       },
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
-        gridColumnStart: 1,
-        gridRowStart: 2,
-        [mediaQueryS]: {
-          gridColumnStart: 3,
-          gridRowStart: 1,
-          marginLeft: pxToRemWithUnit(16),
+        [mediaQueryMaxS]: {
+          gridRowStart: 2,
         },
       },
     }),
-    ...(hasClose && { close: getCloseIconJssStyle() }),
   });
 };
 
-export const getNotificationRootJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {
+export const getNotificationRootJssStyle = (
+  state: InlineNotificationState,
+  theme: Theme,
+  hasAction: boolean,
+  hasClose: boolean
+): JssStyle => {
   const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
-    gridTemplateColumns: '0 1fr auto', // 3 columns for icon, content and close button
-    gridTemplateRows: 'auto',
-    gridRowGap: pxToRemWithUnit(16),
-    alignItems: 'start',
-    justifyItems: 'start',
-    padding: pxToRemWithUnit(16),
+    // 2 columns for content and optional close button
+    gridTemplateColumns: `minmax(auto, 1fr)${hasClose ? ' auto' : ''}`,
+    gap: spacingStaticMedium,
+    placeItems: 'start',
+    padding: spacingStaticMedium,
     background: themedColors[`${state}SoftColor`],
     borderRadius: borderRadiusSmall,
-    [mediaQueryS]: {
-      // 4 columns are for icon, content, action button and close button
-      gridTemplateColumns: '2rem 1fr auto auto',
+    [mediaQueryMinS]: {
+      // 4 columns are for icon, content, optional action button and optional close button
+      gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,
     },
   };
 };
 
 export const getNotificationIconJssStyle = (): JssStyle => ({
-  visibility: 'hidden',
-  [mediaQueryS]: {
-    display: 'inline-flex',
-    visibility: 'visible',
-    font: `${fontSizeTextSmall} ${fontFamily}`,
-    width: fontLineHeight,
-    height: fontLineHeight,
+  [mediaQueryMaxS]: {
+    display: 'none',
   },
 });
 
 export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
-  gridGap: pxToRemWithUnit(4),
-  maxWidth: pxToRemWithUnit(800),
-});
-
-export const getCloseIconJssStyle = (): JssStyle => ({
-  marginLeft: pxToRemWithUnit(16),
+  gap: spacingStaticXSmall,
+  maxWidth: '50rem',
+  [mediaQueryMinS]: {
+    marginLeft: `-${spacingStaticSmall}`,
+  },
 });
