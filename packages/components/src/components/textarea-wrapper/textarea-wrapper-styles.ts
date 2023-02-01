@@ -6,7 +6,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FormState } from '../../utils/form/form-state';
-import { spacingStaticMedium, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { spacingStaticMedium, spacingStaticLarge, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
@@ -27,14 +27,16 @@ export const getComponentCss = (
       ...mergeDeep(
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
+            font: textSmallStyle.font, // to override line-height
             // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
-            padding: hasCounter ? `${spacingStaticMedium} ${spacingStaticMedium} 36px` : spacingStaticMedium,
-            resize: 'vertical',
+            padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,
           })
         ),
         {
           '::slotted(textarea)': {
-            minHeight: '192px', // min-height should be overridable
+            height: 'auto', // removes !important from getBaseChildStyles
+            minHeight: '200px', // min-height should be overridable
+            resize: 'vertical', // overridable, too
           },
         } as Styles
       ),

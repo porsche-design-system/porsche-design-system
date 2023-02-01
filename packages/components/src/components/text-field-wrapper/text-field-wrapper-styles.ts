@@ -126,10 +126,12 @@ export const getComponentCss = (
     ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    'sr-only': {
-      ...getScreenReaderOnlyJssStyle(),
-      padding: 0,
-    },
+    ...(hasUnitOrVisibleCounter && {
+      'sr-only': {
+        ...getScreenReaderOnlyJssStyle(),
+        padding: 0,
+      },
+    }),
   });
 };
 
