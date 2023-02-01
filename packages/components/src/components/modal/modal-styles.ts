@@ -20,9 +20,7 @@ import {
 import { MODAL_Z_INDEX } from '../../constants';
 import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/src/js/theme/themeDarkBackgroundShading';
 
-const mediaQueryM = getMediaQueryMin('m');
 const mediaQueryXl = getMediaQueryMin('xl');
-const mediaQueryXxl = getMediaQueryMin('xxl');
 const { backgroundColor: lightThemeBackgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 
@@ -61,20 +59,21 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-const getSlottedJssStyle = (marginValue: number, hasHeader: boolean): JssStyle => {
-  const marginRem = `${-marginValue}px`;
+const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, disableCloseButton: boolean): JssStyle => {
+  const marginPx = `${-marginValue}px`;
+  const marginRem = pxToRemWithUnit(-marginValue);
   return {
     [`&(.${stretchToFullModalWidthClassName})`]: {
       width: `calc(100% + ${marginValue * 2}px)`,
-      margin: `0 ${marginRem}`,
+      margin: `0 ${marginPx}`,
     },
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-        marginTop: marginRem,
+        marginTop: !disableCloseButton ? marginRem : marginPx,
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-      marginBottom: marginRem,
+      marginBottom: marginPx,
     },
   };
 };
@@ -120,11 +119,7 @@ export const getComponentCss = (
       },
       '::slotted': addImportantToEachRule({
         ...mergeDeep(
-          getSlottedJssStyle(32, hasHeader),
-          {
-            [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
-            [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
-          },
+          getSlottedJssStyle(32, hasHeader, disableCloseButton),
           buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
               borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
@@ -147,7 +142,7 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-        padding: disableCloseButton ? '32px' : '40px 32px',
+        padding: !disableCloseButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
         backgroundColor: lightThemeBackgroundColor,
         outline: 0,
         '&:focus::before': {
@@ -163,27 +158,15 @@ export const getComponentCss = (
         '&:not(:focus-visible)::before': {
           border: 0,
         },
-        [mediaQueryM]: {
-          padding: '40px',
-        },
         [mediaQueryXl]: {
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridSafeZone}`,
-        },
-        [mediaQueryXxl]: {
-          padding: '64px',
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
     ),
     ...(hasHeader && {
       header: {
-        padding: '0 0 16px',
-        [mediaQueryM]: {
-          padding: '0 0 24px',
-        },
-        [mediaQueryXxl]: {
-          padding: '0 0 32px',
-        },
+        padding: '0 0 8px',
       },
     }),
     close: {
