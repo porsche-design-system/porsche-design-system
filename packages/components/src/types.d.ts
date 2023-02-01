@@ -1,7 +1,7 @@
 // common type definitions
 import type { IconName } from '@porsche-design-system/icons';
 
-export type { ButtonAriaAttributes } from './utils';
+export type { ButtonAriaAttribute } from './utils';
 export type { PropTypes, ValidatorFunction } from './utils/validation/validateProps';
 export type { BreakpointCustomizable, BreakpointKey } from './utils/breakpoint-customizable';
 export type { Theme } from './utils/theme';
@@ -13,7 +13,6 @@ export type { TextWeight } from './components/text/text-weight';
 export type { HeadlineVariant, VariantType } from './components/headline/headline-utils';
 
 export type { IconName } from '@porsche-design-system/icons';
-export type { IconSize } from './components/icon/icon-size';
 
 export type LinkButtonIconName = IconName | 'none';
 

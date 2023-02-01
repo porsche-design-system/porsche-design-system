@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       p-button-pure:not(:last-child) {
         margin-right: 16px;
       }
+    
       .stretched-buttons p-button-pure {
         margin-right: 0;
       }
@@ -63,12 +64,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [active]="true">Label active</p-button-pure>
       <p-button-pure [active]="true" [disabled]="true">Label active disabled</p-button-pure>
       <p-button-pure [active]="true" [loading]="true">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'">Label active</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'" [disabled]="true">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'" [loading]="true">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true">Label active</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [disabled]="true">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [loading]="true">Label active loading</p-button-pure>
     </div>
 
     <div class="playground dark" title="should render with active state on dark background">
       <p-button-pure [active]="true" [theme]="'dark'">Label active</p-button-pure>
       <p-button-pure [active]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
       <p-button-pure [active]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'" [theme]="'dark'">Label active</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [icon]="'none'" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [theme]="'dark'">Label active</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [hideLabel]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
     </div>
 
     <div class="playground light" title="should render button with specific icon">
@@ -78,7 +91,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render button with specific icon on dark background">
       <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
-      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'">Label with local icon-source</p-button-pure>
+      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'"
+        >Label with local icon-source
+      </p-button-pure>
     </div>
 
     <div class="playground light" title="should render button with multiline label">
@@ -146,8 +161,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [icon]="'none'"
         [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
         style="font-size: 48px"
-        >Label icon none size responsive</p-button-pure
-      >
+        >Label icon none size responsive
+      </p-button-pure>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

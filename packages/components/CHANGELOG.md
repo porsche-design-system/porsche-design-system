@@ -12,10 +12,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Prop `underline` for `Link Pure`
-- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible` and `Text Field Wrapper`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible` and `Text Field Wrapper`
+- Prop `size` for `Icon` supports `x-small` and `x-large`
 
 #### Changed
 
+- `Icon` supports
+  `'primary' | 'contrast-low' | 'contrast-medium' | 'contrast-high' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-info' | 'inherit'`
+  for color prop while
+  `'brand' | 'default' | 'neutral-contrast-low' | 'neutral-contrast-medium' | 'neutral-contrast-high' | 'notification-neutral'`
+  is deprecated now.
+- Value `inherit` for prop `color` of `Icon` works slightly different to the previous major version. A CSS filter is
+  required to apply custom coloring to take advantage of using an SVG embedded in an `<img/>` for better SSR support and
+  loading performance in general.
+
+```diff
+- <p-icon color="inherit" style="color: #fff"></p-icon>
+
++ <p-icon color="inherit" style="filter: invert(100%)"></p-icon>
+```
+
+- `getIconLinks()` partial accepts only param-cased icon names
+
+```diff
+- require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
+
++ require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
+```
+
+- Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
   the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
@@ -34,9 +59,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
 
-- `Spinner`, `Link Pure`, `Button Pure`,`Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Tag Dismissible`
-  and `Text Field Wrapper` match new design language
-- Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied
+- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
+  `Popover`, `Tag Dismissible` and `Text Field Wrapper` matches new design language
+- CSS global variables names
+
+```diff
+- --p-animation-duration__spinner
+- --p-animation-duration__banner
+
++ --p-animation-duration
+```
+
+- Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied:
 
 ```diff
 - <p-link-pure href="#" weight="thin">Some label</p-link-pure>
@@ -50,6 +84,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-button-pure weight="semibold">Some label</p-button-pure>
 - <p-button-pure weight="bold">Some label</p-button-pure>
 + <p-button-pure>Some label</p-button-pure>
+```
+
+- Prop `lazy` for `Icon` is deprecated now:
+-
+
+```diff
+- <p-icon laze="true"></p-icon>
+
++ <p-icon></p-icon>
 ```
 
 #### Removed
@@ -81,6 +124,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-switch tabbable="false">Some label</p-switch>
 + <p-switch tabindex="-1">Some label</p-switch>
+```
+
+#### Fixed
+
+- `Icon` supports param cased icon names only, typings are adapted accordingly:
+
+```diff
+- <p-icon name="arrowRight"></p-icon>
++ <p-icon name="arrow-right"></p-icon>
 ```
 
 ### [2.19.1-rc.1] - 2023-01-18

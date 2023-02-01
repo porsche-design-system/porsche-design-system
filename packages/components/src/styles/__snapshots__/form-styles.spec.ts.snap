@@ -11,13 +11,12 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "boxSizing": "border-box",
     "color": "#010205",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -27,18 +26,14 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "cursor": "not-allowed",
   },
   "::slotted(input:focus)": {
-    "borderColor": "#E7323B",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#010205",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#c51720",
     },
   },
@@ -56,13 +51,12 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "boxSizing": "border-box",
     "color": "#010205",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -73,17 +67,13 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
   },
   "::slotted(input:focus)": {
     "borderColor": "#010205",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#010205",
     },
   },
@@ -101,13 +91,12 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "boxSizing": "border-box",
     "color": "#010205",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -117,18 +106,14 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "cursor": "not-allowed",
   },
   "::slotted(input:focus)": {
-    "borderColor": "#32B85B",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(input:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#010205",
   },
   "::slotted(input[readonly])": {
     "background": "#D8D8DB",
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not([readonly]):hover)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#258843",
     },
   },
@@ -146,13 +131,12 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -162,14 +146,10 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "cursor": "not-allowed",
   },
   "::slotted(select:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -187,13 +167,12 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -204,13 +183,9 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
   },
   "::slotted(select:focus)": {
     "borderColor": "#FBFCFF",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -228,13 +203,12 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "height": "3.375rem",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -244,14 +218,10 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "cursor": "not-allowed",
   },
   "::slotted(select:focus)": {
-    "borderColor": "#00C77E",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(select:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not([readonly]):hover)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#008a57",
     },
   },
@@ -270,12 +240,12 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -285,18 +255,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -314,12 +280,12 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -329,18 +295,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#CB3333",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#9a2727",
     },
   },
@@ -358,12 +320,12 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -374,17 +336,13 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "::slotted(textarea:focus)": {
     "borderColor": "#FBFCFF",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -402,12 +360,12 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "boxSizing": "border-box",
     "color": "#FBFCFF",
     "display": "block",
-    "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "outline": "2px solid transparent",
-    "outlineOffset": "2px",
-    "position": "relative",
+    "font": "normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "height": "auto",
+    "margin": 0,
+    "outline": 0,
     "textIndent": 0,
-    "transition": "border-color var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -417,18 +375,14 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "cursor": "not-allowed",
   },
   "::slotted(textarea:focus)": {
-    "borderColor": "#00C77E",
-    "outlineColor": "#0A0AFF",
-  },
-  "::slotted(textarea:focus:not(:focus-visible))": {
-    "outlineColor": "transparent",
+    "borderColor": "#FBFCFF",
   },
   "::slotted(textarea[readonly])": {
     "background": "#404044",
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not([readonly]):hover)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
       "borderColor": "#008a57",
     },
   },
@@ -439,22 +393,15 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#d30303 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#9a2727 !important",
           },
         },
       },
@@ -464,7 +411,6 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
         "height": "auto",
         "margin": 0,
         "overflow": "visible",
-        "padding": "0 0 0.25rem",
         "position": "static",
         "whiteSpace": "normal",
         "width": "fit-content",
@@ -476,7 +422,6 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
         "height": "1px",
         "margin": "-1px",
         "overflow": "hidden",
-        "padding": "0 0 0.25rem",
         "position": "absolute",
         "whiteSpace": "nowrap",
         "width": "fit-content",
@@ -487,7 +432,6 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
         "height": "auto",
         "margin": 0,
         "overflow": "visible",
-        "padding": "0 0 0.25rem",
         "position": "static",
         "whiteSpace": "normal",
         "width": "fit-content",
@@ -498,7 +442,6 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
         "height": "auto",
         "margin": 0,
         "overflow": "visible",
-        "padding": "0 0 0.25rem",
         "position": "static",
         "whiteSpace": "normal",
         "width": "fit-content",
@@ -510,16 +453,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
         "height": "1px",
         "margin": "-1px",
         "overflow": "hidden",
-        "padding": "0 0 0.25rem",
         "position": "absolute",
         "whiteSpace": "nowrap",
         "width": "fit-content",
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -527,25 +468,19 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
   "unit": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-          "borderColor": "#d30303 !important",
-        },
-      },
-    },
     "display": "block ",
+    "pointerEvents": "none",
   },
 }
 `;
@@ -554,29 +489,21 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#a30000 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#c51720 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -584,14 +511,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -601,29 +528,21 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly]))": {
-            "borderColor": "#000 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly]))": {
+            "borderColor": "#010205 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -631,14 +550,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -648,29 +567,21 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#014d0c !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#258843 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -678,14 +589,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -695,30 +606,22 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#a30000 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#c51720 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -726,14 +629,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -743,30 +646,22 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly]))": {
-            "borderColor": "#000 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly]))": {
+            "borderColor": "#010205 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -774,14 +669,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -791,30 +686,22 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#626669",
+      "&+&": {
+        "color": "#535457",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#014d0c !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#258843 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#000",
+      "color": "#010205",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -822,14 +709,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -839,27 +726,21 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
+      "&+&": {
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#a30000 !important",
+          "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#c51720 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#96989a",
+      "color": "#949598",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -867,14 +748,14 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -884,29 +765,21 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#d30303 !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#9a2727 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -914,14 +787,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -931,29 +804,21 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly]))": {
-            "borderColor": "#fff !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
+            "borderColor": "#FBFCFF !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -961,14 +826,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -978,29 +843,21 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#017d14 !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#008a57 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "clip": "auto",
       "clipPath": "none",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "auto",
@@ -1008,14 +865,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": 0,
       "overflow": "visible",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "static",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "normal",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -1025,30 +882,22 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#d30303 !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#9a2727 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -1056,14 +905,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -1073,30 +922,22 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly]))": {
-            "borderColor": "#fff !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
+            "borderColor": "#FBFCFF !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -1104,14 +945,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -1121,30 +962,22 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
-      },
-      "&--description": {
-        "color": "#b0b1b2",
+      "&+&": {
+        "color": "#AFB0B3",
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#017d14 !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#008a57 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#fff",
+      "color": "#FBFCFF",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -1152,14 +985,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }
@@ -1169,27 +1002,21 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
 {
   "label": {
     "&__text": {
-      "&+&--description": {
-        "WebkitTextSizeAdjust": "none",
-        "font": "normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-        "hyphens": "auto",
-        "marginTop": "-0.25rem",
-        "overflowWrap": "break-word",
-        "paddingBottom": "0.5rem",
-        "textSizeAdjust": "none",
+      "&+&": {
+        "fontSize": ".875rem",
+        "marginTop": "-4px",
       },
       "@media(hover:hover)": {
         "&:hover": {
-          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:not(:disabled):not([readonly]):hover)": {
-            "borderColor": "#d30303 !important",
+          "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
+            "borderColor": "#9a2727 !important",
           },
         },
       },
-      "WebkitTextSizeAdjust": "none",
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
-      "color": "#7c7f81",
+      "color": "#7E7F82",
       "display": "block",
       "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       "height": "1px",
@@ -1197,14 +1024,14 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "margin": "-1px",
       "overflow": "hidden",
       "overflowWrap": "break-word",
-      "padding": "0 0 0.25rem",
       "position": "absolute",
-      "textSizeAdjust": "none",
       "transition": "color var(--p-transition-duration, .24s) ease",
       "whiteSpace": "nowrap",
       "width": "fit-content",
     },
-    "display": "block",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "4px",
     "position": "relative",
   },
 }

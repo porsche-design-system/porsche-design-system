@@ -6,6 +6,7 @@ export const ButtonPurePage = (): JSX.Element => {
     p-button-pure:not(:last-child) {
       margin-right: 16px;
     }
+
     .stretched-buttons p-button-pure {
       margin-right: 0;
     }
@@ -64,12 +65,24 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure active={true}>Label active</PButtonPure>
         <PButtonPure active={true} disabled={true}>Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true}>Label active loading</PButtonPure>
+        <PButtonPure active={true} icon="none">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true}>Label active loading</PButtonPure>
+        <PButtonPure active={true} hideLabel={true}>Label active</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} loading={true}>Label active loading</PButtonPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
         <PButtonPure active={true} theme="dark">Label active</PButtonPure>
         <PButtonPure active={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true} theme="dark">Label active loading</PButtonPure>
+        <PButtonPure active={true} icon="none" theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true} theme="dark">Label active loading</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} loading={true} theme="dark">Label active loading</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with specific icon">
@@ -79,7 +92,9 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground dark" title="should render button with specific icon on dark background">
         <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
-        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">Label with local icon-source</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark"
+          >Label with local icon-source
+        </PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
@@ -147,8 +162,8 @@ export const ButtonPurePage = (): JSX.Element => {
           icon="none"
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: '48px' }}
-          >Label icon none size responsive</PButtonPure
-        >
+          >Label icon none size responsive
+        </PButtonPure>
       </div>
     </>
   );

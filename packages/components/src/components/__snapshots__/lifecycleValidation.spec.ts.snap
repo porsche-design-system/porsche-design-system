@@ -159,7 +159,7 @@ exports[`should call validateProps() with correct parameters via render for p-ic
   "aria": "aria",
   "color": "oneOf",
   "lazy": "boolean",
-  "name": "string",
+  "name": "oneOf",
   "size": "oneOf",
   "source": "string",
   "theme": "oneOf",
@@ -284,6 +284,7 @@ exports[`should call validateProps() with correct parameters via render for p-po
   "aria": "aria",
   "description": "string",
   "direction": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
