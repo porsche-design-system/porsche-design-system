@@ -6,7 +6,7 @@
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   The <code>headline</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>
-  Use <a href="./components/typography/heading/"><code>heading</code> component</a> instead.
+  Use <a href="components/typography/heading/"><code>heading</code> component</a> instead.
 </p-inline-notification>
 
 ---

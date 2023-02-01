@@ -11,7 +11,6 @@ describe('getComponentCss()', () => {
 
   it.each<Parameters<typeof getComponentCss>>([
     ['headline-1', 'left', 'default', false, 'light'],
-    ,
     ['headline-2', 'center', 'inherit', true, 'dark'],
     ['headline-3', 'center', 'inherit', true, 'dark'],
     ['headline-4', 'center', 'inherit', true, 'dark'],
