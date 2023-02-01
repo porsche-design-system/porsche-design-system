@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getThemeForIcon() should return correct theme for color: background-base and theme: dark 1`] = `"dark"`;
+
+exports[`getThemeForIcon() should return correct theme for color: background-base and theme: light 1`] = `"light"`;
+
+exports[`getThemeForIcon() should return correct theme for color: neutral-contrast-high and theme: dark 1`] = `"light"`;
+
+exports[`getThemeForIcon() should return correct theme for color: neutral-contrast-high and theme: light 1`] = `"dark"`;
+
+exports[`getThemeForIcon() should return correct theme for color: primary and theme: dark 1`] = `"light"`;
+
+exports[`getThemeForIcon() should return correct theme for color: primary and theme: light 1`] = `"dark"`;
+
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-default, theme: dark 1`] = `"#292934"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-default, theme: light 1`] = `"#E0E0E0"`;

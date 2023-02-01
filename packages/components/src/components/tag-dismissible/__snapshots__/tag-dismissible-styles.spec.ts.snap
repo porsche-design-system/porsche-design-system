@@ -27,18 +27,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -95,18 +92,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -163,18 +157,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -237,18 +228,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -311,18 +299,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -379,18 +364,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -447,18 +429,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -521,18 +500,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -595,18 +571,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -669,18 +642,15 @@ button {
   hyphens: auto;
   outline: 0;
 }
-button::before {
+button:focus::before {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid transparent;
+  border: 2px solid #0A0AFF;
   border-radius: 8px;
-}
-button:focus::before {
-  border-color: #0A0AFF;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;

@@ -1,6 +1,19 @@
-import { getThemedBackgroundHoverColor, hasInvertedThemeColor, TagColor } from './tag-utils';
+import { getThemedBackgroundHoverColor, getThemeForIcon, hasInvertedThemeColor, TagColor } from './tag-utils';
 import type { Theme } from '../../types';
 import { getThemedColors } from '../../styles';
+
+describe('getThemeForIcon()', () => {
+  it.each<Parameters<typeof getThemeForIcon>>([
+    ['neutral-contrast-high', 'light'],
+    ['neutral-contrast-high', 'dark'],
+    ['primary', 'light'],
+    ['primary', 'dark'],
+    ['background-base', 'light'],
+    ['background-base', 'dark'],
+  ])('should return correct theme for color: %s and theme: %s', (...args) => {
+    expect(getThemeForIcon(...args)).toMatchSnapshot();
+  });
+});
 
 const colorsWithThemeCombinations: [TagColor, Theme, boolean][] = [
   ['background-surface', 'light', false],
