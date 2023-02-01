@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { InlineNotificationState } from '../inline-notification/inline-notification-utils';
 import type { BannerState, BannerWidth } from './banner-utils';
+import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +13,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
-import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 
 const propTypes: PropTypes<typeof Banner> = {
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
@@ -67,7 +66,7 @@ export class Banner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedStateMap: Partial<Record<InlineNotificationState, InlineNotificationState>> = {
+    const deprecatedStateMap: Partial<Record<BannerState, BannerState>> = {
       neutral: 'info',
     };
     warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);

@@ -1,6 +1,8 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import type { ToastState } from '../toast/toast-utils';
-import { TOAST_STATES, toastStateMap } from '../toast/toast-utils';
+import { TOAST_STATES } from '../toast/toast-utils';
+import type { IconColor } from '../../icon/icon-utils';
+import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,11 +10,10 @@ import {
   THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './toast-item-styles';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
-import { IconColor } from '../../icon/icon-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -44,9 +45,12 @@ export class ToastItem {
   }
 
   public render(): JSX.Element {
-    const mappedState = toastStateMap(this.state);
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, mappedState, this.theme);
+    const deprecatedStateMap: Partial<Record<ToastState, ToastState>> = {
+      neutral: 'info',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
 
     const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -55,7 +59,7 @@ export class ToastItem {
       <Host>
         <PrefixedTagNames.pIcon
           class="icon"
-          name={getInlineNotificationIconName(mappedState)}
+          name={getInlineNotificationIconName(this.state)}
           color={`notification-${this.state}` as IconColor}
           theme={this.theme}
           aria-hidden="true"
