@@ -17,7 +17,7 @@ const ToastBasicStateNeutralPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render toast info with state neutral on light background">
-        <Toast text="Some message" state="neutral" />
+        <Toast text="Some message" />
       </div>
     </>
   );

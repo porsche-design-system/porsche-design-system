@@ -16,7 +16,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   ],
   template: `
     <div class="playground light" title="should render toast info with state neutral on light background">
-      <p-toast [state]="'neutral'"></p-toast>
+      <p-toast></p-toast>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
