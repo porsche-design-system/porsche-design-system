@@ -1,6 +1,20 @@
-import { getVisualRegressionStatesTester, openPopoversAndHighlightSpacer, vrtTest } from '@porsche-design-system/shared/testing';
+import {
+  getVisualRegressionStatesTester,
+  openPopoversAndHighlightSpacer,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
-const components = ['checkbox-wrapper', 'radio-button-wrapper', 'link', 'button', 'tag-dismissible', 'spinner', 'popover', 'text-field-wrapper',];
+const components = [
+  'checkbox-wrapper',
+  'radio-button-wrapper',
+  'link',
+  'button',
+  'tag-dismissible',
+  'spinner',
+  'popover',
+  'text-field-wrapper',
+  'scroller',
+];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
   expect(

@@ -12,11 +12,11 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'scroller', '/#scroller')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('scroller-states', async () => {
@@ -37,10 +37,7 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
   </p-scroller>
 </div>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }));
 
       // Scroll a bit to ensure both arrows are visible
       await page.evaluate(() =>
