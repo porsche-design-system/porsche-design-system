@@ -16,7 +16,7 @@ import type { IconName, PropTypes, Theme } from '../../types';
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
-  icon: AllowedTypes.string,
+  icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
 };
 
@@ -34,7 +34,7 @@ export class Tag {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName;
+  @Prop() public icon?: IconName; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -64,6 +64,7 @@ export class Tag {
             name={this.icon}
             source={this.iconSource}
             color="primary"
+            size="x-small"
             theme={this.theme}
             aria-hidden="true"
           />

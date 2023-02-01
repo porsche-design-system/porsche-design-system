@@ -5,15 +5,12 @@ import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/util
 
 export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
   return {
-    '&::before': {
+    '&:focus::before': {
       content: '""',
       position: 'absolute',
       ...getInsetJssStyle(-4),
-      border: `${borderWidthBase} solid transparent`,
+      border: `${borderWidthBase} solid ${themedColors.focusColor}`,
       borderRadius: borderRadiusMedium,
-    },
-    '&:focus::before': {
-      borderColor: themedColors.focusColor,
     },
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
@@ -28,7 +25,7 @@ export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: Theme
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.primaryColor, // 'neutral-contrast-high' is deprecated (replaced with 'primary')
     primary: themedColors.primaryColor,
-    'notification-neutral': themedColors.infoSoftColor, // 'notification-neutral' is deprecated (replaced with 'notification-information')
+    'notification-neutral': themedColors.infoSoftColor, // 'notification-neutral' is deprecated (replaced with 'notification-info')
     'notification-info': themedColors.infoSoftColor,
     'notification-success': themedColors.successSoftColor,
     'notification-error': themedColors.errorSoftColor,

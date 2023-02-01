@@ -4,10 +4,9 @@ import {
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
-  pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import { textXSmallStyle, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -50,19 +49,19 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
       },
       span: {
         display: 'flex',
+        gap: '2px',
         alignItems: 'center',
         position: 'relative',
         padding: '4px 9px',
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
-        ...textXSmallStyle,
+        font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('background-color'),
           ...hoverMediaQuery({
             '&:hover': {
-              cursor: 'pointer',
               background: backgroundHoverColor,
             },
           }),
@@ -77,6 +76,12 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           font: 'inherit',
           outline: 0, // reset native blue outline
           color: 'inherit',
+          appearance: 'none',
+          margin: 0,
+          padding: 0,
+          background: 0,
+          border: 0,
+          textAlign: 'left',
         },
 
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
@@ -85,23 +90,13 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           return result;
         }, {} as JssStyle),
 
-        '&(button)': {
-          margin: 0,
-          padding: 0,
-          background: 0,
-          border: 0,
-          textAlign: 'left',
-        },
         '&(br)': {
           display: 'none',
         },
       }),
     },
     icon: {
-      margin: `0 ${pxToRemWithUnit(2)} 0 ${pxToRemWithUnit(-2)}`,
-    },
-    label: {
-      padding: '1px 0',
+      marginLeft: '-2px', // optimize visual alignment
     },
   });
 };
