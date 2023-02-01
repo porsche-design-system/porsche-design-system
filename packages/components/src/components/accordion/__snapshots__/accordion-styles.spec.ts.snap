@@ -33,10 +33,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -114,10 +114,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -197,10 +197,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 2px;
-  bottom: 2px;
   left: -4px;
   right: -4px;
+  top: 2px;
+  bottom: 2px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -275,10 +275,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 2px;
-  bottom: 2px;
   left: -4px;
   right: -4px;
+  top: 2px;
+  bottom: 2px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -353,10 +353,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 2px;
-  bottom: 2px;
   left: -4px;
   right: -4px;
+  top: 2px;
+  bottom: 2px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -433,10 +433,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -514,10 +514,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -597,10 +597,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -680,10 +680,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 2px;
-  bottom: 2px;
   left: -4px;
   right: -4px;
+  top: 2px;
+  bottom: 2px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -758,10 +758,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 2px;
-  bottom: 2px;
   left: -4px;
   right: -4px;
+  top: 2px;
+  bottom: 2px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -838,10 +838,10 @@ button::before {
   position: absolute;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
-  top: 6px;
-  bottom: 6px;
   left: -4px;
   right: -4px;
+  top: 6px;
+  bottom: 6px;
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
