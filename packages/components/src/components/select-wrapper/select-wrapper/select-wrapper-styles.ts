@@ -68,7 +68,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };

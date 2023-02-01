@@ -186,7 +186,7 @@ import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' };
+  config = { themeable: true, spacing: 'block' };
 
   label = 'show';
   type = 'text';
