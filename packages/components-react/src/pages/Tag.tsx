@@ -20,8 +20,11 @@ export const TagPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should show different background colors on light background">
+      <div className="playground light" title="should show default tag on light background">
         <PTag>Default</PTag>
+      </div>
+
+      <div className="playground light" title="should show different background colors on light background">
         <PTag color="background-default">Color background-default</PTag>
         <PTag color="background-base">Color background-base</PTag>
         <PTag color="background-surface">Color background-surface</PTag>
@@ -35,7 +38,6 @@ export const TagPage = (): JSX.Element => {
       </div>
 
       <div className="playground light surface" title="should show different background colors on light surface background">
-        <PTag>Default</PTag>
         <PTag color="background-default">Color background-default</PTag>
         <PTag color="background-base">Color background-base</PTag>
         <PTag color="background-surface">Color background-surface</PTag>
@@ -49,7 +51,6 @@ export const TagPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show different background colors on dark background">
-        <PTag theme="dark">Default</PTag>
         <PTag theme="dark" color="background-default">Color background-default</PTag>
         <PTag theme="dark" color="background-base">Color background-base</PTag>
         <PTag theme="dark" color="background-surface">Color background-surface</PTag>
@@ -63,7 +64,6 @@ export const TagPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark surface" title="should show different background colors on dark surface background">
-        <PTag theme="dark">Default</PTag>
         <PTag theme="dark" color="background-default">Color background-default</PTag>
         <PTag theme="dark" color="background-base">Color background-base</PTag>
         <PTag theme="dark" color="background-surface">Color background-surface</PTag>
@@ -77,17 +77,33 @@ export const TagPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show different background colors and icons on light background">
+        <PTag icon="car" color="background-default">Color background-default</PTag>
         <PTag icon="car" color="background-base">Color background-base</PTag>
-        <PTag icon="highway" color="background-surface">Color background-surface</PTag>
+        <PTag icon="car" color="background-surface">Color background-surface</PTag>
+        <PTag icon="car" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag icon="car" color="primary">Color primary</PTag>
+        <PTag icon="car" color="notification-neutral">Color notification-neutral</PTag>
+        <PTag icon="car" color="notification-info">Color notification-info</PTag>
+        <PTag icon="car" color="notification-success">Color notification-success</PTag>
+        <PTag icon="car" color="notification-error">Color notification-error</PTag>
+        <PTag icon="car" color="notification-warning">Color notification-warning</PTag>
         <PTag iconSource="./assets/icon-custom-kaixin.svg" color="background-surface"> Color background-surface</PTag>
       </div>
 
       <div className="playground dark" title="should show different background colors and icons on dark background">
+        <PTag theme="dark" icon="car" color="background-default">Color background-default</PTag>
         <PTag theme="dark" icon="car" color="background-base">Color background-base</PTag>
-        <PTag theme="dark" icon="highway" color="background-surface">Color background-surface</PTag>
+        <PTag theme="dark" icon="car" color="background-surface">Color background-surface</PTag>
+        <PTag theme="dark" icon="car" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
+        <PTag theme="dark" icon="car" color="primary">Color primary</PTag>
+        <PTag theme="dark" icon="car" color="notification-neutral">Color notification-neutral</PTag>
+        <PTag theme="dark" icon="car" color="notification-info">Color notification-info</PTag>
+        <PTag theme="dark" icon="car" color="notification-success">Color notification-success</PTag>
+        <PTag theme="dark" icon="car" color="notification-error">Color notification-error</PTag>
+        <PTag theme="dark" icon="car" color="notification-warning">Color notification-warning</PTag>
         <PTag theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
-          Color background-surface
-        </PTag>
+          Color background-surface</PTag
+        >
       </div>
 
       <div className="playground light" title="should show different background colors with link on light background">
@@ -136,15 +152,14 @@ export const TagPage = (): JSX.Element => {
         </PTag>
       </div>
 
-      <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
-        <PTag> Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text </PTag>
+      <div className="playground light" title="should not render line break">
         <PTag>
           Default <br />
           with line break
         </PTag>
       </div>
 
-      <div className="playground light" title="should show different multiline tags on light background">
+      <div className="playground light" title="should not break into multiline although not enough space is given">
         <div style={{ width: '100px', overflow: 'auto', border: '1px solid deeppink' }}>
           <PTag color="primary">Text that is very long</PTag>
           <PTag color="primary" icon="car">Text with icon that is very long</PTag>

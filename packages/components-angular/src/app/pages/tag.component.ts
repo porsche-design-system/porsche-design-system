@@ -19,8 +19,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div class="playground light" title="should show different background colors on light background">
+    <div class="playground light" title="should show default tag on light background">
       <p-tag>Default</p-tag>
+    </div>
+
+    <div class="playground light" title="should show different background colors on light background">
       <p-tag [color]="'background-default'">Color background-default</p-tag>
       <p-tag [color]="'background-base'">Color background-base</p-tag>
       <p-tag [color]="'background-surface'">Color background-surface</p-tag>
@@ -34,7 +37,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light surface" title="should show different background colors on light surface background">
-      <p-tag>Default</p-tag>
       <p-tag [color]="'background-default'">Color background-default</p-tag>
       <p-tag [color]="'background-base'">Color background-base</p-tag>
       <p-tag [color]="'background-surface'">Color background-surface</p-tag>
@@ -48,7 +50,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show different background colors on dark background">
-      <p-tag [theme]="'dark'">Default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-base'">Color background-base</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag>
@@ -62,7 +63,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark surface" title="should show different background colors on dark surface background">
-      <p-tag [theme]="'dark'">Default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-base'">Color background-base</p-tag>
       <p-tag [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag>
@@ -76,17 +76,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show different background colors and icons on light background">
+      <p-tag [icon]="'car'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [icon]="'car'" [color]="'background-base'">Color background-base</p-tag>
-      <p-tag [icon]="'highway'" [color]="'background-surface'">Color background-surface</p-tag>
+      <p-tag [icon]="'car'" [color]="'background-surface'">Color background-surface</p-tag>
+      <p-tag [icon]="'car'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
+      <p-tag [icon]="'car'" [color]="'primary'">Color primary</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-info'">Color notification-info</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-success'">Color notification-success</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-error'">Color notification-error</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-warning'">Color notification-warning</p-tag>
       <p-tag [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'"> Color background-surface</p-tag>
     </div>
 
     <div class="playground dark" title="should show different background colors and icons on dark background">
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'background-default'">Color background-default</p-tag>
       <p-tag [theme]="'dark'" [icon]="'car'" [color]="'background-base'">Color background-base</p-tag>
-      <p-tag [theme]="'dark'" [icon]="'highway'" [color]="'background-surface'">Color background-surface</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'background-surface'">Color background-surface</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'primary'">Color primary</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-info'">Color notification-info</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-success'">Color notification-success</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-error'">Color notification-error</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-warning'">Color notification-warning</p-tag>
       <p-tag [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'">
-        Color background-surface
-      </p-tag>
+        Color background-surface</p-tag
+      >
     </div>
 
     <div class="playground light" title="should show different background colors with link on light background">
@@ -135,15 +151,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tag>
     </div>
 
-    <div class="playground light" title="should apply custom styles for dedicated slotted content on light background">
-      <p-tag> Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text </p-tag>
+    <div class="playground light" title="should not render line break">
       <p-tag>
         Default <br />
         with line break
       </p-tag>
     </div>
 
-    <div class="playground light" title="should show different multiline tags on light background">
+    <div class="playground light" title="should not break into multiline although not enough space is given">
       <div style="width: 100px; overflow: auto; border: 1px solid deeppink">
         <p-tag [color]="'primary'">Text that is very long</p-tag>
         <p-tag [color]="'primary'" [icon]="'car'">Text with icon that is very long</p-tag>
