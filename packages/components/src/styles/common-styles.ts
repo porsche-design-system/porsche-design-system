@@ -1,6 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { fontWeight, spacingStaticSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 import { hoverMediaQuery } from './hover-media-query';
 import type { Theme } from '../types';
@@ -140,7 +140,6 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${spacingStaticXSmall}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
