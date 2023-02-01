@@ -55,7 +55,6 @@ export const getComponentCss = (
           zIndex: 1,
           font: textSmallStyle.font,
           color: contrastMediumColor,
-          pointerEvents: 'none',
         },
       }
     ),
