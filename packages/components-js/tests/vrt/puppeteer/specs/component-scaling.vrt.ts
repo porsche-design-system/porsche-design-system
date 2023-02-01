@@ -14,6 +14,7 @@ const components = [
   'spinner',
   'popover',
   'text-field-wrapper',
+  'modal',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
