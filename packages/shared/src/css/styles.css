@@ -10,12 +10,10 @@ body {
   margin: 0;
   padding: 0;
   font: revert;
-  line-height: revert;
   text-size-adjust: revert;
   -webkit-text-size-adjust: revert;
-}
 
-body {
+  /* overrides to detect gaps in component styles */
   color: deeppink;
   font-family: serif;
   font-style: italic;
@@ -25,21 +23,13 @@ body {
   font-variant: small-caps;
 }
 
-body > div,
-body > app-root {
-  font: revert;
-  line-height: revert;
-  text-size-adjust: revert;
-  -webkit-text-size-adjust: revert;
-}
-
-select:focus,
-select {
+body > select {
   position: relative;
   z-index: 999999;
+}
+
+select {
   font: revert;
-  outline: none;
-  outline-offset: 0;
 }
 
 .playground {
