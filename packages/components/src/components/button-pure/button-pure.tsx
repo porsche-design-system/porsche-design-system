@@ -16,7 +16,7 @@ import {
 import type {
   AlignLabel,
   BreakpointCustomizable,
-  ButtonAriaAttributes,
+  ButtonAriaAttribute,
   ButtonType,
   LinkButtonIconName,
   PropTypes,
@@ -42,7 +42,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -92,7 +92,7 @@ export class ButtonPure {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);

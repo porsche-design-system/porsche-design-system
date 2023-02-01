@@ -2,14 +2,14 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  GetMarkup,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import type { TagName } from '@porsche-design-system/shared';
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('form-field-wrapper-states', async () => {
@@ -34,7 +34,7 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
         'p-textarea-wrapper': '<textarea>Some value</textarea>',
       };
 
-      const getElementsMarkup: GetMarkup = () =>
+      const getElementsMarkup: GetThemedMarkup = (theme) =>
         Object.entries(tagNameToChildMap)
           .map(([tag, child]) => {
             const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
@@ -42,32 +42,32 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
 
             return `
 <div>
-  <${tag} label="Default">
+  <${tag} label="Default" theme="${theme}">
     ${child}
   </${tag}>
-  <${tag} label="Readonly">
+  <${tag} label="Readonly" theme="${theme}">
     ${childReadonly}
   </${tag}>
-  <${tag} label="Disabled">
+  <${tag} label="Disabled" theme="${theme}">
     ${childDisabled}
   </${tag}>
-  <${tag} label="Error" state="error" message="Error">
+  <${tag} label="Error" state="error" message="Error" theme="${theme}">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="error" message="Error">
+  <${tag} label="Disabled" state="error" message="Error" theme="${theme}">
     ${childDisabled}
   </${tag}>
-  <${tag} label="Success" state="success" message="Success">
+  <${tag} label="Success" state="success" message="Success" theme="${theme}">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="success" message="Success">
+  <${tag} label="Disabled" state="success" message="Success" theme="${theme}">
     ${childDisabled}
   </${tag}>
 </div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on
           })
           .join('\n');
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover input');
       await forceHoverState(page, '.hover select');
