@@ -63,7 +63,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <a href="#">Slotted Tertiary</a>
         </p-link>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 
