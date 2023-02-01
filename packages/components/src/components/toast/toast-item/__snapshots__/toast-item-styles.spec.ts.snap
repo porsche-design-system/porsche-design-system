@@ -9,7 +9,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   padding: 16px;
   background: #001A33;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   padding: 16px;
   background: #E8EEFD;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -95,7 +95,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   padding: 16px;
   background: #001A33;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -138,7 +138,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   padding: 16px;
   background: #E8EEFD;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -181,7 +181,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   padding: 16px;
   background: #003320;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -224,7 +224,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   padding: 16px;
   background: #EBFAF0;
   border-radius: 4px;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
