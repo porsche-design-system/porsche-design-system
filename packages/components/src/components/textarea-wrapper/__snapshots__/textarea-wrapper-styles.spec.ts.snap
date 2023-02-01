@@ -406,7 +406,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 
@@ -452,7 +452,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 "
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 
@@ -567,7 +567,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 "
@@ -1031,7 +1031,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 
@@ -1078,7 +1078,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 "
@@ -1126,7 +1126,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 
@@ -1194,7 +1194,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 "
@@ -1662,7 +1662,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 
@@ -1708,7 +1708,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
 }
 "
