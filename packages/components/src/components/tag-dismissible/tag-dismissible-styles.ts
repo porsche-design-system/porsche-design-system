@@ -2,7 +2,7 @@ import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, g
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-styles';
+import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { Theme } from '../../utils/theme';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
