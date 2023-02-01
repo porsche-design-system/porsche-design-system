@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  AllowedTypes,
   addInputEventListenerForCounter,
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   FORM_STATES,
@@ -15,10 +15,11 @@ import {
   observeAttributes,
   observeProperties,
   setAriaAttributes,
+  THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -36,7 +37,6 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../common/required/required';
-import type { IconName } from '../../types';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -49,6 +49,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   showCharacterCount: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
   actionLoading: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -87,6 +88,9 @@ export class TextFieldWrapper {
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
+
+  /** Adapts the color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
@@ -182,19 +186,13 @@ export class TextFieldWrapper {
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : type,
       this.isWithinForm,
-      this.hasAction,
-      this.hasAction && this.actionLoading
+      this.theme
     );
 
     const disabledOrReadOnly = disabled || readOnly;
 
     const labelProps = {
       onClick: this.onLabelClick,
-    };
-
-    const iconProps = {
-      color: 'inherit',
-      'aria-hidden': 'true',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -210,12 +208,12 @@ export class TextFieldWrapper {
               </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text label__text--description" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.description || <slot name="description" />}
               </span>
             )}
             {(this.hasUnit || this.isCounterVisible) && (
-              <span class="unit" {...labelProps} ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
+              <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
                 {this.unit}
               </span>
             )}
@@ -223,51 +221,72 @@ export class TextFieldWrapper {
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
           {this.isPassword ? (
-            <button
+            <PrefixedTagNames.pButtonPure
+              class="button"
               type="button"
-              onClick={this.togglePassword}
+              hideLabel={true}
+              icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
-              aria-pressed={this.showPassword ? 'true' : 'false'}
+              theme={this.theme}
+              onClick={this.togglePassword}
+              aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
             >
-              <span class="sr-only">Toggle password visibility</span>
-              <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} {...iconProps} />
-            </button>
+              Toggle password visibility
+            </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
-              <button
+              // TODO: create an own component, which would fix SSR support too
+              this.isWithinForm ? (
+                <PrefixedTagNames.pButtonPure
+                  key="btn-submit"
+                  class="button"
+                  type="submit"
+                  icon="search"
+                  disabled={disabledOrReadOnly}
+                  theme={this.theme}
+                  onClick={this.onSubmit}
+                  hideLabel={true}
+                >
+                  Search
+                </PrefixedTagNames.pButtonPure>
+              ) : (
+                <PrefixedTagNames.pIcon
+                  key="icon"
+                  class="icon"
+                  name="search"
+                  color="contrast-medium"
+                  theme={this.theme}
+                  aria-hidden="true"
+                />
+              ),
+              <PrefixedTagNames.pButtonPure
                 key="btn-clear"
+                class="button"
                 type="button"
+                icon="close"
+                hideLabel={true}
                 tabIndex={-1}
                 hidden={!this.isClearable}
+                theme={this.theme}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
-              >
-                <PrefixedTagNames.pIcon name="close" {...iconProps} />
-              </button>,
+                aria-hidden="true"
+              />,
               this.hasAction && (
-                <button
+                <PrefixedTagNames.pButtonPure
                   key="btn-action"
+                  class="button"
                   type="button"
+                  icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
+                  theme={this.theme}
                   onClick={!this.actionLoading ? () => this.action.emit() : null}
+                  hideLabel={true}
+                  loading={this.actionLoading}
                 >
-                  <span class="sr-only">Locate me</span>
-                  {this.actionLoading ? (
-                    <PrefixedTagNames.pSpinner size="inherit" />
-                  ) : (
-                    // hardcoded locate icon
-                    <PrefixedTagNames.pIcon name="locate" {...iconProps} />
-                  )}
-                </button>
-              ),
-              this.isWithinForm ? (
-                <button key="btn-submit" type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
-                  <span class="sr-only">Search</span>
-                  <PrefixedTagNames.pIcon name="search" {...iconProps} />
-                </button>
-              ) : (
-                <PrefixedTagNames.pIcon key="icon" class="icon" name="search" {...iconProps} />
+                  Locate me
+                </PrefixedTagNames.pButtonPure>
               ),
             ]
           )}
@@ -309,11 +328,6 @@ export class TextFieldWrapper {
   };
 
   private setInputStyles = (): void => {
-    setInputStyles(
-      this.input,
-      this.unitOrCounterElement,
-      this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.state
-    );
+    setInputStyles(this.input, this.unitOrCounterElement, this.isCounterVisible ? 'suffix' : this.unitPosition);
   };
 }

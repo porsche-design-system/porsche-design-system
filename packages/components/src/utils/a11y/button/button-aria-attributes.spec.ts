@@ -1,4 +1,4 @@
-import { BUTTON_ARIA_ATTRIBUTES } from './button-aria-attributes';
+import { BUTTON_ARIA_ATTRIBUTES } from './button-aria-attribute';
 
 describe('BUTTON_ARIA_ATTRIBUTES', () => {
   it('should match snapshot', () => {
