@@ -155,6 +155,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-switch tabindex="-1">Some label</p-switch>
 ```
 
+- `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
 #### Fixed
 
 - `Icon` supports param cased icon names only, typings are adapted accordingly:
@@ -163,6 +165,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-icon name="arrowRight"></p-icon>
 + <p-icon name="arrow-right"></p-icon>
 ```
+
+### [2.20.0-rc.0] - 2023-01-30
+
+#### Added
+
+- `applyNormalizeStyles` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
 
 ### [2.19.1-rc.1] - 2023-01-18
 
@@ -589,7 +597,7 @@ information can be found here:
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
   `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed
