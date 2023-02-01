@@ -5,7 +5,7 @@ exports[`getContentWrapperStyle() should return correct css for width: basic 1`]
   "boxSizing": "border-box",
   "margin": "0 auto",
   "maxWidth": "1920px",
-  "minWidth": "320px",
+  "minWidth": 0,
   "padding": "0 clamp(22px, 10.625vw - 12px, 192px)",
   "width": "100%",
 }
@@ -15,14 +15,14 @@ exports[`getContentWrapperStyle() should return correct css for width: extended 
 {
   "margin": "0 auto",
   "maxWidth": "1920px",
-  "minWidth": "320px",
+  "minWidth": 0,
   "width": "100%",
 }
 `;
 
 exports[`getContentWrapperStyle() should return correct css for width: fluid 1`] = `
 {
-  "minWidth": "320px",
+  "minWidth": 0,
   "width": "100%",
 }
 `;

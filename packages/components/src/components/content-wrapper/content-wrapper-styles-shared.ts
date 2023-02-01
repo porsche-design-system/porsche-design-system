@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { ContentWrapperWidth } from './content-wrapper-utils';
-import { gridSafeZone, gridWidthMax, gridWidthMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, gridWidthMax } from '@porsche-design-system/utilities-v2';
 
 const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
@@ -19,7 +19,7 @@ const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
 export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => {
   return {
     width: '100%',
-    minWidth: gridWidthMin,
+    minWidth: 0, // needed for possible flex context within content-wrapper
     ...widthMap[width],
   };
 };
