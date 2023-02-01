@@ -34,7 +34,7 @@ load because they make all options permanently visible so that users can easily 
 In a group of Radio Buttons one option should be selected by default, except for cases where a pre-selection can lead to
 wrong assumptions, i.e. "Male" or "Female". In this case no option should be selected by default.
 
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
     <img src="./assets/radio-button-examples.png" alt="Examples for radio button usage" />
 </div>

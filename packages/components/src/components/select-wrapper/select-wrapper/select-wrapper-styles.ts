@@ -35,6 +35,7 @@ export const getComponentCss = (
         mergeDeep(
           getBaseChildStyles('select', state, theme, {
             position: 'static',
+            zIndex: 0, // TODO: overrides global style.css in e2e and vrts
             cursor: 'pointer',
             padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
             '&@-moz-document url-prefix()': {
@@ -60,7 +61,6 @@ export const getComponentCss = (
         bottom: pxToRemWithUnit(12),
         right: pxToRemWithUnit(12),
         color: primaryColor,
-        pointerEvents: 'none', // let events through to select which is visually underneath
         transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
         transition: getTransition('transform'),
         '&--open': {

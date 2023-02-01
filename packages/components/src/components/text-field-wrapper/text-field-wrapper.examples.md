@@ -122,10 +122,10 @@ On top of `actionIcon="locate"` it is possible to put the component into a loadi
 ### Demo implementation
 
 <Playground :frameworkMarkup="searchExample" :config="config">
-  <p-text-field-wrapper label="Some label" hide-label="true" action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
+  <p-text-field-wrapper label="Some label" hide-label="true" action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction" :theme="theme">
     <input type="search" :value="demoValue" :placeholder="demoIsLoading ? 'Locating...' : ''" v-on:input="onDemoInput" />
   </p-text-field-wrapper>
-  <p-text>Value: {{ demoValue }}</p-text>
+  <p-text :theme="theme">Value: {{ demoValue }}</p-text>
 </Playground>
 
 ## Validation states
@@ -183,6 +183,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import IMask from 'imask';
 import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared';
+import { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
@@ -195,6 +196,10 @@ export default class Code extends Vue {
 
   imaskExample = getTextFieldWrapperCodeSamples('example-imask');
   searchExample = getTextFieldWrapperCodeSamples('example-search');
+
+  get theme(): Theme {
+    return this.$store.getters.theme || 'light';
+  }
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
