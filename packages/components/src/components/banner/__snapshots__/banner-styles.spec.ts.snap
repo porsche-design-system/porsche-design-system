@@ -11,12 +11,12 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100%;
-  min-width: 0;
-  margin: 0 auto;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  max-width: 1920px;
-  box-sizing: border-box;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  max-width: 1920px !important;
+  box-sizing: border-box !important;
 }
 @keyframes mobileIn {
   from {
@@ -98,10 +98,10 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100%;
-  min-width: 0;
-  margin: 0 auto;
-  max-width: 1920px;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  max-width: 1920px !important;
 }
 @keyframes mobileIn {
   from {
@@ -183,8 +183,8 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100%;
-  min-width: 0;
+  width: 100% !important;
+  min-width: 0 !important;
 }
 @keyframes mobileIn {
   from {
