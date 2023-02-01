@@ -1,10 +1,15 @@
-import { getVisualRegressionStatesTester, openPopoversAndHighlightSpacer, vrtTest } from '@porsche-design-system/shared/testing';
+import {
+  getVisualRegressionStatesTester,
+  openPopoversAndHighlightSpacer,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 const components = [
   'checkbox-wrapper',
   'radio-button-wrapper',
   'link',
   'button',
+  'tag',
   'link-pure',
   'button-pure',
   'tag-dismissible',
