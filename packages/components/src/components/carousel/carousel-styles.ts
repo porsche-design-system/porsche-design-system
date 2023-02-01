@@ -123,12 +123,13 @@ export const getComponentCss = (
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
         textAlign: 'center',
+        lineHeight: '8px',
       },
       bullet: {
         display: 'inline-block',
         borderRadius: borderRadiusSmall,
         background: disabledColor,
-        margin: '4px',
+        margin: '0 4px',
         transition: 'background-color 0.5s, width 0.5s',
         width: '8px',
         height: '8px',
