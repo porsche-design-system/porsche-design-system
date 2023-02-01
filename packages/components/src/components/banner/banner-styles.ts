@@ -12,6 +12,7 @@ import {
   getKeyframes,
   getKeyframesMobile,
 } from './banner-styles-shared';
+import { addImportantToEachRule } from '../../styles';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';
@@ -44,7 +45,7 @@ export const getComponentCss = (width: BannerWidth): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
-        ...getContentWrapperStyle(width),
+        ...addImportantToEachRule(getContentWrapperStyle(width)),
         [mediaQueryBase]: {
           bottom: `var(${bannerPositionBottomVar})`,
         },
