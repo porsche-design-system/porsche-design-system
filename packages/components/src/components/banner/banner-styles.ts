@@ -1,8 +1,10 @@
 import type { JssStyle } from 'jss';
+import type { BannerWidth } from './banner-utils';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { addImportantToRule, pxToRemWithUnit } from '../../styles';
 import { BANNER_Z_INDEX } from '../../constants';
+import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-shared-styles';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';
@@ -60,13 +62,15 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
     transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
   });
 
-export const getComponentCss = (): string => {
+const bannerOffset = '56px';
+
+export const getComponentCss = (width: BannerWidth): string => {
   return getCss({
     '@global': {
       ':host': {
         // TODO: Why is nothing set as important here?
-        [bannerPositionTopVar]: pxToRemWithUnit(56),
-        [bannerPositionBottomVar]: pxToRemWithUnit(56),
+        [bannerPositionTopVar]: bannerOffset,
+        [bannerPositionBottomVar]: bannerOffset,
         display: 'block',
         position: `var(${bannerPositionTypeVar},fixed)`,
         zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
@@ -74,6 +78,7 @@ export const getComponentCss = (): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
+        ...getContentWrapperStyle(width),
         [mediaQueryBase]: {
           bottom: `var(${bannerPositionBottomVar})`,
         },
