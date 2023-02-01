@@ -28,7 +28,6 @@ export const getComponentCss = (
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
             font: textSmallStyle.font, // to override line-height
-            // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
             padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,
           })
         ),
