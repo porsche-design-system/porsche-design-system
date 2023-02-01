@@ -44,6 +44,7 @@ export class Scroller {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  // TODO: Naming is strange? Theme or Scheme
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 

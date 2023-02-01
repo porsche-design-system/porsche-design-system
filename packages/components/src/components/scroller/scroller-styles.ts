@@ -1,43 +1,65 @@
 import { getCss } from '../../utils';
-import { addImportantToRule, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
+import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { borderRadiusSmall, fontLineHeight, getFocusStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  dropShadowMediumStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
 export const getComponentCss = (
-  gradientColorScheme: GradientColorTheme,
+  gradientColorTheme: GradientColorTheme,
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor } = getThemedColors(theme);
+  const { backgroundColor, focusColor } = getThemedColors(theme);
 
   const actionPrevNextStyles = {
     position: 'relative',
-    padding: `${pxToRemWithUnit(4)} 0`,
+    padding: '4px 0',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
-    borderRadius: borderRadiusSmall,
   };
 
-  const gradient =
-    'rgba(31,31,31,0.9) 0%,' +
-    'rgba(31,31,31,0.9) 20%,' +
-    'rgba(31,31,31,0.852589) 26.67%,' +
-    'rgba(32,32,32,0.768225) 33.33%,' +
-    'rgba(33,33,33,0.668116) 40%,' +
-    'rgba(34,34,34,0.557309) 46.67%,' +
-    'rgba(35,35,35,0.442691) 53.33%,' +
-    'rgba(36,36,36,0.331884) 60%,' +
-    'rgba(37,37,37,0.231775) 66.67%,' +
-    'rgba(38,38,38,0.147411) 73.33%,' +
-    'rgba(39,39,39,0.0816599) 80%,' +
-    'rgba(39,39,39,0.03551) 86.67%,' +
-    'rgba(39,39,39,0.0086472) 93.33%,' +
-    'rgba(39,39,39,0)';
+  const gradientColorMap: {
+    [key in Theme]: {
+      [key in GradientColorTheme]: string;
+    };
+  } = {
+    light: {
+      default: '255,255,255',
+      surface: '238,239,242',
+    },
+    dark: {
+      default: '14,14,18',
+      surface: '33,34,37',
+    },
+  };
+
+  const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme) => {
+    return (
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},1) 0%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.9) 20%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.852589) 26.67%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.768225) 33.33%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.668116) 40%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.557309) 46.67%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.442691) 53.33%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.331884) 60%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.231775) 66.67%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.147411) 73.33%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.0816599) 80%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.03551) 86.67%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0.0086472) 93.33%,` +
+      `rgba(${gradientColorMap[theme][gradientColorTheme]},0)`
+    );
+  };
 
   return getCss({
     '@global': {
@@ -49,13 +71,13 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gridTemplateColumns: '48px minmax(0, 1fr) 48px',
-      margin: `0 ${pxToRemWithUnit(-4)}`,
+      margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
-      minHeight: pxToRemWithUnit(24),
+      minHeight: '24px',
       gridArea: '1 / 1 / 1 / -1',
-      padding: pxToRemWithUnit(4),
+      padding: '4px',
       overflow: 'scroll hidden',
       msOverflowStyle: 'none' /* IE and Edge */,
       scrollbarWidth: 'none' /* Firefox */,
@@ -66,11 +88,24 @@ export const getComponentCss = (
     // Extra wrapper needed to compensate different offset parent calculation depending on browser.
     // Needed for position of status bar.
     'scroll-wrapper': {
-      ...getFocusStyle(),
       position: 'relative',
       display: 'inline-flex',
       minWidth: '100%',
       verticalAlign: 'top',
+      outline: 0,
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        ...getInsetJssStyle(-4),
+        border: `${borderWidthBase} solid transparent`,
+        borderRadius: borderRadiusSmall,
+      },
+      '&:focus::before': {
+        borderColor: focusColor,
+      },
+      '&:focus:not(:focus-visible)::before': {
+        borderColor: 'transparent',
+      },
     },
     trigger: {
       position: 'absolute',
@@ -90,13 +125,10 @@ export const getComponentCss = (
       marginLeft: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
-      background: `linear-gradient(to right, ${gradient} 100%)`,
+      background: `linear-gradient(to right, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& .button': {
-        marginLeft: '10px',
-      },
-      '& .button::before': {
-        left: 0,
+        marginLeft: '6px',
       },
     },
     'action-next': {
@@ -104,33 +136,23 @@ export const getComponentCss = (
       marginRight: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
-      background: `linear-gradient(to left, ${gradient} 100%)`,
+      background: `linear-gradient(to left, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& .button': {
-        marginRight: '10px',
+        marginRight: '6px',
       },
-      '& .button::before': {
-        right: 0,
-      },
-    },
-    temp: {
-      color: gradientColorScheme,
     },
     button: {
       pointerEvents: 'auto',
       position: 'static',
       ...textSmallStyle,
       backgroundColor,
-      borderRadius: 'inherit',
+      borderRadius: borderRadiusSmall,
+      border: `2px solid ${backgroundColor}`,
       transition: getTransition('background-color'),
-      // Pseudo-element to stretch the click-area to full height
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        width: fontLineHeight,
-        height: fontLineHeight,
+      ...dropShadowMediumStyle,
+      '&:hover': {
+        borderColor: 'transparent',
       },
     },
   });
