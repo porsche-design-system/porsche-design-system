@@ -59,7 +59,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -225,7 +224,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -320,7 +318,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -392,7 +389,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -464,7 +460,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -559,7 +554,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -653,7 +647,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -724,7 +717,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -795,7 +787,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -889,7 +880,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -984,7 +974,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1056,7 +1045,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1128,7 +1116,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1224,7 +1211,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1320,7 +1306,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1393,7 +1378,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1466,7 +1450,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1562,7 +1545,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1657,7 +1639,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1729,7 +1710,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1801,7 +1781,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1896,7 +1875,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1992,7 +1970,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -2065,7 +2042,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -2138,7 +2114,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;

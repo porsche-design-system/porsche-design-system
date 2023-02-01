@@ -1,4 +1,4 @@
-import type { ButtonAriaAttributes } from '../../utils';
+import type { ButtonAriaAttribute } from '../../utils';
 import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAriaAttributes } from '../../utils';
 
@@ -20,7 +20,7 @@ export const warnIfIsLoadingAndIconIsNone = (
 export const getButtonPureAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
-  aria: SelectedAriaAttributes<ButtonAriaAttributes>
+  aria: SelectedAriaAttributes<ButtonAriaAttribute>
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria),

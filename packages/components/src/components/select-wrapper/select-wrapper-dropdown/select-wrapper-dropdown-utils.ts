@@ -53,7 +53,7 @@ export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
   hasFilter: boolean,
-  isOpen: boolean,
+  isOpen: boolean
 ): AriaAttributes => {
   return {
     'aria-label': label,
@@ -62,8 +62,8 @@ export const getListAriaAttributes = (
         'aria-required': 'true',
       }),
     ...(!isOpen && {
-      'aria-hidden': 'true'
-    })
+      'aria-hidden': 'true',
+    }),
   };
 };
 
