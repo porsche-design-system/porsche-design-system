@@ -970,7 +970,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-information, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1039,7 +1039,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-information, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;

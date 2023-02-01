@@ -16,9 +16,9 @@ exports[`getThemedBackgroundHoverColor() should return correct backgroundColor f
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-error, theme: light 1`] = `"#EED7D9"`;
 
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-information, theme: dark 1`] = `"#0F2943"`;
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-info, theme: dark 1`] = `"#0F2943"`;
 
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-information, theme: light 1`] = `"#D6DEF0"`;
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-info, theme: light 1`] = `"#D6DEF0"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-neutral, theme: dark 1`] = `"#0F2943"`;
 

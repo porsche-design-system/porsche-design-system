@@ -54,8 +54,8 @@ describe('getComponentCss()', () => {
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
-    ['notification-neutral', true, 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-    ['notification-information', true, 'light'],
+    ['notification-neutral', true, 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', true, 'light'],
     ['background-surface', true, 'light'],
     ['background-default', true, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
     ['background-default', false, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
@@ -66,8 +66,8 @@ describe('getComponentCss()', () => {
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],
     ['notification-error', true, 'dark'],
-    ['notification-neutral', true, 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-    ['notification-information', true, 'dark'],
+    ['notification-neutral', true, 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', true, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();

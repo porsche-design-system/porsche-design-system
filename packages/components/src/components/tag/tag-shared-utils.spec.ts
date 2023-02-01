@@ -12,8 +12,8 @@ describe('getThemedBackgroundColor()', () => {
     ['notification-success', 'light'],
     ['notification-warning', 'light'],
     ['notification-error', 'light'],
-    ['notification-neutral', 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-    ['notification-information', 'light'],
+    ['notification-neutral', 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', 'light'],
     ['background-surface', 'light'],
     ['background-default', 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
     ['background-base', 'dark'],
@@ -22,8 +22,8 @@ describe('getThemedBackgroundColor()', () => {
     ['notification-success', 'dark'],
     ['notification-warning', 'dark'],
     ['notification-error', 'dark'],
-    ['notification-neutral', 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-    ['notification-information', 'dark'],
+    ['notification-neutral', 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', 'dark'],
     ['background-surface', 'dark'],
   ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {
     const themedColors = getThemedColors(theme);
