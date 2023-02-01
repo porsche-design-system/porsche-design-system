@@ -55,7 +55,6 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           borderRadius: borderRadiusSmall,
-          transition: getTransition('background-color'),
           left: '-4px',
           right: '-4px',
           ...(compact
@@ -69,6 +68,7 @@ export const getComponentCss = (
               }),
         },
         ...hoverMediaQuery({
+          transition: getTransition('background-color'),
           '&:hover::before': {
             backgroundColor: hoverColor,
           },

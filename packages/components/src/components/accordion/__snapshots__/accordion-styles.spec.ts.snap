@@ -32,7 +32,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -45,6 +44,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -113,7 +115,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -126,6 +127,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -196,7 +200,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 2px;
@@ -209,6 +212,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
@@ -274,7 +280,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 2px;
@@ -287,6 +292,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -352,7 +360,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 2px;
@@ -365,6 +372,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -432,7 +442,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -445,6 +454,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -513,7 +525,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -526,6 +537,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
@@ -596,7 +610,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -609,6 +622,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -679,7 +695,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 2px;
@@ -692,6 +707,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -757,7 +775,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 2px;
@@ -770,6 +787,9 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(148, 149, 152, 0.20);
   }
@@ -837,7 +857,6 @@ button::before {
   content: "";
   position: absolute;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
   left: -4px;
   right: -4px;
   top: 6px;
@@ -885,6 +904,9 @@ button:not(:focus-visible)::before {
 }
 
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover::before {
     background-color: rgba(126, 127, 130, 0.20);
   }
