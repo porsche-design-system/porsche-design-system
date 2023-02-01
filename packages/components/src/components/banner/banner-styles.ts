@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { BannerWidth } from './banner-utils';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToRule, pxToRemWithUnit } from '../../styles';
+import { addImportantToRule } from '../../styles';
 import { BANNER_Z_INDEX } from '../../constants';
 import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-shared-styles';
 
@@ -20,9 +20,7 @@ const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryBase = getMediaQueryMinMax('base', 's');
 
 export const getBoxShadow = (): JssStyle => ({
-  boxShadow:
-    `0 ${pxToRemWithUnit(2)} ${pxToRemWithUnit(4)} 0 rgba(0,0,0,0.05),` +
-    `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
+  boxShadow: '0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2)',
 });
 
 export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
