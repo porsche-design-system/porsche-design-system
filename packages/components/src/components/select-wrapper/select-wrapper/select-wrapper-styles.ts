@@ -35,6 +35,7 @@ export const getComponentCss = (
         mergeDeep(
           getBaseChildStyles('select', state, theme, {
             position: 'static',
+            zIndex: 0, // TODO: overrides global style.css in e2e and vrts
             cursor: 'pointer',
             padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
             '&@-moz-document url-prefix()': {

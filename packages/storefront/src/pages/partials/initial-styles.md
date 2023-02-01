@@ -37,7 +37,7 @@ export default class Code extends Vue {
     {
       value: "{ prefix: 'custom-prefix' }",
       comment: 'with custom prefix to match your prefixed components',
-    }
+    },
   ];
 }
 </script>
