@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagColor } from './tag-utils';
-import { TAG_COLORS } from './tag-utils';
+import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -65,7 +65,7 @@ export class Tag {
             source={this.iconSource}
             color="primary"
             size="x-small"
-            theme={this.theme}
+            theme={getThemeForIcon(this.color, this.theme)}
             aria-hidden="true"
           />
         )}

@@ -3,6 +3,10 @@ import type { ThemedColors } from '../../styles'; // deep import needed since ba
 import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
 import { isThemeDark } from '../../utils/theme/isThemeDark';
 
+export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
+  return ['neutral-contrast-high', 'primary'].includes(color) ? (theme === 'light' ? 'dark' : 'light') : theme;
+};
+
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
