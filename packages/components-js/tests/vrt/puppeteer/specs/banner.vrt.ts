@@ -13,7 +13,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner')).toBeFalsy();
 });
 

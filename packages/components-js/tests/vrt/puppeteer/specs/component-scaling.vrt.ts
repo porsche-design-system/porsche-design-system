@@ -7,6 +7,9 @@ import {
 const components = [
   'button',
   'button-pure',
+  'inline-notification',
+  'banner',
+  'toast-basic',
   'checkbox-wrapper',
   'link',
   'link-pure',

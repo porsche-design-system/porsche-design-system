@@ -21,17 +21,22 @@ Both expose the `addMessage()` method, which needs to be called with a parameter
 ```ts
 type ToastMessage = {
   text: string;
-  state?: 'neutral' | 'success';
+  state?: 'info' | 'success';
 };
 ```
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
 
 <Playground :frameworkMarkup="basic" :config="config">
   <label>
     State:
     <select v-model="toastState" aria-label="Select state">
       <option disabled>Select state</option>
-      <option value="neutral">Neutral</option>
+      <option value="info">Info</option>
       <option value="success">Success</option>
+      <option value="neutral">Neutral (deprecated)</option>
     </select>
   </label>
   <br><br>
@@ -78,7 +83,7 @@ import type { Theme } from '@/models';
 export default class Code extends Vue {
   config = { themeable: true };
 
-  toastState = 'neutral';
+  toastState = 'info';
   toastText = 'Some message';
   toastCounter = 1;
   positionBottom = 64;
