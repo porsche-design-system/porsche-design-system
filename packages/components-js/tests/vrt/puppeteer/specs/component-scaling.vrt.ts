@@ -11,6 +11,7 @@ const components = [
   'popover',
   'radio-button-wrapper',
   'spinner',
+  'tag',
   'tag-dismissible',
   'text-field-wrapper',
   'textarea-wrapper',

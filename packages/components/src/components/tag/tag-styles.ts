@@ -1,39 +1,18 @@
 import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
-  pxToRemWithUnit,
   ThemedColors,
 } from '../../styles';
-import {
-  fontStyle,
-  fontWeight,
-  textXSmallStyle,
-  borderRadiusMedium,
-  borderWidthBase,
-} from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
-import { hasInvertedThemeColor } from './tag-utils';
+import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-
-export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
-  const colorMap: { [key in TagColor]: string } = {
-    'background-default': themedColors.backgroundColor,
-    'background-surface': themedColors.backgroundSurfaceColor,
-    'neutral-contrast-high': themedColors.contrastHighColor,
-    'notification-neutral': themedColors.infoSoftColor,
-    'notification-success': themedColors.successSoftColor,
-    'notification-error': themedColors.errorSoftColor,
-    'notification-warning': themedColors.warningSoftColor,
-  };
-
-  return colorMap[tagColor];
-};
+import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
 
 export const getColors = (
   themedColors: ThemedColors,
@@ -41,54 +20,26 @@ export const getColors = (
   theme: Theme
 ): {
   primaryColor: string;
-  hoverColor: string;
-  outlineColor: string;
+  focusColor: string;
   backgroundColor: string;
+  backgroundHoverColor: string;
 } => {
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
-  const { primaryColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
-  const { focusColor, primaryColor: themedBaseColor } = themedColors;
+  const { primaryColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
+  const { focusColor } = themedColors;
 
   return {
     primaryColor,
-    hoverColor,
-    outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
+    focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
-  };
-};
-
-export const slottedTextJssStyle: JssStyle = {
-  '&(strong),&(b)': {
-    fontWeight: fontWeight.bold,
-  },
-  '&(em),&(i)': {
-    fontStyle,
-  },
-};
-
-export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
-  const { focusColor } = themedColors;
-  return {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      ...getInsetJssStyle(-4),
-      border: `${borderWidthBase} solid transparent`,
-      borderRadius: borderRadiusMedium,
-    },
-    '&:focus::before': {
-      borderColor: focusColor,
-    },
-    '&:focus:not(:focus-visible)::before': {
-      borderColor: 'transparent',
-    },
+    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor, hoverColor, backgroundColor } = getColors(themedColors, tagColor, theme);
+  const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
 
   return getCss({
     '@global': {
@@ -98,20 +49,20 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
       },
       span: {
         display: 'flex',
+        gap: '2px',
         alignItems: 'center',
         position: 'relative',
-        height: pxToRemWithUnit(24),
-        padding: `0 ${pxToRemWithUnit(6)}`,
-        borderRadius: pxToRemWithUnit(4),
+        padding: '4px 9px',
+        borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
-        ...textXSmallStyle,
+        font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
-          transition: getTransition('color'),
+          transition: getTransition('background-color'),
           ...hoverMediaQuery({
             '&:hover': {
-              color: hoverColor,
+              background: backgroundHoverColor,
             },
           }),
         }),
@@ -125,6 +76,12 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           font: 'inherit',
           outline: 0, // reset native blue outline
           color: 'inherit',
+          appearance: 'none',
+          margin: 0,
+          padding: 0,
+          background: 0,
+          border: 0,
+          textAlign: 'left',
         },
 
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
@@ -133,21 +90,13 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           return result;
         }, {} as JssStyle),
 
-        '&(button)': {
-          margin: 0,
-          padding: 0,
-          background: 0,
-          border: 0,
-          textAlign: 'left',
-        },
         '&(br)': {
           display: 'none',
         },
-        ...slottedTextJssStyle,
       }),
     },
     icon: {
-      margin: `0 ${pxToRemWithUnit(2)} 0 ${pxToRemWithUnit(-2)}`,
+      marginLeft: '-2px', // optimize visual alignment
     },
   });
 };
