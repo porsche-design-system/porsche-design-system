@@ -16,6 +16,9 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                         {
                           "children": [
                             {
+                              "role": "none",
+                            },
+                            {
                               "children": [
                                 {
                                   "children": [
@@ -169,6 +172,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                       "children": [
                         {
                           "children": [
+                            {
+                              "role": "none",
+                            },
                             {
                               "children": [
                                 {
@@ -325,6 +331,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                         {
                           "children": [
                             {
+                              "role": "none",
+                            },
+                            {
                               "children": [
                                 {
                                   "children": [
@@ -478,6 +487,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                       "children": [
                         {
                           "children": [
+                            {
+                              "role": "none",
+                            },
                             {
                               "children": [
                                 {
@@ -642,6 +654,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                       "children": [
                         {
                           "children": [
+                            {
+                              "role": "none",
+                            },
                             {
                               "children": [
                                 {
