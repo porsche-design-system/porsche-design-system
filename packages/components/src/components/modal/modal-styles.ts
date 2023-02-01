@@ -120,17 +120,21 @@ export const getComponentCss = (
         overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule({
-        ...getSlottedJssStyle(32, hasHeader),
-        [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
-        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
-        ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-            borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+        ...mergeDeep(
+          getSlottedJssStyle(32, hasHeader),
+          {
+            [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
+            [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
           },
-          [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-            borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
-          },
-        })),
+          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+              borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+            },
+            [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+              borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
+            },
+          }))
+        ),
       }),
       h1: {
         ...headingLargeStyle,
