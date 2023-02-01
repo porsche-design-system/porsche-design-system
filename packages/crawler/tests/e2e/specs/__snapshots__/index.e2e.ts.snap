@@ -150,7 +150,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
           "hostPdsComponent": "p-banner",
           "properties": {
-            "actionIcon": "arrow-head-right",
+            "actionIcon": "arrow-right",
             "actionLoading": false,
             "description": "",
             "heading": "",
@@ -168,7 +168,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
             "color": "notification-info",
             "lazy": false,
             "name": "information-filled",
-            "size": "inherit",
+            "size": "small",
             "theme": "dark",
           },
         },
