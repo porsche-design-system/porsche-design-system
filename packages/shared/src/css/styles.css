@@ -52,7 +52,7 @@ select {
 }
 
 .playground.light.surface {
-  background: #f2f2f2;
+  background: #eeeff2;
 }
 
 .playground.dark,
@@ -61,7 +61,7 @@ select {
 }
 
 .playground.dark.surface {
-  background: #262b2e;
+  background: #212225;
 }
 
 .playground.hover::before,
