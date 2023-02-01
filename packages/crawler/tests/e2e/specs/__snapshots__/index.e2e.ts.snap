@@ -135,17 +135,6 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
         },
       },
       {
-        "p-content-wrapper": {
-          "children": "<p-inline-notification class="root hydrated">(the content was stripped)</p-inline-notification>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "backgroundColor": "transparent",
-            "theme": "light",
-            "width": "basic",
-          },
-        },
-      },
-      {
         "p-inline-notification": {
           "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
           "hostPdsComponent": "p-banner",
