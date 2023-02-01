@@ -6,16 +6,15 @@ import {
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
 import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import type { TagColor } from '../tag/tag-utils';
-import { TAG_COLORS, warnIfColorBackgroundDefaultIsUsed } from '../tag/tag-utils';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
-  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   label: AllowedTypes.string,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
@@ -42,7 +41,10 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfColorBackgroundDefaultIsUsed(this.host, this.color);
+    const deprecatedColorMap: Partial<Record<TagDismissibleColor, TagDismissibleColor>> = {
+      'background-default': 'background-base',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

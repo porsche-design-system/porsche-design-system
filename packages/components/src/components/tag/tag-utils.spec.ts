@@ -10,7 +10,7 @@ const colorsWithThemeCombinations: [TagColor, Theme, boolean][] = [
   ['notification-warning', 'light', false],
   ['notification-error', 'light', false],
   ['notification-neutral', 'light', false], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-  ['notification-information', 'light', false],
+  ['notification-info', 'light', false],
   ['background-surface', 'dark', false],
   ['background-default', 'dark', false],
   ['neutral-contrast-high', 'dark', true],
@@ -18,7 +18,7 @@ const colorsWithThemeCombinations: [TagColor, Theme, boolean][] = [
   ['notification-warning', 'dark', false],
   ['notification-error', 'dark', false],
   ['notification-neutral', 'dark', false], // 'notification-neutral' is deprecated (replaced with 'notification-information')
-  ['notification-information', 'dark', false],
+  ['notification-info', 'dark', false],
 ];
 
 describe('hasInvertedThemeColor()', () => {

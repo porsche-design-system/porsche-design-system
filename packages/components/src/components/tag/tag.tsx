@@ -1,11 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagColor } from './tag-utils';
-import {
-  TAG_COLORS,
-  warnIfColorBackgroundDefaultIsUsed,
-  warnIfColorNeutralContrastHighIsUsed,
-  warnIfColorNotificationNeutralIsUsed,
-} from './tag-utils';
+import { TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,6 +8,7 @@ import {
   getPrefixedTagNames,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
 import type { IconName, PropTypes, Theme } from '../../types';
@@ -45,9 +41,12 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfColorNotificationNeutralIsUsed(this.host, this.color);
-    warnIfColorNeutralContrastHighIsUsed(this.host, this.color);
-    warnIfColorBackgroundDefaultIsUsed(this.host, this.color);
+    const deprecatedColorMap: Partial<Record<TagColor, TagColor>> = {
+      'notification-neutral': 'notification-info',
+      'neutral-contrast-high': 'primary',
+      'background-default': 'background-base',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
     attachComponentCss(
       this.host,
       getComponentCss,
