@@ -45,13 +45,24 @@ export const getComponentCss = (
   });
 };
 
+const getBackgroundColor = (state: InlineNotificationState, theme: Theme): string => {
+  const { infoSoftColor, successSoftColor, errorSoftColor, warningSoftColor } = getThemedColors(theme);
+  const colorMap: { [key in InlineNotificationState]: string } = {
+    neutral: infoSoftColor, // deprecated
+    info: infoSoftColor,
+    warning: warningSoftColor,
+    success: successSoftColor,
+    error: errorSoftColor,
+  };
+  return colorMap[state];
+};
+
 export const getNotificationRootJssStyle = (
   state: InlineNotificationState,
   theme: Theme,
   hasAction: boolean,
   hasClose: boolean
 ): JssStyle => {
-  const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
     // 2 columns for content and optional close button
@@ -59,7 +70,7 @@ export const getNotificationRootJssStyle = (
     gap: spacingStaticMedium,
     placeItems: 'start',
     padding: spacingStaticMedium,
-    background: themedColors[`${state}SoftColor`],
+    background: getBackgroundColor(state, theme),
     borderRadius: borderRadiusSmall,
     [mediaQueryMinS]: {
       // 4 columns are for icon, content, optional action button and optional close button

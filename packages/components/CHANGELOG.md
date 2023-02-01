@@ -68,6 +68,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-tag-dismissible color="background-base">Color label</p-tag>
 ```
 
+- Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
+  **"arrow-right"**
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
@@ -88,7 +90,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible`, `Inline Notification`, `Banner`, `Toast`, `Tag` and `Text Field Wrapper` matches new design language
+  `Popover`, `Tag Dismissible`, `Inline Notification`, `Banner`, `Toast`, `Tag` and `Text Field Wrapper` matches new
+  design language
 - CSS global variables names
 
 ```diff

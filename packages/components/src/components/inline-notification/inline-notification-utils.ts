@@ -7,25 +7,13 @@ export type InlineNotificationState = typeof INLINE_NOTIFICATION_STATES[number];
 
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
   const stateToIconMap: { [key in InlineNotificationState]: IconName } = {
-    neutral: 'information-filled',
+    neutral: 'information-filled', // deprecated
     info: 'information-filled',
     warning: 'warning-filled',
     success: 'success-filled',
     error: 'error-filled',
   };
   return stateToIconMap[state];
-};
-
-// state 'neutral' is deprecated and needs to be mapped to 'info' should be removed in v4
-export const inlineNotificationStateMap = (state: InlineNotificationState): InlineNotificationState => {
-  const stateMap: { [key in InlineNotificationState]: InlineNotificationState } = {
-    neutral: 'info',
-    info: 'info',
-    warning: 'warning',
-    success: 'success',
-    error: 'error',
-  };
-  return stateMap[state];
 };
 
 export const getContentAriaAttributes = (

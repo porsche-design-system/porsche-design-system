@@ -1,15 +1,22 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasHeading, THEMES, validateProps } from '../../utils';
 import type { IconName, PropTypes, Theme } from '../../types';
+import type { IconColor } from '../icon/icon-utils';
+import type { InlineNotificationState } from './inline-notification-utils';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  hasHeading,
+  THEMES,
+  validateProps,
+  warnIfDeprecatedPropValueIsUsed,
+} from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
-  INLINE_NOTIFICATION_STATES,
   getContentAriaAttributes,
   getInlineNotificationIconName,
-  inlineNotificationStateMap,
+  INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
-import type { InlineNotificationState } from './inline-notification-utils';
-import { IconColor } from '../icon/icon-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
@@ -18,7 +25,7 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   persistent: AllowedTypes.boolean,
   actionLabel: AllowedTypes.string,
   actionLoading: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.string,
+  actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -60,9 +67,12 @@ export class InlineNotification {
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
   public render(): JSX.Element {
-    const mappedState = inlineNotificationStateMap(this.state);
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, mappedState, !!this.actionLabel, !this.persistent, this.theme);
+    const deprecatedStateMap: Partial<Record<InlineNotificationState, InlineNotificationState>> = {
+      neutral: 'info',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
 
     const bannerId = 'banner';
     const labelId = 'label';
@@ -73,12 +83,12 @@ export class InlineNotification {
       <Host>
         <PrefixedTagNames.pIcon
           class="icon"
-          name={getInlineNotificationIconName(mappedState)}
+          name={getInlineNotificationIconName(this.state)}
           color={`notification-${this.state}` as IconColor}
           theme={this.theme}
           aria-hidden="true"
         />
-        <div id={bannerId} class="content" {...getContentAriaAttributes(mappedState, labelId, descriptionId)}>
+        <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
           <p id={descriptionId}>{this.description || <slot />}</p>
         </div>
