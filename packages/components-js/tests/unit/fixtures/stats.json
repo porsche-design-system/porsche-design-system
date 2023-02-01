@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 5706,
-    "gzipSize": 2467
+    "size": 5747,
+    "gzipSize": 2474
   },
   {
     "chunkShortName": "banner",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 7498,
-    "gzipSize": 3099
+    "size": 7539,
+    "gzipSize": 3104
   },
   {
     "chunkShortName": "carousel",
@@ -61,13 +61,13 @@
   },
   {
     "chunkShortName": "headline",
-    "size": 5025,
-    "gzipSize": 2099
+    "size": 5137,
+    "gzipSize": 2112
   },
   {
     "chunkShortName": "icon",
-    "size": 16216,
-    "gzipSize": 7410
+    "size": 16257,
+    "gzipSize": 7418
   },
   {
     "chunkShortName": "inline-notification",
@@ -81,8 +81,8 @@
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7298,
-    "gzipSize": 2989
+    "size": 7339,
+    "gzipSize": 2994
   },
   {
     "chunkShortName": "link-social",
@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 67340,
-    "gzipSize": 22898
+    "gzipSize": 22895
   },
   {
     "chunkShortName": "marque",
@@ -106,8 +106,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 8032,
-    "gzipSize": 3435
+    "size": 8003,
+    "gzipSize": 3432
   },
   {
     "chunkShortName": "pagination",
@@ -146,8 +146,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 11604,
-    "gzipSize": 4770
+    "size": 11645,
+    "gzipSize": 4773
   },
   {
     "chunkShortName": "switch",
@@ -157,17 +157,17 @@
   {
     "chunkShortName": "table",
     "size": 10602,
-    "gzipSize": 3897
+    "gzipSize": 3895
   },
   {
     "chunkShortName": "tabs",
-    "size": 6139,
-    "gzipSize": 2595
+    "size": 6074,
+    "gzipSize": 2578
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8389,
-    "gzipSize": 3326
+    "size": 8430,
+    "gzipSize": 3335
   },
   {
     "chunkShortName": "tag",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "text",
-    "size": 5391,
-    "gzipSize": 2227
+    "size": 5432,
+    "gzipSize": 2231
   },
   {
     "chunkShortName": "text-field-wrapper",
