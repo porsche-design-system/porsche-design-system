@@ -14,8 +14,8 @@ const Document = (): JSX.Element => {
       <Head>
         <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png" />
 
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
         {getInitialStyles({ format: 'jsx' })}
+        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
         {getFontLinks({ weights: ['regular', 'semi-bold', 'bold'], withoutTags: true })
           .map((x) => x.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
           .map((url) => (
