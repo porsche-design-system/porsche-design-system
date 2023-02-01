@@ -392,7 +392,7 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
-      "actionIcon": "arrow-head-right",
+      "actionIcon": "arrow-right",
       "actionLabel": null,
       "actionLoading": false,
       "description": null,
