@@ -2,7 +2,7 @@
 
 exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
 {
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "": [
       {
         "p-text": {
@@ -79,7 +79,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       },
     ],
   },
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "test-prefix": [
       {
         "p-text": {
@@ -120,7 +120,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
 
 exports[`should retrieve children and hostPdsComponent correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "": [
       {
         "p-banner": {
@@ -212,7 +212,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
 
 exports[`should retrieve children correctly and put stripped content 1`] = `
 {
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "": [
       {
         "p-flex": {
@@ -263,7 +263,7 @@ exports[`should retrieve children correctly and put stripped content 1`] = `
 
 exports[`should retrieve hostPdsComponent correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "": [
       {
         "p-button": {
@@ -289,7 +289,7 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
 
 exports[`should retrieve object value from string correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "2.20.0-rc.0": {
     "": [
       {
         "p-spinner": {
