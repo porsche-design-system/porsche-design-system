@@ -1,17 +1,17 @@
 import type { JssStyle } from 'jss';
 import type { BannerWidth } from './banner-utils';
-import type { KeyframesDirection } from './banner-shared-styles';
+import type { KeyframesDirection } from './banner-styles-shared';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
-import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-shared-styles';
+import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-styles-shared';
 import {
   getAnimationIn,
   getAnimationOut,
   getBoxShadow,
   getKeyframes,
   getKeyframesMobile,
-} from './banner-shared-styles';
+} from './banner-styles-shared';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';

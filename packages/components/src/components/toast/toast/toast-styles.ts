@@ -2,7 +2,7 @@ import { gridSafeZone, getMediaQueryMin } from '@porsche-design-system/utilities
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
-import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-shared-styles';
+import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
 const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const toastPositionBottomVarInternal = '--p-internal-toast-position-bottom';

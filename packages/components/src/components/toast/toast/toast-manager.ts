@@ -1,6 +1,6 @@
 import { forceUpdate } from '@stencil/core';
 import type { ToastState } from './toast-utils';
-import { ANIMATION_DURATION } from '../../banner/banner-shared-styles';
+import { ANIMATION_DURATION } from '../../banner/banner-styles-shared';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
 

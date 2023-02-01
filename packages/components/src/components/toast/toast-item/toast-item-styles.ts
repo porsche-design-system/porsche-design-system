@@ -6,7 +6,7 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles';
-import { getBoxShadow } from '../../banner/banner-shared-styles';
+import { getBoxShadow } from '../../banner/banner-styles-shared';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../../styles';
 
