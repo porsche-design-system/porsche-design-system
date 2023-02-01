@@ -65,7 +65,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <span slot="message">Some success message with a <a href="#">link</a>.</span>
         </p-radio-button-wrapper>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 

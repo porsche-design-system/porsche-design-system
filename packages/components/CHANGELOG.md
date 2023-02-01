@@ -12,7 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Prop `underline` for `Link Pure`
-- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover` and `Tag Dismissible`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
+  `Text Field Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 
 #### Changed
@@ -40,6 +41,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
 ```
 
+- Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-info`
+
+```diff
+- <p-tag color="notification-neutral">Color label</p-tag>
++ <p-tag color="notification-info">Color label</p-tag>
+```
+
+- Color `neutral-contrast-high` for `Tag` is deprecated now, replaced by `primary`
+
+```diff
+- <p-tag color="neutral-contrast-high">Color label</p-tag>
++ <p-tag color="primary">Color label</p-tag>
+```
+
+- Color `background-default` for `Tag` is deprecated now, replaced by `background-base`
+
+```diff
+- <p-tag color="background-default">Color label</p-tag>
++ <p-tag color="background-base">Color label</p-tag>
+```
+
+- Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
+
+```diff
+- <p-tag-dismissible color="background-default">Color label</p-tag>
++ <p-tag-dismissible color="background-base">Color label</p-tag>
+```
+
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
 - Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
 - Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
@@ -60,7 +89,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag Dismissible` and `Text Field Wrapper` matches new design language
+  `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -126,6 +155,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-switch tabindex="-1">Some label</p-switch>
 ```
 
+- `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
 #### Fixed
 
 - `Icon` supports param cased icon names only, typings are adapted accordingly:
@@ -134,6 +165,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-icon name="arrowRight"></p-icon>
 + <p-icon name="arrow-right"></p-icon>
 ```
+
+### [2.20.0-rc.0] - 2023-01-30
+
+#### Added
+
+- `applyNormalizeStyles` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
 
 ### [2.19.1-rc.1] - 2023-01-18
 
@@ -560,7 +597,7 @@ information can be found here:
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
   `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed

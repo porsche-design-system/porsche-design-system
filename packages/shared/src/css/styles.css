@@ -9,6 +9,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font: revert;
+  line-height: revert;
+  text-size-adjust: revert;
+  -webkit-text-size-adjust: revert;
 }
 
 body {
@@ -21,31 +25,41 @@ body {
   font-variant: small-caps;
 }
 
-body > select {
+body > div,
+body > app-root {
+  font: revert;
+  line-height: revert;
+  text-size-adjust: revert;
+  -webkit-text-size-adjust: revert;
+}
+
+select:focus,
+select {
   position: relative;
   z-index: 999999;
+  font: revert;
+  outline: none;
+  outline-offset: 0;
 }
 
 .playground {
   padding: 1rem;
 }
 
-.playground.light,
-.playground.light-electric {
+.playground.light {
   background: #fff;
 }
 
 .playground.light.surface {
-  background: #f2f2f2;
+  background: #eeeff2;
 }
 
-.playground.dark,
-.playground.dark-electric {
+.playground.dark {
   background: #0e1418;
 }
 
 .playground.dark.surface {
-  background: #262b2e;
+  background: #212225;
 }
 
 .playground.hover::before,
