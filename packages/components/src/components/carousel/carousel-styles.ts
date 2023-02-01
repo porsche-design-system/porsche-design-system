@@ -14,6 +14,7 @@ import {
   textSmallStyle,
   getMediaQueryMin,
   gridGap,
+  borderRadiusSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
@@ -120,19 +121,21 @@ export const getComponentCss = (
     },
     ...(disablePagination !== true && {
       pagination: {
-        ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
-        gridAutoColumns: pxToRemWithUnit(8),
-        gridAutoFlow: 'column',
-        justifyContent: 'center',
-        gap: pxToRemWithUnit(8),
-        height: pxToRemWithUnit(8),
+        ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
+        textAlign: 'center',
       },
       bullet: {
-        borderRadius: pxToRemWithUnit(4),
+        display: 'inline-block',
+        borderRadius: borderRadiusSmall,
         background: disabledColor,
+        margin: '4px',
+        transition: 'background-color 0.5s, width 0.5s',
+        width: '8px',
+        height: '8px',
       },
       [bulletActiveClass]: {
         background: primaryColor,
+        width: '20px',
       },
     }),
   });
