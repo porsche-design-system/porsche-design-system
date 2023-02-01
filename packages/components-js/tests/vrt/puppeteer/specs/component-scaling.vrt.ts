@@ -5,18 +5,19 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 const components = [
-  'checkbox-wrapper',
-  'radio-button-wrapper',
-  'link',
   'button',
-  'tag',
-  'link-pure',
   'button-pure',
-  'tag-dismissible',
+  'checkbox-wrapper',
+  'link',
+  'link-pure',
   'link-social',
-  'spinner',
   'popover',
+  'radio-button-wrapper',
+  'spinner',
+  'tag',
+  'tag-dismissible',
   'text-field-wrapper',
+  'textarea-wrapper',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {

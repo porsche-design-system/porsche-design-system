@@ -1,6 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
-import { buildResponsiveStyles, isVisibleFormState } from '../utils';
+import { buildResponsiveStyles } from '../utils';
 import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
 import {
   borderRadiusSmall,
@@ -80,7 +80,6 @@ export const getLabelStyles = (
 ): Styles => {
   const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const hasVisibleState = isVisibleFormState(state);
 
   const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
 
@@ -104,11 +103,10 @@ export const getLabelStyles = (
           }),
         },
         ...hoverMediaQuery({
-          // TODO: we can use logical order for form state instead
           '&:hover': {
             [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))` +
-            (hasVisibleState ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
-              borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : primaryColor),
+            (formStateHoverColor ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
+              borderColor: addImportantToRule(formStateHoverColor || primaryColor),
             },
           },
         }),

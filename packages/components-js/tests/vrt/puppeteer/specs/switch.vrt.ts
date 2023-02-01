@@ -33,7 +33,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-switch theme="${theme}" loading="true">Loading</p-switch>
         <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 
