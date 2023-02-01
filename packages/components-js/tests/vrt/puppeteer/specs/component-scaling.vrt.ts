@@ -8,7 +8,7 @@ const components = [
   'button',
   'checkbox-wrapper',
   'link',
-  'modal',
+  'modal-basic',
   'popover',
   'radio-button-wrapper',
   'spinner',
