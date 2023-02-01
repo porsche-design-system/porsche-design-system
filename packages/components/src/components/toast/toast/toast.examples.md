@@ -25,6 +25,10 @@ type ToastMessage = {
 };
 ```
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
+
 <Playground :frameworkMarkup="basic" :config="config">
   <label>
     State:
@@ -32,7 +36,7 @@ type ToastMessage = {
       <option disabled>Select state</option>
       <option value="info">Info</option>
       <option value="success">Success</option>
-      <option value="neutral">DEPRECATED Neutral</option>
+      <option value="neutral">Neutral (deprecated)</option>
     </select>
   </label>
   <br><br>

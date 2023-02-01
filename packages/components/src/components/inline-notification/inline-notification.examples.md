@@ -16,7 +16,9 @@ component is best for a particular scenario.
 
 ## State
 
-Coloring can be controlled via the `state` property.
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
 
 <Playground :markup="stateDemo" :config="config">
   <select v-model="state" aria-label="Select state">
@@ -25,7 +27,7 @@ Coloring can be controlled via the `state` property.
     <option value="success">Success</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
-    <option value="neutral">DEPRECATED Neutral</option>
+    <option value="neutral">Neutral (deprecated)</option>
   </select>
 </Playground>
 
