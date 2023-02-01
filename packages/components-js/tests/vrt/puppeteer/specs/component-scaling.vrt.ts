@@ -6,8 +6,11 @@ import {
 
 const components = [
   'button',
+  'button-pure',
   'checkbox-wrapper',
   'link',
+  'link-pure',
+  'link-social',
   'modal-basic',
   'popover',
   'radio-button-wrapper',
