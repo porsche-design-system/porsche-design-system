@@ -23,9 +23,8 @@ import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/
 const mediaQueryM = getMediaQueryMin('m');
 const mediaQueryXl = getMediaQueryMin('xl');
 const mediaQueryXxl = getMediaQueryMin('xxl');
-const { backgroundColor: lightThemeBackgroundColor, primaryColor: darkBorderColorFullscreen } =
-  getThemedColors('light');
-const { primaryColor: lightBorderColorFullscreen } = getThemedColors('dark');
+const { backgroundColor: lightThemeBackgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
+const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
@@ -43,7 +42,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `max(1rem, 7vh) ${gridSafeZone}`,
+        margin: `max(16px, 7vh) ${gridSafeZone}`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -136,10 +135,10 @@ export const getComponentCss = (
           }))
         ),
       }),
-      h1: {
+      h2: {
         ...headingLargeStyle,
         margin: 0,
-        color: getThemedColors('light').primaryColor,
+        color: lightThemePrimaryColor,
       },
     },
     root: mergeDeep(
@@ -148,7 +147,7 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-        padding: '32px',
+        padding: disableCloseButton ? '32px' : '40px 32px',
         backgroundColor: lightThemeBackgroundColor,
         outline: 0,
         '&:focus::before': {
@@ -157,7 +156,7 @@ export const getComponentCss = (
           border: `${borderWidthBase} solid`,
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
-            borderColor: fullscreenValue ? darkBorderColorFullscreen : lightBorderColorFullscreen,
+            borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,
             ...(fullscreenValue ? getInsetJssStyle(0) : getInsetJssStyle(-4)),
           })),
         },
@@ -168,7 +167,7 @@ export const getComponentCss = (
           padding: '40px',
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridSafeZone}`,
         },
         [mediaQueryXxl]: {
           padding: '64px',
@@ -179,13 +178,11 @@ export const getComponentCss = (
     ...(hasHeader && {
       header: {
         padding: '0 0 16px',
-        ...(!disableCloseButton && { margin: '0 32px 0 0' }),
         [mediaQueryM]: {
           padding: '0 0 24px',
         },
         [mediaQueryXxl]: {
           padding: '0 0 32px',
-          ...(!disableCloseButton && { margin: 0 }),
         },
       },
     }),
