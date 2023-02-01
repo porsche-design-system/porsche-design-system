@@ -105,6 +105,7 @@ export class InlineNotification {
         )}
         {!this.persistent && (
           <PrefixedTagNames.pButtonPure
+            class="close"
             type="button"
             icon="close"
             theme={this.theme}
