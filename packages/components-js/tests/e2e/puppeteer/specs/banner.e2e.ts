@@ -170,7 +170,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });
