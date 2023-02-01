@@ -117,7 +117,6 @@ export class Scroller {
             size="inherit"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            theme={this.theme}
             aria-hidden="true"
           >
             {direction}

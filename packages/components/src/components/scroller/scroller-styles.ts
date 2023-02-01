@@ -2,7 +2,7 @@ import { getCss, isThemeDark } from '../../utils';
 import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
@@ -23,18 +23,10 @@ const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): stri
 
   return (
     `rgba(${gradientRGB},1) 0%,` +
-    `rgba(${gradientRGB},0.9) 20%,` +
-    `rgba(${gradientRGB},0.852589) 26.67%,` +
-    `rgba(${gradientRGB},0.768225) 33.33%,` +
+    `rgba(${gradientRGB},0.9) 10%,` +
     `rgba(${gradientRGB},0.668116) 40%,` +
-    `rgba(${gradientRGB},0.557309) 46.67%,` +
-    `rgba(${gradientRGB},0.442691) 53.33%,` +
     `rgba(${gradientRGB},0.331884) 60%,` +
-    `rgba(${gradientRGB},0.231775) 66.67%,` +
-    `rgba(${gradientRGB},0.147411) 73.33%,` +
     `rgba(${gradientRGB},0.0816599) 80%,` +
-    `rgba(${gradientRGB},0.03551) 86.67%,` +
-    `rgba(${gradientRGB},0.0086472) 93.33%,` +
     `rgba(${gradientRGB},0)`
   );
 };
@@ -46,7 +38,9 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, focusColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
+
+  const buttonBackgroundColor = gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
 
   const actionPrevNextStyles = {
     position: 'relative',
@@ -125,7 +119,7 @@ export const getComponentCss = (
       background: `linear-gradient(to right, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& .button': {
-        marginLeft: '6px',
+        marginLeft: '8px',
         ...hoverMediaQuery({
           visibility: isPrevHidden ? 'hidden' : 'visible',
         }),
@@ -139,7 +133,7 @@ export const getComponentCss = (
       background: `linear-gradient(to left, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& .button': {
-        marginRight: '6px',
+        marginRight: '8px',
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'visible',
         }),
@@ -148,10 +142,11 @@ export const getComponentCss = (
     button: {
       pointerEvents: 'auto',
       position: 'static',
-      backgroundColor,
+      backgroundColor: buttonBackgroundColor,
       borderRadius: borderRadiusSmall,
-      border: `2px solid ${backgroundColor}`,
+      border: `2px solid ${buttonBackgroundColor}`,
       visibility: 'hidden',
+      ...textSmallStyle,
       ...(!isThemeDark(theme) && {
         // Needed to ensure visibility as dropShadowMediumStyle conflicts with frostedGlass filter
         boxShadow:
