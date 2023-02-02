@@ -16,6 +16,7 @@ import {
   borderRadiusSmall,
   headingXLargeStyle,
 } from '@porsche-design-system/utilities-v2';
+import { spacingFluidMedium } from '@porsche-design-system/utilities-v2/src/js';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -36,11 +37,13 @@ export const getComponentCss = (
         maxWidth: gridWidthMax,
         marginLeft: 'auto',
         marginRight: 'auto',
-        gap: '24px',
+        gap: spacingFluidMedium,
         gridAutoFlow: 'row',
+        /*
         [mediaQueryXl]: {
           gap: '32px',
         },
+         */
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXLargeStyle,
