@@ -24,12 +24,15 @@ export class Grid {
   /** Handles wrapping behaviour of elements. */
   @Prop() public wrap?: BreakpointCustomizable<GridWrap> = 'wrap';
 
-  /** Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this. */
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public gutter?: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.wrap);
     syncGridItemsProps(this.host, this.gutter);
 
     return <slot />;

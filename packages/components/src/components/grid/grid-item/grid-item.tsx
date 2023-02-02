@@ -29,13 +29,7 @@ export class GridItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      this.offset,
-      this.host.gutter || { base: 16, s: 24, m: 36 } // default as fallback
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.offset);
 
     return <slot />;
   }
