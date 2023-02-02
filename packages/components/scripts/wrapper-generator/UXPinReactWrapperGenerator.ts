@@ -229,7 +229,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
-        .replace(/(\.\.\.rest)/, "text, state = 'neutral', $1") // destructure custom props
+        .replace(/(\.\.\.rest)/, "text, state = 'info', $1") // destructure custom props
         .replace(
           // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
           /((const propsToSync =)|(useBrowserLayoutEffect\(\(\) =>))/,

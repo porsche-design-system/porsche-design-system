@@ -16,7 +16,7 @@ const ToastBasicPage: NextPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should render toast neutral on light background">
+      <div className="playground light" title="should render toast info on light background">
         <Toast text="Some message" />
       </div>
     </>

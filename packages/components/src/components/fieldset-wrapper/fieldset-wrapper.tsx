@@ -55,7 +55,9 @@ export class FieldsetWrapper {
           </legend>
         )}
         <slot />
-        {hasMessageValue && <StateMessage id={messageId} state={this.state} message={this.message} host={this.host} />}
+        {hasMessageValue && (
+          <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
+        )}
       </fieldset>
     );
   }

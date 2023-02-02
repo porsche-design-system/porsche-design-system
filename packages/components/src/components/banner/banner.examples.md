@@ -15,12 +15,17 @@ component is best for a particular scenario.
 The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "
 Custom styling" section.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
+
 <Playground :markup="basic" :config="config">
   <select v-model="state" aria-label="Select state">
     <option disabled>Select state</option>
-    <option value="neutral">Neutral</option>
+    <option value="info">Info</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
+    <option value="neutral">Neutral (deprecated)</option>
   </select>
 </Playground>
 
@@ -80,7 +85,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 export default class Code extends Vue {
   config = { themeable: true };
   
-  state = 'neutral';
+  state = 'info';
   width = 'basic';
   
   get basic() {

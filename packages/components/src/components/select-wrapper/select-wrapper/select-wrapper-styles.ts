@@ -27,6 +27,7 @@ export const getComponentCss = (
       ...addImportantToEachRule(
         getBaseChildStyles('select', state, theme, {
           position: 'static',
+          zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
           padding: `13px ${pxToRemWithUnit(47)} 13px ${spacingStaticMedium}`,
           '&@-moz-document url-prefix()': {
@@ -46,7 +47,6 @@ export const getComponentCss = (
         bottom: pxToRemWithUnit(13),
         right: pxToRemWithUnit(14),
         color: primaryColor,
-        pointerEvents: 'none', // let events through to select which is visually underneath
         transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
         transition: getTransition('transform'),
         '&--open': {

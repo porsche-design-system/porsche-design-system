@@ -68,9 +68,9 @@ button:focus:not(:focus-visible)) {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -105,7 +105,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -214,9 +214,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -282,7 +282,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -391,9 +391,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -428,7 +428,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -534,9 +534,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -602,7 +602,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -708,9 +708,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -745,7 +745,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -850,9 +850,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -918,7 +918,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1023,9 +1023,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1060,7 +1060,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1162,9 +1162,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1230,7 +1230,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1332,9 +1332,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1369,7 +1369,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1478,9 +1478,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1546,7 +1546,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1655,9 +1655,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1692,7 +1692,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1798,9 +1798,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -1866,7 +1866,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -1972,9 +1972,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -2009,7 +2009,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -2114,9 +2114,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -2182,7 +2182,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -2287,9 +2287,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -2324,7 +2324,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -2426,9 +2426,9 @@ ul {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `
 ":host {
-  --p-dropdown-position: absolute;
+  --p-internal-dropdown-position: absolute;
   display: block;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   margin-top: -3.375rem;
   padding-top: 3.375rem;
   left: 0;
@@ -2494,7 +2494,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -2855,7 +2855,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #0E0E12;
@@ -2961,7 +2961,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -3067,7 +3067,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #0E0E12;
@@ -3169,7 +3169,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -3271,7 +3271,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #0E0E12;
@@ -3377,7 +3377,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;
@@ -3483,7 +3483,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #0E0E12;
@@ -3585,7 +3585,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-dropdown-position);
+  position: var(--p-internal-dropdown-position);
   padding: 12px;
   margin: 0;
   background: #FFF;

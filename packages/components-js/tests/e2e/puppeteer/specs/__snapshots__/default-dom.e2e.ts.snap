@@ -20,45 +20,8 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<style>
-  p-inline-notification a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-inline-notification b,
-  p-inline-notification strong {
-    font-weight: 700 !important;
-  }
-
-  p-inline-notification em,
-  p-inline-notification i {
-    font-style: normal !important;
-  }
-
-  p-inline-notification a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-inline-notification a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-inline-notification a:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-inline-notification a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
-  }
-</style>
-<p-content-wrapper class="hydrated">
-  <p-inline-notification class="root hydrated">
-  </p-inline-notification>
-</p-content-wrapper>"
+"<p-inline-notification class="root hydrated">
+</p-inline-notification>"
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
@@ -159,14 +122,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `
-"<i class="root">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
-    <path d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z">
-    </path>
-  </svg>
-</i>"
-`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
@@ -205,7 +161,7 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
 "<a class="root" href="value" target="_self">
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -272,8 +228,12 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-popover 1`] = `
-"<p-button-pure class="hydrated">
-  More information</p-button-pure>"
+"<button type="button" aria-expanded="false">
+  <p-icon class="icon hydrated">
+  </p-icon>
+  <span class="label">
+    More information</span>
+</button>"
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
@@ -439,7 +399,7 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 
 exports[`should have no basic DOM regression for p-tag 1`] = `
 "<span>
-  <div>
+  <div class="label">
     <slot>
     </slot>
   </div>

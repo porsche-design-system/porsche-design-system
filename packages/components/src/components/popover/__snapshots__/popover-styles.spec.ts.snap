@@ -1,29 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: bottom 1`] = `
+exports[`getComponentCss() should return correct css for direction: bottom and theme: dark 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
 }
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
 .spacer {
   position: absolute;
   z-index: 9999;
-  top: -1rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
@@ -35,28 +90,27 @@ p {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 0 .75rem .75rem;
-  border-color: transparent transparent #fff;
+  border-width: 0 12px 12px;
+  border-color: transparent transparent #FFF;
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
-  background: #fff;
-  padding: .5rem 1rem;
+  background: #FFF;
+  padding: 8px 16px;
   pointer-events: auto;
   top: 100%;
   left: 50%;
   transform: translate3d(-50%, 0, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   list-style-type: none;
-  color: #000;
+  color: #010205;
   white-space: inherit;
+  border-radius: 4px;
 }
 @keyframes keyframes-fadeIn {
   from {
@@ -66,12 +120,6 @@ p {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 27rem;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvastext;
@@ -83,30 +131,216 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: left 1`] = `
+exports[`getComponentCss() should return correct css for direction: bottom and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
 }
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
 .spacer {
   position: absolute;
   z-index: 9999;
-  top: -1rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
+}
+.spacer::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 12px 12px;
+  border-color: transparent transparent #FFF;
+}
+.popover {
+  position: absolute;
+  max-width: min(90vw, 27rem);
+  width: max-content;
+  box-sizing: border-box;
+  background: #FFF;
+  padding: 8px 16px;
+  pointer-events: auto;
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #010205;
+  white-space: inherit;
+  border-radius: 4px;
+}
+@keyframes keyframes-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (forced-colors: active) {
+    .spacer::before {
+      border-color: canvas canvas canvastext;
+    }
+    .popover {
+      outline: 1px solid canvastext;
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: left and theme: dark 1`] = `
+":host {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
+.spacer {
+  position: absolute;
+  z-index: 9999;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
@@ -118,28 +352,27 @@ p {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  border-width: .75rem 0 .75rem .75rem;
-  border-color: transparent transparent transparent #fff;
+  border-width: 12px 0 12px 12px;
+  border-color: transparent transparent transparent #FFF;
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
-  background: #fff;
-  padding: .5rem 1rem;
+  background: #FFF;
+  padding: 8px 16px;
   pointer-events: auto;
   top: 50%;
   right: 100%;
   transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   list-style-type: none;
-  color: #000;
+  color: #010205;
   white-space: inherit;
+  border-radius: 4px;
 }
 @keyframes keyframes-fadeIn {
   from {
@@ -149,12 +382,6 @@ p {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 27rem;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvas canvas canvastext;
@@ -166,30 +393,216 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: right 1`] = `
+exports[`getComponentCss() should return correct css for direction: left and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
 }
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
 .spacer {
   position: absolute;
   z-index: 9999;
-  top: -1rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
+}
+.spacer::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-width: 12px 0 12px 12px;
+  border-color: transparent transparent transparent #FFF;
+}
+.popover {
+  position: absolute;
+  max-width: min(90vw, 27rem);
+  width: max-content;
+  box-sizing: border-box;
+  background: #FFF;
+  padding: 8px 16px;
+  pointer-events: auto;
+  top: 50%;
+  right: 100%;
+  transform: translate3d(0, -50%, 0);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #010205;
+  white-space: inherit;
+  border-radius: 4px;
+}
+@keyframes keyframes-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (forced-colors: active) {
+    .spacer::before {
+      border-color: canvas canvas canvas canvastext;
+    }
+    .popover {
+      outline: 1px solid canvastext;
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: right and theme: dark 1`] = `
+":host {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
+.spacer {
+  position: absolute;
+  z-index: 9999;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
@@ -201,28 +614,27 @@ p {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  border-width: .75rem .75rem .75rem 0;
-  border-color: transparent #fff transparent transparent;
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #FFF transparent transparent;
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
-  background: #fff;
-  padding: .5rem 1rem;
+  background: #FFF;
+  padding: 8px 16px;
   pointer-events: auto;
   top: 50%;
   left: 100%;
   transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   list-style-type: none;
-  color: #000;
+  color: #010205;
   white-space: inherit;
+  border-radius: 4px;
 }
 @keyframes keyframes-fadeIn {
   from {
@@ -232,12 +644,6 @@ p {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 27rem;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvas canvastext canvas canvas;
@@ -249,30 +655,216 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: top 1`] = `
+exports[`getComponentCss() should return correct css for direction: right and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
   vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
 }
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
 .spacer {
   position: absolute;
   z-index: 9999;
-  top: -1rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
+}
+.spacer::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #FFF transparent transparent;
+}
+.popover {
+  position: absolute;
+  max-width: min(90vw, 27rem);
+  width: max-content;
+  box-sizing: border-box;
+  background: #FFF;
+  padding: 8px 16px;
+  pointer-events: auto;
+  top: 50%;
+  left: 100%;
+  transform: translate3d(0, -50%, 0);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #010205;
+  white-space: inherit;
+  border-radius: 4px;
+}
+@keyframes keyframes-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (forced-colors: active) {
+    .spacer::before {
+      border-color: canvas canvastext canvas canvas;
+    }
+    .popover {
+      outline: 1px solid canvastext;
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: top and theme: dark 1`] = `
+":host {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+}
+
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
+.spacer {
+  position: absolute;
+  z-index: 9999;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 240ms keyframes-fadeIn ease forwards;
@@ -284,28 +876,27 @@ p {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-width: .75rem .75rem 0;
-  border-color: #fff transparent transparent;
+  border-width: 12px 12px 0;
+  border-color: #FFF transparent transparent;
 }
 .popover {
   position: absolute;
-  max-width: 90vw;
+  max-width: min(90vw, 27rem);
   width: max-content;
   box-sizing: border-box;
-  background: #fff;
-  padding: .5rem 1rem;
+  background: #FFF;
+  padding: 8px 16px;
   pointer-events: auto;
   bottom: 100%;
   left: 50%;
   transform: translate3d(-50%, 0, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   list-style-type: none;
-  color: #000;
+  color: #010205;
   white-space: inherit;
+  border-radius: 4px;
 }
 @keyframes keyframes-fadeIn {
   from {
@@ -315,12 +906,6 @@ p {
     opacity: 1;
   }
 }
-@media(min-width:480px) {
-    .popover {
-      max-width: 27rem;
-    }
-}
-
 @media (forced-colors: active) {
     .spacer::before {
       border-color: canvastext canvas canvas;
@@ -332,68 +917,133 @@ p {
 "
 `;
 
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-popover a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+exports[`getComponentCss() should return correct css for direction: top and theme: light 1`] = `
+":host {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top;
 }
-p-popover b, p-popover strong {
-  font-weight: 700 !important;
+:host([hidden]) {
+  display: none !important;
 }
-p-popover em, p-popover i {
-  font-style: normal !important;
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
 }
-p-popover a::-moz-focus-inner {
-  border: 0 !important;
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-p-popover a:focus {
-  outline-color: currentColor !important;
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
 }
-p-popover a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
+button:focus::before {
+  border-color: #0A0AFF;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 @media(hover:hover) {
-  p-popover a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-popover a:hover {
-    color: #d5001c !important;
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, 0.20);
   }
 }
-"
-`;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-popover a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+.label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-prefixed-p-popover b, prefixed-p-popover strong {
-  font-weight: 700 !important;
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
 }
-prefixed-p-popover em, prefixed-p-popover i {
-  font-style: normal !important;
+.spacer {
+  position: absolute;
+  z-index: 9999;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
 }
-prefixed-p-popover a::-moz-focus-inner {
-  border: 0 !important;
+.spacer::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0;
+  border-color: #FFF transparent transparent;
 }
-prefixed-p-popover a:focus {
-  outline-color: currentColor !important;
+.popover {
+  position: absolute;
+  max-width: min(90vw, 27rem);
+  width: max-content;
+  box-sizing: border-box;
+  background: #FFF;
+  padding: 8px 16px;
+  pointer-events: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #010205;
+  white-space: inherit;
+  border-radius: 4px;
 }
-prefixed-p-popover a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-popover a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
+@keyframes keyframes-fadeIn {
+  from {
+    opacity: 0;
   }
-  prefixed-p-popover a:hover {
-    color: #d5001c !important;
+  to {
+    opacity: 1;
   }
+}
+@media (forced-colors: active) {
+    .spacer::before {
+      border-color: canvastext canvas canvas;
+    }
+    .popover {
+      outline: 1px solid canvastext;
+    }
 }
 "
 `;

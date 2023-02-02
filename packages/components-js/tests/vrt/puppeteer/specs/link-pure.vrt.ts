@@ -36,7 +36,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <div>
           <p-link-pure theme="${theme}" align-label="left" href="#">Label align left</p-link-pure>
           <p-link-pure theme="${theme}" align-label="left"><a href="#">Label slotted align left</a></p-link-pure>
-          <p-link-pure theme="${theme}" align-label="left" icon="logoDelicious" href="#">Label align left</p-link-pure>
+          <p-link-pure theme="${theme}" align-label="left" icon="logo-delicious" href="#">Label align left</p-link-pure>
         </div>
         <div>
           <p-link-pure theme="${theme}" hide-label="true" href="#">Without label</p-link-pure>

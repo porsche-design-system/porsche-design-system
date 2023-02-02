@@ -130,7 +130,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         textFieldWrappers.map(
           async (item) =>
             (
-              await item.evaluateHandle((el) => el.shadowRoot.querySelector('button[type=button]'))
+              await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))
             ).evaluate((el: HTMLElement) => el.click()) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
         )
       );

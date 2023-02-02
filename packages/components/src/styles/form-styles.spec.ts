@@ -17,7 +17,7 @@ describe('getBaseChildStyles()', () => {
   });
 });
 
-xdescribe('getLabelStyles()', () => {
+describe('getLabelStyles()', () => {
   it.each<Parameters<typeof getLabelStyles>>([
     ['input', false, false, 'none', 'light'],
     ['input', false, false, 'success', 'light'],

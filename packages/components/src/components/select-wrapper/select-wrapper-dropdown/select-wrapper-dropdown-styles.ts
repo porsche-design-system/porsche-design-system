@@ -22,7 +22,7 @@ import { INPUT_HEIGHT } from '../../../styles/form-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { FormState } from '../../../utils/form/form-state';
 
-const dropdownPositionVar = '--p-dropdown-position';
+const dropdownPositionVar = '--p-internal-dropdown-position';
 
 export const getButtonStyles = (theme: Theme): Styles => {
   const { primaryColor, focusColor } = getThemedColors(theme);
