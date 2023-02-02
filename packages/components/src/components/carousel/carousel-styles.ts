@@ -67,7 +67,7 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...(wrapContent &&
           addImportantToEachRule({
-            // TODO: 0 calc(${gridSafeZone} + ${gridGap})
+            // TODO: 0 calc(${gridSafeZone} + ${gridGap}) - will be done after Grid Refactoring
             padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
             [mediaQueryXl]: {
               padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,

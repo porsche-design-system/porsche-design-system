@@ -125,7 +125,7 @@ export class Carousel {
         right: '7%', // together with wrapContent this is overridden via css
       },
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      // TODO: for gap definition the gridGap const must be used
+      // TODO: for gap definition the gridGap const must be used - will be done after Grid Refactoring
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: spacingStaticMedium,
         s: spacingStaticLarge,
