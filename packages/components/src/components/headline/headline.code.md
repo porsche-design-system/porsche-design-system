@@ -9,6 +9,8 @@
 
 **Headline component** to specify headline styling and hierarchy in documents.
 
+<TableOfContents></TableOfContents>
+
 ## Variant
 
 Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. There are multiple

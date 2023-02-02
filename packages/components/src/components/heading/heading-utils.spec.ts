@@ -48,7 +48,7 @@ describe('getHeadingTagName()', () => {
     expect(getHeadingTagName(host)).toBe('div');
   });
 
-  it('should return tag if hasSlottedHeadingTag() is false and tag is passed', () => {
+  it('should return tag value if hasSlottedHeadingTag() is false and tag is passed', () => {
     const host = document.createElement('p-heading');
     jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
 
