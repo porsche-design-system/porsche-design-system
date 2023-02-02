@@ -32,11 +32,11 @@ const headingMap: Record<HeadingVariantType | HeadlineVariantTypeDeprecated, Jss
   'headline-5': headingSmallStyle, // deprecated
 };
 
-const getVariantJssStyle = (variant: HeadingVariant | HeadlineVariantDeprecated): JssStyle => {
+export const getVariantJssStyle = (variant: HeadingVariant | HeadlineVariantDeprecated): JssStyle => {
   return headingMap[variant as HeadingVariantType];
 };
 
-const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+export const getSizeJssStyle = (textSize: TextSize): JssStyle => {
   const { semiBold: fontWeightSemiBold } = fontWeight;
   return textSize === 'inherit'
     ? {

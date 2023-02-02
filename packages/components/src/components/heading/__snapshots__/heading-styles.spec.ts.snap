@@ -310,3 +310,106 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
 }
 "
 `;
+
+exports[`getSizeJssStyle() should return correct css for textSize: inherit 1`] = `
+{
+  "fontSize": "inherit",
+  "fontWeight": 600,
+}
+`;
+
+exports[`getSizeJssStyle() should return correct css for textSize: large 1`] = `
+{
+  "font": "normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getSizeJssStyle() should return correct css for textSize: medium 1`] = `
+{
+  "font": "normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getSizeJssStyle() should return correct css for textSize: small 1`] = `
+{
+  "font": "normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getSizeJssStyle() should return correct css for textSize: x-large 1`] = `
+{
+  "font": "normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getSizeJssStyle() should return correct css for textSize: x-small 1`] = `
+{
+  "font": "normal normal 600 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: heading-1 1`] = `
+{
+  "font": "normal normal 600 clamp(2.07rem, .96vw + 1.88rem, 2.94rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: heading-2 1`] = `
+{
+  "font": "normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: heading-3 1`] = `
+{
+  "font": "normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: heading-4 1`] = `
+{
+  "font": "normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: heading-5 1`] = `
+{
+  "font": "normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: headline-1 1`] = `
+{
+  "font": "normal normal 600 clamp(2.07rem, .96vw + 1.88rem, 2.94rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: headline-2 1`] = `
+{
+  "font": "normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: headline-3 1`] = `
+{
+  "font": "normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: headline-4 1`] = `
+{
+  "font": "normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: headline-5 1`] = `
+{
+  "font": "normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
+
+exports[`getVariantJssStyle() should return correct css for variant: large-title 1`] = `
+{
+  "font": "italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+}
+`;
