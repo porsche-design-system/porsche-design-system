@@ -1,9 +1,9 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
-import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { deprecatedGridComponentMessage, GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
 
 const propTypes: PropTypes<typeof Grid> = {
   direction: AllowedTypes.breakpoint<GridDirection>(GRID_DIRECTIONS),
@@ -32,10 +32,7 @@ export class Grid {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(
-      this.host,
-      'Please use native CSS Grid (https://css-tricks.com/snippets/css/complete-guide-grid) instead in combination with the Porsche Grid utility based on CSS Grid.'
-    );
+    warnIfDeprecatedComponentIsUsed(this.host, deprecatedGridComponentMessage);
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap);
 
     return <slot />;

@@ -1,8 +1,8 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,6 +10,7 @@ import {
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
+import { deprecatedGridComponentMessage } from '../grid/grid-utils';
 
 const propTypes: PropTypes<typeof GridItem> = {
   size: AllowedTypes.breakpoint<GridItemSize>(GRID_ITEM_SIZES),
@@ -35,10 +36,7 @@ export class GridItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(
-      this.host,
-      'Please use native CSS Grid (https://css-tricks.com/snippets/css/complete-guide-grid) instead in combination with the Porsche Grid utility based on CSS Grid.'
-    );
+    warnIfDeprecatedComponentIsUsed(this.host, deprecatedGridComponentMessage);
     attachComponentCss(this.host, getComponentCss, this.size, this.offset);
 
     return <slot />;
