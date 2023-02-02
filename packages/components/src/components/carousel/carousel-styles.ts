@@ -58,20 +58,19 @@ export const getComponentCss = (
             }
           : {
               textAlign: 'center',
-              paddingLeft: '42px',
             }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
+        padding: `${spacingStaticXSmall} 0 0`,
         ...(isAlignLeft
           ? {
               maxWidth: '550px',
             }
           : {
               textAlign: 'center',
-              paddingLeft: '42px',
             }),
         gridColumn: 1, // to force it into 2nd line
       }),
@@ -117,11 +116,8 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
-      display: 'grid',
-      gap: spacingStaticXSmall,
       padding: wrapContent ? `0 ${gridSafeZone}` : null,
       [mediaQueryS]: {
-        gridTemplateColumns: 'minmax(0px, 1fr) 80px', // 2nd row has width of nav buttons
         position: 'relative',
         minHeight: '40px', // actual height of prev/next buttons
       },
