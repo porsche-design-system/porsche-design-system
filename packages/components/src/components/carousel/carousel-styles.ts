@@ -10,11 +10,11 @@ import {
 import {
   gridWidthMax,
   gridSafeZone,
-  headingMediumStyle,
   textSmallStyle,
   getMediaQueryMin,
   gridGap,
   borderRadiusSmall,
+  headingXLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
@@ -43,7 +43,7 @@ export const getComponentCss = (
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingMediumStyle,
+        ...headingXLargeStyle,
         margin: 0,
         color: primaryColor,
         maxWidth: pxToRemWithUnit(900),
