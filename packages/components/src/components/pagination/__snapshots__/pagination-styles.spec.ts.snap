@@ -2,7 +2,6 @@
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: { base: 5, xs: 7, s: 5, m: 7, l: 5, xl: 7 } and theme: dark 1`] = `
 ":host {
-  outline: 0 !important;
   display: block;
 }
 :host([hidden]) {
@@ -11,37 +10,26 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: {
 nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   counter-reset: size 5;
 }
 ul {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   padding: 0;
 }
 li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li:first-child {
-  margin-right: 8px;
-}
-li:last-child {
-  margin-left: 8px;
 }
 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
+  height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   box-sizing: border-box;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -50,8 +38,9 @@ span {
   color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
+  border-color: transparent;
 }
-span:focus::before {
+span:not(.ellipsis):focus::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -61,27 +50,25 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 8px;
 }
-span[aria-current]:focus::before {
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 2.75rem;
-  height: 2.75rem;
-}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
+}
+span[aria-current] {
+  disabled-cursor-style: [object Object];
+  color: #FBFCFF;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-current] {
-  cursor: default;
-  pointer-events: none;
-  color: #FBFCFF;
-  border: 2px solid #FBFCFF;
+span[aria-current]:not(.ellipsis):focus::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 @media(min-width:480px) {
   nav {
@@ -92,6 +79,15 @@ span[aria-current] {
 @media(min-width:760px) {
   nav {
     counter-reset: size 5;
+  }
+  ul {
+    gap: 8px;
+  }
+  li:first-child {
+    margin-right: 8px;
+  }
+  li:last-child {
+    margin-left: 8px;
   }
 }
 
@@ -114,7 +110,7 @@ span[aria-current] {
 }
 
 @media(hover:hover) {
-  span:hover {
+  span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background-color: rgba(126, 127, 130, 0.20);
@@ -127,23 +123,11 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
-}
-.ellipsis:focus::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  .ellipsis:hover {
-    -webkit-backdrop-filter: revert;
-    backdrop-filter: revert;
-    background-color: transparent;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: dark 1`] = `
 ":host {
-  outline: 0 !important;
   display: block;
 }
 :host([hidden]) {
@@ -152,37 +136,26 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
 nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   counter-reset: size 5;
 }
 ul {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   padding: 0;
 }
 li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li:first-child {
-  margin-right: 8px;
-}
-li:last-child {
-  margin-left: 8px;
 }
 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
+  height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   box-sizing: border-box;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -191,8 +164,9 @@ span {
   color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
+  border-color: transparent;
 }
-span:focus::before {
+span:not(.ellipsis):focus::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -202,30 +176,40 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 8px;
 }
-span[aria-current]:focus::before {
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 2.75rem;
-  height: 2.75rem;
-}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
+}
+span[aria-current] {
+  disabled-cursor-style: [object Object];
+  color: #FBFCFF;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-current] {
-  cursor: default;
-  pointer-events: none;
-  color: #FBFCFF;
-  border: 2px solid #FBFCFF;
+span[aria-current]:not(.ellipsis):focus::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
+@media(min-width:760px) {
+  ul {
+    gap: 8px;
+  }
+  li:first-child {
+    margin-right: 8px;
+  }
+  li:last-child {
+    margin-left: 8px;
+  }
+}
+
 @media(hover:hover) {
-  span:hover {
+  span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background-color: rgba(126, 127, 130, 0.20);
@@ -238,23 +222,11 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
-}
-.ellipsis:focus::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  .ellipsis:hover {
-    -webkit-backdrop-filter: revert;
-    backdrop-filter: revert;
-    background-color: transparent;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: light 1`] = `
 ":host {
-  outline: 0 !important;
   display: block;
 }
 :host([hidden]) {
@@ -263,37 +235,26 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
 nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   counter-reset: size 5;
 }
 ul {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   padding: 0;
 }
 li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li:first-child {
-  margin-right: 8px;
-}
-li:last-child {
-  margin-left: 8px;
 }
 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
+  height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   box-sizing: border-box;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -302,8 +263,9 @@ span {
   color: #010205;
   outline: 0;
   border-radius: 4px;
+  border-color: transparent;
 }
-span:focus::before {
+span:not(.ellipsis):focus::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -313,30 +275,40 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 8px;
 }
-span[aria-current]:focus::before {
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 2.75rem;
-  height: 2.75rem;
-}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
+}
+span[aria-current] {
+  disabled-cursor-style: [object Object];
+  color: #010205;
+  border: 2px solid #010205;
+  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #949598;
 }
-span[aria-current] {
-  cursor: default;
-  pointer-events: none;
-  color: #010205;
-  border: 2px solid #010205;
+span[aria-current]:not(.ellipsis):focus::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
+@media(min-width:760px) {
+  ul {
+    gap: 8px;
+  }
+  li:first-child {
+    margin-right: 8px;
+  }
+  li:last-child {
+    margin-left: 8px;
+  }
+}
+
 @media(hover:hover) {
-  span:hover {
+  span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background-color: rgba(148, 149, 152, 0.20);
@@ -349,23 +321,11 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
-}
-.ellipsis:focus::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  .ellipsis:hover {
-    -webkit-backdrop-filter: revert;
-    backdrop-filter: revert;
-    background-color: transparent;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: dark 1`] = `
 ":host {
-  outline: 0 !important;
   display: block;
 }
 :host([hidden]) {
@@ -374,37 +334,26 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   counter-reset: size 7;
 }
 ul {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   padding: 0;
 }
 li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li:first-child {
-  margin-right: 8px;
-}
-li:last-child {
-  margin-left: 8px;
 }
 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
+  height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   box-sizing: border-box;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -413,8 +362,9 @@ span {
   color: #FBFCFF;
   outline: 0;
   border-radius: 4px;
+  border-color: transparent;
 }
-span:focus::before {
+span:not(.ellipsis):focus::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -424,30 +374,40 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 8px;
 }
-span[aria-current]:focus::before {
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 2.75rem;
-  height: 2.75rem;
-}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
+}
+span[aria-current] {
+  disabled-cursor-style: [object Object];
+  color: #FBFCFF;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-current] {
-  cursor: default;
-  pointer-events: none;
-  color: #FBFCFF;
-  border: 2px solid #FBFCFF;
+span[aria-current]:not(.ellipsis):focus::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
+@media(min-width:760px) {
+  ul {
+    gap: 8px;
+  }
+  li:first-child {
+    margin-right: 8px;
+  }
+  li:last-child {
+    margin-left: 8px;
+  }
+}
+
 @media(hover:hover) {
-  span:hover {
+  span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background-color: rgba(126, 127, 130, 0.20);
@@ -460,23 +420,11 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
-}
-.ellipsis:focus::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  .ellipsis:hover {
-    -webkit-backdrop-filter: revert;
-    backdrop-filter: revert;
-    background-color: transparent;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: light 1`] = `
 ":host {
-  outline: 0 !important;
   display: block;
 }
 :host([hidden]) {
@@ -485,37 +433,26 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   counter-reset: size 7;
 }
 ul {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   padding: 0;
 }
 li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li:first-child {
-  margin-right: 8px;
-}
-li:last-child {
-  margin-left: 8px;
 }
 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
+  height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   box-sizing: border-box;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -524,8 +461,9 @@ span {
   color: #010205;
   outline: 0;
   border-radius: 4px;
+  border-color: transparent;
 }
-span:focus::before {
+span:not(.ellipsis):focus::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -535,30 +473,40 @@ span:focus::before {
   border: 2px solid #0A0AFF;
   border-radius: 8px;
 }
-span[aria-current]:focus::before {
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 2.75rem;
-  height: 2.75rem;
-}
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
+}
+span[aria-current] {
+  disabled-cursor-style: [object Object];
+  color: #010205;
+  border: 2px solid #010205;
+  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
   pointer-events: none;
   color: #949598;
 }
-span[aria-current] {
-  cursor: default;
-  pointer-events: none;
-  color: #010205;
-  border: 2px solid #010205;
+span[aria-current]:not(.ellipsis):focus::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
+@media(min-width:760px) {
+  ul {
+    gap: 8px;
+  }
+  li:first-child {
+    margin-right: 8px;
+  }
+  li:last-child {
+    margin-left: 8px;
+  }
+}
+
 @media(hover:hover) {
-  span:hover {
+  span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background-color: rgba(148, 149, 152, 0.20);
@@ -571,16 +519,5 @@ span[aria-current] {
 }
 .ellipsis::after {
   content: "…";
-}
-.ellipsis:focus::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  .ellipsis:hover {
-    -webkit-backdrop-filter: revert;
-    backdrop-filter: revert;
-    background-color: transparent;
-  }
-}
-"
+}"
 `;
