@@ -16,7 +16,7 @@ import {
 } from './flex-utils';
 import type { BreakpointCustomizable } from '../../../types';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   const dataInline: BreakpointCustomizable<FlexInline>[] = [
     false,
     true,
