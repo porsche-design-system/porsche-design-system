@@ -26,7 +26,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -80,9 +80,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -203,7 +202,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -256,9 +255,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -313,7 +311,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -366,9 +364,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -423,7 +420,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -476,9 +473,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -532,7 +528,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -585,9 +581,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -641,7 +636,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -694,9 +689,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -751,7 +745,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -804,9 +798,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -861,7 +854,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -915,9 +908,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -972,7 +964,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1026,9 +1018,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -1083,7 +1074,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1137,9 +1128,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -1193,7 +1183,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1247,9 +1237,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -1303,7 +1292,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1357,9 +1346,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #010205;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -1414,7 +1402,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1468,9 +1456,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #FBFCFF;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
@@ -1525,7 +1512,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 13px 2.9375rem 13px 16px !important;
+  padding: 8px 2.9375rem 8px 16px !important;
 }
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
@@ -1578,12 +1565,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .icon {
   position: absolute;
-  bottom: 0.8125rem;
-  right: 0.875rem;
-  color: #7E7F82;
+  bottom: 13px;
+  right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
   pointer-events: none;
+  color: #7E7F82;
   cursor: not-allowed;
 }
 .icon--open {

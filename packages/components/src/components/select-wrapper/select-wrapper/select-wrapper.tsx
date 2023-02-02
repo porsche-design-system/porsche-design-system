@@ -146,7 +146,8 @@ export class SelectWrapper {
             <PrefixedTagNames.pIcon
               class="icon"
               name="arrow-head-down"
-              color="inherit"
+              theme={this.theme}
+              color={disabled ? 'contrast-medium' : 'primary'}
               aria-hidden="true"
               ref={(el) => (this.iconElement = el)}
             />
