@@ -113,6 +113,13 @@ export const getComponentCss = (
     ellipsis: {
       cursor: 'default',
       pointerEvents: 'none',
+      ...hoverMediaQuery({
+        '&:hover': {
+          WebkitBackdropFilter: 'revert',
+          backdropFilter: 'revert',
+          backgroundColor: 'transparent',
+        },
+      }),
       '&::after': {
         content: '"…"',
       },
