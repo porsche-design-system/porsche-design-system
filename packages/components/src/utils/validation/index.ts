@@ -2,7 +2,7 @@ export * from './getOnlyChildHTMLElementOrThrow';
 export * from './getOnlyChildOfKindHTMLElementOrThrow';
 export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
-export * from './throwIfComponentIsDeprecated';
+export * from './warnIfComponentIsDeprecated';
 export * from './throwIfElementHasAttribute';
 export * from './throwIfInvalidLinkUsage';
 export * from './throwIfParentIsNotOfKind';

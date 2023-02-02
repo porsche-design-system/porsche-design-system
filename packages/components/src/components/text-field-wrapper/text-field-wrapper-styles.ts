@@ -126,6 +126,7 @@ export const getComponentCss = (
     ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    // TODO: could be made conditional if we had hasUnit
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
       padding: 0,

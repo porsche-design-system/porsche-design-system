@@ -46,22 +46,20 @@ select {
   padding: 1rem;
 }
 
-.playground.light,
-.playground.light-electric {
+.playground.light {
   background: #fff;
 }
 
 .playground.light.surface {
-  background: #f2f2f2;
+  background: #eeeff2;
 }
 
-.playground.dark,
-.playground.dark-electric {
+.playground.dark {
   background: #0e1418;
 }
 
 .playground.dark.surface {
-  background: #262b2e;
+  background: #212225;
 }
 
 .playground.hover::before,

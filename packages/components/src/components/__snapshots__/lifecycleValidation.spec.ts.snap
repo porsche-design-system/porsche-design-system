@@ -491,6 +491,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "message": "string",
   "showCharacterCount": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 

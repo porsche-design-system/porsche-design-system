@@ -61,6 +61,7 @@ import { TextListPage } from './TextList';
 import { ToastBasicPage } from './ToastBasic';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
+import { ToastBasicStateNeutralPage } from './ToastBasicStateNeutral';
 import { ToastOffsetPage } from './ToastOffset';
 import { ToastPrefixedPage } from './ToastPrefixed';
 import { TypographyCyrilPage } from './TypographyCyril';
@@ -313,6 +314,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast Basic Long Text',
     path: '/toast-basic-long-text',
     element: <ToastBasicLongTextPage />,
+  },
+  {
+    name: 'Toast Basic State Neutral',
+    path: '/toast-basic-state-neutral',
+    element: <ToastBasicStateNeutralPage />,
   },
   {
     name: 'Toast Offset',
