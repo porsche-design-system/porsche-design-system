@@ -104,7 +104,7 @@ export const getComponentCss = (
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
           borderRadius: borderRadiusSmall,
-          '&:focus::before': {
+          '&:not([aria-disabled]):not(.ellipsis):focus::before': {
             ...getInsetJssStyle(-6),
           },
         },
