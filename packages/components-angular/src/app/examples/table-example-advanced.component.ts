@@ -17,15 +17,13 @@ import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system
       <p-table-body>
         <p-table-row *ngFor="let item of data">
           <p-table-cell>
-            <p-flex>
-              <p-flex-item>
-                <img src="{{ item.imageUrl }}" width="80" height="45" style="margin-right: .5rem" alt="" />
-              </p-flex-item>
-              <p-flex-item>
+            <div style="display: flex;">
+              <img src="{{ item.imageUrl }}" width="80" height="45" style="margin-right: .5rem" alt="" />
+              <div>
                 <p-text weight="semibold">{{ item.model }}</p-text>
                 <p-text size="x-small">{{ item.date }}</p-text>
-              </p-flex-item>
-            </p-flex>
+              </div>
+            </div>
           </p-table-cell>
           <p-table-cell>{{ item.interest }}</p-table-cell>
           <p-table-cell>
