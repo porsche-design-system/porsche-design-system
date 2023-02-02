@@ -37,9 +37,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
       },
       nav: {
