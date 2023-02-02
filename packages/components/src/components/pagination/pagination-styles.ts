@@ -1,23 +1,31 @@
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
 import {
-  addImportantToEachRule,
-  getInsetJssStyle,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../styles';
-import {
-  borderRadiusSmall,
   borderRadiusMedium,
+  borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   frostedGlassStyle,
-  textSmallStyle,
+  getMediaQueryMin,
   spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const mediaQueryMinS = getMediaQueryMin('s');
+
+const buttonSizeSmaller = `calc(${fontLineHeight} + 12px)`;
+const buttonSizeNormal = `calc(${fontLineHeight} + 16px)`;
+
+const disabledCursorStyle: JssStyle = {
+  cursor: 'default',
+  pointerEvents: 'none', // prevents :hover
+};
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
@@ -30,52 +38,58 @@ export const getComponentCss = (
       ':host': {
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          outline: 0,
         }),
         display: 'block',
       },
       nav: {
         display: 'flex',
         justifyContent: 'center',
-        margin: 0,
-        padding: 0,
         ...buildResponsiveStyles(maxNumberOfPageLinks, (n: NumberOfPageLinks) => ({
           counterReset: `size ${n}`,
         })),
       },
       ul: {
         display: 'flex',
-        gap: spacingStaticSmall,
+        gap: spacingStaticXSmall,
         margin: 0,
         padding: 0,
+        [mediaQueryMinS]: {
+          gap: spacingStaticSmall,
+        },
       },
       li: {
         listStyleType: 'none',
-        margin: 0,
-        padding: 0,
-        '&:first-child': {
-          marginRight: spacingStaticSmall,
-        },
-        '&:last-child': {
-          marginLeft: spacingStaticSmall,
+        [mediaQueryMinS]: {
+          '&:first-child': {
+            marginRight: spacingStaticSmall,
+          },
+          '&:last-child': {
+            marginLeft: spacingStaticSmall,
+          },
         },
       },
       span: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: getTransition('color'),
+        transition: ['border-color', 'background-color'].map(getTransition).join(), // for smooth transition between states
         position: 'relative',
-        width: pxToRemWithUnit(40),
-        height: pxToRemWithUnit(40),
+        width: buttonSizeSmaller,
+        height: buttonSizeSmaller,
         boxSizing: 'border-box',
-        textDecoration: 'none',
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
         outline: 0,
         borderRadius: borderRadiusSmall,
+        borderColor: 'transparent', // default value is needed for smooth transition
+        // TODO: maybe we can get rid of media query when using clamp(36px, some fluid width based on vw, 40px)
+        // custom media query is needed ensuring buttons are getting asap the desired size of 40x40px
+        ['@media(min-width:360px)']: {
+          width: buttonSizeNormal,
+          height: buttonSizeNormal,
+        },
         ...hoverMediaQuery({
           '&:hover': {
             ...frostedGlassStyle,
@@ -89,42 +103,28 @@ export const getComponentCss = (
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
         },
-        '&[aria-current]:focus::before': {
-          ...getInsetJssStyle('auto'),
-          width: pxToRemWithUnit(44),
-          height: pxToRemWithUnit(44),
-        },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
         },
-        '&[aria-disabled]': {
-          cursor: 'default',
-          pointerEvents: 'none',
-          color: disabledColor,
-        },
         '&[aria-current]': {
-          cursor: 'default',
-          pointerEvents: 'none',
+          disabledCursorStyle,
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
+          borderRadius: borderRadiusSmall,
+          '&:focus::before': {
+            ...getInsetJssStyle(-6),
+          },
+        },
+        '&[aria-disabled]': {
+          ...disabledCursorStyle,
+          color: disabledColor,
         },
       },
     },
     ellipsis: {
-      cursor: 'default',
-      pointerEvents: 'none',
-      ...hoverMediaQuery({
-        '&:hover': {
-          WebkitBackdropFilter: 'revert',
-          backdropFilter: 'revert',
-          backgroundColor: 'transparent',
-        },
-      }),
+      ...disabledCursorStyle,
       '&::after': {
         content: '"…"',
-      },
-      '&:focus::before': {
-        borderColor: 'transparent',
       },
     },
   });
