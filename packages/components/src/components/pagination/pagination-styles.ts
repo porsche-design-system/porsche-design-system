@@ -28,9 +28,11 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...hostHiddenStyles,
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+          outline: 0,
+        }),
         display: 'block',
-        outline: addImportantToRule(0),
       },
       nav: {
         display: 'flex',
@@ -43,7 +45,7 @@ export const getComponentCss = (
       },
       ul: {
         display: 'flex',
-        gap: '8px',
+        gap: spacingStaticSmall,
         margin: 0,
         padding: 0,
       },
@@ -52,10 +54,10 @@ export const getComponentCss = (
         margin: 0,
         padding: 0,
         '&:first-child': {
-          marginRight: '8px',
+          marginRight: spacingStaticSmall,
         },
         '&:last-child': {
-          marginLeft: '8px',
+          marginLeft: spacingStaticSmall,
         },
       },
       span: {
