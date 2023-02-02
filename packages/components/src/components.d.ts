@@ -352,7 +352,8 @@ export namespace Components {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -1968,7 +1969,8 @@ declare namespace LocalJSX {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
