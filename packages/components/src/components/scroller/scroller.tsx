@@ -109,18 +109,20 @@ export class Scroller {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
-          <PrefixedTagNames.pButtonPure
+          <button
             class="button"
             type="button"
             tabIndex={-1}
-            hideLabel={true}
-            size="inherit"
-            icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             onClick={() => this.scrollOnPrevNextClick(direction)}
             aria-hidden="true"
+            aria-label={direction}
           >
-            {direction}
-          </PrefixedTagNames.pButtonPure>
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+              color="inherit"
+            />
+          </button>
         </div>
       );
     };

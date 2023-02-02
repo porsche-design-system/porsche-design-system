@@ -1,8 +1,15 @@
 import { getCss, isThemeDark } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { borderRadiusSmall, borderWidthBase, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  dropShadowLowStyle,
+  fontLineHeight,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
@@ -38,9 +45,15 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
+  const {
+    backgroundColor,
+    backgroundSurfaceColor,
+    focusColor,
+    primaryColor: primaryColorLight,
+  } = getThemedColors('light');
+  const { hoverColor } = getThemedColors(theme);
 
-  const buttonBackgroundColor = gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
+  const isDarkTheme = isThemeDark(theme);
 
   const actionPrevNextStyles = {
     position: 'relative',
@@ -61,6 +74,10 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gridTemplateColumns: '48px minmax(0, 1fr) 48px',
+      ...hoverMediaQuery({
+        // distinguish gradient width on mobile and desktop
+        gridTemplateColumns: '64px minmax(0, 1fr) 64px',
+      }),
       margin: '0 -4px',
       height: 'inherit',
     },
@@ -140,22 +157,36 @@ export const getComponentCss = (
       },
     },
     button: {
+      display: 'flex',
       pointerEvents: 'auto',
       position: 'static',
-      backgroundColor: buttonBackgroundColor,
-      borderRadius: borderRadiusSmall,
-      border: `2px solid ${buttonBackgroundColor}`,
-      visibility: 'hidden',
+      alignItems: 'center',
+      justifyContent: 'center',
       ...textSmallStyle,
-      ...(!isThemeDark(theme) && {
-        // Needed to ensure visibility as dropShadowMediumStyle conflicts with frostedGlass filter
-        boxShadow:
-          '0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07)',
+      height: `calc(${fontLineHeight} + 4px)`,
+      width: `calc(${fontLineHeight} + 4px)`,
+      border: 0,
+      outline: 0,
+      cursor: 'pointer',
+      color: primaryColorLight,
+      backgroundColor: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
+      borderRadius: borderRadiusSmall,
+      ...frostedGlassStyle,
+      visibility: 'hidden',
+      ...(!isDarkTheme && {
+        ...dropShadowLowStyle,
       }),
-      '&:hover': {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-      },
+      ...hoverMediaQuery({
+        transition: getTransition('background-color'),
+        '&:hover': {
+          backgroundColor: hoverColor,
+          '& > .icon': {
+            filter:
+              isDarkTheme &&
+              'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
+          },
+        },
+      }),
     },
   });
 };

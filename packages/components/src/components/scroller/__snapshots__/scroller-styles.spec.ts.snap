@@ -93,26 +93,44 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+  .button:hover > .icon {
+    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 "
@@ -211,27 +229,45 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07);
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+  .button:hover > .icon {
+    filter: false;
   }
 }
 "
@@ -330,27 +366,45 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07);
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+  .button:hover > .icon {
+    filter: false;
   }
 }
 "
@@ -449,26 +503,44 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: hidden;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+  .button:hover > .icon {
+    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 "
@@ -567,27 +639,45 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07);
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: hidden;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+  .button:hover > .icon {
+    filter: false;
   }
 }
 "
@@ -686,27 +776,45 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #FFF;
-  border-radius: 4px;
-  border: 2px solid #FFF;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07);
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: hidden;
   }
   .action-next .button {
     visibility: hidden;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+  .button:hover > .icon {
+    filter: false;
   }
 }
 "
@@ -805,26 +913,44 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #EEEFF2;
-  border-radius: 4px;
-  border: 2px solid #EEEFF2;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #EEEFF2;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(126, 127, 130, 0.20);
+  }
+  .button:hover > .icon {
+    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 "
@@ -923,27 +1049,45 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   margin-right: 8px;
 }
 .button {
+  display: flex;
   pointer-events: auto;
   position: static;
-  background-color: #EEEFF2;
-  border-radius: 4px;
-  border: 2px solid #EEEFF2;
-  visibility: hidden;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0px 0px 0.6px rgba(0, 0, 0, 0.02), 0px 0px 2.7px rgba(0, 0, 0, 0.028), 0px 0px 6.3px rgba(0, 0, 0, 0.035), 0px 0px 10.9px rgba(0, 0, 0, 0.042), 0px 0px 14.6px rgba(0, 0, 0, 0.05), 0px 0px 16px rgba(0, 0, 0, 0.07);
-}
-.button:hover {
-  background-color: transparent;
-  border-color: transparent;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #010205;
+  background-color: #EEEFF2;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
 @media(hover:hover) {
+  .root {
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+  }
   .action-prev .button {
     visibility: visible;
   }
   .action-next .button {
     visibility: visible;
+  }
+  .button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  .button:hover {
+    background-color: rgba(148, 149, 152, 0.20);
+  }
+  .button:hover > .icon {
+    filter: false;
   }
 }
 "
