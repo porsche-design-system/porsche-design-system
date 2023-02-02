@@ -129,7 +129,7 @@ export class Carousel {
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: spacingStaticMedium,
         s: spacingStaticLarge,
-        l: spacingStaticXLarge,
+        l: spacingStaticLarge,
       }),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl),
