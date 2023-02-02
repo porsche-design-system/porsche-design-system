@@ -9,7 +9,6 @@ it.each(extendedViewports)('should have no visual regression for basic modal for
   expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-basic', '/#modal-basic')).toBeFalsy();
 });
 
-// TODO: flaky vrt test, check in a newer version of puppeteer if issue still remains
 it.each(extendedViewports)(
   'should have no visual regression for scrollable modal for viewport %s',
   async (viewport) => {
