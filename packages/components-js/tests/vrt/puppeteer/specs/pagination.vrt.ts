@@ -30,13 +30,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
         <p-pagination total-items-count="500" items-per-page="25" active-page="2" theme="${theme}"></p-pagination>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
-        {
-          injectIntoHead: head,
-        }
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover > p-pagination >>> span');
 
