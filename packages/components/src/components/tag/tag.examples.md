@@ -8,6 +8,11 @@
 
 ## Color
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following colors have been deprecated and will be removed with the next major release: "background-default",
+"neutral-contrast-high", and "notification-neutral".
+</p-inline-notification>
+
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
   <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>

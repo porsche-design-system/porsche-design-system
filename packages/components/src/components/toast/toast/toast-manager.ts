@@ -1,6 +1,6 @@
 import { forceUpdate } from '@stencil/core';
 import type { ToastState } from './toast-utils';
-import { ANIMATION_DURATION } from '../../banner/banner-styles';
+import { ANIMATION_DURATION } from '../../banner/banner-styles-shared';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
 
@@ -42,7 +42,7 @@ export class ToastManagerClass {
       throw new Error('Empty text provided to addMessage.');
     }
 
-    const msg: ToastMessage = { state: 'neutral', ...message }; // neutral is our default state
+    const msg: ToastMessage = { state: 'info', ...message }; // info is our default state
 
     const { length } = this.messages;
     this.messages.push(msg);

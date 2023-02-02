@@ -1,43 +1,19 @@
 import * as colorsUtils from '../../styles/colors';
 import * as tagUtils from './tag-utils';
 import * as isThemeDarkUtils from '../../utils/theme/isThemeDark';
-import * as tagStyles from './tag-styles';
-import { getColors, getComponentCss, getThemedBackgroundColor } from './tag-styles';
+import * as tagSharedUtils from './tag-shared-utils';
+import { getColors, getComponentCss } from './tag-styles';
 import { getThemedColors } from '../../styles/colors';
 import type { Theme } from '../../types';
-import type { TagColor } from './tag-utils';
 
-xdescribe('getThemedBackgroundColor()', () => {
-  it.each<[TagColor, Theme]>([
-    ['background-default', 'light'],
-    ['neutral-contrast-high', 'light'],
-    ['notification-success', 'light'],
-    ['notification-warning', 'light'],
-    ['notification-error', 'light'],
-    ['notification-neutral', 'light'],
-    ['background-surface', 'light'],
-    ['background-default', 'dark'],
-    ['neutral-contrast-high', 'dark'],
-    ['notification-success', 'dark'],
-    ['notification-warning', 'dark'],
-    ['notification-error', 'dark'],
-    ['notification-neutral', 'dark'],
-    ['background-surface', 'dark'],
-  ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {
-    const themedColors = getThemedColors(theme);
-    expect(getThemedBackgroundColor(color, themedColors)).toMatchSnapshot();
-  });
-});
-
-xdescribe('getColors()', () => {
+describe('getColors()', () => {
   it('should call hasInvertedThemeColor(), getThemedColors() and getThemedBackgroundColor() with correct parameters', () => {
-    const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
+    const themedColors = getThemedColors('light');
     const hasInvertedThemeColorSpy = jest.spyOn(tagUtils, 'hasInvertedThemeColor');
-    const getThemedBackgroundColorSpy = jest.spyOn(tagStyles, 'getThemedBackgroundColor');
+    const getThemedBackgroundColorSpy = jest.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
 
-    getColors(getThemedColors('light'), 'background-surface', 'light');
+    getColors(themedColors, 'background-surface', 'light');
 
-    expect(getThemedColorsSpy).toBeCalledWith('light');
     expect(hasInvertedThemeColorSpy).toBeCalledWith('background-surface', 'light');
     expect(getThemedBackgroundColorSpy).toBeCalledWith('background-surface', getThemedColors('light'));
   });
@@ -45,9 +21,10 @@ xdescribe('getColors()', () => {
   it('should call hasInvertedThemeColor(), isThemeDark() and getThemedColors() with correct parameters', () => {
     const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
     const isThemeDarkSpy = jest.spyOn(isThemeDarkUtils, 'isThemeDark');
+    const themedColors = getThemedColors('light');
 
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(true);
-    getColors(getThemedColors('light'), 'background-surface', 'light');
+    getColors(themedColors, 'background-surface', 'light');
 
     expect(getThemedColorsSpy).toBeCalledWith('dark');
     expect(isThemeDarkSpy).toBeCalledWith('light');
@@ -60,27 +37,37 @@ xdescribe('getColors()', () => {
     ['dark', false],
   ])('should return correct css for theme: %s and hasInvertedTheme: %s', (theme, hasInvertedTheme) => {
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(hasInvertedTheme);
-    expect(getColors(getThemedColors('light'), 'background-surface', theme)).toMatchSnapshot();
+
+    const themedColors = getThemedColors(theme);
+    expect(getColors(themedColors, 'background-surface', theme)).toMatchSnapshot();
   });
 });
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['background-default', true, 'light'],
-    ['background-default', false, 'light'],
-    ['neutral-contrast-high', true, 'light'],
+    ['background-default', true, 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-default', false, 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', true, 'light'],
+    ['background-base', false, 'light'],
+    ['neutral-contrast-high', true, 'light'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', true, 'light'],
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
-    ['notification-neutral', true, 'light'],
+    ['notification-neutral', true, 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', true, 'light'],
     ['background-surface', true, 'light'],
-    ['background-default', true, 'dark'],
-    ['background-default', false, 'dark'],
-    ['neutral-contrast-high', true, 'dark'],
+    ['background-default', true, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-default', false, 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
+    ['background-base', true, 'dark'],
+    ['background-base', false, 'dark'],
+    ['neutral-contrast-high', true, 'dark'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
+    ['primary', true, 'dark'],
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],
     ['notification-error', true, 'dark'],
-    ['notification-neutral', true, 'dark'],
+    ['notification-neutral', true, 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
+    ['notification-info', true, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();

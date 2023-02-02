@@ -2,8 +2,8 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  GetMarkup,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import {
@@ -13,11 +13,11 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'textarea-wrapper', '/#textarea-wrapper')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('textarea-wrapper-states', async () => {
@@ -38,57 +38,57 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
       const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
       const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
 
-      const getElementsMarkup: GetMarkup = () => `
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
         <div>
-          <p-textarea-wrapper label="Default">
+          <p-textarea-wrapper label="Default" theme="${theme}">
             ${child}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Error" state="error" message="Error">
+          <p-textarea-wrapper label="Error" state="error" message="Error" theme="${theme}">
             ${child}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Success" state="success" message="Success">
+          <p-textarea-wrapper label="Success" state="success" message="Success" theme="${theme}">
             ${child}
           </p-textarea-wrapper>
         </div>
         <div>
-          <p-textarea-wrapper label="Readonly">
+          <p-textarea-wrapper label="Readonly" theme="${theme}">
             ${childReadonly}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Readonly Error" state="error" message="Error">
+          <p-textarea-wrapper label="Readonly Error" state="error" message="Error" theme="${theme}">
             ${childReadonly}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Readonly Success" state="success" message="Success">
+          <p-textarea-wrapper label="Readonly Success" state="success" message="Success" theme="${theme}">
             ${childReadonly}
           </p-textarea-wrapper>
         </div>
         <div>
-          <p-textarea-wrapper label="Disabled">
+          <p-textarea-wrapper label="Disabled" theme="${theme}">
             ${childDisabled}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Disabled Error" state="error" message="Error">
+          <p-textarea-wrapper label="Disabled Error" state="error" message="Error" theme="${theme}">
             ${childDisabled}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Disabled Success" state="success" message="Success">
+          <p-textarea-wrapper label="Disabled Success" state="success" message="Success" theme="${theme}">
             ${childDisabled}
           </p-textarea-wrapper>
         </div>
         <div>
-          <p-textarea-wrapper>
+          <p-textarea-wrapper theme="${theme}">
             <span slot="label">Slotted label with <a href="#">link</a></span>
             <span slot="description">Slotted description with <a href="#">link</a></span>
             ${child}
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Error" description="Some description" state="error">
+          <p-textarea-wrapper label="Error" description="Some description" state="error" theme="${theme}">
             ${child}
             <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Success" description="Some description" state="success">
+          <p-textarea-wrapper label="Success" description="Some description" state="success" theme="${theme}">
             ${child}
             <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-textarea-wrapper>
         </div>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-textarea-wrapper textarea');
       await forceHoverState(page, '.hover p-textarea-wrapper a');
