@@ -14,7 +14,7 @@ import type { ScrollIndicatorPosition } from './scroller-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const gradientColorMap: { [K in Theme]: { [T in GradientColorTheme]: string } } = {
+const gradientColorMap: { [key in Theme]: Record<GradientColorTheme, string> } = {
   light: {
     default: '255,255,255',
     surface: '238,239,242',
@@ -45,7 +45,7 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor, primaryColor } = getThemedColors('light');
+  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
   const { hoverColor } = getThemedColors(theme);
 
   const isDarkTheme = isThemeDark(theme);
@@ -65,6 +65,37 @@ export const getComponentCss = (
         height: 'inherit',
         ...hostHiddenStyles,
       }),
+      button: {
+        display: 'flex',
+        pointerEvents: 'auto',
+        position: 'static',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...textSmallStyle,
+        height: `calc(${fontLineHeight} + 4px)`,
+        width: `calc(${fontLineHeight} + 4px)`,
+        border: 0,
+        outline: 0,
+        cursor: 'pointer',
+        background: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
+        borderRadius: borderRadiusSmall,
+        ...frostedGlassStyle,
+        visibility: 'hidden',
+        ...(!isDarkTheme && {
+          ...dropShadowLowStyle,
+        }),
+        ...hoverMediaQuery({
+          transition: getTransition('background-color'),
+          '&:hover': {
+            backgroundColor: hoverColor,
+            ...(isDarkTheme && {
+              '& > .icon': {
+                filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
+              },
+            }),
+          },
+        }),
+      },
     },
     root: {
       display: 'grid',
@@ -130,7 +161,7 @@ export const getComponentCss = (
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
-      '& .button': {
+      '& button': {
         marginLeft: '8px',
         // Hide buttons on mobile
         ...hoverMediaQuery({
@@ -145,45 +176,13 @@ export const getComponentCss = (
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
-      '& .button': {
+      '& button': {
         marginRight: '8px',
         // Hide buttons on mobile
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'visible',
         }),
       },
-    },
-    button: {
-      display: 'flex',
-      pointerEvents: 'auto',
-      position: 'static',
-      alignItems: 'center',
-      justifyContent: 'center',
-      ...textSmallStyle,
-      height: `calc(${fontLineHeight} + 4px)`,
-      width: `calc(${fontLineHeight} + 4px)`,
-      border: 0,
-      outline: 0,
-      cursor: 'pointer',
-      color: primaryColor,
-      backgroundColor: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
-      borderRadius: borderRadiusSmall,
-      ...frostedGlassStyle,
-      visibility: 'hidden',
-      ...(!isDarkTheme && {
-        ...dropShadowLowStyle,
-      }),
-      ...hoverMediaQuery({
-        transition: getTransition('background-color'),
-        '&:hover': {
-          backgroundColor: hoverColor,
-          ...(isDarkTheme && {
-            '& > .icon': {
-              filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
-            },
-          }),
-        },
-      }),
     },
   });
 };

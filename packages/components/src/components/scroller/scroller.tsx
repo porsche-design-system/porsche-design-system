@@ -110,18 +110,13 @@ export class Scroller {
       return (
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <button
-            class="button"
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
             aria-hidden="true"
             aria-label={direction}
           >
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-              color="inherit"
-            />
+            <PrefixedTagNames.pIcon class="icon" name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'} />
           </button>
         </div>
       );
