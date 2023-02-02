@@ -18,8 +18,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render native dropdown with label">
       <p-select-wrapper [label]="'Native'" [native]="true">
         <select>
-          <option [value]="'a'">Option A</option>
-          <option [value]="'b'">Option B</option>
+          <option></option>
+          <option [value]="'a'" selected>Option A</option>
+          <option [value]="'b'" disabled>Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
       </p-select-wrapper>
@@ -27,8 +28,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground dark" title="should render native dropdown with label on dark theme">
       <p-select-wrapper [label]="'Native'" [native]="true" [theme]="'dark'">
         <select>
-          <option [value]="'a'">Option A</option>
-          <option [value]="'b'">Option B</option>
+          <option></option>
+          <option [value]="'a'" selected>Option A</option>
+          <option [value]="'b'" disabled>Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
       </p-select-wrapper>
@@ -37,8 +39,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render with label">
       <p-select-wrapper [label]="'Some label'">
         <select>
-          <option [value]="'a'">Option A</option>
-          <option [value]="'b'">Option B</option>
+          <option></option>
+          <option [value]="'a'" selected>Option A</option>
+          <option [value]="'b'" disabled>Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
       </p-select-wrapper>
@@ -46,8 +49,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground dark" title="should render with label on dark theme">
       <p-select-wrapper [label]="'Some label'" [theme]="'dark'">
         <select>
-          <option [value]="'a'">Option A</option>
-          <option [value]="'b'">Option B</option>
+          <option></option>
+          <option [value]="'a'" selected>Option A</option>
+          <option [value]="'b'" disabled>Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
       </p-select-wrapper>

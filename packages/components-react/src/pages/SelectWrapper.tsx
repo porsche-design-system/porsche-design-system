@@ -19,8 +19,9 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div className="playground light" title="should render native dropdown with label">
         <PSelectWrapper label="Native" native={true}>
           <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
+            <option />
+            <option value="a" selected>Option A</option>
+            <option value="b" disabled>Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
@@ -28,8 +29,9 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div className="playground dark" title="should render native dropdown with label on dark theme">
         <PSelectWrapper label="Native" native={true} theme="dark">
           <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
+            <option />
+            <option value="a" selected>Option A</option>
+            <option value="b" disabled>Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
@@ -38,8 +40,9 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div className="playground light" title="should render with label">
         <PSelectWrapper label="Some label">
           <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
+            <option />
+            <option value="a" selected>Option A</option>
+            <option value="b" disabled>Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
@@ -47,8 +50,9 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div className="playground dark" title="should render with label on dark theme">
         <PSelectWrapper label="Some label" theme="dark">
           <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
+            <option />
+            <option value="a" selected>Option A</option>
+            <option value="b" disabled>Option B</option>
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
