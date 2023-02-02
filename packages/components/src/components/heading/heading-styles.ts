@@ -14,6 +14,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { isVariantType } from './heading-utils';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const headingMap: Record<VariantType, JssStyle> = {
   'large-title': displayLargeStyle,
@@ -65,6 +66,7 @@ export const getHeadingHeadlineStyles = (
   return getCss({
     '@global': {
       ':host': {
+        ...addImportantToEachRule({ ...hostHiddenStyles }),
         display: 'block',
       },
       '::slotted': {
