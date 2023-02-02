@@ -29,12 +29,12 @@ ReactDOM.render(
 );
 ```
 
-In the following example the `PHeadline` component will render as `<sample-prefix-p-heading>`.
+In the following example the `PHeading` component will render as `<sample-prefix-p-heading>`.
 
 ```tsx
 // App.tsx
 
-import { PHeadline } from '@porsche-design-system/components-react';
+import { PHeading } from '@porsche-design-system/components-react';
 
-export const App = (): JSX.Element => <PHeadline>Some headline</PHeadline>;
+export const App = (): JSX.Element => <PHeading>Some heading</PHeading>;
 ```
