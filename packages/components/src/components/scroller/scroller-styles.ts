@@ -26,15 +26,15 @@ const gradientColorMap: { [K in Theme]: { [T in GradientColorTheme]: string } } 
 };
 
 const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): string => {
-  const gradientRGB = gradientColorMap[theme][gradientColorTheme];
+  const gradientColor = gradientColorMap[theme][gradientColorTheme];
 
   return (
-    `rgba(${gradientRGB},1) 0%,` +
-    `rgba(${gradientRGB},0.9) 10%,` +
-    `rgba(${gradientRGB},0.668116) 40%,` +
-    `rgba(${gradientRGB},0.331884) 60%,` +
-    `rgba(${gradientRGB},0.0816599) 80%,` +
-    `rgba(${gradientRGB},0)`
+    `rgba(${gradientColor},1) 0%,` +
+    `rgba(${gradientColor},0.9) 10%,` +
+    `rgba(${gradientColor},0.668116) 40%,` +
+    `rgba(${gradientColor},0.331884) 60%,` +
+    `rgba(${gradientColor},0.0816599) 80%,` +
+    `rgba(${gradientColor},0)`
   );
 };
 
@@ -45,12 +45,7 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const {
-    backgroundColor,
-    backgroundSurfaceColor,
-    focusColor,
-    primaryColor: primaryColorLight,
-  } = getThemedColors('light');
+  const { backgroundColor, backgroundSurfaceColor, focusColor, primaryColor } = getThemedColors('light');
   const { hoverColor } = getThemedColors(theme);
 
   const isDarkTheme = isThemeDark(theme);
@@ -137,6 +132,7 @@ export const getComponentCss = (
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& .button': {
         marginLeft: '8px',
+        // Hide buttons on mobile
         ...hoverMediaQuery({
           visibility: isPrevHidden ? 'hidden' : 'visible',
         }),
@@ -151,6 +147,7 @@ export const getComponentCss = (
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& .button': {
         marginRight: '8px',
+        // Hide buttons on mobile
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'visible',
         }),
@@ -168,7 +165,7 @@ export const getComponentCss = (
       border: 0,
       outline: 0,
       cursor: 'pointer',
-      color: primaryColorLight,
+      color: primaryColor,
       backgroundColor: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
       borderRadius: borderRadiusSmall,
       ...frostedGlassStyle,
@@ -180,11 +177,11 @@ export const getComponentCss = (
         transition: getTransition('background-color'),
         '&:hover': {
           backgroundColor: hoverColor,
-          '& > .icon': {
-            filter:
-              isDarkTheme &&
-              'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
-          },
+          ...(isDarkTheme && {
+            '& > .icon': {
+              filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
+            },
+          }),
         },
       }),
     },

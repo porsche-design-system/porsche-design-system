@@ -266,9 +266,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   .button:hover {
     background-color: rgba(148, 149, 152, 0.20);
   }
-  .button:hover > .icon {
-    filter: false;
-  }
 }
 "
 `;
@@ -402,9 +399,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   }
   .button:hover {
     background-color: rgba(148, 149, 152, 0.20);
-  }
-  .button:hover > .icon {
-    filter: false;
   }
 }
 "
@@ -676,9 +670,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   .button:hover {
     background-color: rgba(148, 149, 152, 0.20);
   }
-  .button:hover > .icon {
-    filter: false;
-  }
 }
 "
 `;
@@ -812,9 +803,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   }
   .button:hover {
     background-color: rgba(148, 149, 152, 0.20);
-  }
-  .button:hover > .icon {
-    filter: false;
   }
 }
 "
@@ -1085,9 +1073,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   }
   .button:hover {
     background-color: rgba(148, 149, 152, 0.20);
-  }
-  .button:hover > .icon {
-    filter: false;
   }
 }
 "
