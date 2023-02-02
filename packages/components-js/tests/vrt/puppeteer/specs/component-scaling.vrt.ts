@@ -13,6 +13,7 @@ const components = [
   'link',
   'link-pure',
   'link-social',
+  'pagination',
   'popover',
   'radio-button-wrapper',
   'select-wrapper',
