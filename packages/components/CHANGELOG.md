@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Flex` is deprecated and will be removed with the next major release. In general, please use native
+  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
+  standardized layout technique.
 - `Icon` supports
   `'primary' | 'contrast-low' | 'contrast-medium' | 'contrast-high' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-info' | 'inherit'`
   for color prop while
@@ -90,8 +93,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
 
-- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`, `Toast` and `Text Field Wrapper` matches new design language
+- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
+  `Radio Button Wrapper`, `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`,
+  `Toast` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
