@@ -12,10 +12,10 @@ import {
   gridSafeZone,
   textSmallStyle,
   getMediaQueryMin,
-  gridGap,
   borderRadiusSmall,
   headingXLargeStyle,
   spacingFluidMedium,
+  spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
@@ -101,7 +101,7 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      gap: gridGap,
+      gap: spacingStaticXSmall,
       padding: wrapContent ? `0 ${gridSafeZone}` : null,
       [mediaQueryS]: {
         gridTemplateColumns: 'minmax(0px, 1fr) 80px', // 2nd row has width of nav buttons
