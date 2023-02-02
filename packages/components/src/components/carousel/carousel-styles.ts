@@ -17,6 +17,7 @@ import {
   spacingStaticXSmall,
   spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
+import { HeaderAlign } from '../../types';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -26,9 +27,11 @@ const mediaQueryXl = getMediaQueryMin('xl');
 export const getComponentCss = (
   wrapContent: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
-  theme: Theme
+  theme: Theme,
+  alignHeader: HeaderAlign
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
+  const isAlignLeft = alignHeader === 'left';
 
   return getCss({
     '@global': {
@@ -49,13 +52,27 @@ export const getComponentCss = (
         ...headingXLargeStyle,
         margin: 0,
         color: primaryColor,
-        maxWidth: '900px',
+        ...(isAlignLeft
+          ? {
+              maxWidth: '900px',
+            }
+          : {
+              textAlign: 'center',
+              paddingLeft: '42px',
+            }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
-        maxWidth: '550px',
+        ...(isAlignLeft
+          ? {
+              maxWidth: '550px',
+            }
+          : {
+              textAlign: 'center',
+              paddingLeft: '42px',
+            }),
         gridColumn: 1, // to force it into 2nd line
       }),
     },

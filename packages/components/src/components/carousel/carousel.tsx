@@ -159,7 +159,14 @@ export class Carousel {
     validateProps(this, propTypes);
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.wrapContent,
+      this.disablePagination,
+      this.theme,
+      this.alignHeader
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
