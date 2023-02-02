@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { HeadingVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../types';
+import type { HeadingVariant, TextAlign, TextColor, TextSize, Theme, HeadingVariantType } from '../../types';
 import { buildResponsiveStyles, getCss, textMap } from '../../utils';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
 import {
@@ -13,10 +13,12 @@ import {
   displayLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { isVariantType } from './heading-utils';
+import { isHeadingVariantType } from './heading-utils';
+import type { HeadlineVariantDeprecated } from '../headline/headline-utils';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import { isHeadlineVariantType, HeadlineVariantTypeDeprecated } from '../headline/headline-utils';
 
-const headingMap: Record<VariantType, JssStyle> = {
+const headingMap: Record<HeadingVariantType | HeadlineVariantTypeDeprecated, JssStyle> = {
   'large-title': displayLargeStyle,
   'heading-1': headingXXLargeStyle,
   'heading-2': headingXLargeStyle,
@@ -30,8 +32,8 @@ const headingMap: Record<VariantType, JssStyle> = {
   'headline-5': headingSmallStyle, // deprecated
 };
 
-const getVariantJssStyle = (variant: HeadingVariant): JssStyle => {
-  return headingMap[variant as VariantType];
+const getVariantJssStyle = (variant: HeadingVariant | HeadlineVariantDeprecated): JssStyle => {
+  return headingMap[variant as HeadingVariantType];
 };
 
 const getSizeJssStyle = (textSize: TextSize): JssStyle => {
@@ -47,17 +49,7 @@ const getSizeJssStyle = (textSize: TextSize): JssStyle => {
 };
 
 export const getComponentCss = (
-  variant: HeadingVariant,
-  align: TextAlign,
-  color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
-  ellipsis: boolean,
-  theme: Theme
-): string => {
-  return getHeadingHeadlineStyles(variant, align, color, ellipsis, theme);
-};
-
-export const getHeadingHeadlineStyles = (
-  variant: HeadingVariant,
+  variant: HeadingVariant | HeadlineVariantDeprecated,
   align: TextAlign,
   color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
   ellipsis: boolean,
@@ -79,7 +71,7 @@ export const getHeadingHeadlineStyles = (
       textAlign: align,
       color: color === 'inherit' ? 'inherit' : getThemedColors(theme).primaryColor,
       whiteSpace: 'inherit',
-      ...(isVariantType(variant)
+      ...(isHeadingVariantType(variant) || isHeadlineVariantType(variant)
         ? getVariantJssStyle(variant)
         : {
             ...textSmallStyle,

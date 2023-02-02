@@ -8,24 +8,19 @@ export const HEADING_VARIANTS = [
   'heading-3',
   'heading-4',
   'heading-5',
-  'headline-1', // deprecated
-  'headline-2', // deprecated
-  'headline-3', // deprecated
-  'headline-4', // deprecated
-  'headline-5', // deprecated
 ] as const;
 
-export type VariantType = typeof HEADING_VARIANTS[number];
+export type HeadingVariantType = typeof HEADING_VARIANTS[number];
 
-type HeadingVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
+export type HeadingVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type HeadingVariant = VariantType | HeadingVariantCustom | Extract<TextSize, 'inherit'>;
+export type HeadingVariant = HeadingVariantType | HeadingVariantCustom | Extract<TextSize, 'inherit'>;
 
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = typeof HEADING_TAGS[number];
 
-export const isVariantType = (variant: HeadingVariant): boolean => {
-  return HEADING_VARIANTS.includes(variant as VariantType);
+export const isHeadingVariantType = (variant: HeadingVariant): boolean => {
+  return HEADING_VARIANTS.includes(variant as HeadingVariantType);
 };
 
 export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
@@ -34,18 +29,13 @@ export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
 
-const variantToTagMap: { [key in VariantType]: string } = {
+const headingVariantToTagMap: { [key in HeadingVariantType]: string } = {
   'large-title': 'h1',
   'heading-1': 'h1',
   'heading-2': 'h2',
   'heading-3': 'h3',
   'heading-4': 'h4',
   'heading-5': 'h5',
-  'headline-1': 'h1',
-  'headline-2': 'h2',
-  'headline-3': 'h3',
-  'headline-4': 'h4',
-  'headline-5': 'h5',
 };
 
 export const getHeadingTagName = (host: HTMLElement, variant?: HeadingVariant, tag?: HeadingTag): string => {
@@ -53,9 +43,9 @@ export const getHeadingTagName = (host: HTMLElement, variant?: HeadingVariant, t
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isVariantType(variant)) {
+  } else if (!isHeadingVariantType(variant)) {
     return 'h1';
   } else {
-    return variantToTagMap[variant as VariantType];
+    return headingVariantToTagMap[variant as HeadingVariantType];
   }
 };

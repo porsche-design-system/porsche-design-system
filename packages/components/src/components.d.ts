@@ -19,6 +19,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
+import { HeadlineVariantDeprecated } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
@@ -420,7 +421,7 @@ export namespace Components {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadingVariant;
+        "variant"?: HeadlineVariantDeprecated;
     }
     interface PIcon {
         /**
@@ -2069,7 +2070,7 @@ declare namespace LocalJSX {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadingVariant;
+        "variant"?: HeadlineVariantDeprecated;
     }
     interface PIcon {
         /**

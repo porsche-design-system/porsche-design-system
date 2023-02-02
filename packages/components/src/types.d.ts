@@ -10,7 +10,7 @@ export type { TextSize } from './components/text/text-size';
 export type { TextAlign } from './components/text/text-align';
 export type { TextColor } from './components/text/text-color';
 export type { TextWeight } from './components/text/text-weight';
-export type { HeadingVariant, VariantType } from './components/heading/heading-utils';
+export type { HeadingVariant, HeadingVariantType } from './components/heading/heading-utils';
 
 export type { IconName } from '@porsche-design-system/icons';
 

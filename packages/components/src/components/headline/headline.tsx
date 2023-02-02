@@ -9,8 +9,10 @@ import {
   warnIfComponentIsDeprecated,
 } from '../../utils';
 import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
-import type { HeadingTag, HeadingVariant } from '../heading/heading-utils';
-import { getHeadingTagName, HEADING_TAGS } from '../heading/heading-utils';
+import type { HeadingTag } from '../heading/heading-utils';
+import type { HeadlineVariantDeprecated } from './headline-utils';
+import { getHeadlineTagName } from './headline-utils';
+import { HEADING_TAGS } from '../heading/heading-utils';
 import { getComponentCss } from '../heading/heading-styles';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
@@ -30,7 +32,7 @@ export class Headline {
   @Element() public host!: HTMLElement;
 
   /** Predefined style of the headline. */
-  @Prop() public variant?: HeadingVariant = 'headline-1';
+  @Prop() public variant?: HeadlineVariantDeprecated = 'headline-1';
 
   /** Sets a custom HTML tag depending on the usage of the headline component. */
   @Prop() public tag?: HeadingTag;
@@ -58,7 +60,7 @@ export class Headline {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
 
-    const TagName = getHeadingTagName(this.host, this.variant, this.tag);
+    const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

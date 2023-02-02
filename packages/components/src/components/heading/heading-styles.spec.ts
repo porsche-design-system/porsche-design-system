@@ -1,14 +1,6 @@
-import { getComponentCss, getHeadingHeadlineStyles } from './heading-styles';
-import * as HeadingHeadlineStyles from './heading-styles';
+import { getComponentCss } from './heading-styles';
 
 describe('getComponentCss()', () => {
-  it('should call getHeadingHeadlineStyles with correct parameters', () => {
-    const spy = jest.spyOn(HeadingHeadlineStyles, 'getHeadingHeadlineStyles');
-    getHeadingHeadlineStyles('heading-1', 'left', 'default', false, 'light');
-
-    expect(spy).toBeCalledWith('heading-1', 'left', 'default', false, 'light');
-  });
-
   it.each<Parameters<typeof getComponentCss>>([
     ['heading-1', 'left', 'default', false, 'light'],
     ['inherit', 'left', 'default', false, 'light'],
