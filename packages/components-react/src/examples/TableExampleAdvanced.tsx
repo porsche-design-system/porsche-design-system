@@ -1,7 +1,6 @@
+import type { SortingChangeEvent } from '@porsche-design-system/components-react';
 import {
   PButtonPure,
-  PFlex,
-  PFlexItem,
   PHeadline,
   PTable,
   PTableBody,
@@ -12,7 +11,6 @@ import {
   PTableRow,
   PText,
 } from '@porsche-design-system/components-react';
-import type { SortingChangeEvent } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
@@ -48,15 +46,13 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
         {data.map((item, i) => (
           <PTableRow key={i}>
             <PTableCell>
-              <PFlex>
-                <PFlexItem>
-                  <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
-                </PFlexItem>
-                <PFlexItem>
+              <div style={{ display: 'flex' }}>
+                <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
+                <div>
                   <PText weight="semibold">{item.model}</PText>
                   <PText size="x-small">{item.date}</PText>
-                </PFlexItem>
-              </PFlex>
+                </div>
+              </div>
             </PTableCell>
             <PTableCell>{item.interest}</PTableCell>
             <PTableCell>
