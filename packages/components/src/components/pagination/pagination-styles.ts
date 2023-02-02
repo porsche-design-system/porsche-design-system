@@ -19,8 +19,9 @@ import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 
-const buttonSizeSmaller = `calc(${fontLineHeight} + 12px)`;
-const buttonSizeNormal = `calc(${fontLineHeight} + 16px)`;
+// button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
+// and text scale 200% works (almost) on mobile viewports too
+const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
 
 const disabledCursorStyle: JssStyle = {
   cursor: 'default',
@@ -72,10 +73,10 @@ export const getComponentCss = (
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: ['border-color', 'background-color'].map(getTransition).join(), // for smooth transition between states
+        transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transition between states
         position: 'relative',
-        width: buttonSizeSmaller,
-        height: buttonSizeSmaller,
+        width: buttonSize,
+        height: buttonSize,
         boxSizing: 'border-box',
         ...textSmallStyle,
         whiteSpace: 'nowrap',
@@ -84,12 +85,6 @@ export const getComponentCss = (
         outline: 0,
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
-        // TODO: maybe we can get rid of media query when using clamp(36px, some fluid width based on vw, 40px)
-        // custom media query is needed ensuring buttons are getting asap the desired size of 40x40px
-        ['@media(min-width:360px)']: {
-          width: buttonSizeNormal,
-          height: buttonSizeNormal,
-        },
         ...hoverMediaQuery({
           '&:hover': {
             ...frostedGlassStyle,
