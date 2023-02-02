@@ -1,18 +1,18 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
+import type { BannerState, BannerWidth } from './banner-utils';
+import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './banner-styles';
-import type { BannerState, BannerWidth } from './banner-utils';
-import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
+import { getComponentCss } from './banner-styles';
 
 const propTypes: PropTypes<typeof Banner> = {
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
@@ -29,7 +29,7 @@ export class Banner {
   @Element() public host!: HTMLElement;
 
   /** State of the banner. */
-  @Prop() public state?: BannerState = 'neutral';
+  @Prop() public state?: BannerState = 'info';
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
@@ -46,7 +46,6 @@ export class Banner {
   private inlineNotificationElement: HTMLPInlineNotificationElement;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
@@ -67,24 +66,26 @@ export class Banner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss);
+    const deprecatedStateMap: Partial<Record<BannerState, BannerState>> = {
+      neutral: 'info',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    attachComponentCss(this.host, getComponentCss, this.width);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pContentWrapper width={this.width}>
-        <PrefixedTagNames.pInlineNotification
-          ref={(el) => (this.inlineNotificationElement = el)}
-          class="root"
-          state={this.state}
-          persistent={this.persistent}
-          theme={this.theme}
-          onDismiss={this.removeBanner}
-        >
-          {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
-          {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-        </PrefixedTagNames.pInlineNotification>
-      </PrefixedTagNames.pContentWrapper>
+      <PrefixedTagNames.pInlineNotification
+        ref={(el) => (this.inlineNotificationElement = el)}
+        class="root"
+        state={this.state}
+        persistent={this.persistent}
+        theme={this.theme}
+        onDismiss={this.removeBanner}
+      >
+        {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
+        {hasNamedSlot(this.host, 'description') && <slot name="description" />}
+      </PrefixedTagNames.pInlineNotification>
     );
   }
 
