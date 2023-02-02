@@ -19,7 +19,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div class="playground light" title="should render toast neutral on light background with custom bottom position">
+    <div class="playground light" title="should render toast info on light background with custom bottom position">
       <p-toast></p-toast>
     </div>
   `,
