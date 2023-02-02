@@ -1,5 +1,6 @@
 import { getTagNameWithoutPrefix } from '../tag-name';
 
+// TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <T extends string>(
   host: HTMLElement,
   prop: string,

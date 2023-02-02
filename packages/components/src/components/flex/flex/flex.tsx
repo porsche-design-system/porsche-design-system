@@ -8,6 +8,7 @@ import type {
   FlexWrap,
 } from './flex-utils';
 import {
+  deprecatedFlexComponentMessage,
   FLEX_ALIGN_CONTENTS,
   FLEX_ALIGN_ITEMS,
   FLEX_DIRECTIONS,
@@ -15,7 +16,7 @@ import {
   FLEX_WRAPS,
 } from './flex-utils';
 import { getComponentCss } from './flex-styles';
-import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
+import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
 
 const propTypes: PropTypes<typeof Flex> = {
@@ -54,6 +55,7 @@ export class Flex {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, deprecatedFlexComponentMessage);
     attachComponentCss(
       this.host,
       getComponentCss,
