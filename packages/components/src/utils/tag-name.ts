@@ -13,7 +13,7 @@ export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
   return (tagNameWithoutPrefix || tagName) as TagName; // return tagName as fallback for default tags
 };
 
-// prevent internal usage of p-heading and p-text
+// prevent internal usage of p-heading, p-headline and p-text
 type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pHeadline' | 'pHeading' | 'pText'>;
 type PrefixedTagNames = Record<AllowedTagNameCamelCase, string>;
 const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter(

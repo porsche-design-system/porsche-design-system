@@ -1,7 +1,3 @@
-# Typography
-
-<TableOfContents></TableOfContents>
-
 ## Headline
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
