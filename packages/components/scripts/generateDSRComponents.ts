@@ -80,7 +80,11 @@ const generateDSRComponents = (): void => {
           `import { Component } from 'react';
 import { minifyCss } from '../../minifyCss';
 import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
-import { get${componentName}Css } from '${stylesBundleImportPath}';
+${
+  componentName === 'Headline'
+    ? `import { getHeadingCss } from '${stylesBundleImportPath}'`
+    : `import { get${componentName}Css } from '${stylesBundleImportPath}'`
+};
 `
         )
         .replace(/(export class) ([A-Za-z]+)/, '$1 DSR$2 extends Component<any>') // make it a real React.Component
@@ -111,7 +115,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
+    ${
+      componentName === 'Headline'
+        ? `const style = minifyCss(stripFocusAndHoverStyles(getHeadingCss(${getComponentCssParams})))`
+        : `const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})))`
+    };
 
     return (
       <>
