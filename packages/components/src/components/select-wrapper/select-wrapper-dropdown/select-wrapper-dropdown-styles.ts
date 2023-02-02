@@ -199,7 +199,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       boxSizing: 'border-box',
       borderRadius: borderRadiusSmall,
       transition: ['background-color', 'color'].map(getTransition).join(),
-      '&[role="status"]': {
+      '&[role=status]': {
         cursor: 'not-allowed',
       },
       '&__sr': getTextHiddenJssStyle(true),

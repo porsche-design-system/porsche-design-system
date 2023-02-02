@@ -435,7 +435,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -610,7 +610,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -746,7 +746,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -918,7 +918,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1053,7 +1053,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1224,7 +1224,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1356,7 +1356,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1524,7 +1524,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1663,7 +1663,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1838,7 +1838,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -1974,7 +1974,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2146,7 +2146,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2281,7 +2281,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2452,7 +2452,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2584,7 +2584,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -2752,7 +2752,7 @@ ul {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4412,7 +4412,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4512,7 +4512,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4608,7 +4608,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4704,7 +4704,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4804,7 +4804,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -4904,7 +4904,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -5000,7 +5000,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -5096,7 +5096,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.option[role="status"] {
+.option[role=status] {
   cursor: not-allowed;
 }
 .option__sr {
