@@ -130,7 +130,15 @@ span[aria-current] {
 }
 .ellipsis:focus::before {
   border-color: transparent;
-}"
+}
+@media(hover:hover) {
+  .ellipsis:hover {
+    -webkit-backdrop-filter: revert;
+    backdrop-filter: revert;
+    background-color: transparent;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: dark 1`] = `
@@ -233,7 +241,15 @@ span[aria-current] {
 }
 .ellipsis:focus::before {
   border-color: transparent;
-}"
+}
+@media(hover:hover) {
+  .ellipsis:hover {
+    -webkit-backdrop-filter: revert;
+    backdrop-filter: revert;
+    background-color: transparent;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: light 1`] = `
@@ -336,7 +352,15 @@ span[aria-current] {
 }
 .ellipsis:focus::before {
   border-color: transparent;
-}"
+}
+@media(hover:hover) {
+  .ellipsis:hover {
+    -webkit-backdrop-filter: revert;
+    backdrop-filter: revert;
+    background-color: transparent;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: dark 1`] = `
@@ -439,7 +463,15 @@ span[aria-current] {
 }
 .ellipsis:focus::before {
   border-color: transparent;
-}"
+}
+@media(hover:hover) {
+  .ellipsis:hover {
+    -webkit-backdrop-filter: revert;
+    backdrop-filter: revert;
+    background-color: transparent;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: light 1`] = `
@@ -542,5 +574,13 @@ span[aria-current] {
 }
 .ellipsis:focus::before {
   border-color: transparent;
-}"
+}
+@media(hover:hover) {
+  .ellipsis:hover {
+    -webkit-backdrop-filter: revert;
+    backdrop-filter: revert;
+    background-color: transparent;
+  }
+}
+"
 `;
