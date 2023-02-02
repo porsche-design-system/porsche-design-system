@@ -25,7 +25,7 @@ const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
 
 const disabledCursorStyle: JssStyle = {
   cursor: 'default',
-  pointerEvents: 'none', // prevents :hover
+  pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 
 export const getComponentCss = (
@@ -86,12 +86,12 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         ...hoverMediaQuery({
-          '&:hover': {
+          '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,
           },
         }),
-        '&:focus::before': {
+        '&:not([aria-disabled]):not(.ellipsis):focus::before': {
           content: '""',
           position: 'absolute',
           ...getInsetJssStyle(-4),
