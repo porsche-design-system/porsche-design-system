@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getTransition, pxToRemWithUnit } from '../../../styles';
+import { addImportantToEachRule, getTransition } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -9,6 +9,7 @@ import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
 import { spacingStaticMedium } from '../../../../../utilities/projects/utilities';
 
 export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
+export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -26,11 +27,7 @@ export const getComponentCss = (
         position: 'static',
         zIndex: 0, // TODO: overrides global style.css in e2e and vrts
         cursor: 'pointer',
-        padding: `8px ${pxToRemWithUnit(47)} 8px ${spacingStaticMedium}`,
-        '&@-moz-document url-prefix()': {
-          // fix for 3px text-indention in FF
-          paddingLeft: pxToRemWithUnit(8),
-        },
+        padding: `8px ${ICON_SPACE} 8px ${spacingStaticMedium}`,
       }),
     }),
     root: {

@@ -8,15 +8,17 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  addImportantToRule,
 } from '../../../styles';
 import {
   borderRadiusSmall,
+  borderWidthBase,
   fontWeightSemiBold,
   spacingStaticMedium,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import { ICON_SPACE, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
@@ -24,8 +26,9 @@ import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
-export const getButtonStyles = (theme: Theme): Styles => {
-  const { primaryColor, focusColor } = getThemedColors(theme);
+export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
+  const { primaryColor, disabledColor } = getThemedColors(theme);
+  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return {
     '@global': {
@@ -36,34 +39,36 @@ export const getButtonStyles = (theme: Theme): Styles => {
         width: '100%',
         padding: 0,
         background: 'transparent',
-        border: '2px solid currentColor',
+        border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
         borderRadius: borderRadiusSmall,
-        outline: '2px solid transparent',
-        outlineOffset: '2px',
+        outline: '0',
         cursor: 'pointer',
-        color: 'currentColor',
-        transition: getTransition('color'),
-        '&:focus': {
-          outlineColor: focusColor,
-          '&:not(:focus-visible))': {
-            outlineColor: 'transparent',
-          },
+        transition: getTransition('border-color'), // background and text color are handled on select
+        '&:focus, &:focus ~ ul': {
+          borderColor: primaryColor,
         },
         ...hoverMediaQuery({
-          '&:not(:disabled):hover ~ ul': {
-            borderColor: primaryColor,
+          '&:not(:disabled):not(:focus):hover': {
+            borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
           },
         }),
         '&:disabled': {
           cursor: 'not-allowed',
+          borderColor: disabledColor,
         },
       },
     },
   };
 };
 
-export const getFilterStyles = (disabled: boolean, theme: Theme): Styles<'@global'> => {
-  const { primaryColor, backgroundColor, contrastHighColor, focusColor, disabledColor } = getThemedColors(theme);
+export const getFilterStyles = (
+  isOpen: boolean,
+  state: FormState,
+  disabled: boolean,
+  theme: Theme
+): Styles<'@global'> => {
+  const { primaryColor, backgroundColor, disabledColor } = getThemedColors(theme);
+  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
@@ -78,17 +83,17 @@ export const getFilterStyles = (disabled: boolean, theme: Theme): Styles<'@globa
         display: 'block',
         position: 'absolute',
         zIndex: 1,
-        bottom: '2px', // input is inset to not overlap with 1px or 2px border of state
+        bottom: '2px', // input is inset to not overlap with 2px border of state
         left: '2px',
-        width: `calc(100% - ${inputHeightRem})`,
+        width: `calc(100% - ${ICON_SPACE})`,
         height: inputHeightRem,
         padding: `13px ${spacingStaticMedium}`,
-        outline: 'none',
+        outline: '0',
         appearance: 'none',
         boxSizing: 'border-box',
-        border: 'none',
-        borderRadius: borderRadiusSmall,
-        opacity: 0,
+        border: '0', // done via span
+        borderRadius: borderRadiusSmall, // for white corners
+        opacity: 0, // is used to overlay input on focus
         ...textSmallStyle,
         textIndent: 0,
         cursor: disabled ? 'not-allowed' : 'text',
@@ -97,27 +102,32 @@ export const getFilterStyles = (disabled: boolean, theme: Theme): Styles<'@globa
         '&::placeholder': placeHolderJssStyle,
         '&::-webkit-input-placeholder': placeHolderJssStyle,
         '&::-moz-placeholder': placeHolderJssStyle,
-        '&:focus': {
-          opacity: disabled ? 0 : 1, // to display value while typing
-          '&+span': {
-            outlineColor: focusColor,
+        '&:not(:disabled):focus': {
+          opacity: 1, // to display value while typing
+          '&+span, &~ ul': {
+            borderColor: primaryColor,
           },
         },
         ...hoverMediaQuery({
-          '&:not(:disabled):hover ~ ul': {
-            borderColor: contrastHighColor,
+          '&:not(:disabled)': {
+            '&+span:hover': {
+              borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+            },
+            '&:hover': {
+              '&+span, &~ul': {
+                borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+              },
+            },
           },
         }),
         '&+span': {
-          // for focus outline and click event on arrow
+          // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',
           ...getInsetJssStyle(),
-          outline: '2px solid transparent',
-          outlineOffset: '2px',
-          transition: getTransition('color'),
+          transition: getTransition('border-color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
-          border: '2px solid currentColor',
+          border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
           borderRadius: borderRadiusSmall,
         },
       },
@@ -143,14 +153,14 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         flexDirection: 'column',
         gap: spacingStaticSmall,
         position: `var(${dropdownPositionVar})`, // for vrt tests
-        padding: '12px',
+        padding: '6px',
         margin: 0,
         background: backgroundColor,
         ...textSmallStyle,
         zIndex: 10,
         left: 0,
         right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)',
+        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
         ...(!isOpen && {
           opacity: 0,
           overflow: 'hidden',
@@ -158,11 +168,14 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
           pointerEvents: 'none',
         }),
         boxSizing: 'border-box',
-        maxHeight: pxToRemWithUnit(8.5 * (OPTION_HEIGHT + 8) + 12 + 2), // 8 = gap, 12 = padding, 2 = border
+        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
-        border: `2px solid ${contrastMediumColor}`,
+        border: `2px solid ${isOpen ? primaryColor : contrastMediumColor}`,
+        // causes diagonal edge between different border colors
+        [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
+        // boxShadow: `0 -2px 0 ${backgroundColor}`, // TODO: rounded corners on select or button are visible
         ...(isDirectionDown
           ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
           : ['borderTopLeftRadius', 'borderTopRightRadius']
@@ -171,19 +184,13 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-        outline: 'none',
-        ...hoverMediaQuery({
-          '&:hover': {
-            borderColor: primaryColor,
-          },
-        }),
       },
     },
     option: {
       display: 'flex',
       justifyContent: 'space-between',
       gap: '12px',
-      padding: `${spacingStaticSmall} 14px`,
+      padding: `${spacingStaticSmall} 12px`,
       minHeight: pxToRemWithUnit(OPTION_HEIGHT),
       color: contrastHighColor,
       cursor: 'pointer',
@@ -197,7 +204,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       },
       '&__sr': getTextHiddenJssStyle(true),
       ...hoverMediaQuery({
-        '&:not([aria-disabled]):not([role="status"]):hover': {
+        '&:not([aria-disabled]):not([role=status]):hover': {
           color: primaryColor,
           background: backgroundSurfaceColor,
         },
@@ -238,8 +245,8 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
 export const getComponentCss = (
   direction: DropdownDirectionInternal,
   isOpen: boolean,
-  disabled: boolean,
   state: FormState,
+  disabled: boolean,
   filter: boolean,
   theme: Theme
 ): string => {
@@ -269,7 +276,7 @@ export const getComponentCss = (
           },
         },
       },
-      filter ? getFilterStyles(disabled, theme) : getButtonStyles(theme),
+      filter ? getFilterStyles(isOpen, state, disabled, theme) : getButtonStyles(isOpen, state, theme),
       getListStyles(direction, isOpen, theme)
     )
   );

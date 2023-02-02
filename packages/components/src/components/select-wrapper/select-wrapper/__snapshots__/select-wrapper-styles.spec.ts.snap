@@ -26,10 +26,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -202,10 +199,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -311,10 +305,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -420,10 +411,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -528,10 +516,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -636,10 +621,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -745,10 +727,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -854,10 +833,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -964,10 +940,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1074,10 +1047,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -1183,10 +1153,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1292,10 +1259,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -1402,10 +1366,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1512,10 +1473,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px 2.9375rem 8px 16px !important;
-}
-::slotted(select)@-moz-document url-prefix() {
-  padding-left: 0.5rem !important;
+  padding: 8px 52px 8px 16px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
