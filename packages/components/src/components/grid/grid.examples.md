@@ -1,5 +1,10 @@
 # Grid
 
+The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche
+web experiences and screen sizes. The Porsche Design System grid system is based upon a standard 12 column responsive
+grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It
+is not meant to function as a toolkit for layout content blocks or components.
+
 <p-inline-notification heading="Deprecation hint" state="error" persistent="true">
 This component is deprecated and will be removed with the next major release. 
 In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
@@ -117,36 +122,36 @@ export default class Code extends Vue {
   }
   
   get size() {
-    return `<p-grid class="example-grid">
+    return `<p-grid>
   <p-grid-item size="12">12</p-grid-item>
 </p-grid>
-${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
+${Array.from(Array(11)).map((x, i) => `<p-grid>
   <p-grid-item size="${i+1}">${i+1}</p-grid-item>
   <p-grid-item size="${11-i}">${11-i}</p-grid-item>
 </p-grid>`).join('\n')}`;
   }
 
   sizeResponsiveness =
-`<p-grid class="example-grid">
+`<p-grid>
   <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
   <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
 </p-grid>`;
 
   get offset() {
-    return `${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
+    return `${Array.from(Array(11)).map((x, i) => `<p-grid>
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
 </p-grid>`).join('\n')}`;
     }
     
   offsetResponsiveness =
-`<p-grid class="example-grid">
+`<p-grid>
   <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
 </p-grid>`;
 
   direction(value: string, size: string = '4') {
     const attr = value ? ` direction="${value}"` : '';
     const sizeAttr = value ? ` size="${size}"` : '';
-    return `<p-grid${attr} class="example-grid">
+    return `<p-grid${attr}>
   <p-grid-item${sizeAttr}>A</p-grid-item>
   <p-grid-item${sizeAttr}>B</p-grid-item>
   <p-grid-item${sizeAttr}>C</p-grid-item>
@@ -154,7 +159,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   }
 
   wrap(value: string) {
-    return `<p-grid wrap="${value}" class="example-grid">
+    return `<p-grid wrap="${value}">
   <p-grid-item size="6">A</p-grid-item>
   <p-grid-item size="6">B</p-grid-item>
   <p-grid-item size="6">C</p-grid-item>
@@ -165,13 +170,13 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   nesting =
 `<p-grid>
   <p-grid-item size="6">
-    <p-grid class="example-grid">
+    <p-grid>
       <p-grid-item size="6">A</p-grid-item>
       <p-grid-item size="6">B</p-grid-item>
     </p-grid>
   </p-grid-item>
   <p-grid-item size="6">
-    <p-grid class="example-grid">
+    <p-grid>
       <p-grid-item size="4">A</p-grid-item>
       <p-grid-item size="8">B</p-grid-item>
     </p-grid>
@@ -183,7 +188,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
 <style scoped lang="scss">
   @import '~@porsche-design-system/components-js/utilities/scss';
   
-  :deep(.example-grid p-grid-item) {
+  :deep(p-grid-item) {
     @include pds-text-small;
     color: $pds-theme-light-primary;
     text-align: center;
