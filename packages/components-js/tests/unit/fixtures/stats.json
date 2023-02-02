@@ -51,8 +51,8 @@
   },
   {
     "chunkShortName": "flex",
-    "size": 2984,
-    "gzipSize": 1120
+    "size": 3388,
+    "gzipSize": 1328
   },
   {
     "chunkShortName": "grid",
@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 67338,
-    "gzipSize": 22905
+    "gzipSize": 22904
   },
   {
     "chunkShortName": "marque",
