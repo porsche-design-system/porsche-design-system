@@ -55,6 +55,16 @@ export const getComponentCss = (
   ellipsis: boolean,
   theme: Theme
 ): string => {
+  return getSharedHeadingHeadlineStyles(variant, align, color, ellipsis, theme);
+};
+
+export const getSharedHeadingHeadlineStyles = (
+  variant: HeadingVariant | HeadlineVariantDeprecated,
+  align: TextAlign,
+  color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
+  ellipsis: boolean,
+  theme: Theme
+): string => {
   return getCss({
     '@global': {
       ':host': {

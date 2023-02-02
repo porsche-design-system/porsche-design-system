@@ -13,7 +13,7 @@ import type { HeadingTag } from '../heading/heading-utils';
 import type { HeadlineVariantDeprecated } from './headline-utils';
 import { getHeadlineTagName } from './headline-utils';
 import { HEADING_TAGS } from '../heading/heading-utils';
-import { getComponentCss } from '../heading/heading-styles';
+import { getComponentCss } from '../headline/headline-styles';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated

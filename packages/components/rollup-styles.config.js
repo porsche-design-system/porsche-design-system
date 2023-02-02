@@ -18,16 +18,12 @@ const generateStylesEntryFile = () => {
   const stylesExports = stylesPaths
     .map((utilPath) => {
       const isCommonComponent = utilPath.includes('/components/common/');
-      const isHeadlineComponent = utilPath.includes('/components/headline/');
-      if (!isHeadlineComponent) {
-        // deprecated headline component uses styles of new heading component
-        const styleExport = isCommonComponent
-          ? `*`
-          : `{ getComponentCss as get${pascalCase(/([-a-z]+)-styles\.ts/.exec(utilPath)[1])}Css }`;
-        const fromPath = `./components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}`;
+      const styleExport = isCommonComponent
+        ? `*`
+        : `{ getComponentCss as get${pascalCase(/([-a-z]+)-styles\.ts/.exec(utilPath)[1])}Css }`;
+      const fromPath = `./components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}`;
 
-        return `export ${styleExport} from '${fromPath}';`;
-      }
+      return `export ${styleExport} from '${fromPath}';`;
     })
     .join('\n');
 
