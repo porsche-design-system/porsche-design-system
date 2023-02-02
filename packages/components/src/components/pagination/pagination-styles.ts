@@ -89,7 +89,7 @@ export const getComponentCss = (
             backgroundColor: hoverColor,
           },
         }),
-        '&:not([aria-disabled]):not(.ellipsis):focus::before': {
+        '&:not(.ellipsis):focus::before': {
           content: '""',
           position: 'absolute',
           ...getInsetJssStyle(-4),
@@ -104,7 +104,7 @@ export const getComponentCss = (
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
           borderRadius: borderRadiusSmall,
-          '&:not([aria-disabled]):not(.ellipsis):focus::before': {
+          '&:not(.ellipsis):focus::before': {
             ...getInsetJssStyle(-6),
           },
         },
