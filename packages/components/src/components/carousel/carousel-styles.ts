@@ -36,23 +36,23 @@ export const getComponentCss = (
         maxWidth: gridWidthMax,
         marginLeft: 'auto',
         marginRight: 'auto',
-        gap: pxToRemWithUnit(24),
+        gap: '24px',
         gridAutoFlow: 'row',
         [mediaQueryXl]: {
-          gap: pxToRemWithUnit(32),
+          gap: '32px',
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXLargeStyle,
         margin: 0,
         color: primaryColor,
-        maxWidth: pxToRemWithUnit(900),
+        maxWidth: '900px',
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
-        maxWidth: pxToRemWithUnit(550),
+        maxWidth: '550px',
         gridColumn: 1, // to force it into 2nd line
       }),
     },
@@ -101,9 +101,9 @@ export const getComponentCss = (
       gap: gridGap,
       padding: wrapContent ? `0 ${gridSafeZone}` : null,
       [mediaQueryS]: {
-        gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
+        gridTemplateColumns: 'minmax(0px, 1fr) 80px', // 2nd row has width of nav buttons
         position: 'relative',
-        minHeight: pxToRemWithUnit(40), // actual height of prev/next buttons
+        minHeight: '40px', // actual height of prev/next buttons
       },
     },
     nav: {
