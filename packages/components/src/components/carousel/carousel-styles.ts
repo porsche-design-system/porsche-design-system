@@ -15,8 +15,8 @@ import {
   gridGap,
   borderRadiusSmall,
   headingXLargeStyle,
+  spacingFluidMedium,
 } from '@porsche-design-system/utilities-v2';
-import { spacingFluidMedium } from '@porsche-design-system/utilities-v2/src/js';
 
 export const bulletActiveClass = 'bullet--active';
 
