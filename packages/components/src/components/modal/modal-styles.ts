@@ -18,10 +18,9 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
-import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/src/js/theme/themeDarkBackgroundShading';
-
+import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/dist/js/theme/themeDarkBackgroundShading';
 const mediaQueryXl = getMediaQueryMin('xl');
-const { backgroundColor: lightThemeBackgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
+const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
@@ -117,19 +116,21 @@ export const getComponentCss = (
         }),
         overflowY: 'auto', // overrideable
       },
-      '::slotted': addImportantToEachRule({
-        ...mergeDeep(
+      '::slotted': addImportantToEachRule(
+        mergeDeep(
           getSlottedJssStyle(32, hasHeader, disableCloseButton),
           buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-              borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
-            },
-            [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-              borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
+            [`&(.${stretchToFullModalWidthClassName}`]: {
+              '&:first-child': {
+                borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+              },
+              '&:last-child': {
+                borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
+              },
             },
           }))
-        ),
-      }),
+        )
+      ),
       h2: {
         ...headingLargeStyle,
         margin: 0,
@@ -143,7 +144,7 @@ export const getComponentCss = (
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: !disableCloseButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
-        backgroundColor: lightThemeBackgroundColor,
+        backgroundColor,
         outline: 0,
         '&:focus::before': {
           content: '""',
@@ -152,7 +153,7 @@ export const getComponentCss = (
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
             borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,
-            ...(fullscreenValue ? getInsetJssStyle(0) : getInsetJssStyle(-4)),
+            ...getInsetJssStyle(fullscreenValue ? 0 : -4),
           })),
         },
         '&:not(:focus-visible)::before': {
@@ -173,9 +174,9 @@ export const getComponentCss = (
       position: 'absolute',
       top: '8px',
       right: '8px',
-      border: `2px solid ${lightThemeBackgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
+      border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
       borderRadius: '4px',
-      backgroundColor: lightThemeBackgroundColor,
+      backgroundColor,
       '&:hover': {
         backgroundColor: 'transparent',
         borderColor: 'transparent',
