@@ -20,45 +20,8 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<style>
-  p-inline-notification a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-inline-notification b,
-  p-inline-notification strong {
-    font-weight: 700 !important;
-  }
-
-  p-inline-notification em,
-  p-inline-notification i {
-    font-style: normal !important;
-  }
-
-  p-inline-notification a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-inline-notification a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-inline-notification a:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-inline-notification a:hover {
-    color: rgba(148, 149, 152, 0.20) !important;
-  }
-</style>
-<p-content-wrapper class="hydrated">
-  <p-inline-notification class="root hydrated">
-  </p-inline-notification>
-</p-content-wrapper>"
+"<p-inline-notification class="root hydrated">
+</p-inline-notification>"
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
@@ -198,7 +161,7 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
 "<a class="root" href="value" target="_self">
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>

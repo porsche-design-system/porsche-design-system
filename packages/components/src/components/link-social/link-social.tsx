@@ -2,9 +2,11 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
   THEMES,
   throwIfInvalidLinkUsage,
+  warnIfComponentIsDeprecated,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../types';
@@ -51,11 +53,24 @@ export class LinkSocial {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
+    warnIfComponentIsDeprecated(
+      this.host,
+      'This component is deprecated and will be removed with next major release. Use "link" component with corresponding social icon instead.'
+    );
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      'primary',
+      this.hideLabel,
+      !this.href,
+      this.theme
+    );
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -74,11 +89,10 @@ export class LinkSocial {
           size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color="inherit"
-          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
+          theme={getLinkButtonThemeForIcon('primary', this.theme)} // relevant for ssr support
           aria-hidden="true"
         />
-        <span>
+        <span class="label">
           <slot />
         </span>
       </TagType>
