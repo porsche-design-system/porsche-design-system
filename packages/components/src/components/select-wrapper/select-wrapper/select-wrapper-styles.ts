@@ -1,20 +1,15 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { buildSlottedStyles, getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../../styles';
+import { getCss } from '../../../utils';
+import { addImportantToEachRule, getTransition } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
+import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
+import { spacingStaticMedium } from '../../../../../utilities/projects/utilities';
 
-const { primaryColor: themeLightBaseColor } = getThemedColors('light');
-
-export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
+export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
+export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -22,35 +17,19 @@ export const getComponentCss = (
   state: FormState,
   theme: Theme
 ): string => {
-  const isDarkTheme = isThemeDark(theme);
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
-
   return getCss({
-    '@global': {
+    '@global': addImportantToEachRule({
       ':host': {
         display: 'block',
+        ...hostHiddenStyles,
       },
-      ...addImportantToEachRule(
-        mergeDeep(
-          getBaseChildStyles('select', state, theme, {
-            position: 'static',
-            zIndex: 0, // TODO: overrides global style.css in e2e and vrts
-            cursor: 'pointer',
-            padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
-            '&@-moz-document url-prefix()': {
-              // fix for 3px text-indention in FF
-              paddingLeft: pxToRemWithUnit(8),
-            },
-          }),
-          {
-            '::slotted(select:disabled)': {
-              background: isDarkTheme ? themeLightBaseColor : backgroundColor, // 🤷
-            },
-          }
-        )
-      ),
-    },
+      ...getBaseChildStyles('select', state, theme, {
+        position: 'static',
+        zIndex: 0, // TODO: overrides global style.css in e2e and vrts
+        cursor: 'pointer',
+        padding: `8px ${ICON_SPACE} 8px ${spacingStaticMedium}`,
+      }),
+    }),
     root: {
       display: 'block',
       position: 'relative',
@@ -58,9 +37,8 @@ export const getComponentCss = (
     ...getLabelStyles('select', isDisabled, hideLabel, state, theme, {
       icon: {
         position: 'absolute',
-        bottom: pxToRemWithUnit(12),
-        right: pxToRemWithUnit(12),
-        color: primaryColor,
+        bottom: '13px',
+        right: '15px',
         transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
         transition: getTransition('transform'),
         '&--open': {
@@ -71,8 +49,4 @@ export const getComponentCss = (
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: true })));
 };
