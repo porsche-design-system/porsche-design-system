@@ -4,7 +4,8 @@
 
 ## Heading
 
-**Heading component** to specify heading styling and hierarchy in documents.
+**Heading component** to specify heading styling and hierarchy in documents. **Note**: Using the heading utilities
+<a href="utilities/scss/functions#typography"><code>typography utilities</code></a> can be a performant alternative.
 
 ## Variant
 
