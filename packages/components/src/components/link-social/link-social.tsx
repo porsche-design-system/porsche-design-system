@@ -6,8 +6,8 @@ import {
   getPrefixedTagNames,
   THEMES,
   throwIfInvalidLinkUsage,
-  warnIfComponentIsDeprecated,
   validateProps,
+  warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../types';
 import type { SocialIconName } from './link-social-utils';
@@ -53,10 +53,7 @@ export class LinkSocial {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
-    warnIfComponentIsDeprecated(
-      this.host,
-      'This component is deprecated and will be removed with next major release. Use "link" component with corresponding social icon instead.'
-    );
+    warnIfDeprecatedComponentIsUsed(this.host, 'Use "link" component with corresponding social icon instead.');
   }
 
   public render(): JSX.Element {

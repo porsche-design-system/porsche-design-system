@@ -8,7 +8,13 @@ import type {
   FlexItemWidth,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  throwIfParentIsNotOfKind,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   FLEX_ITEM_ALIGN_SELFS,
@@ -18,6 +24,7 @@ import {
   FLEX_ITEM_SHRINKS,
   FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
+import { deprecatedFlexComponentMessage } from '../flex/flex-utils';
 
 const propTypes: PropTypes<typeof FlexItem> = {
   width: AllowedTypes.breakpoint<FlexItemWidth>(FLEX_ITEM_WIDTHS),
@@ -59,6 +66,7 @@ export class FlexItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, deprecatedFlexComponentMessage);
     attachComponentCss(
       this.host,
       getComponentCss,
