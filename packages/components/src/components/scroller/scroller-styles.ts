@@ -82,7 +82,6 @@ export const getComponentCss = (
       height: 'inherit',
     },
     'scroll-area': {
-      minHeight: '28px',
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'scroll hidden',
@@ -97,6 +96,7 @@ export const getComponentCss = (
     'scroll-wrapper': {
       position: 'relative',
       display: 'inline-flex',
+      minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
       outline: 0,
