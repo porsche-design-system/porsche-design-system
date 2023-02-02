@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
-import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS, syncGridItemsProps } from './grid-utils';
+import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
@@ -37,7 +37,6 @@ export class Grid {
       'Please use native CSS Grid (https://css-tricks.com/snippets/css/complete-guide-grid) instead in combination with the Porsche Grid utility based on CSS Grid.'
     );
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap);
-    syncGridItemsProps(this.host, this.gutter);
 
     return <slot />;
   }
