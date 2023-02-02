@@ -93,11 +93,14 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         },
       },
       button: {
+        display: 'grid',
+        gridTemplateColumns: `${fontLineHeight} minmax(0, auto)`,
+        rowGap: '2px',
         position: 'relative',
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: `4px 4px 4px calc(${fontLineHeight} + 4px)`, // icon height + 4px
+        padding: '4px',
         background: 0,
         border: 0,
         outline: 0,
@@ -105,6 +108,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         ...textSmallStyle,
         fontSize: 'inherit',
         whiteSpace: 'nowrap',
+        width: 'max-content',
         // '&:focus::before': {
         //   content: '""',
         //   position: 'absolute',
@@ -122,6 +126,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
               // TODO: combine &::before and &::after element
               '&::before': {
                 // circle of counter element
+                gridArea: '1 / 1 / 1 / 1',
                 content: '""',
                 position: 'absolute',
                 top: '50%',
@@ -171,9 +176,13 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             }),
       },
     },
+    label: {
+      gridArea: '1 / 2 / 1 / 2',
+    },
     ...(!isStateCurrentOrUndefined && {
       // other icons via icon component
       icon: {
+        gridArea: '1 / 1 / 1 / 1',
         position: 'absolute',
         left: 0,
         height: fontLineHeight,
