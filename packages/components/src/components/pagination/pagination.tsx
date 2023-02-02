@@ -117,7 +117,12 @@ export class Pagination {
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelPrev}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-left" color="inherit" aria-hidden="true" />
+                      <PrefixedTagNames.pIcon
+                        name="arrow-left"
+                        theme={this.theme}
+                        color={isActive ? 'default' : 'neutral-contrast-medium'}
+                        aria-hidden="true"
+                      />
                     </span>
                   </li>
                 );
@@ -152,7 +157,12 @@ export class Pagination {
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelNext}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-right" color="inherit" aria-hidden="true" />
+                      <PrefixedTagNames.pIcon
+                        name="arrow-right"
+                        theme={this.theme}
+                        color={isActive ? 'default' : 'neutral-contrast-medium'}
+                        aria-hidden="true"
+                      />
                     </span>
                   </li>
                 );
