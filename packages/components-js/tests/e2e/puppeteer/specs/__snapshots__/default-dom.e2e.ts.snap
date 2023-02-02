@@ -256,13 +256,13 @@ exports[`should have no basic DOM regression for p-scroller 1`] = `
     </div>
   </div>
   <div class="action-prev">
-    <button class="button" type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
       <p-icon class="icon hydrated">
       </p-icon>
     </button>
   </div>
   <div class="action-next">
-    <button class="button" type="button" tabindex="-1" aria-hidden="true" aria-label="next">
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="next">
       <p-icon class="icon hydrated">
       </p-icon>
     </button>
