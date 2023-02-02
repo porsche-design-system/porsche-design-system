@@ -23,6 +23,7 @@ const adjustHeadline = (str: string): string => {
     'p-flex': 'Flex',
     'p-grid': 'Grid',
     'p-heading': 'Typography',
+    'p-headline': 'Typography',
     'p-inline-notification': 'Notifications',
     'p-segmented-control': 'Segmented Control',
     'p-stepper-horizontal': 'Stepper Horizontal',
