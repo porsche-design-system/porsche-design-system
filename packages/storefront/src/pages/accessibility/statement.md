@@ -105,7 +105,7 @@ We continually assess and work to ensure that our Web presence is in conformance
     margin-top: $pds-spacing-static-x-large;
   }
 
-  p-text + p-heading[variant="headinge-4"],
+  p-text + p-heading[variant="heading-4"],
   p-text + p-headline[variant="headline-4"],
   p-text-list + p-heading[variant="heading-4"],
   p-text-list + p-headline[variant="headline-4"],
