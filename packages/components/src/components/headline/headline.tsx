@@ -6,7 +6,7 @@ import {
   THEMES,
   TEXT_ALIGNS,
   validateProps,
-  throwIfComponentIsDeprecated,
+  warnIfComponentIsDeprecated,
 } from '../../utils';
 import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
 import type { HeadingTag, HeadingVariant } from '../heading/heading-utils';
@@ -48,7 +48,7 @@ export class Headline {
   @Prop() public theme?: Theme = 'light';
 
   public componentWillLoad(): void {
-    throwIfComponentIsDeprecated(
+    warnIfComponentIsDeprecated(
       this.host,
       'This component is deprecated and will be removed with next major release. Use "heading" component instead.'
     );
