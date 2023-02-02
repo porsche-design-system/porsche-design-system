@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeaderAlign, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -189,6 +189,10 @@ export namespace Components {
         "weight"?: TextWeight;
     }
     interface PCarousel {
+        /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: HeaderAlign;
         /**
           * Defines the description used in the carousel.
          */
@@ -1801,6 +1805,10 @@ declare namespace LocalJSX {
         "weight"?: TextWeight;
     }
     interface PCarousel {
+        /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: HeaderAlign;
         /**
           * Defines the description used in the carousel.
          */

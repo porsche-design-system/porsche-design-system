@@ -10,6 +10,9 @@ export type { TextSize } from './components/text/text-size';
 export type { TextAlign } from './components/text/text-align';
 export type { TextColor } from './components/text/text-color';
 export type { TextWeight } from './components/text/text-weight';
+
+export type { HeaderAlign } from './components/carousel/carousel-align-header';
+
 export type { HeadlineVariant, VariantType } from './components/headline/headline-utils';
 
 export type { IconName } from '@porsche-design-system/icons';

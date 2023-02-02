@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   getSlotTextContent,
   hasDescription,
+  HEADER_ALIGNS,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -15,7 +16,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, HeaderAlign, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
@@ -32,7 +33,7 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { ButtonPure } from '../button-pure/button-pure';
-import { spacingStaticLarge, spacingStaticMedium, spacingStaticXLarge } from '@porsche-design-system/utilities-v2';
+import { spacingStaticLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -41,6 +42,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
+  alignHeader: AllowedTypes.oneOf<HeaderAlign>(HEADER_ALIGNS),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -64,6 +66,9 @@ export class Carousel {
 
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
+
+  /** Alignment of heading and description */
+  @Prop() public alignHeader?: HeaderAlign = 'left';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
