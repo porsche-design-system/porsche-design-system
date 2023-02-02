@@ -97,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 67338,
-    "gzipSize": 22904
+    "gzipSize": 22903
   },
   {
     "chunkShortName": "marque",
@@ -111,8 +111,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 6007,
-    "gzipSize": 2494
+    "size": 6873,
+    "gzipSize": 2827
   },
   {
     "chunkShortName": "popover",
@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 21307,
-    "gzipSize": 7111
+    "size": 21305,
+    "gzipSize": 7108
   },
   {
     "chunkShortName": "spinner",
