@@ -32,8 +32,8 @@ const initHeading = (opts?: { variant?: HeadingVariant; slot?: string; tag?: Hea
 
 const getHost = () => selectNode(page, 'p-heading');
 
-const getHeadingTagName = (): Promise<string> =>
-  page.$eval('p-heading', (el) => el.shadowRoot.querySelector('.root').tagName);
+const getHeadingTagName = async (): Promise<string> =>
+  (await getHost()).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
 
 describe('tag', () => {
   it('should render according to variant', async () => {
@@ -88,7 +88,6 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-heading'], 'componentDidLoad: p-heading').toBe(1);
-    expect(status.componentDidUpdate['p-heading'], 'componentDidUpdate: p-heading').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -104,7 +103,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
-  it('should work without unnecessary round trips after state change', async () => {
+  it('should work without unnecessary round trips after prop change', async () => {
     await initHeading({ variant: 'heading-1' });
     const host = await getHost();
 
