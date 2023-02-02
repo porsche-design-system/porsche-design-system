@@ -120,7 +120,7 @@ export class Pagination {
                       <PrefixedTagNames.pIcon
                         name="arrow-left"
                         theme={this.theme}
-                        color={isActive ? 'default' : 'neutral-contrast-medium'}
+                        color={isActive ? 'default' : 'contrast-medium'}
                         aria-hidden="true"
                       />
                     </span>
@@ -160,7 +160,7 @@ export class Pagination {
                       <PrefixedTagNames.pIcon
                         name="arrow-right"
                         theme={this.theme}
-                        color={isActive ? 'default' : 'neutral-contrast-medium'}
+                        color={isActive ? 'default' : 'contrast-medium'}
                         aria-hidden="true"
                       />
                     </span>
