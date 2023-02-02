@@ -1,12 +1,20 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  pxToRemWithUnit,
+} from '../../styles';
 import {
   borderRadiusSmall,
+  borderRadiusMedium,
   borderWidthBase,
   frostedGlassStyle,
   textSmallStyle,
+  spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
@@ -75,13 +83,14 @@ export const getComponentCss = (
         '&:focus::before': {
           content: '""',
           position: 'absolute',
-          color: primaryColor,
-          ...getInsetJssStyle(-2),
+          ...getInsetJssStyle(-4),
           border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusSmall,
+          borderRadius: borderRadiusMedium,
         },
         '&[aria-current]:focus::before': {
-          ...getInsetJssStyle(-4),
+          ...getInsetJssStyle('auto'),
+          width: pxToRemWithUnit(44),
+          height: pxToRemWithUnit(44),
         },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
