@@ -90,54 +90,6 @@ exports[`getComponentCss() should return correct css for direction: {"base":"col
 "
 `;
 
-exports[`getComponentCss() should return correct css for gutter: {"base":16,"xs":24,"s":36,"m":16,"l":24,"xl":36} 1`] = `
-":host {
-  display: flex !important;
-  flex: auto !important;
-  width: auto !important;
-  margin-left: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gutter: 16 1`] = `
-":host {
-  display: flex !important;
-  flex: auto !important;
-  width: auto !important;
-  margin-left: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gutter: 24 1`] = `
-":host {
-  display: flex !important;
-  flex: auto !important;
-  width: auto !important;
-  margin-left: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gutter: 36 1`] = `
-":host {
-  display: flex !important;
-  flex: auto !important;
-  width: auto !important;
-  margin-left: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-}"
-`;
-
 exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
 ":host {
   display: flex !important;

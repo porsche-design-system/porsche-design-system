@@ -1,5 +1,3 @@
-import type { GridGutter } from '../grid/grid-utils';
-import { GRID_GUTTERS } from '../grid/grid-utils';
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
@@ -28,13 +26,5 @@ describe('getComponentCss()', () => {
     dataSizes.map((x, i) => [x, dataOffsetsReversed[i]])
   )('should return correct css for size: %j and offset: %j', (size, offset) => {
     expect(getComponentCss(size, offset)).toMatchSnapshot();
-  });
-
-  const dataGutters: BreakpointCustomizable<GridGutter>[] = [
-    ...GRID_GUTTERS,
-    { base: 16, xs: 24, s: 36, m: 16, l: 24, xl: 36 },
-  ];
-  it.each<BreakpointCustomizable<GridGutter>>(dataGutters)('should return correct css for gutter: %j', () => {
-    expect(getComponentCss(1, 0)).toMatchSnapshot();
   });
 });
