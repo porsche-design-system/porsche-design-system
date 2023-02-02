@@ -2,11 +2,11 @@
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: { base: 5, xs: 7, s: 5, m: 7, l: 5, xl: 7 } and theme: dark 1`] = `
 ":host {
-  display: block;
   outline: 0 !important;
+  display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 nav {
   display: flex;
@@ -54,19 +54,20 @@ span {
 span:focus::before {
   content: "";
   position: absolute;
-  color: #FBFCFF;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-span[aria-current]:focus::before {
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+}
+span[aria-current]:focus::before {
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 2.75rem;
+  height: 2.75rem;
 }
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -134,11 +135,11 @@ span[aria-current] {
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: dark 1`] = `
 ":host {
-  display: block;
   outline: 0 !important;
+  display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 nav {
   display: flex;
@@ -186,19 +187,20 @@ span {
 span:focus::before {
   content: "";
   position: absolute;
-  color: #FBFCFF;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-span[aria-current]:focus::before {
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+}
+span[aria-current]:focus::before {
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 2.75rem;
+  height: 2.75rem;
 }
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -236,11 +238,11 @@ span[aria-current] {
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: light 1`] = `
 ":host {
-  display: block;
   outline: 0 !important;
+  display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 nav {
   display: flex;
@@ -288,19 +290,20 @@ span {
 span:focus::before {
   content: "";
   position: absolute;
-  color: #010205;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-span[aria-current]:focus::before {
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+}
+span[aria-current]:focus::before {
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 2.75rem;
+  height: 2.75rem;
 }
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -338,11 +341,11 @@ span[aria-current] {
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: dark 1`] = `
 ":host {
-  display: block;
   outline: 0 !important;
+  display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 nav {
   display: flex;
@@ -390,19 +393,20 @@ span {
 span:focus::before {
   content: "";
   position: absolute;
-  color: #FBFCFF;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-span[aria-current]:focus::before {
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+}
+span[aria-current]:focus::before {
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 2.75rem;
+  height: 2.75rem;
 }
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -440,11 +444,11 @@ span[aria-current] {
 
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: light 1`] = `
 ":host {
-  display: block;
   outline: 0 !important;
+  display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 nav {
   display: flex;
@@ -492,19 +496,20 @@ span {
 span:focus::before {
   content: "";
   position: absolute;
-  color: #010205;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-span[aria-current]:focus::before {
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
+  border: 2px solid #0A0AFF;
+  border-radius: 8px;
+}
+span[aria-current]:focus::before {
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 2.75rem;
+  height: 2.75rem;
 }
 span:focus:not(:focus-visible)::before {
   border-color: transparent;
