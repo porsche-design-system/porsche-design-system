@@ -71,13 +71,13 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
   const { top } = host.getBoundingClientRect();
 
-  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 26; // 26 = 2 x 12px padding + 2px border
+  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 14; // 26 = 2 x 6px padding + 2px border
   const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 
 export const handleScroll = (host: HTMLElement, highlightedIndex: number): void => {
-  const hostElementHeightThreshold = 276; // based on 10 * OPTION_HEIGHT with some buffer
+  const hostElementHeightThreshold = 276; // TODO: probably wrong value, based on 10 * OPTION_HEIGHT with some buffer
   const { scrollHeight, scrollTop } = host;
 
   if (scrollHeight > hostElementHeightThreshold) {
