@@ -3,7 +3,7 @@
 <p-inline-notification heading="Deprecation hint" state="error" persistent="true">
 This component is deprecated and will be removed with the next major release. 
 In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
-Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid covering the specific layout needs for an harmonic appearance across all digital touchpoints.
+Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
 </p-inline-notification>
 
 The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche
