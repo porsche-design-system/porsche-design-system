@@ -5,7 +5,6 @@ import {
   getBackfaceVisibilityJssStyle,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
-  pxToRemWithUnit,
 } from '../../styles';
 import {
   gridWidthMax,
@@ -16,6 +15,7 @@ import {
   headingXLargeStyle,
   spacingFluidMedium,
   spacingStaticXSmall,
+  spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
@@ -114,13 +114,14 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'grid',
         gridAutoFlow: 'column',
+        gap: spacingStaticXSmall,
         position: 'absolute', // we can't span across multiple rows with implicit grid
         right: wrapContent ? gridSafeZone : 0,
         bottom: 0,
       },
     },
     btn: {
-      padding: pxToRemWithUnit(8),
+      padding: spacingStaticSmall,
     },
     ...(disablePagination !== true && {
       pagination: {
