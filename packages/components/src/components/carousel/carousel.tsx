@@ -32,7 +32,7 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { ButtonPure } from '../button-pure/button-pure';
-import { spacingStaticLarge, spacingStaticMedium, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { spacingStaticLarge, spacingStaticMedium, spacingStaticXLarge } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -127,9 +127,9 @@ export class Carousel {
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       // TODO: for gap definition the gridGap const must be used
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
-        base: spacingStaticSmall,
-        s: spacingStaticMedium,
-        l: spacingStaticLarge,
+        base: spacingStaticMedium,
+        s: spacingStaticLarge,
+        l: spacingStaticXLarge,
       }),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl),
