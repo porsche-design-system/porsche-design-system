@@ -46,8 +46,7 @@ select {
   padding: 1rem;
 }
 
-.playground.light,
-.playground.light-electric {
+.playground.light {
   background: #fff;
 }
 
@@ -55,8 +54,7 @@ select {
   background: #eeeff2;
 }
 
-.playground.dark,
-.playground.dark-electric {
+.playground.dark {
   background: #0e1418;
 }
 

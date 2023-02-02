@@ -1,5 +1,12 @@
 # Link Social
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>link-social</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Use <a href="./components/link/examples#link-with-specific-icon"><code>link</code> component</a> with corresponding social icon instead.
+</p-inline-notification>
+
+--- 
+
 The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to
 social media platforms or social sharing dialogs.
 
@@ -163,9 +170,9 @@ export default class Code extends Vue {
 >Facebook</p-link-social>`;
 
   taborder =
-`<p-link-social href="https://www.porsche.com">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com" tabindex="-1">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com">Some label</p-link-social>`;
+`<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" tabindex="-1" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>`;
 }
 </script>
 

@@ -130,10 +130,10 @@ it('should render characterCountElement when maxlength is set', async () => {
   expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeDefined();
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
-  const defaultColor = 'rgb(98, 102, 105)';
-  const hoverColor = 'rgb(0, 0, 0)';
+  const defaultBorderColor = 'rgb(148, 149, 152)';
+  const hoverBorderColor = 'rgb(1, 2, 5)';
 
   it('should show hover state on input when label is hovered', async () => {
     await initTextarea({ hasLabel: true });
@@ -142,16 +142,16 @@ xdescribe('hover state', () => {
     const textarea = await getTextarea();
 
     const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultColor);
+    expect(initialStyle).toBe(defaultBorderColor);
     await textarea.hover();
     const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(hoverStyle).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultColor);
+    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
 
     await label.hover();
-    expect(await getBorderColor(textarea)).toBe(hoverColor);
+    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
   });
 
   it('should show hover state on textarea when counter is hovered', async () => {
@@ -161,16 +161,16 @@ xdescribe('hover state', () => {
     const textarea = await getTextarea();
 
     const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultColor);
+    expect(initialStyle).toBe(defaultBorderColor);
     await textarea.hover();
     const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverColor);
+    expect(hoverStyle).toBe(hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultColor);
+    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
 
     await counter.hover();
-    expect(await getBorderColor(textarea)).toBe(hoverColor);
+    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
   });
 });
 
