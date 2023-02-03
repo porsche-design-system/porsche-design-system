@@ -63,7 +63,7 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
   </div>
 </div>
 <div id="splide" class="splide splide--slide splide--ltr splide--draggable is-active is-initialized" role="region" aria-roledescription="carousel">
-  <div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 7%;">
+  <div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);">
     <div class="splide__list" id="splide-list" role="presentation" style="transform: translateX(0px);">
     </div>
   </div>
