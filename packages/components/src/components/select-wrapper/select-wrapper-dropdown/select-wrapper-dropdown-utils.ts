@@ -34,15 +34,8 @@ export const getFilterInputAriaAttributes = (
   activeDescendantId: number
 ): AriaAttributes => {
   return {
-    'aria-labelledby': labelId,
-    'aria-describedby': descriptionId || null,
-    'aria-haspopup': 'listbox',
-    'aria-expanded': isOpen ? 'true' : 'false',
+    ...getSelectWrapperDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId),
     'aria-autocomplete': 'list',
-    'aria-controls': dropdownId,
-    ...(isOpen && {
-      'aria-activedescendant': `option-${activeDescendantId}`,
-    }),
     ...(isRequired && {
       'aria-required': 'true',
     }),
@@ -78,13 +71,13 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
   const { top } = host.getBoundingClientRect();
 
-  const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
+  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 14; // 26 = 2 x 6px padding + 2px border
   const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 
 export const handleScroll = (host: HTMLElement, highlightedIndex: number): void => {
-  const hostElementHeightThreshold = 276; // based on 10 * OPTION_HEIGHT with some buffer
+  const hostElementHeightThreshold = 276; // TODO: probably wrong value, based on 10 * OPTION_HEIGHT with some buffer
   const { scrollHeight, scrollTop } = host;
 
   if (scrollHeight > hostElementHeightThreshold) {
