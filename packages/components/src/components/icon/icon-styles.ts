@@ -102,7 +102,7 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
-          '-webkit-animation': `${theme === 'light' ? 'rerender1' : 'rerender2'} 1ms`, // needed to enforce repaint in Safari if themes are switched programmatically.
+          '-webkit-animation': `${theme === 'light' ? 'rerender1' : 'rerender2'} 1ms`, // needed to enforce repaint in Safari if themes or colors are switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -115,22 +115,24 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
-      '@keyframes rerender1': {
-        '0%': {
-          transform: 'rotateZ(0)',
+      ...(!isColorInherit && {
+        '@keyframes rerender1': {
+          '0%': {
+            transform: 'rotateZ(0)',
+          },
+          '100%': {
+            transform: 'rotateZ(0)',
+          },
         },
-        '100%': {
-          transform: 'rotateZ(0)',
+        '@keyframes rerender2': {
+          '0%': {
+            transform: 'rotateZ(0)',
+          },
+          '100%': {
+            transform: 'rotateZ(0)',
+          },
         },
-      },
-      '@keyframes rerender2': {
-        '0%': {
-          transform: 'rotateZ(0)',
-        },
-        '100%': {
-          transform: 'rotateZ(0)',
-        },
-      },
+      }),
     },
   });
 };
