@@ -37,10 +37,9 @@ export const getColors = (
 } => {
   const themedColors = getThemedColors(theme);
 
-  const { primaryColor, contrastMediumColor, disabledColor } = themedColors;
+  const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = themedColors;
   const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
-  const borderColor = isSelected ? primaryColor : isDisabled ? disabledColor : themedColors.contrastMediumColor;
-  const hoverBorderColor = themedColors.primaryColor;
+  const borderColor = isSelected ? primaryColor : contrastLowColor;
 
   return isDisabled
     ? {
@@ -48,14 +47,14 @@ export const getColors = (
         buttonColor: disabledColor,
         labelColor: disabledColor,
         borderColor,
-        hoverBorderColor,
+        hoverBorderColor: primaryColor,
       }
     : {
         backgroundColor,
         buttonColor: primaryColor,
         labelColor: contrastMediumColor,
         borderColor,
-        hoverBorderColor,
+        hoverBorderColor: primaryColor,
       };
 };
 
