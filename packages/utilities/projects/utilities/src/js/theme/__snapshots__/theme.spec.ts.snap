@@ -97,6 +97,8 @@ exports[`should contain correct values for themeDark 1`] = `
 
 exports[`should contain correct values for themeDarkBackgroundBase 1`] = `"#0E0E12"`;
 
+exports[`should contain correct values for themeDarkBackgroundShading 1`] = `"rgba(1, 2, 5, 0.67)"`;
+
 exports[`should contain correct values for themeDarkBackgroundSurface 1`] = `"#212225"`;
 
 exports[`should contain correct values for themeDarkContrastHigh 1`] = `"#AFB0B3"`;
@@ -164,6 +166,8 @@ exports[`should contain correct values for themeLight 1`] = `
 `;
 
 exports[`should contain correct values for themeLightBackgroundBase 1`] = `"#FFF"`;
+
+exports[`should contain correct values for themeLightBackgroundShading 1`] = `"rgba(1, 2, 5, 0.67)"`;
 
 exports[`should contain correct values for themeLightBackgroundSurface 1`] = `"#EEEFF2"`;
 
