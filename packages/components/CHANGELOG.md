@@ -90,8 +90,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 ```
 
-- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`, `Radio Button Wrapper`,
-  `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`, `Toast` and `Text Field Wrapper` matches new design language
+- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
+  `Radio Button Wrapper`, `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`,
+  `Toast`, `Text Field Wrapper` and `Carousel` matches new design language
 - CSS global variables names
 
 ```diff
