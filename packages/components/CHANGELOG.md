@@ -102,7 +102,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Headline`  and `Text Field Wrapper` matches new design language
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Headline` and `Text Field Wrapper` matches
+  new design language
 - CSS global variables names
 
 ```diff
@@ -141,7 +142,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```diff
 - <p-headline variant="headline-1">The quick brown fox jumps over the lazy dog</p-headline>
 
-+ <p-heading variant="heading-1">The quick brown fox jumps over the lazy dog</p-heading>
++ <p-heading size="xx-large">The quick brown fox jumps over the lazy dog</p-heading>
 ```
 
 #### Removed
