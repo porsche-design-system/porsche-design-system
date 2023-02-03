@@ -258,6 +258,7 @@ export default class Code extends Vue {
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
+    border-radius: 4px;
   }
 
   button {
