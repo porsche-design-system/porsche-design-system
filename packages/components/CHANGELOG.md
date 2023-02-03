@@ -100,8 +100,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
-  `Radio Button Wrapper`, `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`,
-  `Toast`, `Grid`, `Flex` and `Text Field Wrapper` matches new design language
+  `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`,  and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -138,8 +138,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Removed
 
-- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper` and `Text Field Wrapper` (use normalize styles,
-  provided by `getInitialStyles()` partial instead)
+- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and
+  `Text Field Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
 - `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff

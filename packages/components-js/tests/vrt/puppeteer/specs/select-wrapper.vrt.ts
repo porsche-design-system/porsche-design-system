@@ -13,7 +13,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'select-wrapper', '/#select-wrapper', {
       scenario: async (page) => {
@@ -24,7 +24,7 @@ xit.each(defaultViewports)('should have no visual regression for viewport %s', a
   ).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('select-wrapper-states', async () => {
