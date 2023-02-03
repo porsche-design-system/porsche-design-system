@@ -7,17 +7,25 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
-import type { HeadingTag, HeadingVariant } from '@porsche-design-system/components/dist/types/bundle';
+import type {
+  HeadingTag,
+  HeadingSize,
+  BreakpointCustomizable,
+} from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initHeading = (opts?: { variant?: HeadingVariant; slot?: string; tag?: HeadingTag }): Promise<void> => {
-  const { variant, slot, tag } = opts;
+const initHeading = (opts?: {
+  size?: BreakpointCustomizable<HeadingSize>;
+  slot?: string;
+  tag?: HeadingTag;
+}): Promise<void> => {
+  const { size, slot, tag } = opts;
 
   const attrs = [
-    variant ? `variant="${typeof variant === 'object' ? JSON.stringify(variant).replace(/"/g, "'") : variant}"` : '',
+    size ? `size="${typeof size === 'object' ? JSON.stringify(size).replace(/"/g, "'") : size}"` : '',
     tag ? `tag="${tag}"` : '',
   ].join(' ');
 
@@ -36,38 +44,38 @@ const getHeadingTagName = async (): Promise<string> =>
   (await getHost()).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
 
 describe('tag', () => {
-  it('should render according to variant', async () => {
-    await initHeading({ variant: 'large-title' });
-    expect(await getHeadingTagName(), 'for variant="large-title"').toBe('H1');
+  it('should render according to size', async () => {
+    await initHeading({ size: 'large-title' });
+    expect(await getHeadingTagName(), 'for size="large-title"').toBe('H1');
 
-    await initHeading({ variant: 'heading-1' });
-    expect(await getHeadingTagName(), 'for variant="heading-1"').toBe('H1');
+    await initHeading({ size: 'xx-large' });
+    expect(await getHeadingTagName(), 'for size="xx-large"').toBe('H1');
 
-    await initHeading({ variant: 'heading-2' });
-    expect(await getHeadingTagName(), 'for variant="heading-2"').toBe('H2');
+    await initHeading({ size: 'x-large' });
+    expect(await getHeadingTagName(), 'for size="x-large"').toBe('H2');
 
-    await initHeading({ variant: 'heading-3' });
-    expect(await getHeadingTagName(), 'for variant="heading-3"').toBe('H3');
+    await initHeading({ size: 'large' });
+    expect(await getHeadingTagName(), 'for size="large"').toBe('H3');
 
-    await initHeading({ variant: 'heading-4' });
-    expect(await getHeadingTagName(), 'for variant="heading-4"').toBe('H4');
+    await initHeading({ size: 'medium' });
+    expect(await getHeadingTagName(), 'for size="medium"').toBe('H4');
 
-    await initHeading({ variant: 'heading-5' });
-    expect(await getHeadingTagName(), 'for variant="heading-5"').toBe('H5');
+    await initHeading({ size: 'small' });
+    expect(await getHeadingTagName(), 'for size="small"').toBe('H5');
   });
 
-  it('should render according to tag h6 when variant is set', async () => {
-    await initHeading({ variant: 'large-title', tag: 'h6' });
+  it('should render according to tag h6 when size is set', async () => {
+    await initHeading({ size: 'large-title', tag: 'h6' });
     expect(await getHeadingTagName()).toBe('H6');
   });
 
-  it('should render as default if variant is a size object without tag', async () => {
-    await initHeading({ variant: { base: 'large' } });
+  it('should render as default if size is a size object without tag', async () => {
+    await initHeading({ size: { base: 'large' } });
     expect(await getHeadingTagName()).toBe('H1');
   });
 
   it('should render according to tag h6 if size is set', async () => {
-    await initHeading({ variant: { base: 'large' }, tag: 'h6' });
+    await initHeading({ size: { base: 'large' }, tag: 'h6' });
     expect(await getHeadingTagName()).toBe('H6');
   });
 
@@ -84,7 +92,7 @@ describe('tag', () => {
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
-    await initHeading({ variant: 'heading-1' });
+    await initHeading({ size: 'xx-large' });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-heading'], 'componentDidLoad: p-heading').toBe(1);
@@ -94,7 +102,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips with custom breakpoints', async () => {
-    await initHeading({ variant: { base: 'small', l: 'large' } });
+    await initHeading({ size: { base: 'small', l: 'large' } });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-heading'], 'componentDidLoad: p-heading').toBe(1);
@@ -104,10 +112,10 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after prop change', async () => {
-    await initHeading({ variant: 'heading-1' });
+    await initHeading({ size: 'xx-large' });
     const host = await getHost();
 
-    await setProperty(host, 'variant', 'heading-4');
+    await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
@@ -116,10 +124,10 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after state change with custom breakpoints', async () => {
-    await initHeading({ variant: { base: 'small', l: 'large' } });
+    await initHeading({ size: { base: 'small', l: 'large' } });
     const host = await getHost();
 
-    await setProperty(host, 'variant', 'heading-4');
+    await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
@@ -128,7 +136,7 @@ describe('lifecycle', () => {
   });
 
   it('should have a theme prop defined at any time without any unnecessary round trips', async () => {
-    await initHeading({ variant: 'large-title' });
+    await initHeading({ size: 'large-title' });
     const host = await getHost();
 
     expect(await getProperty(host, 'theme')).toBe('light');
