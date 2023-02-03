@@ -14,7 +14,7 @@ import type { ScrollIndicatorPosition } from './scroller-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const gradientColorMap: { [key in Theme]: Record<GradientColorTheme, string> } = {
+const gradientColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
   light: {
     default: '255,255,255',
     surface: '238,239,242',
@@ -68,7 +68,6 @@ export const getComponentCss = (
       button: {
         display: 'flex',
         pointerEvents: 'auto',
-        position: 'static',
         alignItems: 'center',
         justifyContent: 'center',
         ...textSmallStyle,
@@ -81,13 +80,11 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
-        ...(!isDarkTheme && {
-          ...dropShadowLowStyle,
-        }),
+        ...(!isDarkTheme && dropShadowLowStyle),
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
-            backgroundColor: hoverColor,
+            background: hoverColor,
             ...(isDarkTheme && {
               '& > .icon': {
                 filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
