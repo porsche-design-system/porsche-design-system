@@ -25,6 +25,10 @@ export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXl = getMediaQueryMin('xl');
+// the speed which "splide" framework uses to switch between slides
+const splideSpeed = '0.4s';
+const bulletSize = '8px';
+const activeBulletWidth = '20px';
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -137,20 +141,21 @@ export const getComponentCss = (
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
         textAlign: 'center',
-        lineHeight: '8px',
+        lineHeight: bulletSize,
       },
       bullet: {
         display: 'inline-block',
         borderRadius: borderRadiusSmall,
         background: disabledColor,
-        margin: '0 4px',
-        transition: 'background-color 0.5s, width 0.5s',
-        width: '8px',
-        height: '8px',
+        margin: `0 ${spacingStaticXSmall}`,
+        // set transition to have the same speed as switching slides in splide
+        transition: `background-color ${splideSpeed}, width ${splideSpeed}`,
+        width: bulletSize,
+        height: bulletSize,
       },
       [bulletActiveClass]: {
         background: primaryColor,
-        width: '20px',
+        width: activeBulletWidth,
       },
     }),
   });
