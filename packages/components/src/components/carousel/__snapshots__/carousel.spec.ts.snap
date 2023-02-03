@@ -20,7 +20,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "i18n": {},
     "mediaQuery": "min",
     "padding": {
-      "right": "7%",
+      "right": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
     },
     "pagination": false,
     "perMove": 1,

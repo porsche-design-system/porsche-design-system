@@ -443,7 +443,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -518,7 +518,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
 }
 "
@@ -554,7 +554,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -611,7 +611,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
 }
 "
