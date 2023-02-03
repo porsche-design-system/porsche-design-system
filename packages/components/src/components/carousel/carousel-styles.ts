@@ -42,11 +42,6 @@ export const getComponentCss = (
         marginRight: 'auto',
         gap: spacingFluidMedium,
         gridAutoFlow: 'row',
-        /*
-        [mediaQueryXl]: {
-          gap: '32px',
-        },
-         */
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXLargeStyle,
