@@ -153,6 +153,7 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "alignHeader": "left",
       "description": null,
       "disablePagination": false,
       "heading": null,
