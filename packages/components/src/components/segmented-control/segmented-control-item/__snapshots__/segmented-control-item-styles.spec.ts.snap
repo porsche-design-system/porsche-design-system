@@ -11,7 +11,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #7E7F82;
+  border: 2px solid #404044;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
@@ -71,7 +71,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #949598;
+  border: 2px solid #D8D8DB;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
@@ -131,7 +131,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #7E7F82;
+  border: 2px solid #404044;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
@@ -191,7 +191,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #949598;
+  border: 2px solid #D8D8DB;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
@@ -311,7 +311,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #949598;
+  border: 2px solid #D8D8DB;
   transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
