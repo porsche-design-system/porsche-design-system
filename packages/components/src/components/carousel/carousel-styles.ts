@@ -16,8 +16,9 @@ import {
   spacingFluidMedium,
   spacingStaticXSmall,
   spacingStaticSmall,
+  spacingFluidXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { HeaderAlign } from '../../types';
+import type { HeaderAlign } from '../../types';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -59,7 +60,7 @@ export const getComponentCss = (
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
-        padding: `${spacingStaticXSmall} 0 0`,
+        padding: `${spacingFluidXSmall} 0 0`,
         ...(isAlignLeft
           ? {
               maxWidth: '550px',

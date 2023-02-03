@@ -32,7 +32,7 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { ButtonPure } from '../button-pure/button-pure';
+import type { ButtonPure } from '../button-pure/button-pure';
 import { spacingStaticLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
