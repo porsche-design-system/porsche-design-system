@@ -76,7 +76,7 @@ p,::slotted([slot=description]) {
   border-radius: 4px;
   background: #949598;
   margin: 0 4px;
-  transition: background-color 0.5s, width 0.5s;
+  transition: background-color 0.4s, width 0.4s;
   width: 8px;
   height: 8px;
 }
@@ -204,7 +204,7 @@ p,::slotted([slot=description]) {
   border-radius: 4px;
   background: #7E7F82;
   margin: 0 4px;
-  transition: background-color 0.5s, width 0.5s;
+  transition: background-color 0.4s, width 0.4s;
   width: 8px;
   height: 8px;
 }
@@ -305,7 +305,7 @@ p,::slotted([slot=description]) {
   border-radius: 4px;
   background: #949598;
   margin: 0 4px;
-  transition: background-color 0.5s, width 0.5s;
+  transition: background-color 0.4s, width 0.4s;
   width: 8px;
   height: 8px;
 }
@@ -493,7 +493,7 @@ p,::slotted([slot=description]) {
   border-radius: 4px;
   background: #949598;
   margin: 0 4px;
-  transition: background-color 0.5s, width 0.5s;
+  transition: background-color 0.4s, width 0.4s;
   width: 8px;
   height: 8px;
 }
