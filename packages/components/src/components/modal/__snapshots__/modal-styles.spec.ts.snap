@@ -33,10 +33,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
-  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 0 8px 8px !important;
 }
 h2 {
@@ -125,10 +129,12 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 0 8px 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -219,10 +225,12 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 0 8px 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -313,10 +321,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -405,9 +417,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -499,10 +513,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -591,9 +609,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -685,10 +705,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -906,10 +930,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
-  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 0 8px 8px !important;
 }
 h2 {
@@ -998,10 +1026,12 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 0 8px 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1092,10 +1122,12 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 0 8px 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1186,10 +1218,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -1278,9 +1314,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -1372,10 +1410,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
@@ -1464,9 +1506,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -32px !important;
-  border-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
   border-radius: 0 !important;
 }
 h2 {
