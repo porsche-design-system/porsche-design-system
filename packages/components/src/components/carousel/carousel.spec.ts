@@ -78,14 +78,14 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  xit('should call getSplideBreakpoints() with correct parameters', () => {
+  it('should call getSplideBreakpoints() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3, { base: '0.5rem', l: '2rem', s: '1rem' });
+    expect(spy).toBeCalledWith(3, { base: '16px', l: '32px', s: '32px' });
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
@@ -98,7 +98,7 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(component.intl);
   });
 
-  xit('should call Splide constructor with correct parameters and set this.splide', () => {
+  it('should call Splide constructor with correct parameters and set this.splide', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
