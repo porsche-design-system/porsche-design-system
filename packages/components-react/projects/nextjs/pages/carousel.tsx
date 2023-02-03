@@ -261,6 +261,30 @@ const CarouselPage: NextPage = (): JSX.Element => {
           <div>Slide 3</div>
         </PCarousel>
       </div>
+
+      <div className="playground light" title="should render carousel with alignHeader=center on light background">
+        <PCarousel heading="Aligned header" alignHeader="center" description="Description">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with alignHeader=center and wrap-content=true on light background"
+      >
+        <PCarousel
+          heading="Aligned header with wrapped content"
+          alignHeader="center"
+          wrapContent={true}
+          description="Description"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
     </>
   );
 };
