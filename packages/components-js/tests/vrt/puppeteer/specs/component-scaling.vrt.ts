@@ -21,6 +21,7 @@ const components = [
   'tag-dismissible',
   'text-field-wrapper',
   'textarea-wrapper',
+  'carousel',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
