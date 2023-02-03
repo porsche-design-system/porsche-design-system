@@ -7,14 +7,14 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "arrows": false,
     "breakpoints": {
       "0": {
-        "gap": "0.5rem",
+        "gap": "16px",
         "perPage": 1,
       },
       "1300": {
-        "gap": "2rem",
+        "gap": "32px",
       },
       "760": {
-        "gap": "1rem",
+        "gap": "32px",
       },
     },
     "i18n": {},

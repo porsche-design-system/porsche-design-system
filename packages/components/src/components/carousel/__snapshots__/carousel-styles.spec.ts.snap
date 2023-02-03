@@ -3,58 +3,28 @@
 exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 56.25rem !important;
+  color: #010205 !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 34.375rem !important;
+  color: #010205 !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
@@ -90,46 +60,45 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  gap: 1rem;
-}
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 .pagination {
   display: none;
-  grid-auto-columns: 0.5rem;
-  grid-auto-flow: column;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 0.5rem;
+  text-align: center;
+  line-height: 8px;
 }
 .bullet {
-  border-radius: 0.25rem;
-  background: #96989a;
+  display: inline-block;
+  border-radius: 4px;
+  background: #949598;
+  margin: 0 4px;
+  transition: background-color 0.5s, width 0.5s;
+  width: 8px;
+  height: 8px;
 }
 .bullet--active {
-  background: #000;
+  background: #010205;
+  width: 20px;
 }
 @media(min-width:480px) {
   .pagination {
-    display: grid;
+    display: block;
   }
 }
 
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -141,7 +110,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1000px) {
   .pagination {
-    display: grid;
+    display: block;
   }
 }
 
@@ -152,11 +121,8 @@ p,::slotted([slot=description]) {
 }
 
 @media(min-width:1760px) {
-  .header {
-    gap: 1.5rem;
-  }
   .pagination {
-    display: grid;
+    display: block;
   }
 }
 "
@@ -165,58 +131,28 @@ p,::slotted([slot=description]) {
 exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #fff !important;
-  max-width: 56.25rem !important;
+  color: #FBFCFF !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #fff !important;
-  max-width: 34.375rem !important;
+  color: #FBFCFF !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
@@ -252,49 +188,42 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  gap: 1rem;
-}
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 .pagination {
-  display: grid;
-  grid-auto-columns: 0.5rem;
-  grid-auto-flow: column;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 0.5rem;
+  display: block;
+  text-align: center;
+  line-height: 8px;
 }
 .bullet {
-  border-radius: 0.25rem;
-  background: #7c7f81;
+  display: inline-block;
+  border-radius: 4px;
+  background: #7E7F82;
+  margin: 0 4px;
+  transition: background-color 0.5s, width 0.5s;
+  width: 8px;
+  height: 8px;
 }
 .bullet--active {
-  background: #fff;
+  background: #FBFCFF;
+  width: 20px;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
     right: 0;
     bottom: 0;
-  }
-}
-
-@media(min-width:1760px) {
-  .header {
-    gap: 1.5rem;
   }
 }
 "
@@ -303,58 +232,28 @@ p,::slotted([slot=description]) {
 exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 56.25rem !important;
+  color: #010205 !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 34.375rem !important;
+  color: #010205 !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
@@ -390,49 +289,42 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  gap: 1rem;
-}
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 .pagination {
-  display: grid;
-  grid-auto-columns: 0.5rem;
-  grid-auto-flow: column;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 0.5rem;
+  display: block;
+  text-align: center;
+  line-height: 8px;
 }
 .bullet {
-  border-radius: 0.25rem;
-  background: #96989a;
+  display: inline-block;
+  border-radius: 4px;
+  background: #949598;
+  margin: 0 4px;
+  transition: background-color 0.5s, width 0.5s;
+  width: 8px;
+  height: 8px;
 }
 .bullet--active {
-  background: #000;
+  background: #010205;
+  width: 20px;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
     right: 0;
     bottom: 0;
-  }
-}
-
-@media(min-width:1760px) {
-  .header {
-    gap: 1.5rem;
   }
 }
 "
@@ -441,58 +333,28 @@ p,::slotted([slot=description]) {
 exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 56.25rem !important;
+  color: #010205 !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 34.375rem !important;
+  color: #010205 !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
@@ -528,34 +390,24 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  gap: 1rem;
-}
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
     right: 0;
     bottom: 0;
-  }
-}
-
-@media(min-width:1760px) {
-  .header {
-    gap: 1.5rem;
   }
 }
 "
@@ -564,64 +416,34 @@ p,::slotted([slot=description]) {
 exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 56.25rem !important;
+  color: #010205 !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 34.375rem !important;
+  color: #010205 !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -653,56 +475,50 @@ p,::slotted([slot=description]) {
   -webkit-touch-callout: none;
 }
 .header {
-  display: grid;
-  gap: 1rem;
-  padding: 0 max(1rem, 7vw);
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
 }
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 .pagination {
-  display: grid;
-  grid-auto-columns: 0.5rem;
-  grid-auto-flow: column;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 0.5rem;
+  display: block;
+  text-align: center;
+  line-height: 8px;
 }
 .bullet {
-  border-radius: 0.25rem;
-  background: #96989a;
+  display: inline-block;
+  border-radius: 4px;
+  background: #949598;
+  margin: 0 4px;
+  transition: background-color 0.5s, width 0.5s;
+  width: 8px;
+  height: 8px;
 }
 .bullet--active {
-  background: #000;
+  background: #010205;
+  width: 20px;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: clamp(22px, 10.625vw - 12px, 192px);
     bottom: 0;
   }
 }
 
 @media(min-width:1760px) {
   .splide__track {
-    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
-  }
-  .header {
-    gap: 1.5rem;
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
 }
 "
@@ -711,64 +527,34 @@ p,::slotted([slot=description]) {
 exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 120rem !important;
+  max-width: 1920px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  gap: 1.5rem !important;
+  gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
 h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
+  font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 56.25rem !important;
+  color: #010205 !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   margin: 0 !important;
-  color: #000 !important;
-  max-width: 34.375rem !important;
+  color: #010205 !important;
+  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    gap: 2rem !important;
-  }
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-  }
-}
-
 .splide {
   overflow: hidden;
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -800,41 +586,32 @@ p,::slotted([slot=description]) {
   -webkit-touch-callout: none;
 }
 .header {
-  display: grid;
-  gap: 1rem;
-  padding: 0 max(1rem, 7vw);
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
 }
 .nav {
   display: none;
 }
 .btn {
-  padding: 0.5rem;
+  padding: 8px;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) 5rem;
     position: relative;
-    min-height: 2.5rem;
+    min-height: 40px;
   }
   .nav {
     display: grid;
     grid-auto-flow: column;
+    gap: 4px;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: clamp(22px, 10.625vw - 12px, 192px);
     bottom: 0;
   }
 }
 
 @media(min-width:1760px) {
   .splide__track {
-    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
-  }
-  .header {
-    gap: 1.5rem;
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + 7%) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
 }
 "
