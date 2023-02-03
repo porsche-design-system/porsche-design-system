@@ -1,5 +1,5 @@
-import type { TextSize } from '../../types';
-import type { HeadingVariantCustom, HeadingTag } from '../heading/heading-utils';
+import type { TextSize, BreakpointCustomizable, HeadingSize } from '../../types';
+import type { HeadingTag } from '../heading/heading-utils';
 import { hasSlottedHeadingTag } from '../heading/heading-utils';
 
 export const HEADLINE_VARIANTS_DEPRECATED = [
@@ -13,12 +13,16 @@ export const HEADLINE_VARIANTS_DEPRECATED = [
 
 export type HeadlineVariantTypeDeprecated = typeof HEADLINE_VARIANTS_DEPRECATED[number];
 
+export type HeadingVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
+
 export type HeadlineVariantDeprecated =
   | HeadlineVariantTypeDeprecated
   | HeadingVariantCustom
   | Extract<TextSize, 'inherit'>;
 
-export const isHeadlineVariantType = (variant: HeadlineVariantDeprecated): boolean => {
+export const isHeadlineVariantType = (
+  variant: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated
+): boolean => {
   return HEADLINE_VARIANTS_DEPRECATED.includes(variant as HeadlineVariantTypeDeprecated);
 };
 

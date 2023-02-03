@@ -1,65 +1,46 @@
 import type { JssStyle } from 'jss';
-import type { HeadingVariant, TextAlign, TextColor, TextSize, Theme, HeadingVariantType } from '../../types';
-import { buildResponsiveStyles, getCss, textMap } from '../../utils';
+import type { TextAlign, TextColor, Theme, HeadingSize } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
-import {
-  headingLargeStyle,
-  headingXLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  headingXXLargeStyle,
-  fontWeight,
-  textSmallStyle,
-  displayLargeStyle,
-} from '@porsche-design-system/utilities-v2';
+import { fontWeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { isHeadingVariantType } from './heading-utils';
 import type { HeadlineVariantDeprecated } from '../headline/headline-utils';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { isHeadlineVariantType, HeadlineVariantTypeDeprecated } from '../headline/headline-utils';
+import { isHeadlineVariantType } from '../headline/headline-utils';
+import { BreakpointCustomizable } from '../../types';
+import { headingMap } from '../../utils/typography/headingMap';
 
-const headingMap: Record<HeadingVariantType | HeadlineVariantTypeDeprecated, JssStyle> = {
-  'large-title': displayLargeStyle,
-  'heading-1': headingXXLargeStyle,
-  'heading-2': headingXLargeStyle,
-  'heading-3': headingLargeStyle,
-  'heading-4': headingMediumStyle,
-  'heading-5': headingSmallStyle,
-  'headline-1': headingXXLargeStyle, // deprecated
-  'headline-2': headingXLargeStyle, // deprecated
-  'headline-3': headingLargeStyle, // deprecated
-  'headline-4': headingMediumStyle, // deprecated
-  'headline-5': headingSmallStyle, // deprecated
+// needed for deprecated p-headline
+export const getVariantJssStyle = (
+  variant: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated
+): JssStyle => {
+  return headingMap[variant as HeadingSize];
 };
 
-export const getVariantJssStyle = (variant: HeadingVariant | HeadlineVariantDeprecated): JssStyle => {
-  return headingMap[variant as HeadingVariantType];
-};
-
-export const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+export const getSizeJssStyle = (headingSize: HeadingSize): JssStyle => {
   const { semiBold: fontWeightSemiBold } = fontWeight;
-  return textSize === 'inherit'
+  return headingSize === 'inherit'
     ? {
-        fontSize: textSize,
+        fontSize: headingSize,
         fontWeight: fontWeightSemiBold,
       }
     : {
-        font: textMap[textSize].font.replace('400', fontWeightSemiBold),
+        font: headingMap[headingSize].font.replace('400', fontWeightSemiBold),
       };
 };
 
 export const getComponentCss = (
-  variant: HeadingVariant | HeadlineVariantDeprecated,
+  size: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated,
   align: TextAlign,
   color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
   ellipsis: boolean,
   theme: Theme
 ): string => {
-  return getSharedHeadingHeadlineStyles(variant, align, color, ellipsis, theme);
+  return getSharedHeadingHeadlineStyles(size, align, color, ellipsis, theme);
 };
 
 export const getSharedHeadingHeadlineStyles = (
-  variant: HeadingVariant | HeadlineVariantDeprecated,
+  size: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated,
   align: TextAlign,
   color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
   ellipsis: boolean,
@@ -81,11 +62,11 @@ export const getSharedHeadingHeadlineStyles = (
       textAlign: align,
       color: color === 'inherit' ? 'inherit' : getThemedColors(theme).primaryColor,
       whiteSpace: 'inherit',
-      ...(isHeadingVariantType(variant) || isHeadlineVariantType(variant)
-        ? getVariantJssStyle(variant)
+      ...(isHeadlineVariantType(size)
+        ? getVariantJssStyle(size)
         : {
             ...textSmallStyle,
-            ...buildResponsiveStyles(variant, getSizeJssStyle),
+            ...buildResponsiveStyles(size, getSizeJssStyle),
             overflowWrap: null,
             hyphens: null,
           }),

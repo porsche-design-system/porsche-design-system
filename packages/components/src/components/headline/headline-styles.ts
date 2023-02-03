@@ -1,9 +1,9 @@
-import type { HeadingVariant, TextAlign, TextColor, Theme } from '../../types';
+import type { TextAlign, TextColor, Theme } from '../../types';
 import type { HeadlineVariantDeprecated } from '../headline/headline-utils';
 import { getSharedHeadingHeadlineStyles } from '../heading/heading-styles';
 
 export const getComponentCss = (
-  variant: HeadingVariant | HeadlineVariantDeprecated,
+  variant: HeadlineVariantDeprecated,
   align: TextAlign,
   color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
   ellipsis: boolean,

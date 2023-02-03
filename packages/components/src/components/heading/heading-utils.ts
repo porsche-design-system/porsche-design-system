@@ -1,26 +1,17 @@
-import type { BreakpointCustomizable, TextSize } from '../../types';
 import { getHTMLElement } from '../../utils';
+import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import { HeadlineVariantTypeDeprecated } from '../headline/headline-utils';
 
-export const HEADING_VARIANTS = [
-  'large-title',
-  'heading-1',
-  'heading-2',
-  'heading-3',
-  'heading-4',
-  'heading-5',
-] as const;
-
-export type HeadingVariantType = typeof HEADING_VARIANTS[number];
-
-export type HeadingVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
-
-export type HeadingVariant = HeadingVariantType | HeadingVariantCustom | Extract<TextSize, 'inherit'>;
+export const HEADING_SIZES = ['large-title', 'xx-large', 'x-large', 'large', 'medium', 'small', 'inherit'] as const;
+export type HeadingSize = typeof HEADING_SIZES[number];
 
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = typeof HEADING_TAGS[number];
 
-export const isHeadingVariantType = (variant: HeadingVariant): boolean => {
-  return HEADING_VARIANTS.includes(variant as HeadingVariantType);
+export const isHeadingSizeType = (
+  variant: HeadingSize | BreakpointCustomizable<HeadingSize> | HeadlineVariantTypeDeprecated
+): boolean => {
+  return HEADING_SIZES.includes(variant as HeadingSize);
 };
 
 export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
@@ -29,23 +20,28 @@ export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
 
-const headingVariantToTagMap: { [key in HeadingVariantType]: string } = {
+export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
   'large-title': 'h1',
-  'heading-1': 'h1',
-  'heading-2': 'h2',
-  'heading-3': 'h3',
-  'heading-4': 'h4',
-  'heading-5': 'h5',
+  'xx-large': 'h1',
+  'x-large': 'h2',
+  large: 'h3',
+  medium: 'h4',
+  small: 'h5',
+  inherit: 'h1',
 };
 
-export const getHeadingTagName = (host: HTMLElement, variant?: HeadingVariant, tag?: HeadingTag): string => {
+export const getHeadingTagName = (
+  host: HTMLElement,
+  size?: HeadingSize | BreakpointCustomizable<HeadingSize>,
+  tag?: HeadingTag
+): string => {
   if (hasSlottedHeadingTag(host)) {
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isHeadingVariantType(variant)) {
+  } else if (!isHeadingSizeType(size)) {
     return 'h1';
   } else {
-    return headingVariantToTagMap[variant as HeadingVariantType];
+    return headingSizeToTagMap[size as HeadingSize];
   }
 };

@@ -7,13 +7,13 @@ import {
   TEXT_ALIGNS,
   validateProps,
 } from '../../utils';
-import type { PropTypes, TextAlign, TextColor, Theme } from '../../types';
-import type { HeadingTag, HeadingVariant } from './heading-utils';
-import { getHeadingTagName, HEADING_TAGS } from './heading-utils';
+import type { HeadingSize, PropTypes, TextAlign, TextColor, Theme, BreakpointCustomizable } from '../../types';
+import type { HeadingTag } from './heading-utils';
+import { getHeadingTagName, HEADING_SIZES, HEADING_TAGS } from './heading-utils';
 import { getComponentCss } from './heading-styles';
 
-const propTypes: Omit<PropTypes<typeof Heading>, 'variant'> = {
-  // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
+const propTypes: PropTypes<typeof Heading> = {
+  size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
   tag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<Extract<TextColor, 'primary' | 'default' | 'inherit'>>(['primary', 'default', 'inherit']),
@@ -28,8 +28,8 @@ const propTypes: Omit<PropTypes<typeof Heading>, 'variant'> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Predefined style of the heading. */
-  @Prop() public variant?: HeadingVariant = 'heading-1';
+  /** Size of the heading. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
+  @Prop() public size?: BreakpointCustomizable<HeadingSize> = 'xx-large';
 
   /** Sets a custom HTML tag depending on the usage of the heading component. */
   @Prop() public tag?: HeadingTag;
@@ -48,9 +48,9 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
-    const TagName = getHeadingTagName(this.host, this.variant, this.tag);
+    const TagName = getHeadingTagName(this.host, this.size, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

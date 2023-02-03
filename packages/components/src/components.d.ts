@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadingTag, HeadingVariant } from "./components/heading/heading-utils";
+import { HeadingTag } from "./components/heading/heading-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
@@ -386,6 +386,10 @@ export namespace Components {
          */
         "ellipsis"?: boolean;
         /**
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
           * Sets a custom HTML tag depending on the usage of the heading component.
          */
         "tag"?: HeadingTag;
@@ -393,10 +397,6 @@ export namespace Components {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        /**
-          * Predefined style of the heading.
-         */
-        "variant"?: HeadingVariant;
     }
     interface PHeadline {
         /**
@@ -2036,6 +2036,10 @@ declare namespace LocalJSX {
          */
         "ellipsis"?: boolean;
         /**
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
           * Sets a custom HTML tag depending on the usage of the heading component.
          */
         "tag"?: HeadingTag;
@@ -2043,10 +2047,6 @@ declare namespace LocalJSX {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        /**
-          * Predefined style of the heading.
-         */
-        "variant"?: HeadingVariant;
     }
     interface PHeadline {
         /**

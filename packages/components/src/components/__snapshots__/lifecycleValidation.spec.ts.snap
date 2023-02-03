@@ -149,6 +149,7 @@ exports[`should call validateProps() with correct parameters via render for p-he
   "align": "oneOf",
   "color": "oneOf",
   "ellipsis": "boolean",
+  "size": "breakpoint",
   "tag": "oneOf",
   "theme": "oneOf",
 }
