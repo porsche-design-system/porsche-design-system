@@ -1,11 +1,18 @@
 import {
   addImportantToRule,
+  getInsetJssStyle,
   getInvertedThemedColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
 } from '../../../styles';
-import { borderRadiusSmall, fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusMedium,
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
@@ -109,22 +116,22 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         fontSize: 'inherit',
         whiteSpace: 'nowrap',
         width: 'max-content',
-        // '&:focus::before': {
-        //   content: '""',
-        //   position: 'absolute',
-        //   ...getInsetJssStyle(-4),
-        //   border: `${borderWidthBase} solid ${focusColor}`,
-        //   borderRadius: borderRadiusMedium,
-        // },
-        // '&:focus:not(:focus-visible)::before': {
-        //   borderColor: 'transparent',
-        // },
+        '&:focus::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-4),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusMedium,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
         ...(isStateCurrentOrUndefined
           ? // counter circle icon via css
             {
               cursor: isDisabled ? 'not-allowed' : 'auto',
               // TODO: combine &::before and &::after element
-              '&::before': {
+              '&::after': {
                 // circle of counter element
                 gridArea: '1 / 1 / 1 / 1',
                 content: '""',
@@ -162,11 +169,9 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           isDisabled
           ? {
               cursor: 'not-allowed',
-              textDecoration: 'none',
             }
           : {
               cursor: 'pointer',
-              textDecoration: 'underline',
               ...hoverMediaQuery({
                 transition: getTransition('background-color'),
                 '&:hover': {
