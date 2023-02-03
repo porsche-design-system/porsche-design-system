@@ -7,11 +7,11 @@ import {
 import type { GetThemedMarkup } from '../helpers';
 import { forceFocusState, getThemedBodyMarkup, setContentWithDesignSystem } from '../helpers';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tabs', '/#tabs')).toBeFalsy();
 });
 
-xit('should have no visual regression for :focus-visible', async () => {
+it('should have no visual regression for :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('tabs-states', async () => {
@@ -43,7 +43,7 @@ xit('should have no visual regression for :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'], states: ['focus'] })
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'], states: ['focus'] })
       );
 
       await forceFocusState(page, '.focus > p-tabs p-tabs-item');

@@ -19,6 +19,8 @@ const components = [
   'scroller',
   'select-wrapper',
   'spinner',
+  'tabs',
+  'tabs-bar',
   'tag',
   'tag-dismissible',
   'text-field-wrapper',
