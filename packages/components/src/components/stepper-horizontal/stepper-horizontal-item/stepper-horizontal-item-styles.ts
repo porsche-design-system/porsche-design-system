@@ -1,18 +1,14 @@
 import {
   addImportantToRule,
-  getInsetJssStyle,
+  getFocusJssStyle,
+  getHoverJssStyle,
   getInvertedThemedColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
+  pxToRemWithUnit,
 } from '../../../styles';
-import {
-  borderRadiusMedium,
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
@@ -33,34 +29,23 @@ const getColors = (
   primaryColor: string;
   hoverColor: string;
   iconColor: string;
-  iconDisabledColor: string;
   invertedBaseColor: string;
   disabledColor: string;
-  focusColor: string;
 } => {
-  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, warningColor, successColor, disabledColor } = getThemedColors(theme);
 
-  const stateToColorMap: { [key in Theme]: Record<StepperState, string> } = {
-    light: {
-      current: 'inherit',
-      complete: 'invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)', // We need tokens for this.
-      warning: 'invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%)',
-    },
-    dark: {
-      current: 'inherit',
-      complete: 'invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%)',
-      warning: 'invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%)',
-    },
+  const stateToColorMap: Record<StepperState, string> = {
+    current: 'inherit',
+    complete: successColor,
+    warning: warningColor,
   };
 
   return {
     primaryColor,
     hoverColor,
-    iconColor: stateToColorMap[theme][state],
-    iconDisabledColor: 'invert(40%) sepia(2%) saturate(686%) hue-rotate(187deg) brightness(80%) contrast(94%)', // Is not defined!
+    iconColor: stateToColorMap[state],
     invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
     disabledColor,
-    focusColor,
   };
 };
 
@@ -76,8 +61,7 @@ const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2
 const counterValueSize = spriteHeight;
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
-  const { primaryColor, hoverColor, iconColor, iconDisabledColor, invertedBaseColor, disabledColor, focusColor } =
-    getColors(state, theme);
+  const { primaryColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColors(state, theme);
   const isStateCurrentOrUndefined = !state || state === 'current';
   const isDisabled = !state || disabled;
 
@@ -100,40 +84,24 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         },
       },
       button: {
-        display: 'grid',
-        gridTemplateColumns: `${fontLineHeight} minmax(0, auto)`,
-        rowGap: '2px',
         position: 'relative',
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: '4px',
+        padding: `0 0 0 calc(${fontLineHeight} + ${pxToRemWithUnit(4)})`, // icon height + 4px
         background: 0,
         border: 0,
-        outline: 0,
-        borderRadius: borderRadiusSmall,
         ...textSmallStyle,
         fontSize: 'inherit',
         whiteSpace: 'nowrap',
-        width: 'max-content',
-        '&:focus::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-4),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusMedium,
-        },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
+        ...getFocusJssStyle(),
         ...(isStateCurrentOrUndefined
           ? // counter circle icon via css
             {
               cursor: isDisabled ? 'not-allowed' : 'auto',
               // TODO: combine &::before and &::after element
-              '&::after': {
+              '&::before': {
                 // circle of counter element
-                gridArea: '1 / 1 / 1 / 1',
                 content: '""',
                 position: 'absolute',
                 top: '50%',
@@ -142,57 +110,55 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                 height: counterCircleSize,
                 width: counterCircleSize,
                 borderRadius: '50%',
-                background: `${getSvg(
-                  isDisabled ? disabledColor : invertedBaseColor
-                )} 0 50% / ${spriteWidth} ${spriteHeight} no-repeat`,
                 ...(isDisabled
                   ? {
                       boxSizing: 'border-box',
                       border: `1px solid ${disabledColor}`,
                     }
                   : {
-                      backgroundColor: primaryColor,
+                      background: primaryColor,
                     }),
               },
-              // '&::after': {
-              //   // value of counter element
-              //   content: '""',
-              //   position: 'absolute',
-              //   top: '50%',
-              //   transform: 'translateY(-50%)',
-              //   left: counterValuePosition,
-              //   width: counterValueSize,
-              //   height: counterValueSize,
-              // },
+              '&::after': {
+                // value of counter element
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                left: counterValuePosition,
+                width: counterValueSize,
+                height: counterValueSize,
+                background: `${getSvg(
+                  isDisabled ? disabledColor : invertedBaseColor
+                )} 0 50% / ${spriteWidth} ${spriteHeight} no-repeat`,
+              },
             }
           : // other icons via icon component
           isDisabled
           ? {
               cursor: 'not-allowed',
+              textDecoration: 'none',
             }
           : {
               cursor: 'pointer',
+              textDecoration: 'underline',
               ...hoverMediaQuery({
-                transition: getTransition('background-color'),
-                '&:hover': {
-                  backgroundColor: hoverColor,
+                ...getHoverJssStyle(),
+                '&:hover .icon': {
+                  color: hoverColor,
                 },
               }),
             }),
       },
     },
-    label: {
-      gridArea: '1 / 2 / 1 / 2',
-    },
     ...(!isStateCurrentOrUndefined && {
       // other icons via icon component
       icon: {
-        gridArea: '1 / 1 / 1 / 1',
         position: 'absolute',
         left: 0,
         height: fontLineHeight,
         width: fontLineHeight,
-        filter: isDisabled ? iconDisabledColor : iconColor,
+        color: isDisabled ? disabledColor : iconColor,
         transition: getTransition('color'),
       },
     }),
