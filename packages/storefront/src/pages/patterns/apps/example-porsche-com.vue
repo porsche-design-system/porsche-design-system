@@ -44,7 +44,7 @@
       >
         <img src="./assets/compare.png" width="1207" height="414" alt="" />
         <template #top>
-          <p-heading variant="heading-3" tag="h2">Vergleichen alle unsere Modelle</p-heading>
+          <p-heading size="large" tag="h2">Vergleichen alle unsere Modelle</p-heading>
           <p-text
             >Vergleiche alle unsere Modelle Verbrenner, Hybrid und E-Modelle miteinander. Egal ob 718, 911, Taycan,
             Panamera, Macan oder Cayenne.</p-text
@@ -446,7 +446,7 @@
       >
         <img src="./assets/car-box.png" alt="" />
         <template #top>
-          <p-heading variant="heading-3">Immer das richtige Fahrzeugzubehör zur Hand</p-heading>
+          <p-heading size="large">Immer das richtige Fahrzeugzubehör zur Hand</p-heading>
           <p-button variant="tertiary">Zum Porsche Tequipment Shop</p-button>
         </template>
       </Card>
@@ -459,14 +459,14 @@
       >
         <img src="./assets/chrono.png" alt="" />
         <template #top>
-          <p-heading variant="heading-3">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-heading>
+          <p-heading size="large">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-heading>
           <p-button variant="tertiary">Zum Porsche Design Shop</p-button>
         </template>
       </Card>
       <Card class="accessories__card accessories__card--electric" :height="{ min: '25rem', val: '50vh', max: '35rem' }">
         <img src="./assets/teaser-ev.png" width="1280" height="624" alt="" />
         <template #top>
-          <p-heading theme="dark" variant="heading-3">Porsche E-Performance</p-heading>
+          <p-heading theme="dark" size="large">Porsche E-Performance</p-heading>
           <p-text theme="dark"
             >Entdecke unsere Porsche E-Performance mit unseren Elektro- und Plug-in-Hybrid-Modellen, der 800V und
             unserer durchdachten weltweiten Ladeinfrastruktur.</p-text

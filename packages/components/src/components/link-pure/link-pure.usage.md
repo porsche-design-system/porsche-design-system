@@ -61,6 +61,6 @@ Multiple Links Pure can be combined to one Link Pure group that must be stacked 
 scannability and legibility. It is recommended to not group more than 6 Links Pure in a row.
 
 <div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-heading variant="heading-3" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
+    <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
     <img src="./assets/link-pure.png" alt="Example"/>
 </div>

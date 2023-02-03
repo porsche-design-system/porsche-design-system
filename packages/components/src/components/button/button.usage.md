@@ -86,7 +86,7 @@ Though it's technically possible to use multiline text in Porsche Buttons, it's 
 short and, therefore, avoid multiline Buttons.
 
 <div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-heading variant="heading-3" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
+    <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
     <img src="./assets/button-examples.png" alt="Examples for button usage"/>
 </div>
 

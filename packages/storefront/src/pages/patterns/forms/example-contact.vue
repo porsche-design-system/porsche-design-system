@@ -2,7 +2,7 @@
   <p-content-wrapper>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading variant="heading-2" tag="h1">Get in touch with Porsche</p-heading>
+        <p-heading size="x-large" tag="h1">Get in touch with Porsche</p-heading>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
           Do you have any specific questions about your Porsche vehicle? Please use the form below so that we can
           process your inquiry as quickly as possible.
@@ -199,7 +199,7 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-            <p-heading variant="heading-5" tag="h3" class="spacing-mt-24">Date of first registration</p-heading>
+            <p-heading size="small" tag="h3" class="spacing-mt-24">Date of first registration</p-heading>
             <p-text-field-wrapper
               label="Date"
               class="form-row-spacing"

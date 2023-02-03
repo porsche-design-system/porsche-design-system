@@ -30,7 +30,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
 
   return (
     <PTable onSortingChange={onSortingChange}>
-      <PHeading slot="caption" variant="heading-3">
+      <PHeading slot="caption" size="large">
         Some visual caption
       </PHeading>
       <PTableHead>

@@ -2,7 +2,7 @@
   <p-content-wrapper>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading variant="heading-2" tag="h1">Create a new Porsche account</p-heading>
+        <p-heading size="x-large" tag="h1">Create a new Porsche account</p-heading>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
           Please enter your registration details in the following fields.
           <br />This text can be enhanced by some information on the benefits of a Porsche account registration.

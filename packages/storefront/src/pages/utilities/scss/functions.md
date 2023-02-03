@@ -93,7 +93,7 @@ p {
 ### Heading
 
 Given values are:  
-`title-large | heading-1 | heading-2 | heading-3 | heading-4 | heading-5`
+`title-large | xx-large | x-large | large | medium | small`
 
 Possible heading mixin for usage with SCSS (where {v} is the value):
 

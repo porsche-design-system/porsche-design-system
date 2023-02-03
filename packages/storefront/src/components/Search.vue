@@ -16,7 +16,7 @@
           }"
         >
           <template v-slot:item="{ item }">
-            <p-heading variant="heading-5" tag="h2" class="category">{{ item.category }}</p-heading>
+            <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
             <ul>
               <li v-for="(hit, index) in item.hits" :key="index">
                 <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">

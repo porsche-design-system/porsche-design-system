@@ -24,7 +24,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-heading variant="heading-3" theme="${theme}">Some Heading with <a href="#">link</a></p-heading>`;
+        <p-heading size="large" theme="${theme}">Some Heading with <a href="#">link</a></p-heading>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 

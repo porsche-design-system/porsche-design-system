@@ -48,7 +48,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
-      <sample-prefix-p-heading p-heading variant="heading-1">Heading</sample-prefix-p-heading>
+      <sample-prefix-p-heading p-heading size="xx-large">Heading</sample-prefix-p-heading>
     </div>
   `,
   styles: [],

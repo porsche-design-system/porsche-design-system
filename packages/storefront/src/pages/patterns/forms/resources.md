@@ -38,7 +38,7 @@ bundled with the Porsche Design System.
 <Playground>
   <p-grid class="form-top-spacing">
     <p-grid-item size="{ base: 12, m: 8 }">
-      <p-heading variant="heading-2" tag="h1">Some Form Headline</p-heading>
+      <p-heading size="x-large" tag="h1">Some Form Headline</p-heading>
       <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Some Form Subline.</p-text>
     </p-grid-item>
   </p-grid>

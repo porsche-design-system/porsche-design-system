@@ -103,7 +103,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
 
 <Playground :frameworkMarkup="advanced">
   <p-table ref="tableAdvanced">
-    <p-heading slot="caption" variant="heading-3">Some visual caption</p-heading>
+    <p-heading slot="caption" size="large">Some visual caption</p-heading>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
@@ -179,7 +179,7 @@ export default class Code extends Vue {
 </p-table>`;
 
   captionSlot = `<p-table>
-  <p-heading slot="caption" variant="heading-3">Some slotted caption</p-heading>
+  <p-heading slot="caption" size="large">Some slotted caption</p-heading>
   ${this.basicTableHead}
   ${this.basicTableBody}
 </p-table>`;

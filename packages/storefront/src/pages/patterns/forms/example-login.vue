@@ -2,7 +2,7 @@
   <p-content-wrapper>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading variant="heading-2" tag="h1">Welcome to Porsche</p-heading>
+        <p-heading size="x-large" tag="h1">Welcome to Porsche</p-heading>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
           >Log in to your Porsche account to manage your vehicles and services.</p-text
         >
@@ -68,7 +68,7 @@
     </p-grid>
     <p-grid class="form-section-spacing form-bottom-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading variant="heading-4" tag="h2">New to Porsche?</p-heading>
+        <p-heading size="medium" tag="h2">New to Porsche?</p-heading>
         <p-link-pure class="spacing-mt-8">Create a new Porsche account</p-link-pure>
       </p-grid-item>
     </p-grid>

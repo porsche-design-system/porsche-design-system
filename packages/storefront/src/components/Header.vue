@@ -4,7 +4,7 @@
       <p-marque :href="href" @click="navigate"></p-marque>
     </router-link>
 
-    <p-heading class="spacing-mt-8" variant="heading-4" tag="h1" align="center"> Design System </p-heading>
+    <p-heading class="spacing-mt-8" size="medium" tag="h1" align="center"> Design System </p-heading>
 
     <p-text size="x-small" align="center">
       <strong>Web v{{ this.version }}</strong>

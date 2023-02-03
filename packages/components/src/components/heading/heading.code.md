@@ -26,11 +26,11 @@ also section "**Custom tag hierarchy**").
 | Heading Variant | Rendered HTML Tag |
 | --------------- | ----------------- |
 | `large-title`   | `<h1>`            |
-| `heading-1`     | `<h1>`            |
-| `heading-2`     | `<h2>`            |
-| `heading-3`     | `<h3>`            |
-| `heading-4`     | `<h4>`            |
-| `heading-5`     | `<h5>`            |
+| `xx-large`      | `<h1>`            |
+| `x-large`       | `<h2>`            |
+| `large`         | `<h3>`            |
+| `medium`        | `<h4>`            |
+| `small`         | `<h5>`            |
 
 ## Custom Variant
 
@@ -99,7 +99,7 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADING_VARIANTS } from './heading-utils';
+import { HEADING_SIZES } from './heading-utils';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -111,30 +111,30 @@ export default class Code extends Vue {
   color = 'default';
   align = 'center';
 
-  variant = HEADING_VARIANTS.map((item) => `<p-heading variant="${item}">${sentence}</p-heading>`).join('\n');
+  variant = HEADING_SIZES.map((item) => `<p-heading variant="${item}">${sentence}</p-heading>`).join('\n');
 
   get customVariantMarkup() {
     const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
-    return `<p-heading variant="${this.customVariant}"${style}>${sentence}</p-heading>`;
+    return `<p-heading size="${this.customVariant}"${style}>${sentence}</p-heading>`;
   }
 
   customTagHierarchy =
-`<p-heading variant="heading-1" tag="h3">${sentence}</p-heading>
-<p-heading variant="heading-3" tag="h1">${sentence}</p-heading>
-<p-heading variant="heading-1">
+`<p-heading size="xx-large" tag="h3">${sentence}</p-heading>
+<p-heading size="large" tag="h1">${sentence}</p-heading>
+<p-heading size="xx-large">
   <h3>${sentence}</h3>
 </p-heading>
-<p-heading variant="heading-3">
+<p-heading size="large">
   <h1>${sentence}</h1>
 </p-heading>`;
 
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
-    return `<p-heading variant="heading-3" color="${this.color}"${style}>${sentence}</p-heading>`
+    return `<p-heading size="large" color="${this.color}"${style}>${sentence}</p-heading>`
   }
 
   get alignment() {
-    return `<p-heading variant="heading-3" align="${this.align}">${sentence}</p-heading>`;
+    return `<p-heading size="large" align="${this.align}">${sentence}</p-heading>`;
   }
   
   ellipsisMode =

@@ -1,6 +1,6 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-heading variant="heading-4" tag="h2">Table of Contents</p-heading>
+    <p-heading size="medium" tag="h2">Table of Contents</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <p-link-pure :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
