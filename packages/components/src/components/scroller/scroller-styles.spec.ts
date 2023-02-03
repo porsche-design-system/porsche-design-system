@@ -1,6 +1,6 @@
 import { getComponentCss } from './scroller-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['default', false, false, 'center', 'light'],
     ['surface', false, false, 'center', 'dark'],
