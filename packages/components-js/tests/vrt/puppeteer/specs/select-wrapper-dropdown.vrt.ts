@@ -1,9 +1,9 @@
 import { forceHoverState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
-import { Theme } from '@porsche-design-system/components/dist/types/types';
+import type { Theme } from '@porsche-design-system/components/dist/types/types';
 
-xit('should have no visual regression for :hover', async () => {
+it('should have no visual regression for :hover', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('select-wrapper-dropdown-states', async () => {

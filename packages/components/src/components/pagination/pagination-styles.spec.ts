@@ -1,6 +1,6 @@
 import { getComponentCss } from './pagination-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [5, 'light'],
     [7, 'light'],

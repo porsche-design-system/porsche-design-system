@@ -102,8 +102,8 @@ export class SelectWrapperDropdown {
       getComponentCss,
       this.direction === 'auto' ? determineDirection(this.host) : this.direction,
       this.isOpen,
-      this.disabled,
       this.state,
+      this.disabled,
       this.filter,
       this.theme
     );
@@ -151,7 +151,8 @@ export class SelectWrapperDropdown {
               labelId,
               descriptionId,
               dropdownId,
-              getHighlightedOptionMapIndex(this.optionMaps))}
+              getHighlightedOptionMapIndex(this.optionMaps)
+            )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
           />
@@ -202,7 +203,12 @@ export class SelectWrapperDropdown {
                   >
                     {value}
                     {selected && !disabled && (
-                      <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
+                      <PrefixedTagNames.pIcon
+                        aria-hidden="true"
+                        name="check"
+                        color={disabled ? 'contrast-medium' : 'primary'}
+                        theme={this.theme}
+                      />
                     )}
                   </li>,
                 ];

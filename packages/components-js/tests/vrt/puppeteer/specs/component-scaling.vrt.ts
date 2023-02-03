@@ -6,22 +6,24 @@ import {
 
 const components = [
   'accordion',
+  'banner',
   'button',
   'button-pure',
-  'inline-notification',
-  'banner',
-  'toast-basic',
   'checkbox-wrapper',
+  'inline-notification',
   'link',
   'link-pure',
   'link-social',
+  'pagination',
   'popover',
   'radio-button-wrapper',
+  'select-wrapper',
   'spinner',
   'tag',
   'tag-dismissible',
   'text-field-wrapper',
   'textarea-wrapper',
+  'toast-basic',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {

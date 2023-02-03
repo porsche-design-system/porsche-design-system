@@ -145,7 +145,7 @@ describe('focus state', () => {
   });
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   it('should change border-color of select when label text is hovered', async () => {
     await initSelect();
     await page.mouse.move(0, 300); // avoid potential hover initially
@@ -153,11 +153,11 @@ xdescribe('hover state', () => {
     const select = await getSelect();
     const labelText = await getLabelText();
     const initialStyle = await getElementStyle(select, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+    expect(initialStyle).toBe('rgb(148, 149, 152)');
 
     await labelText.hover();
     const hoverColor = await getElementStyle(select, 'borderColor');
-    expect(hoverColor).toBe('rgb(0, 0, 0)');
+    expect(hoverColor).toBe('rgb(1, 2, 5)');
   });
 });
 
