@@ -259,6 +259,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 3</div>
       </p-carousel>
     </div>
+
+    <div class="playground light" title="should render carousel with alignHeader=center on light background">
+      <p-carousel [heading]="'Aligned header'" [alignHeader]="'center'" [description]="'Description'">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with alignHeader=center and wrap-content=true on light background"
+    >
+      <p-carousel
+        [heading]="'Aligned header with wrapped content'"
+        [alignHeader]="'center'"
+        [wrapContent]="true"
+        [description]="'Description'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
