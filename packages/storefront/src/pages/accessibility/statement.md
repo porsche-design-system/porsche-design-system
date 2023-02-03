@@ -99,20 +99,14 @@ We continually assess and work to ensure that our Web presence is in conformance
   }
 
   p-text + p-heading[variant="heading-3"],
-  p-text + p-headline[variant="headline-3"],
-  p-text-list + p-heading[variant="headline-3"],
-  p-text-list + p-headline[variant="headline-3"] {
+  p-text-list + p-heading[variant="heading-3"] {
     margin-top: $pds-spacing-static-x-large;
   }
 
   p-text + p-heading[variant="heading-4"],
-  p-text + p-headline[variant="headline-4"],
   p-text-list + p-heading[variant="heading-4"],
-  p-text-list + p-headline[variant="headline-4"],
   p-text + p-heading[variant="heading-5"],
-  p-text + p-headline[variant="headline-5"],
-  p-text-list + p-heading[variant="heading-5"],
-  p-text-list + p-headline[variant="headline-5"] {
+  p-text-list + p-heading[variant="heading-5"] {
     margin-top: $pds-spacing-static-large;
   }
 }
