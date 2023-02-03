@@ -1,5 +1,4 @@
 import { getCss } from '../../../utils';
-import { pxToRemWithUnit } from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -9,7 +8,7 @@ export const getComponentCss = (): string => {
       },
     },
     root: {
-      marginBottom: pxToRemWithUnit(8),
+      marginBottom: '8px',
     },
   });
 };

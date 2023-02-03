@@ -1,16 +1,11 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../styles';
+import { addImportantToEachRule, getThemedColors, getTransition } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase, fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const tabsTransitionDuration = '.4s';
 
@@ -22,16 +17,18 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-        position: addImportantToRule('relative'),
-      },
+        position: 'relative',
+        ...hostHiddenStyles,
+      }),
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
         [transformSelector('::slotted([role])')]: {
           display: 'inline-block',
-          margin: `0 0 calc(.5em - ${pxToRemWithUnit(4)}) 0`,
+          position: 'relative',
+          margin: '0 0 calc(.5em - 4px) 0',
           padding: 0,
           verticalAlign: 'top',
           fontFamily: 'inherit',
@@ -44,7 +41,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
           boxSizing: 'border-box',
           WebkitAppearance: 'none',
           appearance: 'none',
-          outline: '1px solid transparent',
+          outline: 0,
           outlineOffset: '1px',
           textDecoration: 'none',
           textAlign: 'left',
@@ -52,25 +49,34 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
           background: 'transparent',
           color: primaryColor,
           cursor: 'pointer',
-          transition: getTransition('color'),
+          transition: getTransition('background'),
+          borderRadius: borderRadiusSmall,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: '-2px',
+            bottom: '-2px',
+            left: '-4px',
+            right: '-4px',
+            background: 'transparent',
+            borderRadius: borderRadiusSmall,
+          },
         },
         ...hoverMediaQuery({
-          [transformSelector('::slotted([role]:hover)')]: {
-            color: hoverColor,
+          [transformSelector('::slotted([role]:hover)::before')]: {
+            background: hoverColor,
           },
         }),
-        [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
-          color: primaryColor,
-        },
         // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
-        [transformSelector('::slotted([role]:focus)')]: {
-          outlineColor: focusColor,
+        [transformSelector('::slotted([role]:focus)::before')]: {
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
         },
-        [transformSelector('::slotted([role]:focus:not(:focus-visible))')]: {
-          outlineColor: 'transparent',
+        [transformSelector('::slotted([role]:focus:not(:focus-visible))::before')]: {
+          borderColor: 'transparent',
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
-          marginRight: '1em',
+          marginRight: '16px', // No token for this spacing exists yet
         },
       }),
     },
@@ -83,9 +89,9 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       display: 'block',
       position: 'absolute',
       width: 0,
-      height: weight === 'semibold' ? '.125em' : '.09375em',
+      height: weight === 'semibold' ? '2px' : '1.5px',
       left: 0,
-      bottom: `-${pxToRemWithUnit(4)}`,
+      bottom: '-4px',
       background: primaryColor,
       '&--enable-transition': {
         willChange: 'width',
