@@ -316,9 +316,6 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "hasSlottedCss": false,
-    "internalProps": {
-      "gutter": "{ base: 16, s: 24, m: 36 }",
-    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
@@ -735,7 +732,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "hasSlottedCss": true,
+    "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,

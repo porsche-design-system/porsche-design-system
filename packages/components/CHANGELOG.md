@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Flex` is deprecated and will be removed with the next major release. In general, please use native
+  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
+  standardized layout technique.
+- `Grid` is deprecated and will be removed with the next major release. In general, please use native
+  <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more
+  standardized layout technique. Additionally, we provide a Porsche Grid utility instead based on CSS Grid covering the
+  specific layout needs for a harmonic appearance across all digital touch-points.
+- The `gutter` property of `Grid` is deprecated and has no effect anymore. Instead, a fluid gutter depending on the
+  viewport width is used.
 - `Icon` supports
   `'primary' | 'contrast-low' | 'contrast-medium' | 'contrast-high' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-info' | 'inherit'`
   for color prop while
@@ -91,8 +100,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
-  `Radio Button Wrapper`, `Popover`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`, `Inline Notification`, `Banner`,
-  `Toast`, `Text Field Wrapper` and `Carousel` matches new design language
+  `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Carousel` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -129,8 +138,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Removed
 
-- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper` and `Text Field Wrapper` (use normalize styles,
-  provided by `getInitialStyles()` partial instead)
+- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and
+  `Text Field Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
 - `subline` slot for `Link Pure` and `Button Pure`
 
 ```diff
