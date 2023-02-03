@@ -33,7 +33,7 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import type { ButtonPure } from '../button-pure/button-pure';
-import { spacingStaticLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { spacingFluidLarge, spacingStaticLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -127,7 +127,7 @@ export class Carousel {
       perMove: 1,
       mediaQuery: 'min',
       padding: {
-        right: '7%', // together with wrapContent this is overridden via css
+        right: spacingFluidLarge, // together with wrapContent this is overridden via css
       },
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       // TODO: for gap definition the gridGap const must be used - will be done after Grid Refactoring

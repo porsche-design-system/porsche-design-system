@@ -17,6 +17,7 @@ import {
   spacingStaticXSmall,
   spacingStaticSmall,
   spacingFluidXSmall,
+  spacingFluidLarge,
 } from '@porsche-design-system/utilities-v2';
 import type { HeaderAlign } from '../../types';
 
@@ -80,9 +81,9 @@ export const getComponentCss = (
         ...(wrapContent &&
           addImportantToEachRule({
             // TODO: 0 calc(${gridSafeZone} + ${gridGap}) - will be done after Grid Refactoring
-            padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
+            padding: `0 calc(${gridSafeZone} + ${spacingFluidLarge}) 0 ${gridSafeZone}`,
             [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
+              padding: `0 calc(${gridSafeZone} + ${spacingFluidLarge}) 0 ${gridSafeZone}`,
             },
           })),
         '&--draggable': {
