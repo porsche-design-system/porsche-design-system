@@ -116,21 +116,21 @@ export const getComponentCss = (
         }),
         overflowY: 'auto', // overrideable
       },
-      '::slotted': addImportantToEachRule(
-        mergeDeep({
-          ...getSlottedJssStyle(32, hasHeader, disableCloseButton),
-          ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            [`&(.${stretchToFullModalWidthClassName})`]: {
-              '&:first-child': {
+      '::slotted': addImportantToEachRule({
+        ...mergeDeep(
+          getSlottedJssStyle(32, hasHeader, disableCloseButton),
+          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            [`&(.${stretchToFullModalWidthClassName}`]: {
+              '&:first-child)': {
                 borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
               },
-              '&:last-child': {
+              '&:last-child)': {
                 borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
               },
             },
-          })),
-        })
-      ),
+          }))
+        ),
+      }),
       h2: {
         ...headingLargeStyle,
         margin: 0,
