@@ -94,9 +94,7 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
       ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       img: {
         display: 'block', // without display, img tag gets some extra spacing

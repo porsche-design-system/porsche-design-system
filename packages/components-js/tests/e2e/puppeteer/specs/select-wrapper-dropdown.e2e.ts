@@ -480,23 +480,23 @@ it('should not set checkmark icon if option is both selected and disabled', asyn
   expect(await getDropdownCheckmarkIcon()).toBeNull();
 });
 
-xdescribe('hover state', () => {
+describe('hover state', () => {
   it('should change border-color when dropdown combobox is hovered', async () => {
     await initSelect();
     await page.mouse.move(0, 300); // avoid potential hover initially
 
     const dropdownCombobox = await getDropdownCombobox();
     const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+    expect(initialStyle).toBe('rgba(0, 0, 0, 0)');
 
     await dropdownCombobox.hover();
     const hoverStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(hoverStyle).toBe('rgb(0, 0, 0)');
+    expect(hoverStyle).toBe('rgb(1, 2, 5)');
   });
 });
 
-xdescribe('dropdown position', () => {
-  const expectedDropdownStyle = '0px none rgb(50, 54, 57)';
+describe('dropdown position', () => {
+  const expectedDropdownStyle = '1px solid rgb(148, 149, 152)';
 
   it('should set direction to up', async () => {
     await initSelect({ dropdownDirection: 'up' });
