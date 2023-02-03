@@ -22,7 +22,7 @@ const hasFocusVisibleSupport = hasDocument && supportsFocusVisible();
 // getter for easy mocking
 export const getHasFocusVisibleSupport = (): boolean => hasFocusVisibleSupport;
 
-//TODO: is this still needed?
+// TODO: is this still needed?
 // TODO: remove fallback once :focus-visible is supported by safari
 export const getFocusVisibleFallback = (style: JssStyle): JssStyle =>
   getHasFocusVisibleSupport() ? style : { outline: 0 };
