@@ -1,6 +1,6 @@
 import { getComponentCss } from './tabs-bar-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['small', 'regular', 'light'],
     ['small', 'regular', 'dark'],
