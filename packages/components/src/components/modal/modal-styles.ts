@@ -18,7 +18,7 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
-import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/dist/js/theme/themeDarkBackgroundShading';
+import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/src/js/theme/themeDarkBackgroundShading';
 const mediaQueryXl = getMediaQueryMin('xl');
 const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
