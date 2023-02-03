@@ -60,6 +60,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
+  "alignHeader": "oneOf",
   "description": "string",
   "disablePagination": "breakpoint",
   "heading": "string",
