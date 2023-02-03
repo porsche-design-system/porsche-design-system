@@ -193,10 +193,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(
-          /(getHeadingTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
+          /(getHeadingTagName|getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
-        ) // heading, text, text-list, tag
+        ) // heading, headline, text, text-list, tag
         .replace(/ = getHeadingTagName/, ': any$&') // heading
+        .replace(/ = getHeadlineTagName/, ': any$&') // headline
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
           "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
