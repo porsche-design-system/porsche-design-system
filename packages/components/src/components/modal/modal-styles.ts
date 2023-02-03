@@ -9,6 +9,7 @@ import {
   frostedGlassStyle,
   borderWidthBase,
   headingLargeStyle,
+  themeDarkBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
@@ -18,7 +19,6 @@ import {
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
-import { themeDarkBackgroundShading } from '@porsche-design-system/utilities-v2/src/js/theme/themeDarkBackgroundShading';
 const mediaQueryXl = getMediaQueryMin('xl');
 const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
@@ -117,10 +117,10 @@ export const getComponentCss = (
         overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule(
-        mergeDeep(
-          getSlottedJssStyle(32, hasHeader, disableCloseButton),
-          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            [`&(.${stretchToFullModalWidthClassName}`]: {
+        mergeDeep({
+          ...getSlottedJssStyle(32, hasHeader, disableCloseButton),
+          ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            [`&(.${stretchToFullModalWidthClassName})`]: {
               '&:first-child': {
                 borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
               },
@@ -128,8 +128,8 @@ export const getComponentCss = (
                 borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
               },
             },
-          }))
-        )
+          })),
+        })
       ),
       h2: {
         ...headingLargeStyle,
