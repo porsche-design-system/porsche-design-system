@@ -57,7 +57,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-button-pure theme="${theme}" align-label="left" stretch="true">Label stretch align left</p-button-pure>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 

@@ -29,7 +29,7 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
         },
       }),
     },
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...mergeDeep(getFunctionalComponentStateMessageStyles(theme, state), {
       message: {
         marginTop: spacingStaticMedium,

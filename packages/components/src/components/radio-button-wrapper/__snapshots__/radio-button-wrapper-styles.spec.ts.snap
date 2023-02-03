@@ -59,7 +59,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -197,11 +196,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #9a2727 !important;
+    border-color: #9A2727 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #9a2727 !important;
-    background-color: #9a2727 !important;
+    border-color: #9A2727 !important;
+    background-color: #9A2727 !important;
   }
 }
 
@@ -225,7 +224,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -292,11 +290,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #c51720 !important;
-    background-color: #c51720 !important;
+    border-color: #C51720 !important;
+    background-color: #C51720 !important;
   }
 }
 
@@ -320,7 +318,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -392,7 +389,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -464,7 +460,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -559,7 +554,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -653,7 +647,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -724,7 +717,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -795,7 +787,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -861,11 +852,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #008a57 !important;
+    border-color: #008A57 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #008a57 !important;
-    background-color: #008a57 !important;
+    border-color: #008A57 !important;
+    background-color: #008A57 !important;
   }
 }
 
@@ -889,7 +880,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -984,7 +974,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1056,7 +1045,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1128,7 +1116,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1195,11 +1182,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #9a2727 !important;
+    border-color: #9A2727 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #9a2727 !important;
-    background-color: #9a2727 !important;
+    border-color: #9A2727 !important;
+    background-color: #9A2727 !important;
   }
 }
 
@@ -1224,7 +1211,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1291,11 +1277,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #c51720 !important;
+    border-color: #C51720 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #c51720 !important;
-    background-color: #c51720 !important;
+    border-color: #C51720 !important;
+    background-color: #C51720 !important;
   }
 }
 
@@ -1320,7 +1306,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1393,7 +1378,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1466,7 +1450,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1562,7 +1545,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1657,7 +1639,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1729,7 +1710,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1801,7 +1781,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -1867,11 +1846,11 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    border-color: #008a57 !important;
+    border-color: #008A57 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    border-color: #008a57 !important;
-    background-color: #008a57 !important;
+    border-color: #008A57 !important;
+    background-color: #008A57 !important;
   }
 }
 
@@ -1896,7 +1875,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -1992,7 +1970,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;
@@ -2065,7 +2042,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #FBFCFF;
 }
 .message {
   display: flex;
@@ -2138,7 +2114,6 @@ label {
 }
 .required {
   user-select: none;
-  color: #010205;
 }
 .message {
   display: flex;

@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div title="should show banner neutral position fixed">
+    <div title="should show banner info position fixed">
       <p-banner>
         <span slot="title">Some notification position fixed (1)</span>
         <span slot="description">
@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="content-wrapper">
-      <div class="playground light" title="should show banner neutral on light background">
+      <div class="playground light" title="should show banner info on light background">
         <p-banner>
           <span slot="title">Some notification title</span>
           <span slot="description">
@@ -33,8 +33,26 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-banner>
       </div>
 
-      <div class="playground dark" title="should show banner neutral on dark background">
+      <div class="playground light" title="should show banner info with state neutral on light background">
+        <p-banner [state]="'neutral'">
+          <span slot="title">Some notification title</span>
+          <span slot="description">
+            Some notification description. And some <a [href]="'https://www.porsche.com/'">LINK</a> element.
+          </span>
+        </p-banner>
+      </div>
+
+      <div class="playground dark" title="should show banner info on dark background">
         <p-banner [theme]="'dark'">
+          <span slot="title">Some notification title</span>
+          <span slot="description">
+            Some notification description. And some <a [href]="'https://www.porsche.com/'">LINK</a> element.
+          </span>
+        </p-banner>
+      </div>
+
+      <div class="playground dark" title="should show banner info with state neutral on dark background">
+        <p-banner [state]="'neutral'" [theme]="'dark'">
           <span slot="title">Some notification title</span>
           <span slot="description">
             Some notification description. And some <a [href]="'https://www.porsche.com/'">LINK</a> element.

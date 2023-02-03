@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -93,7 +93,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -145,7 +145,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -352,7 +352,8 @@ export namespace Components {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -1130,6 +1131,10 @@ export namespace Components {
          */
         "state"?: FormState;
         /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
           * The unit text.
          */
         "unit"?: string;
@@ -1179,6 +1184,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -1697,7 +1706,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1749,7 +1758,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1960,7 +1969,8 @@ declare namespace LocalJSX {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -2782,6 +2792,10 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
         /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
           * The unit text.
          */
         "unit"?: string;
@@ -2831,6 +2845,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         /**

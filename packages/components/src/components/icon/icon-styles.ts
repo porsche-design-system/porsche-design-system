@@ -91,11 +91,11 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        ...hostHiddenStyles,
+      ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
-      }),
+        ...addImportantToEachRule(hostHiddenStyles),
+      },
       img: {
         display: 'block', // without display, img tag gets some extra spacing
         margin: 0,
