@@ -130,7 +130,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-angular/utilities/scss';
+  @import '~@porsche-design-system/components-vue/utilities/scss';
 
   // VisualizeGrid
   .visualize-grid {
