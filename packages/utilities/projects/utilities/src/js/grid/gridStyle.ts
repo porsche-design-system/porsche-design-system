@@ -18,33 +18,36 @@ import {
   _cssVariableGridBasicSpanTwoThirds,
   _cssVariableGridExtendedSpanOneHalf,
   _cssVariableGridNarrowSpanOneHalf,
-  _gridColumnSpan,
 } from './gridShared';
 
-type Layout = 'mobile' | 'desktop' | 'max';
+const _gridColumnSpan = 'span';
+const _cssVariableInternalGridSafeZone = '--pds-internal-grid-safe-zone';
+
+type Layout = 'mobile' | 'desktop';
 const getColumns = (repeat: number): string => `repeat(${repeat}, minmax(0, 1fr))`;
-const getOuterColumn = (layout: Layout): string =>
-  `minmax(0, calc(${layout === 'max' ? gridSafeZoneXXL : gridSafeZoneBase} - ${gridGap}))`;
+const getOuterColumn = (): string => `minmax(0, calc(var(${_cssVariableInternalGridSafeZone}) - ${gridGap}))`;
 const getGridTemplateColumns = (layout: Layout) =>
   layout === 'mobile'
-    ? `[${gridFullColumnStart}] ${getOuterColumn(
-        layout
-      )} [${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
+    ? `[${gridFullColumnStart}] ${getOuterColumn()} [${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
         6
-      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd}] ${getOuterColumn(
-        layout
-      )} [${gridFullColumnEnd}]`
-    : `[${gridFullColumnStart}] ${getOuterColumn(layout)} [${gridExtendedColumnStart}] ${getColumns(
+      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd}] ${getOuterColumn()} [${gridFullColumnEnd}]`
+    : `[${gridFullColumnStart}] ${getOuterColumn()} [${gridExtendedColumnStart}] ${getColumns(
         1
       )} [${gridBasicColumnStart}] ${getColumns(2)} [${gridNarrowColumnStart}] ${getColumns(
         8
       )} [${gridNarrowColumnEnd}] ${getColumns(2)} [${gridBasicColumnEnd}] ${getColumns(
         1
-      )} [${gridExtendedColumnEnd}] ${getOuterColumn(layout)} [${gridFullColumnEnd}]`;
+      )} [${gridExtendedColumnEnd}] ${getOuterColumn()} [${gridFullColumnEnd}]`;
 
 // TODO: maybe we should extend grid variants by gridExtendedStyle, gridBasicStyle, gridNarrowStyle,
 //  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers
 export const gridStyle = {
+  [_cssVariableInternalGridSafeZone]: gridSafeZoneBase,
+  [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 3`,
+  [_cssVariableGridBasicSpanOneHalf]: `${_gridColumnSpan} 3`,
+  [_cssVariableGridBasicSpanOneThird]: `${_gridColumnSpan} 2`,
+  [_cssVariableGridBasicSpanTwoThirds]: `${_gridColumnSpan} 4`,
+  [_cssVariableGridNarrowSpanOneHalf]: `${_gridColumnSpan} 3`,
   display: 'grid',
   gridGap,
   gridTemplateColumns: getGridTemplateColumns('mobile'),
@@ -55,8 +58,9 @@ export const gridStyle = {
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     // TODO: we should define those css variables in global scope by getInitialStyles() partial to reduce repetitive css declaration,
-    //  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers
-    [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 7`,
+    //  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers.
+    //  In addition, it wouldn't work in case only utilities are used without getInitialStyles() partials.
+    //  So maybe, keep it as is.
     [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 7`,
     [_cssVariableGridBasicSpanOneHalf]: `${_gridColumnSpan} 6`,
     [_cssVariableGridBasicSpanOneThird]: `${_gridColumnSpan} 4`,
@@ -64,8 +68,7 @@ export const gridStyle = {
     [_cssVariableGridNarrowSpanOneHalf]: `${_gridColumnSpan} 4`,
     gridTemplateColumns: getGridTemplateColumns('desktop'),
   },
-  // TODO: we can use internal css variable instead
   [getMediaQueryMin('xxl')]: {
-    gridTemplateColumns: getGridTemplateColumns('max'),
+    [_cssVariableInternalGridSafeZone]: gridSafeZoneXXL,
   },
 } as const;

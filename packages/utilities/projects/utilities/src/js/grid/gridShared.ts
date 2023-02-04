@@ -1,5 +1,3 @@
-export const _gridColumnSpan = 'span';
-
 export const _cssVariableGridExtendedSpanOneHalf = '--pds-grid-extended-span-one-half';
 export const _cssVariableGridBasicSpanOneHalf = '--pds-grid-basic-span-one-half';
 export const _cssVariableGridBasicSpanOneThird = '--pds-grid-basic-span-one-third';

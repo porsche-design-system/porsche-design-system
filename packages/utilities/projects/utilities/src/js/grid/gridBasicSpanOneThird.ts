@@ -1,3 +1,3 @@
-import { _cssVariableGridBasicSpanOneThird, _gridColumnSpan } from './gridShared';
+import { _cssVariableGridBasicSpanOneThird } from './gridShared';
 
-export const gridBasicSpanOneThird = `var(${_cssVariableGridBasicSpanOneThird}, ${_gridColumnSpan} 2)`;
+export const gridBasicSpanOneThird = `var(${_cssVariableGridBasicSpanOneThird})`;
