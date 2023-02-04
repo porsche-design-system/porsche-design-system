@@ -1,3 +1,4 @@
+export * from './UtilitiesGridExample';
 export * from './AccordionExample';
 export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleEvents';

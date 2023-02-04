@@ -150,4 +150,13 @@ export const routes: RouteType[] = [
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
   },
+  {
+    name: '---',
+    isDisabled: true,
+  },
+  {
+    name: 'Utilities Grid Example',
+    path: '/utilities-grid-example',
+    element: <fromExamples.UtilitiesGridExample />,
+  },
 ];
