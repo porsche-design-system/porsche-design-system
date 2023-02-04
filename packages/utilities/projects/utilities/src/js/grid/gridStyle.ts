@@ -4,13 +4,22 @@ import { gridWidthMin } from './gridWidthMin';
 import { gridWidthMax } from './gridWidthMax';
 import { gridSafeZoneBase } from './gridSafeZoneBase';
 import { gridSafeZoneXXL } from './gridSafeZoneXXL';
-
-const span = 'span';
-const cssVariableGridExtendedSpanOneHalf = '--pds-grid-extended-span-one-half';
-const cssVariableGridBasicSpanOneHalf = '--pds-grid-basic-span-one-half';
-const cssVariableGridBasicSpanOneThird = '--pds-grid-basic-span-one-third';
-const cssVariableGridBasicSpanTwoThirds = '--pds-grid-basic-span-two-thirds';
-const cssVariableGridNarrowSpanOneHalf = '--pds-grid-narrow-span-one-half';
+import { gridFullColumnStart } from './gridFullColumnStart';
+import { gridExtendedColumnStart } from './gridExtendedColumnStart';
+import { gridBasicColumnStart } from './gridBasicColumnStart';
+import { gridNarrowColumnStart } from './gridNarrowColumnStart';
+import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
+import { gridBasicColumnEnd } from './gridBasicColumnEnd';
+import { gridExtendedColumnEnd } from './gridExtendedColumnEnd';
+import { gridFullColumnEnd } from './gridFullColumnEnd';
+import {
+  _cssVariableGridBasicSpanOneHalf,
+  _cssVariableGridBasicSpanOneThird,
+  _cssVariableGridBasicSpanTwoThirds,
+  _cssVariableGridExtendedSpanOneHalf,
+  _cssVariableGridNarrowSpanOneHalf,
+  _gridColumnSpan,
+} from './gridShared';
 
 type Layout = 'mobile' | 'desktop' | 'max';
 const getColumns = (repeat: number): string => `repeat(${repeat}, minmax(0, 1fr))`;
@@ -33,22 +42,8 @@ const getGridTemplateColumns = (layout: Layout) =>
         1
       )} [${gridExtendedColumnEnd}] ${getOuterColumn(layout)} [${gridFullColumnEnd}]`;
 
-export const gridFullColumnStart = 'full-start';
-export const gridFullColumnEnd = 'full-end';
-export const gridExtendedColumnStart = 'extended-start';
-export const gridExtendedColumnEnd = 'extended-end';
-export const gridBasicColumnStart = 'basic-start';
-export const gridBasicColumnEnd = 'basic-end';
-export const gridNarrowColumnStart = 'narrow-start';
-export const gridNarrowColumnEnd = 'narrow-end';
-
-export const gridExtendedSpanOneHalf = `var(${cssVariableGridExtendedSpanOneHalf}, ${span} 3)`;
-export const gridBasicSpanOneHalf = `var(${cssVariableGridBasicSpanOneHalf}, ${span} 3)`;
-export const gridBasicSpanOneThird = `var(${cssVariableGridBasicSpanOneThird}, ${span} 2)`;
-export const gridBasicSpanTwoThirds = `var(${cssVariableGridBasicSpanTwoThirds}, ${span} 4)`;
-export const gridNarrowSpanOneHalf = `var(${cssVariableGridNarrowSpanOneHalf}, ${span} 3)`;
-
-// TODO: we should extend grid variants by gridExtendedStyle, gridBasicStyle, gridNarrowStyle
+// TODO: maybe we should extend grid variants by gridExtendedStyle, gridBasicStyle, gridNarrowStyle,
+//  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers
 export const gridStyle = {
   display: 'grid',
   gridGap,
@@ -59,15 +54,17 @@ export const gridStyle = {
   padding: `0 max(0px, (100% - ${gridWidthMax}) / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
-    // TODO: we should define those css variables in global scope by getInitialStyles() partial to reduce repetitive css declaration
-    [cssVariableGridExtendedSpanOneHalf]: `${span} 7`,
-    [cssVariableGridExtendedSpanOneHalf]: `${span} 7`,
-    [cssVariableGridBasicSpanOneHalf]: `${span} 6`,
-    [cssVariableGridBasicSpanOneThird]: `${span} 4`,
-    [cssVariableGridBasicSpanTwoThirds]: `${span} 8`,
-    [cssVariableGridNarrowSpanOneHalf]: `${span} 4`,
+    // TODO: we should define those css variables in global scope by getInitialStyles() partial to reduce repetitive css declaration,
+    //  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers
+    [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 7`,
+    [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 7`,
+    [_cssVariableGridBasicSpanOneHalf]: `${_gridColumnSpan} 6`,
+    [_cssVariableGridBasicSpanOneThird]: `${_gridColumnSpan} 4`,
+    [_cssVariableGridBasicSpanTwoThirds]: `${_gridColumnSpan} 8`,
+    [_cssVariableGridNarrowSpanOneHalf]: `${_gridColumnSpan} 4`,
     gridTemplateColumns: getGridTemplateColumns('desktop'),
   },
+  // TODO: we can use internal css variable instead
   [getMediaQueryMin('xxl')]: {
     gridTemplateColumns: getGridTemplateColumns('max'),
   },
