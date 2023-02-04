@@ -12,19 +12,19 @@
 
 ### Utilities
 
-| Utilities            | V3 Status <br/>                              |
-| -------------------- | -------------------------------------------- |
-| ✅ **Font**          |                                              |
-| ✅ **Grid**          |                                              |
-| ✅ **Media Query**   |                                              |
-| ✅ **Theme**         |                                              |
-| ✅ **Typography**    |                                              |
-| ⛔ **Focus**         | - Not working in Safari in a generic way yet |
-| ✅ **Spacing**       |                                              |
-| ✅ **Gradient**      |                                              |
-| ✅ **Frosted Glass** |                                              |
-| ✅ **Drop Shadow**   |                                              |
-| ✅ **Border**        |                                              |
+| Utilities            | V3 Status <br/>                                                  |
+| -------------------- | ---------------------------------------------------------------- |
+| ✅ **Font**          | - Docs missing                                                   |
+| ✅ **Grid**          | - Docs missing                                                   |
+| ✅ **Media Query**   | - Docs missing                                                   |
+| ✅ **Theme**         | - Docs missing                                                   |
+| ✅ **Typography**    | - Docs missing                                                   |
+| ⛔ **Focus**         | - Docs missing<br />- Not working in Safari in a generic way yet |
+| ✅ **Spacing**       | - Docs missing                                                   |
+| 🚧 **Gradient**      | - Docs missing<br />- SCSS variables isn't supported yet         |
+| ✅ **Frosted Glass** | - Docs missing                                                   |
+| ✅ **Drop Shadow**   | - Docs missing                                                   |
+| ✅ **Border**        | - Docs missing                                                   |
 
 ### Components
 
