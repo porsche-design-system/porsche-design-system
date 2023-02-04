@@ -39,8 +39,6 @@ const getGridTemplateColumns = (layout: Layout) =>
         1
       )} [${gridExtendedColumnEnd}] ${getOuterColumn()} [${gridFullColumnEnd}]`;
 
-// TODO: maybe we should extend grid variants by gridExtendedStyle, gridBasicStyle, gridNarrowStyle,
-//  on the other hand, it's not necessary anymore as soon as CSS Subgrid is supported in all major browsers
 export const gridStyle = {
   [_cssVariableInternalGridSafeZone]: gridSafeZoneBase,
   [_cssVariableGridExtendedSpanOneHalf]: `${_gridColumnSpan} 3`,
