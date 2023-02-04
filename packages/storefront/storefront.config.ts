@@ -516,6 +516,26 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Fonts: [() => import('@/pages/assets/fonts.md')],
   },
+  'Utilities Deprecated': {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/utilities/introduction.md')],
+    Scss: {
+      // @ts-ignore
+      Variables: [() => import('@/pages/utilities/scss/variables.md')],
+      // @ts-ignore
+      Functions: [() => import('@/pages/utilities/scss/functions.md')],
+      // @ts-ignore
+      Helper: [() => import('@/pages/utilities/scss/helper.md')],
+    },
+    Js: {
+      // @ts-ignore
+      Variables: [() => import('@/pages/utilities/js/variables.md')],
+      // @ts-ignore
+      Functions: [() => import('@/pages/utilities/js/functions.md')],
+      // @ts-ignore
+      Helper: [() => import('@/pages/utilities/js/helper.md')],
+    },
+  },
   Performance: {
     // @ts-ignore
     Cdn: [() => import('@/pages/performance/cdn.md')],
