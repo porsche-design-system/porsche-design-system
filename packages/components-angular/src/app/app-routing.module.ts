@@ -154,6 +154,17 @@ export const routes: ExtendedRoute[] = [
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,
   },
+  {
+    name: '---',
+    path: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    name: 'Utilities Grid Example',
+    path: 'utilities-grid-example',
+    component: fromExamples.UtilitiesGridExampleComponent,
+  },
 ];
 
 @NgModule({
