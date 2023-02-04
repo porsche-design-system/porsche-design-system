@@ -4,7 +4,7 @@ import { pascalCase } from 'change-case';
 import type { TagName } from '../src/lib/tagNames';
 
 type CodeSample = {
-  component: TagName | 'componentsReady';
+  component: TagName | 'componentsReady' | 'utilities-grid';
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
@@ -168,6 +168,15 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/toast-example.html',
           componentsAngularPath + '/toast-example.component.ts',
           componentsReactPath + '/ToastExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'utilities-grid',
+      samples: [
+        [
+          componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsReactPath + '/UtilitiesGridExample.tsx',
         ],
       ],
     },
