@@ -205,7 +205,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   }
 
   @media (min-width: 1920px) {
-    --pds-internal-grid-safe-zone: clamp(22px, 50vw - 768px, 512px);
+    --pds-internal-grid-safe-zone: clamp(192px, 50vw - 768px, 512px);
   }
 }
 "
@@ -247,7 +247,7 @@ $pds-grid-narrow-span-one-half: var(--pds-grid-narrow-span-one-half);
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
 "$pds-grid-safe-zone-base: clamp(22px, 10.625vw - 12px, 192px);
-$pds-grid-safe-zone-xxl: clamp(22px, 50vw - 768px, 512px);
+$pds-grid-safe-zone-xxl: clamp(192px, 50vw - 768px, 512px);
 "
 `;
 

@@ -64,13 +64,13 @@ exports[`should contain correct values for gridNarrowSpanOneHalf 1`] = `"var(--p
 exports[`should contain correct values for gridSafeZone 1`] = `
 {
   "base": "clamp(22px, 10.625vw - 12px, 192px)",
-  "xxl": "clamp(22px, 50vw - 768px, 512px)",
+  "xxl": "clamp(192px, 50vw - 768px, 512px)",
 }
 `;
 
 exports[`should contain correct values for gridSafeZoneBase 1`] = `"clamp(22px, 10.625vw - 12px, 192px)"`;
 
-exports[`should contain correct values for gridSafeZoneXXL 1`] = `"clamp(22px, 50vw - 768px, 512px)"`;
+exports[`should contain correct values for gridSafeZoneXXL 1`] = `"clamp(192px, 50vw - 768px, 512px)"`;
 
 exports[`should contain correct values for gridStyle 1`] = `
 {
@@ -81,7 +81,7 @@ exports[`should contain correct values for gridStyle 1`] = `
   "--pds-grid-narrow-span-one-half": "span 3",
   "--pds-internal-grid-safe-zone": "clamp(22px, 10.625vw - 12px, 192px)",
   "@media(min-width:1920px)": {
-    "--pds-internal-grid-safe-zone": "clamp(22px, 50vw - 768px, 512px)",
+    "--pds-internal-grid-safe-zone": "clamp(192px, 50vw - 768px, 512px)",
   },
   "@media(min-width:760px)": {
     "--pds-grid-basic-span-one-half": "span 6",
