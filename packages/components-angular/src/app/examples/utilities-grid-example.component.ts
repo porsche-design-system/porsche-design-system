@@ -79,10 +79,10 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
         <p-button variant="secondary">Some label</p-button>
       </div>
       <div class="basic-content-two-thirds-left">
-        <span class="info kbBcQV"><b>Basic One Third</b> for Content Tiles</span>
+        <span class="info kbBcQV"><b>Basic Two Thirds</b> for Content Tiles</span>
       </div>
       <div class="basic-content-one-third-right">
-        <span class="info"><b>Basic Two Thirds</b> for Content Tiles</span>
+        <span class="info"><b>Basic One Third</b> for Content Tiles</span>
       </div>
       <div class="basic-content-custom-left">
         <span class="info"><b>Custom (desktop: column 3-7)</b> for Content</span>
