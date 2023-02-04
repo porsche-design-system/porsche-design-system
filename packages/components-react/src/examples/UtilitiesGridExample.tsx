@@ -33,7 +33,6 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textLargeStyle,
-  textMediumStyle,
   textSmallStyle,
   textXSmallStyle,
   themeLightPrimary,
@@ -76,7 +75,6 @@ const getTileStyle = (color: Color, padding: 'medium' | 'small' | false = 'mediu
     yellow: `rgba(255, 255, 0, ${opacity})`,
   };
   return {
-    ...textMediumStyle,
     padding: padding === 'medium' ? spacingFluidMedium : padding === 'small' ? spacingFluidSmall : 0,
     borderRadius: borderRadius ? borderRadiusLarge : 0,
     background: colorMap[color],
