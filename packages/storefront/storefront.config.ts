@@ -68,6 +68,12 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
+  'Design Tokens': {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/utilities/introduction.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/utilities/grid.md')],
+  },
   Components: {
     Accordion: {
       // @ts-ignore
@@ -446,6 +452,30 @@ export const config: StorefrontConfig = {
       ],
     },
   },
+  Partials: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/partials/introduction.md')],
+    // @ts-ignore
+    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
+    // @ts-ignore
+    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
+    // @ts-ignore
+    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
+    // @ts-ignore
+    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
+    // @ts-ignore
+    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
+    // @ts-ignore
+    'Font Links': [() => import('@/pages/partials/font-links.md')],
+    // @ts-ignore
+    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
+    // @ts-ignore
+    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
+    // @ts-ignore
+    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
+    // @ts-ignore
+    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
+  },
   Help: {
     // @ts-ignore
     Support: [() => import('@/pages/help/support.md')],
@@ -485,50 +515,6 @@ export const config: StorefrontConfig = {
     Marque: [() => import('@/pages/assets/marque.md')],
     // @ts-ignore
     Fonts: [() => import('@/pages/assets/fonts.md')],
-  },
-  Utilities: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/utilities/introduction.md')],
-    Scss: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/scss/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/scss/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/scss/helper.md')],
-    },
-    Js: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/js/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/js/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/js/helper.md')],
-    },
-  },
-  Partials: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/partials/introduction.md')],
-    // @ts-ignore
-    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
-    // @ts-ignore
-    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
-    // @ts-ignore
-    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
-    // @ts-ignore
-    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
-    // @ts-ignore
-    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
-    // @ts-ignore
-    'Font Links': [() => import('@/pages/partials/font-links.md')],
-    // @ts-ignore
-    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
-    // @ts-ignore
-    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
-    // @ts-ignore
-    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
-    // @ts-ignore
-    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
   Performance: {
     // @ts-ignore

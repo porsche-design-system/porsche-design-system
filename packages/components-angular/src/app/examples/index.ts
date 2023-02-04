@@ -15,6 +15,7 @@ import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component
 import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { ToastExampleComponent } from './toast-example.component';
+import { UtilitiesGridExampleComponent } from './utilities-grid-example.component';
 
 export const examples = [
   AccordionExampleComponent,
@@ -34,6 +35,7 @@ export const examples = [
   TextFieldWrapperExampleImaskComponent,
   TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
+  UtilitiesGridExampleComponent,
 ];
 
 export * from './accordion-example.component';
@@ -53,3 +55,4 @@ export * from './tabs-bar-example-basic.component';
 export * from './text-field-wrapper-example-imask.component';
 export * from './text-field-wrapper-example-search.component';
 export * from './toast-example.component';
+export * from './utilities-grid-example.component';
