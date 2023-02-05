@@ -10,23 +10,24 @@
 - Use `text-indent: -999999px` for accessible but hidden text/label
   (https://webaim.org/techniques/css/invisiblecontent/)
 - Ensure Banner, Toast, Modal, Content-Wrapper etc. is in sync with new grid design token by VRT test
+- Markdown Styles needs to be updated with new design tokens
 
 ### Utilities
 
-| Utilities            | V3 Status <br/>      |
-| -------------------- | -------------------- |
-| ✅ **Font**          | - Usage Docs missing |
-| ✅ **Grid**          | - Usage Docs missing |
-| ✅ **Media Query**   | - Usage Docs missing |
-| ✅ **Theme**         | - Usage Docs missing |
-| ✅ **Typography**    | - Usage Docs missing |
-| ✅ **Focus**         | - Usage Docs missing |
-| ⛔ **Hover**         | - Usage Docs missing |
-| ✅ **Spacing**       | - Usage Docs missing |
-| ✅ **Gradient**      | - Usage Docs missing |
-| ✅ **Frosted Glass** | - Usage Docs missing |
-| ✅ **Drop Shadow**   | - Usage Docs missing |
-| ✅ **Border**        | - Usage Docs missing |
+| Utilities            | V3 Status <br/>                                          |
+| -------------------- | -------------------------------------------------------- |
+| ✅ **Font**          | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Grid**          | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Media Query**   | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Theme**         | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Typography**    | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Focus**         | - Usage Docs missing<br />-StackBlitz button not working |
+| ⛔ **Hover**         | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Spacing**       | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Gradient**      | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Frosted Glass** | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Drop Shadow**   | - Usage Docs missing<br />-StackBlitz button not working |
+| ✅ **Border**        | - Usage Docs missing<br />-StackBlitz button not working |
 
 ### Components
 
