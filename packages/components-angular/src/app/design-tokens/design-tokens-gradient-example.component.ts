@@ -4,18 +4,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-design-tokens-gradient-example',
   styleUrls: ['./design-tokens-gradient-example.component.scss'],
   template: `
-    <div>
-      <div class="wrapper">
-        <h3 class="heading">Border Radius</h3>
-        <div class="border-radius-small tile">Small</div>
-        <div class="border-radius-medium tile">Medium</div>
-        <div class="border-radius-large tile">Large</div>
-      </div>
-      <div class="wrapper">
-        <h3 class="heading">Border Width</h3>
-        <div class="border-width-base"></div>
-        <div class="border-width-thin"></div>
-      </div>
+    <div class="wrapper">
+      <div class="gradient-to-top tile">Gradient To Top</div>
+      <div class="gradient-to-bottom tile">Gradient To Bottom</div>
+      <div class="gradient-to-left tile">Gradient To Left</div>
+      <div class="gradient-to-right tile">Gradient To Right</div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

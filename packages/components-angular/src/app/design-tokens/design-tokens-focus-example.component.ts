@@ -5,16 +5,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./design-tokens-focus-example.component.scss'],
   template: `
     <div>
-      <div class="wrapper">
-        <h3 class="heading">Border Radius</h3>
-        <div class="border-radius-small tile">Small</div>
-        <div class="border-radius-medium tile">Medium</div>
-        <div class="border-radius-large tile">Large</div>
+      <div class="wrapper wrapper--light">
+        <h3 class="heading heading--light">Focus Light (only visible by keyboard navigation)</h3>
+        <button class="native-button native-button--light">Some Button</button>
+        <a href="#" class="native-anchor native-anchor--light">Some Anchor</a>
       </div>
-      <div class="wrapper">
-        <h3 class="heading">Border Width</h3>
-        <div class="border-width-base"></div>
-        <div class="border-width-thin"></div>
+      <div class="wrapper wrapper--dark">
+        <h3 class="heading heading--dark">Focus Dark (only visible by keyboard navigation)</h3>
+        <button class="native-button native-button--dark">Some Button</button>
+        <a href="#" class="native-anchor native-anchor--dark">Some Anchor</a>
       </div>
     </div>
   `,

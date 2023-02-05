@@ -6,15 +6,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div>
       <div class="wrapper">
-        <h3 class="heading">Border Radius</h3>
-        <div class="border-radius-small tile">Small</div>
-        <div class="border-radius-medium tile">Medium</div>
-        <div class="border-radius-large tile">Large</div>
+        <h3 class="heading">Spacing Fluid (XS - XL)</h3>
+        <div class="spacing-fluid-x-small tile"></div>
+        <div class="spacing-fluid-small tile"></div>
+        <div class="spacing-fluid-medium tile"></div>
+        <div class="spacing-fluid-large tile"></div>
+        <div class="spacing-fluid-x-large tile"></div>
       </div>
       <div class="wrapper">
-        <h3 class="heading">Border Width</h3>
-        <div class="border-width-base"></div>
-        <div class="border-width-thin"></div>
+        <h3 class="heading">Spacing Static (XS - XXL)</h3>
+        <div class="spacing-static-x-small tile"></div>
+        <div class="spacing-static-small tile"></div>
+        <div class="spacing-static-medium tile"></div>
+        <div class="spacing-static-large tile"></div>
+        <div class="spacing-static-x-large tile"></div>
+        <div class="spacing-static-xx-large tile"></div>
       </div>
     </div>
   `,

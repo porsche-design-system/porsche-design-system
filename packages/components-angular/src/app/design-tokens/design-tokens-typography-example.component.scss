@@ -3,59 +3,75 @@
 // Wrapper
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: $pds-grid-gap;
   padding: $pds-spacing-fluid-medium;
 }
 
 // Typography
-.heading {
-  @include pds-heading-medium;
+.typography {
   color: $pds-theme-light-primary;
-  text-align: center;
-  width: 100%;
   margin: 0;
 }
 
-// Tile
-.tile {
+.heading {
+  @include pds-heading-medium;
+  color: $pds-theme-light-primary;
+  margin: 0;
+}
+
+// Display
+.display-large {
+  @include pds-display-large;
+}
+
+.display-medium {
+  @include pds-display-medium;
+}
+
+// Heading
+.heading-xxx-large {
+  @include pds-heading-xxx-large;
+}
+
+.heading-xx-large {
+  @include pds-heading-xx-large;
+}
+
+.heading-x-large {
+  @include pds-heading-x-large;
+}
+
+.heading-large {
+  @include pds-heading-large;
+}
+
+.heading-medium {
+  @include pds-heading-medium;
+}
+
+.heading-small {
+  @include pds-heading-small;
+}
+
+// Text
+.text-x-large {
+  @include pds-text-x-large;
+}
+
+.text-large {
+  @include pds-text-large;
+}
+
+.text-medium {
+  @include pds-text-medium;
+}
+
+.text-small {
   @include pds-text-small;
-  color: $pds-theme-dark-primary;
-  background: $pds-theme-dark-background-base;
-  padding: $pds-spacing-fluid-medium;
 }
 
-// Border Radius
-.border-radius-small {
-  border-radius: $pds-border-radius-small;
-}
-
-.border-radius-medium {
-  border-radius: $pds-border-radius-medium;
-}
-
-.border-radius-large {
-  border-radius: $pds-border-radius-large;
-}
-
-// Border Width
-.border-width-base {
-  width: 100%;
-  border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-  &::before {
-    @include pds-text-x-small;
-    content: 'Base';
-    color: $pds-theme-light-primary;
-  }
-}
-
-.border-width-thin {
-  width: 100%;
-  border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-  &::before {
-    @include pds-text-x-small;
-    content: 'Thin';
-    color: $pds-theme-light-primary;
-  }
+.text-x-small {
+  @include pds-text-x-small;
 }
