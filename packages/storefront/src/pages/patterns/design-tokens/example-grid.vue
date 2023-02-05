@@ -182,7 +182,6 @@
   // Typography
   .info {
     @include pds-text-x-small;
-    @include pds-frosted-glass;
     display: inline-block;
     vertical-align: top;
     color: $pds-theme-light-primary;

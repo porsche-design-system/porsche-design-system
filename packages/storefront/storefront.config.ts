@@ -70,9 +70,27 @@ export const config: StorefrontConfig = {
   },
   'Design Tokens': {
     // @ts-ignore
-    Introduction: [() => import('@/pages/utilities/introduction.md')],
+    Introduction: [() => import('@/pages/design-tokens/introduction.md')],
     // @ts-ignore
-    Grid: [() => import('@/pages/utilities/grid.md')],
+    Border: [() => import('@/pages/design-tokens/border.md')],
+    // @ts-ignore
+    'Drop Shadow': [() => import('@/pages/design-tokens/drop-shadow.md')],
+    // @ts-ignore
+    Focus: [() => import('@/pages/design-tokens/focus.md')],
+    // @ts-ignore
+    'Frosted Glass': [() => import('@/pages/design-tokens/frosted-glass.md')],
+    // @ts-ignore
+    Gradient: [() => import('@/pages/design-tokens/gradient.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/design-tokens/grid.md')],
+    // @ts-ignore
+    'Media Query': [() => import('@/pages/design-tokens/media-query.md')],
+    // @ts-ignore
+    Spacing: [() => import('@/pages/design-tokens/spacing.md')],
+    // @ts-ignore
+    Theme: [() => import('@/pages/design-tokens/theme.md')],
+    // @ts-ignore
+    Typography: [() => import('@/pages/design-tokens/typography.md')],
   },
   Components: {
     Accordion: {
@@ -124,12 +142,6 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.props.md')],
-    },
-    Color: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/color/color.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/color/color.usage.md')],
     },
     'Content Wrapper': {
       // @ts-ignore
@@ -308,12 +320,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md'),
       ],
-    },
-    Spacing: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/spacing/spacing.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/spacing/spacing.usage.md')],
     },
     'Segmented Control': {
       // @ts-ignore

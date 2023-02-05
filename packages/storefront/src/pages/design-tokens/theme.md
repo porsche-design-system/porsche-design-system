@@ -1,19 +1,10 @@
-# Grid
+# Theme
 
 <TableOfContents></TableOfContents>
 
 ## Example
 
-The Porsche grid system is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) for best
-performance, changing its available columns on mobile (6 content columns + 2 safe zone columns) and desktop view
-(8/12/14 content columns + 2 safe zone columns). It has a size range between 320px and 2560px, using fluid sized columns
-and gaps.
-
-<p-link href="patterns/design-tokens/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
-Window</p-link>
-
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensGrid></ExampleDesignTokensGrid>
 </Playground>
 
 ## Usage
@@ -84,15 +75,12 @@ scss `~` tilde imports).
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getUtilitiesGridCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensGrid from '@/pages/patterns/design-tokens/example-grid.vue';
+import { getDesignTokensThemeCodeSamples } from '@porsche-design-system/shared';
 
 @Component({
-  components: {
-    ExampleDesignTokensGrid
-  },
+  components: {},
 })
 export default class Code extends Vue {
-  codeExample = getUtilitiesGridCodeSamples();
+  codeExample = getDesignTokensThemeCodeSamples();
 }
 </script>
