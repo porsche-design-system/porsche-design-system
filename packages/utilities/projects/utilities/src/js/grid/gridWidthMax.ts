@@ -1,1 +1,1 @@
-export const gridWidthMax = '1920px';
+export const gridWidthMax = '2560px';

@@ -10,6 +10,10 @@ import * as grid from '../src/js/grid/gridStyle';
 import * as gridGap from '../src/js/grid/gridGap';
 import * as gridWidth from '../src/js/grid/gridWidth';
 import * as gridSafeZone from '../src/js/grid/gridSafeZone';
+import * as gridFull from '../src/js/grid/gridFull';
+import * as gridExtended from '../src/js/grid/gridExtended';
+import * as gridBasic from '../src/js/grid/gridBasic';
+import * as gridNarrow from '../src/js/grid/gridNarrow';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
@@ -95,5 +99,9 @@ generateVariables({
   gridGap,
   gridWidth,
   gridSafeZone,
+  gridFull,
+  gridExtended,
+  gridBasic,
+  gridNarrow,
 });
 generateMixins({ heading, text, display, grid, dropShadow, frostedGlass, gradient });
