@@ -17,7 +17,7 @@ const getWrapperStyle = {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
-  alignItems: 'start',
+  alignItems: 'flex-start',
   gap: gridGap,
   padding: spacingFluidMedium,
 } as const;

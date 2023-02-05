@@ -30,7 +30,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
 
