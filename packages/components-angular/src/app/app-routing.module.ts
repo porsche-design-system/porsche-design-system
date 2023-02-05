@@ -162,14 +162,54 @@ export const routes: ExtendedRoute[] = [
     children: [],
   },
   {
+    name: 'Design Tokens Border Example',
+    path: 'design-tokens-border',
+    component: fromDesignTokens.DesignTokensBorderExampleComponent,
+  },
+  {
+    name: 'Design Tokens Drop Shadow Example',
+    path: 'design-tokens-drop-shadow',
+    component: fromDesignTokens.DesignTokensDropShadowExampleComponent,
+  },
+  {
+    name: 'Design Tokens Focus Example',
+    path: 'design-tokens-focus',
+    component: fromDesignTokens.DesignTokensFocusExampleComponent,
+  },
+  {
+    name: 'Design Tokens Frosted Glass Example',
+    path: 'design-tokens-frosted-glass',
+    component: fromDesignTokens.DesignTokensFrostedGlassExampleComponent,
+  },
+  {
+    name: 'Design Tokens Gradient Example',
+    path: 'design-tokens-gradient',
+    component: fromDesignTokens.DesignTokensGradientExampleComponent,
+  },
+  {
     name: 'Design Tokens Grid Example',
     path: 'design-tokens-grid',
     component: fromDesignTokens.DesignTokensGridExampleComponent,
   },
   {
-    name: 'Design Tokens Border Example',
-    path: 'design-tokens-border',
-    component: fromDesignTokens.DesignTokensBorderExampleComponent,
+    name: 'Design Tokens Media Query Example',
+    path: 'design-tokens-media-query',
+    component: fromDesignTokens.DesignTokensMediaQueryExampleComponent,
+  },
+  {
+    name: 'Design Tokens Spacing Example',
+    path: 'design-tokens-spacing',
+    component: fromDesignTokens.DesignTokensSpacingExampleComponent,
+  },
+  {
+    name: 'Design Tokens Theme Example',
+    path: 'design-tokens-theme',
+    component: fromDesignTokens.DesignTokensThemeExampleComponent,
+  },
+  {
+    name: 'Design Tokens Typography Example',
+    path: 'design-tokens-typography',
+    component: fromDesignTokens.DesignTokensTypographyExampleComponent,
   },
 ];
 
