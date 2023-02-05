@@ -1,15 +1,14 @@
 <template>
   <div>
-    <div class="wrapper">
-      <h3 class="heading">Border Radius</h3>
-      <div class="border-radius-small tile">Small</div>
-      <div class="border-radius-medium tile">Medium</div>
-      <div class="border-radius-large tile">Large</div>
+    <div class="wrapper wrapper--light">
+      <h3 class="heading heading--light">Focus Light (only visible by keyboard navigation)</h3>
+      <button class="native-button native-button--light">Some Button</button>
+      <a href="#" class="native-anchor native-anchor--light">Some Anchor</a>
     </div>
-    <div class="wrapper">
-      <h3 class="heading">Border Width</h3>
-      <div class="border-width-base"></div>
-      <div class="border-width-thin"></div>
+    <div class="wrapper wrapper--dark">
+      <h3 class="heading heading--dark">Focus Dark (only visible by keyboard navigation)</h3>
+      <button class="native-button native-button--dark">Some Button</button>
+      <a href="#" class="native-anchor native-anchor--dark">Some Anchor</a>
     </div>
   </div>
 </template>
@@ -31,58 +30,61 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: start;
     gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
+
+    &--light {
+      background: $pds-theme-light-background-base;
+    }
+
+    &--dark {
+      background: $pds-theme-dark-background-base;
+    }
   }
 
   // Typography
   .heading {
     @include pds-heading-medium;
-    color: $pds-theme-light-primary;
     text-align: center;
     width: 100%;
     margin: 0;
-  }
 
-  // Tile
-  .tile {
-    @include pds-text-small;
-    color: $pds-theme-dark-primary;
-    background: $pds-theme-dark-background-base;
-    padding: $pds-spacing-fluid-medium;
-  }
-
-  // Border Radius
-  .border-radius-small {
-    border-radius: $pds-border-radius-small;
-  }
-
-  .border-radius-medium {
-    border-radius: $pds-border-radius-medium;
-  }
-
-  .border-radius-large {
-    border-radius: $pds-border-radius-large;
-  }
-
-  // Border Width
-  .border-width-base {
-    width: 100%;
-    border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Base';
+    &--light {
       color: $pds-theme-light-primary;
+    }
+
+    &--dark {
+      color: $pds-theme-dark-primary;
     }
   }
 
-  .border-width-thin {
-    width: 100%;
-    border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Thin';
+  // Native Button
+  .native-button {
+    @include pds-text-small;
+
+    &--light {
+      @include pds-focus;
       color: $pds-theme-light-primary;
+    }
+
+    &--dark {
+      @include pds-focus;
+    }
+  }
+
+  // Native Anchor
+  .native-anchor {
+    @include pds-text-small;
+
+    &--light {
+      @include pds-focus;
+      color: $pds-theme-light-primary;
+    }
+
+    &--dark {
+      @include pds-focus;
+      color: $pds-theme-dark-primary;
     }
   }
 </style>
