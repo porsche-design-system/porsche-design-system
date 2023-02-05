@@ -1,15 +1,21 @@
 <template>
   <div>
     <div class="wrapper">
-      <h3 class="heading">Border Radius</h3>
-      <div class="border-radius-small tile">Small</div>
-      <div class="border-radius-medium tile">Medium</div>
-      <div class="border-radius-large tile">Large</div>
+      <h3 class="heading">Spacing Fluid (XS - XL)</h3>
+      <div class="spacing-fluid-x-small tile"></div>
+      <div class="spacing-fluid-small tile"></div>
+      <div class="spacing-fluid-medium tile"></div>
+      <div class="spacing-fluid-large tile"></div>
+      <div class="spacing-fluid-x-large tile"></div>
     </div>
     <div class="wrapper">
-      <h3 class="heading">Border Width</h3>
-      <div class="border-width-base"></div>
-      <div class="border-width-thin"></div>
+      <h3 class="heading">Spacing Static (XS - XXL)</h3>
+      <div class="spacing-static-x-small tile"></div>
+      <div class="spacing-static-small tile"></div>
+      <div class="spacing-static-medium tile"></div>
+      <div class="spacing-static-large tile"></div>
+      <div class="spacing-static-x-large tile"></div>
+      <div class="spacing-static-xx-large tile"></div>
     </div>
   </div>
 </template>
@@ -30,6 +36,7 @@
   .wrapper {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: center;
     gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
@@ -47,42 +54,54 @@
   // Tile
   .tile {
     @include pds-text-small;
-    color: $pds-theme-dark-primary;
-    background: $pds-theme-dark-background-base;
+    background: $pds-theme-light-contrast-low;
+    border-radius: $pds-border-radius-small;
     padding: $pds-spacing-fluid-medium;
   }
 
-  // Border Radius
-  .border-radius-small {
-    border-radius: $pds-border-radius-small;
+  // Spacing Fluid
+  .spacing-fluid-x-small {
+    padding: $pds-spacing-fluid-x-small;
   }
 
-  .border-radius-medium {
-    border-radius: $pds-border-radius-medium;
+  .spacing-fluid-small {
+    padding: $pds-spacing-fluid-small;
   }
 
-  .border-radius-large {
-    border-radius: $pds-border-radius-large;
+  .spacing-fluid-medium {
+    padding: $pds-spacing-fluid-medium;
   }
 
-  // Border Width
-  .border-width-base {
-    width: 100%;
-    border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Base';
-      color: $pds-theme-light-primary;
-    }
+  .spacing-fluid-large {
+    padding: $pds-spacing-fluid-large;
   }
 
-  .border-width-thin {
-    width: 100%;
-    border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Thin';
-      color: $pds-theme-light-primary;
-    }
+  .spacing-fluid-x-large {
+    padding: $pds-spacing-fluid-x-large;
+  }
+
+  // Spacing Static
+  .spacing-static-x-small {
+    padding: $pds-spacing-static-x-small;
+  }
+
+  .spacing-static-small {
+    padding: $pds-spacing-static-small;
+  }
+
+  .spacing-static-medium {
+    padding: $pds-spacing-static-medium;
+  }
+
+  .spacing-static-large {
+    padding: $pds-spacing-static-large;
+  }
+
+  .spacing-static-x-large {
+    padding: $pds-spacing-static-x-large;
+  }
+
+  .spacing-static-xx-large {
+    padding: $pds-spacing-static-xx-large;
   }
 </style>

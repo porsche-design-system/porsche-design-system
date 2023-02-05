@@ -25,9 +25,9 @@ const Wrapper = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'flex-start',
+  justifyContent: 'center',
   gap: gridGap,
   padding: spacingFluidMedium,
-  justifyContent: 'center',
 });
 
 // Typography
@@ -42,7 +42,6 @@ const Heading = styled.h3({
 // Tile
 const getTileStyle = {
   ...textXSmallStyle,
-  color: themeLightPrimary,
   background: themeLightContrastLow,
   borderRadius: borderRadiusSmall,
   padding: spacingFluidMedium,
