@@ -20,31 +20,19 @@ The Design Tokens are available as JavaScript and SCSS version. Look at the exam
 JavaScript Design Tokens can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/utilities/js';`.
 
-- `gridBasic`
-- `gridBasicColumnEnd`
-- `gridBasicColumnStart`
-- `gridBasicSpanOneHalf`
-- `gridBasicSpanOneThird`
-- `gridBasicSpanTwoThirds`
-- `gridExtended`
-- `gridExtendedColumnEnd`
-- `gridExtendedColumnStart`
-- `gridExtendedSpanOneHalf`
-- `gridFull`
-- `gridFullColumnEnd`
-- `gridFullColumnStart`
-- `gridGap`
-- `gridNarrow`
-- `gridNarrowColumnEnd`
-- `gridNarrowColumnStart`
-- `gridNarrowSpanOneHalf`
-- `gridSafeZone`
-- `gridSafeZoneBase`
-- `gridSafeZoneXXL`
-- `gridStyle`
-- `gridWidth`
-- `gridWidthMax`
-- `gridWidthMin`
+- `displayLargeStyle`
+- `displayMediumStyle`
+- `headingXXXLargeStyle`
+- `headingXXLargeStyle`
+- `headingXLargeStyle`
+- `headingLargeStyle`
+- `headingMediumStyle`
+- `headingSmallStyle`
+- `textXLargeStyle`
+- `textLargeStyle`
+- `textMediumStyle`
+- `textSmallStyle`
+- `textXSmallStyle`
 
 #### SCSS
 
