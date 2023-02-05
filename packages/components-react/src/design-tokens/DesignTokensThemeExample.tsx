@@ -5,7 +5,6 @@ import {
   gridGap,
   headingMediumStyle,
   spacingFluidMedium,
-  textXSmallStyle,
   themeDarkBackgroundBase,
   themeDarkBackgroundShading,
   themeDarkBackgroundSurface,
