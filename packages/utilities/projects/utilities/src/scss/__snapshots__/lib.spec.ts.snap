@@ -84,8 +84,8 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_gradient.scss 1`] = `
-"@mixin pds-gradient-bottom {
-  background-color: linear-gradient(
+"@mixin pds-gradient-to-bottom {
+  background: linear-gradient(
     to bottom,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,
@@ -104,8 +104,8 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   );
 }
 
-@mixin pds-gradient-left {
-  background-color: linear-gradient(
+@mixin pds-gradient-to-left {
+  background: linear-gradient(
     to left,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,
@@ -124,8 +124,8 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   );
 }
 
-@mixin pds-gradient-right {
-  background-color: linear-gradient(
+@mixin pds-gradient-to-right {
+  background: linear-gradient(
     to right,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,
@@ -144,8 +144,8 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   );
 }
 
-@mixin pds-gradient-top {
-  background-color: linear-gradient(
+@mixin pds-gradient-to-top {
+  background: linear-gradient(
     to top,
     rgba(31, 31, 31, 0.9) 0%,
     rgba(31, 31, 31, 0.9) 20%,

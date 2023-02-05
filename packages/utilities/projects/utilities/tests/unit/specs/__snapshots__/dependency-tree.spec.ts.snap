@@ -31,6 +31,8 @@ exports[`should have no regression for dependency tree 1`] = `
   ],
   "dropShadow/dropShadowShared.js": [],
   "focus/getFocusStyle.js": [
+    "border/borderRadiusMedium.js",
+    "border/borderRadiusSmall.js",
     "border/borderWidthBase.js",
     "theme/themeDarkStateFocus.js",
     "theme/themeLightStateFocus.js",
@@ -99,17 +101,17 @@ exports[`should have no regression for dependency tree 1`] = `
   "font/fontWeightRegular.js": [],
   "font/fontWeightSemiBold.js": [],
   "frostedGlass/frostedGlassStyle.js": [],
-  "gradient/gradientBottomStyle.js": [
-    "gradient/gradientShared.js",
-  ],
-  "gradient/gradientLeftStyle.js": [
-    "gradient/gradientShared.js",
-  ],
-  "gradient/gradientRightStyle.js": [
-    "gradient/gradientShared.js",
-  ],
   "gradient/gradientShared.js": [],
-  "gradient/gradientTopStyle.js": [
+  "gradient/gradientToBottomStyle.js": [
+    "gradient/gradientShared.js",
+  ],
+  "gradient/gradientToLeftStyle.js": [
+    "gradient/gradientShared.js",
+  ],
+  "gradient/gradientToRightStyle.js": [
+    "gradient/gradientShared.js",
+  ],
+  "gradient/gradientToTopStyle.js": [
     "gradient/gradientShared.js",
   ],
   "grid/gridBasic.js": [
@@ -229,10 +231,10 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontWeightRegular.js",
     "font/fontWeightSemiBold.js",
     "frostedGlass/frostedGlassStyle.js",
-    "gradient/gradientBottomStyle.js",
-    "gradient/gradientLeftStyle.js",
-    "gradient/gradientRightStyle.js",
-    "gradient/gradientTopStyle.js",
+    "gradient/gradientToBottomStyle.js",
+    "gradient/gradientToLeftStyle.js",
+    "gradient/gradientToRightStyle.js",
+    "gradient/gradientToTopStyle.js",
     "grid/gridBasic.js",
     "grid/gridBasicColumnEnd.js",
     "grid/gridBasicColumnStart.js",
@@ -286,6 +288,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "theme/theme.js",
     "theme/themeDark.js",
     "theme/themeDarkBackgroundBase.js",
+    "theme/themeDarkBackgroundShading.js",
     "theme/themeDarkBackgroundSurface.js",
     "theme/themeDarkContrastHigh.js",
     "theme/themeDarkContrastLow.js",
@@ -305,6 +308,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "theme/themeDarkStateHover.js",
     "theme/themeLight.js",
     "theme/themeLightBackgroundBase.js",
+    "theme/themeLightBackgroundShading.js",
     "theme/themeLightBackgroundSurface.js",
     "theme/themeLightContrastHigh.js",
     "theme/themeLightContrastLow.js",
