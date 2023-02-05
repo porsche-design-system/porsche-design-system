@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromDesignTokens from './design-tokens';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -161,9 +162,9 @@ export const routes: ExtendedRoute[] = [
     children: [],
   },
   {
-    name: 'Utilities Grid Example',
-    path: 'utilities-grid-example',
-    component: fromExamples.UtilitiesGridExampleComponent,
+    name: 'Design Tokens Grid Example',
+    path: 'design-tokens-grid',
+    component: fromDesignTokens.DesignTokensGridExampleComponent,
   },
 ];
 

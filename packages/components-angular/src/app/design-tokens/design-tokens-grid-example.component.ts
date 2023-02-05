@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { AccordionChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-utilities-grid-example',
-  styleUrls: ['./utilities-grid-example.component.scss'],
+  selector: 'page-design-tokens-grid-example',
+  styleUrls: ['./design-tokens-grid-example.component.scss'],
   template: `
     <div class="visualize-grid">
       <span *ngFor="let n of counter(16)" class="visualize-grid-columns"></span>
@@ -134,7 +134,7 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UtilitiesGridExampleComponent {
+export class DesignTokensGridExampleComponent {
   counter(i: number) {
     return new Array(i);
   }
