@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <div class="wrapper">
-      <h3 class="heading">Border Radius</h3>
-      <div class="border-radius-small tile">Small</div>
-      <div class="border-radius-medium tile">Medium</div>
-      <div class="border-radius-large tile">Large</div>
-    </div>
-    <div class="wrapper">
-      <h3 class="heading">Border Width</h3>
-      <div class="border-width-base"></div>
-      <div class="border-width-thin"></div>
-    </div>
+  <div class="wrapper">
+    <h3 class="heading">Drop Shadow</h3>
+    <div class="drop-shadow-low tile">Small</div>
+    <div class="drop-shadow-medium tile">Medium</div>
+    <div class="drop-shadow-high tile">Large</div>
   </div>
 </template>
 
@@ -47,42 +40,22 @@
   // Tile
   .tile {
     @include pds-text-small;
-    color: $pds-theme-dark-primary;
-    background: $pds-theme-dark-background-base;
+    color: $pds-theme-light-primary;
+    background: $pds-theme-light-background-surface;
     padding: $pds-spacing-fluid-medium;
-  }
-
-  // Border Radius
-  .border-radius-small {
-    border-radius: $pds-border-radius-small;
-  }
-
-  .border-radius-medium {
-    border-radius: $pds-border-radius-medium;
-  }
-
-  .border-radius-large {
     border-radius: $pds-border-radius-large;
   }
 
-  // Border Width
-  .border-width-base {
-    width: 100%;
-    border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Base';
-      color: $pds-theme-light-primary;
-    }
+  // Drop Shadow
+  .drop-shadow-low {
+    @include pds-drop-shadow-low;
   }
 
-  .border-width-thin {
-    width: 100%;
-    border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Thin';
-      color: $pds-theme-light-primary;
-    }
+  .drop-shadow-medium {
+    @include pds-drop-shadow-medium;
+  }
+
+  .drop-shadow-high {
+    @include pds-drop-shadow-high;
   }
 </style>
