@@ -11,9 +11,9 @@ import {
 
 // Wrapper
 const Wrapper = styled.div({
-  display: 'grid',
-  padding: spacingFluidMedium,
+  display: 'flex',
   justifyContent: 'center',
+  padding: spacingFluidMedium,
   background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
 });
 
