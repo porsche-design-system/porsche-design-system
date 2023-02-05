@@ -91,6 +91,11 @@ const getTileStyle = {
 } as const;
 
 // Theme Light
+const ThemeLightPrimary = styled.div({
+  ...getTileStyle,
+  background: themeLightPrimary,
+});
+
 const ThemeLightBackgroundBase = styled.div({
   ...getTileStyle,
   background: themeLightBackgroundBase,
@@ -182,6 +187,11 @@ const ThemeLightStateDisabled = styled.div({
 });
 
 // Theme Dark
+const ThemeDarkPrimary = styled.div({
+  ...getTileStyle,
+  background: themeDarkPrimary,
+});
+
 const ThemeDarkBackgroundBase = styled.div({
   ...getTileStyle,
   background: themeDarkBackgroundBase,
@@ -277,6 +287,7 @@ export const DesignTokensThemeExample = (): JSX.Element => {
     <>
       <WrapperLight>
         <HeadingLight>Theme Light</HeadingLight>
+        <ThemeLightPrimary />
         <ThemeLightBackgroundBase />
         <ThemeLightBackgroundSurface />
         <ThemeLightBackgroundShading />
@@ -298,6 +309,7 @@ export const DesignTokensThemeExample = (): JSX.Element => {
       </WrapperLight>
       <WrapperDark>
         <HeadingDark>Theme Dark</HeadingDark>
+        <ThemeDarkPrimary />
         <ThemeDarkBackgroundBase />
         <ThemeDarkBackgroundSurface />
         <ThemeDarkBackgroundShading />

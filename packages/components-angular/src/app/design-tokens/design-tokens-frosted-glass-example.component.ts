@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./design-tokens-frosted-glass-example.component.scss'],
   template: `
     <div class="wrapper">
-      <h3 class="frosted-glass">Frosted Glass</h3>
+      <div class="frosted-glass">Frosted Glass</div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

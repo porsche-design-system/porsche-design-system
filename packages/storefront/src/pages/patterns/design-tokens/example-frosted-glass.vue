@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h3 class="frosted-glass">Frosted Glass</h3>
+    <div class="frosted-glass">Frosted Glass</div>
   </div>
 </template>
 
