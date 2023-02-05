@@ -1,0 +1,36 @@
+import React from 'react';
+import styled from 'styled-components';
+import {
+  borderRadiusLarge,
+  frostedGlassStyle,
+  spacingFluidMedium,
+  textSmallStyle,
+  themeDarkPrimary,
+  themeLightStateHover,
+} from '@porsche-design-system/components-react/utilities/js';
+
+// Wrapper
+const Wrapper = styled.div({
+  display: 'grid',
+  padding: spacingFluidMedium,
+  justifyContent: 'center',
+  background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+});
+
+// Frosted Glass
+const FrostedGlass = styled.div({
+  ...textSmallStyle,
+  ...frostedGlassStyle,
+  color: themeDarkPrimary,
+  background: themeLightStateHover,
+  borderRadius: borderRadiusLarge,
+  padding: spacingFluidMedium,
+});
+
+export const DesignTokensFrostedGlassExample = (): JSX.Element => {
+  return (
+    <Wrapper>
+      <FrostedGlass>Frosted Glass</FrostedGlass>
+    </Wrapper>
+  );
+};
