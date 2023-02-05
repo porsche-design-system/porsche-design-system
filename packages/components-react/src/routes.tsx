@@ -1,6 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromDesignTokens from './design-tokens';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -157,51 +158,51 @@ export const routes: RouteType[] = [
   {
     name: 'Design Tokens Border',
     path: '/design-tokens-border',
-    element: <fromExamples.DesignTokensBorderExample />,
+    element: <fromDesignTokens.DesignTokensBorderExample />,
   },
   {
     name: 'Design Tokens Drop Shadow',
     path: '/design-tokens-drop-shadow',
-    element: <fromExamples.DesignTokensDropShadowExample />,
+    element: <fromDesignTokens.DesignTokensDropShadowExample />,
   },
   {
     name: 'Design Tokens Focus',
     path: '/design-tokens-focus',
-    element: <fromExamples.DesignTokensFocusExample />,
+    element: <fromDesignTokens.DesignTokensFocusExample />,
   },
   {
     name: 'Design Tokens Frosted Glass',
     path: '/design-tokens-frosted-glass',
-    element: <fromExamples.DesignTokensFrostedGlassExample />,
+    element: <fromDesignTokens.DesignTokensFrostedGlassExample />,
   },
   {
     name: 'Design Tokens Gradient',
     path: '/design-tokens-gradient',
-    element: <fromExamples.DesignTokensGradientExample />,
+    element: <fromDesignTokens.DesignTokensGradientExample />,
   },
   {
     name: 'Design Tokens Grid',
     path: '/design-tokens-grid',
-    element: <fromExamples.DesignTokensGridExample />,
+    element: <fromDesignTokens.DesignTokensGridExample />,
   },
   {
     name: 'Design Tokens Media Query',
     path: '/design-tokens-media-query',
-    element: <fromExamples.DesignTokensMediaQueryExample />,
+    element: <fromDesignTokens.DesignTokensMediaQueryExample />,
   },
   {
     name: 'Design Tokens Spacing',
     path: '/design-tokens-spacing',
-    element: <fromExamples.DesignTokensSpacingExample />,
+    element: <fromDesignTokens.DesignTokensSpacingExample />,
   },
   {
     name: 'Design Tokens Theme',
     path: '/design-tokens-theme',
-    element: <fromExamples.DesignTokensThemeExample />,
+    element: <fromDesignTokens.DesignTokensThemeExample />,
   },
   {
     name: 'Design Tokens Typography',
     path: '/design-tokens-typography',
-    element: <fromExamples.DesignTokensTypographyExample />,
+    element: <fromDesignTokens.DesignTokensTypographyExample />,
   },
 ];
