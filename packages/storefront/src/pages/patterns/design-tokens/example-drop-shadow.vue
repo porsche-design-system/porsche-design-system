@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <h3 class="heading">Drop Shadow</h3>
-    <div class="drop-shadow-low tile">Small</div>
+    <div class="drop-shadow-low tile">Low</div>
     <div class="drop-shadow-medium tile">Medium</div>
-    <div class="drop-shadow-high tile">Large</div>
+    <div class="drop-shadow-high tile">High</div>
   </div>
 </template>
 
