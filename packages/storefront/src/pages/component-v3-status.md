@@ -9,6 +9,7 @@
 - No `:active` style shall be set
 - Use `text-indent: -999999px` for accessible but hidden text/label
   (https://webaim.org/techniques/css/invisiblecontent/)
+- Ensure Banner, Toast, Modal, Content-Wrapper etc. is in sync with new grid design token by VRT test
 
 ### Utilities
 
