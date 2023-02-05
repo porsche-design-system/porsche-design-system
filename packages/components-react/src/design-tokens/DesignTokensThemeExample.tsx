@@ -50,9 +50,9 @@ const wrapperStyle = {
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'flex-start',
+  justifyContent: 'center',
   gap: gridGap,
   padding: spacingFluidMedium,
-  justifyContent: 'center',
 } as const;
 
 const WrapperLight = styled.div({
