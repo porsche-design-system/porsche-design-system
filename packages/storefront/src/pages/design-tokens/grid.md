@@ -13,7 +13,7 @@ and gaps.
 Window</p-link>
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensGrid></ExampleDesignTokensGrid>
+  <ExampleDesignTokensGrid />
 </Playground>
 
 ## Usage
