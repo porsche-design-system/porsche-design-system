@@ -64,12 +64,12 @@
     @include pds-text-small;
 
     &--light {
-      @include pds-focus;
+      @include pds-focus('medium');
       color: $pds-theme-light-primary;
     }
 
     &--dark {
-      @include pds-focus;
+      @include pds-focus('medium', 'small', 'dark');
     }
   }
 
@@ -83,7 +83,7 @@
     }
 
     &--dark {
-      @include pds-focus;
+      @include pds-focus('small', 'small', 'dark');
       color: $pds-theme-dark-primary;
     }
   }
