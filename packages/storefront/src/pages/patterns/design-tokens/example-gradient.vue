@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <div class="wrapper">
-      <h3 class="heading">Border Radius</h3>
-      <div class="border-radius-small tile">Small</div>
-      <div class="border-radius-medium tile">Medium</div>
-      <div class="border-radius-large tile">Large</div>
-    </div>
-    <div class="wrapper">
-      <h3 class="heading">Border Width</h3>
-      <div class="border-width-base"></div>
-      <div class="border-width-thin"></div>
-    </div>
+  <div class="wrapper">
+    <div class="gradient-to-top tile">Gradient To Top</div>
+    <div class="gradient-to-bottom tile">Gradient To Bottom</div>
+    <div class="gradient-to-left tile">Gradient To Left</div>
+    <div class="gradient-to-right tile">Gradient To Right</div>
   </div>
 </template>
 
@@ -31,58 +24,33 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: $pds-grid-gap;
+    grid-gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
-  }
-
-  // Typography
-  .heading {
-    @include pds-heading-medium;
-    color: $pds-theme-light-primary;
-    text-align: center;
-    width: 100%;
-    margin: 0;
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
   }
 
   // Tile
   .tile {
     @include pds-text-small;
     color: $pds-theme-dark-primary;
-    background: $pds-theme-dark-background-base;
+    border-radius: $pds-border-radius-large;
     padding: $pds-spacing-fluid-medium;
   }
 
-  // Border Radius
-  .border-radius-small {
-    border-radius: $pds-border-radius-small;
+  // Gradient
+  .gradient-to-top {
+    @include pds-gradient-to-top;
   }
 
-  .border-radius-medium {
-    border-radius: $pds-border-radius-medium;
+  .gradient-to-bottom {
+    @include pds-gradient-to-bottom;
   }
 
-  .border-radius-large {
-    border-radius: $pds-border-radius-large;
+  .gradient-to-left {
+    @include pds-gradient-to-left;
   }
 
-  // Border Width
-  .border-width-base {
-    width: 100%;
-    border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Base';
-      color: $pds-theme-light-primary;
-    }
-  }
-
-  .border-width-thin {
-    width: 100%;
-    border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Thin';
-      color: $pds-theme-light-primary;
-    }
+  .gradient-to-right {
+    @include pds-gradient-to-right;
   }
 </style>
