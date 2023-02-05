@@ -166,6 +166,11 @@ export const routes: ExtendedRoute[] = [
     path: 'design-tokens-grid',
     component: fromDesignTokens.DesignTokensGridExampleComponent,
   },
+  {
+    name: 'Design Tokens Border Example',
+    path: 'design-tokens-border',
+    component: fromDesignTokens.DesignTokensBorderExampleComponent,
+  },
 ];
 
 @NgModule({
