@@ -130,7 +130,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-vue/utilities/scss';
+  // TODO: we should import from vue, but we need to prepare CI first
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   // VisualizeGrid
   .visualize-grid {
