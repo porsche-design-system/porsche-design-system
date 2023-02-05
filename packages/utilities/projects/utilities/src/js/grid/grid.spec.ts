@@ -1,7 +1,7 @@
 import * as fromGrid from './';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromGrid).length).toBe(6);
+  expect(Object.keys(fromGrid).length).toBe(25);
 });
 
 it.each<keyof typeof fromGrid>(Object.keys(fromGrid) as (keyof typeof fromGrid)[])(
