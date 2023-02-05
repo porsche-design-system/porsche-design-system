@@ -1,15 +1,20 @@
 <template>
   <div>
     <div class="wrapper">
-      <h3 class="heading">Border Radius</h3>
-      <div class="border-radius-small tile">Small</div>
-      <div class="border-radius-medium tile">Medium</div>
-      <div class="border-radius-large tile">Large</div>
+      <h3 class="heading">Media Query (change viewport to see effect)</h3>
+      <p class="media-query-min">Media Query Min:</p>
+      <p class="media-query-max">Media Query Max:</p>
+      <p class="media-query-min-max">Media Query Min Max:</p>
     </div>
     <div class="wrapper">
-      <h3 class="heading">Border Width</h3>
-      <div class="border-width-base"></div>
-      <div class="border-width-thin"></div>
+      <h3 class="heading">Breakpoint</h3>
+      <p class="breakpoint-base">Breakpoint Base:</p>
+      <p class="breakpoint-xs">Breakpoint XS:</p>
+      <p class="breakpoint-s">Breakpoint S:</p>
+      <p class="breakpoint-m">Breakpoint M:</p>
+      <p class="breakpoint-l">Breakpoint L:</p>
+      <p class="breakpoint-xl">Breakpoint XL:</p>
+      <p class="breakpoint-xxl">Breakpoint XXL:</p>
     </div>
   </div>
 </template>
@@ -29,8 +34,7 @@
   // Wrapper
   .wrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
   }
@@ -39,50 +43,154 @@
   .heading {
     @include pds-heading-medium;
     color: $pds-theme-light-primary;
-    text-align: center;
-    width: 100%;
     margin: 0;
   }
 
-  // Tile
-  .tile {
+  .text {
     @include pds-text-small;
-    color: $pds-theme-dark-primary;
-    background: $pds-theme-dark-background-base;
-    padding: $pds-spacing-fluid-medium;
+    color: $pds-theme-light-primary;
+    margin: 0;
   }
 
-  // Border Radius
-  .border-radius-small {
-    border-radius: $pds-border-radius-small;
-  }
-
-  .border-radius-medium {
-    border-radius: $pds-border-radius-medium;
-  }
-
-  .border-radius-large {
-    border-radius: $pds-border-radius-large;
-  }
-
-  // Border Width
-  .border-width-base {
-    width: 100%;
-    border-bottom: $pds-border-width-base solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Base';
-      color: $pds-theme-light-primary;
+  // MediaQueryMin
+  .media-query-min {
+    @include pds-media-query-min('base') {
+      &::after {
+        content: ' Base';
+      }
+    }
+    @include pds-media-query-min('xs') {
+      &::after {
+        content: ' XS';
+      }
+    }
+    @include pds-media-query-min('s') {
+      &::after {
+        content: ' S';
+      }
+    }
+    @include pds-media-query-min('m') {
+      &::after {
+        content: ' M';
+      }
+    }
+    @include pds-media-query-min('l') {
+      &::after {
+        content: ' L';
+      }
+    }
+    @include pds-media-query-min('xl') {
+      &::after {
+        content: ' XL';
+      }
+    }
+    @include pds-media-query-min('xxl') {
+      &::after {
+        content: ' XXL';
+      }
     }
   }
 
-  .border-width-thin {
-    width: 100%;
-    border-bottom: $pds-border-width-thin solid $pds-theme-light-primary;
-    &::before {
-      @include pds-text-x-small;
-      content: 'Thin';
-      color: $pds-theme-light-primary;
+  .media-query-max {
+    @include pds-media-query-max('xxl') {
+      &::after {
+        content: ' XXL';
+      }
+    }
+    @include pds-media-query-max('xl') {
+      &::after {
+        content: ' XL';
+      }
+    }
+    @include pds-media-query-max('l') {
+      &::after {
+        content: ' L';
+      }
+    }
+    @include pds-media-query-max('m') {
+      &::after {
+        content: ' M';
+      }
+    }
+    @include pds-media-query-max('s') {
+      &::after {
+        content: ' S';
+      }
+    }
+    @include pds-media-query-max('xs') {
+      &::after {
+        content: ' XS';
+      }
+    }
+  }
+
+  .media-query-min-max {
+    @include pds-media-query-min-max('base', 'xs') {
+      &::after {
+        content: ' Base - XS';
+      }
+    }
+    @include pds-media-query-min-max('xs', 's') {
+      &::after {
+        content: ' XS - S';
+      }
+    }
+    @include pds-media-query-min-max('s', 'm') {
+      &::after {
+        content: ' S - M';
+      }
+    }
+    @include pds-media-query-min-max('m', 'l') {
+      &::after {
+        content: ' M - L';
+      }
+    }
+    @include pds-media-query-min-max('l', 'xl') {
+      &::after {
+        content: ' L - XL';
+      }
+    }
+    @include pds-media-query-min-max('xl', 'xxl') {
+      &::after {
+        content: ' XL - XXL';
+      }
+    }
+  }
+
+  // Breakpoint
+  .breakpoint-base {
+    &::after {
+      content: ' #{$pds-breakpoint-base}';
+    }
+  }
+  .breakpoint-xs {
+    &::after {
+      content: ' #{$pds-breakpoint-xs}';
+    }
+  }
+  .breakpoint-s {
+    &::after {
+      content: ' #{$pds-breakpoint-s}';
+    }
+  }
+  .breakpoint-m {
+    &::after {
+      content: ' #{$pds-breakpoint-m}';
+    }
+  }
+  .breakpoint-l {
+    &::after {
+      content: ' #{$pds-breakpoint-l}';
+    }
+  }
+  .breakpoint-xl {
+    &::after {
+      content: ' #{$pds-breakpoint-xl}';
+    }
+  }
+  .breakpoint-xxl {
+    &::after {
+      content: ' #{$pds-breakpoint-xxl}';
     }
   }
 </style>
