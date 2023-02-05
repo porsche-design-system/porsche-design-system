@@ -187,7 +187,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-border',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-border-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensBorderExample.tsx',
         ],
       ],
@@ -196,7 +196,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-drop-shadow',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-drop-shadow-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensDropShadowExample.tsx',
         ],
       ],
@@ -205,7 +205,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-focus',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-focus-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensFocusExample.tsx',
         ],
       ],
@@ -214,7 +214,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-frosted-glass',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-frosted-glass-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensFrostedGlassExample.tsx',
         ],
       ],
@@ -223,7 +223,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-gradient',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-gradient-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensGradientExample.tsx',
         ],
       ],
@@ -232,7 +232,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-grid',
       samples: [
         [
-          componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-grid-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensGridExample.tsx',
         ],
       ],
@@ -241,7 +241,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-media-query',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-media-query-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensMediaQueryExample.tsx',
         ],
       ],
@@ -250,7 +250,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-spacing',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-spacing-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensSpacingExample.tsx',
         ],
       ],
@@ -259,7 +259,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-theme',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-theme-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensThemeExample.tsx',
         ],
       ],
@@ -268,7 +268,7 @@ const generateCodeSamples = (): void => {
       component: 'design-tokens-typography',
       samples: [
         [
-          // componentsAngularPath + '/utilities-grid-example.component.ts',
+          componentsAngularPath + '/../design-tokens/design-tokens-typography-example.component.ts',
           componentsReactPath + '/../design-tokens/DesignTokensTypographyExample.tsx',
         ],
       ],
