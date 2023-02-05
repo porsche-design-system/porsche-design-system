@@ -5,6 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
+  <ExampleDesignTokensFocus />
 </Playground>
 
 ## Usage
@@ -34,9 +35,12 @@ scss `~` tilde imports).
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getDesignTokensFocusCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensFocus from '@/pages/patterns/design-tokens/example-focus.vue';
 
 @Component({
-  components: {},
+  components: {
+    ExampleDesignTokensFocus
+  },
 })
 export default class Code extends Vue {
   codeExample = getDesignTokensFocusCodeSamples();

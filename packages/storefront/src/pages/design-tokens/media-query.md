@@ -5,6 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
+  <ExampleDesignTokensMediaQuery />
 </Playground>
 
 ## Usage
@@ -53,9 +54,12 @@ scss `~` tilde imports).
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getDesignTokensMediaQueryCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensMediaQuery from '@/pages/patterns/design-tokens/example-media-query.vue';
 
 @Component({
-  components: {},
+  components: {
+    ExampleDesignTokensMediaQuery
+  },
 })
 export default class Code extends Vue {
   codeExample = getDesignTokensMediaQueryCodeSamples();
