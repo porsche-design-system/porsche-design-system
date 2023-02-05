@@ -155,8 +155,53 @@ export const routes: RouteType[] = [
     isDisabled: true,
   },
   {
+    name: 'Utilities Border Example',
+    path: '/utilities-border-example',
+    element: <fromExamples.UtilitiesBorderExample />,
+  },
+  {
+    name: 'Utilities Drop Shadow Example',
+    path: '/utilities-drop-shadow-example',
+    element: <fromExamples.UtilitiesDropShadowExample />,
+  },
+  {
+    name: 'Utilities Focus Example',
+    path: '/utilities-focus-example',
+    element: <fromExamples.UtilitiesFocusExample />,
+  },
+  {
+    name: 'Utilities Frosted Glass Example',
+    path: '/utilities-frosted-glass-example',
+    element: <fromExamples.UtilitiesFrostedGlassExample />,
+  },
+  {
+    name: 'Utilities Gradient Example',
+    path: '/utilities-gradient-example',
+    element: <fromExamples.UtilitiesGradientExample />,
+  },
+  {
     name: 'Utilities Grid Example',
     path: '/utilities-grid-example',
     element: <fromExamples.UtilitiesGridExample />,
+  },
+  {
+    name: 'Utilities Media Query Example',
+    path: '/utilities-media-query-example',
+    element: <fromExamples.UtilitiesMediaQueryExample />,
+  },
+  {
+    name: 'Utilities Spacing Example',
+    path: '/utilities-spacing-example',
+    element: <fromExamples.UtilitiesSpacingExample />,
+  },
+  {
+    name: 'Utilities Theme Example',
+    path: '/utilities-theme-example',
+    element: <fromExamples.UtilitiesThemeExample />,
+  },
+  {
+    name: 'Utilities Typography Example',
+    path: '/utilities-typography-example',
+    element: <fromExamples.UtilitiesTypographyExample />,
   },
 ];
