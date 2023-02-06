@@ -34,7 +34,7 @@ export class Display {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending on the usage of the display component. */
-  @Prop() public tag?: DisplayTag;
+  @Prop() public tag?: DisplayTag = 'h1';
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';

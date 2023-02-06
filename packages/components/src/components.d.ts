@@ -275,7 +275,7 @@ export namespace Components {
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
@@ -1925,7 +1925,7 @@ declare namespace LocalJSX {
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
