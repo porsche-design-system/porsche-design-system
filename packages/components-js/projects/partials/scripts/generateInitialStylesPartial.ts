@@ -77,13 +77,20 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration':
-        {
-          WebkitAppearance: 'none',
-          appearance: 'none',
+      input: {
+        '&::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration':
+          {
+            WebkitAppearance: 'none',
+            appearance: 'none',
+          },
+      },
+      'input[type="search"]': {
+        '&::-webkit-search-cancel-button': {
+          display: 'none',
+          '&:focus, &:hover': {
+            display: 'none',
+          },
         },
-      'input[type="search"]::-webkit-search-cancel-button': {
-        display: 'none',
       },
       'input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
