@@ -2,23 +2,23 @@ import type { Page } from 'puppeteer';
 import type { TagName } from '@porsche-design-system/shared';
 import { setContentWithDesignSystem } from '../helpers';
 
-describe('componentsReady', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
+let page: Page;
+beforeEach(async () => (page = await browser.newPage()));
+afterEach(async () => await page.close());
 
-  const getReadyAmount = (selector?: string): Promise<number> =>
-    page.evaluate((selector: string) => {
-      const el = selector ? document.querySelector(selector) : undefined;
-      return (window as any).porscheDesignSystem.componentsReady(el);
-    }, selector);
+const getReadyAmount = (selector?: string): Promise<number> =>
+  page.evaluate((selector: string) => {
+    const el = selector ? document.querySelector(selector) : undefined;
+    return (window as any).porscheDesignSystem.componentsReady(el);
+  }, selector);
 
-  const addComponent = (tagName: TagName) =>
-    page.evaluate((tagName: string) => {
-      const el = document.createElement(tagName);
-      document.body.appendChild(el);
-    }, tagName);
+const addComponent = (tagName: TagName) =>
+  page.evaluate((tagName: string) => {
+    const el = document.createElement(tagName);
+    document.body.appendChild(el);
+  }, tagName);
 
+describe('with initialized design system', () => {
   it('should work for no component', async () => {
     await setContentWithDesignSystem(page, ``);
     expect(await getReadyAmount()).toBe(0);
@@ -99,5 +99,49 @@ describe('componentsReady', () => {
     expect(await getReadyAmount()).toBe(2);
     expect(val1).toBe(2);
     expect(val1).toBe(val2);
+  });
+});
+
+describe('without initialized design system', () => {
+  const initPDS = (): Promise<void> => {
+    return page.evaluate(() => {
+      const el = document.createElement('script');
+      el.textContent = 'porscheDesignSystem.load()';
+      document.body.append(el);
+    });
+  };
+
+  const interceptAndDelayJsRequests = async (): Promise<void> => {
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+      const url = req.url();
+      if (url.endsWith('.js')) {
+        // console.log(url);
+        setTimeout(() => req.continue(), 500);
+      } else {
+        req.continue();
+      }
+    });
+  };
+
+  const setContentWithDesignSystemWithoutLoadCallAndWaitForComponentsReady = (content: string): Promise<void> =>
+    setContentWithDesignSystem(page, `<p-button>Button</p-button>`, {
+      withoutLoadCall: true,
+      withoutWaitForComponentsReady: true,
+    });
+
+  it('should work for single component', async () => {
+    await setContentWithDesignSystemWithoutLoadCallAndWaitForComponentsReady(`<p-button>Button</p-button>`);
+    await initPDS();
+
+    expect(await getReadyAmount()).toBe(1);
+  });
+
+  it('should work for single component with delayed js requests', async () => {
+    await interceptAndDelayJsRequests();
+    await setContentWithDesignSystemWithoutLoadCallAndWaitForComponentsReady(`<p-button>Button</p-button>`);
+    await initPDS();
+
+    expect(await getReadyAmount()).toBe(1);
   });
 });

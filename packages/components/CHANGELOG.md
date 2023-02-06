@@ -9,6 +9,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.20.0] - 2023-02-06
+
+### [2.20.0-rc.1] - 2023-02-06
+
+### [2.20.0-rc.0] - 2023-01-30
+
+#### Added
+
+- `applyNormalizeStyles` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
+
+### [2.19.1-rc.1] - 2023-01-18
+
+#### Added
+
+- `jsdom-polyfill` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill`
+  and can be used to have working web components in jsdom based tests (e.g. jest)
+- `testing` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/testing` to provide
+  `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which use `@testing-library/dom`
+  queries internally to support Shadow DOM
+- Validation if `prefix` is already reserved by a different version upon initialization of the Porsche Design System
+
+#### Fixed
+
+- `componentsReady()` waits for Porsche Design System being initialized before checking components which can happen in
+  certain test scenarios without partials
+
+### [2.19.1-rc.0] - 2023-01-18
+
+#### Fixed
+
+- Bug in `@porsche-design-system/components-react/ssr` where in some cases during SSG an error was thrown when
+  components render their children conditionally
+
 ### [2.19.0] - 2022-12-22
 
 ### [2.19.0-rc.2] - 2022-12-22
@@ -38,7 +71,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Validation to ensure crucial partials are used.  
   **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
-  **https://designsystem.porsche.com/v2/partials/initial-styles**
+  [getInitialStyles() documentation](https://designsystem.porsche.com/latest/partials/initial-styles)
 
 #### Changed
 
@@ -69,11 +102,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
-  `@porsche-design-system/components-react/ssr`. To use it simply change your imports:
+  `@porsche-design-system/components-react/ssr`. To use it simply change your imports.
+
+**Important:** make sure to apply the new `getDSRPonyfill()` partial right before your closing `</body>` tag. More
+information can be found here:
+[getDSRPonyfill() documentation](https://designsystem.porsche.com/latest/partials/dsr-ponyfill)
 
 ```diff
 - import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
 + import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react/ssr';
++ import { getDSRPonyfill } from '@porsche-design-system/components-react/partials';
 ```
 
 #### Changed

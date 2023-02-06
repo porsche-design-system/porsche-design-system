@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
+{
+  "2.20.0": {
+    "": [
+      {
+        "p-text": {
+          "children": "Second prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+    "my-prefix": [
+      {
+        "p-text": {
+          "children": "First prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = `
+{
+  "2.18.0": {
+    "": [
+      {
+        "p-text": {
+          "children": "Second version first prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+    "my-prefix": [
+      {
+        "p-text": {
+          "children": "Second version second prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+  },
+  "2.20.0": {
+    "test-prefix": [
+      {
+        "p-text": {
+          "children": "First version first prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+    "test1-prefix": [
+      {
+        "p-text": {
+          "children": "First version second prefix",
+          "hostPdsComponent": null,
+          "properties": {
+            "align": "left",
+            "color": "default",
+            "ellipsis": false,
+            "size": "small",
+            "tag": "p",
+            "theme": "light",
+            "weight": "regular",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve children and hostPdsComponent correctly 1`] = `
+{
+  "2.20.0": {
+    "": [
+      {
+        "p-banner": {
+          "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
+          "hostPdsComponent": null,
+          "properties": {
+            "persistent": false,
+            "state": "neutral",
+            "theme": "dark",
+            "width": "basic",
+          },
+        },
+      },
+      {
+        "p-content-wrapper": {
+          "children": "<p-inline-notification class="root hydrated">(the content was stripped)</p-inline-notification>",
+          "hostPdsComponent": "p-banner",
+          "properties": {
+            "backgroundColor": "transparent",
+            "theme": "light",
+            "width": "basic",
+          },
+        },
+      },
+      {
+        "p-inline-notification": {
+          "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
+          "hostPdsComponent": "p-banner",
+          "properties": {
+            "actionIcon": "arrow-head-right",
+            "actionLoading": false,
+            "description": "",
+            "heading": "",
+            "persistent": false,
+            "state": "neutral",
+            "theme": "dark",
+          },
+        },
+      },
+      {
+        "p-icon": {
+          "children": null,
+          "hostPdsComponent": "p-inline-notification",
+          "properties": {
+            "color": "inherit",
+            "lazy": false,
+            "name": "information",
+            "size": "small",
+            "theme": "light",
+          },
+        },
+      },
+      {
+        "p-button-pure": {
+          "children": "Close notification",
+          "hostPdsComponent": "p-inline-notification",
+          "properties": {
+            "active": false,
+            "alignLabel": "right",
+            "disabled": false,
+            "hideLabel": true,
+            "icon": "close",
+            "loading": false,
+            "size": "small",
+            "stretch": false,
+            "tabbable": true,
+            "theme": "light",
+            "type": "button",
+            "weight": "regular",
+          },
+        },
+      },
+      {
+        "p-icon": {
+          "children": null,
+          "hostPdsComponent": "p-button-pure",
+          "properties": {
+            "color": "inherit",
+            "lazy": false,
+            "name": "close",
+            "size": "inherit",
+            "theme": "light",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve children correctly and put stripped content 1`] = `
+{
+  "2.20.0": {
+    "": [
+      {
+        "p-flex": {
+          "children": "<p-flex-item class="hydrated">(the content was stripped)</p-flex-item><p-flex-item class="hydrated">(the content was stripped)</p-flex-item>",
+          "hostPdsComponent": null,
+          "properties": {
+            "alignContent": "stretch",
+            "alignItems": "stretch",
+            "direction": "row",
+            "inline": false,
+            "justifyContent": "flex-start",
+            "wrap": "nowrap",
+          },
+        },
+      },
+      {
+        "p-flex-item": {
+          "children": "<p>1</p>",
+          "hostPdsComponent": null,
+          "properties": {
+            "alignSelf": "auto",
+            "flex": "initial",
+            "grow": 0,
+            "offset": "none",
+            "shrink": 1,
+            "width": "auto",
+          },
+        },
+      },
+      {
+        "p-flex-item": {
+          "children": "<p>2</p>",
+          "hostPdsComponent": null,
+          "properties": {
+            "alignSelf": "auto",
+            "flex": "initial",
+            "grow": 0,
+            "offset": "none",
+            "shrink": 1,
+            "width": "auto",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve hostPdsComponent correctly 1`] = `
+{
+  "2.20.0": {
+    "": [
+      {
+        "p-button": {
+          "children": "
+            Test button
+        ",
+          "hostPdsComponent": null,
+          "properties": {
+            "disabled": false,
+            "hideLabel": false,
+            "icon": "arrow-head-right",
+            "loading": false,
+            "tabbable": true,
+            "theme": "light",
+            "type": "submit",
+            "variant": "primary",
+          },
+        },
+      },
+      {
+        "p-icon": {
+          "children": null,
+          "hostPdsComponent": "p-button",
+          "properties": {
+            "color": "inherit",
+            "lazy": false,
+            "name": "arrow-head-right",
+            "size": "inherit",
+            "theme": "dark",
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`should retrieve object value from string correctly 1`] = `
+{
+  "2.20.0": {
+    "": [
+      {
+        "p-spinner": {
+          "children": "
+    
+      
+    
+
+    ",
+          "hostPdsComponent": null,
+          "properties": {
+            "aria": "{"aria-label":"Loading page content"}",
+            "size": "{"base":"small","l":"medium"}",
+            "theme": "light",
+          },
+        },
+      },
+    ],
+  },
+}
+`;

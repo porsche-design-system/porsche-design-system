@@ -4,15 +4,17 @@ import type { TagName } from '@porsche-design-system/shared';
 import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
 import * as beautify from 'js-beautify';
 
-type Options = WaitForOptions & {
-  enableLogging?: boolean;
-  injectIntoHead?: string;
-};
-
 export type ClickableTests = {
   state: string;
   setContent: () => Promise<void>;
 }[];
+
+type Options = WaitForOptions & {
+  enableLogging?: boolean;
+  injectIntoHead?: string;
+  withoutLoadCall?: boolean;
+  withoutWaitForComponentsReady?: boolean;
+};
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
@@ -20,6 +22,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   const options: Options = {
     waitUntil: 'networkidle0',
     injectIntoHead: '',
+    withoutLoadCall: false,
+    withoutWaitForComponentsReady: false,
     ...opts,
   };
 
@@ -39,7 +43,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         ${options.injectIntoHead}
       </head>
       <body>
-        <script type="text/javascript">porscheDesignSystem.load();</script>
+        ${options.withoutLoadCall ? '' : '<script type="text/javascript">porscheDesignSystem.load();</script>'}
         <script>
           let updatingCount = 0;
           let timeout;
@@ -113,7 +117,9 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
     options
   );
 
-  await waitForComponentsReady(page);
+  if (!options.withoutWaitForComponentsReady) {
+    await waitForComponentsReady(page);
+  }
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {

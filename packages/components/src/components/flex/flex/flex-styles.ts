@@ -5,42 +5,37 @@ import type {
   FlexInline,
   FlexJustifyContent,
   FlexWrap,
-  FlexInlineType,
-  FlexWrapType,
-  FlexDirectionType,
-  FlexJustifyContentType,
-  FlexAlignItemsType,
-  FlexAlignContentType,
 } from './flex-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
+import type { BreakpointCustomizable } from '../../../types';
 
 export const getComponentCss = (
-  inline: FlexInline,
-  wrap: FlexWrap,
-  direction: FlexDirection,
-  justifyContent: FlexJustifyContent,
-  alignItems: FlexAlignItems,
-  alignContent: FlexAlignContent
+  inline: BreakpointCustomizable<FlexInline>,
+  wrap: BreakpointCustomizable<FlexWrap>,
+  direction: BreakpointCustomizable<FlexDirection>,
+  justifyContent: BreakpointCustomizable<FlexJustifyContent>,
+  alignItems: BreakpointCustomizable<FlexAlignItems>,
+  alignContent: BreakpointCustomizable<FlexAlignContent>
 ): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule(
         mergeDeep(
-          buildResponsiveStyles(inline, (inlineResponsive: FlexInlineType) => ({
+          buildResponsiveStyles(inline, (inlineResponsive: FlexInline) => ({
             display: inlineResponsive ? 'inline-flex' : 'flex',
           })),
-          buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrapType) => ({ flexWrap: flexWrapResponsive })),
-          buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirectionType) => ({
+          buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrap) => ({ flexWrap: flexWrapResponsive })),
+          buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirection) => ({
             flexDirection: flexDirectionResponsive,
           })),
-          buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContentType) => ({
+          buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContent) => ({
             justifyContent: justifyContentResponsive,
           })),
-          buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItemsType) => ({
+          buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItems) => ({
             alignItems: alignItemsResponsive,
           })),
-          buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContentType) => ({
+          buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContent) => ({
             alignContent: alignContentResponsive,
           }))
         )

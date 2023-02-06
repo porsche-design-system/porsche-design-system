@@ -7,7 +7,7 @@ import type {
   ThemeExtendedElectricDark,
 } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { getInsetJssStyle } from '../../styles';
+import { getInsetJssStyle, addImportantToEachRule } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -17,7 +17,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
+  alignLabel: BreakpointCustomizable<AlignLabel>,
   hasSubline: boolean,
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
@@ -39,7 +39,7 @@ export const getComponentCss = (
       ),
       {
         '@global': {
-          '::slotted': {
+          '::slotted': addImportantToEachRule({
             '&(a)': {
               display: 'block',
               position: 'static',
@@ -67,7 +67,7 @@ export const getComponentCss = (
             '&(a:focus:not(:focus-visible))::before': {
               outlineColor: 'transparent',
             },
-          },
+          }),
           'slot[name=subline]::slotted(*)': {
             margin: 0,
           },

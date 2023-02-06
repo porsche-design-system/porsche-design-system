@@ -5,7 +5,7 @@ import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
 
-type PresetsProps = { [key: string]: number | string | boolean | string[] };
+type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
 type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
@@ -255,6 +255,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'href');
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
     }
+
+    // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
+    extendedProps
+      .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
+      .forEach((prop) => {
+        cleanedComponent = cleanedComponent.replace(new RegExp(`${prop.key} = ${prop.defaultValue}`), '$& as any');
+      });
 
     return cleanedComponent;
   }
@@ -586,7 +593,7 @@ function getStringifiedProps(props: PresetsProps): string {
     .join(' ');
 }
 
-function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]): string {
+function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[] | object | null): string {
   if (typeof attribute === 'string') {
     return `"` + attribute + `"`;
   } else {

@@ -25,11 +25,12 @@ export type { ButtonType } from './utils/link-button/button-type';
 export type LinkVariant = LinkButtonVariant;
 export type { LinkTarget } from './utils/link-button/link-target';
 
-export type { AlignLabel, AlignLabelType } from './utils/link-button/align-label';
+export type { AlignLabel } from './utils/link-button/align-label';
 
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
+  const ROLLUP_REPLACE_VERSION: string;
 }
 
 import type { AriaAttributes } from './aria-types';

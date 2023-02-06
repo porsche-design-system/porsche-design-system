@@ -1,18 +1,19 @@
 import { addScript } from './add-script';
-import { getComponentsManagerData } from './data-handler';
+import { CM_KEY, getComponentsManagerData } from './data-handler';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
+type ReadyResolve = () => void;
 export type LibraryHandlerData = {
-  isLoaded: boolean;
+  isInjected: boolean;
+  isReady: () => Promise<unknown>;
+  readyResolve: ReadyResolve;
   prefixes: string[];
   registerCustomElements: RegisterCustomElementsCallback | null;
 };
 
 /**
  * @property script - the url of the entrypoint
- * @property stylesUrl - an URL to a stylesheet file
- * @property inlineStyles - a string with styles that get inserted inline synchronously
  * @property version - the version of the library
  * @property prefix - the prefix used for the components
  */
@@ -26,10 +27,21 @@ export type LoadComponentLibraryOptions = {
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version) || {};
-  const { isLoaded, prefixes, registerCustomElements } = data;
-  if (!isLoaded) {
+  const { isInjected, prefixes = [], registerCustomElements } = data;
+
+  const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
+    ([v, cmData]) => v !== version && cmData.prefixes.includes(prefix)
+  );
+  if (collidingVersion) {
+    throw new Error(
+      `Prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
+Take a look at document.${CM_KEY} for more details.`
+    );
+  }
+
+  if (!isInjected) {
     addScript(script);
-    data.isLoaded = true;
+    data.isInjected = true;
   }
 
   if (!prefixes.includes(prefix)) {
@@ -61,8 +73,12 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
   const { [version]: libraryHandlerData = null } = cmData;
 
   if (libraryHandlerData === null) {
+    let readyPromiseResolve: ReadyResolve = () => {};
+    const readyPromise: Promise<void> = new Promise((resolve: ReadyResolve) => (readyPromiseResolve = resolve));
     const newLibraryHandlerData: LibraryHandlerData = {
-      isLoaded: false,
+      isInjected: false,
+      isReady: () => readyPromise,
+      readyResolve: readyPromiseResolve,
       prefixes: [],
       registerCustomElements: null,
     };
