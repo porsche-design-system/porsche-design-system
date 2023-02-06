@@ -27,10 +27,10 @@ export type LoadComponentLibraryOptions = {
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version) || {};
-  const { isInjected, prefixes, registerCustomElements } = data;
+  const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
-    ([v, data]) => v !== version && data.prefixes.includes(prefix)
+    ([v, cmData]) => v !== version && cmData.prefixes.includes(prefix)
   );
   if (collidingVersion) {
     throw new Error(

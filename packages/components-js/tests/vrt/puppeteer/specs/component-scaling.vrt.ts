@@ -5,6 +5,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 const components = [
+  'accordion',
   'banner',
   'button',
   'button-pure',
@@ -13,6 +14,7 @@ const components = [
   'link',
   'link-pure',
   'link-social',
+  'modal-basic',
   'pagination',
   'popover',
   'radio-button-wrapper',
