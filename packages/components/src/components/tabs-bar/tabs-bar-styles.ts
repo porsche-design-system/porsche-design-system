@@ -28,7 +28,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
         [transformSelector('::slotted([role])')]: {
           display: 'inline-block',
           position: 'relative',
-          margin: '0 0 calc(.5em - 4px) 0',
+          margin: '0 0 4px 0',
           padding: 0,
           verticalAlign: 'top',
           fontFamily: 'inherit',

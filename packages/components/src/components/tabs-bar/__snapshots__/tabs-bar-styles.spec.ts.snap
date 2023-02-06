@@ -11,7 +11,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -94,7 +94,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -177,7 +177,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -260,7 +260,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -343,7 +343,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
@@ -426,7 +426,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
   position: relative !important;
-  margin: 0 0 calc(.5em - 4px) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
