@@ -4,6 +4,9 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -19,18 +22,18 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  letter-spacing: normal;
+  color: #010205;
   list-style-type: none;
   white-space: inherit;
   font-size: inherit;
@@ -38,9 +41,12 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", weight: semibold, align: left, color: notification-error, ellipsis: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for size: "large", weight: semi-bold, align: left, color: notification-info, ellipsis: true and theme: light 1`] = `
 ":host {
   display: block;
+}
+:host([hidden]) {
+  display: none;
 }
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -57,23 +63,69 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: left;
-  font: normal normal 600 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  letter-spacing: normal;
+  color: #1E5BEB;
   list-style-type: none;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: clamp(1.44rem, .3vw + 1.38rem, 1.71rem);
+  font-weight: 600;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "large", weight: semibold, align: left, color: notification-error, ellipsis: true and theme: light 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none;
+}
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+  letter-spacing: inherit !important;
+}
+.root {
+  display: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  letter-spacing: normal;
+  color: #E7323B;
+  list-style-type: none;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(1.44rem, .3vw + 1.38rem, 1.71rem);
+  font-weight: 600;
 }"
 `;
 
@@ -81,6 +133,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -96,23 +151,25 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: right;
-  font: normal normal 700 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e3e4e5;
+  letter-spacing: normal;
+  color: #AFB0B3;
   list-style-type: none;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: clamp(1.2rem, .12vw + 1.18rem, 1.31rem);
+  font-weight: 700;
 }"
 `;
 
@@ -120,6 +177,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -135,20 +195,63 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: left;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #000;
+  letter-spacing: normal;
+  color: #010205;
   list-style-type: none;
   white-space: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: left, color: primary, ellipsis: false and theme: light 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none;
+}
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+  letter-spacing: inherit !important;
+}
+.root {
+  display: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  letter-spacing: normal;
+  color: #010205;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: 1rem;
+  font-weight: 400;
 }"
 `;
 
@@ -156,6 +259,9 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -171,20 +277,22 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: center;
-  font: normal normal 400 3.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #d5001c;
+  letter-spacing: normal;
+  color: #FBFCFF;
   list-style-type: none;
   white-space: inherit;
+  font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+  font-weight: 400;
 }"
 `;
 
@@ -192,6 +300,9 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -207,23 +318,25 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: right;
-  font: normal normal 100 3.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #d5001c;
+  letter-spacing: normal;
+  color: #FBFCFF;
   list-style-type: none;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+  font-weight: 400;
 }"
 `;
 
@@ -231,6 +344,9 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -246,20 +362,22 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: left;
-  font: normal normal 600 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  letter-spacing: normal;
   color: currentColor;
   list-style-type: none;
   white-space: inherit;
+  font-size: .875rem;
+  font-weight: 600;
 }"
 `;
 
@@ -267,6 +385,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
 }
+:host([hidden]) {
+  display: none;
+}
 ::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
@@ -282,33 +403,37 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   word-wrap: inherit !important;
   hyphens: inherit !important;
   white-space: inherit !important;
+  letter-spacing: inherit !important;
 }
 .root {
   display: inherit;
-  padding: 0;
   margin: 0;
+  padding: 0;
   text-align: center;
-  font: normal normal 700 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #fc1717;
+  letter-spacing: normal;
+  color: #CB3333;
   list-style-type: none;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 700;
 }
 @media(min-width:480px) {
   .root {
-    font: normal normal 700 2.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: clamp(1.44rem, .3vw + 1.38rem, 1.71rem);
+    font-weight: 700;
   }
 }
 
 @media(min-width:760px) {
   .root {
-    font: normal normal 700 1.5rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: clamp(1.2rem, .12vw + 1.18rem, 1.31rem);
+    font-weight: 700;
   }
 }
 
@@ -321,101 +446,15 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 
 @media(min-width:1300px) {
   .root {
-    font: normal normal 700 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: .875rem;
+    font-weight: 700;
   }
 }
 
 @media(min-width:1760px) {
   .root {
-    font: normal normal 700 3.25rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  cursor: pointer !important;
-  font: inherit !important;
-}
-p-text a, p-text button {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-text b, p-text strong {
-  font-weight: 700 !important;
-}
-p-text em, p-text i {
-  font-style: normal !important;
-}
-p-text a::-moz-focus-inner, p-text button::-moz-focus-inner {
-  border: 0 !important;
-}
-p-text a:focus, p-text button:focus {
-  outline-color: currentColor !important;
-}
-p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-text[data-theme="dark"] a:hover, p-text[data-theme="dark"] button:hover {
-    color: #ff0223 !important;
-  }
-  p-text a, p-text button {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-text a:hover, p-text button:hover {
-    color: #d5001c !important;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  cursor: pointer !important;
-  font: inherit !important;
-}
-prefixed-p-text a, prefixed-p-text button {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-text b, prefixed-p-text strong {
-  font-weight: 700 !important;
-}
-prefixed-p-text em, prefixed-p-text i {
-  font-style: normal !important;
-}
-prefixed-p-text a::-moz-focus-inner, prefixed-p-text button::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-text a:focus, prefixed-p-text button:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-text[data-theme="dark"] a:hover, prefixed-p-text[data-theme="dark"] button:hover {
-    color: #ff0223 !important;
-  }
-  prefixed-p-text a, prefixed-p-text button {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-text a:hover, prefixed-p-text button:hover {
-    color: #d5001c !important;
+    font-size: clamp(1.73rem, .57vw + 1.61rem, 2.24rem);
+    font-weight: 700;
   }
 }
 "
