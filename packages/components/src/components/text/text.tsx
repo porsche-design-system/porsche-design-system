@@ -1,4 +1,4 @@
-import type { TextTag } from './text-tag';
+import type { TextTag } from './text-utils';
 import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
@@ -15,7 +15,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
-import { TEXT_TAGS } from './text-tag';
+import { TEXT_TAGS } from './text-utils';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
