@@ -5,6 +5,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 const components = [
+  'accordion',
   'banner',
   'button',
   'button-pure',

@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
   `Text Field Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
+- Prop `size` for `Accordion` `compact="true"` supports `medium`
 
 #### Changed
 
@@ -101,7 +102,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller` and `Text Field Wrapper` matches new design
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion` and `Text Field Wrapper` matches new design
   language
 - CSS global variables names
 

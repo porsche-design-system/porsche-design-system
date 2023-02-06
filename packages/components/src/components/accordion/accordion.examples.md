@@ -58,9 +58,6 @@ Please **refrain** from using any other than text content as slotted markup.
 
 By setting `compact` to `true` you can have a more compact accordion. It removes the borders and reduces the spacings.
 
-Be aware, that the `size` property will be ignored when `compact` is set to `true`. We recommend using the property in
-case you need a side-navigation with an accordion like behavior.
-
 <Playground :markup="compactMarkup" :config="config"></Playground>
 
 ---
