@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "headline",
-    "size": 5023,
-    "gzipSize": 2108
+    "size": 5001,
+    "gzipSize": 2101
   },
   {
     "chunkShortName": "icon",
@@ -91,13 +91,13 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 7010,
-    "gzipSize": 2936
+    "size": 7012,
+    "gzipSize": 2935
   },
   {
     "chunkShortName": "main",
     "size": 67338,
-    "gzipSize": 22900
+    "gzipSize": 22898
   },
   {
     "chunkShortName": "marque",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 7425,
-    "gzipSize": 2932
+    "size": 5842,
+    "gzipSize": 2338
   },
   {
     "chunkShortName": "segmented-control",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8382,
-    "gzipSize": 3325
+    "size": 8384,
+    "gzipSize": 3324
   },
   {
     "chunkShortName": "tag",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "text",
-    "size": 5383,
-    "gzipSize": 2231
+    "size": 4929,
+    "gzipSize": 1987
   },
   {
     "chunkShortName": "text-field-wrapper",
