@@ -3,7 +3,13 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getThemedColors, getTransition } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { borderRadiusSmall, borderWidthBase, fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontSizeText,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
@@ -20,6 +26,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       ':host': addImportantToEachRule({
         display: 'block',
         position: 'relative',
+        transform: 'translate3d(0,0,0)', // creates new stacking context
         ...hostHiddenStyles,
       }),
       ...addImportantToEachRule({
@@ -57,8 +64,8 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
             bottom: '-2px',
             left: '-4px',
             right: '-4px',
-            background: 'transparent',
             borderRadius: borderRadiusSmall,
+            zIndex: '-1', // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
             ...hoverMediaQuery({
               transition: getTransition('background'),
             }),
@@ -66,6 +73,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
         },
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
+            ...frostedGlassStyle,
             background: hoverColor,
           },
         }),
