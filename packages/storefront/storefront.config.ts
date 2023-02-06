@@ -445,9 +445,9 @@ export const config: StorefrontConfig = {
     },
     Typography: {
       // @ts-ignore
-      Text: [() => import('@/../../components/src/components/text/text.code.md')],
+      Text: [() => import('@/../../components/src/components/text/text.example.md')],
       // @ts-ignore
-      Headline: [() => import('@/../../components/src/components/headline/headline.code.md')],
+      Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
       // @ts-ignore
       Usage: [() => import('@/pages/components/typography/typography.usage.md')],
       Props: [
