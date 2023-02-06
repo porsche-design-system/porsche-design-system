@@ -8,30 +8,46 @@ const TextPage: NextPage = (): JSX.Element => {
       <div className="playground" title="should show whole text in thin and bold">
         <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
         <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
+        <PText weight="semi-bold">The quick brown fox jumps over the lazy dog</PText>
         <PText weight="semibold">The quick brown fox jumps over the lazy dog</PText>
         <PText weight="bold">The quick brown fox jumps over the lazy dog</PText>
       </div>
 
       <div className="playground light" title="should show text with different color variants on light background">
+        <PText color="primary" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="default" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="brand" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
+        <PText color="contrast-high" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="neutral-contrast-high" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
+        <PText color="contrast-medium" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="neutral-contrast-medium" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
+        <PText color="contrast-low" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="neutral-contrast-low" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="notification-success" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="notification-warning" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="notification-error" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
+        <PText color="notification-info" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="notification-neutral" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText color="inherit" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
       </div>
 
       <div className="playground dark" title="should show text with different color variants on dark background">
+        <PText theme="dark" color="primary" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText theme="dark" color="default" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
         <PText theme="dark" color="brand" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PText>
+        <PText theme="dark" color="contrast-high" style={{ color: 'deeppink' }}>
+          The quick brown fox jumps over the lazy dog
+        </PText>
         <PText theme="dark" color="neutral-contrast-high" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
         </PText>
+        <PText theme="dark" color="contrast-medium" style={{ color: 'deeppink' }}>
+          The quick brown fox jumps over the lazy dog
+        </PText>
         <PText theme="dark" color="neutral-contrast-medium" style={{ color: 'deeppink' }}>
+          The quick brown fox jumps over the lazy dog
+        </PText>
+        <PText theme="dark" color="contrast-low" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
         </PText>
         <PText theme="dark" color="neutral-contrast-low" style={{ color: 'deeppink' }}>
@@ -44,6 +60,9 @@ const TextPage: NextPage = (): JSX.Element => {
           The quick brown fox jumps over the lazy dog
         </PText>
         <PText theme="dark" color="notification-error" style={{ color: 'deeppink' }}>
+          The quick brown fox jumps over the lazy dog
+        </PText>
+        <PText theme="dark" color="notification-info" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
         </PText>
         <PText theme="dark" color="notification-neutral" style={{ color: 'deeppink' }}>
