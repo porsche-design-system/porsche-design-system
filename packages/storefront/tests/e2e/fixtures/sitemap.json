@@ -237,6 +237,8 @@
   "/utilities-deprecated/scss/functions",
   "/utilities-deprecated/scss/helper",
   "/utilities-deprecated/scss/variables",
+  "/utilities/js/functions",
+  "/utilities/scss/mixins",
   "http://eepurl.com/gnOIXD",
   "http://semver.org/",
   "https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA",
