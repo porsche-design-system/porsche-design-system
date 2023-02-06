@@ -17,6 +17,7 @@ const components = [
   'pagination',
   'popover',
   'radio-button-wrapper',
+  'scroller',
   'select-wrapper',
   'spinner',
   'tag',

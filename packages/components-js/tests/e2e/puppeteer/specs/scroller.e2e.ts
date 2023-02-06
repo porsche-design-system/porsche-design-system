@@ -53,8 +53,8 @@ const getActionContainers = async () => {
   return { actionPrev, actionNext };
 };
 const getPrevNextButton = async () => {
-  const prevButton = await selectNode(page, 'p-scroller >>> .action-prev p-button-pure');
-  const nextButton = await selectNode(page, 'p-scroller >>> .action-next p-button-pure');
+  const prevButton = await selectNode(page, 'p-scroller >>> .action-prev button');
+  const nextButton = await selectNode(page, 'p-scroller >>> .action-next button');
   return { prevButton, nextButton };
 };
 const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
@@ -212,13 +212,13 @@ describe('next/prev buttons', () => {
     expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
   });
 
-  it('should have label of prev/next buttons in dom', async () => {
+  it('should have aria-label in prev/next buttons in dom', async () => {
     await initScroller();
 
     const { nextButton, prevButton } = await getPrevNextButton();
 
-    expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
-    expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+    expect(await getAttribute(prevButton, 'aria-label')).toBe('prev');
+    expect(await getAttribute(nextButton, 'aria-label')).toBe('next');
   });
 
   describe('gradient next rounding edge case', () => {
@@ -263,10 +263,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -277,10 +276,9 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -295,8 +293,8 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 
