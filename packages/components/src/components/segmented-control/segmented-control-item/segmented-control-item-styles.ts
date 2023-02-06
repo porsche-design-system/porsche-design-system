@@ -83,7 +83,6 @@ export const getComponentCss = (
         padding: hasIcon ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`,
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
-        transition: getTransition('border-color'),
         outline: 0,
         backgroundColor: 'transparent',
         color: buttonColor,
@@ -110,8 +109,8 @@ export const getComponentCss = (
             }
           : {
               cursor: 'pointer',
-              transition: getTransition('border-color'),
               ...hoverMediaQuery({
+                transition: getTransition('border-color'),
                 '&:hover': {
                   borderColor: hoverBorderColor,
                   cursor: 'pointer',
