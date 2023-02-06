@@ -62,9 +62,9 @@ export const getComponentCss = (
   isDisabled: boolean,
   isSelected: boolean,
   bgColor: SegmentedControlBackgroundColor,
-  theme: Theme,
-  icon?: LinkButtonIconName,
-  iconSource?: string
+  icon: LinkButtonIconName | undefined,
+  iconSource: string | undefined,
+  theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, bgColor, theme);

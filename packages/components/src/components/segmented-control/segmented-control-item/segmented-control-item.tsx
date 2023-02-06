@@ -73,9 +73,9 @@ export class SegmentedControlItem {
       this.disabled,
       this.host.selected,
       this.host.backgroundColor || 'background-default', // default as fallback
-      this.host.theme || 'light', // default as fallback
       this.icon,
-      this.iconSource
+      this.iconSource,
+      this.host.theme || 'light' // default as fallback
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
