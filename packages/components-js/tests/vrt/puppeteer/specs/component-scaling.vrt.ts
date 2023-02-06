@@ -44,6 +44,10 @@ it.each(components)('should have no visual regression for scaled component %s', 
             fixed: 48,
           },
         });
+        if (component === 'tabs' || component === 'tabs-bar') {
+          // Position of status bar is calculated via JS and needs the reload to be calculated correctly
+          await page.reload({ waitUntil: 'networkidle0' });
+        }
       },
     })
   ).toBeFalsy();
