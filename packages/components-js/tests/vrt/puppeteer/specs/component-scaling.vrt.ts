@@ -14,6 +14,7 @@ const components = [
   'link',
   'link-pure',
   'link-social',
+  'modal-basic',
   'pagination',
   'popover',
   'radio-button-wrapper',
