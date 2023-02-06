@@ -36,16 +36,6 @@ export const getComponentCss = (
   ellipsis: boolean,
   theme: Theme
 ): string => {
-  return getSharedHeadingHeadlineStyles(size, align, color, ellipsis, theme);
-};
-
-export const getSharedHeadingHeadlineStyles = (
-  size: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated,
-  align: TextAlign,
-  color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
-  ellipsis: boolean,
-  theme: Theme
-): string => {
   return getCss({
     '@global': {
       ':host': {
