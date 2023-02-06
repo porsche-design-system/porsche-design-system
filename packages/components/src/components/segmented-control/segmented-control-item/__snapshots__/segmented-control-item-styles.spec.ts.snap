@@ -12,7 +12,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #404044;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #FBFCFF;
@@ -47,6 +46,9 @@ span {
   color: #7E7F82;
 }
 @media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     border-color: #FBFCFF;
     cursor: pointer;
@@ -72,7 +74,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #010205;
@@ -107,6 +108,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     border-color: #010205;
     cursor: pointer;
@@ -132,7 +136,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #404044;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #FBFCFF;
@@ -167,6 +170,9 @@ span {
   color: #7E7F82;
 }
 @media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     border-color: #FBFCFF;
     cursor: pointer;
@@ -192,7 +198,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #010205;
@@ -227,6 +232,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     border-color: #010205;
     cursor: pointer;
@@ -252,7 +260,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #010205;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #010205;
@@ -287,6 +294,9 @@ span {
   color: #949598;
 }
 @media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     border-color: #010205;
     cursor: pointer;
@@ -312,7 +322,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #949598;
@@ -365,7 +374,6 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #010205;
-  transition: border-color var(--p-transition-duration, .24s) ease;
   outline: 0;
   background-color: transparent;
   color: #949598;
