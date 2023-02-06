@@ -1,4 +1,3 @@
-import { pxToRemWithUnit } from '../../styles';
 import type { ScrollerDirection, GradientColorTheme } from '../scroller/scroller-utils';
 import { setAttribute } from '../../utils';
 
@@ -43,13 +42,13 @@ export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLEle
   const barCenter = barWidth / 2;
   const barPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
   const xTranslation = barPositionLeft + barCenter;
-  const xTranslate = pxToRemWithUnit(xTranslation || 0);
+  const xTranslate = `${xTranslation}px` || 0;
   return `transform: translate3d(${xTranslate},0,0); width: 0;`;
 };
 
 export const getTransformationToActive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
-  const barWidth = pxToRemWithUnit(offsetWidth || 0);
-  const barPositionLeft = pxToRemWithUnit(offsetLeft > 0 ? offsetLeft : 0);
+  const barWidth = `${offsetWidth || 0}px`;
+  const barPositionLeft = `${offsetLeft > 0 ? offsetLeft : 0}px`;
   return `transform: translate3d(${barPositionLeft},0,0); width: ${barWidth};`;
 };
 
