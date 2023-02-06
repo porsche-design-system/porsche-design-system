@@ -9,7 +9,7 @@ import {
 } from '../../styles';
 import {
   gridWidthMax,
-  gridSafeZone,
+  gridSafeZoneBase,
   headingMediumStyle,
   textSmallStyle,
   getMediaQueryMin,
@@ -63,10 +63,10 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...(wrapContent &&
           addImportantToEachRule({
-            // TODO: 0 calc(${gridSafeZone} + ${gridGap})
-            padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
+            // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap})
+            padding: `0 calc(${gridSafeZoneBase} + 7%) 0 ${gridSafeZoneBase}`,
             [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZone} + 7%) 0 ${gridSafeZone}`,
+              padding: `0 calc(${gridSafeZoneBase} + 7%) 0 ${gridSafeZoneBase}`,
             },
           })),
         '&--draggable': {
@@ -98,7 +98,7 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       gap: gridGap,
-      padding: wrapContent ? `0 ${gridSafeZone}` : null,
+      padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       [mediaQueryS]: {
         gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
         position: 'relative',
@@ -111,7 +111,7 @@ export const getComponentCss = (
         display: 'grid',
         gridAutoFlow: 'column',
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: wrapContent ? gridSafeZone : 0,
+        right: wrapContent ? gridSafeZoneBase : 0,
         bottom: 0,
       },
     },
