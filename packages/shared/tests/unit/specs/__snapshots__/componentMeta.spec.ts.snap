@@ -236,7 +236,7 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "label",
       "message",
@@ -247,6 +247,7 @@ exports[`should match snapshot 1`] = `
       "message": null,
       "required": false,
       "state": "none",
+      "theme": "light",
     },
     "styling": "jss",
   },
