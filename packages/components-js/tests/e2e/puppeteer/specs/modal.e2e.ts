@@ -605,7 +605,7 @@ describe('slotted heading', () => {
     await waitForStencilLifecycle(page);
     await waitForComponentsReady(page); // wait for p-headline to initialize
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h1>Some Heading</h1>"');
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h2>Some Heading</h2>"');
   });
 });
 
