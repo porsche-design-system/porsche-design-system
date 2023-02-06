@@ -101,7 +101,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`,  and `Text Field Wrapper` matches new design language
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, and `Text Field Wrapper` matches new design
+  language
 - CSS global variables names
 
 ```diff
@@ -1116,9 +1117,7 @@ supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implement
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
-update it to the latest version (we also provide a focus
-[SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and
-[JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
+update it to the latest version.
 
 #### Improved geometry of Porsche Next font
 

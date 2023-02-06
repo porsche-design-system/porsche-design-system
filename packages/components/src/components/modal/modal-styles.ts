@@ -3,7 +3,7 @@ import type { GetJssStyleFunction } from '../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
 import {
-  gridSafeZone,
+  gridSafeZoneBase,
   getMediaQueryMin,
   borderRadiusMedium,
   frostedGlassStyle,
@@ -39,7 +39,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `max(16px, 7vh) ${gridSafeZone}`,
+        margin: `max(16px, 7vh) ${gridSafeZoneBase}`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -160,7 +160,7 @@ export const getComponentCss = (
           border: 0,
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridSafeZone}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridSafeZoneBase}`,
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any

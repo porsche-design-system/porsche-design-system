@@ -15,7 +15,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   min-width: 0 !important;
   margin: 0 auto !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   box-sizing: border-box !important;
 }
 @keyframes mobileIn {
@@ -82,6 +82,12 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
     }
 }
 
+@media(min-width:1920px) {
+    :host {
+      padding: 0 clamp(192px, 50vw - 768px, 512px) !important;
+    }
+}
+
   .root {
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
   }"
@@ -101,7 +107,7 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   width: 100% !important;
   min-width: 0 !important;
   margin: 0 auto !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
 }
 @keyframes mobileIn {
   from {
