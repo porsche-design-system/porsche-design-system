@@ -146,8 +146,8 @@ font tags. For example the style headline 1 can also technically be implemented 
 ### Line height
 
 For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles
-provided work with a 4 px baseline unit that fits to the [8 px spacing system](components/spacing) in order to follow a
-harmonious overall vertical rhythm.
+provided work with a 4 px baseline unit that fits to the spacing system in order to follow a harmonious overall vertical
+rhythm.
 
 ### Headline-subline combinations
 

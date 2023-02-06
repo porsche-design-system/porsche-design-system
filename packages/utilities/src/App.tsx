@@ -1,43 +1,30 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import {
-  gridStyle,
-  gridGap,
   getMediaQueryMax,
   getMediaQueryMin,
-  displayLargeStyle,
-  displayMediumStyle,
-  headingLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  headingXLargeStyle,
-  headingXXLargeStyle,
-  headingXXXLargeStyle,
-  textLargeStyle,
+  gridBasicColumnEnd,
+  gridBasicColumnStart,
+  gridBasicSpanOneHalf,
+  gridBasicSpanOneThird,
+  gridBasicSpanTwoThirds,
+  gridExtendedColumnEnd,
+  gridExtendedColumnStart,
+  gridExtendedSpanOneHalf,
+  gridFullColumnEnd,
+  gridFullColumnStart,
+  gridNarrowColumnEnd,
+  gridNarrowColumnStart,
+  gridNarrowSpanOneHalf,
+  gridStyle,
+  spacingFluidXLarge,
   textMediumStyle,
-  textXLargeStyle,
-  textXSmallStyle,
-} from '@porsche-design-system/utilities-v2';
-
-const dummyText = 'The quick brown fox jumps over the lazy dog';
-
-const gridColumnFluidStart = 'fluid-start';
-const gridColumnFluidEnd = 'fluid-end';
-const gridColumnExtendedStart = 'extended-start';
-const gridColumnExtendedEnd = 'extended-end';
-const gridColumnBasicStart = 'basic-start';
-const gridColumnBasicEnd = 'basic-end';
-
-const gridSpanOneHalf = 'var(--pds-grid-span-one-half)';
-const gridSpanOneThird = 'var(--pds-grid-span-one-third)';
-const gridSpanTwoThirds = 'var(--pds-grid-span-two-thirds)';
-const gridSpanOneQuarter = 'var(--pds-grid-span-one-quarter)';
-const gridSpanThreeQuarters = 'var(--pds-grid-span-three-quarters)';
+} from '@porsche-design-system/components-js/utilities/js';
 
 const Grid = styled.div({
   ...gridStyle,
   position: 'relative',
-  margin: `${gridGap} 0`,
+  margin: `${spacingFluidXLarge} 0`,
   '&:first-child': {
     margin: 0,
     position: 'fixed',
@@ -77,147 +64,105 @@ const GridColumnDesktop = styled.div({
   },
 });
 
-const SubGrid = styled.div({
-  display: 'grid',
-  gridColumn: `${gridColumnBasicStart} / ${gridColumnBasicEnd}`,
-  gridTemplateColumns: 'subgrid',
-});
-
-const SubGridColumnOneThird = styled.div({
-  gridColumn: gridSpanOneThird,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"One Third"',
-  },
-});
-
-const GridColumnFluid = styled.div({
-  gridColumn: `${gridColumnFluidStart} / ${gridColumnFluidEnd}`,
-  padding: '200px 0',
-  background: 'blue',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Fluid / Full Width"',
-  },
-});
-
-const GridColumnExtended = styled.div({
-  gridColumn: `${gridColumnExtendedStart} / ${gridColumnExtendedEnd}`,
-  padding: '200px 0',
-  background: 'blue',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Extended / Basic-Extended"',
-  },
-});
-
-const GridColumnBasic = styled.div({
-  gridColumn: `${gridColumnBasicStart} / ${gridColumnBasicEnd}`,
-  padding: '200px 0',
-  background: 'blue',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Basic / Basic-Narrow"',
-  },
-});
-
-const GridColumnHalf = styled.div({
-  gridColumn: `${gridColumnBasicStart} / ${gridSpanOneHalf}`,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Half"',
-  },
-});
-
-const GridColumnOneThird = styled.div({
-  gridColumn: `${gridColumnBasicStart} / ${gridSpanOneThird}`,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"One Third"',
-  },
-});
-
-const GridColumnTwoThirds = styled.div({
-  gridColumn: gridSpanTwoThirds,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Two Thirds"',
-  },
-});
-
-const GridSpanOneQuarter = styled.div({
-  gridColumn: `${gridColumnBasicStart} / ${gridSpanOneQuarter}`,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"One Quarter"',
-  },
-});
-
-const GridSpanThreeQuarters = styled.div({
-  gridColumn: gridSpanThreeQuarters,
-  padding: '50px 0',
-  background: 'deeppink',
-  textAlign: 'center',
-  color: 'white',
-  '&::before': {
-    content: '"Three Quarters"',
-  },
-});
-
-const Typography = styled.div({
-  display: 'grid',
-  gridGap: '16px',
-  gridColumn: `${gridColumnBasicStart} / ${gridColumnBasicEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: gridSpanOneHalf,
-    '&:nth-child(odd)': {
-      gridColumn: `${gridColumnBasicStart} / ${gridSpanOneHalf}`,
+type Color = 'blue' | 'green' | 'purple' | 'yellow';
+const getBoxStyles = (color: Color, content: string) => {
+  const opacity = 0.5;
+  const colorMap: { [key in Color]: string } = {
+    blue: `rgba(0, 0, 255, ${opacity})`,
+    green: `rgba(0, 255, 0, ${opacity})`,
+    purple: `rgba(255, 0, 255, ${opacity})`,
+    yellow: `rgba(255, 255, 0, ${opacity})`,
+  };
+  return {
+    padding: '100px 0',
+    background: colorMap[color],
+    textAlign: 'center',
+    color: 'deeppink',
+    ...textMediumStyle,
+    '&::before': {
+      content: `'${content}'`,
     },
-  },
+  } as const;
+};
+
+// Grid Full
+const GridFull = styled.div({
+  ...getBoxStyles('blue', 'Full'),
+  gridColumn: `${gridFullColumnStart} / ${gridFullColumnEnd}`,
 });
 
-const Info = styled.div({
-  ...textXSmallStyle,
-  fontSize: '.75rem',
-  color: 'deeppink',
+// Grid Extended
+const GridExtended = styled.div({
+  ...getBoxStyles('green', 'Extended'),
+  gridColumn: `${gridExtendedColumnStart} / ${gridExtendedColumnEnd}`,
 });
 
-const TextXSmallStatic = styled.div(textXSmallStyle);
-const TextMediumStatic = styled.div(textMediumStyle);
-const TextLargeStatic = styled.div(textLargeStyle);
-const TextXLargeStatic = styled.div(textXLargeStyle);
+const GridExtendedColumnHalfLeft = styled.div({
+  ...getBoxStyles('green', 'Base: Half'),
+  gridColumn: `${gridExtendedColumnStart} / ${gridExtendedSpanOneHalf}`,
+});
 
-const HeadingXXXLargeFluid = styled.div(headingXXXLargeStyle);
+const GridExtendedColumnHalfRight = styled.div({
+  ...getBoxStyles('green', 'Base: Half'),
+  gridColumn: `${gridExtendedSpanOneHalf} / ${gridExtendedColumnEnd}`,
+});
 
-const HeadingSmallStatic = styled.div(headingSmallStyle);
-const HeadingMediumStatic = styled.div(headingMediumStyle);
-const HeadingLargeStatic = styled.div(headingLargeStyle);
-const HeadingXLargeStatic = styled.div(headingXLargeStyle);
-const HeadingXXLargeStatic = styled.div(headingXXLargeStyle);
-const HeadingXXXLargeStatic = styled.div(headingXXXLargeStyle);
+// Grid Basic
+const GridBasic = styled.div({
+  ...getBoxStyles('purple', 'Basic'),
+  gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
+});
 
-const DisplayMediumFluid = styled.div(displayMediumStyle);
+const GridBaseColumnHalfLeft = styled.div({
+  ...getBoxStyles('purple', 'Base: Half'),
+  gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneHalf}`,
+});
 
-const DisplayMediumStatic = styled.div(displayMediumStyle);
-const DisplayLargeStatic = styled.div(displayLargeStyle);
+const GridBaseColumnHalfRight = styled.div({
+  ...getBoxStyles('purple', 'Base: Half'),
+  gridColumn: `${gridBasicSpanOneHalf} / ${gridBasicColumnEnd}`,
+});
+
+const GridBaseColumnOneThirdLeft = styled.div({
+  ...getBoxStyles('purple', 'Base: One Third'),
+  gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneThird}`,
+});
+
+const GridBaseColumnOneThirdFollow = styled.div({
+  ...getBoxStyles('purple', 'Base: One Third'),
+  gridColumn: `${gridBasicSpanOneThird}`,
+});
+
+const GridBaseColumnTwoThirdsRight = styled.div({
+  ...getBoxStyles('purple', 'Base: Two Thirds'),
+  gridColumn: `${gridBasicSpanTwoThirds} / ${gridBasicColumnEnd}`,
+});
+
+const GridBaseColumnOneThirdRight = styled.div({
+  ...getBoxStyles('purple', 'Base: One Third'),
+  gridColumn: `${gridBasicSpanOneThird} / ${gridBasicColumnEnd}`,
+});
+
+const GridBaseColumnTwoThirdsLeft = styled.div({
+  ...getBoxStyles('purple', 'Base: Two Thirds'),
+  gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanTwoThirds}`,
+});
+
+// Grid Narrow
+const GridNarrow = styled.div({
+  ...getBoxStyles('yellow', 'Narrow'),
+  gridColumn: `${gridNarrowColumnStart} / ${gridNarrowColumnEnd}`,
+});
+
+const GridNarrowColumnHalfLeft = styled.div({
+  ...getBoxStyles('yellow', 'Base: Half'),
+  gridColumn: `${gridNarrowColumnStart} / ${gridNarrowSpanOneHalf}`,
+});
+
+const GridNarrowColumnHalfRight = styled.div({
+  ...getBoxStyles('yellow', 'Base: Half'),
+  gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,
+});
 
 function App() {
   return (
@@ -231,94 +176,29 @@ function App() {
         ))}
       </Grid>
       <Grid>
-        <GridColumnFluid />
-        <GridColumnExtended />
-        <GridColumnBasic />
-        <GridColumnHalf />
-        <GridColumnOneThird />
-        <GridColumnTwoThirds />
-        <GridSpanOneQuarter />
-        <GridSpanThreeQuarters />
+        <GridFull />
       </Grid>
       <Grid>
-        <SubGrid>
-          <SubGridColumnOneThird></SubGridColumnOneThird>
-          <SubGridColumnOneThird></SubGridColumnOneThird>
-          <SubGridColumnOneThird></SubGridColumnOneThird>
-        </SubGrid>
+        <GridExtended />
+        <GridExtendedColumnHalfLeft />
+        <GridExtendedColumnHalfRight />
       </Grid>
       <Grid>
-        <Typography></Typography>
-        <Typography>
-          <TextXSmallStatic>
-            <Info>TextXSmallStatic</Info>
-            {dummyText}
-          </TextXSmallStatic>
-          <TextMediumStatic>
-            <Info>TextMediumStatic</Info>
-            {dummyText}
-          </TextMediumStatic>
-          <TextLargeStatic>
-            <Info>TextLargeStatic</Info>
-            {dummyText}
-          </TextLargeStatic>
-          <TextXLargeStatic>
-            <Info>TextXLargeStatic</Info>
-            {dummyText}
-          </TextXLargeStatic>
-        </Typography>
+        <GridBasic />
+        <GridBaseColumnHalfLeft />
+        <GridBaseColumnHalfRight />
+        <GridBaseColumnOneThirdLeft />
+        <GridBaseColumnOneThirdFollow />
+        <GridBaseColumnOneThirdFollow />
+        <GridBaseColumnOneThirdLeft />
+        <GridBaseColumnTwoThirdsRight />
+        <GridBaseColumnTwoThirdsLeft />
+        <GridBaseColumnOneThirdRight />
       </Grid>
       <Grid>
-        <Typography>
-          <HeadingXXXLargeFluid>
-            <Info>HeadingXXXLargeFluid</Info>
-            {dummyText}
-          </HeadingXXXLargeFluid>
-        </Typography>
-        <Typography>
-          <HeadingSmallStatic>
-            <Info>HeadingSmallStatic</Info>
-            {dummyText}
-          </HeadingSmallStatic>
-          <HeadingMediumStatic>
-            <Info>HeadingMediumStatic</Info>
-            {dummyText}
-          </HeadingMediumStatic>
-          <HeadingLargeStatic>
-            <Info>HeadingLargeStatic</Info>
-            {dummyText}
-          </HeadingLargeStatic>
-          <HeadingXLargeStatic>
-            <Info>HeadingXLargeStatic</Info>
-            {dummyText}
-          </HeadingXLargeStatic>
-          <HeadingXXLargeStatic>
-            <Info>HeadingXXLargeStatic</Info>
-            {dummyText}
-          </HeadingXXLargeStatic>
-          <HeadingXXXLargeStatic>
-            <Info>HeadingXXXLargeStatic</Info>
-            {dummyText}
-          </HeadingXXXLargeStatic>
-        </Typography>
-      </Grid>
-      <Grid>
-        <Typography>
-          <DisplayMediumFluid>
-            <Info>DisplayMediumFluid</Info>
-            {dummyText}
-          </DisplayMediumFluid>
-        </Typography>
-        <Typography>
-          <DisplayMediumStatic>
-            <Info>DisplayMediumStatic</Info>
-            {dummyText}
-          </DisplayMediumStatic>
-          <DisplayLargeStatic>
-            <Info>DisplayLargeStatic</Info>
-            {dummyText}
-          </DisplayLargeStatic>
-        </Typography>
+        <GridNarrow />
+        <GridNarrowColumnHalfLeft />
+        <GridNarrowColumnHalfRight />
       </Grid>
     </Fragment>
   );

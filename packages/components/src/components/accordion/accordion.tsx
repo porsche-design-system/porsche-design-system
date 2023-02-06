@@ -19,7 +19,6 @@ import {
   setCollapsibleElementHeight,
   unobserveResize,
   useResizeObserverFallback,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
@@ -75,10 +74,6 @@ export class Accordion {
     }
   }
 
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
-  }
-
   public componentDidLoad(): void {
     if (!useResizeObserverFallback) {
       observeResize(
@@ -129,8 +124,7 @@ export class Accordion {
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon
               class="icon"
-              color="inherit"
-              name="arrow-head-down"
+              name={this.open ? 'minus' : 'plus'}
               theme={this.theme}
               size="inherit"
               aria-hidden="true"

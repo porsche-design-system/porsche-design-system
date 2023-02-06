@@ -292,7 +292,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-accordion'], 'componentDidUpdate: p-accordion').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 });

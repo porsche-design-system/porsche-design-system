@@ -43,7 +43,6 @@ All releases of the Porsche Design System additional packages are available as v
 about them on the corresponding docs.
 
 - [Assets](assets/introduction): `@porsche-design-system/assets`
-- [Utilities](utilities/introduction): `@porsche-design-system/utilities`
 
 ## Web components used with a not-supported framework
 

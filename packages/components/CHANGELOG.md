@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
   `Text Field Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
+- Prop `size` for `Accordion` `compact="true"` supports `medium`
 - Component `Heading` which replaces the component `Headline` with next major release
 
 #### Changed
@@ -101,9 +102,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
-  `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Headline` and `Text Field Wrapper` matches
-  new design language
+  `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Headline` and `Text Field Wrapper` matches new design
+  language
 - CSS global variables names
 
 ```diff
@@ -212,6 +213,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-icon name="arrowRight"></p-icon>
 + <p-icon name="arrow-right"></p-icon>
 ```
+
+### [2.20.0] - 2023-02-06
+
+### [2.20.0-rc.1] - 2023-02-06
 
 ### [2.20.0-rc.0] - 2023-01-30
 
@@ -1125,9 +1130,7 @@ supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implement
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
-update it to the latest version (we also provide a focus
-[SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and
-[JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
+update it to the latest version.
 
 #### Improved geometry of Porsche Next font
 

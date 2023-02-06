@@ -31,6 +31,12 @@ const getPatternHeading = async (): Promise<string> => {
   return page.$eval('p-heading[tag="h1"]', (x) => x.innerHTML);
 };
 
+const getPatternDesignTokenHeadline = async (): Promise<string> => {
+  await page.waitForSelector('html.hydrated');
+  await page.waitForSelector('h1.display', { visible: true });
+  return page.$eval('h1.display', (x) => x.innerHTML);
+};
+
 const internalUrls = getInternalUrls();
 const externalUrls = getExternalUrls();
 
@@ -54,6 +60,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
           ? 'first page'
           : url.startsWith('/patterns/forms/')
           ? await getPatternHeading()
+          : url.startsWith('/patterns/design-tokens/')
+          ? await getPatternDesignTokenHeadline()
           : await getHeadline();
 
       expect(heading).not.toBe('404 - Page not found');
