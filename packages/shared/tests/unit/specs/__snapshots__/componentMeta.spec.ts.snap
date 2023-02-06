@@ -225,7 +225,7 @@ exports[`should match snapshot 1`] = `
       "color": "primary",
       "ellipsis": false,
       "size": "large",
-      "tag": null,
+      "tag": "h1",
       "theme": "light",
     },
     "styling": "jss",
