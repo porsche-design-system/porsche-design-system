@@ -13,7 +13,6 @@ import {
   textXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
-import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const ITEM_PADDING = '17px';
@@ -25,10 +24,8 @@ export const ICON_MARGIN = pxToRemWithUnit(4);
 export const getColors = (
   isDisabled: boolean,
   isSelected: boolean,
-  bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): {
-  backgroundColor: string;
   buttonColor: string;
   labelColor: string;
   borderColor: string;
@@ -37,19 +34,16 @@ export const getColors = (
   const themedColors = getThemedColors(theme);
 
   const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = themedColors;
-  const backgroundColor = themedColors[bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'];
   const borderColor = isSelected ? primaryColor : contrastLowColor;
 
   return isDisabled
     ? {
-        backgroundColor,
         buttonColor: disabledColor,
         labelColor: disabledColor,
         borderColor,
         hoverBorderColor: primaryColor,
       }
     : {
-        backgroundColor,
         buttonColor: primaryColor,
         labelColor: contrastMediumColor,
         borderColor,
@@ -57,15 +51,9 @@ export const getColors = (
       };
 };
 
-export const getComponentCss = (
-  isDisabled: boolean,
-  isSelected: boolean,
-  bgColor: SegmentedControlBackgroundColor,
-  hasIcon: boolean,
-  theme: Theme
-): string => {
+export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIcon: boolean, theme: Theme): string => {
   const { focusColor } = getThemedColors(theme);
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, bgColor, theme);
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
 
   return getCss({
     '@global': {

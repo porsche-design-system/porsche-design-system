@@ -7,6 +7,7 @@ import {
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { PropTypes, Theme, ValidatorFunction } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
@@ -15,13 +16,15 @@ import {
   getItemMaxWidth,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   syncSegmentedControlItemsProps,
-  warnIfBackgroundColorIsUsed,
 } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
-  backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>(SEGMENTED_CONTROL_BACKGROUND_COLORS),
+  backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>([
+    undefined,
+    ...SEGMENTED_CONTROL_BACKGROUND_COLORS,
+  ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
 };
@@ -34,7 +37,7 @@ export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
   /** Background color variations */
-  @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default'; // 'background-color' prop is deprecated
+  @Prop() public backgroundColor?: SegmentedControlBackgroundColor; // 'background-color' prop is deprecated
 
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -68,9 +71,10 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfBackgroundColorIsUsed(this.host, this.backgroundColor);
+    warnIfDeprecatedPropIsUsed(this.host, 'background-color', this.backgroundColor);
+
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
-    syncSegmentedControlItemsProps(this.host, this.value, this.backgroundColor, this.theme);
+    syncSegmentedControlItemsProps(this.host, this.value, this.theme);
 
     return (
       <Host role="group">
