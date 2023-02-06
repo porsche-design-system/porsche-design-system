@@ -1,5 +1,6 @@
 import type { AriaAttributes, Theme } from '../../../types';
 import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
+import type { IconColor } from '../../icon/icon-utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
   selected: boolean;
@@ -11,6 +12,6 @@ export const getButtonAttributes = (isSelected: boolean, isDisabled: boolean): A
   ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
 });
 
-export const getIconColor = (isDisabled: boolean): string => {
+export const getIconColor = (isDisabled: boolean): IconColor => {
   return !isDisabled ? 'primary' : 'contrast-medium';
 };
