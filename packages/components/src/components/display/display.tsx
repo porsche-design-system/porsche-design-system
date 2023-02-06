@@ -1,5 +1,5 @@
-import type { DisplayTag, DisplaySize, DisplayColor } from './display-utils';
-import type { BreakpointCustomizable, PropTypes, TextAlign as DisplayAlign, Theme } from '../../types';
+import type { DisplayTag, DisplaySize, DisplayAlign, DisplayColor } from './display-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { DISPLAY_TAGS, DISPLAY_SIZES, DISPLAY_COLORS } from './display-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {

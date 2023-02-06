@@ -13,9 +13,7 @@ import { ButtonGroupDirection } from "./components/button-group/button-group-uti
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
-import { DisplayTag } from "./components/display/display-tag";
-import { DisplaySize } from "./components/display/display-size";
-import { DisplayColor } from "./components/display/display-color";
+import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
@@ -265,7 +263,7 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: DisplayAlign;
         /**
           * Basic text color variations depending on theme property.
          */
@@ -1915,7 +1913,7 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: DisplayAlign;
         /**
           * Basic text color variations depending on theme property.
          */
