@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for state: error, labelSize: medium and hasLabel: false 1`] = `
+exports[`getComponentCss() should return correct css for state: error, labelSize: medium, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 fieldset {
   margin: 0;
@@ -11,27 +14,25 @@ fieldset {
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 1rem;
+  gap: 4px;
+  margin-top: 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #e00000;
+  color: #CB3333;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: none, labelSize: medium and hasLabel: false 1`] = `
+exports[`getComponentCss() should return correct css for state: error, labelSize: medium, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 fieldset {
   margin: 0;
@@ -40,26 +41,51 @@ fieldset {
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 1rem;
+  gap: 4px;
+  margin-top: 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  color: #E7323B;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: none, labelSize: medium and hasLabel: true 1`] = `
+exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: true and theme: dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 fieldset {
   margin: 0;
@@ -67,87 +93,31 @@ fieldset {
   border: none;
 }
 legend {
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
   padding: 0;
-  color: #000;
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-}
-@media(min-width:760px) and (max-width:999px) {
-  legend {
-    font-size: 1.125rem;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  legend {
-    font-size: 1.25rem;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  legend {
-    font-size: 1.375rem;
-  }
-}
-
-@media(min-width:1760px) {
-  legend {
-    font-size: 1.5rem;
-  }
-}
-
-.required {
-  user-select: none;
-  color: #e00000;
-}
-.message {
-  display: flex;
-  margin-top: 1rem;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for state: none, labelSize: small and hasLabel: false 1`] = `
-":host {
-  display: block !important;
-}
-fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  color: #FBFCFF;
+  font: normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 1rem;
+  gap: 4px;
+  margin-top: 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: none, labelSize: small and hasLabel: true 1`] = `
+exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 fieldset {
   margin: 0;
@@ -155,35 +125,31 @@ fieldset {
   border: none;
 }
 legend {
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
   padding: 0;
-  color: #000;
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  color: #010205;
+  font: normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 1rem;
+  gap: 4px;
+  margin-top: 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: success, labelSize: medium and hasLabel: false 1`] = `
+exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 fieldset {
   margin: 0;
@@ -192,20 +158,132 @@ fieldset {
 }
 .required {
   user-select: none;
-  color: #e00000;
 }
 .message {
   display: flex;
-  margin-top: 1rem;
+  gap: 4px;
+  margin-top: 16px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: true and theme: dark 1`] = `
+":host {
+  display: block !important;
 }
-.message__icon {
-  margin-right: 0.25rem;
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+legend {
+  margin: 0 0 16px;
+  padding: 0;
+  color: #FBFCFF;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+legend {
+  margin: 0 0 16px;
+  padding: 0;
+  color: #010205;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: success, labelSize: medium, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #00C77E;
+  transition: color var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: success, labelSize: medium, hasLabel: false and theme: light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #32B85B;
+  transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
