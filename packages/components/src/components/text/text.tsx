@@ -1,3 +1,5 @@
+import type { TextTag } from './text-tag';
+import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -12,9 +14,7 @@ import {
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { getComponentCss } from './text-styles';
-import type { TextTag } from './text-tag';
 import { TEXT_TAGS } from './text-tag';
 
 const propTypes: PropTypes<typeof Text> = {
@@ -83,7 +83,7 @@ export class Text {
     );
 
     const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const hasSlottedTextTag = firstChild?.matches(TEXT_TAGS.join());
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     return (
