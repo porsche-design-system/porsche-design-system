@@ -143,7 +143,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await forceHoverState(page, '.hover p-text-field-wrapper >>> p-button-pure >>> button');
       await forceFocusState(page, '.focus p-text-field-wrapper input');
       await forceFocusState(page, '.focus p-text-field-wrapper a');
-      await forceFocusState(page, '.focus p-text-field-wrapper >>> button');
+      await forceFocusState(page, '.focus p-text-field-wrapper >>> p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper a');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper >>> p-button-pure >>> button');
