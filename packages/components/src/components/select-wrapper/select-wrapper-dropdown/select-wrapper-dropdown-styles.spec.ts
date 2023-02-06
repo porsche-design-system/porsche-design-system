@@ -4,34 +4,52 @@ import { getCss } from '../../../utils';
 describe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
     [true, 'none', 'light'],
-    [false, 'none', 'dark'],
     [true, 'success', 'light'],
-    [false, 'success', 'dark'],
     [true, 'error', 'light'],
+    [true, 'none', 'dark'],
+    [true, 'success', 'dark'],
+    [true, 'error', 'dark'],
+    [false, 'none', 'light'],
+    [false, 'success', 'light'],
+    [false, 'error', 'light'],
+    [false, 'none', 'dark'],
+    [false, 'success', 'dark'],
     [false, 'error', 'dark'],
-  ])('should return correct css for isOpen: %o, state: %o and theme: %o', (isOpen, state, theme) => {
+  ])('should return correct css for isOpen: %s, state: %s and theme: %s', (isOpen, state, theme) => {
     expect(getCss(getButtonStyles(isOpen, state, theme))).toMatchSnapshot();
   });
 });
 
 describe('getFilterStyles()', () => {
   it.each<Parameters<typeof getFilterStyles>>([
-    [true, false, 'none', 'light'],
-    [false, false, 'none', 'dark'],
-    [true, false, 'success', 'light'],
-    [false, false, 'success', 'dark'],
-    [true, false, 'error', 'light'],
-    [false, false, 'error', 'dark'],
-    [true, true, 'none', 'light'],
-    [false, true, 'none', 'dark'],
-    [true, true, 'success', 'light'],
-    [false, true, 'success', 'dark'],
-    [true, true, 'error', 'light'],
-    [false, true, 'error', 'dark'],
+    [true, 'none', true, 'light'],
+    [true, 'none', true, 'dark'],
+    [true, 'none', false, 'light'],
+    [true, 'none', false, 'dark'],
+    [true, 'success', true, 'light'],
+    [true, 'success', true, 'dark'],
+    [true, 'success', false, 'light'],
+    [true, 'success', false, 'dark'],
+    [true, 'error', true, 'light'],
+    [true, 'error', true, 'dark'],
+    [true, 'error', false, 'light'],
+    [true, 'error', false, 'dark'],
+    [false, 'none', true, 'light'],
+    [false, 'none', true, 'dark'],
+    [false, 'none', false, 'light'],
+    [false, 'none', false, 'dark'],
+    [false, 'success', true, 'light'],
+    [false, 'success', true, 'dark'],
+    [false, 'success', false, 'light'],
+    [false, 'success', false, 'dark'],
+    [false, 'error', true, 'light'],
+    [false, 'error', true, 'dark'],
+    [false, 'error', false, 'light'],
+    [false, 'error', false, 'dark'],
   ])(
-    'should return correct css for isOpen: %o, disabled: %o, state: %o and theme: %o',
-    (isOpen, disabled, state, theme) => {
-      expect(getCss(getFilterStyles(isOpen, disabled, state, theme))).toMatchSnapshot();
+    'should return correct css for isOpen: %s,  state: %s, disabled: %s and theme: %s',
+    (isOpen, state, disabled, theme) => {
+      expect(getCss(getFilterStyles(isOpen, state, disabled, theme))).toMatchSnapshot();
     }
   );
 });
@@ -53,24 +71,24 @@ describe('getListStyles()', () => {
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['down', true, false, 'none', false, 'light'],
-    ['down', false, false, 'none', false, 'light'],
-    ['down', true, false, 'none', true, 'light'],
-    ['down', false, false, 'none', true, 'light'],
-    ['up', true, false, 'none', false, 'light'],
-    ['up', false, false, 'none', false, 'light'],
-    ['up', true, false, 'none', true, 'light'],
-    ['up', false, false, 'none', true, 'light'],
-    ['down', true, true, 'none', false, 'light'],
-    ['down', false, true, 'none', false, 'light'],
-    ['down', true, true, 'none', true, 'light'],
-    ['down', false, true, 'none', true, 'light'],
-    ['up', true, true, 'none', false, 'light'],
-    ['up', false, true, 'none', false, 'light'],
-    ['up', true, true, 'none', true, 'light'],
-    ['up', false, true, 'none', true, 'light'],
+    ['down', true, 'none', false, false, 'light'],
+    ['down', false, 'none', false, false, 'light'],
+    ['down', true, 'none', false, true, 'light'],
+    ['down', false, 'none', false, true, 'light'],
+    ['up', true, 'none', false, false, 'light'],
+    ['up', false, 'none', false, false, 'light'],
+    ['up', true, 'none', false, true, 'light'],
+    ['up', false, 'none', false, true, 'light'],
+    ['down', true, 'none', true, false, 'light'],
+    ['down', false, 'none', true, false, 'light'],
+    ['down', true, 'none', true, true, 'light'],
+    ['down', false, 'none', true, true, 'light'],
+    ['up', true, 'none', true, false, 'light'],
+    ['up', false, 'none', true, false, 'light'],
+    ['up', true, 'none', true, true, 'light'],
+    ['up', false, 'none', true, true, 'light'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, disabled: %s, state: %s, filter: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

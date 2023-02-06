@@ -8,6 +8,13 @@
 
 ## Color
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <b>background-default</b> color is deprecated and will be removed with next major release. Please use
+  <b>background-base</b> color instead. In case, e.g. <b>color="background-default"</b> is used it will automatically be
+  mapped to <b>color="background-surface"</b>.
+
+</p-inline-notification>
+
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
   <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
@@ -37,7 +44,7 @@ import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'inline' };
+  config = { themeable: true, spacing: 'inline' };
   backgroundColor = 'default';
 
   get colorMarkup(){

@@ -1,10 +1,10 @@
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   generateGUID,
-  getBodyMarkup,
-  GetMarkup,
+  getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import {
@@ -28,44 +28,46 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `<style>p-radio-button-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }</style>`;
 
-      const getElementsMarkup: GetMarkup = () => `
-        <p-radio-button-wrapper label="When input gets hovered or focused">
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-radio-button-wrapper theme="${theme}" label="When input gets hovered or focused">
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
         <div class="force-label">
-          <p-radio-button-wrapper label="When label gets hovered or focused">
+          <p-radio-button-wrapper theme="${theme}" label="When label gets hovered or focused">
             <input type="radio" name="some-name" />
           </p-radio-button-wrapper>
         </div>
-        <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="error" message="Some error validation message.">
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="success" message="Some success validation message.">
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label">
+        <p-radio-button-wrapper theme="${theme}" label="Some label">
           <input type="radio" name="${generateGUID()}" checked/>
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="error" message="Some error validation message.">
           <input type="radio" name="${generateGUID()}" checked/>
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="success" message="Some success validation message.">
           <input type="radio" name="${generateGUID()}" checked />
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper>
+        <p-radio-button-wrapper theme="${theme}">
           <span slot="label">Some label with a <a href="#">link</a>.</span>
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label" state="error">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="error">
           <input type="radio" name="some-name" />
           <span slot="message">Some error message with a <a href="#">link</a>.</span>
         </p-radio-button-wrapper>
-        <p-radio-button-wrapper label="Some label" state="success">
+        <p-radio-button-wrapper theme="${theme}" label="Some label" state="success">
           <input type="radio" name="some-name" />
           <span slot="message">Some success message with a <a href="#">link</a>.</span>
         </p-radio-button-wrapper>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover > p-radio-button-wrapper input[type="radio"]');
       await forceHoverState(page, '.hover > .force-label > p-radio-button-wrapper >>> span');

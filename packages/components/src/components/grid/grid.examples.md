@@ -3,11 +3,13 @@
 The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche
 web experiences and screen sizes. The Porsche Design System grid system is based upon a standard 12 column responsive
 grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It
-is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](components/flex)
-component is the right choice.
+is not meant to function as a toolkit for layout content blocks or components.
 
-In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within
-[** Content Wrapper**](components/content-wrapper).
+<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
@@ -45,43 +47,24 @@ In some cases it might be necessary to define or change direction of the columns
 `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be
 achieved by setting `reverse`.
 
-### Row (default)
-
-<Playground :markup="direction('row')" :config="config"></Playground>
-
-### Row reverse
-
-<Playground :markup="direction('row-reverse')" :config="config"></Playground>
-
-### Column
-
-<Playground :markup="direction('column')" :config="config"></Playground>
-
-### Column-reverse
-
-<Playground :markup="direction('column-reverse')" :config="config"></Playground>
-
-### Responsiveness
-
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
-
-<Playground :markup="direction('{ base: \'column\', m: \'row\' }', '{ base: 12, m: 4 }')" :config="config"></Playground>
+<Playground :markup="markupDirection" :config="config">
+  <select v-model="directionValue" aria-label="Select direction">
+    <option disabled>Select direction</option>
+    <option value="row">Row (default)</option>
+    <option value="row-reverse">Row reverse</option>
+    <option value="column">Column</option>
+    <option value="column-reverse">Column Reverse</option>
+    <option value="responsive">Responsive</option>
+  </select>
+</Playground>
 
 ---
 
 ## Grid gutter
 
-The grid gutter can have the sizes `16`, `24` and `36`.
-
-### Gutter
-
-<Playground :markup="gutter()" :config="config"></Playground>
-
-### Gutter with breakpoint
-
-The gutter sizes can be set on different breakpoints.
-
-<Playground :markup="gutterBreakpoint()" :config="config"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+The gutter property is deprecated and has no effect anymore. Instead, a fluid gutter depending on the viewport width is used.
+</p-inline-notification>
 
 ---
 
@@ -132,71 +115,51 @@ import Component from 'vue-class-component';
 export default class Code extends Vue {
   config = { spacing: 'block-small' };
   
+  directionValue = 'row';
+
+  get markupDirection() {
+    return (this.directionValue === 'responsive') ? this.direction('{ base: \'column\', m: \'row\' }', '{ base: 12, m: 4 }') : this.direction(this.directionValue);
+  }
+  
   get size() {
-    return `<p-grid class="example-grid">
+    return `<p-grid>
   <p-grid-item size="12">12</p-grid-item>
 </p-grid>
-${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
+${Array.from(Array(11)).map((x, i) => `<p-grid>
   <p-grid-item size="${i+1}">${i+1}</p-grid-item>
   <p-grid-item size="${11-i}">${11-i}</p-grid-item>
 </p-grid>`).join('\n')}`;
   }
 
   sizeResponsiveness =
-`<p-grid class="example-grid">
+`<p-grid>
   <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
   <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
 </p-grid>`;
 
   get offset() {
-    return `${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
+    return `${Array.from(Array(11)).map((x, i) => `<p-grid>
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
 </p-grid>`).join('\n')}`;
     }
     
   offsetResponsiveness =
-`<p-grid class="example-grid">
+`<p-grid>
   <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
 </p-grid>`;
 
   direction(value: string, size: string = '4') {
     const attr = value ? ` direction="${value}"` : '';
     const sizeAttr = value ? ` size="${size}"` : '';
-    return `<p-grid${attr} class="example-grid">
+    return `<p-grid${attr}>
   <p-grid-item${sizeAttr}>A</p-grid-item>
   <p-grid-item${sizeAttr}>B</p-grid-item>
   <p-grid-item${sizeAttr}>C</p-grid-item>
 </p-grid>`;
   }
 
-  gutter() {
-    return `<p-grid gutter="16" class="example-grid">
-  <p-grid-item size="4">A</p-grid-item>
-  <p-grid-item size="4">B</p-grid-item>
-  <p-grid-item size="4">C</p-grid-item>
-</p-grid>
-<p-grid gutter="24" class="example-grid">
-  <p-grid-item size="4">D</p-grid-item>
-  <p-grid-item size="4">E</p-grid-item>
-  <p-grid-item size="4">F</p-grid-item>
-</p-grid>
-<p-grid gutter="36" class="example-grid">
-  <p-grid-item size="4">G</p-grid-item>
-  <p-grid-item size="4">H</p-grid-item>
-  <p-grid-item size="4">I</p-grid-item>
-</p-grid>`; 
-  }
-
-  gutterBreakpoint(){
-    return `<p-grid gutter="{base: 36, m: 16}" class="example-grid">
-    <p-grid-item size="4">A</p-grid-item>
-    <p-grid-item size="4">B</p-grid-item>
-    <p-grid-item size="4">C</p-grid-item>
-  </p-grid>`;
-  }
-
   wrap(value: string) {
-    return `<p-grid wrap="${value}" class="example-grid">
+    return `<p-grid wrap="${value}">
   <p-grid-item size="6">A</p-grid-item>
   <p-grid-item size="6">B</p-grid-item>
   <p-grid-item size="6">C</p-grid-item>
@@ -207,13 +170,13 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   nesting =
 `<p-grid>
   <p-grid-item size="6">
-    <p-grid class="example-grid">
+    <p-grid>
       <p-grid-item size="6">A</p-grid-item>
       <p-grid-item size="6">B</p-grid-item>
     </p-grid>
   </p-grid-item>
   <p-grid-item size="6">
-    <p-grid class="example-grid">
+    <p-grid>
       <p-grid-item size="4">A</p-grid-item>
       <p-grid-item size="8">B</p-grid-item>
     </p-grid>
@@ -223,11 +186,11 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   
-  :deep(.example-grid p-grid-item) {
-    @include p-text-small;
-    color: $p-color-theme-light-default;
+  :deep(p-grid-item) {
+    @include pds-text-small;
+    color: $pds-theme-light-primary;
     text-align: center;
     background: lightskyblue;
     background-clip: content-box;

@@ -1,38 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
 {
   "aria-busy": null,
-  "aria-describedby": null,
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: true and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 2`] = `
 {
   "aria-busy": null,
-  "aria-describedby": "subline",
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true, hasSubline: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
 {
   "aria-busy": "true",
-  "aria-describedby": null,
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: false, hasSubline: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
 {
   "aria-busy": null,
-  "aria-describedby": null,
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true, hasSubline: false and aria: {
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {
   'aria-label': 'Some more detailed label',
   'aria-expanded': true,
   'aria-haspopup': true,
@@ -40,7 +36,6 @@ exports[`getButtonPureAriaAttributes() should return correct aria attributes for
 } 1`] = `
 {
   "aria-busy": "true",
-  "aria-describedby": null,
   "aria-disabled": "true",
   "aria-expanded": "true",
   "aria-haspopup": "true",
@@ -49,10 +44,9 @@ exports[`getButtonPureAriaAttributes() should return correct aria attributes for
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true, hasSubline: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
 {
   "aria-busy": "true",
-  "aria-describedby": null,
   "aria-disabled": "true",
 }
 `;

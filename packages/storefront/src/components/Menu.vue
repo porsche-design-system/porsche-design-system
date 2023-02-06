@@ -32,7 +32,7 @@
   .menu {
     width: 2.5rem;
     height: 2.5rem;
-    padding: $pds-spacing-small;
+    padding: $pds-spacing-static-small;
     cursor: pointer;
 
     &:hover {
@@ -73,7 +73,7 @@
     width: 1.5rem;
     height: 2px;
     display: block;
-    background: $pds-theme-light-brand;
+    background: $pds-theme-light-primary;
     transition: transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
     &::before,
@@ -83,7 +83,7 @@
       height: 2px;
       display: block;
       transition: transform 0.15s ease;
-      background: $pds-theme-light-brand;
+      background: $pds-theme-light-primary;
     }
 
     &::before {
@@ -95,7 +95,7 @@
     &::after {
       bottom: -0.6875rem;
       width: 1.5rem;
-      background: $pds-theme-light-brand;
+      background: $pds-theme-light-primary;
       transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
   }

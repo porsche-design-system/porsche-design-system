@@ -11,6 +11,12 @@ describe('toast-basic', () => {
   });
 });
 
+describe('toast-basic-state-neutral', () => {
+  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+    expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/#toast-basic')).toBeFalsy();
+  });
+});
+
 describe('toast-basic-dark', () => {
   it('should have no visual regression for viewport 1000', async () => {
     expect(await vrtTest(getVisualRegressionStatesTester(), 'toast-basic-dark', '/#toast-basic-dark')).toBeFalsy();

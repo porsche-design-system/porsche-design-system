@@ -487,16 +487,16 @@ describe('hover state', () => {
 
     const dropdownCombobox = await getDropdownCombobox();
     const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+    expect(initialStyle).toBe('rgba(0, 0, 0, 0)');
 
     await dropdownCombobox.hover();
     const hoverStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(hoverStyle).toBe('rgb(0, 0, 0)');
+    expect(hoverStyle).toBe('rgb(1, 2, 5)');
   });
 });
 
 describe('dropdown position', () => {
-  const expectedDropdownStyle = '0px none rgb(50, 54, 57)';
+  const expectedDropdownStyle = '1px solid rgb(148, 149, 152)';
 
   it('should set direction to up', async () => {
     await initSelect({ dropdownDirection: 'up' });

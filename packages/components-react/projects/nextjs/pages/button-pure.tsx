@@ -5,8 +5,9 @@ import { PButtonPure } from '@porsche-design-system/components-react/ssr';
 const ButtonPurePage: NextPage = (): JSX.Element => {
   const style = `
     p-button-pure:not(:last-child) {
-      margin-right: 0.5rem;
+      margin-right: 16px;
     }
+
     .stretched-buttons p-button-pure {
       margin-right: 0;
     }
@@ -42,16 +43,22 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
         <PButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           Label responsive
         </PButtonPure>
-        <PButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          Label responsive
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
       </div>
 
-      <div className="playground light" title="should render button with different weight">
-        <PButtonPure weight="thin">Label weight thin</PButtonPure>
+      <div className="playground light" title="should render button without icon">
+        <PButtonPure icon="none">Label default</PButtonPure>
+        <PButtonPure icon="none" disabled={true}>Label disabled</PButtonPure>
+        <PButtonPure icon="none" loading={true}>Label loading</PButtonPure>
+      </div>
+      <div className="playground dark" title="should render button with label on dark theme">
+        <PButtonPure icon="none" theme="dark">Label default</PButtonPure>
+        <PButtonPure icon="none" disabled={true} theme="dark">Label disabled</PButtonPure>
+        <PButtonPure icon="none" loading={true} theme="dark">Label loading</PButtonPure>
+      </div>
+
+      <div className="playground light" title="should not render button with different weight">
         <PButtonPure weight="regular">Label weight regular</PButtonPure>
-        <PButtonPure weight="semibold">Label weight semibold</PButtonPure>
+        <PButtonPure weight="semi-bold">Label weight semi-bold</PButtonPure>
         <PButtonPure weight="bold">Label weight bold</PButtonPure>
       </div>
 
@@ -59,20 +66,24 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
         <PButtonPure active={true}>Label active</PButtonPure>
         <PButtonPure active={true} disabled={true}>Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true}>Label active loading</PButtonPure>
-        <PButtonPure active={true}>
-          Label active
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
+        <PButtonPure active={true} icon="none">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true}>Label active loading</PButtonPure>
+        <PButtonPure active={true} hideLabel={true}>Label active</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} loading={true}>Label active loading</PButtonPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
         <PButtonPure active={true} theme="dark">Label active</PButtonPure>
         <PButtonPure active={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
         <PButtonPure active={true} loading={true} theme="dark">Label active loading</PButtonPure>
-        <PButtonPure active={true} theme="dark">
-          Label active
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
+        <PButtonPure active={true} icon="none" theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} icon="none" disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} icon="none" loading={true} theme="dark">Label active loading</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} hideLabel={true} loading={true} theme="dark">Label active loading</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with specific icon">
@@ -82,11 +93,13 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render button with specific icon on dark background">
         <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
-        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">Label with local icon-source</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark"
+          >Label with local icon-source
+        </PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <PButtonPure style={{ width: '240px' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+        <PButtonPure style={{ width: '15rem' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button-pure with custom clickable area">
@@ -94,43 +107,12 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
         <PButtonPure hideLabel={true} style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
       </div>
 
-      <div className="playground light" title="should render with subline">
-        <PButtonPure size="small">
-          Label size small
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-        <PButtonPure size="medium">
-          Label size medium
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-        <PButtonPure size="large">
-          Label size large
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-        <PButtonPure size="x-large">
-          Label size x-large
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-        <PButtonPure size="medium" disabled={true}>
-          Label size medium disabled
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-      </div>
-
       <div className="playground light" title="should render with no icon">
         <PButtonPure icon="none">Label icon none</PButtonPure>
-        <PButtonPure size="small" icon="none">
-          Label icon none
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
       </div>
 
       <div className="playground light" title="should render icon if hide-label and icon none is set">
         <PButtonPure hideLabel={true} icon="none">Label hide-label icon none</PButtonPure>
-        <PButtonPure hideLabel={true} size="small" icon="none">
-          Label hide-label icon none
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
       </div>
 
       <div className="playground light" title="should align label to the left">
@@ -149,17 +131,6 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
       <div className="playground light" title="should render with stretched label depending on viewport">
         <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           Label stretch responsive
-        </PButtonPure>
-      </div>
-
-      <div className="playground light" title="should not align label left or stretch if it has a subline">
-        <PButtonPure alignLabel="left">
-          Label align left
-          <p slot="subline">Some subline</p>
-        </PButtonPure>
-        <PButtonPure stretch={true}>
-          Label stretch
-          <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
 
@@ -192,8 +163,8 @@ const ButtonPurePage: NextPage = (): JSX.Element => {
           icon="none"
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: '48px' }}
-          >Label icon none size responsive</PButtonPure
-        >
+          >Label icon none size responsive
+        </PButtonPure>
       </div>
     </>
   );

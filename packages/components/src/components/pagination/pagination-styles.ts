@@ -1,93 +1,121 @@
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
+import {
+  borderRadiusMedium,
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  frostedGlassStyle,
+  getMediaQueryMin,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const mediaQueryMinS = getMediaQueryMin('s');
+
+// button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
+// and text scale 200% works (almost) on mobile viewports too
+const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
+
+const disabledCursorStyle: JssStyle = {
+  cursor: 'default',
+  pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
+};
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
   theme: Theme
 ): string => {
-  const { baseColor, brandColor, disabledColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
       ':host': {
+        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
-        outline: addImportantToRule(0),
       },
       nav: {
         display: 'flex',
         justifyContent: 'center',
-        margin: 0,
-        padding: 0,
         ...buildResponsiveStyles(maxNumberOfPageLinks, (n: NumberOfPageLinks) => ({
           counterReset: `size ${n}`,
         })),
       },
       ul: {
         display: 'flex',
+        gap: spacingStaticXSmall,
         margin: 0,
         padding: 0,
+        [mediaQueryMinS]: {
+          gap: spacingStaticSmall,
+        },
       },
       li: {
         listStyleType: 'none',
-        margin: 0,
-        padding: 0,
+        [mediaQueryMinS]: {
+          '&:first-child': {
+            marginRight: spacingStaticSmall,
+          },
+          '&:last-child': {
+            marginLeft: spacingStaticSmall,
+          },
+        },
       },
       span: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: getTransition('color'),
+        transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transition between states
         position: 'relative',
-        width: pxToRemWithUnit(40),
-        height: pxToRemWithUnit(40),
+        width: buttonSize,
+        height: buttonSize,
         boxSizing: 'border-box',
-        textDecoration: 'none',
-        ...textSmall,
+        ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: baseColor,
-        ...getFocusJssStyle({ color: focusColor, offset: 1 }),
+        color: primaryColor,
+        outline: 0,
+        borderRadius: borderRadiusSmall,
+        borderColor: 'transparent', // default value is needed for smooth transition
         ...hoverMediaQuery({
-          '&:hover': {
-            color: hoverColor,
+          '&:not([aria-disabled]):not(.ellipsis):hover': {
+            ...frostedGlassStyle,
+            backgroundColor: hoverColor,
           },
         }),
-        '&:active': {
-          outline: 'none',
-          color: activeColor,
+        '&:not(.ellipsis):focus::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-4),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusMedium,
         },
-        '&[aria-disabled]': {
-          cursor: 'default',
-          pointerEvents: 'none',
-          color: disabledColor,
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
         },
         '&[aria-current]': {
-          cursor: 'default',
-          ...hoverMediaQuery({
-            '&:hover': {
-              color: baseColor,
-            },
-          }),
-          '&::after': {
-            content: '""',
-            display: 'block',
-            position: 'absolute',
-            bottom: 0,
-            left: pxToRemWithUnit(6),
-            right: pxToRemWithUnit(6),
-            height: pxToRemWithUnit(4),
-            background: brandColor,
+          disabledCursorStyle,
+          color: primaryColor,
+          border: `${borderWidthBase} solid ${primaryColor}`,
+          borderRadius: borderRadiusSmall,
+          '&:not(.ellipsis):focus::before': {
+            ...getInsetJssStyle(-6),
           },
+        },
+        '&[aria-disabled]': {
+          ...disabledCursorStyle,
+          color: disabledColor,
         },
       },
     },
     ellipsis: {
-      cursor: 'default',
-      pointerEvents: 'none',
+      ...disabledCursorStyle,
       '&::after': {
         content: '"…"',
       },

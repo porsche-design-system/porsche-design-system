@@ -1,10 +1,9 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasDescription,
@@ -15,12 +14,13 @@ import {
   setAriaAttributes,
   unobserveAttributes,
   validateProps,
+  FORM_STATES,
+  THEMES,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
+import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
-import { FORM_STATES } from '../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -29,6 +29,7 @@ const propTypes: PropTypes<typeof TextareaWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -56,22 +57,22 @@ export class TextareaWrapper {
   /** Show or hide max character count. */
   @Prop() public showCharacterCount?: boolean = true;
 
+  /** Adapts the color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
+
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
-  private isCounterVisible: boolean;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
-    this.hasCounter = hasCounter(this.textarea);
-    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
+    this.hasCounter = hasCounter(this.textarea) && this.showCharacterCount;
   }
 
   public componentDidLoad(): void {
@@ -105,8 +106,8 @@ export class TextareaWrapper {
       this.textarea.disabled,
       this.hideLabel,
       this.state,
-      this.isCounterVisible,
-      this.hasCounter
+      this.hasCounter,
+      this.theme
     );
 
     const labelProps = {
@@ -123,18 +124,16 @@ export class TextareaWrapper {
             </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <span class="label__text label__text--description" {...labelProps}>
+            <span class="label__text" {...labelProps}>
               {this.description || <slot name="description" />}
             </span>
           )}
-          {this.isCounterVisible && (
-            <span class="counter" {...labelProps} aria-hidden="true" ref={(el) => (this.counterElement = el)} />
-          )}
+          {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
           <slot />
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
         )}
       </Host>
     );

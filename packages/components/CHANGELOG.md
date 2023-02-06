@@ -9,6 +9,203 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Prop `underline` for `Link Pure`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
+  `Text Field Wrapper`
+- Prop `size` for `Icon` supports `x-small` and `x-large`
+- Prop `size` for `Accordion` `compact="true"` supports `medium`
+
+#### Changed
+
+- `Flex` is deprecated and will be removed with the next major release. In general, please use native
+  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
+  standardized layout technique.
+- `Grid` is deprecated and will be removed with the next major release. In general, please use native
+  <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more
+  standardized layout technique. Additionally, we provide a Porsche Grid utility instead based on CSS Grid covering the
+  specific layout needs for a harmonic appearance across all digital touch-points.
+- The `gutter` property of `Grid` is deprecated and has no effect anymore. Instead, a fluid gutter depending on the
+  viewport width is used.
+- `Icon` supports
+  `'primary' | 'contrast-low' | 'contrast-medium' | 'contrast-high' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-info' | 'inherit'`
+  for color prop while
+  `'brand' | 'default' | 'neutral-contrast-low' | 'neutral-contrast-medium' | 'neutral-contrast-high' | 'notification-neutral'`
+  is deprecated now.
+- Value `inherit` for prop `color` of `Icon` works slightly different to the previous major version. A CSS filter is
+  required to apply custom coloring to take advantage of using an SVG embedded in an `<img/>` for better SSR support and
+  loading performance in general.
+
+```diff
+- <p-icon color="inherit" style="color: #fff"></p-icon>
+
++ <p-icon color="inherit" style="filter: invert(100%)"></p-icon>
+```
+
+- `getIconLinks()` partial accepts only param-cased icon names
+
+```diff
+- require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
+
++ require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
+```
+
+- Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-info`
+
+```diff
+- <p-tag color="notification-neutral">Color label</p-tag>
++ <p-tag color="notification-info">Color label</p-tag>
+```
+
+- Color `neutral-contrast-high` for `Tag` is deprecated now, replaced by `primary`
+
+```diff
+- <p-tag color="neutral-contrast-high">Color label</p-tag>
++ <p-tag color="primary">Color label</p-tag>
+```
+
+- Color `background-default` for `Tag` is deprecated now, replaced by `background-base`
+
+```diff
+- <p-tag color="background-default">Color label</p-tag>
++ <p-tag color="background-base">Color label</p-tag>
+```
+
+- Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
+
+```diff
+- <p-tag-dismissible color="background-default">Color label</p-tag>
++ <p-tag-dismissible color="background-base">Color label</p-tag>
+```
+
+- Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
+  **"arrow-right"**
+- Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
+- Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
+- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
+  the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
+
+```diff
+- <p-link href="#" hide-label="true">Some label</p-link>
++ <p-link href="#" hide-label="true" icon="arrow-right">Some label</p-link>
+
+- <p-link href="#" hide-label="{ base: true, m: false }">Some label</p-link>
++ <p-link href="#" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>
+
+- <p-button hide-label="true">Some label</p-button>
++ <p-button hide-label="true" icon="arrow-right">Some label</p-button>
+
+- <p-button hide-label="{ base: true, m: false }">Some label</p-button>
++ <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
+```
+
+- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
+  `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion` and `Text Field Wrapper` matches new design
+  language
+- CSS global variables names
+
+```diff
+- --p-animation-duration__spinner
+- --p-animation-duration__banner
+
++ --p-animation-duration
+```
+
+- Prop `weight` for `Link Pure` and `Button Pure` is deprecated now, only regular font weight will be applied:
+
+```diff
+- <p-link-pure href="#" weight="thin">Some label</p-link-pure>
+- <p-link-pure href="#" weight="regular">Some label</p-link-pure>
+- <p-link-pure href="#" weight="semibold">Some label</p-link-pure>
+- <p-link-pure href="#" weight="bold">Some label</p-link-pure>
++ <p-link-pure href="#">Some label</p-link-pure>
+
+- <p-button-pure weight="thin">Some label</p-button-pure>
+- <p-button-pure weight="regular">Some label</p-button-pure>
+- <p-button-pure weight="semibold">Some label</p-button-pure>
+- <p-button-pure weight="bold">Some label</p-button-pure>
++ <p-button-pure>Some label</p-button-pure>
+```
+
+- Prop `lazy` for `Icon` is deprecated now:
+-
+
+```diff
+- <p-icon laze="true"></p-icon>
+
++ <p-icon></p-icon>
+```
+
+#### Removed
+
+- Custom slotted CSS for `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and
+  `Text Field Wrapper` (use normalize styles, provided by `getInitialStyles()` partial instead)
+- `subline` slot for `Link Pure` and `Button Pure`
+
+```diff
+<p-link-pure href="#">
+  Some label
+-   <p slot="subline">Some Subline</p>
+</p-link-pure>
+
+<p-button-pure>
+  Some label
+-   <p slot="subline">Some Subline</p>
+</p-button-pure>
+```
+
+- Deprecated prop `tabbable` for `Button Pure`, `Button` and `Switch`
+
+```diff
+- <p-button-pure tabbable="false">Some label</p-button-pure>
++ <p-button-pure tabindex="-1">Some label</p-button-pure>
+
+- <p-button tabbable="false">Some label</p-button>
++ <p-button tabindex="-1">Some label</p-button>
+
+- <p-switch tabbable="false">Some label</p-switch>
++ <p-switch tabindex="-1">Some label</p-switch>
+```
+
+- `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
+- Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
+
+```diff
+- <p-inline-notification heading="Some heading" description="Some description" state="neutral"></p-inline-notification>
++ <p-inline-notification heading="Some heading" description="Some description" state="info"></p-inline-notification>
+
+- <p-inline-notification state="neutral"></p-inline-notification>
++ <p-inline-notification state="info"></p-inline-notification>
+```
+
+```diff
+- <p-banner state="neutral">
+-  <span slot="title">Some banner title</span>
+-  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
+- </p-banner>
++ <p-banner state="info">
++  <span slot="title">Some banner title</span>
++  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
++ </p-banner>
+```
+
+```diff
+- <p-toast state="neutral"></p-toast>
++ <p-toast state="info"></p-toast>
+```
+
+#### Fixed
+
+- `Icon` supports param cased icon names only, typings are adapted accordingly:
+
+```diff
+- <p-icon name="arrowRight"></p-icon>
++ <p-icon name="arrow-right"></p-icon>
+```
+
 ### [2.20.0] - 2023-02-06
 
 ### [2.20.0-rc.1] - 2023-02-06
@@ -925,9 +1122,7 @@ supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implement
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
-update it to the latest version (we also provide a focus
-[SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and
-[JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
+update it to the latest version.
 
 #### Improved geometry of Porsche Next font
 

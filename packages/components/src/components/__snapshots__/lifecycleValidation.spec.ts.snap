@@ -28,7 +28,6 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "icon": "string",
   "iconSource": "string",
   "loading": "boolean",
-  "tabbable": "boolean",
   "theme": "oneOf",
   "type": "oneOf",
   "variant": "oneOf",
@@ -53,7 +52,6 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "loading": "boolean",
   "size": "breakpoint",
   "stretch": "breakpoint",
-  "tabbable": "boolean",
   "theme": "oneOf",
   "type": "oneOf",
   "weight": "oneOf",
@@ -79,6 +77,7 @@ exports[`should call validateProps() with correct parameters via render for p-ch
   "label": "string",
   "message": "string",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
@@ -160,7 +159,7 @@ exports[`should call validateProps() with correct parameters via render for p-ic
   "aria": "aria",
   "color": "oneOf",
   "lazy": "boolean",
-  "name": "string",
+  "name": "oneOf",
   "size": "oneOf",
   "source": "string",
   "theme": "oneOf",
@@ -210,6 +209,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "stretch": "breakpoint",
   "target": "string",
   "theme": "oneOf",
+  "underline": "boolean",
   "weight": "oneOf",
 }
 `;
@@ -284,6 +284,7 @@ exports[`should call validateProps() with correct parameters via render for p-po
   "aria": "aria",
   "description": "string",
   "direction": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
@@ -293,6 +294,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "label": "string",
   "message": "string",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
@@ -367,7 +369,6 @@ exports[`should call validateProps() with correct parameters via render for p-sw
   "hideLabel": "breakpoint",
   "loading": "boolean",
   "stretch": "breakpoint",
-  "tabbable": "boolean",
   "theme": "oneOf",
 }
 `;
@@ -432,6 +433,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "aria": "aria",
   "color": "oneOf",
   "label": "string",
+  "theme": "oneOf",
 }
 `;
 
@@ -457,6 +459,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "message": "string",
   "showCharacterCount": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
   "unit": "string",
   "unitPosition": "oneOf",
 }
@@ -478,6 +481,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "message": "string",
   "showCharacterCount": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 

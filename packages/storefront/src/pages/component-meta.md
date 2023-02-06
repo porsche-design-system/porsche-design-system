@@ -70,9 +70,9 @@ export default class Code extends Vue {
   :deep(code) {
     @include pds-text-x-small;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    padding: 0.125rem $pds-spacing-small;
-    background-color: mix($pds-theme-light-brand, $pds-theme-light-background-base, 10%);
+    padding: 0.125rem $pds-spacing-static-small;
+    background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
     border-radius: 3px;
-    color: $pds-theme-light-brand;
+    color: $pds-theme-light-primary;
   }
 </style>

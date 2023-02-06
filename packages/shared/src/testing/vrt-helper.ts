@@ -17,7 +17,7 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
     document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
 
     document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
-      const button = popover.shadowRoot.querySelector('p-button-pure, my-prefix-p-button-pure') as HTMLElement;
+      const button = popover.shadowRoot.querySelector('button');
       button.click();
     });
   });

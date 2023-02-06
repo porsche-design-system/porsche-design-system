@@ -2,8 +2,8 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  GetMarkup,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import {
@@ -37,90 +37,92 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
       const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
 
-      const getElementsMarkup: GetMarkup = () => `
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
         <div>
-          <p-text-field-wrapper label="Text empty">
+          <p-text-field-wrapper label="Text empty" theme="${theme}">
             <input type="text" />
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Password empty">
+          <p-text-field-wrapper label="Password empty" theme="${theme}">
             <input type="password" />
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Search empty">
+          <p-text-field-wrapper label="Search empty" theme="${theme}">
             <input type="search" />
           </p-text-field-wrapper>
         </div>
         <form>
-          <p-text-field-wrapper label="Text in form">
+          <p-text-field-wrapper label="Text in form" theme="${theme}">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Password in form">
+          <p-text-field-wrapper label="Password in form" theme="${theme}">
             <input type="password" value="Value" />
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Search in form">
+          <p-text-field-wrapper label="Search in form" theme="${theme}">
             <input type="search" value="Value" />
           </p-text-field-wrapper>
         </form>
         <div>
-          <p-text-field-wrapper label="Default">
+          <p-text-field-wrapper label="Default" theme="${theme}">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper class="toggle-password" label="Password">
+          <p-text-field-wrapper class="toggle-password" label="Password" theme="${theme}">
             <input type="password" value="Value" />
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Search">
+          <p-text-field-wrapper label="Search" theme="${theme}">
             <input type="search" value="Value" />
           </p-text-field-wrapper>
         </div>
         <div>
-          <p-text-field-wrapper label="Default">
+          <p-text-field-wrapper label="Default" theme="${theme}">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Error" state="error" message="Error">
+          <p-text-field-wrapper label="Error" state="error" message="Error" theme="${theme}">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Success" state="success" message="Success">
+          <p-text-field-wrapper label="Success" state="success" message="Success" theme="${theme}">
             ${child}
           </p-text-field-wrapper>
         </div>
         <div>
-          <p-text-field-wrapper label="Readonly">
+          <p-text-field-wrapper label="Readonly" theme="${theme}">
             ${childReadonly}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Readonly Error" state="error" message="Error">
+          <p-text-field-wrapper label="Readonly Error" state="error" message="Error" theme="${theme}">
             ${childReadonly}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Readonly Success" state="success" message="Success">
+          <p-text-field-wrapper label="Readonly Success" state="success" message="Success" theme="${theme}">
             ${childReadonly}
           </p-text-field-wrapper>
         </div>
         <div>
-          <p-text-field-wrapper label="Disabled">
+          <p-text-field-wrapper label="Disabled" theme="${theme}">
             ${childDisabled}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Disabled Error" state="error" message="Error">
+          <p-text-field-wrapper label="Disabled Error" state="error" message="Error" theme="${theme}">
             ${childDisabled}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Disabled Success" state="success" message="Success">
+          <p-text-field-wrapper label="Disabled Success" state="success" message="Success" theme="${theme}">
             ${childDisabled}
           </p-text-field-wrapper>
         </div>
         <div>
-          <p-text-field-wrapper>
+          <p-text-field-wrapper theme="${theme}">
             <span slot="label">Slotted label with <a href="#">link</a></span>
             <span slot="description">Slotted description with <a href="#">link</a></span>
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Error" description="Some description" state="error">
+          <p-text-field-wrapper label="Error" description="Some description" state="error" theme="${theme}">
             ${child}
             <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Success" description="Some description" state="success">
+          <p-text-field-wrapper label="Success" description="Some description" state="success" theme="${theme}">
             ${child}
             <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-text-field-wrapper>
         </div>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
       // let's toggle some password fields
       const textFieldWrappers = await page.$$('.toggle-password');
@@ -128,7 +130,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         textFieldWrappers.map(
           async (item) =>
             (
-              await item.evaluateHandle((el) => el.shadowRoot.querySelector('button[type=button]'))
+              await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))
             ).evaluate((el: HTMLElement) => el.click()) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
         )
       );

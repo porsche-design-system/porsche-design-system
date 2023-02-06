@@ -1,27 +1,24 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  getTransition,
-  getThemedColors,
-  pxToRemWithUnit,
   addImportantToRule,
+  getThemedColors,
+  getTransition,
+  pxToRemWithUnit,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
+
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
   ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
-export const getComponentCss = (
-  size: BreakpointCustomizable<TabSize>,
-  weight: TabWeight,
-  theme: ThemeExtendedElectric
-): string => {
-  const { baseColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
+export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: TabWeight, theme: Theme): string => {
+  const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -53,7 +50,7 @@ export const getComponentCss = (
           textAlign: 'left',
           border: 0,
           background: 'transparent',
-          color: baseColor,
+          color: primaryColor,
           cursor: 'pointer',
           transition: getTransition('color'),
         },
@@ -63,7 +60,7 @@ export const getComponentCss = (
           },
         }),
         [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
-          color: activeColor,
+          color: primaryColor,
         },
         // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
         [transformSelector('::slotted([role]:focus)')]: {
@@ -78,9 +75,9 @@ export const getComponentCss = (
       }),
     },
     scroller: {
-      ...textSmall,
+      ...textSmallStyle,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSize[s].fontSize })),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSizeText[s] })),
     },
     bar: {
       display: 'block',
@@ -89,7 +86,7 @@ export const getComponentCss = (
       height: weight === 'semibold' ? '.125em' : '.09375em',
       left: 0,
       bottom: `-${pxToRemWithUnit(4)}`,
-      background: activeColor,
+      background: primaryColor,
       '&--enable-transition': {
         willChange: 'width',
         transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,

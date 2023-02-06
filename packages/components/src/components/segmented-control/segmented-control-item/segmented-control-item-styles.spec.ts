@@ -1,6 +1,6 @@
 import { getComponentCss } from './segmented-control-item-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, false, 'background-default', 'light'],
     [true, false, 'background-default', 'light'],

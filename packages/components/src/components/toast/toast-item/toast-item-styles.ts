@@ -2,31 +2,28 @@ import type { Theme } from '../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { getCss } from '../../../utils';
 import {
-  getCloseIconJssStyle,
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
-} from '../../inline-notification/inline-notification-styles';
-import { getBoxShadow } from '../../banner/banner-styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+} from '../../inline-notification/inline-notification-styles-shared';
+import { getBoxShadow } from '../../banner/banner-styles-shared';
+import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
-  const textColor = getThemedColors('light').baseColor;
   return getCss({
     '@global': {
       ':host': {
-        ...getNotificationRootJssStyle(state, theme),
+        ...getNotificationRootJssStyle(state, false, true, theme),
         ...getBoxShadow(),
       },
       p: {
-        ...textSmall,
+        ...textSmallStyle,
         margin: 0,
-        color: textColor,
+        color: getThemedColors(theme).primaryColor,
       },
     },
-    icon: getNotificationIconJssStyle(state),
+    icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
-    close: getCloseIconJssStyle(),
   });
 };

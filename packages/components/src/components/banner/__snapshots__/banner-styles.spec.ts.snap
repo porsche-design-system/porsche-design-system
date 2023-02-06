@@ -1,40 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getAnimationIn() should return correct JssStyle for keyframesName: mobileIn and durationVar: --p-duration 1`] = `
-{
-  "animation": "var(--p-duration,600ms) $mobileIn cubic-bezier(0.45,0,0.55,1) forwards",
-}
-`;
-
-exports[`getAnimationIn() should return correct JssStyle for keyframesName: mobileIn and durationVar: null 1`] = `
-{
-  "animation": "600ms $mobileIn cubic-bezier(0.45,0,0.55,1) forwards",
-}
-`;
-
-exports[`getAnimationOut() should return correct JssStyle 1`] = `
-{
-  "animation": "600ms $mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important",
-}
-`;
-
-exports[`getBoxShadow() should return correct JssStyle 1`] = `
-{
-  "boxShadow": "0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2)",
-}
-`;
-
-exports[`getComponentCss() should return correct css 1`] = `
+exports[`getComponentCss() should return correct css for width: basic 1`] = `
 ":host {
-  --p-banner-position-top: 3.5rem;
-  --p-banner-position-bottom: 3.5rem;
+  --p-banner-position-top: 56px;
+  --p-banner-position-bottom: 56px;
   display: block;
   position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-banner-z-index,99);
+  z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  max-width: 2560px !important;
+  box-sizing: border-box !important;
 }
 @keyframes mobileIn {
   from {
@@ -84,7 +66,7 @@ exports[`getComponentCss() should return correct css 1`] = `
       animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
     :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration__banner,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
+      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
 
@@ -96,103 +78,185 @@ exports[`getComponentCss() should return correct css 1`] = `
       animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
     :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration__banner,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media(min-width:1920px) {
+    :host {
+      padding: 0 clamp(192px, 50vw - 768px, 512px) !important;
     }
 }
 
   .root {
-    box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
   }"
 `;
 
-exports[`getKeyframesMobile() should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
-{
-  "from": {
-    "opacity": 0,
-    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
-  },
-  "to": {
-    "opacity": 1,
-    "transform": "translate3d(0,0,0)",
-  },
+exports[`getComponentCss() should return correct css for width: extended 1`] = `
+":host {
+  --p-banner-position-top: 56px;
+  --p-banner-position-bottom: 56px;
+  display: block;
+  position: var(--p-banner-position-type,fixed);
+  z-index: var(--p-internal-banner-z-index,99);
+  opacity: 0;
+  left: 0;
+  right: 0;
+  will-change: opacity,transform;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  max-width: 2560px !important;
 }
+@keyframes mobileIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes mobileOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+}
+@keyframes desktopIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes desktopOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+}
+@media(min-width:0px) and (max-width:759px) {
+    :host {
+      bottom: var(--p-banner-position-bottom);
+    }
+    :host(.banner--close) {
+      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated), :host(.ssr) {
+      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media(min-width:760px) {
+    :host {
+      top: var(--p-banner-position-top);
+    }
+    :host(.banner--close) {
+      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated), :host(.ssr) {
+      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+  .root {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  }"
 `;
 
-exports[`getKeyframesMobile() should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
-{
-  "from": {
-    "opacity": 1,
-    "transform": "translate3d(0,0,0)",
-  },
-  "to": {
-    "opacity": 0,
-    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
-  },
+exports[`getComponentCss() should return correct css for width: fluid 1`] = `
+":host {
+  --p-banner-position-top: 56px;
+  --p-banner-position-bottom: 56px;
+  display: block;
+  position: var(--p-banner-position-type,fixed);
+  z-index: var(--p-internal-banner-z-index,99);
+  opacity: 0;
+  left: 0;
+  right: 0;
+  will-change: opacity,transform;
+  width: 100% !important;
+  min-width: 0 !important;
 }
-`;
+@keyframes mobileIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes mobileOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+}
+@keyframes desktopIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes desktopOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+}
+@media(min-width:0px) and (max-width:759px) {
+    :host {
+      bottom: var(--p-banner-position-bottom);
+    }
+    :host(.banner--close) {
+      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated), :host(.ssr) {
+      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
 
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-banner a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+@media(min-width:760px) {
+    :host {
+      top: var(--p-banner-position-top);
+    }
+    :host(.banner--close) {
+      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated), :host(.ssr) {
+      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
 }
-p-banner b, p-banner strong {
-  font-weight: 700 !important;
-}
-p-banner em, p-banner i {
-  font-style: normal !important;
-}
-p-banner a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-banner a:focus {
-  outline-color: currentColor !important;
-}
-p-banner a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-banner a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-banner a:hover {
-    color: #d5001c !important;
-  }
-}
-"
-`;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-banner a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-banner b, prefixed-p-banner strong {
-  font-weight: 700 !important;
-}
-prefixed-p-banner em, prefixed-p-banner i {
-  font-style: normal !important;
-}
-prefixed-p-banner a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-banner a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-banner a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-banner a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-banner a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+  .root {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  }"
 `;

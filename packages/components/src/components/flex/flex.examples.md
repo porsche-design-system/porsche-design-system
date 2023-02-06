@@ -2,8 +2,12 @@
 
 The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by
 the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
-components. It does not replace the [Grid](components/grid) component which should be used to define basic page
-structures.
+components.
+
+<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
@@ -488,7 +492,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;
@@ -498,9 +502,9 @@ export default class Code extends Vue {
 
   :deep(.example-flex) {
     & > * {
-      @include p-text-small;
+      @include pds-text-small;
       padding: 0 6vw;
-      color: $p-color-theme-light-default;
+      color: $pds-theme-light-primary;
       text-align: center;
 
       &:nth-child(1n) {
@@ -517,7 +521,7 @@ export default class Code extends Vue {
 
       &:nth-child(4n) {
         background-color: $color-blue-4;
-        color: $p-color-theme-dark-default;
+        color: $pds-theme-dark-primary;
       }
 
       &[align-self] {
@@ -525,7 +529,7 @@ export default class Code extends Vue {
       }
 
       &[align-self='baseline']:nth-child(1) {
-        margin-top: $p-spacing-24;
+        margin-top: 1.5rem;
       }
     }
 
@@ -544,7 +548,7 @@ export default class Code extends Vue {
     }
 
     &[align-items='baseline'] > :nth-child(2) {
-      margin-top: $p-spacing-24;
+      margin-top: 1.5rem;
     }
   }
 </style>

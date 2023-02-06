@@ -1,4 +1,10 @@
-import { textSmall, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import {
+  textSmallStyle,
+  spacingStaticSmall,
+  spacingStaticMedium,
+  spacingStaticLarge,
+  getMediaQueryMin,
+} from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToRule,
@@ -8,8 +14,7 @@ import {
   getThemedColors,
 } from '../../../styles';
 
-const { baseColor } = getThemedColors('light');
-const { small: spacingSmall, medium: spacingMedium, large: spacingLarge } = spacing;
+const { primaryColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -19,9 +24,9 @@ export const getComponentCss = (): string => {
       },
     },
     caption: {
-      marginBottom: spacingSmall,
-      [mediaQueryMin('m')]: {
-        marginBottom: spacingMedium,
+      marginBottom: spacingStaticSmall,
+      [getMediaQueryMin('m')]: {
+        marginBottom: spacingStaticMedium,
       },
     },
     root: {
@@ -35,9 +40,9 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      ...textSmall,
+      ...textSmallStyle,
       textAlign: 'left',
-      color: baseColor,
+      color: primaryColor,
       whiteSpace: 'nowrap',
     },
     'scroll-trigger': {
@@ -53,7 +58,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacingLarge,
+      paddingLeft: spacingStaticLarge,
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',

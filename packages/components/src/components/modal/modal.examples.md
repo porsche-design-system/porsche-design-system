@@ -160,7 +160,7 @@ export default class Code extends Vue {
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+    <p-button type="button" variant="secondary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;}
   
@@ -174,7 +174,7 @@ export default class Code extends Vue {
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+    <p-button type="button" variant="secondary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;
 
@@ -217,7 +217,7 @@ export default class Code extends Vue {
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+      <p-button type="button" variant="secondary" icon="close">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;
@@ -233,10 +233,10 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   :deep(.footer) {  
-    padding: p-px-to-rem(32px) 0 0;
+    padding: 2rem 0 0;
   }
   :deep(.fullscreen-container) {
     flex: 1;

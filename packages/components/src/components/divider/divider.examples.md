@@ -63,13 +63,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   :deep(.divider-vertical-container-example) {
     display: flex;
     height: 100px;
   }
-  @include p-media-query("l") {
+  @include pds-media-query-min("l") {
     :deep(.divider-vertical-responsive-container-example) {
       display: flex;
       height: 100px;

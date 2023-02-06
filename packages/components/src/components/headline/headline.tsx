@@ -17,7 +17,7 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
   tag: AllowedTypes.oneOf<HeadlineTag>([...HEADLINE_TAGS, undefined]),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
-  color: AllowedTypes.oneOf<Extract<TextColor, 'default' | 'inherit'>>(['default', 'inherit']),
+  color: AllowedTypes.oneOf<Extract<TextColor, 'primary' | 'default' | 'inherit'>>(['primary', 'default', 'inherit']),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -32,14 +32,14 @@ export class Headline {
   /** Predefined style of the headline. */
   @Prop() public variant?: HeadlineVariant = 'headline-1';
 
-  /** Sets a custom HTML tag depending of the usage of the headline component. */
+  /** Sets a custom HTML tag depending on the usage of the headline component. */
   @Prop() public tag?: HeadlineTag;
 
   /** Text alignment of the component. */
   @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: Extract<TextColor, 'default' | 'inherit'> = 'default';
+  @Prop() public color?: Extract<TextColor, 'primary' | 'default' | 'inherit'> = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;

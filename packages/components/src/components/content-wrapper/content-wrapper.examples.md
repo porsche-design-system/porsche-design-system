@@ -63,15 +63,15 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   :deep(.playground-content-wrapper-background-color .demo){
     background-color: deeppink;
   }  
   
   :deep(.example-content) {
-    @include p-text-small;
-    color: $p-color-theme-light-default;
+    @include pds-text-small;
+    color: $pds-theme-light-primary;
     text-align: center;
     background: lightskyblue;
   }

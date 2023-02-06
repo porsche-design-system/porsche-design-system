@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getContentWrapperStyle() should return correct css for width: basic 1`] = `
+{
+  "@media(min-width:1920px)": {
+    "padding": "0 clamp(192px, 50vw - 768px, 512px)",
+  },
+  "boxSizing": "border-box",
+  "margin": "0 auto",
+  "maxWidth": "2560px",
+  "minWidth": 0,
+  "padding": "0 clamp(22px, 10.625vw - 12px, 192px)",
+  "width": "100%",
+}
+`;
+
+exports[`getContentWrapperStyle() should return correct css for width: extended 1`] = `
+{
+  "margin": "0 auto",
+  "maxWidth": "2560px",
+  "minWidth": 0,
+  "width": "100%",
+}
+`;
+
+exports[`getContentWrapperStyle() should return correct css for width: fluid 1`] = `
+{
+  "minWidth": 0,
+  "width": "100%",
+}
+`;

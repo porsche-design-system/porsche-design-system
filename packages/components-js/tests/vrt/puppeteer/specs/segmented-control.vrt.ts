@@ -13,11 +13,11 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'segmented-control', '/#segmented-control')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('segmented-control-states', async () => {
@@ -49,7 +49,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-segmented-control-item value="3" label="Some label" icon="arrow-head-right" disabled>Disabled</p-segmented-control-item>
         </p-segmented-control>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 

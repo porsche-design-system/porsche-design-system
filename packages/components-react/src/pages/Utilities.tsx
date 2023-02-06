@@ -1,4 +1,4 @@
-import { themeLight, textSmall } from '@porsche-design-system/components-react/utilities/js';
+import { themeLight, textSmallStyle } from '@porsche-design-system/components-react/utilities/js';
 
 export const UtilitiesPage = (): JSX.Element => {
   return (
@@ -9,12 +9,12 @@ export const UtilitiesPage = (): JSX.Element => {
         justifyContent: 'center',
         height: '100px',
         width: '100px',
-        background: themeLight.brand,
+        background: themeLight.primary,
         color: '#fff',
-        ...textSmall,
+        ...textSmallStyle,
       }}
     >
-      {themeLight.brand}
+      {themeLight.primary}
     </div>
   );
 };

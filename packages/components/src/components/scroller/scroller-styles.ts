@@ -1,24 +1,58 @@
-import { getCss } from '../../utils';
-import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../styles';
-import type { ThemeExtendedElectric } from '../../types';
+import { getCss, isThemeDark } from '../../utils';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
+import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import { getFocus } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  dropShadowLowStyle,
+  fontLineHeight,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
+import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const gradientColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
+  light: {
+    default: '255,255,255',
+    surface: '238,239,242',
+  },
+  dark: {
+    default: '14,14,18',
+    surface: '33,34,37',
+  },
+};
+
+const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): string => {
+  const gradientColor = gradientColorMap[theme][gradientColorTheme];
+
+  return (
+    `rgba(${gradientColor},1) 0%,` +
+    `rgba(${gradientColor},0.9) 10%,` +
+    `rgba(${gradientColor},0.668116) 40%,` +
+    `rgba(${gradientColor},0.331884) 60%,` +
+    `rgba(${gradientColor},0.0816599) 80%,` +
+    `rgba(${gradientColor},0)`
+  );
+};
 
 export const getComponentCss = (
-  gradientColorScheme: GradientColorTheme,
+  gradientColorTheme: GradientColorTheme,
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, baseColor } = getThemedColors(theme);
-  const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
-  const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
+  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
+  const { hoverColor } = getThemedColors(theme);
+
+  const isDarkTheme = isThemeDark(theme);
 
   const actionPrevNextStyles = {
     position: 'relative',
-    padding: `${pxToRemWithUnit(4)} 0`,
+    padding: '4px 0',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
@@ -26,21 +60,53 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-        height: addImportantToRule('inherit'),
+        height: 'inherit',
+        ...hostHiddenStyles,
+      }),
+      button: {
+        display: 'flex',
+        pointerEvents: 'auto',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...textSmallStyle,
+        height: `calc(${fontLineHeight} + 4px)`,
+        width: `calc(${fontLineHeight} + 4px)`,
+        border: 0,
+        outline: 0,
+        cursor: 'pointer',
+        background: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
+        borderRadius: borderRadiusSmall,
+        ...frostedGlassStyle,
+        visibility: 'hidden',
+        ...(!isDarkTheme && dropShadowLowStyle),
+        ...hoverMediaQuery({
+          transition: getTransition('background-color'),
+          '&:hover': {
+            background: hoverColor,
+            ...(isDarkTheme && {
+              '& > .icon': {
+                filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
+              },
+            }),
+          },
+        }),
       },
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '2em minmax(0, 1fr) 2em',
-      margin: `0 ${pxToRemWithUnit(-4)}`,
+      gridTemplateColumns: '48px minmax(0, 1fr) 48px',
+      ...hoverMediaQuery({
+        // distinguish gradient width on mobile and desktop
+        gridTemplateColumns: '64px minmax(0, 1fr) 64px',
+      }),
+      margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
-      minHeight: pxToRemWithUnit(24),
       gridArea: '1 / 1 / 1 / -1',
-      padding: pxToRemWithUnit(4),
+      padding: '4px',
       overflow: 'scroll hidden',
       msOverflowStyle: 'none' /* IE and Edge */,
       scrollbarWidth: 'none' /* Firefox */,
@@ -48,14 +114,29 @@ export const getComponentCss = (
         display: 'none',
       },
     },
-    // Extra wrapper needed to compensate different offset parent calculation depending of browser.
+    // Extra wrapper needed to compensate different offset parent calculation depending on browser.
     // Needed for position of status bar.
     'scroll-wrapper': {
-      ...getFocus({ color: baseColor }),
       position: 'relative',
       display: 'inline-flex',
+      minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
+      outline: 0,
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        ...getInsetJssStyle(-4),
+        border: `${borderWidthBase} solid transparent`,
+        borderRadius: borderRadiusSmall,
+        pointerEvents: 'none', // Needed to enable clicks inside of slot
+      },
+      '&:focus::before': {
+        borderColor: focusColor,
+      },
+      '&:focus:not(:focus-visible)::before': {
+        borderColor: 'transparent',
+      },
     },
     trigger: {
       position: 'absolute',
@@ -75,10 +156,14 @@ export const getComponentCss = (
       marginLeft: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
-      background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
+      background: `linear-gradient(to right, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
-      '& .button::before': {
-        left: 0,
+      '& button': {
+        marginLeft: '8px',
+        // Hide buttons on mobile
+        ...hoverMediaQuery({
+          visibility: isPrevHidden ? 'hidden' : 'visible',
+        }),
       },
     },
     'action-next': {
@@ -86,22 +171,14 @@ export const getComponentCss = (
       marginRight: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
-      background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
+      background: `linear-gradient(to left, ${getGradient(theme, gradientColorTheme)} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
-      '& .button::before': {
-        right: 0,
-      },
-    },
-    button: {
-      pointerEvents: 'auto',
-      position: 'static',
-      // Pseudo-element to stretch the click-area to full height
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        width: 'max(2rem, 80%)',
+      '& button': {
+        marginRight: '8px',
+        // Hide buttons on mobile
+        ...hoverMediaQuery({
+          visibility: isNextHidden ? 'hidden' : 'visible',
+        }),
       },
     },
   });

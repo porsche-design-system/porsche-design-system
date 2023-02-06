@@ -61,12 +61,8 @@
 
     // Theme light
     &.light {
-      &.brand {
-        background: $pds-theme-light-brand;
-      }
-
-      &.default {
-        background: $pds-theme-light-base;
+      &.primary {
+        background: $pds-theme-light-primary;
       }
 
       &.background-default {
@@ -75,10 +71,6 @@
 
       &.background-surface {
         background: $pds-theme-light-background-surface;
-      }
-
-      &.background-shading {
-        background: $pds-theme-light-background-shading;
       }
 
       &.neutral-contrast-high {
@@ -118,11 +110,11 @@
       }
 
       &.notification-neutral {
-        background: $pds-theme-light-notification-neutral;
+        background: $pds-theme-light-notification-info;
       }
 
       &.notification-neutral-soft {
-        background: $pds-theme-light-notification-neutral-soft;
+        background: $pds-theme-light-notification-info-soft;
       }
 
       &.state-hover {
@@ -134,7 +126,7 @@
       }
 
       &.state-focus {
-        color: $pds-theme-light-base;
+        color: $pds-theme-light-primary;
         background: $pds-theme-light-state-focus;
       }
 
@@ -145,12 +137,8 @@
 
     // Theme dark
     &.dark {
-      &.brand {
-        background: $pds-theme-dark-brand;
-      }
-
-      &.default {
-        background: $pds-theme-dark-base;
+      &.primary {
+        background: $pds-theme-dark-primary;
       }
 
       &.background-default {
@@ -159,10 +147,6 @@
 
       &.background-surface {
         background: $pds-theme-dark-background-surface;
-      }
-
-      &.background-shading {
-        background: $pds-theme-dark-background-shading;
       }
 
       &.neutral-contrast-high {
@@ -202,11 +186,11 @@
       }
 
       &.notification-neutral {
-        background: $pds-theme-dark-notification-neutral;
+        background: $pds-theme-dark-notification-info;
       }
 
       &.notification-neutral-soft {
-        background: $pds-theme-dark-notification-neutral-soft;
+        background: $pds-theme-dark-notification-info-soft;
       }
 
       &.state-hover {
@@ -218,70 +202,13 @@
       }
 
       &.state-focus {
-        color: $pds-theme-dark-base;
+        color: $pds-theme-dark-primary;
         background: $pds-theme-dark-state-focus;
       }
 
       &.state-disabled {
         background: $pds-theme-dark-state-disabled;
       }
-    }
-
-    // External brand colors
-    &.external-facebook {
-      background: $pds-color-external-facebook;
-    }
-
-    &.external-google {
-      background: $pds-color-external-google;
-    }
-
-    &.external-instagram {
-      background: $pds-color-external-instagram;
-    }
-
-    &.external-kakaotalk {
-      background: $pds-color-external-kakaotalk;
-    }
-
-    &.external-linkedin {
-      background: $pds-color-external-linkedin;
-    }
-
-    &.external-naver {
-      background: $pds-color-external-naver;
-    }
-
-    &.external-pinterest {
-      background: $pds-color-external-pinterest;
-    }
-
-    &.external-reddit {
-      background: $pds-color-external-reddit;
-    }
-
-    &.external-tiktok {
-      background: $pds-color-external-tiktok;
-    }
-
-    &.external-twitter {
-      background: $pds-color-external-twitter;
-    }
-
-    &.external-wechat {
-      background: $pds-color-external-wechat;
-    }
-
-    &.external-whatsapp {
-      background: $pds-color-external-whatsapp;
-    }
-
-    &.external-xing {
-      background: $pds-color-external-xing;
-    }
-
-    &.external-youtube {
-      background: $pds-color-external-youtube;
     }
   }
 </style>

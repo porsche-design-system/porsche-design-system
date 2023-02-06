@@ -20,8 +20,8 @@
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
     "replace": "yarn replace:initialStyles && yarn replace:fontLatin",
-    "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getInitialStyles({applyNormalizeStyles: true}))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
-    "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
+    "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
+    "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getFontLinks({ weights: [\"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s^$regex^$partial^\" index.html > index.tmp.html && rm index.html && mv index.tmp.html index.html",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:vue-wrapper",
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
@@ -57,7 +57,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "~4.9.4",
-    "vite": "^4.0.3",
+    "vite": "^4.0.4",
     "vite-plugin-static-copy": "^0.13.0",
     "vue-tsc": "^1.0.19"
   }

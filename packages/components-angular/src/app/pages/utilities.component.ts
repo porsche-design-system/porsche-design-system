@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { themeLight, textSmall } from '@porsche-design-system/components-angular/utilities/js';
+import { themeLight, textSmallStyle } from '@porsche-design-system/components-angular/utilities/js';
 import { paramCase } from 'change-case';
 
 @Component({
   selector: 'page-utilities',
   styles: [``],
-  template: `<div [style]="getStyle()">{{ themeLight.brand }}</div>`,
+  template: `<div [style]="getStyle()">{{ themeLight.primary }}</div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UtilitiesComponent {
@@ -19,8 +19,8 @@ export class UtilitiesComponent {
       height: '100px',
       width: '100px',
       color: '#fff',
-      background: themeLight.brand,
-      ...textSmall,
+      background: themeLight.primary,
+      ...textSmallStyle,
     })
       .map(([key, value]) => [paramCase(key), value].join(':'))
       .join(';');

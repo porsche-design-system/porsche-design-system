@@ -7,14 +7,14 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const ITEM_PADDING = pxToRemWithUnit(16);
-export const { font: BUTTON_FONT } = textSmall;
-export const { font: LABEL_FONT } = textXSmall;
+export const { font: BUTTON_FONT } = textSmallStyle;
+export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 
@@ -25,7 +25,7 @@ export const getColors = (
   theme: Theme
 ): { backgroundColor: string; buttonColor: string; labelColor: string } => {
   const themedColors = getThemedColors(theme);
-  const { baseColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
+  const { primaryColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
 
   const backgroundColor =
     themedColors[
@@ -40,7 +40,7 @@ export const getColors = (
       }
     : {
         backgroundColor,
-        buttonColor: baseColor,
+        buttonColor: primaryColor,
         labelColor: contrastMediumColor,
       };
 };
@@ -51,7 +51,7 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const { baseColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, contrastLowColor } = getThemedColors(theme);
   const { backgroundColor, buttonColor, labelColor } = getColors(isDisabled, isSelected, bgColor, theme);
 
   return getCss({
@@ -69,8 +69,8 @@ export const getComponentCss = (
         border: 0,
         background: backgroundColor,
         color: buttonColor,
-        ...textSmall,
-        ...getFocusJssStyle({ color: baseColor }),
+        ...textSmallStyle,
+        ...getFocusJssStyle({ color: primaryColor }),
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
@@ -89,7 +89,7 @@ export const getComponentCss = (
       // label
       span: {
         display: 'block',
-        ...textXSmall,
+        ...textXSmallStyle,
         color: labelColor,
       },
     },

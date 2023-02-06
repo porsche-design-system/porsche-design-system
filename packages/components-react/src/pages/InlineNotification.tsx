@@ -4,12 +4,29 @@ import { PInlineNotification } from '@porsche-design-system/components-react';
 export const InlineNotificationPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should show inline-notification neutral on light background">
+      <div className="playground light" title="should show inline-notification info on light background">
         <PInlineNotification heading="Some neutral heading" description="Some description" />
       </div>
 
-      <div className="playground dark" title="should show inline-notification neutral on dark background">
+      <div className="playground light" title="should show inline-notification info with state neutral on light background">
         <PInlineNotification
+          state="neutral"
+          heading="Some neutral heading"
+          description="Some description"
+         />
+      </div>
+
+      <div className="playground dark" title="should show inline-notification info on dark background">
+        <PInlineNotification
+          heading="Some neutral heading"
+          description="Some description"
+          theme="dark"
+         />
+      </div>
+
+      <div className="playground dark" title="should show inline-notification info with state neutral on dark background">
+        <PInlineNotification
+          state="neutral"
           heading="Some neutral heading"
           description="Some description"
           theme="dark"
@@ -81,7 +98,7 @@ export const InlineNotificationPage = (): JSX.Element => {
         </PInlineNotification>
       </div>
 
-      <div className="playground light" title="should show inline-notification with action button">
+      <div className="playground light" title="should show inline-notification with action button on light background">
         <PInlineNotification
           heading="Some heading with action button"
           description="Some description"
@@ -89,7 +106,16 @@ export const InlineNotificationPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with loading action button">
+      <div className="playground dark" title="should show inline-notification with action button on dark background">
+        <PInlineNotification
+          heading="Some heading with action button"
+          description="Some description"
+          actionLabel="Some action label"
+          theme="dark"
+         />
+      </div>
+
+      <div className="playground light" title="should show inline-notification with loading action button on light background">
         <PInlineNotification
           heading="Some heading with action button"
           description="Some description"
@@ -98,7 +124,17 @@ export const InlineNotificationPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification in persistent mode">
+      <div className="playground dark" title="should show inline-notification with loading action button on dark background">
+        <PInlineNotification
+          heading="Some heading with action button"
+          description="Some description"
+          actionLabel="Some loading action label"
+          actionLoading={true}
+          theme="dark"
+         />
+      </div>
+
+      <div className="playground light" title="should show inline-notification in persistent mode on light background">
         <PInlineNotification
           heading="Some persistent heading"
           description="Some description"
@@ -106,7 +142,19 @@ export const InlineNotificationPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification in persistent mode with action button">
+      <div className="playground dark" title="should show inline-notification in persistent mode on dark background">
+        <PInlineNotification
+          heading="Some persistent heading"
+          description="Some description"
+          persistent={true}
+          theme="dark"
+         />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show inline-notification in persistent mode with action button on light background"
+      >
         <PInlineNotification
           heading="Some persistent heading with action button"
           description="Some description"
@@ -116,9 +164,26 @@ export const InlineNotificationPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with multiline heading and description">
+      <div
+        className="playground dark"
+        title="should show inline-notification in persistent mode with action button on dark background"
+      >
         <PInlineNotification
-          style={{ width: '240px' }}
+          heading="Some persistent heading with action button"
+          description="Some description"
+          persistent={true}
+          actionLabel="Some action label with custom icon"
+          actionIcon="refresh"
+          theme="dark"
+         />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show inline-notification with multiline heading and description on light background"
+      >
+        <PInlineNotification
+          style={{ width: '15rem' }}
           heading="Some heading with a very long text across multiple lines"
           description="Some description with a very long text across multiple lines"
           actionLabel="Some action label with custom icon"

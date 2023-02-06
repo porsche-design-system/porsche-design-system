@@ -1,175 +1,456 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for color: brand, size: small and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: dark 1`] = `
 ":host {
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
 }
-img {
-  filter: none;
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #d5001c;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, size: inherit and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
+:host([hidden]) {
+  display: none !important;
 }
 img {
-  filter: none;
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
+  display: block;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  width: inherit;
-  height: inherit;
-  color: #000;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, size: large and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-img {
-  filter: none;
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 3rem;
-  height: 3rem;
-  color: #000;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, size: small and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-img {
-  filter: invert(100%);
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #fff;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, size: small and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-img {
-  filter: none;
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #000;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: light 1`] = `
 ":host {
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
 }
+:host([hidden]) {
+  display: none !important;
+}
 img {
-  filter: none;
-}
-svg {
-  fill: currentColor;
-}
-@media (forced-colors: active) {
-  svg {
-    fill: canvasText;
-  }
-}
-
-.root {
-  display: flex;
-  flex-shrink: 0;
+  display: block;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: currentColor;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-error, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-error, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-info, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-info, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-success, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-success, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-warning, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-warning, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: inherit and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: large and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: clamp(1.44rem, .3vw + 1.38rem, 1.71rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: medium and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: clamp(1.2rem, .12vw + 1.18rem, 1.31rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: x-large and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: clamp(1.73rem, .57vw + 1.61rem, 2.24rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: primary, size: x-small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: .875rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }"
 `;

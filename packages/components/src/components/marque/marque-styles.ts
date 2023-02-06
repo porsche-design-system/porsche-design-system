@@ -1,6 +1,6 @@
 import type { MarqueSize } from './marque-utils';
 import type { JssStyle } from 'jss';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors } from '../../styles';
 
@@ -27,14 +27,14 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...getFocusJssStyle({ color: getThemedColors('light').baseColor, offset: 0, pseudo: '::before' }),
+        ...getFocusJssStyle({ color: getThemedColors('light').primaryColor, offset: 0, pseudo: '::before' }),
       },
       picture: {
         display: 'block',
         ...(size === 'responsive'
           ? {
               ...baseSizes.small,
-              [mediaQueryMin('l')]: baseSizes.medium,
+              [getMediaQueryMin('l')]: baseSizes.medium,
             }
           : baseSizes[size]),
       },

@@ -68,6 +68,30 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
+  'Design Tokens': {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/design-tokens/introduction.md')],
+    // @ts-ignore
+    Border: [() => import('@/pages/design-tokens/border.md')],
+    // @ts-ignore
+    'Drop Shadow': [() => import('@/pages/design-tokens/drop-shadow.md')],
+    // @ts-ignore
+    Focus: [() => import('@/pages/design-tokens/focus.md')],
+    // @ts-ignore
+    'Frosted Glass': [() => import('@/pages/design-tokens/frosted-glass.md')],
+    // @ts-ignore
+    Gradient: [() => import('@/pages/design-tokens/gradient.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/design-tokens/grid.md')],
+    // @ts-ignore
+    'Media Query': [() => import('@/pages/design-tokens/media-query.md')],
+    // @ts-ignore
+    Spacing: [() => import('@/pages/design-tokens/spacing.md')],
+    // @ts-ignore
+    Theme: [() => import('@/pages/design-tokens/theme.md')],
+    // @ts-ignore
+    Typography: [() => import('@/pages/design-tokens/typography.md')],
+  },
   Components: {
     Accordion: {
       // @ts-ignore
@@ -118,12 +142,6 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.props.md')],
-    },
-    Color: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/color/color.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/color/color.usage.md')],
     },
     'Content Wrapper': {
       // @ts-ignore
@@ -303,12 +321,6 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md'),
       ],
     },
-    Spacing: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/spacing/spacing.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/spacing/spacing.usage.md')],
-    },
     'Segmented Control': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
@@ -446,6 +458,30 @@ export const config: StorefrontConfig = {
       ],
     },
   },
+  Partials: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/partials/introduction.md')],
+    // @ts-ignore
+    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
+    // @ts-ignore
+    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
+    // @ts-ignore
+    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
+    // @ts-ignore
+    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
+    // @ts-ignore
+    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
+    // @ts-ignore
+    'Font Links': [() => import('@/pages/partials/font-links.md')],
+    // @ts-ignore
+    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
+    // @ts-ignore
+    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
+    // @ts-ignore
+    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
+    // @ts-ignore
+    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
+  },
   Help: {
     // @ts-ignore
     Support: [() => import('@/pages/help/support.md')],
@@ -486,7 +522,7 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Fonts: [() => import('@/pages/assets/fonts.md')],
   },
-  Utilities: {
+  'Utilities Deprecated': {
     // @ts-ignore
     Introduction: [() => import('@/pages/utilities/introduction.md')],
     Scss: {
@@ -505,30 +541,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Helper: [() => import('@/pages/utilities/js/helper.md')],
     },
-  },
-  Partials: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/partials/introduction.md')],
-    // @ts-ignore
-    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
-    // @ts-ignore
-    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
-    // @ts-ignore
-    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
-    // @ts-ignore
-    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
-    // @ts-ignore
-    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
-    // @ts-ignore
-    'Font Links': [() => import('@/pages/partials/font-links.md')],
-    // @ts-ignore
-    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
-    // @ts-ignore
-    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
-    // @ts-ignore
-    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
-    // @ts-ignore
-    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
   Performance: {
     // @ts-ignore

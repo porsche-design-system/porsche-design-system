@@ -2,7 +2,6 @@
 
 exports[`accessibility should expose correct accessibility tree description if subline property is set 1`] = `
 {
-  "description": "Some Subline",
   "name": "Some label",
   "role": "link",
 }
@@ -33,9 +32,52 @@ exports[`accessibility should expose correct initial accessibility tree properti
 {
   "children": [
     {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "Some label",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "Some label",
+                  "role": "link",
+                },
+              ],
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
       "role": "none",
     },
   ],
-  "role": "none",
+  "name": "",
+  "role": "RootWebArea",
 }
 `;

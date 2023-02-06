@@ -1,12 +1,13 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
-import type { BreakpointCustomizable, ThemeExtendedElectricDark } from '../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../utils';
-import { getBaseSlottedStyles, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const sizeSmall = pxToRemWithUnit(48);
-const sizeMedium = pxToRemWithUnit(72);
-const sizeLarge = pxToRemWithUnit(104);
+const sizeSmall = '48px';
+const sizeMedium = '72px';
+const sizeLarge = '104px';
 
 const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   small: { height: sizeSmall, width: sizeSmall },
@@ -15,53 +16,63 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-export const getComponentCss = (
-  size: BreakpointCustomizable<SpinnerSize>,
-  theme: ThemeExtendedElectricDark
-): string => {
-  const { contrastHighColor, baseColor } = getThemedColors(theme);
-  const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
+export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
+  const strokeDasharray = '57'; // C = 2πR
+  const animationDuration = 'var(--p-animation-duration, 2s)';
+  const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'inline-flex',
         verticalAlign: 'top',
-      },
+        ...hostHiddenStyles,
+      }),
       svg: {
         display: 'block',
         position: 'relative',
         fill: 'none',
         transform: 'translate3d(0,0,0)',
+        animation: `$rotate ${animationDuration} linear infinite`,
       },
       circle: {
-        stroke: isThemeDark(theme) || isThemeDarkElectric(theme) ? baseColor : contrastHighColor,
         '&:first-child': {
-          opacity: 0.4,
+          stroke: contrastMediumColor,
+          animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
           transformOrigin: '0 0',
-          animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
-          strokeDasharray: '40, 200',
-          strokeDashoffset: 0,
+          animation: `$dash ${animationDuration} ease-in-out infinite`,
+          stroke: primaryColor,
+          strokeDasharray:
+            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+              ? strokeDasharray
+              : strokeDasharrayVar,
           strokeLinecap: 'round',
         },
       },
       '@keyframes rotate': {
+        '0%': {
+          transform: 'rotateZ(0deg)',
+        },
         '100%': {
-          transform: 'rotate(360deg)',
+          transform: 'rotateZ(360deg)',
         },
       },
       '@keyframes dash': {
         '0%': {
-          strokeDasharray: '3, 1000',
+          strokeDashoffset: 57,
+          transform: 'rotateZ(0)',
         },
-        '50%': {
-          strokeDasharray: '42, 1000',
+        '50%, 75%': {
+          strokeDashoffset: 20,
+          transform: 'rotateZ(80deg)',
         },
+
         '100%': {
-          strokeDasharray: '30, 1000',
-          strokeDashoffset: '-52',
+          strokeDashoffset: 57,
+          transform: 'rotateZ(360deg)',
         },
       },
     },
@@ -71,12 +82,8 @@ export const getComponentCss = (
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
-      strokeWidth: 1,
+      strokeWidth: 1.5,
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

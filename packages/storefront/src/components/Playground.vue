@@ -185,7 +185,7 @@
   @import '../styles/internal.variables';
 
   .example {
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
     overflow-x: auto;
     border: 1px solid transparent;
 
@@ -227,18 +227,18 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$pds-spacing-medium;
+        margin-top: -$pds-spacing-static-medium;
       }
 
       :deep(> *) {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
     }
 
     &--spacing-inline .demo {
       :deep(> *) {
         &:not(:last-child) {
-          margin-right: $pds-spacing-medium;
+          margin-right: $pds-spacing-static-medium;
         }
       }
     }
@@ -247,24 +247,24 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$pds-spacing-small;
+        margin-top: -$pds-spacing-static-small;
       }
 
       :deep(> *) {
-        margin-top: $pds-spacing-small;
+        margin-top: $pds-spacing-static-small;
       }
     }
 
     .configurator ~ .demo {
-      margin-top: $pds-spacing-large;
+      margin-top: $pds-spacing-static-large;
     }
 
     .demo ~ .code-block {
-      margin-top: $pds-spacing-large;
+      margin-top: $pds-spacing-static-large;
     }
 
     .code-block ~ p-button {
-      margin-top: $pds-spacing-medium;
+      margin-top: $pds-spacing-static-medium;
     }
 
     .code-block {

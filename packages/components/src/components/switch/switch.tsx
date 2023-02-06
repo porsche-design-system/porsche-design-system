@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
+import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
+import type { AlignLabel, BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
@@ -7,7 +7,7 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
@@ -22,8 +22,7 @@ const propTypes: PropTypes<typeof Switch> = {
   checked: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  tabbable: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -51,24 +50,15 @@ export class Switch {
   /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
-
   /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
-  }
-
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.isDisabledOrLoading) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -77,7 +67,7 @@ export class Switch {
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
-      () => this.isDisabledOrLoading
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
   }
 
@@ -90,37 +80,38 @@ export class Switch {
       this.hideLabel,
       this.stretch,
       this.checked,
+      this.disabled,
       this.loading,
-      this.isDisabledOrLoading,
       this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <label class="root">
-        <span id="label" class="text">
-          <slot />
-        </span>
-        <button
-          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          type="button"
-          role="switch"
-          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
-          onClick={this.onSwitchClick}
-        >
+      <button
+        {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+        class="root"
+        type="button"
+        role="switch"
+        onClick={this.onSwitchClick}
+      >
+        <span class="switch">
+          {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
             {this.loading && (
               <PrefixedTagNames.pSpinner
                 class="spinner"
                 size="inherit"
-                theme={this.checked ? 'light' : 'dark'}
+                theme={this.theme}
                 aria={{ 'aria-label': 'Loading state' }}
               />
             )}
           </span>
-        </button>
-      </label>
+        </span>
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 

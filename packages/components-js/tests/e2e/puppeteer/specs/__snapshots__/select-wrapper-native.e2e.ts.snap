@@ -30,19 +30,6 @@ exports[`accessibility should update accessibility tree with message text if sta
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
           "role": "none",
         },
       ],
@@ -64,16 +51,6 @@ exports[`accessibility should update accessibility tree with message text if sta
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
           "role": "none",
         },
       ],

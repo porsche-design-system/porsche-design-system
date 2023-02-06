@@ -97,7 +97,7 @@
 
   .link {
     width: 100%;
-    margin: $pds-spacing-x-small 0;
+    margin: $pds-spacing-static-x-small 0;
     display: inline-block;
     text-decoration: none;
   }

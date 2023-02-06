@@ -2,7 +2,7 @@
 
 exports[`should match flippedBreakpoint snapshot 1`] = `
 {
-  "0px": "xxs",
+  "0px": "base",
   "1000px": "m",
   "1300px": "l",
   "1760px": "xl",

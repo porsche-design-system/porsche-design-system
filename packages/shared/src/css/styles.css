@@ -1,10 +1,8 @@
 :root {
   --p-transition-duration: 0s;
-  --p-animation-duration__spinner: 0s;
-  --p-animation-duration__banner: 0s;
-  --p-override-popover-animation-duration: 0s;
-  --p-override-toast-skip-timeout: true;
-  --p-override-toast-animation-duration: 0s;
+  --p-animation-duration: 0s;
+  --p-temporary-spinner-stroke-dasharray: 40;
+  --p-temporary-toast-skip-timeout: true;
 }
 
 html,
@@ -48,22 +46,20 @@ select {
   padding: 1rem;
 }
 
-.playground.light,
-.playground.light-electric {
+.playground.light {
   background: #fff;
 }
 
 .playground.light.surface {
-  background: #f2f2f2;
+  background: #eeeff2;
 }
 
-.playground.dark,
-.playground.dark-electric {
+.playground.dark {
   background: #0e1418;
 }
 
 .playground.dark.surface {
-  background: #262b2e;
+  background: #212225;
 }
 
 .playground.hover::before,
@@ -103,30 +99,4 @@ select {
 
 .playground.dark.focus-hover::before {
   content: ':focus-visible:hover (theme=dark)';
-}
-
-/*light-electric*/
-.playground.light-electric.hover::before {
-  content: ':hover (theme=light-electric)';
-}
-
-.playground.light-electric.focus::before {
-  content: ':focus-visible (theme=light-electric)';
-}
-
-.playground.light-electric.focus-hover::before {
-  content: ':focus-visible:hover (theme=light-electric)';
-}
-
-/*dark-electric*/
-.playground.dark-electric.hover::before {
-  content: ':hover (theme=dark-electric)';
-}
-
-.playground.dark-electric.focus::before {
-  content: ':focus-visible (theme=dark-electric)';
-}
-
-.playground.dark-electric.focus-hover::before {
-  content: ':focus-visible:hover (theme=dark-electric)';
 }

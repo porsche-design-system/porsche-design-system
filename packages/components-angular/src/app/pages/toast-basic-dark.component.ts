@@ -15,7 +15,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div class="playground dark" title="should render toast neutral on dark background">
+    <div class="playground dark" title="should render toast info on dark background">
       <p-toast [theme]="'dark'"></p-toast>
     </div>
   `,

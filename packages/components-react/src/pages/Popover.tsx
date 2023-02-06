@@ -4,7 +4,11 @@ import { PPopover } from '@porsche-design-system/components-react';
 export const PopoverPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should render multiple popovers" style={{ position: 'relative', height: '500px' }}>
+      <div
+        className="playground light"
+        title="should render multiple popovers on light background"
+        style={{ position: 'relative', height: '500px' }}
+      >
         <span style={{ position: 'absolute', top: '15%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover>
             <span>
@@ -18,6 +22,15 @@ export const PopoverPage = (): JSX.Element => {
         </span>
         <span style={{ position: 'absolute', top: '60%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover description="Some description via prop" />
+        </span>
+      </div>
+
+      <div className="playground dark" title="should render popover on dark background" style={{ position: 'relative', height: '200px' }}>
+        <span style={{ position: 'absolute', top: '60%', left: '50vw', transform: 'translate(-50%)' }}>
+          <PPopover theme="dark" direction="top"
+            >Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text in theme dark</PPopover
+          >
         </span>
       </div>
     </>

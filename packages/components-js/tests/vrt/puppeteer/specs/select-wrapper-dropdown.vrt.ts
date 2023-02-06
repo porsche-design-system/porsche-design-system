@@ -1,7 +1,7 @@
 import { forceHoverState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
-import { Theme } from '@porsche-design-system/components/dist/types/types';
+import type { Theme } from '@porsche-design-system/components/dist/types/types';
 
 it('should have no visual regression for :hover', async () => {
   const vrt = getVisualRegressionStatesTester();
@@ -10,7 +10,7 @@ it('should have no visual regression for :hover', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
-  p-select-wrapper-dropdown { --p-dropdown-position: 'static'; }
+  p-select-wrapper-dropdown { --p-internal-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;
 

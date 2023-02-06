@@ -35,7 +35,9 @@
             We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong> and
             <strong>React</strong> based on Web Components and appreciate any feedback, feature requests or suggestions
             on our public
-            <a href="https://github.com/porsche-design-system/porsche-design-system-contribution/issues">Contribution Board</a>.
+            <a href="https://github.com/porsche-design-system/porsche-design-system-contribution/issues"
+              >Contribution Board</a
+            >.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -85,7 +87,7 @@
 
   .teaser {
     &:first-child {
-      margin-top: -$pds-spacing-large;
+      margin-top: -$pds-spacing-static-large;
 
       @include pds-media-query-min('s') {
         margin-top: -4rem;
@@ -93,8 +95,8 @@
     }
 
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
 
     @include pds-media-query-min('s') {
@@ -124,10 +126,10 @@
 
   .intro {
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
 
     @include pds-media-query-min('s') {
       margin: {
@@ -139,7 +141,7 @@
 
     p a {
       text-decoration: none;
-      color: $pds-theme-light-brand;
+      color: $pds-theme-light-primary;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
@@ -148,13 +150,13 @@
     }
 
     h2 + p a {
-      border-bottom: 1px solid $pds-theme-light-brand;
+      border-bottom: 1px solid $pds-theme-light-primary;
     }
   }
 
   .newsletter {
     &:last-child {
-      margin-bottom: -$pds-spacing-large;
+      margin-bottom: -$pds-spacing-static-large;
 
       @include pds-media-query-min('s') {
         margin-bottom: -4rem;
@@ -162,10 +164,10 @@
     }
 
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
     background: $pds-theme-light-background-surface;
 
     @include pds-media-query-min('s') {
@@ -177,7 +179,7 @@
     }
 
     a {
-      color: $pds-theme-light-brand;
+      color: $pds-theme-light-primary;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
