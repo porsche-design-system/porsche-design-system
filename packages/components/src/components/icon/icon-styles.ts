@@ -85,6 +85,17 @@ const filter: { [theme in Theme]: { [color in Exclude<TextColor, 'inherit'>]: st
   },
 };
 
+const forceRerenderAnimationStyle = {
+  '0%': {
+    transform: 'rotateZ(0)',
+  },
+  '100%': {
+    transform: 'rotateZ(0)',
+  },
+};
+const keyFramesLight = 'rerender-light';
+const keyFramesDark = 'rerender-dark';
+
 export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme): string => {
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
@@ -102,6 +113,7 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
+          WebkitAnimation: `${theme === 'light' ? keyFramesLight : keyFramesDark} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -114,6 +126,14 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
+      ...(!isColorInherit &&
+        theme === 'light' && {
+          [`@keyframes ${keyFramesLight}`]: forceRerenderAnimationStyle,
+        }),
+      ...(!isColorInherit &&
+        theme === 'dark' && {
+          [`@keyframes ${keyFramesDark}`]: forceRerenderAnimationStyle,
+        }),
     },
   });
 };

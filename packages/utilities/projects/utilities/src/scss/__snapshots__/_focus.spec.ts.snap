@@ -1,21 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pds-focus() should return correct css for opts: { offset: '20px' } 1`] = `
-"div:focus {
-  outline: #0a0aff solid 2px;
-  outline-offset: 20px;
+exports[`pds-focus() should return correct css for opts: { offset: '-20px' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
 }
-div:focus:not(:focus-visible) {
-  outline-color: transparent;
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'medium' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'medium' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 8px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small', theme: 'dark' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small', theme: 'light' } 1`] = `
+"div {
+  position: relative;
+  outline: 0;
+}
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }"
 `;
 
 exports[`pds-focus() should return correct css for opts: {} 1`] = `
-"div:focus {
-  outline: #0a0aff solid 2px;
-  outline-offset: 2px;
+"div {
+  position: relative;
+  outline: 0;
 }
-div:focus:not(:focus-visible) {
-  outline-color: transparent;
+div:focus::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #0a0aff;
+  border-radius: 4px;
+}
+div:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }"
 `;

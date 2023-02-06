@@ -1,13 +1,16 @@
 import type { JssStyle } from 'jss';
 import type { ContentWrapperWidth } from './content-wrapper-utils';
-import { gridSafeZone, gridWidthMax } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, gridSafeZoneBase, gridSafeZoneXXL, gridWidthMax } from '@porsche-design-system/utilities-v2';
 
 const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
     margin: '0 auto',
-    padding: `0 ${gridSafeZone}`,
+    padding: `0 ${gridSafeZoneBase}`,
     maxWidth: gridWidthMax,
     boxSizing: 'border-box',
+    [getMediaQueryMin('xxl')]: {
+      padding: `0 ${gridSafeZoneXXL}`,
+    },
   },
   extended: {
     margin: '0 auto',
