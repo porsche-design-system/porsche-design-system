@@ -1,1 +1,7 @@
-export const gridSafeZone = 'clamp(22px, 10.625vw - 12px, 192px)';
+import { gridSafeZoneBase } from './gridSafeZoneBase';
+import { gridSafeZoneXXL } from './gridSafeZoneXXL';
+
+export const gridSafeZone = {
+  base: gridSafeZoneBase,
+  xxl: gridSafeZoneXXL,
+};

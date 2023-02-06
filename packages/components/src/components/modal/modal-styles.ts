@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { gridSafeZone, headingMediumStyle, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZoneBase, headingMediumStyle, getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -35,7 +35,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `max(1rem, 7vh) ${gridSafeZone}`,
+        margin: `max(1rem, 7vh) ${gridSafeZoneBase}`,
       };
 };
 
@@ -135,7 +135,7 @@ export const getComponentCss = (
           padding: pxToRemWithUnit(40),
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZone}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(12rem, 10vh) ${gridSafeZoneBase}`,
         },
         [mediaQueryXxl]: {
           padding: pxToRemWithUnit(64),
