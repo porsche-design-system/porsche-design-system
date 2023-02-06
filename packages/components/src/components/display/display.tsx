@@ -1,10 +1,6 @@
-import type { DisplayTag } from './display-tag';
-import type { DisplaySize } from './display-size';
-import type { DisplayColor } from './display-color';
-import type { BreakpointCustomizable, PropTypes, TextAlign, Theme } from '../../types';
-import { DISPLAY_TAGS } from './display-tag';
-import { DISPLAY_SIZES } from './display-size';
-import { DISPLAY_COLORS } from './display-color';
+import type { DisplayTag, DisplaySize, DisplayColor } from './display-utils';
+import type { BreakpointCustomizable, PropTypes, TextAlign as DisplayAlign, Theme } from '../../types';
+import { DISPLAY_TAGS, DISPLAY_SIZES, DISPLAY_COLORS } from './display-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -20,7 +16,7 @@ import { getComponentCss } from './display-styles';
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>(DISPLAY_TAGS),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
-  align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<DisplayAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -40,7 +36,7 @@ export class Display {
   @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';
 
   /** Text alignment of the component. */
-  @Prop() public align?: TextAlign = 'left';
+  @Prop() public align?: DisplayAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: DisplayColor = 'primary';

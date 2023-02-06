@@ -1,5 +1,4 @@
-import type { DisplaySize } from './display-size';
-import type { DisplayColor } from './display-color';
+import type { DisplaySize, DisplayColor } from './display-utils';
 import type { BreakpointCustomizable, TextAlign, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule } from '../../styles';
@@ -7,9 +6,9 @@ import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { DISPLAY_TAGS } from './display-tag';
+import { DISPLAY_TAGS } from './display-utils';
 
-const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: any } = {
+const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
   medium: fontSizeDisplayMedium,
   large: fontSizeDisplayLarge,
 };
@@ -24,7 +23,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...hostHiddenStyles,
+        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
       },
       '::slotted': {
