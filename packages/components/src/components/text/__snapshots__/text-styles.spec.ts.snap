@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -134,7 +134,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -219,7 +219,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -260,7 +260,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -301,7 +301,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -345,7 +345,7 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
@@ -386,7 +386,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: block;
 }
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 ::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;

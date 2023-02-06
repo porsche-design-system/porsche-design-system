@@ -13,9 +13,9 @@ import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { TEXT_TAGS } from './text-tag';
+import { TEXT_TAGS } from './text-utils';
 
-const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: any } = {
+const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,
@@ -34,7 +34,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...hostHiddenStyles,
+        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
       },
       '::slotted': {

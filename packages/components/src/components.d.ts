@@ -42,7 +42,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextTag } from "./components/text/text-tag";
+import { TextTag } from "./components/text/text-utils";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
