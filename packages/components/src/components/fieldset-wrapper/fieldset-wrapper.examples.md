@@ -36,7 +36,7 @@ If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `
 is removed from all wrapped child components, as long as they are Porsche Design System form elements. You should still
 set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
-<Playground :markup="requiredMarkup" config="config"></Playground>
+<Playground :markup="requiredMarkup" :config="config"></Playground>
 
 ---
 
