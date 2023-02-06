@@ -26,7 +26,7 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.20.0-rc.0",
+    "@porsche-design-system/components-react": "2.20.0-rc.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-imask": "^6.4.3",
