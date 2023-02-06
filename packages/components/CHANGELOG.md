@@ -102,7 +102,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion` and `Text Field Wrapper` matches new design
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text` and `Text Field Wrapper` matches new design
   language
 - CSS global variables names
 
@@ -130,12 +130,75 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - Prop `lazy` for `Icon` is deprecated now:
--
 
 ```diff
 - <p-icon laze="true"></p-icon>
 
 + <p-icon></p-icon>
+```
+
+- Weight `thin` for `Text` is deprecated now, currently mapped to default value `regular`
+
+```diff
+- <p-text weight="thin">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Weight `semibold` for `Text` is deprecated now, currently mapped to `semi-bold`
+
+```diff
+- <p-text weight="semibold">Some text</p-text>
+
++ <p-text weight="semi-bold">Some text</p-text>
+```
+
+- Color `brand` for `Text` is deprecated now, currently mapped to default value `primary`
+
+```diff
+- <p-text color="brand">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Color `default` for `Text` is deprecated now, currently mapped to default value `primary`
+
+```diff
+- <p-text color="default">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Color `neutral-contrast-low` for `Text` is deprecated now, currently mapped to `contrast-low`
+
+```diff
+- <p-text color="neutral-contrast-low">Some text</p-text>
+
++ <p-text color="contrast-low">Some text</p-text>
+```
+
+- Color `neutral-contrast-medium` for `Text` is deprecated now, currently mapped to `contrast-medium`
+
+```diff
+- <p-text color="neutral-contrast-medium">Some text</p-text>
+
++ <p-text color="contrast-medium">Some text</p-text>
+```
+
+- Color `neutral-contrast-high` for `Text` is deprecated now, currently mapped to `contrast-high`
+
+```diff
+- <p-text color="neutral-contrast-high">Some text</p-text>
+
++ <p-text color="contrast-high">Some text</p-text>
+```
+
+- Color `notification-neutral` for `Text` is deprecated now, currently mapped to `notification-info`
+
+```diff
+- <p-text color="notification-neutral">Some text</p-text>
+
++ <p-text color="notification-info">Some text</p-text>
 ```
 
 #### Removed
