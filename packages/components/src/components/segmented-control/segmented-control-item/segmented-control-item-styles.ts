@@ -15,7 +15,6 @@ import {
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
-import { LinkButtonIconName } from '../../../types';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -62,13 +61,11 @@ export const getComponentCss = (
   isDisabled: boolean,
   isSelected: boolean,
   bgColor: SegmentedControlBackgroundColor,
-  icon: LinkButtonIconName | undefined,
-  iconSource: string | undefined,
+  hasIcon: boolean,
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, bgColor, theme);
-  const hasIcon = icon || iconSource;
 
   return getCss({
     '@global': {

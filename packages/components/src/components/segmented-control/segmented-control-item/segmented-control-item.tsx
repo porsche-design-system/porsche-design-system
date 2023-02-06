@@ -66,6 +66,7 @@ export class SegmentedControlItem {
     validateProps(this, propTypes);
     // this additional validation is still needed because undefined is allowed with current propTypes
     throwIfPropIsUndefined(this.host, 'value', this.value);
+    const hasIcon = !!this.icon || !!this.iconSource;
 
     attachComponentCss(
       this.host,
@@ -73,8 +74,7 @@ export class SegmentedControlItem {
       this.disabled,
       this.host.selected,
       this.host.backgroundColor || 'background-default', // default as fallback
-      this.icon,
-      this.iconSource,
+      hasIcon,
       this.host.theme || 'light' // default as fallback
     );
 
