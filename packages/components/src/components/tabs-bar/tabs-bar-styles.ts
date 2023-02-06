@@ -49,7 +49,6 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
           background: 'transparent',
           color: primaryColor,
           cursor: 'pointer',
-          transition: getTransition('background'),
           borderRadius: borderRadiusSmall,
           '&::before': {
             content: '""',
@@ -60,6 +59,9 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
             right: '-4px',
             background: 'transparent',
             borderRadius: borderRadiusSmall,
+            ...hoverMediaQuery({
+              transition: getTransition('background'),
+            }),
           },
         },
         ...hoverMediaQuery({

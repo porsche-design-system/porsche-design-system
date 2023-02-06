@@ -32,7 +32,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   background: transparent !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -56,6 +55,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(126, 127, 130, 0.20) !important;
   }
@@ -115,7 +117,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -139,6 +140,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(148, 149, 152, 0.20) !important;
   }
@@ -198,7 +202,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   background: transparent !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -222,6 +225,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(126, 127, 130, 0.20) !important;
   }
@@ -281,7 +287,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -305,6 +310,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(148, 149, 152, 0.20) !important;
   }
@@ -364,7 +372,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -388,6 +395,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(148, 149, 152, 0.20) !important;
   }
@@ -447,7 +457,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
   border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
@@ -471,6 +480,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   margin-right: 16px !important;
 }
 @media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     background: rgba(148, 149, 152, 0.20) !important;
   }
