@@ -5,9 +5,8 @@ import {
   themeDark,
   fontWeight,
   themeLight,
-  fontBehavior,
   fontFamily,
-  fontHyphenation,
+  fontHyphenationStyle,
   fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
 
@@ -28,12 +27,13 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       '*': {
         fontFamily: fontFamily,
         lineHeight: fontLineHeight,
-        ...fontBehavior,
+        textSizeAdjust: 'none',
+        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       },
 
       p: {
         fontWeight: fontWeight.regular,
-        ...fontHyphenation,
+        ...fontHyphenationStyle,
       },
 
       'h1, h2, h3, h4, h5, h6': {
@@ -77,17 +77,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration':
+      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button':
         {
           WebkitAppearance: 'none',
           appearance: 'none',
         },
-      'input[type="search"]::-webkit-search-cancel-button': {
-        display: 'none',
-        '&:focus, &:hover': {
-          display: 'none',
-        },
-      },
       'input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
           // TODO: does it have any effect?
