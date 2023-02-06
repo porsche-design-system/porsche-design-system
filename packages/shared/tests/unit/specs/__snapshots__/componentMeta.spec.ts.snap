@@ -688,7 +688,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "props": {
-      "backgroundColor": "background-default",
+      "backgroundColor": null,
       "theme": "light",
       "value": null,
     },
@@ -702,7 +702,6 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "internalProps": {
-      "backgroundColor": "background",
       "selected": null,
       "theme": "light",
     },
