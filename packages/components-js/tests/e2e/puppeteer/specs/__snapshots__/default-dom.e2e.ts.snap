@@ -391,7 +391,7 @@ exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
 "<p-scroller class="scroller hydrated" role="tablist">
   <slot>
   </slot>
-  <span class="bar" style="transform: translate3d(0rem,0,0); width: 0;">
+  <span class="bar" style="transform: translate3d(0px,0,0); width: 0;">
   </span>
 </p-scroller>"
 `;
