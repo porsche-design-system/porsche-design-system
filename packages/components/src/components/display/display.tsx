@@ -36,8 +36,8 @@ export class Display {
   /** Sets a custom HTML tag depending on the usage of the display component. */
   @Prop() public tag?: DisplayTag;
 
-  /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
-  @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'medium';
+  /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */
+  @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';
 
   /** Text alignment of the component. */
   @Prop() public align?: TextAlign = 'left';
