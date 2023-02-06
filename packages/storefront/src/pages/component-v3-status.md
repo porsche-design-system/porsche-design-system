@@ -14,20 +14,20 @@
 
 ### Utilities
 
-| Utilities            | V3 Status <br/>                                          |
-| -------------------- | -------------------------------------------------------- |
-| ✅ **Font**          | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Grid**          | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Media Query**   | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Theme**         | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Typography**    | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Focus**         | - Usage Docs missing<br />-StackBlitz button not working |
-| ⛔ **Hover**         | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Spacing**       | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Gradient**      | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Frosted Glass** | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Drop Shadow**   | - Usage Docs missing<br />-StackBlitz button not working |
-| ✅ **Border**        | - Usage Docs missing<br />-StackBlitz button not working |
+| Utilities            | V3 Status <br/>                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ |
+| ✅ **Font**          | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Grid**          | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Media Query**   | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Theme**         | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Typography**    | - Usage Docs missing<br />-StackBlitz button not working<br />- Add letter-spacing: normal; as font behavior |
+| ✅ **Focus**         | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ⛔ **Hover**         | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Spacing**       | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Gradient**      | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Frosted Glass** | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Drop Shadow**   | - Usage Docs missing<br />-StackBlitz button not working                                                     |
+| ✅ **Border**        | - Usage Docs missing<br />-StackBlitz button not working                                                     |
 
 ### Components
 
