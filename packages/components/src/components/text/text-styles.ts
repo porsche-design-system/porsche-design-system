@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import { buildSlottedStyles, getCss, buildResponsiveStyles, textMap } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../styles';
+import { buildResponsiveStyles, getCss, textMap } from '../../utils';
+import { addImportantToEachRule } from '../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
@@ -51,24 +51,4 @@ export const getComponentCss = (
       ...buildResponsiveStyles(size, getSizeJssStyle),
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& button': {
-        margin: 0,
-        padding: 0,
-        background: 0,
-        border: 0,
-        cursor: 'pointer',
-        font: 'inherit',
-      },
-      // adjust keys of baseSlottedStyles to be applied on both, `a` and `button` tag
-      ...Object.entries(getBaseSlottedStyles({ withDarkTheme: true })).reduce((result, [key, value]) => {
-        result[key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key] = value;
-        return result;
-      }, {} as JssStyle),
-    })
-  );
 };
