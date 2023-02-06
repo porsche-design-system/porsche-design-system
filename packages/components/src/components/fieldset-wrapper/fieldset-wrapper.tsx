@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, THEMES, validateProps } from '../../utils';
 import type { PropTypes } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
@@ -8,6 +8,7 @@ import { Required } from '../common/required/required';
 import { FORM_STATES } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
+import { Theme } from '../../types';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
   label: AllowedTypes.string,
@@ -15,6 +16,7 @@ const propTypes: PropTypes<typeof FieldsetWrapper> = {
   required: AllowedTypes.boolean,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -39,9 +41,19 @@ export class FieldsetWrapper {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
+  /** Adapts color depending on theme. */
+  @Prop() public theme?: Theme = 'light';
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, hasLabel(this.host, this.label));
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.state,
+      this.labelSize,
+      hasLabel(this.host, this.label),
+      this.theme
+    );
 
     const messageId = 'message';
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
