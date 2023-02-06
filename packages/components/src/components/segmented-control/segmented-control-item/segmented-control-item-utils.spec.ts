@@ -15,7 +15,8 @@ describe('getIconColor()', () => {
   it.each<Parameters<typeof getIconColor>>([[false], [true]])(
     'should return correct icon color for isDisabled: %s',
     (...args) => {
-      expect(getIconColor(...args)).toMatchSnapshot();
+      const expectedResult = args[0] ? 'contrast-medium' : 'primary';
+      expect(getIconColor(...args)).toBe(expectedResult);
     }
   );
 });
