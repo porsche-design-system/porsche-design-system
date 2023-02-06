@@ -16,6 +16,7 @@ export const getSlottedTypographyJssStyle = (): JssStyle => {
     wordWrap: 'inherit',
     hyphens: 'inherit',
     whiteSpace: 'inherit',
+    letterSpacing: 'inherit',
   };
 };
 
